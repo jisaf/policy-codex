@@ -1,0 +1,16 @@
+id: CO-2869
+name: "Medicaid: parent or caretaker relative of a dependent child"
+identifier: ma_is_parent_or_caretaker_relative_of_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is a parent or caretaker relative (ma_caretaker_relative_of, CO-2606) of a person who is a dependent child (ma_is_dependent_child)."
+derived: [exists, ma_caretaker_relative_of, [of, [P], ma_is_dependent_child]]
+sources: [S1500, S1719]
+implemented: engine
+tags: [ma, magi, household]
+rationale: "Dual-entry audit 2.1: the Transitional Medical Assistance test asks this of each member of the MAGI household (CO-2425), which reads another person's fact through this item; the same condition is written inline in several Medicaid items."
+tests:
+  - {id: CO-2869-T1, title: "Mother of a dependent child", as_of: "2026-11-01", given: {ma_caretaker_relative_of: [p2]}, others: {p2: {ma_is_dependent_child: true}}, expect: true}
+  - {id: CO-2869-T2, title: "No dependent child", as_of: "2026-11-01", given: {ma_caretaker_relative_of: []}, expect: false}

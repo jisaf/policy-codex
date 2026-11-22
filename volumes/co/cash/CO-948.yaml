@@ -7,11 +7,11 @@ scope: person
 program: AdultFinancial
 meaning: "Whether the person's af_countable_resources is at or below the Adult Financial resource limit - af_resource_limit_couple (CO-3046) for a married client, af_resource_limit_individual (CO-3045) otherwise - per 9 CCR 2503-5 3.520.72.A and C.R.S. 26-2-111(1)(b), (2)(a)(I)."
 precision: "Hard-coded numbers audit D-4: the item read the SSI-method limits (ssi_resource_limit_individual, _couple) on the ground that 3.520.72.A's figures are the same dollar amounts; the rule states its own figures and an SSI change would not change them without an amendment, so it reads Adult Financial's own parameters."
-derived: [<=, af_countable_resources, [case, [af_is_married, af_resource_limit_couple], [else, af_resource_limit_individual]]]
+derived: [<=, af_countable_resources, [case, [is_married, af_resource_limit_couple], [else, af_resource_limit_individual]]]
 sources: [S441, S442, S443, S454]
 implemented: engine
 tags: [cash, oap, and, ab, resources]
-rationale: "No existing item compares Adult Financial countable resources to the $2,000/$3,000 limit. af_category (CO-953) needs it. Not identical to ma_meets_ssi_resource_standard (CO-610), which compares against ma_ssi_household_size's living-together test rather than af_countable_resources's plain-marriage test; acknowledged as reusing CO-610's two resource-limit parameters directly (CO-233/CO-234), per the phase-5 brief's cross-program reuse instruction, rather than restating $2,000/$3,000 a second time. Fix round (M-6): reads af_is_married (CO-930) instead of re-deriving [exists_related, [spouse], true] a second time, matching af_countable_resources (CO-947)."
+rationale: "No existing item compares Adult Financial countable resources to the $2,000/$3,000 limit. af_category (CO-953) needs it. Not identical to ma_meets_ssi_resource_standard (CO-610), which compares against ma_ssi_household_size's living-together test rather than af_countable_resources's plain-marriage test; acknowledged as reusing CO-610's two resource-limit parameters directly (CO-233/CO-234), per the phase-5 brief's cross-program reuse instruction, rather than restating $2,000/$3,000 a second time. Fix round (M-6): reads is_married (CO-930) instead of re-deriving [exists_related, [spouse], true] a second time, matching af_countable_resources (CO-947)."
 nearest: [CO-610]
 tests:
   - {id: CO-948-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, ssi_countable_resources_individual: 1900, ssi_countable_resources_couple: 46000}, others: {}, relationships: [], expect: true}

@@ -1,0 +1,15 @@
+id: CO-2812
+name: SNAP homeless temporary accommodation, most days
+identifier: snap_homeless_temporary_accommodation_max_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The most days a stay in the residence of another individual can last and still make the person homeless for SNAP (7 CFR 271.2, "Homeless individual" (2)(iii)).
+versions:
+  - from: "2000-01-01"
+    value: 90
+    source: S1950
+sources: [S1950]
+tags: [snap]
+rationale: "Same-word audit SW-11: the 90-day limit of 271.2 (2)(iii) is a figure set by rule, so it is a parameter, not a literal in snap_is_homeless (CO-037)."

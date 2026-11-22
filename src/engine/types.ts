@@ -118,6 +118,10 @@ export interface ProgramVocabulary {
   prefix: string | null;
   /** The items this program's administrators are accountable for. */
   outcomes?: string[];
+  /** The words an item's meaning uses to name this program ("Colorado Works",
+   *  "TANF"); read by the read.shared_definition governance rule. The id is
+   *  always one of them. */
+  names?: string[];
 }
 
 /** A tag in a declared hierarchy: an id, the parent tag's id (absent for a

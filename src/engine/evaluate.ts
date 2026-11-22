@@ -254,7 +254,7 @@ export function evaluate(
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
-  /** P53: the month "that month" names while a "for each month in" sum
+  /** P54: the month "that month" names while a "for each month in" sum
    *  evaluates its value; null outside one. A derived fact's own rule never
    *  sees it (value() clears it), so memoised values do not depend on it. */
   let thatMonth: string | null = null;
@@ -671,7 +671,17 @@ export function evaluate(
           if (r !== inverse) continue;
           for (const [r2, x] of c.rels[y] ?? []) if (r2 === role && x !== p) out.add(x);
         }
-        return Object.keys(c.persons).filter((pid) => out.has(pid));
+        const shared = Object.keys(c.persons).filter((pid) => out.has(pid));
+        if (e[2] !== "every") return shared;
+        // P53, "every": only the persons whose holders of the role are exactly
+        // this person's (with "parent": full siblings, who share both legal
+        // parents). Another person's unstated relationships are read as none.
+        const holders = (q: string) => new Set((c.rels[q] ?? []).filter(([r]) => r === inverse).map(([, y]) => y));
+        const mine = holders(p);
+        return shared.filter((x) => {
+          const h = holders(x);
+          return h.size === mine.size && [...mine].every((y) => h.has(y));
+        });
       }
       case "reachable": {
         // The persons joined to this person by a chain of the named
@@ -757,7 +767,7 @@ export function evaluate(
         return vs.some((v: any) => v === null) ? null : vs.filter(Boolean).length;
       }
       case "sum_months": {
-        // P53: the sum of a number for each month in a list, with "that
+        // P54: the sum of a number for each month in a list, with "that
         // month" naming each month in turn and "the month" unchanged.
         const ms = g(e[1]);
         if (ms === null) return null;

@@ -9,6 +9,7 @@ import { parseCases } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger/markdown";
 import { parseDocuments } from "../ledger/documents";
+import { AID_CODES_FILE, parseAidCodes } from "../ledger/aid-codes";
 import type { LoadedVolume } from "../ledger/load";
 import type { Item } from "../engine/types";
 
@@ -80,9 +81,11 @@ export function loadVolume(root: string, volumeId: string): { vol: LoadedVolume;
   const casesText = exists("tests/cases.yaml") ? read("tests/cases.yaml") : null;
   const cases = casesText === null ? [] : parseCases(casesText);
   const documents = exists("documents.yaml") ? parseDocuments(read("documents.yaml")) : [];
+  const aidCodes = exists(AID_CODES_FILE) ? parseAidCodes(read(AID_CODES_FILE)) : null;
   const vol: LoadedVolume = {
     volumeId: entry.id, title: entry.title, path: entry.path, ref: "local", sha: null,
     meta, items, sources, sourcesText, openQuestions, cases, casesText, documents, chapterOf,
+    aidCodes,
   };
   const engine = createEngine(items, meta, {
     sourceIds: sources.map((s) => s.id),

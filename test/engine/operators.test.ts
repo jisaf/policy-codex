@@ -325,7 +325,7 @@ describe("parameters and tables", () => {
   });
 });
 
-describe("sum over months (P53)", () => {
+describe("sum over months (P54)", () => {
   const months = ["2026-01", "2026-02", "2026-03"];
   it("adds a number for each month, with that month bound and the month unchanged", () => {
     const w = { w: { "2026-01": 1, "2026-02": 2, "2026-03": 4 } };

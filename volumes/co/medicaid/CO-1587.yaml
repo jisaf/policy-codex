@@ -1,0 +1,17 @@
+id: CO-1587
+name: "Medicaid: in Title IV-B foster care or receiving Title IV-E payments"
+identifier: ma_is_in_title_iv_foster_care_or_adoption_assistance
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is a child in foster care receiving child welfare services under Title IV-B, or receives Title IV-E foster care maintenance or adoption assistance payments.
+derived: [in, child_welfare_payment_type, [title_iv_e_foster_care, title_iv_b_services_only, title_iv_e_adoption_assistance]]
+sources: [S844, S854]
+implemented: engine
+tags: [verification, ma]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-324: cw_receives_title_iv_foster_adoption_kinship_payment (CO-841) also covers kinship payments the citizenship exemption does not name) needs it as a supplied fact. Same-word audit SW-8, dual-entry 3.21: derived from child_welfare_payment_type (CO-2847)."
+nearest: [CO-841, CO-2415]
+tests:
+  - {id: CO-1587-T1, title: "IV-B services in foster care", as_of: "2026-11-01", given: {child_welfare_payment_type: title_iv_b_services_only}, expect: true}
+  - {id: CO-1587-T2, title: "No child welfare involvement", as_of: "2026-11-01", given: {child_welfare_payment_type: none}, expect: false}

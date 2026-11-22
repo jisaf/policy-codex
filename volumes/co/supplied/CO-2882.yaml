@@ -1,0 +1,12 @@
+id: CO-2882
+name: Expected program completion date
+identifier: expected_program_completion_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person can reasonably be expected to complete the program education_program_type names (for a secondary student, graduation)."
+supplied_by: The school's record or the applicant's statement.
+sources: [S206, S406]
+tags: [student]
+rationale: "Same-word audit SW-12: the Medicaid and Colorado Works dependent-child test asks whether a full-time secondary student can reasonably be expected to complete before turning 19; the expected completion date is the fact, the comparison is derived."

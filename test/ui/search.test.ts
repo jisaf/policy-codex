@@ -48,7 +48,7 @@ describe("search", () => {
 
   it("groups hits by kind and builds a hash per hit", () => {
     const grouped = groupHits(search(index, "abawd"));
-    expect(Object.keys(grouped)).toEqual(["item", "source", "question"]);
+    expect(Object.keys(grouped)).toEqual(["item", "source", "question", "resolved"]);
     const src = grouped.source[0];
     expect(hitHash(src, defaultRoute())).toBe("#/mwr/source/S12");
   });

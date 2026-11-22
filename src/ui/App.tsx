@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./phase13.css";
 import { CasesView } from "./CasesView";
 import { DocumentsView } from "./DocumentsView";
 import { GraphView } from "./GraphView";
@@ -19,6 +20,12 @@ import { route, statusSig, volumeSig } from "./state";
 import { TableView } from "./TableView";
 import { Tour, tourBoxHeightSig, tourOpenSig } from "./Tour";
 import { Tray } from "./Tray";
+import { DraftBanner } from "./DraftBanner";
+import { InboxView } from "./views/InboxView";
+import { OutcomesView } from "./views/OutcomesView";
+import { QuestionsView } from "./views/QuestionsView";
+import { RolesView } from "./views/RolesView";
+import { WalkthroughView } from "./views/WalkthroughView";
 
 function ViewSlot() {
   const r = route.value;
@@ -31,6 +38,11 @@ function ViewSlot() {
   if (r.view === "source") return <SourcesView />;
   if (r.view === "documents" || r.view === "document") return <DocumentsView />;
   if (r.view === "handoff") return <HandoffView />;
+  if (r.view === "inbox") return <InboxView />;
+  if (r.view === "questions") return <QuestionsView />;
+  if (r.view === "walkthrough") return <WalkthroughView />;
+  if (r.view === "roles") return <RolesView />;
+  if (r.view === "outcomes") return <OutcomesView />;
   return <SearchView />;
 }
 
@@ -43,6 +55,7 @@ export function App() {
       style={tourOpen ? { "--tourbox-h": `${tourBoxHeightSig.value}px` } : undefined}
     >
       <Header />
+      <DraftBanner />
       <main>
         {status.kind === "loading" && <p class="status">{status.message}</p>}
         {status.kind === "error" && <p class="status bad">{status.message}</p>}

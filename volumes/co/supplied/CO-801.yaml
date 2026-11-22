@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person
 program: All
-meaning: The combined countable resources of this person and a spouse living together as of the current month, after the 20 CFR 416.1210 and 8.100.5.M.2 exclusions - the figure 8.100.5.M.1's $3,000 couple resource limit, and § 8.100.7.O.1's ongoing CSRA-plus-$2,000 test, are compared against.
+meaning: The combined countable resources of this person and a spouse living together as of the current month, after the 20 CFR 416.1210 and 8.100.5.M.2 exclusions - the figure 8.100.5.M.1's $3,000 couple resource limit, and § 8.100.7.O.1's ongoing CSRA-plus-$2,000 test, are compared against. Stated once, on one spouse; readers take it through ssi_countable_resources_of_couple (CO-2861). Not stated for an unmarried person.
 supplied_by: "The attested value of the couple's resources, as the case record holds it, valued under the 20 CFR 416.1210 and 8.100.5.M.2 exclusions and redetermined each review; it is the attested value until a resources verification element requires documents (ma_requires_verification_of_resources, CO-1405; a Medicare Savings Program applicant's non-liquid resources are taken on attestation, 42 CFR 435.952(e)(2)(i)), and then the county worker's determination from both spouses' account statements and property records (heavier-definitions audit H-15: the fact is the person's circumstance as stated; documents belong to the *_verification_document_received facts and the verification items, which ask for them only where a program's rule requires it)."
 sources: [S301]
 tags: [non_magi, resources]

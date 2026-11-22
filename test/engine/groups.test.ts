@@ -113,6 +113,28 @@ describe("group patterns", () => {
     expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
     expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
   });
+  it("finds the persons who share every parent (P53: full siblings)", () => {
+    const c7 = makeCase(ix, {
+      id: "F", as_of: "2026-10-01",
+      relationships: [
+        ["parent", "p1", "p2"], ["parent", "p4", "p2"],
+        ["parent", "p1", "p3"], ["parent", "p4", "p3"],
+        ["parent", "p1", "p5"],
+      ] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} }, p4: { facts: {} }, p5: { facts: {} } },
+    });
+    const fx = buildIndex([...items,
+      { id: "G-13", name: "Full siblings", identifier: "full_sibs", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent", "every"], implemented: "engine" },
+      { id: "G-14", name: "Siblings", identifier: "sibs", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent"], implemented: "engine" }]);
+    // p2 and p3 share both parents; p5 shares only p1 with them.
+    expect(evaluate(fx, c7, "sibs", "p2", null)).toEqual(["p3", "p5"]);
+    expect(evaluate(fx, c7, "full_sibs", "p2", null)).toEqual(["p3"]);
+    expect(evaluate(fx, c7, "full_sibs", "p5", null)).toEqual([]);
+    expect(evaluate(fx, c7, "full_sibs", "p1", null)).toEqual([]);
+    const text = "the persons who share every parent with this person";
+    expect(parseInline(fx, text)).toEqual(["shared_relative", "parent", "every"]);
+    expect(inline(fx, parseInline(fx, text))).toBe(text);
+  });
   it("joins the bound person to a group by relationship", () => {
     const c8 = makeCase(ix, {
       id: "J", as_of: "2026-10-01",

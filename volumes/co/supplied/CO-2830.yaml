@@ -1,0 +1,12 @@
+id: CO-2830
+name: Complies with the Refugee Services Program work requirements
+identifier: complies_with_refugee_program_work_requirements
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether, this month, the person is subject to and complying with the work requirements of the Colorado Refugee Services Program. A fact about the person's refugee program case, not this volume's determination.
+supplied_by: The Colorado Refugee Services Program case record.
+sources: [S121]
+tags: [snap, work_registration]
+rationale: "Dual-entry audit 3.17 and same-word audit SW-24: SNAP's is_complying_with_tanf_work_requirements (CO-066, retired) restated the Colorado Works compliance that complies_with_tanf_work_requirements (CO-1935) states, plus the refugee work program. The refugee program is the part no other fact states."

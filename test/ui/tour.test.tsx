@@ -123,7 +123,8 @@ describe("Tour", () => {
     );
     await tick();
     expect(tourOpenSig.value).toBe(true);
-    expect(host.querySelectorAll(".doors .door").length).toBe(4);
+    expect(host.querySelectorAll(".doors.classic .door").length).toBe(4);
+    expect(host.querySelectorAll(".doors.roles .door").length).toBe(6);
     expect(location.hash).toBe("#/mwr/start");
   });
 });

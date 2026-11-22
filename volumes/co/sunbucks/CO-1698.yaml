@@ -16,7 +16,7 @@ tags: [verification, sebt]
 open: [OQ-377]
 rationale: "Review K-5: the chapter had no SUN Bucks verification outcome."
 tests:
-  - {id: CO-1698-T1, month: "2026-10", as_of: "2026-10-01", given: {is_school_aged: false, is_enrolled_in_nslp_school: false}, expect: not_applicable}
-  - {id: CO-1698-T2, month: "2026-10", as_of: "2026-10-01", given: {is_school_aged: true, sebt_requires_verification_of_income: false, sebt_requires_verification_of_school_enrollment: false}, expect: not_required}
-  - {id: CO-1698-T3, month: "2026-10", as_of: "2026-10-01", given: {is_school_aged: true, sebt_requires_verification_of_income: true, sebt_requires_verification_of_school_enrollment: false, sebt_pending_verification_count: 0}, expect: complete}
-  - {id: CO-1698-T4, month: "2026-10", as_of: "2026-10-01", given: {is_school_aged: true, sebt_requires_verification_of_income: true, sebt_requires_verification_of_school_enrollment: false, sebt_pending_verification_count: 1}, expect: pending}
+  - {id: CO-1698-T1, month: "2026-10", as_of: "2026-10-01", given: {sebt_is_school_aged: false, is_enrolled_in_nslp_school: false}, expect: not_applicable}
+  - {id: CO-1698-T2, month: "2026-10", as_of: "2026-10-01", given: {sebt_is_school_aged: true, sebt_requires_verification_of_income: false, sebt_requires_verification_of_school_enrollment: false}, expect: not_required}
+  - {id: CO-1698-T3, month: "2026-10", as_of: "2026-10-01", given: {sebt_is_school_aged: true, sebt_requires_verification_of_income: true, sebt_requires_verification_of_school_enrollment: false, sebt_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1698-T4, month: "2026-10", as_of: "2026-10-01", given: {sebt_is_school_aged: true, sebt_requires_verification_of_income: true, sebt_requires_verification_of_school_enrollment: false, sebt_pending_verification_count: 1}, expect: pending}

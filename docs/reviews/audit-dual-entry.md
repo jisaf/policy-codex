@@ -300,3 +300,54 @@ Fix round, track 1 (immigration status, sponsors, receipt records and outcome re
 - 4.5: fixed (52d402a). "Shall have minimum essential coverage" is the child's coverage, a record; CO-085's precision says an enrollment approved in the same application counts.
 - 4.6: fixed (52d402a). ma_bccp_has_creditable_coverage (CO-1191) derived from Medicare, Medical Assistance enrollment and ma_bccp_has_other_creditable_coverage (CO-2712).
 - Section 4 table rows marked "Correct" or "stays supplied" (receives_snap, receives_ssi, receipt histories, case records, af_category for OAP Health Care "qualify for"): confirmed; CO-1156 now reads OAP receipt as H-3 directs.
+
+Fix round, track 2 (the dual-entry findings outside immigration status, sponsors and receipt records), 2026-11-21.
+
+- 1.1: fixed (42e828d). CO-1977 reads `ma_community_spouse_income`; CO-833 retired.
+- 1.2: fixed (42e828d). `ma_community_spouse_shelter_costs` (CO-2802) from the community spouse's own `shelter_cost_monthly`, `housing_maintenance_fee` (CO-2800) and the larger of the SNAP utility allowance her home reaches and `utility_expenses_actual` (CO-2801); CO-834 retired; which SUA tier is OQ-560. CO-01 and CO-02 recomputed by hand (MMMNA 2,993.50 to 3,909.50; income allowance 1,813.50 to 2,729.50; patient payment 106.14 to 0; CSRA 46,000 to 259,660).
+- 1.3: fixed (42e828d). CO-838 retired and removed from CO-01, CO-02, CO-06.
+- 1.4: fixed (42e828d). CO-2469 reads the family member's `lives_with`; CO-2468 retired.
+- 1.6: fixed (87ecde0). Trust, annuity and transfers are each person's own; the verification items read a spouse's across the edge; the penalty sums the couple's transfers once.
+- 1.7: not fixed. Deriving the apportionment from the spouse's institutionalization and LTC eligibility reads the spouse's eligibility, which reads the spouse's own penalty share: a dependency cycle unless the spouse's eligibility apart from the penalty is a separate item, which was not built.
+- 1.8: fixed (87ecde0). CO-889 derived (now `ma_spouse_or_qualifying_child_lives_in_home`), with the age as a parameter (CO-2865).
+- 1.9: not fixed. The burial responsible persons' resources stay supplied on the decedent (one case, CO-13).
+- 1.10, 5.12: not fixed. The mother's enrollment at the child's birth is still stated on the child. The statements on older persons are not meaningless: the citizenship-verification exemption (CO-1395) reads the fact at any age.
+- 1.11: fixed (87ecde0). `has_military_connection` (CO-005) derived from own service (CO-2866), the spouse's or parent's service and surviving-spouse status (CO-2867).
+- 1.12: fixed (87ecde0). Meaning of `qualifying_quarters` changed.
+- 1.13 to 1.17, 5.9 (OQ-541): not fixed. The person-valued unit heads were not built; household facts are still repeated per member.
+- 2.1: fixed (87ecde0). CO-2425 derived (CO-2860, CO-2869).
+- 2.2: fixed (4d7a812). CO-2550 and CO-2551 derived from the months of `child_support_received`; CO-028's meaning says it is stated on the child; CO-85 p6 states the month without support.
+- 2.3: fixed (4d7a812). CO-2002 derived, with track 3's `snap_child_support_averaging_months` (the track 2 parameter CO-2844 was retired at the merge).
+- 2.4: fixed (87ecde0). CO-1344 derived (now `ma_electronic_data_source_household_income_pct_fpl`); CO-91 states its non-filers' tax facts and the data sources' 0, CO-92 the reported 1,800.
+- 2.5: not fixed (P3). The attested ratio keeps its shape.
+- 2.6, 5.6: fixed (87ecde0). `ssi_countable_resources_of_couple` (CO-2861); the couple figure is stated on one spouse and dropped from unmarried persons in seven cases.
+- 2.7: not fixed (same-word SW-30).
+- 2.8: not fixed. The utility count and the telephone fact stay.
+- 2.9: fixed (4d7a812). `foster_care_exit_date` (CO-2853); CO-095 derived.
+- 2.10: not fixed (same-word SW-20).
+- 2.11: fixed (87ecde0). CO-1986 derived (CO-2862, CO-2863).
+- 2.12, 5.11: fixed (4d7a812). `is_related_to` reads grandparents through the parent chain; the composed grandparent edges were dropped from CO-01, CO-02, CO-07 and CO-71.
+- 2.13: fixed (87ecde0). Per-child `cccap_care_is_part_time` (CO-2864); CO-1288 derived.
+- 3.2, 5.8: fixed (53b090a, be905fc). The care roles state who cares for whom once; CO-042, CO-1926, CO-065 and CO-018 derived.
+- 3.4: fixed (4d7a812). `is_married` (CO-930); marital_status keeps the statuses edges cannot show; the case check warns on a contradiction.
+- 3.5, 5.14: fixed (30b77a1). CO-895 retired; CO-01, CO-02, CO-08 state `shares_heat_with` edges.
+- 3.6: not fixed (same-word SW-7).
+- 3.8: not fixed. The Adult Financial program record was left to the receipt-records work; track 1 added `adult_financial_program_received`.
+- 3.9 to 3.13: fixed (be905fc).
+- 3.14: fixed (87ecde0). `date_of_death` (CO-2868); `is_deceased`, `af_died_while_receiving_af_or_medicaid` and `cw_is_deceased_client` derived; the sponsor's death is track 1's.
+- 3.15: fixed (53b090a). Two non-overlapping requests (CO-2215, CO-2216); CO-1560 retired.
+- 3.16: fixed by track 1's `is_enrolled_in_medical_assistance` (CO-2435); track 2's person-month `receives_medicaid` (CO-2393) was retired at the merge (9e0ec6e).
+- 3.17: fixed (53b090a). CO-066 retired; refugee program compliance CO-2830.
+- 3.18: fixed (99a44a2; same-word SW-12).
+- 3.19: fixed (151299e; same-word SW-17).
+- 3.20: not fixed (same-word SW-20).
+- 3.21: fixed (4d7a812; same-word SW-8).
+- 3.22: Medicaid part fixed (53b090a, `ma_determination_type`). CCCAP part not fixed: `cccap_is_receiving_assistance` and `cccap_redetermination_date` stay, since deriving receipt from a date being stated reads absence as a value.
+- 3.23: fixed (30b77a1, 6e631ef). CO-505 reads a Colorado county where no state is stated; the check warns on a contradiction.
+- 3.24, 3.25: not fixed (same-word SW-28).
+- 3.26: fixed (30b77a1). CO-2885 adds hours_worked; CO-07 p1's 60 hours stated once.
+- 3.27: fixed (4d7a812). CO-1296 derived; the remaining grounds are CO-2848 to CO-2852.
+- 5.1: fixed (6e631ef) for the remaining identifiers: an identifier no item has now blocks a household case; none remains.
+- 5.2: already fixed before this round (a02f5cf removed the pins; npm run check blocks a derived value stated in a household case). No pin remains after the merges.
+- 5.5: fixed (42e828d; CO-838 removed). `has_applied_for_ssi` now has a reader (CO-2271, be905fc).
+- 5.10: fixed (47de2af). 581 per-month facts moved from facts to month_defaults; CO-87's month-by-month entries stay as the case's stated history.

@@ -1,0 +1,12 @@
+id: CO-2826
+name: Lost Old Age Pension because of Social Security benefits
+identifier: lost_oap_due_to_social_security_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person was eligible for and lost Old Age Pension financial assistance because of the receipt of, or an increase (including a cost-of-living adjustment) to, Social Security (OASDI) benefits, their own or deemed from a parent or spouse. A loss of SSI is lost_ssi_due_to_social_security_benefits."
+supplied_by: The county's Adult Financial case history.
+sources: [S623]
+tags: [ma, non_magi]
+rationale: "Dual-entry audit 3.11: lost_ssi_or_oap_due_to_social_security_benefits (CO-1108) and lost_ssi_due_to_social_security_benefits (CO-1180) overlapped, so a person could be stated to have lost SSI in one and not the other. The OAP loss is the half CO-1180 does not state."

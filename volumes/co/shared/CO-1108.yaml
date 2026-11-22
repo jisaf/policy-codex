@@ -1,0 +1,18 @@
+id: CO-1108
+name: Lost SSI or OAP because of Social Security benefits
+identifier: lost_ssi_or_oap_due_to_social_security_benefits
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person was eligible for and lost SSI and/or Old Age Pension financial assistance because of the receipt of, or an increase (including a cost-of-living adjustment) to, Social Security (OASDI) benefits - their own, or deemed from a parent or spouse - the loss event that Medicaid's 10 CCR 2505-10 §§ 8.100.6.D.2 (Pickle), 8.100.6.I.1.d (disabled widow(er)s) and 8.100.6.J.1 (Disabled Adult Children) each start from.
+precision: One fact for the three groups; which benefit caused the loss is distinguished by receives_oasdi_as_disabled_adult_child (CO-1110) and is_widow_or_widower (CO-1111), and for Pickle by the COLA arithmetic of ma_pickle_countable_income (CO-1158). Section 8.100.6.D.1 excludes Railroad Retirement Benefits from the Pickle disregard; a loss caused only by RRB is not this fact.
+derived: [any, lost_ssi_due_to_social_security_benefits, lost_oap_due_to_social_security_benefits]
+sources: [S623, S625, S626]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item records why a person lost SSI or OAP. ma_pickle_eligible (CO-1159), ma_dac_eligible (CO-1161) and ma_disabled_widow_eligible (CO-1162) need it. Dual-entry audit 3.11: derived from the SSI loss (CO-1180) and the OAP loss (CO-2826)."
+tests:
+  - {id: CO-1108-T1, title: "Lost SSI", as_of: "2026-11-01", given: {lost_ssi_due_to_social_security_benefits: true}, expect: true}
+  - {id: CO-1108-T2, title: "Lost OAP only", as_of: "2026-11-01", given: {lost_ssi_due_to_social_security_benefits: false, lost_oap_due_to_social_security_benefits: true}, expect: true}
+  - {id: CO-1108-T3, title: "Neither", as_of: "2026-11-01", given: {lost_ssi_due_to_social_security_benefits: false, lost_oap_due_to_social_security_benefits: false}, expect: false}

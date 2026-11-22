@@ -1,6 +1,6 @@
 id: CO-1510
 name: Resident of a care facility for thirty consecutive days
-identifier: resides_in_care_facility_thirty_consecutive_days
+identifier: af_resides_in_care_facility_thirty_consecutive_days
 kind: supplied
 type: yes/no
 scope: person-month
@@ -11,5 +11,5 @@ supplied_by: County eligibility worker, from the facility admission record and t
 sources: [S1008, S1009, S1010]
 open: [OQ-352]
 tags: [cash, oap, and]
-rationale: "No existing fact states the Adult Financial facility test (phase-8 review K-2). snap_resides_in_institution_providing_meals (CO-007) covers a medical institution that provides most of the person's meals - SNAP's test, which the vocabulary review proposes to split - and not an assisted living residence, group home or host home; with institution_entry_date (CO-008) it also cannot say whether the month is a full calendar month of residence (3.532.F)."
+rationale: "No existing fact states the Adult Financial facility test (phase-8 review K-2). snap_resides_in_institution_providing_meals (CO-007) covers a medical institution that provides most of the person's meals - SNAP's test, which the vocabulary review proposes to split - and not an assisted living residence, group home or host home; with institution_entry_date (CO-008) it also cannot say whether the month is a full calendar month of residence (3.532.F). Same-word audit SW-37: renamed from af_resides_in_care_facility_thirty_consecutive_days so the identifier carries the prefix of the program (or method) whose meaning it states."
 nearest: [CO-007]

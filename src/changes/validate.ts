@@ -1,7 +1,7 @@
 import type { Engine } from "../engine/engine";
 import type { Finding } from "../engine/governance";
 import type { Item } from "../engine/types";
-import { applyChangeSet, changedIdentifiers } from "./apply";
+import { applyChangeSet, changedIdentifiers, isSignatureOnly } from "./apply";
 import type { ChangeEntry, ChangeSet } from "./types";
 
 export interface ItemReport {
@@ -53,17 +53,29 @@ function governanceOf(
   return ratchetGovernance(found, base.governance(baseItem));
 }
 
+/** Reports on signature-only entries (approvals staged from the inbox), per
+ *  base ledger. A signature changes no value, so its report holds while the
+ *  entry and the content entries beside it are unchanged: a chapter signed at
+ *  once is validated once, not again on every route change. */
+const signatureReports = new WeakMap<Engine, Map<string, ItemReport>>();
+
 /** Runs the full constraint set over the whole ledger with the change-set
  *  applied, so an edit that breaks a downstream item is caught here. */
 export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport {
   const applied = base.withItems(applyChangeSet(base.items(), cs));
   const reports: ItemReport[] = [];
+  let cache = signatureReports.get(base);
+  if (!cache || cache.size > 5000) { cache = new Map(); signatureReports.set(base, cache); }
+  const contentKey = JSON.stringify(cs.entries.filter((e) => !isSignatureOnly(e)));
   for (const e of cs.entries) {
     if (!e.after) continue;
+    const key = isSignatureOnly(e) ? `${contentKey}\n${JSON.stringify(e)}` : null;
+    const hit = key ? cache.get(key) : undefined;
+    if (hit) { reports.push(hit); continue; }
     const item = applied.itemById(e.id) ?? e.after;
     const report = applied.constraints(item);
     const findings = governanceOf(base, applied, e, item);
-    reports.push({
+    const out: ItemReport = {
       id: e.id,
       identifier: item.identifier,
       errors: [
@@ -75,7 +87,9 @@ export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport 
         ...findings.filter((f) => f.level === "warn").map((f) => f.msg),
       ],
       governance: findings,
-    });
+    };
+    if (key) cache.set(key, out);
+    reports.push(out);
   }
   // Impact is measured on the base graph. A delete or an identifier rename
   // removes its own downstream edges from the applied graph, which would

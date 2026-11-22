@@ -8,7 +8,7 @@ program: ColoradoWorks
 role: outcome
 meaning: Whether Colorado Works requires verification of the person's lawful presence, by producing a listed document (a Colorado license or identification card other than one issued under the Road and Community Safety Act, a military, merchant mariner or tribal document, a Rule 5 Appendix A citizenship document, or an immigration document verified through SAVE) and it has not been provided.
 precision: "An identity match through an electronic data source is not a produced document and is not evidence of lawful presence (review C-8); a DMV lawful-presence check under 3.604.3.H.4 is not modeled separately (OQ-376). False where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2). Due by: cw_status_verification_due_date (CO-1656: thirty days; the member, not the unit, is excluded after it)."
-derived: [all, cw_verification_is_applicable, [all, cw_requires_verification_of_lawful_presence, [not, [any, [all, identity_verification_document_received, identity_document_is_on_cash_program_list], [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a], immigration_status_verified_by_electronic_data_source]]]]
+derived: [all, cw_verification_is_applicable, [all, cw_requires_verification_of_lawful_presence, [not, [any, [all, identity_verification_document_received, cw_lawful_presence_identity_document_is_acceptable], [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a], immigration_status_verified_by_electronic_data_source]]]]
 sources: [S877, S1066, S1067, S1068, S1069, S1071, S1073]
 implemented: engine
 tags: [verification, cash, tanf]

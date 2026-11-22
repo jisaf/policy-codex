@@ -8,14 +8,14 @@ program: AdultFinancial
 role: outcome
 meaning: Whether a burial benefit is available for the deceased person - the person died while receiving OAP, AND, HCA or Medicaid, the total cost of burial services (less an exempt plot) is at most $2,500, and the decedent's estate and the legally responsible persons' resources leave some cost unmet - per 9 CCR 2503-5 3.570.43.A and F.1.
 precision: The 30-day request window and its good-cause extension to one year (3.570.43.C) are procedural and not modeled.
-derived: [all, died_while_receiving_af_or_medicaid, [<=, ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
+derived: [all, af_died_while_receiving_af_or_medicaid, [<=, ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
 sources: [S719, S721, S723]
 open: [OQ-355]
 implemented: engine
 tags: [cash]
 rationale: No existing item determines burial assistance eligibility; it is new to the volume with the current 9 CCR 2503-5 (D-80) and declared as an outcome.
 tests:
-  - {id: CO-1231-T1, as_of: "2026-10-01", given: {died_while_receiving_af_or_medicaid: false}, expect: false}
-  - {id: CO-1231-T2, as_of: "2026-10-01", given: {died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 3000}, expect: false}
-  - {id: CO-1231-T3, as_of: "2026-10-01", given: {died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 900, af_burial_unmet_cost: 3000}, expect: true}
-  - {id: CO-1231-T4, as_of: "2026-10-01", given: {died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 2000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 0}, expect: false}
+  - {id: CO-1231-T1, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: false}, expect: false}
+  - {id: CO-1231-T2, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 3000}, expect: false}
+  - {id: CO-1231-T3, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 900, af_burial_unmet_cost: 3000}, expect: true}
+  - {id: CO-1231-T4, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 2000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 0}, expect: false}

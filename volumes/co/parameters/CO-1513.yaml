@@ -17,4 +17,4 @@ versions:
     source: S700
 sources: [S700, S707, S1012, S1020]
 tags: [cash, oap, and, income]
-rationale: "No existing parameter states the Adult Financial ISM maximum (phase-8 review K-4); af_countable_income (CO-946) caps the county's ISM amount at it. Not the SSI-methodology in-kind figure the Medicaid chapter's in_kind_support_and_maintenance (CO-802) carries, which is valued under 20 CFR 416.1130-416.1140 without the Adult Financial cap or valuation steps."
+rationale: "No existing parameter states the Adult Financial ISM maximum (phase-8 review K-4); af_countable_income (CO-946) caps the county's ISM amount at it. Not the SSI-methodology in-kind figure the Medicaid chapter's ssi_in_kind_support_and_maintenance (CO-802) carries, which is valued under 20 CFR 416.1130-416.1140 without the Adult Financial cap or valuation steps."

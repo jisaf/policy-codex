@@ -1,0 +1,15 @@
+id: CO-2883
+name: Age before which a secondary student must be expected to finish
+identifier: secondary_student_completion_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "A full-time secondary student remains a dependent child if reasonably expected to complete the program before reaching this age (42 CFR 435.4 and 10 CCR 2505-10 § 8.100.4.G, S206; 9 CCR 2503-6 3.604.1, S401, S406): 19."
+versions:
+  - from: "2000-01-01"
+    value: 19
+    source: S206
+sources: [S206, S401, S406]
+tags: [age, student]
+rationale: "Same-word audit SW-12: the derived full-time secondary student test (CO-1720) reads the age as a parameter; Medicaid and Colorado Works state the same age."

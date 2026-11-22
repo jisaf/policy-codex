@@ -12389,6 +12389,145 @@ Document: D-80
 > E. All payments, including partial payments, shall have any cents dropped to the
 > nearest dollar, except in cases where SSI income reduces the grant.
 
+### S1950. SNAP: homeless individual (current text)
+
+Document: D-186
+
+7 CFR 271.2, "Homeless individual" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-271.2
+
+> Homeless individual means
+>
+> (1) An individual who lacks a fixed and regular nighttime residence, including, but not limited to, an individual who will imminently lose their nighttime residence; or
+>
+> (2) An individual whose primary nighttime residence is:
+>
+> (i) A supervised shelter designed to provide temporary accommodations (such as a welfare hotel or congregate shelter);
+>
+> (ii) A halfway house or similar institution that provides temporary residence for individuals intended to be institutionalized;
+>
+> (iii) A temporary accommodation for not more than 90 days in the residence of another individual; or
+>
+> (iv) A public or private place not designed for, or ordinarily used, as a regular sleeping accommodation for human beings (a hallway, a bus station, a lobby, or similar places).
+
+### S1951. SNAP: elderly or disabled member, prongs (4) and (6) to (11) (current text)
+
+Document: D-186
+
+7 CFR 271.2, "Elderly or disabled member" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-271.2
+
+> (4) Receives federally or State-administered supplemental benefits under section 212(a) of Pub. L. 93-66;
+>
+> (6) Is a veteran with a service-connected or non-service-connected disability rated by the Veteran's Administration (VA) as total or paid as total by the VA under title 38 of the United States Code;
+>
+> (7) Is a veteran considered by the VA to be in need of regular aid and attendance or permanently housebound under title 38 of the United States Code;
+>
+> (8) Is a surviving spouse of a veteran and considered by the VA to be in need of regular aid and attendance or permanently housebound or a surviving child of a veteran and considered by the VA to be permanently incapable of self-support under title 38 of the United States Code;
+>
+> (9) Is a surviving spouse or surviving child of a veteran and considered by the VA to be entitled to compensation for a service-connected death or pension benefits for a nonservice-connected death under title 38 of the United States Code and has a disability considered permanent under section 221(i) of the Social Security Act. “Entitled” as used in this definition refers to those veterans' surviving spouses and surviving children who are receiving the compensation or pension benefits stated or have been approved for such payments, but are not yet receiving them; or
+>
+> (10) Receives an annuity payment under: section 2(a)(1)(iv) of the Railroad Retirement Act of 1974 and is determined to be eligible to receive Medicare by the Railroad Retirement Board; or section 2(a)(1)(v) of the Railroad Retirement Act of 1974 and is determined to be disabled based upon the criteria used under title XVI of the Social Security Act.
+>
+> (11) Is a recipient of interim assistance benefits pending the receipt of Supplemented Security Income, a recipient of disability related medical assistance under title XIX of the Social Security Act, or a recipient of disability-based State general assistance benefits provided that the eligibility to receive any of these benefits is based upon disability or blindness criteria established by the State agency which are at least as stringent as those used under title XVI of the Social Security Act (as set forth at 20 CFR part 416, subpart I, Determining Disability and Blindness as defined in Title XVI).
+
+### S1952. School meals: categorically eligible children; foster, homeless, migrant, Head Start and runaway child
+
+Document: D-187
+
+7 CFR 245.2, "Categorically eligible", "Foster child", "Head Start child", "Homeless child", "Migrant child", "Runaway child" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-245.2
+
+> Categorically eligible means considered income eligible for free meals or free milk, as applicable, based on documentation that a child is a member of a Family, as defined in this section, and one or more children in that family are receiving assistance under SNAP, FDPIR or the TANF program, as defined in this section. A Foster child, Homeless child, a Migrant child, a Head Start child and a Runaway child, as defined in this section, are also categorically eligible. Categorical eligibility and automatic eligibility may be used synonymously.
+>
+> Foster child means a child who is formally placed by a court or an agency that administers a State plan under parts B or E of title IV of the Social Security Act (42 U.S.C. 621 et seq.). It does not include a child in an informal arrangement that may exist outside of State or court based systems.
+>
+> Head Start child means a child enrolled as a participant in a Head Start program authorized under the Head Start Act (42 U.S.C. 9831 et seq.)
+>
+> Homeless child means a child identified as lacking a fixed, regular and adequate nighttime residence, as specified under section 725(a) of the McKinney-Vento Homeless Assistance Act (42 U.S.C. 11434a(2)) by the local educational agency liaison, director of a homeless shelter or other individual identified by FNS.
+>
+> Migrant child means a child identified as meeting the definition of migrant in section 1309 of the Elementary and Secondary Education Act of 1965 (20 U.S.C. 6399) by the State or local Migrant Education Program coordinator or the local educational liaison, or other individual identified by FNS.
+>
+> Runaway child means a child identified as a runaway receiving assistance under a program under the Runaway and Homeless Youth Act (42 U.S.C. 5701 et seq.) by the local educational liaison, or other individual in accordance with guidance issued by FNS.
+
+### S1953. McKinney-Vento: homeless children and youths
+
+Document: D-188
+
+42 U.S.C. 11434a(2) (McKinney-Vento Homeless Assistance Act sec. 725). https://www.law.cornell.edu/uscode/text/42/11434a
+
+> (2) The term “homeless children and youths”—
+>
+> (A) means individuals who lack a fixed, regular, and adequate nighttime residence (within the meaning of section 11302(a)(1) of this title); and
+>
+> (B) includes—
+>
+> (i) children and youths who are sharing the housing of other persons due to loss of housing, economic hardship, or a similar reason; are living in motels, hotels, trailer parks, or camping grounds due to the lack of alternative adequate accommodations; are living in emergency or transitional shelters; or are abandoned in hospitals;
+>
+> (ii) children and youths who have a primary nighttime residence that is a public or private place not designed for or ordinarily used as a regular sleeping accommodation for human beings (within the meaning of section 11302(a)(2)(C) [1] of this title);
+>
+> (iii) children and youths who are living in cars, parks, public spaces, abandoned buildings, substandard housing, bus or train stations, or similar settings; and
+>
+> (iv) migratory children (as such term is defined in section 6399 of title 20) who qualify as homeless for the purposes of this part because the children are living in circumstances described in clauses (i) through (iii).
+
+### S1954. CCCAP: families experiencing homelessness (current text)
+
+Document: D-87
+
+8 CCR 1403-1 3.103.CCC (rule version 12658, effective 2026-08-14; fetched again 2026-11-21 and unchanged). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> CCC. “Families experiencing homelessness” means families who lack a fixed, regular, and adequate nighttime residence and at least one (1) of the following:
+>
+> 1. Children who are sharing the housing of other persons due to loss of housing, economic hardship, or a similar reason; are living in motels, hotels, or camping grounds due to the lack of alternative accommodations; are living in emergency or transitional shelters;
+>
+> 2. Children who have a primary nighttime residence that is a public or private place not designed for or ordinarily used as a regular sleeping accommodation for human beings;
+>
+> 3. Children who are living in cars, parks, public spaces, abandoned buildings, substandard housing, bus or train stations, or similar settings; or
+>
+> 4. Migratory children who qualify as experiencing homelessness for the purposes of these rules because the children are living in circumstances described in this definition (1) through (3), of this rule subsection.
+
+### S1955. SSI: who is a spouse, holding out included
+
+Document: D-189
+
+20 CFR 416.1806 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/section-416.1806
+
+> (a) We will consider someone to be your spouse (and therefore consider you to be married) for SSI purposes if—
+>
+> (1) You are legally married under the laws of the State where your and his or her permanent home is (or was when you lived together);
+>
+> (2) We have decided that either of you is entitled to husband's or wife's Social Security insurance benefits as the spouse of the other (this decision will not affect your SSI benefits for any month before it is made); or
+>
+> (3) You and an unrelated person of the opposite sex are living together in the same household at or after the time you apply for SSI benefits, and you both lead people to believe that you are husband and wife.
+>
+> (b) if more than one person would qualify as your husband or wife under paragraph (a) of this section, we will consider the person you are presently living with to be your spouse for SSI purposes.
+
+### S1956. Medicaid: inmate of a public institution; public institution
+
+Document: D-190
+
+42 CFR 435.1010, "Inmate of a public institution", "Public institution" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.1010
+
+> Inmate of a public institution means a person who is living in a public institution. An individual is not considered an inmate if—
+>
+> (a) He is in a public educational or vocational training institution for purposes of securing education or vocational training; or
+>
+> (b) He is in a public institution for a temporary period pending other arrangements appropriate to his needs.
+>
+> Public institution means an institution that is the responsibility of a governmental unit or over which a governmental unit exercises administrative control. The term “public institution” does not include—
+
+### S1957. SNAP: a nonrecurring lump sum is not income; it is a resource in the month received
+
+Document: D-192
+
+7 CFR 273.9(c)(8) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (8) Money received in the form of a nonrecurring lump-sum payment, including, but not limited to, income tax refunds, rebates, or credits; retroactive lump-sum social security, SSI, public assistance, railroad retirement benefits, or other payments; lump-sum insurance settlements; or refunds of security deposits on rental property or utilities. TANF payments made to divert a family from becoming dependent on welfare may be excluded as a nonrecurring lump-sum payment if the payment is not defined as assistance because of the exception for non-recurrent, short-term benefits in 45 CFR 261.31(b)(1). These payments shall be counted as resources in the month received, in accordance with § 273.8(c) unless specifically excluded from consideration as a resource by other Federal laws.
+
+### S1958. SNAP: liquid resources include lump sums
+
+Document: D-191
+
+7 CFR 273.8(c)(1) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (1) Liquid resources, such as cash on hand, money in checking and savings accounts, saving certificates, stocks or bonds, and lump sum payments as specified in § 273.9(c)(8); and
 ### S1900. Qualified alien: the eight categories of 8 U.S.C. 1641(b)
 
 Document: D-181

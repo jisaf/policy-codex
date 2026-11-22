@@ -2,7 +2,9 @@ import { DEFAULT_VOLUME } from "../config";
 
 export type ViewName =
   | "start" | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents"
-  | "document" | "search" | "handoff";
+  | "document" | "search" | "handoff"
+  // Phase 13 workflow views (src/ui/views/registry.ts).
+  | "inbox" | "questions" | "walkthrough" | "roles" | "outcomes";
 
 export interface Route {
   volume: string;
@@ -15,7 +17,7 @@ export interface Route {
 
 export const VIEWS: ViewName[] = [
   "start", "table", "graph", "cases", "program", "item", "source", "documents", "document",
-  "search", "handoff",
+  "search", "handoff", "inbox", "questions", "walkthrough", "roles", "outcomes",
 ];
 
 export function defaultRoute(): Route {

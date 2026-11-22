@@ -1,0 +1,12 @@
+id: CO-2825
+name: Enrolled in Medicare Part B
+identifier: medicare_part_b_enrolled
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is enrolled for supplementary medical insurance benefits under Medicare Part B.
+supplied_by: CMS enrollment data (BENDEX, the State's Medicare buy-in file) or the Medicare card.
+sources: [S1206]
+tags: [ma]
+rationale: "Dual-entry audit 3.9: is_medicare_entitled_or_enrolled (CO-017) restated Part A entitlement (CO-803). 42 CFR 435.553(a)(2) (S1206) names Part A entitlement or enrollment and Part B enrollment; Part B is the one part no fact stated."

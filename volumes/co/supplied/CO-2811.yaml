@@ -1,0 +1,12 @@
+id: CO-2811
+name: Temporary residence start date
+identifier: temporary_residence_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person began staying in the temporary accommodation nighttime_residence_type (CO-2810) names (another person's home, a shelter, a motel). Stated only for those types."
+supplied_by: The application's living situation question.
+sources: [S1950]
+tags: [household, snap]
+rationale: "Same-word audit SW-11: 7 CFR 271.2 (S1950) makes a temporary accommodation in another individual's residence homeless only for \"not more than 90 days\"; no fact states how long the stay has lasted."

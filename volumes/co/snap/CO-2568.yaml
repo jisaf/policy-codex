@@ -1,0 +1,18 @@
+id: CO-2568
+name: "SNAP: elementary or secondary student"
+identifier: snap_is_elementary_or_secondary_student
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person attends elementary or secondary school, attends classes toward a General Equivalency Diploma that the state or local school district recognizes, operates or supervises, or attends elementary or secondary classes through a home-school program the district recognizes or supervises, including a temporary interruption for a semester or vacation break when enrollment will resume.
+precision: If not stated, SNAP reads this as false (snap_student_earnings_are_excluded, CO-2569).
+derived: [in, education_program_type, [elementary, secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized]]
+sources: [S1817]
+implemented: engine
+tags: [income, age]
+rationale: "CDHS review C-2: no fact stated elementary or secondary enrollment as 7 CFR 273.9(c)(7) defines it; cccap_is_attending_high_school (grades 9-12) and snap_is_enrolled_half_time_in_school_or_training (higher education and training) are narrower or different. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
+nearest: [CO-1292]
+tests:
+  - {id: CO-2568-T1, title: "Grade 3", as_of: "2026-11-01", given: {education_program_type: elementary}, expect: true}
+  - {id: CO-2568-T2, title: "College", as_of: "2026-11-01", given: {education_program_type: higher_education}, expect: false}

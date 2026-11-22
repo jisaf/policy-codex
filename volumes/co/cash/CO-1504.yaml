@@ -1,0 +1,18 @@
+id: CO-1504
+name: Deceased Colorado Works client
+identifier: cw_is_deceased_client
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person has died and is a deceased Colorado Works client - one who received Colorado Works while alive and whose case was active in the county at death - so that a death reimbursement benefit may be paid toward the funeral, burial or cremation, per 9 CCR 2503-6 3.606.7.A.1, B.1 and F ("The county department in which the deceased client's case is active"). False for a living person.
+precision: "A Colorado Works payment in the month of death is read as an active case at death (3.606.7.F). A payment not stated for that month is read as none."
+derived: [all, [not, [unknown, date_of_death]], [at, [">", [otherwise, tanf_cash_income, 0], 0], [month_of, date_of_death]]]
+sources: [S1005, S1006]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing fact states this (phase-8 review K-1). af_died_while_receiving_af_or_medicaid (CO-1220) names the Adult Financial burial program's decedents (OAP, AND, HCA, Medicaid) and does not cover a Colorado Works client who was not on one of them; the two programs' benefits are separate (3.570.43 and 3.606.7), so a separate fact keeps each meaning exact. Dual-entry audit 3.14: derived from the date of death and the Colorado Works payment of the month of death."
+nearest: [CO-1220]
+tests:
+  - {id: CO-1504-T5, title: "Colorado Works paid in the month of death", as_of: "2026-12-01", given: {date_of_death: "2026-11-20", tanf_cash_income: 488}, expect: true}
+  - {id: CO-1504-T6, title: "Living", as_of: "2026-12-01", given: {}, expect: false}

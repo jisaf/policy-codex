@@ -1,0 +1,13 @@
+id: CO-2881
+name: Education enrollment intensity
+identifier: education_enrollment_intensity
+kind: supplied
+type: one of
+scope: person
+program: All
+options: [full_time, half_time, less_than_half_time]
+meaning: "How much the person is enrolled in the program education_program_type names, as the school or program defines it: full_time, half_time (at least half time but less than full time), or less_than_half_time. Not stated for a person in no program."
+supplied_by: The school's or program's enrollment record.
+sources: [S125, S206, S1203]
+tags: [student]
+rationale: "Same-word audit SW-12 and dual-entry 3.18: SNAP, Medicaid, Colorado Works and community engagement each test the enrollment level the school defines."

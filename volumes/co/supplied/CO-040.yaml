@@ -1,6 +1,6 @@
 id: CO-040
 name: Is disqualified for work-requirement noncompliance
-identifier: is_disqualified_for_work_requirement_noncompliance
+identifier: snap_is_disqualified_for_work_requirement_noncompliance
 kind: supplied
 type: yes/no
 scope: person
@@ -9,4 +9,4 @@ meaning: The person is currently serving a disqualification period for failing t
 precision: "A voluntary quit is stated through snap_voluntary_quit_date (CO-2313) and its disqualification computed by snap_is_disqualified_for_voluntary_quit (CO-2318); state this fact false for a voluntary quit alone."
 supplied_by: Case record.
 sources: []
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member. Same-word audit SW-37: renamed from snap_is_disqualified_for_work_requirement_noncompliance so the identifier carries the prefix of the program (or method) whose meaning it states."

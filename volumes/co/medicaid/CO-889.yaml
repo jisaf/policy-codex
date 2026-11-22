@@ -1,0 +1,17 @@
+id: CO-889
+name: "Medicaid: spouse or qualifying child lives in the home"
+identifier: ma_spouse_or_qualifying_child_lives_in_home
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether this person's spouse, or a child of this person who is under 21 or blind or disabled of any age, is lawfully residing in this person's home (42 U.S.C. 1396p(f)(2)): read as a spouse or such a child who does not reside in a medical institution and, where this person's lives_with is stated, is in it."
+precision: "A person in a nursing facility usually has no lives_with stated for the community home; the relative's own residence then decides. Disability is the SSA finding (meets_ssa_disability_criteria). If the person has no stated relationships, Medicaid reads no such relative."
+derived: [otherwise, [exists_related, [spouse, child], [all, [any, [rel, [spouse], [P]], [<, [of, [P], age], ma_home_equity_child_age_limit], [of, [P], is_blind], [of, [P], meets_ssa_disability_criteria]], [not, [otherwise, [of, [P], resides_in_medical_institution], false]], [otherwise, [in_group, [P], lives_with], true]]], false]
+sources: [S370]
+implemented: engine
+tags: [ma, ltc, resources, legal, household]
+rationale: "ma_home_equity_disqualifies (CO-650) read ma_ltc_couple - whether a spouse exists and is not in an institution - as the 1396p(f)(2) exception, but that fact asks nothing about who lives in the home: it excuses a couple whose community spouse lives with relatives and disqualifies an unmarried applicant whose disabled adult child lives in the home - the phase-4 review's C-20 finding. No existing item asks whether anyone specifically resides in the individual's home. Dual-entry audit 1.8: derived from the spouse and child edges, age, blindness and disability, and where the relative lives, so it is not stated beside them."
+tests:
+  - {id: CO-889-T1, title: "Wife at home", as_of: "2026-11-01", given: {}, others: {p2: {resides_in_medical_institution: false}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-889-T2, title: "Adult son, 30, not disabled", as_of: "2026-11-01", given: {}, others: {p2: {date_of_birth: "1996-01-01", is_blind: false, meets_ssa_disability_criteria: false, resides_in_medical_institution: false}}, relationships: [[parent, p1, p2]], expect: false}

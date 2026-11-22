@@ -47,7 +47,10 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "count": return `the number of persons in ${i(e[1])}`;
     case "has_relative_in":
       return "that person is a " + (e[1] as string[]).join(" or ") + ` of a person in ${i(e[2])}`;
-    case "shared_relative": return `the persons who share a ${e[1]} with this person`;
+    case "shared_relative":
+      return e[2] === "every"
+        ? `the persons who share every ${e[1]} with this person`
+        : `the persons who share a ${e[1]} with this person`;
     case "reachable": {
       const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
       // Not "such that": the condition gates each edge of the walk (this
@@ -203,7 +206,9 @@ export function compact(ix: LedgerIndex, e: Expr): string {
   if (op === "rel" || op === "exists_related") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }
-  if (op === "shared_relative") return `${op}(${JSON.stringify(e[1])})`;
+  if (op === "shared_relative") {
+    return e[2] === "every" ? `${op}(${JSON.stringify(e[1])}, "every")` : `${op}(${JSON.stringify(e[1])})`;
+  }
   if (op === "has_relative_in") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }

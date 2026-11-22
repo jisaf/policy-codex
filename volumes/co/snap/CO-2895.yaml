@@ -1,0 +1,15 @@
+id: CO-2895
+name: "SNAP: medical expenses"
+identifier: snap_medical_expenses
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's medical expenses for the SNAP excess medical deduction (7 CFR 273.9(d)(3), S87, S91): out-of-pocket medical expenses and health insurance premiums the person pays."
+derived: [+, medical_expenses_out_of_pocket, health_insurance_premiums_paid]
+sources: [S87, S91]
+implemented: engine
+tags: [snap, income]
+rationale: "Same-word audit SW-34: premiums are stated once (CO-835); SNAP counts them with the other medical expenses, so this item adds the two."
+tests:
+  - {id: CO-2895-T1, title: "Prescriptions 80 and Medicare Part B 185", month: "2026-10", as_of: "2026-10-01", given: {medical_expenses_out_of_pocket: 80, health_insurance_premiums_paid: 185}, expect: 265}

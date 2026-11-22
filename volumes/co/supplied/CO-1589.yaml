@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: Medicaid
-meaning: The person's monthly gross income that an electronic data source (IEVS, the Federal Data Services Hub, The Work Number, SSA) reports, for comparison with the attested figure in an aged, blind or disabled determination.
+meaning: "The person's monthly gross income that an electronic data source (IEVS, the Federal Data Services Hub, The Work Number, SSA) reports, for comparison with the attested figure (42 CFR 435.952): in an aged, blind or disabled determination, and summed over the MAGI household for the MAGI comparison (ma_electronic_data_source_household_income_pct_fpl, CO-1344)."
 supplied_by: CBMS interface results as recorded in the case.
 sources: [S867, S838]
 tags: [verification, ma, income, non_magi]
