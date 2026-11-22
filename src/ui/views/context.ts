@@ -28,6 +28,9 @@ export function viewContext(): ViewContext | null {
   const vol = volumeSig.value;
   if (!engine || !vol) return null;
   return {
-    engine, vol, route: route.value, persona: personaById(personaSig.value), today: todayIso(),
+    // A link from another persona's role page names it (`?persona=`), so the
+    // counts it opens are that persona's, as the page said.
+    engine, vol, route: route.value,
+    persona: personaById(route.value.params.persona) ?? personaById(personaSig.value), today: todayIso(),
   };
 }
