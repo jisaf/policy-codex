@@ -160,6 +160,8 @@ relationship_roles:
   - {id: grandparent, inverse: grandchild}
   - {id: grandchild, inverse: grandparent}
   - {id: other_relative, inverse: other_relative, label: "related by blood, adoption or marriage other than as parent, stepparent, grandparent, sibling or spouse (aunt, uncle, cousin, niece, nephew, great-grandparent, in-law)"}
+  - {id: gave_birth_to, inverse: born_to, label: "the birth mother of the child (a fact of birth, beside the legal parent edge where she is also the legal parent)"}
+  - {id: born_to, inverse: gave_birth_to, label: "the child this person gave birth to"}
   - {id: legal_guardian, inverse: ward, label: "appointed by a court as the person's guardian"}
   - {id: ward, inverse: legal_guardian, label: "the person for whom a court appointed this guardian"}
   - {id: foster_parent, inverse: foster_child, label: "the child is placed in this person's home in foster care"}

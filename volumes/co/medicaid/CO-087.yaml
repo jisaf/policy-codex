@@ -1,0 +1,17 @@
+id: CO-087
+name: Mother was enrolled in Medicaid at birth
+identifier: mother_was_enrolled_in_medicaid_at_birth
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person's mother was eligible for and receiving Medical Assistance at the time of the person's birth (including through retroactive Medical Assistance covering the birth), the condition 10 CCR 2505-10 8.100.4.G.7 and 42 CFR 435.117(b)(1) make an \"Eligible Needy Newborn\", and on which the citizenship documentation exemption for a deemed newborn rests at any age."
+precision: "Read from the birth mother's enrollment in the birth month (birth_mother_coverage_at_birth, CO-3322); the child need not live with the mother, per 8.100.4.G.7's third sentence, so no co-residence is read."
+derived: ["=", birth_mother_coverage_at_birth, medical_assistance]
+sources: [S211, S212]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived."
+tests:
+  - {id: CO-087-T1, as_of: "2026-10-01", given: {birth_mother_coverage_at_birth: medical_assistance}, expect: true}
+  - {id: CO-087-T2, as_of: "2026-10-01", given: {birth_mother_coverage_at_birth: chp}, expect: false}

@@ -43,6 +43,7 @@
   # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
   parameters: {cccap_entry_income_limit_pct_fpl_table: {adams: 1.85}}
   relationships:
+    - [gave_birth_to, p4, p5]  # dual-entry 1.10: p4 was on Medical Assistance when p5 was born (was mother_was_enrolled_in_medicaid_at_birth true on p5)
     - [spouse, p1, p2]
     - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
@@ -193,7 +194,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -416,7 +417,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -627,7 +628,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -831,7 +832,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -911,6 +912,8 @@
         participates_in_workfare: false
         shelter_cost_monthly: 0
         wages_gross: 0
+      months:
+        "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
@@ -1036,7 +1039,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -2113,6 +2115,7 @@
   # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
   parameters: {cccap_entry_income_limit_pct_fpl_table: {adams: 1.85}}
   relationships:
+    - [gave_birth_to, p4, p5]  # dual-entry 1.10: p4 was on Medical Assistance when p5 was born (was mother_was_enrolled_in_medicaid_at_birth true on p5)
     - [spouse, p1, p2]
     - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
@@ -2264,7 +2267,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -2484,7 +2487,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -2695,7 +2698,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -2897,7 +2900,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -2975,6 +2978,8 @@
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
         shelter_cost_monthly: 0
+      months:
+        "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
         is_member_of_federally_recognized_tribe: false
@@ -3099,7 +3104,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
@@ -4378,7 +4382,7 @@
         # application, so no earned income verification is pending in October; she has no unearned income.
         earned_income_verification_document_received: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
@@ -4427,7 +4431,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
@@ -4473,7 +4477,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -4522,7 +4526,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -4569,7 +4573,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
@@ -4757,7 +4761,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
@@ -4800,7 +4804,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: true
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
@@ -4857,7 +4861,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5096,7 +5100,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
@@ -5159,7 +5163,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
@@ -5219,7 +5223,7 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
@@ -6154,7 +6158,7 @@
         is_pregnant: true
         expected_number_of_children: 1
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -6215,7 +6219,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -6285,7 +6289,7 @@
         expected_number_of_children: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -6358,7 +6362,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -6478,7 +6482,7 @@
         expected_number_of_children: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -6810,7 +6814,7 @@
         adult_financial_program_received: none
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -6964,7 +6968,7 @@
         adult_financial_program_received: none
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7230,7 +7234,7 @@
         adult_financial_program_received: none
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7398,7 +7402,7 @@
         adult_financial_program_received: none
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7781,7 +7785,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
@@ -7841,7 +7845,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
@@ -7900,7 +7904,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
@@ -7952,7 +7956,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -8360,7 +8364,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8418,7 +8422,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8476,7 +8480,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8535,7 +8539,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8640,7 +8644,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8698,7 +8702,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8756,7 +8760,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8815,7 +8819,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8900,6 +8904,7 @@
   # on Medicaid) and 272.7% is over the children's standard: eligible_newborn. All three are Title XXI.
   as_of: "2027-02-01"
   relationships:
+    - [gave_birth_to, p1, p3]  # dual-entry 1.10: p1 was enrolled in CHP+ when p3 was born (was chp_mother_was_enrolled_at_birth true on p3)
     - [spouse, p1, p2]
     - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
@@ -8927,7 +8932,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -8971,6 +8976,8 @@
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
+      months:
+        "2026-12": {public_health_coverage_enrolled: chp}  # dual-entry 1.10: enrollment in the birth month
     p2:
       facts:
         is_member_of_federally_recognized_tribe: false
@@ -8986,7 +8993,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9045,7 +9052,6 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9060,7 +9066,6 @@
         is_tax_filer: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
-        chp_mother_was_enrolled_at_birth: true
         ma_custodial_parent: p1
         ma_application_date: "2026-12-10"
       month_defaults:
@@ -9104,7 +9109,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9197,7 +9202,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9263,7 +9268,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9321,7 +9326,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9416,7 +9421,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9479,7 +9484,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9542,7 +9547,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -9605,7 +9610,7 @@
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
@@ -11999,7 +12004,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-05-20"
@@ -12060,7 +12065,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-05-20"
@@ -12171,7 +12176,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
@@ -12225,7 +12230,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -12282,7 +12287,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
