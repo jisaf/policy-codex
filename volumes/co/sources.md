@@ -13768,3 +13768,369 @@ Document: D-86
 > “Non-Traditional Dwelling”: A non-traditional dwelling means a structure that provides housing that is not
 > affixed to a permanent physical address or is enumerated as such in this rule (see Section 3.752.25),
 > including, but not limited to, cars, vans, buses, tents and lean-tos.
+
+### S2400. Patient payment: Medicare Part B premium deducted for the first two months unless the client is on the Part B Buy-In; Part D premium deducted (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.1.e (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> e. For change in patient payment with respect to the post-eligibility treatment of income, the Eligibility Site shall:
+>
+> i) Review the AP-5615 form for Medicare part B premium deduction allowances for the first two months of admission.
+>
+> ii) If client is already on the Medicare Buy-In program for Medicare part B, do not adjust patient payment on AP-5615 form for the Medicare premium deduction. If client is not on the Buy-In program, adjust AP-5615 form for the Medicare premium deduction for the first two months of Long-Term Care institution eligibility.
+>
+> iii) If the client has a Medicare D premium, the Eligibility Site shall use the amount as an income adjustment/deduction in the patient payment calculation and complete the AP-5615 form.
+
+### S2401. Patient payment: income, the allowable monthly income adjustments, and Long-Term Care insurance payments (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.b-c (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. Once an applicant for Nursing Facility Medical Assistance has been determined eligible for Medical Assistance, the Eligibility Site shall determine the patient payment due to the Nursing Facility which is to be applied to the Medicaid reimbursement for the cost of care. That patient payment is calculated by:
+>
+> i) Determining all applicable income of the recipient
+>
+> ii) Deducting all applicable allowable monthly income adjustments, which include:
+>
+> 1) Personal Needs Allowance
+>
+> 2) If applicable, Monthly Income Allowance for the community spouse.
+>
+> 3) If applicable, Family Dependent Allowance
+>
+> 4) If applicable, Home Maintenance Allowance
+>
+> 5) If applicable, Trustee/Maintenance Fees: actual fees, with a maximum of $20 per month
+>
+> 6) If applicable, Mandatory Income Tax Withheld
+>
+> 7) Mandatory garnishments repaying Federal assistance overpayment
+>
+> 8) Medical or remedial care expenses that are not subject to payment by a third party:
+>
+> a) Medicare Part B Premium expenses, if applicable, are deductible only for the first and second month in the Nursing Facility.
+>
+> b) Medicare Part D Premium expenses, if applicable, are ongoing deductions.
+>
+> c) Other medical and remedial expenses covered under the Nursing Facility PETI (NF PETI) program are not deductible. NF PETI-approved expenses are allowed only for residents with a patient payment, but do not change the patient payment amount. For NF PETI, see the Section 8.482.33 in this volume “Post Eligibility Treatment of Income”.
+>
+> c. Long-Term Care Insurance
+>
+> Long-Term Care insurance payments are not counted as income for eligibility purposes. However, they are income available for a patient payment. The patient payment shall include the client’s income after the allowable deductions and any Long-Term Care insurance payments for the month. In the event that the patient payment is greater than the cost of care, the Long-Term Care insurance payment shall be applied before the client’s income.
+>
+> i) If Long-Term Care insurance is received for the month, and:
+>
+> 1) If, after all deductions, the client has income available for a patient payment, add this to the amount of the Long-Term Care insurance to determine the total patient payment.
+>
+> a) If the total amount is greater that the allowable cost of care, the Long-Term Care insurance is applied before the client’s income, or;
+>
+> b If after all deductions, the client does not have income available for the patient payment, only the Long-Term Care insurance payment is used.
+
+### S2402. Patient payment: the $65 plus one-half earned income reserve and mandatory tax withholdings (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.d.iii-iv (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> iii) For aged, disabled, or blind Long-Term Care institution recipients engaged in income-producing activities, an additional amount of $65 per month plus one-half of the remaining gross income may be retained by the individual.
+>
+> iv) Effective September 15, 1994, aged, disabled, or blind Long-Term Care institution residents, HCBS or PACE recipients with mandatory withholdings from earned or unearned income to cover federal state, and local taxes may have an additional amount included as a deduction from the patient payment. The patient payment deduction must be for a specific accounting period when the taxes are owed and expected to be withheld from income or paid by the individual in the accounting period. The Eligibility Site must verify that the taxes were withheld. If the taxes are not paid, the Eligibility Site must establish a recovery. The deduction is also applicable for any Federal pensions with mandated tax withholdings from unearned income despite the individual earner being institutionalized. All other pensions will discontinue the tax withholding once notified that the recipient is receiving institutionalized care through Medicaid, thus signifying that the withholding was not mandatory. This deduction does not apply to individuals who have elected to have taxes withheld from their earnings as a means to receiving a greater tax refund.
+
+### S2403. Patient payment: residents engaged in income-producing activities; personal needs reserved from earned income only when unearned income is insufficient (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.e-f (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> e. The reserve specified in section 8.100.7.V.3.d.iii. of this volume shall apply to Long-Term Care institution residents who are engaged in income-producing activities on a regular basis. Types of income-producing activities include:
+>
+> i) work in a sheltered workshop or work activity center;
+>
+> ii) “protected employment” which means the employer gives special privileges to the individual;
+>
+> iii) an activity that produced income in connection with a course of vocational rehabilitation;
+>
+> iv) employment training sessions;
+>
+> v) activities within the facility such as crafts products and facility employment.
+>
+> f. In determining the personal needs reserve amount for Long-Term Care institution residents engaged in income-producing activities:
+>
+> i) The personal needs allowance is reserved from earned income only when the person has insufficient unearned income to meet this need;
+>
+> ii) In determining countable earned income of a Long-Term Care institution resident, the following rules shall apply:
+>
+> 1) $65 shall be subtracted from the gross earned income.
+>
+> 2) The result shall be divided in half.
+>
+> 3) The remaining income is the countable earned income and shall be considered in determining the patient payment.
+>
+> iii) When the personal needs allowance is reserved from unearned income, the additional reserve is computed based on the total gross earned income.
+
+### S2404. Patient payment: Home Maintenance Allowance and its maximum (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.g (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> g. Other Deductions Reserved from Recipient's Income:
+>
+> i) In the case of a married, long-term care recipient who is institutionalized in a Long-Term Care institution and who has a spouse (and, in some cases, other dependent family members) living in the community, there are “spousal protection” rules which permit the contribution of the institutionalized spouse's income toward their living expenses. See section 8.100.7.K.
+>
+> ii) For a Long-Term Care institution recipient with no family at home, an amount in addition to the personal needs allowance may be reserved for maintenance of the recipient's home for a temporary period, not to exceed 6 months, if a physician has certified that the person is likely to return to his/her home within that period.
+>
+> This additional reserve from recipient income is referred to as Home Maintenance Allowance and the amount of the deduction must be based on actual and verified shelter expenses such as mortgage payments, taxes, utilities to prevent freeze, etc.
+>
+> The Home Maintenance Allowance:
+>
+> 1) Prior to July 1, 2018 shall not exceed the total of the current shelter and utilities components of the applicable standard of assistance (OAP for aged recipients; AND/SSI-CS or AB/SSI-CS for disabled or blind recipients).
+>
+> 2) Beginning July 1, 2018
+>
+> a) The Home Maintenance Allowance shall not exceed the Home Maintenance Allowance Maximum described in this section.
+>
+> Claimable utility costs will be limited to the lessor of the following amounts:
+>
+> The standard utility allowance used by Colorado under 7 U.S.C. 2014(e) (2018), which is hereby incorporated by reference.
+>
+> The incorporation of 7 U.S.C. 2014(e) (2018) excludes later amendments to, or editions of, the referenced material. Pursuant to § 24-4-103(12.5), C.R.S., the Department maintains copies of this incorporated text in its entirety, available for public inspection during regular business hours at: Colorado Department of Health Care Policy and Financing, 1570 Grant Street, Denver CO 80203. Certified copies of incorporated materials are provided at cost upon request.
+>
+> Or;
+>
+> The individual’s actual, verified, utility expenses.
+>
+> b) The Maximum Home Maintenance Allowance is The Individual Needs Standard minus 105% Federal Poverty Limit (FPL) for a household of 1, rounded to the nearest whole dollar, and is determined as follows:
+>
+> (1) The Department will calculate the Individual Needs Standard by dividing the Federal Minimum Monthly Maintenance Needs Allowance maximum by the Federal Minimum Monthly Maintenance Needs Allowance (MMMNA), described at 8.100.7.Q, which is in place on January 1st of each calendar year. The result of this division will be multiplied by 150% of FPL for a household of 1.
+>
+> (2) The Home Maintenance Maximum is determined by subtracting 150% FPL for a household of 1 from the Individual Needs Standard and adding 30% of 150% FPL for a household of 1. The result will be rounded to the nearest whole dollar.
+
+### S2405. Patient payment: SSI paid to an institutionalized individual is deducted from gross income (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.i (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> i. As of July 1, 1988, an SSI cash recipient may continue to receive SSI benefits when he/she is expected to be institutionalized for three months or less. This provision is intended to allow temporarily institutionalized recipients to pay the necessary expenses to maintain the principal place of residence.
+>
+> i) Payments made under this continued benefit provision are not considered over-payments of SSI benefits if the recipient's stay is more than 90 days.
+>
+> ii) The amount of Supplemental Security Income (SSI) benefit paid to an institutionalized individual is deducted from gross income when computing the patient payment.
+
+### S2406. QMB: effective the month after the month of determination; not retroactive; the annual COLA disregard (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.L.10-12 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 10. Eligibility for QMB benefits shall be effective the month following the month of determination. Beneficiaries who submit and complete an application within the 45-day standard shall be eligible for benefits no later than the first of the month following the 45th day of application. Administrative delays shall not postpone the effective date of eligibility.
+>
+> 11. QMB benefits are not retroactive and the three month retroactive Medical Assistance rule does not apply to QMB benefits.
+>
+> 12. Members who would lose their QMB entitlement due to annual social security COLA will remain eligible for QMB coverage under Medical Assistance, as income disregard cases, until the next year's federal poverty guidelines are published.
+
+### S2407. SLMB: start of eligibility, retroactive months, and the annual COLA disregard (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.M.5-7 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. SLMB eligibility starts on the date of application or up to three month prior to the application date for retroactive Medical Assistance.
+>
+> 6. Eligibility may be made retroactive up to 90 days, but may not be effective prior to 1/1/93.
+>
+> 7. Clients who would lose their SLMB entitlement due to annual SSA COLA will remain eligible for SLMB coverage, as income disregard cases, through the month following the month in which the annual federal poverty levels (FPL) update is published.
+
+### S2408. QI-1: effective the month of application, retroactive up to three months (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.N.3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. Eligibility for QI1 benefits shall be effective the month in which application is made and the individual is eligible for benefits. Eligibility may be retroactive up to three months from the date of application, but not prior to January 1, 1998.
+
+### S2409. QI-1: the annual COLA disregard (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.N.6 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. Clients who would lose QI-1 entitlement due to annual social security COLA will remain eligible for QI-1 coverage under Medical Assistance, as an income disregard case, until the next year’s federal poverty guidelines are published.
+
+### S2410. QDWI: not otherwise eligible; effective the month of determination; retroactive only to SSA's approval (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.O.4-6 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. An individual may be eligible under this section only if he/she is not otherwise eligible under another Medical Assistance category of eligibility.
+>
+> 5. Eligibility for QDWI benefits shall be effective the month of determination of entitlement.
+>
+> 6. Eligibility may be retroactive only to the date as of which SSA approves an individual's application for coverage as a “Qualified Disabled and Working Individual”. However, eligibility may not begin prior to 07/01/90.
+
+### S2411. Retroactive coverage: requested on the application; the applicant need not be eligible in the month of application (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.E.2 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. An explanation of the conditions for retroactive Medical Assistance shall be given to all applicants. Those applicants who within the three months period prior to the date of application or as of the date the person became eligible for Medical Assistance, whichever is later, have received medical services which would be a benefit under the Colorado State Plan, can request retroactive coverage on the application form. The determination of eligibility for retroactive Medical Assistance shall be made as part of the application process. An applicant does not have to be eligible in the month of application to be eligible for retroactive Medical Assistance. The applicant or client may verbally request retroactive coverage at any time following the completion of an application. Verification required to determine Medical Assistance Program eligibility for the retroactive period shall be secured by the eligibility site to determine retroactive eligibility. Proof of the declared medical service shall not be required.
+
+### S2412. 2026 HHS poverty guidelines: published in the Federal Register on January 15, 2026
+
+Document: D-220
+
+91 FR 1797 (January 15, 2026), Annual Update of the HHS Poverty Guidelines. https://www.govinfo.gov/content/pkg/FR-2026-01-15/html/2026-00755.htm
+
+> [Federal Register Volume 91, Number 10 (Thursday, January 15, 2026)]
+> [Notices]
+> [Pages 1797-1798]
+> From the Federal Register Online via the Government Publishing Office [www.gpo.gov]
+> [FR Doc No: 2026-00755]
+>
+> -----------------------------------------------------------------------
+>
+> DEPARTMENT OF HEALTH AND HUMAN SERVICES
+>
+> Office of the Secretary
+>
+> Annual Update of the HHS Poverty Guidelines
+>
+> AGENCY: Department of Health and Human Services.
+>
+> ACTION: Notice.
+>
+> -----------------------------------------------------------------------
+>
+> SUMMARY: This notice provides an update of the Department of Health and
+> Human Services (HHS) poverty guidelines to account for last calendar
+> year's increase in prices as measured by the Consumer Price Index.
+>
+> DATES: Effective Date: January 13, 2026 unless an office administering
+> a program using the guidelines specifies a different effective date for
+> that particular program.
+
+### S2413. 2025 HHS poverty guidelines: published in the Federal Register on January 17, 2025
+
+Document: D-221
+
+90 FR 5917 (January 17, 2025), Annual Update of the HHS Poverty Guidelines. https://www.govinfo.gov/content/pkg/FR-2025-01-17/html/2025-01377.htm
+
+> [Federal Register Volume 90, Number 11 (Friday, January 17, 2025)]
+> [Notices]
+> [Pages 5917-5918]
+> From the Federal Register Online via the Government Publishing Office [www.gpo.gov]
+> [FR Doc No: 2025-01377]
+>
+> -----------------------------------------------------------------------
+>
+> DEPARTMENT OF HEALTH AND HUMAN SERVICES
+>
+> Office of the Secretary
+>
+> Annual Update of the HHS Poverty Guidelines
+>
+> AGENCY: Department of Health and Human Services.
+>
+> ACTION: Notice.
+>
+> -----------------------------------------------------------------------
+>
+> SUMMARY: This notice provides an update of the Department of Health and
+> Human Services (HHS) poverty guidelines to account for last calendar
+> year's increase in prices as measured by the Consumer Price Index.
+>
+> DATES: January 15, 2025 unless an office administering a program using
+> the guidelines specifies a different effective date for that particular
+> program.
+
+### S2414. Trafficking victims are eligible for federally funded or administered benefits to the same extent as refugees
+
+Document: D-222
+
+22 U.S.C. 7105(b)(1)(A). https://www.law.cornell.edu/uscode/text/22/7105
+
+> (A) Eligibility for benefits and services
+>
+> Notwithstanding title IV of the Personal Responsibility and Work Opportunity Reconciliation Act of 1996 [8 U.S.C. 1601 et seq.], an alien who is a victim of a severe form of trafficking in persons, or an alien classified as a nonimmigrant under section 1101(a)(15)(T)(ii) of title 8, shall be eligible for benefits and services under any Federal or State program or activity funded or administered by any official or agency described in subparagraph (B) to the same extent as an alien who is admitted to the United States as a refugee under section 1157 of title 8.
+
+### S2415. Victim of a severe form of trafficking: a person under 18, or one certified by HHS (bona fide T visa application or continued presence)
+
+Document: D-222
+
+22 U.S.C. 7105(b)(1)(C), (E)(i). https://www.law.cornell.edu/uscode/text/22/7105
+
+> (C) Definition of victim of a severe form of trafficking in personsFor the purposes of this paragraph, the term “victim of a severe form of trafficking in persons” means only a person—
+> (i)
+> who has been subjected to an act or practice described in section 7102(8) of this title as in effect on October 28, 2000; and
+>
+> (ii)
+> (I)
+> who has not attained 18 years of age; or
+>
+> (II)
+> who is the subject of a certification under subparagraph (E).
+>
+> (D) Repealed. Pub. L. 108–193, § 6(a)(2), Dec. 19, 2003, 117 Stat. 2880
+>
+> (E) Certification
+> (i) In generalSubject to clause (ii), the certification referred to in subparagraph (C) is a certification by the Secretary of Health and Human Services, after consultation with the Secretary of Homeland Security, that the person referred to in subparagraph (C)(ii)(II)—
+> (I)
+> is willing to assist in every reasonable way in the investigation and prosecution of severe forms of trafficking in persons or is unable to cooperate with such a request due to physical or psychological trauma; and
+>
+> (II)
+> (aa)
+> has made a bona fide application for a visa under section 1101(a)(15)(T) of title 8, as added by subsection (e), that has not been denied; or
+>
+> (bb)
+> is a person whose continued presence in the United States the Secretary of Homeland Security is ensuring in order to effectuate prosecution of traffickers in persons.
+
+### S2416. Iraqi special immigrants: eligible for refugee benefits and entitlement programs to the same extent and for the same periods as refugees
+
+Document: D-223
+
+Pub. L. 110-181, div. A, title XII, sec. 1244(g) (8 U.S.C. 1157 note). https://www.govinfo.gov/content/pkg/USCODE-2023-title8/html/USCODE-2023-title8-chap12-subchapII-partI-sec1157.htm
+
+> "(g) Resettlement Support.—Iraqi aliens granted special immigrant status described in section 101(a)(27) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(27)) shall be eligible for resettlement assistance, entitlement programs, and other benefits available to refugees admitted under section 207 of such Act (8 U.S.C. 1157) to the same extent, and for the same periods of time, as such refugees.
+
+### S2417. Afghan special immigrants: eligible for refugee benefits and entitlement programs to the same extent and for the same periods as refugees
+
+Document: D-224
+
+Pub. L. 111-8, div. F, title VI, sec. 602(b)(8) (8 U.S.C. 1101 note). https://www.govinfo.gov/content/pkg/USCODE-2023-title8/html/USCODE-2023-title8-chap12-subchapI-sec1101.htm
+
+> "(8) Resettlement support.—A citizen or national of Afghanistan who is granted special immigrant status described in section 101(a)(27) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(27)) shall be eligible for resettlement assistance, entitlement programs, and other benefits available to refugees admitted under section 207 of such Act (8 U.S.C. 1157) to the same extent, and for the same periods of time, as such refugees.
+
+### S2418. Medicare Savings Programs: non-liquid resources verified only when the attestation is not reasonably compatible, or after eligibility
+
+Document: D-96
+
+42 CFR 435.952(e)(2)(ii)-(iii). https://www.ecfr.gov/current/title-42/part-435/subpart-J
+
+> (ii) If the agency has information that is not reasonably compatible with an applicant's attestation, the agency must seek additional information from the individual in accordance with paragraph (c) of this section.
+>
+> (iii) The agency may verify the value of non-liquid resources after the agency has determined that an applicant is eligible for the Medicare Savings Programs, in accordance with paragraph (c) of this section. If the agency requests documentation in accordance with this paragraph, the agency must provide the individual with at least 90 days from the date of the request to provide any necessary information requested and must allow the individual to submit such documentation through any of the modalities described in § 435.907(a).
+
+### S2419. Medicare Savings Programs: life insurance face value, and the cash surrender value at the State's option, taken on attestation
+
+Document: D-96
+
+42 CFR 435.952(e)(4)(i). https://www.ecfr.gov/current/title-42/part-435/subpart-J
+
+> (4) *Life insurance policies.* (i) Except as provided in paragraph (e)(4)(ii) of this section, the agency must accept an applicant's attestation of the face value of life insurance.
+>
+> (A) If an individual attests to a face value of life insurance policy that is above $1,500, the State may accept an attestation of the cash surrender value of the life insurance policy for the purpose of determining resource eligibility for the Medicare Savings Programs.
+
+### S2420. SSI: liquid and nonliquid resources defined
+
+Document: D-208
+
+20 CFR 416.1201(b)-(c)(1). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1201
+
+> (b) Liquid resources. Liquid resources are cash or other property which can be converted to cash within 20 days, excluding certain nonwork days as explained in § 416.120(d). Examples of resources that are ordinarily liquid are stocks, bonds, mutual fund shares, promissory notes, mortgages, life insurance policies, financial institution accounts (including savings, checking, and time deposits, also known as certificates of deposit) and similar items. Liquid resources, other than cash, are evaluated according to the individual's equity in the resources. (See § 416.1208 for the treatment of funds held in individual and joint financial institution accounts.)
+> (c) Nonliquid resources. (1) Nonliquid resources are property which is not cash and which cannot be converted to cash within 20 days excluding certain nonwork days as explained in § 416.120(d). Examples of resources that are ordinarily nonliquid are loan agreements, household goods, automobiles, trucks, tractors, boats, machinery, livestock, buildings and land. Nonliquid resources are evaluated according to their equity value except as otherwise provided. (See § 416.1218 for treatment of automobiles.)
