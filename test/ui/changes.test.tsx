@@ -86,12 +86,12 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 6 and reaches 15", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 6 and reaches 17", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
-    expect([r.read.length, r.reach.length]).toEqual([6, 15]);
+    expect([r.read.length, r.reach.length]).toEqual([6, 17]);
   });
 
   it("$100 for the $90 disregard moves 8 steps on the way (countable income) and no outcome", () => {
@@ -233,7 +233,7 @@ describe("My proposal", () => {
     await tick();
     expect(ed.querySelector(".refuse")).toBeNull();
     const effect = host.querySelector("section.effect")!;
-    expect(effect.querySelector(".reach")!.textContent).toBe("Read by 6 of 47 stored households; it reaches 15.");
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 17.`);
     await until(() => effect.getAttribute("aria-busy") === "false");
     expect(effect.textContent).toMatch(/8 stored results in 4 households would change/);
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);

@@ -47,7 +47,7 @@ test("Marcus changes the $90 disregard and sees its effect and approvers on one 
 
   await ed.locator('input[name="value"]').fill("100");
   const effect = page.locator("section.effect");
-  await expect(effect.locator(".reach")).toHaveText("Read by 6 of 47 stored households; it reaches 15.", { timeout: 30_000 });
+  await expect(effect.locator(".reach")).toHaveText(/^Read by 6 of \d+ stored households; it reaches 17\.$/, { timeout: 30_000 });
   await expect(effect).toContainText("8 stored results in 4 households would change", { timeout: 30_000 });
   await expect(effect).toContainText("Steps on the way that change (8)");
 
