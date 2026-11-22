@@ -1,0 +1,15 @@
+{
+  "name": "rulebook-blind-a",
+  "private": true,
+  "type": "module",
+  "description": "Rulebook: a blind prototype interface for the Colorado codex. Uses the repository's node_modules (esbuild, vite-node, yaml) and src/engine.",
+  "scripts": {
+    "data": "cd ../.. && npm run export -- --volume co && vite-node prototypes/blind-a/scripts/build-data.ts",
+    "bundle": "node scripts/build.mjs",
+    "build": "npm run data && npm run bundle",
+    "serve": "node scripts/serve.mjs",
+    "smoke": "cd ../.. && vite-node prototypes/blind-a/scripts/smoke.ts",
+    "check-routes": "node scripts/check-routes.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  }
+}
