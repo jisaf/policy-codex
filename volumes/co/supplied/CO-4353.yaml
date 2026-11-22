@@ -1,0 +1,14 @@
+id: CO-4353
+name: "Colorado Works: county closure of the grant in effect"
+identifier: cw_county_closure_type
+kind: supplied
+type: one of
+options: [none, demonstrable_evidence, continued_ebt_misuse, minor_parent_education_nonparticipation]
+scope: person-month
+program: ColoradoWorks
+meaning: "The closure of this client's Colorado Works basic cash assistance that a county department has made and that is in effect in the month, or none: demonstrable_evidence, the client did not participate in the Workforce Development program before signing the first Individualized Plan (9 CCR 2503-6 3.601 \"Demonstrable evidence\", 3.607.5); continued_ebt_misuse, the one-month denial or discontinuance of the cash benefit for continued use of the EBT card at prohibited establishments after a warning and a one-month disabling of the card (3.609.2.J.3-4), stated for that one month; minor_parent_education_nonparticipation, an unmarried minor parent of the unit failed without good cause to participate in education or an approved training program within the sixty days of 3.604.2.N.1.b, and the termination or discontinuation is in effect."
+precision: "If not stated, Colorado Works reads this as none. Each closure rests on a county finding the volume does not make (participation before the first Individualized Plan, quarterly EBT transaction monitoring, good cause), so the finding enters here, as the sanction level does (work_sanction_level_served, CO-1261). A closure ends when the client reapplies and is approved (3.609.2.J.3: not before the one-month period expires); the month the closure no longer applies states none."
+supplied_by: "County Workforce Development and eligibility case record (statewide automated system): the closure action and its notice."
+sources: [S3161, S3162, S3153]
+tags: [cash, tanf]
+rationale: "Coverage review CW-13 (P1): three closures the current rule states had no item and no recorded reason (3.607.5, S3161; 3.609.2.J.3-4, S3162; 3.604.2.N.1.b, S3153); the fourth-level sanction closure was already modeled (CO-1264). One supplied fact with an option per closure, rather than three yes/no facts, since a closure has one reason; cw_eligibility_status (CO-921) reads it for every member of the unit."

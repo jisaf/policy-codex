@@ -5,10 +5,10 @@ kind: derived
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: Whether this person is an "adult" (or a minor child head-of-household) for the sixty-month time limit - eighteen or older, or a minor who is the assistance unit's head of household and has a dependent child of their own - per 45 CFR 264.1(a)(1)-(2) and 9 CCR 2503-6 3.606.6.A, C.
+meaning: Whether this person is an "adult" (or a minor child head-of-household) for the sixty-month time limit - eighteen or older, or a minor who is the assistance unit's head of household and has a dependent child of their own, or a minor parent who does not live in the home of a caretaker and receives assistance as an adult (9 CCR 2503-6 3.604.2.N.2.c, cw_minor_parent_is_assisted_as_adult, CO-4352; coverage review CW-2) - per 45 CFR 264.1(a)(1)-(2) and 9 CCR 2503-6 3.606.6.A, C.
 precision: "The minor-head-of-household branch reads cw_has_dependent_child (the minor parent has a dependent child of her own), per 264.1(a)(2)'s \"minor parent head-of-household.\" Vocabulary fix round (R-7): reads cw_is_head_of_assistance_unit (CO-1733), not the SNAP head of household."
-derived: [any, [">=", age, cw_dependent_child_age_limit], [all, cw_is_head_of_assistance_unit, cw_has_dependent_child]]
-sources: [S417, S421]
+derived: [any, [">=", age, cw_dependent_child_age_limit], [all, cw_is_head_of_assistance_unit, cw_has_dependent_child], cw_minor_parent_is_assisted_as_adult]
+sources: [S3154, S421, S3153]
 implemented: engine
 tags: [cash, tanf]
 rationale: "No existing item states who counts as an 'adult' for the Colorado Works time limit; cw_months_of_assistance_used (CO-915) and cw_time_limit_reached (CO-918) both need it under the fix-round C-2 finding that the sixty-month test is a unit-level test over the unit's adult members, not a person-level test read off whoever is asked. Reuses cw_dependent_child_age_limit (CO-270) rather than a bare 18, the same convention cw_is_work_eligible_individual (CO-919, fixed under C-6) follows."

@@ -1,0 +1,19 @@
+id: CO-4372
+name: "Colorado Works: excluded for status or SSN verification not provided"
+identifier: cw_is_excluded_for_unprovided_status_verification
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "This person has not provided, within the thirty calendar days of 9 CCR 2503-6 3.604.3.K, a verification of citizenship, qualified non-citizen status, lawful presence, identity or social security number that is pending for the person: \"Individuals unable to provide this verification will not receive payment for themselves and their income will be used to determine eligibility for the household\" (K, last paragraph; 3.604.3.I.3)."
+precision: "The determination date is after the person's thirty-day due date (cw_status_verification_due_date, CO-1656) and, in the month of the determination date, the person has at least one such element pending (cw_person_pending_status_verification_count, CO-1655). Where no verification request date is stated the thirty days have not begun, so the person is not excluded; the same reading as cw_verification_status (CO-1427), whose members_excluded result rests on the same two tests. The person is left out of the unit's size (cw_assistance_unit_members_for_size, CO-2351) and reported ineligible_member_verification (cw_person_participation_status, CO-2561); the person's income still counts as a member's (CO-910, CO-923)."
+derived: [otherwise, [all, [">", [det_date], cw_status_verification_due_date], [">", [at, cw_person_pending_status_verification_count, [det_month]], 0]], false]
+sources: [S1064]
+implemented: engine
+tags: [cash, tanf, verification]
+rationale: "Coverage review CW-12 (P1): CO-1427 reported members_excluded and said the members concerned receive no payment, but cw_assistance_unit_members_for_size (CO-2351) did not read the pending status count, so the grant still counted those members in the unit's size; the two outcomes disagreed. This item states the person-level test once for both readers."
+tests:
+  - {id: CO-4372-T1, title: "Requested September 1, due October 1; SSN still pending on October 15: excluded", as_of: "2026-10-15", given: {cw_status_verification_due_date: "2026-10-01", cw_person_pending_status_verification_count: 1}, expect: true}
+  - {id: CO-4372-T2, title: "Still within the thirty days", as_of: "2026-10-15", given: {cw_status_verification_due_date: "2026-10-20", cw_person_pending_status_verification_count: 1}, expect: false}
+  - {id: CO-4372-T3, title: "Past the date but nothing pending", as_of: "2026-10-15", given: {cw_status_verification_due_date: "2026-10-01", cw_person_pending_status_verification_count: 0}, expect: false}
+  - {id: CO-4372-T4, title: "No request date stated: the thirty days have not begun", as_of: "2026-10-15", given: {}, expect: false}

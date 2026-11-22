@@ -243,6 +243,11 @@ outcomes:
       ineligible_institution: "Not eligible: an institution patient for tuberculosis or mental disease, or an inmate."
       ineligible_strike: "Not eligible: an adult of the unit is on strike."
       ineligible_child_support: "Not eligible: child support assignment or cooperation."
+      ineligible_deceased: "Not eligible: the client died before the month began."
+      ineligible_diversion_period: "Not eligible: within a diversion period of ineligibility."
+      closed_demonstrable_evidence: "Closed: no Workforce Development participation before the first Individualized Plan."
+      closed_ebt_misuse: "Closed for one month: continued EBT card misuse."
+      closed_minor_parent_education: "Closed: a minor parent did not participate in education without good cause."
 
   - outcome: cw_diversion_eligible
     codes:
