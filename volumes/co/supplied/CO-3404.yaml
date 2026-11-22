@@ -1,0 +1,14 @@
+id: CO-3404
+name: "Shelter costs others pay for the person"
+identifier: shelter_costs_paid_by_others
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's share of the home's shelter costs (an equal share of home_total_shelter_costs among the persons living there) that someone else pays or provides for the person in the month outside a business arrangement requiring rent at least equal to the presumed maximum value; 0 when the person pays a full share or more."
+precision: "Shelter only; food is not included (§ 8.100.5.F.5.k.i). If not stated, a reader is unknown."
+supplied_by: "Application (housing and shelter costs); client statement is acceptable verification (3.520.79.A)."
+sources: [S668, S1012]
+implemented: engine
+tags: [income, household]
+rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."

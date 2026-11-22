@@ -1,0 +1,14 @@
+id: CO-3405
+name: "ISM charged by the Social Security Administration"
+identifier: ssa_in_kind_support_and_maintenance_charged
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The in-kind support and maintenance the Social Security Administration counts against the person's SSI payment for the month, as SSA's record shows; 0 when none."
+precision: "A finding made outside this volume (convention rule 13 (i)). If not stated, Adult Financial reads this as 0."
+supplied_by: "Application (housing and shelter costs); client statement is acceptable verification (3.520.79.A)."
+sources: [S1012]
+implemented: engine
+tags: [income]
+rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."

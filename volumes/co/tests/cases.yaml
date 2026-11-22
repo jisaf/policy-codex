@@ -254,7 +254,7 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -465,7 +465,7 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -2301,7 +2301,7 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -2511,7 +2511,7 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -4676,7 +4676,7 @@
       chp_eligibility_status: {"2026-10": ineligible, "2026-11": ineligible}
 
 - id: CO-05
-  title: Former foster care youth over every MAGI standard; 17-year-old sibling in a continuous eligibility period after an income change; grandmother caretaker on Social Security; retroactive coverage
+  title: Former foster care youth over every MAGI standard; 16-year-old sibling in a continuous eligibility period after an income change; grandmother caretaker on Social Security; retroactive coverage
   # Adapted from the phase-3 review's designed cases CO-07/CO-08 (docs/reviews/magi-chp-phase-3.md
   # S3.4), merged into one case with three stated months now that continuous_eligibility_period_start
   # month (CO-094) anchors ma_child_continuous_eligibility_end_month on ma_application_date rather than
@@ -5069,7 +5069,7 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         tax_exempt_interest: 0
@@ -5133,7 +5133,7 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         tax_exempt_interest: 0
@@ -5192,7 +5192,7 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         tax_exempt_interest: 0
@@ -5463,7 +5463,7 @@
         hours_worked: 0
         cw_work_activity_hours: 0
         work_program_hours: 0
-        af_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
@@ -5580,7 +5580,7 @@
         hours_worked: 0
         cw_work_activity_hours: 0
         work_program_hours: 0
-        af_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
         work_sanction_level_served: none
   # Audit fix round (dual-entry 3.7, 5.3): the unit receives its October grant of 387 (receives_tanf_cash, the case
   # record); tanf_cash_income states it across the three members it supports, 129 each, where it was 0. No expectation
@@ -6099,7 +6099,7 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 5200
         social_security_income: 0
         pension_income: 0
@@ -6160,7 +6160,7 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 2600
         social_security_income: 0
         pension_income: 0
@@ -6251,8 +6251,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
-        af_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method and Adult Financial ISM are derived (was ssi_ and af_in_kind_support_and_maintenance 0)
       months:
         "2026-10": {has_emergency_medical_condition: true}
     p4:
@@ -6291,7 +6290,7 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -6442,7 +6441,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         receives_va_aid_and_attendance: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
@@ -6528,7 +6527,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hca_authorized_amount: 900
-        af_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
@@ -8279,7 +8278,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8335,7 +8334,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8392,7 +8391,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8448,7 +8447,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8551,7 +8550,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8607,7 +8606,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8664,7 +8663,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8720,7 +8719,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8832,7 +8831,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8889,7 +8888,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8946,7 +8945,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9003,7 +9002,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9094,7 +9093,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9157,7 +9156,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9212,7 +9211,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9311,7 +9310,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9372,7 +9371,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9433,7 +9432,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9489,7 +9488,7 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        ssi_in_kind_support_and_maintenance: 0
+        shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
