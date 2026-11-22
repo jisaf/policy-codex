@@ -7,8 +7,8 @@ scope: person-month
 program: SNAP
 meaning: "Whether the forty qualifying quarters of this household member must be verified for SNAP: a lawful permanent resident whose eligibility rests on them - not five years in qualified status, not exempt from the waiting period, and at least federal_qualifying_quarters_threshold quarters - at application, and at recertification when the immigration status information is outdated (10 CCR 2506-1 4.505.61; 7 CFR 273.2(f)(1)(ii)(A): \"The State agency must also verify these factors, if applicable to the alien's eligibility\")."
 precision: "Where eligibility rests on another ground (five years, an exemption), the quarters are not applicable to it and are not verified. The recertification arm reads snap_immigration_status_information_is_outdated (CO-2322), read as false when not stated, as the status itself does (CO-1373)."
-derived: [all, snap_is_household_member, ["=", immigration_status, lawful_permanent_resident], [not, has_held_qualified_status_five_years], [not, snap_is_exempt_from_immigrant_waiting_period], [">=", qualifying_quarters, federal_qualifying_quarters_threshold], [any, [not, snap_determination_is_recertification], [otherwise, snap_immigration_status_information_is_outdated, false]]]
-sources: [S2516, S802]
+derived: [all, snap_is_household_member, ["=", immigration_status, lawful_permanent_resident], [not, has_held_qualified_status_five_years], [not, snap_is_exempt_from_immigrant_waiting_period], [">=", snap_creditable_qualifying_quarters, federal_qualifying_quarters_threshold], [any, [not, snap_determination_is_recertification], [otherwise, snap_immigration_status_information_is_outdated, false]]]
+sources: [S2516, S802, S3056]
 implemented: engine
 tags: [verification, snap, immigration]
 rationale: "Final verification V-4 (docs/reviews/final-verification.md): SNAP verified only the SAVE status, so an LPR eligible through forty quarters was certified on the attested count, which 4.505.61 forbids."

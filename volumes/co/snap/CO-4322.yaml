@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: "The person's rental income for the month from property the person does not actively manage an average of at least twenty hours a week, as SNAP counts it (10 CCR 2506-1 4.404.D): the rent received (rental_income_received, CO-4320) less the cost of doing business (rental_property_costs, CO-4321), not below zero."
+meaning: "The person's rental income for the month from property the person does not actively manage an average of at least twenty hours a week, as SNAP counts it (10 CCR 2506-1 4.404.D): the rent received (rental_income_received, CO-4457) less the cost of doing business (rental_property_costs, CO-4321), not below zero."
 precision: "The costs allowed are those of 4.403.11.B-C, the kinds the self-employment cost facts describe, stated for the rented property. A loss is not offset against other income; only a farmer's self-employment loss is (4.403.12.E). The rent is unearned income: snap_person_unearned_income (CO-331) subtracts the gross rent, part of other_unearned_income_taxable, and adds this net figure."
 derived: [max, 0, ["-", [otherwise, rental_income_received, 0], [otherwise, rental_property_costs, 0]]]
 sources: [S3111]

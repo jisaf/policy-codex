@@ -225,6 +225,8 @@ outcomes:
       over_net_income_limit: "Not eligible: over the net income limit."
       over_resource_limit: "Not eligible: over the resource limit."
       zero_allotment: "Not eligible: the allotment works out to $0."
+      fdpir_participation: "Not eligible this period: a member receives the Food Distribution Program on Indian Reservations."
+      refused_to_cooperate: "Not eligible: the household refused to cooperate in providing necessary information."
 
   # --------------------------------------------------------- Colorado Works
   - outcome: cw_eligibility_status

@@ -135,9 +135,11 @@ describe("the walk", () => {
     expect(folded[0].n).toBe(1);
     expect(visibleSteps(w, true)).toHaveLength(w.steps.length);
     const behind = foldedBehind(w, folded);
-    const [stepWithFold] = [...behind.keys()];
+    // The first fold that opening reveals (a counted step behind a step that did not count is reached only
+    // through "show all"; since the SNAP coverage round CO-01's outcome step has one such).
+    const stepWithFold = [...behind.keys()].find((k) => visibleSteps(w, false, new Set([k])).length > folded.length);
     expect(stepWithFold).toBeDefined();
-    const opened = visibleSteps(w, false, new Set([stepWithFold]));
+    const opened = visibleSteps(w, false, new Set([stepWithFold!]));
     expect(opened.length).toBeGreaterThan(folded.length);
     // Every memo hit links to the step that worked it out.
     for (const s of w.steps) for (const i of s.inputs) if (i.step !== null) expect(i.step).toBeLessThanOrEqual(w.steps.length);

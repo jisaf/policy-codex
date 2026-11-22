@@ -5,10 +5,10 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: "This household member is ineligible as a non-citizen, for refusing or failing to provide an SSN, or under the ABAWD (able-bodied adult without dependents) time limit: the members 10 CCR 2506-1 4.411.1.B.2 and 7 CFR 273.11(c)(2) treat with a pro rata share of income, and whose shelter and dependent care costs are divided the same way (4.407.3.A, 4.407.4)."
-precision: The SSN refusal reads as false when not stated (CO-2562).
-derived: [any, snap_is_ineligible_non_citizen, [otherwise, snap_is_disqualified_for_ssn_refusal, false], snap_is_ineligible_abawd]
-sources: [S46, S1812, S1814, S1602]
+meaning: "This household member is ineligible as a non-citizen, as a member whose questionable citizenship is unverified (10 CCR 2506-1 4.505.51.C), for refusing or failing to provide an SSN, or under the ABAWD (able-bodied adult without dependents) time limit: the members 10 CCR 2506-1 4.411.1.B.2 and 7 CFR 273.11(c)(2) treat with a pro rata share of income, and whose shelter and dependent care costs are divided the same way (4.407.3.A, 4.407.4)."
+precision: "The SSN refusal reads as false when not stated (CO-2562). Coverage review C-2: a member whose questionable citizenship is unverified after the time allowed (CO-4251) has \"his or her income, less a prorated share\" counted (4.505.51.C, S3051), as an ineligible non-citizen does."
+derived: [any, snap_is_ineligible_non_citizen, snap_is_ineligible_pending_citizenship_verification, [otherwise, snap_is_disqualified_for_ssn_refusal, false], snap_is_ineligible_abawd]
+sources: [S46, S1812, S1814, S1602, S3051]
 implemented: engine
 tags: [snap, income, state_election]
 rationale: "CDHS review B-4: the pro rata branch of CO-333, CO-371, CO-2300 and CO-2301 tested only snap_is_ineligible_non_citizen; 4.411.1.B.2 names the SSN and ABAWD grounds too. One item names the group, as snap_is_disqualified_member_counted_in_full (CO-2302) names the full-count group."
@@ -16,4 +16,5 @@ nearest: [CO-2302]
 tests:
   - {id: CO-2565-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_ineligible_non_citizen: false, snap_is_ineligible_abawd: true}, expect: true}
   - {id: CO-2565-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_ineligible_non_citizen: false, snap_is_disqualified_for_ssn_refusal: true, snap_is_ineligible_abawd: false}, expect: true}
-  - {id: CO-2565-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_ineligible_non_citizen: false, snap_is_ineligible_abawd: false}, expect: false}
+  - {id: CO-2565-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_ineligible_non_citizen: false, snap_is_ineligible_pending_citizenship_verification: false, snap_is_ineligible_abawd: false}, expect: false}
+  - {id: CO-2565-T4, title: "C-2: a member whose questionable citizenship is unverified after the time allowed is prorated", month: "2026-10", as_of: "2026-10-01", given: {snap_is_ineligible_non_citizen: false, snap_is_ineligible_pending_citizenship_verification: true}, expect: true}

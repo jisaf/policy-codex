@@ -1,0 +1,21 @@
+id: CO-4251
+name: "SNAP: is ineligible while questionable citizenship is unverified"
+identifier: snap_is_ineligible_pending_citizenship_verification
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This household member declares U.S. citizenship or nationality, the declaration is questionable, and no acceptable proof (a listed document, or a signed third-party statement where none can be obtained) has been provided by the end of the time 4.505.6.E allows: the member \"shall be ineligible to participate until proof of citizenship is obtained, except as provided in Section 4.505.6, E\", and has their income, less a prorated share, and all their resources counted for the remaining members (10 CCR 2506-1 4.505.51.C, 4.505.5.B; 7 CFR 273.2(f)(2)(ii): \"ineligible to participate until the issue is resolved\", with income and resources \"as set forth in § 273.11(c)\")."
+precision: "Read for the month containing the determination date, as household composition is. A declaration of citizenship is accepted unless the agency finds it questionable (4.505.51.A-B; 7 CFR 273.2(f)(2)), so where citizenship_attestation_is_questionable (CO-1307) is not stated SNAP reads it as false here. The time allowed is the one 4.505.6.E gives an applicant non-citizen, to which 4.505.51.C points: the thirtieth day after the date of application, or ten days from the request if later (snap_noncitizen_documentation_due_date, CO-1617); until then the member participates and the factor is pending (snap_verification_status, CO-1394). The pending test is snap_citizenship_verification_is_pending (CO-1600), which already accepts the third-party statement (snap_citizenship_document_is_acceptable). The member is an ineligible member (snap_is_ineligible_member, CO-311) whose income counts pro rata (snap_is_ineligible_member_prorated, CO-2565; 4.411.1), as 4.505.51.C directs."
+derived: [all, is_us_citizen_or_national, [otherwise, citizenship_attestation_is_questionable, false], [at, snap_citizenship_verification_is_pending, [det_month]], [">", [det_date], snap_noncitizen_documentation_due_date]]
+sources: [S3051, S811, S2516]
+implemented: engine
+tags: [snap, immigration, verification]
+nearest: [CO-4154, CO-1600]
+rationale: "Coverage review C-2 (docs/reviews/coverage-snap-nonfinancial.md): questionable, unverified citizenship only raised a pending count (CO-1600); no eligibility item applied 4.505.51.C (S3051), so the member stayed in the eligible size with full benefits. The same defect was fixed for non-citizens by snap_is_ineligible_pending_non_citizen_verification (CO-4154), which reads only eligible non-citizens; no existing item states the citizen's case."
+tests:
+  - {id: CO-4251-T1, title: "C-2: a questionable citizen with no proof after the thirtieth day - ineligible", as_of: "2026-11-05", given: {immigration_status: us_citizen, citizenship_attestation_is_questionable: true, snap_noncitizen_documentation_due_date: "2026-10-31", snap_citizenship_verification_is_pending: true}, expect: true}
+  - {id: CO-4251-T2, title: "Within the time allowed - still participates, the factor pending", as_of: "2026-10-20", given: {immigration_status: us_citizen, citizenship_attestation_is_questionable: true, snap_noncitizen_documentation_due_date: "2026-10-31", snap_citizenship_verification_is_pending: true}, expect: false}
+  - {id: CO-4251-T3, title: "Proof provided", as_of: "2026-11-05", given: {immigration_status: us_citizen, citizenship_attestation_is_questionable: true, snap_noncitizen_documentation_due_date: "2026-10-31", snap_citizenship_verification_is_pending: false}, expect: false}
+  - {id: CO-4251-T4, title: "A non-citizen is never this ground (CO-4154 carries it)", as_of: "2026-11-05", given: {immigration_status: lawful_permanent_resident}, expect: false}
+  - {id: CO-4251-T5, title: "A citizenship declaration not found questionable is accepted", as_of: "2026-11-05", given: {immigration_status: us_citizen}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-4266
+name: "SNAP: household participates in FDPIR"
+identifier: snap_household_participates_in_fdpir
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "A member of this person's SNAP household is a member of a household receiving the Food Distribution Program on Indian Reservations (the Commodity Food Distribution Program) for the period the determination covers, so the household may not participate in SNAP in the same period (10 CCR 2506-1 4.303.B: \"Participation shall be limited to participation in the Commodity Food Distribution Program or SNAP\")."
+precision: "Reads receives_fdpir (CO-2851) for each member of snap_household_members (CO-305), false for a member of whom it is not stated. The fact is stated as of the determination date, so the bar covers the months determined; a household that leaves FDPIR is determined again from the month it does."
+derived: [exists, snap_household_members, [otherwise, [of, [P], receives_fdpir], false]]
+sources: [S3057, S1952]
+implemented: engine
+tags: [snap, household]
+nearest: [CO-2851]
+rationale: "Coverage review C-11 (docs/reviews/coverage-snap-nonfinancial.md): no SNAP item read FDPIR participation, so a household enrolled in FDPIR for the month, as on the Southern Ute and Ute Mountain Ute reservations, was found eligible for SNAP in the same month. receives_fdpir (CO-2851), stated for SUN Bucks, already states the enrollment; snap_is_eligible (CO-386) and snap_eligibility_status (CO-387) read this item."
+tests:
+  - {id: CO-4266-T1, title: "C-11: the household's adult receives FDPIR", as_of: "2026-10-01", given: {snap_household_members: [p1, p2], receives_fdpir: true}, others: {p2: {receives_fdpir: true}}, expect: true}
+  - {id: CO-4266-T2, title: "No member in FDPIR", as_of: "2026-10-01", given: {snap_household_members: [p1, p2], receives_fdpir: false}, others: {p2: {}}, expect: false}

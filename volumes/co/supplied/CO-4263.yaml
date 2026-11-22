@@ -1,0 +1,13 @@
+id: CO-4263
+name: Receives temporary or permanent disability benefits
+identifier: receives_temporary_or_permanent_disability_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person receives disability benefits, temporary or permanent, issued by a governmental or a private source because of the person's own disability: for example workers' compensation temporary or permanent disability payments, state or private short-term or long-term disability insurance benefits, an employer's disability plan, Social Security or SSI disability, or a VA disability benefit."
+precision: "If not stated, SNAP reads this as false. The public permanent disability benefits of the 7 CFR 271.2 disabled-member list are also stated by their own facts (snap_is_disabled_member, CO-302), so a case need not state this fact for them."
+supplied_by: "Application (income from disability benefits); the payer's award or payment record."
+sources: [S3050, S3065, S749]
+tags: [disability]
+rationale: "Coverage review C-7 (docs/reviews/coverage-snap-nonfinancial.md): 7 CFR 273.24(c)(2)(i) (S3050) and 10 CCR 2506-1 4.311.A.3.A, 4.310.3.C.3.b (S749, S3065) make a person \"receiving temporary or permanent disability benefits issued by governmental or private sources\" medically unfit for employment. The volume read only the permanent public benefits of the disabled-member list (CO-302); no fact stated a temporary or private disability benefit."

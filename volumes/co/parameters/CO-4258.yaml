@@ -1,0 +1,13 @@
+id: CO-4258
+name: "SNAP: military connection, dependent child age limit"
+identifier: snap_military_dependent_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "An unmarried dependent child of a veteran or service member has a military connection while under this age: \"a child who is under the age of 18\" (7 CFR 273.4(a)(6)(ii)(G)(3); 10 CCR 2506-1 4.305.B.3.f.3.d, \"under the age of eighteen (18)\")."
+value: 18
+sources: [S3054, S3055]
+implemented: engine
+tags: [snap, immigration, age]
+rationale: "Coverage review C-4: snap_has_military_connection (CO-4260) tests the child's age. A figure the rule states is a parameter, not a literal (OQ-82); snap_immigrant_child_exemption_age (CO-177) is the different 1612(a)(2)(J) exception for any child under 18."

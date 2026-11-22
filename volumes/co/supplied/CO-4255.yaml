@@ -1,0 +1,14 @@
+id: CO-4255
+name: Residence setting is nonprofit
+identifier: residence_setting_is_nonprofit
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The setting the person lives in (other than a private dwelling) is operated by a private nonprofit organization or institution. A setting operated by a governmental unit is residence_setting_operated_by_government (CO-3331); a setting that is neither is operated for profit."
+precision: "Stated for a setting other than a private dwelling where a reader asks. If not stated, SNAP reads this as false: 4.309.3.A and 4.309.4.A treat a for-profit facility's residents as residents of an institution, and the local office verifies the setting before certifying them."
+supplied_by: "The facility's license, certification or approval record."
+sources: [S3052, S3053]
+tags: [household]
+nearest: [CO-3331]
+rationale: "Coverage review C-3 (docs/reviews/coverage-snap-nonfinancial.md): SNAP's treatment-center and group-living exceptions to the institution rule hold only for a public or private nonprofit facility (10 CCR 2506-1 4.309.3.A, 4.309.4.A, S3052; 7 CFR 271.2, S3053). The setting facts stated whether a governmental unit operates it (CO-3331), its beds (CO-3332) and its license (CO-3335), but not whether a private operator is nonprofit."

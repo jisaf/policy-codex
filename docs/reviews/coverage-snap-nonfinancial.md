@@ -85,7 +85,7 @@ Key:
 
 | term(s) | disposition |
 |---|---|
-| Able-Bodied Adult Without Dependents (ABAWD) | C: CO-165, CO-166 (`statute_override`, 18-64), CO-412, CO-413/CO-414 (child under 14, override). The "no one under 18" prong: GAP C-1. |
+| Able-Bodied Adult Without Dependents (ABAWD) | C: CO-165, CO-166 (`statute_override`, 18-64), CO-412, CO-413/CO-414 (child under 14, override). The "no one under 18" prong: carried by CO-4250 with CO-414 (coverage round; was GAP C-1). |
 | Administrative disqualification hearing; Administrative law judge; Administrative adjudicator; Adverse action; Adverse action period; Appeal; Bifurcated appeal; Combined appeal; Dispute Resolution Conference; Evidence; Fair hearing / State-level fair hearing; Final agency decision; Initial decision; IPV hearing; IPV hearing waiver; Local-level dispute resolution conference; Office of Administrative Courts; Office of Appeals; Preliminary determination; Preponderance of evidence; Clear and convincing evidence; SNAP fair hearings unit; Waiver of administrative disqualification hearing; Disqualification Consent Agreement | N/A: appeals, hearings and IPV adjudication are out of scope (4.800). The IPV outcome enters as CO-039. |
 | Agency error claim; Claim; Compromise; Demand letter; Inadvertent Household Error Claim; Notice of Overpayment; Over-issuance; Recoupment; Repayment agreement; Under-issuance; Restoration; Supplement | N/A: claims and restoration are out of scope (4.702, 4.801). |
 | Allotment; Minimum benefit; Thrifty food plan; Issuance month | Fin: CO-385, CO-135, CO-2307. |
@@ -108,30 +108,30 @@ Key:
 | Countable month | C: CO-416, CO-051. |
 | D-SNAP; Temporary emergency | N/A: disaster assistance (4.904) is out of scope. |
 | Disqualified individuals | C: CO-311 (IPV CO-039; SSN CO-2562; non-citizen CO-310; work CO-040/CO-2318; ABAWD CO-2564). QA arm: N/A (QC). |
-| Drug and Alcohol Treatment Center | C: CO-007 (GAP C-3 for the nonprofit condition). |
-| Dual participation | C: CO-4178, CO-304. FDPIR: GAP C-11. Battered-shelter exception: P2-5. |
+| Drug and Alcohol Treatment Center | C: CO-007 (carried by CO-007 with CO-4255, CO-4256 (coverage round; was GAP C-3) for the nonprofit condition). |
+| Dual participation | C: CO-4178, CO-304. FDPIR: carried by CO-4266 with CO-386, CO-387 (coverage round; was GAP C-11). Battered-shelter exception: P2-5. |
 | Employment and Training Program; Employment First; Voluntary work registrant | N/A: E&T administration (4.312). Hours count as CO-048. |
-| Expedited service | C: CO-348, CO-1393, CO-1394 (GAP C-12). |
+| Expedited service | C: CO-348, CO-1393, CO-1394 (carried by CO-4254 with CO-1394 (coverage round; was GAP C-12)). |
 | Fleeing felon | C: CO-038 (P2-3). |
 | Fraud; Intentional; Intentional Program Violation; Material fact; Trafficking | N/A: IPV adjudication. The outcome is CO-039. |
 | Full-time student; Institution of higher education; Post high school education | C: CO-069, CO-021, CO-2880, CO-2881. |
-| Good cause | C: supplied findings CO-2313 (voluntary quit), CO-2562 (SSN). GAP C-9 for ABAWD good cause. |
-| Group Living Arrangement | C: CO-007 (GAP C-3: nonprofit, ≤ 16 residents, 1616(e) certification). |
+| Good cause | C: supplied findings CO-2313 (voluntary quit), CO-2562 (SSN). carried by CO-4264 with CO-415 (coverage round; was GAP C-9) for ABAWD good cause. |
+| Group Living Arrangement | C: CO-007 (carried by CO-007 with CO-4255, CO-4256 (coverage round; was GAP C-3): nonprofit, ≤ 16 residents, 1616(e) certification). |
 | Head of Household | C: CO-067 (supplied); CO-1370 reads it. |
 | Household | C: CO-305. |
 | Indigent non-citizen | C: CO-2334, CO-2337 (exempt), CO-3701 (only money from the sponsor). The 12-month term is in CO-2334's meaning. |
 | Lawful Permanent Resident; Parolee; Qualified non-citizen | C: CO-002, CO-308 (`statute_override`: only LPRs among qualified aliens). OQ-1, OQ-533. |
-| Level sanction; Sanction | C: CO-2316, CO-2317, CO-2319, CO-2318 (GAP C-8). |
+| Level sanction; Sanction | C: CO-2316, CO-2317, CO-2319, CO-2318 (carried by CO-2318 and CO-040's meaning (coverage round; was GAP C-8)). |
 | LEAP | N/A: another program. |
 | Migrant farm worker | C: CO-055, CO-2306, CO-2570. |
-| On-the-job training | GAP C-10. |
+| On-the-job training | carried by CO-4265 with CO-410 (coverage round; was GAP C-10). |
 | Outdated | C: CO-2321 to CO-2331. |
 | Person experiencing homelessness | C: CO-037, CO-2810, CO-2811, CO-2812 (90 days). |
 | Person with disabilities (prongs 1-8) | C: CO-302 (1: SSI, CO-015, CO-2822; 2: CO-2823, CO-2862; 3-4: CO-016; 5-6: CO-1729; 7: CO-3717 with CO-011/CO-017; 8: AND-SO through CO-2710, CO-014, CO-3718). |
 | Prudent Person Principle | N/A: worker discretion. |
 | Questionable | C: the `*_attestation_is_questionable` facts (CO-1307, CO-1314, CO-1331, CO-1338, …). |
 | Shelter for battered women and children | C: CO-007/CO-3330 (a shelter is a private dwelling for CO-007). P2-5. |
-| Sponsor; Sponsored non-citizen | C: CO-1573, CO-2713, CO-2337 (OQ-730, GAP C-14). |
+| Sponsor; Sponsored non-citizen | C: CO-1573, CO-2713, CO-2337 (OQ-730, carried by CO-3711, CO-3702, OQ-730 resolved (coverage round; was GAP C-14)). |
 | Striker | C: CO-3500. |
 | Substantial lottery or gambling winnings | C: CO-4150, CO-4151 (≥ CO-119). |
 | SSI | C: CO-012, CO-849. |
@@ -150,7 +150,7 @@ Key:
 |---|---|
 | 4.200 | N/A (heading). |
 | 4.201.A | N/A: no additional local conditions; signage. |
-| 4.201.B | C: CO-2305, CO-2308 (benefits from the month of application; GAP C-13 for delay cases). |
+| 4.201.B | C: CO-2305, CO-2308 (benefits from the month of application; carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13) for delay cases). |
 | 4.201.C | C: CO-348 (entitlement). The screening timing is N/A (processing). |
 | 4.201.D | N/A: withdrawal procedure. |
 | 4.201.E | C: CO-386 reads SNAP criteria only. |
@@ -194,14 +194,14 @@ Key:
 | 4.205.11.B.2.a | N/A: annotating the notice. |
 | 4.205.11.B.2.b | C: CO-1393 (30th day; migrant exception CO-2570). Issuance dates are N/A. |
 | 4.205.11.B.2.c | C: CO-2570 (meaning: once a season), CO-1393. |
-| 4.205.11.C | GAP C-12. |
+| 4.205.11.C | carried by CO-4254 with CO-1394 (coverage round; was GAP C-12). |
 | 4.205.2.A | C: CO-1746 (filed when a valid application reaches the correct county). The 30-day standard is N/A. |
 | 4.205.2.B | C: CO-1345, CO-1392 (10 days). The rest is N/A. |
-| 4.205.3.A-F | N/A: fault determination (it feeds GAP C-13). |
+| 4.205.3.A-F | N/A: fault determination (it feeds carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13)). |
 | 4.205.31, first paragraph | N/A. |
-| 4.205.31, second paragraph | GAP C-13. |
+| 4.205.31, second paragraph | carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13). |
 | 4.205.32 | C: CO-2308 (retroactive, prorated per 4.207.2). |
-| 4.205.4.A | GAP C-13 (household fault: benefits from the following month). |
+| 4.205.4.A | carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13) (household fault: benefits from the following month). |
 | 4.205.4.B-C | N/A: denial. |
 | 4.206.A | C: CO-341. |
 | 4.206.B | N/A: the other programs' own limits. |
@@ -232,7 +232,7 @@ Key:
 | 4.209.1.A.1-2 | C: CO-2305 (a timely recertification has no initial month, so a full month). |
 | 4.209.1.B | N/A: timing. |
 | 4.209.1.C | C: CO-2305 precision (a late application is an initial application, prorated). |
-| 4.209.1.D | GAP C-13 (benefits from the date the action is taken). |
+| 4.209.1.D | carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13) (benefits from the date the action is taken). |
 | 4.209.1.E.1-3 | N/A: processing. |
 | 4.210.A | N/A: the 24-month period. |
 | 4.210.B | N/A: periodic report processing; reinstatement is not a new application (CO-2305). |
@@ -256,10 +256,10 @@ Key:
 | 4.302.C.2 | P2-4. |
 | 4.303.A | C: CO-309 (OQ-393 resolved: the county is administrative). |
 | 4.303.B, first paragraph | C: CO-4178, CO-304. P2-5 for the shelter exception. |
-| 4.303.B, second paragraph (FDPIR) | GAP C-11. |
-| 4.303.C | GAP C-6. |
-| 4.303.D | C: CO-309 (no fixed address required). GAP C-6 for migrants. |
-| 4.303.E | GAP C-6. |
+| 4.303.B, second paragraph (FDPIR) | carried by CO-4266 with CO-386, CO-387 (coverage round; was GAP C-11). |
+| 4.303.C | carried by CO-4252, CO-4253 with CO-309 (coverage round; was GAP C-6). |
+| 4.303.D | C: CO-309 (no fixed address required). carried by CO-4252, CO-4253 with CO-309 (coverage round; was GAP C-6) for migrants. |
+| 4.303.E | carried by CO-4252, CO-4253 with CO-309 (coverage round; was GAP C-6). |
 | 4.303.F | N/A: addresses on the application. |
 | 4.304.A.1-3, A.2.A | C: CO-305 (purchase-and-prepare edges; separate units). |
 | 4.304.1 (intro) | C: CO-305 (mandatory edges cross regardless of purchasing). |
@@ -298,7 +298,7 @@ Key:
 | 4.304.4.D.2 | C: CO-007 (more than 50 percent of meals; a halfway house is `other_institution`). |
 | 4.304.4.D.3 | C: CO-007 (`educational_or_vocational_institution` with a meal plan). |
 | 4.304.41.A, D, E | C: CO-007 (a private dwelling or shelter under CO-3330). |
-| 4.304.41.B-C | GAP C-3. |
+| 4.304.41.B-C | carried by CO-007 with CO-4255, CO-4256 (coverage round; was GAP C-3). |
 | 4.305 (intro) | C: CO-309, CO-308. |
 | 4.305.A.1.a-d, A.2 | C: CO-002 (`us_citizen`, `us_national`), CO-1358. |
 | 4.305.B (intro; each category stands alone) | C: CO-308, CO-306, CO-3713. |
@@ -311,22 +311,22 @@ Key:
 | 4.305.B.2.b.1-4 | C: CO-2702, CO-3715, CO-3713. |
 | 4.305.B.3 (intro) | C: CO-307. |
 | 4.305.B.3.a | C: CO-508, CO-003, CO-104. |
-| 4.305.B.3.b | C: CO-307, CO-004, CO-3033. GAP C-5. |
+| 4.305.B.3.b | C: CO-307, CO-004, CO-3033. carried by CO-4261, CO-4262 with CO-307 (coverage round; was GAP C-5). |
 | 4.305.B.3.b.1.a-c | C: CO-004 meaning (P3-7 for divorce). |
 | 4.305.B.3.b.2.a | C: CO-004. |
-| 4.305.B.3.b.2.b | GAP C-5. |
+| 4.305.B.3.b.2.b | carried by CO-4261, CO-4262 with CO-307 (coverage round; was GAP C-5). |
 | 4.305.B.3.c | C: CO-3713, CO-177. |
 | 4.305.B.3.d | C: CO-306 (`snap_is_disabled_member`). |
 | 4.305.B.3.e | C: CO-306, CO-2601, CO-279. |
 | 4.305.B.3.f.1-2 | C: CO-005, CO-2866. |
 | 4.305.B.3.f.3.a-c | C: CO-005. |
-| 4.305.B.3.f.3.d-e | GAP C-4. |
+| 4.305.B.3.f.3.d-e | carried by CO-4260 (CO-4257 to CO-4259) with CO-306 (coverage round; was GAP C-4). |
 | 4.305.1.A-G, I | C: CO-308 (only listed categories pass), CO-002. |
 | 4.305.1.H | C: CO-308 `statute_override` (COFA eligible). P2-10. |
 | 4.305.2.A | C: CO-1573 (affidavit on or after 1997-12-19), CO-2337. |
 | 4.305.2.B.1-2 | C: CO-1573, CO-2713. |
-| 4.305.2.C | C: CO-2337, CO-3701, CO-3702. GAP C-14 (OQ-730). |
-| 4.305.2.D.1 | C: CO-2337 (citizenship, 40 quarters, death). GAP C-14 for the spouse. |
+| 4.305.2.C | C: CO-2337, CO-3701, CO-3702. carried by CO-3711, CO-3702, OQ-730 resolved (coverage round; was GAP C-14) (OQ-730). |
+| 4.305.2.D.1 | C: CO-2337 (citizenship, 40 quarters, death). carried by CO-3711, CO-3702, OQ-730 resolved (coverage round; was GAP C-14) for the spouse. |
 | 4.305.2.D.2.a | C: CO-3703, CO-3711. |
 | 4.305.2.D.2.b | C: CO-3710, CO-3705. |
 | 4.305.2.D.2.c | C: CO-3708, CO-3706. |
@@ -352,16 +352,16 @@ Key:
 | 4.306.B.1-2 | C: CO-411 (age band). |
 | 4.306.B.3 | C: CO-021 (half time). |
 | 4.306.B.4-5 | C: CO-021, CO-2880 (only higher education). |
-| 4.306.B.6 | GAP C-10. |
+| 4.306.B.6 | carried by CO-4265 with CO-410 (coverage round; was GAP C-10). |
 | 4.306.C | C: CO-2880 meaning (a break is still enrollment). |
-| 4.306.1.A | C: CO-400, CO-410. GAP C-7 for temporary or private disability benefits. |
+| 4.306.1.A | C: CO-400, CO-410. carried by CO-4263 with CO-400 (coverage round; was GAP C-7) for temporary or private disability benefits. |
 | 4.306.1.B | C: CO-407, CO-402, CO-175, CO-160. |
 | 4.306.1.C | C: CO-070, CO-407. The term-start and break timing is in CO-070's meaning only in part (P3). |
 | 4.306.1.D | C: CO-408, CO-409 (`statute_override`), CO-3719. |
 | 4.306.1.E | C: CO-408, CO-071. |
 | 4.306.1.F | C: CO-410 (`receives_tanf_cash`). |
 | 4.306.1.G | C: CO-072. |
-| 4.306.1.H | GAP C-10. |
+| 4.306.1.H | carried by CO-4265 with CO-410 (coverage round; was GAP C-10). |
 | 4.307.A | C: CO-3504, CO-3500, CO-3501 (exempt the day before the strike, in CO-3500's meaning). |
 | 4.307.B | C: CO-3503, CO-3502. |
 | 4.307.1.A-D | C: CO-3500 meaning. |
@@ -380,12 +380,12 @@ Key:
 | 4.309.21.B | P2-5. |
 | 4.309.21.C | N/A: procedure. |
 | 4.309.21.D | C: CO-305; CO-4175 for inaccessible joint resources (Fin). |
-| 4.309.3.A-B | GAP C-3. |
+| 4.309.3.A-B | carried by CO-007 with CO-4255, CO-4256 (coverage round; was GAP C-3). |
 | 4.309.3.C | P3-9. |
 | 4.309.3.D | C: CO-348. |
 | 4.309.3.E | C: CO-305, CO-045. |
 | 4.309.31.A-E | N/A: center duties, EBT custody, departures, claims. |
-| 4.309.4.A | GAP C-3. |
+| 4.309.4.A | carried by CO-007 with CO-4255, CO-4256 (coverage round; was GAP C-3). |
 | 4.309.4.B, B.2-4 | N/A: representative and EBT handling. |
 | 4.309.4.B.1 | P3-9. |
 | 4.309.4.C-D | N/A: same processing standards. |
@@ -398,7 +398,7 @@ Key:
 | 4.310.3.A | C: CO-406, CO-161, CO-162. |
 | 4.310.3.A.1 | C: CO-405 youth arm, CO-3040. |
 | 4.310.3.B | C: CO-401, CO-164, CO-065. |
-| 4.310.3.C | C: CO-400. P2-2 for C.1-2 and C.3.a, c-d, C.4-5. GAP C-7 for C.3.b. |
+| 4.310.3.C | C: CO-400. P2-2 for C.1-2 and C.3.a, c-d, C.4-5. carried by CO-4263 with CO-400 (coverage round; was GAP C-7) for C.3.b. |
 | 4.310.3.D.1-3 | C: CO-020, CO-021, CO-405 (ineligible students excluded), CO-2880. |
 | 4.310.3.E | C: CO-404, CO-402, CO-403, CO-163. E.1-2: P3-8. |
 | 4.310.3.F | C: CO-046 (P3-8 for an appeal). |
@@ -413,14 +413,14 @@ Key:
 | 4.310.7.A-N | C: CO-2313, CO-040 (good cause found by the county). |
 | 4.310.8.A.1-3 | C: CO-2314, CO-2316, CO-2317, CO-2319, CO-2318. |
 | 4.310.8.B | C: CO-2315. |
-| 4.310.8.C-D | GAP C-8. |
+| 4.310.8.C-D | carried by CO-2318 and CO-040's meaning (coverage round; was GAP C-8). |
 | 4.311 (intro) | N/A: statements accepted. Work hours: CO-1386. |
 | 4.311.A.1 | C: CO-165, CO-412. |
 | 4.311.A.2 | C: CO-166 `statute_override` (through 64). |
-| 4.311.A.3.A | GAP C-7. |
+| 4.311.A.3.A | carried by CO-4263 with CO-400 (coverage round; was GAP C-7). |
 | 4.311.A.3.B | C: CO-044. |
 | 4.311.A.3.C | C: CO-043. |
-| 4.311.A.4 | GAP C-1 (age 14 under the override; the relationship test is wrong). |
+| 4.311.A.4 | carried by CO-4250 with CO-414 (coverage round; was GAP C-1) (age 14 under the override; the relationship test is wrong). |
 | 4.311.B.1 | C: CO-415, CO-168. |
 | 4.311.B.1.a.i-iv | C: CO-022, CO-1915, CO-1916. |
 | 4.311.B.2, B.2.a.i-iii | C: CO-048. |
@@ -436,7 +436,7 @@ Key:
 | 4.311.3 (intro) | C: CO-418, CO-417, CO-169. |
 | 4.311.3.A.1 | C: CO-416, CO-051. |
 | 4.311.3.A.2 | C: CO-416 (the month of the eighteenth birthday). |
-| 4.311.3.B | GAP C-9. |
+| 4.311.3.B | carried by CO-4264 with CO-415 (coverage round; was GAP C-9). |
 | 4.311.3.C.1 | C: CO-417. |
 | 4.311.3.C.2 | C: CO-417, CO-1515, CO-170. |
 | 4.311.3.D.1.a-d | C: CO-2309. |
@@ -492,7 +492,7 @@ Key:
 | 4.505.5.A.1-7 | C: CO-1371, CO-1372, CO-1306, CO-1304. |
 | 4.505.5.B | C: CO-2001 (OQ-313). |
 | 4.505.51.A-B | C: CO-1307 meaning. |
-| 4.505.51.C | GAP C-2. |
+| 4.505.51.C | carried by CO-4251 with CO-311, CO-2565, CO-2571, CO-1394 (coverage round; was GAP C-2). |
 | 4.505.51.D | N/A. |
 | 4.505.6.A | N/A: notice. |
 | 4.505.6.B | C: CO-1601. Participating without the member: CO-310 through 4.505.6.J. |
@@ -506,7 +506,7 @@ Key:
 | 4.505.6.I | C: CO-4154, CO-310. No retroactive benefits: N/A. |
 | 4.505.6.J | C: CO-002 (status not shown), CO-310. |
 | 4.505.61 (intro, second paragraph) | C: CO-3736, CO-3733, CO-4154, CO-3734, CO-3735. |
-| 4.505.61.A-C.1-11 | GAP C-5. |
+| 4.505.61.A-C.1-11 | carried by CO-4261, CO-4262 with CO-307 (coverage round; was GAP C-5). |
 | 4.505.7.A.1-4 | C: CO-1616, CO-1611. |
 | 4.505.7.B | C: CO-4154. |
 | 4.505.7.C | C: CO-4154, CO-3701, CO-3702 (attribution excluded; one sponsor for everyone). |
@@ -528,8 +528,8 @@ Key:
 | 2015(d)(1)(C) | C: CO-2316, CO-2317, CO-2319 (C-8 for "until the later of"). |
 | 2015(d)(2) | C: CO-405. |
 | 2015(d)(4) | N/A: E&T. |
-| 2015(e) | C: CO-411, CO-410 (GAP C-10). |
-| 2015(f) as amended | C: CO-308, CO-309 (GAP C-6), CO-310. Closing sentence: Fin (CO-333). |
+| 2015(e) | C: CO-411, CO-410 (carried by CO-4265 with CO-410 (coverage round; was GAP C-10)). |
+| 2015(f) as amended | C: CO-308, CO-309 (carried by CO-4252, CO-4253 with CO-309 (coverage round; was GAP C-6)), CO-310. Closing sentence: Fin (CO-333). |
 | 2015(g) | N/A: Colorado is not an SSI cash-out state. |
 | 2015(h) | Fin: CO-4158 to CO-4160. |
 | 2015(i) | N/A: an option not elected in 4.3xx. |
@@ -559,12 +559,12 @@ Key:
 | 273.2(f)(1)(vi) | C: CO-1375. |
 | 273.2(f)(1)(vii) | C: CO-1370. |
 | 273.2(f)(1)(viii) | C: CO-1384. |
-| 273.2(f)(2)(ii) | GAP C-2. |
+| 273.2(f)(2)(ii) | carried by CO-4251 with CO-311, CO-2565, CO-2571, CO-1394 (coverage round; was GAP C-2). |
 | 273.2(f)(8)(i)(A) | C: CO-1619 (P2-9). |
-| 273.2(h)(2)-(4) | GAP C-13. |
+| 273.2(h)(2)-(4) | carried by CO-4268 to CO-4270 with CO-2305, CO-2308, CO-385 (coverage round; was GAP C-13). |
 | 273.2(i)(1) | C: CO-348. |
 | 273.2(i)(3)-(4)(iii) | C: CO-1393 (OQ-323 resolved). |
-| 273.2(i)(4)(iv) | GAP C-12. |
+| 273.2(i)(4)(iv) | carried by CO-4254 with CO-1394 (coverage round; was GAP C-12). |
 | 273.2(j)(2) | C: CO-338 (Colorado's list). |
 | 273.4(a)(1)-(5) | C: CO-308 override, CO-002. |
 | 273.4(a)(6)(ii)(A)-(F), (iv) | C: CO-307, CO-306, CO-3713. |
@@ -574,20 +574,20 @@ Key:
 | 273.4(c)(5) | C: CO-4154. |
 | 273.5(a) | C: CO-411. |
 | 273.5(b)(1)-(6), (8)-(11) | C: CO-410, CO-407, CO-408, CO-409, CO-072, CO-070. |
-| 273.5(b)(7) | GAP C-10. |
+| 273.5(b)(7) | carried by CO-4265 with CO-410 (coverage round; was GAP C-10). |
 | 273.7(a)(1) | C: CO-406, CO-040. |
 | 273.7(b)(1)(i)-(viii) | C: CO-405, CO-406 (C-7 for (ii) verification). |
 | 273.7(f) | C: CO-2318. |
 | 273.7(j)(1)-(3) | C: CO-2313, CO-2318, CO-2320. |
-| 273.7(j)(4) | GAP C-8. |
+| 273.7(j)(4) | carried by CO-2318 and CO-040's meaning (coverage round; was GAP C-8). |
 | 273.24(a)(1) | C: CO-415. |
-| 273.24(a)(2) | GAP C-9. |
+| 273.24(a)(2) | carried by CO-4264 with CO-415 (coverage round; was GAP C-9). |
 | 273.24(b) | C: CO-416, CO-417. |
 | 273.24(c)(1) | C: CO-166, CO-412. |
-| 273.24(c)(2)(i) | GAP C-7. |
+| 273.24(c)(2)(i) | carried by CO-4263 with CO-400 (coverage round; was GAP C-7). |
 | 273.24(c)(2)(ii)-(iii) | C: CO-044, CO-043. |
 | 273.24(c)(3) | C: CO-413. |
-| 273.24(c)(4) | GAP C-1. |
+| 273.24(c)(4) | carried by CO-4250 with CO-414 (coverage round; was GAP C-1). |
 | 273.24(c)(5)-(6) | C: CO-414. |
 | 273.24(c)(7)-(10) | C: override (S1303). |
 | 273.24(d) | C: CO-2309. |
@@ -654,3 +654,55 @@ Resolved open questions referenced and spot-checked: OQ-2, OQ-3, OQ-11, OQ-309, 
 | V-13 (duplicate child) | fixed | CO-4178 to CO-4181, CO-304. Side effect for shelter residents: P2-5. |
 | F-3, F-5, F-7, F-9, F-12, F-13 | fixed | CO-3713; CO-407 and CO-409 (override present, so P2-1 of the earlier pass is closed); CO-302 prongs; CO-3729 to CO-3731; CO-415 with CO-1915/CO-1916; CO-050 with CO-3728. |
 | P2-2 (sponsor's spouse) | recorded as OQ-730 | Now C-14: the class is wrong. |
+
+## 6. Disposition (coverage round)
+
+Fix agent, SNAP non-financial coverage round (2026-11-22), on branch `ccr-9d19bf4c-wmnwcl` from `a2ed7f0`. Commits: `45a9d59` (C-1 to C-7, C-12), `d9e4fc6` (C-8 to C-11, P2-8), `d20c888` (C-13, C-14, P2 and P3 meaning fixes), `b48e4b4` (households CO-150 to CO-154), and the commit carrying this section. Governing texts were re-read in D-82 and the federal documents, and every new excerpt (S3050 to S3075) was checked line by line against downloads made 2026-11-22: the Secretary of State PDF of 10 CCR 2506-1 (rule version 12718), the eCFR versioner (7 CFR 271.2, 273.2, 273.4, 273.5, 273.7, 273.24) and law.cornell.edu (7 U.S.C. 2014, 2015; 8 U.S.C. 1631, 1641). The reviewer's probes ZZ-A1, ZZ-A2b, ZZ-A3, ZZ-A4b and ZZ-A5 are stored as CO-150, CO-152, CO-153, CO-154 and CO-151 with hand derivations. The coverage matrix rows above now read "carried by ... (coverage round; was GAP C-n)".
+
+### P1
+
+| id | disposition |
+|---|---|
+| C-1 | Fixed `45a9d59`. `snap_lives_with_child_under_abawd_dependent_child_age` (CO-4250): anyone in the same home (`lives_with`, else the SNAP household) under `snap_abawd_dependent_child_age` (14, with the 4.311.A.4 override); an arm of CO-414 beside the (c)(3) parent arm CO-413. CO-150 (ZZ-A1): p1 `not_subject`, eligible, size 3, allotment 550 (was `limit_reached`, ineligible member). |
+| C-2 | Fixed `45a9d59`. `snap_is_ineligible_pending_citizenship_verification` (CO-4251): a questionable citizen still unverified after the 4.505.6.E time (the thirtieth day, CO-1617) is an ineligible member (CO-311), income prorated (CO-2565), reason `ineligible_member_citizenship_verification` (CO-2571), verification `members_excluded` (CO-1394). Within that time the member still participates, as 4.505.51.C's "except as provided in Section 4.505.6, E" says. CO-152 (ZZ-A2b): size 2, allotment 90 (was 336). |
+| C-3 | Fixed `45a9d59`. CO-007's (B) and (C) exceptions require a public or nonprofit setting (CO-3331, new `residence_setting_is_nonprofit` CO-4255), certification (CO-3335), and for (C) no more than `snap_group_living_max_residents` (CO-4256, 16) residents. CO-153 (ZZ-A3): the grandmother is `not_in_household` (was her own SNAP household). |
+| C-4 | Fixed `45a9d59`. SNAP's own `snap_has_military_connection` (CO-4260) with the 273.4(a)(6)(ii)(G)(3) dependent child (under 18, a full-time student under 22, or disabled and dependent before 18: CO-4257 to CO-4259), read by CO-306 and CO-3738. The shared CO-005 is unchanged for Medicaid, CHP+ and cash, whose own rules this volume does not show defining the child (convention rule 15); the Medicaid owner should check 1612(b)'s "unmarried dependent child". CO-154 (ZZ-A4b): p3 ineligible non-citizen, allotment 336 (was eligible, 342). |
+| C-5 | Fixed `45a9d59`. New neutral `qualifying_quarters_with_federal_means_tested_benefit` (CO-4261, 0 when not stated) and `snap_creditable_qualifying_quarters` (CO-4262), read by CO-307, CO-3736 and CO-2337; CO-307's assumption corrected; CO-004 gains a precision. CO-307-T3: 40 SSA quarters, 6 removed: not eligible. |
+| C-6 | Fixed `45a9d59`. New neutral `state_where_living_now` (CO-4252) and `snap_meets_residency_requirement` (CO-4253, falling back to `is_colorado_resident`), read by CO-309; a residency failure is `ineligible_member_residency` (P3-4). CO-151 (ZZ-A5): allotment 151 (was 0). |
+| C-7 | Fixed `45a9d59`. New neutral `receives_temporary_or_permanent_disability_benefits` (CO-4263, false when not stated), an arm of CO-400 (so of CO-405, CO-410 and CO-414). |
+| C-8 | Fixed `d9e4fc6`. CO-2318 is not served while the member is exempt from work registration (CO-405; 4.310.8.C-D, 273.7(j)(4)); CO-040's meaning says the supplied work-requirement disqualification ends the same way. The exemption is read as of the determination rather than from "the date exemption information was provided" (precision). |
+| C-9 | Fixed `d9e4fc6`. `snap_abawd_work_hours_missed_for_good_cause` (CO-4264, 0 when not stated) adds to CO-415's hours, so to the countable-month and regaining tests. |
+| C-10 | Fixed `d9e4fc6`. New neutral `participates_in_on_the_job_training` (CO-4265, false when not stated), an arm of CO-410. |
+| C-11 | Fixed `d9e4fc6`. `snap_household_participates_in_fdpir` (CO-4266) reads `receives_fdpir` (CO-2851, kept person scope as of the determination; its meaning now names SNAP); CO-386 and CO-387 (new option `fdpir_participation`). |
+| C-12 | Fixed `45a9d59`. Case fact `snap_prior_expedited_postponed_verification_incomplete` (CO-4254, false when not stated) closes CO-1394's `postponed_expedited` row. |
+| C-13 | Fixed `d20c888`. Case fact `snap_household_delay_benefits_begin_date` (CO-4268) and `snap_benefits_begin_date` (CO-4269); the initial month (CO-2305) and its proration (CO-2308) run from it, and CO-385 pays 0 for a month before it (CO-4270). These are the financial track's items; the edits are the date read and one first arm. CO-2308-T5: application 10-12, verification 11-20 by the household's fault: nothing for October, November 11/30 of the benefit. |
+| C-14 | Fixed `d20c888`. OQ-730 resolved on 8 U.S.C. 1631(a)(2) (not a state choice): CO-3711 and CO-3702 add the income and resources of a sponsor's spouse who did not sign (CO-2714), with a `statute_override` naming 4.305.2.C and 273.4(c)(2). CO-94 and CO-116 now state the non-signing spouse's zero income; no expectation changed. |
+
+### P2
+
+| id | disposition |
+|---|---|
+| P2-1 | Fixed `d20c888`. CO-1746's meaning: for a joint SSI/SNAP application from an institution the filing date is the date of release (273.2(c)(1)(vi)(A), S3073); CO-2305's precision corrected. |
+| P2-2 | Fixed `45a9d59`. CO-044's meaning names the 4.310.3.C examples (S3065). They are examples for the agency's finding ("can include"), not findings in themselves, so no open question; C.3.b is C-7's arm. |
+| P2-3 | Partly fixed `d20c888`: CO-1732's meaning states 4.304.4.C's impartial-party finding and actively-seeking conditions (SNAP is its only reader). Deferred for CO-038: `is_fleeing_felon` is read by Colorado Works and Adult Financial too, whose rules define it differently, so SNAP's four-part test needs its own prefixed finding read by CO-311 and CO-2302 (the financial track's range). |
+| P2-4 | Fixed `d20c888`. CO-2562's precision: a sincere religious objection is not a refusal (4.302.C.2, S3067). |
+| P2-5 | Fixed `d20c888`. CO-4178's precision: not stated true for a battered-shelter resident whose other household contains the abuser (4.309.21.B, S3068). |
+| P2-6 | Fixed `d20c888`. CO-2567's precision states the 4.304.3.C.5 reasonable payment (maximum allotment, two-thirds for two meals or fewer, meals portion only) and C.4 (S3069). |
+| P2-7 | Recorded, not a separate element (docs/colorado-notes.md): the conferring receipt facts are supplied from the conferring program's own record (convention rule 11), which is the 4.502.A.4 verification. |
+| P2-8 | Fixed `d9e4fc6`. Case fact `snap_household_refused_to_cooperate` (CO-4267, false when not stated) in CO-386 and CO-387 (new option `refused_to_cooperate`); 2015(c) and 4.500.E (S3070, S3072). |
+| P2-9 | Fixed `d20c888`. OQ-371 resolved on 273.2(f)(8)(i)(A) and 4.506 (S3064); no answer changes; `open:` removed from CO-1619. |
+| P2-10 | Fixed `d20c888`, on a different reading: the finding's premise that 1641(b)(8) is Medicaid-only is out of date. The Law Revision Counsel's note (D-285, S3074): "2024—Subsec. (b)(8). Pub. L. 118–42 struck out ', but only with respect to the designated Federal program defined in section 1612(b)(3)(C) of this title (relating to the Medicaid program)'". A COFA resident is a qualified alien for every Federal public benefit, so 1611(a) does not conflict with 2015(f)(2)(D). Recorded in OQ-1 (body and Checked line) and CO-308's assumption. |
+
+### P3
+
+| id | disposition |
+|---|---|
+| P3-1 | Left to the financial track: CO-344 is in its range (no change here). |
+| P3-2 | Accepted: a lost exemption kept to recertification affects only the informational `snap_is_work_registrant` and supplied voluntary-quit findings. |
+| P3-3 | Accepted: the six-month cap of 4.505.6.F.1 bounds the certification period, which is certification administration outside this volume. |
+| P3-4 | Fixed `45a9d59` (with C-6): `ineligible_member_residency`. |
+| P3-5 | Deferred: a foster child's household follows the stated edges (CO-305 never crosses a foster_parent edge); enforcing "may not apply separately" needs a composition rule for the optional member. |
+| P3-6 | Deferred: whether 4.304.1.C.2's spouse who purchases and prepares is set aside in the 165% test needs the text read against 273.1(b)(2); an open question if it leaves a choice. |
+| P3-7 | Fixed `d20c888`. CO-004's precision states 4.305.B.3.b.1.c (S3075). |
+| P3-8 | Partly fixed `d20c888`: CO-046's meaning includes a UIB denial under appeal (4.310.3.F). Deferred: a migrant under contract to begin work within 30 days (4.310.3.E.1) needs a fact for the contract. |
+| P3-9 | Accepted: one-person treatment-center households follow the stated edges; a facility's FNS authorization is its standing, not a household fact. |

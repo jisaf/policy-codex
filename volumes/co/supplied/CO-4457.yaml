@@ -11,4 +11,4 @@ supplied_by: "Applicant statement, leases or rent receipts."
 sources: [S3256]
 tags: [income]
 nearest: [CO-1714]
-rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-10): 8 CCR 1403-1 3.111.I.12 and I.17 (S3256) count \"Net rental income\"; other_unearned_income_taxable states rents gross, together with other income, so CCCAP could neither find the rents nor net them. This part-of fact and rental_property_expenses_paid (CO-4458) let CCCAP count the net rent."
+rationale: "Merged with CO-4320 (the SNAP financial coverage round added the same fact under the same identifier; SNAP CO-4322 and CCCAP read this one). Coverage round (docs/reviews/coverage-cccap.md, F-10): 8 CCR 1403-1 3.111.I.12 and I.17 (S3256) count \"Net rental income\"; other_unearned_income_taxable states rents gross, together with other income, so CCCAP could neither find the rents nor net them. This part-of fact and rental_property_expenses_paid (CO-4458) let CCCAP count the net rent."

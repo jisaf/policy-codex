@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: This household member, required to provide a Social Security Number, refused to supply it at application or failed without good cause to provide proof of an application for one, and so is ineligible to participate in SNAP; the household is not (10 CCR 2506-1 4.302.A.3, 4.304.4.A.2). The disqualification ends when the member provides an SSN or proof of an application.
-precision: If not stated, SNAP reads this as false. A newborn without an SSN is not disqualified (4.302.B), and a member who provided an SSN is not disqualified for lack of a card (4.302.A.1).
+precision: "If not stated, SNAP reads this as false. A newborn without an SSN is not disqualified (4.302.B), and a member who provided an SSN is not disqualified for lack of a card (4.302.A.1). A member who refuses to provide an SSN based on a sincere religious objection is not disqualified: \"all members of the household may participate in SNAP, if otherwise eligible\" (4.302.C.2, S3067; coverage review P2-4), so this fact is false for that member."
 supplied_by: County worker determination recorded in CBMS.
-sources: [S1811, S1810]
+sources: [S1811, S1810, S3067]
 tags: [snap]
 rationale: "CDHS review B-4: snap_is_ineligible_member (CO-311) did not list the SSN disqualification; no fact stated it (has_been_issued_ssn and the verification facts state whether an SSN exists or was verified, not whether the member refused)."

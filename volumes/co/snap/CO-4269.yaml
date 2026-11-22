@@ -1,0 +1,18 @@
+id: CO-4269
+name: "SNAP: benefits begin date"
+identifier: snap_benefits_begin_date
+kind: derived
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The date from which this person's SNAP household's benefits run: the later date a household-caused delay sets (snap_household_delay_benefits_begin_date, CO-4268; 10 CCR 2506-1 4.205.31, 4.205.4.A, 4.209.1.D), otherwise the date of application (snap_application_date, CO-1746; 4.201.B, 4.207.2.A)."
+precision: "The initial month is the month containing this date (snap_is_initial_month, CO-2305) and is prorated from it (snap_prorated_initial_month_allotment, CO-2308); a month before it pays nothing (snap_is_before_benefits_begin, CO-4270)."
+derived: [otherwise, snap_household_delay_benefits_begin_date, snap_application_date]
+sources: [S3063, S1615]
+implemented: engine
+tags: [snap, income]
+nearest: [CO-1746]
+rationale: "Coverage review C-13: the initial month and its proration read snap_application_date directly; a household's delay can move the start of benefits later (S3063). One item states the date both read."
+tests:
+  - {id: CO-4269-T1, title: "C-13: verification provided on day 39 by the household's fault", as_of: "2026-11-20", given: {snap_application_date: "2026-10-12", snap_household_delay_benefits_begin_date: "2026-11-20"}, expect: "2026-11-20"}
+  - {id: CO-4269-T2, title: "No delay: the date of application", as_of: "2026-10-15", given: {snap_application_date: "2026-10-12"}, expect: "2026-10-12"}

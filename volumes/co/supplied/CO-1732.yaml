@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The person is violating a condition of probation or parole imposed under federal or state law."
+meaning: "The person is violating a condition of probation or parole imposed under federal or state law. For SNAP the violation counts only when an impartial party designated by the agency has determined that the person violated a condition of probation or parole, and federal, state or local law enforcement authorities are actively seeking the person to enforce it: the agency intends to arrest the person within twenty days of submitting a request for information to the local office, presents a felony arrest warrant, or states within thirty days of the local office's request that it intends to arrest the person (10 CCR 2506-1 4.304.4.C, C.1.a-c, S3066)."
 supplied_by: "Law enforcement or court data match; applicant statement."
-sources: [S19]
+sources: [S19, S3066]
 tags: [legal]
-rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-6): split from is_fleeing_felon_or_probation_violator (CO-038), which joined two conditions because SNAP's 7 CFR 273.11(n) joins them; Adult Financial names fleeing felons only, so a probation violator was denied OAP or AND."
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-6): split from is_fleeing_felon_or_probation_violator (CO-038), which joined two conditions because SNAP's 7 CFR 273.11(n) joins them; Adult Financial names fleeing felons only, so a probation violator was denied OAP or AND. Coverage review P2-3: the meaning states 4.304.4.C's impartial-party finding and actively-seeking conditions; only SNAP reads this fact (CO-311, CO-2302)."

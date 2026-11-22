@@ -1,0 +1,18 @@
+id: CO-4262
+name: "SNAP: creditable qualifying quarters"
+identifier: snap_creditable_qualifying_quarters
+kind: derived
+type: whole number
+scope: person
+program: SNAP
+meaning: "The qualifying quarters SNAP credits to the non-citizen toward the forty: the quarters SSA's record credits (qualifying_quarters, CO-004) less those for a period after December 31, 1996 in which the non-citizen, a parent or the spouse received a federal means-tested public benefit (qualifying_quarters_with_federal_means_tested_benefit, CO-4261), never below zero (10 CCR 2506-1 4.505.61.A-B; 8 U.S.C. 1612(a)(2)(B)(ii))."
+precision: "The quarters removed are read as 0 when not stated (CO-4261). The benefits that do not count (4.505.61.C) and the fortieth quarter earned before applying (4.505.61.B) are in CO-4261's meaning."
+derived: [max, 0, ["-", qualifying_quarters, [otherwise, qualifying_quarters_with_federal_means_tested_benefit, 0]]]
+sources: [S3056, S13]
+implemented: engine
+tags: [snap, immigration]
+nearest: [CO-004]
+rationale: "Coverage review C-5: snap_meets_immigrant_additional_condition (CO-307) assumed the 4.505.61 exclusion was \"already reflected in the supplied count\", but CO-004's meaning is SSA's credited total, which does not reflect it; a permanent resident with 40 SSA quarters, 6 of them in years the family received SNAP or Medicaid, was found eligible with 34 creditable. CO-307, the quarters verification requirement (CO-3736) and the sponsor-deeming forty-quarter end (CO-2337) read this item. The same crediting rule (8 U.S.C. 1645, 1612(b)(2)(B)(ii)) governs Medicaid's forty quarters, which reads CO-004 through its own items."
+tests:
+  - {id: CO-4262-T1, title: "C-5: 40 SSA quarters, 6 in years the family received SNAP", as_of: "2026-10-01", given: {qualifying_quarters: 40, qualifying_quarters_with_federal_means_tested_benefit: 6}, expect: 34}
+  - {id: CO-4262-T2, title: "None removed when not stated", as_of: "2026-10-01", given: {qualifying_quarters: 40}, expect: 40}
