@@ -475,6 +475,8 @@ describe("phase 13 retest fixes", () => {
       }
     }
     expect(departureSince({ statute_override: "Federal law overrides X: since Pub. L. 119-21 took effect on July 4, 2025, the age is 64." })).toBe("2025-07-04");
+    // The rule overridden quotes its own date; the departure dates from what governs.
+    expect(departureSince({ statute_override: "The federal figure overrides 4.408.E, which still states $4,500 \"Effective October 1, 2024\": the limit is $4,750 from October 1, 2026." })).toBe("2026-10-01");
   });
 
   it("explains an Unknown under the other reading by the facts the household lacks", () => {

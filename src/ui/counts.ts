@@ -318,8 +318,17 @@ export function isoDate(text: string): string | null {
 export function departureSince(it: Pick<Item, "effective" | "statute_override">): string | null {
   if (it.effective?.from) return it.effective.from;
   const note = it.statute_override ?? "";
-  const m = /\b(?:since|from|effective|took effect(?: on)?|in force|applies from|beginning)\s+([^;:]{0,60})/i.exec(note);
-  return m ? isoDate(m[1]) : null;
+  // The part after the first colon says what governs and from when; the part
+  // before it quotes the rule overridden, whose own dates are not the
+  // departure's ("which still states $4,500 'Effective October 1, 2024'").
+  const colon = note.indexOf(": ");
+  for (const part of colon >= 0 ? [note.slice(colon + 2), note] : [note]) {
+    for (const m of part.matchAll(/\b(?:since|from|effective|took effect(?: on)?|in force|applies from|beginning)\s+([^;:]{0,60})/gi)) {
+      const d = isoDate(m[1]);
+      if (d) return d;
+    }
+  }
+  return null;
 }
 
 /** Every item that follows a statute over a Colorado rule, in `programs`
