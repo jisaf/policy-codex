@@ -55,7 +55,7 @@ Carried, still deferred, not counted again: NM-17 (a parent's OASDI cost-of-livi
 
 ## 3. Coverage matrix
 
-Key: **C** = carried by (the derivation was read and is correct unless a finding is named). **NA** = not applicable, with the reason. **OQ** = open question. **GAP** = no item and no recorded reason. Rows group subparagraphs only where one disposition serves all of them. 290 rows.
+Key: **C** = carried by (the derivation was read and is correct unless a finding is named). **NA** = not applicable, with the reason. **OQ** = open question. **GAP** = no item and no recorded reason. Rows group subparagraphs only where one disposition serves all of them. 394 rows.
 
 ### 3.1 § 8.100.5.A-E: application, verification, effective dates, estate recovery, availability (D-65:2095-2232)
 
@@ -394,10 +394,16 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 7.F.2.h | C: CO-660 gates only CO-651/CO-652; CO-612 is not gated. |
 | 7.F.2.i | C: CO-824 and CO-886 restated at the new transfer. |
 | 7.F.2.j.i-xi | C: CO-824 (the caseworker's finding of what is an uncompensated transfer); exempt transfers transfer_was_exempt (CO-825). |
-| 7.F.3-8 (exempt transfers, hardship, apportionment) | C: CO-825; ma_transfer_penalty_is_apportioned_with_spouse (CO-2232), CO-2233, CO-2234, CO-2235, CO-3311. |
-| 7.G (promissory notes, loans, life estates purchased, annuities, income trust region table) | C: CO-824 (the uncompensated value under G); the region table G.6.a.i.a as 7.E.6.a.i.a above. |
-| 7.H.1-2 | C: CO-4643 (life estate value the Department finds available), CO-824 (transfer). |
-| 7.I (annuities: disclosure, remainder beneficiary, actuarial soundness) | C: owns_annuity (CO-1579), CO-1635, CO-1639, annuity_verification_document_received (CO-1580); value or transfer through CO-4643 and CO-824. |
+| 7.G.1-5 (promissory notes, personal care services, joint tenancy) | C: CO-824 (the uncompensated value the site computes under G); a conforming note's value is a holding (CO-3390 or CO-4643). |
+| 7.G.6 (no penalty: transfers to a spouse, a disabled child, a caretaker child, a sibling, intent shown, returned) | C: transfer_was_exempt (CO-825). |
+| 7.G.7 (rebuttable presumption) | C: CO-824 and CO-825 (the site's finding). |
+| 7.G.8 (apportionment between spouses) | C: ma_transfer_penalty_is_apportioned_with_spouse (CO-2232), CO-2233, ma_transfer_penalty_apportioned_share_rate (CO-2234), ma_transfer_penalty_share_rate (CO-2235), CO-3311 (items cite it as "F.8"; P3 in passing, the cite should read G.8). |
+| 7.G.9 | C: CO-1634, CO-1638. |
+| 7.G.10 | NA: notice. |
+| 7.G.11.a-g (undue hardship waiver) | C: CO-825 (an approved waiver is an exception); the request procedure is NA. |
+| 7.G.12 (no penalty in listed circumstances) | C: CO-825. |
+| 7.H.1-5 (life estates: definitions, value, remainder, table) | C: CO-4643 (life estate value the Department finds available), CO-824 (transfer); the table is the site's valuation (NA as computation). |
+| 7.I.1-5 (annuities by purchase date: disclosure, remainder beneficiary, actuarial soundness) | C: owns_annuity (CO-1579), CO-1635, CO-1639, annuity_verification_document_received (CO-1580); value or transfer through CO-4643 and CO-824. |
 | 7.J | NA: life expectancy tables used in the caseworker's valuation behind CO-824 and CO-4643. |
 
 ### 3.9 § 8.100.7.K-V: spousal impoverishment and post-eligibility (D-65:4029-4458)
@@ -532,7 +538,7 @@ Stored cases were evaluated in the scratch copy against their `expect` blocks; e
 | NM-2 (real property for sale, co-owner hardship) | X-FORSALE: aged. CO-4620 read. |
 | NM-3 (spouse's retirement accounts) | CO-189: resources 1,000, aged, QMB eligible. X-IRA: 1,000, aged. |
 | NM-4 (income-producing property) | CO-4621 read (J.2-J.3 as written). |
-| NM-5 (home rules) | CO-4622 read; CO-139 and CO-113 keep their written intent. C3-5 is a new defect in the same item (xiv). |
+| NM-5 (home rules) | CO-4622 read and its tests T1-T10 checked against the text; CO-214 below exercises ix. C3-5 is a new defect in the same item (xiv). |
 | NM-6 (retroactive lump sums) | CO-2470, CO-800 read. |
 | NM-7, NM-8 (PASS, IRWE, blind work expenses) | X-PASS: 880, disabled. CO-605 and CO-1715 read. C3-3 finds the protected-group tests never got them. |
 | NM-9 (disabled widow(er) income and resources) | X-DWB: not a disabled widow(er), as the disposition recorded. |
