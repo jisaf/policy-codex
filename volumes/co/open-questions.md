@@ -2594,3 +2594,13 @@ Owner: Cash programs policy owner
 Assumption: In the month of the initial payment the twenty five percent is taken of the partial month payment (the grant times the 3.609.2.A.1 partial month figure), since C.1 measures it against the unit's "grant payment".
 
 Checked 2026-11-22: 9 CCR 2503-6 3.608.4.C.1, D and 3.609.2.A.1.e (D-81, version effective 2025-07-01, S760, S3156). Neither paragraph names the base of a percentage deduction in a partial month.
+
+### OQ-850. CCCAP medical leave at a redetermination: does D.9's "unable to care for their children" apply, or is any verified medical leave a temporary break
+
+Body: 8 CCR 1403-1 3.111.D.9 (S2700) names as an eligible household caretakers "with an open and active Low-Income Child Care case who are participating in a low-income eligible activity and go on temporary verified medical leave and are unable to care for their children". 3.112.C.2 (S2701) makes "Any temporary absence from low-income eligible activities ... due to extended verified medical leave" a temporary break, with no condition on caring for the children, and 3.103.WWW (S3530) includes leave "to care for a family member". 3.114.B.5 (S3251) ends care at the redetermination for a caretaker no longer in an eligible activity. At a change during the period 3.125.Q.2 (S3252) keeps any temporary break, so CO-984 counts the leave there (coverage pass 2 C2-2); at a redetermination the two paragraphs give different tests. Items: CO-984.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: At a redetermination medical leave is an eligible activity only when the caretaker is unable to care for the children (D.9, the paragraph that states the eligible household); at a change during the period any verified medical leave counts (3.112.C.2, 3.125.Q.2).
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103.WWW, 3.111.D.9, 3.112.C.2, 3.114.B.5 and 3.125.Q.2 (D-87, version effective 2026-08-14). Neither D.9 nor 3.112.C refers to the other.

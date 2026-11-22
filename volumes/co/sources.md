@@ -21551,3 +21551,46 @@ Document: D-81
 > 4. U.S. Department of Veterans Affairs (VA) educational assistance (G.I. Bill) payments or
 > any other benefits which are conditional upon school attendance are income to the extent
 > that they exceed expenses necessary for school attendance.
+
+### S3530. CCCAP: "Medical leave" is granted for a personal illness or injury or to care for a family member
+
+Document: D-87
+
+8 CCR 1403-1 3.103.WWW (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> WWW. “Medical leave” means a temporary period of absence from the adult
+> caretaker(s) or teen parent(s)’ Low-Income Child Care eligible activity that is
+> granted due to a personal illness or injury, or to care for a family member that is
+> not related to maternity/paternity leave.
+
+### S3531. CCCAP: a Colorado Works Child Care household that moves county keeps care; a transition needs no additional verification until the twelve-month redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.116.L, 3.117.B (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> L. If the adult caretaker or teen parent moves out of the county in which they are
+> actively receiving Colorado Works Child Care during the twelve (12) month
+> period:
+>
+> ...
+>
+> B. Households shall be determined eligible to transition to Low-Income Child Care
+> based on the information and verification that is provided to the child care
+> technician by the county Colorado Works worker upon receipt of the Department-
+> prescribed Colorado Works Child Care Referral Form. No additional verification
+> shall be required until the household's twelve (12) month re-determination for
+> Low-Income Child Care. Child citizenship status, age, and identity must not be
+> re-verified at the time of the Low-Income Child Care re-determination if it was
+> previously verified using the Colorado Works Child Care Referral Form.
+
+### S3532. CCCAP: caretakers self-declare assets of no more than one million dollars at application and re-determination
+
+Document: D-87
+
+8 CCR 1403-1 3.113.A.1.d (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> d. At application and re-determination, adult caretakers or teen
+> parents must self-declare that their liquid and non-liquid assets do
+> not exceed one million dollars. If assets exceed one million dollars
+> the household is ineligible for CCCAP.
