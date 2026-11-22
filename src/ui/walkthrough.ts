@@ -1,4 +1,4 @@
-/* The data behind the case walkthrough (views/WalkthroughView.tsx): a stored
+/* The data behind a household's determination (places/Determination.tsx): a stored
  * test household's determination, read from the engine's own trace and laid
  * out as a reader steps through it. Nothing here takes intake or recomputes
  * with new facts: every value is what the codex records for a stored case,

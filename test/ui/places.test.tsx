@@ -56,8 +56,8 @@ describe("the seven places", () => {
   it("Households lists the stored households, and each has a page with four tabs", () => {
     const list = show("#/co/households");
     expect(list.querySelector(".placehead h1")!.textContent).toBe("Households");
-    expect(list.querySelectorAll("ul.wk-cases li").length).toBe(vol.cases.length);
-    expect(list.querySelector('ul.wk-cases li[data-case="CO-01"] a')!.getAttribute("href")).toBe("#/co/households/CO-01");
+    expect(list.querySelectorAll("ul.hhlist li").length).toBe(vol.cases.length);
+    expect(list.querySelector('ul.hhlist li[data-case="CO-01"] a')!.getAttribute("href")).toBe("#/co/households/CO-01");
 
     const page = show("#/co/households/CO-01");
     const tabs = [...page.querySelectorAll("nav.hhtabs a")].map((a) => a.textContent);
@@ -77,9 +77,10 @@ describe("the seven places", () => {
   it("an older walkthrough address opens the determination page", () => {
     const host = show("#/co/walkthrough/CO-01?person=p3&program=SNAP");
     expect(host.querySelector(".wk-person")!.textContent).toContain("Person 3");
-    // Its links come back canonical.
-    const chip = host.querySelector('.wk-pick a.chip[data-person="p1"]')!.getAttribute("href")!;
-    expect(chip).toMatch(/^#\/co\/households\/CO-01\/p1/);
+    expect((host.querySelector("select.det-program") as HTMLSelectElement).value).toBe("SNAP");
+    // Its links are canonical.
+    const back = host.querySelector(".eyebrow a")!.getAttribute("href")!;
+    expect(back).toBe("#/co/households/CO-01");
   });
 
   it("Figures lists every dated figure in force on a date, filtered by words", () => {

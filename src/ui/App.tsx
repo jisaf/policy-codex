@@ -26,12 +26,12 @@ import { DraftBanner } from "./DraftBanner";
 import { ChangesPage } from "./places/ChangesPage";
 import { DeskPage } from "./places/DeskPage";
 import { FiguresPage } from "./places/FiguresPage";
+import { DeterminationPage } from "./places/Determination";
 import { HouseholdPage, HouseholdsList } from "./places/HouseholdPage";
 import { LawPage } from "./places/LawPage";
 import { InboxView } from "./views/InboxView";
 import { OutcomesView } from "./views/OutcomesView";
 import { QuestionsView } from "./views/QuestionsView";
-import { WalkthroughView } from "./views/WalkthroughView";
 import { MapPage } from "./map/MapView";
 
 /** The page for the address. It dispatches on the canonical route (what the
@@ -50,7 +50,7 @@ export function ViewSlot() {
     case "households":
       if (!parts.length) return <HouseholdsList />;
       if (parts[0] === "new") return <CasesView />;
-      if (parts[1]) return <WalkthroughView />;
+      if (parts[1]) return <DeterminationPage />;
       return <HouseholdPage />;
     case "questions": return <QuestionsView />;
     case "law":

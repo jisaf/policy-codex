@@ -1,0 +1,148 @@
+/* Households and a household's determination (HouseholdPage.tsx,
+ * Determination.tsx). Uses the tokens of styles.css and shell.css. */
+.household, .households { overflow-wrap: anywhere; }
+.household .small, .households .small { font-size: 12px; color: var(--muted); }
+.household .code, .households .code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--muted); }
+.household h2 { font-size: 17px; margin: 20px 0 6px; }
+.household .lbl, .households .lbl { color: var(--muted); font-size: 13px; }
+.pid { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85em; color: var(--muted); font-weight: 600; }
+.pshort { font-weight: 600; }
+
+/* the list */
+.hhfilters { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 8px 0 12px; }
+.hhfilters label { display: flex; gap: 6px; align-items: center; min-width: 0; max-width: 100%; }
+.hhfilters input[type="search"] { font: inherit; padding: 5px 8px; border: 1px solid var(--line); border-radius: 4px; width: 22rem; max-width: 100%; }
+.hhfilters select { font: inherit; padding: 4px; max-width: 100%; }
+ul.hhlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+a.hhcard { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 6px; text-decoration: none; color: var(--ink); }
+a.hhcard:hover { border-color: var(--accent); }
+a.hhcard .hhtitle { font-weight: 600; color: var(--accent); }
+a.hhcard .hhpeople { font-size: 13px; }
+
+/* the page and its tabs */
+.household .placehead .purpose { max-width: none; }
+.hhnotes p { max-width: 90ch; }
+nav.hhtabs { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 10px 0 14px; border-bottom: 2px solid var(--line); }
+nav.hhtabs a { padding: 8px 12px; margin-bottom: -2px; border-bottom: 3px solid transparent; text-decoration: none; color: var(--ink);
+  font-weight: 500; border-radius: 4px 4px 0 0; }
+nav.hhtabs a:hover { background: var(--med); }
+nav.hhtabs a.on { border-bottom-color: var(--accent); color: var(--accent); font-weight: 600; }
+.howcounted { margin: 4px 0 10px; }
+.howcounted summary { cursor: pointer; color: var(--accent); }
+.howcounted p { max-width: 80ch; margin: 4px 0; }
+
+/* results and aid codes: programs as rows, persons as columns */
+.hhmonth { margin: 6px 0; }
+.hhgrid-wrap { max-width: 100%; }
+table.hhgrid { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; margin: 6px -4px; }
+table.hhgrid caption { text-align: left; caption-side: top; padding: 0 4px 2px; }
+table.hhgrid thead td { width: 9.5em; }
+table.hhgrid thead th { text-align: left; vertical-align: bottom; padding: 2px 6px 4px; font-weight: 400; }
+table.hhgrid thead th .pnote { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 12px; color: var(--muted); margin-top: 2px; }
+table.hhgrid tbody th { text-align: left; vertical-align: top; font-weight: 600; padding: 8px 6px; font-size: 13px; }
+table.hhgrid td { vertical-align: top; padding: 0; }
+.docpill { display: inline-block; margin-top: 4px; font-size: 12px; padding: 1px 8px; border-radius: 99px; background: #fbefd9;
+  color: #6b4a00; text-decoration: none; border: 1px solid #ebd3a4; }
+.cell { display: flex; flex-direction: column; gap: 3px; padding: 6px 8px; border-radius: 6px; min-height: 100%; font-size: 13px; }
+.cell.has { background: var(--panel); border: 1px solid #9fc3d4; }
+.cell.none { background: var(--all); border: 1px solid transparent; }
+.cell.none > a { color: var(--muted); }
+.cell .held a { font-weight: 600; }
+.cell .codechip { font-size: 11px; }
+.cell .amount b { font-variant-numeric: tabular-nums; }
+.untested-line { margin-top: 6px; }
+.hhcards { display: none; }
+.hhperson { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin: 8px 0; }
+.hhperson h2 { font-size: 15px; margin: 0 0 2px; }
+.hhperson dl { margin: 6px 0 0; }
+.hhperson .hhrow { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 6px; padding: 4px 0; border-top: 1px solid var(--line); }
+.hhperson dt { font-weight: 600; font-size: 13px; }
+.hhperson dd { margin: 0; }
+.hhperson .cell { padding: 0; border: 0; background: none; }
+
+/* documents */
+.hhdocs-table .dueprograms { list-style: none; margin: 0; padding: 0; }
+.hhdocs-table .dueprograms li { margin: 1px 0; }
+.beforetoday { display: inline-block; font-size: 12px; padding: 0 6px; border-radius: 3px; background: #fbefd9; color: #6b4a00; }
+
+/* what if */
+.wi-card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin: 8px 0; }
+.wi-amount { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.wi-amount select { font: inherit; padding: 4px; max-width: 100%; }
+.wi-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+.wi-row select { font: inherit; padding: 4px; max-width: 100%; }
+.wi-row label { display: flex; gap: 4px; align-items: center; min-width: 0; max-width: 100%; }
+button.chip { font: inherit; padding: 3px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--panel); cursor: pointer; }
+button.chip.on { background: var(--med); border-color: var(--accent); font-weight: 600; }
+input.wi-add { width: 6.5em; font: inherit; padding: 3px 6px; }
+.wi-result, .wi-tipping { margin-top: 12px; }
+.wi-first { background: #eaf3f8; border-left: 3px solid var(--accent); padding: 6px 10px; }
+table.wi-steps tr.first td { background: #eaf3f8; font-weight: 600; }
+table.wi-steps caption { text-align: left; caption-side: top; }
+
+/* what the case states */
+ul.relations { columns: 2 22rem; margin: 0; padding-left: 18px; }
+.hhfacts { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin: 6px 0; }
+.hhfacts summary { cursor: pointer; }
+.hhfacts table.facts { width: 100%; border-collapse: collapse; margin-top: 6px; }
+.hhfacts table.facts td { border-bottom: 1px solid var(--line); padding: 3px 6px; vertical-align: top; font-size: 13px; }
+.hhfacts table.facts td:last-child { width: 40%; }
+table.expectations tr.differs td { background: #fdf0f0; }
+
+/* the determination */
+.determination .eyebrow { margin: 0; font-size: 13px; color: var(--muted); }
+.determination h1 { font-size: 22px; margin: 2px 0; }
+.determination h1 .sep { color: var(--muted); font-weight: 400; }
+.determination .personnote { margin: 0 0 6px; max-width: 90ch; }
+.detpick { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 8px 0; padding: 6px 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.detpick label { display: flex; gap: 6px; align-items: center; min-width: 0; max-width: 100%; }
+.detpick select { font: inherit; padding: 3px; max-width: 100%; min-width: 0; }
+.determination p.client { font-size: 18px; line-height: 1.45; margin: 14px 0 8px; max-width: 70ch; padding: 10px 14px;
+  background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; }
+.determination .verdict { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 6px 0; }
+.determination .verdict .big { font-size: 20px; }
+.determination .verdict.unknown .big { color: var(--warn); }
+.determination .asof { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; font-size: 13px; margin: 6px 0; }
+.determination .asof input { font: inherit; padding: 2px 4px; }
+.detactions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0; }
+.detactions a.btn { text-decoration: none; color: var(--ink); }
+.detactions .printtraining { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.detactions select { font: inherit; padding: 3px; }
+ul.banners { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.fedbanner { background: #eef2fb; border: 1px solid #b7c4e6; border-left: 4px solid #3d5ba8; border-radius: 6px; padding: 6px 10px; }
+.fedbanner p { margin: 2px 0; }
+p.fedbanner { margin: 4px 0; }
+.unvbanner { background: #fff7e6; border: 1px solid #e3c470; border-radius: 6px; padding: 6px 10px; }
+ol.whyshort { margin: 4px 0; padding-left: 22px; max-width: 80ch; }
+ol.whyshort li { margin: 3px 0; }
+ol.whyshort li.why { font-weight: 500; }
+ol.whyshort .linkish { padding: 0; text-align: left; }
+ul.detquestions { margin: 0; padding-left: 18px; }
+
+@media (max-width: 760px) {
+  table.hhgrid, table.hhgrid caption { display: none; }
+  .hhcards { display: block; }
+  .hhfilters input[type="search"] { width: 100%; }
+  .hhfilters label { flex: 1 1 100%; }
+  nav.hhtabs a { padding: 6px 8px; font-size: 14px; }
+  .determination p.client { font-size: 16px; }
+  .detpick label { flex: 1 1 100%; }
+  .detpick select { flex: 1; }
+  table.wi-changes thead, table.wi-steps thead, table.expectations thead { display: none; }
+  table.wi-changes tr, table.wi-steps tr, table.expectations tr { display: block; border-bottom: 1px solid var(--line); padding: 4px 0; }
+  table.wi-changes td, table.wi-steps td, table.expectations td { display: block; border: 0; padding: 1px 4px; }
+  .hhfacts table.facts td:last-child { width: 45%; }
+}
+
+@media print {
+  .determination .print-only { display: block; }
+  .determination .detpick, .determination .detactions, .determination .asof label { display: none !important; }
+  .determination p.client { border: 1px solid #999; }
+  .printing-training .wk-citations, .printing-training .wk-changes-panel, .printing-training .detquestions { display: none; }
+  .printing-training ol.stepper .inputs .small { display: none; }
+}
+.detquestions-block summary { cursor: pointer; }
+.detquestions-block summary h2 { display: inline; }

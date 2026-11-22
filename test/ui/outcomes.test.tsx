@@ -209,22 +209,9 @@ describe("OutcomesView", () => {
     // Only Medicaid codes on the Medicaid page.
     for (const c of host.querySelectorAll(".codecard")) expect(c.getAttribute("data-code")).toMatch(/^PH-(MA|MSP|RHCP|OAP)/);
   });
-
-  it("renders one stored household, a row per person and a column per program", () => {
-    setUp({ tab: "household", case: "CO-01" });
-    const host = document.createElement("div");
-    render(<OutcomesView />, host);
-    const table = host.querySelector("table.household")!;
-    const hc = vol.cases.find((c) => c.id === "CO-01")!;
-    expect(table.querySelectorAll("tbody tr").length).toBe(Object.keys(hc.persons).length);
-    expect(table.querySelectorAll("thead th").length).toBe(codePrograms(engine, map).length + 1);
-    // Each cell opens the person's determination: households/<case>/<person>/<outcome>.
-    expect(table.querySelector('a[href*="/households/CO-01/p1/"]')).toBeTruthy();
-    expect(host.textContent).toContain("this person does not");
-  });
 });
 
-describe("phase 13 retest fixes: the household grid", () => {
+describe("phase 13 retest fixes: the household codes (the grid is test/ui/households.test.tsx)", () => {
   const kase = (id: string) => vol.cases.find((c) => c.id === id)!;
 
   it("says 'not tested in this case' for a program the case never tests (CO-83's Medicaid)", () => {
@@ -233,27 +220,6 @@ describe("phase 13 retest fixes: the household grid", () => {
     for (const row of householdCodes(engine, map, hc)) {
       for (const pp of row.programs) expect(pp.tested).toBe(tested.includes(pp.program));
     }
-    setUp({ tab: "household", case: "CO-83" });
-    const host = document.createElement("div");
-    render(<OutcomesView />, host);
-    const untested = host.querySelectorAll('td[data-prog="Medicaid"] .untested');
-    if (!tested.includes("Medicaid")) expect(untested.length).toBe(Object.keys(hc.persons).length);
-    expect(host.textContent).not.toMatch(/No needy-young-person group applies/);
-  });
-
-  it("puts amounts and ages in the grid, and opens the walkthrough at the cell's own outcome", () => {
-    setUp({ tab: "household", case: "CO-01" });
-    const host = document.createElement("div");
-    render(<OutcomesView />, host);
-    expect(host.querySelector('tr[data-person="p1"] th')!.textContent).toMatch(/age \d+/);
-    const snap = host.querySelector('tr[data-person="p2"] td[data-prog="SNAP"]')!;
-    expect(snap.querySelector(".amount")!.textContent).toMatch(/\$/);
-    const fp = [...host.querySelectorAll('tr[data-person="p2"] td[data-prog="Medicaid"] .held a')]
-      .map((a) => decodeURIComponent(a.getAttribute("href")!)).find((h) => h.includes("/households/CO-01/p2/"))!;
-    const pp = householdCodes(engine, map, kase("CO-01")).find((r) => r.person === "p2")!.programs.find((x) => x.program === "Medicaid")!;
-    expect(fp).toContain(`/households/CO-01/p2/${cellOutcome(pp)}`);
-    // Relationship sentences read as English.
-    expect(host.querySelector(".family")?.textContent ?? "").not.toMatch(/ of of | is the files /);
   });
 
   it("links the open questions an outcome's reasoning carries (CO-01's family planning)", () => {

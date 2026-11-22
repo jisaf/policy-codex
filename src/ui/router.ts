@@ -191,23 +191,11 @@ export function internalRoute(c: Route): Route {
       // The sign-off list is the approvals inbox, filtered by `?role=`.
       if (parts[0] === "sign") return { ...base, view: "inbox", arg: join(...parts.slice(1)), params: c.params };
       return c;
-    case "households": {
-      if (!parts.length) return { ...base, view: "walkthrough", arg: null, params: c.params };
+    case "households":
+      // The list, a household's tabs and a determination are built for this
+      // place; adding a household is still the Cases view's form.
       if (parts[0] === "new") return { ...base, view: "cases", arg: "new", params: c.params };
-      const [caseId, person, outcome] = parts;
-      if (person) {
-        return {
-          ...base, view: "walkthrough", arg: caseId,
-          params: { ...c.params, person, ...(outcome ? { outcome } : {}) },
-        };
-      }
-      const tab = householdTab(c);
-      if (tab === "states") return { ...base, view: "cases", arg: caseId, params: omit(c.params, ["tab"]) };
-      if (tab === "results") {
-        return { ...base, view: "outcomes", arg: null, params: { tab: "household", case: caseId, ...pick(c.params, ["month"]) } };
-      }
       return c;
-    }
     case "programs":
       if (c.params.tab === "aid-codes") return { ...base, view: "outcomes", arg: c.arg, params: omit(c.params, ["tab"]) };
       return { ...base, view: "program", arg: c.arg, params: c.params };
