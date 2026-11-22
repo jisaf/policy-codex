@@ -74,6 +74,7 @@ outcomes:
       ineligible_income: "Not eligible: income."
       ineligible_residency: "Not eligible: residency."
       ineligible_no_category: "Not eligible: no covered group."
+      ineligible_before_coverage_period: "Not eligible: a month before the person's birth, or before the application and outside a requested retroactive period."
 
   - outcome: ma_needy_young_person_category
     codes:

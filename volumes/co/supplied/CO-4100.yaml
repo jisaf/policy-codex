@@ -1,0 +1,13 @@
+id: CO-4100
+name: Retroactive Medical Assistance coverage requested
+identifier: ma_retroactive_coverage_requested
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether retroactive Medical Assistance coverage has been requested for the person, on the application form or verbally at any time after the application was completed, for medical services the person received in the retroactive period (the months before the month of application, from the date the person became eligible, whichever is later) that would be a benefit under the Colorado State Plan (10 CCR 2505-10 § 8.100.3.E.1-2). The request declares the services; proof of them is not required. If not stated, no request was made."
+precision: "One fact for both conditions of § 8.100.3.E: E.1's 'That person shall have received medical services at any time during that period' and E.2's request, which only an applicant who has received such services can make ('Those applicants who ... have received medical services ... can request retroactive coverage on the application form'). E.2 says 'Proof of the declared medical service shall not be required', so the declaration is the lighter fact the rule allows. A request with no services declared is not a request in this sense. Read as false when not stated: a request is an entry on the application or a later recorded request, and its absence is no request."
+supplied_by: "The retroactive coverage question on the application, or the Eligibility Site's record of a later verbal request, with the medical services the applicant declares."
+sources: [S1503, S2411]
+tags: [ma, magi]
+rationale: "Final verification pass 2, F2-1 (docs/reviews/final2-medicaid-chp.md): ma_pregnancy_coverage_period_start_month (CO-565) opened the pregnancy coverage period in the earliest retroactive month in which the Pregnant Women category was met, for every pregnant applicant, although § 8.100.3.E.1-2 gives retroactive coverage only to an applicant who received medical services in the period and requests it. No fact stated the request or the services."
