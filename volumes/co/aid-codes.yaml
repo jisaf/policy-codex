@@ -235,6 +235,9 @@ outcomes:
       ineligible_resources: "Not eligible: resources."
       ineligible_living_arrangement: "Not eligible: living arrangement."
       sanction_closure: "Closed by sanction."
+      ineligible_institution: "Not eligible: an institution patient for tuberculosis or mental disease, or an inmate."
+      ineligible_strike: "Not eligible: an adult of the unit is on strike."
+      ineligible_child_support: "Not eligible: child support assignment or cooperation."
 
   - outcome: cw_diversion_eligible
     codes:

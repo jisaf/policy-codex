@@ -1,0 +1,15 @@
+id: CO-3876
+name: "Adult Financial: most disaster assistance per client per disaster"
+identifier: af_disaster_assistance_max
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: "The disaster assistance payment \"shall not exceed two thousand dollars ($2,000) per client, per disaster\" (9 CCR 2503-5 3.570.51.A)."
+versions:
+  - from: "2022-07-01"
+    value: 2000
+    source: S2624
+sources: [S2624, S2631]
+tags: [cash]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. Dated from the date the section's heading gives the payments (\"3.570.5 SUPPORTIVE PAYMENTS (Effective 7/1/2022)\"); the rule's history notes date the adoption of 3.570.5-3.570.53 April 1, 2022 (S2631)."

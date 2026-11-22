@@ -8,7 +8,7 @@ program: AdultFinancial
 role: outcome
 meaning: "Whether Adult Financial requires verification of the client's wages (documents: DOLE wage data is not verified upon receipt) and self-employment income (documentation the county accepts unless questionable, or SSA self-employment data) and it has not been provided."
 precision: "Self-employment documentation is required, though no specific document is (3.520.783.E, review C-11); earned_income_attestation_is_questionable stands for documentation the county finds questionable. False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
-derived: [all, af_verification_is_applicable, [any, [all, [">", wages_gross, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_gross_receipts, 0], [not, [any, self_employment_income_verified_by_electronic_data_source, [all, earned_income_verification_document_received, [not, earned_income_attestation_is_questionable]]]]]]]
+derived: [all, af_verification_is_applicable, af_earned_income_is_unverified]
 sources: [S880, S889]
 implemented: engine
 tags: [verification, cash]

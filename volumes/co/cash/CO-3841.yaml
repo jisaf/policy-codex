@@ -1,0 +1,19 @@
+id: CO-3841
+name: "Adult Financial: in a period of ineligibility for a transfer"
+identifier: af_is_in_twfc_penalty_period
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the month falls in the person's period of ineligibility for a transfer without fair consideration: the af_twfc_penalty_months months beginning with the month after the month of the transfer (9 CCR 2503-5 3.520.76.D.5)."
+precision: "False when there is no penalty. A month in the period may also be a month of ineligibility for another reason (E)."
+derived: [all, [">", af_twfc_penalty_months, 0], [">=", [month], [month_after, [month_of, resource_transfer_date]]], ["<=", [month], [months_after, af_twfc_penalty_months, [month_of, resource_transfer_date]]]]
+sources: [S2614]
+implemented: engine
+tags: [cash, resources]
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. af_category (CO-953) and af_and_so_eligible (CO-1203) read this item in every branch."
+tests:
+  - {id: CO-3841-T1, title: "Transfer in December 2025, 4 months: January to April 2026 - April is in the period", as_of: "2026-04-10", month: "2026-04", given: {af_twfc_penalty_months: 4, resource_transfer_date: "2025-12-15"}, expect: true}
+  - {id: CO-3841-T2, title: "May 2026 is after the period", as_of: "2026-05-10", month: "2026-05", given: {af_twfc_penalty_months: 4, resource_transfer_date: "2025-12-15"}, expect: false}
+  - {id: CO-3841-T3, title: "The month of the transfer is not in the period (D.5)", as_of: "2025-12-20", month: "2025-12", given: {af_twfc_penalty_months: 4, resource_transfer_date: "2025-12-15"}, expect: false}
+  - {id: CO-3841-T4, title: "No penalty", as_of: "2026-10-01", month: "2026-10", given: {af_twfc_penalty_months: 0}, expect: false}

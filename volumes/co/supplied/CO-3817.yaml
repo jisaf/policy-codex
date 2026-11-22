@@ -1,0 +1,13 @@
+id: CO-3817
+name: "Wages from subsidized employment"
+identifier: subsidized_employment_wages
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's wages for the month earned through a subsidized employment program: subsidized employment, an apprenticeship, on-the-job training or a transitional job whose wages a public program subsidizes."
+precision: "Part of the person's gross earned income for the month as wages_gross states it, not added to it. If not stated, every program reads it as 0."
+supplied_by: "Applicant statement, the program's or employer's record."
+sources: [S2604, S2606]
+tags: [cash, income]
+rationale: "Final cash review FC-2 and FC-3: Colorado Works' and Adult Financial's exclusion items (CO-2340 to CO-2343) summed a closed list of neutral receipt facts, so income the current exempt-income lists name could not be excluded and was counted. 9 CCR 2503-6 3.605.2.C and 3.605.4.B.35 (S2604, S2606) do not consider wages earned through subsidized employment programs. The fact states the receipt, program-neutrally (convention rule 13); each program's exclusion item decides whether its list exempts it."

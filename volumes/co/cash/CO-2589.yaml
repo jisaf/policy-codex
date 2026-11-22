@@ -8,7 +8,7 @@ program: AdultFinancial
 role: outcome
 meaning: "Whether Adult Financial still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where Adult Financial verification applies to the person."
 precision: "Due by: af_verification_due_date (CO-1437: eleven days)."
-derived: [all, af_verification_is_applicable, [all, af_has_countable_unearned_income, [not, unearned_income_is_verified]]]
+derived: [all, af_verification_is_applicable, af_unearned_income_is_unverified]
 sources: [S872, S875, S880, S891, S898]
 implemented: engine
 tags: [verification, income]

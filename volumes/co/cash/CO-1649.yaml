@@ -8,7 +8,7 @@ program: ColoradoWorks
 role: outcome
 meaning: "Whether Colorado Works requires verification of the person's wages (documents: DOLE wage data is not verified upon receipt) and self-employment income (documents, or SSA self-employment data, which is verified when entered) and it has not been provided."
 precision: "False where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2). Due by: cw_verification_due_date (CO-1426: eleven days), or cw_verification_extended_due_date when the county extended it."
-derived: [all, cw_verification_is_applicable, [any, [all, [">", wages_gross, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_gross_receipts, 0], [not, [any, earned_income_verification_document_received, self_employment_income_verified_by_electronic_data_source]]]]]
+derived: [all, cw_verification_is_applicable, cw_earned_income_is_unverified]
 sources: [S872, S875]
 implemented: engine
 tags: [verification, cash, tanf]

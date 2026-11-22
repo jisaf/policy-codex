@@ -1,0 +1,19 @@
+id: CO-3829
+name: "Adult Financial: the client's unearned income disregard"
+identifier: af_client_general_income_disregard
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The part of the $20 unearned income disregard this Adult Financial client receives: all of af_general_income_disregard for an unmarried client; for a married client, the client's equal share of it (af_married_couple_disregard_share), since the disregard \"shall be split equally between the client and the client's spouse so that no more than a $20.00 disregard is applied for the married couple\" (9 CCR 2503-5 3.533.A.2.c.1, 3.544.B.2, 3.549.A.2.c.1)."
+precision: "Married is is_married (CO-930): a spouse edge, or marital_status married. The split applies whether or not the spouse is also an Adult Financial client; the spouse's half is what the AND-SO and AND-CS deeming of the spouse's unearned income may use (af_deemed_relative_income, CO-2384). OQ-661 records the reading."
+derived: [case, [is_married, ["*", af_general_income_disregard, af_married_couple_disregard_share]], [else, af_general_income_disregard]]
+sources: [S2610, S2611, S2612]
+implemented: engine
+open: [OQ-661]
+tags: [cash, oap, and, income]
+rationale: "Final cash review FC-4, confirmed with the engine: af_countable_income (CO-946) gave each married client the full $20, so two OAP spouses with $500 of Social Security each had 480 countable and a $552 grant each where the rule gives 490 and $542. OQ-114, which carried the split, had been marked Resolved."
+tests:
+  - {id: CO-3829-T1, title: "Unmarried client: the whole $20", as_of: "2026-10-01", given: {marital_status: single}, relationships: [], expect: 20}
+  - {id: CO-3829-T2, title: "Married client with the spouse in the case: $10 (3.533.A.2.c.1)", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[spouse, p1, p2]], expect: 10}
+  - {id: CO-3829-T3, title: "Married client whose spouse is not a person of the case: $10", as_of: "2026-10-01", given: {marital_status: married}, relationships: [], expect: 10}

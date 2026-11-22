@@ -1,0 +1,20 @@
+id: CO-3804
+name: "Colorado Works: is a resident of an institution"
+identifier: cw_is_institution_resident
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "Whether this person is a resident of an institution under 9 CCR 2503-6 3.604.2.O.2: the person lives in an institution (a general medical or surgical hospital, a nursing home, an assisted living residence, a mental institution, or another care facility of that kind) and the stay has lasted at least cw_institution_resident_min_days consecutive days on the determination date."
+precision: "The stay is counted from institution_entry_date (CO-008) to the determination date (OQ-660: the elapsed stay, not an expected one). If residence_setting_type is not stated, Colorado Works reads the person as living in a private dwelling. A correctional facility is 3.604.1.E's (cw_is_institution_patient_or_inmate, CO-3802), not an institution here."
+derived: [all, [in, [otherwise, residence_setting_type, private_dwelling], [hospital, nursing_facility, icf_iid, psychiatric_hospital, tuberculosis_hospital, assisted_living_residence, other_long_term_care_facility]], [">=", [days_between, institution_entry_date, [det_date]], cw_institution_resident_min_days]]
+sources: [S2602]
+implemented: engine
+open: [OQ-660]
+tags: [cash, tanf, household]
+rationale: "Final cash review FC-1: the medical-treatment absence of 3.604.2.E.1 and I.2 kept a parent in the home indefinitely (cw_is_considered_living_in_home, CO-3354), but 3.604.2.O.2 (S2602) says a client who is a resident of an institution, a stay of at least thirty consecutive days, is not in the home. No item stated the thirty days."
+tests:
+  - {id: CO-3804-T1, title: "In a nursing home for 60 days", as_of: "2026-10-01", given: {residence_setting_type: nursing_facility, institution_entry_date: "2026-08-02"}, expect: true}
+  - {id: CO-3804-T2, title: "In a hospital for 29 days", as_of: "2026-10-01", given: {residence_setting_type: hospital, institution_entry_date: "2026-09-02"}, expect: false}
+  - {id: CO-3804-T3, title: "In a hospital for exactly 30 days", as_of: "2026-10-01", given: {residence_setting_type: hospital, institution_entry_date: "2026-09-01"}, expect: true}
+  - {id: CO-3804-T4, title: "At home", as_of: "2026-10-01", given: {residence_setting_type: private_dwelling}, expect: false}

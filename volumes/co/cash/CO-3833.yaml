@@ -1,0 +1,19 @@
+id: CO-3833
+name: "Adult Financial: unearned income disregard rolled to earned income"
+identifier: af_general_income_disregard_rolled_to_earned
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "For an OAP or AND-CS client, the part of the client's unearned income disregard the client's unearned income leaves unused, applied to the earned income calculation (9 CCR 2503-5 3.533.A.2.f, 3.549.A.2.f), up to the client's gross earned income; 0 for an AND-SO client, since 3.544 has no such paragraph."
+precision: "The program is read as af_countable_income reads it: OAP when af_is_oap_age, AND-CS when af_and_cs_eligible, AND-SO otherwise. The unused part is measured against the client's own share of the disregard (af_client_general_income_disregard, OQ-661) and against unearned income other than SSI (OQ-351)."
+derived: [case, [[any, af_is_oap_age, af_and_cs_eligible], [min, ["-", af_client_general_income_disregard, af_general_income_disregard_applied_to_unearned], af_gross_earned_income]], [else, 0]]
+sources: [S2610, S2611, S2612]
+implemented: engine
+open: [OQ-661]
+tags: [cash, oap, and, income]
+rationale: "Final cash review FC-5, confirmed with the engine: af_countable_income (CO-946) rolled the unused $20 onto earnings for every program, so an AND-SO client with $465 of wages had 190 countable and a $58 grant; 3.544.A-B (S2611) gives (465 - 65) / 2 = 200 and $48. The rollover of A.2.f is stated in 3.533 (OAP) and 3.549 (AND-CS) only."
+tests:
+  - {id: CO-3833-T1, title: "OAP client, no unearned income, $465 of wages: $20 rolls", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: true, af_client_general_income_disregard: 20, af_general_income_disregard_applied_to_unearned: 0, af_gross_earned_income: 465}, expect: 20}
+  - {id: CO-3833-T2, title: "AND-SO client, no unearned income, $465 of wages: nothing rolls (3.544)", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: false, af_and_cs_eligible: false, af_client_general_income_disregard: 20, af_general_income_disregard_applied_to_unearned: 0, af_gross_earned_income: 465}, expect: 0}
+  - {id: CO-3833-T3, title: "AND-CS client with $12 of earnings and no other unearned income: $12 rolls", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: false, af_and_cs_eligible: true, af_client_general_income_disregard: 20, af_general_income_disregard_applied_to_unearned: 0, af_gross_earned_income: 12}, expect: 12}

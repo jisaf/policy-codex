@@ -10,6 +10,7 @@ precision: "The needs deduction mirrors cw_minor_parent_deeming_needs_deduction 
 derived: [case, [[exists_related, [spouse], [of, [P], cw_is_parent_of_dependent_child]], [max, 0, ["-", ["-", ["+", [max, 0, ["-", cw_gross_earned_income, cw_earned_income_disregard_dollar]], cw_countable_unearned_income], ["+", child_support_paid_legally_obligated, [otherwise, cw_support_paid_to_tax_dependents_outside_home, 0]]], [lookup, cw_need_standard_table, [count, [filter, [persons], [all, [rel, [parent], [P]], [of, [P], cw_is_excluded_from_assistance_unit]]]]]]]], [else, ["+", cw_countable_earned_income, cw_countable_unearned_income]]]
 sources: [S1307, S528, S1626]
 implemented: engine
+open: [OQ-102]
 tags: [cash, tanf, income]
 rationale: "OQ-140: the budgetary unit's income (3.606.1.J, S528) includes the spouse of a requesting caretaker (3.604.2.D.1.b, S1626); A.4.a (S1307) states how a stepparent's income is made available to the stepchildren. No item computed either."
 tests:

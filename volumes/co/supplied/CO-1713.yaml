@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The Old Age Pension, Aid to the Needy Disabled or Aid to the Blind grant the person received for the month. Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts."
-precision: "Not SSI (ssi_income, CO-849) and not Colorado Works (tanf_cash_income, CO-029). Adult Financial does not read it: a program does not count its own grant as income against itself."
+meaning: "The Adult Financial grant the person received for the month: Old Age Pension, Aid to the Needy Disabled (AND-SO or AND-CS) or the Home Care Allowance (9 CCR 2503-5 3.500). Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts."
+precision: "Not SSI (ssi_income, CO-849) and not Colorado Works (tanf_cash_income, CO-029). Adult Financial does not read it as income: a program does not count its own grant as income against itself. The burial benefit reads it as receipt of Adult Financial at death (af_died_while_receiving_af_or_medicaid, CO-1220). Final cash review FC-17: the meaning named Aid to the Blind, which 9 CCR 2503-5 no longer has (OQ-112), and did not name the Home Care Allowance, which CO-1220 read it as including."
 supplied_by: "CBMS Adult Financial case record."
 sources: [S42]
 tags: [income, cash]

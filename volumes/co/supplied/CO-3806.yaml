@@ -1,0 +1,13 @@
+id: CO-3806
+name: Date the person left Colorado temporarily
+identifier: temporarily_out_of_state_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person, a Colorado resident with an established intent to return, left Colorado for a temporary stay outside the State. Not stated when the person is in Colorado."
+precision: "If not stated, Colorado Works reads the person as in Colorado. A person who has given up Colorado residence states another state_of_residence instead."
+supplied_by: "Applicant statement, as the county establishes it."
+sources: [S2602]
+tags: [cash, tanf]
+rationale: "Final cash review FC-1: 9 CCR 2503-6 3.604.2.O.1 (S2602) keeps a client who is temporarily out of State eligible on the same basis as one in the State, but the temporarily out-of-State status \"shall not exceed ninety (90) consecutive days\". state_of_residence (CO-006) states the State of residence, not a temporary stay elsewhere, and no fact stated when one began."

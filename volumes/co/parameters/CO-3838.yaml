@@ -1,0 +1,12 @@
+id: CO-3838
+name: "Adult Financial: months before the application in which a transfer is reviewed"
+identifier: af_twfc_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A transfer made within this many months before the application date, or while the client receives Adult Financial grant payments, is a transfer without fair consideration if the other conditions are met (9 CCR 2503-5 3.520.76.A.3; C.R.S. 26-2-111(1)(c)(I): \"thirty-six months immediately prior to the filing of application\")."
+value: 36
+sources: [S2614, S2615]
+tags: [cash, resources]
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. The figure is a parameter."

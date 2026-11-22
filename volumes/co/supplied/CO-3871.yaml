@@ -1,0 +1,13 @@
+id: CO-3871
+name: "A declared disaster is in effect"
+identifier: declared_disaster_in_effect
+kind: supplied
+type: yes/no
+scope: case
+program: All
+meaning: "A county, the Governor or the federal government has declared a disaster that covers the household's county, and the declaration has not ended on the determination date; or the effects of a disaster appeared after its declaration was rescinded and the county director (or designee) has granted the client's petition for disaster assistance (9 CCR 2503-5 3.570.51.B-D)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "The declaration; the county director's decision on a petition."
+sources: [S2624]
+tags: [cash, application_wide]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. No fact stated a disaster declaration. One value for the case: the household's county."

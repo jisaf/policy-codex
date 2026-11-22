@@ -8,7 +8,7 @@ program: ColoradoWorks
 role: outcome
 meaning: "Whether Colorado Works still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where Colorado Works verification applies to the person."
 precision: "Due by: cw_verification_due_date (CO-1426: eleven days), or cw_verification_extended_due_date when the county extended it."
-derived: [all, cw_verification_is_applicable, [all, cw_has_countable_unearned_income, [not, unearned_income_is_verified]]]
+derived: [all, cw_verification_is_applicable, cw_unearned_income_is_unverified]
 sources: [S872, S875, S880, S891, S898]
 implemented: engine
 tags: [verification, income]

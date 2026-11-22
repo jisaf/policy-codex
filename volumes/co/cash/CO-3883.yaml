@@ -1,0 +1,17 @@
+id: CO-3883
+name: "Adult Financial: unearned income is unverified"
+identifier: af_unearned_income_is_unverified
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether this person has unearned income for the month that Adult Financial counts and that is not verified, by an electronic data source verified on receipt or by documents (9 CCR 2503-5 3.520.5.A)."
+precision: "Whoever's income it is: the client, or the client's spouse (CO-3884)."
+derived: [all, af_has_countable_unearned_income, [not, unearned_income_is_verified]]
+sources: [S880]
+implemented: engine
+tags: [cash, verification]
+rationale: "Final cash review FC-12 and final verification review V-2 (and V-9): as af_earned_income_is_unverified (CO-3882), for the unearned-income element (CO-2589)."
+tests:
+  - {id: CO-3883-T1, as_of: "2026-10-01", month: "2026-10", given: {af_has_countable_unearned_income: true, unearned_income_is_verified: false}, expect: true}
+  - {id: CO-3883-T2, as_of: "2026-10-01", month: "2026-10", given: {af_has_countable_unearned_income: true, unearned_income_is_verified: true}, expect: false}

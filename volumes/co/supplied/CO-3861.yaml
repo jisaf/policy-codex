@@ -1,0 +1,13 @@
+id: CO-3861
+name: "Adult Financial: potential income the client refused to secure"
+identifier: af_refused_potential_income
+kind: supplied
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The monthly amount of other potential income the client or legal fiduciary refused or failed to make a reasonable effort to secure, which the county department considers available to the client (9 CCR 2503-5 3.520.71.G.1), as the county figures it."
+precision: "If not stated, Adult Financial reads it as 0. It is unearned income, added in af_unearned_income_other_than_ssi (CO-3831)."
+supplied_by: "County department finding and notice of proposed action."
+sources: [S2623]
+tags: [cash, oap, and, income]
+rationale: "Final cash review FC-9: 3.520.71.G.1 (S2623) counts income the client refuses to pursue as if available; no fact stated it."

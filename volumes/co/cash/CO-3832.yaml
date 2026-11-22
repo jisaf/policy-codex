@@ -1,0 +1,17 @@
+id: CO-3832
+name: "Adult Financial: unearned income disregard applied"
+identifier: af_general_income_disregard_applied_to_unearned
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The part of the client's unearned income disregard (af_client_general_income_disregard) deducted from the client's unearned income other than SSI for the month (9 CCR 2503-5 3.533.A.2.c, 3.544.B.2, 3.549.A.2.c): the lesser of the disregard and that income, so a client with SSI only receives none (A.2.c.2)."
+derived: [min, af_client_general_income_disregard, af_unearned_income_other_than_ssi]
+sources: [S2610, S2611, S2612]
+implemented: engine
+open: [OQ-661]
+tags: [cash, oap, and, income]
+rationale: "Final cash review FC-4: the disregard applied is the client's share of the $20, not always the $20; af_countable_income (CO-946) and the AND-SO and AND-CS deeming of the spouse's unearned income (CO-2384) both read the amount applied."
+tests:
+  - {id: CO-3832-T1, title: "Married OAP client with $500 of Social Security: $10", as_of: "2026-10-01", month: "2026-10", given: {af_client_general_income_disregard: 10, af_unearned_income_other_than_ssi: 500}, expect: 10}
+  - {id: CO-3832-T2, title: "Unmarried client with $8 of interest: $8", as_of: "2026-10-01", month: "2026-10", given: {af_client_general_income_disregard: 20, af_unearned_income_other_than_ssi: 8}, expect: 8}

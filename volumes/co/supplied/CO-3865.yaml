@@ -1,0 +1,13 @@
+id: CO-3865
+name: "Adult Financial: subsequent AND-SO application"
+identifier: af_is_subsequent_and_so_application
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The client has applied for AND-SO before, so this is a subsequent AND-SO application (9 CCR 2503-5 3.520.71.C)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "County department case history."
+sources: [S2622]
+tags: [cash, and, verification]
+rationale: "Final cash review FC-9: 3.520.71.C (S2622) gives a subsequent AND-SO application thirty days, and no conditional approval, to prove the SSA application."

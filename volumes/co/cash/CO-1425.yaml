@@ -6,12 +6,13 @@ type: whole number
 scope: person-month
 program: ColoradoWorks
 role: outcome
-meaning: The number of verification elements still pending across every member of this person's Colorado Works assistance unit.
-precision: Zero where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2).
-derived: [case, [cw_verification_is_applicable, [sum, cw_assistance_unit_members, [of, [P], cw_person_pending_verification_count]]], [else, 0]]
+meaning: "The number of verification elements still pending across every member of this person's Colorado Works assistance unit, plus the unverified earned and unearned income of every other household member whose income is used to determine the unit's eligibility and payment (cw_income_verification_members: a stepparent or a caretaker's spouse in the budgetary unit, a minor parent's parents), which 9 CCR 2503-6 3.604.3.B.2.e requires verified."
+precision: "Zero where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2). Final cash review FC-12 and final verification review V-2: the count summed the assistance unit only, so the income of a stepparent or of a minor parent's parent, deemed to the unit, was counted but never pending. Those members' own Colorado Works status stays not_applicable; their income elements count in the unit's."
+derived: [case, [cw_verification_is_applicable, [+, [sum, cw_assistance_unit_members, [of, [P], cw_person_pending_verification_count]], [sum, [filter, cw_income_verification_members, [not, [in_group, [P], cw_assistance_unit_members]]], [+, [case, [[of, [P], cw_earned_income_is_unverified], 1], [else, 0]], [case, [[of, [P], cw_unearned_income_is_unverified], 1], [else, 0]]]]]], [else, 0]]
 sources: [S871, S872]
 implemented: engine
 tags: [verification, cash, tanf]
-rationale: The unit-level count the county's verification request lists; no existing item counts it.
+rationale: "The unit-level count the county's verification request lists; no existing item counts it."
 tests:
   - {id: CO-1425-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_assistance_unit_members: [p1, p2], cw_person_pending_verification_count: 1}, others: {p2: {cw_verification_is_applicable: true, cw_person_pending_verification_count: 1}}, expect: 2}
+  - {id: CO-1425-T3, title: "V-2: a stepfather's undocumented wages are pending for the unit", month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_assistance_unit_members: [p1, p2], cw_income_verification_members: [p1, p2, p3], cw_person_pending_verification_count: 0}, others: {p2: {cw_person_pending_verification_count: 0}, p3: {cw_earned_income_is_unverified: true, cw_unearned_income_is_unverified: false}}, expect: 1}

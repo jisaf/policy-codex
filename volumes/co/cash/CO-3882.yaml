@@ -1,0 +1,17 @@
+id: CO-3882
+name: "Adult Financial: earned income is unverified"
+identifier: af_earned_income_is_unverified
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether this person has earned income for the month that Adult Financial requires verified and that is not: wages with no income document (DOLE wage data is not verified on receipt), or self-employment income with neither SSA data nor an unquestioned document (9 CCR 2503-5 3.520.5.A, 3.520.783.E)."
+precision: "Whoever's income it is: the client, or the client's spouse whose potential income 3.520.5.A.3 requires verified (af_spouse_income_pending_verification_count, CO-3884)."
+derived: [any, [all, [">", wages_gross, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_gross_receipts, 0], [not, [any, self_employment_income_verified_by_electronic_data_source, [all, earned_income_verification_document_received, [not, earned_income_attestation_is_questionable]]]]]]
+sources: [S880, S889]
+implemented: engine
+tags: [cash, verification]
+rationale: "Final cash review FC-12 and final verification review V-2 (and V-9): the earned-income element (CO-1665) was gated on the person's own Adult Financial applicability, so a spouse under OAP age with no disability was never asked. The ungated condition is stated once, here."
+tests:
+  - {id: CO-3882-T1, title: "Wages with no pay stubs", as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 900, self_employment_gross_receipts: 0, earned_income_verification_document_received: false}, expect: true}
+  - {id: CO-3882-T2, title: "No earnings", as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 0, self_employment_gross_receipts: 0}, expect: false}

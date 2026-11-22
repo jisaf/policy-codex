@@ -1,0 +1,12 @@
+id: CO-3847
+name: "Adult Financial: lifetime months of AND-SO for substance abuse"
+identifier: af_and_so_substance_abuse_max_months
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The cumulative months in a lifetime for which a client whose primary diagnosis is alcoholism or controlled substance addiction may receive AND-SO (9 CCR 2503-5 3.541.3.A: \"twelve (12) cumulative months in a lifetime\"; C.R.S. 26-2-111(4)(f))."
+value: 12
+sources: [S2616, S2617]
+tags: [cash, and]
+rationale: "Final cash review FC-7: 9 CCR 2503-5 3.541.3 (S2616) and C.R.S. 26-2-111(4)(e)-(f) (S2617) limit AND-SO for a client whose primary diagnosis is alcoholism or controlled substance addiction to twelve cumulative months in a lifetime, on condition of treatment and of not testing positive twice in any three-month period, and nothing in the volume stated it. The figure is a parameter."
