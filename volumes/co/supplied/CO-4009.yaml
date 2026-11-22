@@ -6,7 +6,7 @@ type: calendar date
 scope: person-month
 program: All
 meaning: "For a month in which the person (or the person's spouse) transferred a resource for less than its fair value (resource_transfer_uncompensated_value), the date on which the whole of that resource was returned to the person, in the same month or a later one. Not stated when it has not been returned in whole."
-precision: "A partial return is not stated here: it reduces resource_transfer_uncompensated_value (3.520.76.D.6.b)."
+precision: "A partial return is not stated here: it reduces resource_transfer_uncompensated_value (3.520.76.D.6.b). SNAP does not read a transfer whose resource has been returned in whole as a transfer under 10 CCR 2506-1 4.408.2 (snap_resource_transfer_is_disqualifying, CO-4159)."
 supplied_by: "Applicant statement, deeds, account and sale records, as the county establishes them."
 sources: [S2806]
 implemented: engine

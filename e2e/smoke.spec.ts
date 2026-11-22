@@ -25,7 +25,7 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
 
   // The derivation is rich text: a fact in it opens one card, which links to
   // the definition and to the decision record, and closes on Escape.
-  await page.locator("pre.derivation button.tok.fact").first().click();
+  await page.locator(".decided .derivation button.tok.fact").first().click();
   const card = page.locator(".tokpop");
   await expect(card).toBeVisible();
   await expect(card.getByRole("link", { name: "Open definition" }))
