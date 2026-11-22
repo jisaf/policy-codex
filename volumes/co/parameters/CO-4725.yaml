@@ -1,0 +1,13 @@
+id: CO-4725
+name: "Adult Financial: cost of doing business allowance for a licensed child care provider, each additional child"
+identifier: af_child_care_provider_cost_each_additional_child
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: "The monthly cost of doing business allowed a licensed child care provider for each child after the first for whom day care is provided (9 CCR 2503-5 3.520.783.C.3.b: \"For each additional child deduct $22\")."
+precision: "Read by af_self_employment_business_costs (CO-1707)."
+value: 22
+sources: [S3505]
+tags: [cash, income]
+rationale: "Coverage review 2 (first-pass P2-2): the figure of 3.520.783.C.3.b (S3505)."

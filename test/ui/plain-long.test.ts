@@ -23,8 +23,9 @@ describe("long rules read as bulleted clauses", () => {
     for (const l of rule("CO-900")) expect(partsText(l.parts).length).toBeLessThanOrEqual(LONG_LINE + 20);
   });
 
-  it("a long sum is 'the total of:' with one term a line (Adult Financial deemed income, CO-2384)", () => {
-    const text = plainText(rule("CO-2384"));
+  it("a long sum is 'the total of:' with one term a line (Adult Financial needs of a spouse's dependent children, CO-2392)", () => {
+    // CO-2384 was the example until coverage pass 2 (G-1) moved its income sums into CO-3830 and CO-4720.
+    const text = plainText(rule("CO-2392"));
     expect(text).toContain("the total of:\n");
     expect(text).toMatch(/\n +• that person's Social Security income\n/);
     // The group the total runs over is described after it, not in one line.

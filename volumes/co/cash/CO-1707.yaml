@@ -6,11 +6,13 @@ type: money
 scope: person-month
 program: AdultFinancial
 meaning: "The person's cost of doing business for the month that 9 CCR 2503-5 3.520.783.B allows (rent of business premises, wholesale cost of merchandise, utilities, interest, taxes, labor, upkeep of necessary equipment): the operating costs and interest; not depreciation, payments on the principal of loans for capital assets, or personal expenses."
-precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0."
-derived: [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]]
-sources: [S1156]
+precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0. Coverage review 2 (first-pass P2-2): for a licensed child care provider (licensed_child_care_children_in_care_count above 0) the cost is af_child_care_provider_cost_first_child for the first child and af_child_care_provider_cost_each_additional_child for each other child, or the documented operating and interest costs when they are greater (3.520.783.C.3.a-d, S3505)."
+derived: [case, [[">", [otherwise, licensed_child_care_children_in_care_count, 0], 0], [max, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [+, af_child_care_provider_cost_first_child, ["*", af_child_care_provider_cost_each_additional_child, ["-", licensed_child_care_children_in_care_count, 1]]]]], [else, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]]]]
+sources: [S1156, S3505]
 implemented: engine
 tags: [cash, income]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
 tests:
   - {id: CO-1707-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 420}
+  - {id: CO-1707-T2, title: "P2-2: a licensed day care provider caring for three children with $60 of documented costs - 55 + 2 x 22 = 99 (3.520.783.C.3)", month: "2026-10", as_of: "2026-10-01", given: {licensed_child_care_children_in_care_count: 3, self_employment_operating_costs: 60}, expect: 99}
+  - {id: CO-1707-T3, title: "P2-2: documented costs of $300 are greater than the allowance (C.3.d)", month: "2026-10", as_of: "2026-10-01", given: {licensed_child_care_children_in_care_count: 3, self_employment_operating_costs: 300}, expect: 300}

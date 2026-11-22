@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The total cash surrender value of the life insurance policies the person owns."
-precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0."
+precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0, except that Adult Financial estimates it from the 9 CCR 2503-5 3.520.75.H chart when the face value and purchase date are stated (af_life_insurance_cash_value, CO-4722)."
 supplied_by: "Application (resources), verified by statements as each program requires."
 sources: [S2213, S2214, S2215, S2216]
 implemented: engine

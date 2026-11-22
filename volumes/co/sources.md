@@ -21522,3 +21522,133 @@ Document: D-65
 > i) A revocable annuity is a countable resource. The value of the annuity is the total value of the annuity principal plus any accumulated interest.
 >
 > i) An irrevocable assignable annuity is a countable resource. The value of the annuity is presumed to be the total value of the annuity principal plus any accumulated interest.
+
+### S3500. Adult Financial: countable income is the client's, spouse's or sponsor's income after valid exemptions; exempt income is not countable to the spouse or sponsor
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Countable income"); 3.520.786 (introduction) (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Countable income” means all earned and/or unearned income considered available to the client, spouse of the client, or sponsor(s) of the client after the application of valid exemptions, disregards, and deductions.
+>
+> 3.520.786 EXEMPT INCOME
+>
+> Certain earned and unearned income that is not countable to the client, client’s spouse, or sponsor(s) in whole or in part is exempt. Such exempt income is limited to the following:
+
+### S3501. Facility; Home Care Allowance denial when residing anywhere other than home; forty-two days of combined leave
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Facility"); 3.570.17.C.7 (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Facility” means the residence of a client where the intent is either to care for or provide treatment to the client. Facilities include general medical and surgical hospitals, nursing homes, regional centers, group and host homes, and mental health institutions. Facilities do not include penal institutions, such as Federal and State prisons or county, local, municipal jails, and community corrections residential programs.
+>
+> 7. Living Arrangements: The CMA or county department shall deny or discontinue when the client is residing anywhere other than his OR her home.
+>
+> a. The CMA may continue to authorize services while a resident is on medical or non-medical leave.
+>
+> b. Combined leave shall not exceed a total of forty-two (42) days in a twelve (12) month period beginning with the date the client was approved for the HCA program.
+
+### S3502. Adult Financial: eligibility ends on the date of death; no eligibility for the month after a death before the first of the month
+
+Document: D-80
+
+9 CCR 2503-5 3.581.C.1-3 (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. If a client dies, payments to the client shall be treated as follows:
+>
+> 1. A client’s eligibility shall end on the date of his or her death.
+>
+> 2. If a client of any category of assistance dies before 12:00 a.m. on the first day of a month, no eligibility for a grant payment for the following month exists.
+>
+> 3. If a client of any category of assistance dies on or after 12:00 a.m. on the first day of a month, any payment to which the person was eligible shall be maintained for release to the client's personal representative as defined in Section 15-10-201(39), C.R.S., for a maximum of three (3) months.
+
+### S3503. Home Care Allowance: payment from the month after approval, no retroactive payment; discontinuation the day after death
+
+Document: D-80
+
+9 CCR 2503-5 3.570.13.F; 3.570.17.C.10 (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> F. If financially and functionally eligible for HCA, the HCA grant payment shall begin on the first day of the month following the month in which the HCA is approved or the payment effective date from the State approved form completed by the CMA, whichever date is later. There shall be no retroactive HCA payments.
+>
+> 10. Death: The CMA or county shall discontinue the HCA program effective the day after the client's date of death. No notice of discontinuation shall be sent.
+
+### S3504. Adult Financial: chart to estimate a life insurance policy's cash surrender value
+
+Document: D-80
+
+9 CCR 2503-5 3.520.75.H (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> H. Use the following chart to estimate a life insurance policy's CSV if not available from the client, client’s spouse, or sponsor(s):
+>
+> YEARS LIFE INSURANCE ESTIMATED CSV IS THIS POLICY HAS BEEN IN PERCENTAGE OF FACE EFFECT VALUE:
+>
+> 20 OR MORE 60%
+>
+> 15-19 50%
+>
+> 11-14 45%
+>
+> 6-10 30%
+>
+> 4-5 20%
+>
+> 3 10%
+>
+> 2 5%
+>
+> 1 0%
+
+### S3505. Adult Financial self-employment: farm income on a yearly basis; the licensed child care provider's allowances
+
+Document: D-80
+
+9 CCR 2503-5 3.520.783.C.1, C.3 (rule version 12428, effective 03/02/2026; re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 1. Farm income shall be considered on a yearly basis. Net income for the prior year shall be determined and averaged for the succeeding year and counted as earned income. When a client, client’s spouse, or sponsor(s) ceases to farm, the income is no longer deducted from the grant standard.
+>
+> 3. Appropriate allowances for cost of doing business for a client, client’s spouse, or sponsor(s) who is/are a licensed child care provider are:
+>
+> a. For the first child for whom day care is provided, deduct $55; and,
+>
+> b. For each additional child deduct $22.
+>
+> c. Subtract the total allowances from the documented expenses to determine the earned income.
+>
+> d. If the client, client’s spouse, or sponsor(s) can document a cost of doing business that is greater than the amounts above, the procedure, described in Section 3.520.783.B, shall be used to calculate earned income.
+
+### S3506. Colorado minimum wage for 2026: $15.16 per hour (temporary PAY CALC Order, effective January 1, 2026)
+
+Document: D-330
+
+7 CCR 1103-14 Rule 1.1, 1.2.1(A) (rule version 12310, effective 01/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12310&fileName=7%20CCR%201103-14
+
+> Adopted as temporary rules on December 12, 2025; effective January 1, 2026, and shall have effect until the 2026 PAY CALC Order, 7 CCR 1103-14, takes effect as early as February 1, 2026, or 120 days after the adoption of these temporary rules, whichever event occurs first.
+>
+> Minimum Pay Level in 2026 Level Future Annual
+> COMPS Order Rule (Yearly Calculation) Adjustments
+> $15.16 per hour Last year’s minimum
+> (A) Full Colorado minimum wage
+
+### S3507. Colorado minimum wage for 2026: $15.16 per hour (PAY CALC Order, effective February 1, 2026)
+
+Document: D-331
+
+7 CCR 1103-14 Rule 1.2.1(A) (rule version 12404, effective 02/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12404&fileName=7%20CCR%201103-14
+
+> 1.2.1 Following are the 2026 minimum pay and income levels and future adjustments in each cited COMPS Order rule, and/or mandated by constitutional, statutory, or rule provisions the COMPS Order implements, or from which it derives.
+>
+> Minimum Pay Level in 2026 Level Future Annual
+> COMPS Order Rule Adjustments
+> (Yearly Calculation)
+> $15.16 per hour Last year’s minimum
+> (A) Full Colorado minimum adjusted by CPI
+> wage (R. 3.1) (Consumer Price Index)
+
+### S3508. Colorado statewide minimum wage: every covered employee paid not less than the Colorado minimum wage the PAY CALC Order specifies
+
+Document: D-332
+
+7 CCR 1103-1 (COMPS Order #40) Rule 3.1 (rule version 12406, effective 02/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12406&fileName=7%20CCR%201103-1
+
+> 3.1 Statewide Minimum Wage. Under the minimum wage requirements of Article XVIII, Section 15, of the Colorado Constitution, all employees (with the exception detailed in Rule 3.3), whether employed on an hourly, piecework, commission, time, task, or other basis, shall be paid not less than the Colorado minimum wage, as specified for the applicable year in the PAY CALC Order, less any applicable lawful credits or exceptions noted, for all hours worked, if the employee is covered by either:

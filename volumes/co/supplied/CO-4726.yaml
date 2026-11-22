@@ -1,0 +1,14 @@
+id: CO-4726
+name: Home Care Allowance approval date
+identifier: af_hca_approval_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The date the county department and the Case Management Agency approved the person for the Home Care Allowance, as the case records it: the date that opens the twelve-month leave period of 9 CCR 2503-5 3.570.17.C.7.b and whose month 3.570.13.F names (\"the first day of the month following the month in which the HCA is approved\")."
+precision: "Not stated: read as approved before the month evaluated, so af_hca_grant (CO-1219) pays the month (an ongoing client)."
+supplied_by: "County department HCA approval record."
+sources: [S3501, S3503]
+implemented: engine
+tags: [cash, and]
+rationale: "Coverage review 2 (first-pass P2-4, still deferred): 3.570.13.F starts the HCA payment only from the month after the approval month and allows no retroactive payment; no fact stated the approval date."

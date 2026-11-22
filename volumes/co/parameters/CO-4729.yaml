@@ -1,0 +1,13 @@
+id: CO-4729
+name: "Home Care Allowance: the forty-two days of combined leave"
+identifier: af_hca_combined_leave_max_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The most days of combined medical and non-medical leave a Home Care Allowance client may take in a twelve-month period beginning with the approval date (9 CCR 2503-5 3.570.17.C.7.b: \"Combined leave shall not exceed a total of forty-two (42) days\")."
+precision: "Compared with >: forty-two days is within the limit. Read by af_hca_eligibility_status (CO-1217)."
+value: 42
+sources: [S3501]
+tags: [cash, and]
+rationale: "Coverage review 2 (first-pass P2-4): the figure of 3.570.17.C.7.b (S3501)."

@@ -7,9 +7,9 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: The monthly Home Care Allowance payment for an eligible client - the CMA-authorized amount, raised by a State Supplementary Payment to the HCA payment floor when below it - or zero for a client who is not eligible, per 9 CCR 2503-5 3.570.11.B, 3.570.11.E.2 and 3.570.13.D.
-precision: "The tier maximums are not stated in the rule (OQ-250); the authorized amount is supplied. No retroactive payment and the first-of-the-following-month start (3.570.13.F) are not modeled."
-derived: [case, [["=", af_hca_eligibility_status, eligible], [max, af_hca_payment_floor, hca_authorized_amount]], [else, 0]]
-sources: [S713, S714]
+precision: "The tier maximums are not stated in the rule (OQ-250); the authorized amount is supplied. Coverage review 2 (first-pass P2-4): payment begins on the first of the month after the approval month or with the month of the CMA's payment effective date, whichever is later, and nothing is paid for an earlier month (3.570.13.F, S3503: \"There shall be no retroactive HCA payments\"); an unstated approval date or payment effective date sets no later start."
+derived: [case, [["=", af_hca_eligibility_status, eligible], [case, [[any, [all, [not, [unknown, af_hca_approval_date]], ["<=", [month], [month_of, af_hca_approval_date]]], [all, [not, [unknown, af_hca_payment_effective_date]], ["<", [month], [month_of, af_hca_payment_effective_date]]]], 0], [else, [max, af_hca_payment_floor, hca_authorized_amount]]]], [else, 0]]
+sources: [S713, S714, S3503]
 open: [OQ-250]
 implemented: engine
 tags: [cash, income]
@@ -18,3 +18,6 @@ tests:
   - {id: CO-1219-T1, as_of: "2026-10-01", month: "2026-10", given: {af_hca_eligibility_status: eligible, hca_authorized_amount: 1100}, expect: 1100}
   - {id: CO-1219-T2, as_of: "2026-10-01", month: "2026-10", given: {af_hca_eligibility_status: eligible, hca_authorized_amount: 600}, expect: 977}
   - {id: CO-1219-T3, as_of: "2026-10-01", month: "2026-10", given: {af_hca_eligibility_status: ineligible_functional, hca_authorized_amount: 600}, expect: 0}
+  - {id: CO-1219-T4, title: "P2-4: approved on October 6 - no payment for October (3.570.13.F)", as_of: "2026-10-01", month: "2026-10", given: {af_hca_eligibility_status: eligible, hca_authorized_amount: 1100, af_hca_approval_date: "2026-10-06"}, expect: 0}
+  - {id: CO-1219-T5, title: "P2-4: approved in September - November paid", as_of: "2026-11-01", month: "2026-11", given: {af_hca_eligibility_status: eligible, hca_authorized_amount: 1100, af_hca_approval_date: "2026-09-20"}, expect: 1100}
+  - {id: CO-1219-T6, title: "P2-4: approved in September, the CMA form's payment effective date December 1 - nothing for November", as_of: "2026-11-01", month: "2026-11", given: {af_hca_eligibility_status: eligible, hca_authorized_amount: 1100, af_hca_approval_date: "2026-09-20", af_hca_payment_effective_date: "2026-12-01"}, expect: 0}

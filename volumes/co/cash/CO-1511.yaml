@@ -10,6 +10,7 @@ precision: "Receipt is read from receives_tanf_cash (CO-013); eligibility and th
 derived: [any, receives_tanf_cash, [in, cw_eligibility_status, [eligible, sanction_closure]], [otherwise, af_has_open_colorado_works_closure_bar, false]]
 sources: [S711, S1011]
 implemented: engine
+open: [OQ-845]
 tags: [cash, oap, and, tanf]
 accepts_from: [cw_eligibility_status]
 rationale: "No existing item applies the Adult Financial bar on Colorado Works recipients (phase-8 review K-3); af_category (CO-953) and af_and_so_eligible (CO-1203) need it. Reads the Colorado Works outcome cw_eligibility_status cross-program rather than restating the Colorado Works tests, since 3.520.61.F refers to Colorado Works eligibility as Colorado Works determines it. Answers OQ-117, whose Aid to the Blind carve-out the general bar of 3.520.61.F supersedes. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Adult Financial rule names the other program's result (the Colorado Works bar of 3.520.61.F; the HCBS target-group screen of 3.570, S712)."

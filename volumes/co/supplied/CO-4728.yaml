@@ -1,0 +1,14 @@
+id: CO-4728
+name: Home Care Allowance combined leave days in the approval year
+identifier: af_hca_combined_leave_days_in_approval_year
+kind: supplied
+type: whole number
+scope: person
+program: AdultFinancial
+meaning: "The days of medical and non-medical leave (absences from the person's home of more than twenty-four hours, 9 CCR 2503-5 3.570.12) the person has taken, through the determination date, in the current twelve-month period that begins on the Home Care Allowance approval date (af_hca_approval_date) or its anniversary (3.570.17.C.7.b)."
+precision: "Not stated: read as 0."
+supplied_by: "Case Management Agency leave record."
+sources: [S3501]
+implemented: engine
+tags: [cash, and]
+rationale: "Coverage review 2 (first-pass P2-4, still deferred): 3.570.17.C.7.b limits combined leave to forty-two days in a twelve-month period from approval; no fact stated the days of leave taken. The leave days are counted from a record the CMA keeps (C.7.a), not from facts another record supplies."
