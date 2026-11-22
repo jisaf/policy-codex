@@ -52,7 +52,7 @@ import { personaRoles, type Persona } from "./personas";
 import {
   groupByOwner, isOpen, matchesFilter, queueEntry, questionInfos, questionStatus, type QueueEntry, type QueueFilter,
 } from "./questions";
-import { expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
+import { caseReads, expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
 import { caseToSpec } from "../engine/cases";
 import { buildWalk, documentRows, documentsOwed, type DocumentOwed, type DocumentRow } from "./walkthrough";
 import { approvalStatus } from "./approvals";
@@ -120,8 +120,11 @@ export function householdCount(rs: ReadonlyArray<{ caseId: string }>): number {
 const restMemo = new WeakMap<Engine, WeakMap<readonly HouseholdCase[], Map<string, StoredResult[]>>>();
 
 /** identifier -> the stored results whose trace reads it. Built once per
- *  engine and case list (about a second for the Colorado volume), so views
- *  build it after their first paint. */
+ *  engine and case list (about a second for the Colorado volume, many on a
+ *  loaded machine), so a view never builds it at once: it uses
+ *  `useRestingIndex` (src/ui/useResting.ts), which builds it a household
+ *  at a time with `restingIndexInSteps`, and calls this only once
+ *  `restingReady` says it is built. */
 export function restingIndex(engine: Engine, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> {
   let per = restMemo.get(engine);
   if (!per) { per = new WeakMap(); restMemo.set(engine, per); }
@@ -146,14 +149,22 @@ export function restingIndexInSteps(
   engine: Engine, cases: readonly HouseholdCase[], budgetMs = 30,
 ): Promise<Map<string, StoredResult[]>> {
   if (restingReady(engine, cases)) return Promise.resolve(restingIndex(engine, cases));
-  return new Promise((resolve) => {
+  // One build at a time: every page that asks while it runs waits on it
+  // (two pages each starting their own build doubled the work, and a page
+  // building it at once in a timer held the main thread for seconds on a
+  // loaded machine: the e2e's first click after choosing a role).
+  let per = pendingMemo.get(engine);
+  if (!per) { per = new WeakMap(); pendingMemo.set(engine, per); }
+  const pending = per.get(cases);
+  if (pending) return pending;
+  const p = new Promise<Map<string, StoredResult[]>>((resolve) => {
     const out = new Map<string, StoredResult[]>();
     let i = 0;
     const run = () => {
       if (restingReady(engine, cases)) { resolve(restingIndex(engine, cases)); return; }
       const until = Date.now() + budgetMs;
       while (i < cases.length && Date.now() < until) {
-        for (const e of expectationReads(engine, [cases[i]])) {
+        for (const e of caseReads(engine, cases[i])) {
           const { reads, ...r } = e;
           for (const id of reads) {
             const list = out.get(id);
@@ -163,14 +174,19 @@ export function restingIndexInSteps(
         i++;
       }
       if (i < cases.length) { setTimeout(run, 0); return; }
-      let per = restMemo.get(engine);
-      if (!per) { per = new WeakMap(); restMemo.set(engine, per); }
-      per.set(cases, out);
-      resolve(out);
+      let done = restMemo.get(engine);
+      if (!done) { done = new WeakMap(); restMemo.set(engine, done); }
+      if (!done.has(cases)) done.set(cases, out);
+      per!.delete(cases);
+      resolve(done.get(cases)!);
     };
     setTimeout(run, 0);
   });
+  per.set(cases, p);
+  return p;
 }
+
+const pendingMemo = new WeakMap<Engine, WeakMap<readonly HouseholdCase[], Promise<Map<string, StoredResult[]>>>>();
 
 /** Whether `restingIndex` is already built (a view can then use it at once). */
 export function restingReady(engine: Engine, cases: readonly HouseholdCase[]): boolean {

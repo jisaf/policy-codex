@@ -150,22 +150,37 @@ export function expectationReads(engine: Engine, cases: readonly HouseholdCase[]
   const hit = perEngine.get(cases);
   if (hit) return hit;
   const out: ExpectationReads[] = [];
-  for (const c of cases) {
-    const explained = engine.explainCase(c);
-    const full = new Map<string, TraceNode>();
-    const index = (n: TraceNode) => {
-      if (n.children.length && !full.has(n.key)) full.set(n.key, n);
-      for (const k of n.children) index(k);
-    };
-    for (const e of explained) index(e.root);
-    for (const e of explained) {
-      out.push({
-        caseId: c.id, caseTitle: c.title, person: e.person, identifier: e.identifier,
-        month: e.month, value: e.root.value, reads: readsOf(e.root, full),
-      });
-    }
-  }
+  for (const c of cases) out.push(...caseReads(engine, c));
   perEngine.set(cases, out);
+  return out;
+}
+
+const caseMemo = new WeakMap<Engine, WeakMap<HouseholdCase, ExpectationReads[]>>();
+
+/** One household's `expectationReads`, memoised per engine and case, so a
+ *  build done a household at a time (counts.ts `restingIndexInSteps`) and a
+ *  build done at once share the work: the trace of each household is
+ *  explained once. */
+export function caseReads(engine: Engine, c: HouseholdCase): ExpectationReads[] {
+  let per = caseMemo.get(engine);
+  if (!per) { per = new WeakMap(); caseMemo.set(engine, per); }
+  const hit = per.get(c);
+  if (hit) return hit;
+  const out: ExpectationReads[] = [];
+  const explained = engine.explainCase(c);
+  const full = new Map<string, TraceNode>();
+  const index = (n: TraceNode) => {
+    if (n.children.length && !full.has(n.key)) full.set(n.key, n);
+    for (const k of n.children) index(k);
+  };
+  for (const e of explained) index(e.root);
+  for (const e of explained) {
+    out.push({
+      caseId: c.id, caseTitle: c.title, person: e.person, identifier: e.identifier,
+      month: e.month, value: e.root.value, reads: readsOf(e.root, full),
+    });
+  }
+  per.set(c, out);
   return out;
 }
 

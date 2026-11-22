@@ -11,13 +11,13 @@ import type { HouseholdCase } from "../../../engine/cases";
 import type { Item } from "../../../engine/types";
 import {
   changedBy, changedPhrase, changedSplit, changeMonths, changesInMonth, changesReadBy, COUNT_DEFINITIONS,
-  documentReaders, householdCount, householdsReadingAny, householdsThatRead, itemsCitingDocument, restingIndex,
-  restingReady,
+  documentReaders, householdCount, householdsReadingAny, householdsThatRead, itemsCitingDocument,
   type ChangeEvent, type DocumentChange,
 } from "../../counts";
 import type { ChangedResult } from "../../questionEffects";
 import { formatDate, formatValue } from "../../present";
 import { programLabel } from "../../roles";
+import { useRestingReady } from "../../useResting";
 import { buildHash, type Route } from "../../router";
 import { navigate } from "../../state";
 import { plainCaseTitle } from "../../walkthrough";
@@ -36,19 +36,10 @@ export function monthName(month: string): string {
   return new Date(`${month}-01T00:00:00Z`).toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-/** Whether the read index (counts.ts `restingIndex`, about a second on the
- *  Colorado volume) is built; it is built after the first paint. */
+/** Whether the read index (counts.ts `restingIndex`) is built; it is built
+ *  a household at a time after the first paint (src/ui/useResting.ts). */
 export function useReadIndex(engine: Engine, cases: readonly HouseholdCase[]): boolean {
-  const [ready, setReady] = useState(() => restingReady(engine, cases));
-  useEffect(() => {
-    if (restingReady(engine, cases)) { setReady(true); return; }
-    setReady(false);
-    // Not for a reader only passing through: the page paints, then waits a
-    // moment before the second of work.
-    const t = setTimeout(() => { restingIndex(engine, cases); setReady(true); }, 250);
-    return () => clearTimeout(t);
-  }, [engine, cases]);
-  return ready || restingReady(engine, cases);
+  return useRestingReady(engine, cases);
 }
 
 const KIND_TEXT: Record<ChangeEvent["kind"], string> = {

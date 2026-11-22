@@ -295,6 +295,14 @@ export function closeEditor(): void {
   editingSig.value = null;
 }
 
+/** Two change sets hold the same staged work for the same volume and ref. */
+export function sameChangeSet(a: ChangeSet, b: ChangeSet): boolean {
+  if (a === b) return true;
+  if (a.volume !== b.volume || a.baseRef !== b.baseRef) return false;
+  if (a.entries.length !== b.entries.length || (a.files ?? []).length !== (b.files ?? []).length) return false;
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
 export function navigate(patch: Partial<Route>): void {
   location.hash = buildHash({ ...route.value, ...patch });
 }
@@ -304,10 +312,15 @@ async function openRoute(r: Route): Promise<void> {
   const wantRef = baseRefOf(r);
   const already = volumeSig.value;
   const cs = loadChangeSet(r.volume, wantRef);
-  changeSetSig.value = cs;
+  // Moving between pages keeps the change set it already holds when the
+  // stored one is the same: a fresh object would rebuild the draft engine
+  // (and drop every per-engine count cached for it, the resting index among
+  // them) and validate the tray again on every click.
+  const same = sameChangeSet(changeSetSig.value, cs);
+  if (!same) changeSetSig.value = cs;
 
   if (already && already.volumeId === r.volume && already.ref === wantRef) {
-    recomputeReport();
+    if (!same || !reportSig.value) recomputeReport();
     return;
   }
 

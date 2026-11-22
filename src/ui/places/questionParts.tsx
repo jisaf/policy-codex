@@ -13,7 +13,7 @@ import type { LoadedVolume } from "../../ledger/load";
 import { parseOpenQuestions, type OpenQuestion, type Source } from "../../ledger/markdown";
 import { fileEntries } from "../../changes/types";
 import {
-  changedBy, changedPhrase, householdCount, restingIndexInSteps, restingOn, restingPhrase, restingReady,
+  changedBy, changedPhrase, householdCount, restingOn, restingPhrase,
 } from "../counts";
 import { PERSONAS } from "../personas";
 import { isUnverified } from "../provenance";
@@ -25,6 +25,7 @@ import { alternativeEntry, alternativeFor, type Alternative, type ChangedResult,
 import { stagedAnswers, type StagedAnswer } from "../questionAnswer";
 import { buildHash, type Route } from "../router";
 import { changeSetSig, draftsShown } from "../state";
+import { useRestingReady as useRestingReadyFor } from "../useResting";
 
 // ---- links
 
@@ -270,15 +271,7 @@ export function useEffects(
 }
 
 /** Whether the resting index (counts.ts) is built; it is built after the
- *  first paint, a household at a time, so the page stays responsive. */
+ *  first paint, a household at a time (src/ui/useResting.ts). */
 export function useRestingReady(engine: Engine, vol: LoadedVolume): boolean {
-  const done = useSignal(restingReady(engine, vol.cases));
-  useEffect(() => {
-    if (restingReady(engine, vol.cases)) { done.value = true; return; }
-    done.value = false;
-    let live = true;
-    restingIndexInSteps(engine, vol.cases).then(() => { if (live) done.value = true; });
-    return () => { live = false; };
-  }, [engine, vol]);
-  return done.value || restingReady(engine, vol.cases);
+  return useRestingReadyFor(engine, vol.cases);
 }

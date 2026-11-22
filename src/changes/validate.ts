@@ -62,7 +62,10 @@ const signatureReports = new WeakMap<Engine, Map<string, ItemReport>>();
 /** Runs the full constraint set over the whole ledger with the change-set
  *  applied, so an edit that breaks a downstream item is caught here. */
 export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport {
-  const applied = base.withItems(applyChangeSet(base.items(), cs));
+  // An empty change set validates against the base itself: building a
+  // second engine for it cost a few hundred milliseconds on every page
+  // change (seconds on a loaded machine).
+  const applied = cs.entries.length ? base.withItems(applyChangeSet(base.items(), cs)) : base;
   const reports: ItemReport[] = [];
   let cache = signatureReports.get(base);
   if (!cache || cache.size > 5000) { cache = new Map(); signatureReports.set(base, cache); }

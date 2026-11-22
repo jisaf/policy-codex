@@ -13,28 +13,20 @@ import type { ChangeEntry } from "../../changes/types";
 import type { LoadedVolume } from "../../ledger/load";
 import {
   affectsPhrase, changedBy, changedPhrase, COUNT_DEFINITIONS, householdCount, itemAffects, householdsReached,
-  householdsThatRead, readReachPhrase, restingIndex, restingReady, unknownReason,
+  householdsThatRead, readReachPhrase, unknownReason,
 } from "../counts";
 import { formatDate, formatFor, formatValue, personLabel } from "../present";
 import type { ChangedResult, StoredResult } from "../questionEffects";
 import { programLabel } from "../roles";
+import { useRestingIndex } from "../useResting";
 import { buildHash, type Route } from "../router";
 import { plainCaseTitle } from "../walkthrough";
 import { householdValues, outcomesByProgram, previousVersionComparison } from "./model";
 
-/** counts.ts `restingIndex`, worked out after the page paints (about a
- *  second for the Colorado volume) unless another page already did. */
+/** counts.ts `restingIndex`, built a household at a time after the page
+ *  paints (src/ui/useResting.ts) unless another page already did. */
 export function useResting(engine: Engine | null, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> | null {
-  const ready = engine ? restingReady(engine, cases) : false;
-  const out = useSignal<Map<string, StoredResult[]> | null>(null);
-  useEffect(() => {
-    if (!engine) return;
-    if (ready) { out.value = restingIndex(engine, cases); return; }
-    out.value = null;
-    const t = setTimeout(() => { out.value = restingIndex(engine, cases); }, 30);
-    return () => clearTimeout(t);
-  }, [engine, cases, ready]);
-  return engine && ready ? restingIndex(engine, cases) : out.value;
+  return useRestingIndex(engine, cases);
 }
 
 const isTable = (v: unknown) => v !== null && typeof v === "object" && !Array.isArray(v);
