@@ -87,3 +87,4 @@ The Colorado volume is complete when a fresh verification pass (one reviewer per
 ### Phase 13 started early (2026-11-21)
 The product owner asked for the UI work to run in parallel with the audit fix tracks. Discovery walkthroughs run now; the aid-code layer waits until the outcome names settle after fix track 1.
 Scope (product owner, 2026-11-21): the app defines policy as rules; it is not a rules engine. No intake and no live calculation. The case walkthrough is a read-only step-through of the stored test households, and "what changes" compares stored cases before and after a staged rule change.
+Added (product owner, 2026-11-22): a visual design pass after the UI fix round (layout, hierarchy, spacing, a consistent component style, the long walkthrough broken into sections or tabs); and two "blind builder" prototypes, built from the data and the user brief without seeing the current interface, under prototypes/, for comparison.

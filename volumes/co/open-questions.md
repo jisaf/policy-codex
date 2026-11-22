@@ -12,6 +12,13 @@ Open-question sweep (2026-11-21): the entrant half is resolved and its premise w
 
 CDHS stakeholder review fix round (2026-11-21): the CDHS program representative's position (review section 5, marked [PK], program knowledge not yet tied to a published text) is to apply sec. 10108 to new applications from CDHS's implementation date and to ongoing households at their next recertification or an earlier acted-on change, not by determination date. The text does not say so: Pub. L. 119-21 sec. 10108 (D-5) has no effective-date or transition clause, so it took effect on enactment, and 7 CFR 272.1(g) leaves an implementation schedule to the amendment itself, which states none; the FNS memo that would set the treatment of current participants is still served only from www.usda.gov (refused again this session). snap_is_eligible_non_citizen (CO-308) now carries an effective range from July 4, 2025 and a county-facing statute_override note; the ongoing-case treatment stays as of the determination date and is tracked in OQ-533. Items: CO-308.
 
+Class: blocked on a named document
+Owner: SNAP policy owner
+Assumption: The narrower list of non-citizens who may receive SNAP applies from the day the 2025 Act was enacted, to every determination made after that day, for new and ongoing households alike.
+Blocked on: FNS memorandum "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Alien SNAP Eligibility - Revised" and its Question and Answer #1 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it)
+
+Checked 2026-11-22: Pub. L. 119-21 sec. 10108 (D-5) has no effective-date or transition clause; 10 CCR 2506-1 4.305 (D-82, effective 2026-10-01) still lists the pre-Act categories, so it has not adopted the change; FNS's implementation page on fns.usda.gov links to the memorandum on www.usda.gov, which refused it again. Only that memorandum states the date FNS applies the change to current participants.
+
 ### OQ-2. Resolved: the elderly and the blind-or-disabled waiting-period exceptions are separate; CO-306 now carries the blind-or-disabled one
 
 Body: The brief describes an additional-condition exemption for "elderly/disabled who were lawfully residing on 8/22/1996." The only text found in the fetched Colorado or federal documents matching that date is 10 CCR 2506-1 4.305,B,3,e (S15), which is framed as a date-of-birth cutoff (born on or before August 22, 1931, i.e., age 65 or older as of that date) combined with lawful residence on that date, not a general elderly-or-disabled exemption. CO-306 (snap_is_exempt_from_immigrant_waiting_period; the fact snap_eligible_household_size (CO-313) is not the item with this logic - N-3 fix-round correction) models S15 literally (date_of_birth on or before 1931-08-22 and qualified_status_date on or before 1996-08-22, as a proxy for "lawfully resided ... on August 22, 1996" since no supplied fact captures residence on a specific historical date directly), rather than the broader "elderly or disabled" reading from the brief. Items: CO-306.
@@ -33,6 +40,12 @@ Body: 10 CCR 2506-1 4.206,C,1,a (S47) lists SSI, Colorado Works (CW/TANF), Old A
 Body: 10 CCR 2506-1 4.206,C,2,a,2) (S48) makes ECE conditional on the household having "been authorized to receive" a non-cash TANF/MOE-funded service, and states that notice of the service "shall be provided on the application ... and/or the statement of facts" — i.e., every Colorado SNAP applicant is given the opportunity to receive that non-cash service as part of applying. No supplied fact in this volume's interface captures whether a household affirmatively took up the non-cash service. The draft's `snap_meets_ece_eligibility` (CO-339) therefore tests only the 200% gross income limit and the IPV/drug-felony exclusion, treating the TANF/MOE notice-and-authorization condition as met whenever a household applies (consistent with Colorado's practice of extending the non-cash service to every applicant through the application form itself). A future revision should add a supplied fact if a case needs to model a household that was not actually authorized for the service. Items: CO-339, CO-340.
 
 Checked 2026-11-21: 10 CCR 2506-1 4.206.C.2.a.2 (D-82) and the 12/30/2025 version (D-133) require households "who have been authorized to receive" the non-cash TANF/MOE service and only that "Language regarding the non-cash TANF/MOE funded program shall be provided" on the forms; neither says that providing the language is the authorization, so no published rule settles it. Watch: FNS's proposed rule "SNAP: Reforming Categorical Eligibility" (91 FR 72454, Nov. 10, 2026; D-132, S1308) would "limit categorical eligibility to only households that receive TANF assistance, as defined at 45 CFR 260.31" and remove 7 CFR 273.2(j)(2)(i)(B)-(C) and (2)(ii), which would end ECE; it is a proposal (comments close 2026-12-10) and changes nothing today. snap_meets_ece_eligibility (CO-340) notes it.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Every SNAP applicant is treated as authorized for the non-cash TANF-funded service, because the notice of it is printed on the application.
+
+Checked 2026-11-22: 10 CCR 2506-1 4.206.C.2.a.2 (D-82, S48) and the 12/30/2025 version (D-133) require households "who have been authorized to receive" the non-cash TANF/MOE service and only that its language be on the application or statement of facts; neither says that giving the language is the authorization, and the proposed federal rule on categorical eligibility (D-132) changes nothing yet. No published rule settles it.
 
 ### OQ-13. Resolved: the elderly/disabled SE household is not subject to the gross income test at all
 
@@ -107,6 +120,12 @@ Resolution (phase-10 open-question sweep, supplied-facts round): with OQ-28, she
 Body: 7 CFR 273.10(e)(1)(i)(H) (S101) and 10 CCR 2506-1 4.407.3,A (S96) describe the 50% shelter-income test as applied to "the household's income after all other deductions," without addressing what happens if the standard, earned income, medical, dependent care, and child support deductions computed so far exceed gross income (a negative intermediate figure). snap_adjusted_income_before_shelter (CO-378) floors this intermediate figure at $0 before the 50% shelter share is taken, on the reading that "income after deductions" cannot itself be negative for this purpose (consistent with the final net income floor at $0 that 7 CFR 273.10(e)(1) implies throughout). Items: CO-378.
 
 Checked 2026-11-21: 7 CFR 273.10(e)(1)(i)(H) (D-14: "Subtract from total shelter costs 50 percent of the household's monthly income after all the above deductions have been subtracted") and 10 CCR 2506-1 4.407.3 (D-82, and the same text in the 12/30/2025 version, D-133); neither addresses a negative intermediate figure, so no published rule settles it.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: When the deductions taken before the shelter deduction exceed a household's income, the income used for the shelter test is zero, not a negative amount.
+
+Checked 2026-11-22: 7 CFR 273.10(e)(1)(i)(H) (D-14: "50 percent of the household's monthly income after all the above deductions have been subtracted") and 10 CCR 2506-1 4.407.3 (D-82; the same in D-133) say what is subtracted but not what happens when that figure is below zero. No published rule settles it.
 
 ### OQ-31. Resolved: the amended ABAWD age exception ("under 18, or over 65") leaves 18-64 subject to the time limit
 
@@ -224,6 +243,12 @@ Phase 7 sweep: the current § 8.100.4.G.3 (D-65) still states no deprivation req
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: 42 CFR 435.4 (deprivation unless the State eliminates it in its plan) and the current § 8.100.4.G.3 (D-65), which states no deprivation requirement; the election is in the State plan, which no allowed host publishes; no published rule settles it.
 
+Class: state policy choice
+Owner: Medicaid policy owner, State plan coordinator
+Assumption: Colorado has dropped the old requirement that a child be deprived of a parent's support, so a dependent child is defined by age and living with the parent or caretaker alone.
+
+Checked 2026-11-22: 42 CFR 435.4 (D-35), whose "dependent child" keeps deprivation of parental support unless the State eliminates it in its plan, and 10 CCR 2505-10 § 8.100.4.G.3 (D-65), which states no deprivation requirement. The election is Colorado's State plan choice, and no published Colorado rule states it; no published rule settles it.
+
 ### OQ-51. Resolved: Caretaker relative's specific relation categories not separately tested
 
 Body: 42 CFr 435.4's "caretaker relative" definition lists specific relations (father, mother, grandfather, grandmother, brother, sister, stepfather, stepmother, stepbrother, stepsister, uncle, aunt, first cousin, nephew, niece, or a parent's/relative's spouse) rather than treating any household member who cares for a child as a caretaker relative. ma_is_parent_caretaker_category (CO-547) tests only this volume's "caretaker" relationship role (and "parent"), on the assumption that a case author would only state a caretaker edge for a relation 435.4 actually recognizes; the rule does not itself validate that the caretaker relationship named on a case is one of 435.4's listed relations. Items: CO-547.
@@ -318,13 +343,15 @@ Phase-10 needs-fact sweep (2026-11-21): resolved. The phase 7 note above is wron
 
 Body: Resolved in the phase 3 coordinator pass: chp_child_is_eligible, chp_prenatal_is_eligible and chp_eligibility_status read ma_magi_is_eligible (CO-553) directly, and the interim supplied fact is_eligible_for_medicaid (CO-091) was removed before any case used it. A person whose only Medicaid path is emergency-only counts as Medicaid-eligible for this test, which for children and pregnant persons cannot arise under 8.100.3.G's coverage regardless of status. Items: CO-705, CO-706, CO-707.
 
-### OQ-62. chp_household_members, chp_household_size and chp_household_income were not created as separate identifiers
+### OQ-62. Resolved: CHP+ reads the Medicaid MAGI household, size and income directly; separate CHP+ identifiers would only restate them
 
 Body: The phase-3 brief's batch 7 interface lists chp_household_members, chp_household_size and chp_household_income alongside chp_income_within_limit, chp_child_is_eligible and the rest. 10 CCR 2505-3-50.13 and -150.1 both adopt the Medicaid MAGI household and income rules by cross-reference rather than stating a CHP+-specific test, so the natural derivation for each would be a bare reference to ma_magi_household_members, ma_magi_household_size and ma_magi_household_income respectively. This volume's engine governance rule `derived.alias` (src/engine/governance.ts) treats a derivation that is a bare reference to another item's identifier as an error ("an alias is not a rule, so use that fact directly"), so these three items were not created; every CHP+ rule in this batch that needs the MAGI household, size or income reads ma_magi_household_members, ma_magi_household_size, ma_magi_household_income and ma_magi_household_income_pct_fpl directly, which the phase-3 brief's own text says is expected ("cross-program reads of ma_ items are expected"). If a future amendment gives CHP+ its own household or income test that actually differs from Medicaid's, these three identifiers should be created then, with a real derivation rather than a pass-through. Items: (none created; see CO-704, CO-705, CO-706, CO-708 for the cross-program reads).
 
 Phase 7 sweep: a design choice under the derived.alias governance rule; no published rule settles it.
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: 10 CCR 2505-3 §§ 50.13 and 150.1 (D-66), which adopt the MAGI household and income rules by cross-reference; the question is a ledger-design choice under derived.alias; no published rule settles it.
+
+Resolution (open-question classification pass, 2026-11-22): answered by the rule text. 10 CCR 2505-3 § 50.13 (D-66: "“Household” shall be determined by relationships to the tax filer ... as required in 10 CCR 2505-10-8.100.4.E") and § 150.1 ("Calculation of income for the Children’s Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4.C") adopt the Medicaid MAGI household and income rules and state no CHP+ test of their own. CHP+'s household, size and income are therefore the Medicaid ones, and the CHP+ items read ma_magi_household_members, ma_magi_household_size, ma_magi_household_income and ma_magi_household_income_pct_fpl (CO-704 to CO-708) as the rule directs; three CHP+ identifiers that restated them would be aliases, which derived.alias forbids. No item changes and no test is added, since no value changes. If a later CHP+ rule states a household or income test of its own, an item with that derivation is added then.
 
 ### OQ-63. Resolved: the Children's Medicaid standard is 142%, matching CHP+'s 142% floor; there is no gap
 
@@ -375,6 +402,12 @@ Phase 7 sweep: the current § 8.100.5.H (D-65) states the same allocation sequen
 Open-question sweep (2026-11-21): the rule is clear (triage: NEEDS FACT) but this sweep did not model it; it needs facts for an ineligible spouse's and ineligible children's income and the allocations of § 8.100.5.H (S308).
 
 Phase-10 needs-fact sweep (2026-11-21): partly resolved. The incomes were already in the case (each person's own income facts); what was missing was who is "not applying or eligible for SSI" (H.2.b-c) and the unemancipated-child test (H.2.a). New facts ma_is_applying_for_or_eligible_for_ssi (CO-2271) and ma_is_regularly_attending_school_or_training (CO-2272); parameters CO-2273, CO-2274, CO-2276 and CO-2280; rules ma_is_ssi_unemancipated_child (CO-2275), ma_ssi_ineligible_child_allocation (CO-2277: half the individual FBR per ineligible unemancipated child of the household, less the child's own income, child support in full), ma_ssi_child_allocation_from_spouse_unearned and _earned (CO-2278, CO-2279: taken from an ineligible spouse's income, unearned first, before the standard disregards, H.3.b.i-ii) and ma_ssi_household_unearned_income_counted (CO-2281, which also counts an unemancipated child's child support reduced by one third, H.4.c). ma_ssi_countable_unearned_income (CO-606) and ma_ssi_countable_earned_income (CO-605) now apply the $20 and $65-plus-one-half disregards to the income after the allocation (S1506). Which parent's income bears the allocation is OQ-473. Still open, as a gap in the published text: deeming a parent's income to an applicant child, which the Ineligible Parent(s) Allocation (H.3.a.ii, H.3.b.iii) presupposes but § 8.100.5.H never computes (whose income, and how it is divided among several applicant children); § 8.100.5.H.4.e incorporates 20 CFR 416.1112 only, not the SSI parent-to-child deeming rules. No household case has an ineligible spouse with children in the home, so no case states the new facts and no expectation changed.
+
+Class: state policy choice
+Owner: Medicaid policy owner, LTSS policy owner
+Assumption: No part of a parent's income is counted for a child applying under the SSI-related rules; only the allocations the Colorado rule spells out are taken.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.H.1-4 (D-65, S308, S1506): the Ineligible Parent(s) Allocation (H.3.a.ii, H.3.b.iii) presupposes deeming a parent's income to an applicant child, but the section never computes it, and H.4.e incorporates 20 CFR 416.1112 only, not the SSI deeming rules. Whose income is deemed and how it is divided among several applicant children is left to Colorado; no published rule settles it.
 
 ### OQ-84. Resolved: QDWI's disability and work history is derived from two supplied history facts
 
@@ -460,6 +493,11 @@ Open-question sweep (2026-11-21): resolved pending verification. The product own
 
 Hard-coded numbers fix round (audit H-7): the county-to-region assignment is ma_ltc_private_pay_region_by_county_table (CO-3021) and the four regional rates are one table keyed by region, ma_income_trust_limit_table (CO-3022), replacing CO-1981 to CO-1984. The figures and their verification status are unchanged. The transfer-penalty divisor (CO-832) stays a figure of its own, because the memo states it separately (S1228; audit D-2).
 
+Class: blocked on a named document
+Owner: LTSS policy owner
+Assumption: The ceiling on income for a person with an income trust is the regional average private-pay rate for nursing facility care, using the 2025 and 2026 figures the product owner supplied from the operational memo.
+Blocked on: HCPF Operational Memo OM 25-073, which states the regional private-pay rates (hcpf.colorado.gov refused)
+
 ### OQ-100. Resolved (overruled): long-term care eligibility is reported for the setting the person requests
 
 Body: brief4.md's options (eligible_institutional, eligible_hcbs, eligible_pace, ...) are mutually exclusive, but a person meeting the nursing facility level of care, the HCBS target group, and PACE criteria simultaneously (as the target household's p1 might, once enrolled) is not disambiguated by any cited text; ma_ltc_eligibility_status (CO-652) tests PACE, then HCBS, then institutional, in that order, which is an authoring choice, not a reading of 8.100.7 - the phase-4 review's C-18 finding corrected this open question's own text, which previously said "institutional first" while the item's case list and precision both said PACE first. Items: CO-652.
@@ -478,11 +516,23 @@ Open-question sweep (2026-11-21): the chart (S414) is fully carried; what remain
 
 Phase-10 open-question sweep (supplied-facts round): the unit composition part is resolved with OQ-152 and OQ-140. cw_assistance_unit_members (CO-900) now reaches the spouse of a pregnant parent (3.604.2.C.1.e) and, on request, a stepparent, a non-parent caretaker and that caretaker's spouse and the other optional members of C.2 (S1625; cw_requests_inclusion_in_assistance_unit, CO-2346; cw_is_optional_member_by_custody_or_support, CO-2347; cw_is_optional_assistance_unit_member, CO-2349; cw_is_excluded_from_assistance_unit, CO-2350), so a unit can now hold three adults (two parents and a requesting non-parent caretaker, for example), and cw_unit_caretaker_count (CO-926) reads the caretakers it counts. Still open: such a unit's need and grant standard. Checked 2026-11-21: 3.606.1.F's Standards of Assistance Chart (D-81, S414) has rows for no caretaker, one caretaker and two caretakers only, and no other text of 9 CCR 2503-6 prices a third; no published rule settles it, so CO-926 keeps its cap of two.
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A Colorado Works unit with three or more caretakers gets the two-caretaker need and grant standard.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.606.1.F, the Standards of Assistance Chart (D-81, S414), has rows for no caretaker, one caretaker and two caretakers only, and no other paragraph of 9 CCR 2503-6 prices a third. No published rule settles it.
+
 ### OQ-102. Partly resolved: the minor-parent income-deeming "needs" deduction counts the parents and their other children in the home; open: which dollar measure "needs" means
 
 Body: 9 CCR 2503-6 3.605.1.A.4.a (S413) says the needs of the non-participant parent of a minor parent, and of others in that parent's home for whom the parent is responsible, "shall be deducted from the result to determine the amount attributed to the assistance unit," but does not state which figure "needs" refers to. cw_deemed_parent_income_of_minor_parent (CO-909) reads the One Caretaker need standard for a unit of one (cw_need_standard_table's size-1 value, $253) as the non-participant parent's own needs deduction, on the reading that "needs" in this deeming formula means the same need standard 3.606.1.F otherwise uses for a unit of that composition. It does not add a further deduction for other people in the non-participant parent's home for whom the parent is responsible. Fix round (C-11(c)): this open question previously said no such person exists in this batch's target household, which was incorrect - in CO-01, p3 (the non-participant parent) is responsible for p4 (her own seventeen-year-old daughter, also living in the home), so the second deduction is skipped in the very household this question described as having no one to skip. It does not change CO-01's outcome (deducting the size-2 need standard $331 instead of $253 still leaves deemed income far above p4's unit's need standard), so the household does not test the rule either way; the deduction itself remains unmodeled (no item computes "one plus the count of the non-participant parent's other dependents in the home"). Items: CO-909.
 
 Open-question sweep (2026-11-21): whose needs are deducted is answered by the text. 9 CCR 2503-6 3.605.1.A.4.a (D-81, S1307): "The needs of the stepparent or parent of the minor parent, and the needs of individuals living in the home for whom the stepparent or parent are responsible shall be deducted from the result to determine the amount attributed to the assistance unit." The new cw_minor_parent_deeming_needs_deduction (CO-2000) deducts the need standard for the parent or parents in the home and their other children in the home (the minor parent's siblings and half siblings; not the minor parent herself, whose needs her own assistance unit meets): the One Caretaker row for one parent, the Two Caretakers row for two, keyed by the number of those children. cw_deemed_parent_income_of_minor_parent (CO-909) now deducts it once from the parents' combined countable income instead of the zero-children One Caretaker figure once per parent (new test CO-909-T6: a parent with another child in the home deducts $331, deeming $1,959 instead of $2,037). In CO-01 and CO-02 p3 has no child in the home other than the minor parent p4, so the deduction stays $253 and no expectation changed. Still open: which dollar measure "needs" means. Checked 2026-11-21: 3.605.1.A.4.a and 3.606.1.F (D-81) - the deeming paragraph names no figure and the need standard chart does not say it serves deeming; no published rule settles it. The draft reads the need standard. Items: CO-909, CO-2000.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The needs deducted when a minor parent's own parent's income is deemed are measured by the Colorado Works need standard.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.605.1.A.4.a (D-81, S1307) deducts "the needs of" the parent and those the parent is responsible for without naming a figure, and the need standard chart of 3.606.1.F (D-81) does not say it serves deeming. No published rule settles it.
 
 ### OQ-103. Resolved: Colorado Works sponsor deeming and disqualified-member income are modeled
 
@@ -505,6 +555,12 @@ Checked 2026-11-21: 45 CFR 261.31(a)(1) and 261.35 (S419, S420) state a weekly a
 CDHS stakeholder review fix round (2026-11-21): the CDHS reviewer notes that federal TANF reporting converts weekly hours with 4.33 weeks a month, not 4; the impact is low because participation is not an eligibility condition here. Recorded; no change.
 
 Hard-coded numbers fix round (audit H-19): the four weeks are a parameter, cw_weeks_per_month (CO-3044), which carries this question, instead of a literal in cw_meets_work_participation (CO-920). SNAP converts by 4.3 (7 CFR 273.10(c)(2), snap_weeks_per_month, CO-3041) and Medical Assistance by 4.33 (ma_community_engagement_weeks_per_month, CO-1907); neither text governs Colorado Works, so the draft keeps four until the cash programs owner decides.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A weekly hours requirement is turned into a monthly one by multiplying by four.
+
+Checked 2026-11-22: 45 CFR 261.31(a) and 261.35 (S419, S420) state weekly averages with no weeks-per-month factor and measure the State's participation rate, and the current 9 CCR 2503-6 (D-81) states no monthly-hour figure for a person. No published rule settles it.
 
 ### OQ-105. Resolved: the Colorado Works earned income disregards follow the current 3.606.2.A - $90 at application, 100% in the first certification period and for a new source, 67% for a current source after it
 
@@ -587,6 +643,13 @@ Phase-10 open-question sweep: stays blocked. 3.111.H.1.a (S1413) still has the D
 CDHS stakeholder review fix round (2026-11-21) (C-9): the CDHS/CDEC reviewer confirms the CDEC publishes each county's entry level; cdec.colorado.gov is refused, so the figure stays supplied. Still open: blocked on a refused host.
 
 Hard-coded numbers fix round (audit H-18): the figure is no longer entered on each person. cccap_entry_income_limit_pct_fpl (CO-870) is derived from cccap_entry_income_limit_pct_fpl_table (CO-3004), a table keyed by county with no version loaded (the engine now holds a figure awaiting publication as an empty list of versions), never below the 185% floor (cccap_entry_income_limit_min_pct_fpl, CO-3005). Household cases CO-01, CO-02 and CO-08 state the county row they assume (1.85) under parameters:. Still open: the county figures themselves.
+
+Class: blocked on a named document
+Owner: Child care policy owner (CDEC)
+Assumption: Each county's entry income limit is loaded once it is published; until then the stored households state the 185 percent floor for their county.
+Blocked on: the Colorado Department of Early Childhood's county entry-eligibility levels set from the self-sufficiency standard under 8 CCR 1403-1 3.111.H.1.a (cdec.colorado.gov refused)
+
+Checked 2026-11-22: 8 CCR 1403-1 3.111.H.1.a (D-87, S780) has the Department set entry eligibility "at a level based on the self-sufficiency standard, not to be set below" 185 percent; the rule states no county figure.
 
 ### OQ-122. Resolved: LEAP income limit (60% state median income) is the Department's published season table
 
@@ -688,6 +751,12 @@ Body: 26-2-111(4)(a) (S442) states two independent routes to AND-SO's total-disa
 
 Checked 2026-11-21: 9 CCR 2503-5 3.540 (D-80:4197-4200, version effective 2026-03-02) still describes AND-SO for clients who "have not been approved for Supplemental Security Income (SSI) or Social Security Disability Insurance (SSDI)", and C.R.S. 26-2-111(4)(a) (D-59) names SSDI eligibility as a route to the disability test. The texts conflict and no published rule settles it.
 
+Class: needs Legal
+Owner: Legal, Cash programs policy owner
+Assumption: A person already approved for Social Security disability benefits is not eligible for interim Aid to the Needy Disabled.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.540 (D-80, version effective 2026-03-02) describes AND-SO for clients who "have not been approved for Supplemental Security Income (SSI) or Social Security Disability Insurance (SSDI)", and C.R.S. 26-2-111(4)(a) (D-59) names being "determined to be disabled and eligible for social security disability insurance benefits" as a route to the disability test. The readings: (a) the statute governs and an SSDI recipient may qualify; (b) the rule's bridge-program reading excludes one, the reading in force. No published rule reconciles them.
+
 ### OQ-139. Resolved: the current rule has no Aid to the Blind program, so the AB good-cause exception has no rule to implement it
 
 Body: 26-2-111(5)(a)(II) (S443) requires an AB applicant to have "applied for supplemental security income benefits and complied with any recommendations for referrals made by the county department except for good cause shown." has_applied_for_ssi (CO-848) and af_ab_eligible (CO-945) model the application requirement itself but not the "except for good cause shown" exception - no supplied fact states whether a county has excused noncompliance for good cause, so a client who has not applied for SSI is always ineligible under this item even where a county would excuse it. Items: CO-848, CO-945.
@@ -734,6 +803,12 @@ Phase 7 sweep: the current § 8.100.6.Q.1.g.iv (D-65) keeps the same wording - '
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.6.Q.1.g (S318, current D-65), whose band table says "individuals" and "households" in different rows; no published rule settles it.
 
+Class: state policy choice
+Owner: Premium and finance owner, Medicaid policy owner
+Assumption: The children's buy-in premium bands are read by household income as a percentage of poverty for the household's size, and the rows that say individuals are read as households.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1.g (D-65, S318) puts the premiums "on a sliding scale based on household size and income" and says "households" in two bands and "individuals" in two. No published rule settles it.
+
 ### OQ-145. Resolved: MMMNA standard's July-versus-January adjustment timing is not modeled
 
 Body: 10 CCR 2505-10 § 8.100.7.Q.1.a (S358) states the MMMNA "is adjusted in July of each year," but federal_poverty_guideline_annual_table (CO-181) versions its HHS poverty guideline figures from January 1 of the calendar year the guideline is published for, not from the following July when Colorado's MMMNA standard actually changes. ma_mmmna_standard (CO-662) accordingly uses the calendar-year guideline for any month, so a determination made January through June of a year picks up that year's guideline one adjustment cycle early, rather than continuing to use the prior July's figure until the new one takes effect. Items: CO-662, CO-181.
@@ -768,6 +843,12 @@ Phase 8: the version effective 2025-07-01 (D-81) keeps both sentences unchanged 
 
 Checked 2026-11-21: 9 CCR 2503-6 3.606.1.H ("shall not exceed the need standard", D-81:3029) and 3.606.1.J.4 ("equals or exceeds the need standard, the assistance unit is not eligible", D-81:3055), both in the version effective 2025-07-01. No published rule settles it.
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A Colorado Works unit whose countable income equals the need standard is not eligible.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.606.1.H ("shall not exceed the need standard") and 3.606.1.J.4 ("equals or exceeds the need standard, the assistance unit is not eligible") in the version effective 2025-07-01 (D-81) point different ways at equality. No published rule settles it.
+
 ### OQ-157. Resolved: CCCAP teen-parent eligible-activity conjunct read without a default
 
 Body: 8 CCR 1403-1 3.103.ZZZZ (S481) requires a teen parent to be "in an eligible activity," in addition to being under 21 and having physical custody, which cccap_is_teen_parent (CO-981) previously did not test at all (its own precision deferred the prong to cccap_caretaker_in_eligible_activity, CO-984, but nothing read CO-984 from CO-981 itself). The review (docs/reviews/cccap-leap-phase-6.md, C-8, should-fix) found this truncation let CO-985 and CO-991 use the truncated term as a live classifier with the wrong consequence in both directions. The new activity conjunct is read with `[otherwise, cccap_caretaker_in_eligible_activity, false]` (defaults to not in an eligible activity when the case does not state hours_worked/cccap_is_in_job_search_activity/snap_is_enrolled_half_time_in_school_or_training for this person), rather than leaving it unknown, for the same case-coverage reason as OQ-134/OQ-135/OQ-136: most existing tests and cases in this chapter that mark a custodial minor a teen parent do not state her activity facts, since the prior item never read them, and an unknown value would turn every one of those cases' downstream CCCAP determinations unknown. The default is the more conservative reading (a teen parent without a stated activity is treated as not a teen parent, so her earnings count under CO-985 and she does not count as a caretaker whose inactivity could deny the household under CO-991) - the opposite direction of risk from OQ-134/135/136's "defaults to more favorable" pattern. A future batch that can edit every case's facts should replace the default with an explicit fact and remove the `otherwise`. Items: CO-981.
@@ -796,7 +877,7 @@ Body: 8 CCR 1403-1 3.111.H.4.c (S515) is CCCAP's own asset self-declaration; ccc
 
 Resolution (Phase-10 open-question sweep): Resolved. The vocabulary fix round gave CCCAP its own cccap_declared_assets (CO-1741), which cccap_meets_asset_limit (CO-996) reads; its meaning now states 3.103.K's definition (S1414): every vehicle counts except the primary caretakers' automobile, the primary home is excluded, and no SNAP or retirement-account exclusion applies.
 
-### OQ-162. Partly resolved: CCCAP K-4/K-5/K-6 (need for care, time-limited activities, minimum-wage-per-hour test) are modeled; open: a county plan's longer job search or education period, and education limits by kind of activity
+### OQ-162. Partly resolved: CCCAP K-4/K-5/K-6 (need for care, time-limited activities, minimum-wage-per-hour test) and the education limits by kind of activity are modeled; open: a county plan's longer job search or education period
 
 Body: 8 CCR 1403-1 3.110/3.111.D.1.a/3.111.F (need for child care assistance and the eligible child's "less than twenty-four hours" test, S483/S497/S482), 3.111.G.3.a/G.3.g/G.4 (the 13-week job search cap and the 104-208-week training/post-secondary cap, `documents/D-64.md:462,476`), and 3.111.G.1.b/2.d (the federal-minimum-wage-per-hour verification, `documents/D-64.md:440`) are each stated, eligibility-determining conditions this batch does not implement, per the review's K-4, K-5, K-6 findings (docs/reviews/cccap-leap-phase-6.md). K-4 would need a supplied needs_child_care_assistance fact and an hours-of-care condition on cccap_is_eligible_child (CO-980); K-5 would need job_search_weeks_used/training_weeks_used_lifetime supplied facts and 13/208-week parameters, extending cccap_caretaker_in_eligible_activity (CO-984), which OQ-124 already covers for activity mapping but not for these limits; K-6 would need a federal minimum wage parameter (which the SNAP chapter's own work rules, 7 CFR 273.7(b)(1)(vii), would also use) and a gross-income-divided-by-hours test in CO-984. None were in this batch's assigned item range. Items: CO-980, CO-984.
 
@@ -806,6 +887,13 @@ Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): current citation. 8
 
 Resolution (Phase-10 open-question sweep): K-4 resolved: cccap_is_eligible_child (CO-980) reads the new cccap_child_needs_care_for_part_of_day (CO-2108), care for a portion of the day but less than twenty-four hours (3.110, 3.111.F, S1408). K-5 resolved in part: cccap_caretaker_in_eligible_activity (CO-984) counts job search while cccap_job_search_weeks_used (CO-2109) is below cccap_job_search_weeks (CO-2110, 13; G.3.a, g, S1411), education or training until cccap_education_activity_time_limit_reached (CO-2111; G.4, S1412), and SUD treatment for cccap_sud_treatment_activity_max_months (CO-2112, 12) from its start (G.4.a.3). K-6 resolved: employment and self-employment count only when gross wages plus CCCAP self-employment income per hour worked is at least federal_minimum_wage (CO-160), or the self-employment is in its launch period (cccap_self_employment_in_launch_period, CO-2113; G.1.b, G.2.d-e, S1410). Still open: a county plan's longer job search or education period (a county figure, like OQ-121), and the education limits enter as a yes/no because the activity fact does not separate post-secondary, workforce training and basic education. The C-12 income exclusions (3.111.J) and the 3.111.K child support deduction are OQ-390's. No case expectation changed.
 
+Open-question classification pass (2026-11-22): the education limits by kind of activity are carried after all. cccap_education_activity_time_limit_reached (CO-2111) states in its meaning the limit for each kind (104 weeks for training or post-secondary education and for workforce training, 208 under an approved county plan, and 52 weeks for basic education, none for a teen parent in basic education; 3.111.G.4, S1412), so the person who supplies it applies the limit for the caretaker's activity and nothing is missing from the ledger. What stays open is a county's approved plan: a longer job search period than 13 weeks, or more weeks of education.
+
+Class: blocked on a named document
+Owner: Child care policy owner (CDEC)
+Assumption: Job search counts for 13 weeks and education for the statewide limits, with no county extension.
+Blocked on: each county's CCCAP county plan approved by the Department under 8 CCR 1403-1 3.104, which states any longer job search or education period (cdec.colorado.gov refused; the plans are not published on an allowed host)
+
 ### OQ-163. Partly resolved: CCCAP/LEAP K-7 (shared-fuel arithmetic) and K-8 (duplicate-household denial) are modeled; open: K-9, the teen-parent household merge
 
 Body: Three further completeness gaps from the review (docs/reviews/cccap-leap-phase-6.md) remain open. K-7: 9 CCR 2503-7 3.752.25.A.4, A.6 (`documents/D-63.md:463-467`) makes a multi-household residence vulnerable when it contributes toward shared expenses and divides estimated home heating costs by the number of parties on a shared meter - the machinery for exactly the multi-household-dwelling situation C-1's shares_heating_fuel_with fix creates, and unmodeled; it belongs with OQ-123's benefit-amount gap if a future batch builds leap_benefit_amount. K-8: 3.751.2.A (`documents/D-63.md`, not separately excerpted this batch) makes "any individual considered as part of an approved household cannot subsequently be considered as part of another household during the same eligibility period" a hard rule, and 3.754.1's weatherization-refusal and other denial factors beyond the application-period timing (leap_month_in_eligibility_period, CO-1008) are not modeled; leap_is_eligible (CO-1007)'s precision already acknowledges the 3.754.1 list generally. K-9: cccap_household_members (CO-982)'s closure joins a teen parent to both her parent's household and her own child, so a teen parent's household income is tested together with her parent's, a modeling choice 3.103.GGG's "adult caretaker(s) or teen parent(s)" phrasing does not itself resolve and 3.111.D.3 (separate applications for a child across two households) may cut against; this is, per the review, "the single modeling choice in the CCCAP chapter with the largest effect on the target household." None were in this batch's assigned item range. Items: CO-982, CO-1007, CO-1008.
@@ -814,11 +902,23 @@ Phase-10 open-question sweep. K-7: resolved. 3.752.25.A.4 makes a household in a
 
 CDHS stakeholder review fix round (2026-11-21): the CDHS/CDEC reviewer states that K-9 cannot be answered from the rule text and returns it to the CDEC as a blocker for CO-01's CCCAP expectation. Still open.
 
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A teen parent who lives with her own parent is in one CCCAP household with that parent.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103 ("Household", "Teen parent") and 3.111.D (D-87): the definitions join adult caretakers or teen parents and their children but do not say whether a teen parent living with her own parent forms a separate household. No published rule settles it.
+
 ### OQ-200. Emergency Medicaid's "otherwise eligible" is read as a MAGI category, the SSI-related standards, or institutional long-term care
 
 Body: 42 U.S.C. 1396b(v)(2)(B) and 42 CFR 440.255(c)(2) require an alien to meet "the eligibility requirements for medical assistance under the State plan" other than receipt of AFDC, SSI or a State supplementary payment, and 10 CCR 2505-10 § 8.100.3.F.1.k says "the criteria for one of the categorical Medical Assistance programs". ma_meets_requirements_other_than_status (CO-1150) reads that as residency plus a MAGI category (whose income test is part of the category), or - for an aged, blind or disabled person - the SSI-related income and resource standards or institutional long-term care financial eligibility at the nursing facility level of care. The Buy-In programs, HCBS and the protected groups are not routes, because their own items read citizenship, and the Cover All Coloradans population (children, pregnant and postpartum people) never reaches this test because it meets status. The emergency medical condition is a month-level supplied fact (has_emergency_medical_condition, CO-1100), not a claim-by-claim determination, and the organ-transplant exclusion of 1396b(v)(2)(C) is not represented. Items: CO-1150, CO-1151, CO-510, CO-1100. Phase 7 fix round: the SSI-related route is joined by OAP SISC B (an aged, blind or disabled OAP recipient within the SSI resource standard, § 8.100.6.K.4, S621, S665), and every route now also requires § 8.100.3.G.1.c's institution for mental diseases requirement (ma_meets_imd_requirement, CO-1179, S659). HCBS and PACE now read status themselves (B-3), so an HCBS or PACE applicant who fails status is emergency-eligible only through the SSI-related, OAP or institutional route; whether the 300% special income group should also be a route for a non-institutionalized HCBS applicant is part of this question. The Cover All Coloradans population no longer meets status for every category (OQ-214): a child, pregnant or postpartum person who fails status is emergency-only when the only category met is one ix.1.a-b does not list (CO-1175, CO-510). Items added: CO-1175, CO-1177, CO-1179.
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: 42 U.S.C. 1396b(v)(2)(B), 42 CFR 440.255(c)(2) and § 8.100.3.F.1.k (D-26, D-65); whether the HCBS special income group counts for a non-institutionalized applicant is not stated; no published rule settles it.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: For emergency Medicaid, a non-citizen is otherwise eligible through a MAGI group, the SSI-related standards, an Old Age Pension route or nursing facility care, but not through the higher income limit for home and community services alone.
+
+Checked 2026-11-22: 42 U.S.C. 1396b(v)(2)(B), 42 CFR 440.255(c)(2) and 10 CCR 2505-10 § 8.100.3.F.1.k (D-26, D-65) require "the criteria for one of the categorical Medical Assistance programs" without saying whether the HCBS special income group counts for a person who is not in an institution. No published rule settles it.
 
 ### OQ-201. BCCP's "woman" is read as recorded sex female
 
@@ -826,17 +926,34 @@ Body: 10 CCR 2505-10 § 8.715.2.C.1 requires "a woman who has not yet attained t
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.715.2.C.1 ("a woman", D-65) and 42 U.S.C. 1396a(aa), which states no sex; no published rule settles it.
 
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Only a person recorded as female can qualify for the breast and cervical cancer treatment program.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.715.2.C.1 (D-67: "Be a woman who has not yet attained the age of 65") and 42 U.S.C. 1396a(aa), which states no sex requirement. No published rule says how "woman" is read for a person recorded otherwise.
+
 ### OQ-202. BCCP's out-of-state transfer requirement and stale cross-reference
 
 Body: § 8.715.2.C lists as a seventh requirement that members "Be a member who has previously qualified and enrolled in a NBCCED program in another state and chooses to transfer her enrollment to CWCCI", which read literally would exclude every Colorado-screened woman; it is read as an alternative way to meet the screening requirement (C.4) and folded into is_screened_in_need_of_breast_or_cervical_cancer_treatment (CO-1102). § 8.715.2.C.3's exception cross-references "Section 8.100.3(G)(1)(g)(viii)", which in the current § 8.100 (D-65) is the Afghan humanitarian parolee paragraph; the Cover All Coloradans exception it evidently means is now ix. ma_bccp_eligibility_status reads ma_meets_citizenship_requirement (CO-509), which carries the Cover All Coloradans exception. Items: CO-1102, CO-1152. Phase 7 fix round: the literal current '(viii)' is the Afghan humanitarian parolee paragraph (§ 8.100.3.G.1.g.viii), itself a plausible exception; '(vi)-(vii)' now points vi at the incorporation-by-reference paragraph; and '(ii)-(iv)' skips v (Cuban/Haitian entrants and COFA migrants, S657). ma_bccp_eligibility_status now reads ma_meets_status_for_cover_all_coloradans_categories (CO-1174): the status test CO-509, which covers v (the better outcome), or the Cover All Coloradans population, the exception C.3 evidently means.
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: the current § 8.715.2.C (D-65), whose cross-reference to § 8.100.3(G)(1)(g) is stale and whose transfer requirement reads as a seventh condition; no published rule settles it.
 
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Moving an enrollment from another state's program is one way to meet the screening requirement, not a seventh condition, and the outdated cross-reference is read as the Cover All Coloradans exception.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.715.2.C (D-67), whose seventh requirement reads literally as excluding every woman screened in Colorado and whose exception cites a paragraph of § 8.100.3.G.1.g that now covers Afghan parolees. No published rule settles it.
+
 ### OQ-203. BCCP creditable coverage: the 2002 edition of C.R.S. 10-16-102 is not fetched (narrowed in the phase 7 fix round)
 
 Body: § 8.715.3.A defines creditable coverage by C.R.S. 10-16-102 "(2002)". The current (2024) 10-16-102(16) was fetched (D-79, S674): Medicare, the Colorado Medical Assistance Act, the children's basic health plan, employer and group plans, individual plans, a state risk pool, TRICARE, FEHB, a public health plan and a Peace Corps plan. § 8.715.3.B removes limited-scope, single-disease (other than breast or cervical cancer) and Indian Health Service or tribal coverage, and § 8.715.3.D keeps coverage with yearly drug or visit limits or high deductibles (S672). ma_bccp_eligibility_status (CO-1152) now reads the BCCP-specific ma_bccp_has_creditable_coverage (CO-1191), which carries those rules, and ma_bccp_creditable_coverage_exception_applies (CO-1192), the two § 8.715.3.C exceptions, in place of the CHP+ fact CO-090. What remains open: the 2002 edition the rule incorporates was not fetched, and the 2024 definition is read as stating it. Items: CO-1152, CO-1191, CO-1192.
 
 Open-question sweep (2026-11-21): still blocked: leg.colorado.gov publishes only the current C.R.S. editions (2024 is the latest title PDF), and no allowed host carries the 2002 edition of C.R.S. 10-16-102 that § 8.715.3.A incorporates; that edition would settle it. The product owner's research quotes the 2002 C.R.S. 10-16-102(21) definition of "health benefit plan" (any hospital or medical expense policy or certificate, hospital or medical service corporation contract, health maintenance organization subscriber contract, or other similar health contract subject to the commissioner's jurisdiction offered or sold in Colorado, excluding accident-only, credit, dental, vision, Medicare supplement, long-term care, disability income, supplements to liability insurance, workers' compensation, automobile medical payment, and specified-disease or hospital-indemnity coverage). That definition (unverified, not fetched) is consistent with ma_bccp_has_creditable_coverage (CO-1191), whose § 8.715.3.B exclusions already remove limited-scope and single-disease coverage, so no item changes; the 2002 creditable-coverage paragraph itself remains unseen.
+
+Class: blocked on a named document
+Owner: Medicaid policy owner
+Assumption: The current statutory definition of creditable coverage stands in for the 2002 edition the rule incorporates.
+Blocked on: C.R.S. 10-16-102, 2002 edition, which 10 CCR 2505-10 § 8.715.3.A incorporates (not published by an allowed host: leg.colorado.gov serves only current editions)
 
 ### OQ-204. Limited Family Planning: "a household of two in addition to any other household members" and the 5% disregard
 
@@ -845,6 +962,12 @@ Body: § 8.100.4.E.3 counts the family planning applicant "as a household of two
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.4.E.3 and § 8.100.4.G.8 (D-65), which state the household of two and the band without saying where the 5% disregard applies; no published rule settles it.
 
 Hard-coded numbers fix round (audit H-21): the count is a parameter, ma_family_planning_applicant_household_count (CO-3029, 2), and the household size is ma_magi_household_size plus that count less one; the reading is unchanged and stays open.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The family planning applicant is counted as two in the household, which adds one to its size, and the 5 percent disregard applies only at the 260 percent ceiling.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.E.3 ("a household of two in addition to any other household members") and § 8.100.4.G.8 (D-65) state the count and the band without saying where the 5 percent disregard applies. No published rule settles it.
 
 ### OQ-205. Resolved: Reproductive health-care program: "would be eligible to enroll in the medical assistance program" and declining state medical assistance
 
@@ -880,6 +1003,12 @@ Body: § 8.100.6.I.1.f requires disabled widow(er)s to "meet all other Medical A
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.6.I.1.f and §§ 8.100.6.F-H (D-65), which state no income or resource test for disabled widow(er)s and describe closed cohorts; no published rule settles it.
 
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Disabled widows and widowers need only Colorado residence and a qualifying status besides the conditions the rule lists, and the closed historical groups are not offered.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.I.1.f ("meet all other Medical Assistance requirements") and §§ 8.100.6.F-H (D-65), which state no income or resource test for the group and describe cohorts closed to new applicants. No published rule settles it.
+
 ### OQ-210. Resolved: HCBS waiver target groups: only age (and CES marital status) is derived
 
 Body: § 8.7101 states each waiver's target group as diagnoses, levels of care, settings and ages; ma_hcbs_waiver_age_criteria_met (CO-1164) derives only the age bounds (and CES's "unmarried") against the Case Management Agency's designation (CO-821), which carries the rest (§ 8.7100.D.1.a). EBD's subgroups are collapsed to an 18-or-older floor, and BI's "Brain Injury that occurred prior to the individual's 65th birthday" is not tested. Items: CO-1164, CO-821, CO-653. Phase 7 fix round (S-4): the waiver-specific level of care is no longer collapsed to nursing facility level of care: ma_meets_designated_waiver_level_of_care (CO-1178) carries the Case Management Agency's finding of the level of care the designated waiver requires (ICF/IID for CES, SLS, DD and CHRP's developmental disability route; nursing facility or hospital for CwCHN and CIH; S662-S664). Diagnoses and settings remain in the designation itself.
@@ -898,6 +1027,11 @@ Body: The current § 8.100.7.F.2.c.i (D-65, S648) defines the transfer-penalty d
 
 Open-question sweep (2026-11-21): resolved pending verification. The product owner supplied the 2025 and 2026 figures from HCPF Operational Memo OM 25-073 (D-125, which could not be retrieved: hcpf.colorado.gov refuses automated requests): the transfer-penalty divisor $10,475.11 (2025) and $10,814.64 (2026), and the nursing facility personal needs allowance $108.73 (2025) and $110.36 (2026). They are recorded as the unverified excerpt S1228 and must be checked against the memo before the items move past Draft. transfer_penalty_divisor (CO-832) and ma_personal_needs_allowance_institutional (CO-887) are now dated parameters (moved to parameters/, IDs and identifiers unchanged). Changed expectations: CO-01 and CO-02 p1 ma_patient_payment 215 -> 179.64 (2030 - 110.36 - 1740); CO-06 p1 ma_transfer_penalty_months 6 -> 4 (54,000 / 10,814.64 = 4.993: four whole months and 30 days). The residential HCBS personal needs allowance (HCPF IM 25-030) is not read by any item and is not modeled.
 
+Class: blocked on a named document
+Owner: LTSS policy owner
+Assumption: The transfer penalty divisor and the nursing facility personal needs allowance are the 2025 and 2026 figures the product owner supplied from the operational memo.
+Blocked on: HCPF Operational Memo OM 25-073, which states the 2025 and 2026 figures (hcpf.colorado.gov refused)
+
 ### OQ-213. Partly resolved: five-year rule exemptions - the refugee, asylee and entrant reading of § 8.100.3.G.1.g.iv and the count from qualified status are settled; open: adult parolees, conditional entrants and battered non-citizens
 
 Body: The current § 8.100.3.G.1.g.iv (S656) opens "Be a Legal Permanent Resident(LPR) applying for Medical Assistance, who arrived in the United States on any date is exempt from the five-year rule" and then lists persons "granted asylum", refugees and trafficking victims (iv.9-11), who are often not LPRs; the Cornell copy's iv said "a non-citizen who arrived ... on any date" (D-39). Read literally, a refugee or asylee who has not adjusted to LPR falls under no adult category, which conflicts with 8 U.S.C. 1613(b)(1), which iv cites. ma_is_five_year_bar_exempt (CO-1172) reads the refugee, asylee, Cuban/Haitian entrant and COFA migrant statuses of citizenship_status as exempt whether or not adjusted (v.1-2 say "on any date" in any case), reads a trafficking victim as exempt through ma_five_year_bar_exempt_category (CO-1170), and reads the 40-work-quarters exemption (iv.1) for LPRs only. Separately, the Cornell iii (subject to the five-year rule) also listed parolees of at least one year, conditional entrants and battered non-citizens; the current iii is LPRs only (S655) and those groups appear only in vii (pregnant women and children, S658). An adult in one of those statuses meets no adult status category in the current text; citizenship_status records them as other_qualified_non_citizen, which is_qualified_non_citizen (CO-506) still treats as qualified and therefore subject to the five-year rule, the Cornell reading. Also, iii counts five years from "the individual's date of entry into the United States"; has_held_qualified_status_five_years (CO-508) counts from qualified_status_date. Items: CO-509, CO-1172, CO-1170, CO-506, CO-508.
@@ -908,11 +1042,23 @@ HCPF fix round (2026-11-21, docs/reviews/stakeholder-hcpf.md), B-1: the open hal
 
 OQ-44 fix (audit fix round, 2026-11-21): ma_five_year_bar_exempt_category (CO-1170) is retired; CO-1172 reads the trafficking victim from immigration_status (trafficking_victim) and the other iv categories from status_before_lpr_adjustment (CO-2700), is_american_indian_born_in_canada_or_tribal_member (CO-2701) and is_hmong_or_highland_lao_veteran (CO-2702); the lumped other_qualified_non_citizen is now parolee_one_year_or_more, conditional_entrant, battered_non_citizen or deportation_withheld, each still qualified (CO-506). The open half is unchanged.
 
+Class: needs Legal
+Owner: Legal, Medicaid policy owner
+Assumption: For a determination dated before October 2026, an adult parolee, conditional entrant or battered non-citizen waits five years and is then covered.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.G.1.g.iii-iv (D-65), whose subject-to-five-years list now names lawful permanent residents only, and 8 U.S.C. 1612(b) (D-25), under which covering these groups after five years is a State option. The readings: (a) the earlier Cornell text listed them as covered after five years, the reading in force; (b) the current text covers no adult in these statuses. No published rule says which Colorado chose.
+
 ### OQ-214. Partly resolved: Cover All Coloradans reaches a child or pregnant person in any category; open: a postpartum person not covered while pregnant reaches only the § 8.100.3.G.1.g.ix.1.a-b list
 
 Body: § 8.100.3.G.1.g.ix.1 (S607) says persons under 19, pregnant or within 12 months postpartum "shall not be excluded from the following Medical Assistance Categories on the basis of immigration status" and lists MAGI Children, MAGI Pregnant, Psych <21, Transitional Medical Assistance, 4 Month Extended Medical Assistance, MAGI prenatal and child presumptive eligibility, the two Buy-In programs, and the Long-Term Care waivers except PACE. The phase 7 fix round (S-2) reads the list as exhaustive: ma_meets_citizenship_requirement (CO-509) no longer carries the population; ma_is_cover_all_coloradans_person (CO-1173) states it; ma_meets_status_for_cover_all_coloradans_categories (CO-1174) is read by the Buy-In programs, HCBS waivers, CHP+ and BCCP (whose § 8.715.2.C.3 cross-references the exception); ma_magi_is_fully_eligible (CO-562) applies it to the Children's and Pregnant categories only; and every other category (MAGI Adult and Parent/Caretaker, SSI-related, institutional care, PACE, the protected groups, OAP SISC B, limited family planning) reads CO-509 alone. So an undocumented postpartum adult whose only category is Adult is emergency-only, an undocumented disabled child is not SSI-related eligible (but is covered in the Children's category or a waiver when eligible there), and a pregnant undocumented woman fails limited family planning's status test and reaches the reproductive health-care program. If HCPF reads ix.1 as reaching every category, CO-509 should again include CO-1173. Items: CO-509, CO-1173, CO-1174, CO-1175, CO-562, CO-510, CO-1151, CO-1152, CO-1154, CO-652, CO-653.
 
 Open-question sweep (2026-11-21): partly resolved. C.R.S. 25.5-2-104(2) (S1217) makes a child under 19 who would be eligible for medical assistance but for immigration status eligible for state medical assistance, with the same benefits (25.5-2-104(1)); C.R.S. 25.5-5-201(6)(a) (S1218) makes a pregnant non-citizen who meets every other requirement eligible for medical assistance, with twelve months postpartum under (6)(b). Neither is limited to the categories § 8.100.3.G.1.g.ix.1.a-b lists, so for a child or a pregnant person the exhaustive reading was wrong: ma_magi_is_fully_eligible (CO-562) now counts a child or pregnant person in any MAGI category, and ma_is_covered_under_cover_all_coloradans (CO-1175) covers a child or pregnant person who meets every requirement of any categorical program other than status (an undocumented disabled child meeting only the SSI-related standards is covered, not emergency-only). What stays open: a postpartum person who was not covered while pregnant, whom the statute does not reach, still reaches only the rule's ix.1.a-b list (CO-1173 carries the postpartum term). No household expectation changed.
+
+Class: needs Legal
+Owner: Legal, Medicaid policy owner
+Assumption: A postpartum person who was not covered while pregnant is exempt from the immigration test only in the categories the Colorado rule lists.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.G.1.g.ix.1 (D-65, S607) lists the categories, and C.R.S. 25.5-2-104(2) and 25.5-5-201(6) (S1217, S1218) reach children and pregnant people, with postpartum coverage only for a person covered while pregnant. The readings: (a) the list governs for this person, the reading in force; (b) the exception reaches every category. No published rule settles it.
 
 ### OQ-215. Resolved: limited family planning has no age or gender restriction; § 8.730's child-bearing age describes the services
 
@@ -950,6 +1096,11 @@ Open-question sweep (2026-11-21): the tier dollar amounts remain unconfirmed. 9 
 
 CDHS stakeholder review fix round (2026-11-21) (C-5): the CDHS reviewer confirms that the tier maximums are set administratively within appropriations (3.570.11.D) and published to the CMAs, not in rule; the schedule is with CDHS's Adult Financial program office, and cdhs.colorado.gov refused this session. Still open: blocked on a refused host.
 
+Class: blocked on a named document
+Owner: Cash programs policy owner
+Assumption: The Home Care Allowance pays the amount the case management agency authorizes, raised to the $977 floor.
+Blocked on: CDHS's Home Care Allowance tier maximum schedule, set administratively under 9 CCR 2503-5 3.570.11.D (cdhs.colorado.gov refused)
+
 ### OQ-251. Partly resolved: the FY2027 elderly/disabled resource limit is settled; open: the date from which FNS applies H.R.1's utility-allowance limit, which Colorado's SNAP rule has not adopted
 
 Body: Two places where the version of 10 CCR 2506-1 effective 2026-10-01 (D-82) and the federal source differ. (1) 4.407.31.A.1.b (S743) still grants the Heating and Cooling Utility Allowance to any household that "Received a Low-Income Energy Assistance Program (LEAP) or an Energy Electronic Benefit Transfer (E-EBT) payment within the previous twelve (12) month period"; Pub. L. 119-21 sec. 10103 (S136) limits that route to households with an elderly or disabled member. snap_entitled_to_heating_cooling_allowance (CO-1243) follows the statute, as the volume does for secs. 10102 and 10108 (OQ-1, OQ-31, OQ-32). (2) 4.408.E (S748) states the resource limit for a household with a member aged 60 or older or disabled as $4,500 "Effective October 1, 2024"; FNS's FY2027 table (D-83, S732) states $4,750. snap_resource_limit_elderly_disabled (CO-119) takes the FNS figure from 2026-10-01, because the limit is the federally indexed figure of 7 U.S.C. 2014(g) and Colorado's other COLA tables in the same rule were updated to FY2027. The limit only matters for a Standard Eligibility household (categorically eligible households skip the resource test). Items: CO-119, CO-1243.
@@ -957,6 +1108,13 @@ Body: Two places where the version of 10 CCR 2506-1 effective 2026-10-01 (D-82) 
 Open-question sweep (2026-11-21): (2) is resolved: the elderly/disabled resource limit is the figure 7 U.S.C. 2014(g)(1) indexes and FNS publishes ($4,750 for FY2027, D-83, S732); a State rule cannot set a lower federal resource limit, so snap_resource_limit_elderly_disabled (CO-119) keeps the FNS version (no change). (1) stays open on its date only: sec. 10103 governs and snap_entitled_to_heating_cooling_allowance (CO-1243) follows it, but FNS's "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Treatment of Energy Assistance Payments - Revised" memo, which would state the implementation date, is served only from www.usda.gov, which refused the request (Access Denied). Items: CO-1243.
 
 CDHS stakeholder review fix round (2026-11-21): as for OQ-1. Sec. 10103 (D-5) has no effective-date clause; snap_entitled_to_heating_cooling_allowance (CO-1243) now carries an effective range from July 4, 2025 and a statute_override note naming 10 CCR 2506-1 4.407.31.A.1.b; the CDHS position on ongoing cases (recertification) is recorded as program knowledge in OQ-533, not adopted. Items: CO-1243.
+
+Class: blocked on a named document
+Owner: SNAP policy owner
+Assumption: The narrower route to the heating and cooling utility allowance applies from the day the 2025 Act was enacted.
+Blocked on: FNS memorandum "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Treatment of Energy Assistance Payments - Revised" (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it)
+
+Checked 2026-11-22: Pub. L. 119-21 sec. 10103 (D-5) has no effective-date clause, and 10 CCR 2506-1 4.407.31.A.1.b (D-82, S743) still grants the allowance for any LEAP payment; only the memorandum states the date FNS applies the change.
 
 ### OQ-252. Colorado Works sanctions and diversion: defaults and county options
 
@@ -968,6 +1126,12 @@ Checked 2026-11-21: 9 CCR 2503-6 3.606.8.A.6 (S762) leaves the higher income lim
 
 CDHS stakeholder review fix round (2026-11-21) (C-3): part (3) is now modeled as far as the text allows. The diversion amount is the county-approved amount in the agreement (cw_county_approved_diversion_amount, CO-2559) and cw_diversion_payment (CO-2560) pays it when cw_diversion_eligible holds; 3.606.8 states no dollar cap (OQ-531).
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A case that states no sanction has none, and a county's higher diversion income limit is entered as a yes or no for the case.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.606.8.A.6 (D-81, S762) leaves the higher income limit to "the county's policy" up to "the maximum criteria established in the State plan for non-recurrent short-term benefits"; neither the county policies nor the State plan figure is in the rule. No published rule settles it.
+
 ### OQ-253. How LEAP's Step B, Step D and Step F adjustments combine, and which poverty guideline Step D uses
 
 Body: 9 CCR 2503-7 3.758.47 Step G (S772) says the benefit is determined "by subtracting the applicable adjustments listed above, in Steps B-F from the household's estimated home heating costs (EHHC)". Step B is a percentage "of the estimated home heating costs (EHHC) of the applicant household to be adjusted" and Step D reduces "the amount the of estimated home heating costs (EHHC)" by the income-band percentage (S770, S771), so leap_benefit_amount (CO-1281) reads both as shares of the same costs (after the Step C electric portion and the Step E division) and subtracts their sum; a sequential reading (apply B, then D to what remains) would give a slightly larger benefit. Step F deducts the $180 allowance "from the amount remaining after Step B", which the item applies after both percentages. Step D's bands are stated as "Federal Poverty Level" percentages without naming a table; leap_household_income_pct_fpl (CO-1278) uses the HHS guideline in force on the determination date and annualizes the month's income. The statewide adjustment rate and the program-year minimum and maximum are not stated in the rule (3.758.48 says the State notifies counties) and are supplied. Items: CO-1272, CO-1276, CO-1277, CO-1278, CO-1281.
@@ -978,7 +1142,13 @@ Phase-10 open-question sweep: checked 2026-11-21: 9 CCR 2503-7 3.758.47 Steps A-
 
 CDHS stakeholder review fix round (2026-11-21): the CDHS reviewer accepts the additive reading provisionally; Step G's "subtracting the applicable adjustments ... in Steps B-F from ... EHHC" supports it. The LEAP office should confirm it against the LEAP system's calculation before approval. Not resolved by text.
 
-### OQ-254. Partly resolved: CCCAP parent fee - children in care and the post-July 2028 formula are modeled; open: the dollars at the band edges and the county-discretion waivers
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: The statewide and income-band reductions are each taken as a share of the same heating costs and added together, and the income bands use the federal poverty guideline in force on the determination date.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.758.47 Steps A-G and 3.758.48 (D-86, S770-S772) and the amendment effective November 1, 2026 (D-173) say the adjustments are subtracted but not in what order, and name no poverty table for Step D. No published rule settles it.
+
+### OQ-254. Partly resolved: CCCAP parent fee - children in care, the post-July 2028 formula and the county waivers are modeled; open: the dollars at the post-2028 band edges
 
 Body: 8 CCR 1403-1 3.124.P (D-87, S785), in force July 1, 2021 through July 31, 2028, assesses 1% of gross countable household income at or below 100% of the FPG, and above it 1% of income plus 14% of every dollar above the FPG plus $15 for each additional child "when households are requesting care for more than one (1) child". (1) No fact states for which children care is requested; cccap_parent_fee_formula_amount (CO-1289) counts the household's eligible children (cccap_is_eligible_child), which overstates the fee for a household with an eligible child not in care. (2) 3.124.Q (S786) replaces the formula from August 1, 2028 with marginal rates by FPG band (1% to 100%, 3% 101-130%, 5% 131-160%, 7% above 160%); CO-1289 carries an effective range ending 2028-08-01 and the Q formula is not modeled, so cccap_parent_fee is unknown for later dates. Q's table also leaves the band edges between 100% and 101% (and 130%/131%, 160%/161%) unstated. (3) cccap_parent_fee (CO-1290) models the no-income, protective-services, Colorado-Works-non-paid-activity exceptions and the 20% quality and 55% part-time reductions, but not the county-discretion waivers (Head Start dual enrollment, teen-parent hardship, declared disaster, the $5 hardship reduction), the homelessness stabilization period, or a protective services household whose child has countable income (3.124.G, I.1, I.5, I.6, I.8, S, X); it treats a Colorado Works household with no earned or self-employment income as one in a non-paid activity. Items: CO-1289, CO-1290.
 
@@ -988,7 +1158,15 @@ Phase-10 open-question sweep. (1) Resolved: cccap_is_eligible_child (CO-980) now
 
 CDHS stakeholder review fix round (2026-11-21): (C-8) the $15 per additional child now counts the eligible children for whom care is requested (cccap_care_is_requested_for_child, CO-2579, read as requested when not stated). (C-7) the teen-parent hardship waiver (I.1), Child Welfare Child Care (I.4) and the homelessness stabilization period (I.5) are modeled with facts CO-2575-CO-2577, and a protective services household whose children have countable income pays the formula fee (I.6) on that income (cccap_parent_fee_income, CO-2578; OQ-536). Still open: the dollars at the post-2028 band edges (the CDHS reviewer reads them as continuous, as the draft does) and the county-discretion waivers of 3.124.G, I.8, S and X.
 
-### OQ-255. Partly resolved: Summer EBT (SUN Bucks) - no Colorado rule exists, and school age, special provision schools and the guideline year are settled; open: Colorado's optional categorical sources and the household reading of categorical eligibility
+Open-question classification pass (2026-11-22): part (3) is resolved. 8 CCR 1403-1 3.124.G, I.8, S and X (D-87, S2302) let a county waive the fee for a child dually enrolled in Head Start or Early Head Start, for a declared disaster or emergency (up to twelve months) or for a one- or two-teen-parent household for whom it is a hardship, and reduce it to $5 for hardship under an approved county plan. Each is a county decision documented in the case: new supplied facts cccap_parent_fee_waived_by_county (CO-3505) and cccap_parent_fee_hardship_reduction_approved (CO-3506), each read as false when not stated, and the parameter cccap_parent_fee_hardship_reduced_amount (CO-3507, $5). The fee the formula assesses after the quality and part-time reductions is now its own item, cccap_parent_fee_assessed (CO-3508), and cccap_parent_fee (CO-1290) pays nothing under a waiver and no more than $5 under a hardship reduction (new tests CO-1290-T11 to T13, CO-3508-T1 and T2). No household case states a waiver; no expectation changed. Still open: the dollars between 100% and 101%, 130% and 131%, and 160% and 161% of the guideline after July 2028. Items: CO-1289, CO-1290, CO-3505, CO-3506, CO-3507, CO-3508.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: After July 2028 the parent fee bands are read as continuous at 100, 130 and 160 percent of the poverty guideline.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.124.Q (D-87, S786) states the bands as "101-130%", "131-160%" and above, in whole percentages, and 3.124.P (S785) states the earlier formula; neither says which band an income between two whole percentages falls in. No published rule settles it.
+
+### OQ-255. Partly resolved: Summer EBT (SUN Bucks) - no Colorado rule exists, and school age, special provision schools, the guideline year and the household reading of categorical eligibility are settled; open: Colorado's optional categorical sources
 
 Body: The SUN Bucks chapter is built from 7 CFR part 292 (D-88), FNS's 2026 benefit levels notice (D-89) and the 2026-2027 school meal Income Eligibility Guidelines notice (D-90). (1) No Colorado rule for Summer EBT was found: the Secretary of State's lists for the Department of Human Services' SNAP (10 CCR 2506-1), Income Maintenance (9 CCR 2503) and Food Distribution (12 CCR 2514-1) agencies carry none, and 10 CCR 2506-1 (D-82) does not mention Summer EBT; Colorado's Plan for Operations and Management (292.8), which states its streamlined-certification sources and summer operational period, was not fetched. (2) "School aged" is Colorado's compulsory-attendance age (292.2, S793); the Colorado statute was not fetched, so sebt_is_school_aged (CO-1292) is supplied rather than derived from date_of_birth. (3) Whether Colorado uses Medicaid or another means-tested program as a streamlined-certification source (292.12(d)(2)) is not stated in any fetched text; such a ground enters through sebt_other_categorical_basis (CO-1296), with SNAP and TANF read from the volume's own facts (snap_is_eligible, receives_tanf_cash). (4) The guideline chart in D-90 is an image; sebt_income_eligibility_limit (CO-1297) derives the monthly figure from the method the notice states (2026 poverty guideline x 1.85, rounded up, then divided by twelve and rounded up), using the HHS guideline in force on the determination date, so January-June determinations use the new year's poverty figures before the July 1 guideline change (292.5(b)). (5) The special-provision-school distinctions of 292.6(c) (no school-meal application route other than the NSLP/SBP or Summer EBT application) are not separately modeled. Items: CO-1292, CO-1296, CO-1297, CO-1298.
 
@@ -999,6 +1177,13 @@ Phase-10 open-question sweep. (1) Confirmed: there is no Colorado Summer EBT rul
 CDHS stakeholder review fix round (2026-11-21) (C-11): the reviewer's understanding of Colorado's streamlined-certification sources is program knowledge to be confirmed by CDHS and CDE from the Plan for Operations and Management, which is not published on an allowed host; sebt_other_categorical_basis stays a supplied fact. CDE is now a co-approver of SUN Bucks items (volume.yaml).
 
 Hard-coded numbers fix round (audit D-1): sebt_income_eligibility_limit (CO-1297) reads the federal table as of the most recent July 1 (sebt_income_guideline_start_month, CO-3015; P25 and P50); the guideline-year copies CO-1519 and CO-1520 are retired.
+
+Open-question classification pass (2026-11-22): the household reading of categorical eligibility (N-4) is resolved with OQ-552: the household is the persons living with the child as one economic unit (7 CFR 292.2, S2301), read through the new lives_as_one_economic_unit_with relationship (sebt_household_child_receives_snap_or_tanf, CO-2708). Only Colorado's optional streamlined-certification sources remain.
+
+Class: blocked on a named document
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Only SNAP and TANF receipt, and the other grounds a case states for a child, make a child categorically eligible; Colorado is not assumed to use any further program as a source.
+Blocked on: Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which names its streamlined-certification sources (not published on an allowed host; cdhs.colorado.gov refused)
 
 ### OQ-300. Resolved: each program has its own verification request date
 
@@ -1026,11 +1211,24 @@ Phase-9 fix round: the second half is resolved. 8.100.5.B.1.c (S867) applies the
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.4.C.2.a.ii (S864, D-65), which does not say 20% of what; Colorado's Medicaid verification plan, which would, is not published on an allowed host; no published rule settles it.
 
+Class: blocked on a named document
+Owner: Medicaid policy owner, Eligibility operations owner
+Assumption: Income is reasonably compatible when the data figure is no more than 20 percent above the attested figure.
+Blocked on: Colorado's Medicaid and CHIP eligibility verification plan (42 CFR 435.945(j)), which states the reasonable compatibility threshold (not published on an allowed host; the medicaid.gov verification-plan pages tried on 2026-11-22 return 404)
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.2.a.ii (D-65, S864) gives "the reasonable compatibility threshold percentage of 20%" without saying 20 percent of what.
+
 ### OQ-303. The period for Medical Assistance documentation other than citizenship, identity and immigration status
 
 Body: The fetched Medical Assistance texts give a 90-day reasonable opportunity period for citizenship, identity and immigration status (S841, S853, S859) and a 30-day reasonable opportunity period for income that is not reasonably compatible (8.100.4.C.2, 8.100.5.B.1.c; S864, S867). For any other documentation (questionable residency, age, relationships or pregnancy, ABD unearned income and resources, a missing SSN) 42 CFR 435.952(c)(2)(iii) (S838) requires only "a reasonable period," and 8.100.3.D.2 allows extensions on request. The volume uses the 30-day income period for all of these (ma_verification_due_date, CO-1414). A reviewer may prefer the 45- or 90-day processing standard of 8.100.3.D.1 as the outer bound. Items: CO-1349, CO-1414, CO-1415.
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: 42 CFR 435.952(c)(2)(iii) ("a reasonable period") and § 8.100.3 and 8.100.5.B (D-65), which state no period for other documentation; no published rule settles it.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Eligibility operations owner
+Assumption: Documents other than citizenship, identity and immigration status are due 30 days after the request, the period Colorado gives for income that is not reasonably compatible.
+
+Checked 2026-11-22: 42 CFR 435.952(c)(2)(iii) (S838) requires only "a reasonable period", and 10 CCR 2505-10 §§ 8.100.3 and 8.100.5.B (D-65) state 90 days for citizenship and immigration status and 30 days for income but no period for other documentation. No published rule settles it.
 
 ### OQ-304. Resolved: Identity documents: two or three corroborating documents; children's records to 16 or 19
 
@@ -1192,11 +1390,23 @@ Body: 9 CCR 2503-5 3.532.D-F, 3.543.D-F and 3.548.D-F (S1008-S1010) make an OAP,
 
 Checked 2026-11-21: (1) 9 CCR 2503-5 3.532.C-F, 3.543.D-F, 3.548.D-F (S1008-S1010) call the PNA a "grant standard" and a "PNA maximum" of $79 and say nothing of income; 10 CCR 2505-10 8.100.7.V.3.d.j (D-65) pays a nursing facility resident the difference between reduced SSI and the PNA, which supports the income-deducted reading but does not govern the $79. No published rule settles (1). (3) and (4) are resolved: 3.532.D.3 and 3.532.E.2, 3.543.E.2, 3.548.E.2 (D-80, S1318) are clear. The new supplied af_resides_in_psychiatric_facility_thirty_consecutive_days (CO-2006) gives an OAP client 65 or older the PNA, and af_resides_in_unlicensed_or_uncertified_facility (CO-2007) pays neither a PNA nor a grant in af_oap_grant (CO-951) and af_and_grant (CO-952); new tests CO-951-T6 (psychiatric facility at 66: $79 less $50 = $29) and CO-951-T7 (unlicensed facility: $0). The four case persons who state af_resides_in_care_facility_thirty_consecutive_days (two in CO-07, one each in CO-71 and CO-13) now state both new facts false; no case expectation changed. (1) stays open.
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A facility resident's countable income is subtracted from the $79 personal needs allowance.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.532.C-F, 3.543.D-F and 3.548.D-F (D-80, S1008-S1010) call the allowance a "grant standard" and a maximum of $79 and say nothing of income. No published rule settles it.
+
 ### OQ-353. SNAP Standard Medical Expense Deduction: expenses between $165 and $200
 
 Body: 10 CCR 2506-1 4.407.61.A (S1013) uses the $165 SMED "if the total verified medical expenses are greater than thirty-five dollars ($35) and less than or equal to the SMED", and lets the household claim actual expenses "if the total verified expenses, after deducting the first thirty-five dollars ($35), exceed the SMED". Expenses over $165 and up to $200 meet neither sentence. snap_excess_medical_deduction (CO-376) gives such a household the SMED - the greater of $165 and the expenses less $35 - reading the paragraph's first sentence ("eligible for a deduction using either the [SMED] or using actual medical expenses") as a choice the household may make in its favor. Items: CO-376.
 
 Checked 2026-11-21: 10 CCR 2506-1 4.407.61.A (D-82, S1013), unchanged in the 12/30/2025 version (D-133): the SMED applies when expenses are "greater than thirty-five dollars ($35) and less than or equal to the SMED" and actual expenses when they, "after deducting the first thirty-five dollars ($35), exceed the SMED"; Colorado's SMED demonstration terms are not on an allowed host. No published rule settles it.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: A household whose medical expenses are between $165 and $200 gets the standard medical deduction.
+
+Checked 2026-11-22: 10 CCR 2506-1 4.407.61.A (D-82, S1013; unchanged in D-133) gives the standard deduction when expenses are "less than or equal to the SMED" and actual expenses when they, after the first $35, "exceed the SMED", leaving expenses over $165 and up to $200 in neither. No published rule settles it.
 
 ### OQ-354. Colorado Works death reimbursement: how insurance, the estate and responsible persons' resources reduce the benefit
 
@@ -1204,17 +1414,35 @@ Body: 9 CCR 2503-6 3.606.7 (S1005-S1007) says insurance proceeds "shall be used 
 
 Checked 2026-11-21: 9 CCR 2503-6 3.606.7.B.2, F.2.b, F.2.c and F.2.f (S1005-S1007) each say what reduces the Death Reimbursement but not in what order against the $1,500 maximum and the charges. No published rule settles it.
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The death reimbursement is the lesser of $1,500 and the charges the estate leaves unpaid, less insurance and the responsible persons' resources above the limit.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.606.7.B.2, F.2.b, F.2.c and F.2.f (D-81, S1005-S1007) each say what reduces the payment but not in what order against the $1,500 maximum and the charges. No published rule settles it.
+
 ### OQ-355. Adult Financial burial: does the $2,500 combined-charges limit of 3.570.43.F.1 exclude a prepaid plot as A.4 does
 
 Body: 9 CCR 2503-5 3.570.43.A.4 (D-80, `documents/D-80.md:6739-6747`) excludes a prepaid plot of $2,000 or less, or a donated one, from the $2,500 limit; F.1 (`D-80.md:6891`) says "If the combined charges from the provider(s) exceed two thousand five hundred dollars ($2,500), no burial grant payment shall be paid", with no exception. af_burial_eligible (CO-1231) subtracts the plot for both, reading a prepaid plot as no provider charge at death; CO-13 p2 ($2,800 charged with a $600 plot) sits exactly on the difference. Related: burial_services_total_cost (CO-1221) includes the plot, so af_burial_unmet_cost (CO-1230) nets "the full burial costs" including a plot already paid for. The Colorado Works rule states the exemption in its computation steps (3.606.7.F.2.d, S1007) as well as the limit, which supports reading A.4 into F.1. Items: CO-1221, CO-1230, CO-1231.
 
 Checked 2026-11-21: 9 CCR 2503-5 3.570.43.A.4 (D-80:6739-6747) excludes a prepaid plot of $2,000 or less, or a donated plot, from the $2,500 maximum cost limit, and F.1 (D-80:6891) denies payment "If the combined charges from the provider(s) exceed two thousand five hundred dollars ($2,500)" with no exception. No published rule settles whether A.4 reaches F.1.
 
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A prepaid burial plot is left out of the $2,500 combined-charges limit, as it is left out of the cost limit.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.570.43.A.4 (D-80) excludes a prepaid plot of $2,000 or less, or a donated plot, from the $2,500 cost limit, and F.1 denies payment "If the combined charges from the provider(s) exceed two thousand five hundred dollars ($2,500)" with no exception. No published rule settles whether A.4 reaches F.1.
+
 ### OQ-356. SNAP expanded categorical eligibility: gross income "below" or "at or below" 200% of poverty
 
 Body: 10 CCR 2506-1 says ECE household gross income must be "below" 200% of the federal poverty level at 4.401.A.1 (`documents/D-82.md:5704`) and "at or below" at 4.206.C.2.a.1 (`D-82.md:2385`). snap_meets_ece_eligibility (CO-340) compares with at or below against snap_bbce_gross_income_limit (CO-339), the reading of the categorical eligibility section itself; a household with gross income exactly at the 200% figure is categorically eligible under 4.206 and not under 4.401. Items: CO-339, CO-340.
 
 Checked 2026-11-21: 10 CCR 2506-1 4.401.A.1 ("below", D-82:5704) and 4.206.C.2.a.1 ("at or below", D-82:2385); the 12/30/2025 version keeps the same pair (D-133:4850 "below", D-133:2019 "at or below"). No published rule settles it.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Gross income exactly at 200 percent of poverty meets the expanded categorical eligibility limit.
+
+Checked 2026-11-22: 10 CCR 2506-1 4.401.A.1 ("below two hundred percent") and 4.206.C.2.a.1 ("at or below") in D-82, and the same pair in D-133. No published rule settles it.
 
 ### OQ-357. Resolved: the Adult Financial bar on Colorado Works reads the closure reasons of 3.520.71.F.2
 
@@ -1241,6 +1469,12 @@ Body: 4.502.B.2 (S1056) says a change of "fifty ($50) or more" must be verified 
 Checked 2026-11-21: 10 CCR 2506-1 4.502.B.2 (S1056) says both "fifty ($50) or more for each member must be verified" and "changed by fifty dollars ($50) or less, verification is not required"; 7 CFR 273.2(f)(8)(i)(A) (S1055) says "more than $50". No published rule settles the $50 boundary itself. The changed-source and outdated-information parts are NEEDS FACT (a changed-source fact per expense, an outdated-information fact) and are not modeled in this sweep.
 
 Phase-10 open-question sweep (supplied-facts round): the changed-source and outdated-information parts are resolved. 10 CCR 2506-1 4.502.B.1-3 (D-82, S1618) re-verifies an unchanged factor when it is "incomplete, inaccurate, questionable, inconsistent, or outdated" and an expense whose source has changed. New supplied facts: snap_identity_information_is_outdated (CO-2321), snap_immigration_status_information_is_outdated (CO-2322, a changed or expired status included), snap_disability_information_is_outdated (CO-2323), snap_income_information_is_outdated (CO-2324), snap_medical_expenses_information_is_outdated (CO-2325), snap_dependent_care_information_is_outdated (CO-2326), snap_child_support_paid_information_is_outdated (CO-2327) and snap_residency_information_is_outdated (CO-2331), each read as false when not stated; and snap_medical_expenses_source_changed_since_last_certification (CO-2328), snap_dependent_care_source_changed_since_last_certification (CO-2329) and snap_child_support_paid_source_changed_since_last_certification (CO-2330). The recertification arms of CO-1370, CO-1373, CO-1375, CO-1376, CO-1377, CO-1380, CO-1381, CO-1382 and CO-1384 read them (new tests CO-1370-T4, CO-1373-T5, CO-1375-T7, CO-1376-T7, CO-1380-T6 and T7, CO-1381-T4, CO-1382-T4 and T5, CO-1384-T3 and T4). The only recertification case, CO-03, has no verification expectations; no expectation changed. Still open: the $50 boundary itself (checked 2026-11-21, as above); CO-1619 keeps "more than $50".
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: At recertification an income change must be verified only when it is more than $50.
+
+Checked 2026-11-22: 10 CCR 2506-1 4.502.B.2 (D-82, S1056) says both that a change of "fifty ($50) or more" must be verified and that one of "fifty dollars ($50) or less" need not be; 7 CFR 273.2(f)(8)(i)(A) (S1055) says "more than $50". No published rule settles a change of exactly $50.
 
 ### OQ-372. Resolved: Medical Assistance renewal: citizenship information and the five-year gap
 
@@ -1274,13 +1508,21 @@ Body: 3.541.1.A.1.b (S1080) gives thirty calendar days following the interview t
 
 Resolution (open-question sweep, 2026-11-21): 3.541.1.A.1.b (S1080) counts the thirty calendar days "following the interview". The new supplied af_interview_date (CO-2005) states the date, and af_verification_status (CO-1438) counts the period from it, reading the verification request date when a case does not state the interview (the meaning says so; that is the old behavior, so no expectation changed). New test CO-1438-T6: an interview on September 1 makes the examination past due on October 20 although the request was dated October 1. Items: CO-1438, CO-1599, CO-1669, CO-2005.
 
-### OQ-376. Partly resolved: Department of Revenue Rule 5 repealed - Colorado Works reads the incorporated edition; open: the edition LEAP reads and the DMV lawful presence match
+### OQ-376. Partly resolved: Department of Revenue Rule 5 repealed - Colorado Works reads the incorporated edition, and a DMV lawful presence match is a document received; open: the edition LEAP reads
 
 Body: The current 1 CCR 204-30 (effective 10/15/2026, D-120) shows Rule 5 withdrawn ("Withdrawal effective December 31, 2026", S1072) and its editor's notes "Rule 5 repealed eff. 10/15/2026" (S1098). 9 CCR 2503-6 3.604.3.I.1 incorporates Rule 5, Appendices A and B "(Mar. 2, 2021), no later editions", so Colorado Works still reads the incorporated edition (D-119); 9 CCR 2503-7 3.753.11 and 3.753.14 name Appendices A and B without an edition. The volume reads the incorporated edition for both until CDHS amends its rules. Appendix A.C.2 (the applicant's own declaration) and A.D-G are not document types. 3.604.3.H.4 (S1096) lets the county use the DMV to verify lawful presence and identity; cw_lawful_presence_verification_is_pending (CO-1644) accepts a produced document or a SAVE result and does not read an identity match (review C-8), so a DMV lawful-presence match is stated by recording the license as the document received. Items: CO-1644, CO-1657.
 
 Open-question sweep (2026-11-21): the Colorado Works half is resolved: 9 CCR 2503-6 3.604.3.I.1 incorporates Rule 5, Appendices A and B "(Mar. 2, 2021), no later editions" (D-104), so the repeal of Rule 5 does not change what Colorado Works accepts and cw_lawful_presence_verification_is_pending (CO-1644) reads the incorporated edition (D-119). The DMV lawful-presence match of 3.604.3.H.4 (S1096) has no fact and is not modeled. The LEAP half (3.753.11, 3.753.14 name the appendices with no edition) belongs to the LEAP items and stays open.
 
 Phase-10 open-question sweep (LEAP part): checked 2026-11-21: 9 CCR 2503-7 3.753.11 and 3.753.14 (D-86, D-107) still name 1 CCR 204-30 Appendices A and B without an edition, and the current 1 CCR 204-30 (D-120, S1072, S1098) has Rule 5 withdrawn; no published rule settles which edition LEAP reads, so the volume keeps the incorporated edition.
+
+Open-question classification pass (2026-11-22): the DMV half needs no fact of its own. 9 CCR 2503-6 3.604.3.H.4 (S1096) lets the county use the DMV to verify lawful presence and identity, and a DMV match is stated by recording the license as the document received, which cw_lawful_presence_verification_is_pending (CO-1644) already reads; the rule states no separate effect of a DMV match. Only the edition LEAP reads remains.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: LEAP accepts the documents of the 2021 edition of the Department of Revenue's lawful presence list, the edition Colorado Works incorporates.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.753.11 and 3.753.14 (D-86, D-107) name 1 CCR 204-30 Appendices A and B without an edition, and the current 1 CCR 204-30 (D-120, S1072, S1098) has Rule 5 withdrawn. No published rule says which edition LEAP reads.
 
 ### OQ-377. Partly resolved: SUN Bucks verification - the exceptions are carried by existing facts; open: no fixed response period
 
@@ -1289,6 +1531,11 @@ Body: 7 CFR 292.14 (D-117) sets no period for a household selected in the sample
 Phase-10 open-question sweep. The exceptions are carried after all: foster, migrant and runaway children (and FDPIR or another approved program) are within sebt_other_categorical_basis (CO-1296), which sebt_requires_verification_of_income (CO-1699) already reads, and homelessness is snap_is_homeless; CO-1699's precision now says so and records that the same fact also carries Head Start and individual certification, which 292.14(f)(1) does not list, and that (f)(1) speaks of all children in the household. The period stays open: checked 2026-11-21: 7 CFR 292.14(a)(1)(ii), (f)(2)(i), (f)(7) (D-117), C.R.S. 26-2-309 (D-142) and the Secretary of State's rule lists (D-143); no published rule settles the date by which a selected household must respond, so sebt_verification_status (CO-1698) keeps no past-due state.
 
 CDHS stakeholder review fix round (2026-11-21): the CDHS reviewer confirms the response period is in Colorado's Plan for Operations and Management, which was not fetched. The SUN Bucks pending items say so in their due-date note.
+
+Class: blocked on a named document
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: A household selected for Summer EBT verification has no fixed deadline, so its verification is never reported as past due.
+Blocked on: Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which sets the response period of 292.14(f)(2)(i) (not published on an allowed host; cdhs.colorado.gov refused)
 
 ### OQ-378. Resolved: the remaining CCCAP verifications are modeled
 
@@ -1356,7 +1603,7 @@ Open-question sweep (2026-11-21): 9 CCR 2503-5 3.520.72.A-B (D-80) has its own r
 
 Resolution (phase-10 open-question sweep, supplied-facts round): 9 CCR 2503-5 3.520.72.A and E (S1636). The new af_client_and_spouse_countable_resources (CO-2389) states the client's and spouse's resources as Adult Financial counts and exempts them (3.520.72-77); af_countable_resources (CO-947) reads it, with the SSI-method figure standing in when it is not stated (documented on the fact), and adds, for a sponsored non-citizen, the sponsor's countable resources (af_sponsor_countable_resources, CO-2390) over the sponsor's limit of $2,000, $3,000 (married, spouse not a co-sponsor) or $4,000 (co-sponsor spouse). New tests CO-947-T3 to T5; CO-947-T1 and T2, CO-948-T1 and T2 now state a citizen and CO-953-T2 states no sponsor. No case states the new figures or a sponsor; no expectation changed.
 
-### OQ-393. Partly resolved: residency - Medicaid's special rules, CCCAP's county residence and SNAP's residency prong are modeled; open: SNAP's county of application
+### OQ-393. Resolved: residency - Medicaid's special rules, CCCAP's county residence and SNAP's residency prong are modeled, and SNAP's county of application is not an eligibility condition
 
 Body: is_colorado_resident (CO-505) compares the stated state of residence with Colorado. Not modeled: Medicaid's 42 CFR 435.403(e)-(j) rules for institutionalized persons who cannot state intent, temporary absences and children placed out of state (when modeled they become ma_meets_residency over CO-505); CCCAP's county residence (cccap_requires_verification_of_residency, CO-1440, speaks of 'a verified resident of the county'; no county_of_residence fact exists); and a SNAP residency condition under 7 CFR 273.3, which no SNAP item states, so SNAP eligibility does not read residence at all. Items: CO-505, CO-1440, CO-987.
 
@@ -1365,6 +1612,8 @@ Open-question sweep (2026-11-21): the SNAP part is resolved with OQ-3: snap_meet
 Phase-10 open-question sweep: the CCCAP part is resolved (OQ-159): cccap_meets_county_residency (CO-2107) reads county_of_residence (CO-1979) and cccap_application_county (CO-2106). The Medicaid and SNAP parts are outside this sweep.
 
 Phase-10 needs-fact sweep (2026-11-21): the Medicaid part is resolved. ma_meets_residency (CO-2250) is Medicaid's residency over is_colorado_resident: for a person in an institution who is incapable of indicating intent (ma_is_incapable_of_indicating_intent, CO-2251; § 8.100.3.B.3, S1518; if not stated, no finding of incapacity), Colorado must be the state ma_institutionalized_state_of_residence (CO-2257) gives - the state that arranged an out-of-state placement (CO-2255), otherwise for a person under 21 or incapable before 21 (CO-2252, parameter CO-2256) the parents' or guardian's state at placement (CO-2253), otherwise the institution's state (CO-2254). The conflict between B.2.b and B.2.c with 42 CFR 435.403(h)(4) for a person incapable from 21 on is OQ-472. Temporary absence (B.4) and a home outside Colorado the person intends to return to are already in state_of_residence's meaning. Every Medicaid eligibility item that read is_colorado_resident now reads ma_meets_residency (CO-554, 555, 561, 562, 611, 618, 620, 652, 653, 654, 1150-1152, 1154, 1159, 1161-1163, 1177); CHP+ keeps is_colorado_resident under its own rule. Since incapacity is read as absent when not stated, no case changed. The SNAP part is outside this sweep.
+
+Resolution (open-question classification pass, 2026-11-22): the SNAP county half is answered by 10 CCR 2506-1 (D-82, S2300). 4.303.A has an applicant live in the county where the application is made unless the local office arranges filing in a nearby county; 4.303.C makes a county resident eligible "provided other eligibility requirements are met"; and 4.902.1 lets an office that receives an application belonging to another county process it to completion and transfer the case once the decision is made. The county is where the case is administered, not a condition of eligibility, so SNAP eligibility reads Colorado residence alone (snap_meets_citizenship_requirement, CO-309, through is_colorado_resident), and a household that applied in the wrong county is not denied for it. CO-309 now cites S2300 and says so; no value changes, so no test is added. Every part of this question is now settled.
 
 ### OQ-394. Resolved: CCCAP's citizen/legal resident is a citizen, national or qualified alien (3.103.Z and the HHS notice it incorporates)
 
@@ -1396,13 +1645,31 @@ Resolution (engineering item follow-up pass, 2026-11-21; product-owner decision 
 
 Body: 42 CFR 435.556(a)(1) and 42 U.S.C. 1396a(xx)(1)(A) (S1211, S1215) let the State plan require community engagement for one to three consecutive months before the month of application, and 435.556(a)(2) for one or more months, consecutive or not, before a renewal; 435.557(d) (S1216) lets the State verify more often than at renewal. No published Colorado rule (the current 10 CCR 2505-10 § 8.100, D-65, effective 11/14/2026, says nothing of community engagement) or State plan amendment on an allowed host states the choices. The draft uses one month at application (ma_community_engagement_application_lookback_months, CO-1902) and one month at renewal (ma_community_engagement_renewal_required_months, CO-1903), the least the federal text allows, verifies at application and renewal only, and reads the renewal period as the months from the month of the most recent determination's effective date through the month before the determination (CO-1973). Items: CO-1902, CO-1903, CO-1973, CO-1974.
 
+Class: state policy choice
+Owner: Medicaid policy owner, State plan coordinator
+Assumption: The work requirement looks back one month at application and one month at renewal, and is checked only at those times.
+
+Checked 2026-11-22: 42 CFR 435.556(a)(1)-(2) and 435.557(d) (S1211, S1216) and 42 U.S.C. 1396a(xx)(1)(A) (S1215) leave the look-back months and the verification frequency to the State plan, and 10 CCR 2505-10 § 8.100 (D-65, effective 11/14/2026) has no community engagement text. No published rule settles it.
+
 ### OQ-411. Community engagement: the short-term hardship election, a good faith exemption, and early implementation
 
 Body: 42 CFR 435.555 (S1210) is a State option; 435.559(b) lets a State implement before January 1, 2027; 435.560 (S1213) lets CMS exempt a State that shows a good faith effort, for six months at a time and no later than December 31, 2028. No published Colorado rule or CMS approval on an allowed host states any of these. The draft does not apply the hardship exception (ma_elects_short_term_hardship_exception, CO-1911, false; the hardship items CO-1939-CO-1943 and CO-1971 are modeled so that a yes changes only the parameter) and starts the requirement on January 1, 2027 (CO-1900). If CMS grants Colorado an exemption, CO-1900 needs a later dated value. Items: CO-1900, CO-1911, CO-1971, CO-1974.
 
+Class: state policy choice
+Owner: Medicaid policy owner, State plan coordinator
+Assumption: Colorado does not use the short-term hardship exception, has no good-faith exemption, and starts the requirement on January 1, 2027.
+
+Checked 2026-11-22: 42 CFR 435.555, 435.559(b) and 435.560 (S1210, S1213) make each a State option or a CMS decision, and 10 CCR 2505-10 § 8.100 (D-65) has no community engagement text; no CMS approval for Colorado is on an allowed host. No published rule settles it.
+
 ### OQ-412. Community engagement: other State choices inside the exclusions and the hours
 
 Body: The federal text leaves these to the State, and Colorado has published none: the optional relatives of the caretaker relative definition, which follow the State's 42 CFR 435.110 elections (435.554(a)(iv), S1207); the list of conditions that identify the medically frail (435.554(c)(5)(ii), S1209), so the five conditions are supplied facts; a minimum time commitment for a drug or alcohol treatment program (435.554(c)(8)); computing work hours from income divided by the minimum wage when hours are not documented (435.552(e)(2)(i)-(ii), S1204); and not seeking further information to verify a mandatory exception (435.557(g)(1), S1216). (Phase-10 needs-fact sweep, 2026-11-21: the first of these is published after all. Colorado's 435.110 election is its definition of caretaker relative, "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care" (§ 8.100.1, S1500), which takes 435.4's option (3); 435.554(a)(iv) applies the same election, and CO-1962 cites it. See OQ-51.) The draft reads the caretaker edge as the 435.4 relatives, supplies the medically frail conditions, applies no minimum time, counts documented hours only, and does not model verification of the requirement (435.557) or the noncompliance procedures (435.558). Items: CO-1962, CO-1964, CO-1965, CO-1967.
+
+Class: state policy choice
+Owner: Medicaid policy owner, State plan coordinator
+Assumption: The medically frail conditions are entered case by case, a treatment program needs no minimum time, only documented hours count, and the State's verification choices are not applied.
+
+Checked 2026-11-22: 42 CFR 435.554(c)(5)(ii) and (c)(8), 435.552(e)(2) and 435.557(g)(1) (S1204, S1207, S1209, S1216) leave each to the State, and 10 CCR 2505-10 § 8.100 (D-65) has no community engagement text. No published rule settles them.
 
 ### OQ-413. Resolved: community engagement - the mandatory groups, the relatives, the 1115 branch, the noncompliance procedure and the undocumented adult
 
@@ -1422,17 +1689,41 @@ Resolution (CDHS stakeholder review fix round (2026-11-21), S-4): C.R.S. 26-2-11
 
 Body: 10 CCR 2505-3 § 320.1 (S1504) states the copayment bands in whole percentages of the federal poverty level: less than 101% (A), "between 101% and 150%" (B), "between 151% and 200%" (C) and "between 201% and 260%" (D). A family whose income ratio is above 150% but below 151%, or above 200% but below 201%, falls in no band. chp_copayment_income_band (CO-2228) reads B as up to and including 150% and C as up to and including 200%, so those ratios fall into the next band up (C and D). The rule also leaves open whether "between 101% and 150%" includes exactly 150%; the draft includes it in B. Checked 2026-11-21: § 320.1 (D-66) and § 330 (D-66); no published rule settles the gaps. Items: CO-2228, CO-2225, CO-2226, CO-2227.
 
+Class: state policy choice
+Owner: CHP+ policy owner
+Assumption: Income at exactly 150 or 200 percent of poverty falls in the lower copayment band, and a ratio just above it falls in the next band up.
+
+Checked 2026-11-22: 10 CCR 2505-3 § 320.1 and § 330 (D-66, S1504) state the bands in whole percentages ("between 101% and 150%", "between 151% and 200%", "between 201% and 260%"). No published rule settles the ratios between them.
+
 ### OQ-471. Income trust deductions omit the family allowance
 
 Body: The income trust rules of 10 CCR 2505-10 § 8.100.7 (trusts, 6.a.i.c, S1508) say "The only deductions from the monthly trust distribution to the Long Term Care institution are the allowable deductions which are permitted for Medical Assistance-eligible persons who do not have income trusts. Allowable deductions include only the following: i) Personal need allowance ii) Spousal income payments iii) Approved PETI payments". The first sentence allows every deduction a person without a trust receives, which § 8.100.7.T.1 and 42 U.S.C. 1396r-5(d)(1) make include the family allowance for dependent family members; the list that follows omits it. ma_patient_payment (CO-658) keeps the family allowance for a trust user, reading the first sentence and the federal requirement over the list. Checked 2026-11-21: § 8.100.7 (D-65) states both sentences; no published rule settles which governs. Items: CO-658, CO-2238.
+
+Class: needs Legal
+Owner: Legal, LTSS policy owner
+Assumption: A person with an income trust still gets the family allowance for dependent family members in the patient payment.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7 (D-65, S1508) first allows every deduction a person without a trust receives and then lists only the personal needs allowance, spousal income and PETI payments; § 8.100.7.T.1 and 42 U.S.C. 1396r-5(d)(1) include the family allowance. The readings: (a) the first sentence and the statute govern, the reading in force; (b) the list is exhaustive. No published rule reconciles them.
 
 ### OQ-472. Residency of an institutionalized person who became incapable of indicating intent at or after 21
 
 Body: 10 CCR 2505-10 § 8.100.3.B.2.b (S1518) makes the state of residence of an institutionalized person who became incapable of indicating intent at or after age 21 "the state in which the person was living when he or she became incapable of indicating intent", or, if that cannot be determined, when first so determined. B.2.c says that "upon placement in another state, the new state is the state of residence unless the current state of residence is involved in the placement", and 42 CFR 435.403(h)(4) (D-33) makes it "the State in which the individual is physically present, except where another State makes a placement". For a person who became incapable in one state and was then placed privately in an institution in another, B.2.b gives the first state and B.2.c and the federal rule the second. ma_institutionalized_state_of_residence (CO-2257) follows B.2.c and the federal rule (the institution's state, ma_institution_state), because the federal definition binds the State plan. Checked 2026-11-21: § 8.100.3.B.2-3 (D-65) and 42 CFR 435.403(e), (h) (D-33); no published rule reconciles them. Items: CO-2257, CO-2250, CO-2254.
 
+Class: needs Legal
+Owner: Legal, Medicaid policy owner
+Assumption: A person who became unable to state intent at or after 21 and was then placed privately in another state's institution is a resident of the state where the institution is.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.B.2.b-c (D-65, S1518) and 42 CFR 435.403(h)(4) (D-33, "physically present"): B.2.b gives the state the person lived in when the incapacity began, B.2.c and the federal rule the state of the institution. The readings: (a) the federal rule and B.2.c govern, the reading in force; (b) B.2.b governs. No published rule reconciles them.
+
 ### OQ-473. Ineligible child allocation: only from an ineligible parent's income, or also from applicant spouses with children
 
 Body: 10 CCR 2505-10 § 8.100.5.H.3.a.i (S1506) disregards the Ineligible Child Allocation "from the ineligible parents' gross income", and H.2.c defines an ineligible parent or spouse as one "who is not applying or eligible for SSI". H.3.a.iii adds that "No allocations are allowed for applicant/recipient spouses who do not have children in the home", which implies that applicant or recipient spouses who do have children in the home receive allocations from their own income. The draft takes the allocation only from the income of a spouse living with the person who is not applying for or eligible for SSI (ma_ssi_child_allocation_from_spouse_unearned and _earned, CO-2278, CO-2279), as H.3.a.i says; a single applicant parent, or a couple both applying for or eligible for SSI, gets no allocation. Checked 2026-11-21: § 8.100.5.H.1-4 (D-65), which incorporates 20 CFR 416.1112 only, not the SSI deeming rules; no published rule settles it. Items: CO-2278, CO-2279.
+
+Class: state policy choice
+Owner: Medicaid policy owner, LTSS policy owner
+Assumption: The allocation for an ineligible child is taken only from the income of a spouse who is not applying for or eligible for SSI.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.H.1-4 (D-65, S1506): H.3.a.i takes the allocation "from the ineligible parents' gross income", and H.3.a.iii implies that applicant spouses with children in the home get one too, without saying from what; H.4.e incorporates 20 CFR 416.1112 only. No published rule settles it.
 
 ### OQ-490. Resolved: Colorado Works disregards on a disqualified member's earnings - 3.605.1.A.6 governs status and SSN disqualifications, 3.604.2.M the others
 
@@ -1452,53 +1743,123 @@ Body: 42 U.S.C. 1396b(v)(5) (S1700) limits payment "beginning on October 1, 2026
 
 Hard-coded numbers fix round (audit E-1): the switch is a dated yes/no parameter, ma_alien_payment_restriction_applies (CO-3034), false before October 1, 2026 and true from it, rather than a comparison of the determination date with ma_alien_payment_restriction_start_date (CO-2401, retired). The question, determination date or month of service, stands.
 
+Class: needs Legal
+Owner: Legal, Medicaid policy owner
+Assumption: The October 2026 limit on federal payment for some non-citizens is applied to every month of a determination made on or after October 1, 2026, including earlier months of retroactive coverage.
+
+Checked 2026-11-22: 42 U.S.C. 1396b(v)(5) (S1700) limits payment "beginning on October 1, 2026" for assistance furnished, and CMS SHO #26-001 (S1704) applies it to applicants determined eligible and enrollees on and after that date; no Colorado rule addresses retroactive months. The readings: (a) by determination date, the reading in force; (b) by month of service, which would pay for September 2026 services on a later application. No published rule settles it.
+
 ### OQ-511. Children with Disabilities Buy-In premiums: whether the public health emergency waiver has ended
 
 Body: § 8.100.6.Q.1.g.vii (S1728) says the Department "will continue to waive premiums until the last day of the twelfth month following the end of the COVID-19 Public Health Emergency" (May 11, 2023, so May 31, 2024) and "will notify all members as to when required premiums will resume". ma_cbwd_premium (CO-621) reads the waiver as ended and charges the schedule. The HCPF reviewer [K] asked to confirm whether premiums are being charged; the Department's notice is on hcpf.colorado.gov, which this session cannot fetch. Items: CO-621.
+
+Class: blocked on a named document
+Owner: Premium and finance owner
+Assumption: The pandemic waiver of buy-in premiums for children has ended, and premiums are charged on the schedule.
+Blocked on: HCPF's notice to members that Children with Disabilities Buy-In premiums resume, which 10 CCR 2505-10 § 8.100.6.Q.1.g.vii promises (hcpf.colorado.gov refused)
 
 ### OQ-512. "The MAGI needs standard for his/her family size" in the needy persons under 21 groups
 
 Body: § 8.100.4.H.1.a and d (S1717) admit Psych <21 and Alternatives to Foster Care youth "whose household income is less than the MAGI needs standard for his/her family size"; § 8.100 does not define the term. ma_needy_young_person_category (CO-2419) reads it as the highest MAGI income standard among the groups whose demographic criteria the person meets (ma_magi_highest_income_standard_pct, CO-539: 142% for a child under 19, 133% for an adult of 19 or 20), compared strictly with the MAGI household income. HCPF's Eligibility Policy section would know the standard CBMS applies. Items: CO-2419.
 
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The needs standard for a young person's family size is the highest MAGI income limit of the groups whose age and other conditions the person meets.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.H.1.a and d (D-65, S1717) use "the MAGI needs standard for his/her family size", and neither the definitions of § 8.100.1 nor any other paragraph of § 8.100 (D-65) defines it. No published rule settles it.
+
 ### OQ-513. Hospital presumptive eligibility: does "aged 19-65" include 65?
 
 Body: § 8.100.3.R.1.c and R.2.d (S1721, S1722) open hospital presumptive eligibility to "An applicant aged 19-65" at or below 133% FPL. The Adults group the category stands for ends at 65 (42 CFR 435.119(b)(1); ma_adult_upper_age_limit, CO-199), so ma_hospital_presumptive_eligibility_category (CO-2439) reads the range as 19 through 64. Read literally, a 65-year-old would qualify for a presumptive period in a group whose full determination excludes them. Items: CO-2439.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Hospital presumptive eligibility for adults covers ages 19 through 64.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.R.1.c and R.2.d (D-65, S1721, S1722) say "aged 19-65"; 42 CFR 435.1110(a) and (c) (D-35) apply the requirements of 435.1102 and 435.1103 and let the State permit additional bases under its plan, and the adult group ends at 65 (42 CFR 435.119(b)(1)). Whether Colorado permits a 65-year-old a presumptive period is its plan choice; no published rule settles it.
 
 ### OQ-514. Funding source and CBMS aid codes
 
 Body: The HCPF review's C-12 [K] asked for the funding stream (Title XIX, Title XXI, state-only) CBMS needs for aid codes and HCPF needs for budget. ma_funding_source (CO-2456) states it from the volume's own outcomes and the funding the statutes name (C.R.S. 25.5-2-104(4) and 25.5-5-201(6)(c) for state-only coverage, S1729, S1730; CMS SHO #26-001 for CHIP and emergency services, S1703, S1731). The aid codes themselves, and how CBMS orders a person who qualifies through more than one route, are HCPF operational choices not published in a fetchable source. Items: CO-2456.
 
+Class: blocked on a named document
+Owner: Medicaid policy owner, Premium and finance owner
+Assumption: The funding stream is stated from the program each result belongs to and the funding the statutes name; the codes the eligibility system assigns are placeholders.
+Blocked on: HCPF's CBMS aid code table and its order of precedence for a person eligible through more than one route (not published on an allowed host; hcpf.colorado.gov refused)
+
 ### OQ-515. The date Medicaid, CHP+ and the Medicare Savings Programs start using each year's poverty guidelines
 
 Body: federal_poverty_guideline_annual_table (CO-181) and its companion (CO-182) date each HHS table from January 1 (2025 from S1710, 2026 from S55). HHS publishes in mid-January, and the HCPF reviewer says [K] HCPF applies the new guidelines on the date its annual memo sets (F-1); the memo is on hcpf.colorado.gov, which this session cannot fetch. A January determination may therefore use a figure HCPF had not yet adopted. Items: CO-181, CO-182.
+
+Class: blocked on a named document
+Owner: Medicaid policy owner, CHP+ policy owner
+Assumption: Each year's federal poverty guidelines are used from January 1.
+Blocked on: HCPF's annual memo setting the date Medical Assistance, CHP+ and the Medicare Savings Programs adopt the new poverty guidelines (hcpf.colorado.gov refused)
 
 ### OQ-516. 2025 spousal impoverishment and Medicare Savings Program figures not loaded
 
 Body: The HCPF review (F-2) asked for 2025 versions of the indexed figures so that a 2026 application's retroactive months in late 2025 have a figure. The 2025 SSI federal benefit rates, substantial gainful activity amounts (S1711) and poverty guidelines (S1710) are now versions. CMS's 2025 SSI and Spousal Impoverishment Standards chart (the 2025 CSRA minimum and maximum, the MMMNA maximum and the home equity limit) and the 2025 Medicare Savings Program resource limits were not found at a fetchable URL (medicaid.gov serves only the current chart and a 2021 one at the addresses tried; medicare.gov serves the current limits), so ma_csra_minimum, ma_csra_maximum, ma_mmmna_cap, ma_home_equity_limit and the MSP resource limits (CO-827, CO-828, CO-830, CO-831, CO-807, CO-808) still begin on 2026-01-01 and a 2025 month has no value for them. Items: CO-807, CO-808, CO-827, CO-828, CO-830, CO-831.
 
+Class: blocked on a named document
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: The spousal impoverishment and Medicare Savings Program resource figures start in January 2026, so a month in 2025 has none.
+Blocked on: CMS's 2025 SSI and Spousal Impoverishment Standards chart and the 2025 Medicare Savings Program resource limits (not found on an allowed host: medicaid.gov serves only the current chart and a 2021 one, rechecked 2026-11-22)
+
 ### OQ-517. How HCPF transitions current members under the October 2026 federal payment limit
 
 Body: CMS SHO #26-001 (S1704) requires states to apply 1396b(v)(5) to applicants determined eligible and to enrollees on and after October 1, 2026, treating it as a change in circumstances: reverify status electronically first, then ask the member, give a reasonable opportunity, consider every other basis (the CHIPRA 214 option, emergency Medicaid) and give advance notice before ending coverage (S1705). The HCPF reviewer's [K] statement that HCPF's method (redetermination at renewal or a mass change) is in its implementation guidance could not be cited: that guidance is on hcpf.colorado.gov. The codex applies the federal limit as of the determination date (OQ-510) and does not model the notice period. Items: CO-509.
+
+Class: blocked on a named document
+Owner: Medicaid policy owner, Eligibility operations owner
+Assumption: Current members are judged under the October 2026 federal payment limit at their next determination on or after October 1, 2026, and no notice period is modeled.
+Blocked on: HCPF's implementation guidance for 42 U.S.C. 1396b(v)(5) (redetermination at renewal or a mass change) (hcpf.colorado.gov refused)
 
 ### OQ-518. Colorado's rule still admits refugees, asylees and other qualified adults after the federal limit
 
 Body: The current § 8.100.3.G.1.g (version effective 11/14/2026, D-65) has not been amended for 1396b(v)(5) and still admits refugees, asylees, Cuban and Haitian entrants, COFA migrants and other qualified non-citizens (iii-v). From October 1, 2026 federal payment for those who are not lawful permanent residents, entrants or COFA migrants is limited to emergency services (S1700). No fetched Colorado statute funds full coverage for those adults with state money: C.R.S. 25.5-2-104(2) reaches children under 19 and 25.5-5-201(6) pregnant people (S1729, S1730), who keep full coverage in any case through the lawfully residing option or Cover All Coloradans. The codex applies the federal limit (CO-509) and reports such adults emergency-only; whether HCPF will amend § 8.100.3.G.1.g or fund the adults otherwise is HCPF's to decide by rule (HCPF review B-1). Items: CO-509, CO-2400.
 
+Class: needs Legal
+Owner: Legal, Medicaid policy owner
+Assumption: From October 2026, adult refugees, asylees and other qualified non-citizens who are not permanent residents, Cuban or Haitian entrants or compact migrants get emergency services only, although Colorado's rule still lists them.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.G.1.g.iii-v (D-65, effective 11/14/2026) has not been amended, 42 U.S.C. 1396b(v)(5) (S1700) ends federal payment for those adults, and C.R.S. 25.5-2-104(2) and 25.5-5-201(6) (S1729, S1730) fund only children and pregnant people with state money. The readings: (a) the federal limit governs, the reading in force; (b) the rule keeps covering them, which no statute funds. No published rule reconciles them.
+
 ### OQ-519. Alternative Care Facility personal needs allowance and room and board
 
 Body: The HCPF review's note C-13: § 8.100.7.B.3 states a personal needs allowance and room and board for members in an Alternative Care Facility, which HCPF's IM 25-030 [K] updates. No item computes a post-eligibility amount for an Alternative Care Facility resident; ma_patient_payment (CO-658) is the nursing facility computation. The memo is on hcpf.colorado.gov and was not fetched. Items: CO-658.
+
+Class: blocked on a named document
+Owner: LTSS policy owner
+Assumption: No post-eligibility amount is computed for a resident of an Alternative Care Facility; the nursing facility computation is the only one.
+Blocked on: HCPF Informational Memo IM 25-030, which updates the Alternative Care Facility personal needs allowance and room and board of 10 CCR 2505-10 § 8.100.7.B.3 (hcpf.colorado.gov refused)
 
 ### OQ-520. Whether a full-benefit dual's Medicare Part B premium is deducted in the patient payment
 
 Body: The HCPF review's note N-5: CO-01 p1 is a Medicare beneficiary not on a Medicare Savings Program, and the case states health_insurance_premiums_paid 0. The patient payment deducts premiums the person pays (§ 8.100.7.T.1.d, CO-658). Whether HCPF's Part B buy-in pays a long-term care member's Part B premium from the month of eligibility, so that she pays none, is an HCPF operational fact not in a fetched source; the case keeps 0, which matches that reading. Items: CO-658.
 
+Class: state policy choice
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: A long-term care member who has Medicare pays no Part B premium of her own, so none is deducted in her patient payment.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.T.1.d (D-65) deducts health insurance premiums the person pays, and § 8.100.3.M.2.a (D-65) says no federal match is claimed for Medicare Part B premium payments for the 300 percent group, without saying whether the State pays them. No published rule settles it.
+
 ### OQ-530. Colorado Works standards from July 1, 2028
 
 Body: SB 26-181 (D-171, S1800-S1801), in effect June 2, 2026, amended C.R.S. 26-2-709(1)(b) so that no cost-of-living adjustment is applied to basic cash assistance for the State fiscal years beginning July 1, 2026 and July 1, 2027; CDHS's proposed SFY 2026-27 increase (eDocket 2026-00094) was terminated as moot (D-172, S1804), and the current 9 CCR 2503-6 is still the version effective July 1, 2025 (S1803). The 3.606.1.F chart therefore stands for SFY 2026-27 and 2027-28 and carries a version through June 30, 2028 (CO-274-CO-277, CO-351-CO-354). From July 1, 2028 the statute requires the prior year's amount plus 2% or the average of the federal SSA cost-of-living adjustments for that fiscal year and the two before, whichever is greater; the SSA figures are not on an allowed host and the statute does not fix the result, so no version covers a date from July 1, 2028 and a grant then is unknown (CO-89). Items: CO-274, CO-275, CO-276, CO-277, CO-351, CO-352, CO-353, CO-354.
 
+Class: blocked on a named document
+Owner: Cash programs policy owner
+Assumption: Colorado Works need and grant standards are unknown for dates from July 1, 2028.
+Blocked on: CDHS's Colorado Works need and grant standards for the State fiscal year beginning July 1, 2028, set under C.R.S. 26-2-709(1)(b) from federal Social Security cost-of-living adjustments not yet announced (not published; ssa.gov and cdhs.colorado.gov refused)
+
 ### OQ-531. Colorado Works diversion payment: no dollar cap in the rule
 
 Body: 9 CCR 2503-6 3.606.8.A (S762) leaves the diversion payment to the county's agreement with the client and states no maximum; A.6's "maximum criteria established in the State plan" bound the county's higher income limit, and A.4 bounds the period of ineligibility by the maximum grant over the same period. The CDHS review (C-3) asks for the State-plan cap as a parameter; the Colorado TANF State plan is not on an allowed host. cw_diversion_payment (CO-2560) pays the county-approved amount (CO-2559) with no cap. Items: CO-2559, CO-2560.
+
+Class: blocked on a named document
+Owner: Cash programs policy owner
+Assumption: A diversion payment is the amount the county approves, with no cap.
+Blocked on: Colorado's TANF State Plan, which sets the maximum criteria for non-recurrent short-term benefits that 9 CCR 2503-6 3.606.8.A.6 refers to (not published on an allowed host; cdhs.colorado.gov refused)
 
 ### OQ-532. LEAP program-year figures and the source of the income table
 
@@ -1506,31 +1867,64 @@ Body: 9 CCR 2503-7 3.758.47-48 (S770-S772) leave the statewide adjustment rate (
 
 Hard-coded numbers fix round (audit H-18): the engine now holds a figure awaiting publication as a parameter with an empty list of versions, so CO-1272, CO-1276 and CO-1277 are global parameters (same IDs and identifiers) with no version loaded, no longer entered on each household head. The benefit stays unknown, now with a no-version warning naming the figure, until the 2026-2027 notice is fetched and loaded as a version from November 1, 2026 to May 1, 2027. The Step A.2 flat-rate estimated heating costs by dwelling type stay unmodeled: both their dwelling categories and their amounts are in the LEAP training manual, so neither a key fact nor a table can be stated until it is fetched (CO-1271 keeps the vendor-or-flat-rate meaning). The 2026-2027 income table stays sourced to the copy of CDHS's LEAP page on cdhs.nxt-dev.colorado.gov (D-144), which the new rule text and CCCAP's state median income figures corroborate (OQ-122). Items: CO-875, CO-1272, CO-1276, CO-1277, CO-1281.
 
+Class: blocked on a named document
+Owner: Energy assistance (LEAP) policy owner
+Assumption: A household's LEAP benefit stays unknown until the program-year adjustment rate, minimum and maximum are published.
+Blocked on: CDHS's 2026-2027 LEAP program-year notification to counties under 9 CCR 2503-7 3.758.48 and the LEAP training manual's flat-rate heating costs (cdhs.colorado.gov refused, HTTP 403)
+
 ### OQ-533. SNAP: CDHS's implementation dates for Pub. L. 119-21 and the treatment of ongoing cases
 
 Body: The CDHS reviewer (C-1, section 5) would date the sec. 10102, 10103 and 10108 changes from CDHS's implementation date in its Food and Energy Assistance agency letter, apply secs. 10103 and 10108 to ongoing households at their next recertification or an acted-on change, and count no ABAWD month before implementation or notice. Those positions are marked as program knowledge in the review and no published text was available to confirm them: the Act has no effective-date or transition clause (D-5), 7 CFR 272.1(g) leaves the implementation schedule to the amendment, FNS's implementation memoranda are served only from www.usda.gov (refused; fns.usda.gov's implementation page links there), no Federal Register document states them, and the Colorado rule effective October 1, 2026 (D-82) has not adopted the changes. The draft dates CO-308, CO-1243, CO-166 and CO-412 from enactment (July 4, 2025), applies them at the determination date, and gives each a county-facing statute_override note; snap_determination_is_recertification exists to carry a recertification rule once a text states it. Items: CO-308, CO-1243, CO-166, CO-412, CO-414.
 
-### OQ-534. SNAP strikers are not modeled
+Class: blocked on a named document
+Owner: SNAP policy owner
+Assumption: The 2025 Act's SNAP changes apply from the day of enactment to every determination made after it, new and ongoing households alike.
+Blocked on: FNS's implementation memoranda for Pub. L. 119-21 secs. 10102, 10103 and 10108 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it) and CDHS's Food and Energy Assistance agency letter setting Colorado's implementation dates (cdhs.colorado.gov refused)
+
+Checked 2026-11-22: Pub. L. 119-21 (D-5) has no effective-date or transition clause, 7 CFR 272.1(g) leaves the schedule to the amendment, and 10 CCR 2506-1 (D-82, effective 2026-10-01) has not adopted the changes.
+
+### OQ-534. Resolved: SNAP strikers are modeled (7 CFR 273.1(e))
 
 Body: 7 CFR 273.1(e) (S1816) makes a household with a striking member ineligible unless it was eligible the day before the strike, and then counts the higher of the striker's pre-strike and current income. The CDHS review (C-2) lists strikers among the household categories not modeled; the pre-strike comparison needs facts the volume does not carry (the strike date, pre-strike income), and the reviewer accepts that C-2 can follow in a later round. Roomers, live-in attendants and boarders (273.1(c)(3), (5)-(6)) and the student-earnings exclusion (273.9(c)(7)) are modeled in this round. Items: CO-305.
+
+Resolution (open-question classification pass, 2026-11-22): the rule is clear and the facts are added. 7 CFR 273.1(e) (S1816) makes a household with a striking member ineligible unless it was eligible the day before the strike and is otherwise eligible, and counts the higher of the striker's pre-strike and current income for eligibility and the benefit. New supplied facts: snap_is_striker (CO-3500, the definition and its exceptions: a lockout, a person exempt from work registration the day before for a reason other than employment, and those who cannot work for lack of anything to deliver or fear of crossing the line), snap_household_was_eligible_day_before_strike (CO-3501, the county's (e)(1) determination) and snap_striker_pre_strike_income (CO-3502), each read only for a striker, and a person not stated to be one is not. New rules: snap_striker_income_above_current (CO-3503), the amount by which pre-strike income exceeds current income, which snap_person_earned_income (CO-330) adds so the counted income is the higher of the two (as earnings, since it stands for the wages the strike stopped); and snap_household_meets_striker_condition (CO-3504), which snap_is_eligible (CO-386) requires and snap_eligibility_status (CO-387) reports as the new reason striking_member (aid-codes.yaml: no code). New tests CO-3503-T1 to T3, CO-3504-T1 to T3, CO-330-T5, CO-386-T6 and CO-387-T9; the earlier CO-386 and CO-387 tests state the condition met. No household case has a striker; no expectation changed. Items: CO-305, CO-330, CO-386, CO-387, CO-3500, CO-3501, CO-3502, CO-3503, CO-3504.
 
 ### OQ-535. SUN Bucks: which summer a July or August determination is for
 
 Body: 7 CFR 292.2 (S1820-S1822) defines the instructional year as July 1 of the prior year through the day before the summer operational period, and the period of eligibility as the instructional year through the last day of the summer operational period; a month in July or August can therefore lie both in the summer operational period still under way and in the next summer's instructional year. Colorado's summer operational period is in its Plan for Operations and Management, not on an allowed host. sebt_summer_year (CO-2581) reads every month from July of one year through June of the next as the next year's summer, so an application in July or August for the current summer (292.13(g)) is read as for the next one. Items: CO-2581, CO-1299.
 
+Class: blocked on a named document
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Every month from July through the next June is read as part of the following summer.
+Blocked on: Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which states the summer operational period (not published on an allowed host; cdhs.colorado.gov refused)
+
 ### OQ-536. CCCAP protective services parent fee: the income the formula is applied to
 
 Body: 8 CCR 1403-1 3.124.I.6 (S784) gives a protective services household no parent fee "unless the child(ren) has countable income" but does not say what the formula of 3.124.P is applied to when it does. The only income 3.119.A counts for such a household is the placed children's, so cccap_parent_fee_income (CO-2578) applies the formula to the eligible children's countable income (cccap_protective_services_income); the household size is the household's as for any other household. Items: CO-2578, CO-1290.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: For a protective services household whose children have income, the fee formula is applied to the children's countable income, with the household's size.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.124.I.6 (D-87, S784) charges no fee "unless the child(ren) has countable income" without saying what the formula of 3.124.P is applied to, and 3.119.A (D-87) counts only the placed children's income. No published rule settles it.
 
 ### OQ-540. "Assumes responsibility" (Medicaid caretaker relative) and "loco parentis" (CCCAP adult caretaker) read from one primary-responsibility role
 
 Body: § 8.100.1 (S1500) makes a caretaker relative "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care"; 42 CFR 435.4 (S205) says "assumes primary responsibility". 8 CCR 1403-1 3.103.C (S481) names a "person who is acting in 'loco parentis'" with physical custody. Both read the neutral role `has_primary_responsibility_for` (ma_caretaker_relative_of, CO-2606; cccap_adult_caretaker_of, CO-2607). A relative who shares the care of a child while a parent is in the home (a grandmother) may meet Colorado's "assumes responsibility" but not 435.4's "primary" or CCCAP's "in loco parentis"; with one role, a case that states it makes her both a Medicaid caretaker relative and a CCCAP adult caretaker, and a case that does not makes her neither (same-word audit SW-3). The draft reads the role as primary responsibility for both. A second neutral role for shared responsibility, or the CCCAP owner's confirmation that loco parentis means the parent is absent, would settle it. Items: CO-2606, CO-2607.
 
-### OQ-541. Case-wide facts are held on every person, and household results are repeated per member
+Class: state policy choice
+Owner: Medicaid policy owner, Child care policy owner (CDEC)
+Assumption: One relative who has taken primary responsibility for a child's care is both the Medicaid caretaker relative and the child care adult caretaker; a relative who only shares the care with a parent at home is neither.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500: "assumes responsibility for the dependent child's care"), 42 CFR 435.4 (S205: "assumes primary responsibility") and 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis"); none says whether care shared with a parent in the home counts. No published rule settles it.
+
+### OQ-541. Resolved: facts that are one value for the application stay on each person and the check warns when persons differ; household results are one value per unit
 
 Body: docs/reviews/engineering-item-followups.md section 9 (Drools N-3, Corticon N-4, fact-graph S3): snap_application_date, verification_request_date, cccap_application_county and similar facts mean one value for the application but are person-scope and stated on every person; nothing says what happens when persons disagree. Household results (snap_allotment) are likewise one value per member, so a consumer could add up one allotment per member. The engine reads only determination_date from case scope. The options are an engine change that reads case-scope facts (and moves these facts to it), or a check that every person states the same value; and an identity for each assistance unit (a unit-scope item). This is a ledger-design choice for the policy owners and the tech member, not a text question. Items: CO-088, CO-1746, CO-2372, CO-2122, CO-1343, CO-2106, CO-385.
 
-Resolution (audit fix round 5, 2026-11-22; dual-entry audit 1.13-1.17, 5.9, same-word SW-9): the engine reads case-scope supplied facts, stated once in a case's `case_facts` (docs/operators.md, Case scope; convention rule 18). The application and household facts are case scope: snap_application_date, snap_determination_is_recertification, cw_application_date, cw_determination_is_redetermination, leap_application_date, cccap_application_county, cccap_determination_type (new, CO-3307; cccap_is_receiving_assistance derived), cccap_redetermination_date, the CCCAP fee flags, the SUN Bucks application facts, chp_family_cost_sharing_paid_for_year, the SNAP migrant and residency facts, and the facts of the home (the heating arrangement and utilities, CO-3300 to CO-3306, and LEAP's dwelling facts). verification_request_date stays per person (OQ-300) and ma_application_date stays per person (a later applicant is a separate application). CO-85, which held an application unit and three redetermination units, was split (CO-100). Household results (snap_allotment) remain one value per member of the unit; a consumer reads it once per unit. The heading is left for the classification pass.
+Resolution (open-question classification pass, 2026-11-22; ledger design). (1) Facts that are one value for the application stay person facts, since the engine reads facts per person and the only case-level fact it reads is the determination date. The supplied facts that are one value for an application carry the new volume tag application_wide: snap_application_date (CO-1746), cw_application_date (CO-2372), leap_application_date (CO-2122) and cccap_application_county (CO-2106). npm run check (caseConsistencyWarnings, src/tools/check.ts) now warns when the persons of a household case state different values of such a fact; the stored cases agree (new unit test in test/repo/check.test.ts). ma_application_date (CO-088) is not tagged: Medical Assistance dates each person's own application (a newborn, or a member added later), and CO-76, CO-77 and CO-99 state different dates on purpose; nor are the verification request dates (CO-1343 and the per-program ones), each a written request to a person. (2) Household results are one value per unit by design: each member's value is that member's own unit's (snap_household_members, CO-305, says so), so a reader that totals results counts each unit once, and the case walkthrough already shows them as household outcomes (isHouseholdOutcome, src/ui/walkthrough.ts). No unit identity item is needed, because the unit is the household-members group each result reads. Items: CO-1746, CO-2372, CO-2122, CO-2106.
+
+Update (audit fix round 5, 2026-11-22; dual-entry audit 1.13-1.17, 5.9, same-word SW-9), superseding (1) above: the engine reads case-scope supplied facts, stated once in a case's `case_facts` (docs/operators.md, Case scope; convention rule 18). The application and household facts are case scope: snap_application_date, snap_determination_is_recertification, cw_application_date, cw_determination_is_redetermination, leap_application_date, cccap_application_county, cccap_determination_type (new, CO-3307; cccap_is_receiving_assistance derived), cccap_redetermination_date, the CCCAP fee flags, the SUN Bucks application facts, chp_family_cost_sharing_paid_for_year, the SNAP migrant and residency facts, and the facts of the home (the heating arrangement and utilities, CO-3300 to CO-3306, and LEAP's dwelling facts). verification_request_date stays per person (OQ-300) and ma_application_date stays per person (a later applicant is a separate application). CO-85, which held an application unit and three redetermination units, was split (CO-100). Household results (snap_allotment) remain one value per member of the unit; a consumer reads it once per unit. The application_wide check now has nothing to compare for these facts, since no person states them; it still guards any fact the tag names that stays on persons.
 
 ### OQ-542. Resolved: Medicaid's OAP routes read the Adult Financial case record, so a MAGI answer no longer reaches Colorado Works eligibility through af_category
 
@@ -1542,59 +1936,160 @@ Resolution (audit fix round, 2026-11-21; heavier-definitions audit H-3): ma_meet
 
 Body: immigration_status (CO-002) carries the union of the categories the volume's governing texts name (8 U.S.C. 1641, S1900, S1901; § 8.100.3.G.1.g, S1902-S1905; 10 CCR 2505-3 § 110.1.B, S1906-S1908; 9 CCR 2503-7 3.753.16-17, S1909). The audit asked for the option set to be checked against the USCIS SAVE status list; uscis.gov refused the fetch on 2026-11-21 (Access Denied on www.uscis.gov/save and its status-code pages), so the option names are not reconciled with SAVE's response codes, and fact assembly maps SAVE responses to them. Two readings follow from the options: (1) an Afghan humanitarian parolee (EGFDEA sec. 2502) or Ukrainian humanitarian parolee (AUSAA sec. 401) is read as paroled for at least one year, so a qualified alien under 1641(b)(4) (is_qualified_non_citizen, CO-506), and under LEAP's 3.753.16.B and CHP+'s 110.1.B.3.b; both programs paroled for terms over one year, but neither statute nor a parole document was fetched, and an individual paroled for less than a year would be stated as parolee_less_than_one_year, losing the special category; (2) a trafficking victim certified by HHS is read as a qualified alien through 1641(c)(4) (T nonimmigrant status or a prima facie application); a victim with continued presence only is eligible "to the same extent as" a refugee under 22 U.S.C. 7105(b)(1)(A), which the volume did not save, so the reading may be broader or narrower than that statute in a given program. The statutes that treat Iraqi and Afghan special immigrants who have not adjusted as refugees for federal benefits (Pub. L. 110-181 sec. 1244, Pub. L. 111-8 sec. 602) were not fetched either; is_qualified_non_citizen leaves them out, so Colorado Works and Adult Financial do not accept them, while Medicaid, CHP+ and LEAP accept them by their own lists. Items: CO-002, CO-506, CO-1010, CO-2706.
 
+Class: blocked on a named document
+Owner: Medicaid policy owner, Legal
+Assumption: Afghan and Ukrainian humanitarian parolees are read as paroled for at least a year, and a trafficking victim certified by HHS as a qualified non-citizen.
+Blocked on: the USCIS SAVE status list and response codes (www.uscis.gov refused, Access Denied, 2026-11-21; not an allowed host)
+
 ### OQ-551. SUN Bucks states no citizenship or immigration test; 8 U.S.C. 1615(b) leaves it to the State
 
 Body: 8 U.S.C. 1615(a) (S1913) protects the school lunch and breakfast programs from any status test, and 1615(b) says that nothing in PRWORA "shall prohibit or require a State to provide" to a non-citizen who is not a qualified alien the benefits of the other National School Lunch Act programs, among them Summer EBT (NSLA sec. 13A). 7 CFR part 292 (D-88) states no status condition, and Colorado has no Summer EBT rule (D-143, OQ-255) and C.R.S. 26-2-309 (D-142) states none. The volume therefore reads SUN Bucks as having no status test: no SUN Bucks item reads immigration_status, and a child's eligibility does not depend on it. If CDHS or CDE adopts a status condition under 1615(b), a sebt_ status item reading immigration_status would be added. Items: CO-1298.
 
-### OQ-552. SUN Bucks: "children in that household" read as the child and the child's siblings
+Class: state policy choice
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Summer EBT has no citizenship or immigration test.
+
+Checked 2026-11-22: 8 U.S.C. 1615(a)-(b) (S1913) neither requires nor forbids a State to give Summer EBT to a non-citizen who is not qualified; 7 CFR part 292 (D-88) and C.R.S. 26-2-309 (D-142) state no status condition, and Colorado has no Summer EBT rule (D-143). No published rule settles it.
+
+### OQ-552. Resolved: SUN Bucks reads "children in that household" from the persons living with the child as one economic unit
 
 Body: 7 CFR 292.2 (S792) makes a child categorically eligible when "one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR". No fact states the membership of the school meal household (school_meal_household_size is a count, and OQ-255 records that the household reading could not be modeled). sebt_household_child_receives_snap_or_tanf (CO-2708) reads the receipt records (receives_snap, receives_tanf_cash) of the child and of the child's siblings (siblings, CO-2609: persons sharing a legal parent), so a cousin, a step-sibling or a foster child of the same household is not read, and a sibling who lives elsewhere is. If a school meal household group is modeled (dual-entry audit 1.16), CO-2708 should read it instead. Items: CO-2708, CO-1298, CO-1699, CO-1633.
+
+Resolution (open-question classification pass, 2026-11-22): 7 CFR 292.2 defines the household: "a group of related or nonrelated individuals, who are not residents of an institution or boarding house, but who are living as one economic unit" (D-88, S2301). The new relationship role lives_as_one_economic_unit_with (volume.yaml) states it, and sebt_household_child_receives_snap_or_tanf (CO-2708) reads the receipt records of every person joined to the child by it, so a cousin, a step-sibling or a foster child of the economic unit is read and a sibling who lives elsewhere is not. Receipt is read for every member of the unit, since SNAP and TANF are paid to a SNAP household or an assistance unit that holds the unit's children with the adults who receive. New tests CO-2708-T4 to T6; CO-2708-T3 states no relationships. No household case changed (none relied on a sibling's receipt). CO-1298 no longer carries this question. Items: CO-2708, CO-1298.
 
 ### OQ-553. Adult Financial sponsor deeming: other non-citizens the same sponsor sponsors are counted as the sponsor's dependents
 
 Body: 9 CCR 2503-5 3.534.D.2.C (S1632; 3.544.G.2.c and 3.549.G.2.c, S1633, S1634) deducts half the SSI benefit standard for "each dependent of the sponsor (other than the non-citizen client and the non-citizen client's spouse), as defined in Section 3.520.68.B.2.b.1"; 3.520.68.B.2.b.1 was not read for this round. With the sponsor a person of the case (dual-entry audit 1.5), af_deemed_sponsor_income (CO-2386) counts the dependents stated on the sponsor (sponsor_dependent_count, CO-2387: dependents other than the persons the sponsor sponsors and their spouses) plus the other non-citizens of the case the same sponsors sponsor, other than the client's spouse, reading each as the sponsor's dependent, as an I-864 sponsor's household counts the sponsored immigrants. If 3.520.68.B.2.b.1 defines a dependent more narrowly (for example, only persons the sponsor claims for tax purposes), a sponsored sibling who is not claimed should not be counted. Items: CO-2386, CO-2387.
 
-### OQ-580. CCCAP's monthly poverty guideline above eight persons: one rounding or two
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Other non-citizens the same sponsor sponsors are counted as the sponsor's dependents when the sponsor's income is deemed.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.534.D.2.C, 3.544.G.2.c and 3.549.G.2.c (D-80, S1632-S1634) deduct for "each person who is a dependent of the sponsor ... as defined in Section 3.520.68.B.2.b.1", but 3.520.68 in the current rule (D-80) and in the earlier Cornell copy (D-62) has only paragraph A, the five-year bar, so the cross-reference defines nothing. No published rule settles who is a dependent.
+
+### OQ-580. Resolved: CCCAP's monthly poverty guideline above eight persons adds the rule's rounded per-person step
 
 Body: 8 CCR 1403-1 3.111.H.2-3 (S780, S781) state the monthly 100% federal poverty guideline for household sizes 1 to 8 and an "Each Additional person" figure, each the HHS annual figure divided by twelve and rounded to the cent. The hard-coded numbers fix round (audit D-1) derives the monthly figure from the one federal table (cccap_poverty_guideline_monthly, CO-3007: the HHS guideline in force on the most recent October 1 for the household's size, with the HHS step for each member beyond eight, divided by twelve and rounded once). For sizes 1 to 8 the two agree to the cent; above 8 the rule's table adds its rounded per-member step to the rounded 8-person figure, so a household of 9 reads $5,116.66 in the table and $5,116.67 here (October 2026), and a household of 10 $5,589.99 against $5,590.00. The draft reads one rounding of the HHS figure; the CCCAP owner should confirm which figure counties apply, or the item can round the two parts separately. Items: CO-3007, CO-995.
+
+Resolution (open-question classification pass, 2026-11-22): the rule's own table answers it. 8 CCR 1403-1 3.111.H.2-3 (D-87, S780, S781) state the monthly 100% guideline for sizes 1 to 8 and an "Each Additional" person amount ($473.33 from October 1, 2026), each already rounded to the cent, so the figure for nine or more is the eight-person figure plus that rounded amount for each further person. cccap_poverty_guideline_monthly (CO-3007) now rounds the two parts separately: the HHS figure for the household's size up to the table's last row divided by twelve and rounded, plus the HHS step divided by twelve and rounded for each member beyond it. A household of nine reads $5,116.66 and of ten $5,589.99, as the table does (CO-3007-T4 restated, new CO-3007-T6 and T7). No household case has more than eight members; no expectation changed. Items: CO-3007.
 
 ### OQ-560. The community spouse's standard utility allowance: which of Colorado's four SNAP tiers
 
 Body: 10 CCR 2505-10 § 8.100.7.Q.1.b.ii (S1756) adds "the larger of the following amounts: the standard utility allowance used by Colorado under U.S.C. 2014(e) of Title 7; or the community spouse's actual, verified, utility expenses". Colorado's SNAP standard utility allowance is mandatory and four-tiered (10 CCR 2506-1 4.407.31, S743-S747): the Heating and Cooling, Basic, One Utility and Telephone allowances. The Medicaid rule names "the standard utility allowance" without a tier. ma_community_spouse_shelter_costs (CO-2802) takes the tier the community spouse's own SNAP household reaches (snap_utility_allowance_amount, CO-1500), which is zero where every utility is included in the rent, as the same paragraph requires. The other reading is always the Heating and Cooling Utility Allowance (the full SUA). The Medicaid policy owner should confirm. Items: CO-2802.
 
-### OQ-561. LEAP: what "considered homeless or resides in non-traditional dwellings" covers
+Class: state policy choice
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: The community spouse's utility allowance is the SNAP utility allowance tier the spouse's own household would get.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.Q.1.b.ii (D-65, S1756) names "the standard utility allowance used by Colorado under U.S.C. 2014(e) of Title 7" without a tier, and 10 CCR 2506-1 4.407.31 (D-82, S743-S747) has four. No published rule settles it.
+
+### OQ-561. Partly resolved: LEAP's non-traditional dwelling is defined in 3.751.1; open: what "considered homeless" covers
 
 Body: 9 CCR 2503-7 3.752.25.B.6 (S774) excludes from vulnerability to rising heating costs a household that is "considered homeless or resides in non-traditional dwellings", without defining either term; LEAP's rule cites neither 7 CFR 271.2 (SNAP, S1950) nor McKinney-Vento (42 U.S.C. 11434a, S1953). leap_is_homeless_or_in_non_traditional_dwelling (CO-2815) keeps the reading the shared is_homeless had for LEAP: no fixed and regular residence of the household's own, a shelter, a halfway house, a motel, hotel, trailer park or campground for lack of an alternative, or a place not designed for sleeping; a household doubled up in another's home and one in substandard housing are not excluded. The LEAP policy owner should say which definition applies. Items: CO-2815, CO-1004.
+
+Open-question classification pass (2026-11-22): the non-traditional dwelling half is answered by the rule. 9 CCR 2503-7 3.751.1 (D-86, S2303) defines it as "a structure that provides housing that is not affixed to a permanent physical address ... including, but not limited to, cars, vans, buses, tents and lean-tos", which the place-not-designed-for-sleeping arrangement of nighttime_residence_type carries; leap_is_homeless_or_in_non_traditional_dwelling (CO-2815) now cites it (new test CO-2815-T3, a tent). "Considered homeless" stays undefined.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: A household is homeless for LEAP when it has no fixed, regular home of its own, lives in a shelter, a halfway house, or a motel or campground for lack of an alternative, or sleeps in a place not meant for it; a household staying in another's home or in substandard housing is not.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.751.1 and 3.752.25.B.6 (D-86, S774, S2303) define a non-traditional dwelling but not "considered homeless", and cite neither 7 CFR 271.2 nor 42 U.S.C. 11434a; the amendment effective November 1, 2026 (D-173) adds no definition. No published rule settles it.
 
 ### OQ-562. CCCAP: "attending school as defined by the Colorado Department of Education"
 
 Body: 8 CCR 1403-1 (S1637 F.2) asks for an immunization record of a child in unrelated exempt care who is "not attending school as defined by the Colorado Department of Education". The Department's definition is not in the CCCAP rule and was not fetched (CDE's and CDEC's sites are not among the hosts this volume can reach; C.R.S. 22-33-104 states compulsory attendance ages, not what "attending school" means). cccap_is_attending_school (CO-2884) counts kindergarten through grade 12, secondary career and technical programs and a district-recognized home-school program, and not preschool. The CCCAP policy owner (CDEC) should confirm, in particular for preschool and home school. Items: CO-2884, CO-1447, CO-1448.
 
+Class: blocked on a named document
+Owner: Child care policy owner (CDEC)
+Assumption: A child attends school when in kindergarten through grade 12, a secondary career and technical program or a recognized home-school program, but not preschool.
+Blocked on: the Colorado Department of Education's definition of attending school, which 8 CCR 1403-1 names without restating (cde.state.co.us is not an allowed host; C.R.S. 22-33-104 states only the attendance ages)
+
 ### OQ-590. Limited family planning presumptive eligibility: "counted individually as a household member of two"
 
 Body: 10 CCR 2505-10 § 8.100.3.R.2.c and § 8.100.4.F.2.c (S1722, S1501) require "declared household income greater than 133% but not exceeding 260% of the federal poverty level" and add that the applicant "will be counted individually as a household member of two". Two readings: (a) the household's declared income, with the applicant counted as two members of the declared household, as § 8.100.4.E.3 (S614) counts the applicant in the full limited family planning determination ("counted as a household of two in addition to any other household members"); (b) the applicant's own income alone ("individually") against the guideline for a household of two, as the heavier-definitions audit (H-9) proposed. The draft takes (a): the same sentence names "declared household income" as the figure, and E.3 states the counting rule of the same category in near-identical words, so "individually" is read as the applicant personally being the one counted as two. ma_declared_household_income_pct_fpl_limited_family_planning (CO-3152) divides the declared household income by the guideline for the declared size plus ma_family_planning_applicant_household_count (CO-3029) less one, the arithmetic ma_family_planning_household_income_pct_fpl (CO-1153) uses. Checked 2026-11-21: § 8.100.3.R.2.c, § 8.100.4.F.2.c and E.3 in the rule version effective 11/14/2026 (D-65, re-retrieved the same day); no published rule says which income the presumptive test counts. A state policy choice for HCPF. Items: CO-3152, CO-2439, CO-3155.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: For presumptive limited family planning, the declared household income is compared with the poverty guideline for the household, counting the applicant as two.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.R.2.c, § 8.100.4.F.2.c ("counted individually as a household member of two") and § 8.100.4.E.3 (D-65, effective 11/14/2026); none says whether "individually" means the applicant's own income. No published rule settles it.
 
 ### OQ-591. Old Age Pension: whether a qualified non-citizen's status must be verified once the statute's bar applies
 
 Body: C.R.S. 26-2-111(2)(c)(I) (S1316) says a qualified alien "shall not be granted the old age pension ... unless it is shown that" the alien meets 26-2-111.8(2)(a) (entry before August 22, 1996) or (2)(b) (the five-year bar), except under (2)(c)(II) (a county hardship finding) and (III) (SSI eligibility); the volume applies that bar (OQ-430, CO-929). 9 CCR 2503-5 3.520.5.D (S881) has the county query SAVE "For AND only", and 3.520.67.E (S887) says "all non-citizens are eligible to apply for OAP". Two readings: (a) "unless it is shown" puts the showing of the entry date or five years in status on the case, so the status and its date are verified whenever they decide the pension; (b) the rule's AND-only SAVE paragraph means Old Age Pension takes the status as declared. The draft takes (a), the reading the text supports better: the statute conditions the grant on a showing and the volume follows the statute over the rule's silence (OQ-430, OQ-1); 3.520.5.D names the means for AND and does not say that an OAP applicant's status need not be shown, and 3.520.67.E is about who may apply, not who may be granted. af_requires_verification_of_immigration_status (CO-1432) now requires verification for an Old Age Pension applicant who claims a qualified status, except one who also receives SSI ((2)(c)(III)) or has the county's hardship finding ((2)(c)(II)), for whom status does not decide the pension. The means for OAP (SAVE or USCIS documents) is not named by the rule. Checked 2026-11-21: C.R.S. 26-2-111(2)(c) (D-59) and 9 CCR 2503-5 3.520.5.D, 3.520.67.E-F (D-105); no published rule says how an OAP applicant's status is shown. For CDHS Legal to confirm. Items: CO-1432.
 
+Class: needs Legal
+Owner: Legal, Cash programs policy owner
+Assumption: An Old Age Pension applicant who claims a qualified immigration status must have it verified, unless the person receives SSI or has the county's hardship finding.
+
+Checked 2026-11-22: C.R.S. 26-2-111(2)(c) (D-59, S1316) grants the pension only "unless it is shown that" the entry-date or five-year condition is met, while 9 CCR 2503-5 3.520.5.D (D-105, S881) has the county query SAVE "For AND only" and 3.520.67.E (S887) lets all non-citizens apply. The readings: (a) the statute requires the showing, the reading in force; (b) the rule's silence means the status is taken as declared. No published rule reconciles them.
+
 ### OQ-592. Lottery and gambling winnings: two receipts in the same month
 
 Body: 42 U.S.C. 1396a(e)(14)(K)(i) (S1234) sets the counting period by "the amount of such winnings or income", one award at a time, and 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.1-3 (S669) by "winnings ... counted as income in the month received". Neither says whether two separate wins received in the same month are spread by each one's amount or by their total (two $50,000 wins in October: each under $80,000 and counted in October, or $100,000 spread over four months). lottery_gambling_winnings_received (CO-1181) states a month's receipts together, so the draft spreads their total, the reading that keeps one fact per month and matches the Colorado text's "winnings ... in the month received"; stating each award separately would need a receipt-level fact the volume does not have. Checked 2026-11-21: 1396a(e)(14)(K) (D-198 source page) and § 8.100.4.C.1.b.xiv (D-65); no published rule addresses two awards in one month. A state policy choice for HCPF. Items: CO-1181, CO-1187.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Two gambling wins received in the same month are added together and spread by their total.
+
+Checked 2026-11-22: 42 U.S.C. 1396a(e)(14)(K)(i) (S1234) sets the period by "the amount of such winnings", one award at a time, and 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.1-3 (D-65, S669) counts winnings "in the month received"; neither addresses two awards in one month. No published rule settles it.
 
 ### OQ-593. Community engagement: when an enrolled beneficiary who made no satisfactory showing is disenrolled
 
 Body: 42 CFR 435.558(d)(2)(ii) (S2109) and 42 U.S.C. 1396a(xx)(6)(A)(iii) (S2108) have the State disenroll a beneficiary who made no satisfactory showing "not later than the end of the month following the month in which the 30-calendar day period ... ends", after advance written notice, and 435.558(a)(3) continues Medicaid "until the individual is determined ineligible consistent with § 435.930(b)". The State may disenroll earlier, after advance notice; no Colorado rule yet states when (10 CCR 2505-10 § 8.100, effective 11/14/2026, D-65, has no community engagement text). ma_meets_adult_group_community_engagement_condition (CO-1975) reads the latest month the federal text allows, the month after the month the period ends, so no month the beneficiary is entitled to is cut short. A state policy choice for HCPF, to be revisited when Colorado's community engagement rule is published. Checked 2026-11-21: 42 CFR 435.558 (D-121), 42 U.S.C. 1396a(xx)(6) (D-198), 10 CCR 2505-10 § 8.100 (D-65). Items: CO-1975.
 
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: An enrolled person who makes no showing is disenrolled at the latest time federal law allows, the end of the month after the month the 30-day period ends.
+
+Checked 2026-11-22: 42 CFR 435.558(d)(2)(ii) (D-121, S2109: "not later than the end of the month following") and 42 U.S.C. 1396a(xx)(6)(A)(iii) (S2108) set the latest date and let the State act earlier, and 10 CCR 2505-10 § 8.100 (D-65) has no community engagement text. No published rule settles it.
 
 ### OQ-610. LEAP hotel residents: "has lived or will live in the hotel continuously for thirty calendar days"
 
-Body: 9 CCR 2503-7 3.752.25.B.8 (S774) excludes hotel residents from vulnerability "unless proof that the household has lived or will live in the hotel continuously for thirty (30) calendar days at the time of application and that heat is included in rent", proof being "a monthly statement, billing statement or receipt indicating the monthly arrangement". leap_living_arrangement (CO-1283), now derived from the neutral residence setting (same-word audit SW-20), reads the days lived from institution_entry_date (CO-008) to leap_application_date (CO-2122) against leap_hotel_min_continuous_residence_days (CO-3342), with heat included in rent (home_heating_cost_arrangement, CO-3300). The "will live" arm (a monthly arrangement shown at application, before thirty days have passed) is not read: no fact states a prospective stay, and the rule leaves to the county what proof of a future stay suffices. Two readings: (a) the draft, days already lived; (b) a household with a monthly hotel arrangement is vulnerable from its first day. Checked 2026-11-22: 3.752.25.B.8 (D-86, version effective 11/01/2025); no published rule defines the proof of a future stay. A state policy choice for the LEAP owner. Items: CO-1283, CO-3342.
+Body: 9 CCR 2503-7 3.752.25.B.8 (S774) excludes hotel residents from vulnerability "unless proof that the household has lived or will live in the hotel continuously for thirty (30) calendar days at the time of application and that heat is included in rent", proof being "a monthly statement, billing statement or receipt indicating the monthly arrangement". leap_living_arrangement (CO-1283), now derived from the neutral residence setting (same-word audit SW-20), reads the days lived from institution_entry_date (CO-008) to leap_application_date (CO-2122) against leap_hotel_min_continuous_residence_days (CO-3342), with heat included in rent (home_heating_cost_arrangement, CO-3300). The "will live" arm (a monthly arrangement shown at application, before thirty days have passed) is not read: no fact states a prospective stay, and the rule leaves to the county what proof of a future stay suffices. Two readings: (a) the draft, days already lived; (b) a household with a monthly hotel arrangement is vulnerable from its first day. Items: CO-1283, CO-3342.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: A hotel household is vulnerable once it has lived in the hotel thirty days by the application date with heat in its rent; a planned stay does not count.
+
+Checked 2026-11-22: 3.752.25.B.8 (D-86, version effective 11/01/2025); no published rule defines the proof of a future stay. A state policy choice for the LEAP owner.
 
 ### OQ-611. Colorado Works: a child temporarily absent for a reason 3.604.2.E and G do not list
 
-Body: 9 CCR 2503-6 3.604.2.E (S2203) keeps a dependent child in the home during an absence for medical treatment, a court's jurisdiction, an agency's legal custody without physical custody, or school away from home; G keeps the child in the home for more than forty-five days for medical care or education away, a parenting-plan visit of up to six months, or a voluntary foster placement of up to three months; I.3 keeps "a parent or non-parent caretaker" in the home during an absence of less than forty-five days with an established intent to return. No paragraph says what happens to a child away for less than forty-five days for another reason (a stay with a grandparent over the summer, for example). cw_is_considered_living_in_home (CO-3354) reads I.3's forty-five days for a child as for a caretaker, since G's "for a period greater than forty-five (45) consecutive calendar days" implies that shorter absences do not end the child's living in the home. The other reading keeps a child in the home only for the listed reasons. Checked 2026-11-22: 3.604.2.E-I (D-81, version effective 07/01/2025); no published rule addresses it. A state policy choice for the cash programs owner. Items: CO-3354.
+Body: 9 CCR 2503-6 3.604.2.E (S2203) keeps a dependent child in the home during an absence for medical treatment, a court's jurisdiction, an agency's legal custody without physical custody, or school away from home; G keeps the child in the home for more than forty-five days for medical care or education away, a parenting-plan visit of up to six months, or a voluntary foster placement of up to three months; I.3 keeps "a parent or non-parent caretaker" in the home during an absence of less than forty-five days with an established intent to return. No paragraph says what happens to a child away for less than forty-five days for another reason (a stay with a grandparent over the summer, for example). cw_is_considered_living_in_home (CO-3354) reads I.3's forty-five days for a child as for a caretaker, since G's "for a period greater than forty-five (45) consecutive calendar days" implies that shorter absences do not end the child's living in the home. The other reading keeps a child in the home only for the listed reasons. Items: CO-3354.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A child away for less than forty-five days with an intent to return stays in the home, as a caretaker does under 3.604.2.I.3.
+
+Checked 2026-11-22: 3.604.2.E-I (D-81, version effective 07/01/2025); no published rule addresses it. A state policy choice for the cash programs owner.
 
 ### OQ-612. Temporary absence for SNAP, MAGI Medicaid, CCCAP and LEAP
 
-Body: The volume now reads living together from one neutral home label (dwelling_id, CO-3350; lives_with, CO-1925), where a temporarily absent person keeps the home they usually live in and intend to return to (same-word audit SW-7). Colorado Works applies its own absence rule (3.604.2.E, G, I; CO-3354) and CCCAP its involuntary-absence rule for a second caretaker (3.111.D.1.b, CO-898). The other programs' excerpted rules state a household of persons who "live together" (7 CFR 273.1(a), S2), persons "living with" the individual (42 CFR 435.603(f), S163) and individuals "living together" at a dwelling (9 CCR 2503-7 3.751.1, S1400) without a limit on temporary absence, so the volume reads a temporarily absent person as living in the usual home for them. A State agency may set limits (an absence of more than a month, for example, in SNAP practice). Checked 2026-11-22: 7 CFR 273.1 (D-7, text re-checked against the eCFR of 2026-11-19), 10 CCR 2505-10 § 8.100.4.E (D-65), 9 CCR 2503-7 3.751 (D-86): none states a temporary-absence limit. A state policy choice for the SNAP, Medicaid, CCCAP and LEAP owners. Items: CO-1925, CO-3350, CO-305, CO-500, CO-982, CO-1000.
+Body: The volume now reads living together from one neutral home label (dwelling_id, CO-3350; lives_with, CO-1925), where a temporarily absent person keeps the home they usually live in and intend to return to (same-word audit SW-7). Colorado Works applies its own absence rule (3.604.2.E, G, I; CO-3354) and CCCAP its involuntary-absence rule for a second caretaker (3.111.D.1.b, CO-898). The other programs' excerpted rules state a household of persons who "live together" (7 CFR 273.1(a), S2), persons "living with" the individual (42 CFR 435.603(f), S163) and individuals "living together" at a dwelling (9 CCR 2503-7 3.751.1, S1400) without a limit on temporary absence, so the volume reads a temporarily absent person as living in the usual home for them. A State agency may set limits (an absence of more than a month, for example, in SNAP practice). Items: CO-1925, CO-3350, CO-305, CO-500, CO-982, CO-1000.
+
+Class: state policy choice
+Owner: SNAP policy owner, Medicaid policy owner, Child care policy owner (CDEC), Energy assistance (LEAP) policy owner
+Assumption: A temporarily absent person lives in the home they usually live in and intend to return to, with no limit on the absence.
+
+Checked 2026-11-22: 7 CFR 273.1 (D-7, text re-checked against the eCFR of 2026-11-19), 10 CCR 2505-10 § 8.100.4.E (D-65), 9 CCR 2503-7 3.751 (D-86): none states a temporary-absence limit. A state policy choice for the SNAP, Medicaid, CCCAP and LEAP owners.
+
+### OQ-613. Colorado Works: what "a part-time student who is not a full-time employee" means
+
+Body: 9 CCR 2503-6 3.605.4.A.24.b (S1621) disregards "All earned income ... that is received by a dependent child who is a full-time student or a part-time student who is not a fulltime employee". The rule does not say how many hours make a full-time employee. cw_student_earnings_are_disregarded (CO-3385) reads a part-time student working cw_full_time_employee_hours_per_month (CO-3378: 130 hours, thirty hours a week) or more as a full-time employee, the threshold federal law uses for full-time employment elsewhere; the other common reading is forty hours a week. Items: CO-3385, CO-3378.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A part-time student working 130 hours or more in the month is a full-time employee; below that, the earnings are disregarded.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.605.4.A.24 and 3.601 (D-81, version effective 07/01/2025); no definition of a full-time employee. No published rule settles it.
+
+### OQ-614. LEAP self-employment: business mileage "at the county rate"
+
+Body: 9 CCR 2503-7 3.755.21.I (S1084) deducts business mileage from declared gross self-employment income at the county's mileage rate. No county rate is published in the rule. leap_self_employment_allowable_costs (CO-1711) reads the neutral self_employment_business_vehicle_costs (CO-3374), the cost of business mileage the case states, at the mileage rate the program applies; for LEAP the county figures it at its rate before the case states it. If CDHS publishes one statewide rate, it becomes a parameter and the case states miles instead. Items: CO-1711, CO-3374.
+
+Class: blocked on a named document
+Owner: Energy assistance (LEAP) policy owner
+Assumption: The case states the business mileage cost already figured at the county's rate.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.755.21.I (D-86, version effective 11/01/2025) names "the county rate"; the county mileage rates are county policy, not published on any host this volume can reach (cdhs.colorado.gov refuses).

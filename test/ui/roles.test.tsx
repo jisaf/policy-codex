@@ -19,6 +19,8 @@ import { changeSetSig, draftsShownSig, engineSig, modeSig, route, volumeSig } fr
 import { defaultRoute } from "../../src/ui/router";
 import { RolesView } from "../../src/ui/views/RolesView";
 import { noVersionReason } from "../../src/ui/Present";
+import { changedBy, departureItems, ownerGroups, personaQuestions } from "../../src/ui/counts";
+import { documentsTakingEffect, undoEntry } from "../../src/ui/views/RolesView";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
@@ -179,4 +181,53 @@ describe("RolesView", () => {
     // The rule in force still reads 90.
     expect(row.querySelector(".figvalue")!.textContent).toContain("$90.00");
   });
+
+  it("the question card counts what the queue counts, and its lines add up (four retests: 40 vs 51, 27 vs 28)", () => {
+    for (const pid of ["hcpf", "cdhs", "legal"]) {
+      setUp(pid);
+      const host = document.createElement("div");
+      render(<RolesView />, host);
+      const card = [...host.querySelectorAll(".countcard")].find((c) => /open questions/.test(c.textContent!))!;
+      const n = Number(card.querySelector(".num")!.textContent!.replace(/,/g, ""));
+      const mine = personaQuestions(engine, vol.sources, vol.openQuestions, persona(pid));
+      expect(n, pid).toBe(mine.length);
+      const lines = [...card.querySelectorAll("li")].map((li) => Number(/: (\d+)$/.exec(li.textContent!)![1]));
+      if (lines.length) expect(lines.reduce((a, b) => a + b, 0), pid).toBe(n);
+      expect(ownerGroups(engine, mine, personaRoles(persona(pid), engine.meta)).length).toBe(Math.max(lines.length, 1));
+    }
+  });
+
+  it("the sign-off card says how its role lines relate to its headline", () => {
+    setUp("cdhs");
+    const host = document.createElement("div");
+    render(<RolesView />, host);
+    const card = host.querySelector(".countcard")!;
+    const lines = [...card.querySelectorAll("li")].map((li) => Number(/: ([\d,]+)$/.exec(li.textContent!)![1].replace(/,/g, "")));
+    const sum = lines.reduce((a, b) => a + b, 0);
+    expect(card.textContent).toContain(`${sum.toLocaleString("en-US")} sign-offs in all`);
+  });
+
+  it("departures follow the As of date", () => {
+    const all = departureItems(engine);
+    const early = departureItems(engine, { asOf: "2025-06-01" });
+    expect(early.length).toBeLessThanOrEqual(all.length);
+    setUp("legal", { asof: "2025-06-01" });
+    const host = document.createElement("div");
+    render(<RolesView />, host);
+    expect(host.querySelectorAll("#role-departures li.departure").length).toBe(early.length);
+  });
+
+  it("what changed lists rule text taking effect, and works out who a new figure changes", () => {
+    const docs = documentsTakingEffect(engine, vol.documents, vol.sources, ["LEAP"], "2026-11-01", "2026-11-22");
+    expect(docs.map((d) => d.doc.id)).toContain("D-173");
+    const events = changesBetween(engine, rolePrograms(engine, persona("cdhs")), "2025-10-01", "2026-10-31")
+      .filter((e) => e.kind === "new figure" && e.previous && JSON.stringify(e.previous.value) !== JSON.stringify(e.version!.value));
+    expect(events.length).toBeGreaterThan(0);
+    const e = events[0];
+    const entry = undoEntry(e, vol.chapterOf[e.item.id])!;
+    expect(entry.after!.versions!.find((v) => v.from === e.version!.from)!.value).toEqual(e.previous!.value);
+    // Each changed result is one the stored cases really give differently.
+    for (const c of changedBy(engine, vol.cases, [entry]).slice(0, 5)) expect(JSON.stringify(c.value)).not.toBe(JSON.stringify(c.after));
+  });
 });
+

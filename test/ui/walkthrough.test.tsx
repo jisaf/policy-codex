@@ -3,6 +3,7 @@
  * participation, a SNAP allotment's budget, CO-92's documents) and read the
  * values from the engine rather than fixing them, where the fix tracks may
  * still move a figure. */
+import { relationshipSentence } from "../../src/ui/people";
 import { describe, it, expect, beforeEach } from "vitest";
 import path from "node:path";
 import { render } from "preact";
@@ -18,7 +19,8 @@ import {
   budgetRole, budgetRows, budgetText, buildWalk, caseChanges, caseNotes, caseSummaries,
   declaredOutcomePrograms, dueDateFor, documentsOwed, foldedBehind, isHouseholdOutcome,
   outcomeChoices, overrideNotes, participationOutcome, plainCaseTitle, recordedValue,
-  unverifiedNotes, visibleSteps,
+  unverifiedNotes, visibleSteps, budgetEffect, budgetMoney, caseFocus, determinationDate, documentRows,
+  lineSources, personTitle, takenLabel, versionUsed,
 } from "../../src/ui/walkthrough";
 import { WalkthroughView } from "../../src/ui/views/WalkthroughView";
 
@@ -97,7 +99,7 @@ describe("outcomes and per-person participation", () => {
     const host = show({ arg: "CO-01", params: { person: "p3", program: "SNAP", outcome: "snap_allotment" } });
     const own = host.querySelector(".wk-person")!;
     expect(own.getAttribute("data-participation")).toMatch(/^ineligible_member/);
-    expect(own.textContent).toContain("Person 3's own result in SNAP");
+    expect(own.textContent).toContain("Person 3's own place in SNAP");
     expect(own.querySelector(".wk-household")!.textContent).toMatch(/household's result/);
   });
 });
@@ -170,7 +172,9 @@ describe("the budget (cash lead, task 2; county supervisor, task 2)", () => {
   });
 
   it("reads a line's role from the head of its name", () => {
-    expect(budgetRole("SNAP: adjusted income before the shelter deduction")).toBe("net");
+    expect(budgetRole("SNAP: adjusted income before the shelter deduction")).toBe("subtotal");
+    expect(budgetRole("Colorado Works: grant before any sanction")).toBe("subtotal");
+    expect(budgetRole("Colorado Works pregnancy allowance")).toBe("addition");
     expect(budgetRole("SNAP: household earned income for the earned income deduction")).toBe("income");
     expect(budgetRole("SNAP: maximum allotment")).toBe("standard");
     expect(budgetRole("MMMNA cap")).toBe("standard");
@@ -187,7 +191,8 @@ describe("the budget (cash lead, task 2; county supervisor, task 2)", () => {
   it("is drawn for money outcomes only", () => {
     expect(budgetRows(engine, walkOf("CO-01", "snap_person_participation_status", "p3"))).toEqual([]);
     const host = show({ arg: "CO-01", params: { person: "p2", program: "SNAP", outcome: "snap_allotment", month: "2026-10" } });
-    expect(host.querySelectorAll("table.wk-budget tbody tr").length).toBe(rows.length);
+    const shown = budgetRows(engine, w, { effect: budgetEffect(engine, kase("CO-01")) });
+    expect(host.querySelectorAll("table.wk-budget tbody tr").length).toBe(shown.length);
     expect(host.querySelector("table.wk-budget tr.result")!.textContent).toContain("$");
   });
 });
@@ -216,7 +221,7 @@ describe("documents still needed (county supervisor, task 4)", () => {
   it("renders the checklist with a tick box per document", () => {
     const host = show({ arg: "CO-92", params: { person: "p1", program: "SNAP" } });
     const rows = host.querySelectorAll("table.wk-docs tbody tr");
-    expect(rows.length).toBe(documentsOwed(engine, kase("CO-92")).filter((d) => d.applies).length);
+    expect(rows.length).toBe(documentRows(documentsOwed(engine, kase("CO-92")).filter((d) => d.applies)).length);
     expect(rows[0].querySelector("input[type=checkbox]")).not.toBeNull();
   });
 });
@@ -286,3 +291,63 @@ describe("the walkthrough page", () => {
     expect(show({ arg: "CO-999" }).textContent).toContain("No stored household CO-999");
   });
 });
+
+describe("phase 13 retest fixes", () => {
+  it("opens on the person and program the case is about (CO-05: the 16-year-old, Medicaid)", () => {
+    expect(caseFocus(engine, kase("CO-05"))).toEqual({ person: "p3", program: "Medicaid" });
+    expect(caseFocus(engine, kase("CO-87"))).toMatchObject({ person: "p1", program: "SNAP" });
+    const host = show({ arg: "CO-05", params: {} });
+    expect(host.querySelector(".wk-pick a.chip.on[data-person]")!.getAttribute("data-person")).toBe("p3");
+    expect(host.querySelector(".wk-pick a.chip.on[data-program]")!.getAttribute("data-program")).toBe("Medicaid");
+  });
+
+  it("names a person with their stated relationship", () => {
+    expect(personTitle(kase("CO-05"), "p3")).toBe("Person 3 — grandchild of Person 1; in the care of Person 1, age 16");
+    expect(relationshipSentence({ role: "files_jointly_with", from: "p1", to: "p2" })).toBe("Person 1 files taxes jointly with Person 2");
+  });
+
+  it("the Colorado Works budget shows the disregard and leaves out the pregnancy allowance nobody uses", () => {
+    const w2 = walkOf("CO-07", "cw_grant_before_sanction", "p1", "2026-10");
+    const rs = budgetRows(engine, w2, { effect: budgetEffect(engine, kase("CO-07")) });
+    expect(rs.some((r) => r.node.identifier === "cw_pregnancy_allowance")).toBe(false);
+    const taken = rs.find((r) => r.taken)!;
+    expect(taken.taken!.amount).toBeCloseTo(268, 6);
+    expect(takenLabel(taken)).toMatch(/Taken off gross earned income/);
+    // Without the effect check the allowance is listed, as before the fix.
+    expect(budgetRows(engine, w2).some((r) => r.node.identifier === "cw_pregnancy_allowance")).toBe(true);
+  });
+
+  it("the deemed stepparent income shows the needs taken off beside the $90", () => {
+    const w3 = walkOf("CO-83", "cw_countable_income", "p1", "2026-10");
+    const rs = budgetRows(engine, w3, { effect: budgetEffect(engine, kase("CO-83")) });
+    expect(rs.find((r) => r.taken)!.taken!.amount).toBeCloseTo(253, 6);
+  });
+
+  it("cites the figure's period in force on the case date, not its first source", () => {
+    const it = engine.item("snap_standard_deduction")!;
+    const det = determinationDate(kase("CO-01"));
+    const node = { identifier: it.identifier, kind: "parameter", sources: it.sources ?? [] } as never;
+    const v = versionUsed(engine, node, det);
+    if (v?.source) expect(lineSources(engine, node, det)).toEqual([v.source]);
+    expect(budgetMoney(517, String)).toBe("$517");
+    expect(budgetMoney(129.25, () => "$129.25")).toBe("$129.25");
+  });
+
+  it("lists the child's CHP+ row and one row per document", () => {
+    const owed = documentsOwed(engine, kase("CO-92")).filter((d) => d.applies);
+    expect(owed.some((d) => d.program === "CHP+" && d.person === "p2")).toBe(true);
+    const rows = documentRows(owed);
+    const imm = rows.find((r) => r.person === "p1" && /immigration/i.test(r.document))!;
+    expect(imm.programs.length).toBeGreaterThan(1);
+    expect(rows.length).toBeLessThan(owed.length);
+  });
+
+  it("a departure banner says why it bears on the result", () => {
+    const w4 = walkOf("CO-01", "ma_patient_payment", "p1", "2026-10");
+    for (const o of overrideNotes(w4)) {
+      expect(o.via[0]).toBe(w4.root.name);
+      expect(o.via[o.via.length - 1]).toBe(engine.item(o.item)!.name);
+    }
+  });
+});
+

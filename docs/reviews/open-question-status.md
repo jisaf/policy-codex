@@ -1,209 +1,105 @@
 # Open-question status: Colorado volume
 
-Snapshot of `volumes/co/open-questions.md` after the union-merge repair of 2026-11-21. Each question appears once; its status follows its heading: "Resolved:" when every part is settled, "Partly resolved:" when a stated part is still open, and no prefix when it is open. For a question that is not resolved, the reason class says why it is not:
+Generated from `volumes/co/open-questions.md` after the open-question classification pass of 2026-11-22. A question's status follows its heading: "Resolved:" when every part is settled, "Partly resolved:" when a stated part is still open, and no prefix while it is open. Every question that is not resolved now states its class, owner and reading in force on explicit lines the questions view reads (`Class:`, `Owner:`, `Assumption:`, and `Blocked on:` for a blocked one), and a `Checked 2026-11-22:` sentence naming the published texts read and why none settles it (a blocked question names the document and the host that refused it instead, and most also record the check).
 
-- **state policy choice**: the published text leaves the reading to Colorado (an unpublished State plan election, a county figure, or an ambiguity or conflict only the agency can settle).
-- **blocked on refused host**: the text that would settle it is published only on a host this project cannot fetch (hcpf.colorado.gov, cdec.colorado.gov, www.usda.gov).
-- **ledger-design limit**: the rule is clear enough; the open part is how the ledger represents it (a missing fact, alias or relationship role, or structure).
-- **other**: none of the above (noted in the row).
+The classes are the stopping rule's (docs/plan-colorado.md, "Stopping rule"):
 
-Totals: 196 questions; 129 resolved, 23 partly resolved, 44 open. Of the 67 not fully resolved: 48 state policy choice, 5 blocked on refused host, 11 ledger-design limit, 3 other.
+- **state policy choice**: the published text leaves the reading to Colorado (an unpublished State plan election, a county figure, or an ambiguity or conflict only the agency can settle), and the texts checked are recorded.
+- **needs Legal**: a statute and a Colorado rule, or two rules, point different ways; the competing readings and the reading in force are recorded. It counts as a policy choice for the stopping rule, so it also records the texts checked.
+- **blocked on a named document**: the text that would settle it exists, or will, but no allowed host serves it; the document and the host are named.
 
-| OQ | Status | Program | Reason class (open part) |
-|---|---|---|---|
-| OQ-1 | partly | SNAP | blocked on refused host: FNS implementation memo is served only from www.usda.gov |
-| OQ-2 | resolved | SNAP |  |
-| OQ-3 | resolved | SNAP |  |
-| OQ-11 | resolved | SNAP |  |
-| OQ-12 | open | SNAP | state policy choice: whether the application notice is the authorization |
-| OQ-13 | resolved | SNAP |  |
-| OQ-14 | resolved | SNAP |  |
-| OQ-15 | resolved | SNAP |  |
-| OQ-21 | resolved | SNAP |  |
-| OQ-22 | resolved | SNAP |  |
-| OQ-23 | resolved | SNAP |  |
-| OQ-24 | resolved | SNAP |  |
-| OQ-25 | resolved | SNAP |  |
-| OQ-26 | resolved | SNAP |  |
-| OQ-27 | resolved | SNAP |  |
-| OQ-28 | resolved | SNAP |  |
-| OQ-29 | resolved | SNAP |  |
-| OQ-30 | open | SNAP | state policy choice: negative intermediate income not addressed |
-| OQ-31 | resolved | SNAP |  |
-| OQ-32 | resolved | SNAP |  |
-| OQ-33 | resolved | SNAP |  |
-| OQ-34 | resolved | SNAP |  |
-| OQ-35 | resolved | SNAP |  |
-| OQ-36 | resolved | SNAP |  |
-| OQ-37 | resolved | SNAP |  |
-| OQ-38 | resolved | SNAP |  |
-| OQ-41 | resolved | Medicaid |  |
-| OQ-42 | resolved | Medicaid |  |
-| OQ-43 | resolved | Medicaid |  |
-| OQ-44 | open | Medicaid | ledger-design limit: how the ledger stores lawful presence |
-| OQ-49 | resolved | Medicaid |  |
-| OQ-50 | open | Medicaid | state policy choice: deprivation election is in the unpublished State plan |
-| OQ-51 | resolved | Medicaid |  |
-| OQ-52 | resolved | Medicaid |  |
-| OQ-53 | resolved | Medicaid |  |
-| OQ-54 | open | Medicaid | ledger-design limit: no separate attested-income fact |
-| OQ-55 | resolved | Medicaid |  |
-| OQ-56 | resolved | Medicaid |  |
-| OQ-57 | resolved | CHP+ |  |
-| OQ-58 | resolved | CHP+ |  |
-| OQ-59 | resolved | CHP+ |  |
-| OQ-60 | resolved | CHP+ |  |
-| OQ-61 | resolved | CHP+ |  |
-| OQ-62 | open | CHP+ | ledger-design limit: CHP+ aliases of the MAGI household |
-| OQ-63 | resolved | Medicaid |  |
-| OQ-64 | resolved | CHP+ |  |
-| OQ-65 | resolved | Medicaid |  |
-| OQ-81 | resolved | Medicaid |  |
-| OQ-82 | open | Medicaid | ledger-design limit: premium schedules as case expressions |
-| OQ-83 | partly | Medicaid | state policy choice: parent-to-child deeming not computed by 8.100.5.H |
-| OQ-84 | resolved | Medicaid |  |
-| OQ-91 | resolved | Medicaid |  |
-| OQ-92 | resolved | Medicaid |  |
-| OQ-93 | resolved | Medicaid |  |
-| OQ-94 | resolved | Medicaid |  |
-| OQ-95 | open | Medicaid | ledger-design limit: family-member group supplied, not derived |
-| OQ-96 | resolved | Medicaid |  |
-| OQ-97 | open | Medicaid | ledger-design limit: community spouse facts supplied directly |
-| OQ-98 | resolved | Medicaid |  |
-| OQ-99 | partly | Medicaid | blocked on refused host: OM 25-073 figures unverified (hcpf.colorado.gov) |
-| OQ-100 | open | Medicaid | state policy choice: no rule orders the LTC settings |
-| OQ-101 | partly | Colorado Works | state policy choice: chart has no row above two caretakers |
-| OQ-102 | partly | Colorado Works | state policy choice: deeming "needs" names no figure |
-| OQ-103 | resolved | Colorado Works |  |
-| OQ-104 | open | Colorado Works | state policy choice: no individual monthly-hour equivalent |
-| OQ-105 | resolved | Colorado Works |  |
-| OQ-111 | resolved | Adult Financial |  |
-| OQ-112 | resolved | Adult Financial |  |
-| OQ-113 | resolved | Adult Financial |  |
-| OQ-114 | resolved | Adult Financial |  |
-| OQ-115 | resolved | Adult Financial |  |
-| OQ-116 | resolved | Adult Financial |  |
-| OQ-117 | resolved | Adult Financial |  |
-| OQ-118 | resolved | Adult Financial |  |
-| OQ-119 | resolved | Adult Financial |  |
-| OQ-120 | resolved | Adult Financial |  |
-| OQ-121 | open | CCCAP | blocked on refused host: county entry limits only on cdec.colorado.gov |
-| OQ-122 | resolved | LEAP |  |
-| OQ-123 | resolved | LEAP |  |
-| OQ-124 | resolved | CCCAP |  |
-| OQ-125 | resolved | CCCAP |  |
-| OQ-126 | resolved | Medicaid |  |
-| OQ-127 | resolved | Medicaid |  |
-| OQ-132 | resolved | LEAP |  |
-| OQ-133 | resolved | CCCAP |  |
-| OQ-134 | resolved | CCCAP |  |
-| OQ-135 | resolved | CCCAP |  |
-| OQ-136 | resolved | CCCAP |  |
-| OQ-137 | resolved | LEAP |  |
-| OQ-138 | open | Adult Financial | state policy choice: statute and rule conflict on SSDI |
-| OQ-139 | resolved | Adult Financial |  |
-| OQ-140 | resolved | Colorado Works |  |
-| OQ-141 | resolved | Colorado Works |  |
-| OQ-142 | resolved | Colorado Works |  |
-| OQ-143 | resolved | Colorado Works |  |
-| OQ-144 | open | Medicaid | state policy choice: "individuals" versus "households" in the band table |
-| OQ-145 | resolved | Medicaid |  |
-| OQ-151 | resolved | Adult Financial |  |
-| OQ-152 | resolved | Colorado Works |  |
-| OQ-153 | open | Colorado Works | state policy choice: "shall not exceed" against "equals or exceeds" |
-| OQ-157 | resolved | CCCAP |  |
-| OQ-158 | resolved | LEAP |  |
-| OQ-159 | resolved | CCCAP |  |
-| OQ-160 | resolved | CCCAP |  |
-| OQ-161 | resolved | CCCAP |  |
-| OQ-162 | partly | CCCAP | state policy choice: county-plan periods; the activity fact does not split education kinds |
-| OQ-163 | partly | LEAP, CCCAP | state policy choice: K-9 teen-parent household |
-| OQ-200 | open | Medicaid | state policy choice: HCBS special income group for emergency Medicaid |
-| OQ-201 | open | Medicaid | state policy choice: BCCP "woman" |
-| OQ-202 | open | Medicaid | state policy choice: BCCP transfer requirement and stale cross-reference |
-| OQ-203 | open | Medicaid | other: 2002 C.R.S. edition published on no allowed host |
-| OQ-204 | open | Medicaid | state policy choice: where the 5% disregard applies |
-| OQ-205 | resolved | Medicaid |  |
-| OQ-206 | resolved | Medicaid |  |
-| OQ-207 | resolved | Medicaid |  |
-| OQ-208 | resolved | Medicaid |  |
-| OQ-209 | open | Medicaid | state policy choice: disabled widow(er)s and closed cohorts |
-| OQ-210 | resolved | Medicaid |  |
-| OQ-211 | resolved | Medicaid |  |
-| OQ-212 | partly | Medicaid | blocked on refused host: OM 25-073 figures unverified (hcpf.colorado.gov) |
-| OQ-213 | partly | Medicaid | state policy choice: covering parolees, conditional entrants, battered non-citizens is a State option |
-| OQ-214 | partly | Medicaid | state policy choice: postpartum person not covered while pregnant |
-| OQ-215 | open | Medicaid | state policy choice: age/gender restriction against childbearing age |
-| OQ-216 | partly | Medicaid | ledger-design limit: one receipt per person; per-member exemption |
-| OQ-217 | open | Medicaid | state policy choice: Department-discretion exclusions |
-| OQ-250 | partly | Adult Financial | other: no published HCA tier schedule |
-| OQ-251 | partly | SNAP | blocked on refused host: FNS implementation memo is served only from www.usda.gov |
-| OQ-252 | open | Colorado Works | state policy choice: county diversion policies and State plan maximum |
-| OQ-253 | open | LEAP | state policy choice: how Steps B, D and F combine; Step D table |
-| OQ-254 | partly | CCCAP | state policy choice: band-edge dollars; county waivers need facts |
-| OQ-255 | partly | SUN Bucks | state policy choice: optional categorical sources in the unfetched State plan; household reading |
-| OQ-300 | resolved | All (verification) |  |
-| OQ-301 | resolved | Medicaid |  |
-| OQ-302 | partly | Medicaid | state policy choice: 20% of what; verification plan not on an allowed host |
-| OQ-303 | open | Medicaid | state policy choice: no period for other documentation |
-| OQ-304 | resolved | Medicaid |  |
-| OQ-305 | resolved | Medicaid |  |
-| OQ-306 | resolved | Medicaid |  |
-| OQ-307 | resolved | Medicaid |  |
-| OQ-308 | resolved | Medicaid, CHP+ |  |
-| OQ-309 | resolved | SNAP |  |
-| OQ-310 | resolved | SNAP |  |
-| OQ-311 | resolved | SNAP |  |
-| OQ-312 | resolved | SNAP |  |
-| OQ-313 | resolved | SNAP |  |
-| OQ-314 | resolved | Colorado Works |  |
-| OQ-315 | resolved | Colorado Works, Adult Financial |  |
-| OQ-316 | resolved | Colorado Works, LEAP, Medicaid |  |
-| OQ-317 | resolved | Adult Financial |  |
-| OQ-318 | resolved | LEAP |  |
-| OQ-319 | resolved | LEAP |  |
-| OQ-320 | resolved | All (verification) |  |
-| OQ-321 | resolved | All (verification) |  |
-| OQ-322 | resolved | CHP+ |  |
-| OQ-323 | partly | SNAP | ledger-design limit: no fact for the migrant out-of-state exception |
-| OQ-324 | resolved | Medicaid |  |
-| OQ-350 | resolved | Colorado Works |  |
-| OQ-351 | open | Adult Financial | state policy choice: whether SSI is in "gross unearned income" |
-| OQ-352 | partly | Adult Financial | state policy choice: whether income is deducted from the $79 PNA |
-| OQ-353 | open | SNAP | state policy choice: SMED between $165 and $200 |
-| OQ-354 | open | Colorado Works | state policy choice: order of the death-reimbursement reductions |
-| OQ-355 | open | Adult Financial | state policy choice: prepaid plot and the $2,500 combined-charges limit |
-| OQ-356 | open | SNAP | state policy choice: "below" or "at or below" 200% |
-| OQ-357 | resolved | Adult Financial |  |
-| OQ-358 | resolved | LEAP |  |
-| OQ-370 | resolved | LEAP |  |
-| OQ-371 | partly | SNAP | state policy choice: the $50 boundary |
-| OQ-372 | resolved | Medicaid |  |
-| OQ-373 | resolved | Colorado Works, Adult Financial, CCCAP |  |
-| OQ-374 | resolved | Medicaid |  |
-| OQ-375 | resolved | Adult Financial |  |
-| OQ-376 | partly | Colorado Works, LEAP | state policy choice: LEAP edition of Rule 5; DMV match has no fact |
-| OQ-377 | partly | SUN Bucks | state policy choice: response date set by the Summer EBT agency |
-| OQ-378 | resolved | CCCAP |  |
-| OQ-379 | resolved | Medicaid |  |
-| OQ-380 | resolved | SNAP |  |
-| OQ-381 | resolved | LEAP |  |
-| OQ-382 | resolved | Medicaid |  |
-| OQ-390 | partly | All (income) | ledger-design limit: SSI-method exclusions have no inputs |
-| OQ-391 | resolved | Adult Financial |  |
-| OQ-392 | resolved | Adult Financial |  |
-| OQ-393 | partly | Medicaid, CCCAP, SNAP | other: SNAP county of application not yet wired to county_of_residence |
-| OQ-394 | open | CCCAP | state policy choice: "legal resident" and lawfully present non-qualified non-citizens |
-| OQ-395 | resolved | CCCAP |  |
-| OQ-396 | open | All (relationships) | ledger-design limit: shared relationship edges |
-| OQ-410 | open | Medicaid | state policy choice: Colorado look-back months and verification frequency unpublished |
-| OQ-411 | open | Medicaid | state policy choice: hardship election, good faith exemption, early start unpublished |
-| OQ-412 | open | Medicaid | state policy choice: other State choices unpublished |
-| OQ-413 | open | Medicaid | ledger-design limit: modeling choices the federal text does not force |
-| OQ-430 | open | Adult Financial | state policy choice: statute and rule conflict on OAP five-year bar |
-| OQ-470 | open | CHP+ | state policy choice: gaps between copayment bands |
-| OQ-471 | open | Medicaid | state policy choice: income trust deductions and the family allowance |
-| OQ-472 | open | Medicaid | state policy choice: state rule and 42 CFR 435.403 conflict |
-| OQ-473 | open | Medicaid | state policy choice: whose income bears the ineligible child allocation |
-| OQ-490 | open | Colorado Works | state policy choice: 3.604.2.M against 3.605.1.A.6 |
-| OQ-491 | open | Adult Financial | state policy choice: day of eligibility in the proration |
+## Counts
+
+Totals: 229 questions; 154 resolved, 20 partly resolved, 55 open. Of the 75 not fully resolved: 43 state policy choice, 8 needs Legal, 24 blocked on a named document, 0 ledger design.
+
+**Questions that would still block certification under the stopping rule: 0.** Every open question is a state policy choice (or a Legal question) with the published text checked recorded, or is blocked on a named document.
+
+Before this pass (2026-11-21 state, as the questions view classed it): 81 not fully resolved, of which 52 state policy choice, 14 needs Legal, 10 blocked, 5 ledger design; 34 would have blocked certification (a policy or Legal question with no recorded check, or a ledger-design question), and the class of several was misread from their text (OQ-530 waits on a figure not yet published; OQ-1 and OQ-251 wait on FNS memoranda; OQ-83 is a gap in the published text).
+
+Resolved in this pass: OQ-62 (rule text), OQ-393 (rule text), OQ-534 (SNAP strikers modeled), OQ-541 (ledger design decided; case check added), OQ-552 (SUN Bucks household from 7 CFR 292.2), OQ-580 (the rule's table). Part-answered in this pass: OQ-162 (the education limits by kind are carried by their fact), OQ-254 (the county waivers modeled), OQ-255 (the household reading, with OQ-552), OQ-376 (the DMV match needs no fact), OQ-561 (non-traditional dwelling defined in 3.751.1).
+
+By owner (first named): Medicaid policy owner 24; SNAP policy owner 12; Cash programs policy owner 12; Legal 8; LTSS policy owner 6; Child care policy owner (CDEC) 6; Energy assistance (LEAP) policy owner 4; Premium and finance owner 2; CHP+ policy owner 1.
+
+## Questions not fully resolved
+
+| OQ | Status | Program | Class | Owner | Blocked on | Question |
+|---|---|---|---|---|---|---|
+| OQ-1 | partly | SNAP | blocked on a named document | SNAP policy owner, Legal | FNS memorandum "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Alien SNAP Eligibility - Revised" and its Question and Answer #1 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it) | The Cuban/Haitian entrant half is settled; open: the date from which FNS applies Pub. L. 119-21 sec. 10108's narrowed non-citizen categories to current participants |
+| OQ-12 | open | SNAP | state policy choice | SNAP policy owner, Legal, State plan coordinator |  | Whether the TANF/MOE non-cash-service notice condition of ECE (S48) is modeled as always met |
+| OQ-30 | open | SNAP | state policy choice | SNAP policy owner |  | Whether the excess shelter deduction and the net income computation floor intermediate income at $0 before applying the 50% shelter share is not addressed by the fetched text |
+| OQ-50 | open | Medicaid | state policy choice | Medicaid policy owner, State plan coordinator |  | Dependent-child deprivation criterion not modeled |
+| OQ-83 | partly | Medicaid | state policy choice | Medicaid policy owner, LTSS policy owner |  | SSI-related couple income allocations of 8.100.5.H are modeled; open: deeming a parent's income to an applicant child |
+| OQ-99 | partly | Medicaid | blocked on a named document | LTSS policy owner, Medicaid policy owner | HCPF Operational Memo OM 25-073, which states the regional private-pay rates (hcpf.colorado.gov refused) | Colorado's income trust private-pay-rate ceiling (8.100.7.G.1.a) is modeled; open: its OM 25-073 figures are unverified |
+| OQ-101 | partly | ColoradoWorks | state policy choice | Cash programs policy owner |  | Colorado Works unit composition is modeled; open: the need and grant standard of a unit with more than two caretakers, which the chart has no row for |
+| OQ-102 | partly | ColoradoWorks | state policy choice | Cash programs policy owner |  | The minor-parent income-deeming "needs" deduction counts the parents and their other children in the home; open: which dollar measure "needs" means |
+| OQ-104 | open | ColoradoWorks | state policy choice | Cash programs policy owner |  | Work participation monthly-hour equivalent is an assumption |
+| OQ-121 | open | CCCAP | blocked on a named document | Child care policy owner (CDEC) | the Colorado Department of Early Childhood's county entry-eligibility levels set from the self-sufficiency standard under 8 CCR 1403-1 3.111.H.1.a (cdec.colorado.gov refused) | CCCAP county entry income limit is a county-set figure, not a single text-stated number |
+| OQ-138 | open | AdultFinancial | needs Legal (counts as a policy choice) | Legal, Cash programs policy owner |  | Statute permits an SSDI-determined route into AND-SO; the implementing regulation excludes an SSDI recipient |
+| OQ-144 | open | Medicaid | state policy choice | Premium and finance owner, Medicaid policy owner |  | CBwD premium schedule's household-size keying and "individuals" versus "households" wording |
+| OQ-153 | open | ColoradoWorks | state policy choice | Cash programs policy owner |  | Tension between "shall not exceed" (3.606.1.H) and "equals or exceeds" (3.606.1.J.4) at the income-equals-need-standard boundary |
+| OQ-162 | partly | CCCAP | blocked on a named document | Child care policy owner (CDEC), Legal | each county's CCCAP county plan approved by the Department under 8 CCR 1403-1 3.104, which states any longer job search or education period (cdec.colorado.gov refused; the plans are not published on an allowed host) | CCCAP K-4/K-5/K-6 (need for care, time-limited activities, minimum-wage-per-hour test) and the education limits by kind of activity are modeled; open: a county plan's longer job search or education period |
+| OQ-163 | partly | LEAP, CCCAP | state policy choice | Child care policy owner (CDEC), Energy assistance (LEAP) policy owner, Legal |  | CCCAP/LEAP K-7 (shared-fuel arithmetic) and K-8 (duplicate-household denial) are modeled; open: K-9, the teen-parent household merge |
+| OQ-200 | open | Medicaid | state policy choice | Medicaid policy owner, Legal |  | Emergency Medicaid's "otherwise eligible" is read as a MAGI category, the SSI-related standards, or institutional long-term care |
+| OQ-201 | open | Medicaid | state policy choice | Medicaid policy owner |  | BCCP's "woman" is read as recorded sex female |
+| OQ-202 | open | Medicaid | state policy choice | Medicaid policy owner |  | BCCP's out-of-state transfer requirement and stale cross-reference |
+| OQ-203 | open | Medicaid | blocked on a named document | Medicaid policy owner | C.R.S. 10-16-102, 2002 edition, which 10 CCR 2505-10 § 8.715.3.A incorporates (not published by an allowed host: leg.colorado.gov serves only current editions) | BCCP creditable coverage: the 2002 edition of C.R.S. 10-16-102 is not fetched (narrowed in the phase 7 fix round) |
+| OQ-204 | open | Medicaid | state policy choice | Medicaid policy owner, Legal, State plan coordinator |  | Limited Family Planning: "a household of two in addition to any other household members" and the 5% disregard |
+| OQ-209 | open | Medicaid | state policy choice | Medicaid policy owner |  | Disabled widow(er)s: "meet all other Medical Assistance requirements", and the closed historical groups |
+| OQ-212 | partly | Medicaid | blocked on a named document | LTSS policy owner, Medicaid policy owner, Legal | HCPF Operational Memo OM 25-073, which states the 2025 and 2026 figures (hcpf.colorado.gov refused) | The transfer-penalty divisor and the institutional personal needs allowance are dated parameters; open: their OM 25-073 figures are unverified |
+| OQ-213 | partly | Medicaid | needs Legal (counts as a policy choice) | Legal, Medicaid policy owner |  | Five-year rule exemptions - the refugee, asylee and entrant reading of § 8.100.3.G.1.g.iv and the count from qualified status are settled; open: adult parolees, conditional entrants and battered non-citizens |
+| OQ-214 | partly | Medicaid | needs Legal (counts as a policy choice) | Legal, Medicaid policy owner, State plan coordinator, LTSS policy owner |  | Cover All Coloradans reaches a child or pregnant person in any category; open: a postpartum person not covered while pregnant reaches only the § 8.100.3.G.1.g.ix.1.a-b list |
+| OQ-250 | partly | AdultFinancial | blocked on a named document | Cash programs policy owner, LTSS policy owner | CDHS's Home Care Allowance tier maximum schedule, set administratively under 9 CCR 2503-5 3.570.11.D (cdhs.colorado.gov refused) | Home Care Allowance - the HCBS transition and the "home" test are modeled; open: the tier dollar amounts |
+| OQ-251 | partly | SNAP | blocked on a named document | SNAP policy owner, Legal | FNS memorandum "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Treatment of Energy Assistance Payments - Revised" (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it) | The FY2027 elderly/disabled resource limit is settled; open: the date from which FNS applies H.R.1's utility-allowance limit, which Colorado's SNAP rule has not adopted |
+| OQ-252 | open | ColoradoWorks | state policy choice | Cash programs policy owner, Legal, State plan coordinator |  | Colorado Works sanctions and diversion: defaults and county options |
+| OQ-253 | open | LEAP | state policy choice | Energy assistance (LEAP) policy owner |  | How LEAP's Step B, Step D and Step F adjustments combine, and which poverty guideline Step D uses |
+| OQ-254 | partly | CCCAP | state policy choice | Child care policy owner (CDEC) |  | CCCAP parent fee - children in care, the post-July 2028 formula and the county waivers are modeled; open: the dollars at the post-2028 band edges |
+| OQ-255 | partly | SunBucks | blocked on a named document | SNAP policy owner, School meals (CDE) co-approver | Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which names its streamlined-certification sources (not published on an allowed host; cdhs.colorado.gov refused) | Summer EBT (SUN Bucks) - no Colorado rule exists, and school age, special provision schools, the guideline year and the household reading of categorical eligibility are settled; open: Colorado's optional categorical sources |
+| OQ-302 | partly | Medicaid, CHP+ | blocked on a named document | Medicaid policy owner, Eligibility operations owner, CHP+ policy owner | Colorado's Medicaid and CHIP eligibility verification plan (42 CFR 435.945(j)), which states the reasonable compatibility threshold (not published on an allowed host; the medicaid.gov verification-plan pages tried on 2026-11-22 return 404) | Reasonable compatibility for aged, blind and disabled applicants uses the program's standard; open: the 20% threshold (20% of what) |
+| OQ-303 | open | Medicaid | state policy choice | Medicaid policy owner, Eligibility operations owner |  | The period for Medical Assistance documentation other than citizenship, identity and immigration status |
+| OQ-352 | partly | AdultFinancial | state policy choice | Cash programs policy owner |  | Adult Financial personal needs allowance - psychiatric and unlicensed facilities are modeled; open: whether income is deducted from the $79 |
+| OQ-353 | open | SNAP | state policy choice | SNAP policy owner |  | SNAP Standard Medical Expense Deduction: expenses between $165 and $200 |
+| OQ-354 | open | ColoradoWorks | state policy choice | Cash programs policy owner |  | Colorado Works death reimbursement: how insurance, the estate and responsible persons' resources reduce the benefit |
+| OQ-355 | open | AdultFinancial | state policy choice | Cash programs policy owner |  | Adult Financial burial: does the $2,500 combined-charges limit of 3.570.43.F.1 exclude a prepaid plot as A.4 does |
+| OQ-356 | open | SNAP | state policy choice | SNAP policy owner, Legal, State plan coordinator |  | SNAP expanded categorical eligibility: gross income "below" or "at or below" 200% of poverty |
+| OQ-371 | partly | SNAP | state policy choice | SNAP policy owner, Eligibility operations owner, Legal |  | SNAP recertification - changed expense sources and outdated information are modeled; open: the $50 boundary |
+| OQ-376 | partly | ColoradoWorks | state policy choice | Energy assistance (LEAP) policy owner, Cash programs policy owner, Eligibility operations owner, Legal |  | Department of Revenue Rule 5 repealed - Colorado Works reads the incorporated edition, and a DMV lawful presence match is a document received; open: the edition LEAP reads |
+| OQ-377 | partly | SunBucks | blocked on a named document | SNAP policy owner, School meals (CDE) co-approver, Eligibility operations owner | Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which sets the response period of 292.14(f)(2)(i) (not published on an allowed host; cdhs.colorado.gov refused) | SUN Bucks verification - the exceptions are carried by existing facts; open: no fixed response period |
+| OQ-410 | open | Medicaid | state policy choice | Medicaid policy owner, State plan coordinator, Legal |  | Community engagement: Colorado's look-back months and verification frequency are not published |
+| OQ-411 | open | Medicaid | state policy choice | Medicaid policy owner, State plan coordinator, Legal |  | Community engagement: the short-term hardship election, a good faith exemption, and early implementation |
+| OQ-412 | open | Medicaid | state policy choice | Medicaid policy owner, State plan coordinator |  | Community engagement: other State choices inside the exclusions and the hours |
+| OQ-470 | open | CHP+ | state policy choice | CHP+ policy owner |  | CHP+ copayment bands: ratios between 150% and 151%, and between 200% and 201% |
+| OQ-471 | open | Medicaid | needs Legal (counts as a policy choice) | Legal, LTSS policy owner, Medicaid policy owner |  | Income trust deductions omit the family allowance |
+| OQ-472 | open | Medicaid | needs Legal (counts as a policy choice) | Legal, Medicaid policy owner |  | Residency of an institutionalized person who became incapable of indicating intent at or after 21 |
+| OQ-473 | open | Medicaid | state policy choice | Medicaid policy owner, LTSS policy owner |  | Ineligible child allocation: only from an ineligible parent's income, or also from applicant spouses with children |
+| OQ-510 | open | Medicaid | needs Legal (counts as a policy choice) | Legal, Medicaid policy owner |  | The October 2026 federal payment limit is applied by determination date, not by the month of service |
+| OQ-511 | open | Medicaid | blocked on a named document | Premium and finance owner, Medicaid policy owner | HCPF's notice to members that Children with Disabilities Buy-In premiums resume, which 10 CCR 2505-10 § 8.100.6.Q.1.g.vii promises (hcpf.colorado.gov refused) | Children with Disabilities Buy-In premiums: whether the public health emergency waiver has ended |
+| OQ-512 | open | Medicaid | state policy choice | Medicaid policy owner |  | "The MAGI needs standard for his/her family size" in the needy persons under 21 groups |
+| OQ-513 | open | Medicaid | state policy choice | Medicaid policy owner, Legal |  | Hospital presumptive eligibility: does "aged 19-65" include 65? |
+| OQ-514 | open | Medicaid | blocked on a named document | Medicaid policy owner, Premium and finance owner, Legal | HCPF's CBMS aid code table and its order of precedence for a person eligible through more than one route (not published on an allowed host; hcpf.colorado.gov refused) | Funding source and CBMS aid codes |
+| OQ-515 | open | All | blocked on a named document | Medicaid policy owner, CHP+ policy owner, SNAP policy owner, Cash programs policy owner | HCPF's annual memo setting the date Medical Assistance, CHP+ and the Medicare Savings Programs adopt the new poverty guidelines (hcpf.colorado.gov refused) | The date Medicaid, CHP+ and the Medicare Savings Programs start using each year's poverty guidelines |
+| OQ-516 | open | Medicaid | blocked on a named document | LTSS policy owner, Medicaid policy owner, Legal | CMS's 2025 SSI and Spousal Impoverishment Standards chart and the 2025 Medicare Savings Program resource limits (not found on an allowed host: medicaid.gov serves only the current chart and a 2021 one, rechecked 2026-11-22) | 2025 spousal impoverishment and Medicare Savings Program figures not loaded |
+| OQ-517 | open | Medicaid | blocked on a named document | Medicaid policy owner, Eligibility operations owner, Legal | HCPF's implementation guidance for 42 U.S.C. 1396b(v)(5) (redetermination at renewal or a mass change) (hcpf.colorado.gov refused) | How HCPF transitions current members under the October 2026 federal payment limit |
+| OQ-518 | open | Medicaid | needs Legal (counts as a policy choice) | Legal, Medicaid policy owner |  | Colorado's rule still admits refugees, asylees and other qualified adults after the federal limit |
+| OQ-519 | open | Medicaid | blocked on a named document | LTSS policy owner, Medicaid policy owner, Legal | HCPF Informational Memo IM 25-030, which updates the Alternative Care Facility personal needs allowance and room and board of 10 CCR 2505-10 § 8.100.7.B.3 (hcpf.colorado.gov refused) | Alternative Care Facility personal needs allowance and room and board |
+| OQ-520 | open | Medicaid | state policy choice | LTSS policy owner, Medicaid policy owner, Legal |  | Whether a full-benefit dual's Medicare Part B premium is deducted in the patient payment |
+| OQ-530 | open | ColoradoWorks | blocked on a named document | Cash programs policy owner | CDHS's Colorado Works need and grant standards for the State fiscal year beginning July 1, 2028, set under C.R.S. 26-2-709(1)(b) from federal Social Security cost-of-living adjustments not yet announced (not published; ssa.gov and cdhs.colorado.gov refused) | Colorado Works standards from July 1, 2028 |
+| OQ-531 | open | ColoradoWorks | blocked on a named document | Cash programs policy owner | Colorado's TANF State Plan, which sets the maximum criteria for non-recurrent short-term benefits that 9 CCR 2503-6 3.606.8.A.6 refers to (not published on an allowed host; cdhs.colorado.gov refused) | Colorado Works diversion payment: no dollar cap in the rule |
+| OQ-532 | open | LEAP | blocked on a named document | Energy assistance (LEAP) policy owner | CDHS's 2026-2027 LEAP program-year notification to counties under 9 CCR 2503-7 3.758.48 and the LEAP training manual's flat-rate heating costs (cdhs.colorado.gov refused, HTTP 403) | LEAP program-year figures and the source of the income table |
+| OQ-533 | open | SNAP | blocked on a named document | SNAP policy owner, Legal | FNS's implementation memoranda for Pub. L. 119-21 secs. 10102, 10103 and 10108 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it) and CDHS's Food and Energy Assistance agency letter setting Colorado's implementation dates (cdhs.colorado.gov refused) | SNAP: CDHS's implementation dates for Pub. L. 119-21 and the treatment of ongoing cases |
+| OQ-535 | open | SunBucks | blocked on a named document | SNAP policy owner, School meals (CDE) co-approver | Colorado's Summer EBT Plan for Operations and Management under 7 CFR 292.8, which states the summer operational period (not published on an allowed host; cdhs.colorado.gov refused) | SUN Bucks: which summer a July or August determination is for |
+| OQ-536 | open | CCCAP | state policy choice | Child care policy owner (CDEC) |  | CCCAP protective services parent fee: the income the formula is applied to |
+| OQ-540 | open | Medicaid, CCCAP | state policy choice | Medicaid policy owner, Child care policy owner (CDEC) |  | "Assumes responsibility" (Medicaid caretaker relative) and "loco parentis" (CCCAP adult caretaker) read from one primary-responsibility role |
+| OQ-550 | open | CHP+, LEAP | blocked on a named document | Medicaid policy owner, Legal, CHP+ policy owner, Energy assistance (LEAP) policy owner | the USCIS SAVE status list and response codes (www.uscis.gov refused, Access Denied, 2026-11-21; not an allowed host) | Immigration status options not checked against the SAVE status list; humanitarian parolees and certified trafficking victims read as qualified aliens |
+| OQ-551 | open | SunBucks | state policy choice | SNAP policy owner, School meals (CDE) co-approver |  | SUN Bucks states no citizenship or immigration test; 8 U.S.C. 1615(b) leaves it to the State |
+| OQ-553 | open | AdultFinancial | state policy choice | Cash programs policy owner, Legal |  | Adult Financial sponsor deeming: other non-citizens the same sponsor sponsors are counted as the sponsor's dependents |
+| OQ-560 | open | Medicaid | state policy choice | LTSS policy owner, Medicaid policy owner |  | The community spouse's standard utility allowance: which of Colorado's four SNAP tiers |
+| OQ-561 | partly | LEAP | state policy choice | Energy assistance (LEAP) policy owner |  | LEAP's non-traditional dwelling is defined in 3.751.1; open: what "considered homeless" covers |
+| OQ-562 | open | CCCAP | blocked on a named document | Child care policy owner (CDEC), Eligibility operations owner | the Colorado Department of Education's definition of attending school, which 8 CCR 1403-1 names without restating (cde.state.co.us is not an allowed host; C.R.S. 22-33-104 states only the attendance ages) | CCCAP: "attending school as defined by the Colorado Department of Education" |
+| OQ-590 | open | Medicaid | state policy choice | Medicaid policy owner, Legal |  | Limited family planning presumptive eligibility: "counted individually as a household member of two" |
+| OQ-591 | open | AdultFinancial | needs Legal (counts as a policy choice) | Legal, Cash programs policy owner, Eligibility operations owner |  | Old Age Pension: whether a qualified non-citizen's status must be verified once the statute's bar applies |
+| OQ-592 | open | Medicaid | state policy choice | Medicaid policy owner |  | Lottery and gambling winnings: two receipts in the same month |
+| OQ-593 | open | Medicaid | state policy choice | Medicaid policy owner |  | Community engagement: when an enrolled beneficiary who made no satisfactory showing is disenrolled |
+
+## Resolved questions
+
+OQ-2, OQ-3, OQ-11, OQ-13, OQ-14, OQ-15, OQ-21, OQ-22, OQ-23, OQ-24, OQ-25, OQ-26, OQ-27, OQ-28, OQ-29, OQ-31, OQ-32, OQ-33, OQ-34, OQ-35, OQ-36, OQ-37, OQ-38, OQ-41, OQ-42, OQ-43, OQ-44, OQ-49, OQ-51, OQ-52, OQ-53, OQ-54, OQ-55, OQ-56, OQ-57, OQ-58, OQ-59, OQ-60, OQ-61, OQ-62, OQ-63, OQ-64, OQ-65, OQ-81, OQ-82, OQ-84, OQ-91, OQ-92, OQ-93, OQ-94, OQ-95, OQ-96, OQ-97, OQ-98, OQ-100, OQ-103, OQ-105, OQ-111, OQ-112, OQ-113, OQ-114, OQ-115, OQ-116, OQ-117, OQ-118, OQ-119, OQ-120, OQ-122, OQ-123, OQ-124, OQ-125, OQ-126, OQ-127, OQ-132, OQ-133, OQ-134, OQ-135, OQ-136, OQ-137, OQ-139, OQ-140, OQ-141, OQ-142, OQ-143, OQ-145, OQ-151, OQ-152, OQ-157, OQ-158, OQ-159, OQ-160, OQ-161, OQ-205, OQ-206, OQ-207, OQ-208, OQ-210, OQ-211, OQ-215, OQ-216, OQ-217, OQ-300, OQ-301, OQ-304, OQ-305, OQ-306, OQ-307, OQ-308, OQ-309, OQ-310, OQ-311, OQ-312, OQ-313, OQ-314, OQ-315, OQ-316, OQ-317, OQ-318, OQ-319, OQ-320, OQ-321, OQ-322, OQ-323, OQ-324, OQ-350, OQ-351, OQ-357, OQ-358, OQ-370, OQ-372, OQ-373, OQ-374, OQ-375, OQ-378, OQ-379, OQ-380, OQ-381, OQ-382, OQ-390, OQ-391, OQ-392, OQ-393, OQ-394, OQ-395, OQ-396, OQ-413, OQ-430, OQ-490, OQ-491, OQ-534, OQ-541, OQ-542, OQ-552, OQ-580.

@@ -155,6 +155,9 @@ export interface VolumeMeta {
    *  volumes written before the engineering review round; the engine then
    *  falls back to the built-in table (DEFAULT_INVERSE_ROLE, ledger-index.ts). */
   relationship_roles?: RelationshipRoleDecl[];
+  /** The codex steward a reader without a GitHub token sends a downloaded
+   *  change to (codex.json's volume entry may name one instead). */
+  steward?: { name: string; contact?: string };
 }
 
 /** Ids the constraint checker validates citations against. When omitted the

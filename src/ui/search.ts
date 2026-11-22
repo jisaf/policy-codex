@@ -25,6 +25,14 @@ export interface SearchEntry {
   /** The words a reader is most likely to search by: the name, meaning and
    *  precision. A query found here ranks above one found only in rule text. */
   primary: string;
+  /** An item's program, so a reader's own programs rank first. */
+  program?: string;
+}
+
+export interface SearchOptions {
+  /** The reader's programs (their persona's): an item of another program
+   *  ranks below theirs and the shared ones. */
+  programs?: readonly string[];
 }
 
 export interface SearchIndex { entries: SearchEntry[] }
@@ -55,6 +63,9 @@ const ALIASES: Array<[RegExp, string]> = [
   [/119-21|h\.\s?r\.\s?1\b|\bhr\s?1\b|obbba|one big beautiful bill|working families tax cut/i, "hr1"],
   [/non-?citizen|\balien|immigra|lawful(ly)? present|lawful presence|refugee|asylee|lawful permanent|qualified alien|parolee/i, "immigrant"],
   [/statute over rule|supersede|notwithstanding/i, "statute-over-rule"],
+  // Medicaid's countable income is MAGI: "countable income" finds the MAGI
+  // income items (HCPF analyst task 1: it landed on Colorado Works).
+  [/\bmagi[- ]based income|modified adjusted gross income|\bmagi household income/i, "countable income"],
 ];
 
 /** The query's own spelling of those aliases. */
@@ -84,6 +95,7 @@ export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex
         it.assumption ?? "", tagText(vol, it), derivationText(engine, it.identifier),
       ].join(" ").toLowerCase()),
       primary: withAliases(`${primary} ${override.toLowerCase()}`),
+      program: it.program,
     });
   }
   for (const s of vol.sources) {
@@ -139,7 +151,8 @@ export function queryTerms(q: string): QueryTerm[] {
   }));
 }
 
-export function search(index: SearchIndex, q: string, limit = 30): SearchHit[] {
+export function search(index: SearchIndex, q: string, limit = 30, opts: SearchOptions = {}): SearchHit[] {
+  const mine = opts.programs?.length ? new Set(opts.programs) : null;
   const needle = q.trim().toLowerCase();
   if (!needle) return [];
   const terms = queryTerms(needle);
@@ -150,13 +163,22 @@ export function search(index: SearchIndex, q: string, limit = 30): SearchHit[] {
     if (phraseAt < 0 && !allTerms) continue;
     const exactId = e.id.toLowerCase() === needle;
     const title = e.title.toLowerCase();
-    const titleHit = title.includes(needle);
-    const titleTerms = terms.filter((t) => t.re.test(title)).length;
+    // A title that names the thing by another name (Medicaid's "MAGI-based
+    // income" is its countable income) answers the phrase a little better
+    // than one that only shares the words.
+    const aliasTitle = withAliases(title);
+    const titleHit = title.includes(needle) || aliasTitle.slice(title.length).includes(needle);
+    const aliasBonus = !title.includes(needle) && titleHit && mine && e.program && mine.has(e.program) ? 12 : 0;
+    const titleTerms = terms.filter((t) => t.re.test(aliasTitle)).length;
     const primaryTerms = terms.filter((t) => t.re.test(e.primary)).length;
     const primaryPhrase = e.primary.includes(needle);
-    const score = (exactId ? 1000 : 0) + (titleHit ? 100 : 0) + titleTerms * 15
+    let score = (exactId ? 1000 : 0) + (titleHit ? 100 + aliasBonus : 0) + titleTerms * 15
       + (primaryPhrase ? 60 : 0) + primaryTerms * 8 + (phraseAt >= 0 ? 30 + Math.max(0, 20 - phraseAt / 10) : 0)
       + (e.kind === "item" ? 2 : 0);
+    if (mine && e.program && !exactId) {
+      if (mine.has(e.program)) score += 40;
+      else if (e.program !== "All") score *= 0.4;
+    }
     const firstTerm = terms[0] ? e.haystack.search(terms[0].re) : -1;
     const snippetNeedle = phraseAt >= 0 ? needle
       : firstTerm >= 0 ? e.haystack.slice(firstTerm, firstTerm + 1 + terms[0].word.length).trim() : needle;

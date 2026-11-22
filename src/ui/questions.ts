@@ -83,13 +83,18 @@ export interface QuestionNote {
   text: string;
 }
 
-const NOTE_LABEL_WORDS = /\b(round|sweep|review|pass|phase|checked|resolution|audit|answer)\b/i;
+const NOTE_LABEL_WORDS = /\b(round|sweep|review|pass|phase|checked|resolution|audit|answer|opinion)\b/i;
+
+/** The explicit lines a question may state (`Class:`, `Owner:`,
+ *  `Assumption:`, `Blocked on:`); the queue shows each in its own place. */
+export const EXPLICIT_FIELDS = ["Class", "Owner", "Assumption", "Blocked on"] as const;
 
 /** The body as notes: the question as first written, then each later note
- *  with its label split off, in the order the ledger keeps them. */
+ *  with its label split off, in the order the ledger keeps them. A paragraph
+ *  made only of explicit field lines is not a note. */
 export function questionNotes(body: string): QuestionNote[] {
   const out: QuestionNote[] = [];
-  for (const raw of body.split(/\n{2,}/)) {
+  for (const raw of withoutFieldLines(body).split(/\n{2,}/)) {
     let text = raw.trim().replace(/\s*\n\s*/g, " ");
     if (!text) continue;
     if (/^Body:\s*/.test(text)) {
@@ -131,10 +136,22 @@ export function sentences(text: string): string[] {
 }
 
 /** An explicit `Key: value` line in the body (`Class:`, `Owner:`,
- *  `Assumption:`), for questions that state it outright. */
+ *  `Assumption:`), for questions that state it outright. A list bullet or
+ *  bold key ("- **Owner:** ...") reads the same; the last such line wins,
+ *  since a later note restates an earlier one. */
 export function explicitField(body: string, key: string): string | null {
-  const m = new RegExp(`^${key}:\\s*(.+)$`, "mi").exec(body);
-  return m ? m[1].trim() : null;
+  const re = new RegExp(`^\\s*(?:[-*]\\s+)?(?:\\*\\*)?${key}:(?:\\*\\*)?\\s*(.+)$`, "gmi");
+  let last: string | null = null;
+  for (const m of body.matchAll(re)) last = m[1].replace(/\*\*/g, "").trim();
+  return last;
+}
+
+/** The explicit field lines, which the page shows as fields, not as notes:
+ *  a paragraph made only of them is not a note. */
+const FIELD_LINE = new RegExp(`^\\s*(?:[-*]\\s+)?(?:\\*\\*)?(?:${EXPLICIT_FIELDS.join("|")}):(?:\\*\\*)?\\s*.+$`, "gim");
+
+export function withoutFieldLines(body: string): string {
+  return body.replace(FIELD_LINE, "").replace(/\n{3,}/g, "\n\n");
 }
 
 /** The text that says what is still open: the heading's "open: ..." part, the
@@ -213,9 +230,12 @@ export function questionClass(q: Pick<QuestionInfo, "rawTitle" | "body" | "statu
   return "policy";
 }
 
-/** The sentence naming the document or site the question waits on, from the
- *  latest note that names one; null when none does. */
+/** The document the question waits on: an explicit `Blocked on:` line, else
+ *  the sentence naming the document or site, from the latest note that names
+ *  one; null when none does. */
 export function waitingOn(q: Pick<QuestionInfo, "body">): string | null {
+  const explicit = explicitField(q.body, "Blocked on");
+  if (explicit) return explicit;
   const notes = questionNotes(q.body);
   for (let i = notes.length - 1; i >= 0; i--) {
     const hit = sentences(notes[i].text).find((s) => BLOCKED_TEXT.test(s));
@@ -257,8 +277,22 @@ export function questionOwners(
   const policy = engine.meta.approval_policy;
   const out: string[] = [];
   const add = (r: string) => { if (!out.includes(r)) out.push(r); };
+  // An explicit Owner line names who answers first (in the policy's own
+  // spelling of each role); the program and tag owners follow.
   const explicit = explicitField(q.body, "Owner");
-  if (explicit) for (const r of explicit.split(/[,;]/)) if (r.trim()) add(r.trim());
+  if (explicit) {
+    const roles = policy?.roles ?? [];
+    const role = (t: string) => roles.find((x) => x.toLowerCase() === t.toLowerCase());
+    for (const r of explicit.split(/[,;]/)) {
+      const t = r.trim().replace(/\.$/, "");
+      if (!t) continue;
+      // "Medicaid policy owner and Legal" names two roles; "Premium and
+      // finance owner" is one.
+      const halves = t.split(/\s+and\s+/);
+      if (!role(t) && halves.length > 1 && halves.every((h) => role(h.trim()))) for (const h of halves) add(role(h.trim())!);
+      else add(role(t) ?? t);
+    }
+  }
   if (cls === "legal") add("Legal");
   const own = q.programs.filter((p) => p !== "All");
   for (const p of own.length ? own : q.programs) for (const r of policy?.by_program?.[p] ?? []) add(r);
@@ -291,7 +325,7 @@ function assumptionScore(s: string): number {
  *  its items reads, applies or keeps; else an item's own recorded assumption
  *  naming the question; else the question's first sentences. */
 export function assumptionInForce(q: Pick<QuestionInfo, "body" | "id" | "items">): string {
-  const s = readingInForce(q);
+  const s = plainReading(readingInForce(q));
   // An opening identifier ("snap_x (CO-1) keeps ...") is left as written;
   // the page reads it as the item's name.
   return s && !/^`?[a-z][a-z0-9]*_/.test(s) ? s[0].toUpperCase() + s.slice(1) : s;
@@ -313,6 +347,34 @@ function readingInForce(q: Pick<QuestionInfo, "body" | "id" | "items">): string 
   const own = q.items.find((it) => (it.assumption ?? "").includes(q.id));
   if (own?.assumption) return own.assumption;
   return notes[0] ? sentences(notes[0].text).slice(0, 2).join(" ") : "";
+}
+
+/** The reading in force as a reader reads it: the review history, the
+ *  authoring code words and the file references taken out (the four
+ *  retests: "The HCPF review's note C-13: ... [K]", "a county-facing
+ *  statute_override note", "documents/D-80.md:6739-6747", "this session
+ *  cannot fetch"). The words as written stay on the question's record. */
+export function plainReading(text: string): string {
+  let t = text;
+  // A review-note label at the front: "The HCPF review's note C-13:", "HCPF review B-1:".
+  t = t.replace(/^(?:the\s+)?[A-Z]{2,6}(?:\s+[a-z]+)*\s+(?:review|reviewer)(?:'s)?(?:\s+note)?\s+[A-Z]-?\d+[a-z]?\s*[:,]\s*/i, "");
+  // Inline review references: "(HCPF review B-1)", "per CDHS review B-4", "(F-1)", "(C-5)".
+  t = t.replace(/\s*\((?:[A-Z]{2,6}\s+)?(?:review|reviewer|fix[- ]round|audit|track)[^)]*\)/gi, "");
+  t = t.replace(/\s*\([A-Z]-\d+[a-z]?\)/g, "");
+  t = t.replace(/\b(?:the\s+)?[A-Z]{2,6}\s+reviewer(?:'s)?\s+(?:\[K\]\s+)?(?:statement|says|note)\b\s*/g, "the agency's statement ");
+  t = t.replace(/\s*\[[A-Z]\]/g, "");
+  // File references: "documents/D-80.md:6739-6747", "docs/reviews/x.md section 9 (...)".
+  // A review file named as the source of a statement: "docs/reviews/x.md
+  // section 9 (Drools N-3, ...)" reads as the codex's records.
+  t = t.replace(/`?docs\/[\w./-]+\.md(?::[\d-]+)?`?(?:\s+section\s+\d+)?(?:\s*\([^)]*\))?/g, "the codex's records");
+  // A document's line reference ("`documents/D-80.md:6739-6747`", "`D-80.md:6891`")
+  // is dropped: the document id beside it, or the excerpt, is the citation.
+  t = t.replace(/\s*\(\s*`?(?:[\w-]+\/)*[\w.-]+\.md(?::[\d-]+)?`?\s*\)/g, "");
+  t = t.replace(/,?\s*`?(?:[\w-]+\/)*[\w.-]+\.md(?::[\d-]+)?`?/g, "");
+  t = t.replace(/\bstatute_override\b/g, "statute-over-rule");
+  t = t.replace(/\b(?:this|the) session (?:cannot|could not) fetch\b/gi, "could not be fetched");
+  t = t.replace(/\bwhich could not be fetched\b/g, "which could not be fetched");
+  return t.replace(/\s{2,}/g, " ").replace(/\s+([.,;:])/g, "$1").trim();
 }
 
 // ---- rule text
@@ -376,6 +438,9 @@ export function outcomesReached(engine: Engine, items: readonly Item[]): Item[] 
 // ---- everything the queue shows about one question
 
 export interface QueueEntry extends QuestionInfo {
+  /** The words search matches besides the text: the items' names and the
+   *  labels of their tags ("Long-term care"), and the owners. */
+  searchText: string;
   cls: QuestionClass;
   owners: string[];
   /** The first owner: the group the queue files it under. */
@@ -396,9 +461,17 @@ export function queueEntry(engine: Engine, sources: readonly Source[], q: Questi
   const owners = questionOwners(engine, q, cls);
   const text = ruleText(q.body, q.items, sources);
   const assumption = assumptionInForce(q);
-  const waiting = waitingOn(q);
+  const rawWaiting = waitingOn(q);
+  const waiting = rawWaiting ? plainReading(rawWaiting) : null;
+  const tagLabel = (id: string) => {
+    for (const t of engine.meta.tags ?? []) if (typeof t !== "string" && t.id === id) return t.label ?? id;
+    return id.replace(/_/g, " ");
+  };
+  const searchText = [
+    ...q.items.map((it) => it.name), ...q.items.flatMap((it) => (it.tags ?? []).map(tagLabel)), ...owners,
+  ].join(" ");
   return {
-    ...q, cls, owners, owner: owners[0] ?? NO_OWNER,
+    ...q, searchText, cls, owners, owner: owners[0] ?? NO_OWNER,
     assumption,
     // Said once: a note that is both the reading and what it waits on.
     waitingOn: waiting && waiting !== assumption ? waiting : null,
@@ -425,11 +498,28 @@ export function matchesFilter(e: QueueEntry, f: QueueFilter): boolean {
   if (f.cls && e.cls !== f.cls) return false;
   if (f.affectsOutcome && !e.outcomes.length) return false;
   if (f.blocksCertification && !e.blocksCertification) return false;
-  if (f.text) {
-    const t = f.text.toLowerCase();
-    if (![e.id, e.title, e.body].some((s) => s.toLowerCase().includes(t))) return false;
-  }
+  if (f.text && !queueTextMatches(e, f.text)) return false;
   return true;
+}
+
+/** Words a reader types for the same thing the ledger words otherwise. */
+const SEARCH_SYNONYMS: Record<string, string[]> = {
+  "long-term care": ["long-term care", "long term care", "ltc", "nursing facility", "nursing home", "ltss", "institutional"],
+  "long term care": ["long-term care", "long term care", "ltc", "nursing facility", "nursing home", "ltss", "institutional"],
+  ltc: ["ltc", "long-term care", "nursing facility"],
+};
+
+/** Whether a question matches the search: the phrase (or one of its
+ *  synonyms) anywhere in its id, title, body, items' names and tag labels or
+ *  owners; else every word of it. */
+export function queueTextMatches(e: Pick<QueueEntry, "id" | "title" | "body"> & { searchText?: string }, text: string): boolean {
+  const t = text.trim().toLowerCase();
+  if (!t) return true;
+  const hay = `${e.id} ${e.title} ${e.body} ${e.searchText ?? ""}`.toLowerCase();
+  const phrases = SEARCH_SYNONYMS[t] ?? [t];
+  if (phrases.some((p) => hay.includes(p))) return true;
+  const words = t.split(/\s+/).filter(Boolean);
+  return words.length > 1 && words.every((w) => hay.includes(w));
 }
 
 /** The queue grouped by owner, in the volume's role order (Legal where the

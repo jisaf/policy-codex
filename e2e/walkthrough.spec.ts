@@ -19,7 +19,7 @@ test("walks a SNAP household from the case list to the deciding step", async ({ 
 
   // Person 3 is an ineligible non-citizen in a paid household.
   await page.locator('.wk-pick a.chip[data-person="p3"]').click();
-  await expect(page.locator(".wk-person")).toContainText("Person 3's own result in SNAP");
+  await expect(page.locator(".wk-person")).toContainText("Person 3's own place in SNAP");
   await expect(page.locator(".wk-person")).toContainText("Not eligible");
   await expect(page.locator("ol.stepper li.step.why")).toContainText("This is why");
 
@@ -48,11 +48,20 @@ test("walks a SNAP household from the case list to the deciding step", async ({ 
   await expect(page).toHaveURL(new RegExp(`excerpt=${sid}`));
 });
 
+test("opens a case on the person and program its title is about", async ({ page }) => {
+  await page.goto("/#/co/walkthrough/CO-05");
+  await expect(page.locator('.wk-pick a.chip.on[data-person="p3"]')).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator('.wk-pick a.chip.on[data-program="Medicaid"]')).toBeVisible();
+  await expect(page.locator('.wk-pick a.chip[data-person="p3"]')).toContainText("grandchild of Person 1");
+});
+
 test("lists CO-92's documents with their due dates, and fits a phone", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/#/co/walkthrough/CO-92?person=p1&program=CCCAP");
   await expect(page.locator("table.wk-docs")).toBeVisible({ timeout: 30_000 });
   await expect(page.locator('table.wk-docs tr[data-doc="cccap_work_hours_verification_is_pending"]')).toContainText("October 16, 2026");
+  // One row per document, every program it is owed for, the child's CHP+ included.
+  await expect(page.locator('table.wk-docs tr[data-person="p2"][data-programs*="CHP+"]')).toBeVisible();
   // The walkthrough itself adds no sideways scroll at phone width.
   const overflow = await page.locator("section.walkthrough").evaluate((el) => el.scrollWidth - el.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);

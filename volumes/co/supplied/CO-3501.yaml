@@ -1,0 +1,13 @@
+id: CO-3501
+name: "SNAP: the striker's household was eligible the day before the strike"
+identifier: snap_household_was_eligible_day_before_strike
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "Stated on a striking member (snap_is_striker, CO-3500): the member's SNAP household was eligible for benefits on the day before the strike, determined, as 7 CFR 273.1(e)(1) requires, by treating the day before the strike as the day of application and assuming the strike did not occur."
+precision: "Read only for a striking member. The pre-strike determination is the county's, made on the household's circumstances on that day; the volume does not re-run SNAP eligibility as of an earlier date."
+supplied_by: County determination of the household's pre-strike eligibility.
+sources: [S1816]
+tags: [snap, household]
+rationale: "OQ-534: 7 CFR 273.1(e) (S1816) lets a household with a striking member participate only if it was eligible the day before the strike; no existing fact states that earlier determination."

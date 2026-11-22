@@ -12,9 +12,13 @@ import { emptyChangeSet, fileEntries } from "../../src/changes/types";
 import { excerptKind } from "../../src/ui/provenance";
 import {
   assumptionInForce, blocksCertification, citedExcerpts, departures, groupByOwner, isOpen,
-  matchesFilter, questionClass, questionInfo, questionInfos, questionNotes, questionStatus,
+  explicitField, matchesFilter, questionClass, questionInfo, questionInfos, questionNotes, questionOwners, questionStatus,
   queueEntry, ruleText, sentences, waitingOn, QUESTION_CLASSES, type QueueEntry,
+  plainReading, queueTextMatches,
 } from "../../src/ui/questions";
+import { agencyNotified, stagedAnswers } from "../../src/ui/questionAnswer";
+import { changedBy, departureItems, departureSince, ownerGroups, personaQuestions, unknownReason } from "../../src/ui/counts";
+import { personaById } from "../../src/ui/personas";
 import {
   ALTERNATIVES, alternativeEntry, alternativeFor, alternativeItem, changedResults, resultsRestingOn,
 } from "../../src/ui/questionEffects";
@@ -99,17 +103,33 @@ describe("reading a question", () => {
 });
 
 describe("class, owner and certification", () => {
-  it("classes every open question, and uses each class", () => {
+  it("classes every open question, and uses each class the stopping rule accepts", () => {
     for (const e of open) expect(QUESTION_CLASSES).toContain(e.cls);
-    for (const c of QUESTION_CLASSES) expect(open.some((e) => e.cls === c), c).toBe(true);
+    for (const c of QUESTION_CLASSES.filter((x) => x !== "ledger")) expect(open.some((e) => e.cls === c), c).toBe(true);
   });
 
-  it("puts a question whose item follows a statute over a rule before Legal", () => {
+  it("states every open question's class, owner and reading, and none blocks certification (stopping rule)", () => {
+    const roles = new Set<string>(engine.meta.approval_policy.roles);
+    for (const e of open) {
+      expect(explicitField(e.body, "Class"), e.id).toBeTruthy();
+      expect(explicitField(e.body, "Assumption"), e.id).toBeTruthy();
+      // The reading in force is plain language: no identifier, no item or excerpt number.
+      expect(explicitField(e.body, "Assumption"), e.id).not.toMatch(/\b[a-z][a-z0-9]*_[a-z0-9_]+\b|\b(?:CO|OQ|D)-\d+|\bS\d{2,}\b|\[K\]/);
+      const owners = explicitField(e.body, "Owner")!.split(",").map((r) => r.trim());
+      for (const r of owners) expect(roles.has(r), `${e.id}: ${r}`).toBe(true);
+      expect(e.cls, e.id).not.toBe("ledger");
+      if (e.cls === "blocked") expect(explicitField(e.body, "Blocked on"), e.id).toBeTruthy();
+      expect(e.blocksCertification, e.id).toBe(false);
+    }
+  });
+
+  it("puts a question whose item follows a statute over a rule before Legal, unless it states its class", () => {
     const carried = open.filter((e) => e.items.some((it) => it.statute_override));
     expect(carried.length).toBeGreaterThan(0);
     for (const e of carried) {
-      expect(e.cls).toBe("legal");
-      expect(e.owners[0]).toBe("Legal");
+      const q = { ...e, body: e.body.replace(/^(?:Class|Owner):.*$/gm, "") };
+      expect(questionClass(q)).toBe("legal");
+      expect(questionOwners(engine, q, "legal")[0]).toBe("Legal");
     }
   });
 
@@ -117,16 +137,20 @@ describe("class, owner and certification", () => {
     for (const e of open.filter((x) => x.cls === "blocked")) {
       expect(waitingOn(e), e.id).toBeTruthy();
       // The card says it once: under "Waiting on", or as the reading itself.
-      expect(e.waitingOn ?? e.assumption).toBe(waitingOn(e) === e.assumption ? e.assumption : waitingOn(e));
+      const plain = plainReading(waitingOn(e)!);
+      expect(e.waitingOn ?? e.assumption).toBe(e.waitingOn === null ? e.assumption : plain);
     }
   });
 
-  it("owns a policy question by its program owner and its items' tags", () => {
+  it("owns a policy question by its program owner and its items' tags, after any owner it names", () => {
     const policy = engine.meta.approval_policy;
     for (const e of open.filter((x) => x.cls !== "legal")) {
+      const named = explicitField(e.body, "Owner");
       const own = e.programs.filter((p) => p !== "All");
       const first = (own.length ? own : e.programs)[0];
-      if (first) expect(e.owner, e.id).toBe(policy.by_program[first][0]);
+      if (named) expect(e.owner, e.id).toBe(named.split(",")[0].trim());
+      else if (first) expect(e.owner, e.id).toBe(policy.by_program[first][0]);
+      if (first) expect(e.owners, e.id).toContain(policy.by_program[first][0]);
     }
     const ltc = open.find((e) => e.items.some((it) => it.tags?.includes("ltc")));
     expect(ltc?.owners).toContain("LTSS policy owner");
@@ -134,7 +158,15 @@ describe("class, owner and certification", () => {
 
   it("an explicit Class line wins over the reading", () => {
     const base = open.find((e) => e.cls === "policy")!;
-    expect(questionClass({ ...base, body: `${base.body}\n\nClass: ledger design` })).toBe("ledger");
+    const body = base.body.replace(/^Class:.*$/m, "");
+    expect(questionClass({ ...base, body: `${body}\n\nClass: ledger design` })).toBe("ledger");
+  });
+
+  it("reads an explicit Blocked on line, and does not show the field lines as a note", () => {
+    const body = "Body: The figure is in a memo.\n\nClass: blocked on a named document\nOwner: Legal\nAssumption: The codex keeps the old figure.\nBlocked on: The annual memo (example.org refused)\n\nChecked 2026-11-22: the rule names no figure.";
+    expect(waitingOn({ body })).toBe("The annual memo (example.org refused)");
+    expect(questionNotes(body).map((n) => n.label)).toEqual([null, "Checked 2026-11-22"]);
+    expect(assumptionInForce({ id: "OQ-9", items: [], body })).toBe("The codex keeps the old figure.");
   });
 
   it("blocks certification as the stopping rule says", () => {
@@ -291,7 +323,7 @@ describe("the view", () => {
     const card = () => host.querySelector('li.qcard[data-question="OQ-533"] .effect')!;
     expect(card().textContent).toContain("Working out");
     await until(() => !card().textContent!.includes("Working out"));
-    expect(card().textContent).toMatch(/stored results? in \d+ households? change/);
+    expect(card().textContent).toMatch(/stored results? in \d+ households? would change \(worked out\)/);
     render(null, host);
   }, 30_000);
 
@@ -316,7 +348,7 @@ describe("the view", () => {
     expect(page.getAttribute("data-question")).toBe(id);
     expect(page.querySelector(".assumption")!.textContent!.length).toBeGreaterThan(20);
     expect(page.querySelectorAll("ul.qitems li").length).toBeGreaterThan(0);
-    expect(page.querySelector(".qclass")!.textContent).toBe("Needs Legal");
+    expect(page.querySelector(".qclass")!.textContent).toBe("Blocked on a named document");
     await until(() => Boolean(page.querySelector(".alternative .effect-count")));
     expect(page.querySelector(".alternative table.qresults td.changed")).toBeTruthy();
 
@@ -337,18 +369,20 @@ describe("the view", () => {
     expect(entry.path).toBe(`${vol.path}/open-questions.md`);
     expect(entry.before).toBe(md);
     expect(entry.after).toMatch(new RegExp(`^### ${id}\\. Resolved: `, "m"));
-    expect(entry.after).toContain("Priya Shah, Legal");
+    expect(entry.after).toContain("Priya Shah, SNAP policy owner");
     expect(entry.label).toBe(`Answer to ${id}`);
 
     // Follow-up edits go through the tray too.
     await until(() => Boolean(host.querySelector(".qstaged")));
     const buttons = [...host.querySelectorAll(".qstaged button")] as HTMLButtonElement[];
     buttons.find((b) => b.textContent!.startsWith(`Take ${id} off`))!.click();
-    buttons.find((b) => b.textContent!.startsWith("Stage the new value"))!.click();
+    // Adopting the other reading staged its figure with the answer.
     const staged = changeSetSig.value.entries;
     expect(staged.find((e) => e.after?.identifier === "snap_abawd_max_age")!.after!.versions!.every((v) => v.value === 54)).toBe(true);
     expect(staged.filter((e) => e.before?.open?.includes(id)).every((e) => !(e.after?.open ?? []).includes(id))).toBe(true);
-    (host.querySelector(".qstaged button.btn:not(.small)") as HTMLButtonElement).click();
+    // What happens next, with the download, is on the page.
+    expect(host.querySelector(".qstaged .sendchange button.download")).not.toBeNull();
+    ([...host.querySelectorAll(".qstaged button")] as HTMLButtonElement[]).find((b) => b.textContent === "Open the change tray")!.click();
     expect(trayOpenSig.value).toBe(true);
 
     // With drafts shown, the staged answer moves the question to Resolved.
@@ -359,4 +393,98 @@ describe("the view", () => {
     render(null, host);
     host.remove();
   }, 60_000);
+});
+
+describe("phase 13 retest fixes", () => {
+  it("search 'long-term care' finds the LTC questions by their items' tags and owners", () => {
+    const hits = open.filter((e) => queueTextMatches(e, "long-term care"));
+    expect(hits.length).toBeGreaterThan(0);
+    expect(hits.length).toBeLessThan(open.length);
+    const ltc = open.filter((e) => e.items.some((it) => (it.tags ?? []).includes("ltc")));
+    for (const e of ltc) expect(hits.map((h) => h.id)).toContain(e.id);
+    expect(matchesFilter(open[0], { text: open[0].id })).toBe(true);
+  });
+
+  it("reads explicit Class:, Owner: and Assumption: lines, the Owner line alone naming who answers", () => {
+    const body = "Body: something.\n\n- **Class:** Blocked on a named document\nOwner: Cash programs policy owner; Legal\nAssumption: No figure from July 1, 2028, so the grant is unknown.";
+    expect(explicitField(body, "Class")).toBe("Blocked on a named document");
+    const q = { rawTitle: "X", body, status: "open" as const, items: open[0].items, programs: ["Medicaid"] };
+    expect(questionClass(q)).toBe("blocked");
+    expect(questionOwners(engine, q, "blocked").slice(0, 2)).toEqual(["Cash programs policy owner", "Legal"]);
+    expect(assumptionInForce({ body, id: "OQ-0", items: [] })).toBe("No figure from July 1, 2028, so the grant is unknown.");
+    // The field lines are fields, not notes.
+    expect(questionNotes(body).map((n) => n.text).join(" ")).not.toMatch(/Owner:/);
+  });
+
+  it("the reading in force drops review history and code words", () => {
+    expect(plainReading("The HCPF review's note C-13: § 8.100.7.B.3 states it, which HCPF's IM 25-030 [K] updates.")).toBe("§ 8.100.7.B.3 states it, which HCPF's IM 25-030 updates.");
+    expect(plainReading("Each gets a county-facing statute_override note (HCPF review B-1).")).toBe("Each gets a county-facing statute-over-rule note.");
+    expect(plainReading("See documents/D-80.md:6739-6747 for it.")).not.toMatch(/\.md/);
+    for (const e of open) {
+      expect(e.assumption, e.id).not.toMatch(/\[K\]|statute_override|\.md:\d/);
+    }
+  });
+
+  it("an opinion keeps the question open; an answer leaves the open list", () => {
+    const id = open.find((e) => e.status === "open")!.id;
+    const opinion = applyAnswer(md, id, { decision: "Sec. 10102 governs.", citation: "Pub. L. 119-21", by: "Priya", role: "Legal", date: "2026-11-21", keepOpen: true, caveat: "revisit at the final rule", agencyNotified: "CDHS, 2026-11-21" });
+    expect(answeredIds(md, opinion)).toEqual([]);
+    expect(stagedAnswers(md, opinion).get(id)).toBe("opinion");
+    const q = parseOpenQuestions(opinion).find((x) => x.id === id)!;
+    expect(questionStatus(q)).toBe("open");
+    expect(q.body).toContain("Caveat: revisit at the final rule.");
+    expect(agencyNotified(q.body)).toBe("CDHS, 2026-11-21.");
+    const answered = applyAnswer(md, id, { decision: "Keep it.", citation: "", by: "Dana", role: "Medicaid policy owner", date: "2026-11-21" });
+    expect(stagedAnswers(md, answered).get(id)).toBe("answered");
+  });
+
+  it("an answered question leaves the queue and shows as 'answer staged'", () => {
+    setUp();
+    const id = open.find((e) => e.status === "open")!.id;
+    const after = applyAnswer(md, id, { decision: "Keep it.", citation: "", by: "Dana", role: "Medicaid policy owner", date: "2026-11-21" });
+    changeSetSig.value = { ...emptyChangeSet("co", "local"), files: [{ path: `${vol.path}/open-questions.md`, before: md, after, label: `Answer to ${id}` }] };
+    route.value = { ...route.value, params: { mine: "0", q: id } };
+    const host = document.createElement("div");
+    render(<QuestionsView />, host);
+    expect(host.querySelector(`.qcards li.qcard[data-question="${id}"]`)).toBeNull();
+    expect(host.querySelector(`.qanswered li[data-question="${id}"]`)).not.toBeNull();
+    render(null, host);
+    changeSetSig.value = emptyChangeSet("co", "local");
+  });
+
+  it("the role page and the queue count a persona's questions the same way, and the groups add up", () => {
+    for (const pid of ["hcpf", "cdhs", "legal"] as const) {
+      const p = personaById(pid)!;
+      const mine = personaQuestions(engine, vol.sources, vol.openQuestions, p);
+      const roles = p.roles.filter((r) => engine.meta.approval_policy.roles.includes(r));
+      for (const e of mine) expect(e.owners.some((o) => roles.includes(o))).toBe(true);
+      const groups = ownerGroups(engine, mine, roles);
+      expect(groups.reduce((n, g) => n + g.entries.length, 0)).toBe(mine.length);
+      // The persona's own roles come first.
+      const firstOther = groups.findIndex((g) => !g.mine);
+      if (firstOther >= 0) expect(groups.slice(firstOther).every((g) => !g.mine)).toBe(true);
+    }
+  });
+
+  it("departures give their start date where the item or note states one, and follow an as-of date", () => {
+    for (const it of departureItems(engine)) {
+      const since = departureSince(it);
+      if (since) {
+        expect(since).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(departureItems(engine, { asOf: "1999-01-01" }).map((x) => x.id)).not.toContain(it.id);
+      }
+    }
+    expect(departureSince({ statute_override: "Federal law overrides X: since Pub. L. 119-21 took effect on July 4, 2025, the age is 64." })).toBe("2025-07-04");
+    // The rule overridden quotes its own date; the departure dates from what governs.
+    expect(departureSince({ statute_override: "The federal figure overrides 4.408.E, which still states $4,500 \"Effective October 1, 2024\": the limit is $4,750 from October 1, 2026." })).toBe("2026-10-01");
+  });
+
+  it("explains an Unknown under the other reading by the facts the household lacks", () => {
+    const alt = alternativeFor("OQ-410");
+    if (!alt) return;
+    const entry = alternativeEntry(engine, vol.chapterOf, alt)!;
+    const changed = changedBy(engine, vol.cases, [entry]);
+    const unknown = changed.filter((c) => c.after === null);
+    for (const u of unknown) expect(unknownReason(u)).toMatch(/does not state|no figure/);
+  });
 });

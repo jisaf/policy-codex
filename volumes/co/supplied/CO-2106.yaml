@@ -10,5 +10,5 @@ meaning: "The county from which this household seeks or receives Low-Income Chil
 precision: "One value for the case."
 supplied_by: The county department that received the CCCAP application or holds the case.
 sources: [S1408]
-tags: [household]
+tags: [household, application_wide]
 rationale: "OQ-159: 3.111.A compares the caretaker's county of residence with the county from which assistance is sought; no existing fact names that county. cccap_meets_county_residency (CO-2107) reads it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

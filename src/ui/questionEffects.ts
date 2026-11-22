@@ -112,9 +112,14 @@ export interface StoredResult {
 export interface ChangedResult extends StoredResult {
   /** The value under the other reading. */
   after: unknown;
+  /** When `after` is unknown: the facts the stored household does not give
+   *  that the changed rules ask for, by name. */
+  missing?: string[];
+  /** When `after` is unknown: the figures with no version in force. */
+  noFigure?: string[];
 }
 
-interface ExpectationReads extends StoredResult {
+export interface ExpectationReads extends StoredResult {
   reads: Set<string>;
 }
 
@@ -139,7 +144,7 @@ function readsOf(root: TraceNode, full: Map<string, TraceNode>): Set<string> {
   return ids;
 }
 
-function expectationReads(engine: Engine, cases: readonly HouseholdCase[]): ExpectationReads[] {
+export function expectationReads(engine: Engine, cases: readonly HouseholdCase[]): ExpectationReads[] {
   let perEngine = readsMemo.get(engine);
   if (!perEngine) { perEngine = new WeakMap(); readsMemo.set(engine, perEngine); }
   const hit = perEngine.get(cases);

@@ -18,6 +18,7 @@ export interface ManifestVolume {
   title: string;
   path: string;
   chapters: Array<{ dir: string; title?: string; files: string[] }>;
+  steward?: { name: string; contact?: string };
 }
 
 export function manifestVolumes(root: string): ManifestVolume[] {
@@ -85,7 +86,7 @@ export function loadVolume(root: string, volumeId: string): { vol: LoadedVolume;
   const vol: LoadedVolume = {
     volumeId: entry.id, title: entry.title, path: entry.path, ref: "local", sha: null,
     meta, items, sources, sourcesText, openQuestions, cases, casesText, documents, chapterOf,
-    aidCodes,
+    aidCodes, steward: entry.steward ?? meta.steward ?? null,
   };
   const engine = createEngine(items, meta, {
     sourceIds: sources.map((s) => s.id),

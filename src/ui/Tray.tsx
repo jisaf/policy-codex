@@ -2,6 +2,8 @@ import { useSignal } from "@preact/signals";
 import { entryKind, entryLabel, fileEntries, isFileUnchanged, isUnchanged } from "../changes/types";
 import { buildHash, isPrRef } from "./router";
 import { saveChangeSet } from "../changes/store";
+import { isSignatureOnly } from "../changes/apply";
+import { SendChange } from "./sendChange";
 import { proposeBlockedReason, proposeChangeSet } from "./propose";
 import {
   changeSetSig, clearTray, credentials, discardChangeEntry, discardFileChange, engineSig,
@@ -83,13 +85,17 @@ export function Tray() {
 
         <ul class="entries">
           {cs.entries.map((e) => {
-            const warnings = warningsById.get(e.id) ?? [];
+            // A signature changes no value a rule reads: it is not an "edit",
+            // and the duplicate-name warnings the item already carries are
+            // not the signer's to act on (HCPF analyst task 3).
+            const signature = isSignatureOnly(e);
+            const warnings = signature ? [] : warningsById.get(e.id) ?? [];
             return (
               <li class="entry" key={e.id}>
                 <a href={buildHash({ ...r, view: "item", arg: e.id, params: {} })}>
                   {entryLabel(e)}
                 </a>
-                <span class="tag">{entryKind(e)}</span>
+                <span class="tag">{signature ? "signature" : entryKind(e)}</span>
                 {isUnchanged(e) && <span class="tag">no change</span>}
                 {warnings.length > 0 && (
                   <span class="tag warncount">
@@ -140,22 +146,23 @@ export function Tray() {
               ? <p class="muted">No downstream items depend on the changed facts.</p>
               : (
                 <p>
-                  {report.impact.length} downstream item(s):{" "}
-                  {report.impact.map((id, i) => (
-                    <span key={id}>
-                      {i > 0 && ", "}
-                      <a
-                        href={buildHash({
-                          ...r, view: "item",
-                          arg: engineSig.value?.item(id)?.id ?? id, params: {},
-                        })}
-                      >{id}</a>
-                    </span>
-                  ))}
+                  {report.impact.length} rule{report.impact.length === 1 ? "" : "s"} and figure{report.impact.length === 1 ? "" : "s"} read the changed items:{" "}
+                  {report.impact.slice(0, 12).map((id, i) => {
+                    const it = engineSig.value?.item(id);
+                    return (
+                      <span key={id}>
+                        {i > 0 && "; "}
+                        <a href={buildHash({ ...r, view: "item", arg: it?.id ?? id, params: {} })} title={id}>{it?.name ?? id}</a>
+                      </span>
+                    );
+                  })}
+                  {report.impact.length > 12 && <span class="muted"> and {report.impact.length - 12} more</span>}
                 </p>
               )}
           </div>
         )}
+
+        {(cs.entries.length > 0 || files.length > 0) && <SendChange kind="change" />}
 
         <div class="actions">
           <button class="btn propose" disabled={Boolean(reason) || busy.value} onClick={propose}>

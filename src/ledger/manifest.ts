@@ -6,8 +6,14 @@ export interface VolumeEntry {
   /** e.g. "draft", while a volume is still being built. Absent means
    *  published; the volume selector shows a "(draft)" suffix when set. */
   status?: string;
+  /** Who proposes changes for readers without a GitHub token: the person or
+   *  team a downloaded change is sent to. volume.yaml `steward:` may name one
+   *  too; this entry wins. */
+  steward?: Steward;
   chapters: Chapter[];
 }
+/** The codex steward: a name, and how to reach them (an address, a channel). */
+export interface Steward { name: string; contact?: string }
 export interface Manifest { volumes: VolumeEntry[] }
 
 export function parseManifest(raw: unknown): Manifest {

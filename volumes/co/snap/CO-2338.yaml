@@ -5,13 +5,14 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: "The part of this person's gross earned income for the month that 10 CCR 2506-1 4.405.1 excludes from SNAP income: work-study. An elementary or secondary student's earnings are excluded whole by snap_student_earnings_are_excluded (CO-2569)."
+meaning: "The part of this person's gross earned income for the month that 10 CCR 2506-1 4.405 and 7 CFR 273.9(c) exclude from SNAP income: all the earnings of an elementary or secondary student under the age of parental control (snap_student_earnings_are_excluded, CO-2569; 273.9(c)(7)), otherwise work-study (4.405.1)."
 precision: "The sum of the neutral receipt facts the program's list names (each part of the gross income facts, so the program's countable income subtracts it); an unstated receipt is 0."
-derived: [otherwise, work_study_earnings, 0]
+derived: [case, [snap_student_earnings_are_excluded, [+, wages_gross, snap_self_employment_income]], [else, [otherwise, work_study_earnings, 0]]]
 sources: [S1620, S2204]
 implemented: engine
 tags: [snap, income]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
 tests:
-  - {id: CO-2338-T1, month: "2026-10", as_of: "2026-10-01", given: {}, expect: 0}
-  - {id: CO-2338-T2, month: "2026-10", as_of: "2026-10-01", given: {work_study_earnings: 50}, expect: 50}
+  - {id: CO-2338-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_student_earnings_are_excluded: false}, expect: 0}
+  - {id: CO-2338-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_student_earnings_are_excluded: false, work_study_earnings: 50}, expect: 50}
+  - {id: CO-2338-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_student_earnings_are_excluded: true, wages_gross: 600, snap_self_employment_income: 0}, expect: 600}

@@ -1,4 +1,13 @@
-import { useLayoutEffect, useState } from "preact/hooks";
+import { useEffect, useLayoutEffect, useState } from "preact/hooks";
+import { useSignal } from "@preact/signals";
+import type { HouseholdCase } from "../../engine/cases";
+import type { ChangeEntry } from "../../changes/types";
+import type { DocumentMeta } from "../../ledger/documents";
+import {
+  changedBy, changedPhrase, departureItems, departureSince, documentEffective, householdCount, ownerGroups,
+  personaQuestions, restingIndex, restingPhrase, restingReady,
+} from "../counts";
+import type { ChangedResult, StoredResult } from "../questionEffects";
 import type { Engine } from "../../engine/engine";
 import type { Item, ItemVersion } from "../../engine/types";
 import { paramInForce } from "../../engine/versions";
@@ -7,8 +16,8 @@ import { personaById, personaRoles, PERSONAS, type Persona } from "../personas";
 import { formatDate, formatValue, optionLabel, personLabel } from "../present";
 import { noVersionReason, Value } from "../Present";
 import {
-  addYears, awaitingByRole, casesReading, changesBetween, defaultSince, departures, figuresInForce, firstSentence,
-  programLabel, questionCounts, roleOutcomes, rolePrograms, signOffCounts, stagedCaseChanges,
+  addYears, awaitingByRole, changesBetween, defaultSince, figuresInForce, firstSentence,
+  programLabel, roleOutcomes, rolePrograms, signOffCounts,
   type ChangeEvent, type Figure,
 } from "../roles";
 import { buildHash, type Route } from "../router";
@@ -63,64 +72,82 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
   const programs = rolePrograms(engine, persona);
   const roles = personaRoles(persona, engine.meta);
   const signOff = signOffCounts(engine, persona);
-  const questions = questionCounts(engine, persona, vol.openQuestions);
-  const deps = departures(engine, persona);
+  const questions = personaQuestions(engine, vol.sources, vol.openQuestions, persona);
+  const qGroups = ownerGroups(engine, questions, roles);
   const since = r.params.since || defaultSince(today);
   const asOf = r.params.asof || today;
+  // Legal and the county read every program's departures; an agency its own.
+  const deps = departureItems(engine, {
+    programs: persona.id === "legal" || !persona.programs.length ? null : programs,
+    asOf,
+  });
   const upcoming = changesBetween(engine, programs, addDay(today), addYears(today, 1)).reverse();
   const show = r.params.show ?? "";
   useLayoutEffect(() => {
     if (!show) return;
     document.getElementById(`role-${show}`)?.scrollIntoView?.({ block: "start" });
   }, [show, persona.id]);
-  const ownsQuestions = persona.id === "legal" || persona.programs.length > 0;
+  const ownsQuestions = roles.length > 0;
   const totalWaiting = waitingOnAny(engine, roles);
+  const totalSignOffs = signOff.reduce((n, x) => n + x.waiting, 0);
   return (
     <div class="persona" data-persona={persona.id}>
       <h2>{persona.label} <small class="muted">{persona.agency}</small></h2>
       <p class="purpose">{persona.body}</p>
       <p class="muted">
         Programs: {programs.map(programLabel).join(", ") || "none in this volume"}.{" "}
-        {roles.length ? <>Signs as: {roles.join(", ")}.</> : "Signs as no approval role."}
+        {roles.length ? <>Signs as: {roles.join(", ")}.</> : "Approves nothing in the codex: this page is for reading it."}
       </p>
 
       <ul class="countcards" aria-label="Your queues">
         {roles.length > 0 && (
           <li class="countcard">
             <a href={buildHash({ ...r, view: "inbox", arg: null, params: roles.length === 1 ? { role: roles[0] } : { persona: persona.id } })}>
-              <span class="num">{totalWaiting}</span> item{totalWaiting === 1 ? "" : "s"} waiting on your sign-off
+              <span class="num">{totalWaiting.toLocaleString("en-US")}</span> item{totalWaiting === 1 ? "" : "s"} waiting on your sign-off
             </a>
             {signOff.length > 1 && (
-              <ul>
-                {signOff.map((s) => (
-                  <li key={s.role}>
-                    <a href={buildHash({ ...r, view: "inbox", arg: null, params: { role: s.role } })}>{s.role}: {s.waiting}</a>
-                  </li>
-                ))}
-              </ul>
+              <>
+                <small class="muted">
+                  {totalSignOffs.toLocaleString("en-US")} sign-offs in all: an item that needs two of your roles is one item
+                  above and is listed under each role below.
+                </small>
+                <ul>
+                  {signOff.map((s) => (
+                    <li key={s.role}>
+                      <a href={buildHash({ ...r, view: "inbox", arg: null, params: { role: s.role } })}>{s.role}: {s.waiting.toLocaleString("en-US")}</a>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
           </li>
         )}
         <li class="countcard">
           <a href={buildHash({ ...r, view: "questions", arg: null, params: { persona: persona.id } })}>
-            <span class="num">{questions.open.length}</span>{" "}
-            {ownsQuestions ? "open questions you own" : "open questions across the programs"}
+            <span class="num">{questions.length}</span>{" "}
+            {ownsQuestions ? "open questions one of your roles answers" : "open questions across the programs"}
           </a>
-          {questions.byProgram.length > 1 && (
-            <ul>
-              {questions.byProgram.map((q) => (
-                <li key={q.program}>
-                  <a href={buildHash({ ...r, view: "questions", arg: null, params: { program: q.program } })}>{programLabel(q.program)}: {q.count}</a>
-                </li>
-              ))}
-            </ul>
+          {qGroups.length > 1 && (
+            <>
+              <small class="muted">By the role each is filed under (the role that answers first); these add up.</small>
+              <ul>
+                {qGroups.map((g) => (
+                  <li key={g.owner}>
+                    <a href={buildHash({ ...r, view: "questions", arg: null, params: { persona: persona.id, owner: g.owner } })}>{g.owner}: {g.entries.length}</a>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </li>
         <li class="countcard">
           <a href={buildHash({ ...r, params: { ...r.params, show: "departures" } })}>
             <span class="num">{deps.length}</span> statute-over-rule departure{deps.length === 1 ? "" : "s"}
           </a>
-          <small class="muted">where a statute governs over the Colorado rule text</small>
+          <small class="muted">
+            where an item {persona.id === "legal" || !persona.programs.length ? "in any program" : "in your programs"} follows a statute
+            over the Colorado rule text, in force on {formatDate(asOf)}
+          </small>
         </li>
         <li class="countcard">
           <a href={buildHash({ ...r, params: { ...r.params, show: "changes" } })}>
@@ -144,7 +171,7 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
 
       <section id="role-changes" class={show === "changes" ? "focus" : ""}>
         <h2>What changed recently</h2>
-        <Changes ctx={ctx} programs={programs} since={since} asOf={today} upcoming={upcoming} />
+        <Changes ctx={ctx} programs={programs} since={since} asOf={today} upcoming={upcoming} persona={persona} />
       </section>
 
       <section id="role-figures" class={show === "figures" ? "focus" : ""}>
@@ -154,6 +181,7 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
 
       <section id="role-departures" class={show === "departures" ? "focus" : ""}>
         <h2>Statute-over-rule departures</h2>
+        <p class="muted">In force on {formatDate(asOf)} (the "As of" date under Figures in force).</p>
         <Departures ctx={ctx} items={deps} />
       </section>
     </div>
@@ -252,12 +280,92 @@ const KIND_TEXT: Record<ChangeEvent["kind"], string> = {
   "rule ends": "Last day of the rule",
 };
 
+/** The stored results resting on each item, worked out after the page has
+ *  painted (counts.ts `restingIndex`), shared by the lists below. */
+function useResting(engine: Engine, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> | null {
+  const ready = restingReady(engine, cases);
+  const out = useSignal<Map<string, StoredResult[]> | null>(ready ? restingIndex(engine, cases) : null);
+  useEffect(() => {
+    if (ready) { out.value = restingIndex(engine, cases); return; }
+    const t = setTimeout(() => { out.value = restingIndex(engine, cases); }, 30);
+    return () => clearTimeout(t);
+  }, [engine, cases, ready]);
+  return out.value;
+}
+
+/** The change a dated figure made: the item as if the new period had kept the
+ *  previous figure. Run against the stored households, the results that
+ *  differ are the ones the new figure changes. */
+export function undoEntry(e: ChangeEvent, chapter: string): ChangeEntry | null {
+  if (e.kind !== "new figure" || !e.previous || !e.version) return null;
+  const v = e.version;
+  const prev = e.previous;
+  const after: Item = {
+    ...e.item,
+    versions: (e.item.versions ?? []).map((x) => (x.from === v.from ? { ...x, value: prev.value } : x)),
+  };
+  return { id: e.item.id, chapter, before: e.item, after };
+}
+
+/** Works out, one event at a time after the page paints, which stored results
+ *  each dated figure change moves. */
+function useWorkedOut(engine: Engine, cases: readonly HouseholdCase[], chapterOf: Record<string, string>, events: ChangeEvent[]) {
+  const done = useSignal<Map<string, ChangedResult[]>>(new Map());
+  const key = events.map((e) => `${e.item.id}@${e.date}`).join(",");
+  useEffect(() => {
+    let live = true;
+    const map = new Map<string, ChangedResult[]>();
+    done.value = map;
+    const queue = events.filter((e) => e.kind === "new figure" && e.previous);
+    const step = () => {
+      if (!live || !queue.length) return;
+      const e = queue.shift()!;
+      const entry = undoEntry(e, chapterOf[e.item.id] ?? "parameters");
+      // The results that differ without the new figure are the ones it changed.
+      const ch = entry ? changedBy(engine, cases, [entry]).map((c) => ({ ...c, value: c.after, after: c.value })) : [];
+      map.set(`${e.item.id}@${e.date}`, ch);
+      done.value = new Map(map);
+      setTimeout(step, 0);
+    };
+    const t = setTimeout(step, 60);
+    return () => { live = false; clearTimeout(t); };
+  }, [engine, cases, key]);
+  return done.value;
+}
+
+/** Documents whose rule text takes effect in [from, to], cited by an item in
+ *  the programs (the county supervisor's "the LEAP rule amendment"). */
+export function documentsTakingEffect(
+  engine: Engine, docs: readonly DocumentMeta[], sources: ReadonlyArray<{ id: string; document?: string }>,
+  programs: readonly string[], from: string, to: string,
+): Array<{ doc: DocumentMeta; date: string; programs: string[] }> {
+  const progs = new Set(programs);
+  const out: Array<{ doc: DocumentMeta; date: string; programs: string[] }> = [];
+  for (const d of docs) {
+    const date = documentEffective(d);
+    if (!date || date < from || date > to) continue;
+    const excerpts = new Set(sources.filter((s) => s.document === d.id).map((s) => s.id));
+    const ps = new Set<string>();
+    for (const it of engine.items()) {
+      if (!(it.sources ?? []).some((x) => excerpts.has(x)) && !(it.versions ?? []).some((v) => v.source && excerpts.has(v.source))) continue;
+      if (progs.has(it.program)) ps.add(it.program);
+    }
+    if (ps.size) out.push({ doc: d, date, programs: [...ps] });
+  }
+  return out.sort((a, b) => b.date.localeCompare(a.date));
+}
+
 function Changes(
-  { ctx, programs, since, asOf, upcoming }:
-  { ctx: ViewContext; programs: string[]; since: string; asOf: string; upcoming: ChangeEvent[] },
+  { ctx, programs, since, asOf, upcoming, persona }:
+  { ctx: ViewContext; programs: string[]; since: string; asOf: string; upcoming: ChangeEvent[]; persona: Persona },
 ) {
-  const { engine, route: r } = ctx;
+  const { engine, vol, route: r } = ctx;
+  void persona;
   const recent = changesBetween(engine, programs, since, asOf);
+  const resting = useResting(engine, vol.cases);
+  const worked = useWorkedOut(engine, vol.cases, vol.chapterOf, [...recent, ...upcoming]);
+  const docsRecent = documentsTakingEffect(engine, vol.documents, vol.sources, programs, since, asOf);
+  const docsNext = documentsTakingEffect(engine, vol.documents, vol.sources, programs, addDay(asOf), addYears(asOf, 1));
   return (
     <>
       <div class="controls">
@@ -268,14 +376,16 @@ function Changes(
         <span class="muted">to today, {formatDate(asOf)}.</span>
       </div>
       <p class="muted note">
-        Read from the dates each figure and rule states (a figure's versions, a rule's effective dates).
-        The ledger source does not expose its commit history, so an edit that changed no date is not listed here;
-        each item's page shows its own history where GitHub answers.
+        Read from the dates each figure, rule and rule document states (a figure's periods, a rule's effective dates,
+        a document's "effective" date). For a new figure, the stored households whose result changes are worked out by
+        running them with the old figure and the new one. An edit that changed no date is not listed here.
       </p>
-      <h3>In force since {formatDate(since)} ({recent.length})</h3>
-      <ChangeList ctx={ctx} events={recent} empty="Nothing in your programs took effect in this period." />
-      <h3>Coming into force in the next year ({upcoming.length})</h3>
-      <ChangeList ctx={ctx} events={upcoming} empty="Nothing dated in the next year." />
+      <h3>In force since {formatDate(since)} ({recent.length + docsRecent.length})</h3>
+      <DocList ctx={ctx} docs={docsRecent} />
+      <ChangeList ctx={ctx} events={recent} resting={resting} worked={worked} empty={docsRecent.length ? "" : "Nothing in your programs took effect in this period."} />
+      <h3>Coming into force in the next year ({upcoming.length + docsNext.length})</h3>
+      <DocList ctx={ctx} docs={docsNext} />
+      <ChangeList ctx={ctx} events={upcoming} resting={resting} worked={worked} empty={docsNext.length ? "" : "Nothing dated in the next year."} />
     </>
   );
 }
@@ -298,13 +408,40 @@ function tableDiff(a: unknown, b: unknown): number | null {
   return n;
 }
 
-function ChangeList({ ctx, events, empty }: { ctx: ViewContext; events: ChangeEvent[]; empty: string }) {
+function DocList({ ctx, docs }: { ctx: ViewContext; docs: ReturnType<typeof documentsTakingEffect> }) {
+  const { route: r } = ctx;
+  if (!docs.length) return null;
+  return (
+    <ul class="changes docs">
+      {docs.map(({ doc, date, programs }) => (
+        <li key={doc.id} class="change rule-text">
+          <span class="date">{formatDate(date)}</span>{" "}
+          <span class="tag">Rule text takes effect</span>{" "}
+          <a href={buildHash({ ...r, view: "document", arg: doc.id, params: {} })}>{doc.title}</a>{" "}
+          {programs.map((p) => <span key={p} class="tag">{programLabel(p)}</span>)}{" "}
+          <small class="mono muted">{doc.id}</small>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ChangeList(
+  { ctx, events, empty, resting, worked }:
+  {
+    ctx: ViewContext; events: ChangeEvent[]; empty: string;
+    resting: Map<string, StoredResult[]> | null; worked: Map<string, ChangedResult[]>;
+  },
+) {
   const { engine, vol, route: r } = ctx;
-  if (!events.length) return <p class="muted">{empty}</p>;
+  if (!events.length) return empty ? <p class="muted">{empty}</p> : null;
   return (
     <ul class="changes">
       {events.map((e, i) => {
-        const touched = casesReading(engine, vol.cases, e.item.identifier);
+        const rest = resting ? (resting.get(e.item.identifier) ?? []) : null;
+        const touchedIds = rest ? [...new Set(rest.map((x) => x.caseId))] : [];
+        const touched = vol.cases.filter((c) => touchedIds.includes(c.id));
+        const changed = worked.get(`${e.item.id}@${e.date}`);
         const diff = e.kind === "new figure" ? tableDiff(e.previous?.value, e.version?.value) : null;
         const why = e.kind === "figure ends" ? noVersionReason(e.item, e.date) : null;
         return (
@@ -325,15 +462,49 @@ function ChangeList({ ctx, events, empty }: { ctx: ViewContext; events: ChangeEv
               <div class="flag override">{e.item.statute_override}</div>
             )}
             <Cites vol={vol} route={r} item={e.item} sourceIds={e.version?.source ? [e.version.source] : undefined} />
-            {touched.length > 0 && (
-              <div class="touches muted">
-                Stored households that read it:{" "}
-                {touched.slice(0, 8).map((c, j) => (
-                  <span key={c.id}>{j > 0 && ", "}<a href={walkthroughHref(r, c.id)}>{c.id}</a></span>
-                ))}
-                {touched.length > 8 && ` and ${touched.length - 8} more`}
+            {e.kind === "new figure" && e.previous && (
+              <div class="worked">
+                {changed === undefined
+                  ? <span class="muted">Working out which stored results the new figure changes…</span>
+                  : changed.length === 0
+                    ? <span>{changedPhrase(0, 0)} between the old figure and the new.</span>
+                    : (
+                      <>
+                        <b>{changedPhrase(changed.length, householdCount(changed))}</b> between the old figure and the new:
+                        <ul class="casechanges">
+                          {changed.slice(0, 6).map((c, j) => {
+                            const it = engine.item(c.identifier);
+                            const hc = vol.cases.find((x) => x.id === c.caseId);
+                            return (
+                              <li key={j}>
+                                <a href={walkthroughHref(r, c.caseId, c.person)} title={hc?.title}>{c.caseId}</a>{" "}
+                                {personLabel(c.person)}{c.month ? `, ${formatDate(c.month)}` : ""}:{" "}
+                                {it ? <a href={itemHref(r, it)}>{it.name}</a> : c.identifier}{" "}
+                                {formatValue(it, c.value)} → <b>{formatValue(it, c.after)}</b>
+                              </li>
+                            );
+                          })}
+                          {changed.length > 6 && <li class="muted">and {changed.length - 6} more</li>}
+                        </ul>
+                      </>
+                    )}
               </div>
             )}
+            <div class="touches muted">
+              {rest === null
+                ? "Working out which stored households rest on it…"
+                : touched.length === 0
+                  ? "No stored household result rests on it."
+                  : (
+                    <>
+                      {restingPhrase(rest.length, touched.length)}:{" "}
+                      {touched.slice(0, 8).map((c, j) => (
+                        <span key={c.id}>{j > 0 && ", "}<a href={walkthroughHref(r, c.id)} title={c.title}>{c.id}</a></span>
+                      ))}
+                      {touched.length > 8 && ` and ${touched.length - 8} more`}
+                    </>
+                  )}
+            </div>
           </li>
         );
       })}
@@ -436,7 +607,8 @@ function StagedChange(
   if (!d) return <div class="staged">Staged for deletion in your tray (not in force).</div>;
   const dv = paramInForce(d, asOf);
   const approvals = approvalStatus(draft, d);
-  const changes = stagedCaseChanges(base, draft, vol.cases, d.identifier);
+  const entry = changeSetSig.value.entries.find((e) => e.id === item.id);
+  const changes = entry ? changedBy(base, vol.cases, [entry]) : [];
   const byCase = new Map<string, typeof changes>();
   for (const c of changes) byCase.set(c.caseId, [...(byCase.get(c.caseId) ?? []), c]);
   return (
@@ -448,10 +620,10 @@ function StagedChange(
         Needs sign-off from: {approvals.required.length ? approvals.required.join(", ") : "no role"}.
       </p>
       {changes.length === 0
-        ? <p class="muted">No stated result of a stored household changes.</p>
+        ? <p class="muted">{changedPhrase(0, 0)}: no stored household's result changes with this one change.</p>
         : (
           <>
-            <p>{byCase.size} stored household{byCase.size === 1 ? "" : "s"} change:</p>
+            <p>{changedPhrase(changes.length, byCase.size)}:</p>
             <ul class="casechanges">
               {[...byCase.entries()].map(([caseId, cs]) => (
                 <li key={caseId}>
@@ -463,7 +635,7 @@ function StagedChange(
                         <li key={i}>
                           {personLabel(c.person)}{c.month ? `, ${formatDate(c.month)}` : ""}:{" "}
                           {it ? <a href={itemHref(r, it)}>{it.name}</a> : c.identifier}{" "}
-                          {formatValue(it, c.before)} → <b>{formatValue(it, c.after)}</b>
+                          {formatValue(it, c.value)} → <b>{formatValue(it, c.after)}</b>
                         </li>
                       );
                     })}
@@ -490,7 +662,7 @@ function Departures({ ctx, items }: { ctx: ViewContext; items: Item[] }) {
       {items.map((it) => (
         <li key={it.id} class="departure">
           <ItemLink route={r} item={it} /> <span class="tag">{programLabel(it.program)}</span>
-          {it.effective?.from && <span class="muted"> since {formatDate(it.effective.from)}</span>}
+          {departureSince(it) && <span class="muted"> since {formatDate(departureSince(it)!)}</span>}
           <p class="flag override">{it.statute_override}</p>
           <Cites vol={vol} route={r} item={it} />
         </li>

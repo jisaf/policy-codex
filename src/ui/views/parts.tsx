@@ -23,10 +23,15 @@ export function excerptHref(r: Route, sourceId: string): string {
 
 /** The case walkthrough for one person and program (route owned by the
  *  walkthrough view: `#/<volume>/walkthrough/<case>?person=&program=`). */
-export function walkthroughHref(r: Route, caseId: string, person?: string, program?: string): string {
+export function walkthroughHref(
+  r: Route, caseId: string, person?: string, program?: string,
+  at?: { outcome?: string; month?: string | null },
+): string {
   const params: Record<string, string> = {};
   if (person) params.person = person;
   if (program) params.program = program;
+  if (at?.outcome) params.outcome = at.outcome;
+  if (at?.month) params.month = at.month;
   return buildHash({ ...r, view: "walkthrough", arg: caseId, params });
 }
 

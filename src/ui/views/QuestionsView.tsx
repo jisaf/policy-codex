@@ -18,11 +18,11 @@ import { parseOpenQuestions, type OpenQuestion, type Source } from "../../ledger
 import { fileEntries } from "../../changes/types";
 import { kindLabel } from "../labels";
 import { PERSONAS, personaRoles } from "../personas";
-import { formatValue, personLabel } from "../present";
+import { formatDate, formatValue, personLabel } from "../present";
 import { EXCERPT_KIND_LABEL, excerptKind, isUnverified } from "../provenance";
 import { volumePrograms } from "../programs";
 import {
-  citedDocuments, departures, groupByOwner, isOpen, matchesFilter, questionInfo, questionInfos, questionNotes,
+  citedDocuments, departures, isOpen, matchesFilter, questionInfo, questionInfos, questionNotes,
   queueEntry, QUESTION_CLASS_BLURB, QUESTION_CLASS_LABEL, QUESTION_CLASSES, QUESTION_STATUS_LABEL,
   type Departure, type QuestionClass, type QuestionInfo, type QueueEntry, type QueueFilter,
 } from "../questions";
@@ -30,7 +30,12 @@ import {
   alternativeEntry, alternativeFor, byCase, changedResults, resultsRestingOn,
   type Alternative, type ChangedResult, type StoredResult,
 } from "../questionEffects";
-import { answeredIds, applyAnswer } from "../questionAnswer";
+import { agencyNotified, answeredIds, applyAnswer, stagedAnswers, type StagedAnswer } from "../questionAnswer";
+import {
+  changedBy, changedPhrase, departureItems, departureSince, householdCount, ownerGroups, ownsEntry, restingOn,
+  restingPhrase, unknownReason,
+} from "../counts";
+import { SendChange } from "../sendChange";
 import { buildHash, type Route } from "../router";
 import {
   changeSetSig, draftEngine, draftsShown, ledgerSource, navigate, openEditor, putChangeEntry,
@@ -116,7 +121,16 @@ export function Prose(
       node = <a class="ref" href={buildHash({ ...r, view: "document", arg: doc, params: {} })}>{doc}</a>;
     }
     if (!node) continue;
-    if (at > last) out.push(text.slice(last, at));
+    // The same item named twice in a row ("x (CO-1), x (CO-2)" for two items
+    // with one name) reads once (HCPF analyst, OQ-410's reading).
+    const between = text.slice(last, at);
+    const prev = out[out.length - 1] as { props?: { children?: unknown; class?: string } } | undefined;
+    const name = (node as { props?: { children?: unknown } }).props?.children;
+    if (typeof name === "string" && prev?.props?.children === name && /^\s*(?:,|and)?\s*$/.test(between)) {
+      last = at + whole.length;
+      continue;
+    }
+    if (at > last) out.push(between);
     out.push(node);
     last = at + whole.length;
   }
@@ -170,6 +184,17 @@ export function questionsInView(vol: LoadedVolume): OpenQuestion[] {
   return staged ? parseOpenQuestions(staged) : vol.openQuestions;
 }
 
+/** What this browser's tray does to each question: answered, or an opinion
+ *  recorded with it kept open. Read whether or not drafts are shown, so an
+ *  answered question leaves the open list (HCPF analyst task 4: "two of us
+ *  could answer it twice"). */
+export function stagedQuestionState(vol: LoadedVolume): Map<string, StagedAnswer> {
+  const path = `${vol.path}/open-questions.md`;
+  const f = fileEntries(changeSetSig.value).find((x) => x.path === path);
+  if (!f?.after || f.before === null) return new Map();
+  return stagedAnswers(f.before, f.after);
+}
+
 // ---- effects on the stored households
 
 export interface QuestionEffect {
@@ -181,10 +206,10 @@ export interface QuestionEffect {
 }
 
 export function questionEffect(engine: Engine, vol: LoadedVolume, q: Pick<QuestionInfo, "id" | "items">): QuestionEffect {
-  const resting = resultsRestingOn(engine, vol.cases, q.items.map((it) => it.identifier));
+  const resting = restingOn(engine, vol.cases, q.items.map((it) => it.identifier));
   const alternative = alternativeFor(q.id);
   const entry = alternative ? alternativeEntry(engine, vol.chapterOf, alternative) : null;
-  const changed = entry ? changedResults(engine, vol.cases, entry) : null;
+  const changed = entry ? changedBy(engine, vol.cases, [entry]) : null;
   return { alternative, changed, resting };
 }
 
@@ -199,17 +224,15 @@ function EffectSummary({ effect }: { effect: QuestionEffect | undefined }) {
     return (
       <span>
         {alternative.label}:{" "}
-        <b>{changed.length
-          ? `${changed.length} stored result${changed.length === 1 ? "" : "s"} in ${households(changed)} household${households(changed) === 1 ? "" : "s"} change`
-          : "no stored household result changes"}</b>.
+        <b>{changedPhrase(changed.length, households(changed))}</b>.
       </span>
     );
   }
   if (!resting.length) return <span>No stored household result rests on it.</span>;
   return (
     <span>
-      {resting.length} stored result{resting.length === 1 ? "" : "s"} in {households(resting)} household{households(resting) === 1 ? "" : "s"} rest on it.{" "}
-      <span class="muted">The question names no single other value, so the new values are not worked out.</span>
+      {restingPhrase(resting.length, households(resting))}.{" "}
+      <span class="muted">The question names no single other value to re-run with.</span>
     </span>
   );
 }
@@ -253,15 +276,17 @@ function readFilter(params: Record<string, string>, persona: ViewContext["person
 }
 
 function QueueCard(
-  { e, ctx, effect }: { e: QueueEntry; ctx: ViewContext; effect: QuestionEffect | undefined },
+  { e, ctx, effect, staged }: { e: QueueEntry; ctx: ViewContext; effect: QuestionEffect | undefined; staged?: StagedAnswer },
 ) {
   const { engine, vol, route: r } = ctx;
   return (
-    <li class="qcard" data-question={e.id} data-class={e.cls}>
+    <li class="qcard" data-question={e.id} data-class={e.cls} data-staged={staged ?? undefined}>
       <h3><a href={qHref(r, e.id)}>{e.title}</a></h3>
       <div class="qmeta">
         <ClassBadge cls={e.cls} />
         {e.status === "partly" && <StatusTag q={e} />}
+        {staged === "answered" && <span class="tag qstaged-tag">Answer staged</span>}
+        {staged === "opinion" && <span class="tag qstaged-tag">Opinion staged, kept open</span>}
         {e.blocksCertification && (
           <span class="flag blocks" title="The stopping rule accepts an open question only as a state policy choice with the text checked recorded, or as blocked on a named document.">
             Blocks certification
@@ -288,7 +313,7 @@ function QueueCard(
       </dl>
       <div class="qactions">
         <a class="btn" href={qHref(r, e.id)}>Open</a>
-        <a class="btn" href={qHref(r, e.id, { answer: "1" })}>Answer</a>
+        {staged !== "answered" && <a class="btn" href={qHref(r, e.id, { answer: "1" })}>Answer</a>}
       </div>
     </li>
   );
@@ -328,8 +353,8 @@ function Filters(
         </label>
         <label>Search
           <input
-            type="search" value={f.text ?? ""} placeholder="words, OQ-n"
-            onChange={(ev) => set({ q: (ev.target as HTMLInputElement).value.trim() })}
+            type="search" value={f.text ?? ""} placeholder="e.g. long-term care, OQ-519"
+            onInput={(ev) => set({ q: (ev.target as HTMLInputElement).value })}
           />
         </label>
         <label class="check">
@@ -355,12 +380,13 @@ function Filters(
   );
 }
 
-function Queue({ ctx, entries }: { ctx: ViewContext; entries: QueueEntry[] }) {
+function Queue({ ctx, entries, staged }: { ctx: ViewContext; entries: QueueEntry[]; staged: Map<string, StagedAnswer> }) {
   const { engine, vol, route: r, persona } = ctx;
   const f = readFilter(r.params, persona);
   const mineRoles = persona ? personaRoles(persona, engine.meta) : [];
-  const shown = entries.filter((e) => matchesFilter(e, f)
-    && (!f.mine || !mineRoles.length || e.owners.some((o) => mineRoles.includes(o))));
+  const all = entries.filter((e) => matchesFilter(e, f) && (!f.mine || !persona || ownsEntry(engine, persona, e)));
+  const answered = all.filter((e) => staged.get(e.id) === "answered");
+  const shown = all.filter((e) => staged.get(e.id) !== "answered");
   const owners = [...new Set(entries.flatMap((e) => e.owners))]
     .sort((a, b) => {
       const roles = engine.meta.approval_policy?.roles ?? [];
@@ -370,16 +396,28 @@ function Queue({ ctx, entries }: { ctx: ViewContext; entries: QueueEntry[] }) {
   const effects = useEffects(engine, vol, shown);
   return (
     <>
-      <Filters ctx={ctx} f={f} programs={programs} owners={owners} shown={shown.length} total={entries.length} />
+      <Filters ctx={ctx} f={f} programs={programs} owners={owners} shown={shown.length} total={entries.length - [...staged.values()].filter((x) => x === "answered").length} />
       {shown.length === 0 && <p class="muted">No open question matches these filters.</p>}
-      {groupByOwner(engine, shown).map((g) => (
-        <section class="qgroup" key={g.owner} data-owner={g.owner}>
-          <h2>{g.owner}{agencyOf(g.owner) && <span class="agency">{agencyOf(g.owner)}</span>} <span class="tag">{g.entries.length}</span></h2>
+      {ownerGroups(engine, shown, mineRoles).map((g) => (
+        <section class={`qgroup${g.mine ? " mine" : ""}`} key={g.owner} data-owner={g.owner}>
+          <h2>{g.owner}{agencyOf(g.owner) && <span class="agency">{agencyOf(g.owner)}</span>} <span class="tag">{g.entries.length}</span>{g.mine && <span class="muted small"> your role</span>}</h2>
           <ul class="qlist qcards">
-            {g.entries.map((e) => <QueueCard key={e.id} e={e} ctx={ctx} effect={effects.get(e.id)} />)}
+            {g.entries.map((e) => <QueueCard key={e.id} e={e} ctx={ctx} effect={effects.get(e.id)} staged={staged.get(e.id)} />)}
           </ul>
         </section>
       ))}
+      {answered.length > 0 && (
+        <section class="qgroup qanswered" data-owner="answer staged">
+          <h2>Answer staged in this browser <span class="tag">{answered.length}</span></h2>
+          <p class="muted">Answered here and waiting to be sent; they leave the open list. Nothing is in the codex until the change is merged.</p>
+          <ul class="qlist">
+            {answered.map((e) => (
+              <li key={e.id} data-question={e.id}><a href={qHref(r, e.id)}>{e.title}</a> <span class="tag qstaged-tag">Answer staged</span> <small class="mono muted">{e.id}</small></li>
+            ))}
+          </ul>
+          <SendChange kind="answer" />
+        </section>
+      )}
     </>
   );
 }
@@ -412,16 +450,26 @@ function Resolved({ ctx, questions }: { ctx: ViewContext; questions: QuestionInf
 
 // ---- departures
 
-function DepartureCard({ d, ctx, resting }: { d: Departure; ctx: ViewContext; resting: StoredResult[] | undefined }) {
+function DepartureCard(
+  { d, ctx, resting, staged }:
+  { d: Departure; ctx: ViewContext; resting: StoredResult[] | undefined; staged: Map<string, StagedAnswer> },
+) {
   const { engine, vol, route: r } = ctx;
   const questions = d.questions.map((id) => vol.openQuestions.find((q) => q.id === id)).filter((q): q is OpenQuestion => Boolean(q));
+  const since = departureSince(d.item);
+  // "Agency notified" as the question record states it, staged answers included.
+  const inView = questionsInView(vol);
+  const stagedFile = fileEntries(changeSetSig.value).find((f) => f.path === `${vol.path}/open-questions.md`)?.after;
+  const stagedQs = stagedFile ? parseOpenQuestions(stagedFile) : inView;
+  const notified = questions.map((q) => agencyNotified(stagedQs.find((x) => x.id === q.id)?.body ?? q.body)).find(Boolean) ?? null;
+  const alt = questions.map((q) => alternativeFor(q.id)).find(Boolean) ?? null;
   return (
     <li class="qcard departure" data-item={d.item.id}>
       <h3><a href={itemHref(r, d.item.id)}>{d.item.name}</a></h3>
       <div class="qmeta">
         <span class="flag override">Statute over rule</span>
         <ProgramTags programs={[d.item.program]} />
-        {d.item.effective?.from && <span>since {d.item.effective.from}</span>}
+        {since ? <span>since {formatDate(since)}</span> : <span class="muted">start date not stated</span>}
         <small class="mono muted">{d.item.id}</small>
       </div>
       <div class="sides">
@@ -446,27 +494,56 @@ function DepartureCard({ d, ctx, resting }: { d: Departure; ctx: ViewContext; re
             ))
             : <span class="muted">None: Legal has not been asked.</span>}
         </dd>
+        <dt>Agency notified</dt>
+        <dd>{notified ? <Prose text={notified} engine={engine} vol={vol} r={r} /> : <span class="muted">Not recorded. Record it with Legal's decision.</span>}</dd>
         <dt>Stored households</dt>
         <dd>{resting === undefined ? <span class="muted">Working out…</span>
-          : resting.length ? `${resting.length} stored results in ${households(resting)} households rest on it.`
-          : "No stored household result rests on it."}</dd>
+          : `${restingPhrase(resting.length, households(resting))}.`}
+          {alt && <DepartureRerun ctx={ctx} questionId={alt.question} />}
+        </dd>
       </dl>
       <div class="qactions">
         {questions.filter((q) => isOpen(questionInfo(engine, q).status)).map((q) => (
-          <a key={q.id} class="btn" href={qHref(r, q.id, { answer: "1" })}>Record Legal's decision ({q.id})</a>
+          staged.get(q.id) === "answered"
+            ? <span key={q.id} class="tag qstaged-tag">Legal's decision on {q.id} is staged</span>
+            : (
+              <a key={q.id} class="btn" href={qHref(r, q.id, { answer: "1" })}>
+                Record Legal's decision ({q.id}){staged.get(q.id) === "opinion" ? ", an opinion is staged" : ""}
+              </a>
+            )
         ))}
       </div>
     </li>
   );
 }
 
-function Departures({ ctx }: { ctx: ViewContext }) {
+/** The other reading, re-run, on the departure card where Legal decides
+ *  (Legal, new task: "the re-run is on the question page but not on the
+ *  departure card"). */
+function DepartureRerun({ ctx, questionId }: { ctx: ViewContext; questionId: string }) {
+  const { engine, vol, route: r } = ctx;
+  const out = useSignal<QuestionEffect | null>(null);
+  useEffect(() => {
+    const t = setTimeout(() => { out.value = questionEffect(engine, vol, { id: questionId, items: [] }); }, 40);
+    return () => clearTimeout(t);
+  }, [engine, vol, questionId]);
+  const e = out.value;
+  if (!e?.alternative || !e.changed) return null;
+  return (
+    <p class="rerun">
+      Under the Colorado rule as written ({e.alternative.label}): <b>{changedPhrase(e.changed.length, households(e.changed))}</b>.{" "}
+      <a href={qHref(r, questionId)}>See them on {questionId}</a>
+    </p>
+  );
+}
+
+function Departures({ ctx, staged }: { ctx: ViewContext; staged: Map<string, StagedAnswer> }) {
   const { engine, vol } = ctx;
   const ds = departures(engine, vol.sources, (s) => excerptKind(s, vol.documents));
   const resting = useSignal<Map<string, StoredResult[]> | null>(null);
   useEffect(() => {
     const t = setTimeout(() => {
-      resting.value = new Map(ds.map((d) => [d.item.id, resultsRestingOn(engine, vol.cases, [d.item.identifier])]));
+      resting.value = new Map(ds.map((d) => [d.item.id, restingOn(engine, vol.cases, [d.item.identifier])]));
     }, 30);
     return () => clearTimeout(t);
   }, [engine, vol]);
@@ -476,7 +553,7 @@ function Departures({ ctx }: { ctx: ViewContext }) {
         Each item below follows a statute where a Colorado rule, not yet amended, says otherwise. Each is a decision for Legal: whether the statute governs, from when, and whether the agency has been told.
       </p>
       <ul class="qcards departures">
-        {ds.map((d) => <DepartureCard key={d.item.id} d={d} ctx={ctx} resting={resting.value?.get(d.item.id)} />)}
+        {ds.map((d) => <DepartureCard key={d.item.id} d={d} ctx={ctx} resting={resting.value?.get(d.item.id)} staged={staged} />)}
       </ul>
     </>
   );
@@ -493,18 +570,20 @@ export function QuestionsView({ readText }: { readText?: ReadText } = {}) {
   const open = all.filter((q) => isOpen(q.status)).map((q) => queueEntry(engine, vol.sources, q));
   const resolved = all.filter((q) => !isOpen(q.status));
   const tab = r.params.tab === "departures" ? "departures" : "queue";
-  const departureCount = engine.items().filter((it) => it.statute_override).length;
+  const departureCount = departureItems(engine).length;
+  const staged = stagedQuestionState(vol);
+  const answeredHere = [...staged.values()].filter((x) => x === "answered").length;
   const tabHref = (t: string) => buildHash({ ...r, params: t === "queue" ? {} : { tab: t } });
   return (
     <section class="view workflow questions">
       <ViewHeader view="questions" />
       <nav class="qtabs" aria-label="Questions">
-        <a href={tabHref("queue")} aria-current={tab === "queue" ? "page" : undefined}>Decision queue ({open.length})</a>
+        <a href={tabHref("queue")} aria-current={tab === "queue" ? "page" : undefined}>Decision queue ({open.length - answeredHere})</a>
         <a href={tabHref("departures")} aria-current={tab === "departures" ? "page" : undefined}>Departures ({departureCount})</a>
       </nav>
       {tab === "queue"
-        ? <><Queue ctx={ctx} entries={open} /><Resolved ctx={ctx} questions={resolved} /></>
-        : <Departures ctx={ctx} />}
+        ? <><Queue ctx={ctx} entries={open} staged={staged} /><Resolved ctx={ctx} questions={resolved} /></>
+        : <Departures ctx={ctx} staged={staged} />}
     </section>
   );
 }
@@ -529,7 +608,14 @@ function ResultsTable(
                 <td>{it ? it.name : x.identifier}</td>
                 <td>{x.month ?? ""}</td>
                 <td>{formatValue(it, x.value)}</td>
-                {changed && <td class="changed">{formatValue(it, (x as ChangedResult).after)}</td>}
+                {changed && (
+                  <td class="changed">
+                    {formatValue(it, (x as ChangedResult).after)}
+                    {((x as ChangedResult).after === null || (x as ChangedResult).after === undefined) && (
+                      <span class="small unknown-why"> because {unknownReason(x as ChangedResult)}</span>
+                    )}
+                  </td>
+                )}
               </tr>
             );
           })}
@@ -591,9 +677,15 @@ function Effects({ q, ctx }: { q: QueueEntry; ctx: ViewContext }) {
           {e.alternative.caveat && <p class="muted">{e.alternative.caveat}</p>}
           <p class="effect-count">
             {e.changed.length
-              ? <>Re-running the {vol.cases.length} stored households with that one change: <b>{e.changed.length} result{e.changed.length === 1 ? "" : "s"} in {households(e.changed)} household{households(e.changed) === 1 ? "" : "s"} change.</b></>
-              : <>Re-running the {vol.cases.length} stored households with that one change: <b>no stored result changes.</b></>}
+              ? <>Re-running the {vol.cases.length} stored households with that one change: <b>{changedPhrase(e.changed.length, households(e.changed))}.</b></>
+              : <>Re-running the {vol.cases.length} stored households with that one change: <b>{changedPhrase(0, 0)}.</b></>}
           </p>
+          {e.changed.some((c) => c.after === null || c.after === undefined) && (
+            <p class="unknown-note">
+              <b>"Unknown" is not a denial.</b> It means the stored test household does not state a fact the other
+              reading needs (each row says which), so the codex cannot work the result out. It does not mean the person fails.
+            </p>
+          )}
           <HouseholdResults rs={e.changed} engine={engine} r={r} changed />
         </div>
       )}
@@ -602,7 +694,7 @@ function Effects({ q, ctx }: { q: QueueEntry; ctx: ViewContext }) {
           ? <h3>Every stored result that rests on it</h3>
           : <p class="muted">The question names no single other value, so the new values are not worked out. These stored results rest on the items carrying the assumption and could change with the answer.</p>}
         {e.resting.length
-          ? <p>{e.resting.length} result{e.resting.length === 1 ? "" : "s"} in {households(e.resting)} of {vol.cases.length} stored households.</p>
+          ? <p>{restingPhrase(e.resting.length, households(e.resting))}, of {vol.cases.length} stored households.</p>
           : <p>No stored household result rests on it.</p>}
         <HouseholdResults rs={e.resting} engine={engine} r={r} changed={false} />
       </div>
@@ -635,16 +727,20 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
   const roles = engine.meta.approval_policy?.roles ?? [];
   const mine = persona ? personaRoles(persona, engine.meta) : [];
   const defaultRole = q.owners.find((o) => mine.includes(o)) ?? q.owners[0] ?? roles[0] ?? "";
-  const reading = useSignal<"current" | "alternative" | "other">("current");
+  const reading = useSignal<"current" | "alternative" | "opinion" | "other">("current");
   const decision = useSignal("");
+  const caveat = useSignal("");
+  const notified = useSignal("");
   const citation = useSignal("");
   const by = useSignal("");
   const role = useSignal(defaultRole);
   const date = useSignal(today);
   const error = useSignal("");
   const busy = useSignal(false);
-  const staged = useSignal<{ adoptedAlternative: boolean } | null>(null);
+  const staged = useSignal<{ adoptedAlternative: boolean; keptOpen: boolean } | null>(null);
   const followUpDone = useSignal<string[]>([]);
+  const dropped = useSignal(false);
+  const answerAgain = useSignal(false);
   const carrying = q.items.filter((it) => (it.open ?? []).includes(q.id));
 
   const submit = async (ev: Event) => {
@@ -652,7 +748,7 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
     error.value = "";
     const text = decision.value.trim()
       || (reading.value === "current" ? "Keep the reading the codex applies." : reading.value === "alternative" && alt ? `${alt.label}.` : "");
-    if (!text) { error.value = "Write the decision."; return; }
+    if (!text) { error.value = reading.value === "opinion" ? "Write the opinion." : "Write the decision."; return; }
     if (!by.value.trim()) { error.value = "Name who decided."; return; }
     busy.value = true;
     try {
@@ -661,16 +757,21 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
       const read = readText ?? ((p: string) => ledgerSource().readText(p));
       const before = stagedFile?.before ?? await read(path);
       const base = stagedFile?.after ?? before;
+      const keepOpen = reading.value === "opinion";
       const after = applyAnswer(base, q.id, {
         decision: text, citation: citation.value, by: by.value, role: role.value, date: date.value,
-        followUps: q.items.map((it) => it.id),
+        followUps: keepOpen ? undefined : q.items.map((it) => it.id),
+        keepOpen, caveat: caveat.value, agencyNotified: notified.value,
       });
       const ids = answeredIds(before, after);
       putFileChange({
         path, before, after,
-        label: ids.length > 1 ? `Answers to ${ids.join(", ")}` : `Answer to ${q.id}`,
+        label: ids.length > 1 ? `Answers to ${ids.join(", ")}` : ids.length ? `Answer to ${ids[0]}` : `Opinion on ${q.id}`,
       });
-      staged.value = { adoptedAlternative: reading.value === "alternative" };
+      staged.value = { adoptedAlternative: reading.value === "alternative", keptOpen: keepOpen };
+      // Adopting the other reading stages its figure too (HCPF analyst, new
+      // task: "a second button did").
+      if (reading.value === "alternative") stageAlternative();
     } catch (e) {
       error.value = (e as Error).message;
     } finally {
@@ -682,13 +783,16 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
     const eng = draftEngine() ?? engine;
     const done: string[] = [];
     for (const it of carrying) {
-      const cur = eng.itemById(it.id) ?? it;
+      // Built on what the tray already holds for the item (the other
+      // reading's figure), so one follow-up never undoes another.
+      const cur = changeSetSig.value.entries.find((e) => e.id === it.id)?.after ?? eng.itemById(it.id) ?? it;
       const after: Item = { ...JSON.parse(JSON.stringify(cur)) as Item, open: (cur.open ?? []).filter((o) => o !== q.id) };
       if (!after.open!.length) delete after.open;
       putChangeEntry({ id: it.id, chapter: vol.chapterOf[it.id] ?? "", before: engine.itemById(it.id) ?? it, after });
       done.push(it.id);
     }
-    followUpDone.value = [...followUpDone.value, ...done];
+    followUpDone.value = [...new Set([...followUpDone.value, ...done])];
+    dropped.value = true;
   };
 
   const stageAlternative = () => {
@@ -696,29 +800,31 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
     const entry = alternativeEntry(draftEngine() ?? engine, vol.chapterOf, alt);
     if (!entry) return;
     putChangeEntry({ ...entry, before: engine.itemById(entry.id) ?? entry.before });
-    followUpDone.value = [...followUpDone.value, entry.id];
+    if (!followUpDone.value.includes(entry.id)) followUpDone.value = [...followUpDone.value, entry.id];
   };
 
   if (staged.value) {
     return (
       <div class="qstaged" role="status">
         <p>
-          <b>Staged in the change tray.</b> {q.id} is retitled "Resolved: {q.title}" with your answer appended. Propose it from the tray to send it for review.
+          <b>Staged in the change tray.</b>{" "}
+          {staged.value.keptOpen
+            ? <>Your opinion is added to {q.id}'s record; the question stays open.</>
+            : <>{q.id} is retitled "Resolved: {q.title}" with your answer added to its record, and it leaves the open list.</>}
         </p>
+        <SendChange kind="answer" />
         <h3>Follow-up edits</h3>
         <ul>
           {carrying.length > 0 && (
             <li>
-              <button type="button" class="btn small" disabled={carrying.every((it) => followUpDone.value.includes(it.id))} onClick={stageDropQuestion}>
-                Take {q.id} off the {carrying.length} item{carrying.length === 1 ? "" : "s"} that carry it
+              <button type="button" class="btn small" disabled={dropped.value} onClick={stageDropQuestion}>
+                Take {q.id} off the {carrying.length === 1 ? "item that carries it" : `${carrying.length} items that carry it`}
               </button>
             </li>
           )}
           {staged.value.adoptedAlternative && alt && (
             <li>
-              <button type="button" class="btn small" disabled={followUpDone.value.includes(engine.item(alt.identifier)?.id ?? "")} onClick={stageAlternative}>
-                Stage the new value: {engine.item(alt.identifier)?.name} becomes {formatValue(engine.item(alt.identifier), alt.value)}
-              </button>
+              Staged with the answer: {engine.item(alt.identifier)?.name} becomes {formatValue(engine.item(alt.identifier), alt.value)}.
             </li>
           )}
           {q.items.map((it) => (
@@ -728,25 +834,35 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
             </li>
           ))}
         </ul>
-        {followUpDone.value.length > 0 && <p>Staged: {followUpDone.value.join(", ")}.</p>}
+        {followUpDone.value.length > 0 && <p>Staged: {[...new Set(followUpDone.value)].map((id) => engine.itemById(id)?.name ?? id).join("; ")}.</p>}
         <p>
-          <button type="button" class="btn" onClick={() => { trayOpenSig.value = true; }}>Open the change tray</button>{" "}
           <button type="button" class="btn" onClick={() => { staged.value = null; }}>Change the answer</button>
         </p>
       </div>
     );
   }
 
+  // An answer staged earlier (another visit): say so, rather than offer the
+  // form as if the question were unanswered (HCPF analyst task 4).
+  if (stagedQuestionState(vol).get(q.id) === "answered" && !answerAgain.value) {
+    return (
+      <div class="qstaged" role="status">
+        <p><b>An answer to {q.id} is staged in this browser.</b> It is not in the codex yet.</p>
+        <SendChange kind="answer" />
+        <p><button type="button" class="btn" onClick={() => { answerAgain.value = true; }}>Answer it again</button></p>
+      </div>
+    );
+  }
+
   return (
     <form class="qanswer" onSubmit={submit} data-question={q.id}>
-      {alt && (
-        <fieldset>
-          <legend>Decision</legend>
-          <label><input type="radio" name="reading" checked={reading.value === "current"} onChange={() => { reading.value = "current"; }} /> Keep the reading in force</label>
-          <label><input type="radio" name="reading" checked={reading.value === "alternative"} onChange={() => { reading.value = "alternative"; }} /> Adopt the other reading: {alt.label}</label>
-          <label><input type="radio" name="reading" checked={reading.value === "other"} onChange={() => { reading.value = "other"; }} /> Something else (say what below)</label>
-        </fieldset>
-      )}
+      <fieldset>
+        <legend>Decision</legend>
+        <label><input type="radio" name="reading" value="current" checked={reading.value === "current"} onChange={() => { reading.value = "current"; }} /> Keep the reading in force, and close the question</label>
+        {alt && <label><input type="radio" name="reading" value="alternative" checked={reading.value === "alternative"} onChange={() => { reading.value = "alternative"; }} /> Adopt the other reading: {alt.label} (its figure is staged with the answer)</label>}
+        <label><input type="radio" name="reading" value="opinion" checked={reading.value === "opinion"} onChange={() => { reading.value = "opinion"; }} /> Opinion recorded, keep the question open (with a caveat)</label>
+        <label><input type="radio" name="reading" value="other" checked={reading.value === "other"} onChange={() => { reading.value = "other"; }} /> Something else, and close the question (say what below)</label>
+      </fieldset>
       <label>
         The decision
         <span class="hint">In your words: what the codex should do, and from when.</span>
@@ -756,6 +872,18 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
         Citation
         <span class="hint">The rule paragraph, statute, memo or letter the decision rests on.</span>
         <input type="text" value={citation.value} onInput={(ev) => { citation.value = (ev.target as HTMLInputElement).value; }} />
+      </label>
+      {reading.value === "opinion" && (
+        <label>
+          Caveat
+          <span class="hint">What the opinion depends on, or when to revisit it (e.g. "revisit when the final rule issues").</span>
+          <input type="text" name="caveat" value={caveat.value} onInput={(ev) => { caveat.value = (ev.target as HTMLInputElement).value; }} />
+        </label>
+      )}
+      <label>
+        Agency notified (optional)
+        <span class="hint">Who at the agency was told, and when. Recorded with the decision; the departures list shows it.</span>
+        <input type="text" name="agency-notified" value={notified.value} onInput={(ev) => { notified.value = (ev.target as HTMLInputElement).value; }} />
       </label>
       <div class="row">
         <label>
@@ -774,7 +902,10 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
         </label>
       </div>
       <p class="muted">
-        This stages a change to the open-questions list: the question is retitled "Resolved:" and your answer is added to it. Nothing is published until the change is proposed from the tray.
+        {reading.value === "opinion"
+          ? "This stages your opinion on the question's record; the question stays open."
+          : "This stages a change to the open-questions list: the question is marked resolved and your answer is added to its record."}{" "}
+        Nothing is in the codex until the change is sent and merged: the next step is shown once it is staged.
       </p>
       <div>
         <button type="submit" class="btn propose" disabled={busy.value}>{busy.value ? "Staging…" : "Stage the answer"}</button>
@@ -833,6 +964,17 @@ export function QuestionPage({ ctx, id, readText }: { ctx: ViewContext; id: stri
             <h2>The reading in force until it is answered</h2>
             <p class="assumption"><Prose text={q.assumption} engine={engine} vol={vol} r={r} /></p>
             {q.waitingOn && <p><b>Waiting on:</b> <Prose text={q.waitingOn} engine={engine} vol={vol} r={r} /></p>}
+            {notes.length > 0 && (
+              <details class="qhistory">
+                <summary>Where this reading comes from (the question's history)</summary>
+                {notes.map((n, i) => (
+                  <div class="note" key={i}>
+                    <span class="label">{n.label ?? "The question as first written"}</span>
+                    <Prose text={n.text} engine={engine} vol={vol} r={r} />
+                  </div>
+                ))}
+              </details>
+            )}
           </div>
         </>
       )}

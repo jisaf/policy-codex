@@ -18,15 +18,17 @@ import {
 import {
   citedUnverified, filterFromParams, filterToParams, groupRows, inboxRows, KIND_ORDER, matches,
   NO_FILTER, parseReviewNotes, plainChanges, proposeHint, restingOnUnverified, reviewNoteEntry,
-  signatureEntries, stagedNotes, withoutSignature, type InboxRow,
+  signatureEntries, signatureNotice, stagedNotes, textMatches, withoutSignature, type InboxRow,
 } from "../../src/ui/inbox";
+import { householdsRestingOn, restingIndex } from "../../src/ui/counts";
 import { unverifiedIds } from "../../src/ui/provenance";
 import { personaSig } from "../../src/ui/personas";
 import { defaultRoute } from "../../src/ui/router";
 import {
   changeSetSig, credentials, draftsShownSig, engineSig, modeSig, route, volumeSig,
 } from "../../src/ui/state";
-import { InboxView, SIGNER_KEY } from "../../src/ui/views/InboxView";
+import { INBOX_ROLE_KEY, InboxView, SIGNER_KEY, inboxRole } from "../../src/ui/views/InboxView";
+import { personaById } from "../../src/ui/personas";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
@@ -239,6 +241,21 @@ describe("requests for changes are notes in the tray", () => {
     expect(stagedNotes({ ...cs, files: [f2] }).map((n) => n.id)).toEqual(["CO-191", "CO-192"]);
   });
 
+  it("says what an approval does and who else must sign", () => {
+    const it = engine.items().find((i) => engine.approvals(i).length >= 3 && engine.approvals(i).includes("Medicaid policy owner") && !tainted.has(i.identifier))!;
+    const sig = { role: "Medicaid policy owner", by: "Dana", date: "2026-11-21" };
+    const entries = signatureEntries(engine, null, vol.chapterOf, [it.id], sig, "approve", tainted);
+    const text = signatureNotice(engine, entries, sig, "approve");
+    expect(text).toMatch(/becomes Reviewed, not yet Approved/);
+    for (const other of engine.approvals(it).filter((r) => r !== sig.role)) expect(text).toContain(other);
+  });
+
+  it("counts households the same way as the role page (results resting on it)", () => {
+    const ix = restingIndex(engine, vol.cases);
+    const rs = inboxRows({ engine, role: "Medicaid policy owner", sources: vol.sources, cases: vol.cases, chapterOf: vol.chapterOf, changeSet: null, resting: ix });
+    for (const r of rs.slice(0, 40)) expect(r.households).toEqual(householdsRestingOn(engine, vol.cases, r.item.identifier));
+  });
+
   it("says plainly how a staged change becomes a pull request", () => {
     expect(proposeHint(false)).toMatch(/Staged in this browser only/);
     expect(proposeHint(false)).toMatch(/Propose/);
@@ -303,8 +320,12 @@ describe("the inbox page", () => {
       { role: "Medicaid policy owner", by: "Dana Lee (HCPF)", date: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/) },
     ]);
     const notice = host.querySelector(".inbox-notice")!.textContent!;
-    expect(notice).toContain("Staged in this browser only");
-    expect(notice).toContain("Download the staged change");
+    expect(notice).toContain("saved in this browser only");
+    expect(notice).toContain("Download this change");
+    // The steward codex.json names is in the message.
+    expect(notice).toContain("Data steward");
+    // The status sentence says why, not "status would be Reviewed".
+    expect(notice).not.toMatch(/status would be/);
     expect(host.querySelector(`article[data-item="${id}"] .staged-note`)!.textContent).toMatch(/signature is staged/);
 
     // Undo takes it back out of the tray.
@@ -348,6 +369,55 @@ describe("the inbox page", () => {
     expect(files[0].path).toMatch(/^volumes\/co\/reviews\/\d{4}-\d{2}-\d{2}-medicaid-policy-owner-[a-z0-9]+\.md$/);
     expect(files[0].after).toContain("Show 142% and the 2026 monthly dollars.");
     expect(host.querySelector(`article[data-item="${row.dataset.item}"] .staged-note.request`)).not.toBeNull();
+  });
+
+  it("opens on the role it was last read as, if it is the persona's own (CDHS cash lead)", () => {
+    personaSig.value = "cdhs";
+    localStorage.setItem(INBOX_ROLE_KEY, "Cash programs policy owner");
+    const host = mount();
+    expect(host.querySelector("section.inbox")!.getAttribute("data-role")).toBe("Cash programs policy owner");
+    // A role not the persona's is not reopened.
+    localStorage.setItem(INBOX_ROLE_KEY, "Legal");
+    const ctx = { engine, vol, route: { ...route.value, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
+    expect(inboxRole(ctx as never)).toBe("SNAP policy owner");
+  });
+
+  it("opens on the persona's role that signs something staged", () => {
+    personaSig.value = "cdhs";
+    const it = engine.items().find((i) => i.program === "ColoradoWorks" && i.kind === "parameter")!;
+    const ctx = { engine, vol, route: { ...route.value, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
+    const staged = [{ id: it.id, chapter: vol.chapterOf[it.id], before: it, after: { ...it, value: 1 } }];
+    expect(inboxRole(ctx as never, staged)).toBe("Cash programs policy owner");
+  });
+
+  it("inbox/<id> opens the item's row at the top, as a role that signs it", () => {
+    const it = engine.items().find((i) => i.id === "CO-191")!;
+    route.value = { ...route.value, arg: it.id, params: {} };
+    const host = mount();
+    const linked = host.querySelector(".inbox-linked")!;
+    expect(linked.querySelector(`article[data-item="${it.id}"]`)).not.toBeNull();
+    expect(engine.approvals(it)).toContain(host.querySelector("section.inbox")!.getAttribute("data-role"));
+  });
+
+  it("searches by words and lists my staged changes first", () => {
+    localStorage.setItem(SIGNER_KEY, "Dana");
+    route.value = { ...route.value, params: { role: "Medicaid policy owner", q: "children category percent" } };
+    let host = mount();
+    const found = [...host.querySelectorAll<HTMLElement>("article.inbox-row")].map((a) => a.dataset.item);
+    expect(found.length).toBeGreaterThan(0);
+    for (const id of found) expect(textMatches(engine.itemById(id!)!, "children category percent")).toBe(true);
+    // Stage one signature, then the staged list leads.
+    act(() => { host.querySelector<HTMLButtonElement>("article.inbox-row button.approve")!.click(); });
+    const staged = changeSetSig.value.entries[0].id;
+    host.remove();
+    route.value = { ...route.value, params: { role: "Medicaid policy owner" } };
+    host = mount();
+    expect(host.querySelector(`.inbox-staged article[data-item="${staged}"]`)).not.toBeNull();
+    route.value = { ...route.value, params: { role: "Medicaid policy owner", staged: "1" } };
+    host.remove();
+    host = mount();
+    const onlyStaged = [...host.querySelectorAll<HTMLElement>("article.inbox-row")].map((a) => a.dataset.item);
+    expect(onlyStaged).toEqual([staged]);
   });
 
   it("without a role, asks whose sign-off to list", () => {

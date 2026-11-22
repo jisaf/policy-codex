@@ -1,3 +1,4 @@
+import { personaById, personaSig } from "./personas";
 import { useSignal } from "@preact/signals";
 import { DEFAULT_BRANCH } from "../config";
 import { refLabel } from "../ledger/mode";
@@ -93,7 +94,7 @@ export function Header() {
   const q = useSignal("");
   const r = route.value;
   const index = searchIndexSig.value;
-  const hits = index ? search(index, q.value, 12) : [];
+  const hits = index ? search(index, q.value, 12, { programs: personaById(personaSig.value)?.programs }) : [];
   const grouped = groupHits(hits);
   const engine = viewEngine() ?? engineSig.value;
   // The nav opens the first declared program; the program page itself has

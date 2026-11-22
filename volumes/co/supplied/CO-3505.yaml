@@ -1,0 +1,13 @@
+id: CO-3505
+name: "CCCAP: the county waived the parent fee (Head Start, disaster or teen-parent hardship)"
+identifier: cccap_parent_fee_waived_by_county
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The county has waived this household's parent fee under 8 CCR 1403-1 3.124.G (a child dually enrolled in Head Start or Early Head Start, under a county plan approved under 3.104), 3.124.I.8 (a declared state or local disaster or emergency, for up to twelve months) or 3.124.X (a one- or two-teen-parent household for whom paying the fee produces a hardship), as documented in the case record. Stated on each member of the household."
+precision: "If not stated, CCCAP reads this as false: each waiver is a county decision documented in the case file. The waiver for a teen parent in middle or high school, GED or vocational training (3.124.I.1) is cccap_teen_parent_fee_waiver_granted (CO-2575)."
+supplied_by: County decision recorded in CHATS.
+sources: [S2302]
+tags: [household]
+rationale: "OQ-254: the county-discretion waivers of 3.124.G, I.8 and X (S2302) were not modeled; each is a county decision on the case, which no existing fact states."
