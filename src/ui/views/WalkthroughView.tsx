@@ -18,11 +18,11 @@ import {
   changeSetSig, draftEngine, draftsShown, engineSig, localInfoSig, navigate,
 } from "../state";
 import {
-  BUDGET_ROLE_LABEL, budgetRows, budgetText, buildWalk, caseChanges, caseSummaries,
-  defaultOutcome, defaultProgram, documentsOwed, foldedBehind, isHouseholdOutcome, overrideNotes,
-  outcomeChoices, participationOutcome, personTitle, programLabel, recordedValue,
-  unchangedCount, visibleSteps, type BudgetRow, type DocumentOwed, type OutcomeChoice,
-  type Walk, type WalkStep,
+  BUDGET_ROLE_LABEL, budgetEffect, budgetMoney, budgetRows, budgetText, buildWalk, caseChanges, caseFocus,
+  caseSummaries, defaultOutcome, defaultProgram, determinationDate, documentRows, documentsOwed, foldedBehind,
+  isHouseholdOutcome, lineSources, overrideNotes, outcomeChoices, participationOutcome, personTitle, programLabel,
+  recordedValue, takenLabel, unchangedCount, versionUsed, visibleSteps, type BudgetRow, type DocumentRow,
+  type OutcomeChoice, type Walk, type WalkStep,
 } from "../walkthrough";
 import { viewContext, type ViewContext } from "./context";
 import { NoLedger, ViewHeader } from "./ViewStub";
@@ -175,10 +175,13 @@ function CaseWalk({ ctx, hc }: { ctx: ViewContext; hc: HouseholdCase }) {
     () => caseSummaries(engine, [hc], vol.casesText)[0], [engine, hc, vol.casesText],
   );
   const persons = Object.keys(hc.persons ?? {});
-  const person = r.params.person && persons.includes(r.params.person) ? r.params.person : persons[0];
+  // The person and program the case is about, not the first ones (HCPF
+  // analyst task 2: "a 68-year-old, CHP+").
+  const focus = useMemo(() => caseFocus(engine, hc, summary.title), [engine, hc, summary.title]);
+  const person = r.params.person && persons.includes(r.params.person) ? r.params.person : (focus.person ?? persons[0]);
   const programs = summary.programs;
   const program = r.params.program && programs.includes(r.params.program)
-    ? r.params.program : (defaultProgram(engine, hc, person) ?? programs[0]);
+    ? r.params.program : (defaultProgram(engine, hc, person, focus.program) ?? programs[0]);
   const choices = useMemo(
     () => (program ? outcomeChoices(engine, hc, person, program) : []), [engine, hc, person, program],
   );
@@ -263,6 +266,8 @@ function CaseWalk({ ctx, hc }: { ctx: ViewContext; hc: HouseholdCase }) {
       )}
       {!choice && <p class="status">The codex records nothing for {personLabel(person)} in {programLabel(program ?? "")}.</p>}
 
+      <DocumentsChecklist ctx={ctx} hc={hc} person={person} />
+
       {choice && program && (
         <OutcomeWalk
           key={`${hc.id}|${person}|${choice.identifier}|${month ?? ""}`}
@@ -270,8 +275,6 @@ function CaseWalk({ ctx, hc }: { ctx: ViewContext; hc: HouseholdCase }) {
           showAll={r.params.all === "1"} setShowAll={(v) => set({ all: v ? "1" : null })}
         />
       )}
-
-      <DocumentsChecklist ctx={ctx} hc={hc} person={person} />
     </div>
   );
 }
@@ -364,7 +367,10 @@ function OutcomeWalk(
     }, 30);
   };
 
-  const budget = budgetRows(engine, walk);
+  const budget = useMemo(
+    () => budgetRows(engine, walk, { effect: budgetEffect(engine, hc) }), [engine, walk, hc],
+  );
+  const det = determinationDate(hc);
   const overrides = overrideNotes(walk);
   const unverifiedSteps = unverifiedInTrace(walk.root, unverified);
   return (
@@ -393,6 +399,7 @@ function OutcomeWalk(
                   step {walk.why.n}:{" "}
                   {walk.why.node.person && walk.why.node.person !== person && <>{personLabel(walk.why.node.person)}: </>}
                   <b>{walk.why.node.name}</b> is <b>{valueOf(engine, walk.why.node)}</b>.{" "}
+                  <WhyTest ctx={ctx} walk={walk} person={person} />
                   <button type="button" class="linkish no-print" onClick={() => goStep(walk.why!.n)}>Go to step {walk.why.n}</button>
                 </>
               )}
@@ -414,9 +421,15 @@ function OutcomeWalk(
         {(overrides.length > 0 || unverifiedSteps.length > 0) && (
           <ul class="wk-flags">
             {overrides.map((o) => (
-              <li key={o.text}>
+              <li key={o.text} data-override={o.item}>
                 <span class="flag override">Statute over rule</span>{" "}
                 {o.steps.length === 1 ? "step" : "steps"} {o.steps.join(", ")}: {o.text}
+                {o.via.length > 2 && (
+                  <span class="small via">
+                    {" "}Why it bears on this result: the result reads {o.via.slice(-3, -1).join(", which reads ")}, which reads{" "}
+                    <b>{o.via[o.via.length - 1]}</b>.
+                  </span>
+                )}
               </li>
             ))}
             {unverifiedSteps.length > 0 && (
@@ -442,7 +455,7 @@ function OutcomeWalk(
 
       <WhatChanges ctx={ctx} hc={hc} person={person} identifier={choice.identifier} month={month} />
 
-      {budget.length > 0 && <Budget ctx={ctx} rows={budget} goStep={goStep} unverified={unverified} person={person} />}
+      {budget.length > 0 && <Budget ctx={ctx} rows={budget} goStep={goStep} unverified={unverified} person={person} det={det} />}
 
       <h3>Step by step</h3>
       <div class="wk-stepbar no-print">
@@ -511,10 +524,15 @@ function Participation(
   const m = it.scope === "person-month" ? (month ?? hc.as_of.slice(0, 7)) : null;
   const v = recordedValue(engine, hc, part, person, m);
   const household = isHouseholdOutcome(engine, choice.identifier);
-  const isMember = typeof v === "string" && /^eligible/.test(v);
+  const hv = household ? recordedValue(engine, hc, choice.identifier, person, month) : null;
+  const householdDenied = typeof hv === "string" && /^(?:not_eligible|ineligible|denied)/.test(hv);
+  // A member of a unit that is denied is not shown in green above the denial
+  // (county supervisor, new task).
+  const isMember = typeof v === "string" && /^eligible/.test(v) && !householdDenied;
   return (
     <div class={`wk-person${isMember ? "" : " not"}`} data-participation={typeof v === "string" ? v : ""}>
-      <b>{personLabel(person)}'s own result in {programLabel(program)}:</b> {formatFor(engine, part, v)}{" "}
+      <b>{personLabel(person)}'s own place in {programLabel(program)}:</b> {formatFor(engine, part, v)}
+      {householdDenied && <> (a member of the unit; <b>the unit is {formatFor(engine, choice.identifier, hv)}</b>, so nobody is paid)</>}{" "}
       <a class="small" href={itemHref(ctx.route, it)}>({it.name})</a>
       {household && (
         <p class="wk-household">
@@ -523,6 +541,50 @@ function Participation(
         </p>
       )}
     </div>
+  );
+}
+
+/** The test a decided result turned on, in one line: "It compared countable
+ *  income $410.00 with the need standard $331.00" (county supervisor: the
+ *  summary named one input, not the comparison). */
+function WhyTest({ ctx, walk, person }: { ctx: ViewContext; walk: Walk; person: string }) {
+  const why = walk.why;
+  if (!why || why.parent === null) return null;
+  const parent = walk.steps[why.parent - 1];
+  if (typeof parent.node.value === "number") return null;
+  const shown = parent.inputs.filter((i) => i.mattered && i.node.value !== null).slice(0, 4);
+  if (shown.length < 2) return null;
+  return (
+    <span class="wk-test">
+      Step {parent.n}, <b>{parent.node.name}</b> ({valueOf(ctx.engine, parent.node)}), compared:{" "}
+      {shown.map((i, k) => (
+        <span key={i.node.key}>
+          {k > 0 && "; "}
+          {i.node.person && i.node.person !== person && <>{personLabel(i.node.person)}'s </>}
+          {i.node.name} <b>{valueOf(ctx.engine, i.node)}</b>
+        </span>
+      ))}.{" "}
+    </span>
+  );
+}
+
+/** A figure's dated period, and a warning when its source is dated after the
+ *  determination (Legal task 5: the ABAWD age 64 rests on a rule published
+ *  five weeks after the determination). */
+function FigureVersion({ ctx, node, hc }: { ctx: ViewContext; node: TraceNode; hc: HouseholdCase }) {
+  if (node.kind !== "parameter") return null;
+  const det = determinationDate(hc);
+  const v = versionUsed(ctx.engine, node, det);
+  if (!v) return null;
+  const src = v.source ? ctx.vol.sources.find((x) => x.id === v.source) : undefined;
+  const doc = src?.document ? ctx.vol.documents.find((d) => d.id === src.document) : undefined;
+  const late = doc?.date && doc.date > det ? doc.date : null;
+  return (
+    <span class="figversion">
+      {" "}· in force from {formatDate(v.from)}{v.to ? ` to ${formatDate(v.to)}` : ""}
+      {v.source && <> ({v.source})</>}
+      {late && <> · <span class="flag postdated">source dated {formatDate(late)}, after this determination ({formatDate(det)})</span></>}
+    </span>
   );
 }
 
@@ -601,7 +663,9 @@ function Step(
                 {" "}<b>{valueOf(engine, i.node)}</b>{" "}
                 <span class="small">
                   {i.step !== null ? `step ${i.step}` : ORIGIN_WORDS[i.node.origin] ?? i.node.origin}
+                  {i.step === null && <FigureVersion ctx={ctx} node={i.node} hc={hc} />}
                   {i.step === null && i.node.sources.some((x) => unverified.has(x)) && <> · <span class="flag unverified">unverified source</span></>}
+                  {i.node.value === null && !i.mattered && s.node.value !== null && <> · did not matter here</>}
                 </span>
               </li>
             ))}
@@ -624,29 +688,52 @@ function Step(
 // ---- budget
 
 function Budget(
-  { ctx, rows, goStep, unverified, person }:
-  { ctx: ViewContext; rows: BudgetRow[]; goStep: (n: number) => void; unverified: ReadonlySet<string>; person: string },
+  { ctx, rows, goStep, unverified, person, det }:
+  { ctx: ViewContext; rows: BudgetRow[]; goStep: (n: number) => void; unverified: ReadonlySet<string>; person: string; det: string },
 ) {
   const { engine, vol } = ctx;
   const copied = useSignal<"" | "done" | "manual">("");
-  const money = (n: TraceNode) => valueOf(engine, n);
+  const money = (n: Pick<TraceNode, "identifier" | "value">) => budgetMoney(n.value, () => valueOf(engine, n));
+  const sourcesOf = (n: TraceNode) => lineSources(engine, n, det);
   const cite = (s: string) => {
     const src = vol.sources.find((x) => x.id === s);
     return src ? `${citationText(src.citation)} (${s})` : s;
   };
-  const text = budgetText(rows, money, cite);
+  const text = budgetText(rows.map((r) => ({ ...r, node: { ...r.node, sources: sourcesOf(r.node) } })), money, cite);
   return (
     <div class="wk-budget-block">
       <h3>The budget</h3>
       <p class="small">
-        Each dollar figure the result rests on, in the order the codex works it out. Built from the values recorded
-        for this household; copy it into a handout or a spreadsheet.
+        Each dollar figure the result rests on, in the order the codex works it out, with every amount a rule takes
+        off on the way. A figure that changed nothing for this household is left out. Each line cites the rule text
+        in force on {formatDate(det)}. Copy it into a handout or a spreadsheet.
       </p>
       <div class="wk-tablewrap">
         <table class="wk-budget">
           <thead><tr><th>Line</th><th>What it is</th><th>Amount</th><th>Rule text</th></tr></thead>
           <tbody>
-            {rows.map((r) => (
+            {rows.map((r) => r.taken
+              ? (
+                <tr key={`taken-${r.node.key}${r.node.month}`} class="role-deduction taken">
+                  <td>
+                    {r.node.person && r.node.person !== person && <span class="small">{personLabel(r.node.person)}: </span>}
+                    {takenLabel(r)}
+                    {r.taken.figures.length > 0 && (
+                      <span class="small"> (using {r.taken.figures.map((f) => {
+                        const it = engine.item(f.identifier);
+                        const v = typeof f.value === "number" ? ` ${valueOf(engine, f)}` : "";
+                        return it ? `${it.name}${v}` : f.name;
+                      }).join("; ")})</span>
+                    )}
+                  </td>
+                  <td class="role">{BUDGET_ROLE_LABEL.deduction}</td>
+                  <td class="amt">-{money({ identifier: r.node.identifier, value: r.taken.amount })}</td>
+                  <td class="small">
+                    {r.step !== null && <button type="button" class="linkish" onClick={() => goStep(r.step!)}>step {r.step}</button>}
+                  </td>
+                </tr>
+              )
+              : (
               <tr key={r.node.key + r.node.month} class={`role-${r.role}${r.role === "result" ? " result" : ""}`}>
                 <td>
                   {r.node.person && r.node.person !== person && <span class="small">{personLabel(r.node.person)}: </span>}
@@ -656,9 +743,9 @@ function Budget(
                 </td>
                 <td class="role">{BUDGET_ROLE_LABEL[r.role]}</td>
                 <td class="amt">{money(r.node)}</td>
-                <td class="small"><CiteLinks ctx={ctx} ids={r.node.sources} unverified={unverified} max={1} /></td>
+                <td class="small"><CiteLinks ctx={ctx} ids={sourcesOf(r.node)} unverified={unverified} max={1} /></td>
               </tr>
-            ))}
+              ))}
           </tbody>
         </table>
       </div>
@@ -746,31 +833,30 @@ function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: Househo
   const ticked = useSignal<Set<string>>(new Set());
   const owed = docs.filter((d) => d.applies);
   const notOwed = docs.filter((d) => !d.applies);
-  // Mine first, then the rest of the household.
-  const order = (d: DocumentOwed) => (d.person === person ? 0 : 1);
-  const rows = [...owed].sort((a, b) => order(a) - order(b) || a.person.localeCompare(b.person));
-  const dueName = (d: DocumentOwed) => (d.dueIdentifier ? engine.item(d.dueIdentifier)?.name ?? d.dueIdentifier : null);
+  // One row per document; mine first, then the rest of the household.
+  const order = (d: DocumentRow) => (d.person === person ? 0 : 1);
+  const rows = documentRows(owed).sort((a, b) => order(a) - order(b) || a.person.localeCompare(b.person));
   return (
-    <div class="wk-docs-block">
-      <h3>Documents still needed</h3>
+    <details class="wk-docs-block" open={rows.length > 0}>
+      <summary>
+        <h3>Documents still needed {rows.length > 0 ? `(${rows.length})` : ""}</h3>
+      </summary>
       <p class="small">
-        Every verification the codex records as pending for this household on {formatDate(hc.as_of)}, with the
-        date that governs it. The ticks are for your own reading and are not saved.
+        Every verification the codex records as pending for this household on {formatDate(hc.as_of)}: one row per
+        document, with each program it is owed for and the date that governs it. The ticks are for your own reading
+        and are not saved.
       </p>
       {rows.length === 0
         ? <p>Nothing is pending for anyone in this household.</p>
         : (
           <div class="wk-tablewrap">
             <table class="wk-docs">
-              <thead><tr><th>Document</th><th>For whom</th><th>Program</th><th>Due</th></tr></thead>
+              <thead><tr><th>Document</th><th>For whom</th><th>Programs and due dates</th></tr></thead>
               <tbody>
                 {rows.map((d) => {
-                  const key = `${d.person}|${d.identifier}`;
-                  const it = engine.item(d.identifier);
-                  const past = d.due !== null && d.due < hc.as_of;
-                  const pastToday = d.due !== null && d.due < ctx.today;
+                  const key = `${d.person}|${d.document}`;
                   return (
-                    <tr key={key} data-doc={d.identifier} data-person={d.person}>
+                    <tr key={key} data-doc={d.programs[0].identifier} data-person={d.person} data-programs={d.programs.map((p) => p.program).join(" ")}>
                       <td>
                         <label>
                           <input
@@ -781,20 +867,29 @@ function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: Househo
                               ticked.value = next;
                             }}
                           />
-                          {it ? <a href={itemHref(ctx.route, it)}>{d.document}</a> : d.document}
+                          {d.document}
                         </label>
                       </td>
                       <td>{personTitle(hc, d.person)}</td>
-                      <td>{programLabel(d.program)}</td>
                       <td>
-                        {d.due ? <b>{formatDate(d.due)}</b> : <span class="small">no due date in the codex</span>}
-                        {past && <> <span class="pastdue">past due on the case date</span></>}
-                        {!past && pastToday && <> <span class="small">(before today, {formatDate(ctx.today)})</span></>}
-                        {dueName(d) && d.dueIdentifier && (
-                          <div class="small">
-                            <a href={itemHref(ctx.route, engine.item(d.dueIdentifier)!)}>{dueName(d)}</a>
-                          </div>
-                        )}
+                        <ul class="dueprograms">
+                          {d.programs.map((p) => {
+                            const it = engine.item(p.identifier);
+                            const dueIt = p.dueIdentifier ? engine.item(p.dueIdentifier) : undefined;
+                            const past = p.due !== null && p.due < hc.as_of;
+                            const pastToday = p.due !== null && p.due < ctx.today;
+                            return (
+                              <li key={p.program} data-program={p.program}>
+                                {it ? <a href={itemHref(ctx.route, it)}>{programLabel(p.program)}</a> : programLabel(p.program)}:{" "}
+                                {p.due
+                                  ? dueIt ? <a href={itemHref(ctx.route, dueIt)} title={dueIt.name}><b>{formatDate(p.due)}</b></a> : <b>{formatDate(p.due)}</b>
+                                  : <span class="small">no due date in the codex</span>}
+                                {past && <> <span class="pastdue">past due on the case date</span></>}
+                                {!past && pastToday && <> <span class="small">(before today, {formatDate(ctx.today)})</span></>}
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </td>
                     </tr>
                   );
@@ -817,6 +912,6 @@ function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: Househo
           </ul>
         </details>
       )}
-    </div>
+    </details>
   );
 }

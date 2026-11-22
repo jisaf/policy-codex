@@ -15,8 +15,10 @@ import type { Engine } from "../engine/engine";
 import { caseToSpec, programsOfCase, type HouseholdCase } from "../engine/cases";
 import { evaluate, makeCase, type CaseData } from "../engine/evaluate";
 import { decidedBy, type TraceNode } from "../engine/explain";
-import type { Item } from "../engine/types";
+import type { Item, ItemVersion } from "../engine/types";
 import { valuesEqual } from "../engine/values";
+import { versionInForce } from "../engine/versions";
+import { describePerson } from "./people";
 import { personLabel } from "./present";
 
 // ---- programs
@@ -140,10 +142,64 @@ export function ageOn(dob: unknown, date: string): number | null {
   return age;
 }
 
-/** "Person 2, age 81". */
+/** "Person 3 — grandchild of Person 1, age 16", or "Person 2, age 81"
+ *  when the case states no relationship for the person. The age is on the
+ *  case's determination date. */
 export function personTitle(hc: HouseholdCase, pid: string): string {
   const age = ageOn(hc.persons[pid]?.facts?.date_of_birth, hc.as_of);
-  return personLabel(pid) + (age !== null ? `, age ${age}` : "");
+  return describePerson(hc, pid, age);
+}
+
+// ---- what the case is about
+
+/** Words a case title uses for a program. */
+const PROGRAM_WORDS: Array<[string, RegExp]> = [
+  ["ColoradoWorks", /\bColorado Works\b|\bTANF\b/i],
+  ["SNAP", /\bSNAP\b|\bABAWD\b|food assistance/i],
+  ["CHP+", /\bCHP\+/i],
+  ["CCCAP", /\bCCCAP\b|child care/i],
+  ["LEAP", /\bLEAP\b|heating assistance/i],
+  ["SunBucks", /SUN Bucks|Summer EBT/i],
+  ["AdultFinancial", /\bOAP\b|Old Age Pension|\bAND-(?:CS|SO)\b|Adult Financial|Home Care Allowance|burial/i],
+  ["Medicaid", /Medicaid|\bMAGI\b|nursing (?:facility|care)|long-term care|\bQMB\b|MMMNA|continuous eligibility|family planning|presumptive/i],
+];
+
+/** The person and program a stored case is about, read from its title (the
+ *  "17-year-old", "the 58-year-old", the program it names) and its
+ *  expectations: the walkthrough opens there, not on the first person and
+ *  the alphabetically first program (HCPF analyst task 2, CDHS cash lead
+ *  task 2). */
+export function caseFocus(engine: Engine, hc: HouseholdCase, title: string = hc.title): { person: string | null; program: string | null } {
+  const persons = Object.keys(hc.persons ?? {});
+  const progs = programsOfCase(engine.index, hc).filter((p) => p !== "All");
+  const expected = (pid: string, program: string | null) => Object.keys(hc.expect?.[pid] ?? {})
+    .filter((id) => !program || engine.item(id)?.program === program).length;
+  // The program the title names first; else the one the case expects most of.
+  let program: string | null = null;
+  let at = Infinity;
+  for (const [p, re] of PROGRAM_WORDS) {
+    const m = re.exec(title);
+    if (m && progs.includes(p) && m.index < at) { at = m.index; program = p; }
+  }
+  if (!program) {
+    const count = (p: string) => persons.reduce((n, pid) => n + expected(pid, p), 0);
+    program = [...progs].sort((a, b) => count(b) - count(a))[0] ?? null;
+  }
+  // The person whose age the title states (within a year: a title written for
+  // a later month), else the one the case expects most of in that program.
+  let person: string | null = null;
+  const ageWord = /\b(\d{1,3})-year-old\b/i.exec(title);
+  if (ageWord) {
+    const want = Number(ageWord[1]);
+    const ages = persons.map((pid) => ({ pid, age: ageOn(hc.persons[pid]?.facts?.date_of_birth, hc.as_of) }))
+      .filter((x) => x.age !== null && Math.abs(x.age - want) <= 1)
+      .sort((a, b) => Math.abs(a.age! - want) - Math.abs(b.age! - want));
+    person = ages[0]?.pid ?? null;
+  }
+  if (!person) {
+    person = [...persons].sort((a, b) => expected(b, program) - expected(a, program))[0] ?? null;
+  }
+  return { person, program };
 }
 
 // ---- outcomes
@@ -194,12 +250,15 @@ export function outcomeChoices(engine: Engine, hc: HouseholdCase, pid: string, p
   return out;
 }
 
-/** The program to open first for a person: the first of the case's
- *  programs in which the case records something for them. */
-export function defaultProgram(engine: Engine, hc: HouseholdCase, pid: string): string | null {
+/** The program to open first for a person: the case's own focus program
+ *  when the case records something for them in it; else the program the case
+ *  records most for them in. */
+export function defaultProgram(engine: Engine, hc: HouseholdCase, pid: string, focus: string | null = null): string | null {
   const progs = programsOfCase(engine.index, hc).filter((p) => p !== "All");
   const mine = Object.keys(hc.expect?.[pid] ?? {}).map((id) => engine.item(id)?.program);
-  return progs.find((p) => mine.includes(p)) ?? progs[0] ?? null;
+  if (focus && mine.includes(focus)) return focus;
+  const count = (p: string) => mine.filter((x) => x === p).length;
+  return [...progs].filter((p) => mine.includes(p)).sort((a, b) => count(b) - count(a))[0] ?? progs[0] ?? null;
 }
 
 /** The outcome to open first: this person's participation, else the first
@@ -384,15 +443,31 @@ export function buildWalk(root: TraceNode): Walk {
   return { root, steps, why, missing, noFigure, sources };
 }
 
-/** Each statute-over-rule note the walk rests on, once, with the steps that
- *  carry it. */
-export function overrideNotes(walk: Walk): Array<{ text: string; steps: number[] }> {
-  const out: Array<{ text: string; steps: number[] }> = [];
-  for (const s of walk.steps) {
-    const t = s.node.override;
-    if (!t) continue;
+/** Each statute-over-rule note the result rests on, once, with the steps
+ *  that carry it and how the result reaches it (the rules from the outcome
+ *  down to the departing item). Only a departure the result's reasoning
+ *  passes through counts: a step or figure that took part in deciding it,
+ *  not one the codex merely looked at (Legal task 4: a SNAP departure on a
+ *  Medicaid result needs its reason). */
+export function overrideNotes(walk: Walk): Array<{ text: string; steps: number[]; item: string; via: string[] }> {
+  const out: Array<{ text: string; steps: number[]; item: string; via: string[] }> = [];
+  const chain = (s: WalkStep): string[] => {
+    const names: string[] = [];
+    let p: WalkStep | null = s;
+    while (p) { names.unshift(p.node.name); p = p.parent !== null ? walk.steps[p.parent - 1] : null; }
+    return names;
+  };
+  const add = (t: string, n: number, item: string, via: string[]) => {
     const have = out.find((o) => o.text === t);
-    if (have) have.steps.push(s.n); else out.push({ text: t, steps: [s.n] });
+    if (have) { if (!have.steps.includes(n)) have.steps.push(n); } else out.push({ text: t, steps: [n], item, via });
+  };
+  for (const s of walk.steps) {
+    if (!(s.mattered || s.why || s.n === 1)) continue;
+    if (s.node.override) add(s.node.override, s.n, s.node.identifier, chain(s));
+    for (const i of s.inputs) {
+      if (!i.node.override || !i.mattered || i.step !== null) continue;
+      add(i.node.override, s.n, i.node.identifier, [...chain(s), i.node.name]);
+    }
   }
   return out;
 }
@@ -467,11 +542,11 @@ export function unchangedCount(walk: Walk): number {
 
 // ---- the budget
 
-export type BudgetRole = "income" | "expense" | "deduction" | "net" | "standard" | "result" | "amount";
+export type BudgetRole = "income" | "expense" | "deduction" | "net" | "standard" | "result" | "amount" | "subtotal" | "addition";
 
 export const BUDGET_ROLE_LABEL: Record<BudgetRole, string> = {
   income: "Income", expense: "Expense", deduction: "Deduction", net: "Net", standard: "Standard",
-  result: "Result", amount: "Amount",
+  result: "Result", amount: "Amount", subtotal: "Subtotal", addition: "Added",
 };
 
 export interface BudgetRow {
@@ -479,6 +554,10 @@ export interface BudgetRow {
   role: BudgetRole;
   /** The step that works this line out, when it is a rule. */
   step: number | null;
+  /** A line the budget adds that no item names: what a rule took off an
+   *  amount on the way to the next line (an earned income disregard, a
+   *  stepparent's needs), with the amount and the figures it used. */
+  taken?: { amount: number; from: TraceNode; figures: TraceNode[] };
 }
 
 /** What a line of a budget is, read from its name: a deduction, a net
@@ -486,6 +565,10 @@ export interface BudgetRow {
  *  name's head decides: "adjusted income before the shelter deduction" is a
  *  net figure, "standard deduction" a deduction, "MMMNA cap" a standard. */
 export function budgetRole(name: string): BudgetRole {
+  const full = name.replace(/^[^:]+:\s*/, "").toLowerCase();
+  // "grant before any sanction", "total countable income": a running total.
+  if (/\bbefore (?:any|the)\b|\bsubtotal\b/.test(full)) return "subtotal";
+  if (/\ballowance\b/.test(full) && /\bpregnan|\bneeds?\b/.test(full)) return "addition";
   const head = name.replace(/^[^:]+:\s*/, "").replace(/\s*\([^)]*\)/g, "").toLowerCase()
     .split(/\s+(?:for|before|after|of an?|of the|by|under|from|in|to)\s+|,/)[0].trim();
   const last = head.split(/\s+/).pop() ?? "";
@@ -502,7 +585,22 @@ export function budgetRole(name: string): BudgetRole {
  *  up through each deduction to the result. Zero lines are left out except
  *  where the result's own rule reads them; a fact the case gives as zero
  *  adds nothing to a budget. */
-export function budgetRows(engine: Engine, walk: Walk): BudgetRow[] {
+export interface BudgetOptions {
+  /** Whether a figure changed the amount it went into: false leaves the line
+   *  out (a pregnancy allowance multiplied by nobody pregnant, a medical
+   *  threshold with no medical costs). `budgetEffect` answers it by
+   *  re-evaluating the parent with the figure moved. */
+  effect?: (figure: TraceNode, parent: TraceNode) => boolean;
+}
+
+/** A money outcome's computation as budget lines, in the order the codex
+ *  worked them out: each dollar figure the result rests on, from the incomes
+ *  up through each deduction to the result. Left out: a zero fact (it adds
+ *  nothing), a figure that changed nothing (`opts.effect`). Added: what a
+ *  rule took off an income on the way to the next line when no deduction
+ *  line says it (the Colorado Works $90 and 67% disregard, a stepparent's
+ *  needs), so every applied disregard and deduction has a line. */
+export function budgetRows(engine: Engine, walk: Walk, opts: BudgetOptions = {}): BudgetRow[] {
   const root = walk.root;
   const it = engine.item(root.identifier);
   if (it?.type !== "money") return [];
@@ -512,31 +610,115 @@ export function budgetRows(engine: Engine, walk: Walk): BudgetRow[] {
   const unknownResult = root.value === null;
   const rows: BudgetRow[] = [];
   const seen = new Set<string>();
+  const isMoney = (n: TraceNode) => engine.item(n.identifier)?.type === "money";
   // Post-order: an amount is listed after everything it is computed from.
-  const visit = (n: TraceNode, parentMattered: boolean) => {
+  const visit = (n: TraceNode, parentMattered: boolean, parent: TraceNode | null) => {
     if (n.origin === "memo") return;
     const step = stepOf.get(n) ?? null;
-    const on = n === root || (step !== null ? mattered.has(n) : parentMattered);
-    for (const k of n.children) visit(k, on);
+    // A nonzero amount a computed amount is built from takes part in it, even
+    // where the trace marks only one operand of a sum as deciding (CO-83's
+    // deemed stepparent income is most of the countable income).
+    const adds = parentMattered && parent !== null && isMoney(parent) && isMoney(n)
+      && typeof n.value === "number" && n.value !== 0;
+    const on = n === root || (step !== null ? mattered.has(n) || adds : parentMattered);
+    for (const k of n.children) visit(k, on, n);
     if (!on) return;
-    const kit = engine.item(n.identifier);
-    if (kit?.type !== "money") return;
+    if (!isMoney(n)) return;
     const key = nodeKey(n);
     if (seen.has(key)) return;
     const v = n.value;
+    const role: BudgetRole = n === root ? "result" : budgetRole(n.name);
     if (n !== root) {
       // An unknown line belongs only as a rule on the way to an unknown
       // result; an unknown fact read through a default did not matter.
       if (v === null && (!unknownResult || step === null)) return;
-      if (v === 0 && !direct.has(n)) return;
+      // A zero fact adds nothing; a zero countable or net line the codex
+      // worked out is kept (CO-85's payment-countable $0 explains the grant).
+      if (v === 0 && !direct.has(n) && !(step !== null && role === "net" && n.person === null)) return;
+      if (step === null && n.kind === "parameter" && parent && opts.effect && !opts.effect(n, parent)) return;
+    }
+    // What the rule took off its largest income on the way to this line, when
+    // no deduction line of its own says it.
+    if (step !== null && n !== root && typeof v === "number" && ["net", "income", "subtotal", "amount"].includes(role)) {
+      const s = walk.steps[step - 1];
+      const ins = s.inputs.filter((i) => isMoney(i.node) && typeof i.node.value === "number");
+      const deductions = ins.filter((i) => ["deduction", "expense"].includes(budgetRole(i.node.name)));
+      const deducted = deductions.reduce((a, i) => a + (i.node.value as number), 0);
+      const incomes = ins.filter((i) => (i.node.value as number) > 0 && ["income", "net", "subtotal"].includes(budgetRole(i.node.name)));
+      const top = incomes.sort((a, b) => (b.node.value as number) - (a.node.value as number))[0];
+      // What the rule took off beyond the deduction lines it reads: the
+      // whole gap when it reads none (a percentage disregard), the rest when
+      // it reads some (CO-83: $1,500 less the $90 is not $1,157; the
+      // stepparent's $253 needs are the rest).
+      const rest = top && incomes.length === 1 ? (top.node.value as number) - v - deducted : 0;
+      if (top && rest > 0.005 && v >= 0) {
+        const figures = s.inputs
+          .filter((i) => i.node.kind === "parameter" && i.node.value !== null && !deductions.includes(i))
+          .map((i) => i.node);
+        rows.push({ node: n, role: "deduction", step, taken: { amount: rest, from: top.node, figures } });
+      }
     }
     seen.add(key);
-    rows.push({
-      node: n, role: n === root ? "result" : budgetRole(n.name), step,
-    });
+    rows.push({ node: n, role, step });
   };
-  visit(root, true);
+  visit(root, true, null);
   return rows;
+}
+
+/** Whether a figure changed the amount it went into: the parent worked out
+ *  again with the figure doubled (plus one) gives a different amount. A
+ *  figure under a test (a limit compared with income) always counts: it
+ *  decided the test even where moving it would not flip the answer. */
+export function budgetEffect(engine: Engine, hc: HouseholdCase): (figure: TraceNode, parent: TraceNode) => boolean {
+  const spec = caseToSpec(hc);
+  return (figure, parent) => {
+    if (typeof figure.value !== "number" || typeof parent.value !== "number") return true;
+    try {
+      const moved = makeCase(engine.index, { ...spec, parameters: { ...(spec.parameters ?? {}), [figure.identifier]: figure.value * 2 + 1 } });
+      const again = evaluate(engine.index, moved, parent.identifier, parent.person, parent.month);
+      return !same(again, parent.value);
+    } catch {
+      return true;
+    }
+  };
+}
+
+/** Money as the rule keeps it: whole dollars without cents, cents where the
+ *  amount has them (a 25% sanction of $517 is $129.25). */
+export function budgetMoney(v: unknown, fallback: (v: unknown) => string): string {
+  if (typeof v !== "number" || !Number.isFinite(v)) return fallback(v);
+  if (Math.abs(v - Math.round(v)) < 1e-9) {
+    const s = `$${Math.abs(Math.round(v)).toLocaleString("en-US")}`;
+    return v < 0 ? `-${s}` : s;
+  }
+  return fallback(v);
+}
+
+// ---- which version of a figure
+
+/** The determination date a stored case is read on. */
+export function determinationDate(hc: HouseholdCase): string {
+  const d = caseToSpec(hc).given?.determination_date;
+  return typeof d === "string" ? d : hc.as_of;
+}
+
+/** The dated period of a figure the case read, or null for a figure without
+ *  periods. */
+export function versionUsed(engine: Engine, node: Pick<TraceNode, "identifier" | "kind">, date: string): ItemVersion | null {
+  if (node.kind !== "parameter") return null;
+  const it = engine.item(node.identifier);
+  if (!it?.versions?.length) return null;
+  return versionInForce(it, date);
+}
+
+/** The excerpts a line cites: for a figure set by dated periods, the period
+ *  in force on the case's date (its own source first), not the item's first
+ *  source (county supervisor task 2: FY 2027 figures cited to the FY 2026
+ *  tables). */
+export function lineSources(engine: Engine, node: TraceNode, date: string): string[] {
+  const v = versionUsed(engine, node, date);
+  if (v?.source) return [v.source];
+  return node.sources;
 }
 
 /** The budget as tab-separated text, for pasting into a spreadsheet or a
@@ -547,12 +729,24 @@ export function budgetText(
   const lines = ["Line\tWhat it is\tAmount\tRule text"];
   for (const r of rows) {
     const who = r.node.person ? `${personLabel(r.node.person)}: ` : "";
+    if (r.taken) {
+      lines.push([
+        `${who}${takenLabel(r)}`, BUDGET_ROLE_LABEL.deduction, `-${money({ ...r.node, value: r.taken.amount })}`, "",
+      ].join("\t"));
+      continue;
+    }
     lines.push([
       who + r.node.name, BUDGET_ROLE_LABEL[r.role], money(r.node),
       r.node.sources.map(citation).join("; "),
     ].join("\t"));
   }
   return lines.join("\n");
+}
+
+/** "Taken off gross earned income (disregard $90, 67%)". */
+export function takenLabel(r: BudgetRow): string {
+  if (!r.taken) return r.node.name;
+  return `Taken off ${r.taken.from.name.replace(/^[^:]+:\s*/, "")} on the way to ${r.node.name.replace(/^[^:]+:\s*/, "")}`;
 }
 
 // ---- documents owed
@@ -629,8 +823,10 @@ export function documentsOwed(engine: Engine, hc: HouseholdCase, persons?: reado
         const v = recordedValue(engine, hc, part, pid, monthFor(part));
         if (typeof v === "string" && /^not_in_/.test(v)) applies = false;
       }
+      let any = false;
       for (const id of pending) {
         if (recordedValue(engine, hc, id, pid, monthFor(id)) !== true) continue;
+        any = true;
         const dueId = dueDateFor(p.id, id);
         const due = dueId && engine.item(dueId) ? recordedValue(engine, hc, dueId, pid, monthFor(dueId)) : null;
         out.push({
@@ -639,8 +835,55 @@ export function documentsOwed(engine: Engine, hc: HouseholdCase, persons?: reado
           due: typeof due === "string" ? due : null, applies,
         });
       }
+      // A program whose verification is pending with no element flag set
+      // (CHP+ pending a reasonable opportunity period has no status-document
+      // flag of its own): the program's own pending status is the row
+      // (county supervisor task 4: the child's CHP+ row was missing).
+      if (!any && status && engine.item(status)) {
+        const v = recordedValue(engine, hc, status, pid, monthFor(status));
+        if (typeof v === "string" && /reasonable_opportunity/.test(v)) {
+          const dueId = dueDateFor(p.id, status);
+          const due = dueId && engine.item(dueId) ? recordedValue(engine, hc, dueId, pid, monthFor(dueId)) : null;
+          out.push({
+            person: pid, program: p.id, identifier: status,
+            document: pendingStatusDocument(v),
+            dueIdentifier: dueId && engine.item(dueId) ? dueId : null,
+            due: typeof due === "string" ? due : null, applies,
+          });
+        }
+      }
     }
   }
+  return out;
+}
+
+/** The document a program's pending status stands for, in words. */
+function pendingStatusDocument(status: string): string {
+  if (/reasonable_opportunity/.test(status)) return "Citizenship or immigration status (reasonable opportunity period)";
+  const rest = status.replace(/^pending_?/, "").replace(/_/g, " ").trim();
+  return rest ? `Verification pending: ${rest}` : "Verification pending";
+}
+
+/** One row per document a person owes, with every program it is owed for and
+ *  each program's due date, the earliest first (county supervisor task 4:
+ *  "one document, several rows"). */
+export interface DocumentRow {
+  person: string;
+  document: string;
+  programs: Array<{ program: string; identifier: string; due: string | null; dueIdentifier: string | null }>;
+  /** The earliest due date across the programs, or null. */
+  due: string | null;
+}
+
+export function documentRows(owed: readonly DocumentOwed[]): DocumentRow[] {
+  const out: DocumentRow[] = [];
+  for (const d of owed) {
+    let row = out.find((r) => r.person === d.person && r.document.toLowerCase() === d.document.toLowerCase());
+    if (!row) { row = { person: d.person, document: d.document, programs: [], due: null }; out.push(row); }
+    row.programs.push({ program: d.program, identifier: d.identifier, due: d.due, dueIdentifier: d.dueIdentifier });
+    if (d.due && (!row.due || d.due < row.due)) row.due = d.due;
+  }
+  for (const r of out) r.programs.sort((a, b) => (a.due ?? "9999").localeCompare(b.due ?? "9999"));
   return out;
 }
 
