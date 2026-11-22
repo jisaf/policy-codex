@@ -10387,7 +10387,7 @@ Document: D-82
 
 Document: D-81
 
-9 CCR 2503-6 3.605.4.A (introduction), A.24 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+9 CCR 2503-6 3.605.4.A (introduction), B.24 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
 
 > 3.605.4 Exempt Unearned Income
 >
@@ -18671,3 +18671,499 @@ Document: D-80
 > months. However, if the client has been determined disabled by the State
 > disability review contractor, the medical re-examination date shall be
 > established by the review contractor.
+### S3150. Colorado Works: the Federal Poverty Guidelines are those of 86 FR 7732 as of February 1, 2021, with no later editions
+
+Document: D-81
+
+9 CCR 2503-6 3.601, "Federal Poverty Guidelines" (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> "Federal Poverty Guidelines" also called Federal Poverty Level (FPL) means the income level for a
+> household as set forth in the Federal Register 86 FR 7732, 7732-7734, as of February 1, 2021. This rule
+> does not contain any later amendments or editions. These guidelines are available for no cost at
+> https://www.federalregister.gov/. These guidelines are also available for public inspection and copying at
+> the Colorado Department of Human Services, Director of the Division of Economic and Workforce
+> Support, 1575 Sherman Street, Denver, Colorado, 80203, or at any state publications library during
+> regular business hours.
+
+### S3151. 2021 HHS poverty guidelines for the 48 contiguous States and the District of Columbia
+
+Document: D-295
+
+86 FR 7732, 7733 (February 1, 2021), Annual Update of the HHS Poverty Guidelines. https://www.govinfo.gov/content/pkg/FR-2021-02-01/html/2021-01969.htm
+
+> The following guideline figures represent annual income.
+>
+> 2021 Poverty Guidelines for the 48 Contiguous States and the District of
+> Columbia
+> ------------------------------------------------------------------------
+> Poverty
+> Persons in family/household                   guideline
+> ------------------------------------------------------------------------
+> 1...........................................................     $12,880
+> 2...........................................................      17,420
+> 3...........................................................      21,960
+> 4...........................................................      26,500
+> 5...........................................................      31,040
+> 6...........................................................      35,580
+> 7...........................................................      40,120
+> 8...........................................................      44,660
+> ------------------------------------------------------------------------
+>
+> For families/households with more than 8 persons, add $4,540 for
+> each additional person.
+
+### S3152. Colorado Works diversion: the period of ineligibility (POI) and when the county may grant basic cash assistance before it ends
+
+Document: D-81
+
+9 CCR 2503-6 3.606.8.A.4-5 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. The client shall agree not to receive any further Colorado Works assistance in the county
+> where he or she received the diversion payment or any other county for a period of time
+> to be established by the county that issued the diversion payment. This Period of
+> Ineligibility (POI) shall start in the month that the payment is provided and shall not be
+> longer than the equivalent maximum grant payment for the household size over the same
+> period of time.
+>
+> 5. If the client is unable to sustain the agreement because of circumstances beyond his or
+> her control, he or she may apply for and the county may grant basic cash assistance or
+> another diversion payment prior to the end of the POI. The county department can end
+> the POI before it expires if good cause exists and is granted by the county department.
+
+### S3153. Colorado Works minor parents: another adult caretaker or an approved setting; education participation; a minor parent not in a caretaker's home (adult relative; assistance as an adult)
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.N.1, N.1.b, N.2.a-c (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 1. When a minor parent is not emancipated and has a marital status of single, grant
+> payments may not be approved unless the minor parent resides with another adult
+> caretaker or the minor parent resides in another setting which the county has determined
+> is an appropriate setting.
+>
+> ...
+>
+> b. Counties shall assist assistance units which include an unmarried minor
+> parent(s) who has a child at least twelve (12) weeks of age, who has not
+> completed his or her high school education or GED, and who is not participating
+> in educational activities or an approved training program, in participating in such
+> programs within sixty (60) calendar days from the date the initial assessment is
+> completed for those sixteen (16) or older or within sixty (60) calendar days from
+> the date the eligibility interview takes place for those under the age of sixteen
+> (16). Participation means enrollment, attendance, or an action otherwise
+> specified by the county department. Failure to participate without good cause will
+> result in the termination or discontinuation of Colorado Works basic cash
+> assistance.
+>
+> ...
+>
+> 2. When a minor parent does not live in the home of another caretaker:
+>
+> a. The minor parent may not receive benefits until deemed to be in a county
+> approved setting by the county department unless the minor is emancipated, has
+> a marital status other than single, or resides with an adult relative.
+>
+> b. A minor parent who is emancipated or has a marital status other than single is
+> not considered to be living in the home of a caretaker even if they are living in the
+> home of their parent.
+>
+> c. A minor who is a parent and does not live in the home of a caretaker will receive
+> assistance as an adult if approved.
+
+### S3154. Colorado Works time limits (current text): adult members' months; the sixty-month bar on the unit; Indian Country months
+
+Document: D-81
+
+9 CCR 2503-6 3.606.6.A, C, F (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. Time Limits
+>
+> Each month for which a basic cash assistance grant is received shall be counted toward the time
+> limits of adult members who are part of the assistance unit regardless of whether or not the adult
+> is eligible to receive assistance. Any assistance unit containing an adult may receive Federal
+> TANF grant payments for up to sixty (60) cumulative months.
+>
+> ...
+>
+> C. Extensions
+>
+> An assistance unit containing an individual who has received Federal TANF assistance in
+> Colorado or another state as an adult for sixty (60) or more cumulative months shall not be
+> eligible for Colorado Works assistance in Colorado unless the household demonstrates good
+> cause as defined in section 3.601 and outlined in 3.608.3. The county department must reference
+> criteria in the state prescribed extension determination form to approve or deny an extension
+> request for a client who is requesting to receive TANF beyond sixty (60) months. Assistance units
+> that contain disqualified members shall not be eligible for consideration of an extension.
+>
+> ...
+>
+> F. Exemptions From the 60-Month Time Limit
+>
+> Any month of receipt of assistance by an adult while living in Indian Country, or a Native Alaskan
+> village where at least fifty percent (50%) of the adults were not employed, shall not be counted
+> toward the sixty (60) cumulative months of Federal TANF assistance. Indian Country is defined in
+> 18 U.S.C. Section 1151.
+
+### S3155. Colorado Works deeming: the non-participant parent of an unmarried minor parent living in the same home
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.4.a-b (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. Income of a non-participant stepparent and a non-participant parent of an unmarried
+> minor parent
+>
+> a. A stepparent’s countable income is considered available to stepchildren included
+> in the assistance unit as dependent children. The countable income of a non-
+> participant parent(s) of an unmarried minor parent who is living in the same home
+> as the minor parent, shall also be deemed to the assistance unit.
+>
+> The countable income equals gross earned income minus the employment
+> disregard of $90, minus the maintenance or child support paid to others outside
+> the assistance unit, minus the amounts actually paid by the individual to other
+> individuals not living in the home and who could be claimed by the individual for
+> federal income tax purposes, plus any unearned income received by the
+> stepparent or non-participant parent. The needs of the stepparent or parent of
+> the minor parent, and the needs of individuals living in the home for whom the
+> stepparent or parent are responsible shall be deducted from the result to
+> determine the amount attributed to the assistance unit.
+>
+> b. Income of parents living in the same home as the unmarried minor parent shall
+> be attributed to the assistance unit of the minor parent.
+
+### S3156. Colorado Works initial payment: assistance from the date of application, the partial month table, the $10 and $1 floors, cents dropped
+
+Document: D-81
+
+9 CCR 2503-6 3.609.2.A.1, D (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 1. Initial payment
+>
+> The initial payment to eligible clients shall include assistance beginning with the date of
+> application. Should the assistance unit be ineligible on the date of application, but
+> become eligible prior to the time that a determination of eligibility is made, the initial
+> payment shall include assistance beginning with the date on which the assistance unit
+> became eligible.
+>
+> To calculate partial month payments:
+>
+> a. Determine the grant amount based on the size and composition of the assistance
+> unit;
+>
+> b. Deduct the total net countable income – this is the authorized grant amount for
+> the entire month;
+>
+> c. Determine the number of days for which payment is made and based on the
+> table in subsection E. Below, find the decimal figure corresponding to the number
+> of days of eligibility;
+>
+> d. Multiply the authorized grant amount for the entire month by such decimal figure
+> to determine the authorized grant amount for the partial month;
+>
+> e. Subtract from authorized grant amount for the partial month any appropriate
+> deductions, unless the authorized grant for the partial month is less than $10, in
+> which case no payment is made. However, if the deductions from the authorized
+> grant amount for the partial month results in an amount less than $10, such
+> lesser amount shall be paid except when the amount is less than $1.00.
+>
+> To calculate the partial month payments, the following table shall be used:
+>
+> Days Standard Days Standard Days Standard
+> 1 .03288 11 .36164 21 .69041
+> 2 .06575 12 .39452 22 .72329
+> 3 .09863 13 .42739 23 .75617
+> 4 .13151 14 .46027 24 .78904
+> 5 .16439 15 .49315 25 .82192
+> 6 .19726 16 .52603 26 .85480
+> 7 .23014 17 .55890 27 .88768
+> 8 .26302 18 .59178 28 .92054
+> 9 .29590 19 .62466 29 .95342
+> 10 .32876 20 .65754 30 .9863
+>
+> ...
+>
+> D. All payments, including partial payments, shall have any cents dropped to the nearest dollar.
+
+### S3157. Colorado Works countable unearned income: rental income net of allowable expenses; insurance and injury proceeds net of costs; loans, inheritances, gifts and prizes
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3 (intro), A.2, A.5, A.6, A.13, A.14 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> Unless otherwise specified, any unearned income is countable and together with all other countable
+> income of the client it must be considered against the applicable assistance program need and/or grant
+> standards specified in the regulations covering the different programs.
+>
+> ...
+>
+> 2. Income from rental property is considered as unearned income where the client is not
+> actively managing the property on an average of at least twenty (20) hours a week.
+> Rental income is countable to the extent it exceeds allowable expenses. Allowable
+> expenses are maintenance, taxes, management fees, interest on mortgage, and utilities
+> paid. This shall not include the purchase of the rental property and payments on the
+> principal of loans for rental property.
+>
+> ...
+>
+> 5. Proceeds of a life insurance policy to the extent that they exceed the amount expended
+> by the beneficiary for the purpose of the insured recipient's last illness and burial which
+> are not covered by other benefits.
+>
+> 6. Proceeds of a health insurance policy or personal injury lawsuit to the extent that they
+> exceed the amount to be expended or required to be expended for medical care.
+>
+> ...
+>
+> 13. Loans or inheritances.
+>
+> 14. Gifts or prizes.
+
+### S3158. Colorado Works: workers' compensation awards less the medical, legal and related expenses included in them
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.B.4 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. Worker's Compensation payments - payments awarded under federal and state law to an
+> injured employee or to such employee's dependents; amounts included in such awards
+> for medical, legal, or related expenses incurred by a client in connection with such claim
+> are deducted in determining the amount of countable unearned income;
+
+### S3159. Colorado Works earned income: in-kind earnings; board, room, and room and board payments; donated in-kind earned income; in-kind income for employment
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.A, E.4.c-e, F, G (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. Earned In-kind Income
+>
+> Earned in-kind income shall be income resulting from the performance of services by the client for
+> which he or she is compensated in shelter or other items in lieu of wages.
+>
+> ...
+>
+> c. Board (to provide a person with regular meals only) payments shall be
+> considered earned income in the month received to the extent that the board
+> payment exceeds the maximum Food Assistance allotment for a one-person
+> household per boarder and other documented expenses directly related to the
+> provision of board.
+>
+> d. Room (to provide a person with lodging only) payments shall be considered
+> earned income in the month received to the extent that the room payment
+> exceeds other documented expenses directly related to the provision of room.
+>
+> e. Room and board payments shall be considered earned income in the month
+> received to the extent that the payment for room and board exceeds the Food
+> Assistance allotment for a one-person household per room and boarder and
+> other documented expenses directly related to the provision of room and board.
+>
+> ...
+>
+> F. In-Kind Countable Earned Income
+>
+> 1. Donated in-kind earned income is countable when it:
+>
+> a. Is regular and for a specific time period;
+>
+> b. Is a necessary service; and,
+>
+> c. If not performed by the client, someone would have to be hired to perform the
+> service.
+>
+> 2. If donated services meet these requirements, the value of these services is determined
+> by:
+>
+> a. The going rate in the community; or
+>
+> b. From two employers of like services.
+>
+> 3. The client shall be informed that the continuation of donation of services will result in an
+> income deduction from the assistance grant after all applicable earned income disregards
+> have been applied.
+>
+> G. In-Kind Income In Exchange For Employment
+>
+> In-kind income received in exchange for employment is employment income and shall have the
+> appropriate earned income disregards applied to the total value of the income. The amount
+> considered as earned income when a client is paid in-kind is the value of the item supplied. The
+> current market value of the item is used if the value of the item is not provided.
+
+### S3160. Colorado Works: potential income a client refuses to make a reasonable effort to secure is considered available
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.3, A.3.c-d (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3. Securing potential income - a client must make every reasonable effort to secure
+> potential income.
+>
+> ...
+>
+> c. If the client refuses to make a reasonable effort to secure potential income, such
+> income must be considered as if available. Timely and adequate notice must be
+> given to the assistance unit regarding a proposed action to deny, reduce, or
+> terminate assistance, based on the availability of the income.
+>
+> d. If, upon the receipt of the prior notice, the client acts to secure the potential
+> income, the proposed action to deny, reduce, or terminate assistance shall be
+> withdrawn and assistance must be approved and/or continued without
+> adjustment until the income is, in fact, available.
+
+### S3161. Colorado Works: demonstrable evidence, and the closure for not participating before the first Individualized Plan is signed
+
+Document: D-81
+
+9 CCR 2503-6 3.601 "Demonstrable evidence", 3.607.5 (last paragraph) (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Demonstrable evidence” means evidence that a Colorado Works client has refused to comply with the
+> workforce program.
+>
+> ...
+>
+> If a client does not participate in the Workforce Development program prior to signing the first
+> Individualized Plan, this shall be considered Demonstrable Evidence, as defined in 3.601, and will result
+> in the closure of the grant payment. Once an Individualized Plan is signed, clients that do not participate
+> in the Workforce Development program are subject to re-engagement according to 3.608.3.
+
+### S3162. Colorado Works: one-month denial or discontinuance of the cash benefit for continued EBT misuse
+
+Document: D-81
+
+9 CCR 2503-6 3.609.2.J.3-4 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3. If misuse continues, the county department shall deny or discontinue the cash benefit for
+> one month. The county shall require the client to complete a new application after the
+> one-month time period if the client requests assistance. The county department shall not
+> accept a new application from the client until the one-month denial or discontinuance
+> expires. The county department shall follow the dispute resolution process pursuant to
+> section 3.609.6; and,
+>
+> 4. After the one-month case closure for continued misuse, if/when the client reapplies, any
+> future EBT card usage at prohibited establishments shall be considered continued
+> misuse. Such subsequent violations will result in the one-month denial/discontinuance
+> and reapplication process referred to in subsection 3, above.
+
+### S3163. Colorado Works exempt income: refugee resettlement and reception and placement money; the CRSP Interim Cash Payment; insurance cash value taken; designated parts of a lump sum
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B.28-30, B.33 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 28. Refugee resettlement funds and reception and placement money.
+>
+> 29. Interim Cash Payment received through the Colorado Refugee Services Program.
+>
+> 30. Life or disability insurance policies that may have a cash value taken.
+>
+> ...
+>
+> 33. Income that is exempt shall also be exempt if received as a lump sum or excluded if
+> designated or legally obligated for legal fees related to obtaining the lump sum payment,
+> medical bills, funeral and burial expenses, or income taxes.
+
+### S3164. Colorado Works pregnancy allowance (current text)
+
+Document: D-81
+
+9 CCR 2503-6 3.606.1.G (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> G. Pregnancy Allowance
+>
+> Pregnant parents are eligible for the basic cash assistance grant plus a ten-dollar ($10.00)
+> pregnancy allowance. The client is eligible for the pregnancy allowance through the month in
+> which the pregnancy ends.
+
+### S3165. Colorado Works: a client's eligibility ends on the date of death
+
+Document: D-81
+
+9 CCR 2503-6 3.609.2.C.1-2 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. If a client dies, payments to the client shall be treated as follows:
+>
+> 1. A client’s eligibility shall end on the date of his or her death.
+>
+> 2. If a client dies before 12:00 a.m. on the first day of a month, no eligibility for a grant
+> payment for the following month exists.
+
+### S3166. Colorado Works: the full Social Security award is counted, but the lump-sum SMIB refund to a buy-in recipient is exempt
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.B.9 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 9. Supplementary Medical Insurance Benefits (SMIB)- Social Security “Medicare”
+> supplementary medical insurance benefit is a voluntary program, therefore the full Social
+> Security award amount is counted as income to determine Colorado Works eligibility and
+> to determine the amount of financial assistance to the client. The lump sum SMIB refund
+> received by the “buy-in” recipient is exempt income as the client has previously been
+> charged with that income.
+
+### S3167. Colorado Works underpayments are corrected by a retroactive grant payment
+
+Document: D-81
+
+9 CCR 2503-6 3.609.2.G, G.3.c.5 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> G. The county department shall take prompt action to correct underpayments to clients of Colorado
+> Works grant payments. There are two types of underpayments: 1) grant payment(s) received by
+> or for a client that is less than the amount which the client should have received but not a denial
+> or termination, or 2) the failure of the county department to issue a grant payment to an eligible
+> client when such payment should have been issued (i.e., denials or termination of Colorado
+> Works grant payments).
+>
+> ...
+>
+> 5) Prompt action shall be taken to correct underpayments that occurred
+> within the past twelve (12) months from the discovery date by issuing a
+> retroactive payment. Retroactive payments shall not be made unless the
+> amount is one dollar ($1.00) or more.
+
+### S3168. Colorado Works work eligible clients: adults, minor child heads of household and their spouses; those not mandatory
+
+Document: D-81
+
+9 CCR 2503-6 3.607.1.A-B (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. The following are work eligible clients, unless excluded by subsection B below:
+>
+> 1. An adult, minor child head-of-household, or spouse of a minor child head-of-household
+> receiving assistance.
+>
+> 2. A parent who is not receiving assistance that is living with their child who is receiving
+> assistance.
+>
+> B. The following are not mandatory for the Workforce Development program:
+>
+> 1. A minor parent who is not a head-of-household or who is not a spouse of a head-of
+> household.
+
+### S3169. Colorado Works denials: information not supplied within ten calendar days of the request
+
+Document: D-104
+
+9 CCR 2503-6, § 3.602.1.K.1, K.1.c. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> 1.      “Denied,” is the action that the county shall take when the client fails to meet the eligibility
+> requirements of the category of assistance desired. A denial also may be on the basis of
+> such factors as, but not limited to:
+>
+> a.      The client refuses to furnish information necessary to determine eligibility;
+>
+> ...
+>
+> c.       The client does not supply information or otherwise fails to cooperate with the
+> county department within ten (10) calendar days of the request for information
+> unless good cause is granted and after having received notification of the reason
+> for delay;
+
+### S3170. Colorado Works: members of an Indian tribe not eligible under a Tribal Family Assistance Plan are eligible
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.J (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> J. Indian Tribe Eligibility
+>
+> Members of an Indian Tribe not eligible for assistance under a Tribal Family Assistance Plan are
+> eligible for Colorado Works.

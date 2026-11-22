@@ -8,7 +8,7 @@ program: ColoradoWorks
 meaning: Whether this person's assistance unit's net countable income is strictly below the need standard for its size, per 9 CCR 2503-6 3.606.1.H and 3.606.1.J.4 (income equal to or exceeding the need standard is ineligible).
 derived: ["<", cw_countable_income, cw_need_standard]
 sources: [S415]
-open: [OQ-153]
+open: [OQ-153, OQ-771]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: "No existing item states the Colorado Works income test; cw_eligibility_status (CO-920) needs it. Fix round (M-2): the fetched text states this boundary two ways - 3.606.1.H's 'shall not exceed' (equal passes) and 3.606.1.J.4's 'equals or exceeds ... not eligible' (equal fails) - see the new OQ-153; this item keeps J.4's strict-less-than reading, unchanged from before."

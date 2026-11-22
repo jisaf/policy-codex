@@ -1,0 +1,13 @@
+id: CO-4366
+name: Workers' compensation award expenses
+identifier: workers_compensation_award_expenses
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Of the workers' compensation payments the person received in the month (stated in other_unearned_income_nontaxable), the amounts included in the award for medical, legal or related expenses the person incurred in connection with the claim. 0 if none."
+precision: "Part of other_unearned_income_nontaxable (CO-030), not added to it. If not stated, Colorado Works reads it as 0."
+supplied_by: The award or settlement statement.
+sources: [S3158]
+tags: [income]
+rationale: "Coverage review CW-14 (P1): 9 CCR 2503-6 3.605.3.B.4 (S3158) deducts these amounts in determining countable unearned income; the unearned income facts are gross and no fact stated them. Program-neutral; cw_unearned_income_deductions (CO-4369) subtracts it."

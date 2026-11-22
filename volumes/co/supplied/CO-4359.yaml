@@ -1,0 +1,13 @@
+id: CO-4359
+name: "Colorado Works: date a unit ineligible on the date of application became eligible"
+identifier: cw_unit_eligible_from_date
+kind: supplied
+type: calendar date
+scope: case
+program: ColoradoWorks
+meaning: "For an assistance unit that was ineligible on the date of application but became eligible before the determination of eligibility was made, the date on which it became eligible, from which the initial payment includes assistance (9 CCR 2503-6 3.609.2.A.1). Not stated when the unit was eligible on the date of application."
+precision: "One value for the case, after cw_application_date (CO-2372) and on or before the determination date. If not stated, Colorado Works reads the date of application as the date assistance begins (cw_partial_month_payment_factor, CO-4358)."
+supplied_by: "County eligibility worker's determination (CBMS), from the date the change that made the unit eligible occurred."
+sources: [S3156]
+tags: [cash, tanf, application_wide]
+rationale: "Coverage review CW-8: 3.609.2.A.1 (S3156) begins the initial payment on the date of application, or on the later date a unit ineligible on the date of application became eligible before the determination. The volume determines eligibility for a month, not for each day, so the later date is the county's finding and enters here; no existing fact states it."

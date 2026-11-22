@@ -1,0 +1,13 @@
+id: CO-4373
+name: Burial contributions from legally responsible persons
+identifier: burial_contributions_from_responsible_persons
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "For a deceased person, the money that the persons legally responsible for the decedent's support (a spouse; a parent of a minor child) voluntarily contributed toward the decedent's funeral, burial or cremation costs. Not contributions from anyone else. 0 if none."
+precision: "Stated on the decedent. If not stated, Colorado Works reads it as 0 (cw_death_reimbursement_amount, CO-1508)."
+supplied_by: Funeral provider's statement of payments received and the county's burial application.
+sources: [S1007]
+tags: [cash]
+rationale: "Coverage review CW-19 (P2): 9 CCR 2503-6 3.606.7.F.2.c (S1007) says money \"voluntarily contributed by the responsible party towards the burial, funeral, or cremation costs ... is also used to reduce the Death Reimbursement Benefit\"; CO-1508 recorded it as not modeled, with no fact. Contributions from non-responsible parties do not reduce the benefit (F.2.g) and are not stated here. Program-neutral: it states what was paid."

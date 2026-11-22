@@ -1,0 +1,13 @@
+id: CO-4362
+name: "Colorado Works: refused potential income"
+identifier: cw_refused_potential_income
+kind: supplied
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The monthly amount of potential income this client refuses to make a reasonable effort to secure, which the county department considers available after timely and adequate notice (9 CCR 2503-6 3.605.1.A.3.c), as the county figures it. 0 when the client is taking appropriate action to secure it (A.3.b) or acts on the notice (A.3.d)."
+precision: "If not stated, Colorado Works reads it as 0. It is counted as unearned income, added in cw_countable_unearned_income (CO-908) and cw_payment_countable_unearned_income (CO-2554). The finding (a refusal, after notice) is the county's, so the figure enters as a finding with the program prefix (convention rule 13), as Adult Financial's af_refused_potential_income (CO-3861) does."
+supplied_by: County eligibility case record (CBMS), after the notice of proposed action.
+sources: [S3160]
+tags: [cash, tanf, income]
+rationale: "Coverage review CW-11 (P1): 3.605.1.A.3.c (S3160) counts refused potential income \"as if available\", and no Colorado Works item read it or recorded a reason. Adult Financial's counterpart (CO-3861) states its own rule's finding (9 CCR 2503-5 3.520.71.G.1), so Colorado Works has its own fact."

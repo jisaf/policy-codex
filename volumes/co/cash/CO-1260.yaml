@@ -8,7 +8,7 @@ program: ColoradoWorks
 meaning: The assistance unit's basic cash assistance grant before any sanction - the grant standard plus the pregnancy allowance for each pregnant unit member, less the payment countable income, with the cents dropped and floored at zero - per 9 CCR 2503-6 3.606.1.F-G, K and 3.606.2.A.
 precision: The sanction reduction of 3.608.4.C applies to this figure; cw_grant_amount (CO-914) subtracts it.
 derived: [max, 0, ["*", -1, [ceil, ["*", -1, ["-", ["+", cw_grant_standard, ["*", cw_pregnancy_allowance, [count, [filter, cw_assistance_unit_members, [of, [P], is_pregnant]]]]], cw_payment_countable_income]]]]]
-sources: [S415, S1000, S524, S764]
+sources: [S415, S1000, S3164, S764]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: "Phase-8 fix round (B-1): reads the payment income computed with the current 3.606.2.A disregards (S1000) through CO-923; tests T3-T5 exercise the three cases. cw_grant_amount (CO-914) computed this figure directly; 3.608.4.C (S760) reduces 'an assistance unit's grant payment' by 25% for a second or third sanction, so the pre-sanction grant is needed as its own figure. CO-914's derivation moved here unchanged and CO-914 now subtracts the sanction reduction."

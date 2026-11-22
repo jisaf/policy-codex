@@ -1,0 +1,16 @@
+id: CO-4350
+name: "Colorado Works: federal poverty guidelines by household size, annual, as of February 1, 2021"
+identifier: cw_poverty_guideline_annual_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: "The annual HHS poverty guideline for the 48 contiguous states and the District of Columbia, by household size 1 through 8, that 9 CCR 2503-6 means by \"Federal Poverty Guidelines\": the income level \"set forth in the Federal Register 86 FR 7732, 7732-7734, as of February 1, 2021\", with no later amendments or editions (3.601). Colorado Works reads it for the sponsor deeming exemption of 3.605.1.A.5.c.5."
+precision: "Annual dollars; a monthly figure divides by 12. Sizes above 8 add cw_poverty_guideline_annual_each_additional (CO-4351) per additional person. The rule fixes the 2021 edition, so this table does not follow the yearly federal update (federal_poverty_guideline_annual_table, CO-181, is the current guideline other programs read); a later rule that adopts another edition is a new version."
+versions:
+  - from: "2021-02-01"
+    value: { "1": 12880, "2": 17420, "3": 21960, "4": 26500, "5": 31040, "6": 35580, "7": 40120, "8": 44660 }
+    source: S3151
+sources: [S3150, S3151]
+tags: [cash, tanf, income, immigration]
+rationale: "Coverage review CW-4 (P1): cw_sponsor_deeming_applies (CO-2364) compared the combined income with the current guideline (CO-181), but 3.601 (S3150) defines the Federal Poverty Guidelines as the 2021 notice and excludes later editions; for a combined household of four, 125% is $2,760.42 a month under the 2021 guideline and $3,437.50 under the 2026 one. No existing parameter states the 2021 figures (CO-181's versions begin in 2025). Fetched from govinfo.gov (D-295)."

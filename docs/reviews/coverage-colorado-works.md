@@ -68,20 +68,20 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | Caretaker; Responsibility | C: cw_caretaker_of CO-2608 |
 | Certification period | C: cw_in_first_certification_period CO-1501 |
 | Countable income; Exempt income | C: CO-910, CO-923, CO-2340, CO-2341 |
-| Dependent child(ren) A-B | C: cw_is_dependent_child CO-901, CO-270, CO-271, CO-1720; **GAP CW-2** ("resides with a parent or non-parent caretaker" not tested) |
+| Dependent child(ren) A-B | C: cw_is_dependent_child CO-901, CO-270, CO-271, CO-1720; a minor parent not in a caretaker's home is counted as an adult: carried by cw_minor_parent_is_assisted_as_adult CO-4352 in CO-926, CO-927, CO-924, CO-916, CO-3808 (CW-2 fixed) |
 | Disqualified person; Program prohibitions A-E | C: cw_is_disqualified_member CO-928 (A, D via cw_is_serving_ipv_disqualification CO-1730; B is_fleeing_felon; C via CO-4005; E CO-2348) |
 | Diversion | C: cw_diversion_eligible CO-1270, cw_diversion_payment CO-2560 |
 | Domestic violence; survivor; FVO trained worker | C (as the extension input): has_domestic_violence_extension_approved CO-846; the rest N/A, county process |
-| Earned income; Unearned income; Income; In-kind | C: CO-1716, CO-908; in-kind earned **GAP CW-9(c)** |
+| Earned income; Unearned income; Income; In-kind | C: CO-1716, CO-908; in-kind earned carried by in_kind_earned_compensation_value CO-4360 in CO-1716 (CW-9 fixed) |
 | Eligible client ("countable income is below the grant standard") | C: implied by CO-913 (the need standard is below the grant standard in every chart cell, so the need test governs) |
 | Excluded person | C: cw_is_excluded_from_assistance_unit CO-2350 |
-| Federal Poverty Guidelines (86 FR 7732, 2021, no later editions) | **GAP CW-4** (CO-2364 reads the current table) |
+| Federal Poverty Guidelines (86 FR 7732, 2021, no later editions) | C: cw_poverty_guideline_annual_table CO-4350, CO-4351 (D-295, 86 FR 7732) in CO-2364 (CW-4 fixed) |
 | Fleeing felon | C: is_fleeing_felon CO-038 via CO-928 |
 | Good cause | C as supplied county findings (CO-3810, CO-2370, extension facts); N/A otherwise (county judgment) |
 | Grant standard | C: cw_grant_standard CO-912 |
 | Minor | C: cw_minor_parent_age_limit CO-272 |
 | Parent (includes an expectant parent) | C: CO-921 pregnancy branch (S1806), CO-2383 |
-| Potential income | **GAP CW-11** |
+| Potential income | C: cw_refused_potential_income CO-4362 in CO-908, CO-2554 (CW-11 fixed) |
 | Qualified non-citizen | C: CO-905 / CO-4005 |
 | Questionable | C: household_composition_attestation_is_questionable (CO-1421) |
 | Received (income; verification) | N/A: timing conventions, read through month facts |
@@ -93,7 +93,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | Timely/adequate notice; ADH; ALJ; claim; overpayment; fraud; IPV; liable individual; recovery; willful; withdrawal and similar | N/A: notice, hearing and recovery procedure |
 | Verification; verified upon receipt; collateral contact; produce; prudent person | C: the verification items (see 3.604.3); otherwise N/A procedure |
 | Exceptional disengagement | C: via the supplied sanction level CO-1261 (3.608.3.H) |
-| Workforce Development; demonstrable evidence | C: CO-919 (informational); demonstrable-evidence closure **GAP CW-13** |
+| Workforce Development; demonstrable evidence | C: CO-919 (informational); demonstrable-evidence closure carried by cw_county_closure_type CO-4353 in CO-921 (CW-13 fixed) |
 
 ### 3.602 Applications
 | ¶ | disposition |
@@ -106,7 +106,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | E.3-5 | N/A |
 | E.6 "applications ... can only be made by a caretaker with whom a dependent child(ren) is living" | C: CO-921 first branch (no dependent child and no pregnancy) |
 | F.1-2 minimum application | N/A |
-| F.3 application date | C: cw_application_date CO-2372 (verification); payment proration **GAP CW-8** |
+| F.3 application date | C: cw_application_date CO-2372 (verification); payment proration carried by cw_partial_month_payment_factor CO-4358 in CO-914 (CW-8 fixed) |
 | G-H information sharing, confidentiality | N/A |
 | I processing standard (45 days) | N/A: county timeliness |
 | I.1 application for all programs | N/A |
@@ -114,7 +114,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | I.3.a-d application valid 30 days after denial | N/A: application-date procedure |
 | I.4 one interview | N/A |
 | J immunization information | N/A |
-| K.1.a-e denial reasons; K.1.c ten days | N/A as procedural denials; the 10-vs-11 conflict is **CW-15 (P2)** |
+| K.1.a-e denial reasons; K.1.c ten days | N/A as procedural denials; the 10-vs-11 conflict is OQ-770 (CW-15) |
 | K.2 withdrawal | N/A |
 | 3.602.2 voter registration | N/A |
 
@@ -152,14 +152,14 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | C.1.e spouse of a pregnant parent | C: CO-900 spouse edge (is_pregnant) |
 | C.2.a-g optional members, included on request | C: CO-2349, CO-2346, CO-2347, CO-2558, CO-2842 (checked) |
 | C.3.a-b SSI; Title IV recipients excluded | C: CO-2350, CO-841 |
-| D.1.a-e budgetary unit members | C: CO-2352 (a-b); c N/A (an unborn child has no income); d via CO-909 (**GAP CW-5, CW-6**); e via CO-2365 |
+| D.1.a-e budgetary unit members | C: CO-2352 (a-b); c N/A (an unborn child has no income); d via CO-909 (non-participant parents in the same home only, CW-5 and CW-6 fixed); e via CO-2365 |
 | D.2.a-b excluded from the budgetary unit | C: CO-2352 (the stepparent is kept under D.1.b, as A.4 requires) |
 | E.1-4 child in the home despite absence | C: cw_is_considered_living_in_home CO-3354 |
 | F school attendance for school-aged children | N/A: the county works with the family to enroll; no eligibility consequence stated (verification under C.4) |
 | G.1-3 absences over 45 days (medical or education; parenting-plan visit up to 6 months; voluntary foster care up to 3 months) | C: CO-3354, CO-3356, CO-3357; other reasons **OQ-611** |
-| H caretaker hierarchy | **CW-18 (P2)**: "not modeled" |
+| H caretaker hierarchy | CW-18 (P2): deferred, reason recorded in docs/colorado-notes.md (coverage fix round) |
 | I.1-3 caretaker absent (active duty; medical; under 45 days with intent) | C: CO-3354, CO-3355 |
-| J Indian tribe / TFAP | **CW-21 (P2)** |
+| J Indian tribe / TFAP | OQ-772 (CW-21) |
 | K refugees exempt from the bar; CRSP referral | C: CO-905 (exemption); referral N/A |
 | L.1 fugitives or fleeing felons | C: CO-928 |
 | L.2 strike | C: cw_unit_has_striking_adult CO-3808 (spot-checked, CWZ-12) |
@@ -169,14 +169,14 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | M.2 IPV 12/24/lifetime | C: CO-1730 |
 | M.3 fleeing felon | C: CO-928 |
 | M.4 SSN not applied for | C: CO-2348, CO-2557 |
-| M.6 non-qualified non-citizens, or failure to prove status | C: CO-2557, CO-4005; proof failure **CW-12** |
+| M.6 non-qualified non-citizens, or failure to prove status | C: CO-2557, CO-4005; proof failure carried by CO-4372 in CO-2351 and CO-2561 (CW-12 fixed) |
 | N (intro) minor parent may apply | C |
-| N.1 unmarried non-emancipated minor: another adult caretaker or county setting | C: CO-906 — **GAP CW-7** (adult caretaker or relative not accepted) |
+| N.1 unmarried non-emancipated minor: another adult caretaker or county setting | C: CO-906, now with another adult caretaker or an adult relative in the home; a failure bars the unit in CO-921 (CW-7 fixed) |
 | N.1.a county assists | N/A |
-| N.1.b education participation within 60 days; failure ends BCA | **GAP CW-13** |
-| N.2.a not with a caretaker: county setting unless emancipated, married or with an adult relative | C: CO-906 — **GAP CW-7** (adult relative) |
+| N.1.b education participation within 60 days; failure ends BCA | C: cw_county_closure_type CO-4353 (minor_parent_education_nonparticipation) in CO-921 (CW-13 fixed) |
+| N.2.a not with a caretaker: county setting unless emancipated, married or with an adult relative | C: CO-906 (adult relative accepted, CW-7 fixed) |
 | N.2.b emancipated or married minor not in a caretaker's home | C: CO-906 (emancipated or married passes); unit composition partly CO-900 |
-| N.2.c assistance as an adult | **GAP CW-2** |
+| N.2.c assistance as an adult | C: cw_minor_parent_is_assisted_as_adult CO-4352 (CW-2 fixed) |
 | N.3.a-b unrelated caretaker, member or not | C in part: CO-906 county_approved_living_arrangement CO-845 (b's county option is a supplied fact) |
 | N.3.c living with own parent needs no approval | C: CO-906 |
 | N.3.d minor parent as a child of a caretaker | C: CO-900 (the edge is crossed when not requesting for her own child) |
@@ -192,7 +192,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | B.1 IEVS reviewed; not delayed if other evidence | C: CO-1318, CO-1361 |
 | B.2.a lawful presence | C: CO-1420, CO-1644 |
 | B.2.b citizenship or qualified status | C: CO-1645, CO-1646 |
-| B.2.c SSN or proof of application; only the person ineligible | C: CO-1647, CO-2348 (person-level); 8-month validity **CW-25 (P2)** |
+| B.2.c SSN or proof of application; only the person ineligible | C: CO-1647, CO-2348 (person-level); 8-month validity CW-25 (P2): deferred, reason recorded in docs/colorado-notes.md |
 | B.2.c.1-2 SSN by the next recertification | C: CO-1647 with CO-2375 (S1630) |
 | B.2.c.3-4 SOLQ | C: ssn_verified_by_electronic_data_source (in CO-1647) |
 | B.2.d caretaker responsibility unless parent | C: CO-1421, CO-1648 |
@@ -214,7 +214,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | H.4 DMV for lawful presence and identity | C: CO-1367 (OQ-376, CW part resolved) |
 | I.1 citizenship documents; DOR Rule 5 Appendices A-B | C: CO-1306, CO-1657, CO-1645 |
 | I.2 questionable citizenship guidelines | N/A: worker guidance |
-| I.3 ineligible until proof | C: CO-1427 `members_excluded` — payment effect **GAP CW-12** |
+| I.3 ineligible until proof | C: CO-1427 `members_excluded`; payment effect carried by cw_is_excluded_for_unprovided_status_verification CO-4372 in CO-2351 and CO-2561 (CW-12 fixed) |
 | I.4 18 and over establish lawful presence; a.1.a-e documents | C: CO-1420, CO-1352, CO-1367, CO-1302 |
 | I.4.b.1-4 non-cash and emergency exceptions | N/A: not Colorado Works cash |
 | I.4.b.5 pregnant women; b.6 18-year-olds on medical assistance | C: CO-1420, CO-2435 (S1065) |
@@ -222,7 +222,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | J.1 sponsor income information | C: CO-1654, CO-1574, CO-1062 |
 | K thirty days for status, identity, SSN | C: CO-1598, CO-1655, CO-1656 |
 | K (2nd para.) verification at application and redetermination | C: CO-2375 |
-| K (last para.) no payment for them; income used | **GAP CW-12** |
+| K (last para.) no payment for them; income used | C: CO-4372 in CO-2351 (out of the size), CO-910 and CO-923 (income counted) (CW-12 fixed) |
 
 ### 3.604.4 Child support services
 | ¶ | disposition |
@@ -245,18 +245,18 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | ¶ | disposition |
 |---|---|
 | A countable gross income of the assistance and budgetary units | C: CO-910, CO-923 |
-| A.1 month prior and month of application | C in part (month of application); **CW-16 (P2)** |
+| A.1 month prior and month of application | C in part (month of application); the prior month is OQ-771 (CW-16) |
 | A.2 availability | N/A: read through month facts |
-| A.3, a-d potential income | **GAP CW-11** |
-| A.4.a stepparent and non-participant parent deeming formula | C: CO-2353 (stepparent; OQ-102 needs), CO-909, CO-2000 (OQ-102) — **GAP CW-5, CW-6**; maintenance paid **CW-20 (P2)** |
-| A.4.b parents in the same home attributed | C: CO-909 — **GAP CW-6** |
+| A.3, a-d potential income | C: cw_refused_potential_income CO-4362 (CW-11 fixed) |
+| A.4.a stepparent and non-participant parent deeming formula | C: CO-2353 (stepparent; OQ-102 needs), CO-909, CO-2000 (OQ-102); non-participant parents in the same home only (CW-5, CW-6 fixed); maintenance paid carried by spousal_maintenance_paid CO-4354 in CO-909 and CO-2353 (CW-20 fixed) |
+| A.4.b parents in the same home attributed | C: CO-909 (lives_with and the absence rule, CW-6 fixed) |
 | A.5.a presumption; sponsor and spouse net income deemed | C: CO-2365 |
 | A.5.b net income (20% or $175; support paid; plus unearned); rebuttal | C: CO-2365, CO-2367, CO-2368, CO-2359, CO-2361 (checked: the lesser of 20% and $175 per earner) |
 | A.5.c.1 non-LPR qualified | C: CO-2364 (LPR required) |
 | A.5.c.2 adjusted from refugee or asylee | C: CO-2364, CO-2700 |
 | A.5.c.3 signed before 12/19/1997 | C: CO-1573's meaning (only I-864 on or after 12/19/1997 is true) |
 | A.5.c.4 battery or extreme cruelty | C: CO-2363 |
-| A.5.c.5 combined income under 125% FPG | C: CO-2364, CO-2360, CO-2366 — **GAP CW-4** (FPG edition) |
+| A.5.c.5 combined income under 125% FPG | C: CO-2364, CO-2360, CO-2366, CO-4350, CO-4351 (the 2021 edition, CW-4 fixed) |
 | A.5.c.6 40 quarters | C: CO-3033, qualifying_quarters |
 | A.5.c.7 non-I-864 affidavit, or a classification without I-864 | C: CO-1573's meaning |
 | A.5.d recovery from sponsor | N/A: recovery |
@@ -266,7 +266,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 ### 3.605.2 Earned income
 | ¶ | disposition |
 |---|---|
-| A earned in-kind | **GAP CW-9(c)** |
+| A earned in-kind | C: in_kind_earned_compensation_value CO-4360 in CO-1716 (CW-9 fixed) |
 | B.1-2 diverted or garnished wages still earned; paid-when-paid | C: wages_gross is gross before amounts withheld (CO-023) |
 | C short-term (90 days or less) and subsidized employment | C: CO-2340, CO-3817-CO-3819 (FC-2) |
 | D.1-2 countable against the need standard; net after disregards | C: CO-907, CO-922 |
@@ -280,30 +280,30 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | E.3 irregular, averaged over 12 months | C: CO-1706 precision (stated averaged) |
 | E.4.a farm | C: self-employment facts |
 | E.4.b rental income as self-employment only if 20 hours a week managed | C: the fact convention (other_unearned_income_taxable is "property the person does not actively manage") |
-| E.4.c-e board, room, room and board | **GAP CW-10** |
-| F.1-3 donated in-kind earned income | **GAP CW-9(c)** |
-| G in-kind for employment | **GAP CW-9(c)** |
+| E.4.c-e board, room, room and board | C: cw_boarder_income CO-4361 in CO-1716 (E.4.e; room-only rent is in the unearned facts, see CO-4361 precision) (CW-10 fixed) |
+| F.1-3 donated in-kind earned income | C: CO-4360 (the going rate for donated services) (CW-9 fixed) |
+| G in-kind for employment | C: CO-4360 (CW-9 fixed) |
 
 ### 3.605.3 Countable unearned income
 | ¶ | disposition |
 |---|---|
 | intro; A (intro) | C: CO-908 |
 | A.1 VA compensation and pension | C: other_unearned_income_nontaxable |
-| A.2 rental income net of expenses | C (gross) — **GAP CW-14** |
+| A.2 rental income net of expenses | C: rental_property_expenses_paid CO-4364 in cw_unearned_income_deductions CO-4369 (CW-14 fixed) |
 | A.3 spousal maintenance | C: other_unearned facts |
 | A.4 VA educational assistance beyond school expenses | C: CO-2341 exempts all educational assistance (B.26 exempts educational grants, loans, stipends and scholarships); consistent with B.26 |
-| A.5 life insurance proceeds beyond last illness and burial | **GAP CW-14** |
-| A.6 health insurance or injury proceeds beyond medical | **GAP CW-14** |
+| A.5 life insurance proceeds beyond last illness and burial | C: lump_sum_amounts_spent_or_designated CO-4365 in CO-4369 (CW-14 fixed) |
+| A.6 health insurance or injury proceeds beyond medical | C: CO-4365 in CO-4369 (CW-14 fixed) |
 | A.7 strike benefits | C: other_unearned (and the strike bar CO-3808) |
 | A.8 jointly owned property income | C: stated share |
 | A.9-10 lease bonuses and royalties | C: other_unearned_income_taxable |
 | A.11 stepparent and sponsor attributable income | C: CO-2353, CO-2365 |
 | A.12 garnished unearned income | C: gross facts |
 | A.13 loans or inheritances | C: lump_sum_received is part of other_unearned; bona fide loans exempt (CO-3362) |
-| A.14 gifts or prizes | C for gifts in other_unearned — **GAP CW-9(a)(b)** (lottery and gambling prizes; sponsor cash) |
+| A.14 gifts or prizes | C for gifts in other_unearned; lottery and gambling prizes (CO-1181 in CO-908, CO-2554) and sponsor cash when deeming does not apply (cw_sponsor_contributions_counted CO-4363 in CO-910, CO-923) (CW-9 fixed) |
 | A.15-20 dividends and interest, annuities and pensions, disability or survivor, workers' compensation, UI, Social Security | C: CO-908 components |
-| B.1-8 periodic payments | C: CO-908 components; B.4 medical and legal deductions **GAP CW-14**; B.5 VA dependent portion counted to the dependent (fact convention) |
-| B.9 SMIB; lump-sum refund exempt | C (award gross); refund **CW-22 (P2)** |
+| B.1-8 periodic payments | C: CO-908 components; B.4 medical and legal deductions carried by workers_compensation_award_expenses CO-4366 in CO-4369 (CW-14 fixed); B.5 VA dependent portion counted to the dependent (fact convention) |
+| B.9 SMIB; lump-sum refund exempt | C (award gross); refund carried by medicare_premium_refund_received CO-4370 in CO-4369 (CW-22) |
 | B.10 military allotment | C as unearned; the non-recipient's excess-over-need computation N/A (rare); not separately modeled |
 
 ### 3.605.4 Exempt income
@@ -323,10 +323,10 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | B.3 school lunch, WIC | N/A: in-kind food |
 | B.4 home produce | N/A: in-kind |
 | B.5 URA relocation | C: CO-3366 |
-| B.6 EHAP | **CW-22 (P2)** |
+| B.6 EHAP | N/A recorded in docs/colorado-notes.md (a 1970s HUD demonstration with no current payments) (CW-22) |
 | B.7 Indian judgment and trust funds | C: CO-3366 |
 | B.8 ANCSA up to $2,000 a year | C: CO-3366 (the cap is not checked; federal statute) |
-| B.9 assistance for items outside the need standard | **CW-22 (P2)** |
+| B.9 assistance for items outside the need standard | not modeled, reason recorded in docs/colorado-notes.md (the standards are totals with no item list) (CW-22) |
 | B.10 disaster assistance | C: CO-3366 |
 | B.11 Title IV foster or kinship child excluded; income exempt | C: CO-2350, CO-841, CO-3821 |
 | B.12 DVSA volunteers | C: CO-3366 |
@@ -344,12 +344,12 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | B.25 educational savings accounts | C: CO-3816 |
 | B.26 educational grants, loans, stipends, scholarships | C: CO-3360 |
 | B.27 SSI recipient excluded; income exempt | C: CO-2350 (SSI income not read by CO-908) |
-| B.28 refugee resettlement, R&P | **GAP CW-14** |
-| B.29 CRSP Interim Cash Payment | **GAP CW-14** |
-| B.30 life or disability insurance cash value taken | **GAP CW-14** |
+| B.28 refugee resettlement, R&P | C: refugee_resettlement_payments_received CO-4367 in CO-4369 (CW-14 fixed) |
+| B.29 CRSP Interim Cash Payment | C: CO-4367 in CO-4369 (CW-14 fixed) |
+| B.30 life or disability insurance cash value taken | C: insurance_cash_value_withdrawn CO-4368 in CO-4369 (CW-14 fixed) |
 | B.31 LEAP | C: CO-3364 |
 | B.32 subsidized adoption child excluded | C: CO-2350, CO-841 |
-| B.33 lump sum of exempt income; designated amounts | C in part (exempt sources stay exempt); designated amounts **GAP CW-14** |
+| B.33 lump sum of exempt income; designated amounts | C in part (exempt sources stay exempt); designated amounts carried by CO-4365 in CO-4369 (CW-14 fixed) |
 | B.34 tax credits | C: CO-3365 |
 | B.35 subsidized employment wages | C: CO-3817 |
 
@@ -389,12 +389,12 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 |---|---|
 | intro reporting by the 10th; county acts within 10 days | N/A: procedure |
 | A.1 increases the month after report and verification | N/A: effective-date timing (point-in-time model) — see CW-17 |
-| A.2 decreases held until redetermination | **CW-17 (P2)** |
+| A.2 decreases held until redetermination | N/A: out of scope, recorded in docs/colorado-notes.md (CW-17) |
 | B.1.a-b reporting standards (need ÷ .33; need) | N/A: reporting thresholds, not eligibility |
 | B.2-4 new source, people, address | N/A |
 | C (intro) certification does not guarantee eligibility | C: CO-921 evaluated each month |
 | C.1.a income over the need standard closes | C: CO-913 |
-| C.1.b-g other negative changes (member leaves; pregnancy ends; 18-year-old graduates; death; sanctions; IPV) | C through the current-month facts (CO-900, is_pregnant, CO-901, CO-1264, CO-1730); death **CW-24 (P2)** |
+| C.1.b-g other negative changes (member leaves; pregnancy ends; 18-year-old graduates; death; sanctions; IPV) | C through the current-month facts (CO-900, is_pregnant, CO-901, CO-1264, CO-1730); death carried by CO-921 ineligible_deceased (CW-24) |
 | C.1.c.4-5 member moving to a new unit; income excluded from the next month | N/A: noticing period and timing |
 | C.2.a-e positive changes; newborn added from the month of birth | C through current-month facts; newborn documentation N/A |
 | C.3 net of simultaneous changes | N/A |
@@ -414,9 +414,9 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 ### 3.606.6 Time limits and extensions
 | ¶ | disposition |
 |---|---|
-| A every month counts for adult members; units with an adult up to 60 months | C: CO-915, CO-918, CO-924, CO-278 — **GAP CW-3** |
+| A every month counts for adult members; units with an adult up to 60 months | C: CO-915 (every member's counted months), CO-918, CO-924, CO-278 (CW-3 fixed) |
 | B sanction months count | C: the supplied count (CO-840) |
-| C 60 months bars the unit without good cause; state form; disqualified members bar an extension | C: CO-918, CO-925 (S1021) — **GAP CW-3** |
+| C 60 months bars the unit without good cause; state form; disqualified members bar an extension | C: CO-918, CO-925 (S1021, S3154) (CW-3 fixed) |
 | C.1-5, C.7 notices, requests, 30-day decision, 6-month extensions | N/A: procedure (the approval is CO-846/CO-847) |
 | C.6 former clients may request | C: the extension facts |
 | D.1-4 hardship reasons | C: has_hardship_extension_approved CO-847 (county decision) |
@@ -440,7 +440,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | F.1 application; choice of disposition; over $2,500 no payment | C: CO-1508; the rest N/A |
 | F.2.a choice | N/A |
 | F.2.b estate and responsible persons | C: CO-1224, CO-1229 |
-| F.2.c responsible persons' resources over the SSI limit | C: af_burial_responsible_person_excess_resources CO-1229; voluntary contributions **CW-19 (P2)** |
+| F.2.c responsible persons' resources over the SSI limit | C: af_burial_responsible_person_excess_resources CO-1229; voluntary contributions carried by burial_contributions_from_responsible_persons CO-4373 in CO-1508 (CW-19) |
 | F.2.d prepaid plot of $2,000 or less, or donated | C: CO-1222 |
 | F.2.e SS lump-sum death benefit not used | C: CO-1225 precision |
 | F.2.f insurance proceeds reduce the maximum | C: CO-1223 (**OQ-354**) |
@@ -455,7 +455,7 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 | A.1 does not need long-term BCA | C: CO-1266 |
 | A.2 specific need | C: CO-1267 |
 | A.3.a-c written or verbal agreement | C: CO-2559 (the amount agreed); the rest N/A |
-| A.4 POI | C for diversion (CO-1269 in CO-1270) — **GAP CW-1** for BCA; the POI bound **CW-27 (P2)** |
+| A.4 POI | C for diversion (CO-1269 in CO-1270) ; for BCA carried by CO-921 ineligible_diversion_period (CW-1 fixed); the POI bound recorded in OQ-252 (CW-27) |
 | A.5 county may end the POI or grant BCA | C: CO-1269's meaning ("not ended early") |
 | A.6 eligible for BCA or the county's higher limit; no child support assignment; no time-limit count | C: CO-1270, CO-1268 (**OQ-252**); no cap **OQ-531**; the time-limit part is carried by the supplied count |
 | A.7 no diversion in a BCA month | C: CO-1270 (FC-18) |
@@ -467,11 +467,11 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 ### 3.607 Initial Workforce Development
 | ¶ | disposition |
 |---|---|
-| 3.607.1.A.1-2 work eligible | C: CO-919 (informational) — P3-4 |
+| 3.607.1.A.1-2 work eligible | C: CO-919 (informational; the minor spouse of a minor head added, P3-4) |
 | 3.607.1.B.1-3 not mandatory | C: CO-919 |
 | 3.607.1.C | N/A |
 | 3.607.2-3.607.4 screening, assessment, condition agreement | N/A: county process |
-| 3.607.5 Individualized Plan; non-participation before the first IP is demonstrable evidence and closure | **GAP CW-13** (closure); the rest N/A |
+| 3.607.5 Individualized Plan; non-participation before the first IP is demonstrable evidence and closure | C: CO-4353 (demonstrable_evidence) in CO-921 (CW-13 fixed); the rest N/A |
 
 ### 3.608 Ongoing Workforce Development
 | ¶ | disposition |
@@ -495,13 +495,13 @@ Legend: **C** = carried by (and checked); **N/A** = not applicable (reason); **O
 |---|---|
 | 3.609.1.A-E notice and continued benefits | N/A: notice |
 | 3.609.2.A issuance schedule | N/A |
-| 3.609.2.A.1.a-e initial partial-month payment, table, $10 and $1 floors | **GAP CW-8** |
+| 3.609.2.A.1.a-e initial partial-month payment, table, $10 and $1 floors | C: CO-4355 to CO-4359 in CO-914 (CW-8 fixed) |
 | 3.609.2.A.2 prospective | C: month facts |
 | 3.609.2.B claims | N/A |
-| 3.609.2.C.1-3 death | **CW-24 (P2)** (C.1-2); C.3 N/A (personal representative) |
+| 3.609.2.C.1-3 death | C: CO-921 ineligible_deceased (C.1-2, CW-24); C.3 N/A (personal representative) |
 | 3.609.2.D cents dropped on all payments | C: CO-914 floor |
 | 3.609.2.E-H, J (warning and disable steps) | N/A: payment administration |
-| 3.609.2.J.3-4 one-month denial for continued EBT misuse | **GAP CW-13** |
+| 3.609.2.J.3-4 one-month denial for continued EBT misuse | C: CO-4353 (continued_ebt_misuse) in CO-921 (CW-13 fixed) |
 | 3.609.3 overpayments; 3.609.4 recovery | N/A: recovery |
 | 3.609.5.A-M, O-R IPV procedure | N/A |
 | 3.609.5.N.1-4 disqualification periods; only the individual; spouse and sponsor income still available | C: CO-1730 in CO-928 (individual only; income kept, CO-910) |
@@ -560,3 +560,46 @@ Built in a scratch copy of HEAD (`git archive HEAD`) by appending cases to `volu
 | CWZ-10 | CW-10 | $1,500 from 2 boarders | countable 0, $488 | $888 earned, ineligible |
 | CWZ-11 | CW-8 | applied 2026-10-12, no income | $488 for October | 20 days × .65754 → $320 |
 | CWZ-18 | CW-7 | unmarried 16-year-old mother living with her grandmother, no county approval | p1 `ineligible_living_arrangement` $0; baby `eligible` $362 | eligible (adult relative and caretaker) |
+
+## 7. Disposition (coverage round)
+
+Fix round of 2026-11-22 on branch ccr-9d19bf4c-wmnwcl (from a2ed7f0). Commits: 60af424 (D-295, the 2021 HHS poverty guidelines from govinfo.gov, and excerpts S3150-S3170), 593a74f (eligibility and unit), 25197a9 (income), 460c36b (initial partial month), c622cfa (open questions, citations, household cases, notes). Every reproducing household of section 6 was re-run on the fixed ledger with `scripts/eval-case.ts`'s evaluator; the rule's answer now comes out in each (the October results are prorated from the October 12 application date since CW-8). Five probes are stored as household cases with hand derivations: CO-160 (ZZ-1), CO-161 (ZZ-3), CO-162 (ZZ-4), CO-163 (CWZ-8), CO-164 (CWZ-18). The matrix rows above now name the items that carry them.
+
+| id | disposition |
+|---|---|
+| CW-1 | fixed (593a74f): `cw_eligibility_status` (CO-921) returns ineligible_diversion_period when any member of the unit is within a diversion POI (CO-1269, read as false when not stated; its precision now says a county grant of basic cash assistance under A.5 ends the POI). ZZ-2: ineligible_diversion_period, $0. |
+| CW-2 | fixed (593a74f): `cw_minor_parent_is_assisted_as_adult` (CO-4352: under 18, a dependent child of her own, and emancipated, not single, or with no caretaker in the home, N.2.b-c) is read by the caretaker and child counts (CO-926, CO-927), the adult-member test (CO-924), the child-only test (CO-916) and the strike test (CO-3808). CO-901 itself was not changed: reading cw_has_dependent_child there would be a cycle. ZZ-1 (stored as CO-160): One Caretaker, one child, grant standard $488 (October $320). |
+| CW-3 | fixed (593a74f): CO-915 reads the supplied count less Indian Country months for every member; 45 CFR 264.1(b)(1)(i) is applied in the count the statewide system keeps (CO-840's meaning), not by zeroing a current non-head. No open question remains: 3.606.6.A and C state the State's rule. ZZ-3 (CO-161): time_limit_reached. CO-918-T4's expectation changed false -> true with that justification; CO-08 p4 (18) now states his count. |
+| CW-4 | fixed (60af424, 593a74f): D-295 fetched from govinfo.gov; `cw_poverty_guideline_annual_table` and `_each_additional` (CO-4350, CO-4351, version from 2021-02-01) are read by CO-2364. ZZ-4 (CO-162): deeming applies at $2,900 for four ($2,760.42 line), $2,725 deemed, ineligible_income. CO-2364-T1 moved from $4,000 to $3,200 (the five-person line is now $3,233.33). |
+| CW-5 | fixed (593a74f): CO-909 deems only parents not in the minor parent's assistance unit. CWZ-8 (CO-163): countable $410 < $421, eligible, $620 for the month ($407 in October). |
+| CW-6 | fixed (593a74f): CO-909 deems only parents living in the same home (lives_with and the absence rule, as CO-2608 reads the home). CWZ-7: nothing deemed, eligible. |
+| CW-7 | fixed (593a74f): CO-906 accepts another adult caretaker (N.1) or an adult relative (N.2.a: is_related_to, 18 or older, same home); CO-921 bars every member of the unit when any member's arrangement fails. CWZ-18 (CO-164): eligible, No Caretaker two children, $362 ($238 in October). |
+| CW-8 | fixed (460c36b): `cw_partial_month_payment_factor` (CO-4358) from the 3.609.2.A.1 table (CO-4355), from the date of application or the later eligibility date (CO-4359), read in `cw_grant_amount` (CO-914) with the $10 and $1 floors (CO-4356, CO-4357) and cents dropped. CWZ-11: $320. CO-86 p1 October grant $384 -> $252: 20 days (October 12-31) x .65754 x $384 = $252.49, cents dropped. |
+| CW-9 | fixed (25197a9): (a) lottery_gambling_winnings_received is added in CO-908 and CO-2554 (CWZ-9: $2,000 counted, ineligible_income); (b) `cw_sponsor_contributions_counted` (CO-4363) counts money_received_from_sponsor when deeming does not apply, in CO-910 and CO-923 (kept out of CO-908, which CO-2364 reads); (c) neutral `in_kind_earned_compensation_value` (CO-4360) is read in CO-1716, and a disregarded student's in-kind earnings are excluded too (CO-2340). |
+| CW-10 | fixed (25197a9): `cw_boarder_income` (CO-4361): payments less payers x the one-person SNAP maximum allotment (accepts_from snap_maximum_allotment_table) less documented costs, foster care payments excluded; read in CO-1716. CWZ-10: $888 earned, $798 countable, ineligible_income. |
+| CW-11 | fixed (25197a9): `cw_refused_potential_income` (CO-4362, a county finding) is unearned income in CO-908 and CO-2554. |
+| CW-12 | fixed (593a74f): `cw_is_excluded_for_unprovided_status_verification` (CO-4372) leaves the member out of CO-2351 (income still counted in CO-910/CO-923) and CO-2561 reports ineligible_member_verification. CO-02 changed: p4 and p5 (citizenship pending past 2026-10-31) leave the size: cw_unit_size 2 -> 0, cw_need_standard 245 -> 0, cw_grant_standard 362 -> 0 (No Caretaker row, 0 column), participation eligible_member -> ineligible_member_verification; eligibility (ineligible_income, 2,037 >= 0) and the $0 grant unchanged. |
+| CW-13 | fixed (593a74f): `cw_county_closure_type` (CO-4353; demonstrable_evidence, continued_ebt_misuse, minor_parent_education_nonparticipation) read for every member in CO-921 (closed_demonstrable_evidence, closed_ebt_misuse, closed_minor_parent_education). The closures rest on county findings, so they enter as one supplied finding. |
+| CW-14 | fixed (25197a9): `cw_unearned_income_deductions` (CO-4369) from neutral facts CO-4364 (rental expenses, up to the rent in other_unearned_income_taxable), CO-4365 (insurance and lump-sum amounts spent or designated, A.5, A.6, B.33), CO-4366 (workers' compensation award expenses, B.4), CO-4367 (R&P and CRSP Interim Cash Payment, B.28-29), CO-4368 (insurance cash value taken, B.30); subtracted in CO-908 and CO-2554. |
+| CW-15 | open question OQ-770 (state policy choice; the volume keeps eleven days). |
+| CW-16 | open question OQ-771 (state policy choice; the application month is tested). |
+| CW-17 | out of scope, recorded in docs/colorado-notes.md (c622cfa): effective-date rules between determinations (3.606.3.A.1-2); the volume determines a month from that month's facts. |
+| CW-18 | deferred P2 (reason in docs/colorado-notes.md): ranking caretakers needs CO-900's edge rule and CO-2608 to change; a non-parent caretaker joins only on request today (C.2.b), so the hierarchy changes a unit only where one asks to join beside a parent or a nearer relative. |
+| CW-19 | fixed (25197a9): neutral `burial_contributions_from_responsible_persons` (CO-4373) reduces CO-1508 (F.2.c). |
+| CW-20 | fixed (593a74f): neutral `spousal_maintenance_paid` (CO-4354) deducted in CO-909 and CO-2353. |
+| CW-21 | open question OQ-772 (state policy choice; no bar is applied). |
+| CW-22 | SMIB refund fixed (25197a9, CO-4370 in CO-4369); B.6 EHAP recorded as not applicable (a HUD demonstration with no current payments) and B.9 recorded as not modeled (the standards are totals with no item list), docs/colorado-notes.md. |
+| CW-23 | fixed (25197a9): neutral `retroactive_colorado_works_lump_sum_received` (CO-4371, part of CO-3920) is subtracted in CO-4369. |
+| CW-24 | fixed (593a74f): CO-921 returns ineligible_deceased when date_of_death is before the first day of the month (C.1-2); a death in the month keeps it (C.3). |
+| CW-25 | deferred P2 (reason in docs/colorado-notes.md): the eight-month limit needs an SSN application date and a good-cause finding; B.2.c.1's redetermination rule (CO-1647) already requires the number itself at the next recertification. |
+| CW-26 | fixed (593a74f): CO-2561 option ineligible_member_institution_or_absence. |
+| CW-27 | recorded in OQ-252 (c622cfa): the POI bound of 3.606.8.A.4 is not checked; the county's POI is taken as stated. |
+| P3-1 | fixed (593a74f, 460c36b): CO-918, CO-921, CO-914, CO-924, CO-925, CO-1260, CO-278, CO-355, CO-840, CO-846, CO-847, CO-1723 cite S3154/S3164 (D-81) in place of S417, S524, S525. S417 and S524 themselves are left in sources.md (other history cites them). |
+| P3-2 | fixed (c622cfa): OQ-700 cites 3.605.4.A.5 and 3.605.2.D.3. |
+| P3-3 | fixed (593a74f): CO-909's precision now states the deductions it makes; the stale assumption line is removed. |
+| P3-4 | fixed (c622cfa): CO-919 adds the spouse of a minor child head-of-household (3.607.1.A.1, S3168), with a test. |
+| P3-5 | fixed (c622cfa): OQ-104 names CO-920. |
+| P3-6 | fixed (593a74f): CO-926's precision no longer says CO-900 builds only a pair. |
+| P3-7 | fixed (c622cfa): CO-3385, CO-1716's test comment, S1621 and OQ-613 cite 3.605.4.B.24. |
+
+Not P1: none; each P1's reading was confirmed against D-81 before it was fixed. Rule-test expectations changed with justification: CO-916-T1 (true -> false, CW-2), CO-918-T4 (false -> true, CW-3), CO-926-T3 (0 -> 1, CW-2), CO-2364-T1 (re-based to $3,200, CW-4); several older tests now state the new items to stay isolated.

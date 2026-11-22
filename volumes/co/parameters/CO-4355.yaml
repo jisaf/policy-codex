@@ -1,0 +1,16 @@
+id: CO-4355
+name: "Colorado Works: partial month payment factors"
+identifier: cw_partial_month_payment_factor_table
+kind: parameter
+type: table keyed by number of days
+scope: global
+program: ColoradoWorks
+meaning: "The decimal figure the authorized Colorado Works grant for the entire month is multiplied by to give the authorized grant for a partial month, by the number of days for which payment is made in the initial month (1 to 30), per 9 CCR 2503-6 3.609.2.A.1.c-d and the table that follows A.1.e."
+precision: "The figures are the rule's table as printed (30 days is printed .9863). A unit whose assistance begins on the first of the month is paid for the entire month, so no row for 31 days is needed (cw_partial_month_payment_factor, CO-4358). The same figures appear in the Adult Financial rule (af_partial_month_payment_factor_table, CO-2602, 9 CCR 2503-5 3.581.D.4); each program's rule states its own table, so each has its own parameter."
+versions:
+  - from: "2025-07-01"
+    value: {"1": 0.03288, "2": 0.06575, "3": 0.09863, "4": 0.13151, "5": 0.16439, "6": 0.19726, "7": 0.23014, "8": 0.26302, "9": 0.29590, "10": 0.32876, "11": 0.36164, "12": 0.39452, "13": 0.42739, "14": 0.46027, "15": 0.49315, "16": 0.52603, "17": 0.55890, "18": 0.59178, "19": 0.62466, "20": 0.65754, "21": 0.69041, "22": 0.72329, "23": 0.75617, "24": 0.78904, "25": 0.82192, "26": 0.85480, "27": 0.88768, "28": 0.92054, "29": 0.95342, "30": 0.98630}
+    source: S3156
+sources: [S3156]
+tags: [cash, tanf]
+rationale: "Coverage review CW-8 (P1): the initial payment includes assistance from the date of application (3.609.2.A.1, S3156), computed with this table, but no item read it, so the application month was paid in full. Versioned from the effective date of the rule version fetched (D-81, 07/01/2025); the table is unchanged from earlier versions as far as the volume holds them."

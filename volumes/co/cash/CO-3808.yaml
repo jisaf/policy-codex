@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: "Whether this person's Colorado Works assistance unit has an adult (a member who is not a dependent child) participating in a strike, which makes the unit ineligible (9 CCR 2503-6 3.604.2.L.2)."
-precision: "A member whose participation is not stated is read as not on strike (is_participating_in_strike, CO-3800)."
-derived: [exists, cw_assistance_unit_members, [all, [not, [of, [P], cw_is_dependent_child]], [otherwise, [of, [P], is_participating_in_strike], false]]]
+precision: "A member whose participation is not stated is read as not on strike (is_participating_in_strike, CO-3800). Coverage review CW-2: a minor parent assisted as an adult (3.604.2.N.2.c, cw_minor_parent_is_assisted_as_adult, CO-4352) is an adult of the unit here."
+derived: [exists, cw_assistance_unit_members, [all, [any, [not, [of, [P], cw_is_dependent_child]], [of, [P], cw_minor_parent_is_assisted_as_adult]], [otherwise, [of, [P], is_participating_in_strike], false]]]
 sources: [S2601]
 implemented: engine
 tags: [cash, tanf, household]
@@ -15,4 +15,4 @@ rationale: "Final cash review FC-1: 3.604.2.L.2 (S2601) makes \"Assistance units
 tests:
   - {id: CO-3808-T1, title: "The father of the unit is on strike", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_participating_in_strike: true}, others: {p2: {cw_is_dependent_child: true}}, expect: true}
   - {id: CO-3808-T2, title: "No one on strike", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false}, others: {p2: {cw_is_dependent_child: true}}, expect: false}
-  - {id: CO-3808-T3, title: "A 17-year-old dependent child on a student strike is not an adult", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_participating_in_strike: false}, others: {p2: {cw_is_dependent_child: true, is_participating_in_strike: true}}, expect: false}
+  - {id: CO-3808-T3, title: "A 17-year-old dependent child on a student strike is not an adult", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_participating_in_strike: false}, others: {p2: {cw_is_dependent_child: true, cw_minor_parent_is_assisted_as_adult: false, is_participating_in_strike: true}}, expect: false}

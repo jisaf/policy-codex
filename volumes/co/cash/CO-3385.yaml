@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: ColoradoWorks
-meaning: "Whether all the person's earned income for the month is disregarded under 9 CCR 2503-6 3.605.4.A.24.b: a dependent child in a secondary education or undergraduate degree program who is a full-time student, or a part-time student who is not a full-time employee."
+meaning: "Whether all the person's earned income for the month is disregarded under 9 CCR 2503-6 3.605.4.B.24.b: a dependent child in a secondary education or undergraduate degree program who is a full-time student, or a part-time student who is not a full-time employee."
 precision: "A full-time employee is read as working cw_full_time_employee_hours_per_month or more (OQ-613). Secondary education includes career and technical and high school equivalency programs; an undergraduate degree program is higher education."
 derived: [all, cw_is_dependent_child, [in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, higher_education]], [any, ["=", education_enrollment_intensity, full_time], ["<", [otherwise, hours_worked, 0], cw_full_time_employee_hours_per_month]]]
 sources: [S1621]

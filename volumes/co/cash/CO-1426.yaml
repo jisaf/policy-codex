@@ -9,6 +9,7 @@ role: outcome
 meaning: "The date by which requested Colorado Works verifications must be returned: eleven calendar days from the written request (3.604.3.A); with good cause, the twentieth calendar day after the date of application when that is later (3.602.1.I.2); or the date to which the county extended the time beyond the forty-five-day processing maximum (3.604.3.B.4)."
 derived: [case, [[not, [unknown, cw_verification_extended_due_date]], cw_verification_extended_due_date], [[all, [otherwise, cw_verification_good_cause_shown, false], [">", [days_after, cw_verification_good_cause_days, cw_application_date], [days_after, cw_verification_response_days, [otherwise, cw_verification_request_date, verification_request_date]]]], [days_after, cw_verification_good_cause_days, cw_application_date]], [else, [days_after, cw_verification_response_days, [otherwise, cw_verification_request_date, verification_request_date]]]]
 sources: [S871, S1629]
+open: [OQ-770]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: No existing item states when requested Colorado Works verification is due.

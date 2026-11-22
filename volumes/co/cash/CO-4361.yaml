@@ -1,0 +1,21 @@
+id: CO-4361
+name: "Colorado Works: room and board income"
+identifier: cw_boarder_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The room and board payments this person received in the month that Colorado Works counts as earned income (9 CCR 2503-6 3.605.2.E.4.e): the payments less, for each boarder, the maximum Food Assistance allotment for a one-person household, and less the other documented expenses directly related to providing the room and board; never below zero."
+precision: "The payments, the number of boarders and the documented expenses are room_and_board_payments_received (CO-4161), room_and_board_payers_count (CO-4162) and room_and_board_provision_costs (CO-4163, read as 0 when not stated); the allotment is the SNAP maximum allotment for one person (snap_maximum_allotment_table, CO-130, read for 1) in force on the determination date. Payments that are foster care payments (room_and_board_payments_are_foster_care, CO-4164, read as false when not stated) are not counted: 3.605.4.B.11 exempts the income of a Title IV foster child and the volume reads foster care provider payments as exempt (CO-2341). CO-4161 states payments for room and meals together, so the room-and-board rule (E.4.e) is applied; a lodger's payment for a room only is rent, stated in the unearned income facts, and a payment for meals only is not separately stated. If no payments are stated, 0."
+derived: [case, [["<=", [otherwise, room_and_board_payments_received, 0], 0], 0], [[otherwise, room_and_board_payments_are_foster_care, false], 0], [else, [max, 0, ["-", room_and_board_payments_received, ["+", ["*", room_and_board_payers_count, [lookup, snap_maximum_allotment_table, 1]], [otherwise, room_and_board_provision_costs, 0]]]]]]
+accepts_from: [snap_maximum_allotment_table]
+sources: [S3159]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Coverage review CW-10 (P1): room_and_board_payments_received (CO-4161) was read only by SNAP (snap_boarder_income, CO-4165), so Colorado Works counted no boarder income: $1,500 from two boarders gave countable income 0 and $488, where E.4.e (S3159) counts $1,500 less two one-person allotments ($306 each in FY 2027) = $888 as earned income. The Colorado Works rule names the Food Assistance allotment, so this item reads SNAP's parameter (accepts_from). cw_gross_earned_income (CO-1716) adds it."
+tests:
+  - {id: CO-4361-T1, title: "Probe CWZ-10: $1,500 from two boarders, no documented costs: 1,500 - 2 x 306 = 888", as_of: "2026-10-15", month: "2026-10", given: {room_and_board_payments_received: 1500, room_and_board_payers_count: 2}, expect: 888}
+  - {id: CO-4361-T2, title: "One boarder paying $700 with $100 of documented meal costs: 700 - 306 - 100 = 294", as_of: "2026-10-15", month: "2026-10", given: {room_and_board_payments_received: 700, room_and_board_payers_count: 1, room_and_board_provision_costs: 100}, expect: 294}
+  - {id: CO-4361-T3, title: "A boarder paying $250, less than the allotment: nothing counted", as_of: "2026-10-15", month: "2026-10", given: {room_and_board_payments_received: 250, room_and_board_payers_count: 1}, expect: 0}
+  - {id: CO-4361-T4, title: "Foster care payments for a foster child placed in the home are not counted", as_of: "2026-10-15", month: "2026-10", given: {room_and_board_payments_received: 900, room_and_board_payers_count: 1, room_and_board_payments_are_foster_care: true}, expect: 0}
+  - {id: CO-4361-T5, title: "No boarders stated", as_of: "2026-10-15", month: "2026-10", given: {}, expect: 0}
