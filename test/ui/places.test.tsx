@@ -111,10 +111,10 @@ describe("the seven places", () => {
   it("Changes lists what takes effect in a month, rule documents included", () => {
     const host = show("#/co/changes?month=2026-11");
     const n = changesInMonth(engine, vol, "2026-11");
-    expect(host.querySelector("h2")!.textContent).toContain(`${n.total} changes take effect`);
+    expect(host.querySelector("h2.monthhead")!.textContent).toMatch(new RegExp(`${n.total} changes (take|took|will take) effect`));
     expect(host.querySelectorAll("li.change").length).toBe(n.total);
     const proposal = show("#/co/changes/proposal");
-    expect(proposal.querySelector(".tray.inline")).toBeTruthy();
+    expect(proposal.querySelector("section.holds")).toBeTruthy();
   });
 
   it("Programs, Questions and Law's documents keep their content", () => {

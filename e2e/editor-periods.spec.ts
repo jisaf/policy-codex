@@ -31,7 +31,8 @@ test("adds a dated period to the Colorado Works grant standard", async ({ page }
   await page.getByRole("button", { name: "Save to tray" }).click();
   await page.locator("a.proposal-pill").click();
   await expect(page).toHaveURL(/#\/co\/changes\/proposal$/);
-  const entry = page.locator(".tray li.entry", { hasText: "CO-276" });
+  const entry = page.locator('section.holds li.entry[data-entry="CO-276"]');
   await expect(entry).toContainText("edit");
+  await expect(entry).toContainText("New version from July 1, 2028");
   await expect(entry).not.toContainText("no change");
 });
