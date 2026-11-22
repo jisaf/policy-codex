@@ -162,6 +162,10 @@ export function canonicalRoute(r: Route): Route {
       return { ...base, view: "law", arg: join("sources", r.arg), params: r.params };
     case "documents":
       return { ...base, view: "law", arg: "doc", params: r.params };
+    case "questions":
+      // The departures were a tab of the queue; they are in Law now.
+      if (r.params.tab === "departures") return { ...base, view: "law", arg: "departures", params: {} };
+      return r;
     case "document": {
       const at = r.params.excerpt;
       return { ...base, view: "law", arg: join("doc", r.arg), params: { ...omit(r.params, ["excerpt"]), ...(at ? { at } : {}) } };
@@ -196,14 +200,6 @@ export function internalRoute(c: Route): Route {
       // The aid-code tab is the aid-code cards' own route (OutcomesView
       // `CodesTab`); the Programs page reads the canonical route.
       if (c.params.tab === "aid-codes") return { ...base, view: "outcomes", arg: c.arg, params: omit(c.params, ["tab"]) };
-      return c;
-    case "law":
-      if (parts[0] === "sources") return { ...base, view: "source", arg: join(...parts.slice(1)), params: c.params };
-      if (parts[0] === "doc") {
-        if (!parts[1]) return { ...base, view: "documents", arg: null, params: c.params };
-        const at = c.params.at;
-        return { ...base, view: "document", arg: parts[1], params: { ...omit(c.params, ["at"]), ...(at ? { excerpt: at } : {}) } };
-      }
       return c;
     default:
       return c;

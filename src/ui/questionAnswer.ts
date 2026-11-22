@@ -29,7 +29,22 @@ export interface QuestionAnswer {
   caveat?: string;
   /** Who at the agency was told, and when (a departure's notice). */
   agencyNotified?: string;
+  /** "opinion" for a legal opinion (Blind B's form: the conclusion, the
+   *  authority relied on, its effect). `citation` is then the authority. */
+  kind?: "answer" | "opinion";
+  /** A legal opinion's effect ("Federal statute governs over Colorado's
+   *  text"). */
+  effect?: string;
 }
+
+/** The effects a legal opinion can have (Blind B), in the order offered. */
+export const OPINION_EFFECTS = [
+  "The reading in force stands",
+  "The reading in force must change",
+  "Federal statute governs over Colorado's text",
+  "Colorado's text governs",
+  "Cannot be settled without rulemaking",
+] as const;
 
 function sentence(s: string): string {
   const t = s.trim().replace(/\s+/g, " ");
@@ -41,12 +56,17 @@ function sentence(s: string): string {
  *  reads it as the latest note. */
 export function answerNote(a: QuestionAnswer): string {
   const who = [a.by.trim(), a.role.trim()].filter(Boolean).join(", ");
-  const parts = [
-    a.keepOpen
+  const opinion = a.kind === "opinion";
+  const head = opinion
+    ? `Legal opinion${a.keepOpen ? ", question kept open" : ""} (${a.date}, ${who}): ${sentence(a.decision)}`
+    : a.keepOpen
       ? `Opinion, question kept open (${a.date}, ${who}): ${sentence(a.decision)}`
-      : `Answer (${a.date}, ${who}): ${sentence(a.decision)}`,
-    a.citation.trim() ? `Citation: ${sentence(a.citation)}` : "No citation given.",
-  ];
+      : `Answer (${a.date}, ${who}): ${sentence(a.decision)}`;
+  const cite = opinion
+    ? (a.citation.trim() ? `Authority: ${sentence(a.citation)}` : "No authority given.")
+    : (a.citation.trim() ? `Citation: ${sentence(a.citation)}` : "No citation given.");
+  const parts = [head, cite];
+  if (opinion && a.effect?.trim()) parts.push(`Effect: ${sentence(a.effect)}`);
   if (a.caveat?.trim()) parts.push(`Caveat: ${sentence(a.caveat)}`);
   if (a.agencyNotified?.trim()) parts.push(`Agency notified: ${sentence(a.agencyNotified)}`);
   if (a.followUps?.length) {
@@ -113,6 +133,6 @@ export function stagedAnswers(before: string, after: string): Map<string, Staged
 /** The latest "Agency notified:" a question's text records, or null. */
 export function agencyNotified(body: string): string | null {
   let last: string | null = null;
-  for (const m of body.matchAll(/Agency notified:\s*([^\n]+?)(?=\s+(?:Follow-up edits|Caveat|Citation):|$)/gm)) last = m[1].trim();
+  for (const m of body.matchAll(/Agency notified:\s*([^\n]+?)(?=\s+(?:Follow-up edits|Caveat|Citation|Authority|Effect):|$)/gm)) last = m[1].trim();
   return last;
 }

@@ -2,7 +2,6 @@ import "./styles.css";
 import "./phase13.css";
 import "./shell.css";
 import { CasesView } from "./CasesView";
-import { DocumentsView } from "./DocumentsView";
 import { GraphView } from "./GraphView";
 import { HandoffView } from "./HandoffView";
 import { Header } from "./Header";
@@ -15,7 +14,6 @@ import { argParts, canonicalRoute, isPrRef } from "./router";
 import { SearchView } from "./SearchView";
 import { Settings } from "./Settings";
 import { Sidebar } from "./Sidebar";
-import { SourcesView } from "./SourcesView";
 import { navOpenSig } from "./shell";
 import { route, statusSig, volumeSig } from "./state";
 import { TableView } from "./TableView";
@@ -30,7 +28,8 @@ import { HouseholdPage, HouseholdsList } from "./places/HouseholdPage";
 import { LawPage } from "./places/LawPage";
 import { ProgramsPage } from "./places/ProgramsPage";
 import { SignPage } from "./places/SignPage";
-import { QuestionsView } from "./views/QuestionsView";
+import { QuestionsPage } from "./places/QuestionsPage";
+import { OutcomesView } from "./views/OutcomesView";
 import { MapPage } from "./map/MapView";
 
 /** The page for the address. It dispatches on the canonical route (what the
@@ -51,11 +50,8 @@ export function ViewSlot() {
       if (parts[0] === "new") return <CasesView />;
       if (parts[1]) return <DeterminationPage />;
       return <HouseholdPage />;
-    case "questions": return <QuestionsView />;
-    case "law":
-      if (parts[0] === "sources") return <SourcesView />;
-      if (parts[0] === "doc") return <DocumentsView />;
-      return <LawPage />;
+    case "questions": return <QuestionsPage />;
+    case "law": return <LawPage />;
     case "changes": return <ChangesPage />;
     case "item": return <ItemView />;
     case "map": return <MapPage />;

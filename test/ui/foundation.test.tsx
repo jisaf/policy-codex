@@ -16,11 +16,11 @@ import { defaultRoute } from "../../src/ui/router";
 import { buildSearchIndex, search } from "../../src/ui/search";
 import { TableView } from "../../src/ui/TableView";
 import { TextEditor } from "../../src/ui/TextEditor";
-import { SourcesView } from "../../src/ui/SourcesView";
-import { QuestionsView } from "../../src/ui/views/QuestionsView";
+import { LawPage } from "../../src/ui/places/LawPage";
+import { QuestionsPage } from "../../src/ui/places/QuestionsPage";
 import { questionStatus } from "../../src/ui/questions";
 import { tourCase, tourItem, tourProgram } from "../../src/ui/Tour";
-import { documentParagraphs, findExcerptParagraph } from "../../src/ui/DocumentsView";
+import { documentParagraphs, findExcerptParagraph } from "../../src/ui/places/LawSources";
 import { DraftBanner } from "../../src/ui/DraftBanner";
 import { volumePrograms } from "../../src/ui/programs";
 
@@ -188,11 +188,11 @@ describe("open questions have their own page", () => {
     const q = vol.openQuestions.find((x) => questionStatus(x) === "open" && x.items.length > 0)!;
     route.value = { ...route.value, view: "questions", arg: q.id };
     const host = document.createElement("div");
-    render(<QuestionsView />, host);
+    render(<QuestionsPage />, host);
     expect(host.querySelector("section.question")!.getAttribute("data-question")).toBe(q.id);
     expect(host.querySelector(".qstatus")!.textContent).toBe("Open");
     expect(host.querySelectorAll("ul.qitems li").length).toBeGreaterThan(0);
-    expect(host.querySelector(".qbody")!.textContent!.length).toBeGreaterThan(20);
+    expect(host.querySelector(".qnotes")!.textContent!.length).toBeGreaterThan(20);
   });
 });
 
@@ -200,14 +200,16 @@ describe("sources say what kind of text they are", () => {
   beforeEach(setUp);
 
   it("labels excerpts by kind and marks the unverified ones", () => {
-    route.value = { ...route.value, view: "source", arg: null };
+    route.value = { ...route.value, view: "law", arg: "sources", params: { unverified: "1" } };
     const host = document.createElement("div");
-    render(<SourcesView />, host);
-    const kinds = new Set([...host.querySelectorAll("article.source")].map((a) => a.getAttribute("data-kind")));
-    expect(kinds.has("statute")).toBe(true);
-    expect(kinds.has("regulation")).toBe(true);
+    render(<LawPage />, host);
     const unverified = vol.sources.filter((s) => s.verification === "unverified");
-    expect(host.querySelectorAll(".flag.unverified").length).toBe(unverified.length);
+    expect(host.querySelectorAll("ul.excerptlist li").length).toBe(unverified.length);
+    expect(host.querySelectorAll("ul.excerptlist .flag.unverified").length).toBe(unverified.length);
+    route.value = { ...route.value, params: { kind: "regulation" } };
+    render(<LawPage />, host);
+    const kinds = new Set([...host.querySelectorAll("ul.excerptlist .excerpt-kind")].map((a) => a.textContent));
+    expect(kinds.size).toBe(1);
     expect(host.textContent).not.toContain("Nothing here is interpretation");
   });
 

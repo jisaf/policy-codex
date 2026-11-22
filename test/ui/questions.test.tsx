@@ -28,7 +28,12 @@ import {
 } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import { personaSig } from "../../src/ui/personas";
-import { programName, questionEffect, QuestionsView } from "../../src/ui/views/QuestionsView";
+import { programName, questionEffect } from "../../src/ui/places/questionParts";
+import { QuestionsPage as QuestionsView } from "../../src/ui/places/QuestionsPage";
+import { LawPage } from "../../src/ui/places/LawPage";
+import { canonicalRoute, parseHash } from "../../src/ui/router";
+import { questionQueue } from "../../src/ui/counts";
+import { todayIso } from "../../src/ui/views/context";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
@@ -306,7 +311,10 @@ describe("the view", () => {
     const cards = host.querySelectorAll("li.qcard");
     expect(cards.length).toBe(open.length);
     const groups = [...host.querySelectorAll("section.qgroup")].map((g) => g.getAttribute("data-owner"));
-    expect(groups).toEqual(groupByOwner(engine, open).map((g) => g.owner));
+    expect(groups).toEqual(questionQueue(engine, vol.sources, vol.openQuestions, null, {}).groups.map((g) => g.owner));
+    for (const g of host.querySelectorAll("section.qgroup")) {
+      for (const c of g.querySelectorAll("li.qcard")) expect(c.getAttribute("data-owner")).toBe(g.getAttribute("data-owner"));
+    }
     expect(host.querySelector("li.qcard .qclass")).toBeTruthy();
     const resolved = host.querySelector("details.qresolved")!;
     expect(resolved.hasAttribute("open")).toBe(false);
@@ -326,6 +334,40 @@ describe("the view", () => {
     render(null, host);
   });
 
+  it("'Only mine' and the owner filter: every card names an owner the filter accepts", () => {
+    personaSig.value = "cdhs";
+    const roles = personaById("cdhs")!.roles;
+    const host = document.createElement("div");
+    route.value = { ...route.value, params: { mine: "1", sort: "number" } };
+    render(<QuestionsView />, host);
+    const mine = [...host.querySelectorAll("li.qcard")];
+    expect(mine.length).toBe(personaQuestions(engine, vol.sources, vol.openQuestions, personaById("cdhs")!).length);
+    for (const c of mine) expect(roles).toContain(c.getAttribute("data-owner"));
+    expect(host.querySelector("button.mine")!.getAttribute("aria-pressed")).toBe("true");
+    // Marcus: only the Cash programs policy owner's, newest first.
+    route.value = { ...route.value, params: { mine: "1", owner: "Cash programs policy owner", sort: "newest" } };
+    render(<QuestionsView />, host);
+    const cash = [...host.querySelectorAll("li.qcard")];
+    expect(cash.length).toBe(20);
+    for (const c of cash) {
+      expect(c.getAttribute("data-owner")).toBe("Cash programs policy owner");
+      expect(c.querySelector(".qowner b")!.textContent).toBe("Cash programs policy owner");
+    }
+    const nums = cash.map((c) => Number(c.getAttribute("data-question")!.slice(3)));
+    expect(nums).toEqual([...nums].sort((x, y) => y - x));
+    render(null, host);
+  });
+
+  it("sorts by the items carrying a question", () => {
+    route.value = { ...route.value, params: { sort: "items" } };
+    const host = document.createElement("div");
+    render(<QuestionsView />, host);
+    const ids = [...host.querySelectorAll("li.qcard")].map((c) => c.getAttribute("data-question")!);
+    const n = (id: string) => open.find((e) => e.id === id)!.items.length;
+    for (let i = 1; i < ids.length; i++) expect(n(ids[i - 1])).toBeGreaterThanOrEqual(n(ids[i]));
+    render(null, host);
+  });
+
   it("works out each card's households after the first paint", async () => {
     route.value = { ...route.value, params: { q: "OQ-533" } };
     const host = document.createElement("div");
@@ -337,19 +379,24 @@ describe("the view", () => {
     render(null, host);
   }, 30_000);
 
-  it("shows the departures as decisions for Legal", () => {
-    route.value = { ...route.value, params: { tab: "departures" } };
+  it("the departures moved to Law: every one in force, with the App's fields", () => {
+    expect(canonicalRoute(parseHash("#/co/questions?tab=departures"))).toMatchObject({ view: "law", arg: "departures" });
+    route.value = { ...route.value, view: "law", arg: "departures", params: {} };
     const host = document.createElement("div");
-    render(<QuestionsView />, host);
-    const cards = [...host.querySelectorAll("li.departure")];
-    expect(cards.map((c) => c.getAttribute("data-item")).sort()).toEqual(overrideItems.map((it) => it.id).sort());
-    expect(cards[0].textContent).toContain("Colorado rule it departs from");
+    render(<LawPage />, host);
+    const rows = [...host.querySelectorAll("li.departure")];
+    expect(rows.map((c) => c.getAttribute("data-item")).sort())
+      .toEqual(departureItems(engine, { asOf: todayIso() }).map((it) => it.id).sort());
+    for (const label of ["The codex follows", "Departs from", "Reasoning", "Questions", "Agency notified"]) {
+      expect(rows[0].querySelector("dl")!.textContent).toContain(label);
+    }
+    expect(rows[0].querySelector("h2 a")!.getAttribute("href")).toMatch(/^#\/co\/item\/CO-\d+$/);
     render(null, host);
   });
 
   it("opens a question's full page and stages an answer through the tray", async () => {
     const id = "OQ-533";
-    route.value = { ...route.value, arg: id, params: { answer: "1" } };
+    route.value = { ...route.value, arg: id, params: { act: "answer" } };
     const host = document.createElement("div");
     document.body.appendChild(host);
     const read = async (p: string) => fs.readFileSync(path.join(root, p), "utf8");
@@ -359,10 +406,12 @@ describe("the view", () => {
     expect(page.querySelector(".assumption")!.textContent!.length).toBeGreaterThan(20);
     expect(page.querySelectorAll("ul.qitems li").length).toBeGreaterThan(0);
     expect(page.querySelector(".qclass")!.textContent).toBe("Blocked on a named document");
+    // The rule text is on the page, with a way into the full document.
+    expect(page.querySelector(".excerpt blockquote")).toBeTruthy();
     await until(() => Boolean(page.querySelector(".alternative .effect-count")));
     expect(page.querySelector(".alternative table.qresults td.changed")).toBeTruthy();
 
-    const form = page.querySelector("form.qanswer") as HTMLFormElement;
+    const form = page.querySelector('form.qanswer[data-act="answer"]') as HTMLFormElement;
     const type = (sel: string, v: string) => {
       const el = form.querySelector(sel) as HTMLInputElement | HTMLTextAreaElement;
       el.value = v;
@@ -370,7 +419,8 @@ describe("the view", () => {
     };
     (form.querySelectorAll("input[type=radio]")[1] as HTMLInputElement).click();
     type("textarea", "Apply the rule as written until CDHS's agency letter.");
-    type("input[type=text]", "CDHS agency letter FEA 26-01");
+    type('input[name="citation"]', "CDHS agency letter FEA 26-01");
+    type('input[name="agency-notified"]', "CDHS SNAP division, 2026-11-22");
     type('input[autocomplete="name"]', "Priya Shah");
     await tick();
     form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
@@ -380,6 +430,7 @@ describe("the view", () => {
     expect(entry.before).toBe(md);
     expect(entry.after).toMatch(new RegExp(`^### ${id}\\. Resolved: `, "m"));
     expect(entry.after).toContain("Priya Shah, SNAP policy owner");
+    expect(entry.after).toContain("Citation: CDHS agency letter FEA 26-01.");
     expect(entry.label).toBe(`Answer to ${id}`);
 
     // Follow-up edits go through the tray too.
@@ -390,7 +441,6 @@ describe("the view", () => {
     const staged = changeSetSig.value.entries;
     expect(staged.find((e) => e.after?.identifier === "snap_abawd_max_age")!.after!.versions!.every((v) => v.value === 54)).toBe(true);
     expect(staged.filter((e) => e.before?.open?.includes(id)).every((e) => !(e.after?.open ?? []).includes(id))).toBe(true);
-    // What happens next, with the download, is on the page.
     expect(host.querySelector(".qstaged .sendchange button.download")).not.toBeNull();
     ([...host.querySelectorAll(".qstaged button")] as HTMLButtonElement[]).find((b) => b.textContent === "Open the change tray")!.click();
     expect(trayOpenSig.value).toBe(true);
@@ -400,6 +450,48 @@ describe("the view", () => {
     route.value = { ...route.value, arg: null, params: { q: id } };
     render(<QuestionsView />, host);
     expect(host.querySelector(`li.qcard[data-question="${id}"]`)).toBeNull();
+    render(null, host);
+    host.remove();
+  }, 60_000);
+
+  it("records a legal opinion: conclusion, authority, effect and agency notified, the question kept open", async () => {
+    personaSig.value = "legal";
+    const id = open.find((e) => e.status === "open" && e.cls === "legal")!.id;
+    route.value = { ...route.value, arg: id, params: { act: "opinion" } };
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const read = async (p: string) => fs.readFileSync(path.join(root, p), "utf8");
+    render(<QuestionsView readText={read} />, host);
+    const form = host.querySelector('form.qanswer[data-act="opinion"]') as HTMLFormElement;
+    expect(form).toBeTruthy();
+    const type = (sel: string, v: string) => {
+      const el = form.querySelector(sel) as HTMLInputElement | HTMLTextAreaElement;
+      el.value = v;
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+    type("textarea", "Section 10102 governs from its enactment; the Colorado rule yields.");
+    type('input[name="authority"]', "Pub. L. 119-21 sec. 10102");
+    const effect = form.querySelector('select[name="effect"]') as HTMLSelectElement;
+    effect.value = "Federal statute governs over Colorado's text";
+    effect.dispatchEvent(new Event("change", { bubbles: true }));
+    type('input[name="agency-notified"]', "CDHS, by letter of 2026-11-22");
+    type('input[autocomplete="name"]', "Priya Shah");
+    await tick();
+    // The role defaults to Legal.
+    expect((form.querySelector(".row select") as HTMLSelectElement).value).toBe("Legal");
+    form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+    await until(() => fileEntries(changeSetSig.value).length > 0);
+    const entry = fileEntries(changeSetSig.value)[0];
+    expect(entry.label).toBe(`Legal opinion on ${id}`);
+    const q = parseOpenQuestions(entry.after!).find((x) => x.id === id)!;
+    expect(questionStatus(q)).toBe("open");
+    expect(q.body).toContain("Legal opinion, question kept open");
+    expect(q.body).toContain("Authority: Pub. L. 119-21 sec. 10102.");
+    expect(q.body).toContain("Effect: Federal statute governs over Colorado's text.");
+    expect(agencyNotified(q.body)).toBe("CDHS, by letter of 2026-11-22.");
+    expect(stagedAnswers(md, entry.after!).get(id)).toBe("opinion");
+    await until(() => Boolean(host.querySelector(".qstaged")));
+    expect(host.querySelector(".qstaged")!.textContent).toContain("the question stays open");
     render(null, host);
     host.remove();
   }, 60_000);

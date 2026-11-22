@@ -117,8 +117,9 @@ describe("router", () => {
     expect(view("#/co/programs/SNAP")).toMatchObject({ view: "programs", arg: "SNAP" });
     expect(view("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2")).toMatchObject({ view: "programs", arg: "ColoradoWorks/cw_grant_amount", params: { depth: "2" } });
     expect(view("#/co/programs/SNAP?tab=aid-codes")).toMatchObject({ view: "outcomes", arg: "SNAP", params: {} });
-    expect(view("#/co/law/doc/D-3?at=S8")).toMatchObject({ view: "document", arg: "D-3", params: { excerpt: "S8" } });
-    expect(view("#/co/law/sources/S8")).toMatchObject({ view: "source", arg: "S8" });
+    // Law's pages read the canonical route itself (places/LawPage.tsx).
+    expect(view("#/co/law/doc/D-3?at=S8")).toMatchObject({ view: "law", arg: "doc/D-3", params: { at: "S8" } });
+    expect(view("#/co/law/sources/S8")).toMatchObject({ view: "law", arg: "sources/S8" });
     expect(view("#/co/law")).toMatchObject({ view: "law", arg: null });
     // A link an older view builds from its own route comes back canonical.
     const law = view("#/co/law");
