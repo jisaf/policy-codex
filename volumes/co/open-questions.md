@@ -2245,3 +2245,43 @@ Assumption: No county is assumed to provide it; the table is empty (unknown, wit
 Blocked on: the counties' elections to provide Colorado Works Child Care to Colorado Works diversion households under 8 CCR 1403-1 3.116.H (county child care plans and CDEC's county policy listing; cdec.colorado.gov refused)
 
 Checked 2026-11-22: 8 CCR 1403-1 3.116.H and 3.104 (D-87, version effective 2026-08-14) name no county; 9 CCR 2503-6 3.606.8 (D-81) describes the diversion payment, not a county's child care election.
+
+### OQ-710. CCCAP: whether Child Welfare Child Care needs a CCCAP eligible child
+
+Body: 8 CCR 1403-1 3.120.D (S2853) leaves eligibility for Child Welfare Child Care to "the Child Welfare division using the criteria outlined in ... 12 CCR 2509-4, rule section 7.302 (July 31, 2023)"; 3.120.F says the county "shall not provide Child Welfare Child Care utilizing the Child Care Development Fund". The program-wide definition 3.103.UU (S2853) makes an "eligible child" a child under thirteen (or under nineteen with additional care needs) who needs care for part of the day and lives with the caretaker, and adds that "Any child served through the Colorado Works program or the Low-Income Child Care program must be a citizen/legal resident" - naming neither Child Welfare nor Protective Services Child Care. The volume reads the age and need parts as applying to Child Welfare Child Care (the definition is the program's, and 3.120.A-C describe care for children of the same kind) but not the citizenship part (the sentence names only Colorado Works and Low-Income, and the federal citizenship condition attaches to the Child Care Development Fund, which 3.120.F excludes): cccap_eligibility_status (CO-989) finds a Child Welfare Child Care household eligible only when it has a child for whom cccap_is_child_of_eligible_age_needing_care (CO-4056) holds. Protective services households need a full eligible child, citizenship included (3.119.F makes the child's citizenship, age and identity a condition of the care). The other reading: 7.302's criteria alone decide, with no CCCAP age or need test. 12 CCR 2509-4 7.302 (version of July 31, 2023) was not fetched; it is CDHS's child welfare rule and would settle whether it states its own ages. Items: CO-989, CO-4056.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC), Child welfare policy owner (CDHS) co-approver
+Assumption: A Child Welfare Child Care household needs a child under thirteen (under nineteen with additional care needs) who needs part-day care; the child's citizenship is not tested.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.118-3.120 (D-87, version effective 2026-08-14, re-fetched from the Secretary of State on 2026-11-22). Neither names the ages that apply to Child Welfare Child Care; 3.120.D defers to 12 CCR 2509-4 7.302, which this volume does not hold. A state policy choice for the CCCAP and child welfare owners.
+
+### OQ-711. CCCAP: whether one child's unexplained absences end the case or that child's authorization
+
+Body: 8 CCR 1403-1 3.114.A.5 (S2854) terminates "child care authorizations and cases" when "the child has had twenty-two (22) or more unexplained absences from authorized care within a thirty (30) day period and two (2) failed documented attempts to contact the adult caretaker or teen parent have been made"; B.11 says the same at redetermination and 3.117.A.3 bars the automatic transition from Colorado Works. The rule speaks of "the child" and of both authorizations and cases, and does not say whether a second child in good attendance keeps the case open. The volume reads it as ending the absent child's authorization: cccap_eligibility_status (CO-989) finds the household ineligible when every eligible child has the finding (cccap_child_has_unexplained_absences_finding, CO-4055), at a change, a redetermination or a transition, and not at an application. The other reading: any one child's absences close the whole case. Items: CO-989, CO-4055.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: One child's absences end that child's authorization; the case ends when no eligible child is left without them.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.114.A.5, B.11, C-D, 3.117.A.3 (D-87, version effective 2026-08-14, re-fetched 2026-11-22). No other section says how a multi-child household is treated.
+
+### OQ-712. CCCAP: whether a permitted fee increase during the eligibility period lifts the cap altogether
+
+Body: 8 CCR 1403-1 3.124.C (S2850): "During the twelve (12) month eligibility period the household parent fee cannot be assessed higher than the parent fee determined at the most recent Colorado Works Child Care referral or low-income application or re-determination"; 3.124.B: "Increases in parent fees beyond what is outlined in rule subsections (1)-(4) below shall only go into effect at Low-Income Child Care re-determination or at the end of the twelve (12) month Colorado Works Child Care period", B.1, B.3 and B.4 being circumstances that can raise the fee (income regained after a temporary loss, more care authorized, leaving a top-quality-rated provider); 3.117.F caps a transitioning household's fee at its last Colorado Works Child Care referral and lets it be revised "as outlined in rule section 3.124(B)". C reads as absolute and B as allowing those increases; the rule does not say whether a B.1, B.3 or B.4 change lets the whole fee be reassessed or only the part that change causes. The volume lets the formula fee stand when the county records one of those circumstances (cccap_parent_fee_increase_basis, CO-4051) and otherwise caps it at the fee last determined (cccap_parent_fee_within_period_cap, CO-4052). The other reading: the fee rises only by what the circumstance itself adds (for B.4, the 20% reduction lost), other income changes still waiting for the redetermination. Items: CO-1290, CO-4050, CO-4051, CO-4052.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A recorded B.1, B.3 or B.4 circumstance lets the fee be reassessed by the formula; without one the fee is the lesser of the formula and the fee last determined.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.124.A-C, J, R, T and 3.117.E-F (D-87, version effective 2026-08-14, re-fetched 2026-11-22). None apportions an increase.
+
+### OQ-716. CCCAP: from when a protective services household's verification periods run
+
+Body: 8 CCR 1403-1 3.119.B (S2852) allows "up to sixty (60) days to provide verification of the child(ren)'s income", G sixty days for immunization, and F.1-2 "up to six (6) months" for a child's citizenship, age and identity when the Child Welfare worker cannot attest at the referral; F.3 ends the care if they are not verified "within six (6) months of the referral". B and G name no starting day. The volume counts each from the county's request (the program's own request date, else the shared checklist date, OQ-300), the day it counts the fifteen-day and homelessness periods from (CO-1450, CO-3909), and counts six months to the same day of the month (cccap_protective_services_verification_due_date, CO-4061); where the request is made at the referral, as the referral process implies (3.118.E), the two agree. Elements 3.119 does not name (an activity schedule, a custody schedule, an unrelated caretaker's verification) keep the fifteen days. The other readings: the sixty days from the referral; six months as 183 days. Items: CO-4061.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: Every period runs from the county's request; six months end on the same day of the sixth month after it.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.111.H.5.e, 3.118.E, 3.119.B, F, G (D-87, version effective 2026-08-14, re-fetched 2026-11-22). None states the first day of the sixty days.

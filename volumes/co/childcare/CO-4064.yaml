@@ -1,0 +1,18 @@
+id: CO-4064
+name: "CCCAP: household members whose income counts"
+identifier: cccap_household_income_members
+kind: derived
+type: group of persons
+scope: person
+program: CCCAP
+meaning: "The members of this person's CCCAP household (cccap_household_members, CO-982) whose income and child support deduction count toward the household's income: all of them, except the spouse or the child's other parent of a member who is separated from them and holds a validly issued temporary order for parental responsibilities or child custody (has_temporary_order_for_parental_responsibilities, CO-4063), whose financial resources 8 CCR 1403-1 3.111.D.10 does not let the county count against that caretaker."
+precision: "The other parent is a member with whom the order holder shares a child (shared_relative over child). Membership is unchanged: D.10 speaks of the other spouse's or parent's \"financial resources\", not of who is in the household. The order is read as false when not stated."
+derived: [filter, cccap_household_members, [not, [any, [has_relative_in, [spouse], [filter, cccap_household_members, [otherwise, [of, [P], has_temporary_order_for_parental_responsibilities], false]]], [exists, [of, [P], [shared_relative, child]], [all, [in_group, [P], cccap_household_members], [otherwise, [of, [P], has_temporary_order_for_parental_responsibilities], false]]]]]]
+sources: [S2856, S496]
+nearest: [CO-982]
+implemented: engine
+tags: [household, income]
+rationale: "Second-pass review N-7 (was F-14): 3.111.D.10 was not modeled; cccap_household_income (CO-985) and the Colorado Works fee base (CO-2578) summed every member's income. The members whose income counts are a group of their own so both sums read one definition."
+tests:
+  - {id: CO-4064-T1, title: "A mother and her husband, the child's father, in one home: both count", as_of: "2026-10-01", given: {cccap_household_members: [p1, p2, p3], has_temporary_order_for_parental_responsibilities: false}, others: {p2: {has_temporary_order_for_parental_responsibilities: false}, p3: {}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2, p3]}
+  - {id: CO-4064-T2, title: "The mother is separated and holds a temporary custody order: the father's income does not count against her (3.111.D.10)", as_of: "2026-10-01", given: {cccap_household_members: [p1, p2, p3], has_temporary_order_for_parental_responsibilities: true}, others: {p2: {has_temporary_order_for_parental_responsibilities: false}, p3: {}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p3]}
