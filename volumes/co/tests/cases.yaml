@@ -2071,7 +2071,6 @@
     snap_application_date: "2026-10-01"
     snap_determination_is_recertification: false
     leap_application_date: "2026-11-01"
-    leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own checklist date, on its application date (the shared verification_request_date, 2026-10-01, is before the LEAP application)
     cw_meets_county_diversion_income_limit: false
     is_destitute_migrant_or_seasonal_farmworker: false
     residency_verification_cannot_reasonably_be_accomplished: false
@@ -2170,6 +2169,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own request, on its application date
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2382,6 +2382,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own request, on its application date
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2595,6 +2596,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own request, on its application date
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: true
@@ -2794,6 +2796,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own request, on its application date
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2995,6 +2998,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own request, on its application date
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -3392,7 +3396,8 @@
       af_verification_due_date: "2026-10-12"
       af_and_so_disability_certification_due_date: "2026-10-31"
       cccap_verification_due_date: "2026-10-16"
-      leap_verification_due_date: "2026-10-15"
+      # Verification pass V-15: was "2026-10-15" (the shared 10-01 checklist + 14 days, before the LEAP application); LEAP's own request on 2026-11-01 + 14 days (3.756.12.D) = 2026-11-15.
+      leap_verification_due_date: "2026-11-15"
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -3565,7 +3570,7 @@
       af_verification_due_date: "2026-10-12"
       af_and_so_disability_certification_due_date: "2026-10-31"
       cccap_verification_due_date: "2026-10-16"
-      leap_verification_due_date: "2026-10-15"
+      leap_verification_due_date: "2026-11-15"  # V-15, see p1
     p3:
       ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -3731,7 +3736,7 @@
       af_verification_due_date: "2026-10-12"
       af_and_so_disability_certification_due_date: "2026-10-31"
       cccap_verification_due_date: "2026-10-16"
-      leap_verification_due_date: "2026-10-15"
+      leap_verification_due_date: "2026-11-15"  # V-15, see p1
     p4:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -3902,7 +3907,7 @@
       af_verification_due_date: "2026-10-12"
       af_and_so_disability_certification_due_date: "2026-10-31"
       cccap_verification_due_date: "2026-10-16"
-      leap_verification_due_date: "2026-10-15"
+      leap_verification_due_date: "2026-11-15"  # V-15, see p1
     p5:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -4065,7 +4070,7 @@
       af_verification_due_date: "2026-10-12"
       af_and_so_disability_certification_due_date: "2026-10-31"
       cccap_verification_due_date: "2026-10-16"
-      leap_verification_due_date: "2026-10-15"
+      leap_verification_due_date: "2026-11-15"  # V-15, see p1
 
 - id: CO-03
   title: Elderly couple, one with Medicare and out-of-pocket medical expenses, no utility costs of their own

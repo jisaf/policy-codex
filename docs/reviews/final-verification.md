@@ -146,3 +146,17 @@ The probes cited in V-2, V-3 and V-9 were run on in-memory copies of CO-92 and C
 Resolved questions I re-read against the text and found consistent with the items: OQ-300 (request dates per program), OQ-301, OQ-308 (every declared status verified for children and pregnant persons, CO-1622), OQ-309, OQ-316 (extensions), OQ-318 and OQ-370 (the LEAP member excluded, 3.751.1 B), OQ-321 (SSN never delays), OQ-322 (but see V-8), OQ-323 (thirty days; migrant exception), OQ-373 (but see V-12, which concerns its CCCAP text), OQ-378 and OQ-380.
 
 New questions these findings may need: none for V-1 to V-7, whose texts answer them. V-13 needs one only if the SNAP household reviewer does not model the duplicate-child rule.
+
+## Disposition (CCCAP, LEAP and SUN Bucks findings)
+
+Fix track for CCCAP, LEAP and SUN Bucks, 2026-11-22 (commits 70bafc1, 8d451e7, 7fd0df3). The other findings are dispositioned by their own tracks.
+
+| ID | Pri | Disposition |
+|---|---|---|
+| V-1 | P1 | Fixed (8d451e7). Neutral `self_employment_cost_receipts_received` (CO-3927; credit card and bank statements are not receipts); CO-1711 deducts the costs only with receipts (read as false when not stated). Tests CO-1711-T2, T3. |
+| V-7 | P1 | Fixed (8d451e7), as final-cccap-leap-sebt F-01: `cccap_child_support_paid_deduction` (CO-3902) is subtracted in `cccap_household_income` (CO-985) for the income test and the fee. |
+| V-11 | P2 | Fixed (70bafc1, 8d451e7). S2719 quotes 3.755.21.I.1 as amended effective 11/01/2026 (D-173); LEAP reads self-employment for the full month before the application (CO-1002, OQ-681). S1084 is kept for I.2-3, which did not change. |
+| V-12 | P2 | Fixed (8d451e7). CO-2379 retired; OQ-373's CCCAP text corrected. |
+| V-15 | P3 | Fixed (disposition commit). CO-02 states `leap_verification_request_date` 2026-11-01 on each person (a person-scope fact); so CO-02's `leap_verification_due_date` changes 2026-10-15 -> 2026-11-15 for p1-p5 (11-01 + 14 days, 3.756.12.D); LEAP verification stays complete. |
+| V-16 | P3 | Deferred: gift income on declaration and the document-type limits are worker checks on the document received; recorded here, no item change. |
+| V-17 | P3 | Deferred: gating LEAP verification on homelessness and heating responsibility would change CO-91's LEAP verification status (past_due to not_applicable); the eligibility outcome is already false. Fix later. |

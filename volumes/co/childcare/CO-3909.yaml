@@ -11,6 +11,7 @@ derived: [days_after, cccap_homelessness_verification_days, [otherwise, cccap_ve
 sources: [S1823, S2710]
 implemented: engine
 tags: [verification]
-rationale: "Final pass F-02: the stabilization period gives the family at least sixty days to provide verification; no item stated that date."
+rationale: "Final pass F-02: the stabilization period gives the family at least sixty days to provide verification; no item stated that date. cccap_verification_due_date (CO-1450) is the same count over the fifteen-day noticing period (CO-1354); the two are kept apart because the status reads one or the other by the month's stabilization test, while the due date is a person-scope outcome."
+nearest: [CO-1450]
 tests:
   - {id: CO-3909-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-11-30"}
