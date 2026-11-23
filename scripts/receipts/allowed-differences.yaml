@@ -705,3 +705,20 @@
 - {case: "/^G-(MAagedspouse|MAdeemingparent)-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p2, identifier: snap_unearned_income_verification_is_pending, month: "2026-10", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
 - {case: "/^G-MAcommunityspouse-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p2, identifier: snap_unearned_income_verification_is_pending, month: "2026-11", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
 - {case: "/^G-MACBWDchild-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p3, identifier: snap_unearned_income_verification_is_pending, month: "2026-10", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
+
+# Coverage pass 4, MAGI Medicaid and CHP+ (docs/reviews/coverage4-medicaid-magi-chp.md, dispositions).
+# C4-01 (decision 4 of 2026-11-23): 10 CCR 2505-10 8.100.4.C.1 (S166) counts gross income "pursuant to 26 U.S.C. § 61"
+# (S4631), and a savings account distribution is gross income only in part where it is a health savings account, Roth IRA or
+# tuition program distribution for its qualified purpose (26 U.S.C. 223(f)(1), 408A(d)(1), 529(c)(3)(B); S4633-S4635); cash
+# value taken from an insurance policy only as the income from the contract (8.100.4.C.1.b.vii; 61(a)(9)). MAGI counts both
+# kinds at the record's taxable_amount (CO-5000, required where read; ma_magi_receipt_treatment_table, CO-5500). The two
+# generated variants state each part with no taxable amount (the old facts did not say), so MAGI's figures, the outcomes they
+# reach and the unearned-income verification element of a MAGI applicant cannot be determined. Only these two variants
+# state either kind; no stored household does.
+- {case: "/^G-[A-Za-z]+-P3_(pension_300_of_which_savings_distribution_300|insurance_cash_value_300_part_of_nontaxable_)$/", identifier: "/^(ma_person_magi_income|ma_magi_household_income|ma_magi_household_income_pct_fpl|ma_magi_category|ma_magi_eligibility_status|ma_family_planning_status|chp_eligibility_status|ma_has_unearned_income_for_verification|ma_requires_verification_of_unearned_income|ma_unearned_income_verification_is_pending|ma_verification_status|chp_verification_status|ma_pending_verification_count|chp_pending_verification_count)$/", new: unknown, class: "C4-01 (decision 4; 26 U.S.C. 61(a), 223(f)(1)): a savings distribution or insurance cash value with no taxable amount stated cannot be counted for MAGI"}
+# C4-CPB (CO-387; coverage pass 3 C3-08, formerly a known failure under OQ-810): 10 CCR 2505-3 320.1 (D-66) sets the CHP+
+# copayment band by "income, at the time of eligibility determination", and 10 CCR 2505-10 8.100.4.C.4.a (S3356) annualizes
+# only for "Applicants who are found financially ineligible based on current or previous monthly household income". CO-387's
+# p2 is CHP+ eligible on the month's 4,328 / 1,803.33 = 240.0%: band_d (above 200%); before, the annualized 160.0%: band_c.
+# p1, the parent, reads the same family figure.
+- {case: CO-387, identifier: chp_copayment_income_band, old: band_c, new: band_d, class: "C4-CPB (2505-3 320.1, 8.100.4.C.4.a): the copayment band of the income CHP+ eligibility was determined on"}
