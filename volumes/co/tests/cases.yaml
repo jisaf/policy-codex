@@ -52608,6 +52608,9 @@
   # ZZ-4, which are other households). 7 CFR 273.11(a)(2)(ii)(B) (over 4.403.12.E.2.b-c): a farm self-employment loss is
   # offset against other countable income. Farm receipts 200, costs 700; the spouse's wages 1,500. Rule (review): remaining
   # loss 500; adjusted income 1,500 - 300 - 500 - 217 = 483.
+  # Earned-income records, step E1 (SNAP): the farm states that it is not the household's annual support
+  # (self_employment_is_annual_support: false, so its record states annual_support: false), as the review reads its
+  # month figures; 4.403.12.A-B average annual support over twelve months, so SNAP needs the statement (decision 4).
   as_of: "2026-10-15"
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
@@ -52668,6 +52671,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1995-04-02"
         self_employment_is_farming: true
+        self_employment_is_annual_support: false
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
@@ -52681,7 +52685,7 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings:
-        - {kind: farm_self_employment_receipts, amount: 200}
+        - {kind: farm_self_employment_receipts, amount: 200, annual_support: false}
         - {kind: business_cost_operating, amount: 700, farm: true}
       month_defaults:
         health_insurance_premiums_paid: 0

@@ -5,12 +5,12 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The person's receipts marked infrequent or irregular received in the months of the calendar quarter that contains the month (10 CCR 2506-1 4.405.A; 7 CFR 273.9(c)(2) "in a quarter"), whatever their kind.
+meaning: "The person's receipts marked infrequent or irregular received in the months of the calendar quarter that contains the month (10 CCR 2506-1 4.405.A; 7 CFR 273.9(c)(2) \"in a quarter\"), whatever their kind, except a kind SNAP reads from the earnings records (snap_receipt_treatment_table: read_from_earnings)."
 precision: Each month of the quarter is read as 0 when the receipts are not stated, as infrequent_or_irregular_income_in_quarter (CO-4077, which CCCAP still reads) read the month's fact. The calendar quarter is also the federal fiscal quarter. Each earlier month's receipts are summed in that month ("in that month"), so a receipt is counted with the treatment table in force in the month it is received (docs/operators.md, Resolution step 2 and P57).
-derived: [sum_months, snap_calendar_quarter_months, [otherwise, [at, [sum_receipts, receipts, [all, [receipt, irregular], [received_in, [month]]], [receipt, amount]], [that_month]], 0]]
+derived: [sum_months, snap_calendar_quarter_months, [otherwise, [at, [sum_receipts, receipts, [all, [receipt, irregular], [received_in, [month]], [not, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], read_from_earnings]]], [receipt, amount]], [that_month]], 0]]
 sources: [S3128]
 implemented: engine
 tags: [snap, income]
-rationale: "Receipt records, migration phase 1: SNAP's own quarter sum of irregular receipts, replacing its read of the shared CO-4077."
+rationale: "Receipt records, migration phase 1: SNAP's own quarter sum of irregular receipts, replacing its read of the shared CO-4077. Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): a receipt of a kind SNAP now reads as earnings (uniformed_services_special_pay, the translator's transition copy of the earnings record) is left out, so snap_irregular_income_is_within_quarterly_limit (CO-5110), which adds the quarter's irregular earnings, counts it once."
 tests:
   - {id: CO-5013-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: other_nontaxable, amount: 20, irregular: true, month: "2026-10"}, {kind: gift, amount: 15, irregular: true, month: "2026-12"}]}, title: "Irregular receipts in October and December, the quarter of November", expect: 35}

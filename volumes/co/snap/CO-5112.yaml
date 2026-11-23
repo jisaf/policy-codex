@@ -1,0 +1,18 @@
+id: CO-5112
+name: "SNAP: WIOA on-the-job training earnings are excluded"
+identifier: snap_wioa_ojt_earnings_are_excluded
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "The person has earnings from WIOA on-the-job training in the month (a record whose row in snap_earnings_treatment_table is excluded_under_19_with_parent) and is a member under snap_wioa_ojt_exclusion_age_limit (19) on the first day of the month who lives with a parent or is under the parental control of an adult member, so those earnings are excluded (10 CCR 2506-1 4.405.2.A.6, 4.403.B.2, S3108: \"On-the-job training payments for members under nineteen (19) years of age who are participating in WIOA Programs and are under the parental control of an adult member of the household shall be excluded as income\"); false when the month has no such earnings."
+precision: "The test of snap_excluded_earned_income (CO-2338) before step E1, unchanged: the age on the first day of the month, and the living-with-a-parent or parental-control test of snap_student_earnings_are_excluded (CO-2569). A person with no on-the-job training pay in the month is not tested, so the person's age and relationships are not read."
+derived: ["case",[["=",["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"excluded_under_19_with_parent"],["received_in",["month"]]],1],0],false],["else",["all",["<",["years_between","date_of_birth",["first_day",["month"]]],"snap_wioa_ojt_exclusion_age_limit"],["any",["exists_related",["child","stepchild"],["otherwise",["in_group",["P"],"lives_with"],true]],["otherwise","snap_is_under_parental_control_of_household_member",false]]]]]
+sources: [S3108]
+implemented: engine
+tags: [snap, income]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. The person test of 4.405.2.A.6 cannot be read inside a sum over records (docs/operators.md, P55), so it is its own item, read by snap_person_counted_wages (CO-5113)."
+tests:
+  - {id: CO-5112-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: wages, amount: 900}]}, title: "No on-the-job training pay: false, the age not read", expect: false}
+  - {id: CO-5112-T2, month: "2026-11", as_of: "2026-11-15", given: {date_of_birth: "2009-05-01", earnings: [{kind: wioa_on_the_job_training, amount: 500}]}, others: {p2: {date_of_birth: "1985-01-01"}}, relationships: [[parent, p2, p1]], title: "CF-1: a 17-year-old (born 2009-05-01, 17 on 2026-11-01) living with her mother: excluded", expect: true}
+  - {id: CO-5112-T3, month: "2026-11", as_of: "2026-11-15", given: {date_of_birth: "2007-11-01", earnings: [{kind: wioa_on_the_job_training, amount: 500}]}, others: {p2: {date_of_birth: "1985-01-01"}}, relationships: [[parent, p2, p1]], title: "Born 2007-11-01: 19 on 2026-11-01, not under 19, counted", expect: false}

@@ -1,0 +1,16 @@
+id: CO-5117
+name: "SNAP: room and board payments"
+identifier: snap_room_and_board_payments
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The payments the person received in the month from boarders for room and meals that SNAP counts under 10 CCR 2506-1 4.403.2: the earnings records whose row in snap_earnings_treatment_table is counted_above_boarder_allowance that provide room_and_board and are not foster care payments (4.403.2.B.3)."
+precision: "A meals-only or room-only payment is not read here (OQ-996; snap_earnings_treatment_table, CO-5101). Each record states its boarders (snap_room_and_board_payers, CO-5118). Earnings not stated: cannot determine; a stated list with no boarder record is 0."
+derived: ["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"counted_above_boarder_allowance"],["=",["receipt","provides"],"room_and_board"],["not",["receipt","foster_care"]],["received_in",["month"]]],["receipt","amount"]]
+sources: [S2963]
+implemented: engine
+tags: [snap, income]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. Replaces room_and_board_payments_received and room_and_board_payments_are_foster_care (CO-4161, CO-4164)."
+tests:
+  - {id: CO-5117-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: boarder_payments, amount: 900, provides: room_and_board, boarders: 2}, {kind: boarder_payments, amount: 600, provides: room_and_board, boarders: 1, foster_care: true}, {kind: boarder_payments, amount: 400, provides: room_only, boarders: 1}]}, title: "$900 from two boarders, $600 of foster care payments and $400 from a lodger: 900", expect: 900}

@@ -1,0 +1,17 @@
+id: CO-5114
+name: "SNAP: self-employment gross receipts"
+identifier: snap_self_employment_gross_receipts
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The gross receipts of the person's self-employment other than a farm that SNAP counts for the month: the earnings records whose row in snap_earnings_treatment_table is counted_less_costs (self_employment_receipts) received in the month (10 CCR 2506-1 4.403.11; 7 CFR 273.9(b)(1)(ii)), less those marked irregular when snap_irregular_earnings_are_excluded (4.405.A), and, in a destitute household's month of application, without the receipts dated after the date of application (4.406.1.A)."
+precision: "The costs are snap_self_employment_costs (CO-1701); snap_self_employment_income (CO-1702) subtracts them. In a destitute household's month of application each receipt must state its date (decision 4 of 2026-11-23), as the pay does (snap_person_counted_wages, CO-5113). Earnings not stated: cannot determine."
+derived: ["-",["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"counted_less_costs"],["received_in",["month"]],["not",["all",["otherwise","is_destitute_migrant_or_seasonal_farmworker",false],["=",["month"],["month_of","snap_application_date"]],[">",["receipt","date"],"snap_application_date"]]]],["receipt","amount"]],["case",["snap_irregular_earnings_are_excluded",["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"counted_less_costs"],["receipt","irregular"],["received_in",["month"]],["not",["all",["otherwise","is_destitute_migrant_or_seasonal_farmworker",false],["=",["month"],["month_of","snap_application_date"]],[">",["receipt","date"],"snap_application_date"]]]],["receipt","amount"]]],["else",0]]]
+sources: [S41, S1152, S3100, S2964]
+implemented: engine
+tags: [snap, income]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. Replaces self_employment_gross_receipts (CO-1700), which SNAP read for a farm and any other business alike."
+tests:
+  - {id: CO-5114-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: business_cost_operating, amount: 400}, {kind: farm_self_employment_receipts, amount: 700}]}, title: "A business taking in $1,500 and a farm taking in $700: the business, 1,500", expect: 1500}
+  - {id: CO-5114-T2, month: "2026-11", as_of: "2026-11-15", given: {snap_irregular_earnings_are_excluded: true, earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: self_employment_receipts, amount: 25, irregular: true, month: "2026-11"}]}, title: "$25 for a one-off job as a contractor, within the $30 quarter: 1,500", expect: 1500}
