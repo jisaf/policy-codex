@@ -10870,6 +10870,9 @@
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        # No unearned money: p1 pays the children nothing (the SNAP note below) and the household states no income of
+        # either child; stated as an empty list (decision 4 of 2026-11-23: an unstated list is cannot determine).
+        receipts: []
         has_qualifying_military_service: false
         date_of_birth: "2011-05-01"
         immigration_status: lawful_permanent_resident
@@ -10893,6 +10896,7 @@
     p4:
       # Nephew, 12, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        receipts: []  # no unearned money, as for p3
         has_qualifying_military_service: false
         date_of_birth: "2014-02-01"
         immigration_status: lawful_permanent_resident
@@ -28191,6 +28195,7 @@
         state_of_residence: CO
         residence_setting_type: private_dwelling
         nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true  # she lives alone in her own home (a fixed, regular home of her own household); the receipts harness's metamorphic families build on this household
         leap_is_in_another_approved_household: false
         is_emancipated_minor: false
         dwelling_id: d1

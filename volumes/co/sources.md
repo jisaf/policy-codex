@@ -22781,3 +22781,47 @@ Document: D-53
 20 CFR 416.1165(e)(3) (eCFR text fetched 2026-09-18; fetched again 2026-11-23 from the eCFR versioner, whose current version is that of 2016-12-19, and identical). https://www.ecfr.gov/current/title-20/part-416
 
 > (3) *When one child's income makes that child ineligible.* We do not deem more income to an eligible child than the amount which, when combined with the child's own income, reduces his or her SSI benefit to zero. (For purposes of this paragraph, an SSI benefit includes any federally administered State supplement). If the share of parental income that would be deemed to a child makes that child ineligible (reduces the amount to zero) because that child has other countable income, we deem any remaining parental income to other eligible children under age 18 in the household in the manner described in paragraph (e)(2) of this section.
+
+### S4200. SSI: VA unusual medical expense payments and cash the VA gives to purchase aid and attendance are not income
+
+Document: D-207
+
+20 CFR 416.1103 (introduction), (a) (introduction), (a)(7), (b) (introduction), (b)(1) (eCFR as of 2026-11-19; D-207:9-10, 20-22). https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> Some things you receive are not income because you cannot use them as food or shelter, or use them to obtain food or shelter. In addition, what you receive from the sale or exchange of your own property is not income; it remains a resource. The following are some items that are not income:
+>
+> (a) Medical care and services. Medical care and services are not income if they are any of the following:
+>
+> ...
+>
+> (7) Payments from the Department of Veterans Affairs resulting from unusual medical expenses.
+>
+> (b) Social services. Social services are not income if they are any of the following:
+>
+> (1) Assistance provided in cash or in kind (but not received in return for a service you perform) under any Federal, State, or local government program whose purpose is to provide social services including vocational rehabilitation (Example: Cash given you by the Department of Veterans Affairs to purchase aid and attendance);
+
+### S4201. Spousal impoverishment: the community spouse monthly income allowance is a post-eligibility deduction, measured against the income otherwise available to the community spouse
+
+Document: D-47
+
+42 U.S.C. 1396r-5(b)(2) (introduction), (d)(1) (introduction), (d)(2) (D-47:49, 151, 171-179). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (2) Attribution of income In determining the income of an institutionalized spouse or community spouse for purposes of the post-eligibility income determination described in subsection (d), except as otherwise provided in this section and regardless of any State laws relating to community property or the division of marital property, the following rules apply:
+>
+> ...
+>
+> (d) Protecting income for community spouse
+>
+> (1) Allowances to be offset from income of institutionalized spouse After an institutionalized spouse is determined or redetermined to be eligible for medical assistance, in determining the amount of the spouse’s income that is to be applied monthly to payment for the costs of care in the institution, there shall be deducted from the spouse’s monthly income the following amounts in the following order:
+>
+> ...
+>
+> (2) Community spouse monthly income allowance defined In this section (except as provided in paragraph (5)), the “ community spouse monthly income allowance” for a community spouse is an amount by which—
+>
+> (A)
+>
+> except as provided in subsection (e), the minimum monthly maintenance needs allowance (established under and in accordance with paragraph (3)) for the spouse, exceeds
+>
+> (B)
+>
+> the amount of monthly income otherwise available to the community spouse (determined without regard to such an allowance).

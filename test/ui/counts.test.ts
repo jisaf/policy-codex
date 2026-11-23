@@ -27,25 +27,25 @@ describe("owns: the question's Owner line names the role", () => {
     expect(unsettled.filter((q) => !explicitField(q.body, "Owner")).map((q) => q.id)).toEqual([]);
   });
 
-  it("counts the Medicaid policy owner's questions once: 49 open and 3 partly settled (the App said 24 and 49)", () => {
+  it("counts the Medicaid policy owner's questions once: 50 open and 3 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(49); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
+    expect(med.open.length).toBe(50); // + OQ-1050 (reader-defaults round); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
     expect(med.partly.length).toBe(3);
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("49 open questions you own, and 3 partly settled");
+    expect(ownedPhrase(med)).toBe("50 open questions you own, and 3 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 33 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 34 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([33, 4]); // + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
+    expect([cash.open.length, cash.partly.length]).toEqual([34, 4]); // + OQ-1051 (reader-defaults round); + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([57, 5]); // + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(62); // + OQ-1060, OQ-1061; + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([58, 5]); // + OQ-1050 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(63); // + OQ-1050; + OQ-1060, OQ-1061; + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {

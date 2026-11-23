@@ -94,7 +94,7 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 110, 49, 35, 24]); // receipts migration 2: + CO-5651, CO-5652, CO-5653, CO-5654, - CO-2341, + CO-5650 (figure), + OQ-985 to OQ-987; + OQ-951 (time audit T-1), OQ-953 (T-6); + CO-5207, CO-5208 (the child's caretakers and parents in the home, fix round 2026-11-23); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 110, 49, 35, 25]); // reader-defaults round: + OQ-1051; receipts migration 2: + CO-5651, CO-5652, CO-5653, CO-5654, - CO-2341, + CO-5650 (figure), + OQ-985 to OQ-987; + OQ-951 (time audit T-1), OQ-953 (T-6); + CO-5207, CO-5208 (the child's caretakers and parents in the home, fix round 2026-11-23); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
