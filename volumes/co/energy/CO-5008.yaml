@@ -6,11 +6,12 @@ type: money
 scope: person-month
 program: LEAP
 meaning: The parts of the person's counted recurring receipts of the month set aside under a Plan for Achieving Self-Support (9 CCR 2503-7 3.752.23.DD) or paid in a workers' compensation award for the claim's medical, legal or related expenses (3.752.211.D).
-precision: "Read from the receipt the part comes out of (pass_set_aside, claim_expense). leap_person_unearned_income (CO-3926) subtracts it from the recurring receipts and Social Security together, not below zero (coverage review 3 F3-1: a PASS set-aside is most often Social Security disability income)."
-derived: [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [lookup, leap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_at_or_above_minimum_wage]]], ["+", [receipt, pass_set_aside], [receipt, claim_expense]]]
+precision: "Read from the receipt the part comes out of (pass_set_aside, claim_expense). leap_person_unearned_income (CO-3926) subtracts it from the recurring receipts and Social Security together, not below zero (coverage review 3 F3-1: a PASS set-aside is most often Social Security disability income). Coverage pass 4 L4-3 (docs/reviews/coverage4-care-energy.md): a recurring receipt stated with its date is read by its date in the income verification period (9 CCR 2503-7 3.752.22.A: \"received in the income verification period, not to exceed one month's income\"; C.3.a, C.3.c), after the period's first day (leap_income_verification_period_start, CO-5002) through the application date (leap_application_date), not by the calendar month: the period is then one month long, so a monthly source paid on the application date's day of the month is counted once (the cap of A; OQ-681); a receipt stated without a date is read in the month, as before."
+derived: ["sum_receipts", "receipts", ["all", ["not", ["=", ["receipt", "frequency"], "once"]], ["case", [["unknown", ["receipt", "date"]], ["received_in", ["month"]]], ["else", ["all", [">", ["receipt", "date"], "leap_income_verification_period_start"], ["<=", ["receipt", "date"], "leap_application_date"]]]], ["in", ["lookup", "leap_receipt_treatment_table", ["receipt", "kind"]], ["counted", "counted_no_rule_excludes", "counted_at_or_above_minimum_wage"]]], ["+", ["receipt", "pass_set_aside"], ["receipt", "claim_expense"]]]
 sources: [S3300, S3304]
 implemented: engine
 tags: [income]
+open: [OQ-681]
 rationale: "Receipt records, migration phase 1: the PASS and claim-expense terms of leap_excluded_unearned_income (CO-4511), each a field of its receipt."
 tests:
   - {id: CO-5008-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 900, pass_set_aside: 100}, {kind: workers_compensation, amount: 800, claim_expense: 200}]}, title: "PASS set-aside and the award's claim expenses", expect: 300}

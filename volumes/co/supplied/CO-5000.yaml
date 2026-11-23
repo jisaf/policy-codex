@@ -88,7 +88,8 @@ record_fields:
   frequency:
     type: one of
     default: monthly
-    meaning: How often the payment is made; once for a nonrecurring payment.
+    required_if_dated: true
+    meaning: "How often the payment is made; once for a nonrecurring payment. Monthly is what an unstated frequency means on a receipt stated without a date (its amount is the month's); a receipt stated with its date states its frequency, since whether it recurs or is paid once decides the period LEAP and CCCAP read it in (decision 4 of 2026-11-23; coverage pass 4 L4-3, C4-2)."
     options: [once, monthly, weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual]
   per_payment:
     type: money
