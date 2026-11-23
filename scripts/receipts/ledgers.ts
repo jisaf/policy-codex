@@ -15,9 +15,10 @@ export const root = path.resolve(import.meta.dirname, "../..");
 /** The ledger without the migration: the last commit of the branch the
  *  migration merges into that reads the scalar facts everywhere. It was the
  *  adoption commit (41ec04b) until the non-MAGI fix round (82a29d0) was
- *  merged in; the baseline moves with each merge, so the harness measures
- *  the migration and nothing the other track changed. */
-export const BASELINE_REF = "82a29d0c2e864825a991f08e23afdb04d6dc0077";
+ *  merged in, then the time-audit fix round (ccbb3a7) when the migration was
+ *  merged into it; the baseline moves with each merge, so the harness
+ *  measures the migration and nothing the other track changed. */
+export const BASELINE_REF = "ccbb3a7fe315276cc68c03500538ec585dd99697";
 
 export interface Ledger { ledger: LoadedLedger; ix: LedgerIndex }
 

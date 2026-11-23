@@ -39,3 +39,15 @@
 - case: CO-225
   identifier: /^snap_/
   class: R4 SNAP double subtraction of a one-time excluded payment (CO-2339)
+
+# R5 (time audit T-5 met the migration at the merge of ccbb3a7): a SNAP month after the elderly or
+# disabled resource limit's last version closes (snap_resource_limit_elderly_disabled, FY2027, to
+# 2027-10-01). The old snap_has_substantial_lottery_winnings (CO-4151) compared a person's winnings,
+# 0 when none were stated, with the limit, so it could not determine and nor could the person's
+# unearned and gross income; the receipts compare only a gambling receipt with the limit (CO-5012),
+# so a person with no winnings has none, whatever the limit (4.403.I, 7 CFR 273.11(r): a prize "equal
+# to or greater than" the limit). A prize stated in such a month still cannot determine (CO-4151-T7).
+- case: /^CO-(89|93|98)$/
+  identifier: /^snap_(person_unearned_income|person_gross_income|household_gross_income|unearned_income_verification_is_pending)$/
+  old: unknown
+  class: R5 SNAP no winnings, no limit in force (T-5 closure)
