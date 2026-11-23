@@ -7,18 +7,21 @@ options: [band_a, band_b, band_c, band_d]
 scope: person
 program: CHP+
 meaning: "Which § 320.1 copayment schedule applies to a CHP+ enrollee's family, by family income as a share of the federal poverty level at the time of the eligibility determination (10 CCR 2505-3 § 320.1): band_a, less than chp_copayment_waiver_limit_pct (all copayments waived except emergency and urgent care, A); band_b, from chp_copayment_waiver_limit_pct to chp_copayment_band_b_max_pct (B); band_c, above chp_copayment_band_b_max_pct to chp_copayment_band_c_max_pct (C); band_d, above chp_copayment_band_c_max_pct (D, which the rule states to 260%, the CHP+ upper limit)."
-precision: "Income is the MAGI household income ratio (ma_magi_household_income_pct_fpl) in the month of the determination, as for CHP+ eligibility. § 320.1 states whole percentages ('between 101% and 150%', 'between 151% and 200%'), leaving ratios between chp_copayment_band_b_max_pct and 151%, and between chp_copayment_band_c_max_pct and 201%, in no band; they are read into the next band up (OQ-470)."
-derived: [case, [["<", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_waiver_limit_pct], band_a], [["<=", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_band_b_max_pct], band_b], [["<=", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_band_c_max_pct], band_c], [else, band_d]]
-sources: [S1504]
+precision: "Income is the MAGI household income ratio on which the enrollee's CHP+ eligibility is determined, in the month of the determination (§ 320.1: \"income, at the time of eligibility determination\"): the month's figure (ma_magi_monthly_household_income_pct_fpl, CO-6452) where it is within the CHP+ upper limit, and otherwise the budget figure (ma_magi_household_income_pct_fpl, CO-504), the annualized income of 10 CCR 2505-10 8.100.4.C.4.a, which applies only to \"Applicants who are found financially ineligible based on current or previous monthly household income\" (S3356), or C.5's. Coverage pass 4 (2026-11-23; CO-387, coverage pass 3 C3-08): before, the band read the lower of the two figures, so a seasonal self-employed parent's child eligible for CHP+ on the month's 240.0% had the band of the annualized 160.0% (band_c); the band of the figure eligibility was determined on is band_d. OQ-810 no longer covers the band. § 320.1 states whole percentages ('between 101% and 150%', 'between 151% and 200%'), leaving ratios between chp_copayment_band_b_max_pct and 151%, and between chp_copayment_band_c_max_pct and 201%, in no band; they are read into the next band up (OQ-470)."
+derived: [case, [["<", [at, [case, [[any, ["<=", ma_magi_monthly_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ["-", ma_magi_monthly_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]], ma_magi_monthly_household_income_pct_fpl], [else, ma_magi_household_income_pct_fpl]], [det_month]], chp_copayment_waiver_limit_pct], band_a], [["<=", [at, [case, [[any, ["<=", ma_magi_monthly_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ["-", ma_magi_monthly_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]], ma_magi_monthly_household_income_pct_fpl], [else, ma_magi_household_income_pct_fpl]], [det_month]], chp_copayment_band_b_max_pct], band_b], [["<=", [at, [case, [[any, ["<=", ma_magi_monthly_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ["-", ma_magi_monthly_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]], ma_magi_monthly_household_income_pct_fpl], [else, ma_magi_household_income_pct_fpl]], [det_month]], chp_copayment_band_c_max_pct], band_c], [else, band_d]]
+sources: [S1504, S3356]
 implemented: engine
 tags: [chp, income]
-open: [OQ-470, OQ-810]
+open: [OQ-470]
 accepts_from:
   - {from: ma_magi_household_income_pct_fpl, class: adopted_method, source: S1504}
+  - {from: ma_magi_monthly_household_income_pct_fpl, class: adopted_method, source: S1504}
 rationale: "OQ-60: the § 320.1 copayment schedule is keyed by family income band; no item stated the band."
 tests:
-  - {id: CO-2228-T1, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.00}, expect: band_a}
-  - {id: CO-2228-T2, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.45}, expect: band_b}
-  - {id: CO-2228-T3, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.505}, expect: band_c}
-  - {id: CO-2228-T4, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.00}, expect: band_c}
-  - {id: CO-2228-T5, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.40}, expect: band_d}
+  - {id: CO-2228-T1, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.00, ma_magi_monthly_household_income_pct_fpl: 1.00}, expect: band_a}
+  - {id: CO-2228-T2, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.45, ma_magi_monthly_household_income_pct_fpl: 1.45}, expect: band_b}
+  - {id: CO-2228-T3, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.505, ma_magi_monthly_household_income_pct_fpl: 1.505}, expect: band_c}
+  - {id: CO-2228-T4, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.00, ma_magi_monthly_household_income_pct_fpl: 2.00}, expect: band_c}
+  - {id: CO-2228-T5, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.40, ma_magi_monthly_household_income_pct_fpl: 2.40}, expect: band_d}
+  - {id: CO-2228-T6, as_of: "2026-11-10", given: {ma_magi_monthly_household_income_pct_fpl: 2.4, ma_magi_household_income_pct_fpl: 1.6}, title: "Coverage pass 4 (CO-387, RV3-CPB): eligible for CHP+ on the month's 240.0% (at most 260%), so C.4.a's annualized 160.0% is not the income the eligibility was determined on: band_d (above 200%)", expect: band_d}
+  - {id: CO-2228-T7, as_of: "2026-11-10", given: {ma_magi_monthly_household_income_pct_fpl: 2.8, ma_magi_household_income_pct_fpl: 1.6}, title: "Coverage pass 4: over 265% on the month (280%, over 260% even with the 5-point disregard), eligible on the annualized 160.0% (C.4.a): band_c (151% to 200%)", expect: band_c}

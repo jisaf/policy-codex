@@ -23178,6 +23178,215 @@ Document: D-80
 > grant standard, the client shall not be eligible for that specific Adult Financial
 > program.
 
+### S4630. Medicaid income is determined using modified adjusted gross income, with no type of expense, block or other income disregard
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(14)(A) (first sentence), (B) (Legal Information Institute, on file as D-26). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (14) Income determined using modified adjusted gross income.—
+>
+> (A) In general.—
+>
+> Notwithstanding subsection (r) or any other provision of this subchapter, except as provided in subparagraph (D), for purposes of determining income eligibility for medical assistance under the State plan or under any waiver of such plan and for any other purpose applicable under the plan or waiver for which a determination of income is required, including with respect to the imposition of premiums and cost-sharing, a State shall use the modified adjusted gross income of an individual and, in the case of an individual in a family greater than 1, the household income of such family. ...
+>
+> (B) No income or expense disregards.—
+>
+> Subject to subparagraph (I), no type of expense, block, or other income disregard shall be applied by a State to determine income eligibility for medical assistance under the State plan or under any waiver of such plan or for any other purpose applicable under the plan or waiver for which a determination of income is required.
+
+### S4631. Federal income tax: gross income is all income from whatever source derived, except as otherwise provided
+
+Document: D-4430
+
+26 U.S.C. 61(a) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/61
+
+> (a) General definition
+>
+> Except as otherwise provided in this subtitle, gross income means all income from whatever source derived, including (but not limited to) the following items:
+>
+> (1) Compensation for services, including fees, commissions, fringe benefits, and similar items;
+>
+> (2) Gross income derived from business;
+>
+> (3) Gains derived from dealings in property;
+>
+> (4) Interest;
+>
+> (5) Rents;
+>
+> (6) Royalties;
+>
+> (7) Dividends;
+>
+> (8) Annuities;
+>
+> (9) Income from life insurance and endowment contracts;
+>
+> (10) Pensions;
+>
+> (11) Income from discharge of indebtedness;
+>
+> (12) Distributive share of partnership gross income;
+>
+> (13) Income in respect of a decedent; and
+>
+> (14) Income from an interest in an estate or trust.
+
+### S4632. Federal income tax: adjusted gross income is gross income less the deductions of a trade or business and those attributable to property held for the production of rents
+
+Document: D-4431
+
+26 U.S.C. 62(a) (introduction), (a)(1), (a)(4) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/62
+
+> (a) General rule
+>
+> For purposes of this subtitle, the term “adjusted gross income” means, in the case of an individual, gross income minus the following deductions:
+>
+> (1) Trade and business deductions
+>
+> The deductions allowed by this chapter (other than by part VII of this subchapter) which are attributable to a trade or business carried on by the taxpayer, if such trade or business does not consist of the performance of services by the taxpayer as an employee.
+>
+> (4) Deductions attributable to rents and royalties
+>
+> The deductions allowed by part VI (sec. 161 and following), by section 212 (relating to expenses for production of income), and by section 611 (relating to depletion) which are attributable to property held for the production of rents or royalties.
+
+### S4633. Federal income tax: a health savings account distribution used only for qualified medical expenses is not gross income
+
+Document: D-4432
+
+26 U.S.C. 223(f)(1)-(2) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/223
+
+> (f) Tax treatment of distributions
+>
+> (1) Amounts used for qualified medical expenses
+>
+> Any amount paid or distributed out of a health savings account which is used exclusively to pay qualified medical expenses of any account beneficiary shall not be includible in gross income.
+>
+> (2) Inclusion of amounts not used for qualified medical expenses
+>
+> Any amount paid or distributed out of a health savings account which is not used exclusively to pay the qualified medical expenses of the account beneficiary shall be included in the gross income of such beneficiary.
+
+### S4634. Federal income tax: a qualified distribution from a Roth IRA is not gross income
+
+Document: D-4432
+
+26 U.S.C. 408A(d)(1) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/408A
+
+> (d) Distribution rules
+>
+> For purposes of this title—
+>
+> (1) Exclusion
+>
+> Any qualified distribution from a Roth IRA shall not be includible in gross income.
+
+### S4635. Federal income tax: a qualified tuition program distribution is not gross income to the extent of the qualified higher education expenses
+
+Document: D-4432
+
+26 U.S.C. 529(c)(3)(A), (B)(i)-(ii) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/529
+
+> (3) Distributions
+>
+> (A) In general
+>
+> Any distribution under a qualified tuition program shall be includible in the gross income of the distributee in the manner as provided under section 72 to the extent not excluded from gross income under any other provision of this chapter.
+>
+> (B) Distributions for qualified higher education expenses
+>
+> For purposes of this paragraph—
+>
+> (i) In-kind distributions
+>
+> No amount shall be includible in gross income under subparagraph (A) by reason of a distribution which consists of providing a benefit to the distributee which, if paid for by the distributee, would constitute payment of a qualified higher education expense.
+>
+> (ii) Cash distributions
+>
+> In the case of distributions not described in clause (i), if—
+>
+> (I) such distributions do not exceed the qualified higher education expenses (reduced by expenses described in clause (i)), no amount shall be includible in gross income, and
+>
+> (II) in any other case, the amount otherwise includible in gross income shall be reduced by an amount which bears the same ratio to such amount as such expenses bear to such distributions.
+
+### S4636. Federal income tax: meals on the employer's business premises, and lodging the employee must accept there as a condition of employment, furnished for the employer's convenience, are not gross income
+
+Document: D-4435
+
+26 U.S.C. 119(a) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/119
+
+> (a) Meals and lodging furnished to employee, his spouse, and his dependents, pursuant to employment
+>
+> There shall be excluded from gross income of an employee the value of any meals or lodging furnished to him, his spouse, or any of his dependents by or on behalf of his employer for the convenience of the employer, but only if—
+>
+> (1) in the case of meals, the meals are furnished on the business premises of the employer, or
+>
+> (2) in the case of lodging, the employee is required to accept such lodging on the business premises of his employer as a condition of his employment.
+
+### S4637. Federal income tax: the part of an annuity that returns the investment in the contract is not gross income
+
+Document: D-4436
+
+26 U.S.C. 72(b)(1) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/72
+
+> (b) Exclusion ratio
+>
+> (1) In general
+>
+> Gross income does not include that part of any amount received as an annuity under an annuity, endowment, or life insurance contract which bears the same ratio to such amount as the investment in the contract (as of the annuity starting date) bears to the expected return under the contract (as of such date).
+
+### S4638. Federal income tax: a pension for injuries or sickness resulting from active service in the armed forces is not gross income
+
+Document: D-4437
+
+26 U.S.C. 104(a) (introduction), (a)(4) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/104
+
+> (a) In general
+>
+> Except in the case of amounts attributable to (and not in excess of) deductions allowed under section 213 (relating to medical, etc., expenses) for any prior taxable year, gross income does not include—
+>
+> ...
+>
+> (4) amounts received as a pension, annuity, or similar allowance for personal injuries or sickness resulting from active service in the armed forces of any country or in the Coast and Geodetic Survey or the Public Health Service, or as a disability annuity payable under the provisions of section 808 of the Foreign Service Act of 1980;
+
+### S4639. Federal income tax: the recovery of an amount deducted in an earlier year is not gross income to the extent the deduction did not reduce the tax
+
+Document: D-4438
+
+26 U.S.C. 111(a) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/111
+
+> (a) Deductions
+>
+> Gross income does not include income attributable to the recovery during the taxable year of any amount deducted in any prior taxable year to the extent such amount did not reduce the amount of tax imposed by this chapter.
+
+### S4640. AmeriCorps and WIOA allowances are not income for federal need-based programs, other than as the Social Security Act provides
+
+Document: D-4439
+
+42 U.S.C. 12637(d); 29 U.S.C. 3241(a)(2) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/42/12637
+
+> (d) Treatment of benefits
+>
+> Allowances, earnings, and payments to individuals participating in programs that receive assistance under this subchapter shall not be considered to be income for the purposes of determining eligibility for and the amount of income transfer and in-kind aid furnished under any Federal or federally assisted program based on need, other than as provided under the Social Security Act (42 U.S.C. 301 et seq.).
+>
+> ...
+>
+> (2) Treatment of allowances, earnings, and payments
+>
+> Allowances, earnings, and payments to individuals participating in programs under this subchapter shall not be considered as income for the purposes of determining eligibility for and the amount of income transfer and in-kind aid furnished under any Federal or federally assisted program based on need, other than as provided under the Social Security Act (42 U.S.C. 301 et seq.).
+
+### S4641. Colorado Foster Youth in Transition Program: an eligible youth is at least eighteen but less than twenty-one
+
+Document: D-4433
+
+12 CCR 2509-3 § 7.203.4, 7.203.41.A (rule version 12365, fetched from the Secretary of State 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12365&fileName=12%20CCR%202509-3
+
+> 7.203.4 FOSTER YOUTH IN TRANSITION PROGRAM The Foster Youth in Transition Program provides developmentally appropriate, voluntary services to eligible youth and shall be available to all eligible youth. Services shall be offered using a housing first strategy to provide housing solutions to participating youth who are experiencing, or are at imminent risk of, homelessness.
+>
+> 7.203.41 Eligibility
+>
+> An eligible youth is an individual who:
+>
+> A. Is at least eighteen but less than twenty-one years of age or such greater age of foster care eligibility as required by federal law;
 ### S4600. LEAP: eligibility factors, household composition and income among them, are considered as of the date of application
 
 Document: D-86

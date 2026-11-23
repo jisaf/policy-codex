@@ -18,10 +18,10 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 189, 21 of them partly settled", () => {
+  it("holds every question still to answer: 189, 22 of them partly settled", () => {
     expect(all.total).toBe(189); // + OQ-1250 to OQ-1254 (holdings H1 SNAP and Adult Financial); + OQ-1240 to OQ-1244 (H1 Medicaid); coverage pass 4 (CCCAP, LEAP, SUN Bucks): + OQ-1220 (the 2027 Summer EBT notice), OQ-1221 (CCCAP contract term), OQ-1222 (CCCAP VISTA under J.11 and I.32), - OQ-1181 resolved (a dated pay states its frequency); + OQ-1205 (fact-graph review of P58); + OQ-1200 to OQ-1204 (holdings H0: MSP, the programs with no resource test, the three tables' findings); records E1 integration: + OQ-1180 (Medicaid: a boarder alone is not employment), OQ-1181 (a dated pay with no frequency); E1 cash: + OQ-1140 to OQ-1142, OQ-1022 resolved; E1 Medicaid: + OQ-1120 to OQ-1124, OQ-1023 resolved; + OQ-1100, OQ-1101, - OQ-1021 resolved (earnings E1 SNAP); + OQ-1160, OQ-1162, OQ-1163 (earnings E1, LEAP and CCCAP); + OQ-1020 to OQ-1024 (earnings E0); + OQ-1050, OQ-1051 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995, OQ-996 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2: Medicaid), merged; + OQ-990, OQ-991, OQ-992 (receipts migration 2: CCCAP), OQ-993 (SUN Bucks), merged; + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-885, OQ-886, OQ-887, OQ-888 (receipts migration 1: LEAP, Adult Financial); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
     expect(all.rows).toHaveLength(189);
-    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(21); // + OQ-1204 partly settled (H1 Medicaid: part (1) by the text); // + OQ-1024 partly settled (E1 Medicaid: MAGI half)
+    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(22); // + one partly settled by coverage pass 4 MAGI (OQ-970: AmeriCorps settled, training allowances open); + OQ-1204 partly settled (H1 Medicaid: part (1) by the text); // + OQ-1024 partly settled (E1 Medicaid: MAGI half)
   });
 
   it("'only mine' is the persona's owned questions, the same as the Desk counts", () => {

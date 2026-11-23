@@ -1,0 +1,23 @@
+# Earned-income records harness: allowed differences of coverage pass 4, MAGI Medicaid and CHP+
+# (docs/reviews/coverage4-medicaid-magi-chp.md, dispositions). Each entry is a cited fix with its rule text and the
+# household it moves: {case, person?, identifier?, month?, class, old?, new?}.
+
+# C4-CPB (CO-387, coverage pass 3 C3-08, formerly a known failure under OQ-810): 10 CCR 2505-3 320.1 (D-66) sets the
+# copayment band by "income, at the time of eligibility determination", and 10 CCR 2505-10 8.100.4.C.4.a (S3356)
+# annualizes only for "Applicants who are found financially ineligible based on current or previous monthly household
+# income". CO-387's p2 is CHP+ eligible on the month's 4,328 / 1,803.33 = 240.0% (at most 260%), so the band is set on
+# 240.0%: above 200%, band_d; before, on the annualized 34,624 / 12 / 1,803.33 = 160.0%, band_c. p1, the parent, reads
+# the same figure (the band is the family's).
+- {case: CO-387, identifier: chp_copayment_income_band, class: "C4-CPB (2505-3 320.1, 8.100.4.C.4.a): the copayment band of the income CHP+ eligibility was determined on", old: band_c, new: band_d}
+
+# C4-13: MAGI income is no longer rounded to the whole dollar (10 CCR 2505-10 8.100.4.C-D and 42 CFR 435.603(e) state no
+# rounding; docs/conventions.md P41). Figures only. CO-182: 11,998 / 12 = 999.83 (was 1,000); CO-535: half-dollar receipts
+# kept (91,849.50, was 91,850; the household figures follow).
+- {case: CO-182, identifier: ma_annualized_household_income, class: "C4-13 (8.100.4.C-D state no rounding): MAGI income not rounded to the dollar"}
+- {case: CO-535, identifier: "/^(ma_person_magi_income|ma_magi_household_income)$/", class: "C4-13 (8.100.4.C-D state no rounding): MAGI income not rounded to the dollar"}
+
+# C4-14 (10 CCR 2505-10 8.100.4.C.2; 8.100.4.C.1.f, S167; decision 4): the data-source figure CHP+ compares (CO-1344, by
+# its S869 link) sums the members whose income counts (CO-4558), as the attested figure does; which members count turns on
+# whether each is required to file a return, which the SNAP base household (CO-155) does not state for its child p2, so the
+# child's CHP+ income verification cannot be determined (was complete, on a sum over every member).
+- {case: "/^GE-SNAP-(base|in_kind_compensation_value_300)$/", person: p2, identifier: chp_verification_status, month: "2027-02", old: complete, new: unknown, class: "C4-14 (8.100.4.C.2, C.1.f; decision 4): the data-source figure sums the members whose income counts; the child's filing requirement not stated"}
