@@ -35,9 +35,13 @@
 
 # D4-E (decision 4 of 2026-11-23): a person whose earnings are not stated may receive payments from boarders, which LEAP counts as
 # unearned income (E1-L2), so the person's unearned income, and whether it waits on verification, cannot be determined; the stated
-# receipts alone no longer settle it. Each household's LEAP income and verification status were already cannot determine (another
-# member's wages are not stated), so no outcome changes.
-- {case: "/^CO-(94|320|354)$/", identifier: leap_unearned_income_verification_is_pending, class: "D4-E earnings not stated: unearned income (boarders) cannot be determined", old: false, new: unknown}
+# receipts alone no longer settle it. CO-94's sponsored children state no earnings; the household's LEAP income and verification
+# status were already cannot determine (another member's wages are not stated), so no outcome changes.
+- {case: CO-94, identifier: leap_unearned_income_verification_is_pending, class: "D4-E earnings not stated: unearned income (boarders) cannot be determined", old: false, new: unknown}
+# E1-L2, its verification: CO-320 and CO-354 state $1,500 of room and board, which LEAP now counts as unearned income; 3.755.11
+# requires income to be verified, and neither household states whether the unearned-income verification came in, so the pending
+# flag cannot be determined. Their LEAP household income was already cannot determine on both ledgers.
+- {case: "/^CO-(320|354)$/", identifier: leap_unearned_income_verification_is_pending, class: "E1-L2 LEAP counts room and board from boarders (3.752.21); its verification is not stated", old: false, new: unknown}
 
 # Not this track's: at the baseline of the E1 tracks (EARNINGS_BASELINE, 20004af) the decision-4 round for the receipts readers
 # (b49a7f2, merged as bb4b8ee after E0) had not been merged; its class D4-1 (scripts/receipts/allowed-differences.yaml) makes CO-141's

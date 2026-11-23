@@ -298,3 +298,81 @@
   identifier: /^cw_/
   new: unknown
   class: D4-3 Colorado Works exempts Aid and Attendance used for uncovered care only in the person's own home (3.605.4.A.6)
+
+# ---------------------------------------------------------------------------------------------------
+# Earned-income records, E1 for CCCAP and LEAP, with SUN Bucks' decision-4 round (2026-11-23;
+# docs/reviews/records-earnings-care-energy.md, where each class is stated with its cases and the rule text; the records
+# harness classes are in scripts/records/allowed/e1-leap.yaml and e1-cccap.yaml). Measured here against c29d326.
+
+# E1-G: the receipts harness's generated households are written in the scalar facts and translated into receipts only;
+# they state no earnings records (the records harness generates and translates its own, scripts/records/generate-earnings.ts).
+# CCCAP and LEAP read the earnings records from E1, so every generated household's CCCAP and LEAP income cannot be determined
+# here. Their earned-income readings are compared in the records harness (npm run records:harness -- --list earnings), which
+# translates its generated households; the request to translate these too is R-4 of the review.
+- case: /^G-/
+  identifier: /^(cccap|leap)_/
+  new: unknown
+  class: "E1-G the receipts harness's generated households state no earnings records (CCCAP and LEAP read them from E1)"
+
+# R-30: the seven thirty-day households state their earner's pays with dates in earnings alone (CCCAP's thirty days and LEAP's
+# eight weeks computed from the dates, 8 CCR 1403-1 3.111.H.4-5, 9 CCR 2503-7 3.752.22.B-C); the baseline reads the scalar wages
+# they no longer state, so it cannot determine. The new values are the households' expectations.
+- case: /^CO-(125|133|134|135|454|455|456)$/
+  identifier: /^(cccap|leap)_/
+  old: unknown
+  class: "R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)"
+
+# E1-L2 (fixed): LEAP counts payments from boarders for room and board, as it counted those for a room only or meals only
+# (9 CCR 2503-7 3.752.21, S4100: "payments from any other source, which is considered to be a gain or benefit"). CO-171 ($300),
+# CO-320 and CO-354 ($1,500 each); CO-425 states its $600 twice (finding E0-F1) until the SNAP track restates it. Where the
+# newly counted payment must be verified (3.755.11) and the household states no verification, the pending flag cannot be determined.
+- case: /^CO-(171|320|354|425)$/
+  identifier: /^leap_(person_unearned_income|household_income)$/
+  class: "E1-L2 LEAP counts room and board from boarders (3.752.21)"
+- case: /^CO-(320|354)$/
+  identifier: leap_unearned_income_verification_is_pending
+  old: false
+  new: unknown
+  class: "E1-L2 LEAP counts room and board from boarders (3.752.21); its verification is not stated"
+
+# E1-L3, E1-C3 (CO-194, CO-483): LEAP counts an odd job beside a converted pay schedule (3.752.22.B; OQ-1160); CCCAP leaves out
+# irregular earnings under $90 a quarter (8 CCR 1403-1 3.111.J.28). L-F2 (CO-210): a PASS set-aside is taken off its own pay in
+# leap_person_wages, the household figure unchanged.
+- case: CO-194
+  identifier: /^leap_household_income$/
+  old: 1000
+  new: 1020
+  class: "E1-L3 an odd job beside a converted pay schedule is counted (3.752.22.B)"
+- case: /^CO-(194|483)$/
+  identifier: /^cccap_(person_countable_income|household_income)$/
+  class: "E1-C3 J.28 excludes irregular earnings under $90 a quarter"
+- case: CO-210
+  identifier: leap_person_wages
+  old: 4000
+  new: 3500
+  class: "L-F2 a PASS set-aside is taken off its own pay (3.752.23.DD)"
+
+# D4-E (decision 4 of 2026-11-23): a person whose earnings are not stated may receive payments from boarders, which LEAP counts
+# as unearned income, so the person's LEAP unearned income and its verification cannot be determined (CO-94's sponsored children,
+# CO-211's child and guardian).
+- case: /^CO-(94|211)$/
+  identifier: /^leap_(person_unearned_income|unearned_income_verification_is_pending)$/
+  new: unknown
+  class: "D4-E earnings not stated: LEAP unearned income (boarders) cannot be determined"
+
+# D4-S (decision 4 of 2026-11-23): SUN Bucks reads a child's Colorado Works receipts with no default (CO-2708); 7 CFR 292.2 and
+# 292.12(d) give no reading for assistance not reported. A child, or another child of the unit, whose receipts are not stated and
+# whom no flag shows receiving SNAP or TANF has a categorical test that cannot be determined.
+- case: /.*/
+  identifier: sebt_household_child_receives_snap_or_tanf
+  old: false
+  new: unknown
+  class: "D4-S a child's Colorado Works receipts not stated: SUN Bucks' categorical test cannot be determined"
+
+# D4-S restatement: CO-211's child states the empty receipts list its narrative gives ("no SNAP or Colorado Works"), so the
+# unearned-income figures other programs read for her, cannot determine on the baseline, are now 0.
+- case: CO-211
+  person: p2
+  identifier: /^(cw_|ma_)/
+  old: unknown
+  class: "D4-S restatement a child with no receipts states an empty list"
