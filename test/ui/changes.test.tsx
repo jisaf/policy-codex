@@ -86,13 +86,13 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 20 and reaches 81", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 20 and reaches 84", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
     // The five Adult Financial coverage-round households (CO-165 to CO-169) are reached through af_barred_by_colorado_works.
-    expect([r.read.length, r.reach.length]).toEqual([20, 81]); // earned-income records E1, cash: + CO-670 (Colorado Works earnings in records alone) reads it, CO-670 and CO-671 are reached; receipts migration 2: + CO-580 to CO-582 reached (Colorado Works households in receipts alone, no earnings); fix round 2026-11-23: + 2 new stored cases reached; Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
+    expect([r.read.length, r.reach.length]).toEqual([20, 84]); // resource records H1 Adult Financial: + CO-740 to CO-742 reached (copies of probe CO-300, reached as it is); earned-income records E1, cash: + CO-670 (Colorado Works earnings in records alone) reads it, CO-670 and CO-671 are reached; receipts migration 2: + CO-580 to CO-582 reached (Colorado Works households in receipts alone, no earnings); fix round 2026-11-23: + 2 new stored cases reached; Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
   });
 
   it("$100 for the $90 disregard moves 24 steps on the way (countable income) and no outcome", () => {
@@ -235,7 +235,7 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     // The draft reaches the effect panel after the editor's effect runs.
     await until(() => Boolean(effect.querySelector(".reach")));
-    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 20 of ${vol.cases.length} stored households; it reaches 81.`); // + CO-670, CO-671 (earned-income records E1, cash); + CO-580 to CO-582 (receipts migration 2)
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 20 of ${vol.cases.length} stored households; it reaches 84.`); // + CO-740 to CO-742 (resource records H1 Adult Financial, copies of CO-300); + CO-670, CO-671 (earned-income records E1, cash); + CO-580 to CO-582 (receipts migration 2)
     await until(() => effect.getAttribute("aria-busy") === "false");
     expect(effect.textContent).toMatch(/24 stored results in \d+ households would change/); // + CO-670 p1, p2 (earned-income records E1, cash)
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);

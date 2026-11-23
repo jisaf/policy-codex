@@ -1,0 +1,20 @@
+id: CO-5345
+name: "Adult Financial: countable personal property"
+identifier: af_countable_personal_property
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The equity of the personal property the person holds because of its value or as an investment, which Adult Financial counts (9 CCR 2503-5 3.520.77.B: \"This does not include effects that the client holds because of the value or as an investment, which are countable as personal property as outlined in Section 3.520.742\"): each investment_personal_property record (row counted) at its value less what is owed on it (3.520.742.A.3, B: \"the appraised value less liabilities\" of \"art, jewelry or valuable collections\"), times the person's share."
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): finding H0-F2 fixed (OQ-1203): before step H1 no Adult Financial item read investment_personal_property_value (CO-4642), so an OAP or AND client's collectibles were not counted. What is owed on the property is required where read (decision 4). Household goods and personal effects the client uses are exempt (3.520.77.B; row excluded_household_goods) and not read."
+derived: ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted"], ["=", ["receipt", "kind"], "investment_personal_property"]], ["*", ["max", 0, ["-", ["receipt", "value"], ["receipt", "amount_owed"]]], ["otherwise", ["receipt", "share"], 1]]]
+sources: [S4507, S4692]
+implemented: engine
+tags: [cash, resources]
+rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Finding H0-F2 (docs/reviews/holdings-h0.md): 3.520.77.B counts personal effects held as an investment, which no Adult Financial item read."
+tests:
+  # Hand-computed from 9 CCR 2503-5 3.520.77.B (S4507) and 3.520.742.A.3, B (S4692).
+  - {id: CO-5345-T1, title: "H0-F2: a coin collection appraised at $2,500, nothing owed: 2,500", as_of: "2026-10-01", given: {holdings: [{kind: investment_personal_property, value: 2500, amount_owed: 0}]}, expect: 2500}
+  - {id: CO-5345-T2, title: "A painting appraised at $6,000 with a $1,000 loan against it, held half with a sister: (6,000 - 1,000) x 0.5 = 2,500", as_of: "2026-10-01", given: {holdings: [{kind: investment_personal_property, value: 6000, amount_owed: 1000, share: 0.5, co_owners: outside_case, holding_id: art}]}, expect: 2500}
+  - {id: CO-5345-T3, title: "Household goods worth $4,000 the client uses: exempt (3.520.77.B), 0", as_of: "2026-10-01", given: {holdings: [{kind: personal_property, value: 4000}]}, expect: 0}
+  - {id: CO-5345-T4, title: "Decision 4: jewelry held as an investment, $2,000, with nothing said of what is owed - cannot determine", as_of: "2026-10-01", given: {holdings: [{kind: investment_personal_property, value: 2000}]}, expect: unknown}

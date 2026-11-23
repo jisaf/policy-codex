@@ -1,4 +1,112 @@
 # Resource records harness: allowed differences of the snap H1 track (design 4.3, rule 3).
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
-# docs/reviews/records-holdings-snap.md: {case, person?, identifier?, month?, class, old?, new?}.
-[]
+# docs/reviews/records-holdings-snap-af.md: {case, person?, identifier?, month?, class, old?, new?}.
+# Written by the track from the harness run against HOLDINGS_BASELINE; every case is named.
+
+# ---------------------------------------------------------------------------------------------------
+# H1S-D4-1, decision 4 of 2026-11-23: a person who states no holdings states an unknown list. SNAP's non-liquid
+# resources (CO-074) and transfer finding (CO-4159, through CO-5314) read the list with no default: before step H1
+# every part was read as 0 and the finding as no (each `otherwise`). Each person named below states no resource
+# fact at all (the translator gives a holdings list to every person who states one), so the person's liquid
+# resources (liquid_resources_value, never defaulted) were already cannot determine on the baseline and no
+# outcome changes. Checked: no outcome of these households differs. Generated: the variant with liquid not stated.
+- case: /^(CO-04|CO-05|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-95|CO-98|CO-99|CO-100|CO-110|CO-111|CO-122|CO-125|CO-133|CO-134|CO-135|CO-136|CO-137|CO-138|CO-140|CO-145|CO-146|CO-147|CO-148|CO-149|CO-160|CO-161|CO-162|CO-163|CO-164|CO-170|CO-171|CO-172|CO-173|CO-174|CO-175|CO-176|CO-177|CO-178|CO-179|CO-180|CO-181|CO-182|CO-183|CO-184|CO-190|CO-191|CO-199|CO-200|CO-201|CO-202|CO-203|CO-204|CO-205|CO-206|CO-207|CO-208|CO-209|CO-210|CO-211|CO-215|CO-216|CO-224|CO-225|CO-226|CO-227|CO-228|CO-314|CO-315|CO-316|CO-317|CO-318|CO-319|CO-320|CO-321|CO-322|CO-323|CO-324|CO-325|CO-326|CO-327|CO-328|CO-329|CO-330|CO-331|CO-332|CO-333|CO-334|CO-335|CO-336|CO-337|CO-338|CO-339|CO-340|CO-341|CO-342|CO-343|CO-344|CO-345|CO-346|CO-347|CO-348|CO-349|CO-350|CO-361|CO-362|CO-363|CO-364|CO-365|CO-366|CO-367|CO-368|CO-369|CO-370|CO-371|CO-372|CO-373|CO-374|CO-375|CO-376|CO-377|CO-378|CO-379|CO-380|CO-381|CO-382|CO-383|CO-384|CO-385|CO-386|CO-387|CO-393|CO-394|CO-400|CO-401|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-438|CO-439|CO-440|CO-441|CO-442|CO-452|CO-453|CO-454|CO-455|CO-456|CO-458|CO-459|CO-483|CO-488|CO-490|CO-491|CO-492|CO-530|CO-531|CO-535|CO-562|GH-SNAPresources-liquid_not_stated)$/
+  person: p1
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-04|CO-05|CO-13|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-95|CO-98|CO-99|CO-100|CO-111|CO-122|CO-125|CO-135|CO-148|CO-160|CO-161|CO-162|CO-164|CO-170|CO-174|CO-175|CO-176|CO-177|CO-178|CO-179|CO-180|CO-181|CO-183|CO-184|CO-190|CO-191|CO-201|CO-202|CO-203|CO-204|CO-205|CO-206|CO-207|CO-208|CO-209|CO-210|CO-211|CO-214|CO-215|CO-216|CO-224|CO-225|CO-228|CO-314|CO-315|CO-325|CO-329|CO-330|CO-336|CO-337|CO-339|CO-340|CO-347|CO-348|CO-361|CO-362|CO-363|CO-364|CO-365|CO-366|CO-367|CO-368|CO-369|CO-370|CO-371|CO-372|CO-373|CO-374|CO-377|CO-379|CO-380|CO-381|CO-385|CO-386|CO-387|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-458|CO-459|CO-488|CO-562|GH-SNAPmember-liquid_not_stated)$/
+  person: p2
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-04|CO-05|CO-13|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-85|CO-94|CO-99|CO-110|CO-111|CO-122|CO-125|CO-133|CO-134|CO-135|CO-136|CO-137|CO-138|CO-140|CO-141|CO-145|CO-146|CO-148|CO-161|CO-162|CO-163|CO-164|CO-170|CO-171|CO-172|CO-173|CO-174|CO-180|CO-190|CO-191|CO-199|CO-200|CO-201|CO-204|CO-215|CO-216|CO-314|CO-315|CO-316|CO-317|CO-318|CO-319|CO-320|CO-321|CO-322|CO-323|CO-324|CO-325|CO-326|CO-327|CO-328|CO-329|CO-330|CO-331|CO-332|CO-333|CO-334|CO-335|CO-336|CO-337|CO-338|CO-339|CO-340|CO-341|CO-342|CO-343|CO-344|CO-345|CO-346|CO-347|CO-348|CO-349|CO-350|CO-361|CO-393|CO-394|CO-400|CO-401|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-448|CO-449|CO-450|CO-452|CO-454|CO-455|CO-456|CO-483|CO-488)$/
+  person: p3
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-04|CO-13|CO-73|CO-74|CO-75|CO-76|CO-78|CO-85|CO-94|CO-111|CO-125|CO-135|CO-191)$/
+  person: p4
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-04|CO-85|CO-111|CO-163)$/
+  person: p5
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-85|CO-111)$/
+  person: p6
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-85)$/
+  person: p7
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-85)$/
+  person: p8
+  identifier: /^snap_(countable_nonliquid_resources|resource_transfer_is_disqualifying)$/
+  new: unknown
+  class: "H1S-D4-1 holdings not stated: non-liquid resources and the transfer finding cannot be determined (decision 4)"
+- case: /^(CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-94|CO-110|CO-111|CO-125|CO-133|CO-134|CO-135|CO-136|CO-137|CO-138|CO-140|CO-145|CO-146|CO-147|CO-148|CO-149|CO-160|CO-161|CO-162|CO-163|CO-164|CO-170|CO-171|CO-172|CO-173|CO-174|CO-176|CO-177|CO-180|CO-181|CO-182|CO-183|CO-184|CO-190|CO-191|CO-199|CO-200|CO-201|CO-202|CO-203|CO-204|CO-205|CO-206|CO-207|CO-208|CO-215|CO-216|CO-224|CO-226|CO-227|CO-228|CO-314|CO-315|CO-317|CO-318|CO-319|CO-320|CO-321|CO-322|CO-323|CO-324|CO-325|CO-326|CO-327|CO-328|CO-329|CO-330|CO-331|CO-332|CO-333|CO-334|CO-335|CO-336|CO-337|CO-338|CO-339|CO-340|CO-341|CO-342|CO-343|CO-344|CO-345|CO-346|CO-347|CO-348|CO-349|CO-350|CO-361|CO-362|CO-363|CO-364|CO-365|CO-366|CO-375|CO-377|CO-378|CO-379|CO-380|CO-381|CO-382|CO-383|CO-384|CO-385|CO-386|CO-387|CO-393|CO-394|CO-400|CO-401|CO-452|CO-453|CO-454|CO-455|CO-456|CO-458|CO-459|CO-483|CO-488|CO-490|CO-491|CO-492|CO-530|CO-531|CO-535|CO-562|GH-SNAPmember-liquid_not_stated|GH-SNAPresources-liquid_not_stated)$/
+  identifier: /^snap_(resource_transfer_disqualification_months|is_disqualified_for_resource_transfer)$/
+  new: unknown
+  class: "H1S-D4-1 a member of the household states no holdings: the transfer disqualification cannot be determined (decision 4)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1S-D4-2, decision 4: a federal income tax refund is excluded for twelve months from the date of receipt
+# (10 CCR 2506-1 4.410.J.17, S2966) and an earned income tax credit for twelve months when received while
+# participating, a federal one for the month of receipt and the next (J.12): SNAP reads the record's source_date.
+# The old facts (CO-4172, CO-4173) said only that the money came within the twelve months, so the translator
+# writes no date and the liquid resources are cannot determine (before: excluded in full whatever the date).
+# Generated: the refund and credit variants (800 of 2500, so 1700 counted before). Stored households and tests
+# that hold such money are dated (CO-300, CO-343-T6, CO-4176-T1, T3, CO-1740-T3).
+- case: /^(GH-SNAPmember-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-SNAPresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-SNAPmember-liquid_2500_of_which_snap_eitc_held_while_participating_value_800|GH-SNAPresources-liquid_2500_of_which_snap_eitc_held_while_participating_value_800)$/
+  identifier: /^snap_(countable_liquid_resources|household_countable_resources|household_liquid_resources)$/
+  old: 1700
+  new: unknown
+  class: "H1S-D4-2 a held refund or credit with no date of receipt: the twelve months of 4.410.J.12, J.17 cannot be applied (decision 4)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1S-D4-3, decision 4 and design decision D3: whether real property is for sale (4.410.F.1), a lot for a
+# future home (B) or producing income (E.1), and the estimated costs of selling it (F.2, G), are required where
+# read (CO-5300); before step H1 a part not stated was read as 0 (not for sale, no lot, no costs). A real
+# property record that states them is counted as before (rule tests CO-5310-T1 to T6, CO-5311-T1 to T5,
+# CO-074-T1 to T14). Land used only to grow food for the household (home-use production) was not read by SNAP
+# and is now real property like any other (CO-074-T13: counted when stated not for sale, no exemption in 4.410);
+# the variant states no SNAP field, so it is cannot determine. Generated: every variant stating real property
+# over $1,500 (property of $1,500 or less is inaccessible without reading them, as CO-418 is).
+- case: /^(GH-SNAPmember-real_property_5000|GH-SNAPresources-real_property_5000|GH-SNAPmember-home_use_production_land_7000|GH-SNAPresources-home_use_production_land_7000|GH-SNAPmember-joint_real_property_outside_owners_share_2000|GH-SNAPresources-joint_real_property_outside_owners_share_2000|GH-SNAPmember-real_property_5000_of_which_real_property_for_sale_value_2000|GH-SNAPmember-real_property_5000_of_which_land_for_permanent_home_value_2000|GH-SNAPmember-real_property_5000_of_which_installment_sale_contract_value_2000|GH-SNAPresources-real_property_5000_of_which_real_property_for_sale_value_2000|GH-SNAPresources-real_property_5000_of_which_land_for_permanent_home_value_2000|GH-SNAPresources-real_property_5000_of_which_installment_sale_contract_value_2000|GH-SNAPmember-real_property_5000_of_which_af_property_exempt_as_unsaleable_value_2000|GH-SNAPresources-real_property_5000_of_which_af_property_exempt_as_unsaleable_value_2000|GH-SNAPmember-real_property_5000_of_which_real_property_co_owned_with_resident_value_2000|GH-SNAPresources-real_property_5000_of_which_real_property_co_owned_with_resident_value_2000)$/
+  identifier: /^snap_(countable_nonliquid_resources|household_countable_resources)$/
+  new: unknown
+  class: "H1S-D4-3 real property that does not state whether it is for sale, a lot for a home or producing income, or its costs of sale (decision 4, D3)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1S-R (restated): CO-300 (probe PR-PTC, an Adult Financial probe) states its savings in the holdings records
+# alone, the federal refund dated 2026-08-14, inside 4.410.J.17's twelve months; liquid_resources_value and
+# federal_tax_refunds_held_value are no longer stated, so the ledger before step H1 cannot determine its SNAP
+# resources: 1,700 now (2,200 less the refund), as the review computed for Adult Financial.
+- case: CO-300
+  person: p1
+  identifier: /^snap_(countable_liquid_resources|household_countable_resources|household_liquid_resources)$/
+  old: unknown
+  new: 1700
+  class: "H1S-R restated in holdings alone (the refund dated): the ledger before H1 does not read it"
+
+# ---------------------------------------------------------------------------------------------------
+# Not this track's (the harness compares every outcome a stored household expects, CCCAP's among them): coverage
+# pass 4 X4-1 (docs/reviews/coverage4-care-energy.md; scripts/records/allowed/coverage4-care-energy.yaml), merged
+# after HOLDINGS_BASELINE: CCCAP reads a Colorado Works diversion's length with no default, and CO-345 does not
+# state it. No holdings figure is involved; the entry goes when the integration owner re-points HOLDINGS_BASELINE.
+- case: CO-345
+  person: p1
+  identifier: /^cccap_(eligibility_status|household_income)$/
+  new: unknown
+  class: "not this track's: coverage pass 4 X4-1, a diversion whose kind and length are not stated (merged after HOLDINGS_BASELINE)"
+- case: CO-345
+  person: p3
+  identifier: /^cccap_(eligibility_status|household_income)$/
+  new: unknown
+  class: "not this track's: coverage pass 4 X4-1, a diversion whose kind and length are not stated (merged after HOLDINGS_BASELINE)"

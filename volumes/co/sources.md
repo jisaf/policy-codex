@@ -23407,6 +23407,71 @@ Document: D-80
 >
 > B. Household goods and personal effects found in or on the primary residence, that the client uses on a regular basis. The client needs household goods for maintenance, use, and occupancy of the premises as a home. This also includes personal effects which are ordinarily worn or carried by the client, or items that have an intimate relation to the client. This does not include effects that the client holds because of the value or as an investment, which are countable as personal property as outlined in Section 3.520.742.
 
+### S4690. Colorado SNAP: liquid and non-liquid resources defined; household goods, personal effects and one burial plot per household member exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.409.A-B, 4.410.D.1 (rule version 12718, effective 10/01/2026; resource records, step H1 SNAP, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.409 COUNTABLE RESOURCES
+>
+> A. Liquid Resources
+>
+> Liquid resources are assets such as cash on hand, money in checking or savings accounts, saving certificates stocks or bonds, or lump sum payments as specified in Section 4.405, F.
+>
+> B. Non-Liquid Resources
+>
+> A non-liquid resource is any tangible real property such as buildings, land, and vacation homes.
+>
+> The value of non-liquid resources, unless exempt under Section 4.410 or specified under Section 4.408.1 shall be the equity value. The equity value is the fair market value minus the verified amount owed.
+>
+> ...
+>
+> D. Household Goods, Personal Effects, and Retirement Accounts
+>
+> 1. Household goods, personal effects, including one burial plot per household member, the cash value of life insurance policies, and livestock not excluded as income producing property are exempt resources.
+
+### S4691. Colorado SNAP: non-recurring lump sums counted as resources in the month received and after; loans are not income
+
+Document: D-82
+
+10 CCR 2506-1 4.405.E (last paragraph), 4.405.F.1 (rule version 12718, effective 10/01/2026; resource records, step H1 SNAP, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Non-recurring lump sum payments shall be counted as resources in the month received, unless specifically excluded from consideration as a resource by other federal laws. Any funds remaining in subsequent months shall be considered a resource.
+>
+> F. Loans
+>
+> 1. All loans from private individuals as well as commercial institutions shall not be considered as income, including educational loans.
+
+
+### S4692. Adult Financial: personal property valued at its appraised value less liabilities, art, jewelry and valuable collections among it
+
+Document: D-80
+
+9 CCR 2503-5 3.520.742.A.3, 3.520.742.B (rule version 12428, effective 03/02/2026; resource records, step H1 Adult Financial, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3. To determine the equity value of personal property, first determine the actual value; then subtract encumbrances.
+>
+> B. The vehicle with the highest value is exempt as described in 3.520.77.A, and therefore may be verified with client statement. The actual value of any additional personal property which is not assessed for taxation is determined by obtaining the appraised value less liabilities, i.e., vehicles, farm equipment and livestock or inventories of merchandise and materials, such as art, jewelry or valuable collections, as appraised by a verifiable, industry recognized source.
+
+### S4693. Adult Financial: a joint account available in proportion to the persons on it; shared real property charged in proportion to the share owned
+
+Document: D-80
+
+9 CCR 2503-5 3.520.73.A.2, 3.520.741.C.1-2 (rule version 12428, effective 03/02/2026; resource records, step H1 Adult Financial, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 2. The balance in a joint account shall be considered available to the client in proportion to the number of persons on the account.
+>
+> a. If the co-owner of the joint account is the client's legal fiduciary, such as a guardian, conservator, or power of attorney, the account shall be considered to be 100% owned by the client and all funds in the account shall be considered available to the client.
+>
+> ...
+>
+> C. The degree of the ownership interest is determined by the type of ownership. Generally, the types of ownership are:
+>
+> 1. Sole ownership, in which the client, the client’s spouse, or sponsor(s) is the only owner. if the client, spouse, or sponsor(s) has the right to dispose of the property, the actual value less encumbrances of the property is determined and counted as a resource;
+>
+> 2. Shared ownership, in which the property is owned by the client, spouse, or sponsor(s) and one or more individuals. The actual value less encumbrances is determined and charged in proportion to the client, client’s spouse, or sponsor(s)’s share of ownership. There are two kinds of shared ownership:
+
 ### S4660. SSI: one automobile excluded in determining the resources of an individual and spouse; the equity of any other automobile counted
 
 Document: D-4440

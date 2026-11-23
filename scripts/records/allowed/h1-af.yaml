@@ -1,4 +1,136 @@
 # Resource records harness: allowed differences of the af H1 track (design 4.3, rule 3).
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
-# docs/reviews/records-holdings-af.md: {case, person?, identifier?, month?, class, old?, new?}.
-[]
+# docs/reviews/records-holdings-snap-af.md: {case, person?, identifier?, month?, class, old?, new?}.
+# Written by the track from the harness run against HOLDINGS_BASELINE; every case is named.
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-D4-1, decision 4 of 2026-11-23: a person who states no holdings states an unknown list. Adult Financial's
+# life insurance (CO-4722, CO-4001, CO-4002), self-support property (CO-4422) and transfer (CO-4008, CO-3840)
+# figures read the list with no default: before step H1 each fact was read as 0 or as no transfer when not
+# stated. Each person named states no resource fact (the translator gives a list to every person who states
+# one), so the person's liquid resources were already cannot determine and no outcome changes (checked: no
+# Adult Financial outcome of these households differs). Generated: the variant with liquid not stated.
+- case: /^(CO-04|CO-05|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-95|CO-98|CO-99|CO-100|CO-110|CO-111|CO-122|CO-125|CO-133|CO-134|CO-135|CO-136|CO-137|CO-138|CO-140|CO-145|CO-146|CO-147|CO-148|CO-149|CO-160|CO-161|CO-162|CO-163|CO-164|CO-170|CO-171|CO-172|CO-173|CO-174|CO-175|CO-176|CO-177|CO-178|CO-179|CO-180|CO-181|CO-182|CO-183|CO-184|CO-190|CO-191|CO-199|CO-200|CO-201|CO-202|CO-203|CO-204|CO-205|CO-206|CO-207|CO-208|CO-209|CO-210|CO-211|CO-215|CO-216|CO-224|CO-225|CO-226|CO-227|CO-228|CO-314|CO-315|CO-316|CO-317|CO-318|CO-319|CO-320|CO-321|CO-322|CO-323|CO-324|CO-325|CO-326|CO-327|CO-328|CO-329|CO-330|CO-331|CO-332|CO-333|CO-334|CO-335|CO-336|CO-337|CO-338|CO-339|CO-340|CO-341|CO-342|CO-343|CO-344|CO-345|CO-346|CO-347|CO-348|CO-349|CO-350|CO-361|CO-362|CO-363|CO-364|CO-365|CO-366|CO-367|CO-368|CO-369|CO-370|CO-371|CO-372|CO-373|CO-374|CO-375|CO-376|CO-377|CO-378|CO-379|CO-380|CO-381|CO-382|CO-383|CO-384|CO-385|CO-386|CO-387|CO-393|CO-394|CO-400|CO-401|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-438|CO-439|CO-440|CO-441|CO-442|CO-452|CO-453|CO-454|CO-455|CO-456|CO-458|CO-459|CO-483|CO-488|CO-490|CO-491|CO-492|CO-530|CO-531|CO-535|CO-562|GH-AFclientresources-liquid_not_stated|GH-AFspouseresources-liquid_not_stated)$/
+  person: p1
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-04|CO-05|CO-13|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-95|CO-98|CO-99|CO-100|CO-111|CO-122|CO-125|CO-135|CO-148|CO-160|CO-161|CO-162|CO-164|CO-170|CO-174|CO-175|CO-176|CO-177|CO-178|CO-179|CO-180|CO-181|CO-183|CO-184|CO-190|CO-191|CO-201|CO-202|CO-203|CO-204|CO-205|CO-206|CO-207|CO-208|CO-209|CO-210|CO-211|CO-214|CO-215|CO-216|CO-224|CO-225|CO-228|CO-314|CO-315|CO-325|CO-329|CO-330|CO-336|CO-337|CO-339|CO-340|CO-347|CO-348|CO-361|CO-362|CO-363|CO-364|CO-365|CO-366|CO-367|CO-368|CO-369|CO-370|CO-371|CO-372|CO-373|CO-374|CO-377|CO-379|CO-380|CO-381|CO-385|CO-386|CO-387|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-458|CO-459|CO-488|CO-562|GH-AFclientresources-liquid_not_stated|GH-AFspouseresources-liquid_not_stated)$/
+  person: p2
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-04|CO-05|CO-13|CO-73|CO-74|CO-75|CO-76|CO-77|CO-78|CO-85|CO-94|CO-99|CO-110|CO-111|CO-122|CO-125|CO-133|CO-134|CO-135|CO-136|CO-137|CO-138|CO-140|CO-141|CO-145|CO-146|CO-148|CO-161|CO-162|CO-163|CO-164|CO-170|CO-171|CO-172|CO-173|CO-174|CO-180|CO-190|CO-191|CO-199|CO-200|CO-201|CO-204|CO-215|CO-216|CO-314|CO-315|CO-316|CO-317|CO-318|CO-319|CO-320|CO-321|CO-322|CO-323|CO-324|CO-325|CO-326|CO-327|CO-328|CO-329|CO-330|CO-331|CO-332|CO-333|CO-334|CO-335|CO-336|CO-337|CO-338|CO-339|CO-340|CO-341|CO-342|CO-343|CO-344|CO-345|CO-346|CO-347|CO-348|CO-349|CO-350|CO-361|CO-393|CO-394|CO-400|CO-401|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432|CO-448|CO-449|CO-450|CO-452|CO-454|CO-455|CO-456|CO-483|CO-488)$/
+  person: p3
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-04|CO-13|CO-73|CO-74|CO-75|CO-76|CO-78|CO-85|CO-94|CO-111|CO-125|CO-135|CO-191)$/
+  person: p4
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-04|CO-85|CO-111|CO-163)$/
+  person: p5
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-85|CO-111)$/
+  person: p6
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-85)$/
+  person: p7
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+- case: /^(CO-85)$/
+  person: p8
+  identifier: /^af_(life_insurance_cash_value|life_insurance_countable_value_for_oap|life_insurance_countable_value_other_than_oap|self_support_property_countable_value|twfc_transfer_is_counted|twfc_penalty_months)$/
+  new: unknown
+  class: "H1A-D4-1 holdings not stated: life insurance, self-support property and transfers cannot be determined (decision 4)"
+# The same for a client whose spouse states no holdings: 3.520.75.D adds the spouse's face value (CO-5347),
+# which is not known (before: 0). Checked: p3 of each household states no holdings.
+- case: /^(CO-141|CO-448|CO-449|CO-450)$/
+  person: p1
+  identifier: /^af_life_insurance_countable_value_(for_oap|other_than_oap)$/
+  old: 0
+  new: unknown
+  class: "H1A-D4-1 the spouse states no holdings: the face value of the couple's policies cannot be determined (decision 4)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-D4-2, decision 4: the home is exempt while it is the client's principal place of residence or the client
+# intends to return to it (9 CCR 2503-5 3.520.77.C, S3218); the home record's lives_in and intends_to_return are
+# required where read (CO-5300). Before step H1 the item read the person's residence setting and an intent not
+# stated as an intent to return (coverage review P2-5), so a home was never counted unless no intent was stated
+# for a client in a facility. Each household named states a home with no lives_in (the couples' homes stated on
+# each spouse, which the Medicaid H1 track restates as one joint home); the person's resources other than life
+# insurance, and the couple's, are cannot determine. No outcome changes: where the parts known already exceed
+# the limit, af_meets_resource_limit (CO-948) answers no as before (af_resources_known_lower_bound, CO-5350);
+# CO-395's couple (1,000 known) is cannot determine for the limit, and its Adult Financial outcomes were already.
+- case: /^(CO-01|CO-02|CO-06|CO-112|CO-114|CO-152|CO-153|CO-154|CO-188|CO-213|CO-388|CO-395|CO-481)$/
+  identifier: /^af_(person_countable_resources_other_than_life_insurance|client_and_spouse_countable_resources|meets_resource_limit)$/
+  new: unknown
+  class: "H1A-D4-2 a home that does not say whether the client lives in it or intends to return (3.520.77.C; decision 4)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-D4-3, decision 4: a refund is exempt until twelve months after it was received (3.520.77.K, S3206) and a
+# retroactive SSI or Social Security payment through the ninth month after the month received (J): Adult Financial
+# reads the record's source_date. The facts CO-4172, CO-4413 and CO-4414 said only that the money came within the
+# window, so the translator writes no date and the figures and outcomes are cannot determine (before: exempt in
+# full). Stored households and tests that hold such money are dated (CO-300; CO-4412-T1, T2, T6).
+# The same for personal property held as an investment (finding H0-F2 fixed, 3.520.77.B, S4507): it is counted at
+# its appraised value less liabilities (3.520.742.A.3, B, S4692), and the variant states no amount owed; stated,
+# it counts (rule tests CO-5345-T1, T2; CO-4000-T21: 2,800, over the $2,000 limit). The same for a burial space
+# beyond the family's needs, counted at its value less what is owed on it (3.520.72.B.9, 3.520.742.A.3); the
+# variant states no amount owed (rule tests CO-5344-T3: 1,200 with nothing owed).
+- case: /^(GH-AFclientresources-investment_jewelry_2000|GH-AFspouseresources-investment_jewelry_2000|GH-AFclientresources-burial_spaces_beyond_the_family_800|GH-AFspouseresources-burial_spaces_beyond_the_family_800|GH-AFclientresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800|GH-AFspouseresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800)$/
+  identifier: /^af_(exempt_liquid_resources|person_countable_resources_other_than_life_insurance|client_and_spouse_countable_resources|meets_resource_limit|category|oap_grant|and_grant)$/
+  new: unknown
+  class: "H1A-D4-3 a held refund or retroactive payment with no date of receipt, or investment property or a burial space with no amount owed: cannot determine (decision 4)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-1 (cited fix): one retroactive SSI or Social Security payment was stated twice, for the SSI method
+# (retroactive_benefit_payment_unspent_value, CO-4639, with its date) and for Adult Financial (CO-4414); Adult
+# Financial read only the second, so a payment stated for the SSI method was counted. It is one record now, and
+# 3.520.77.J (S3206) exempts it "for nine months following the month they are received": received four months
+# before, 800 of 2,500 exempt (2,500 -> 1,700). Generated: the variant stating the SSI-method fact.
+- case: /^(GH-AFclientresources-retroactive_SSI_800_of_liquid_2500_received_four_months_before|GH-AFspouseresources-retroactive_SSI_800_of_liquid_2500_received_four_months_before)$/
+  identifier: /^af_(exempt_liquid_resources|person_countable_resources_other_than_life_insurance|client_and_spouse_countable_resources)$/
+  class: "H1A-1 a retroactive SSI payment stated for the SSI method is exempt for Adult Financial too (3.520.77.J)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-2 (the rule's reading): 3.520.77.L (S3206) exempts "Monies from a bona fide loan ... in the month received":
+# money from the loan still held, which the holdings state as held_loan_proceeds. Before step H1 the item exempted
+# the month's loan receipt (receipts, kind loan) from liquid_resources_value, whether or not the money was still
+# held. CO-485 states a $600 loan received in November and $1,200 in one account, with no part of it traced as
+# the loan's: 1,200 counted (was 600). No Adult Financial outcome of CO-485 changes (a Medicaid long-term care case).
+- case: CO-485
+  person: p1
+  identifier: /^af_(exempt_liquid_resources|person_countable_resources_other_than_life_insurance|client_and_spouse_countable_resources)$/
+  class: "H1A-2 the loan exempt is the loan money still held (held_loan_proceeds), not the month's loan receipt (3.520.77.L)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-3 (the statement's meaning): CO-434 stated its June 10 transfer in facts with no month, which a person-month
+# fact reads as every month, so October was read as a month with a $5,000 transfer (4 months). The transfer is
+# one record with its disposed_date and is read in June only (3.520.76.D.5: the period begins the month after the
+# transfer); af_is_in_twfc_penalty_period and the household's expectation (af_category none in October) are
+# unchanged. CO-06 (restated by the H1 Medicaid track with its June 2025 transfer stated in the facts with no
+# month, and as a dated record): the ledger before H1 read the transfer in every month and, with no Adult
+# Financial application date, could not determine November and December; the record has no transfer in them: no.
+- case: /^(CO-06|CO-434)$/
+  person: p1
+  identifier: /^af_twfc_(transfer_is_counted|penalty_months)$/
+  class: "H1A-3 a transfer is read in the month of its disposed_date only (3.520.76.D.5)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1A-R (restated): CO-300 (probe PR-PTC) states its savings in the holdings records alone, the refund dated
+# 2026-08-14 (3.520.77.K's twelve months); liquid_resources_value and federal_tax_refunds_held_value are no
+# longer stated, so the ledger before step H1, which reads them, cannot determine it. Its expectations (1,700,
+# oap) are the review's and hold on the ledger on disk.
+- case: CO-300
+  person: p1
+  identifier: /^af_/
+  old: unknown
+  class: "H1A-R restated in holdings alone (the refund dated): the ledger before H1 does not read it"
