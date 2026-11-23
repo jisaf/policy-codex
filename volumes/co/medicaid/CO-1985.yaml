@@ -6,7 +6,8 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: The average private-pay cost of Long-Term Care institution care in the person's region (ma_ltc_private_pay_region), below which an individual's gross monthly income must be for an income trust to establish income eligibility (10 CCR 2505-10 § 8.100.7.G.6.a.i.a)).
-precision: "Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month."
+precision: "Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month. Blocked (OQ-1061): the regional ceiling it reads (CO-3022) rests on S1230, which is not a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
+open: [OQ-1061]
 derived: [lookup, ma_income_trust_limit_table, ma_ltc_private_pay_region]
 sources: [S1229, S1230]
 implemented: engine

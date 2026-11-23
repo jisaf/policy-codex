@@ -2959,3 +2959,25 @@ Owner: SNAP policy owner
 Assumption: A payment for meals only or for a room only is counted as unearned income (the reading before receipt records), pending this answer.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.
+
+### OQ-1060. Medicaid long-term care: the transfer-penalty divisor and the nursing facility personal needs allowance (S1228) are not checked against HCPF OM 25-073
+
+Body: Excerpt S1228 states the 2025 and 2026 transfer-penalty divisor ($10,475.11 and $10,814.64) and nursing facility personal needs allowance ($108.73 and $110.36). It is not a quotation: the product owner supplied the figures on 2026-11-21 from two summaries of HCPF Operational Memo OM 25-073 (D-125). The verification pass of 2026-11-23 tried to fetch the memo and every other allowed source that could state the figures. hcpf.colorado.gov refused the memo itself, the 2025 memo OM 24-054 and the 2025 memo series index (HTTP 403 from the site's CloudFront, on a direct request and through a page fetcher). www.medicaid.gov answered, but CMS's 2026 SSI and spousal impoverishment standards (cib04272026.pdf, D-72) chart only the federal standards (SSI, MMMNA, community spouse resource standards, home equity) and state no Colorado personal needs allowance or private-pay rate. www.sos.state.co.us answered, but the current 10 CCR 2505-10 § 8.100 (D-65) defines the divisor (§ 8.100.7.F.2.c.i, S648) and the indexed base allowance from $75 in 2015 (§ 8.100.7.V.3.d.i.2, S361) without stating the year's figures. www.ecfr.gov, www.law.cornell.edu, www.govinfo.gov and www.federalregister.gov answered; federal law sets only the method (42 U.S.C. 1396p(c)(1)(E)(i)(II), fetched from law.cornell.edu on 2026-11-23: "the average monthly cost to a private patient of nursing facility services in the State ... at the time of application") and no Federal Register notice publishes a State's figures. The figures cannot be derived either: the PNA is indexed to the statewide nursing facility per diem rate, which no allowed host publishes. No figure was changed. This narrows OQ-212 to the one named document.
+
+Class: blocked on a named document
+Owner: LTSS policy owner
+Assumption: The 2025 and 2026 transfer penalty divisor and nursing facility personal needs allowance are the figures the product owner supplied from the operational memo, unverified; every rule resting on them stays Draft.
+Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23); for the 2025 figures also OM 24-054 (refused the same day)
+
+Checked 2026-11-23: D-65 (§ 8.100.7.F.2.c.i, V.3.d.i), D-72 (CMS 2026 standards). Items: CO-832, CO-887, CO-1987, CO-649, CO-659, CO-658, CO-3616, CO-1977, CO-651.
+
+### OQ-1061. Medicaid long-term care: the income-trust regional private-pay rates (S1230) are not checked against HCPF OM 25-073
+
+Body: Excerpt S1230 states the 2025 and 2026 regional average private-pay rates that cap an income-trust user's gross income under § 8.100.7.G.6.a.i.a) (S1229): Region I $11,522.44 (2025 $11,556.20), Region II $10,633.36 ($10,397.93), Region III $9,780.17 ($9,290.77), Region IV $11,322.60 ($10,655.56). It is not a quotation: the product owner supplied the figures on 2026-11-21 from two summaries of HCPF Operational Memo OM 25-073 (D-125). The verification pass of 2026-11-23 tried the same hosts as OQ-1060: hcpf.colorado.gov refused (HTTP 403); www.medicaid.gov (CMS's 2026 standards, D-72), www.sos.state.co.us (the current § 8.100.7.G, D-65, which says only that HCPF "shall calculate the average rates for such regions on an annual, calendar-year basis"), www.ecfr.gov, www.law.cornell.edu, www.govinfo.gov and www.federalregister.gov answered, and none of them states a regional rate. The county lists in S1230 match the rule text (S1229); only the dollar figures are unverified. No figure was changed. This narrows OQ-99 to the one named document.
+
+Class: blocked on a named document
+Owner: LTSS policy owner
+Assumption: The 2025 and 2026 regional income-trust ceilings are the figures the product owner supplied from the operational memo, unverified; every rule resting on them stays Draft.
+Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23)
+
+Checked 2026-11-23: D-65 (§ 8.100.7.G.6.a.i.a)), D-72. Items: CO-3022, CO-1985, CO-642, CO-651, CO-3310.

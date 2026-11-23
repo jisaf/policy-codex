@@ -6,7 +6,8 @@ type: money
 scope: person
 program: Medicaid
 meaning: "The personal needs allowance deducted first from a Long-Term Care institution resident's income: ma_veteran_personal_needs_allowance for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
-precision: "The rule and statute state ma_veteran_personal_needs_allowance for these residents even though the 2026 base allowance (ma_personal_needs_allowance_institutional) is higher."
+precision: "The rule and statute state ma_veteran_personal_needs_allowance for these residents even though the 2026 base allowance (ma_personal_needs_allowance_institutional) is higher. Blocked (OQ-1060): the base allowance it falls back to (CO-887) rests on S1228, which is not a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
+open: [OQ-1060]
 derived: [case, [ma_qualifies_for_veterans_personal_needs_allowance, ma_veteran_personal_needs_allowance], [else, ma_personal_needs_allowance_institutional]]
 sources: [S361, S1231, S1232, S1228]
 implemented: engine

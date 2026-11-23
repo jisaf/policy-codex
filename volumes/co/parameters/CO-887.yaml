@@ -6,12 +6,12 @@ type: money
 scope: global
 program: Medicaid
 meaning: "The base personal needs allowance for a resident of a nursing facility or intermediate care facility, deducted first from income before the patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.d.i and 42 CFR 435.725(c)(1): a $75 base from January 1, 2015, adjusted every year at the rate of the statewide average nursing facility per diem net of patient payment (C.R.S. 25.5-6-206(2)(a))."
-precision: The base resets every year and no fetched document states the current figure. The 2025 and 2026 figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1228). The federal floor is $30 a month (42 CFR 435.725(c)(1)(i)). The veterans-related $90 allowance is selected by ma_personal_needs_allowance (CO-1987). 
+precision: "The base resets every year and no fetched document states the current figure. The 2025 and 2026 figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1228). The federal floor is $30 a month (42 CFR 435.725(c)(1)(i)). The veterans-related $90 allowance is selected by ma_personal_needs_allowance (CO-1987). Blocked (OQ-1060): the 2025 and 2026 figures rest on S1228, which is not a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 108.73, source: S1228}
   - {from: "2026-01-01", to: "2027-01-01", value: 110.36, source: S1228}
 review_by: "2027-01-01"
 sources: [S361, S374, S1228]
 tags: [ma, ltc, income]
-open: [OQ-212]
+open: [OQ-212, OQ-1060]
 rationale: "§ 8.100.7.V.3.d.i.2's own text requires a new base amount every year. OQ-212: the product owner supplied the 2025 and 2026 figures, so it is a dated parameter rather than a per-case supplied fact. Precision history (moved from precision, engineering follow-up pass task 5): Moved from a supplied fact to a dated parameter in the open-question sweep (OQ-212)."

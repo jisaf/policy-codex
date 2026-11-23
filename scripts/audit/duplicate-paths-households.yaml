@@ -1,0 +1,83 @@
+# Hand households for docs/reviews/duplicate-paths-audit.md: npx vite-node scripts/audit/probe.ts -- scripts/audit/duplicate-paths-households.yaml
+- id: CW-caretaker-parent-home
+  title: child living with a parent; an unrelated adult in the home has primary responsibility for the child
+  as_of: "2026-10-01"
+  persons:
+    p: {facts: {date_of_birth: "1990-01-01", dwelling_id: h1, temporary_absence_reason: none, residence_setting_type: private_home}}
+    a: {facts: {date_of_birth: "1986-01-01", dwelling_id: h1, temporary_absence_reason: none, residence_setting_type: private_home}}
+    c: {facts: {date_of_birth: "2018-01-01", dwelling_id: h1, temporary_absence_reason: none, residence_setting_type: private_home}}
+  relationships:
+    - [parent, p, c]
+    - [has_primary_responsibility_for, a, c]
+  evaluate:
+    - {person: a, identifier: cw_caretaker_of}
+    - {person: a, identifier: cw_has_dependent_child}
+    - {person: a, identifier: cw_is_optional_assistance_unit_member}
+    - {person: a, identifier: cw_requires_verification_of_household_composition}
+    - {person: c, identifier: cw_assistance_unit_members}
+- id: SNAP-unpaid-work
+  title: ABAWD meeting the work requirement with unpaid work only
+  as_of: "2026-10-01"
+  persons:
+    p1: {facts: {date_of_birth: "1996-01-01", hours_worked: 0, unpaid_or_in_kind_work_hours: 85, work_program_hours: 0, community_service_hours: 0, snap_abawd_work_hours_missed_for_good_cause: 0, participates_in_workfare: false, snap_is_household_member: true, snap_is_exempt_from_abawd_time_limit: false}}
+  evaluate:
+    - {person: p1, identifier: snap_meets_abawd_work_requirement}
+    - {person: p1, identifier: snap_requires_verification_of_work_hours}
+- id: MA-pickle-eligibility
+  title: Pickle applicant 71, ineligible spouse earning 3,300, their ineligible child (10) at home; OASDI unchanged since the loss
+  as_of: "2026-10-01"
+  persons:
+    p1: {facts: {date_of_birth: "1955-01-01", dwelling_id: h1, receipts: [], wages_gross: 0, ma_self_employment_net_earnings: 0, ssi_in_kind_support_and_maintenance: 0, social_security_income_when_ssi_or_oap_lost: 0, ma_is_applying_for_or_eligible_for_ssi: true, resides_in_medical_institution: false, is_emancipated_minor: false, ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_aged_blind_or_disabled: true, lost_ssi_or_oap_due_to_social_security_benefits: true, ma_meets_ssi_resource_standard: true, ma_child_is_in_non_magi_continuous_eligibility_period: false}}
+    p2: {facts: {date_of_birth: "1960-01-01", dwelling_id: h1, receipts: [], wages_gross: 3300, ma_self_employment_net_earnings: 0, ssi_in_kind_support_and_maintenance: 0, ma_is_applying_for_or_eligible_for_ssi: false, resides_in_medical_institution: false, is_emancipated_minor: false, social_security_income_when_spouse_lost_ssi_or_oap: 0}}
+    c: {facts: {date_of_birth: "2016-01-01", dwelling_id: h1, receipts: [], wages_gross: 0, ma_self_employment_net_earnings: 0, ma_is_applying_for_or_eligible_for_ssi: false, is_emancipated_minor: false, resides_in_medical_institution: false}}
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, c]
+    - [parent, p2, c]
+  evaluate:
+    - {person: p1, identifier: ma_ssi_ineligible_child_allocation}
+    - {person: p1, identifier: ma_ssi_countable_income}
+    - {person: p1, identifier: ma_pickle_countable_income}
+    - {person: p1, identifier: ma_dac_countable_income}
+    - {person: p1, identifier: ma_ssi_household_size}
+    - {person: p1, identifier: ma_pickle_eligible}
+- id: MA-pickle-fill-up
+  title: two disabled children share deemed parental income; one child's limit binds (416.1165(e)(3))
+  as_of: "2026-10-12"
+  persons:
+    p1: {facts: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1, p3], is_blind: false, meets_ssa_disability_criteria: true, ma_ssi_parental_income_to_be_deemed: 2000, ma_ssi_deeming_benefit_zero_amount: 300, ma_pickle_deeming_parents_countable_income: 2994}}
+    p2: {facts: {}}
+    p3: {facts: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1, p3], is_blind: false, meets_ssa_disability_criteria: true, ma_ssi_parental_income_to_be_deemed: 2000, ma_ssi_deeming_benefit_zero_amount: 1014, ma_pickle_deeming_parents_countable_income: 2994}}
+  relationships:
+    - [parent, p2, p1]
+    - [parent, p2, p3]
+  evaluate:
+    - {person: p1, identifier: ma_ssi_parental_income_deemed, month: "2026-10"}
+    - {person: p1, identifier: ma_pickle_parental_income_deemed, month: "2026-10"}
+    - {person: p3, identifier: ma_ssi_parental_income_deemed, month: "2026-10"}
+    - {person: p3, identifier: ma_pickle_parental_income_deemed, month: "2026-10"}
+- id: SNAP-prorated-cap
+  title: initial month from the 1st, a disqualified member's cap binds
+  as_of: "2026-10-01"
+  persons:
+    p1: {facts: {snap_household_ineligibility_ground: none, snap_benefit_reduction: 0, snap_maximum_allotment: 546, snap_allotment_cap_for_disqualified_members: 400, snap_eligible_household_size: 2, snap_meets_net_income_test: true, snap_benefits_begin_date: "2026-10-01"}}
+  evaluate:
+    - {person: p1, identifier: snap_full_month_allotment}
+    - {person: p1, identifier: snap_prorated_initial_month_allotment}
+- id: MA-child-allocation-institution
+  title: aged applicant p1 and ineligible spouse p2; their child c (10) lives in a medical institution; disabled child d (8) applies, deeming from p1 and p2 is not in play for p1's own test
+  as_of: "2026-10-01"
+  persons:
+    p1: {facts: {date_of_birth: "1955-01-01", dwelling_id: h1, receipts: [], wages_gross: 0, ma_self_employment_net_earnings: 0, ma_is_applying_for_or_eligible_for_ssi: true, resides_in_medical_institution: false, is_emancipated_minor: false}}
+    p2: {facts: {date_of_birth: "1960-01-01", dwelling_id: h1, receipts: [], wages_gross: 1500, ma_self_employment_net_earnings: 0, ma_is_applying_for_or_eligible_for_ssi: false, resides_in_medical_institution: false, is_emancipated_minor: false}}
+    c: {facts: {date_of_birth: "2016-01-01", dwelling_id: h2, receipts: [], wages_gross: 0, ma_self_employment_net_earnings: 0, ma_is_applying_for_or_eligible_for_ssi: false, is_emancipated_minor: false, resides_in_medical_institution: true, is_blind: false, meets_ssa_disability_criteria: false}}
+    d: {facts: {date_of_birth: "2018-01-01", dwelling_id: h1, receipts: [], wages_gross: 0, ma_self_employment_net_earnings: 0, ma_is_applying_for_or_eligible_for_ssi: true, is_emancipated_minor: false, resides_in_medical_institution: false, is_blind: false, meets_ssa_disability_criteria: true, ma_ssi_deeming_parents: [p1, p2]}}
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, c]
+    - [parent, p2, c]
+    - [parent, p1, d]
+    - [parent, p2, d]
+  evaluate:
+    - {person: p1, identifier: ma_ssi_ineligible_child_allocation}
+    - {person: d, identifier: ma_ssi_deeming_ineligible_child_allocation}
