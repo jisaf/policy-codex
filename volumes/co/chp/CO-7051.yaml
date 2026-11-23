@@ -1,0 +1,23 @@
+id: CO-7051
+name: "CHP+: is pregnant in the month"
+identifier: chp_is_pregnant_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether the person was a pregnant woman (10 CCR 2505-3 § 110.1.A.2) at some time in the month, for a month from the month of application on, the only months CHP+ can cover (§ 430.1): a person pregnant now (is_pregnant) in the determination month and later months and in the months from the application month on; or, for a pregnancy that has ended (pregnancy_end_date), a month from the month it began (pregnancy_start_date) through the month it ended."
+precision: "Coverage pass 5, C5-03 (2026-11-23). CHP+ coverage is by the month (§ 430.1, \"the first day of the month of application\"; § 430.3, a pregnant woman's enrollment \"effective as of the first of the month of the date of application\"), so a month in which she was pregnant on any day is a pregnant month: the month of the birth is one. A woman who applied while pregnant and delivered before the determination was pregnant in the application month, which opens the § 430.3 enrollment span (chp_is_in_prenatal_coverage_period, CO-2407). For a pregnancy that has ended, the start date is read for the months before its end; not stated, such a month is unknown (decision 4). A month before the application month is never covered by CHP+ (chp_month_is_before_coverage_period, CO-4565; § 430.1), so a pregnancy that has ended is not read in it: such a month is false here, and the CHP+ verification items that read this item (CO-1417, CO-1418) ask nothing for it. CHP+'s own reading of the neutral pregnancy facts, as Medicaid's ma_is_pregnant_in_month (CO-3601) is Medicaid's: CHP+ has no retroactive months, so it reads no month before the application by the dates of a current pregnancy."
+derived: [any, [all, is_pregnant, [any, [">=", [month], [det_month]], [">=", [month], [month_of, ma_application_date]]]], [all, [not, [unknown, pregnancy_end_date]], [">=", [month], [month_of, ma_application_date]], ["<=", [month], [month_of, pregnancy_end_date]], ["<=", [month_of, pregnancy_start_date], [month]]]]
+sources: [S242, S1714, S1715]
+implemented: engine
+tags: [chp]
+nearest: [CO-3601]
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1715}
+rationale: "Coverage pass 5, C5-03 (docs/reviews/coverage5-medicaid-magi-chp.md): every CHP+ prenatal test (chp_income_within_limit CO-704, chp_prenatal_is_eligible CO-706, chp_eligibility_status CO-707, and through CO-706 the § 430.3 span CO-2407) read is_pregnant, the pregnancy on the determination date, in every month, so a woman who applied pregnant on 2026-10-05 and delivered on 2026-10-20, determined 2026-11-10, was never prenatal-eligible and the span never opened (CHP-PG-DELIVERED: ineligible in every month; by hand, October 232.9% is in the 195% to 260% band, eligible_prenatal, the span through October 2027)."
+tests:
+  - {id: CO-7051-T1, as_of: "2026-11-10", month: "2026-10", title: "C5-03 (CHP-PG-DELIVERED): applied 2026-10-05 while pregnant (since 2026-02-10), delivered 2026-10-20, determined 2026-11-10: October is a pregnant month", given: {is_pregnant: false, pregnancy_start_date: "2026-02-10", pregnancy_end_date: "2026-10-20", ma_application_date: "2026-10-05"}, expect: true}
+  - {id: CO-7051-T2, as_of: "2026-11-10", month: "2026-11", title: "C5-03: the same in November, after the birth: not pregnant", given: {is_pregnant: false, pregnancy_start_date: "2026-02-10", pregnancy_end_date: "2026-10-20", ma_application_date: "2026-10-05"}, expect: false}
+  - {id: CO-7051-T3, as_of: "2026-11-10", month: "2026-12", title: "Pregnant now: a later month is a pregnant month", given: {is_pregnant: true, ma_application_date: "2026-11-02"}, expect: true}
+  - {id: CO-7051-T4, as_of: "2026-11-10", month: "2026-10", title: "Pregnancy ended in October, its start date not stated: unknown (decision 4)", given: {is_pregnant: false, pregnancy_end_date: "2026-10-20", ma_application_date: "2026-10-05"}, expect: unknown}
+  - {id: CO-7051-T5, as_of: "2026-11-10", month: "2026-11", title: "Never pregnant (no pregnancy end date stated, not pregnant now): false", given: {is_pregnant: false, ma_application_date: "2026-11-02"}, expect: false}

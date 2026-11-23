@@ -6,13 +6,16 @@ type: money
 scope: person
 program: CHP+
 meaning: "The most cost sharing a CHP+ enrollee's family can be required to pay in a year: chp_cost_sharing_aggregate_cap_pct of the family's yearly income (10 CCR 2505-3 § 330.2; 42 CFR 457.560(a))."
-precision: Yearly income is twelve times the MAGI household income (ma_magi_household_income) of the month of the determination.
-derived: ["*", chp_cost_sharing_aggregate_cap_pct, ["*", 12, [at, ma_magi_household_income, [det_month]]]]
+precision: "Yearly income is twelve times the monthly income CHP+ eligibility was determined on, in the month of the determination: the month's MAGI household income (ma_magi_household_income) where the month's figure is within the CHP+ limit (with the 5-point disregard), else the budget period income of 10 CCR 2505-10 § 8.100.4.C.4 (ma_budget_period_household_income: the annualized income of C.4.a where lower), the same choice the copayment band makes (chp_copayment_income_band, CO-2228). § 330.2 caps cost sharing at 5% of \"income\", and § 50.14 makes income the § 8.100.4.C methodology, which annualizes for an applicant ineligible on the month (coverage pass 5, C5-13: before, the cap was always 5% of twelve times the month's income, which overstated it for a family eligible only on annualized income)."
+derived: ["*", chp_cost_sharing_aggregate_cap_pct, ["*", 12, [at, [case, [[any, ["<=", ma_magi_monthly_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ["-", ma_magi_monthly_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]], ma_magi_household_income], [else, ma_budget_period_household_income]], [det_month]]]]
 sources: [S1505, S247, S250, S245]
 implemented: engine
 tags: [chp, income]
 accepts_from:
   - {from: ma_magi_household_income, class: adopted_method, source: S245}
+  - {from: ma_magi_monthly_household_income_pct_fpl, class: adopted_method, source: S245}
+  - {from: ma_budget_period_household_income, class: adopted_method, source: S245}
 rationale: "OQ-60: chp_cost_sharing_aggregate_cap_pct (CO-213) was a figure with no rule; chp_copayment (CO-2231) applies the limit. Receipt records, migration phase 2 (2026-11-23): the MAGI household income CHP+ reads counts the receipts through Medicaid's MAGI counting table (ma_magi_receipt_treatment_table, CO-5500); CHP+ keeps no table of its own, because 10 CCR 2505-3 150.1 (S245) adopts Medicaid's MAGI income calculation by reference (\"Calculation of income for the Children's Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4.C\"). The adopted-method link now cites that adoption."
 tests:
-  - {id: CO-2229-T1, as_of: "2026-10-01", given: {ma_magi_household_income: 4000}, expect: 2400}
+  - {id: CO-2229-T1, as_of: "2026-10-01", title: "Eligible on the month: 5% of 12 x 4,000 = 2,400", given: {ma_magi_household_income: 4000, ma_magi_monthly_household_income_pct_fpl: 2.2}, expect: 2400}
+  - {id: CO-2229-T2, as_of: "2026-11-10", title: "C5-13: a self-employed family of two with 5,000 this month (5,000 / 1,803.33 = 277.3%, over 260% even less 5 points) eligible on its annualized income of 36,000 (3,000 a month): 5% of 12 x 3,000 = 1,800 (was 5% of 12 x 5,000 = 3,000)", given: {ma_magi_household_income: 5000, ma_magi_monthly_household_income_pct_fpl: 2.7726432532347505, ma_budget_period_household_income: 3000}, expect: 1800}

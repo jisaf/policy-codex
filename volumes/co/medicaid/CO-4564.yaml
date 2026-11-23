@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether this person, a tax filer or a claimed tax dependent, has household income under the premium tax credit methodology (ma_premium_tax_credit_household_income_pct_fpl) below ma_premium_tax_credit_methodology_income_limit_pct of the poverty level, so that § 8.100.4.C.5 and 42 CFR 435.603(i) determine the person's Medicaid financial eligibility on that income."
-precision: "False for a person who neither files nor is claimed (an empty premium tax credit family, CO-4560). Where a counted family member's expected annual income is not stated the figure is unknown and ma_magi_household_income_pct_fpl (CO-504) reads the test as not met, which leaves the MAGI answer as it was. The rate is compared, not rounded."
+precision: "False for a person who neither files nor is claimed (an empty premium tax credit family, CO-4560). Where a counted family member's expected annual income is not stated the figure is unknown, and so is this test; ma_magi_household_income_pct_fpl (CO-504) is then unknown (coverage pass 5, C5-07: before, it read the test as not met, a default no rule gives). The rate is compared, not rounded."
 derived: [all, [">", [count, ma_premium_tax_credit_family], 0], ["<", ma_premium_tax_credit_household_income_pct_fpl, ma_premium_tax_credit_methodology_income_limit_pct]]
 sources: [S3357, S3358]
 implemented: engine
