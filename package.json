@@ -22,7 +22,9 @@
     "export": "vite-node scripts/export.ts",
     "check": "vite-node scripts/check.ts",
     "fingerprint": "vite-node scripts/fingerprint.ts",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "receipts:harness": "vite-node scripts/receipts/harness.ts",
+    "receipts:translate": "vite-node scripts/receipts/apply.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "1.1.4",

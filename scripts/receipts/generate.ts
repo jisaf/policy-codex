@@ -1,10 +1,11 @@
-// Receipt spike: generated households (restructure review, change A). The
-// stored households state almost none of the money facts the spike reshapes
-// (158 of 234 supplied money facts are never nonzero), so each base household
-// below is varied by stating one money fact (or one overlapping pair, as the
-// part-of definitions allow) at a time, with its parent fact raised by the
-// same amount where the definition makes it "part of" the parent.
-import { baseLedger } from "./ledger";
+// Receipt records harness: generated households (restructure review, change
+// A; ported from the spike). The stored households state few of the money
+// facts the receipts restate, so each base household is varied by stating
+// one money fact (or one overlapping pair, as the part-of definitions allow)
+// at a time, with its parent fact raised by the same amount where the
+// definition makes it "part of" the parent, plus the LEAP income
+// verification period families. Stated in the old facts; the harness
+// translates them like any stored household.
 import type { HouseholdCase } from "../../src/engine/cases";
 
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
@@ -24,7 +25,7 @@ const PARTS_N = ["educational_assistance_received", "loan_proceeds_received", "e
   "tanf_supportive_service_payments_received", "workers_compensation_claim_expense_amounts_received", "workforce_program_payments_received",
   "general_or_emergency_assistance_received", "in_home_care_allowance_received", "va_aid_and_attendance_used_for_uncovered_care",
   "uniformed_services_special_pay_received", "state_veteran_annuity_received", "charitable_need_based_cash_received",
-  "migrant_farmworker_emergency_assistance_received"];
+  "migrant_farmworker_emergency_assistance_received", "gifts_received", "charitable_gifts_for_life_threatening_condition_received"];
 const PARTS_T = ["taxable_interest_and_dividend_income", "rental_income_received"];
 const ONE_TIME_ABLE = ["crime_victim_compensation_received", "foster_care_provider_payments_received", "kinship_care_payments_received",
   "tanf_diversion_payment_received", "reverse_mortgage_payments_received", "housing_utility_allowance_received",
@@ -37,6 +38,9 @@ export function variants(): Variant[] {
   for (const f of PARTS_N) v.push([`${f}=300 (part of nontaxable)`, (md) => { add(md, f, 300); add(md, NONTAX, 300); }]);
   for (const f of PARTS_T) v.push([`${f}=300 (part of taxable)`, (md) => { add(md, f, 300); add(md, TAX, 300); }]);
   v.push(["energy 300 of which nonprofit 300", (md) => { add(md, "energy_assistance_received", 300); add(md, "energy_assistance_from_nonprofit_or_supplier_received", 300); add(md, NONTAX, 300); }]);
+  v.push(["federally excluded 300 of which VISTA 200", (md) => { add(md, "federally_excluded_payments_received", 300); add(md, "dvsa_title_i_volunteer_payments_received", 200); add(md, NONTAX, 300); }]);
+  v.push(["workforce 300 of which vocational allowance 200", (md) => { add(md, "workforce_program_payments_received", 300); add(md, "vocational_training_allowance_received", 200); add(md, NONTAX, 300); }]);
+  v.push(["sponsor money 300", (md) => add(md, "money_received_from_sponsor", 300)]);
   v.push(["child support 300 of which arrears 100", (md) => { add(md, "child_support_received", 300); add(md, "child_support_arrears_received", 100); }]);
   v.push(["lump sum 300 (inheritance)", (md) => { add(md, "lump_sum_received", 300); add(md, NONTAX, 300); }]);
   v.push(["retroactive SS lump 300", (md) => { add(md, "retroactive_social_security_lump_sum_received", 300); add(md, "lump_sum_received", 300); add(md, NONTAX, 300); }]);
@@ -70,6 +74,7 @@ const BASES: Base[] = [
 /** Zeroes the money a base household states beyond its wages, so each variant starts clean. */
 function cleanBase(c: HouseholdCase): void {
   for (const p of Object.values(c.persons)) {
+    if (p.facts) delete p.facts.receipts;
     const md = p.month_defaults ?? {};
     for (const k of Object.keys(md)) {
       if (k === "wages_gross" || k === "hours_worked") continue;
@@ -79,17 +84,17 @@ function cleanBase(c: HouseholdCase): void {
   }
 }
 
-export function generated(): HouseholdCase[] {
-  const cases = baseLedger().cases;
+/** The generated households, built from the stored households given. */
+export function generated(cases: readonly HouseholdCase[]): HouseholdCase[] {
   const out: HouseholdCase[] = [];
   for (const b of BASES) {
     const src = cases.find((c) => c.id === b.id);
-    if (!src) continue;
+    if (!src) throw new Error(`generated households: no base household ${b.id}`);
     const base = clone(src);
     cleanBase(base);
     let person = b.person;
     if (!person) {
-      // the sponsor: the person a sponsored_by edge points to
+      // the sponsor: the person a sponsor edge points to
       const edge = (base.relationships ?? []).find((r) => r[0] === "sponsor" || r[0] === "sponsored_by");
       person = edge ? (edge[0] === "sponsor" ? edge[1] : edge[2]) : Object.keys(base.persons).slice(-1)[0];
     }
@@ -104,7 +109,7 @@ export function generated(): HouseholdCase[] {
       out.push(c);
     }
   }
-  // LEAP: the income verification period (application 2026-11-10; period from 2026-10-10)
+  // LEAP: the income verification period (CO-224: application 2026-11-10; period from 2026-10-10)
   const leap = cases.find((c) => c.id === "CO-224");
   if (leap) {
     const base = clone(leap);

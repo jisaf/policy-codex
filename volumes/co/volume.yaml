@@ -140,6 +140,7 @@ types:
   - table keyed by number of days
   - table keyed by option
   - list of months
+  - list of receipts
 
 scopes: [person, person-month, case, month, global]
 
