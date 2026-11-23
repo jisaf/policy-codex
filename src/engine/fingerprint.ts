@@ -14,7 +14,7 @@
  *   each version's `source`), whitespace collapsed;
  * - the fingerprint of every item it reads (the dependency graph's edges),
  *   so a change anywhere upstream, at any depth, changes it (a Merkle hash).
- * Precision, rationale, nearest, name, tags, open, tests, implemented,
+ * Precision, rationale, nearest, name, tags, open, tests, siblings, implemented,
  * review_by, status and the approval record itself are not covered: they
  * do not change what was approved.
  *

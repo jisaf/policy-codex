@@ -230,7 +230,8 @@ The fingerprint is `fp1-` and 20 hex digits of a SHA-256 over:
 - the item's approvable fields: id, identifier, kind, type, options, scope,
   program, role, meaning, assumption, statute_override, supplied_by, value,
   versions (from, to, value, source), derived, sources, effective,
-  accepts_from;
+  accepts_from, link_class, link_basis, adopted_by (the cross-program link
+  declarations, added 2026-11-23: an item without them hashes as before);
 - the quoted text of every excerpt the item cites in sources.md (its
   `sources` and each version's `source`);
 - the fingerprint of every item it reads, so a change at any depth upstream
@@ -239,8 +240,8 @@ The fingerprint is `fp1-` and 20 hex digits of a SHA-256 over:
 
 What does not invalidate, by decision: `precision`, `rationale`, `nearest`,
 `name`, `tags`, `open`, `tests`, `implemented`, `implemented_by`,
-`review_by`, the citation line of an excerpt, and the order of `sources`,
-`options`, `accepts_from` and `versions`. Free text is compared with
+`review_by`, `siblings`, the citation line of an excerpt, and the order of
+`sources`, `options`, `accepts_from`, `adopted_by` and `versions`. Free text is compared with
 whitespace collapsed, so reflowing a paragraph is not a change, but any
 change of words in meaning, assumption, statute_override or supplied_by is:
 the check cannot tell a wording change from a change of meaning, so it errs
@@ -395,9 +396,16 @@ that settles no current flag is reported the same way.
 **Starting point.** `volumes/co/changes/impact-baseline.yaml` records the
 commit the check started from (762a730). When a pull request's base predates
 it, as `origin/main` does until this branch merges, decisions are compared
-against that commit instead of the base, so the 2,000-odd changes made before
-the check existed are not flagged; once the base contains it, the base is
-used. The report's "change impact (since ...)" line names the ref used.
+against that commit instead of the base, so the changes made before the check
+existed are not flagged; once the base contains it, the base is used. The
+report's "change impact (since ...)" line names the ref used. (Measured at
+the start: against `origin/main` the branch's 382 earlier decision changes
+raise 8 flags, all on SNAP items unchanged since main, mostly
+indexed-figure and income-chain neighbours: CO-119 to CO-118, CO-133 to
+CO-138, CO-301 to CO-303 and CO-314, CO-334 to CO-335 and CO-381, CO-378 and
+CO-384 to CO-381. The two figures checked, CO-118 and CO-138, need no change:
+FNS keeps the general asset limit at $3,000 for fiscal year 2027 (S732), and
+the 50% shelter share is statutory.)
 
 **In the app.** Not yet: the Propose flow and the PR review page show
 governance findings (so the link rules appear there), but they do not
