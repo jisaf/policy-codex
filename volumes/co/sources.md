@@ -23177,3 +23177,45 @@ Document: D-80
 > A. If a client's total countable income equals or exceeds the Adult Financial program
 > grant standard, the client shall not be eligible for that specific Adult Financial
 > program.
+
+### S4500. SSI: resources are what the individual owns and could convert to cash; a property right that cannot be liquidated is not a resource; equity is market value less encumbrances
+
+Document: D-4400
+
+20 CFR 416.1201(a), (a)(1), (c)(2) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1201
+
+> (a) Resources; defined. For purposes of this subpart L, resources means cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance.
+>
+> (1) If the individual has the right, authority or power to liquidate the property or his or her share of the property, it is considered a resource. If a property right cannot be liquidated, the property will not be considered a resource of the individual (or spouse).
+>
+> (2) For purposes of this subpart L, the equity value of an item is defined as:
+>
+> (i) The price that item can reasonably be expected to sell for on the open market in the particular geographic area involved; minus
+>
+> (ii) Any encumbrances.
+
+### S4501. SSI: resources are determined as of the first moment of the month
+
+Document: D-4400
+
+20 CFR 416.1207(a) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1207
+
+> (a) General. Resources determinations are made as of the first moment of the month. A resource determination is based on what assets an individual has, what their values are, and whether or not they are excluded as of the first moment of the month.
+
+### S4502. SSI: a jointly held financial account belongs, by presumption, to the SSI claimant or recipient account holders
+
+Document: D-4400
+
+20 CFR 416.1208(c)(1) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1208
+
+> (c) Jointly-held account—(1) Account holders include one or more SSI claimants or recipients. If there is only one SSI claimant or recipient account holder on a jointly held account, we presume that all of the funds in the account belong to that individual. If there is more than one claimant or recipient account holder, we presume that all the funds in the account belong to those individuals in equal shares.
+
+### S4503. SSI: a married individual's resources include an ineligible spouse's, less the spouse's pension funds
+
+Document: D-4400
+
+20 CFR 416.1202(a), (a)(1) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1202
+
+> (a) Married individual. In the case of an individual who is living with a person not eligible under this part and who is considered to be the husband or wife of such individual under the criteria in §§ 416.1802 through 416.1835 of this part, such individual's resources shall be deemed to include any resources, not otherwise excluded under this subpart, of such spouse whether or not such resources are available to such individual. In addition to the exclusions listed in § 416.1210, we also exclude the following items:
+>
+> (1) Pension funds that the ineligible spouse may have. Pension funds are defined as funds held in individual retirement accounts (IRA), as described by the Internal Revenue Code, or in work-related pension plans (including such plans for self-employed persons, sometimes referred to as Keogh plans);

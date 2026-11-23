@@ -131,6 +131,12 @@ export interface Item {
    *  in every month). A "one of" field lists its options. docs/operators.md,
    *  "Receipt records". */
   record_fields?: Record<string, RecordFieldSpec>;
+  /** On a list of records: what one record is called where a rule reads the
+   *  list ("for each holding in", "that holding's value"); a list without
+   *  one names its records receipts. Parse and render only: the operators
+   *  read every list alike (docs/operators.md "Receipt records"; resource
+   *  records, step H0: `holdings`, CO-5300, record_noun holding). */
+  record_noun?: string;
 }
 
 /** One field of a record schema (Item.record_fields). */

@@ -3205,3 +3205,23 @@ Owner: Data steward, Energy assistance (LEAP) policy owner, SNAP policy owner
 Assumption: A dated pay with no frequency is a monthly pay (the schema's default); a household that states dated weekly or bi-weekly pays states their frequency.
 
 Checked 2026-11-23: 9 CCR 2503-7 3.752.22.B-C (D-86); 10 CCR 2506-1 4.402.A.2 (D-82). Neither says what schedule to assume for a pay whose schedule is not reported. Items: CO-5100, CO-5121.
+
+### OQ-1200. Holdings: whether the Medicare Savings Program has any resource rule of its own beyond the SSI method and the beneficiary-deed home
+
+Body: Resource records, step H0 (docs/design-earned-and-resource-records.md 3.3, decision D7) gives the Medicare Savings Program no holdings counting table of its own: ma_msp_countable_resources (CO-5206) reads the SSI-method couple figure (ma_ssi_countable_resources, CO-608) less the equity of a home counted only because it has a recorded beneficiary deed (ma_home_equity_counted_only_by_beneficiary_deed), so from step H1 it reads the SSI method's table (ma_ssi_holding_treatment_table, CO-5303) through that figure. Whether the MSP rules (10 CCR 2505-10 8.100.6, the resource limits of S1735) count or exclude any kind of holding differently from the SSI method, other than that home, is not settled by a text the volume has; the design records it as an owner confirmation, not an assumption made silently.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The Medicare Savings Program counts every kind of holding as the SSI method does, except the home counted only by a beneficiary deed (today's reading).
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.M (S1514, S1515, S3400-S3403, S3421) and the MSP resource limits (S1735); no MSP-specific exclusion was found. Items: CO-5300, CO-5303, CO-5206.
+
+### OQ-1201. Holdings: whether Colorado Works, LEAP and SUN Bucks have no resource test, and CCCAP keeps its asset declaration
+
+Body: Resource records, step H0 (docs/design-earned-and-resource-records.md 1.2 and 3.3, decision D10) builds holdings counting tables for SNAP, Adult Financial and the Medicaid SSI method only. No item of Colorado Works, LEAP or SUN Bucks reads a resource fact: Colorado Works reads holdings only through the death reimbursement, which adopts the SSI method (9 CCR 2503-6 3.606.7.F.2.c, as Adult Financial's burial assistance does, 9 CCR 2503-5 3.570.43.D.3.b), and CCCAP asks the household to declare that its assets are within the limit (cccap_declares_assets_within_limit, CO-1741; OQ-54), which stays the declaration it is. The design records each as an owner confirmation: that 9 CCR 2503-6 (Colorado Works) and 9 CCR 2503-7 (LEAP) set no resource test the volume has missed, that SUN Bucks has none, and that CCCAP's rule asks for the declaration rather than a count.
+
+Class: state policy choice
+Owner: Cash programs policy owner, Energy assistance (LEAP) policy owner, School meals (CDE) co-approver, Child care policy owner (CDEC)
+Assumption: Colorado Works, LEAP and SUN Bucks have no resource test, and CCCAP reads the household's declaration, not its holdings (today's reading).
+
+Checked 2026-11-23: the volume's items for the four programs read no resource fact other than CO-1741 (CCCAP) and the death reimbursement's adopted SSI method (Colorado Works); 9 CCR 2503-6 and 9 CCR 2503-7 as fetched (D-81, D-86) were not searched end to end for a resource test in this step. Items: CO-5300, CO-1741.

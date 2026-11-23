@@ -25,6 +25,22 @@ export function isRecordList(it: Pick<Item, "type"> | undefined | null): boolean
   return !!it && RECORD_LIST_TYPES.has(it.type);
 }
 
+/** What a list's records are called (Item.record_noun), and the field each
+ *  record's worth is stated in: a receipt's `amount`, a holding's `value`
+ *  (resource records, step H0, docs/design-earned-and-resource-records.md
+ *  3.1 and 3.4). The noun is parse and render only ("for each holding in",
+ *  "that holding's value", "that holding is valued in"); the operators read
+ *  every list alike. */
+export const RECORD_NOUNS: Readonly<Record<string, { measure: string; placed: string }>> = {
+  receipt: { measure: "amount", placed: "is received in" },
+  holding: { measure: "value", placed: "is valued in" },
+};
+
+/** The noun of a list of records: its record_noun, else receipt. */
+export function recordNounOf(it: Pick<Item, "record_noun"> | undefined | null): string {
+  return it?.record_noun ?? "receipt";
+}
+
 /** The base type a record field reads as. */
 export function fieldBaseType(spec: RecordFieldSpec | undefined): BaseType {
   if (!spec) return "unknown";
@@ -77,8 +93,12 @@ export function schemaErrors(it: Item): string[] {
   const fields = it.record_fields;
   if (!isRecordList(it)) {
     if (fields) out.push(`record_fields is only for a list of records (type "list of receipts"), not "${it.type}"`);
+    if (it.record_noun !== undefined) out.push(`record_noun is only for a list of records (type "list of receipts"), not "${it.type}"`);
     return out;
   }
+  const noun = recordNounOf(it);
+  const nounSpec = RECORD_NOUNS[noun];
+  if (!nounSpec) out.push(`record_noun "${noun}" is not one of: ${Object.keys(RECORD_NOUNS).join(", ")}`);
   if (it.kind !== "supplied") out.push("a list of records is a supplied fact");
   if (it.scope !== "person") out.push("a list of records is stated per person (scope person)");
   if (!fields || typeof fields !== "object") {
@@ -88,8 +108,9 @@ export function schemaErrors(it: Item): string[] {
   if (it.options && it.options.length) out.push("a list of records states its kinds in record_fields.kind.options, not options");
   const kind = fields.kind;
   if (!kind || kind.type !== "one of" || kind.required !== true) out.push('record_fields.kind is a required "one of" field');
-  const amount = fields.amount;
-  if (!amount || amount.type !== "money" || amount.required !== true) out.push("record_fields.amount is a required money field");
+  const measure = nounSpec?.measure ?? "amount";
+  const amount = fields[measure];
+  if (!amount || amount.type !== "money" || amount.required !== true) out.push(`record_fields.${measure} is a required money field`);
   for (const [name, spec] of Object.entries(fields)) {
     const at = `record_fields.${name}`;
     if (!/^[a-z][a-z0-9_]*$/.test(name)) out.push(`${at}: a field name is snake_case`);
