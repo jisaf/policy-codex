@@ -8,7 +8,7 @@ program: AdultFinancial
 meaning: "Whether the person's af_countable_resources is at or below the Adult Financial resource limit - af_resource_limit_couple (CO-3046) for a married client, af_resource_limit_individual (CO-3045) otherwise - per 9 CCR 2503-5 3.520.72.A and C.R.S. 26-2-111(1)(b), (2)(a)(I)."
 precision: "Hard-coded numbers audit D-4: the item read the SSI-method limits (ssi_resource_limit_individual, _couple) on the ground that 3.520.72.A's figures are the same dollar amounts; the rule states its own figures and an SSI change would not change them without an amendment, so it reads Adult Financial's own parameters. Final cash review FC-14: resources equal to the limit meet it (at most), following C.R.S. 26-2-111(2)(a) and the SSI rule, against 3.520.71.A.1's \"below the resource limit\" (OQ-662)."
 derived: [<=, af_countable_resources, [case, [is_married, af_resource_limit_couple], [else, af_resource_limit_individual]]]
-sources: [S441, S442, S443, S454]
+sources: [S441, S442, S443, S453, S454]
 implemented: engine
 open: [OQ-662]
 tags: [cash, oap, and, ab, resources]
@@ -18,4 +18,5 @@ tests:
   - {id: CO-948-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {}, relationships: [], expect: true}
   - {id: CO-948-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900, af_is_oap_age: true}, others: {p2: {af_person_countable_resources_other_than_life_insurance: 44100, af_life_insurance_countable_value_for_oap: 0}}, relationships: [[spouse, p2]], expect: false}
   # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
-  - {"id": "CO-948-T3", "as_of": "2026-10-01", "title": "T-9: af_countable_resources equal to [\"case\",[\"is_married\",\"af_resource_limit_couple\"],[\"else\",\"af_resource_limit_individual\"]] (af_countable_resources at or under [\"case\",[\"is_married\",\"af_resource_limit_couple\"],[\"else\",\"af_resource_limit_individual\"]])", "given": {"immigration_status": "us_citizen", "af_person_countable_resources": 1900, "af_countable_resources": 2000}, "others": {}, "relationships": [], "expect": true}
+  # T-9 hand-check (docs/reviews/t9-threshold-handcheck.md, givens that contradicted themselves): rebuilt from the underlying facts, no override; the client's own countable resources are $2,000 and the client is unmarried, so the client's countable resources are 2,000, equal to the individual limit 2,000; resources equal to the limit meet it (OQ-662: C.R.S. 26-2-111(2)(a) and the SSI rule against 3.520.71.A.1's "below", S453).
+  - {"id": "CO-948-T3", "as_of": "2026-10-01", "title": "T-9: af_countable_resources equal to [\"case\",[\"is_married\",\"af_resource_limit_couple\"],[\"else\",\"af_resource_limit_individual\"]] (af_countable_resources at or under [\"case\",[\"is_married\",\"af_resource_limit_couple\"],[\"else\",\"af_resource_limit_individual\"]])", "given": {"immigration_status": "us_citizen", "af_person_countable_resources": 2000}, "others": {}, "relationships": [], "expect": true}
