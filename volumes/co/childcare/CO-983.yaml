@@ -8,6 +8,7 @@ program: CCCAP
 meaning: "The number of persons in this person's CCCAP household (cccap_household_members, CO-982), the size the household's poverty guideline and state median income limits are read for."
 derived: [count, cccap_household_members]
 sources: [S485]
+open: [OQ-1315]
 implemented: engine
 tags: [household]
 rationale: "No existing item counts the CCCAP household; cccap_poverty_guideline_monthly (CO-3007) and the 85% SMI limits read this size."

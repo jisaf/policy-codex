@@ -16888,7 +16888,10 @@
   #   leap_is_eligible: 2026-10 false (not in the eligibility period); 2026-11 and 2026-12 true (program year 2026-11 =
   #   the application's, month >= 2026-10).
   # Before the fix: the program year of October 2026 was 2025-11, so 2026-11 and 2026-12 were false.
-  as_of: '2026-11-02'
+  # Coverage pass 5, L5-5 (docs/reviews/coverage5-care-energy.md): a LEAP case is determined as of its application date (the time
+  # contract; leap_determination_is_as_of_application_date, CO-7000), so the household is stated as of 2026-10-20 (was 2026-11-02, the
+  # day the county determined it); its facts are the same on both days and no expectation changes.
+  as_of: '2026-10-20'
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: '2026-10-20'
@@ -63234,7 +63237,9 @@
   # seventeen (leap_age_on_application_date, CO-6400), a member under eighteen whose earnings 3.752.23.Q excludes ("Earned income of
   # children under the age of eighteen (18) who are residing with a parent"). Size 2, income $4,000 <= $4,936 (the limit for 2):
   # eligible. Before the fix his age on the determination date (18) put him out of the household: size 1, $4,000 > $3,774, ineligible.
-  as_of: "2026-11-20"
+  # Coverage pass 5, L5-5: stated as of the application date, 2026-11-10 (the time contract; CO-7000), was the determination date
+  # 2026-11-20; the son is seventeen on both the determination date and the application date now, and no expectation changes.
+  as_of: "2026-11-10"
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: "2026-11-10"
@@ -69697,3 +69702,627 @@
       af_deemed_relative_income: {2026-10: 568}
       af_countable_income: {2026-10: 1158}
       af_category: {2026-10: none}
+- id: CO-800
+  title: "Coverage pass 5 L5-3: retroactive unemployment paid once in the income verification period is counted (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LR1 (L5-3): CO-712's adult, $3,000 of monthly wages, application 2026-11-10 (period from 2026-10-10).
+  # Two weeks of unemployment back pay, $800, paid once on 2026-11-02. 9 CCR 2503-7 3.752.23.EE excludes only "retroactive lump-sum
+  # social security, SSI, and public assistance payments"; 3.752.22.A counts the unearned income received in the period: $800.
+  # Household $3,000 + $800 = $3,800 > $3,774 (the limit for one): ineligible. Before the fix every retroactive one-time payment was
+  # left out: $3,000, eligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: unemployment_compensation, amount: 800, frequency: once, date: '2026-11-02', retroactive: true}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 800
+      leap_household_income:
+        2026-11: 3800
+      leap_is_eligible:
+        2026-11: false
+- id: CO-801
+  title: "Coverage pass 5 L5-2: the part of a military allotment for a child living elsewhere is not the household's (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LM1 (L5-2): CO-712's adult, $3,000 of wages; a military allotment of $1,000 a month, $400 of it for a child who lives
+  # with a former spouse. 3.752.212: "A military allotment received on behalf of an applicant or recipient for those individuals
+  # included in the budget unit shall be considered as income": $1,000 - $400 = $600; $3,000 + $600 = $3,600 <= $3,774: eligible.
+  # Before the fix the whole allotment was counted: $4,000, ineligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: military_allotment, amount: 1000, for_person_living_elsewhere: 400}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 600
+      leap_household_income:
+        2026-11: 3600
+      leap_is_eligible:
+        2026-11: true
+- id: CO-802
+  title: "Coverage pass 5 L5-2: a VA pension's part for a dependent living elsewhere is the dependent's (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LM2 (L5-2): the same adult with a VA pension of $1,000 a month (other_nontaxable), $400 of it paid for a dependent child
+  # who lives elsewhere. 3.752.211.E: "Any portion of a VA pension that is paid to a veteran for support of a dependent shall be
+  # considered countable unearned income to the dependent rather than the veteran", and the child is not in the household:
+  # $1,000 - $400 = $600; $3,600 <= $3,774: eligible. Before the fix: $4,000, ineligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: other_nontaxable, amount: 1000, for_dependent: 400, for_person_living_elsewhere: 400}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 600
+      leap_household_income:
+        2026-11: 3600
+      leap_is_eligible:
+        2026-11: true
+- id: CO-803
+  title: "Coverage pass 5 L5-4: cash value taken from one's own life insurance policy is excluded (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LI1 (L5-4): the same adult surrenders her own whole-life policy for $1,000, paid on 2026-11-02. 3.752.23.GG excludes
+  # "Money obtained from the liquidation of personal resources" (and BB a loan, for a policy loan): unearned $0, $3,000, eligible,
+  # as the same money stated as resource_liquidation already was. Before the fix: $4,000, ineligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: insurance_cash_value, amount: 1000, frequency: once, date: '2026-11-02'}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 0
+      leap_household_income:
+        2026-11: 3000
+      leap_is_eligible:
+        2026-11: true
+- id: CO-804
+  title: "Coverage pass 5 L5-6: weekly gifts dated in the income verification period are verified by declaration (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LG2 (L5-6): CO-712's adult, $3,000 of wages, application 2026-11-10 (period after 2026-10-10 through 2026-11-10);
+  # four weekly $100 gifts dated 2026-10-16, 23, 30 and 2026-11-06, her only unearned income: 3.752.22.A counts the period's
+  # receipts, 4 x $100 = $400 (OQ-681 (4)); $3,000 + $400 = $3,400 <= $3,774, eligible. 3.755.21.K: "Gift income shall be considered
+  # verified with applicant declaration": no document required. Before the fix only the month's undated recurring gifts were
+  # taken off, so the dated gifts asked for a document (required).
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: gift, amount: 100, frequency: weekly, date: '2026-10-16'}
+        - {kind: gift, amount: 100, frequency: weekly, date: '2026-10-23'}
+        - {kind: gift, amount: 100, frequency: weekly, date: '2026-10-30'}
+        - {kind: gift, amount: 100, frequency: weekly, date: '2026-11-06'}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 400
+      leap_household_income:
+        2026-11: 3400
+      leap_is_eligible:
+        2026-11: true
+      leap_requires_verification_of_unearned_income:
+        2026-11: false
+- id: CO-805
+  title: "Coverage pass 5 L5-5: a LEAP case stated as of a day after the application date cannot determine eligibility (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LP1 (L5-5): CO-712's adult applies on 2026-11-10 from an apartment whose heat she pays to the vendor, is evicted
+  # and is in an emergency shelter on 2026-11-20; the case is stated as of 2026-11-20 (her nighttime residence the shelter). 3.752.2:
+  # "The following factors shall be considered as of the date of application: ... dwelling type"; 3.751.1 "Point in Time": "the
+  # circumstances of the household on the date of the application, regardless of any changes thereafter". The time contract
+  # (docs/conventions.md, "Scopes") makes a LEAP determination's determination date its application date, so a case stated for
+  # 2026-11-20 cannot determine LEAP eligibility (leap_determination_is_as_of_application_date, CO-7000: false); stated as of
+  # 2026-11-10 it is CO-712's household, eligible. Before the fix the shelter was read: homeless, not vulnerable, ineligible.
+  as_of: '2026-11-20'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: emergency_or_transitional_shelter
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_is_eligible:
+        2026-11: unknown
+- id: CO-806
+  title: "Coverage pass 5 X5-1: income from jointly owned property counted at least at the owner's share (CCCAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household X5-1 (CCCAP alike): CO-345's mother and son (Denver, entry level $3,336.16 for two), wages $2,000 for 120 hours;
+  # she owns half of a rental house with her brother, who keeps all of its $2,000 a month of rent; no rental expenses.
+  # 8 CCR 1403-1 3.111.H.4.e: "Income from jointly owned property shall be considered as a percentage at least equal to the
+  # percentage of ownership or, if receiving more than percentage of ownership, the actual amount received": the larger of
+  # 0.5 x 2,000 = 1,000 and the $0 received, 1,000; household 2,000 + 1,000 = 3,000 <= 3,336.16: eligible_low_income. Before the
+  # fix (no field for the share): 2,000.
+  as_of: '2026-11-15'
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: '2026-11-15'
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
+        receipts:
+        - {kind: rental_income, amount: 0, ownership_share: 0.5, property_income: 2000}
+        earnings:
+        - {kind: wages, amount: 2000}
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_person_unearned_income:
+        2026-11: 1000
+      cccap_household_income:
+        2026-11: 3000
+      cccap_eligibility_status:
+        2026-11: eligible_low_income
+    p3:
+      cccap_eligibility_status:
+        2026-11: eligible_low_income
+- id: CO-807
+  title: "Coverage pass 5 S5-2: a sibling who received Colorado Works at seventeen in the period makes the child categorical (SUN Bucks)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household S5-2: CO-372's child (born 2016, determination March 2027, summer 2027, period of eligibility from 2026-07-01;
+  # school meal income $6,000 for two) with no receipts of her own, and a brother born 2008-10-15 in the economic unit who received
+  # $300 of Colorado Works in July 2026, at seventeen. 7 CFR 292.6: eligible are children who, "at any time during the period of
+  # eligibility", are categorically eligible; 292.2: "one or more children in that household are receiving assistance under SNAP,
+  # TANF, or FDPIR". In July 2026 he was a child of the household receiving TANF: eligible_categorical. Before the fix his age on the
+  # determination date (18) was read in every month: not a child, so the child was income-tested, ineligible.
+  as_of: '2027-03-01'
+  case_facts:
+    school_meal_household_income: 6000
+  relationships:
+  - [legal_guardian, p1, p2]
+  - [lives_as_one_economic_unit_with, p1, p2]
+  - [legal_guardian, p1, p3]
+  - [lives_as_one_economic_unit_with, p1, p3]
+  - [lives_as_one_economic_unit_with, p2, p3]
+  persons:
+    p1:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+      month_defaults:
+        rental_property_expenses_paid: 0
+        receives_snap: false
+    p2:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        donated_work_hours_per_week: 0
+        is_pregnant: false
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        nighttime_residence_type: fixed_regular_adequate
+        child_welfare_payment_type: none
+        is_migrant_child: false
+        is_runaway_child: false
+        receives_fdpir: false
+        sebt_other_documented_categorical_basis: false
+        is_head_start_child: false
+        is_individually_certified_for_free_or_reduced_price_meals: false
+        receipts: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        receives_snap: false
+      months: null
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        date_of_birth: '2008-10-15'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        receipts:
+        - {kind: colorado_works_cash, amount: 300, month: 2026-07}
+      month_defaults:
+        rental_property_expenses_paid: 0
+        receives_snap: false
+  expect:
+    p2:
+      sebt_household_child_receives_snap_or_tanf:
+        2027-03: true
+      sebt_eligibility_status:
+        2027-03: eligible_categorical
+- id: CO-808
+  title: "Coverage pass 5 X5-1: income from jointly owned property counted at least at the owner's share (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household X5-1 (hand repro): CO-712's adult, $3,000 of wages, owns half of a rental house with her brother, who keeps all of its
+  # $2,000 a month of rent. 9 CCR 2503-7 3.752.21.F: "Income from jointly owned property: - in a percentage at least equal to the
+  # percentage of ownership or, if receiving more than percentage of ownership, the actual amount received": the larger of
+  # 0.5 x 2,000 = 1,000 and the $0 received, 1,000; $3,000 + $1,000 = $4,000 > $3,774: ineligible. Before the fix (no field for the
+  # share): $3,000, eligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: rental_income, amount: 0, ownership_share: 0.5, property_income: 2000}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 1000
+      leap_household_income:
+        2026-11: 4000
+      leap_is_eligible:
+        2026-11: false
+- id: CO-809
+  title: "Coverage pass 5 L5-6: a one-time gift in the income verification period is verified by declaration (LEAP)"
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), review household LG1 (L5-6): CO-712's adult, $3,000 of wages, receives a $500 gift paid once on 2026-11-01, her only unearned income.
+  # 3.752.21.A counts it (unearned $500; $3,500 <= $3,774, eligible); 3.755.21.K: "Gift income shall be considered verified with
+  # applicant declaration": no document is required. Before the fix only the month's recurring gifts were taken off: required.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: gift, amount: 500, frequency: once, date: '2026-11-01'}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        2026-11: 500
+      leap_household_income:
+        2026-11: 3500
+      leap_is_eligible:
+        2026-11: true
+      leap_requires_verification_of_unearned_income:
+        2026-11: false

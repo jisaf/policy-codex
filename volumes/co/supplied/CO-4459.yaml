@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The penalty deducted in the month from an early payout the person received from a pension, annuity, 401(k), IRA or other retirement account, because the payout was taken early."
-precision: "Part of the gross payout a receipt of kind pension (receipts, CO-5000) states, not added to it. If not stated, every program reads it as 0."
+precision: "Part of the gross payout a receipt of kind pension (receipts, CO-5000) states, not added to it. If not stated, every program reads it as 0. Coverage pass 5, C5-2 (docs/reviews/coverage5-care-energy.md): no rule reads it now; the penalty is a field of the payment it was deducted from (receipts, CO-5000, early_withdrawal_penalty), so it is taken from that payment whatever its kind or frequency. It waits for the final cleanup with the other facts without a reader; no stored household states it."
 supplied_by: "The payer's distribution statement."
 sources: [S3256]
 tags: [income]
