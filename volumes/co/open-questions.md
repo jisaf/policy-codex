@@ -2711,3 +2711,23 @@ Owner: Legal, SNAP policy owner
 Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control".
 
 Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.
+
+### OQ-950. Medicaid: the whole month for an age condition in the groups Colorado's effective-date rules do not name
+
+Body: Time audit T-1 (docs/reviews/time-audit.md) measures each Medicaid age condition in the month evaluated, met if it is met on any day of the month. For the MAGI groups 10 CCR 2505-10 § 8.100.4.G.1 says so ("eligible ... at any time during a calendar month shall be eligible for benefits during the entire month", S3351); for the Aged, Blind and Disabled categories § 8.100.5.C.1 makes eligibility effective "the first day of the month the person becomes eligible" (S3900), and § 8.100.5.C.3 gives the Children's Buy-In the whole month. 42 CFR 435.915(b) lets the State make eligibility effective on the first day of a month for a person "eligible at any time during that month" (S3901), an option. Three groups read an age and are named by neither Colorado rule: the Breast and Cervical Cancer Program ("has not yet attained the age of 65", ma_bccp_eligibility_status, CO-1152), PACE (55 or older, ma_pace_eligible, CO-654, which also requires an Aged, Blind or Disabled category) and the IMD exclusion for an institutional resident aged 21 to 64 (ma_meets_imd_requirement, CO-1179). The draft reads them as the other groups are read: an age condition is met for the month if it is met on any day of it. Read the other way (the age on the first day of the month, or on the date coverage starts), a woman whose 65th birthday falls in the month would leave BCCP for that month, a person turning 55 would enter PACE the next month, and a resident turning 21 or 65 would be excluded or covered from the next month.
+
+Class: state policy choice
+Owner: Medicaid policy owner, LTSS policy owner
+Assumption: An age condition of BCCP, PACE and the IMD exclusion is met for a month if it is met on any day of the month, as § 8.100.4.G.1 and § 8.100.5.C.1 read for the other groups.
+
+Checked 2026-11-23: 10 CCR 2505-10 § 8.100.4.G.1, § 8.100.5.C.1 and C.3 (D-65, rule version effective 11/14/2026); 42 CFR 435.915(a)-(b) (D-35). The BCCP excerpts cited by CO-1152 (S608) and the PACE and IMD excerpts state the ages but no effective-date rule for a month in which the age is reached. Items: CO-1152, CO-654, CO-1179.
+
+### OQ-951. Colorado Works and Adult Financial: the age in an application month earlier than the determination month
+
+Body: Time audit T-1 also asked about the cash programs. cw_is_dependent_child (CO-901: "under 18", 26-2-703(9), C.R.S.; 9 CCR 2503-6 3.601) and af_is_oap_age (CO-940: sixty or older, 26-2-111(2)(a)(I); the birth-month transition of 3.532.B.3) are per-person items, so each is evaluated once per case: CO-901 on the determination date, and CO-940 on the determination date with its birth-month rule anchored to the determination month. Neither program's fetched text says on which date an age condition is measured for an application month that precedes the determination month (Adult Financial prorates the first month from the day the client is determined eligible, 3.532.B.2), or for a later month of a case, where a birthday is a change in circumstances handled under the programs' change rules. A child who turns 18 between the application date and the determination is therefore not a dependent child in the application month, and an applicant who turns 60 after applying is OAP age in the application month. 3.532.B.3 settles only the transition of an AND or AND-SO client: "from the first day of the birth month". No stored household crosses such a birthday.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The cash programs' age conditions are measured on the determination date, and the OAP birth-month transition in the determination month, for every month a determination evaluates; a birthday after the determination is a change in circumstances, outside the determination.
+
+Checked 2026-11-23: 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 (the dependent child, S401, S406); 9 CCR 2503-5 3.530 and 3.532.B.2-3 (D-80: the first month "prorated according to the number of days remaining in the month"; the AND client's transition "from the first day of the birth month"). None states the date an age is measured on for a month other than the determination month. Items: CO-901, CO-940.

@@ -135,7 +135,37 @@ An expression is evaluated for:
    context** whichever month asked for them first (so their parameters are
    read on the determination date): each is one value per case, on the
    determination date. `age` (CO-300) is the age on the determination date
-   wherever it is read.
+   wherever it is read; a rule that tests an age in the month it evaluates
+   reads an age taken in that month instead (Ages in a month, below).
+
+### Ages in a month
+
+A month-scoped rule that tests an age condition **for the month it
+evaluates** measures it in that month, never on the determination date (time
+audit T-1). Where the program's text makes any day of the month count
+(Medicaid: 10 CCR 2505-10 8.100.4.G.1 for MAGI, "eligible ... at any time
+during a calendar month shall be eligible ... during the entire month";
+8.100.5.C.1 for the Aged, Blind and Disabled categories, effective "the first
+day of the month the person becomes eligible"; 8.100.5.C.3 for the
+Children's Buy-In), a condition is met for the month if it is met on any day
+of it, and since an age only grows, one day decides each condition:
+
+| Condition | Day the age is taken on | Item |
+|---|---|---|
+| under N (a qualifying upper limit) | the first day of the month | `ma_age_on_first_day_of_month` (CO-4978) |
+| N or older (a qualifying lower limit) | the last day of the month | `ma_age_on_last_day_of_month` (CO-5402) |
+| under N "through the end of the month" of the Nth birthday | the last day of the month before | `ma_age_before_month` (CO-4790) |
+
+A disqualifying condition takes the other day (a person is outside a group
+for the whole month only if the condition holds on every day of it): the IMD
+exclusion's "21 or older" reads the first day and its "under 65" the last.
+These are ordinary items over `years_between`, `first_day`, `days_after` and
+`month`; no operator is involved. A per-person rule about the determination
+itself (presumptive eligibility, a person-scope category read by
+person-scope rules) states the determination month explicitly:
+`[at, ma_is_aged, [det_month]]`. The cash programs' per-person age items
+(`cw_is_dependent_child`, `af_is_oap_age`) are measured on the determination
+date in every month (OQ-951).
 
 ## Logic
 

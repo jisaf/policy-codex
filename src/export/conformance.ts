@@ -108,6 +108,9 @@ export const RESOLUTION = {
   person_items:
     "a person or global derived item is one value per case, evaluated with no month in context " +
     "(its parameters on the determination date)",
+  ages:
+    "age is the age on the determination date; a month rule's age condition reads an age item " +
+    "taken in the month evaluated (docs/operators.md, Ages in a month)",
 } as const;
 
 export interface Suite {

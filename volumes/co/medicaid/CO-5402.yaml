@@ -1,0 +1,20 @@
+id: CO-5402
+name: "Medicaid: age on the last day of the month"
+identifier: ma_age_on_last_day_of_month
+kind: derived
+type: whole number
+scope: person-month
+program: Medicaid
+meaning: "The person's whole number of completed years of age on the last day of the month evaluated: the age an \"N or older\" limit reads where any day of the month counts (10 CCR 2505-10 § 8.100.4.G.1 for MAGI, S3351; § 8.100.5.C.1, \"the first day of the month the person becomes eligible\", for the Aged, Blind and Disabled groups, S3900), so that a person who reaches the limit on any day of the month is within it for the whole month."
+precision: "A person who is N or older on the last day of the month is N or older on at least that day; one who is under N on the last day is under N on every day of it. So the test is exact for a lower limit (aged 65, the Adults group's 19, the Disabled Adult Child's 18, the Working Adults Buy-In's 16, PACE's 55). A disqualifying age condition flips the day: a person is outside a group for the whole month only when the condition holds on every day, so a disqualifying \"N or older\" reads the first day (ma_age_on_first_day_of_month, CO-4978) and a disqualifying \"under N\" this item (the IMD exclusion, CO-1179; the Adults group's bar for a parent of a child under 19 without coverage, CO-548). Time audit T-1 (2026-11-23): the month-scoped age conditions of the Medicaid groups read the age in the month they evaluate, not on the determination date (42 CFR 435.915(a)(2), S218)."
+derived: [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]]
+sources: [S3351, S3900, S218]
+implemented: engine
+tags: [ma, age]
+nearest: [CO-4978, CO-4790]
+rationale: "Time audit T-1: ma_is_aged (CO-600) and the other lower age limits of the Medicaid groups compared age (CO-300), the age on the determination date, in every month, so a retroactive month before a 65th birthday was aged (CO-533). CO-4978 is the first day and CO-4790 the day before the month; no item states the last day."
+tests:
+  - {id: CO-5402-T1, as_of: "2026-11-12", month: "2026-10", title: "T-1: 65th birthday on October 20 - 65 on October 31", given: {date_of_birth: "1961-10-20"}, expect: 65}
+  - {id: CO-5402-T2, as_of: "2026-11-12", month: "2026-09", title: "T-1: September, before the 65th birthday - 64", given: {date_of_birth: "1961-10-20"}, expect: 64}
+  - {id: CO-5402-T3, as_of: "2027-03-01", month: "2027-02", title: "Born February 29: 19 on March 1 in a common year, so 18 on February 28", given: {date_of_birth: "2008-02-29"}, expect: 18}
+  - {id: CO-5402-T4, as_of: "2026-12-15", month: "2026-12", title: "Birthday on the last day of the month", given: {date_of_birth: "2007-12-31"}, expect: 19}

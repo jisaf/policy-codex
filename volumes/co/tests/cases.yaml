@@ -4728,11 +4728,12 @@
   # S3.4), merged into one case with three stated months now that continuous_eligibility_period_start
   # month (CO-094) anchors ma_child_continuous_eligibility_end_month on ma_application_date rather than
   # the determination month (C-4c) - the review's own reason the two cases could not previously be
-  # merged. This harness pins the determination date (and so `age`) to the case's single as_of
-  # (2026-04-10, the date of the application that opens Tasha's continuous eligibility period); it
-  # does not advance with the later months, so Marcus's turning 24 between April 2026 and January
-  # 2027 (the point of the review's original CO-07/CO-08 split) is not separately exercised here - he
-  # is 23 in every month tested, which CO-549-T4's rule-level test already covers for an exit at 20.
+  # merged. The determination date is the case's single as_of (2026-04-10, the date of the
+  # application that opens Tasha's continuous eligibility period). Since time audit T-1 the Medicaid
+  # groups' age conditions are measured in each month evaluated (ma_age_before_month and the other
+  # month ages, CO-4790, CO-4978, CO-5402), so Tasha is 17 in April 2027 and Marcus 24 in January
+  # 2027; every expectation below is unchanged by it (both stay under the 19 and 26 limits they are
+  # tested against), and CO-549-T4's rule-level test covers an exit at 20.
   # A sibling relationship for Marcus and Tasha cannot be stated at all: P43 derives siblings only
   # from a shared parent edge, and no parent is a person in this case (both are raised by their
   # grandmother) - the chapter has no `sibling` role, so it is left unexpressed rather than forced.
@@ -4967,9 +4968,8 @@
   #   the CE period).
   #
   # p3, April 2027 (one month after the continuous eligibility period ends 2027-03). Household still
-  #   [p3], size 1, income unchanged at 1,850, ratio 1.3910 (age is pinned to the case's single
-  #   determination date, 2026-04-10, so she is still evaluated as 16 here even though she would
-  #   actually be 17 by April 2027 - see the case comment above). The continuous eligibility period
+  #   [p3], size 1, income unchanged at 1,850, ratio 1.3910 (the Children's group reads her age in
+  #   April 2027, 17, since time audit T-1; under 19 either way - see the case comment above). The continuous eligibility period
   #   has ended (April 2027 is after 2027-03), so it no longer protects her: on the plain test,
   #   1.3910 > 1.33 and the disregard (1.3410) still exceeds 1.33 -> Medicaid category none, status
   #   ineligible_income. CHP+: 1.3910 does not exceed the 142% floor (nor does 1.3910 - 0.05 = 1.3410)
@@ -5278,7 +5278,7 @@
       ma_is_institutionalized: false
       ma_ltc_couple: false
       ma_ssi_household_size: 1
-      ma_is_aged: true
+      ma_is_aged: {"2026-11": true}
       ma_ssi_countable_income: {"2026-11": 1080}
       ma_meets_ssi_income_standard: {"2026-11": false}
       ma_ssi_countable_resources: 7500
@@ -16740,7 +16740,7 @@
       relationships: []
   expect:
     p1:
-      ma_is_under_child_age_or_turns_nineteen_this_month: true
+      ma_is_under_child_age_or_turns_nineteen_this_month: {"2026-11": true}
       ma_magi_category:
         2026-11: child
       ma_magi_eligibility_status:
@@ -17055,7 +17055,7 @@
       relationships: []
   expect:
     p1:
-      ma_is_former_foster_care_category: true
+      ma_is_former_foster_care_category: {"2026-11": true}
       ma_magi_category:
         2026-11: former_foster_care
       ma_magi_eligibility_status:
@@ -29175,7 +29175,7 @@
       ma_magi_eligibility_status:
         2026-11: ineligible_income
     p2:
-      ma_is_needy_newborn: true
+      ma_is_needy_newborn: {"2026-11": true}
       ma_magi_category:
         2026-11: needy_newborn
       ma_magi_eligibility_status:
@@ -58838,7 +58838,7 @@
 
 - id: CO-530
   title: "Time audit T-1: retroactive months across a 19th birthday (MAGI Children's group)"
-  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # Time audit T-1 (docs/reviews/time-audit.md). Passes since the fix round: the age is taken in the month evaluated.
   # p1, single, born 2007-09-15, earns $1,850 a month in wages, her own tax household (size 1). She applies on
   # 2026-11-10 and asks for retroactive coverage; she met every requirement from 2026-08-01 (ma_eligibility_start_date).
   # Retroactive period (8.100.3.E.1, 42 CFR 435.915(a), an application before 2027): the three months before November,
@@ -58852,8 +58852,9 @@
   #   they turn 19") -> child, eligible.
   # - October 2026: 19 and past the birthday month: Adults (19-64), 1.3910 > 1.33; the 5% disregard at her highest
   #   standard (Adults, 1.33): 1.3910 - 0.05 = 1.3410 > 1.33 -> none, ineligible_income.
-  # The codex measures the 19th birthday against the determination month (ma_is_under_child_age_or_turns_nineteen_this_month,
-  # CO-564: age on 2026-10-31 = 19) in every month, so August and September are also none / ineligible_income.
+  # Before the fix the codex measured the 19th birthday against the determination month
+  # (ma_is_under_child_age_or_turns_nineteen_this_month, CO-564: age on 2026-10-31 = 19) in every month, so August and
+  # September were also none / ineligible_income.
   # A control with the birth year 2008 gives child / eligible for August to October.
   as_of: "2026-11-10"
   relationships: []
@@ -58918,7 +58919,9 @@
 
 - id: CO-531
   title: "Time audit T-1: the application month is the month of the 19th birthday; determined the next month"
-  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # Time audit T-1 (docs/reviews/time-audit.md). Passes since the fix round: the age is taken in the month evaluated.
+  # As a child in October he opens a continuous eligibility period, so the case states the period's exceptions (none
+  # applies) and his expected annual income, 1,850 x 12 = 22,200.
   # p1, single, born 2007-10-20, earns $1,850 a month, his own tax household (size 1). He applies on 2026-10-28 (no
   # retroactive request) and the county determines the application on 2026-11-05 (as_of).
   # Coverage starts in the month of application (8.100.3.E; any day eligible in a calendar month covers the whole
@@ -58928,7 +58931,8 @@
   #   1.3910 <= 1.42 -> child, eligible.
   # - November 2026: 19, past the birthday month: Adults, 1.3910 and 1.3410 (after the 5% disregard) > 1.33 -> none,
   #   ineligible_income.
-  # The codex reads the birthday month as the determination month (November), so October is none / ineligible_income.
+  # Before the fix the codex read the birthday month as the determination month (November), so October was none /
+  # ineligible_income.
   as_of: "2026-11-05"
   relationships: []
   persons:
@@ -58965,6 +58969,11 @@
         has_self_employment_seasonal_or_commission_earnings: false
         ma_is_incapable_of_indicating_intent: false
         ma_prior_enrollment_category: none
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_eligibility_was_erroneously_granted: false
+        expected_annual_income: 22200
       month_defaults:
         lottery_gambling_winnings_received: 0
         wages_gross: 1850
@@ -59085,14 +59094,17 @@
 
 - id: CO-533
   title: "Time audit T-1: retroactive months before a 65th birthday (SSI-related aged)"
-  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # Time audit T-1 (docs/reviews/time-audit.md). Passes since the fix round: the age is taken in the month evaluated.
   # p1, single, born 1961-10-20 (65 on 2026-10-20), not blind or disabled, Medicare Part A, Social Security 800 a
   # month, savings 1,000. Applies 2026-11-05 asking for retroactive coverage (August to October 2026).
   # Aged means 65 or older (42 U.S.C. 1382c(a)(1)(A); ma_aged_age 65). Countable income 800 - 20 = 780 <= 994 (2026).
   # - August and September 2026: 64, not aged, not blind, not disabled -> none.
   # - November 2026: 65 -> aged (780 <= 994; resources 1,000 <= 2,000).
-  # October (the birthday month) is not asserted: whether the whole month counts is not settled by the excerpts read.
-  # The codex takes age on the determination date (2026-11-12) for every month, so August and September are aged.
+  # - October 2026, the birthday month: aged. An Aged, Blind and Disabled category is effective from "the first day of
+  #   the month the person becomes eligible" (10 CCR 2505-10 8.100.5.C.1, S3900), so turning 65 on October 20 makes her
+  #   aged for October (ma_age_on_last_day_of_month, CO-5402: 65 on October 31).
+  # Before the fix the codex took age on the determination date (2026-11-12) for every month, so August and September
+  # were aged.
   as_of: '2026-11-12'
   relationships: []
   persons:
@@ -59167,7 +59179,7 @@
         ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
-      ma_ssi_related_category: {'2026-08': none, '2026-09': none, '2026-11': aged}
+      ma_ssi_related_category: {'2026-08': none, '2026-09': none, '2026-10': aged, '2026-11': aged}
 
 - id: CO-534
   title: "Time audit T-2: the Adult Financial maximum ISM in January 2027"
