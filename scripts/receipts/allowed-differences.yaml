@@ -705,3 +705,37 @@
 - {case: "/^G-(MAagedspouse|MAdeemingparent)-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p2, identifier: snap_unearned_income_verification_is_pending, month: "2026-10", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
 - {case: "/^G-MAcommunityspouse-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p2, identifier: snap_unearned_income_verification_is_pending, month: "2026-11", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
 - {case: "/^G-MACBWDchild-uniformed_services_special_pay_received_300_part_of_nontaxable_$/", person: p3, identifier: snap_unearned_income_verification_is_pending, month: "2026-10", old: unknown, new: false, class: "EI-SP4 (design 2.3) special pay is no longer unearned income to verify"}
+
+# ---------------------------------------------------------------------------------------------------
+# Resource records, Medicaid track H1 (2026-11-23; docs/reviews/records-holdings-medicaid.md, sections 4 and 6): the SSI
+# method's resource readers read the holdings records (CO-5300). Measured against c29d326. Stored households: the classes
+# of scripts/records/allowed/h1-medicaid.yaml, each cited there.
+# H1-M2 (design 2.2): a stated holdings list with no annuity, trust or home record holds none.
+- {case: "/^CO-\\d+$/", identifier: "/^(ma_annuity_verification_is_pending|ma_trust_verification_is_pending)$/", old: unknown, new: false, class: "H1-M2 (design 2.2) holdings stated with no annuity or trust record, no annuity or trust documents owed"}
+- {case: "/^(CO-01|CO-02)$/", person: p5, identifier: ma_home_equity_disqualifies, old: unknown, new: false, class: "H1-M2 (design 2.2) holdings stated with no home record, no home equity over the limit"}
+# H1-M3 (D8; 10 CCR 2505-10 8.100.7.L, M.1): the CSRA snapshot derived from the couple's holdings at the application month;
+# the baseline reads the supplied figure, which the twelve couples no longer state (every expectation passes).
+- {case: "/^(CO-01|CO-02|CO-06|CO-112|CO-152|CO-153|CO-154|CO-188|CO-213|CO-388|CO-395|CO-481)$/", identifier: "/^(ma_csra|ma_institutionalized_spouse_countable_resources|ma_ssi_countable_resources|ma_msp_countable_resources|ma_meets_ltc_resource_standard|ma_ltc_eligibility_status|ma_patient_payment|ma_family_planning_status|ma_ssi_related_category|ma_msp_category|ma_protected_group_category)$/", old: unknown, class: "H1-M3 (D8) the CSRA from the derived snapshot (the baseline read the supplied figure, no longer stated)"}
+# H1-M1 (decision 4): CO-214 p2 states no holdings; whether the home is countable cannot be determined.
+- {case: CO-214, person: p2, identifier: ma_home_is_countable_resource, old: false, new: unknown, class: "H1-M1 (decision 4) holdings not stated, whether the home is countable cannot be determined"}
+# H1-M8 (decision 4; 26 U.S.C. 6409): CO-300's federal refund held has no date of receipt (the Adult Financial track dates it).
+- {case: CO-300, person: p1, identifier: ma_ssi_related_category, month: "2026-10", old: none, new: unknown, class: "H1-M8 (decision 4; 6409) a refund held with no date of receipt cannot be placed in its twelve months"}
+# H1-M9 (8.100.5.N.5): CO-189 p2's 40,000 IRA counted less 20%.
+- {case: CO-189, person: p2, identifier: ma_ssi_countable_resources, old: 41000, new: 33000, class: "H1-M9 (N.5.a-b) a retirement account counted at its gross value less the taxes due, or less 20%"}
+# HM-R1 (transition; request R-7 of docs/reviews/records-holdings-medicaid.md): this harness builds its generated households
+# (G-) from the stored households of c29d326, before the holdings list existed, and translates their receipts and earnings
+# (product owner, 2026-11-23) but not their resource facts into holdings records. Medicaid's SSI-method readers read the
+# holdings records only, so a generated household that states liquid_resources_value but no holdings list has resources
+# that cannot be determined (decision 4), and every outcome that reads them with it. Each entry names the base, person,
+# outcome, month and both values; none stands for a base or figure it was not checked on. Translating the generated
+# households' resource facts on the new side (translate-holdings.ts), as their earned facts are, removes this class.
+- {case: "/^G-(AFclient|AFspousedeemed)-/", person: "/^(p1|p2)$/", identifier: "/^(ma_ssi_related_category)$/", month: "2026-10", old: aged, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-(AFclient|AFspousedeemed)-/", person: "/^(p1|p2)$/", identifier: ma_family_planning_status, month: "2026-10", old: full_coverage, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_ssi_related_category, month: "2026-10", old: aged, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_family_planning_status, month: "2026-10", old: full_coverage, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_msp_category, month: "2026-10", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-(MALTC|MAcommunityspouse)-/", person: p2, identifier: "/^(ma_ssi_related_category|ma_msp_category)$/", month: "2026-11", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-MAMSP-/", person: p1, identifier: ma_msp_category, month: "2027-01", old: qmb, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-MAMSP-/", person: p1, identifier: ma_ssi_related_category, month: "2027-01", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-MAWAWD-/", person: p1, identifier: ma_ltc_eligibility_status, month: "2026-10", old: eligible_hcbs, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+- {case: "/^G-MAcommunityspouse-/", person: p1, identifier: "/^(ma_family_planning_status|ma_ltc_eligibility_status|ma_msp_category|ma_patient_payment|ma_ssi_related_category)$/", month: "2026-11", new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
