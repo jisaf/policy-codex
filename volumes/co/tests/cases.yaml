@@ -59236,7 +59236,7 @@
 - id: CO-535
   title: "Time audit T-4: lottery winnings a few cents under $80,000 and $90,000"
   # Time audit T-4 (docs/reviews/time-audit.md), generated boundary case (npm run boundaries: CO-1185 at T = 79,999, step 0.01).
-  # Still failing: registered in conformance/known-failures.json under T-4.
+  # Passes since the fix round (T-4): CO-1183 is $80,000, compared with "less than".
   # p1 (CO-530's applicant, no retroactive request) wins $89,999.50 in September 2026 and $79,999.50 in October 2026.
   # 42 U.S.C. 1396a(e)(14)(K)(i) (S1234), which binds MAGI eligibility: winnings "less than $80,000" count in the month
   # received (1 month); "greater than or equal to $80,000 but less than $90,000" over 2 months.
