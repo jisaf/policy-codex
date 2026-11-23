@@ -1,0 +1,22 @@
+id: CO-5721
+name: "CCCAP: a person's counted recurring receipts"
+identifier: cccap_counted_recurring_receipts
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's recurring receipts of the month that CCCAP's counting table counts (cccap_receipt_treatment_table), at the amount received in the month: the unearned income received in the prior thirty days (8 CCR 1403-1 3.111.H.4, H.5.b), Social Security included (I.25) less the part set aside under a plan for self-support (J.13)."
+precision: "A receipt is recurring when it is not paid once; it is received in the month when it states the month, or states none (it recurs in every month). The month's receipts stand for the prior thirty days, as the volume reads a case that states calendar-month receipts (OQ-680). A Colorado Works diversion is counted here and taken out again by cccap_excluded_unearned_receipts when it is cash assistance (3.103.S, J.26). An irregular receipt is counted here and taken out by cccap_excluded_irregular_income when J.28's quarterly limit is not reached. The set-aside part is no more than the receipt it is part of. Replaces unearned_income_prior_thirty_days (CO-3913, with the thirty-day figure unearned_income_received_prior_thirty_days, CO-3911, which the receipts do not restate) and the month's social_security_income for CCCAP."
+derived: [sum_receipts, receipts, [all, [in, [lookup, cccap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_less_pass_set_aside, counted_child_support, counted_unless_cash_assistance]], [not, ["=", [receipt, frequency], once]], [received_in, [month]]], [case, [["=", [lookup, cccap_receipt_treatment_table, [receipt, kind]], counted_less_pass_set_aside], ["-", [receipt, amount], [min, [receipt, pass_set_aside], [receipt, amount]]]], [else, [receipt, amount]]]]
+sources: [S891, S2704, S1623, S4020, S3257]
+implemented: engine
+tags: [income]
+open: [OQ-680]
+rationale: "Receipt records, migration phase 2: CCCAP's recurring unearned income, read from the receipts through its counting table."
+tests:
+  - {id: CO-5721-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: pension, amount: 610}, {kind: child_support, amount: 300}, {kind: ssi, amount: 900}, {kind: foster_care_payment, amount: 1500}]}, title: "A pension and child support counted (I.8, I.29); SSI (J.2) and a foster care payment (J.10) excluded", expect: 910}
+  - {id: CO-5721-T2, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: social_security, amount: 900, pass_set_aside: 200}, {kind: colorado_works_cash, amount: 488}]}, title: "Social Security less the part set aside under a PASS (I.25, J.13); Colorado Works cash excluded (J.26)", expect: 700}
+  - {id: CO-5721-T3, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: pension, amount: 610, month: "2026-10"}, {kind: other_nontaxable, amount: 2000, frequency: once, month: "2026-11"}]}, title: "October's pension is not November's; a one-time receipt is not recurring (cccap_one_time_receipts_averaged reads it)", expect: 0}
+  - {id: CO-5721-T4, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: in_home_care_allowance, amount: 400}, {kind: home_care_allowance, amount: 400}]}, title: "Another program's home care allowance counted because no rule excludes it; the Adult Financial Home Care Allowance excluded (J.24)", expect: 400}
+  - {id: CO-5721-T5, month: "2026-11", as_of: "2026-11-15", given: {receipts: []}, title: "No receipts: none", expect: 0}
+  - {id: CO-5721-T6, month: "2026-11", as_of: "2026-11-15", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}

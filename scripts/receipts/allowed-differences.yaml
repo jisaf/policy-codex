@@ -93,3 +93,35 @@
 - case: /^G-[A-Za-z]+-workers_compensation_claim_expense_amounts_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)$/
   identifier: /^cw_/
   class: CW4 workers' compensation claim expenses are a field of the award (3.605.3.B.4)
+# ---- Migration phase 2: CCCAP and SUN Bucks (docs/reviews/receipts-migration-2-cccap-sunbucks.md, section 7) ----
+# Baseline: c29d326, the ledger at the end of phase 1 (npm run receipts:harness -- --base c29d326); the
+# entries also hold against the phase-1 baseline (ccbb3a7), where the phase-1 entries above explain the rest.
+
+# C1 (8 CCR 1403-1 3.111.J.12, J.17, J.24; counted because no rule excludes it, OQ-873's reading): three kinds the
+# old scalar facts folded into a fact CCCAP excluded, which no paragraph of J names. J.12 excludes "Low-Income Energy
+# Assistance Program (LEAP) benefits" (energy_assistance_received held a nonprofit's or supplier's assistance too);
+# J.17 excludes "Training allowances granted by Workforce Investment Act (WIA)" (workforce_program_payments_received
+# held a training allowance from another vocational program too); J.24 excludes the "Home Care Allowance under adult
+# categories of assistance" (in_home_care_allowance_received held another program's personal care allowance too).
+# The receipts name each source apart, and cccap_receipt_treatment_table counts the three by silence, marked for the
+# owner's sign-off. CO-219 and CO-220 state a $1,000 and a $500 vocational training allowance (coverage pass 3 C3-1).
+- case: /^(CO-219|CO-220|G-[A-Za-z]+-(energy_300_of_which_nonprofit_300|workforce_300_of_which_vocational_allowance_200|in_home_care_allowance_received_300_part_of_nontaxable_))$/
+  identifier: /^cccap_/
+  class: C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)
+
+# C2 (the transition rule): a stored household written in receipts alone (CO-458 to CO-460, the spike's families) states
+# none of the scalar facts CCCAP read before phase 2, so the baseline's CCCAP could not determine its income; CCCAP now
+# reads the receipts. No expectation of these households names a CCCAP figure.
+- case: /^CO-(458|459|460)$/
+  identifier: /^cccap_/
+  old: unknown
+  class: C2 CCCAP reads a household stated in receipts alone
+
+# R1 again, met only against the phase-1 baseline (ccbb3a7): CO-345 now states its county diversion as one payment in
+# November 2026 (lump_sum_received with tanf_diversion_payment_received; 9 CCR 2503-6 3.606.8.A, "non-recurring cash
+# payment"), and the old leap_person_one_time_income (CO-4069) needed the thirty-day facts to place any lump sum;
+# leap_receipt_treatment_table excludes a diversion (3.752.23.W), so its date is never asked.
+- case: CO-345
+  identifier: /^leap_/
+  old: unknown
+  class: R1 LEAP excluded one-time receipt no longer needs the thirty-day facts

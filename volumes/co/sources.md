@@ -22587,3 +22587,110 @@ Document: D-81
 > ...
 >
 > 34. Income tax credits when identified as exempt by the state or federal government.
+### S4020. CCCAP countable income: railroad retirement, veterans payments, dividends and interest, estates and trusts, royalties, Social Security, unemployment, workers' compensation, maintenance, child support, military allotments, WIOA wages, AmeriCorps and refugee payments
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I (introduction), I.6-7, I.9-11, I.13-16, I.19, I.23-33 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> I. Income Inclusions
+>
+> Each of the following are considered countable income and are taken into consideration
+> for eligibility for child care.
+>
+> ...
+>
+> 6. Railroad retirement insurance
+>
+> 7. Veterans Payments
+>
+> a. Retirement or pension payments paid by defense finance and
+> accounting services (DFAS) to retired members of the Armed
+> Forces;
+>
+> b. Pension payments paid by the Veteran’s Administration to disabled
+> members of the Armed Forces or to survivors of deceased
+> veterans;
+>
+> ...
+>
+> 9. Dividends
+>
+> 10. Interest on savings or bonds
+>
+> 11. Income from estates or trusts
+>
+> ...
+>
+> 13. Royalties
+>
+> 14. Dividends from stockholders
+>
+> 15. Memberships in association
+>
+> 16. Periodic receipts from estates or trust funds
+>
+> ...
+>
+> 19. Net royalties
+>
+> ...
+>
+> 23. Strike benefits
+>
+> 24. Lease bonuses and royalties (e.g., oil and mineral)
+>
+> 25. Social Security pensions, survivor's benefits and permanent disability
+> insurance payments made prior to deductions for medical insurance
+>
+> 26. Unemployment insurance benefits
+>
+> 27. Worker's compensation received for injuries incurred at work
+>
+> 28. Maintenance payments made by an ex-spouse as a result of dissolution of
+> a marriage
+>
+> 29. Child support payments
+>
+> 30. Military allotments
+>
+> 31. Workforce innovation opportunity act (WIOA) wages earned in work
+> experience or on the-job training
+>
+> 32. Earned AmeriCorps income includes government payments from
+> agricultural stabilization and conservation service and wages of
+> AmeriCorps volunteers in service to America (vista) workers. Vista
+> payments are excluded if the client was receiving CCCAP when they
+> joined vista. If the client was not receiving CCCAP when they joined vista,
+> the vista payments shall count as earned income.
+>
+> 33. CARES payments – refugee payments from Refugee Services
+
+### S4021. CCCAP income exclusions: nutrition assistance, Perkins attendance-cost assistance, radiation exposure compensation, refugee resettlement and placement vendor payments
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.4, J.20-22 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+>
+> Each of the following are not considered countable income and are not taken into
+> consideration for eligibility for child care.
+>
+> ...
+>
+> 4. Nutrition related public assistance
+>
+> ...
+>
+> 20. Financial assistance received under the Carl D. Perkins Vocational and
+> Applied Technology Education Act that is made available for attendance
+> costs. Attendance costs include: tuition, fees, rental or purchase of
+> equipment, materials, supplies, transportation, dependent care and
+> miscellaneous personal expenses
+>
+> 21. Any money received from the Radiation Exposure Compensation Trust
+> Fund, pursuant to Public Law No. 101-426 as amended by Public Law No.
+> 101-510
+>
+> 22. Resettlement and Placement (R & P) vendor payments for refugees

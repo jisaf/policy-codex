@@ -1,0 +1,18 @@
+id: CO-5724
+name: "CCCAP: a person's irregular receipts in the calendar quarter"
+identifier: cccap_irregular_receipts_in_quarter
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's irregular receipts that CCCAP counts (cccap_irregular_receipts) over the calendar quarter (January-March, April-June, July-September, October-December) that contains the month, each month's added: the total 8 CCR 1403-1 3.111.J.28 compares with ninety dollars (\"Irregular income in the certification period that totals less than ninety dollars ($90) in any calendar quarter\")."
+precision: "The quarter is found from the month's calendar number, as the shared quarter total (infrequent_or_irregular_income_in_quarter, CO-4077) found it: its place in the quarter is that number less one, less three times the whole quarters before it. Each month's receipts are summed in that month, so they are counted with that month's counting table. Replaces infrequent_or_irregular_income_in_quarter (CO-4077) for CCCAP, its only reader."
+derived: [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [months_after, ["-", 2, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]]], [month]]], [at, cccap_irregular_receipts, [that_month]]]
+sources: [S2858]
+implemented: engine
+tags: [income]
+open: [OQ-713]
+rationale: "Receipt records, migration phase 2: J.28's quarterly total, from the receipts. The shared total summed one supplied fact that every program would have read alike; with receipts the irregular receipts a program counts are its own (a kind CCCAP excludes is not in CCCAP's quarter)."
+tests:
+  - {id: CO-5724-T1, month: "2026-12", as_of: "2026-12-01", given: {receipts: [{kind: other_nontaxable, amount: 60, irregular: true, month: "2026-10"}, {kind: other_nontaxable, amount: 40, irregular: true, month: "2026-11"}]}, title: "$60 in October and $40 in November, read in December", expect: 100}
+  - {id: CO-5724-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: other_nontaxable, amount: 60, irregular: true, month: "2026-09"}, {kind: other_nontaxable, amount: 10, irregular: true, month: "2026-10"}]}, title: "$60 in September is in the previous quarter", expect: 10}

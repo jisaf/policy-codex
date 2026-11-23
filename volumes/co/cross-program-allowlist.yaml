@@ -9,7 +9,6 @@
 date: 2026-11-23
 held:
   - {item: CO-3912, identifier: wages_gross_prior_thirty_days, readers: [CO-3915, CO-3925]}
-  - {item: CO-3913, identifier: unearned_income_prior_thirty_days, readers: [CO-3916]}
   - {item: CO-3159, identifier: has_unearned_income_other_than_interest_and_dividends, readers: [CO-1404]}
   - {item: CO-3387, identifier: ssi_student_earned_income_exclusion_basis, readers: [CO-2471]}
   - {item: CO-087, identifier: mother_was_enrolled_in_medicaid_at_birth, readers: [CO-1395, CO-550]}

@@ -2698,13 +2698,15 @@ Checked 2026-11-22: 8 CCR 1403-1 3.103.LLL, 3.111.A, 3.111.D.1.a-b and 3.111.H.5
 
 ### OQ-873. CCCAP: a diversion payment that is not cash assistance
 
-Body: 8 CCR 1403-1 3.103.S (S3638): "All state diversion payments of less than four (4) consecutive months are not cash assistance. For the purpose of child care, county diversion payments are not cash assistance." 3.111.J.26 (S2706) excludes "Public cash assistance grants including ... (TANF)/Colorado Works", so a state diversion paid over four or more consecutive months is excluded (cccap_excluded_unearned_receipts, CO-4463, reading tanf_state_diversion_payment_months, CO-4911). 3.111.I lists countable income ("Each of the following are considered countable income") and does not name a diversion payment; J does not exclude one that is not cash assistance. The draft counts a shorter state diversion and a county diversion as unearned income, as it counts any unearned receipt that J does not exclude; read the other way, I is a closed list and they are not income at all. Coverage pass 3 C3-6. Items: CO-4463, CO-4911.
+Body: 8 CCR 1403-1 3.103.S (S3638): "All state diversion payments of less than four (4) consecutive months are not cash assistance. For the purpose of child care, county diversion payments are not cash assistance." 3.111.J.26 (S2706) excludes "Public cash assistance grants including ... (TANF)/Colorado Works", so a state diversion paid over four or more consecutive months is excluded (cccap_excluded_unearned_receipts, CO-4463, reading tanf_state_diversion_payment_months, CO-4911). 3.111.I lists countable income ("Each of the following are considered countable income") and does not name a diversion payment; J does not exclude one that is not cash assistance. The draft counts a shorter state diversion and a county diversion as unearned income, as it counts any unearned receipt that J does not exclude; read the other way, I is a closed list and they are not income at all. Coverage pass 3 C3-6. Items: CO-4463, CO-4911, CO-5720, CO-5722.
 
 Probe hand-check (docs/reviews/probe-handcheck-cash-food-care.md, CO-345; fix round 2026-11-23): even counted as income, a one-time county diversion payment is a non-recurring lump sum. 8 CCR 1403-1 3.111.H.4.i: "Non-recurring lump sum payments, including lump sum child support payments, may be included as income in the month received or averaged over a twelve (12) month period, whichever is most beneficial for the recipient." cccap_person_unearned_income (CO-3916) averages only lump_sum_received (CO-3367), whose meaning includes "a similar one-time payment"; a one-time payment the case states only in the other unearned income facts is counted in full in the month. Stored CO-345 states its 1,500 county diversion that way: counted in full the household is at 3,500, over 185% of the guideline (3,336.16), ineligible_income; averaged it would be 2,000 + 125 = 2,125, eligible_low_income. So a second question sits under this one: whether CCCAP must average every one-time payment whatever fact the case states it in (which would need a program reading of "non-recurring" over the other unearned facts), or only a payment the case states as a lump sum.
 
+Receipt records, migration phase 2 (2026-11-23; docs/reviews/receipts-migration-2-cccap-sunbucks.md): the second question is settled by the text once the payment's form is a fact of its own. H.4.i reaches "Non-recurring lump sum payments, including lump sum child support payments", whatever their source, and a receipt record states whether a payment is paid once (frequency once) apart from its kind, so CCCAP averages every counted receipt paid once (cccap_one_time_receipts_averaged, CO-5722); no fact the case chose decides it any more. A diversion is a non-recurring payment by its own rule: 9 CCR 2503-6 3.606.8.A (S762) calls it a "non-recurring cash payment" ("Specify the need(s) for and the specific type(s) of non-recurring cash payment"; "All diversion clients who receive a one-time cash payment"). Stored CO-345 now states its county diversion as one payment in November 2026 and expects the averaged figure, 2,000 + 1,500 / 12 = 2,125, eligible_low_income. The first question stays open: whether a diversion that is not cash assistance is income at all.
+
 Class: state policy choice
 Owner: Child care policy owner (CDEC)
-Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. It is averaged over twelve months under 3.111.H.4.i only when the case states it as a lump sum ("a similar one-time payment" in the lump-sum fact); stated only as other unearned income it is counted in the month received.
+Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. A diversion paid once, like any counted receipt paid once, is averaged over twelve months under 3.111.H.4.i (receipt records; before them, only when the case stated it as a lump sum).
 
 Checked 2026-11-22: 8 CCR 1403-1 3.103.S, 3.111.I and 3.111.J (D-87, version effective 2026-08-14). Neither I nor J names a diversion payment, and S defines cash assistance without saying how a payment that is not cash assistance is treated. Checked 2026-11-23: 3.111.H.4.h-i (D-87, same version). H.4.i lets a non-recurring lump sum be averaged "whichever is most beneficial" but does not define "non-recurring" or say whether a diversion payment is one; 3.103.S calls a county diversion payment not cash assistance without saying whether it recurs.
 
@@ -2847,3 +2849,43 @@ Owner: Cash programs policy owner
 Assumption: Both are counted as unearned income (the reading before receipt records), pending this answer.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.4.A.3, B.9 and B.10 (D-81). Neither paragraph names a migrant farmworker's emergency assistance or a charity's need-based cash, and B.9 depends on what the assistance pays for.
+
+### OQ-990. CCCAP: kinds of receipt a paragraph of 3.111.J names only in part, or may name
+
+Body: CCCAP's counting table (cccap_receipt_treatment_table, CO-5720) gives each kind of receipt one treatment. For five kinds the paragraph of 8 CCR 1403-1 3.111.J that bears on it names only part of what the kind holds, or may reach it. J.12 (S2207) excludes "Low-Income Energy Assistance Program (LEAP) benefits"; energy_assistance_federal holds LEAP and any other federally funded energy assistance. J.14 excludes "Earned Income Tax Credit (EIC) payments"; income_tax_refund holds every income tax refund or credit. J.27 (S2706) excludes "Reimbursements for expenses paid related to a settlement or lawsuit"; reimbursement holds any reimbursement of expenses that is not a gain. These three are excluded whole, as the ledger excluded them before receipt records (unearned_income_prior_thirty_days, CO-3913, subtracted energy_assistance_received, tax_refunds_and_credits_received and expense_reimbursements_received). J.20 (S4021) excludes Carl D. Perkins assistance "made available for attendance costs", which a vocational_training_allowance may be; J.25 excludes "Loans from private individuals as well as commercial institutions", which a reverse_mortgage may be read as. These two are counted because no rule excludes them (3.111.I names neither). 3.111.I says what is "considered countable income" and J what is not; neither says how a receipt that I does not name and J names only in part is treated.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: Federally funded energy assistance, income tax refunds and credits, and reimbursements of expenses are excluded whole (J.12, J.14, J.27, the reading before receipt records); a vocational training allowance and reverse mortgage payments are counted because no rule excludes them.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.111.I and J (D-87, version effective 2026-08-14). No paragraph treats non-LEAP energy assistance, income tax refunds other than the EIC, reimbursements unrelated to a settlement, vocational training allowances outside WIA or Perkins attendance costs, or reverse mortgage payments. Items: CO-5720.
+
+### OQ-991. CCCAP: General Assistance and emergency assistance, and J.26's "public cash assistance grants including"
+
+Body: 8 CCR 1403-1 3.111.J.26 (S2706) excludes "Public cash assistance grants including Old Age Pension (OAP), Aid to the Needy Disabled (AND), and Temporary Assistance to Needy Families (TANF)/Colorado Works", and 3.103.S (S3638) defines cash assistance as "payments, vouchers, and other forms of benefits designed to meet a household's ongoing basic needs". County General Assistance and one-time emergency assistance are public payments the list does not name; read as illustrations ("including"), J.26 may exclude General Assistance, which meets basic needs, and perhaps not emergency assistance received once. Before receipt records the ledger counted both (general_or_emergency_assistance_received, CO-3812, was part of the other unearned income CO-3913 counted); the counting table keeps that reading and marks both rows counted because no rule excludes them.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: General Assistance and emergency assistance are counted (the reading before receipt records): J.26 is read as naming its grants.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.103.S, 3.111.I and J.26 (D-87, version effective 2026-08-14). Neither names General Assistance or emergency assistance. Items: CO-5720.
+
+### OQ-992. CCCAP: money a non-citizen receives from a sponsor
+
+Body: 8 CCR 1403-1 3.111.I (S4020) lists what is "considered countable income" and J (S1623) what is not; neither names a sponsor's cash support to a non-citizen. Before receipt records the ledger never read it for CCCAP: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts CCCAP summed. On OQ-873's reading (a receipt J does not exclude is counted) it would be counted; on the reading that I is a closed list it would not. The counting table (cccap_receipt_treatment_table, CO-5720) keeps the reading before receipt records, as not_counted_open_question, until the owner decides, as LEAP (OQ-885) and Adult Financial (OQ-888) do.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: Money a sponsor pays the non-citizen is not counted (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.111.I and J (D-87, version effective 2026-08-14). Neither names sponsor support. Items: CO-5720.
+
+### OQ-993. SUN Bucks: whether a Colorado Works diversion or supportive service payment is "assistance under TANF"
+
+Body: 7 CFR 292.2 (S792) makes a child categorically eligible for Summer EBT when "one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR". Colorado Works pays basic cash assistance, diversion payments and supportive service payments from TANF funds. 9 CCR 2503-6 3.606.8.A (S762) says a diversion addresses "a specific crisis situation or episode of need", is "not designed to meet clients' basic ongoing needs", is a "non-recurring cash payment", and that its receipt "does not count toward their Federal TANF assistance time limit", which suggests it is not TANF "assistance"; neither 292.2 nor 292.12(d) defines "assistance" or says whether the federal definition (45 CFR 260.31, not on file) applies. SUN Bucks read only tanf_cash_income (basic cash assistance) before receipt records, and its table of receipts (sebt_receipt_treatment_table, CO-5730) keeps that reading.
+
+Class: state policy choice
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Only Colorado Works basic cash assistance is assistance under TANF for 292.2; a diversion or supportive service payment does not make a child categorically eligible.
+
+Checked 2026-11-23: 7 CFR 292.2, 292.6, 292.12(d) (D-88); 9 CCR 2503-6 3.606.8.A (D-81). None defines TANF "assistance" for Summer EBT; 45 CFR 260.31 is not among the documents on file. Items: CO-5730, CO-5731.

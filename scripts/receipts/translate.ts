@@ -90,7 +90,7 @@ export const MONTH_FACTS: ReadonlySet<string> = new Set<string>([
   "overpayment_recoupment_for_intentional_violation_withheld", "child_support_received_transferred_to_child_support_agency",
   "military_retirement_paid_to_former_spouse", "income_received_for_person_living_elsewhere",
   "infrequent_or_irregular_income_received", "periodic_unearned_income_received", "americorps_service_hours",
-  "money_received_from_sponsor", "retroactive_colorado_works_lump_sum_received",
+  "money_received_from_sponsor", "retroactive_colorado_works_lump_sum_received", "insurance_proceeds_spent_on_medical_or_burial",
 ]);
 /** Person-scope facts the translation reads (the LEAP thirty-day facts and the periodic income). */
 export const PERSON_FACTS: ReadonlySet<string> = new Set<string>([
@@ -208,6 +208,16 @@ function carve(
       else { r.amount = a - inLump; R.push({ ...r, amount: inLump, frequency: "once" }); }
     }
     if (reach > 0) { R.push({ kind: "other_nontaxable", amount: reach, frequency: "once" }); take(reach, false); }
+  }
+  // insurance or injury proceeds spent on medical care or burial (CO-4460,
+  // part of lump_sum_received): the spent_on_covered_costs of the one-time
+  // receipt that holds the proceeds (migration phase 2, CCCAP 3.111.I.21-22)
+  const insSpent = get("insurance_proceeds_spent_on_medical_or_burial");
+  if (insSpent > 0) {
+    const once = R.filter((r) => r.frequency === "once" && !r.retroactive && typeof r.amount === "number");
+    const h = once.find((r) => r.kind === "other_nontaxable" && (r.amount as number) >= insSpent) ?? once.find((r) => (r.amount as number) >= insSpent) ?? once[0];
+    if (h) h.spent_on_covered_costs = Math.min(insSpent, h.amount as number);
+    else notes.push("insurance_proceeds_spent_on_medical_or_burial with no one-time receipt to hold it");
   }
   // irregular income: a receipt of its own, out of the residual
   const irr = get("infrequent_or_irregular_income_received");

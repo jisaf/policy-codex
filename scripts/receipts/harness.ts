@@ -34,9 +34,10 @@ const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null &&
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
 
-/** The programs migrated in phase 1, and Colorado Works in phase 2, whose
- *  outcomes are always compared; with --all-programs, every program's. */
-const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "ColoradoWorks"];
+/** The programs migrated (phase 1: LEAP, SNAP, Adult Financial; phase 2:
+ *  Colorado Works, CCCAP, SUN Bucks), whose outcomes are always compared;
+ *  with --all-programs, every program's. */
+const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "ColoradoWorks", "CCCAP"];
 /** Intermediate figures compared beside the outcomes. */
 const FIGURES = [
   "leap_person_unearned_income", "leap_household_income", "leap_person_countable_income",
@@ -48,6 +49,8 @@ const FIGURES = [
   "cw_countable_unearned_income", "cw_payment_countable_unearned_income", "cw_counted_child_support",
   "cw_countable_income", "cw_payment_countable_income", "cw_sponsor_contributions_counted", "cw_sponsor_deemed_income",
   "cw_budgetary_member_deemed_income", "cw_deemed_parent_income_of_minor_parent", "cw_has_countable_unearned_income",
+  "cccap_person_unearned_income", "cccap_person_countable_income", "cccap_household_income", "cccap_protective_services_income",
+  "cccap_has_countable_unearned_income", "sebt_household_child_receives_snap_or_tanf",
 ];
 
 interface Allowed {
@@ -132,9 +135,10 @@ export function main(): number {
     return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
-  // Both ledgers evaluate the translated household (its old facts kept, its
-  // receipts added): from phase 2 the baseline itself reads the receipts for
-  // the programs phase 1 moved, and the old facts for the rest.
+  // A generated household is stated in the old facts and translated, as a
+  // stored household is (the transition rule): both ledgers read the
+  // translated household, so a baseline on which some programs already read
+  // the receipts (phase 2's baseline is phase 1's end) reads them too.
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);

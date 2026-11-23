@@ -12,15 +12,16 @@ import { buildIndex, type LedgerIndex } from "../../src/engine/ledger-index";
 
 export const root = path.resolve(import.meta.dirname, "../..");
 
-/** The ledger without the migration: the last commit of the branch the
- *  migration merges into that reads the scalar facts everywhere. It was the
- *  adoption commit (41ec04b) until the non-MAGI fix round (82a29d0) was
- *  merged in, then the time-audit fix round (ccbb3a7) when the migration was
- *  merged into it; the baseline moves with each merge, so the harness
- *  measures the migration and nothing the other track changed. Phase 2
- *  (Colorado Works, docs/reviews/receipts-migration-2-cw.md) starts from
- *  c29d326, phase 1 merged: the ledger on which Colorado Works still reads
- *  the scalar facts, so the harness measures the Colorado Works move alone. */
+/** The ledger without the migration phase being measured. Phase 1: the last
+ *  commit of the branch the migration merges into that reads the scalar
+ *  facts everywhere: the adoption commit (41ec04b) until the non-MAGI fix
+ *  round (82a29d0) was merged in, then the time-audit fix round (ccbb3a7)
+ *  when the migration was merged into it. Phase 2 (Colorado Works; CCCAP and
+ *  SUN Bucks; Medicaid and CHP+, three parallel tracks merged together): the
+ *  end of phase 1 (c29d326), so the harness measures phase 2 alone; the
+ *  phase-1 baseline still runs clean with --base ccbb3a7. The baseline moves
+ *  with each merge, so the harness measures the migration and nothing the
+ *  other track changed. */
 export const BASELINE_REF = "c29d3262ed69d9fbc7589a949149aa75dc8ba182";
 
 export interface Ledger { ledger: LoadedLedger; ix: LedgerIndex }
