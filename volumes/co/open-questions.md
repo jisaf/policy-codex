@@ -3053,3 +3053,13 @@ Assumption: The 2025 and 2026 regional income-trust ceilings are the figures the
 Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23)
 
 Checked 2026-11-23: D-65 (§ 8.100.7.G.6.a.i.a)), D-72. Items: CO-3022, CO-1985, CO-642, CO-651, CO-3310.
+
+### OQ-1100. SNAP expedited service: whether a household is still in its postponement period on the thirtieth day after application
+
+Body: 10 CCR 2506-1 4.205.11.B.2.b (S835; the current text, D-82, rule version 12718, reads the same) says that "when the postponed verification is not completed within thirty (30) calendar days from the date of application, the local office shall terminate the household's participation on the thirtieth (30th) calendar day without providing a notice of adverse action". "Within thirty calendar days from the date of application" can include the thirtieth day after it, so that verification completed that day is in time; but participation is terminated "on the thirtieth calendar day", so on that day the household may already be out of its postponement. The text does not say whether the thirtieth day is the application date plus 29 days or plus 30, nor whether the household is still postponed on it. snap_expedited_postponement_end_date (CO-1393) is the application date plus snap_expedited_postponed_verification_days (30), and snap_verification_status (CO-1394) reads a determination date on or before it as postponed_expedited; rule test CO-1394-T14 (the T-9 boundary, A-5 of docs/reviews/t9-threshold-handcheck.md) fixes that reading at equality. 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310) postpones verification to the second or third month of participation and names no day.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: The postponement runs through the application date plus thirty days, inclusive: a household that completes the postponed verification on that day is in time, and is postponed_expedited on it.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.205.11.B.2.b (D-82, rule version 12718; S835 from D-103); 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310); OQ-323 (thirty days rather than the federal months; it does not settle the day). Items: CO-1393, CO-1394.
