@@ -2,17 +2,19 @@
 // each stored household's `receipts` (volumes/co/tests/cases.yaml, edited
 // in place so its comments and layout stay as they are), and each rule test
 // that states the old unearned-income facts (the item files, rewritten
-// byte-stably). The old facts are kept (the transition rule). Run it again
-// after editing a household's old facts; `npm run receipts:harness` fails
-// while a stored household's receipts are not the translation of its old
-// facts.
+// byte-stably). A retired fact a household or test still states (RETIRED)
+// is moved to retired-facts.yaml first. Since phase 3 every old fact is
+// retired, so a new household or test is written in receipts alone and this
+// script only moves a stray old statement out and checks the fixed point;
+// `npm run receipts:harness` fails while a stored household's receipts are
+// not the translation of what it stated before.
 //
 //   npm run receipts:translate [-- --dry-run]
 import fs from "node:fs";
 import path from "node:path";
 import { isMap, isSeq, parseDocument, type Pair, type YAMLMap } from "yaml";
 import { parseItemFile, stringifyItem, flowValue } from "../../src/engine/yaml";
-import { RETIRED, translateCase, translateTest } from "./translate";
+import { EVERY_MONTH, RETIRED, translateCase, translateTest } from "./translate";
 import { loadRetired, saveRetired } from "./retired";
 import { CHOICES } from "./choices";
 import { currentLedger, root } from "./ledgers";
@@ -32,6 +34,16 @@ const lineEnd = (t: string, at: number) => { const i = t.indexOf("\n", at); retu
 // the ledger) is moved out of each household into retired-facts.yaml, which
 // the translation reads beside it.
 const retired = loadRetired();
+/** Keeps one retired statement: a value for every month, or a month's
+ *  value. A fact stated both ways is kept as { every_month, <month>: ... }
+ *  (EVERY_MONTH), so neither statement is lost. */
+const keep = (slot: Record<string, unknown>, k: string, v: unknown, month?: string | null) => {
+  const cur = slot[k];
+  const isMonths = cur !== null && typeof cur === "object" && !Array.isArray(cur);
+  if (month) slot[k] = isMonths ? { ...(cur as Record<string, unknown>), [month]: v } : cur === undefined ? { [month]: v } : { [EVERY_MONTH]: cur, [month]: v };
+  else if (isMonths) slot[k] = { [EVERY_MONTH]: v, ...(cur as Record<string, unknown>) };
+  else slot[k] = v;
+};
 {
   const d0 = parseDocument(text);
   const cuts: Array<[number, number]> = [];
@@ -62,9 +74,7 @@ const retired = loadRetired();
           const k = String((fp.key as { value?: unknown }).value);
           if (!(k in RETIRED) || L.ix.byIdentifier.has(k)) continue;
           const v = (fp.value as { toJSON(): unknown }).toJSON();
-          const slot = ((retired[id] ??= {})[pid] ??= {});
-          if (month) slot[k] = { ...((slot[k] as Record<string, unknown>) ?? {}), [month]: v };
-          else slot[k] = v;
+          keep(((retired[id] ??= {})[pid] ??= {}), k, v, month);
           const ks = (fp.key as { range: [number, number, number] }).range[0];
           const ve = (fp.value as { range: [number, number, number] }).range[1];
           mine.push([lineStart(text, ks), lineEnd(text, ve - 1)]);
@@ -143,9 +153,7 @@ for (const [id, dir] of Object.entries(L.ledger.chapterOf)) {
     const take = (pid: string, o: Record<string, unknown> | undefined, month?: string) => {
       for (const k of Object.keys(o ?? {})) {
         if (!(k in RETIRED) || L.ix.byIdentifier.has(k)) continue;
-        const slot = ((retired[t.id] ??= {})[pid] ??= {});
-        if (month) slot[k] = { ...((slot[k] as Record<string, unknown>) ?? {}), [month]: o![k] };
-        else slot[k] = o![k];
+        keep(((retired[t.id] ??= {})[pid] ??= {}), k, o![k], month);
         delete o![k];
         cut = true;
       }

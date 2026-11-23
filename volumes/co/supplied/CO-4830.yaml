@@ -10,5 +10,5 @@ precision: "Part of other_unearned_income_taxable (CO-1714), where a lodger's pa
 supplied_by: "Applicant statement, rent receipts, as the county establishes them."
 sources: [S3159]
 tags: [income]
-nearest: [CO-1714, CO-4161]
+nearest: [CO-4161]
 rationale: "Coverage pass 3 CW3-1 (P1, docs/reviews/coverage3-colorado-works.md): 9 CCR 2503-6 3.605.2.E.4.d (S3159) counts a room-only payment as earned income above the documented costs of providing the room, but the volume stated a lodger's payment only as rent in other_unearned_income_taxable, so Colorado Works counted $400 from a lodger as unearned income without the earned income disregards (ineligible where the rule gives $310 and eligibility). A part-of fact, as rental_income_received (CO-4457) is, so that the programs reading the rent as unearned keep their answer and Colorado Works can move it."

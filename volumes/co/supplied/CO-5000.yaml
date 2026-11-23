@@ -136,4 +136,3 @@ record_fields:
 sources: [S2712, S2713, S2714, S1624, S3300, S42, S1620, S1622, S2608]
 tags: [income]
 rationale: "Product-owner decision of 2026-11-23 (receipt records): the rules count money by kind of receipt, by date and form, by frequency and by earmark; one record per receipt states each once, so no rule decides where a dollar stated twice sits. Replaces, for LEAP, SNAP and Adult Financial, the scalar unearned income facts and their part-of facts (migration phase 1)."
-nearest: [CO-030, CO-1714, CO-3367]

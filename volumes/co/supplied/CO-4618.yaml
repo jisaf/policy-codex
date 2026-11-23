@@ -6,9 +6,8 @@ type: money
 scope: person-month
 program: All
 meaning: "The part of the person's earned income for the month set aside under a Plan to Achieve Self-Support that the Social Security Administration has approved, and used for the plan's purposes."
-precision: "Part of the person's earned income for the month (wages_gross or the self-employment facts), not added to it. pass_set_aside_income (CO-3825) is the unearned income set aside. If not stated, every program reads it as 0."
+precision: "Part of the person's earned income for the month (wages_gross or the self-employment facts), not added to it. The unearned income set aside is the pass_set_aside field of a receipt (receipts, CO-5000). If not stated, every program reads it as 0."
 supplied_by: "SSA's approved plan and the person's records."
 sources: [S3412]
 tags: [income, disability]
 rationale: "Coverage review NM-7: 20 CFR 416.1112(c)(9), incorporated by 10 CCR 2505-10 § 8.100.5.H.4.e, excludes earned income used to fulfill an approved plan; pass_set_aside_income is part of unearned income only, so earned income set aside had no fact."
-nearest: [CO-3825]

@@ -1,14 +1,18 @@
-// Receipt records, migration phases 1 and 2: the one translation of a household or
+// Receipt records, migration phases 1 to 3: the one translation of a household or
 // rule test stated in the scalar unearned-income facts into the `receipts`
 // list (CO-5000). Written once, reviewed as code (restructure review, change
 // A; ported from prototypes/receipt-spike/translate.ts and brought to the
-// adopted kinds). Transition rule (docs/plan-colorado.md): the old facts are
-// kept, so the programs that still read them (CCCAP, Medicaid, CHP+, SUN
-// Bucks) read what they read before, and the receipts list states the same
-// money once for LEAP, SNAP, Adult Financial and Colorado Works. The
-// translator is the only writer of both, so the two cannot disagree; the
-// harness re-translates every stored household and reports any whose stored
-// receipts differ from the translation of its old facts.
+// adopted kinds). Phases 1 and 2 kept the old facts beside the receipts
+// (the transition rule, docs/plan-colorado.md) while some program still read
+// them. Phase 3 (docs/reviews/receipts-migration-3.md): every program reads
+// the receipts, so every old fact is retired (RETIRED) and no household or
+// rule test states one; their statements before retirement are kept in
+// retired-facts.yaml. The translation no longer needs the ledger to know
+// the old facts (RETIRED gives each one's scope) and is read for two things
+// only: the harness, which evaluates the baseline ledger on what a household
+// stated before (withRetired) and fails when a stored household's receipts
+// are not the translation of it; and the generated households, which are
+// varied by the old facts and translated.
 //
 // The carving rule: within a month, the facts that are "part of"
 // other_unearned_income_taxable/_nontaxable are carved out of that residual;
@@ -553,9 +557,64 @@ export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
   property_or_food_tax_refund_received: "person-month",
   state_veteran_annuity_received: "person-month",
   uniformed_services_special_pay_received: "person-month",
+  // Migration phase 3 (docs/reviews/receipts-migration-3.md): every program
+  // reads the receipts, so every scalar unearned-income fact phase 2 left
+  // without a reader is retired (the last readers were Colorado Works,
+  // CCCAP, SUN Bucks, Medicaid and CHP+)
+  social_security_income: "person-month",
+  pension_income: "person-month",
+  unemployment_income: "person-month",
+  child_support_received: "person-month",
+  tanf_cash_income: "person-month",
+  adult_financial_cash_income: "person-month",
+  tax_exempt_interest: "person-month",
+  other_unearned_income_taxable: "person-month",
+  other_unearned_income_nontaxable: "person-month",
+  lottery_gambling_winnings_received: "person-month",
+  taxable_interest_and_dividend_income: "person-month",
+  rental_income_received: "person-month",
+  educational_assistance_received: "person-month",
+  loan_proceeds_received: "person-month",
+  expense_reimbursements_received: "person-month",
+  energy_assistance_received: "person-month",
+  tax_refunds_and_credits_received: "person-month",
+  federally_excluded_payments_received: "person-month",
+  crime_victim_compensation_received: "person-month",
+  foster_care_provider_payments_received: "person-month",
+  kinship_care_payments_received: "person-month",
+  tanf_diversion_payment_received: "person-month",
+  tanf_supportive_service_payments_received: "person-month",
+  reverse_mortgage_payments_received: "person-month",
+  refugee_resettlement_payments_received: "person-month",
+  workers_compensation_award_expenses: "person-month",
+  americorps_payments_received: "person-month",
+  workforce_program_payments_received: "person-month",
+  vocational_training_allowance_received: "person-month",
+  general_or_emergency_assistance_received: "person-month",
+  in_home_care_allowance_received: "person-month",
+  va_aid_and_attendance_used_for_uncovered_care: "person-month",
+  charitable_need_based_cash_received: "person-month",
+  child_support_arrears_received: "person-month",
+  pass_set_aside_income: "person-month",
+  lump_sum_received: "person-month",
+  retroactive_social_security_lump_sum_received: "person-month",
+  retroactive_ssi_or_public_assistance_lump_sum_received: "person-month",
+  retroactive_colorado_works_lump_sum_received: "person-month",
+  insurance_proceeds_spent_on_medical_or_burial: "person-month",
+  infrequent_or_irregular_income_received: "person-month",
+  money_received_from_sponsor: "person-month",
+  unearned_income_received_prior_thirty_days: "person",
+  // Medicaid's statement of the VA Aid and Attendance portion of a pension,
+  // carved into its own receipt by the translation (phase 2)
+  receives_va_aid_and_attendance: "person-month",
+  va_aid_and_attendance_amount: "person-month",
 };
-/** case id -> person -> retired fact -> value, as stated before retirement. */
+/** case id -> person -> retired fact -> value, as stated before retirement.
+ *  A person-month fact stated by month is { <month>: value, ... }; one stated
+ *  for every month and also for some months keeps the every-month value
+ *  under EVERY_MONTH beside them. */
 export type RetiredFacts = Record<string, Record<string, Record<string, unknown>>>;
+export const EVERY_MONTH = "every_month";
 
 /** A household with the facts a migration retired from it put back: what
  *  it stated before the migration (the harness evaluates the old ledger on
@@ -568,8 +627,12 @@ export function withRetired(c0: HouseholdCase, retired?: RetiredFacts): Househol
     for (const [k, v] of Object.entries(facts)) {
       if (RETIRED[k] !== "person-month") (p.facts ??= {})[k] = v;
       else if (v && typeof v === "object" && !Array.isArray(v)) {
-        // stated month by month: { "2026-10": value, ... }
-        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) ((p.months ??= {})[m] ??= {})[k] = mv;
+        // stated month by month: { "2026-10": value, ... }, with the value
+        // for every month under EVERY_MONTH when it was stated too
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) {
+          if (m === EVERY_MONTH) (p.month_defaults ??= {})[k] = mv;
+          else ((p.months ??= {})[m] ??= {})[k] = mv;
+        }
       } else (p.month_defaults ??= {})[k] = v;
     }
   }
@@ -588,7 +651,7 @@ export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choi
     const facts: Record<string, unknown> = {};
     const md: Record<string, unknown> = { ...(p.month_defaults ?? {}) };
     for (const [k, v] of Object.entries(p.facts ?? {})) {
-      if ((ix.byIdentifier.get(k)?.scope ?? RETIRED[k]) === "person-month") md[k] = v; else facts[k] = v;
+      if ((RETIRED[k] ?? ix.byIdentifier.get(k)?.scope) === "person-month") md[k] = v; else facts[k] = v;
     }
     const t = translatePerson(`${c.id} ${pid}`, { facts, monthDefaults: md, months: p.months ?? {} }, window, app, choiceFor(choices, c.id, pid));
     notes.push(...t.notes);
@@ -618,7 +681,7 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
     const s: Slot = { facts: {}, md: { ...(md0 ?? {}) }, months: clone(months0 ?? {}) };
     for (const [k, v] of Object.entries(src ?? {})) {
       const it = ix.byIdentifier.get(k);
-      if ((it?.scope ?? RETIRED[k]) === "person-month") {
+      if ((RETIRED[k] ?? it?.scope) === "person-month") {
         if (v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).every((x) => /^\d{4}-\d{2}$/.test(x))) {
           for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
         } else s.md[k] = v;
@@ -627,7 +690,9 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
     for (const [k, v] of Object.entries(retired?.[t.id]?.[pid] ?? {})) {
       if (RETIRED[k] !== "person-month") s.facts[k] = v;
       else if (v && typeof v === "object" && !Array.isArray(v)) {
-        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) {
+          if (m === EVERY_MONTH) s.md[k] = mv; else (s.months[m] ??= {})[k] = mv;
+        }
       } else s.md[k] = v;
     }
     persons.set(pid, s);

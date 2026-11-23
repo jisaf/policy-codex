@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "Income in 10 CCR 2505-10 § 8.100.4.C.1's Modified Adjusted Gross Income list that is taxable but is not unearned income received in the month, and that no other income fact names: capital gains (§ 8.100.4.C.1.b.xiii), income from discharge of indebtedness other than student loan debt, income in respect of a decedent, and a distributive share of partnership gross income. Interest, dividends, rents, royalties and pre-2019 alimony received are other_unearned_income_taxable (CO-1714); lottery and gambling winnings (CO-1181) and discharged student loan debt (CO-1188) have their own facts."
+meaning: "Income in 10 CCR 2505-10 § 8.100.4.C.1's Modified Adjusted Gross Income list that is taxable but is not unearned income received in the month, and that no other income fact names: capital gains (§ 8.100.4.C.1.b.xiii), income from discharge of indebtedness other than student loan debt, income in respect of a decedent, and a distributive share of partnership gross income. Interest, dividends, rents, royalties and pre-2019 alimony received, and lottery and gambling winnings, are receipts (CO-5000; kinds interest_and_dividends, rental_income, other_taxable, gambling_winnings); discharged student loan debt (CO-1188) has its own fact."
 precision: "Monthly amount for the month in context, as it is figured for federal income tax. Capital gains are stated gross; capital losses are pretax_deductions (CO-080). Read by MAGI only."
 supplied_by: Applicant statement (CBMS/PEAK), verified through an electronic data source or documentation per 10 CCR 2505-10 8.100.4.B.1.d.
 sources: [S669, S670]

@@ -11,4 +11,4 @@ supplied_by: "Applicant statement, the IRS refund deposit on the account stateme
 sources: [S2966]
 tags: [resources]
 rationale: "Final verification pass 2 N-8 (docs/reviews/final2-snap.md): 10 CCR 2506-1 4.410.J.17 (S2966) disregards federal income tax refunds as a resource for twelve months from receipt, and J.12 a federal earned income tax credit, but SNAP counted liquid_resources_value (CO-3390) in full. tax_refunds_and_credits_received (CO-3365) states the month's receipt as income, not what is still held."
-nearest: [CO-3365, CO-3390]
+nearest: [CO-3390]
