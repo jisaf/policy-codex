@@ -21,6 +21,7 @@
     "conform:self": "vite-node scripts/conform.ts --build --batch --adapter \"npx vite-node scripts/adapters/codex-self.ts\"",
     "export": "vite-node scripts/export.ts",
     "check": "vite-node scripts/check.ts",
+    "fingerprint": "vite-node scripts/fingerprint.ts",
     "e2e": "playwright test"
   },
   "dependencies": {

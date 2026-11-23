@@ -20,8 +20,14 @@ export interface ItemVersion { from: string; to?: string; value: unknown; source
 export interface Effective { from: string; to: string }
 
 /** One signature on an item: the role from the volume's approval policy,
- *  the person or team that signed, the date, and the commit signed. */
-export interface ApprovalRecord { role: string; by?: string; date: string; commit?: string }
+ *  the person or team that signed, the date, the commit signed, and the
+ *  fingerprint of what was signed (src/engine/fingerprint.ts): a hash of the
+ *  item's approvable fields, the excerpts it cites and everything it reads.
+ *  Governance reports the signature as stale once the item's fingerprint no
+ *  longer matches (docs/governance.md "Stale approvals"). */
+export interface ApprovalRecord {
+  role: string; by?: string; date: string; commit?: string; fingerprint?: string;
+}
 
 export interface TestSpec {
   id: string;
@@ -169,6 +175,10 @@ export interface EngineRefs {
   /** Excerpts marked `Verification: unverified` in sources.md. Governance
    *  warns on every item citing one. */
   unverifiedSourceIds?: readonly string[];
+  /** Excerpt id -> quoted text from sources.md, for approval fingerprints.
+   *  When omitted, governance does not check approvals for staleness and
+   *  `engine.fingerprint` returns null. */
+  sourceTexts?: Readonly<Record<string, string>>;
 }
 
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;

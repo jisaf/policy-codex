@@ -222,14 +222,19 @@ export interface Signature {
 }
 
 /** `it` with `sig` in its approval record (replacing an earlier signature by
- *  the same role) and the status the policy gives it. Pure: the caller stages
- *  the result in the change tray. */
+ *  the same role) and the status the policy gives it. The new row records the
+ *  fingerprint of what is signed (src/engine/fingerprint.ts), computed by
+ *  `content`: the ledger with the tray's staged edits applied, so a signature
+ *  on a staged edit covers the edit (docs/governance.md "Stale approvals").
+ *  Pure: the caller stages the result in the change tray. */
 export function signItem(
   engine: Engine, it: Item, sig: Signature, action: SignAction, restsOnUnverified: boolean,
+  content: Engine = engine,
 ): Item {
+  const fingerprint = content.fingerprint(it);
   const record: ApprovalRecord[] = [
     ...(it.approval ?? []).filter((a) => a.role !== sig.role),
-    { role: sig.role, by: sig.by, date: sig.date },
+    { role: sig.role, by: sig.by, date: sig.date, ...(fingerprint ? { fingerprint } : {}) },
   ];
   const required = engine.approvals(it);
   const status = policyStatus(required, new Set(record.map((a) => a.role)), action, restsOnUnverified);

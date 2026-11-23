@@ -119,13 +119,14 @@ describe("status and approval records", () => {
   it("round-trips status, approval and review_by through the item file", () => {
     const it0 = draft({
       status: "Reviewed", review_by: "2027-01-01",
-      approval: [{ role: "Data steward", by: "@org/data", date: "2026-11-21", commit: "abc1234" }],
+      approval: [{ role: "Data steward", by: "@org/data", date: "2026-11-21", commit: "abc1234", fingerprint: "fp1-0123456789abcdef0123" }],
     });
     const text = stringifyItem(it0);
     expect(text).toContain("status: Reviewed");
     expect(text).toMatch(/approval:\n  - \{role: "?Data steward/);
     expect(parseItemFile(text)).toEqual(parseItemFile(stringifyItem(parseItemFile(text))));
     expect(parseItemFile(text).approval![0].commit).toBe("abc1234");
+    expect(parseItemFile(text).approval![0].fingerprint).toBe("fp1-0123456789abcdef0123");
   });
 });
 

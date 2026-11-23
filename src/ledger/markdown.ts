@@ -83,6 +83,14 @@ export function parseOpenQuestions(md: string): OpenQuestion[] {
   return out;
 }
 
+/** Excerpt id -> quoted text, what approval fingerprints hash
+ *  (src/engine/fingerprint.ts). */
+export function sourceTextMap(sources: readonly Source[]): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const s of sources) out[s.id] = s.text;
+  return out;
+}
+
 export function sourceTitleMap(sources: readonly Source[]): Record<string, string> {
   const out: Record<string, string> = {};
   for (const s of sources) out[s.id] = s.title;
