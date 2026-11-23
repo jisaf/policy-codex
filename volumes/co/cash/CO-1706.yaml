@@ -5,14 +5,16 @@ kind: derived
 type: money
 scope: person-month
 program: ColoradoWorks
-meaning: "The person's net profit from self-employment for the month under 9 CCR 2503-6 3.605.2.E.1: gross receipts less the cost of doing business, not below zero; 3.605.2.E.1.c treats it as earned income."
-precision: "Irregular self-employment income averaged over twelve months (3.605.2.E.3) is stated already averaged. A person with no gross receipts has none, whatever the cost fact says."
-derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, cw_self_employment_business_costs]]]]
+meaning: "The person's net profit from self-employment for the month under 9 CCR 2503-6 3.605.2.E.1: gross receipts (of a business, or of a farm, counted in the month received, E.4.a) less the cost of doing business, not below zero; 3.605.2.E.1.c treats it as earned income."
+precision: "Earned-income records, step E1 Colorado Works (docs/reviews/records-earnings-cash.md): the receipts are the earnings records the table counts net of costs (self_employment_receipts and farm_self_employment_receipts; cw_earnings_treatment_table CO-5104: counted_net_of_costs) received in the month; a person with no such receipts has none, whatever the cost records say. Irregular self-employment income averaged over twelve months (3.605.2.E.3) is stated already averaged. Boarder payments are cw_boarder_income (CO-4361). An unstated earnings list is cannot determine (decision 4 of 2026-11-23)."
+derived: [case, [["<=", [sum_receipts, earnings, [all, ["=", [lookup, cw_earnings_treatment_table, [receipt, kind]], counted_net_of_costs], [received_in, [month]]], [receipt, amount]], 0], 0], [else, [max, 0, ["-", [sum_receipts, earnings, [all, ["=", [lookup, cw_earnings_treatment_table, [receipt, kind]], counted_net_of_costs], [received_in, [month]]], [receipt, amount]], cw_self_employment_business_costs]]]]
 sources: [S1155]
 implemented: engine
 tags: [cash, tanf, income]
-rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none. Earned-income records, step E1 Colorado Works: the receipts and costs are earnings records read through the program's counting table."
 tests:
-  - {id: CO-1706-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, cw_self_employment_business_costs: 400, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
-  - {id: CO-1706-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0, earnings: [{kind: wages}]}, expect: 0}
-  - {id: CO-1706-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, cw_self_employment_business_costs: 450, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 300}]}, expect: 0}
+  # Hand computations from 3.605.2.E.1 (S1155).
+  - {id: CO-1706-T1, title: "$1,500 of receipts and $400 of operating costs: 1,100", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: business_cost_operating, amount: 400}]}, expect: 1100}
+  - {id: CO-1706-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - $200 of costs recorded, no receipts: 0", given: {earnings: [{kind: wages, amount: 900}, {kind: business_cost_operating, amount: 200}]}, expect: 0}
+  - {id: CO-1706-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts: max(0, 300 - 450) = 0", given: {earnings: [{kind: self_employment_receipts, amount: 300}, {kind: business_cost_operating, amount: 450}]}, expect: 0}
+  - {id: CO-1706-T4, as_of: "2026-10-01", month: "2026-10", title: "A farm's $1,000 of October sales with $300 of costs: counted in the month received (E.4.a): 700", given: {earnings: [{kind: farm_self_employment_receipts, amount: 1000, month: "2026-10"}, {kind: business_cost_operating, amount: 300, farm: true, month: "2026-10"}]}, expect: 700}

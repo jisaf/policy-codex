@@ -1,0 +1,23 @@
+id: CO-5140
+name: "Colorado Works: pay received in the month"
+identifier: cw_earned_pay
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The pay this person received in the month that Colorado Works counts as earned income (9 CCR 2503-6 3.605.2): the earnings records (earnings, CO-5100) received in the month whose kind Colorado Works' earnings table (cw_earnings_treatment_table, CO-5104) counts as pay: wages, salaries and commissions and the other pay no paragraph of 3.605.4 exempts (3.605.2.D.1: \"Unless otherwise specified, any earned income is countable\"), pay an employer diverts to a third party for the household's expenses (3.605.2.B.1), and in-kind pay at the value of the item supplied (3.605.2.A, G). A business's receipts, boarder payments and costs are counted elsewhere (cw_self_employment_net_profit, CO-1706; cw_boarder_income, CO-4361); exempt pay (work-study, WIOA on-the-job training and other subsidized employment, 3.605.4.B.24.a, B.35, B.16) is not counted."
+precision: "Earned-income records, step E1 Colorado Works (docs/reviews/records-earnings-cash.md). The same for a member of the assistance unit and every person whose income is deemed to it. A record that recurs (no month and no date) is received in every month; a pay received once is placed by its month or date (3.605.1.A.2: income is countable when actually available; 3.605.2.B: wages are available when paid). A temporary job's pay and a dependent student's earnings are counted here and taken off by cw_excluded_earned_income (CO-2340). An unstated earnings list is cannot determine (product-owner decision 4 of 2026-11-23); a stated empty list is no pay."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [in, [lookup, cw_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_at_value]]], [receipt, amount]]
+sources: [S1621, S412, S3159, S4381, S2205, S2606]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Earned-income records, step E1 Colorado Works: the pay part of cw_gross_earned_income (CO-1716), which read wages_gross and in_kind_compensation_value and subtracted the parts of wages_gross the rule exempts (cw_excluded_earned_income, CO-2340); the counting table now decides each kind. Adult Financial's pay (af_earned_pay, CO-5130) is the same pattern for that program's own table; programs do not share an income calculation (product-owner decision of 2026-11-23)."
+nearest: [CO-5130, CO-5651]
+tests:
+  # Hand computations from 3.605.2.A, B.1, D.1, G (S3159, S4381) and 3.605.4.A.24.a, B.35 (S2205, S2606).
+  - {id: CO-5140-T1, month: "2026-10", as_of: "2026-10-15", title: "$800 of wages and $250 of work-study (exempt, A.24.a): 800", given: {earnings: [{kind: wages, amount: 800}, {kind: work_study, amount: 250}]}, expect: 800}
+  - {id: CO-5140-T2, month: "2026-10", as_of: "2026-10-15", title: "$600 of WIOA on-the-job training wages and $400 from a subsidized transitional job are exempt (B.35, B.16): 0", given: {earnings: [{kind: wioa_on_the_job_training, amount: 600}, {kind: subsidized_employment, amount: 400}]}, expect: 0}
+  - {id: CO-5140-T3, month: "2026-10", as_of: "2026-10-15", title: "$1,200 of wages, of which the employer pays $300 straight to the landlord: the $300 is still earned income (B.1): 900 + 300 = 1,200", given: {earnings: [{kind: wages, amount: 900}, {kind: employer_vendor_payment, amount: 300}]}, expect: 1200}
+  - {id: CO-5140-T4, month: "2026-10", as_of: "2026-10-15", title: "$200 of wages and shelter worth $500 for caretaking work (A, G): 700", given: {earnings: [{kind: wages, amount: 200}, {kind: in_kind_pay, amount: 500}]}, expect: 700}
+  - {id: CO-5140-T5, month: "2026-10", as_of: "2026-10-15", title: "Earnings not stated: cannot determine (decision 4)", given: {}, expect: unknown}
+  - {id: CO-5140-T6, month: "2026-10", as_of: "2026-10-15", title: "Earnings stated empty: no pay", given: {earnings: []}, expect: 0}
