@@ -6,9 +6,9 @@ type: whole number
 scope: case
 program: SNAP
 meaning: "The number of distinct non-heating, non-cooling utility costs the household incurs - electricity, water, sewer, trash, cooking fuel and the telephone, the telephone counted as one - per 10 CCR 2506-1 4.407.31.B-D and 4.407.3.E.4-5."
-precision: "Each unstated utility fact is read as not incurred (rule 12), so a case that states no utility counts none, as before."
+precision: "Each unstated utility fact is read as not incurred (rule 12), so a case that states no utility counts none, as before. Coverage pass 4 S4-14 (decision 4 checked): the home's utility costs not stated are read as not incurred, the rule giving that reading: a deduction is given only for an expense the household claims and shows, and an expense not shown is left out (10 CCR 2506-1 4.502.A.3, S818: \"the household's eligibility and benefit level will be determined without providing a deduction or exclusion for the claimed but unverified expense\"; 7 CFR 273.2(f)(3)(ii), S812), so a utility cost not claimed gives no utility allowance."
 derived: [+, [+, [+, [case, [[otherwise, home_incurs_electricity_cost, false], 1], [else, 0]], [case, [[otherwise, home_incurs_water_cost, false], 1], [else, 0]]], [+, [case, [[otherwise, home_incurs_sewer_cost, false], 1], [else, 0]], [case, [[otherwise, home_incurs_trash_cost, false], 1], [else, 0]]]], [+, [case, [[otherwise, home_incurs_cooking_fuel_cost, false], 1], [else, 0]], [case, [[otherwise, home_incurs_telephone_cost, false], 1], [else, 0]]]]
-sources: [S744, S745, S746, S753]
+sources: [S744, S745, S746, S753, S818, S812]
 implemented: engine
 tags: [snap, household]
 rationale: "Dual-entry audit 2.8: the count was supplied beside a separate telephone fact, so a count of 0 with the telephone true could be stated. It is now counted from one neutral fact per utility (CO-3302 to CO-3306, CO-1242), stated once for the case. The ID is kept; the identifier takes the SNAP prefix."
