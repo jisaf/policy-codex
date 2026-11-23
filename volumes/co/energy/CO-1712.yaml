@@ -13,6 +13,6 @@ implemented: engine
 tags: [income]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
 tests:
-  - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, leap_self_employment_allowable_costs: 400}, expect: 1100}
-  - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
-  - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, leap_self_employment_allowable_costs: 450}, expect: 0}
+  - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, leap_self_employment_allowable_costs: 400, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
+  - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0, earnings: [{kind: wages}]}, expect: 0}
+  - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, leap_self_employment_allowable_costs: 450, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 300}]}, expect: 0}

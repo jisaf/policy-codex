@@ -14,6 +14,6 @@ link_class: primitive
 link_basis: "Wages or self-employment receipts stated, gross, before any program's definition of earned income; a program whose earned income differs reads its own item."
 rationale: Several programs require earned-income verification whenever the person has earnings (Colorado Works 3.604.3.B.2.e, S872; CCCAP 3.111.H.5, S891; SNAP 273.2(f)(1)(i), S801); snap_person_earned_income (CO-330) is a sum, not a presence test, and is SNAP's own.
 tests:
-  - {id: CO-1356-T1, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 100, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: true}
-  - {id: CO-1356-T2, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 50, self_employment_net_earnings_for_tax: 50}, expect: true}
-  - {id: CO-1356-T3, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: false}
+  - {id: CO-1356-T1, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 100, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, earnings: [{kind: wages, amount: 100}]}, expect: true}
+  - {id: CO-1356-T2, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 50, self_employment_net_earnings_for_tax: 50, earnings: [{kind: self_employment_receipts, amount: 50, net_for_tax: 50}]}, expect: true}
+  - {id: CO-1356-T3, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, earnings: []}, expect: false}

@@ -87,10 +87,17 @@ function loadAllowed(): Allowed[] {
   const dir = path.join(root, "scripts/records/allowed");
   const out: Allowed[] = [];
   if (!fs.existsSync(dir)) return out;
-  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".yaml")).sort()) {
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".yaml") && x !== "boundary.yaml").sort()) {
     out.push(...(((parseYaml(fs.readFileSync(path.join(dir, f), "utf8")) ?? []) as Allowed[])));
   }
   return out;
+}
+
+/** Boundary pairs known and dispositioned (allowed/boundary.yaml). */
+interface KnownPair { case: string; person: string; receipt: string; earning: string; amount: number; reason: string }
+function loadKnownPairs(): KnownPair[] {
+  const f = path.join(root, "scripts/records/allowed/boundary.yaml");
+  return fs.existsSync(f) ? ((parseYaml(fs.readFileSync(f, "utf8")) ?? []) as KnownPair[]) : [];
 }
 
 function monthsOf(c: HouseholdCase): string[] {
@@ -171,10 +178,14 @@ async function earnings(): Promise<number> {
     const ps: Array<[string, Record<string, unknown> | undefined]> = [["p1", t.given], ...Object.entries(t.others ?? {}), ...Object.entries(t.persons ?? {}).map(([k, p]) => [k, p.facts] as [string, Record<string, unknown> | undefined])];
     for (const [pid, f0] of ps) for (const f of lintPerson(f0?.receipts, f0?.earnings)) findings.push([t.id, pid, f]);
   }
-  const real = findings.filter(([, , f]) => !f.transition);
+  const knownPairs = loadKnownPairs();
+  const isKnown = ([c, p, f]: [string, string, BoundaryFinding]) => knownPairs.some((k) => k.case === c && k.person === p && k.receipt === f.receipt && k.earning === f.earning && k.amount === f.amount);
+  const real = findings.filter((x) => !x[2].transition && !isKnown(x));
+  const known = findings.filter((x) => !x[2].transition && isKnown(x));
   const copies = findings.filter(([, , f]) => f.transition);
   lines.push("## Boundary lint", "",
     `Transition copies (a receipt kind that is earnings, stated in both lists by the translator): ${copies.length ? copies.map(([c, p, f]) => `${c} ${p} ${f.receipt} ${f.amount}`).join("; ") : "none"}.`,
+    `Known and dispositioned (allowed/boundary.yaml): ${known.length ? known.map(([c, p, f]) => `${c} ${p} ${f.receipt}/${f.earning} ${f.amount}`).join("; ") : "none"}.`,
     `Findings: ${real.length ? "" : "none."}`, ...real.map(([c, p, f]) => `- ${c} ${p}: ${f.pair}: receipt ${f.receipt} and earnings ${f.earning}, ${f.amount}${f.month ? " in " + f.month : " every month"}`), "");
   if (real.length) { fail = 1; console.log(`FAILED: ${real.length} boundary finding(s)`); }
 
@@ -235,7 +246,7 @@ async function earnings(): Promise<number> {
   fs.writeFileSync(outFile, text);
   console.log(summary.join("\n"));
   console.log(`translation: ${withEarnings.length} households and ${testsWith} rule tests state earnings; ${stale.length + staleTests.length} not the translation`);
-  console.log(`boundary lint: ${real.length} finding(s), ${copies.length} transition cop${copies.length === 1 ? "y" : "ies"}`);
+  console.log(`boundary lint: ${real.length} finding(s), ${known.length} known and dispositioned, ${copies.length} transition cop${copies.length === 1 ? "y" : "ies"}`);
   console.log(`written ${path.relative(root, outFile)}`);
   if (!fail) console.log("records harness (earnings): OK");
   return fail;

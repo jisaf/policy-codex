@@ -14,6 +14,6 @@ tags: [income]
 rationale: "OQ-534: 7 CFR 273.1(e)(2) (S1816) adds the higher of a striker's pre-strike and current income to the other members' income; no existing item compares the two."
 nearest: [CO-330]
 tests:
-  - {id: CO-3503-T1, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 2400, wages_gross: 0, self_employment_gross_receipts: 0, snap_self_employment_costs: 0, receipts: [{kind: other_taxable, amount: 400}]}, title: "A striker earning nothing now, $2,400 before the strike, with $400 strike pay: $2,000 more is counted", expect: 2000}
-  - {id: CO-3503-T2, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 1000, wages_gross: 1200, self_employment_gross_receipts: 0, snap_self_employment_costs: 0, receipts: []}, title: "Current income above the pre-strike income: nothing is added", expect: 0}
-  - {id: CO-3503-T3, month: "2026-10", given: {wages_gross: 0}, title: "Not stated to be a striker: zero", expect: 0}
+  - {id: CO-3503-T1, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 2400, wages_gross: 0, self_employment_gross_receipts: 0, snap_self_employment_costs: 0, receipts: [{kind: other_taxable, amount: 400}], earnings: []}, title: "A striker earning nothing now, $2,400 before the strike, with $400 strike pay: $2,000 more is counted", expect: 2000}
+  - {id: CO-3503-T2, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 1000, wages_gross: 1200, self_employment_gross_receipts: 0, snap_self_employment_costs: 0, receipts: [], earnings: [{kind: wages, amount: 1200}]}, title: "Current income above the pre-strike income: nothing is added", expect: 0}
+  - {id: CO-3503-T3, month: "2026-10", given: {wages_gross: 0, earnings: [{kind: self_employment_receipts}]}, title: "Not stated to be a striker: zero", expect: 0}

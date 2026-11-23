@@ -1,0 +1,76 @@
+# Records harness: earnings (51 s)
+
+## Translation
+
+Stored households stating earnings: 316 of 326; rule tests stating earnings: 456 of 4383.
+Stored households whose earnings are not the translation of their earned facts: none.
+Rule tests whose earnings are not the translation of their earned facts: none.
+
+## Boundary lint
+
+Transition copies (a receipt kind that is earnings, stated in both lists by the translator): CO-206 p1 room_only_payment 400; CO-362 p1 room_only_payment 600; CO-4361-T7 p1 room_only_payment 600; CO-4361-T8 p1 board_only_payment 500; CO-4361-T9 p1 board_only_payment 450; CO-4361-T10 p1 room_only_payment 300.
+Known and dispositioned (allowed/boundary.yaml): CO-425 p1 other_taxable/boarder_payments 600.
+Findings: none.
+
+## Old against new
+
+Ledger at f5275a645ee2 against the ledger on disk; programs: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; tracks: af, cccap, cw, leap, medicaid, snap.
+
+| Source | Households | Values compared | Values that differ | Allowed | Unexplained |
+|---|---|---|---|---|---|
+| stored households | 326 | 163164 | 0 | 0 | 0 |
+| generated households | 308 | 115836 | 0 | 0 | 0 |
+
+
+## Metamorphic relations
+
+| Relation | Track | Figures | Households | Values | Violations |
+|---|---|---|---|---|---|
+| ME-1 split | af | none reads the records yet | 0 | 0 | 0 |
+| ME-1 split | cccap | none reads the records yet | 0 | 0 | 0 |
+| ME-1 split | cw | none reads the records yet | 0 | 0 | 0 |
+| ME-1 split | leap | not run: LEAP averages the pays of four of the eight weeks before application (3.752.22.B-C), not dollars | | | |
+| ME-1 split | medicaid | none reads the records yet | 0 | 0 | 0 |
+| ME-1 split | snap | not run: SNAP converts each pay by its frequency (4.402.A.2): a stream split in two is not one pay schedule | | | |
+| ME-2 order | af | none reads the records yet | 0 | 0 | 0 |
+| ME-2 order | cccap | none reads the records yet | 0 | 0 | 0 |
+| ME-2 order | cw | none reads the records yet | 0 | 0 | 0 |
+| ME-2 order | leap | none reads the records yet | 0 | 0 | 0 |
+| ME-2 order | medicaid | none reads the records yet | 0 | 0 | 0 |
+| ME-2 order | snap | none reads the records yet | 0 | 0 | 0 |
+| ME-3 month | af | not run: Adult Financial averages a farm's income over the year (3.520.783, S3505) and tests infrequent pay over the quarter | | | |
+| ME-3 month | cccap | not run: CCCAP reads the prior thirty days at application (3.111.H.5.a.1) and may average a business over twelve months (I.2.c) | | | |
+| ME-3 month | cw | none reads the records yet | 0 | 0 | 0 |
+| ME-3 month | leap | not run: LEAP places pays by date against the application date (3.752.22.A-C) | | | |
+| ME-3 month | medicaid | not run: the SSI method tests infrequent pay over the quarter (416.1112(c)(2)) and the student exclusion over the year | | | |
+| ME-3 month | snap | not run: SNAP averages over the year (4.403.3, 4.403.12) and tests irregular pay over the quarter (4.405.A) | | | |
+| ME-4 cost | af | none reads the records yet | 0 | 0 | 0 |
+| ME-4 cost | cccap | none reads the records yet | 0 | 0 | 0 |
+| ME-4 cost | cw | none reads the records yet | 0 | 0 | 0 |
+| ME-4 cost | leap | none reads the records yet | 0 | 0 | 0 |
+| ME-4 cost | medicaid | none reads the records yet | 0 | 0 | 0 |
+| ME-4 cost | snap | none reads the records yet | 0 | 0 | 0 |
+| ME-5 dated | snap | a family the SNAP track adds with its readers (design 4.4) | | | |
+
+## Translation notes
+
+- CO-125 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-133 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-134 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-135 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-454 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-455 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-456 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-330-T7 p1: earned income after the SNAP application date with no application date in the month: left undated
+- CO-4930-T5 p1: earned income after the SNAP application date with no application date in the month: left undated
+- CO-4629-T1 p1: PASS set-aside larger than any pay stated: kept on the wages record
+- CO-4629-T2 p1: PASS set-aside larger than any pay stated: kept on the wages record
+- CO-3915-T1 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-3915-T2 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-3915-T3 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-985-T7 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-1455-T5 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-1455-T5 p1: employment_began_or_ended_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-3912-T1 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-3925-T4 p1: wages_gross_received_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)
+- CO-3925-T4 p1: employment_began_or_ended_prior_thirty_days not restated (a thirty-day figure is not one pay; the LEAP and CCCAP tracks state the dated pays)

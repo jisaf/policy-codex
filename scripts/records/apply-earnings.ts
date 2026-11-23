@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { isMap, isSeq, parseDocument, type Pair, type YAMLMap } from "yaml";
-import { parseItemFile, stringifyItem, flowValue } from "../../src/engine/yaml";
+import { parseItemFile, flowValue } from "../../src/engine/yaml";
 import { translateCase, translateTest } from "./translate-earnings";
 import { currentLedger, root } from "../receipts/ledgers";
 import type { HouseholdCase } from "../../src/engine/cases";
@@ -83,25 +83,98 @@ edits.sort((a, b) => b.start - a.start);
 for (const e of edits) text = text.slice(0, e.start) + e.insert + text.slice(e.end);
 
 // ---- rule tests ----
+// Each item file is edited in place, as cases.yaml is: the earnings entry
+// is inserted into (or replaces the one in) the map that holds the person's
+// facts, in that map's own style (flow or block), so the file's comments,
+// layout and every other test stay as they are.
+type Range = [number, number, number];
+const rangeOf = (n: unknown) => (n as { range: Range }).range;
+/** The offset of the brace that closes the flow map opening at `at`
+ *  (quoted strings skipped). */
+function closeOf(src: string, at: number): number {
+  let depth = 0;
+  for (let i = at; i < src.length; i++) {
+    const ch = src[i];
+    if (ch === "\"" || ch === "'") {
+      for (i++; i < src.length && src[i] !== ch; i++) if (ch === "\"" && src[i] === "\\") i++;
+      continue;
+    }
+    if (ch === "{" || ch === "[") depth++;
+    else if (ch === "}" || ch === "]") { depth--; if (depth === 0) return i; }
+  }
+  throw new Error(`no closing brace for the map at ${at}`);
+}
+/** One text edit that puts `earnings: <list>` into a facts map. */
+function editMap(src: string, holder: YAMLMap, list: unknown[]): { start: number; end: number; insert: string } {
+  const flowList = flowValue(list);
+  const pairs = holder.items as Pair[];
+  const existing = pairs.find((x) => String((x.key as { value?: unknown }).value) === "earnings");
+  if (existing) {
+    const [vs, ve] = rangeOf(existing.value);
+    return { start: vs, end: ve, insert: flowList };
+  }
+  if (holder.flow) {
+    const close = closeOf(src, rangeOf(holder)[0]);
+    return { start: close, end: close, insert: (pairs.length ? ", " : "") + `earnings: ${flowList}` };
+  }
+  const last = pairs[pairs.length - 1];
+  const ks = rangeOf(last.key)[0];
+  const indent = " ".repeat(ks - lineStart(src, ks));
+  const ve = last.value ? rangeOf(last.value)[1] : rangeOf(last.key)[1];
+  const at = lineEnd(src, ve - 1);
+  return { start: at, end: at, insert: `${indent}earnings: ${flowList}\n` };
+}
+/** The map that holds a person's facts in a test node, by the route
+ *  translateTest uses: p1 in given, others' persons in others, persons'
+ *  facts in persons.<pid>.facts. */
+function holderOf(test: YAMLMap, pid: string, persons: boolean): YAMLMap | null {
+  const get = (m: unknown, k: string) => (isMap(m) ? (m as YAMLMap).get(k, true) : undefined);
+  const h = persons ? get(get(get(test, "persons"), pid), "facts") : pid === "p1" ? get(test, "given") : get(get(test, "others"), pid);
+  return isMap(h) ? (h as YAMLMap) : null;
+}
 let testsChanged = 0;
 const itemFiles: Array<[string, string]> = [];
 for (const [id, dir] of Object.entries(L.ledger.chapterOf)) {
   const f = path.join(vol, dir, `${id}.yaml`);
-  const it = parseItemFile(fs.readFileSync(f, "utf8"));
+  const src = fs.readFileSync(f, "utf8");
+  const it = parseItemFile(src);
   if (!it.tests?.length) continue;
-  let changed = false;
-  it.tests = it.tests.map((t) => {
+  const d = parseDocument(src);
+  const seqNode = (d.contents as YAMLMap).get("tests", true);
+  if (!isSeq(seqNode)) continue;
+  const fileEdits: Array<{ start: number; end: number; insert: string }> = [];
+  it.tests.forEach((t, i) => {
     const tr = translateTest(t, L.ix, t.as_of ?? L.ledger.meta.default_as_of);
-    if (tr.changed) { changed = true; testsChanged++; }
-    return tr.value;
+    if (!tr.changed) return;
+    testsChanged++;
+    const node = seqNode.items[i] as YAMLMap;
+    const want: Array<[string, boolean, unknown]> = [];
+    if (tr.value.given && "earnings" in tr.value.given) want.push(["p1", false, tr.value.given.earnings]);
+    for (const [pid, o] of Object.entries(tr.value.others ?? {})) if ("earnings" in o) want.push([pid, false, o.earnings]);
+    for (const [pid, p] of Object.entries(tr.value.persons ?? {})) if (p.facts && "earnings" in p.facts) want.push([pid, true, p.facts.earnings]);
+    for (const [pid, persons, list] of want) {
+      const before = persons ? t.persons?.[pid]?.facts?.earnings : pid === "p1" ? t.given?.earnings : t.others?.[pid]?.earnings;
+      if (JSON.stringify(before) === JSON.stringify(list)) continue;
+      const h = holderOf(node, pid, persons);
+      if (!h) throw new Error(`${t.id} ${pid}: earnings to write but no facts map to write them in`);
+      fileEdits.push(editMap(src, h, list as unknown[]));
+    }
   });
-  if (changed) itemFiles.push([f, stringifyItem(it)]);
+  if (!fileEdits.length) continue;
+  fileEdits.sort((a, b) => b.start - a.start);
+  let out = src;
+  for (const e of fileEdits) out = out.slice(0, e.start) + e.insert + out.slice(e.end);
+  itemFiles.push([f, out]);
 }
 
 console.log(`households re-translated: ${casesChanged} (${persons} persons); rule tests re-translated: ${testsChanged} in ${itemFiles.length} item files`);
 if (!dry) {
   fs.writeFileSync(casesPath, text);
   for (const [f, t] of itemFiles) fs.writeFileSync(f, t);
+  // and every rule test reads back as its translation
+  const L2 = currentLedger();
+  const staleTests = L2.ledger.items.flatMap((it) => (it.tests ?? []).filter((t) => translateTest(t, L2.ix, t.as_of ?? L2.ledger.meta.default_as_of).changed).map((t) => t.id));
+  if (staleTests.length) { console.error(`rule tests not a fixed point: ${staleTests.slice(0, 20).join(", ")}`); process.exitCode = 1; }
   // the written file must read back as the translation
   const again = parseDocument(fs.readFileSync(casesPath, "utf8")).toJSON() as HouseholdCase[];
   const stale = again.filter((c) => translateCase(c, L.ix).changed).map((c) => c.id);

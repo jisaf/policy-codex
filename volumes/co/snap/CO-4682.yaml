@@ -13,6 +13,6 @@ implemented: engine
 tags: [snap, income]
 rationale: "Coverage pass 2 C2-1 (docs/reviews/coverage2-snap-financial.md): with a weekly, biweekly or semimonthly schedule CO-4324 converts the per-period pay, but CO-2338 subtracted the month's own excluded receipts, at the month's 4 or 5 paydays. No item gave the conversion as a ratio the exclusions could share."
 tests:
-  - {id: CO-4682-T1, title: "Five weekly paydays of $250 converted to 1,075", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 1250, snap_person_wages: 1075}, expect: 0.86}
-  - {id: CO-4682-T2, title: "Monthly pay: the month's own receipts", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 2000, snap_person_wages: 2000}, expect: 1}
-  - {id: CO-4682-T3, title: "No wages", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 0}, expect: 1}
+  - {id: CO-4682-T1, title: "Five weekly paydays of $250 converted to 1,075", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 1250, snap_person_wages: 1075, earnings: [{kind: wages, amount: 1250}, {kind: self_employment_receipts}]}, expect: 0.86}
+  - {id: CO-4682-T2, title: "Monthly pay: the month's own receipts", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 2000, snap_person_wages: 2000, earnings: [{kind: wages, amount: 2000}, {kind: self_employment_receipts}]}, expect: 1}
+  - {id: CO-4682-T3, title: "No wages", month: "2027-01", as_of: "2027-01-15", given: {wages_gross: 0, earnings: [{kind: self_employment_receipts}]}, expect: 1}

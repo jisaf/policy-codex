@@ -14,6 +14,6 @@ tags: [income]
 open: [OQ-681]
 rationale: "Final pass F-09 (SW-35): LEAP reads the wages of the income verification period for a job that began or ended, not the calendar month. Receipt records, migration phase 3: split from the cross-program wages_gross_prior_thirty_days (allowlisted as a shared program calculation) into LEAP's own item, keeping its id; CCCAP's reader states its own thirty days."
 tests:
-  - {id: CO-3912-T1, title: "Five weekly pay dates of $500 in the thirty days", as_of: "2026-12-01", month: "2026-12", given: {wages_gross_received_prior_thirty_days: 2500, wages_gross: 2000}, expect: 2500}
-  - {id: CO-3912-T2, title: "Only the month is stated: the month's wages less work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 1200, work_study_earnings: 200}, expect: 1000}
-  - {id: CO-3912-T3, title: "Only the month is stated, no work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 2600}, expect: 2600}
+  - {id: CO-3912-T1, title: "Five weekly pay dates of $500 in the thirty days", as_of: "2026-12-01", month: "2026-12", given: {wages_gross_received_prior_thirty_days: 2500, wages_gross: 2000, earnings: [{kind: wages, amount: 2000}, {kind: self_employment_receipts}]}, expect: 2500}
+  - {id: CO-3912-T2, title: "Only the month is stated: the month's wages less work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 1200, work_study_earnings: 200, earnings: [{kind: wages, amount: 1000}, {kind: work_study, amount: 200}, {kind: self_employment_receipts}]}, expect: 1000}
+  - {id: CO-3912-T3, title: "Only the month is stated, no work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 2600, earnings: [{kind: wages, amount: 2600}, {kind: self_employment_receipts}]}, expect: 2600}
