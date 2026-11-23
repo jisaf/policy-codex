@@ -11,6 +11,8 @@ derived: ["/", declared_household_income_monthly, ["/", [lookup_extended, federa
 sources: [S1501, S1722, S1723, S1745, S55]
 implemented: engine
 tags: [magi, chp, income]
+link_class: primitive
+link_basis: "Attested household income over the published monthly poverty guideline for the attested size; arithmetic on attested figures, with no program's counting rules."
 rationale: "Heavier-definitions audit H-9 (audit fix round 4): the ratio was a supplied fact (attested_household_income_pct_fpl) the site computed; it is derived from the declared amount and size, so the limited family planning size (CO-3152) and the household figure come from one declaration. Program All: Medicaid presumptive eligibility and Express Lane and CHP+ presumptive eligibility read it."
 tests:
   - {id: CO-3151-T1, as_of: "2026-11-01", title: "A household of one declaring $1,596 a month: 1,596 / (15,960 / 12) = 1.2", given: {declared_household_income_monthly: 1596, declared_household_size: 1}, expect: 1.2}

@@ -11,7 +11,8 @@ derived: [any, ma_is_requesting_coverage, chp_is_requesting_coverage]
 sources: [S854, S852, S860, S2103, S1051]
 implemented: engine
 tags: [ma, chp, verification]
-accepts_from: [chp_is_requesting_coverage]
+accepts_from:
+  - {from: chp_is_requesting_coverage, class: primitive, source: S869}
 rationale: "Heavier-definitions audit H-13 (audit fix round 4; the caseworker review's B2 left open for Medicaid): the citizenship, identity, immigration status, residency and age elements flagged a household member who asked for no coverage (a parent applying only for a child) as owing documents. The SSN element (CO-1401) and every other program's verification (CO-2583 to CO-2587) were already gated; no existing item states the gate for these Medicaid and CHP+ elements."
 tests:
   - {id: CO-3157-T1, as_of: "2026-10-01", title: "A parent applying only for her child", given: {ma_is_requesting_coverage: false, chp_is_requesting_coverage: false}, expect: false}

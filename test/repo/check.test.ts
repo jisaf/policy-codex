@@ -38,8 +38,8 @@ describe("npm run check", () => {
     const report = runCheck({ root: ROOT, base: "no-such-ref-at-all" });
     const parsed = JSON.parse(JSON.stringify(report));
     expect(Object.keys(parsed).sort()).toEqual([
-      "addedItems", "base", "blockingItemErrors", "caseOverrides", "cases", "changedFiles",
-      "changedItems", "impact", "items", "knownFailures", "newFailures",
+      "addedItems", "base", "blockingItemErrors", "caseOverrides", "cases", "changeImpact", "changedFiles",
+      "changedItems", "crossProgram", "impact", "items", "knownFailures", "newFailures",
       "ok", "openQuestions", "outcomesAffected", "ruleTests", "warnings",
     ]);
     expect(Object.keys(parsed.ruleTests).sort()).toEqual([

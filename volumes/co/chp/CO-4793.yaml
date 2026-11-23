@@ -13,7 +13,13 @@ derived: [case, [[not, [in, [otherwise, ma_express_lane_source, none], [free_red
 sources: [S3550, S1723]
 implemented: engine
 tags: [chp, verification]
-accepts_from: [ma_express_lane_source, ma_express_lane_family_opted_in, ma_express_lane_child_meets_requirements, ma_citizenship_verification_is_pending, ma_identity_verification_is_pending, ma_express_lane_verification_period_end_date]
+accepts_from:
+  - {from: ma_citizenship_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_express_lane_child_meets_requirements, class: rule_required, source: S3550}
+  - {from: ma_express_lane_family_opted_in, class: primitive, source: S3550}
+  - {from: ma_express_lane_source, class: primitive, source: S3550}
+  - {from: ma_express_lane_verification_period_end_date, class: adopted_method, source: S3550}
+  - {from: ma_identity_verification_is_pending, class: adopted_method, source: S869}
 nearest: [CO-2442]
 rationale: "Coverage review 2, N-05 (2026-11-22): 10 CCR 2505-3 § 180 (S3550) is CHP+'s own Express Lane; no item cited it, and ma_express_lane_status (CO-2442) answers for Medicaid only, so a referred child with declared income in the CHP+ band was referred to the Single Streamlined Application rather than enrolled in CHP+. A separate CHP+ outcome keeps each program's answer in its own item: CO-2442 still reports the Medicaid referral (§ 8.100.4.J.1.a.vi), and this item reports the CHP+ enrollment."
 tests:

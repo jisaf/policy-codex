@@ -102,12 +102,40 @@ export interface Item {
   rationale?: string;
   /** Ids of the nearest existing items, acknowledged when the item was added. */
   nearest?: string[];
-  /** Identifiers of other programs' facts this derived item reads on purpose,
-   *  because its rule names that program's result (governance warns on any
-   *  other cross-program read). */
-  accepts_from?: string[];
+  /** On a shared (program All) derived item: which of the cross-program link
+   *  classes it is (docs/conventions.md "Cross-program links"). */
+  link_class?: SharedLinkClass;
+  /** One line: for a primitive, why no program defines it differently; for
+   *  an adopted method, the method and who adopts it; for a program
+   *  calculation, whose calculation it is. */
+  link_basis?: string;
+  /** On an adopted-method shared item: each program that adopts the method
+   *  by reference, with the excerpt of that program's rule that does so. */
+  adopted_by?: AdoptedBy[];
+  /** Other programs' facts this derived item reads on purpose, each with its
+   *  link class and the excerpt of the rule that requires the link
+   *  (governance refuses any other cross-program read). A bare identifier is
+   *  the pre-2026-11-23 form and is refused until classified. */
+  accepts_from?: Array<AcceptsFrom | string>;
+  /** Deliberate per-program copies of the same logic (docs/governance.md
+   *  "Change impact"), each with a one-line reason. Symmetric: each sibling
+   *  lists this item back. A change to one flags the others. */
+  siblings?: Sibling[];
   tests?: TestSpec[];
 }
+
+/** The class of a shared (program All) derived item. */
+export type SharedLinkClass = "primitive" | "adopted_method" | "program_calculation";
+/** The class of a declared read of another program's item. */
+export type ReadLinkClass = "primitive" | "adopted_method" | "rule_required";
+export const SHARED_LINK_CLASSES: readonly SharedLinkClass[] = ["primitive", "adopted_method", "program_calculation"];
+export const READ_LINK_CLASSES: readonly ReadLinkClass[] = ["primitive", "adopted_method", "rule_required"];
+
+/** One declared cross-program read: the identifier read, its link class, and
+ *  the excerpt of the reader's rule that requires or adopts it. */
+export interface AcceptsFrom { from: string; class: ReadLinkClass; source: string }
+export interface AdoptedBy { program: string; source: string }
+export interface Sibling { id: string; reason: string }
 
 export interface ApprovalPolicy {
   roles: string[];
@@ -153,6 +181,12 @@ export interface VolumeMeta {
   scopes: Scope[];
   /** Declared programs. Absent on volumes written before phase 2. */
   programs?: ProgramVocabulary[];
+  /** The volume classifies its cross-program links (docs/conventions.md
+   *  "Cross-program links"): every shared rule declares its class and every
+   *  read of another program's item is a declared, cited link, both enforced
+   *  as errors. Absent, an undeclared read is only warned on (the pre-
+   *  2026-11-23 rule), as in the pinned work-requirements volume. */
+  link_classes?: boolean;
   /** Declared tag vocabulary: a flat list of ids (as every volume before the
    *  Colorado build wrote it) or a hierarchy of {id, parent?, label?}.
    *  Absent on volumes written before phase 2. */

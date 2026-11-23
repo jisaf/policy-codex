@@ -10,6 +10,8 @@ derived: [filter, siblings, [not, [in_group, [P], full_siblings]]]
 sources: [S1625, S1207]
 implemented: engine
 tags: [household]
+link_class: primitive
+link_basis: "Siblings who are not full siblings; a relationship primitive."
 rationale: "Same-word audit SW-2: Colorado Works makes a half sibling who receives child support an optional member (3.604.2.C.2.d, S1625), and community engagement counts half-blood relatives only at the State's option (S1207). No existing item states half siblings."
 nearest: [CO-2609, CO-2610, CO-2840]
 tests:

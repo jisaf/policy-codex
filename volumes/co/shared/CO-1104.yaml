@@ -11,6 +11,8 @@ derived: [all, [in, residence_setting_type, [hospital, nursing_facility, psychia
 sources: [S2201, S653, S659]
 implemented: engine
 tags: [chp, ma, disability]
+link_class: primitive
+link_basis: "An institution for mental diseases as 42 CFR 435.1010 defines it, from residence-setting facts; Medicaid and CHP+ both apply that definition as written."
 rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. Read by Medicaid and CHP+, which both apply 435.1010's definition."
 tests:
   - {id: CO-1104-T1, month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: psychiatric_hospital, residence_setting_is_primarily_for_mental_diseases: true, residence_setting_bed_count: 40}, expect: true}

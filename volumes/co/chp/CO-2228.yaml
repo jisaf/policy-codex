@@ -9,11 +9,12 @@ program: CHP+
 meaning: "Which § 320.1 copayment schedule applies to a CHP+ enrollee's family, by family income as a share of the federal poverty level at the time of the eligibility determination (10 CCR 2505-3 § 320.1): band_a, less than chp_copayment_waiver_limit_pct (all copayments waived except emergency and urgent care, A); band_b, from chp_copayment_waiver_limit_pct to chp_copayment_band_b_max_pct (B); band_c, above chp_copayment_band_b_max_pct to chp_copayment_band_c_max_pct (C); band_d, above chp_copayment_band_c_max_pct (D, which the rule states to 260%, the CHP+ upper limit)."
 precision: "Income is the MAGI household income ratio (ma_magi_household_income_pct_fpl) in the month of the determination, as for CHP+ eligibility. § 320.1 states whole percentages ('between 101% and 150%', 'between 151% and 200%'), leaving ratios between chp_copayment_band_b_max_pct and 151%, and between chp_copayment_band_c_max_pct and 201%, in no band; they are read into the next band up (OQ-470)."
 derived: [case, [["<", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_waiver_limit_pct], band_a], [["<=", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_band_b_max_pct], band_b], [["<=", [at, ma_magi_household_income_pct_fpl, [det_month]], chp_copayment_band_c_max_pct], band_c], [else, band_d]]
-accepts_from: [ma_magi_household_income_pct_fpl]
 sources: [S1504]
 implemented: engine
 tags: [chp, income]
 open: [OQ-470, OQ-810]
+accepts_from:
+  - {from: ma_magi_household_income_pct_fpl, class: adopted_method, source: S1504}
 rationale: "OQ-60: the § 320.1 copayment schedule is keyed by family income band; no item stated the band."
 tests:
   - {id: CO-2228-T1, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.00}, expect: band_a}

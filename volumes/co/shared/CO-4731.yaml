@@ -11,6 +11,8 @@ derived: [exists, lives_with, [otherwise, [rel, [spouse], [P]], false]]
 sources: [S1632]
 implemented: engine
 tags: [household]
+link_class: primitive
+link_basis: "This person lives with a person who is their spouse; a relationship primitive."
 rationale: "Coverage review 2 of Adult Financial, G-5: 3.534.D.2.B deducts for \"the sponsor's spouse living in the same household with the sponsor\"; sponsor_has_spouse_in_household (CO-2388) tested only that the sponsor had a spouse. Whether a person lives with their spouse is asked of a person other than the one evaluated (the sponsor's spouse), so it is its own item that a reader evaluates on that person."
 tests:
   - {id: CO-4731-T1, title: "Husband in the same home", as_of: "2026-10-01", given: {dwelling_id: home_a}, others: {p2: {dwelling_id: home_a}}, relationships: [[spouse, p1, p2]], expect: true}

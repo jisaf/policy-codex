@@ -12,7 +12,8 @@ sources: [S1208, S1209, S1214]
 implemented: engine
 tags: [ma, magi]
 open: [OQ-412]
-accepts_from: [participates_in_drug_alcohol_treatment]
+accepts_from:
+  - {from: participates_in_drug_alcohol_treatment, class: primitive, source: S1209}
 rationale: "OQ-65: the ten exclusions of 435.554(c), each read from its own item or fact. Dual-entry audit 4.1 (audit fix round): the SNAP exclusion reads the volume's own SNAP work-requirement exemptions (ma_is_exempt_from_snap_work_requirements, CO-2711); SNAP receipt stays the record receives_snap."
 tests:
   - {id: CO-1965-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_is_former_foster_care_category: false, ma_is_indian: false, ma_is_parent_guardian_or_caretaker_relative_of_care_recipient: false, ma_is_family_caregiver_for_community_engagement: false, is_veteran_rated_totally_disabled: false, ma_is_medically_frail: false, complies_with_tanf_work_requirements: false, receives_snap: false, participates_in_drug_alcohol_treatment: false, is_inmate_of_public_institution: false, is_pregnant: false, ma_is_in_pregnancy_coverage_period: false}, title: "Not excluded on any ground", expect: false}

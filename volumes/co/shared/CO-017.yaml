@@ -9,6 +9,8 @@ meaning: "The person is entitled to or enrolled for Medicare benefits under Part
 derived: [any, medicare_part_a_entitled, medicare_part_b_enrolled]
 sources: [S1206, S316]
 implemented: engine
+link_class: primitive
+link_basis: "Medicare Part A entitlement or Part B enrollment as stated; a fact of the person's Medicare record that no program defines differently."
 rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Dual-entry audit 3.9: derived, so Part A entitlement is stated once (medicare_part_a_entitled, CO-803)."
 tests:
   - {id: CO-017-T1, title: "Part A", as_of: "2026-11-01", given: {medicare_part_a_entitled: true}, expect: true}

@@ -11,6 +11,10 @@ derived: [case, [["=", education_program_type, higher_education], [">=", class_a
 sources: [S2212]
 implemented: engine
 tags: [non_magi, student]
+link_class: adopted_method
+link_basis: "The SSI student test (20 CFR 416.1861), which Adult Financial adopts through 9 CCR 2503-5 3.520.786.K's SSI exclusions."
+adopted_by:
+  - {program: AdultFinancial, source: S2206}
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The SSI student earned income exclusion (CO-2471) needs the SSI method's own definition of a student."
 tests:
   - {id: CO-3386-T1, as_of: "2026-10-01", given: {education_program_type: higher_education, class_attendance_hours_per_week: 9}, expect: true}

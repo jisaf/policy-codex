@@ -11,6 +11,8 @@ derived: [otherwise, [<=, date_of_death, [days_after, -1, [first_day, [month_aft
 sources: [S1502]
 implemented: engine
 tags: [ma]
+link_class: primitive
+link_basis: "Death on or before the month's last day, from the stated date of death; a date primitive."
 rationale: "OQ-53: a child's death ends the continuous eligibility period (10 CCR 2505-10 § 8.100.3.Q.1.b.i) and no fact stated it. The existing death facts are program-specific (cw_is_deceased_client, af_died_while_receiving_af_or_medicaid), so a neutral fact is added. Dual-entry audit 3.14: derived from date_of_death (CO-2868)."
 tests:
   - {id: CO-2200-T1, title: "Died during the month", month: "2026-11", as_of: "2026-12-01", given: {date_of_death: "2026-11-20"}, expect: true}

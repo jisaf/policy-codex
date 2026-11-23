@@ -82,6 +82,11 @@ programs:
     names: ["SUN Bucks", "Summer EBT"]
     outcomes: [sebt_eligibility_status, sebt_benefit_amount, sebt_verification_status, sebt_pending_verification_count, sebt_income_verification_is_pending, sebt_school_enrollment_verification_is_pending]
 
+# Cross-program links are classified (docs/conventions.md "Cross-program links";
+# product-owner decision 2026-11-23): every shared rule declares its class and
+# every read of another program's item is a declared, cited link.
+link_classes: true
+
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
   - { id: ma, label: Medical assistance }

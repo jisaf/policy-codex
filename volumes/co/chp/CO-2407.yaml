@@ -12,7 +12,8 @@ sources: [S1715]
 implemented: engine
 tags: [chp]
 open: [OQ-813]
-accepts_from: [ma_application_date]
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1715}
 rationale: "B-2 of the HCPF review: a CHP+ prenatal member was dropped at birth. No CHP+ item kept the span open; ma_is_in_pregnancy_coverage_period (CO-566) is the Medicaid span."
 tests:
   - {id: CO-2407-T1, month: "2027-02", as_of: "2027-02-01", given: {chp_eligibility_period_start_month: "2026-10", chp_prenatal_is_eligible: {"2026-10": true, "2027-02": false}, is_pregnant: false, pregnancy_end_date: "2026-12-03"}, title: "Enrolled in CHP+ prenatal in October; gave birth in December; February is in the span", expect: true}

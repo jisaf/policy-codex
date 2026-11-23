@@ -10,6 +10,8 @@ derived: ["=", ltc_services_received, hcbs_waiver]
 sources: [S712]
 implemented: engine
 tags: [cash, hcbs]
+link_class: primitive
+link_basis: "Current enrollment in an HCBS waiver as the enrollment record shows; no program defines it differently."
 nearest: [CO-885]
 rationale: "Dual-entry audit 3.20 and SW-24: derived from the one enrollment record, ltc_services_received (CO-3339)."
 tests:

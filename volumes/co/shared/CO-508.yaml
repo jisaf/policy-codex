@@ -11,6 +11,8 @@ derived: ["<=", qualified_non_citizen_waiting_period_years, [years_between, qual
 sources: [S173, S176]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "Five years in qualified status, a date difference against the 8 U.S.C. 1613(a) period; no program defines it differently."
 rationale: "No existing Medicaid item states the five-year bar test; ma_meets_citizenship_requirement (CO-509) needs it for a qualified non-citizen who is not otherwise exempted. nearest: [CO-104] acknowledges the cross-program parameter reuse the phase-3 brief directs (create a Medicaid parameter only if the value or citation differs; 8 U.S.C. 1613's five years does not differ from SNAP's read of the same statute)."
 nearest: [CO-104]
 tests:

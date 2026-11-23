@@ -11,7 +11,15 @@ derived: [case, [[not, [all, chp_is_requesting_coverage, [any, ma_is_under_child
 sources: [S869, S868]
 implemented: engine
 tags: [verification, chp]
-accepts_from: [ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_is_under_child_age_or_turns_nineteen_this_month, ma_magi_household_members, ma_pending_status_verification_count, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_ssn_verification_is_pending]
+accepts_from:
+  - {from: ma_age_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_household_composition_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_is_under_child_age_or_turns_nineteen_this_month, class: adopted_method, source: S606}
+  - {from: ma_magi_household_members, class: adopted_method, source: S248}
+  - {from: ma_pending_status_verification_count, class: adopted_method, source: S869}
+  - {from: ma_pregnancy_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_residency_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_ssn_verification_is_pending, class: adopted_method, source: S869}
 rationale: "No existing item counts a person's outstanding CHP+ verifications. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid. Final verification V-3, V-8 and V-14 (2026-11-22): the household members' income elements and questionable unearned income are counted, and the count is 0 where the status is not_applicable, as every other program's count is."
 tests:
   - {id: CO-1417-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_is_requesting_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true, ma_magi_household_members: [p1], chp_unearned_income_verification_is_pending: false, ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: true, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 1}, expect: 2}

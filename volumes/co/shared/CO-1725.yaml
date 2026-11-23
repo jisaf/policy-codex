@@ -11,6 +11,8 @@ derived: [any, [in, immigration_status, [refugee, asylee, deportation_withheld, 
 sources: [S1150, S1151, S402]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "The 8 U.S.C. 1613(b) exempt categories as the statute lists them; every reader applies the statute as written."
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-4): the federal exemption list Colorado Works (C.R.S. 26-2-706(1.5)(b)) and Aid to the Needy Disabled (C.R.S. 26-2-111.8(2)(b)) both adopt by reference. It replaces Colorado Works' read of SNAP's own exemption (snap_is_exempt_from_immigrant_waiting_period, CO-306), whose under-18 and pre-1931 prongs are not 1613(b) categories.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170)."
 tests:
   - {id: CO-1725-T1, as_of: "2026-10-01", title: "Refugee", given: {immigration_status: refugee}, expect: true}

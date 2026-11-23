@@ -11,6 +11,8 @@ derived: ["=", ltc_services_received, pace]
 sources: [S354]
 implemented: engine
 tags: [ma, ltc]
+link_class: primitive
+link_basis: "Current PACE enrollment as the enrollment record shows; no program defines it differently."
 nearest: [CO-1207]
 rationale: "Dual-entry audit 3.20 and SW-24: derived from the one enrollment record, ltc_services_received (CO-3339)."
 tests:

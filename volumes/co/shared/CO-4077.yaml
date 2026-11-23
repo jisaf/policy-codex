@@ -9,6 +9,8 @@ meaning: "The person's infrequent or irregular income (infrequent_or_irregular_i
 precision: "The quarter is found from the month's calendar number, as af_excluded_infrequent_income (CO-3827) finds it: its place in the quarter is that number less one, less three times the whole quarters before it. Each program compares the total with its own limit."
 derived: [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [months_after, ["-", 2, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]]], [month]]], [at, [otherwise, infrequent_or_irregular_income_received, 0], [that_month]]]
 sources: [S2858, S2608]
+link_class: primitive
+link_basis: "The calendar-quarter sum of one supplied receipt; arithmetic over dates, each program applying its own exclusion limit to it."
 nearest: [CO-3827]
 implemented: engine
 tags: [income]

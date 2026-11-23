@@ -11,6 +11,8 @@ derived: [years_between, date_of_birth, [det_date]]
 sources: [S6]
 implemented: engine
 tags: [age]
+link_class: primitive
+link_basis: "Whole years from date of birth to the determination date; an age primitive (birthday-month rules are each program's own items)."
 rationale: Every age-based household and immigrant rule in this chapter (mandatory-member age, elderly age, the non-citizen additional-condition age tests) needs a single, shared whole-years-of-age fact rather than each rule recomputing years_between inline.
 tests:
   - {id: CO-300-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12"}, expect: 79}

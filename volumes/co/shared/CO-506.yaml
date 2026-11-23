@@ -12,6 +12,8 @@ sources: [S1900, S1901, S173]
 open: [OQ-550]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "A qualified alien as 8 U.S.C. 1641(b)-(c) defines it; every program that reads it applies the statute as written."
 rationale: "No existing item in this volume states the qualified-non-citizen test for Medicaid; ma_meets_citizenship_requirement (CO-509) needs it as a precondition to the five-year bar and its exceptions. Not the same test as any SNAP citizenship item (SNAP is a separate federal statute, 7 U.S.C. 2015(f), with its own qualified-alien definitions), so this is a Medicaid-specific rule rather than a shared one, per 42 CFR 435.406(a)(2)(i)'s cross-reference to 42 CFR 435.4's definition.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170). The 1641 list is now quoted (S1900, S1901): deportation withheld, parolees, conditional entrants, battered non-citizens and trafficking victims were the lumped other_qualified_non_citizen option or not representable."
 tests:
   - {id: CO-506-T1, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident}, expect: true}

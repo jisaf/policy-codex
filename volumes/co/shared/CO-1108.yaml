@@ -11,6 +11,10 @@ derived: [any, lost_ssi_due_to_social_security_benefits, lost_oap_due_to_social_
 sources: [S623, S625, S626]
 implemented: engine
 tags: [ma, non_magi, income]
+link_class: primitive
+link_basis: "The loss of SSI or Old Age Pension because of Social Security benefits, as the case records it; a fact of past assistance that no program defines differently."
+accepts_from:
+  - {from: lost_ssi_due_to_social_security_benefits, class: primitive, source: S623}
 rationale: "No existing item records why a person lost SSI or OAP. ma_pickle_eligible (CO-1159), ma_dac_eligible (CO-1161) and ma_disabled_widow_eligible (CO-1162) need it. Dual-entry audit 3.11: derived from the SSI loss (CO-1180) and the OAP loss (CO-2826)."
 tests:
   - {id: CO-1108-T1, title: "Lost SSI", as_of: "2026-11-01", given: {lost_ssi_due_to_social_security_benefits: true}, expect: true}

@@ -1,4 +1,5 @@
 import type { Engine } from "../engine/engine";
+import { acceptedIdentifiers, declaredLinks } from "../engine/links";
 import type {
   Effective, Expr, Item, ItemVersion, ProgramVocabulary, RelationshipRoleDecl, Scope,
 } from "../engine/types";
@@ -61,7 +62,19 @@ export interface LedgerJsonItem {
   tags?: string[];
   implemented?: Item["implemented"];
   implemented_by?: string;
+  /** The identifiers of other programs' items this derived item reads on
+   *  purpose (the identifiers of `links`, kept for readers of format 1). */
   accepts_from?: string[];
+  /** Each declared cross-program read: the identifier, its link class
+   *  (adopted_method, rule_required, or primitive for a supplied fact) and
+   *  the excerpt of the rule that requires or adopts it. */
+  links?: Array<{ from: string; class: string; source: string }>;
+  /** A shared (All) derived item's link class: primitive, adopted_method or
+   *  program_calculation (a shared calculation held for splitting). */
+  link_class?: string;
+  link_basis?: string;
+  /** An adopted method's adopting programs and the excerpts that adopt it. */
+  adopted_by?: Array<{ program: string; source: string }>;
   /** The ids of the item's rule tests, which are cases in the suite. */
   tests: string[];
 }
@@ -148,7 +161,14 @@ export function buildLedgerJson(engine: Engine, vol: LoadedVolume, sha: string):
     if (it.open && it.open.length) row.open = it.open;
     if (it.tags && it.tags.length) row.tags = it.tags;
     if (it.implemented) row.implemented = it.implemented;
-    if (it.accepts_from && it.accepts_from.length) row.accepts_from = it.accepts_from;
+    if (it.accepts_from && it.accepts_from.length) {
+      row.accepts_from = acceptedIdentifiers(it);
+      const links = declaredLinks(it);
+      if (links.length) row.links = links;
+    }
+    if (it.link_class) row.link_class = it.link_class;
+    if (it.link_basis) row.link_basis = it.link_basis;
+    if (it.adopted_by && it.adopted_by.length) row.adopted_by = it.adopted_by;
     return row;
   });
   return {

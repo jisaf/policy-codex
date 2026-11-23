@@ -1,0 +1,6 @@
+# Where the change-impact check (docs/governance.md "Change impact") starts.
+# When a pull request's base ref predates this commit, decisions are compared
+# against the ledger at this commit instead of the base, so the changes made
+# before the check existed (2026-11-23) are not flagged. Once the base
+# contains this commit, the base is used and this file has no effect.
+since: 762a7301b94652d33a840a5213d1d06ad54252d1

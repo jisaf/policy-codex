@@ -11,7 +11,10 @@ derived: [any, ["=", birth_mother_coverage_at_birth, medical_assistance], [exist
 sources: [S211, S212, S640, S2411]
 implemented: engine
 tags: [ma, magi, age]
-accepts_from: [ma_is_in_pregnancy_coverage_period]
+link_class: program_calculation
+link_basis: "Medicaid's eligible-needy-newborn condition, built on Medicaid's own pregnancy coverage period and read only by Medicaid; to become Medicaid's own item (allowlisted)."
+accepts_from:
+  - {from: ma_is_in_pregnancy_coverage_period, class: rule_required, source: S212}
 nearest: [CO-2408]
 rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived. Final verification F-1 (2026-11-22): a mother who delivers and then applies for herself and the newborn gets retroactive coverage of the birth month through her Pregnant Women period; the enrollment record does not yet show that coverage, so the record alone left the newborn without the needy newborn group."
 tests:

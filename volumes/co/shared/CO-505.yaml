@@ -12,6 +12,8 @@ sources: [S171, S172, S495]
 open: [OQ-393]
 implemented: engine
 tags: [household]
+link_class: primitive
+link_basis: "State of residence Colorado, as stated; each program's residency rule is its own item that reads it."
 rationale: "No existing item states Medicaid residency; ma_is_emergency_medicaid_only (CO-510) and batch 6's category-eligibility rules need it. Distinct from any SNAP residency test (this volume has none stated as its own item; SNAP eligibility does not turn on a parallel state_of_residence check in this batch) because 8.100.3.B's no-durational-requirement, no-fixed-address rule is Medicaid-specific text. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-9): shared under a neutral name. A Medicaid item of the same derivation would be a duplicate, and a program item that only reads this one would be an alias; when Medicaid's special residency rules are modeled they become ma_meets_residency over this item. Dual-entry audit 3.23: a Colorado county implies Colorado, so a person who states a county need not state the state; where both are stated the state is read, and npm run check warns when they disagree."
 tests:
   - {id: CO-505-T1, as_of: "2026-10-01", given: {state_of_residence: "CO"}, expect: true}

@@ -13,7 +13,8 @@ sources: [S1729, S1730, S1731, S1703, S607]
 implemented: engine
 tags: [ma, chp, immigration]
 open: [OQ-514]
-accepts_from: [chp_eligibility_status]
+accepts_from:
+  - {from: chp_eligibility_status, class: rule_required, source: S1731}
 rationale: "C-12 of the HCPF review: CBMS needs the funding stream for aid codes and HCPF for budget, and no item stated it. It is not a program outcome. The order puts the state-funded Cover All Coloradans coverage first because ma_magi_is_fully_eligible (CO-562) also reports those children and pregnant people as fully eligible."
 tests:
   - {id: CO-2456-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_covered_under_cover_all_coloradans: true}, title: "Undocumented child covered through Cover All Coloradans", expect: state_only}

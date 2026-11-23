@@ -11,6 +11,8 @@ derived: [=, title_ii_benefit_type, disabled_adult_child]
 sources: [S626, S849]
 implemented: engine
 tags: [ma, non_magi, disability]
+link_class: primitive
+link_basis: "Receipt of OASDI as a Disabled Adult Child, from the stated title II benefit type; no program defines it differently."
 rationale: "No existing item carries the DAC beneficiary code. ma_dac_eligible (CO-1161) needs it. Dual-entry audit 3.10: derived from title_ii_benefit_type (CO-2821), so the DAC code is not stated beside receives_ssdi."
 tests:
   - {id: CO-1110-T1, title: "BIC C", as_of: "2026-11-01", given: {title_ii_benefit_type: disabled_adult_child}, expect: true}

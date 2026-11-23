@@ -11,6 +11,8 @@ derived: [filter, [persons], [all, [has_relative_in, [spouse], sponsors], [not, 
 sources: [S1627, S1632, S1636]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "The sponsors' spouses who did not sign the affidavit; a relationship primitive each program reads for its own deeming."
 rationale: "Dual-entry audit 1.5: the sponsor's spouse's income (sponsor_spouse_gross_earned_income, sponsor_spouse_unearned_income) and presence (sponsor_has_spouse_in_household) were entered on the non-citizen; they are now read from the spouse, a person of the case joined to the sponsor by the spouse role."
 tests:
   - {id: CO-2714-T1, as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[sponsored_by, p1, p2], [spouse, p2, p3]], expect: [p3]}

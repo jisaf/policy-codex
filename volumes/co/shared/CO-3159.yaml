@@ -11,6 +11,8 @@ derived: [">", ["+", social_security_income, pension_income, unemployment_income
 sources: [S1089]
 implemented: engine
 tags: [income, msp, verification]
+link_class: program_calculation
+link_basis: "Medicaid's unearned-income verification trigger, a sum of income facts only Medicaid reads and no rule shares; to become Medicaid's own item (allowlisted)."
 nearest: [CO-2870]
 rationale: "Heavier-definitions audit H-14 (audit fix round 4): the Medicare Savings Program arm of ma_requires_verification_of_unearned_income (CO-1404) needs the unearned income that is not interest or dividends, which 42 CFR 435.952(e)(1)(i) takes on attestation; ma_has_unearned_income_for_verification (CO-2870) counts them all for an aged, blind or disabled person."
 tests:

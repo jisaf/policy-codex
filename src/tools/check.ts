@@ -12,6 +12,11 @@ import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { buildIndex } from "../engine/ledger-index";
 import { staleApprovalMessage, type FingerprintBasis } from "../engine/fingerprint";
+import {
+  changedDecisions, dispositionStub, impactFlags, parseChangeRecord, reconcileImpact,
+  type ImpactFlag,
+} from "../engine/impact";
+import { parse as parseYaml } from "yaml";
 import { ratchetGovernance } from "../changes/validate";
 import { householdInputs, ruleTestInputs, type Audit } from "../export/conformance";
 import { versionInForce } from "../engine/versions";
@@ -36,6 +41,51 @@ export interface LoadedLedger {
   sourceTexts?: Record<string, string>;
   /** the placeholder aid-code layer, when the volume has `aid-codes.yaml`. */
   aidCodes?: AidCodeMap | null;
+  /** every YAML file in the volume's `changes/` directory but the baseline,
+   *  by repository path: the dated change records that carry impact
+   *  dispositions. */
+  changeRecords?: Array<{ path: string; text: string }>;
+  /** `changes/impact-baseline.yaml`'s `since`: the commit the change-impact
+   *  check starts from when the base ref predates it. */
+  impactSince?: string | null;
+  /** the volume's `cross-program-allowlist.yaml`, when it has one. */
+  crossProgramAllowlist?: CrossProgramAllowlist | null;
+}
+
+/** The dated, shrink-only list of shared program calculations
+ *  (docs/governance.md "Cross-program links"): each held item and the
+ *  program items that read it. */
+export interface CrossProgramAllowlist {
+  date: string;
+  held: Array<{ item: string; identifier?: string; readers: string[] }>;
+}
+
+export const ALLOWLIST_FILE = "cross-program-allowlist.yaml";
+export const CHANGES_DIR = "changes";
+export const IMPACT_BASELINE_FILE = "impact-baseline.yaml";
+
+export function parseAllowlist(text: string): CrossProgramAllowlist {
+  const raw = (parseYaml(text) ?? {}) as Record<string, unknown>;
+  const date = raw.date instanceof Date ? raw.date.toISOString().slice(0, 10) : String(raw.date ?? "");
+  const held = Array.isArray(raw.held) ? raw.held : [];
+  return {
+    date,
+    held: held.map((h) => {
+      const r = (h ?? {}) as Record<string, unknown>;
+      return {
+        item: String(r.item ?? ""),
+        ...(r.identifier ? { identifier: String(r.identifier) } : {}),
+        readers: Array.isArray(r.readers) ? r.readers.map(String) : [],
+      };
+    }),
+  };
+}
+
+/** The allowlist's entries as keys: `CO-n` for a held item, `CO-n<-CO-m`
+ *  for each reader it holds. */
+export function allowlistKeys(a: CrossProgramAllowlist | null | undefined): string[] {
+  if (!a) return [];
+  return a.held.flatMap((h) => [h.item, ...h.readers.map((r) => `${h.item}<-${r}`)]);
 }
 
 /** Reads the manifest, every item file, `volume.yaml`, `sources.md`,
@@ -71,6 +121,17 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
   const cases = fs.existsSync(casesPath) ? parseCases(fs.readFileSync(casesPath, "utf8")) : [];
   const aidPath = path.join(root, entry.path, AID_CODES_FILE);
   const aidCodes = fs.existsSync(aidPath) ? parseAidCodes(fs.readFileSync(aidPath, "utf8")) : null;
+  const changesDir = path.join(root, entry.path, CHANGES_DIR);
+  const changeRecords = fs.existsSync(changesDir)
+    ? fs.readdirSync(changesDir).filter((f) => f.endsWith(".yaml") && f !== IMPACT_BASELINE_FILE).sort()
+      .map((f) => ({ path: `${entry.path}/${CHANGES_DIR}/${f}`, text: fs.readFileSync(path.join(changesDir, f), "utf8") }))
+    : [];
+  const baselinePath = path.join(changesDir, IMPACT_BASELINE_FILE);
+  const impactSince = fs.existsSync(baselinePath)
+    ? String(((parseYaml(fs.readFileSync(baselinePath, "utf8")) ?? {}) as Record<string, unknown>).since ?? "") || null
+    : null;
+  const allowPath = path.join(root, entry.path, ALLOWLIST_FILE);
+  const crossProgramAllowlist = fs.existsSync(allowPath) ? parseAllowlist(fs.readFileSync(allowPath, "utf8")) : null;
 
   return {
     items,
@@ -83,6 +144,9 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
     unverifiedSourceIds: unverifiedSourceIds(sources),
     sourceTexts: sourceTextMap(sources),
     aidCodes,
+    changeRecords,
+    impactSince,
+    crossProgramAllowlist,
   };
 }
 
@@ -225,6 +289,16 @@ export interface CheckReport {
   /** duplicated question headings (errors, blocking) and `open:` references
    *  to questions that do not exist (warnings). */
   openQuestions: OpenQuestionFindings;
+  /** Change impact (docs/governance.md "Change impact"): the unchanged items
+   *  that should probably change with each changed decision, and whether a
+   *  change record in the diff dispositions each. Open flags and malformed
+   *  records block. */
+  changeImpact: ChangeImpactReport;
+  /** Cross-program links (docs/governance.md "Cross-program links"): what
+   *  the dated allowlist holds (a warning count), and its errors (an entry
+   *  no longer needed, an entry the diff adds, a shared calculation it does
+   *  not hold), which block. */
+  crossProgram: CrossProgramReport;
   /** Non-blocking findings about tests and cases: inputs no engine reads
    *  (parameters stated as person facts, unknown identifiers, persons named
    *  only in a relationship triple, ...), and unknowns produced with no
@@ -234,6 +308,36 @@ export interface CheckReport {
   /** true when there is nothing to block a merge. */
   ok: boolean;
 }
+
+export interface ChangeImpactReport {
+  /** the ref the decisions were compared against (the base, or the
+   *  volume's impact baseline when the base predates the check), or null
+   *  when there was none. */
+  base: string | null;
+  /** items whose decision changed: id -> the fields. */
+  changed: Record<string, string[]>;
+  flags: ImpactFlag[];
+  open: ImpactFlag[];
+  settled: number;
+  /** dispositions that no longer settle a flag (warnings). */
+  stale: string[];
+  /** malformed change records in the diff (blocking). */
+  errors: string[];
+}
+
+export interface CrossProgramReport {
+  /** allowlist entries in use: the warning count the ratchet shrinks. */
+  held: string[];
+  /** blocking: unheld shared calculations, unused or added entries. */
+  errors: string[];
+}
+
+/** Governance rules that block wherever they land, changed or not, and are
+ *  never ratcheted: a stale approval (the change that made it stale is
+ *  usually upstream) and the link rules (the volume is fully classified, so
+ *  any finding is new). */
+const BLOCK_ANYWHERE = ["approval.stale", "read.cross_program", "link.class", "link.declaration", "siblings.symmetric"];
+const blocksAnywhere = (rule: string) => BLOCK_ANYWHERE.includes(rule);
 
 const IGNORED_ADVICE: Record<string, string> = {
   "unknown identifier": "no item has this identifier, so it is ignored",
@@ -406,6 +510,15 @@ export interface BuildCheckReportOptions {
    *  since. Tests pass one; otherwise it is read from git (`root`, `base`
    *  and the diff) only when some approval is stale. */
   baseline?: { items: Item[]; sourceTexts: Record<string, string> } | null;
+  /** The ledger the change-impact check compares decisions against, and
+   *  its ref. Defaults to the base ledger above (`baseline`, or read from git
+   *  with `root`, `base` and the diff). `runCheck` passes the volume's impact
+   *  baseline instead when the base predates it. */
+  impactBaseline?: { ref: string; items: Item[] } | null;
+  /** The allowlist at the base ref, so an entry the diff adds is refused.
+   *  Defaults to reading it from git when the diff touches the file;
+   *  `null` when the base has none (the allowlist is being introduced). */
+  baseAllowlist?: CrossProgramAllowlist | null;
 }
 
 /** The ledger as it stood at `base`: the current items with every item file
@@ -513,9 +626,11 @@ export function buildCheckReport(
     const constraintResults = engine.constraints(it);
     let findings = engine.governance(it, { isNew });
     // A stale approval is never ratcheted: it is about the signatures, not
-    // the item's content, and it blocks wherever it is (below).
+    // the item's content, and it blocks wherever it is (below). Nor are the
+    // link rules (BLOCK_ANYWHERE).
     let stale = findings.filter((f) => f.rule === "approval.stale");
-    findings = findings.filter((f) => f.rule !== "approval.stale");
+    const anywhere = findings.filter((f) => blocksAnywhere(f.rule) && f.rule !== "approval.stale");
+    findings = findings.filter((f) => !blocksAnywhere(f.rule));
     // The ratchet: a *changed* (not added) item's base version is read from
     // git and governed too — on the current engine's index with the base
     // item substituted (cheaper than a second engine, and acceptable per the
@@ -536,7 +651,7 @@ export function buildCheckReport(
       );
       if (named) stale = [{ ...stale[0], msg: named }];
     }
-    findings = [...findings, ...stale];
+    findings = [...findings, ...anywhere, ...stale];
     return {
       id: it.id,
       identifier: it.identifier,
@@ -611,9 +726,10 @@ export function buildCheckReport(
   const blockingItemErrors: BlockingError[] = [];
   for (const it of items) {
     // A stale approval blocks on every item, changed or not: the change that
-    // made it stale is usually to something upstream of it.
+    // made it stale is usually to something upstream of it. So do the link
+    // rules (BLOCK_ANYWHERE).
     const msgs = !it.isChanged && !it.isNew
-      ? it.governanceErrors.filter((m) => m.startsWith("approval.stale:"))
+      ? it.governanceErrors.filter((m) => blocksAnywhere(m.slice(0, m.indexOf(":"))))
       : [...it.errors, ...it.governanceErrors];
     for (const msg of msgs) {
       blockingItemErrors.push({ id: it.id, identifier: it.identifier, msg });
@@ -647,6 +763,9 @@ export function buildCheckReport(
     }
   }
 
+  const changeImpact = changeImpactOf(ledger, engine, diff, opts, baseline, addedItems);
+  const crossProgram = crossProgramOf(ledger, items, diff, opts);
+
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
   warnings.push(...inputWarnings(engine, ledger));
   if (ledger.aidCodes) warnings.push(...aidCodeWarnings(engine, ledger.aidCodes));
@@ -656,7 +775,10 @@ export function buildCheckReport(
     && newCaseFailures.length === 0
     && newOverrides.length === 0
     && newUnknownCaseIdentifiers.length === 0
-    && openQuestions.errors.length === 0;
+    && openQuestions.errors.length === 0
+    && changeImpact.open.length === 0
+    && changeImpact.errors.length === 0
+    && crossProgram.errors.length === 0;
 
   return {
     base: null, // the caller (runCheck) fills this in with the ref it resolved
@@ -688,9 +810,137 @@ export function buildCheckReport(
     caseOverrides,
     blockingItemErrors,
     openQuestions,
+    changeImpact,
+    crossProgram,
     warnings: [...new Set(warnings)],
     ok,
   };
+}
+
+/** The change-impact flags of a diff and the dispositions the diff's change
+ *  records give them (src/engine/impact.ts). */
+function changeImpactOf(
+  ledger: LoadedLedger, engine: Engine, diff: DiffEntry[] | null, opts: BuildCheckReportOptions,
+  baseline: () => FingerprintBasis | null, addedItems: ReadonlySet<string>,
+): ChangeImpactReport {
+  const empty: ChangeImpactReport = { base: null, changed: {}, flags: [], open: [], settled: 0, stale: [], errors: [] };
+  if (!diff) return empty;
+  let ref: string | null;
+  let before: Item[] | null;
+  if (opts.impactBaseline !== undefined) {
+    ref = opts.impactBaseline?.ref ?? null;
+    before = opts.impactBaseline?.items ?? null;
+  } else {
+    const b = baseline();
+    ref = b ? opts.base ?? "base" : null;
+    before = b ? b.ix.items : null;
+  }
+  if (!before) return empty;
+  const changed = changedDecisions(before, ledger.items);
+  const had = new Set(before.map((it) => it.id));
+  const touched = new Set<string>([...changed.keys(), ...addedItems]);
+  for (const it of ledger.items) if (!had.has(it.id)) touched.add(it.id);
+  const flags = impactFlags(
+    { ix: engine.index, sourceTexts: ledger.sourceTexts ?? {} }, changed, touched,
+  );
+  // Dispositions come from the change records this diff adds or edits: the
+  // pull request's own record. Older records are history.
+  const inDiff = new Set(diff.filter((e) => !e.status.startsWith("D")).map((e) => e.path));
+  const errors: string[] = [];
+  const dispositions = [];
+  for (const rec of ledger.changeRecords ?? []) {
+    if (!inDiff.has(rec.path)) continue;
+    const parsed = parseChangeRecord(rec.text, rec.path);
+    errors.push(...parsed.errors);
+    dispositions.push(...parsed.dispositions);
+  }
+  const r = reconcileImpact(flags, dispositions);
+  return {
+    base: ref,
+    changed: Object.fromEntries(changed),
+    flags,
+    open: r.open,
+    settled: r.settled.length,
+    stale: r.stale,
+    errors,
+  };
+}
+
+/** What the cross-program allowlist holds, and what it must not: a shared
+ *  program calculation (or a reader of one) it does not list, an entry no
+ *  longer needed, an entry the diff adds. */
+function crossProgramOf(
+  ledger: LoadedLedger, items: readonly ItemCheck[], diff: DiffEntry[] | null, opts: BuildCheckReportOptions,
+): CrossProgramReport {
+  const allow = ledger.crossProgramAllowlist ?? null;
+  const keys = new Set(allowlistKeys(allow));
+  const needed = new Set<string>();
+  const errors: string[] = [];
+  const byIdentifier = new Map(ledger.items.map((it) => [it.identifier, it]));
+  for (const ic of items) {
+    for (const w of ic.governanceWarnings) {
+      if (!w.startsWith("link.shared_calculation:")) continue;
+      const read = /reads (\S+) \((\S+)\), a program calculation/.exec(w);
+      const key = read ? `${byIdentifier.get(read[1])?.id ?? read[2]}<-${ic.id}` : ic.id;
+      needed.add(key);
+      if (!keys.has(key)) {
+        errors.push(read
+          ? `${ic.id} ${ic.identifier} reads ${read[1]}, a shared program calculation, and the allowlist does not hold this reader; read the program's own item (the allowlist only shrinks)`
+          : `${ic.id} ${ic.identifier} is a shared program calculation the allowlist does not hold; split it per program (the allowlist only shrinks)`);
+      }
+    }
+  }
+  const allowPath = `${ledger.volumePath}/${ALLOWLIST_FILE}`;
+  for (const k of keys) {
+    if (!needed.has(k)) errors.push(`${allowPath}: ${k} is no longer needed; remove it`);
+  }
+  // Shrink only: an entry the base did not have is refused. When the base
+  // has no allowlist the diff introduces it, and its entries stand.
+  let base: CrossProgramAllowlist | null | undefined = opts.baseAllowlist;
+  const touched = diff?.find((e) => e.path === allowPath);
+  if (base === undefined) {
+    base = touched && opts.root && opts.base && !touched.status.startsWith("A")
+      ? readBaseAllowlist(opts.root, opts.base, allowPath)
+      : touched ? null : allow;
+  }
+  if (base) {
+    const was = new Set(allowlistKeys(base));
+    for (const k of keys) if (!was.has(k)) errors.push(`${allowPath}: ${k} is new; the allowlist only shrinks`);
+  }
+  return { held: [...needed].filter((k) => keys.has(k)).sort(), errors };
+}
+
+function readBaseAllowlist(root: string, base: string, filePath: string): CrossProgramAllowlist | null {
+  try {
+    const text = execFileSync(
+      "git", ["show", `${base}:${filePath}`],
+      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+    );
+    return parseAllowlist(text);
+  } catch {
+    return null;
+  }
+}
+
+/** Whether `a` is an ancestor of `b` (or the same commit). */
+function isAncestor(root: string, a: string, b: string): boolean {
+  try {
+    execFileSync("git", ["merge-base", "--is-ancestor", a, b], { cwd: root, stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** The ref the change-impact check compares against: the base, unless the
+ *  base predates the volume's impact baseline (the commit the check was
+ *  introduced at), which then stands in for it, so the check does not flag
+ *  changes made before it existed. Once the base contains the baseline,
+ *  the base is used. */
+export function impactRef(root: string, base: string, since: string | null | undefined): string {
+  if (!since) return base;
+  if (isAncestor(root, base, since) && isAncestor(root, since, "HEAD") && !isAncestor(root, since, base)) return since;
+  return base;
 }
 
 export interface RunCheckOptions {
@@ -719,8 +969,17 @@ export function runCheck(opts: RunCheckOptions): CheckReport {
   const ledger = loadLedgerFromDisk(opts.root, opts.volume);
   const diff = diffAgainstBase(opts.root, base);
   const knownFailures = loadKnownFailures(opts.root, opts.knownFailuresPath);
+  let impactBaseline: BuildCheckReportOptions["impactBaseline"];
+  if (diff) {
+    const ref = impactRef(opts.root, base, ledger.impactSince);
+    if (ref !== base) {
+      const since = diffAgainstBase(opts.root, ref);
+      impactBaseline = since ? { ref, items: loadBaseline(opts.root, ref, ledger, since).items } : null;
+    }
+  }
   const report = buildCheckReport(
-    ledger, diff, knownFailures, diff ? { root: opts.root, base } : {},
+    ledger, diff, knownFailures,
+    diff ? { root: opts.root, base, ...(impactBaseline !== undefined ? { impactBaseline } : {}) } : {},
   );
   return { ...report, base: diff ? base : null };
 }
@@ -756,6 +1015,23 @@ export function formatSummary(r: CheckReport): string {
     lines.push(`blocking errors (changed or added items; stale approvals anywhere):`);
     for (const e of r.blockingItemErrors) lines.push(`  ${e.id} ${e.identifier}: ${e.msg}`);
   }
+  const ci = r.changeImpact;
+  if (ci.base) {
+    lines.push(
+      `change impact (since ${ci.base}): ${Object.keys(ci.changed).length} decision(s) changed, ` +
+        `${ci.flags.length} flag(s), ${ci.settled} dispositioned, ${ci.open.length} open`,
+    );
+  }
+  if (ci.open.length) {
+    lines.push(`change-impact flags with no disposition (blocking); add them to this pull request's change record, volumes/<volume>/changes/<date>-<slug>.yaml, under impact:, with applies: "<how it is fixed in this PR>" or not_applicable: "<reason>":`);
+    for (const f of ci.open) lines.push(dispositionStub(f));
+  }
+  for (const e of ci.errors) lines.push(`change record error (blocking): ${e}`);
+  for (const s of ci.stale) lines.push(`stale disposition: ${s}`);
+  if (r.crossProgram.held.length) {
+    lines.push(`cross-program allowlist: ${r.crossProgram.held.length} shared calculation(s) and reader(s) held (warnings; the allowlist only shrinks)`);
+  }
+  for (const e of r.crossProgram.errors) lines.push(`cross-program link error (blocking): ${e}`);
   if (r.openQuestions.errors.length) {
     lines.push(`open-questions.md errors:`);
     for (const e of r.openQuestions.errors) lines.push(`  ${e}`);

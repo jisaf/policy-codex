@@ -9,12 +9,12 @@
  *   is computed, its type and options, its values and parameter versions, its
  *   sources and effective range, and the names engineers implement. Free text
  *   is compared with whitespace collapsed, and the order of sets (sources,
- *   options, accepts_from) and of versions does not count;
+ *   options, accepts_from, adopted_by) and of versions does not count;
  * - the text of every excerpt it cites in sources.md (its own `sources` and
  *   each version's `source`), whitespace collapsed;
  * - the fingerprint of every item it reads (the dependency graph's edges),
  *   so a change anywhere upstream, at any depth, changes it (a Merkle hash).
- * Precision, rationale, nearest, name, tags, open, tests, implemented,
+ * Precision, rationale, nearest, name, tags, open, tests, siblings, implemented,
  * review_by, status and the approval record itself are not covered: they
  * do not change what was approved.
  *
@@ -35,12 +35,19 @@ export const APPROVABLE_FIELDS: readonly (keyof Item)[] = [
   "id", "identifier", "kind", "type", "options", "scope", "program", "role",
   "meaning", "assumption", "statute_override", "supplied_by",
   "value", "versions", "derived", "sources", "effective", "accepts_from",
+  "link_class", "link_basis", "adopted_by",
 ];
 
 const TEXT_FIELDS: ReadonlySet<string> = new Set([
-  "meaning", "assumption", "statute_override", "supplied_by",
+  "meaning", "assumption", "statute_override", "supplied_by", "link_basis",
 ]);
-const SET_FIELDS: ReadonlySet<string> = new Set(["options", "sources", "accepts_from"]);
+const SET_FIELDS: ReadonlySet<string> = new Set(["options", "sources", "accepts_from", "adopted_by"]);
+
+/** A set member as a sortable string: a bare string as itself (so a list of
+ *  identifiers hashes as it always has), anything else as canonical JSON. */
+function setKey(x: unknown): string {
+  return typeof x === "string" ? x : canonicalJson(x);
+}
 
 /** The ledger and excerpt texts a fingerprint is computed against. */
 export interface FingerprintBasis {
@@ -71,7 +78,9 @@ function normField(it: Item, f: keyof Item): unknown {
   if (v === undefined || v === null) return undefined;
   if (TEXT_FIELDS.has(f)) return normText(String(v)) || undefined;
   if (SET_FIELDS.has(f) && Array.isArray(v)) {
-    const xs = [...new Set(v.map(String))].sort();
+    const keyed = new Map<string, unknown>();
+    for (const x of v) keyed.set(setKey(x), x);
+    const xs = [...keyed.keys()].sort().map((k) => keyed.get(k));
     return xs.length ? xs : undefined;
   }
   if (f === "versions" && Array.isArray(v)) {
