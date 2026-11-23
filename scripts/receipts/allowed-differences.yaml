@@ -288,3 +288,13 @@
   person: /^(p3|p4)$/
   old: unknown
   class: D4-2 a household whose narrative states no unearned money states an empty receipts list
+
+# D4-3 (fixed): Colorado Works left the part of VA Aid and Attendance used for uncovered medical supplies or care out
+# of the counted receipts in every setting; 9 CCR 2503-6 3.605.4.A.6 (S2605) exempts it only "in the applicant's or
+# recipient's own home". cw_counted_unearned_receipts (CO-5651) now reads lives_in_own_home (CO-5940) when a counted
+# receipt states such a part; the generated households that state the part do not state the home, so Colorado
+# Works cannot determine (decision 4). No stored household states the part.
+- case: /^G-[A-Za-z]+-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_$/
+  identifier: /^cw_/
+  new: unknown
+  class: D4-3 Colorado Works exempts Aid and Attendance used for uncovered care only in the person's own home (3.605.4.A.6)
