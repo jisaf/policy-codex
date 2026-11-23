@@ -45,8 +45,8 @@ describe("long rules read as bulleted clauses", () => {
     // rules that fix a figure at the determination (T-3: CCCAP's fee and
     // entry limit, LEAP's limit and guideline). 42 after earnings E1 SNAP: each
     // pay converted by its own frequency, written once per pay sum (CO-4324,
-    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces). 48 with E1 Adult Financial and Colorado Works (their pay sums). 49 with the records E1 integration (CO-3827 tests the month's irregular receipts before the quarter).
-    expect(over).toBeLessThanOrEqual(49);
+    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces). 48 with E1 Adult Financial and Colorado Works (their pay sums). 49 with the records E1 integration (CO-3827 tests the month's irregular receipts before the quarter). 52 with holdings H1 Medicaid: the SSI method's holdings sum (CO-5320) and income-producing property (CO-4621) read each row's holdings in clauses, one sum per row.
+    expect(over).toBeLessThanOrEqual(52);
   });
 
   it("relationship roles read as words", () => {
