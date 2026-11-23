@@ -954,7 +954,8 @@ export function evaluate(
         // P58: ["largest", list, condition, value]: the largest value over
         // the records of the list whose condition is true, with "that
         // receipt" (or "that holding") naming each record in turn, in list
-        // order; 0 when no record's condition is true. Unknown exactly as
+        // order (negative when every such value is); 0 only when no record's
+        // condition is true. Unknown exactly as
         // P55: when the list is not stated, or when the condition of any
         // record, or the value of a record whose condition is true, is
         // unknown (the largest of values one of which is unknown is not
@@ -967,7 +968,7 @@ export function evaluate(
         const src = receiptList(e[1], p, m, P);
         if (src === null) return null;
         const outer = thatReceipt;
-        let best = 0;
+        let best: number | null = null;
         try {
           for (let i = 0; i < src.list.length; i++) {
             const rec = src.list[i];
@@ -983,12 +984,12 @@ export function evaluate(
             if (cond !== true) continue;
             const v = ev(e[3], p, m, P);
             if (v === null) return null;
-            if (v > best) best = v;
+            if (best === null || v > best) best = v;
           }
         } finally {
           thatReceipt = outer;
         }
-        return best;
+        return best ?? 0;
       }
       case "receipt": {
         // P56: ["receipt", field]: that receipt's field as the record states

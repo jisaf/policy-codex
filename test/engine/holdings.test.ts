@@ -74,6 +74,12 @@ describe("largest (P58)", () => {
     expect(run(largestTransport, [car(4000, true), car(9000, true, 1000), car(12000, false)])).toBe(8000);
   });
 
+  it("is the true largest when every matching value is negative, 0 only when none matches (fact-graph review of D5)", () => {
+    // A car owing more than it is worth has negative equity; the largest is that negative number, not 0.
+    expect(run(largestTransport, [car(1000, true, 3000)])).toBe(-2000);
+    expect(run(largestTransport, [car(1000, true, 3000), car(2000, true, 2500)])).toBe(-500);
+  });
+
   it("excludes the one transportation vehicle of highest value: two vehicles counted less the larger (H7)", () => {
     // 416.1218(b)(1): one automobile used for transportation excluded regardless of value; the other's equity counted.
     expect(run(countableVehicles, [car(6000, true), car(3000, true)])).toBe(3000);

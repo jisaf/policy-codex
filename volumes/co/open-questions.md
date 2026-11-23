@@ -3255,3 +3255,13 @@ Owner: Medicaid policy owner
 Assumption: Each row as today's items read it, until the owner signs it or the Medicaid H1 track changes it with a citation.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6, J, M, N (D-65); 20 CFR 416.1201 (D-4400). Not on file: 20 CFR 416.1235 (tax refunds), 416.1232 (replacement of excluded resources), 416.1237 (disaster assistance). Items: CO-5303, CO-800, CO-4623.
+
+### OQ-1205. Adult Financial vehicles: whether "the vehicle with the highest value" means the highest market value or the highest equity
+
+Body: 9 CCR 2503-5 3.520.77.A (S2214): "The vehicle with the highest value is exempt if it is used for the transportation of the client or a member of the household." The holdings record states each vehicle's market value (`value`) and what is owed on it (`amount_owed`). Two readings: (A) the highest equity, value less amount owed, which is what P58 `largest` returns when its value is the equity, and which matches the SSI method's practice of excluding the one automobile in the way most advantageous to the person (20 CFR 416.1218(b)(1), S2215); (B) the highest market value, whose equity is then excluded, which P58 cannot express without a key argument (the record with the highest market value, larger equity winning a tie). Worked example: car X worth $9,000 owing $8,000 (equity $1,000) and car Y worth $6,000 owing nothing (equity $6,000), both used for transportation: under A the countable vehicle equity is $1,000 (Y excluded); under B it is $6,000 (X excluded), $5,000 more against the resource limit. transportation_vehicle_equity_value (CO-3395) mixes the two ("the equity value of the ... highest-valued vehicle"). Raised by the fact-graph review of design decision D5 (P58), 2026-11-23.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Reading A, the highest equity; the Adult Financial H1 track writes the vehicle exclusion with P58 over equity floored at 0, and adds a key argument to P58 only if the owner chooses B.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.77.A (D-80); 20 CFR 416.1218(b)(1) (S2215). No definition of "value" for vehicles in 3.520.77. Items: CO-5302, CO-3395.
