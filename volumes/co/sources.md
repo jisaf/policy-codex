@@ -22737,3 +22737,11 @@ Document: D-207
 > ...
 >
 > (c) Receipts from the sale, exchange, or replacement of a resource. Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form. This includes any cash or in-kind item that is provided to replace or repair a resource (see subpart L) that has been lost, damaged, or stolen. Sections 416.1150 and 416.1151 discuss treatment of receipts to replace or repair a resource following a major disaster or following some other event causing damage or loss of a resource.
+
+### S4080. SSI: no more parental income is deemed to a child than reduces the child's benefit to zero; the rest goes to the other eligible children
+
+Document: D-53
+
+20 CFR 416.1165(e)(3) (eCFR text fetched 2026-09-18; fetched again 2026-11-23 from the eCFR versioner, whose current version is that of 2016-12-19, and identical). https://www.ecfr.gov/current/title-20/part-416
+
+> (3) *When one child's income makes that child ineligible.* We do not deem more income to an eligible child than the amount which, when combined with the child's own income, reduces his or her SSI benefit to zero. (For purposes of this paragraph, an SSI benefit includes any federally administered State supplement). If the share of parental income that would be deemed to a child makes that child ineligible (reduces the amount to zero) because that child has other countable income, we deem any remaining parental income to other eligible children under age 18 in the household in the manner described in paragraph (e)(2) of this section.
