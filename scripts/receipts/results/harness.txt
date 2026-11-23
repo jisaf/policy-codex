@@ -1,15 +1,16 @@
 # Receipt records harness: ledger at 41ec04b4d62c vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 22 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 21 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 297 | 74180 | 3 | 1 | 3 | 0 |
+| stored households | 297 | 74180 | 6 | 2 | 6 | 0 |
 | generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
 
 ## Allowed differences by class
 
 - R2 decision 4, AmeriCorps hours not stated: 6 household(s): CO-155, G-LEAP-AmeriCorps_300_hours_not_stated, G-SNAP-AmeriCorps_300_hours_not_stated, G-AFclient-AmeriCorps_300_hours_not_stated, G-AFspousedeemed-AmeriCorps_300_hours_not_stated, G-AFsponsordeemed-AmeriCorps_300_hours_not_stated
+- R4 SNAP double subtraction of a one-time excluded payment (CO-2339): 1 household(s): CO-225
 - R1 LEAP excluded one-time receipt no longer needs the thirty-day facts: 55 household(s): G-LEAP-retroactive_SS_lump_300, G-LEAP-retroactive_SSI_PA_lump_300, G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-SNAP-retroactive_SS_lump_300, G-SNAP-retroactive_SSI_PA_lump_300, G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFclient-retroactive_SS_lump_300, G-AFclient-retroactive_SSI_PA_lump_300, G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-retroactive_SS_lump_300, G-AFspousedeemed-retroactive_SSI_PA_lump_300, G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-retroactive_SS_lump_300, G-AFsponsordeemed-retroactive_SSI_PA_lump_300, G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum
 - R3 LEAP CO-4962 placement limit: 1 household(s): G-LEAPwin-crime_victim_3000_one_time_in_October_in
 
@@ -29,16 +30,24 @@ none
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
 | F1 | dated | leap_household_income | 2900 | 2900 |
+| F1 | dated | snap_person_unearned_income | 900 | 900 |
 | F1 | by month only | leap_household_income | 2900 | 2900 |
+| F1 | by month only | snap_person_unearned_income | 900 | 900 |
 | F1 | frequency left at its default | leap_household_income | 2900 | 2900 |
+| F1 | frequency left at its default | snap_person_unearned_income | 900 | 900 |
 | F2 | dated in the period | leap_household_income | 4000 | 4000 |
+| F3 | two receipts, each with its own frequency | snap_person_unearned_income | 529.9999 | 529.9999 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | leap_household_income | 2200 | 2200 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
 
 ## Differences
 
 allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_person_unearned_income @2027-02: old 1300 new unknown
 allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_household_income @2027-02: old 2300 new unknown
 allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p2 leap_household_income @2027-02: old 2300 new unknown
+allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_unearned_income @2026-11: old 0 new 900
+allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_gross_income @2026-11: old 2500 new 3400
+allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_unearned_income_verification_is_pending @2026-11: old false new unknown
 allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-11: old unknown new 0
 allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_household_income @2026-11: old unknown new 2000
 allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_is_eligible @2026-11: old unknown new true

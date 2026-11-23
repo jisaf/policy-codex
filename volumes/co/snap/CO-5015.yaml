@@ -1,0 +1,16 @@
+id: CO-5015
+name: "SNAP: excluded need-based charitable cash"
+identifier: snap_excluded_charitable_receipts
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The month's need-based charitable cash receipts, up to what the earlier months of the calendar quarter left of snap_charitable_cash_quarterly_limit (10 CCR 2506-1 4.405.A.10).
+precision: The limit applies to the quarter's donations in the order received. Each earlier month is read as 0 when the receipts are not stated.
+derived: [min, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [month]]], [receipt, amount]], [max, 0, ["-", snap_charitable_cash_quarterly_limit, [sum_months, snap_calendar_quarter_months_before, [otherwise, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [that_month]]], [receipt, amount]], 0]]]]]
+sources: [S3109]
+implemented: engine
+tags: [snap, income]
+rationale: "Receipt records, migration phase 1: the charitable-cash term of snap_excluded_unearned_income (CO-2339), read from the receipts."
+tests:
+  - {id: CO-5015-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: charitable_need_based_cash, amount: 200, month: "2026-10"}, {kind: charitable_need_based_cash, amount: 200, month: "2026-11"}]}, title: "$300 a quarter: $200 in October leaves $100 of November's $200 excluded", expect: 100}

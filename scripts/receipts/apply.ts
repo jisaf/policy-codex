@@ -43,17 +43,38 @@ const retired = loadRetired();
     for (const pair of (persons as YAMLMap).items as Pair[]) {
       const pid = String((pair.key as { value?: unknown }).value);
       if (!isMap(pair.value)) continue;
+      // [the map, its month (under months), the pair that holds it]
+      const pv = pair.value as YAMLMap;
+      const maps: Array<[unknown, string | null, Pair | undefined]> = [];
       for (const part of ["facts", "month_defaults"]) {
-        const m: unknown = (pair.value as YAMLMap).get(part, true);
+        const holder = (pv.items as Pair[]).find((x) => String((x.key as { value?: unknown }).value) === part);
+        maps.push([holder?.value, null, holder]);
+      }
+      const months: unknown = pv.get("months", true);
+      if (isMap(months)) {
+        for (const mp of (months as YAMLMap).items as Pair[]) maps.push([mp.value, String((mp.key as { value?: unknown }).value), mp]);
+      }
+      for (const [m, month, holder] of maps) {
         if (!isMap(m)) continue;
-        for (const fp of ((m as YAMLMap).items as Pair[]) as Pair[]) {
+        const items = (m as YAMLMap).items as Pair[];
+        const mine: Array<[number, number]> = [];
+        for (const fp of items) {
           const k = String((fp.key as { value?: unknown }).value);
           if (!(k in RETIRED) || L.ix.byIdentifier.has(k)) continue;
-          ((retired[id] ??= {})[pid] ??= {})[k] = (fp.value as { toJSON(): unknown }).toJSON();
+          const v = (fp.value as { toJSON(): unknown }).toJSON();
+          const slot = ((retired[id] ??= {})[pid] ??= {});
+          if (month) slot[k] = { ...((slot[k] as Record<string, unknown>) ?? {}), [month]: v };
+          else slot[k] = v;
           const ks = (fp.key as { range: [number, number, number] }).range[0];
           const ve = (fp.value as { range: [number, number, number] }).range[1];
-          cuts.push([lineStart(text, ks), lineEnd(text, ve - 1)]);
+          mine.push([lineStart(text, ks), lineEnd(text, ve - 1)]);
         }
+        if (mine.length && mine.length === items.length && holder) {
+          // every entry of the map is retired: the map goes with them
+          const ks = (holder.key as { range: [number, number, number] }).range[0];
+          const ve = (holder.value as { range: [number, number, number] }).range[1];
+          cuts.push([lineStart(text, ks), lineEnd(text, ve - 1)]);
+        } else cuts.push(...mine);
       }
     }
   }
@@ -115,9 +136,30 @@ for (const [id, dir] of Object.entries(L.ledger.chapterOf)) {
   const it = parseItemFile(fs.readFileSync(f, "utf8"));
   if (!it.tests?.length) continue;
   let changed = false;
-  it.tests = it.tests.map((t) => {
-    const tr = translateTest(t, L.ix, t.as_of ?? L.ledger.meta.default_as_of, CHOICES);
-    if (tr.changed) { changed = true; testsChanged++; }
+  it.tests = it.tests.map((t0) => {
+    // a retired fact the test states moves to retired-facts.yaml, keyed by the test's id
+    const t = JSON.parse(JSON.stringify(t0)) as typeof t0;
+    let cut = false;
+    const take = (pid: string, o: Record<string, unknown> | undefined, month?: string) => {
+      for (const k of Object.keys(o ?? {})) {
+        if (!(k in RETIRED) || L.ix.byIdentifier.has(k)) continue;
+        const slot = ((retired[t.id] ??= {})[pid] ??= {});
+        if (month) slot[k] = { ...((slot[k] as Record<string, unknown>) ?? {}), [month]: o![k] };
+        else slot[k] = o![k];
+        delete o![k];
+        cut = true;
+      }
+    };
+    take("p1", t.given);
+    take("p1", t.month_defaults);
+    for (const [pid, f] of Object.entries(t.others ?? {})) take(pid, f);
+    for (const [pid, p] of Object.entries(t.persons ?? {})) {
+      take(pid, p.facts);
+      take(pid, p.month_defaults);
+      for (const [m, mf] of Object.entries(p.months ?? {})) take(pid, mf, m);
+    }
+    const tr = translateTest(t, L.ix, t.as_of ?? L.ledger.meta.default_as_of, CHOICES, retired);
+    if (tr.changed || cut) { changed = true; testsChanged++; }
     return tr.value;
   });
   if (changed) itemFiles.push([f, stringifyItem(it)]);

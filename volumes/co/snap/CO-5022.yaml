@@ -1,0 +1,16 @@
+id: CO-5022
+name: "SNAP: the months of the calendar quarter before the month"
+identifier: snap_calendar_quarter_months_before
+kind: derived
+type: list of months
+scope: person-month
+program: SNAP
+meaning: "The months of the calendar quarter that contains the month that come before it (none in the quarter's first month): the earlier months 10 CCR 2506-1 4.405.A.10's quarterly limit on need-based charitable cash has already used."
+derived: [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [month_before, [month]]]
+sources: [S3109]
+implemented: engine
+tags: [snap, income]
+rationale: "Receipt records, migration phase 1: stated once for snap_excluded_charitable_receipts."
+tests:
+  - {id: CO-5022-T1, month: "2026-11", as_of: "2026-11-15", given: {}, title: "November: October", expect: ["2026-10"]}
+  - {id: CO-5022-T2, month: "2026-10", as_of: "2026-10-15", given: {}, title: "October, the quarter's first month: none", expect: []}

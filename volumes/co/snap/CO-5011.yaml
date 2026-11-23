@@ -1,0 +1,20 @@
+id: CO-5011
+name: "SNAP: a person's counted recurring receipts"
+identifier: snap_counted_recurring_receipts
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's recurring receipts of the month that SNAP's counting table counts (counted, counted because no rule excludes it, or counted beyond the quarterly limit), each at its monthly amount: a receipt paid weekly, every two weeks, twice a month or less often than monthly at its payment times the 4.402.A.2 multiplier (snap_income_conversion_rate_table; 7 CFR 273.10(c)(2)(i)), any other at the amount received in the month; less the parts of it 4.405 leaves out: an overpayment recouped from the same source other than for an intentional failure to comply (D.1), child support turned over to the IV-D agency (D.2), a former spouse's share of military retirement (A.11), money received for a person living elsewhere (B) and income set aside under a PASS (A.22)."
+precision: "A receipt paid once is a nonrecurring lump sum, excluded (4.405.E). A receipt is counted in each month it is stated for, or in every month when it states no month; one paid other than monthly is counted at its payment times the multiplier, in every month it is stated for (coverage pass 3 C3-4, CF-3). Replaces the periodic-income facts (CO-4330 to CO-4332: one such income per person); a receipt's frequency and per_payment now state it for each receipt."
+derived: [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [lookup, snap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_beyond_quarterly_limit]]], ["-", [case, [[in, [receipt, frequency], [weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual]], ["*", [receipt, per_payment], [lookup, snap_income_conversion_rate_table, [receipt, frequency]]]], [else, [receipt, amount]]], ["+", ["-", [receipt, recouped], [receipt, recouped_for_intentional_violation]], [receipt, transferred_to_child_support_agency], [receipt, paid_to_former_spouse], [receipt, for_person_living_elsewhere], [receipt, pass_set_aside]]]]
+sources: [S1620, S42, S3112, S2050, S3100, S3102]
+implemented: engine
+tags: [snap, income]
+rationale: "Receipt records, migration phase 1: SNAP's recurring unearned income read from the receipts through its counting table, with the earmarks and the frequency of each receipt."
+tests:
+  - {id: CO-5011-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: social_security, amount: 1420}, {kind: pension, amount: 610}, {kind: educational_assistance, amount: 300}]}, title: "Social Security and a pension counted; educational assistance excluded (4.405.1)", expect: 2030}
+  - {id: CO-5011-T2, month: "2027-02", as_of: "2027-02-15", given: {receipts: [{kind: unemployment_compensation, amount: 500, month: "2027-02", frequency: weekly, per_payment: 100}, {kind: interest_and_dividends, amount: 300, month: "2027-02", frequency: quarterly, per_payment: 300}]}, title: "Receipt spike family F3: two incomes paid other than monthly, each converted (4.402.A.2)", expect: 529.9999}
+  - {id: CO-5011-T3, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: pension, amount: 300, recouped: 100, recouped_for_intentional_violation: 40}, {kind: child_support, amount: 300, transferred_to_child_support_agency: 100}]}, title: "Recoupment other than for an intentional violation (D.1) and IV-D child support (D.2) left out", expect: 440}
+  - {id: CO-5011-T4, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: other_nontaxable, amount: 3000, frequency: once, month: "2026-11"}]}, title: "A nonrecurring lump sum is excluded (4.405.E)", expect: 0}
+  - {id: CO-5011-T5, month: "2026-11", as_of: "2026-11-15", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}

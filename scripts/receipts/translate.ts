@@ -483,6 +483,26 @@ export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
   insurance_proceeds_spent_on_covered_costs_prior_thirty_days: "person",
   named_source_receipts_in_lump_sum_prior_thirty_days: "person",
   americorps_service_hours: "person-month",
+  // LEAP's own reads, left unread when it moved: gifts (the verification
+  // trigger), and three of its excluded sources no other program reads
+  gifts_received: "person-month",
+  gi_bill_housing_and_food_allowances_received: "person-month",
+  housing_utility_allowance_received: "person-month",
+  workers_compensation_claim_expense_amounts_received: "person-month",
+  // SNAP (migration phase 1): the parts and earmarks only SNAP read, and the
+  // periodic income and the largest single game
+  child_support_received_transferred_to_child_support_agency: "person-month",
+  dvsa_title_i_volunteer_payments_received: "person-month",
+  energy_assistance_from_nonprofit_or_supplier_received: "person-month",
+  income_received_for_person_living_elsewhere: "person-month",
+  lottery_gambling_largest_single_game_winnings_received: "person-month",
+  migrant_farmworker_emergency_assistance_received: "person-month",
+  military_retirement_paid_to_former_spouse: "person-month",
+  overpayment_recoupment_for_intentional_violation_withheld: "person-month",
+  overpayment_recoupment_withheld: "person-month",
+  periodic_unearned_income_frequency: "person",
+  periodic_unearned_income_per_payment: "person",
+  periodic_unearned_income_received: "person-month",
 };
 /** case id -> person -> retired fact -> value, as stated before retirement. */
 export type RetiredFacts = Record<string, Record<string, Record<string, unknown>>>;
@@ -496,8 +516,11 @@ export function withRetired(c0: HouseholdCase, retired?: RetiredFacts): Househol
     const p = c.persons[pid];
     if (!p) continue;
     for (const [k, v] of Object.entries(facts)) {
-      if (RETIRED[k] === "person-month") (p.month_defaults ??= {})[k] = v;
-      else (p.facts ??= {})[k] = v;
+      if (RETIRED[k] !== "person-month") (p.facts ??= {})[k] = v;
+      else if (v && typeof v === "object" && !Array.isArray(v)) {
+        // stated month by month: { "2026-10": value, ... }
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) ((p.months ??= {})[m] ??= {})[k] = mv;
+      } else (p.month_defaults ??= {})[k] = v;
     }
   }
   return c;
@@ -534,7 +557,7 @@ export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choi
  *  restated as a recurring receipt with no month, which the test month reads
  *  the same, so the test's receipts stay as short as its facts. A value
  *  keyed by month is stated for its months. */
-export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choices?: Choices): Translated<TestSpec> {
+export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choices?: Choices, retired?: RetiredFacts): Translated<TestSpec> {
   const out = clone(t);
   const notes: string[] = [];
   const testMonth = t.month ?? null;
@@ -545,11 +568,17 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
     const s: Slot = { facts: {}, md: { ...(md0 ?? {}) }, months: clone(months0 ?? {}) };
     for (const [k, v] of Object.entries(src ?? {})) {
       const it = ix.byIdentifier.get(k);
-      if (it?.scope === "person-month") {
+      if ((it?.scope ?? RETIRED[k]) === "person-month") {
         if (v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).every((x) => /^\d{4}-\d{2}$/.test(x))) {
           for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
         } else s.md[k] = v;
       } else s.facts[k] = v;
+    }
+    for (const [k, v] of Object.entries(retired?.[t.id]?.[pid] ?? {})) {
+      if (RETIRED[k] !== "person-month") s.facts[k] = v;
+      else if (v && typeof v === "object" && !Array.isArray(v)) {
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
+      } else s.md[k] = v;
     }
     persons.set(pid, s);
   };

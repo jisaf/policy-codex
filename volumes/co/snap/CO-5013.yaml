@@ -1,0 +1,16 @@
+id: CO-5013
+name: "SNAP: infrequent or irregular unearned receipts in the calendar quarter"
+identifier: snap_irregular_unearned_receipts_in_quarter
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The person's receipts marked infrequent or irregular received in the months of the calendar quarter that contains the month (10 CCR 2506-1 4.405.A; 7 CFR 273.9(c)(2) "in a quarter"), whatever their kind.
+precision: Each month of the quarter is read as 0 when the receipts are not stated, as infrequent_or_irregular_income_in_quarter (CO-4077, which CCCAP still reads) read the month's fact. The calendar quarter is also the federal fiscal quarter.
+derived: [sum_months, snap_calendar_quarter_months, [otherwise, [sum_receipts, receipts, [all, [receipt, irregular], [received_in, [that_month]]], [receipt, amount]], 0]]
+sources: [S3128]
+implemented: engine
+tags: [snap, income]
+rationale: "Receipt records, migration phase 1: SNAP's own quarter sum of irregular receipts, replacing its read of the shared CO-4077."
+tests:
+  - {id: CO-5013-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: other_nontaxable, amount: 20, irregular: true, month: "2026-10"}, {kind: gift, amount: 15, irregular: true, month: "2026-12"}]}, title: "Irregular receipts in October and December, the quarter of November", expect: 35}

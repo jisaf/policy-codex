@@ -30,3 +30,12 @@
 - case: G-LEAPwin-crime_victim_3000_one_time_in_October_in
   identifier: /^leap_/
   class: R3 LEAP CO-4962 placement limit
+
+# R4 (the spike's class 3, fixed; a new P1 for SNAP): a one-time crime victim payment stated, as
+# CO-4960 said it must be, both as crime_victim_compensation_received and as lump_sum_received was
+# subtracted twice by snap_excluded_unearned_income (CO-2339), wiping out $900 of child support: the
+# SNAP twin of LEAP coverage-3 F3-2. A receipt paid once is excluded once (4.405.E, A.27). The
+# unearned-income verification trigger then turns on the verification fact the household does not state.
+- case: CO-225
+  identifier: /^snap_/
+  class: R4 SNAP double subtraction of a one-time excluded payment (CO-2339)

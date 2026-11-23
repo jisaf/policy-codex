@@ -33242,8 +33242,6 @@
         sebt_eligibility_directly_verified: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
-        periodic_unearned_income_frequency: weekly
-        periodic_unearned_income_per_payment: 400
         receipts:
         - {kind: other_nontaxable, amount: 0, frequency: weekly, per_payment: 400, month: "2025-11"}
         - {kind: other_nontaxable, amount: 0, frequency: weekly, per_payment: 400, month: "2025-12"}
@@ -33288,7 +33286,6 @@
       months:
         2027-01:
           unemployment_income: 2000
-          periodic_unearned_income_received: 2000
     p2:
       facts:
         residence_setting_type: private_dwelling
@@ -36695,7 +36692,6 @@
         is_in_sud_treatment_iop_or_higher: false
         self_employment_operating_costs: 0
         educational_assistance_received: 0
-        gi_bill_housing_and_food_allowances_received: 1500
     p3:
       facts:
         date_of_birth: "2020-03-10"
@@ -40271,7 +40267,6 @@
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false
         self_employment_operating_costs: 0
-        gi_bill_housing_and_food_allowances_received: 1500
     p3:
       facts:
         date_of_birth: "2020-03-10"
@@ -54185,7 +54180,6 @@
         medical_expenses_out_of_pocket: 0
         shelter_cost_monthly: 0
         federally_excluded_payments_received: 1000
-        dvsa_title_i_volunteer_payments_received: 1000
     p2:
       facts:
         residence_setting_type: private_dwelling
