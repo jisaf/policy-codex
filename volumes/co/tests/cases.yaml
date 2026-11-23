@@ -1756,8 +1756,8 @@
       cw_minor_parent_living_arrangement_met: true
       cw_deemed_parent_income_of_minor_parent: {"2026-10": 2037}
       cw_countable_income: {"2026-10": 2037}
-      cw_need_standard: 245
-      cw_grant_standard: 362
+      cw_need_standard: {"2026-10": 245}
+      cw_grant_standard: {"2026-10": 362}
       cw_grant_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_income}
       af_category: {"2026-10": none}
@@ -3794,8 +3794,8 @@
       cw_minor_parent_living_arrangement_met: true
       cw_deemed_parent_income_of_minor_parent: {"2026-11": 2037}
       cw_countable_income: {"2026-11": 2037}
-      cw_need_standard: 0   # CW-12: No Caretaker row, 0 children (was 245)
-      cw_grant_standard: 0   # CW-12 (was 362)
+      cw_need_standard: {"2026-11": 0}   # CW-12: No Caretaker row, 0 children (was 245)
+      cw_grant_standard: {"2026-11": 0}   # CW-12 (was 362)
       cw_grant_amount: {"2026-11": 0}
       cw_eligibility_status: {"2026-11": ineligible_income}
       af_category: {"2026-11": none}
@@ -5645,8 +5645,8 @@
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
-      cw_need_standard: 439          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
-      cw_grant_standard: 649         # C-5 fixed: Two Caretakers/1 child row
+      cw_need_standard: {"2026-10": 439}          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
+      cw_grant_standard: {"2026-10": 649}         # C-5 fixed: Two Caretakers/1 child row
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       # C-2/C-3 fixed: cw_eligibility_status is "eligible", not "time_limit_reached" as the review derived.
       # Under the OLD rules the review reviewed, p2's own 61 months (read person-by-person) drove the unit
@@ -10723,8 +10723,8 @@
         complies_with_refugee_program_work_requirements: false
   expect:
     p1:
-      cw_need_standard: 253
-      cw_grant_standard: 374
+      cw_need_standard: {"2026-10": 253}
+      cw_grant_standard: {"2026-10": 374}
       cw_eligibility_status: {"2026-10": eligible}
       cw_grant_amount: {"2026-10": 252}
       cw_person_participation_status: eligible_member
@@ -11445,8 +11445,8 @@
         complies_with_refugee_program_work_requirements: false
   expect:
     p1:
-      cw_need_standard: unknown
-      cw_grant_standard: unknown
+      cw_need_standard: {"2028-08": unknown}
+      cw_grant_standard: {"2028-08": unknown}
       cw_eligibility_status: {"2028-08": unknown}
       cw_grant_amount: {"2028-08": unknown}
 
@@ -17891,8 +17891,8 @@
       cw_minor_parent_is_assisted_as_adult: true
       cw_unit_caretaker_count: 1
       cw_unit_child_count: 1
-      cw_need_standard: 331
-      cw_grant_standard: 488
+      cw_need_standard: {"2026-10": 331}
+      cw_grant_standard: {"2026-10": 488}
       cw_eligibility_status: {2026-10: eligible}
       cw_grant_amount: {2026-10: 320}
       cw_person_participation_status: eligible_member
@@ -18406,8 +18406,8 @@
     p1:
       cw_deemed_parent_income_of_minor_parent: {2026-10: 0}
       cw_countable_income: {2026-10: 410}
-      cw_need_standard: 421
-      cw_grant_standard: 620
+      cw_need_standard: {"2026-10": 421}
+      cw_grant_standard: {"2026-10": 620}
       cw_eligibility_status: {2026-10: eligible}
       cw_grant_amount: {2026-10: 407}
     p3:
@@ -18578,8 +18578,8 @@
     p1:
       cw_minor_parent_living_arrangement_met: true
       cw_minor_parent_is_assisted_as_adult: false
-      cw_need_standard: 245
-      cw_grant_standard: 362
+      cw_need_standard: {"2026-10": 245}
+      cw_grant_standard: {"2026-10": 362}
       cw_eligibility_status: {2026-10: eligible}
       cw_grant_amount: {2026-10: 238}
     p2:
@@ -26957,7 +26957,7 @@
       cw_minor_parent_deeming_needs_deduction: 253
       cw_deemed_parent_income_of_minor_parent:
         2026-10: 257
-      cw_need_standard: 245
+      cw_need_standard: {"2026-10": 245}
       cw_countable_income:
         2026-10: 257
       cw_eligibility_status:
