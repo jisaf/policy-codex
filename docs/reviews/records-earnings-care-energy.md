@@ -66,9 +66,9 @@ No eligibility or benefit outcome changes on a stored household except where can
 
 | Harness | Result |
 |---|---|
-| `npm run records:harness -- --list earnings --track leap` | OK: stored 327 households, 20,738 values, 390 differ, all allowed; generated 28, 1,064 values, 19 differ, all allowed; translation 0 stale; boundary lint 0 findings; ME-2 and ME-4 0 violations (ME-1, ME-3 not invariant for LEAP) |
-| `npm run records:harness -- --list earnings --track cccap` | OK: stored 327, 24,887 values, 139 differ, all allowed; generated 28, 1,344 values, 0 differ; ME-2, ME-4 0 violations (ME-1 not run: R-3; ME-3 not invariant) |
-| `npm run receipts:harness -- --all-programs` | see section 9 |
+| `npm run records:harness -- --list earnings --track leap` | OK: stored 327 households, 20,738 values, 392 differ, all allowed; generated 28, 1,064 values, 19 differ, all allowed; translation 0 stale; boundary lint 0 findings; ME-2 and ME-4 0 violations (ME-1, ME-3 not invariant for LEAP) |
+| `npm run records:harness -- --list earnings --track cccap` | OK: stored 327, 24,887 values, 141 differ, all allowed; generated 28, 1,344 values, 0 differ; ME-2, ME-4 0 violations (ME-1 not run: R-3; ME-3 not invariant) |
+| `npm run receipts:harness -- --all-programs` (baseline c29d326) | OK: stored 319 households, 170,191 values, 764 differ, all allowed; generated 1,626, 696,597 values, 22,501 differ, all allowed (class E1-G: they state no earnings records); 0 unexplained; MA-1 to MA-6 0 violations |
 
 ## 7. T-9 boundary rows and contradictory givens (docs/reviews/t9-threshold-handcheck.md)
 
@@ -98,10 +98,10 @@ The CCCAP, LEAP and SUN Bucks rows. The "Ambiguous: not recorded" table has thre
 |---|---|
 | `node scripts/sync-manifest.mjs co` | written |
 | `npm run typecheck` | passes |
-| `npx vitest run` | passes after the UI pins moved by CO-5125, CO-5151 (figures 462 to 464) and OQ-1160, OQ-1162, OQ-1163 (questions 159 to 162) were re-pinned with their reasons |
-| `npm run receipts:harness -- --all-programs` | (filled at the gate) |
+| `npx vitest run` | 1,131 tests pass (101 files) after the UI pins moved by CO-5125, CO-5151 (figures 462 to 464) and OQ-1160, OQ-1162, OQ-1163 (questions 159 to 162) were re-pinned with their reasons |
+| `npm run receipts:harness -- --all-programs` | 0 unexplained (section 6) |
 | `npm run records:harness -- --list earnings --track leap` / `--track cccap` | OK (section 6) |
-| `CHECK_BASE=origin/main npm run check` | (filled at the gate) |
+| `CHECK_BASE=origin/main npm run check` | OK; conformance self-check OK (5,027 cases); one change-impact flag (CO-4056 on CO-989) dispositioned in volumes/co/changes/2026-11-23-records-care-energy.yaml; 4,540 rule tests and every household expectation pass but CO-387's CHP+ band, a known conformance failure |
 
 ## 10. Requests to the integration owner (design 4.3, rule 1)
 
