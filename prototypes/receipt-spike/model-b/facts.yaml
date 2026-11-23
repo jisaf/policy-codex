@@ -1,0 +1,115 @@
+# Receipt spike, Model B: scalar partition. New residual leaves, and the
+# part_of / window_of / default metadata the check reads. Entries with only an
+# identifier and metadata are merged onto the existing item of that
+# identifier (meanings unchanged except as the `precision` here says).
+- id: CO-9951
+  name: Unearned income not otherwise named, taxable
+  identifier: unearned_income_not_otherwise_named_taxable
+  kind: supplied
+  type: money
+  scope: person-month
+  program: All
+  meaning: "The person's federally taxable unearned income received in the month that no other income fact names (dividends of a trust, royalties, alimony under a pre-2019 order, estate income): the residual of the gross unearned income partition. Never a payment another fact names; a payment of a named source is stated in that source's fact only."
+  precision: "Receipt spike, Model B: the required residual leaf of the gross unearned income group (gross_unearned_income). Required: if not stated, every program that counts unearned income cannot determine. Replaces, for the spike slices, other_unearned_income_taxable (CO-1714), whose meaning includes the named parts."
+  supplied_by: "Applicant statement; the payer's statements."
+  part_of: gross_unearned_income
+  sources: [S42, S1620]
+  tags: [income]
+- id: CO-9952
+  name: Unearned income not otherwise named, nontaxable
+  identifier: unearned_income_not_otherwise_named_nontaxable
+  kind: supplied
+  type: money
+  scope: person-month
+  program: All
+  meaning: "The person's unearned income received in the month that is not federally taxable and that no other income fact names: the nontaxable residual of the gross unearned income partition."
+  precision: "Receipt spike, Model B: required residual leaf, as CO-9951."
+  supplied_by: "Applicant statement; the payer's statements."
+  part_of: gross_unearned_income
+  sources: [S42, S1620]
+  tags: [income]
+- id: CO-9953
+  name: One-time payment not otherwise named
+  identifier: one_time_payment_not_otherwise_named
+  kind: supplied
+  type: money
+  scope: person-month
+  program: All
+  meaning: "A nonrecurring payment the person received in the month that no other income fact names: an inheritance, a lump-sum insurance settlement, a gift of money, a similar one-time payment. A one-time payment of a named source (crime victim compensation, a retroactive Social Security or SSI award, a refugee resettlement grant, a lottery win) is stated in that source's fact, not here."
+  precision: "Receipt spike, Model B: a leaf of the gross unearned income group, disjoint from the residuals and from every named source. If not stated, 0. Replaces lump_sum_received (CO-3367), whose meaning overlapped the named sources (CO-4962)."
+  supplied_by: "Applicant statement; the payer's records, by date received."
+  part_of: gross_unearned_income
+  default: 0
+  sources: [S2714, S3476]
+  tags: [income]
+- id: CO-9954
+  name: One-time payments not otherwise named in the LEAP income verification period
+  identifier: one_time_payment_not_otherwise_named_prior_thirty_days
+  kind: supplied
+  type: money
+  scope: person
+  program: All
+  meaning: "The one-time payments not otherwise named (one_time_payment_not_otherwise_named) the person received in the thirty days before the application date (the LEAP income verification period, 9 CCR 2503-7 3.751.1)."
+  precision: "Receipt spike, Model B: a window restatement of CO-9953 for the application month and the month before (window_of); the check requires it to be no more than the two months' amounts. Replaces lump_sum_received_prior_thirty_days (CO-4066). If not stated, LEAP reads 0 when both months state none, and cannot determine otherwise."
+  supplied_by: "Applicant statement; the payer's records, by date received."
+  window_of: one_time_payment_not_otherwise_named
+  sources: [S2712, S2713]
+  tags: [income]
+- id: CO-9955
+  name: Gross unearned income
+  identifier: gross_unearned_income
+  kind: derived
+  type: money
+  scope: person-month
+  program: All
+  meaning: "The sum of the leaves of the gross unearned income partition for the month: every named source and the residuals, each stated once. A primitive sum, read only by the partition check (part ≤ parent); no program counts it."
+  derived: [+, social_security_income, ssi_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, tax_exempt_interest, [otherwise, taxable_interest_and_dividend_income, 0], [otherwise, rental_income_received, 0], [otherwise, educational_assistance_received, 0], [otherwise, loan_proceeds_received, 0], [otherwise, expense_reimbursements_received, 0], [otherwise, energy_assistance_received, 0], [otherwise, tax_refunds_and_credits_received, 0], [otherwise, property_or_food_tax_refund_received, 0], [otherwise, federally_excluded_payments_received, 0], [otherwise, crime_victim_compensation_received, 0], [otherwise, foster_care_provider_payments_received, 0], [otherwise, kinship_care_payments_received, 0], [otherwise, tanf_diversion_payment_received, 0], [otherwise, tanf_supportive_service_payments_received, 0], [otherwise, reverse_mortgage_payments_received, 0], [otherwise, housing_utility_allowance_received, 0], [otherwise, gi_bill_housing_and_food_allowances_received, 0], [otherwise, refugee_resettlement_payments_received, 0], [otherwise, americorps_payments_received, 0], [otherwise, workforce_program_payments_received, 0], [otherwise, general_or_emergency_assistance_received, 0], [otherwise, in_home_care_allowance_received, 0], [otherwise, uniformed_services_special_pay_received, 0], [otherwise, state_veteran_annuity_received, 0], [otherwise, charitable_need_based_cash_received, 0], [otherwise, migrant_farmworker_emergency_assistance_received, 0], [otherwise, retroactive_social_security_lump_sum_received, 0], [otherwise, retroactive_ssi_or_public_assistance_lump_sum_received, 0], [otherwise, one_time_payment_not_otherwise_named, 0], unearned_income_not_otherwise_named_taxable, unearned_income_not_otherwise_named_nontaxable]
+  implemented: engine
+  tags: [income]
+# metadata on existing facts (merged): named leaves default 0; overlays part_of one parent
+- {identifier: taxable_interest_and_dividend_income, part_of: gross_unearned_income, default: 0}
+- {identifier: rental_income_received, part_of: gross_unearned_income, default: 0}
+- {identifier: educational_assistance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: loan_proceeds_received, part_of: gross_unearned_income, default: 0}
+- {identifier: expense_reimbursements_received, part_of: gross_unearned_income, default: 0}
+- {identifier: energy_assistance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: tax_refunds_and_credits_received, part_of: gross_unearned_income, default: 0}
+- {identifier: property_or_food_tax_refund_received, part_of: gross_unearned_income, default: 0}
+- {identifier: federally_excluded_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: crime_victim_compensation_received, part_of: gross_unearned_income, default: 0}
+- {identifier: foster_care_provider_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: kinship_care_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: tanf_diversion_payment_received, part_of: gross_unearned_income, default: 0}
+- {identifier: tanf_supportive_service_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: reverse_mortgage_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: housing_utility_allowance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: gi_bill_housing_and_food_allowances_received, part_of: gross_unearned_income, default: 0}
+- {identifier: refugee_resettlement_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: americorps_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: workforce_program_payments_received, part_of: gross_unearned_income, default: 0}
+- {identifier: general_or_emergency_assistance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: in_home_care_allowance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: uniformed_services_special_pay_received, part_of: gross_unearned_income, default: 0}
+- {identifier: state_veteran_annuity_received, part_of: gross_unearned_income, default: 0}
+- {identifier: charitable_need_based_cash_received, part_of: gross_unearned_income, default: 0}
+- {identifier: migrant_farmworker_emergency_assistance_received, part_of: gross_unearned_income, default: 0}
+- {identifier: retroactive_social_security_lump_sum_received, part_of: gross_unearned_income, default: 0}
+- {identifier: retroactive_ssi_or_public_assistance_lump_sum_received, part_of: gross_unearned_income, default: 0}
+# overlays: "of which", exactly one parent
+- {identifier: pass_set_aside_income, part_of: gross_unearned_income, default: 0}
+- {identifier: overpayment_recoupment_withheld, part_of: gross_unearned_income, default: 0}
+- {identifier: overpayment_recoupment_for_intentional_violation_withheld, part_of: overpayment_recoupment_withheld, default: 0}
+- {identifier: income_received_for_person_living_elsewhere, part_of: gross_unearned_income, default: 0}
+- {identifier: infrequent_or_irregular_income_received, part_of: gross_unearned_income, default: 0}
+- {identifier: periodic_unearned_income_received, part_of: gross_unearned_income, default: 0}
+- {identifier: workers_compensation_claim_expense_amounts_received, part_of: unearned_income_not_otherwise_named_nontaxable, default: 0}
+- {identifier: va_aid_and_attendance_used_for_uncovered_care, part_of: unearned_income_not_otherwise_named_nontaxable, default: 0}
+- {identifier: child_support_arrears_received, part_of: child_support_received, default: 0}
+- {identifier: child_support_received_transferred_to_child_support_agency, part_of: child_support_received, default: 0}
+- {identifier: military_retirement_paid_to_former_spouse, part_of: pension_income, default: 0}
+- {identifier: energy_assistance_from_nonprofit_or_supplier_received, part_of: energy_assistance_received, default: 0}
+# windows
+- {identifier: lottery_gambling_winnings_received_prior_thirty_days, window_of: lottery_gambling_winnings_received}
+- {identifier: resource_liquidation_proceeds_received_prior_thirty_days, part_of: one_time_payment_not_otherwise_named_prior_thirty_days, default: 0}
+- {identifier: insurance_proceeds_spent_on_covered_costs_prior_thirty_days, part_of: one_time_payment_not_otherwise_named_prior_thirty_days, default: 0}
+- {identifier: lottery_gambling_winnings_received, default: 0}

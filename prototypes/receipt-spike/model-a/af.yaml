@@ -1,0 +1,57 @@
+- id: CO-9930
+  name: "Adult Financial: how each kind of receipt is treated"
+  identifier: af_receipt_treatment_table
+  kind: parameter
+  type: table keyed by option
+  scope: global
+  program: AdultFinancial
+  meaning: "Adult Financial's counting table for unearned income (9 CCR 2503-5 3.520.785, 3.520.786), the same for the client, the client's spouse and the sponsor(s) (3.520.786: \"not countable to the client, client's spouse, or sponsor(s)\"): counted; excluded with its paragraph of 3.520.786 (tax_refund_or_credit A; energy_assistance and energy_assistance_nonprofit_or_supplier C; general_or_emergency_assistance D; in_home_care_allowance E; educational_assistance G; crime_victim_compensation J; reverse_mortgage L; foster_care_payment M; child_support_arrears P; and through K, 20 CFR 416.1124: federally_excluded_payment (b), property_or_food_tax_refund (c)(1), interest_and_dividends and tax_exempt_interest (c)(22), uniformed_services_special_pay (c)(19), americorps (c)(23), state_veteran_annuity (c)(24)); or a named special rule: child_support counted less one-third for an SSI-age child (K, (c)(11)); ssi counted separately (3.533.A.2.c deducts the $20 from unearned income other than SSI); adult_financial_cash not income to the client (the grant itself) but counted to a relative or sponsor (3.534.C)."
+  precision: "Every kind has a row; a kind with no row is unknown and reported. Receipts counted by silence in the current ledger (loan, reimbursement, foster care, kinship, diversion, supportive services, housing utility allowance, G.I. Bill, refugee, workforce) are listed as counted, so the Adult Financial owner sees each decision; whether 3.520.785 counts a bona fide loan or a reimbursement is not settled by this spike."
+  versions:
+    - from: "2000-01-01"
+      value: {social_security: counted, ssi: counted_separately, pension: counted, unemployment_compensation: counted, child_support: counted_less_one_third_for_ssi_child, child_support_arrears: excluded, colorado_works_cash: counted, adult_financial_cash: not_income_to_client, tax_exempt_interest: excluded, interest_and_dividends: excluded, rental_income: counted, workers_compensation: counted, lottery_gambling: counted, other_one_time: counted, resource_liquidation: counted, educational_assistance: excluded, loan: counted, reimbursement: counted, energy_assistance: excluded, energy_assistance_nonprofit_or_supplier: excluded, tax_refund_or_credit: excluded, property_or_food_tax_refund: excluded, federally_excluded_payment: excluded, crime_victim_compensation: excluded, foster_care_payment: excluded, kinship_care_payment: counted, colorado_works_diversion: counted, colorado_works_supportive_services: counted, reverse_mortgage: excluded, housing_utility_allowance: counted, gi_bill_housing_food_allowance: counted, refugee_resettlement: counted, americorps: excluded, workforce_program_payment: counted, general_or_emergency_assistance: excluded, in_home_care_allowance: excluded, va_aid_and_attendance: counted, uniformed_services_special_pay: excluded, state_veteran_annuity: excluded, charitable_need_based_cash: counted, migrant_farmworker_emergency_assistance: counted, other_taxable: counted, other_nontaxable: counted}
+      source: S2608
+  sources: [S1622, S2206, S2209, S2608, S2609]
+  tags: [cash, income]
+
+- id: CO-9931
+  name: "Adult Financial: a person's counted unearned receipts other than SSI"
+  identifier: af_counted_unearned_receipts
+  kind: derived
+  type: money
+  scope: person-month
+  program: AdultFinancial
+  meaning: "The person's receipts of the month that Adult Financial's counting table counts, other than SSI and the Adult Financial grant, a one-time receipt in the month received: the counted kinds at their amount, child support less one-third for an SSI-age child (3.520.786.K, 20 CFR 416.1124(c)(11), af_child_support_exclusion_divisor), less the income set aside under a PASS (I) and VA Aid and Attendance used for uncovered medical care (F), less the infrequent income (O, af_excluded_infrequent_income) and the life-threatening-condition gifts ((c)(21)) the rule exempts. The one figure the client's own income (CO-3831) and a deemed spouse's, parent's or sponsor's income (CO-4720) both read."
+  precision: "Receipt spike, Model A. Replaces af_excluded_unearned_income (CO-2343) and the aggregate sums in CO-3831 and CO-4720, so the deeming path cannot drift from the client's path (coverage review 3 H-1, H-2)."
+  derived: ["-", [+, [sum_receipts, receipts, [all, [received_in, [month]], ["=", [lookup, af_receipt_treatment_table, [receipt, kind]], counted]], ["-", [receipt, amount], [+, [receipt, pass_set_aside], [receipt, used_for_uncovered_medical_care]]]], [sum_receipts, receipts, [all, [received_in, [month]], ["=", [lookup, af_receipt_treatment_table, [receipt, kind]], counted_less_one_third_for_ssi_child]], [case, [af_is_ssi_child, ["-", [receipt, amount], ["/", [receipt, amount], af_child_support_exclusion_divisor]]], [else, [receipt, amount]]]]], [+, af_excluded_infrequent_income, af_excluded_life_threatening_condition_gifts]]
+  sources: [S1622, S2608, S2609, S3212]
+  implemented: engine
+  tags: [cash, income]
+
+- id: CO-3831
+  name: "Adult Financial: unearned income other than SSI"
+  identifier: af_unearned_income_other_than_ssi
+  kind: derived
+  type: money
+  scope: person-month
+  program: AdultFinancial
+  meaning: "This person's gross unearned income for the month other than SSI, from which 3.533.A.2.c, 3.544.B.2 and 3.549.A.2.c deduct the $20 disregard: the counted unearned receipts (af_counted_unearned_receipts); for an OAP or AND-CS client, the in-kind support and maintenance the county determines, up to the ISM maximum (3.520.79); and income the client refused or failed without good cause to secure (3.520.71.G.1); less the expenses of producing workers' compensation, rental, insurance and similar receipts (B.9, B.14-16, B.20), never below zero."
+  precision: "Receipt spike, Model A."
+  derived: [max, 0, ["-", [+, af_counted_unearned_receipts, [case, [[any, af_is_oap_age, af_and_cs_eligible], [min, af_in_kind_support_and_maintenance, af_ism_maximum]], [else, 0]], [otherwise, af_refused_potential_income, 0]], [otherwise, unearned_income_offsetting_expenses, 0]]]
+  sources: [S1622, S1002, S1012, S2610, S2623, S3212]
+  implemented: engine
+  tags: [cash, oap, and, income]
+
+- id: CO-4720
+  name: "Adult Financial: a deemed relative's or sponsor's unearned income after exemptions"
+  identifier: af_relative_deemable_unearned_income
+  kind: derived
+  type: money
+  scope: person-month
+  program: AdultFinancial
+  meaning: "This person's unearned income for the month as Adult Financial deems it from a client's spouse, an AND-CS child's parent or a sponsor: the counted unearned receipts (af_counted_unearned_receipts, the client's own rule, 3.520.786), plus the person's SSI and Adult Financial grant receipts (3.534.C, 3.544.F, 3.549.F test the relative's income against the standard), less the expenses of producing workers' compensation, rental, insurance and similar receipts, never below zero."
+  precision: "Receipt spike, Model A."
+  derived: [max, 0, ["-", [+, af_counted_unearned_receipts, [sum_receipts, receipts, [all, [received_in, [month]], [in, [receipt, kind], [ssi, adult_financial_cash]]], [receipt, amount]]], [otherwise, unearned_income_offsetting_expenses, 0]]]
+  sources: [S2608, S3500, S1632]
+  implemented: engine
+  tags: [cash, income]

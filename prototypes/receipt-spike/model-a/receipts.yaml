@@ -1,0 +1,33 @@
+id: CO-9900
+name: Receipts
+identifier: receipts
+kind: supplied
+type: list of receipts
+options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, lottery_gambling, other_one_time, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance, energy_assistance_nonprofit_or_supplier, tax_refund_or_credit, property_or_food_tax_refund, federally_excluded_payment, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, general_or_emergency_assistance, in_home_care_allowance, va_aid_and_attendance, uniformed_services_special_pay, state_veteran_annuity, charitable_need_based_cash, migrant_farmworker_emergency_assistance, other_taxable, other_nontaxable]
+scope: person
+program: All
+meaning: "Every payment of unearned money the person received or receives, one record per payment or per stream of like payments, each stated once with what it is and when it came: its kind (the source, in words no program's rule is needed to apply), the amount, the month received (or none, for a payment that recurs in every month the case covers), the day received where known, how often it is paid, and the parts of it set aside or spent for a stated purpose. A stated empty list means the person received no unearned money; a list not stated means the person's unearned income is not known, and every program that counts unearned income cannot determine its outcome."
+precision: "Receipt spike, Model A (docs/reviews/receipt-spike.md): replaces, for the three spike slices, the scalar unearned income facts and their part-of facts (other_unearned_income_taxable and _nontaxable with the 30-odd facts that are part of them, lump_sum_received and its retroactive parts, the thirty-day window facts, the PASS set-aside, the periodic-income facts). Each kind is one source; one-time, retroactive and set-aside are fields of the record, never a second record of the same money. Field rules (record_fields): kind and amount are required; frequency is monthly unless stated; month absent means every month; date, per_payment and hours_served are unknown when not stated, and a rule that needs one cannot determine; every earmark is 0 unless stated."
+supplied_by: "The applicant's statement and the payer's records (award letters, statements, deposit records), one record per payment or stream."
+record_fields:
+  kind: {type: one of, required: true}
+  amount: {type: money, required: true}
+  month: {type: month}
+  date: {type: calendar date}
+  frequency: {type: one of, options: [once, monthly, weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual], default: monthly}
+  per_payment: {type: money}
+  retroactive: {type: yes/no, default: false}
+  irregular: {type: yes/no, default: false}
+  hours_served: {type: hours}
+  pass_set_aside: {type: money, default: 0}
+  claim_expense: {type: money, default: 0}
+  spent_on_covered_costs: {type: money, default: 0}
+  used_for_uncovered_medical_care: {type: money, default: 0}
+  transferred_to_child_support_agency: {type: money, default: 0}
+  paid_to_former_spouse: {type: money, default: 0}
+  recouped: {type: money, default: 0}
+  recouped_for_intentional_violation: {type: money, default: 0}
+  for_person_living_elsewhere: {type: money, default: 0}
+sources: [S2712, S2713, S2714, S1624, S3300, S42, S1620, S1622, S2608]
+tags: [income]
+rationale: "Receipt spike (plan-colorado.md decision of 2026-11-23, step 3): the rules cut unearned money by source, form (one-time or recurring), date (the LEAP income verification period, the SNAP quarter), frequency (SNAP's 4.3, 2.15 and 2 multipliers) and earmark (PASS, claim expenses). A record per receipt carries each of these once, so no rule has to decide where a dollar stated twice sits (CO-4962)."
