@@ -119,6 +119,31 @@ describe("comparison and arithmetic: unknown in, unknown out", () => {
       expect(run([op, 1, "x"], {})).toBe(U);
     });
   }
+  it("numbers compare with the 1e-9 tolerance ceil and round use (coverage pass 5, C5-10)", () => {
+    // 2,650.90 is 147% of the 2026 guideline for two (21,640 / 12) in decimal:
+    // 2,650.90 * 12 = 31,810.80 = 1.47 * 21,640. Binary64 gives
+    // 2650.9 / (21640 / 12) = 1.4700000000000002, so less the 5-point
+    // disregard it was 1.4200000000000002, "over" 142%.
+    const ratio = 2650.9 / (21640 / 12);
+    expect(ratio).not.toBe(1.47);
+    expect(run(["<=", ["-", "x", 0.05], 1.42], { x: ratio })).toBe(T);
+    expect(run([">", ["-", "x", 0.05], 1.42], { x: ratio })).toBe(F);
+    expect(run(["<", "x", 1.47], { x: ratio })).toBe(F);
+    expect(run([">=", "x", 1.47], { x: ratio })).toBe(T);
+    expect(run(["=", "x", 1.47], { x: ratio })).toBe(T);
+    // within 1e-9 is the same number; one cent over a limit is not
+    expect(run(["<=", "x", 100], { x: 100 + 5e-10 })).toBe(T);
+    expect(run(["<", "x", 100], { x: 100 - 5e-10 })).toBe(F);
+    expect(run(["<=", "x", 100], { x: 100.01 })).toBe(F);
+    expect(run(["<", "x", 100], { x: 99.99 })).toBe(T);
+    expect(run([">", "x", 100], { x: 100.01 })).toBe(T);
+    expect(run([">=", "x", 100], { x: 99.99 })).toBe(F);
+    expect(run(["=", "x", 0.3], { x: 0.1 + 0.2 })).toBe(T);
+    expect(run(["=", "x", 0.3], { x: 0.31 })).toBe(F);
+    // dates and months still compare as strings, exactly
+    expect(run(["<=", "d", "2026-06-01"], { d: "2026-06-01" })).toBe(T);
+    expect(run(["<", "d", "2026-06-01"], { d: "2026-06-01" })).toBe(F);
+  });
   it("= compares exactly; in tests membership of a literal list", () => {
     expect(run(["=", "x", 3], { x: 3 })).toBe(T);
     expect(run(["in", "x", [1, 2]], { x: 3 })).toBe(F);

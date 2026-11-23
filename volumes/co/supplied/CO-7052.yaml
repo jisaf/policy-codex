@@ -1,0 +1,13 @@
+id: CO-7052
+name: Claimer outside the case is a parent
+identifier: outside_claimer_is_parent
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "For a person who expects to be claimed as a tax dependent by a taxpayer who is not a person of the case (is_claimed_by_filer_outside_case, CO-2716), whether that taxpayer is the person's parent: natural, adoptive or step parent (the parent or stepparent relationship, had the taxpayer been a person of the case). A spouse is never a tax dependent of the other spouse, so a claimer is a parent or someone else."
+precision: "Required where read (decision 4 of 2026-11-23): no rule gives an outside claimer a relationship. A claimer who is a person of the case is the tax_filer / tax_dependent relationship, and the relationship between the two persons says whether the claimer is a parent; this fact is only for a claimer the case does not declare. Medicaid reads it to apply 10 CCR 2505-10 § 8.100.4.E.1.c.i (a dependent claimed by someone other than a spouse, biological, adoptive or step parent has the non-filer household): an outside claimer who is not a parent routes the person to the non-filer rules; one who is a parent leaves the person in the claiming parent's household (E.1.b), whose members and income the case does not state unless the parent is declared as a person of the case (coverage pass 5, C5-05)."
+supplied_by: "Applicant statement on the application (tax filing questions: who expects to claim the person)."
+sources: [S1227, S169, S1226]
+tags: [ma, magi, household]
+rationale: "Coverage pass 5, C5-05 (docs/reviews/coverage5-medicaid-magi-chp.md): a claim by a filer outside the case had no relationship, so ma_is_dependent_claimed_by_non_parent (CO-563), which tests the claimer's relationship through the tax_dependent edge, read every outside claimer as a non-parent and routed the dependent to the non-filer household: a 20-year-old student living alone and claimed by her parents was a household of one at 0% under the premium tax credit methodology, eligible, where E.1.b puts her in her parents' household, whose income the case does not state (STUDENT-OUT)."

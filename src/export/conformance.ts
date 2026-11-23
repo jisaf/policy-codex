@@ -117,6 +117,9 @@ export const RESOLUTION = {
   ages:
     "age is the age on the determination date; a month rule's age condition reads an age item " +
     "taken in the month evaluated (docs/operators.md, Ages in a month)",
+  numbers:
+    "two numbers within 1e-9 of each other are equal in <, <=, >, >= and =, the tolerance ceil, round " +
+    "and band use (docs/operators.md, Comparison; coverage pass 5, C5-10)",
 } as const;
 
 export interface Suite {

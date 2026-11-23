@@ -23387,6 +23387,38 @@ Document: D-4433
 > An eligible youth is an individual who:
 >
 > A. Is at least eighteen but less than twenty-one years of age or such greater age of foster care eligibility as required by federal law;
+### S4880. Domestic Volunteer Service Act: payments to volunteers do not reduce or eliminate eligibility for any governmental program, unless at or above the minimum wage
+
+Document: D-4490
+
+42 U.S.C. 5044(f)(1) (Legal Information Institute, fetched 2026-11-23; coverage pass 5, C5-15). https://www.law.cornell.edu/uscode/text/42/5044
+
+> (f) Government assistance; eligibility; special limitations
+>
+> (1) Notwithstanding any other provision of law except as may be provided expressly in limitation of this subsection, payments to volunteers under this chapter shall not in any way reduce or eliminate the level of or eligibility for assistance or services any such volunteers may be receiving under any governmental program, except that this paragraph shall not apply in the case of such payments when the Director determines that the value of all such payments, adjusted to reflect the number of hours such volunteers are serving, is equivalent to or greater than the minimum wage then in effect under the Fair Labor Standards Act of 1938 (29 U.S.C. 201 et seq.) or the minimum wage, under the laws of the State where such volunteers are serving, whichever is the greater.
+
+### S4881. Federal income tax: a social security benefit is an amount received by reason of the taxpayer's entitlement, reduced by repayments of benefits made in the year
+
+Document: D-4491
+
+26 U.S.C. 86(d)(1), (d)(2)(A) (Legal Information Institute, fetched 2026-11-23; coverage pass 5 field sweep). https://www.law.cornell.edu/uscode/text/26/86
+
+> (d) Social security benefit
+>
+> (1) In general
+>
+> For purposes of this section, the term "social security benefit" means any amount received by the taxpayer by reason of entitlement to—
+>
+> (A) a monthly benefit under title II of the Social Security Act, or
+>
+> (B) a tier 1 railroad retirement benefit.
+>
+> (2) Adjustment for repayments during year
+>
+> (A) In general
+>
+> For purposes of this section, the amount of social security benefits received during any taxable year shall be reduced by any repayment made by the taxpayer during the taxable year of a social security benefit previously received by the taxpayer (whether or not such benefit was received during the taxable year).
+
 ### S4600. LEAP: eligibility factors, household composition and income among them, are considered as of the date of application
 
 Document: D-86

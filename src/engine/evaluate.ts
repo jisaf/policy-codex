@@ -49,6 +49,25 @@ export function formatWarning(w: EvalWarning): string {
   return `${w.kind}: ${w.identifier}${at}: ${w.detail}`;
 }
 
+/** The tolerance within which two numbers are the same number: the one ceil,
+ *  round and band already use (docs/operators.md, Numbers and Comparison). */
+export const NUMBER_TOLERANCE = 1e-9;
+
+/** A comparison of two numbers with NUMBER_TOLERANCE: numbers within it of
+ *  each other are equal, so a figure exactly at a limit in decimal arithmetic
+ *  is at the limit whatever binary noise binary64 adds (coverage pass 5,
+ *  C5-10: 2,650.90 / (21,640 / 12) is 1.4700000000000002 in binary64). */
+export function compareNumbers(op: string, a: number, b: number): boolean {
+  switch (op) {
+    case "<": return a < b - NUMBER_TOLERANCE;
+    case "<=": return a <= b + NUMBER_TOLERANCE;
+    case ">": return a > b + NUMBER_TOLERANCE;
+    case ">=": return a >= b - NUMBER_TOLERANCE;
+    case "=": return Math.abs(a - b) <= NUMBER_TOLERANCE;
+    default: throw new Error(`not a comparison: ${op}`);
+  }
+}
+
 export function addMonths(m: string, n: number): string {
   const y = +m.slice(0, 4);
   const mo = +m.slice(5, 7);
@@ -739,6 +758,11 @@ export function evaluate(
           if (f) { f.branch = 1; f.role = "right"; }
           const b = g(e[2]);
           if (a === null || b === null) return null;
+          // Two numbers within NUMBER_TOLERANCE of each other are equal, the
+          // tolerance ceil and round use (docs/operators.md, Comparison), so a
+          // figure that lands exactly on a limit in decimal (1.47 * 21640 / 12)
+          // is at the limit although binary64 carries noise past it.
+          if (typeof a === "number" && typeof b === "number") return compareNumbers(op, a, b);
           return op === "<" ? a < b : op === "<=" ? a <= b
             : op === ">" ? a > b : op === ">=" ? a >= b : a === b;
         } finally {
