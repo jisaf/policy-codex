@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) transferred assets into a trust, is a trust beneficiary, or has an income trust."
-precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631)."
-derived: [all, ma_owes_long_term_care_asset_disclosure, [any, has_trust_interest, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], has_trust_interest]], has_income_trust]]
+meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) holds an interest in a trust (ma_holds_trust_interest_in_month, CO-5329: a trust_interest holdings record), or has an income trust."
+precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631). Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): a trust interest is a trust_interest holdings record (CO-5300), in place of has_trust_interest (CO-1577); a person whose holdings are stated with no such record has none. has_income_trust (CO-823) stays a person fact (an income arrangement)."
+derived: [all, ma_owes_long_term_care_asset_disclosure, [any, ma_holds_trust_interest_in_month, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ma_holds_trust_interest_in_month]], has_income_trust]]
 sources: [S1741, S3408]
 implemented: engine
 tags: [verification, ma, ltc, resources]

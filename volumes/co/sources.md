@@ -23406,3 +23406,169 @@ Document: D-80
 > Resources that shall be exempt and not counted toward the resource limit for an individual or married couple include:
 >
 > B. Household goods and personal effects found in or on the primary residence, that the client uses on a regular basis. The client needs household goods for maintenance, use, and occupancy of the premises as a home. This also includes personal effects which are ordinarily worn or carried by the client, or items that have an intimate relation to the client. This does not include effects that the client holds because of the value or as an investment, which are countable as personal property as outlined in Section 3.520.742.
+
+### S4660. SSI: one automobile excluded in determining the resources of an individual and spouse; the equity of any other automobile counted
+
+Document: D-4440
+
+20 CFR 416.1218(b), (b)(1), (b)(2) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1218
+
+> (b) Limitation on automobiles. In determining the resources of an individual (and spouse, if any), automobiles are excluded or counted as follows:
+>
+> (1) Total exclusion. One automobile is totally excluded regardless of value if it is used for transportation for the individual or a member of the individual's household.
+>
+> (2) Other automobiles. Any other automobiles are considered to be nonliquid resources. Your equity in the other automobiles is counted as a resource. (See § 416.1201(c).)
+
+### S4661. SSI: earned income tax credit and child tax credit payments excluded from resources for the 9 months following the month of receipt
+
+Document: D-4440
+
+20 CFR 416.1235(a), (a)(1), (a)(3), (b) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1235
+
+> (a) In determining the resources of an individual (and spouse, if any), we exclude for the 9 months following the month of receipt the following funds received on or after March 2, 2004, the unspent portion of:
+>
+> (1) Any payment of a refundable credit pursuant to section 32 of the Internal Revenue Code (relating to the earned income tax credit);
+>
+> (3) Any payment of a refundable credit pursuant to section 24 of the Internal Revenue Code (relating to the child tax credit).
+>
+> (b) Any unspent funds described in paragraph (a) of this section that are retained until the first moment of the tenth month following their receipt are countable as resources at that time.
+
+### S4662. SSI: cash received to repair or replace a lost, damaged or stolen excluded resource excluded for 9 months
+
+Document: D-4440
+
+20 CFR 416.1232(a) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1232
+
+> (a) Cash (including any interest earned on the cash) or in-kind replacement received from any source for purposes of repairing or replacing an excluded resource (as defined in § 416.1210) that is lost, damaged, or stolen is excluded as a resource. This exclusion applies if the cash (and the interest) is used to repair or replace the excluded resource within 9 months of the date the individual received the cash. Any of the cash (and interest) that is not used to repair or replace the excluded resource will be counted as a resource beginning with the month after the 9-month period expires.
+
+### S4663. SSI: assistance received on account of a presidentially declared major disaster excluded from resources
+
+Document: D-4440
+
+20 CFR 416.1237(a), (b) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1237
+
+> (a) Assistance received under the Disaster Relief and Emergency Assistance Act or other assistance provided under a Federal statute because of a catastrophe which is declared to be a major disaster by the President of the United States or comparable assistance received from a State or local government, or from a disaster assistance organization, is excluded in determining countable resources under § 416.1210.
+>
+> (b) Interest earned on the assistance is excluded from resources.
+
+### S4664. Federal law: a federal tax refund is not a resource for 12 months from receipt in any federally assisted program
+
+Document: D-4441
+
+26 U.S.C. 6409 (retrieved 2026-11-23). https://www.law.cornell.edu/uscode/text/26/6409
+
+> Notwithstanding any other provision of law, any refund (or advance payment with respect to a refundable credit) made to any individual under this title shall not be taken into account as income, and shall not be taken into account as resources for a period of 12 months from receipt, for purposes of determining the eligibility of such individual (or any other individual) for benefits or assistance (or the amount or extent of benefits or assistance) under any Federal program or under any State or local program financed in whole or in part with Federal funds.
+
+### S4665. Medical Assistance, SSI method: one principal place of residence excluded for an individual or a married couple; the individual's ownership interest in the home (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.a, a.i-ii (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. A home, which is any property in which an individual or spouse of an individual has an ownership interest and which serves as the individual’s principal place of residence. The property includes the shelter in which an individual resides, the land on which the shelter is located and related outbuildings.
+>
+> i) Only one principal place of residence is excluded for a single individual or a married couple.
+>
+> ii) The individual’s ownership interest in the home must have an equity value that:
+
+### S4666. Medical Assistance: property excluded while efforts to sell it are made stays in the spousal assessment (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.b.vi (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> vi) If the exemption is used to become eligible under the Spousal Protection rules, the property shall continue to be viewed according to 8.100.7.L while efforts to sell it are being made.
+
+### S4667. Medical Assistance: a self-funded retirement account counts at its gross value less the taxes due, or less 20% when the taxes are not provided (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.N.5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. The value of a self-funded retirement account is determined as follows:
+>
+> a. The gross value of the account, less any taxes due, is the amount that is countable as a resource, regardless of whether any monthly income is being received from the account.
+>
+> b. If the applicant is not able to provide the amount of taxes that are due, the value shall be determined by deducting 20% from the gross value of the account.
+
+### S4668. Medical Assistance, ABD and long-term care: Agent Orange settlement payments and Radiation Exposure Compensation payments are exempt as income or resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6 (lead-in), F.6.s, v (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. For the purpose of determining eligibility for the Long Term Care and Aged, Blind, and Disabled Medical Assistance categories the following shall be exempt from consideration as either income or resources:
+>
+> s. Payments made from the Agent Orange Settlement Fund or any fund established pursuant to the settlement in the In Re Agent Orange product liability litigation, M.D.L. No. 381 (E.D.N.Y).
+>
+> v. Any money received from the Radiation Exposure Compensation Trust Fund, Including the Energy Employees Occupational Illness Compensation Program Act, pursuant to P.L. No. 101-426 as amended by P.L. No. 101-510.
+
+### S4669. Medical Assistance: proceeds from the sale of an exempt home excluded when used within three months to buy another home (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.P.1, P.4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. The net proceeds from the sale of exempt or non-exempt resources are considered available resources.
+>
+> 4. The proceeds from the sale of an exempt home will be excluded to the extent they are intended to be used and are, in fact, used to purchase another home in which the individual, a spouse or dependent child resides, within three months of the date of the sale of the home.
+
+### S4670. Medical Assistance: resources available when owned and convertible to cash and not legally restricted (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.E.3, E.4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. Resources and income shall be considered available when actually available; or, shall be deemed available when all of the following apply to the resources or income of the individual or individual’s spouse:
+>
+> a. has any ownership interest in income or resources or equity value of a resource;
+>
+> b. has the right, authority, or power to convert the resource or income to cash or to cause the resource or income to be converted to cash; and
+>
+> c. is not legally restricted from using the resource or income for his or her support and maintenance.
+>
+> 4. Resources and income shall not be considered unavailable merely because the individual or individual’s spouse may need to initiate legal proceedings to access the resources or income.
+
+### S4671. Medical Assistance: the 60-month look-back date before the date of application (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.F.1.d, F.2.a (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> d. “Look-back period” means the number of months prior to the month of application for long-term care services that the Department will consider for transfer of assets.
+>
+> a. For transfers made before February 8, 2006, the look-back period is 36 months prior to the date of application. For transfers made on or after February 8, 2006, the look-back date is 60 months prior to the date of application.
+
+### S4672. Medical Assistance: no transfer penalty where the transfer was meant at fair value, was for another purpose, or has been returned in whole (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.G.12, G.12.a-c (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 12. No period of ineligibility shall be assessed in any of the following circumstances:
+>
+> a. Convincing and objective evidence is provided that the individual intended to dispose of the resources either at fair market value or for other fair consideration.
+>
+> b. Convincing and objective evidence is presented proving that the resources were transferred exclusively for a purpose other than to qualify or remain eligible for Medical Assistance.
+>
+> c. All of the resources transferred without fair consideration have been returned to the individual.
+
+### S4673. Medical Assistance, ABD and long-term care: income calculated on a monthly basis whatever the period it is received for (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.E.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Income, which includes earned and unearned income, shall be calculated on a monthly basis regardless of whether it is received annually, semi-annually, quarterly or weekly.
+
+### S4674. Medical Assistance, ABD and long-term care: student grants and loans and vocational education aid exempt as income or resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6.aa, bb, cc (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> aa. Any grant or loan to an undergraduate student for educational purposes made or insured under any programs administered by the Commissioner of Education (Basic Education Opportunity Grants, Supplementary Education Opportunity Grants, National Direct Student Loans and Guaranteed Student Loans), Pell Grant Program, the PLUS Program, the BYRD Honor Scholarship programs, and the College Work Study Program.
+>
+> bb. Any portion of educational loans and grants obtained and used under conditions that preclude their use for current living cost (need-based).
+>
+> cc. Financial assistance received under the Carl D. Perkins Vocational and Applied Technology Education Act that is made available for attendance cost shall not be considered as income or resources. Attendance cost includes tuition, fees, rental or purchase of equipment, materials or supplies required of all students in the same course of study, books, supplies, transportation, dependent care, and miscellaneous personal expenses of students attending the institution on at least a half-time basis, as determined by the institution.

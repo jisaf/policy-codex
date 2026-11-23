@@ -237,7 +237,6 @@
         receives_ssi: false
         meets_nursing_facility_level_of_care: true
         institution_entry_date: "2026-10-01"
-        ma_spousal_resources_at_snapshot: 46000
         home_equity: 210000
         is_pregnant: false
         is_blind: false
@@ -249,7 +248,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -402,7 +401,6 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ma_spousal_resources_at_snapshot: 46000
         liquid_resources_value: 44100  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 44100, snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -453,7 +451,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2275,14 +2273,13 @@
         state_of_residence: CO
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
-        ma_spousal_resources_at_snapshot: 46000
         receipts:
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2436,7 +2433,6 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ma_spousal_resources_at_snapshot: 46000
         liquid_resources_value: 44100  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 44100, snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -2486,7 +2482,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -4961,9 +4957,11 @@
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3)
         has_income_trust: false
         liquid_resources_value: 172500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 172500, ssi_countable_resources_couple 180000)
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 54000
+        # Resource records, Medicaid track H1: the transfer dated (the day in June 2025 illustrative), one record every program's look-back reads
+        resource_transfer_date: "2025-06-15"
+        resource_transfer_uncompensated_value: 54000
         transfer_was_exempt: false
         # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
         # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
@@ -4983,7 +4981,8 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 172500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home}
+        - {kind: other_resource, value: 54000, amount_owed: 0, compensation_received: 0, disposed_date: "2025-06-15", ma_transfer_exempt: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -5021,7 +5020,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 7500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 7500)
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -5039,7 +5037,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -12665,7 +12663,6 @@
         ma_ltc_setting_requested: institutional
         has_income_trust: false
         liquid_resources_value: 52500
-        ma_spousal_resources_at_snapshot: 60000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -12686,7 +12683,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -12723,7 +12720,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 7500
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -12744,7 +12740,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -20626,14 +20622,13 @@
         state_of_residence: CO
         institution_entry_date: '2026-10-01'
         meets_nursing_facility_level_of_care: true
-        ma_spousal_resources_at_snapshot: 46000
         receipts:
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-152-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -20782,7 +20777,6 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ma_spousal_resources_at_snapshot: 46000
         liquid_resources_value: 44100
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -20831,7 +20825,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-152-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -21690,7 +21684,6 @@
         state_of_residence: CO
         institution_entry_date: '2026-10-01'
         meets_nursing_facility_level_of_care: true
-        ma_spousal_resources_at_snapshot: 46000
         residence_setting_bed_count: 60
         residence_setting_operated_by_government: false
         receipts:
@@ -21699,7 +21692,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-153-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -21848,7 +21841,6 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ma_spousal_resources_at_snapshot: 46000
         liquid_resources_value: 44100
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -21897,7 +21889,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-153-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -22753,14 +22745,13 @@
         state_of_residence: CO
         institution_entry_date: '2026-10-01'
         meets_nursing_facility_level_of_care: true
-        ma_spousal_resources_at_snapshot: 46000
         receipts:
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-154-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -22909,7 +22900,6 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ma_spousal_resources_at_snapshot: 46000
         liquid_resources_value: 44100
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -22958,7 +22948,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-154-home}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -24725,7 +24715,6 @@
         ma_ltc_setting_requested: institutional
         has_income_trust: false
         liquid_resources_value: 52500
-        ma_spousal_resources_at_snapshot: 60000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -24759,7 +24748,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -24801,7 +24790,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 7500
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -24834,7 +24822,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -28413,7 +28401,6 @@
         ma_ltc_setting_requested: institutional
         has_income_trust: false
         liquid_resources_value: 52500
-        ma_spousal_resources_at_snapshot: 60000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -28433,7 +28420,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -28470,7 +28457,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 7500
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -28490,7 +28476,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -42868,7 +42854,6 @@
         ma_ltc_setting_requested: institutional
         has_income_trust: false
         liquid_resources_value: 52500
-        ma_spousal_resources_at_snapshot: 60000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -42887,7 +42872,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -42924,7 +42909,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 7500
-        ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -42943,7 +42927,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -43535,7 +43519,6 @@
         ma_ltc_setting_requested: institutional
         has_income_trust: false
         liquid_resources_value: 500
-        ma_spousal_resources_at_snapshot: 0
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -43561,7 +43544,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -43598,7 +43581,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         liquid_resources_value: 500
-        ma_spousal_resources_at_snapshot: 0
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -43619,7 +43601,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -55576,13 +55558,12 @@
         court_ordered_spousal_support: 0
         is_surviving_spouse_of_va_pensioner: false
         ma_lottery_winnings_hardship_exemption_granted: false
-        ma_spousal_resources_at_snapshot: 200500
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -55634,13 +55615,12 @@
         adult_financial_program_received: none
         retains_ssi_status_without_payment: false
         liquid_resources_value: 200000
-        ma_spousal_resources_at_snapshot: 200500
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
         holdings:
         - {kind: bank_account, value: 200000}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0

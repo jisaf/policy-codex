@@ -1,0 +1,18 @@
+id: CO-5323
+name: "Medicaid: real property left out only while efforts to sell it are made, in the month"
+identifier: ma_real_property_for_sale_excluded_in_month
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of ma_excluded_real_property_value (CO-4620) the person's real property records leave out only because reasonable efforts to sell the property have been unsuccessful (10 CCR 2505-10 8.100.5.M.2.b), and not also because its sale would cost a co-owner the co-owner's home (M.3.h): the equity, at the person's share, of each such record valued in the month. 8.100.5.M.2.b.vi keeps that property in the spousal assessment: \"If the exemption is used to become eligible under the Spousal Protection rules, the property shall continue to be viewed according to 8.100.7.L while efforts to sell it are being made\" (S4666)."
+precision: "Resource records, Medicaid track H1: read by ma_spousal_resources_at_snapshot (CO-888), which adds it back to each spouse's countable resources at the application month. Property both for sale and a co-owner's home stays left out by M.3.h, which vi does not name."
+derived: [sum_receipts, holdings, [all, ["=", [lookup, ma_ssi_holding_treatment_table, [receipt, kind]], counted_less_real_property_exclusions], [received_in, [month]], [unknown, [receipt, disposed_date]], [not, [otherwise, [receipt, income_producing], false]], [not, [otherwise, [receipt, produces_for_household_use], false]], [otherwise, [receipt, ma_sale_efforts_unsuccessful], false], [not, [otherwise, [receipt, co_owner_would_lose_housing], false]]], ["*", [otherwise, [receipt, share], 1], ["-", [receipt, value], [receipt, amount_owed]]]]
+sources: [S1514, S4666, S1515]
+implemented: engine
+tags: [ma, ltc, resources]
+rationale: "Resource records, step H1 (Medicaid): ma_spousal_resources_at_snapshot (CO-888) is derived from the couple's holdings (decision D8), and 8.100.5.M.2.b.vi keeps property for sale in that assessment, which the supplied figure left to the worker; CO-647's rationale already named the rule."
+tests:
+  # Hand-computed from 8.100.5.M.2.b, b.vi (S1514, S4666) and M.3.h (S1515).
+  - {id: CO-5323-T1, month: "2026-11", as_of: "2026-11-02", title: "a 40,000 lot for sale, efforts unsuccessful, and a 20,000 share of a house a co-owner lives in and would lose: 40,000", given: {holdings: [{kind: real_property, value: 40000, amount_owed: 0, listed_for_sale: true, ma_sale_efforts_unsuccessful: true, co_owner_would_lose_housing: false}, {kind: real_property, value: 20000, amount_owed: 0, co_owner_lives_in_it: true, ma_sale_efforts_unsuccessful: false, co_owner_would_lose_housing: true}]}, expect: 40000}
+  - {id: CO-5323-T2, month: "2026-11", as_of: "2026-11-02", title: "no finding of unsuccessful efforts: 0", given: {holdings: [{kind: real_property, value: 40000, amount_owed: 0, listed_for_sale: true, ma_sale_efforts_unsuccessful: false, co_owner_would_lose_housing: false}]}, expect: 0}
