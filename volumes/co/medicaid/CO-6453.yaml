@@ -1,0 +1,17 @@
+id: CO-6453
+name: "Medicaid: the month's household income for limited Family Planning, as a share of the poverty guideline"
+identifier: ma_family_planning_monthly_household_income_pct_fpl
+kind: derived
+type: rate
+scope: person-month
+program: Medicaid
+meaning: "This person's MAGI household income for the month (ma_magi_household_income, CO-503), before any annualized income (C.4.a) is considered, as a fraction of the monthly poverty guideline for the limited Family Planning household (ma_family_planning_monthly_poverty_guideline, CO-4979): the figure limited Family Planning's band tests first (ma_family_planning_income_in_band, CO-1155), as the MAGI groups test ma_magi_monthly_household_income_pct_fpl (CO-6452) first."
+precision: "Coverage pass 4, C4-05 (2026-11-23): C.4.a's order, as CO-6452 states it: the band is met if this figure or the budget figure (ma_family_planning_household_income_pct_fpl, CO-1153) meets it."
+derived: ["/", ma_magi_household_income, ma_family_planning_monthly_poverty_guideline]
+sources: [S3356, S55]
+implemented: engine
+tags: [ma, magi, income]
+nearest: [CO-1153, CO-6452]
+rationale: "Coverage pass 4, C4-05: the Family Planning band read only the budget figure (CO-1153), which is unknown where C.4.a's facts are not stated; the month's figure lets the band be met on it first."
+tests:
+  - {id: CO-6453-T1, month: "2026-11", as_of: "2026-11-10", title: "2,000 a month, a Family Planning household of three (guideline 2,276.67 a month): 2,000 / 2,276.67 = 87.8%", given: {ma_magi_household_income: 2000, ma_family_planning_monthly_poverty_guideline: 2276.6666666666665}, expect: 0.8784773060029283}

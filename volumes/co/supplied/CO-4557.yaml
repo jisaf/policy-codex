@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether some of the person's earned income is from self-employment, from seasonal employment, or from commission-based employment, so that the monthly amount varies over the year."
-precision: "A statement of the kind of work, not of any program's treatment of it. Medical Assistance annualizes such a person's income when the household is ineligible on monthly income (ma_annualized_household_income, CO-4559, § 8.100.4.C.4.a). Read as false where not stated."
+precision: "A statement of the kind of work, not of any program's treatment of it. Medical Assistance annualizes such a person's income when the household is ineligible on monthly income (ma_annualized_household_income, CO-4559, § 8.100.4.C.4.a). Coverage pass 4, C4-05 (2026-11-23): no default (decision 4 of 2026-11-23). Medicaid does not need it for a person whose earnings records state a business or farm (self-employed, whatever this fact says) or state no earnings at all (none of these earnings) (ma_has_annualizable_earnings, CO-6451); for any other person whose household is over a MAGI standard on the month's income, an unstated value makes the C.4.a test cannot determine. Before, it was read as false where not stated, a default no rule gives, even for a person whose records state a business."
 supplied_by: The application's employment and self-employment questions.
 sources: [S3356]
 tags: [income]
