@@ -48,6 +48,9 @@ tests:
       snap_meets_gross_income_test: true
       snap_meets_net_income_test: true
       snap_meets_resource_limit: true
+      # Resource records, step H1 SNAP: the transfer disqualification reads the members' holdings, which this test
+      # does not state (it states the resource test's result); no member transferred a resource.
+      snap_resource_transfer_disqualification_months: 0
       shelter_cost_monthly: 1400
       snap_utility_allowance_amount: 0
       snap_is_homeless: false

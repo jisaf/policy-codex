@@ -23295,3 +23295,40 @@ Document: D-80
 > Resources that shall be exempt and not counted toward the resource limit for an individual or married couple include:
 >
 > B. Household goods and personal effects found in or on the primary residence, that the client uses on a regular basis. The client needs household goods for maintenance, use, and occupancy of the premises as a home. This also includes personal effects which are ordinarily worn or carried by the client, or items that have an intimate relation to the client. This does not include effects that the client holds because of the value or as an investment, which are countable as personal property as outlined in Section 3.520.742.
+
+### S4690. Colorado SNAP: liquid and non-liquid resources defined; household goods, personal effects and one burial plot per household member exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.409.A-B, 4.410.D.1 (rule version 12718, effective 10/01/2026; resource records, step H1 SNAP, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.409 COUNTABLE RESOURCES
+>
+> A. Liquid Resources
+>
+> Liquid resources are assets such as cash on hand, money in checking or savings accounts, saving certificates stocks or bonds, or lump sum payments as specified in Section 4.405, F.
+>
+> B. Non-Liquid Resources
+>
+> A non-liquid resource is any tangible real property such as buildings, land, and vacation homes.
+>
+> The value of non-liquid resources, unless exempt under Section 4.410 or specified under Section 4.408.1 shall be the equity value. The equity value is the fair market value minus the verified amount owed.
+>
+> ...
+>
+> D. Household Goods, Personal Effects, and Retirement Accounts
+>
+> 1. Household goods, personal effects, including one burial plot per household member, the cash value of life insurance policies, and livestock not excluded as income producing property are exempt resources.
+
+### S4691. Colorado SNAP: non-recurring lump sums counted as resources in the month received and after; loans are not income
+
+Document: D-82
+
+10 CCR 2506-1 4.405.E (last paragraph), 4.405.F.1 (rule version 12718, effective 10/01/2026; resource records, step H1 SNAP, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Non-recurring lump sum payments shall be counted as resources in the month received, unless specifically excluded from consideration as a resource by other federal laws. Any funds remaining in subsequent months shall be considered a resource.
+>
+> F. Loans
+>
+> 1. All loans from private individuals as well as commercial institutions shall not be considered as income, including educational loans.
+
