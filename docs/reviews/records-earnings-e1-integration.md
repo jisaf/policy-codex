@@ -179,7 +179,7 @@ No stored household's expectation changes (npm run check: 3,864 of 3,865, CO-387
 |---|---|
 | db1f7ab | CO-1160 takes out the counted OASDI (CO-6250, new); CO-616 and CO-654 dispositions re-keyed (their fingerprints moved through CO-1160), volumes/co/changes/2026-11-23-receipts-harness-classify.yaml |
 | beadd5b | scripts/receipts/allowed-differences.yaml: the 177 entries; harness results |
-| (last) | this section; the records harness results |
+| 2aaf01b, (last) | this section and its gate figures; the records harness results |
 
 | Gate | Result |
 |---|---|
@@ -188,6 +188,6 @@ No stored household's expectation changes (npm run check: 3,864 of 3,865, CO-387
 | `npx vitest run` | 1,131 tests pass (101 files); no pin moved |
 | `npm run receipts:harness -- --all-programs` | OK: stored 319 households, 170,188 values, 975 differ, all allowed; generated 1,626, 696,597 values, 5,619 differ, all allowed, **0 unexplained**; metamorphic MA-1 to MA-6 0 violations |
 | `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 176,260 values, 1,204 differ, all allowed; generated 476, 201,824 values, 2,623 differ, all allowed; translation 0 stale (319 households, 746 rule tests); boundary lint 0 findings; metamorphic 0 violations |
-| `CHECK_BASE=origin/main npm run check` | see below |
+| `CHECK_BASE=origin/main npm run check` | OK (after the commits): co 4,781 rule tests pass (CO-6250-T1 to T4 and CO-1160-T7 new); household expectations 3,864 of 3,865 (CO-387's CHP+ band, the known failure); change impact 28 flags, 28 dispositioned, 0 open; conformance self-check OK (5,270 cases, 8,806 checked, 0 failed); mwr OK |
 
 Left open: none new. Section 11's "the receipts harness's generated households" is closed by this section.
