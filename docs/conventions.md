@@ -72,7 +72,7 @@ Numbers are IEEE 754 binary64, computed in the order written; see `docs/operator
 | Per month | One value for everyone for each calendar month, such as a national rate. |
 | Global | One value for everyone, as of the determination date. Parameters are Global unless stated. |
 
-Every parameter version and every item's effective range is chosen by the **determination date**, also when a rule evaluates another month (a look-back, a retroactive or future month). A per-person derived fact is computed once per case, on the determination date: `age` is today's age in every month evaluated.
+A parameter's version is chosen by **the month evaluated** (time audit T-3; docs/operators.md, Resolution step 2): in a per-month rule, the version in force on the first day of the month (on the determination date in the determination month), so a retroactive, look-back, application or future month reads its own month's figure; outside a month, the version in force on the determination date. A rule whose text fixes a figure at the determination and applies it to every month it evaluates says so with `as_of` (P25): `[as_of, cccap_parent_fee_second_band_rate, [det_date]]`. An item's own effective range is chosen by the determination date. A per-person or global derived fact is computed once per case, on the determination date, with no month in context: `age` is the age on the determination date wherever it is read.
 
 ### Completeness
 
@@ -202,7 +202,7 @@ Persons and relationships
 Parameters
 
 - P24 `[parameter table] for [key]`
-- P25 `[parameter] as of [date]` (`as_of`) selects the version in effect on that date, for a rule that applies a figure from a date other than the determination date (the poverty guideline a program adopts each July 1 or October 1, read from the one federal table). Every other read of a parameter is as of the determination date (see Scopes). Implemented in the hard-coded numbers fix round
+- P25 `[parameter] as of [date]` (`as_of`) selects the version in effect on that date, for a rule that applies a figure from a date other than the determination date (the poverty guideline a program adopts each July 1 or October 1, read from the one federal table). Every other read of a parameter is in the month evaluated, or on the determination date outside a month (see Scopes); a rule that fixes a figure at the determination writes `[x] as of [the determination date]`. Implemented in the hard-coded numbers fix round
 
 Added during the work-requirements spike, because the policy needed them
 
@@ -319,7 +319,7 @@ Every item carries `Effective`. A policy change produces a new version of an ite
 Two kinds of date range are in the ledger, with different ends:
 
 - An item's own `effective` range: `from` is the first day in force and `to` the **last** day in force (inclusive; `to: present` never ends). On a determination date outside it the item is unknown, its rule does not run, and a value stated for it is ignored.
-- A parameter's `versions`: each `from` is the first day the value is in force and `to` the first day it is **not** (exclusive), so consecutive versions share a date. A determination date no version covers gives unknown (reported as a warning).
+- A parameter's `versions`: each `from` is the first day the value is in force and `to` the first day it is **not** (exclusive), so consecutive versions share a date. A date no version covers (the determination date, or the first day of a month evaluated) gives unknown (reported as a warning).
 
 Date logic belongs in these ranges, not inside a derivation: a rule that changes on a date is two versions, not a comparison with a literal date.
 

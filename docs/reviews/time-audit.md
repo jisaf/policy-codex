@@ -207,3 +207,30 @@ The expectations in these cases that already pass are the controls: CO-530 Octob
 ## Validation
 
 `npm run typecheck`, `npm test`, and `CHECK_BASE=origin/main npm run check` all pass. The check reports co rule tests 4104/4104, household expectations 3729/3759 (the 30 failures are all listed in known-failures.json: 16 existing and 14 added here), and the conformance self-check passes 8,023/8,023.
+
+## Fix round (step 7 of the plan), 2026-11-23
+
+Each finding's disposition, in the order the fixes were committed. Every engine change was measured first: every rule test and every stored household expectation (7,862 units) was evaluated under the old and the new resolution, with every derived value and every parameter read recorded, and each value that moved is listed with the text that explains it.
+
+### T-3: parameter versions in the month evaluated (fixed)
+
+The contract, decided from the programs' texts (docs/operators.md, Resolution step 2): in a month-scoped evaluation a versioned parameter takes the version in force on the first day of the month (on the determination date in the determination month); outside a month, on the determination date. A rule whose text fixes a figure at the determination says so with `as_of`.
+
+| Program | Past month (retroactive, look-back) | Future month (prospective) | Basis |
+|---|---|---|---|
+| Medicaid, CHP+ | its own month's figure | its own month's figure | 42 CFR 435.915(a)(2) "would have been eligible ... at the time" (S218); 8.100.4.G.1 month by month (S3351); 8.100.5.C.1 (ABD, from the first day of the month eligible) |
+| SNAP | its own month's figure | its own month's figure | each figure's "effective October 1" version (S738-S742) and the month's allotment; a lottery prize is compared with the limit in force when received (273.11(r)(2)) |
+| Colorado Works, Adult Financial | its own month's figure | its own month's figure | standards dated by State fiscal year and by January 1 (S414, S700, S706) for the month's grant; CW boarder income deducts the month's allotment (3.605.2.E.4) |
+| CCCAP | determination date (fee, entry limit) | determination date (fee, entry limit) | the fee is assessed at referral, application or redetermination and is not raised during the twelve months (3.124.C, S2850); the entry limit is the application or redetermination test (3.111.H.1.a). The exit limit (85% SMI) is the month's |
+| LEAP | determination date | determination date | the heating season's limit table (3.752.22.D) and the guideline on the determination date (OQ-253) |
+| Medicaid community engagement, renewal interval | determination date | determination date | assessed by a determination made once the requirement is in force; the interval is dated by when the redetermination is scheduled |
+
+Made explicit before the engine changed (no answer moved): CO-1289, CO-986, CO-995, CO-1003, CO-1278, CO-1975 and CO-2455 read their figures `as of` the determination date; CO-379-T2 and CO-380-T1 test the FY2026 SNAP figures in September rather than in October read on September 30.
+
+Measured moves (old resolution to new), all explained:
+
+| Unit | Old | New | Explanation |
+|---|---|---|---|
+| CO-532 p1 ma_ssi_related_category @2026-11, @2026-12 | aged | none | the fix: the 2026 retroactive months read the 2026 SSI rate, 994 (S319), not 2027's 1,029; inside them ssi_federal_benefit_rate_individual moves 1,029 to 994 and ssi_student_earned_income_exclusion_annual 10,080 to 9,730 |
+
+Before the `as_of` refactor, five more units moved, and each was a rule whose text fixes the figure at the determination: CO-1289-T8 (the September 2028 fee for July 2028: 45.27 would have become 131.27 under 3.124.P), CO-1975-T5 (January 2027 of a December 2026 determination), CO-176 leap_is_eligible @2026-11 and @2026-12 (the October 2026 income month has no season table before November 1), and CO-379-T2 and CO-380-T1 (October figures of a September 30 determination). CO-379-T3 now states the October figure ($769) for that case.

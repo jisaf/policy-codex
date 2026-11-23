@@ -358,9 +358,21 @@ export function evaluate(
     emit(d);
   }
 
-  function paramOf(it: Item): unknown {
+  const detMonth = c.det.slice(0, 7);
+  /** The date a versioned parameter is read on in a context (docs/operators.md,
+   *  Resolution step 2): with no month in context, the determination date; in
+   *  a month-scoped evaluation, a day of that month: the determination date in
+   *  the determination month, otherwise the first day of the month. Each month
+   *  is judged by the figures in force in it (a retroactive month, a look-back
+   *  month, a future month of a case); a rule that applies another date's
+   *  figure says so with `as_of`. */
+  function versionDate(m: string | null): string {
+    return m == null || m === detMonth ? c.det : m + "-01";
+  }
+
+  function paramOf(it: Item, m: string | null): unknown {
     if (it.identifier in c.params) return c.params[it.identifier];
-    return paramInForce(it, c.det);
+    return paramInForce(it, versionDate(m));
   }
 
   function value(id: string, p: string | null, m: string | null, P: string | null): unknown {
@@ -411,18 +423,20 @@ export function evaluate(
     // states nothing on that date, so it is unknown and its rule never runs.
     if (!inForce(it, c.det)) return seen(null, "not-in-force");
     if (it.kind === "parameter") {
-      // A versioned parameter with no version on the determination date has
-      // no value; that unknown is reported, never silent.
+      // A versioned parameter is read on the version date of the month in
+      // context (the determination date outside one). One with no version on
+      // that date has no value; that unknown is reported, never silent.
+      const on = versionDate(m);
       if (
         !(it.identifier in c.params) && Array.isArray(it.versions) &&
-        !versionInForce(it, c.det)
+        !versionInForce(it, on)
       ) {
-        raise("no-version", `no version in force on ${c.det}`, {
-          identifier: id, person: null, month: null,
+        raise("no-version", `no version in force on ${on}`, {
+          identifier: id, person: null, month: on === c.det ? null : m,
         });
         return seen(null, "no-version");
       }
-      return seen(paramOf(it), "parameter");
+      return seen(paramOf(it, m), "parameter");
     }
     if (sc === "case") {
       if (id === "determination_date") return seen(c.det, "case");
@@ -480,7 +494,10 @@ export function evaluate(
     const outerThatMonth = thatMonth;
     thatMonth = null;
     try {
-      v = ev(it.derived ?? null, p, m, P);
+      // A person or global fact is one value per case, memoised without a
+      // month, so its rule runs with no month in context (its parameters are
+      // read on the determination date) whichever month asked for it first.
+      v = ev(it.derived ?? null, p, sc === "person-month" ? m : null, P);
       if (typeof v === "number" && !Number.isFinite(v)) {
         raise("non-finite", `the rule produced ${v}`);
         v = null;

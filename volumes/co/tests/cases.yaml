@@ -58991,7 +58991,7 @@
 
 - id: CO-532
   title: "Time audit T-3: retroactive months in 2026 on a January 2027 application read the 2027 SSI benefit rate"
-  # Time audit T-3 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-3.
+  # Time audit T-3 (docs/reviews/time-audit.md). Passes since the fix round: a parameter is read in the month evaluated.
   # p1, 76, single, Medicare Part A, savings 1,000 (no burial funds, no other property). Social Security 1,020 a month in
   # November and December 2026, 1,048 from January 2027 (the cost-of-living increase). Applies 2027-01-05 asking for
   # retroactive coverage; every requirement other than income is met throughout.
@@ -59002,8 +59002,8 @@
   # - November 2026: 1,020 - 20 = 1,000 > 994 (the 2026 rate, S319) -> not SSI-related eligible -> none.
   # - December 2026: the same -> none.
   # - January 2027: 1,048 - 20 = 1,028 <= 1,029 (the 2027 rate, S1712) -> aged.
-  # The codex chooses every parameter version by the determination date (2027-01-12), so November and December are
-  # compared with 1,029 and come out aged.
+  # Before the fix the codex chose every parameter version by the determination date (2027-01-12), so November and
+  # December were compared with 1,029 and came out aged.
   as_of: '2027-01-12'
   relationships: []
   persons:

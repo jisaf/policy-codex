@@ -236,7 +236,8 @@ describe("months", () => {
   it("at rebinds the month but not the determination date", () => {
     expect(run(["at", "w", "2026-02"], { w: { "2026-02": 7 } })).toBe(7);
     expect(run(["at", ["det_date"], "2025-02"], {}, { asOf: "2026-06-01" })).toBe("2026-06-01");
-    expect(run(["at", "ver", "2027-06"], {}, { asOf: "2026-06-01" })).toBe(10);
+    // ... but the parameters read under it take that month's version (T-3).
+    expect(run(["at", "ver", "2027-06"], {}, { asOf: "2026-06-01" })).toBe(11);
   });
   it("month arithmetic", () => {
     expect(run(["month_after", "2026-12"], {})).toBe("2027-01");
@@ -279,9 +280,46 @@ describe("dates", () => {
 });
 
 describe("parameters and tables", () => {
-  it("a parameter version is chosen by the determination date; `to` is exclusive", () => {
+  it("outside a month, a parameter version is chosen by the determination date; `to` is exclusive", () => {
     expect(run("ver", {}, { asOf: "2026-12-31" })).toBe(10);
     expect(run("ver", {}, { asOf: "2027-01-01" })).toBe(11);
+  });
+  it("in a month, the version in force in that month (time audit T-3, Resolution step 2)", () => {
+    // A 2026 retroactive month of a 2027 determination reads the 2026 figure;
+    // a 2027 month of a 2026 determination reads the 2027 figure.
+    expect(run("ver", {}, { asOf: "2027-01-12", month: "2026-12" })).toBe(10);
+    expect(run("ver", {}, { asOf: "2026-12-15", month: "2027-01" })).toBe(11);
+    // The determination month reads the determination date's version.
+    expect(run("ver", {}, { asOf: "2027-01-12", month: "2027-01" })).toBe(11);
+    // `at` and `each` move the month, and the version with it.
+    expect(run(["at", "ver", "2026-11"], {}, { asOf: "2027-01-12", month: "2027-01" })).toBe(10);
+    expect(run(["count_months", ["months_from_to", "2026-11", "2027-02"], ["=", "ver", 11]], {},
+      { asOf: "2027-01-12", month: "2027-01" })).toBe(2);
+    // as_of names its own date whatever the month.
+    expect(run(["as_of", "ver", ["det_date"]], {}, { asOf: "2027-01-12", month: "2026-12" })).toBe(11);
+  });
+  it("in a month no version covers, the parameter is unknown and reported for that month", () => {
+    const ix = buildIndex([...base, {
+      id: "T-1", name: "t", identifier: "t", kind: "derived", type: "money", scope: "person-month",
+      program: "All", meaning: "m", derived: "ver",
+    }]);
+    const out: EvalWarning[] = [];
+    const v = evaluate(ix, makeCase(ix, { id: "T", as_of: "2026-03-01" }), "t", "p1", "2025-12", undefined,
+      (w) => out.push(w));
+    expect(v).toBe(U);
+    expect(out.map((w) => [w.kind, w.identifier, w.month, w.detail]))
+      .toEqual([["no-version", "ver", "2025-12", "no version in force on 2025-12-01"]]);
+  });
+  it("a person item's rule runs with no month in context: one value per case, on the determination date", () => {
+    const ix = buildIndex([
+      ...base,
+      { id: "T-2", name: "fig", identifier: "fig", kind: "derived", type: "money", scope: "person",
+        program: "All", meaning: "m", derived: "ver" },
+      { id: "T-1", name: "t", identifier: "t", kind: "derived", type: "money", scope: "person-month",
+        program: "All", meaning: "m", derived: ["+", "fig", ["at", "ver", ["month"]]] },
+    ]);
+    const c = makeCase(ix, { id: "T", as_of: "2027-01-12" });
+    expect(evaluate(ix, c, "t", "p1", "2026-12")).toBe(11 + 10);
   });
   it("lookup of a key with no row is unknown; a number key reads the string row", () => {
     expect(run(["lookup", "tbl", 2], {})).toBe(200);
