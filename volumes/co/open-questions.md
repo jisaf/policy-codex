@@ -2704,7 +2704,7 @@ Probe hand-check (docs/reviews/probe-handcheck-cash-food-care.md, CO-345; fix ro
 
 Class: state policy choice
 Owner: Child care policy owner (CDEC)
-Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. It is averaged over twelve months under 3.111.H.4.i only when the case states it as a lump sum (lump_sum_received, "a similar one-time payment"); stated only as other unearned income it is counted in the month received.
+Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. It is averaged over twelve months under 3.111.H.4.i only when the case states it as a lump sum ("a similar one-time payment" in the lump-sum fact); stated only as other unearned income it is counted in the month received.
 
 Checked 2026-11-22: 8 CCR 1403-1 3.103.S, 3.111.I and 3.111.J (D-87, version effective 2026-08-14). Neither I nor J names a diversion payment, and S defines cash assistance without saying how a payment that is not cash assistance is treated. Checked 2026-11-23: 3.111.H.4.h-i (D-87, same version). H.4.i lets a non-recurring lump sum be averaged "whichever is most beneficial" but does not define "non-recurring" or say whether a diversion payment is one; 3.103.S calls a county diversion payment not cash assistance without saying whether it recurs.
 

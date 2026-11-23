@@ -29,23 +29,23 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("counts the Medicaid policy owner's questions once: 40 open and 3 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(40);
+    expect(med.open.length).toBe(41); // + OQ-900 (beneficiary deed and the MSPs, fix round 2026-11-23)
     expect(med.partly.length).toBe(3);
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("40 open questions you own, and 3 partly settled");
+    expect(ownedPhrase(med)).toBe("41 open questions you own, and 3 partly settled");
   });
 
   it("counts the Cash programs policy owner's: 25 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([25, 4]); // + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
+    expect([cash.open.length, cash.partly.length]).toEqual([26, 4]); // + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([46, 5]);
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(51);
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([47, 5]); // + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(52); // + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {
@@ -71,17 +71,18 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 18 stored households and reaches 41", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 19 stored households and reaches 42", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up)
-    expect(reach).toHaveLength(41); // + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 18 of ${vol.cases.length} stored households; it reaches 41`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432", "CO-488"]); // + CO-488 (CW-18 caretaker hierarchy, fix round 2026-11-23); + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up)
+    expect(reach).toHaveLength(42); // + CO-488 (fix round 2026-11-23); + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 42`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 33 and reaches 67", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(33); // + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(67); // + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up)
+  it("the children's Medicaid income limit (CO-191) is read by 33 and reaches 73", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(33); // unchanged by the fix round 2026-11-23
+    // + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(73); // + CO-484, CO-488, CO-489, CO-490, CO-491, CO-492 (new stored cases of the fix round 2026-11-23); + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up)
   });
 
   it("every household that reads an item is one it reaches", () => {
@@ -100,7 +101,7 @@ describe("unverified upstream", () => {
     expect(citing.length).toBe(6);
     for (const it of citing) expect(citedUnverified(it, unverified).length).toBeGreaterThan(0);
     const tainted = restingOnUnverified(engine, unverified);
-    expect(tainted.size).toBe(50);
+    expect(tainted.size).toBe(63); // + 13 items added or rewired by the fix round 2026-11-23 that now read, directly or through what they read, an item citing an unverified excerpt
     for (const it of citing) {
       expect(tainted.has(it.identifier)).toBe(true);
       for (const r of engine.impact([it.identifier])) expect(tainted.has(r)).toBe(true);

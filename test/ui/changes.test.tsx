@@ -73,7 +73,7 @@ describe("counts for the Changes place", () => {
   it("lists every month with changes, each with changesInMonth's total", () => {
     const months = changeMonths(engine, vol);
     const at = (m: string) => months.find((x) => x.month === m)?.total;
-    expect(at("2026-10")).toBe(26);
+    expect(at("2026-10")).toBe(27); // + CO-118's FY2027 version from 2026-10-01 (fix round 2026-11-23)
     expect(at("2026-11")).toBe(5);
     expect(at("2026-12")).toBeUndefined();
     for (const m of months.slice(-6)) expect(m.total).toBe(changesInMonth(engine, vol, m.month).total);
@@ -86,13 +86,13 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 19 and reaches 74", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 19 and reaches 76", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
     // The five Adult Financial coverage-round households (CO-165 to CO-169) are reached through af_barred_by_colorado_works.
-    expect([r.read.length, r.reach.length]).toEqual([19, 74]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
+    expect([r.read.length, r.reach.length]).toEqual([19, 76]); // fix round 2026-11-23: + 2 new stored cases reached; Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
   });
 
   it("$100 for the $90 disregard moves 22 steps on the way (countable income) and no outcome", () => {
@@ -181,8 +181,8 @@ describe("the proposal's data", () => {
 describe("What takes effect", () => {
   it("October 2026: Dana finds the federal immigrant restriction and compares it with the previous version", async () => {
     const host = show("#/co/changes?month=2026-10");
-    expect(host.querySelector("h2.monthhead")!.textContent).toMatch(/October 2026: 26 changes took effect/);
-    expect(host.querySelectorAll("li.change")).toHaveLength(26);
+    expect(host.querySelector("h2.monthhead")!.textContent).toMatch(/October 2026: 27 changes took effect/);
+    expect(host.querySelectorAll("li.change")).toHaveLength(27); // + CO-118 (fix round 2026-11-23)
     expect(host.querySelector('li.change[data-doc="D-82"]')).toBeTruthy();
     const row = host.querySelector(`li.change[data-item="${IMMIGRANT}"]`)!;
     expect(row.querySelector(".fromto")!.textContent).toBe("No → Yes");
@@ -202,7 +202,7 @@ describe("What takes effect", () => {
     expect(rows).toContain(IMMIGRANT);
     expect(rows.length).toBeLessThan(24);
     const opts = [...host.querySelectorAll(".monthpick select")[0].querySelectorAll("option")].map((o) => o.textContent);
-    expect(opts).toContain("October 2026 (26)");
+    expect(opts).toContain("October 2026 (27)");
     expect(opts.some((o) => /^November 2026 \(5\)/.test(o!))).toBe(true);
   });
 
@@ -235,7 +235,7 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     // The draft reaches the effect panel after the editor's effect runs.
     await until(() => Boolean(effect.querySelector(".reach")));
-    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 74.`);
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 76.`);
     await until(() => effect.getAttribute("aria-busy") === "false");
     expect(effect.textContent).toMatch(/22 stored results in \d+ households would change/);
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);
