@@ -49643,6 +49643,11 @@
   # income is self-employment income (4.403.2) and questionable income is verified (4.506). p1 has no wages, $600 of room
   # and board payments, and his earned-income attestation is questionable. Rule (the fix round's statement): earned-income
   # verification true (before the fix: false). Fixed in b4e12db.
+  # Earned-income records, step E1 (SNAP; finding E0-F1): the $600 of room and board was stated twice, as
+  # room_and_board_payments_received and as other taxable unearned income (the retired other_unearned_income_taxable
+  # 600, its receipt other_taxable 600), though p1 has "no wages, $600 of room and board payments". It is stated once,
+  # as the boarder record: p1's receipts are an empty list and the retired fact is 0. A boarder's payments are
+  # self-employment income (10 CCR 2506-1 4.403.2, S2963), not also unearned income.
   as_of: "2027-02-10"
   case_facts:
     home_heating_cost_arrangement: none
@@ -49785,8 +49790,7 @@
         is_enrolled_in_nslp_school: false
         room_and_board_payments_are_foster_care: false
         self_employment_is_farming: false
-        receipts:
-        - {kind: other_taxable, amount: 600}
+        receipts: []
         earnings:
         - {kind: boarder_payments, amount: 600, provides: room_and_board, boarders: 1}
         - {kind: business_cost_boarder_provision, amount: 200, provides: room_and_board}
