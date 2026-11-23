@@ -14,7 +14,9 @@
 # The holdings schema gains proceeds_source (request R-4; required where read, read by no rule until OQ-1240 is
 # answered). It moves the fingerprint of every decision below the holdings list, so the dispositions of CO-613, CO-616,
 # CO-654, CO-659, CO-946, CO-953, CO-1203 and CO-2308 are re-keyed in place again, their reasons unchanged: no rule
-# reads the new field, and no flagged item's rule, excerpt or answer changes.
+# reads the new field, and no flagged item's rule, excerpt or answer changes. After merging coverage pass 4 for SNAP
+# (24c5d36), the same dispositions, and CO-407's, are re-keyed once more to the merged ledger's fingerprints, their
+# reasons unchanged (each round's change is one its own record dispositions).
 date: 2026-11-23
 summary: "Holdings H1 integration: the whole-phase baseline, every difference classified, the SSI method's investment property at equity (CO-5320), CO-300 read by the SSI method, when_absent fields not reported missing where the reader gives their meaning, the source of replacement proceeds as a holdings field (R-4)."
 impact: []
