@@ -143,3 +143,51 @@ Metamorphic relations (whole phase, 673 households): ME-1 split 0 violations for
 - CO-1356 has no reader (E2).
 - The receipts harness's generated households (section 8).
 - R-2 (job identifier) and the combat-zone field (OQ-1123, OQ-1140): recorded, not added.
+
+## 12. Receipts harness after the generated households state earnings
+
+The product owner approved, on 2026-11-23, that `npm run receipts:harness -- --all-programs` translate the generated households' earned facts into earnings records on the new side (scripts/receipts/harness.ts, a3ffd86, as section 8 described), and EM-R1 and E1-G were removed. The run then had stored households 0 unexplained and generated households 650 unexplained, in three generated variants and one figure: the Disabled Adult Child income on every base with a deemed child (312), and, on most bases, uniformed services special pay (234) and board-only and room-only payments (104). Each was classified by the method of section 3; the entries are in scripts/receipts/allowed-differences.yaml, section "Receipts harness after the generated households state earnings" (177 entries, each naming the generated base, the variant, the person, the figure, its month and both values where they are one; no `/^G-/` with a whole-program figure pattern).
+
+### 12.1 Classification
+
+| Class | Kind | Values | What |
+|---|---|---|---|
+| EI-DAC | (b) E1-M6 (Medicaid track), EM-R4; D-M2 fixed | 312 | ma_dac_countable_income (CO-1160) is the SSI-related countable income with the current OASDI taken out (8.100.6.J.1.c, S626; 8.100.5.H.3-4, S3405): the parental income deemed to a child and the Ineligible Child Allocation are now in it. Checked value by value: the new figure equals ma_ssi_countable_income for the 310 persons with no OASDI, and that income less the counted OASDI for the 2 with OASDI; cannot determine where the SSI-related income is (the variant leaving the other non-taxable income unstated; the CCCAP base's child, cannot determine on both ledgers for the SSI method). Bases: MA deeming parent p1, CHP parent p2, CCCAP p3, MA CBWD child p3 (and p1, whose allocation reads the child's income, on the unstated variant), and the lottery, lump-sum and unstated variants of the SNAP, CW applicant, CW stepparent and MA MAGI bases. EM-R1 hid them while the deemed income could not be determined |
+| EI-AF1 | (b) AF-1 (Adult Financial track) | 90 | a board-only or room-only payment is Adult Financial earned income less provision costs (3.520.783.C.2.b-d, S4380), no longer unearned: af_unearned_income_other_than_ssi and af_relative_deemable_unearned_income 300 to 0, countable income with the $65 and one half (the SNAP base's p1: 747.50 to 617.50; the OAP clients 280 to 107.50); the new self-employment income is verified (3.520.783.E), which is not stated |
+| EI-CW4 | (b) CW-4 (Colorado Works track) | 14 | the same payments, Colorado Works earned income on both ledgers (3.605.2.E.4.c-d), are now verified as earned income (3.604.3.B.2.e); not stated |
+| EI-SP1 | (b) design 2.3 and D2, OQ-1020 | 137 | special pay is earnings (the translator copies the receipt; every receipt table reads the row from earnings): SNAP earned +300 and unearned -300 (pay outside a combat zone, 273.9(b)(1)(i); combat_zone defaults to false, CO-5100, D3); Colorado Works, CCCAP and LEAP unearned 300 to 0, their totals unchanged; CCCAP leaves out a household child's earnings (3.111.J.1): the CBWD base's household income 5,900 to 5,600 |
+| EI-SP2, EI-SP2b | (b) the same, with Colorado Works' disregards | 12 + 6 | the $90 (3.605.1.A.4.a: 300 to 210) and, at application, the new earnings disregard (3.606.2.A.1: payment countable income 300 to 0, the CW applicant's grant 123 to 320); on the Medicaid bases, which do not state receives_tanf_cash, the countable earned income (CO-907) cannot be determined (decision 4) |
+| EI-SP3 | (b) the same; decision 4 | 34 | earned income to verify: SNAP (CO-1376), Colorado Works (CO-3879), CCCAP and its hours (CO-1445, CO-1684), LEAP (CO-1455), Adult Financial (CO-3882) |
+| EI-SP4 | (b) the same | 45 | no longer unearned income to verify (SNAP, Colorado Works, CCCAP, LEAP): each element false where it was cannot determine; the CCCAP base's verification status "complete" |
+| **Total** | | **650** | (a) 1 value, fixed and then in EI-DAC; (b) 650; (c) 0 |
+
+The tracks recorded the special-pay move in their reviews (records-earnings-snap.md section 2, records-earnings-cash.md sections 2 and 3, records-earnings-care-energy.md sections 2 and 3; EM-R2 for Medicaid), but no records-harness class names it: the records harness's generated households state no special pay. Section 8 counted these values among the moved receipt kinds.
+
+**The verification-pending figures.** Every af/cw/snap/leap/cccap `*_earned_income_verification_is_pending` that went from false to cannot determine is a generated household that now has earned income it had not before: the special pay (EI-SP3) or the boarder payment (EI-AF1, EI-CW4), each read as earnings by design 2.3. The rule asks for the document (each program verifies the earned income it counts; Adult Financial's CO-3882 verifies every pay row as wage information, 3.520.5.A.2-3, its exempt rows included, as it verified wages_gross with its exempt parts before E1), and the generated bases, stated in the old facts, state no earned-income or hours document for a person who had no earnings. That is decision 4, not a translation gap: the translation states exactly what the old facts meant (the receipt kinds that are earnings, copied with their amount; nothing for a person who states no earned fact). The unearned-income elements move the other way (EI-SP4). No translator or generator change was needed: no difference was a translator artefact (c), and no generated base was inconsistent.
+
+### 12.2 The real defect fixed (classification a)
+
+**CO-1160 took a PASS set-aside of the OASDI out twice.** ma_dac_countable_income subtracted the gross OASDI (ma_social_security_receipts, CO-5515) from the unearned income counted (CO-2281), from which the OASDI's PASS set-aside had already been left out (ma_ssi_unearned_receipts, CO-5511; 8.100.5.F.6.q, S3404). 8.100.6.J.1.c.i disregards the current OASDI and tests the other countable income, so the set-aside came off twice and as much of the other income with it. Met on the MA CBWD base's "Social Security 300 of which PASS 100" variant: the child of 10 with $1,763.50 of parental income deemed read 1,643.50 where the income other than the OASDI is 1,763.50 - 20 = 1,743.50 (and with $300 of OASDI and no PASS, 1,743.50 already). The figure now takes out ma_ssi_counted_social_security_receipts (CO-6250, new): the current OASDI less its set-aside. Rule tests by hand: CO-6250-T1 ($300 with $100 set aside: 200), T2 (a retroactive payment is not current OASDI: 1,100), T3 (none: 0), T4 (receipts not stated: cannot determine); CO-1160-T7 (the variant's figures: 1,963.50 - 200 - 20 = 1,743.50). The Pickle and Medicare Savings Program cost-of-living disregards (CO-6052, CO-6053, CO-3627, CO-5221) keep the gross benefit, which they compare as an amount.
+
+### 12.3 Answer changes
+
+No stored household's expectation changes (npm run check: 3,864 of 3,865, CO-387's CHP+ band the known failure); the CO-1160 fix changes no stored value (evaluated on every stored household against a3ffd86: ma_dac_countable_income, ma_dac_eligible, ma_disabled_widow_eligible, ma_ssi_income_test_status and ma_ssi_related_category, 4,195 values, none differ; the two stored persons with a PASS of OASDI have no other unearned income, so the floor at 0 gave the same figure). Generated households, against c29d326: the CW applicant base with special pay, cw_grant_amount 123 to 320 (both persons); the CCCAP base with special pay, cccap_verification_status cannot determine to "complete"; the earned- and unearned-income verification elements above; the MA CBWD base's PASS variant, the Disabled Adult Child income 1,743.50 (it read 1,643.50 before the fix). The Disabled Adult Child figure is read by CO-1161, CO-1162 and CO-5516; none of the 650 values is a Medicaid outcome.
+
+### 12.4 Commits and gates
+
+| Commit | What |
+|---|---|
+| db1f7ab | CO-1160 takes out the counted OASDI (CO-6250, new); CO-616 and CO-654 dispositions re-keyed (their fingerprints moved through CO-1160), volumes/co/changes/2026-11-23-receipts-harness-classify.yaml |
+| beadd5b | scripts/receipts/allowed-differences.yaml: the 177 entries; harness results |
+| 2aaf01b, (last) | this section and its gate figures; the records harness results |
+
+| Gate | Result |
+|---|---|
+| `node scripts/sync-manifest.mjs co` | written (medicaid 344 items) |
+| `npm run typecheck` | passes |
+| `npx vitest run` | 1,131 tests pass (101 files); no pin moved |
+| `npm run receipts:harness -- --all-programs` | OK: stored 319 households, 170,188 values, 975 differ, all allowed; generated 1,626, 696,597 values, 5,619 differ, all allowed, **0 unexplained**; metamorphic MA-1 to MA-6 0 violations |
+| `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 176,260 values, 1,204 differ, all allowed; generated 476, 201,824 values, 2,623 differ, all allowed; translation 0 stale (319 households, 746 rule tests); boundary lint 0 findings; metamorphic 0 violations |
+| `CHECK_BASE=origin/main npm run check` | OK (after the commits): co 4,781 rule tests pass (CO-6250-T1 to T4 and CO-1160-T7 new); household expectations 3,864 of 3,865 (CO-387's CHP+ band, the known failure); change impact 28 flags, 28 dispositioned, 0 open; conformance self-check OK (5,270 cases, 8,806 checked, 0 failed); mwr OK |
+
+Left open: none new. Section 11's "the receipts harness's generated households" is closed by this section.
