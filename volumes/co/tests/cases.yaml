@@ -27655,6 +27655,8 @@
         sebt_other_documented_categorical_basis: false
         is_head_start_child: false
         is_individually_certified_for_free_or_reduced_price_meals: false
+        # Decision 4 of 2026-11-23 (CO-2708 reads a child's Colorado Works receipts with no default): "no SNAP or Colorado Works": no receipts.
+        receipts: []
       month_defaults:
         receives_snap: false
   expect:
