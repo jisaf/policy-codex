@@ -92,10 +92,11 @@
   identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
   class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
 
-# M5: a household written in receipts alone after phase 1 (CO-460, the spike's family F3) states no
-# scalar unearned-income fact, so the baseline's Medicaid could not determine its income; Medicaid now
-# reads the receipts. Not a change of rule: the receipts are the household's only statement.
-- case: CO-460
+# M5: a household written in receipts alone after phase 1 (CO-458 to CO-460, the spike's families F1
+# to F3) states no scalar unearned-income fact, so the baseline's Medicaid could not determine its
+# income; Medicaid now reads the receipts. Not a change of rule: the receipts are the household's only
+# statement.
+- case: /^CO-(458|459|460)$/
   identifier: /^(ma_|chp_)/
   old: unknown
   class: M5 household in receipts alone now read by Medicaid

@@ -1,11 +1,11 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 86 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks, Medicaid, CHP+; 75 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 319 | 157263 | 16 | 5 | 16 | 0 |
-| generated households | 1071 | 399703 | 107 | 37 | 107 | 0 |
+| stored households | 319 | 124576 | 23 | 7 | 23 | 0 |
+| generated households | 1071 | 312721 | 130 | 38 | 130 | 0 |
 
 Stored households written in receipts alone (no old statement to compare; checked by their expectations): none.
 
@@ -13,10 +13,10 @@ Stored households written in receipts alone (no old statement to compare; checke
 
 - M2 VA Aid and Attendance stated inside a pension is a veterans' benefit: 2 household(s): CO-139, CO-214
 - M6 a training allowance stated as taxable income is not MAGI income pending OQ-970: 2 household(s): CO-219, CO-220
-- M5 household in receipts alone now read by Medicaid: 1 household(s): CO-460
+- M5 household in receipts alone now read by Medicaid: 3 household(s): CO-458, CO-459, CO-460
+- M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K): 13 household(s): G-SNAP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_
 - M1 MAGI counts a retroactive Social Security payment in the month received: 9 household(s): G-SNAP-retroactive_SS_lump_300, G-MAMAGIparent-retroactive_SS_lump_300, G-MAagedspouse-retroactive_SS_lump_300, G-MAdeemingparent-retroactive_SS_lump_300, G-MALTC-retroactive_SS_lump_300, G-MAcommunityspouse-retroactive_SS_lump_300, G-MACBWDchild-retroactive_SS_lump_300, G-MAMSP-retroactive_SS_lump_300, G-CHPparent-retroactive_SS_lump_300
 - M4 a loan or an income tax refund is not unearned income to verify (416.1103): 16 household(s): G-AFclient-loan_proceeds_received_300_part_of_nontaxable_, G-AFclient-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-AFspousedeemed-loan_proceeds_received_300_part_of_nontaxable_, G-AFspousedeemed-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MAaged-loan_proceeds_received_300_part_of_nontaxable_, G-MAaged-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MALTC-loan_proceeds_received_300_part_of_nontaxable_, G-MALTC-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MAcommunityspouse-loan_proceeds_received_300_part_of_nontaxable_, G-MAcommunityspouse-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MAWAWD-loan_proceeds_received_300_part_of_nontaxable_, G-MAWAWD-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MACBWDchild-loan_proceeds_received_300_part_of_nontaxable_, G-MACBWDchild-tax_refunds_and_credits_received_300_part_of_nontaxable_, G-MAMSP-loan_proceeds_received_300_part_of_nontaxable_, G-MAMSP-tax_refunds_and_credits_received_300_part_of_nontaxable_
-- M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K): 12 household(s): G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_, G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_
 
 ## Stored households whose receipts are not the translation of their old facts
 
@@ -59,18 +59,28 @@ allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
 allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-214 p1 ma_person_magi_income @2026-11: old 1900 new 1600
 allowed (M6 a training allowance stated as taxable income is not MAGI income pending OQ-970) S CO-219 p1 ma_has_unearned_income_for_verification @2027-02: old true new false
 allowed (M6 a training allowance stated as taxable income is not MAGI income pending OQ-970) S CO-220 p1 ma_has_unearned_income_for_verification @2027-02: old true new false
+allowed (M5 household in receipts alone now read by Medicaid) S CO-458 p1 ma_title_ii_cola_increase @2026-11: old unknown new 0
+allowed (M5 household in receipts alone now read by Medicaid) S CO-459 p1 ma_title_ii_cola_increase @2026-11: old unknown new 0
+allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p1 ma_cbwd_household_unearned_income @2027-02: old unknown new 800
+allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p1 ma_title_ii_cola_increase @2027-02: old unknown new 0
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p1 ma_has_unearned_income_for_verification @2027-02: old unknown new true
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_ssi_countable_income @2027-02: old unknown new 0
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_ssi_countable_unearned_income @2027-02: old unknown new 0
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_meets_ssi_income_standard @2027-02: old unknown new true
+allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_wawd_countable_income @2027-02: old unknown new 0
+allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_cbwd_household_unearned_income @2027-02: old unknown new 800
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_ssi_parental_income_deemed @2027-02: old unknown new 0
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_dac_countable_income @2027-02: old unknown new 0
+allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_title_ii_cola_increase @2027-02: old unknown new 0
 allowed (M5 household in receipts alone now read by Medicaid) S CO-460 p2 ma_has_unearned_income_for_verification @2027-02: old unknown new false
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-SNAP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2027-02: old 300 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-SNAP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_cbwd_household_unearned_income @2027-02: old 300 new 0
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-SNAP-retroactive_SS_lump_300 p1 ma_has_unearned_income_for_verification @2027-02: old false new true
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-AFclient-loan_proceeds_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-AFclient-tax_refunds_and_credits_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFclient-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-10: old 280 new 0
@@ -83,11 +93,15 @@ allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) 
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_wawd_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-AFspousedeemed-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-11: old 878.5 new 588.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-11: old 878.5 new 588.5
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-11: old 878.5 new 588.5
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMAGIparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 1262 new 1562
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_household_income @2026-11: old 1262 new 1562
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2026-11: old 0.699815157116451 new 0.8661737523105361
@@ -101,6 +115,7 @@ allowed (M4 a loan or an income tax refund is not unearned income to verify (416
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MAaged-tax_refunds_and_credits_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAaged-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-10: old 280 new 0
@@ -108,6 +123,7 @@ allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) 
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_wawd_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAagedspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAagedspouse-retroactive_SS_lump_300 p2 ma_has_unearned_income_for_verification @2026-10: old false new true
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAagedspouse-retroactive_SS_lump_300 p2 ma_requires_verification_of_unearned_income @2026-10: old false new unknown
@@ -117,6 +133,7 @@ allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) 
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_parental_income_deemed @2026-10: old 3253.5 new 2963.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-10: old 4247.5 new 3957.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_wawd_countable_income @2026-10: old 4247.5 new 3957.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAdeemingparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_dac_countable_income @2026-10: old 4247.5 new 3957.5
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAdeemingparent-retroactive_SS_lump_300 p2 ma_has_unearned_income_for_verification @2026-10: old false new true
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAdeemingparent-retroactive_SS_lump_300 p2 ma_requires_verification_of_unearned_income @2026-10: old false new unknown
@@ -125,6 +142,8 @@ allowed (M4 a loan or an income tax refund is not unearned income to verify (416
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MALTC-tax_refunds_and_credits_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-11: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-11: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-11: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MALTC-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-11: old true new false
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MALTC-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 0 new 300
@@ -134,6 +153,8 @@ allowed (M4 a loan or an income tax refund is not unearned income to verify (416
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MAcommunityspouse-tax_refunds_and_credits_received_300_part_of_nontaxable_ p2 ma_has_unearned_income_for_verification @2026-11: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-11: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_unearned_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_wawd_countable_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_dac_countable_income @2026-11: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAcommunityspouse-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_has_unearned_income_for_verification @2026-11: old true new false
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAcommunityspouse-retroactive_SS_lump_300 p2 ma_person_magi_income @2026-11: old 0 new 300
@@ -143,12 +164,16 @@ allowed (M4 a loan or an income tax refund is not unearned income to verify (416
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MAWAWD-tax_refunds_and_credits_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-10: old 2247.5 new 1957.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-10: old 2247.5 new 1957.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-10: old 2247.5 new 1957.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAWAWD-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MACBWDchild-loan_proceeds_received_300_part_of_nontaxable_ p3 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MACBWDchild-tax_refunds_and_credits_received_300_part_of_nontaxable_ p3 ma_has_unearned_income_for_verification @2026-10: old true new false
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2026-10: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_ssi_countable_income @2026-10: old 2043.5 new 1743.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_ssi_countable_unearned_income @2026-10: old 2043.5 new 1743.5
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_wawd_countable_income @2026-10: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_cbwd_household_unearned_income @2026-10: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_dac_countable_income @2026-10: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MACBWDchild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p3 ma_has_unearned_income_for_verification @2026-10: old true new false
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MACBWDchild-retroactive_SS_lump_300 p3 ma_person_magi_income @2026-10: old 0 new 300
@@ -156,6 +181,8 @@ allowed (M4 a loan or an income tax refund is not unearned income to verify (416
 allowed (M4 a loan or an income tax refund is not unearned income to verify (416.1103)) G G-MAMSP-tax_refunds_and_credits_received_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2027-01: old true new false
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2027-01: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2027-01: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2027-01: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2027-01: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2027-01: old 280 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-MAMSP-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_has_unearned_income_for_verification @2027-01: old true new false
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMSP-retroactive_SS_lump_300 p1 ma_person_magi_income @2027-01: old 0 new 300
@@ -163,9 +190,12 @@ allowed (M1 MAGI counts a retroactive Social Security payment in the month recei
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMSP-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2027-01: old 0 new 0.22556390977443608
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_income @2026-11: old 1780.5 new 1490.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_ssi_countable_unearned_income @2026-11: old 280 new 0
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_wawd_countable_income @2026-11: old 1780.5 new 1490.5
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p1 ma_dac_countable_income @2026-11: old 1780.5 new 1490.5
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_income @2026-11: old 378 new 228
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_countable_unearned_income @2026-11: old 378 new 228
+allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_cbwd_household_unearned_income @2026-11: old 300 new 0
 allowed (M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)) G G-CHPparent-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2 ma_ssi_parental_income_deemed @2026-11: old 398 new 248
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 3066 new 3366
 allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p1 ma_magi_household_income @2026-11: old 3066 new 3366

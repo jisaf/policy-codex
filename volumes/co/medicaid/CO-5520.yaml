@@ -1,0 +1,20 @@
+id: CO-5520
+name: "Medicaid: has unearned income other than interest and dividends"
+identifier: ma_has_unearned_income_other_than_interest_and_dividends
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person received unearned income in the month other than interest and dividends: the gross unearned receipts of the SSI method (ma_ssi_gross_unearned_receipts) less the person's interest, dividends and tax-exempt interest, more than 0. A Medicare Savings Program applicant's interest and dividends are taken on attestation (42 CFR 435.952(e)(1)(i)), so only the rest is an unearned-income element to verify (10 CCR 2505-10 § 8.100.5.B.1.d)."
+precision: Gambling winnings were not part of the old sum and are not here. A loan, an income tax refund and VA Aid and Attendance are not income (CO-5514).
+derived: [">", ["-", ma_ssi_gross_unearned_receipts, [sum_receipts, receipts, [all, [received_in, [month]], [in, [receipt, kind], [interest_and_dividends, tax_exempt_interest]]], [receipt, amount]]], 0]
+sources: [S1089, S3000, S2209]
+implemented: engine
+tags: [ma, non_magi, verification, income]
+rationale: "Receipt records, migration phase 2: Medicaid's own item for the Medicare Savings Program verification trigger (CO-1404), read from the receipts, replacing the shared has_unearned_income_other_than_interest_and_dividends (CO-3159), a program calculation the cross-program allowlist held for CO-1404 alone (docs/reviews/cross-program-audit.md proposed the split)."
+nearest: [CO-3159]
+tests:
+  - {id: CO-5520-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: interest_and_dividends, amount: 40}, {kind: tax_exempt_interest, amount: 10}]}, title: "Only $40 of savings interest", expect: false}
+  - {id: CO-5520-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 1200}, {kind: interest_and_dividends, amount: 40}]}, title: "Social Security and interest", expect: true}
+  - {id: CO-5520-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: rental_income, amount: 300}]}, title: "Rent of $300", expect: true}
+  - {id: CO-5520-T4, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}
