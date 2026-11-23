@@ -1,0 +1,19 @@
+id: CO-6730
+name: "Medicaid SSI method: a person's infrequent or irregular unearned receipts"
+identifier: ma_ssi_irregular_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's unearned receipts of the month that are received infrequently or irregularly (each record's irregular field: received only once in the calendar quarter from a single source and not in the month before or after, or not reasonably expected; 20 CFR 416.1124(c)(6)) and that the SSI method's counting table counts (ma_ssi_receipt_treatment_table, CO-5510: counted, counted because no rule excludes it, or rents), each at the amount ma_ssi_unearned_receipts (CO-5511) counts it: less the parts the method does not count (a plan for self-support's set-aside, what a death benefit paid for the last illness and burial, an award's claim expenses, a veterans benefit's amount for a dependent); a retroactive Title II or SSI payment left out."
+precision: "Gambling winnings and child support, which the readers add apart (ma_ssi_gambling_receipts, ma_ssi_child_support_receipts), are not part of this sum, so the $60 is taken from the other unearned income only. Receipts not stated: cannot determine (decision 4)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [receipt, irregular], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses]], [not, [all, [receipt, retroactive], [in, [receipt, kind], [social_security, ssi]]]]], [max, 0, ["-", [receipt, amount], ["+", [receipt, pass_set_aside], [receipt, spent_on_covered_costs], [receipt, claim_expense], [receipt, for_dependent]]]]]
+sources: [S2609, S4754, S4755, S4756]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 4, non-MAGI N4-3 (docs/reviews/coverage4-medicaid-nonmagi.md): the receipts' irregular field had no SSI-method reader, so a small one-time payment 416.1124(c)(6) does not count was counted. Nearest: ma_ssi_irregular_earned_receipts (CO-5173), the earnings records' irregular pay under 416.1112(c)(2): a different list and table."
+nearest: [CO-5173]
+tests:
+  - {id: CO-6730-T1, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: social_security, amount: 1000}, {kind: gift, amount: 30, irregular: true, frequency: once, month: "2026-11"}]}, title: "A 30 gift received once in the quarter is irregular; Social Security is not: 30", expect: 30}
+  - {id: CO-6730-T2, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: crime_victim_compensation, amount: 100, irregular: true, frequency: once, month: "2026-11"}, {kind: gift, amount: 40, irregular: true, frequency: once, month: "2026-10"}]}, title: "An exempt receipt is not part of it, nor October's gift in November: 0", expect: 0}
+  - {id: CO-6730-T3, month: "2026-11", as_of: "2026-11-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}

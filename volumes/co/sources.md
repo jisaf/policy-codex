@@ -23846,3 +23846,266 @@ Document: D-65
 > bb. Any portion of educational loans and grants obtained and used under conditions that preclude their use for current living cost (need-based).
 >
 > cc. Financial assistance received under the Carl D. Perkins Vocational and Applied Technology Education Act that is made available for attendance cost shall not be considered as income or resources. Attendance cost includes tuition, fees, rental or purchase of equipment, materials or supplies required of all students in the same course of study, books, supplies, transportation, dependent care, and miscellaneous personal expenses of students attending the institution on at least a half-time basis, as determined by the institution.
+
+### S4750. Medical Assistance, ABD and long-term care: reverse mortgage payments are not income; funds left the next month are a resource (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.L.1-3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.5.L. Reverse Mortgages
+>
+> 1. In accordance with C.R.S. § 11-38-110, reverse mortgages payments made to a borrower shall not be treated as income for eligibility purposes.
+>
+> 2. Funds remaining the following month after the payment is made will be countable as a resource.
+>
+> 3. Any payments from a reverse mortgage that are transferred to another individual without fair consideration shall be analyzed in accordance with the rules on transfers without fair consideration in the Long-Term Care section and may result in a penalty period of ineligibility.
+
+### S4751. Medical Assistance, ABD and long-term care: housing assistance under the federal housing Acts and reimbursements of out-of-pocket expenses exempt as income or resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6 (lead-in), F.6.g, F.6.w (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. For the purpose of determining eligibility for the Long Term Care and Aged, Blind, and Disabled Medical Assistance categories the following shall be exempt from consideration as either income or resources:
+>
+> ...
+>
+> g. The value of any assistance paid with respect to a dwelling unit is excluded from income and resources if paid under:
+>
+> i) Experimental Housing Allowance Program (EHAP) payments made by HUD under section 23 of the U.S. Housing Act (12 USCA § 1701z-3);
+>
+> ii) The United States Housing Act of 1937 (42 U.S.C. § 1437 et seq.);
+>
+> iii) The National Housing Act (12 U.S.C. § 1701 et seq.);
+>
+> iv) Section 101 of the Housing and Urban Development Act of 1965 (12 U.S.C. § 1701s; 42 U.S.C. § 1451);
+>
+> v) Title V of the Housing Act of 1949 (42 U.S.C. § 1471 et seq.); or
+>
+> vi) Section 202(h) of the Housing Act of 1959.
+>
+> ...
+>
+> w. Reimbursement or restoration of out-of-pocket expenses. Out-of-pocket expenses are actual expenses for food, housing, medical items, clothing, transportation, or personal needs items.
+
+### S4752. Medical Assistance: the net proceeds of selling a resource are available resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.P (lead-in), P.1-3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.5.P. Treatment of Proceeds from Disposition of Resources
+>
+> Treatment of proceeds from disposition of resources is determined as follows:
+>
+> 1. The net proceeds from the sale of exempt or non-exempt resources are considered available resources.
+>
+> 2. The net proceeds are the selling price less any valid encumbrances and costs of sale.
+>
+> 3. After deducting any amount necessary to raise the individual's and spouse's resources to the applicable limits, the balance of the net proceeds, in excess of the resource limits, shall be considered available resources. In lieu of terminating eligibility due to excess resources, the client may request that the proceeds be used to reimburse the Medical Assistance Program for previous payments for Medical Assistance.
+
+### S4753. Colorado Works is Colorado's TANF program; a diversion is a short-term cash grant payment
+
+Document: D-81
+
+9 CCR 2503-6 3.601 (definitions; rule version 12030, effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Colorado Works” is the Temporary Assistance for Needy Families (TANF) program in Colorado.
+>
+> ...
+>
+> “Diversion” means a short-term cash payment (not to extend beyond four (4) months) intended to meet an
+> episode of need.
+>
+> ...
+>
+> “Grant payment” means the Colorado Works program payment that can either be basic cash assistance
+> or diversion. Grant payments may also be referred to as the benefit.
+>
+> ...
+>
+> “Supportive payment” means a payment and/or service in addition to basic cash assistance or diversion
+> that is based on an assessed need.
+
+### S4754. Medicaid non-MAGI methodology: the cash assistance program most closely related (SSI for the aged, blind and disabled); less restrictive but no more restrictive than the SSI methodologies
+
+Document: D-51
+
+42 CFR 435.601(a), (b)(1)-(2), (d)(1)(i)-(ii), (d)(2)-(3) (eCFR). https://www.ecfr.gov/current/title-42/part-435
+
+> (a) *Definitions.* For purposes of this section, *cash assistance financial methodologies* refers to the income and resources methodologies of the AFDC, SSI, or State supplement programs, or, for aged, blind, and disabled individuals in States that use more restrictive criteria than SSI, the methodologies established in accordance with the requirements of §§ 435.121 and 435.230.
+>
+> (b) *Basic rule for use of non-MAGI financial methodologies.* (1) This section only applies to individuals excepted from application of MAGI-based methods in accordance with § 435.603(j).
+>
+> (2) Except as specified in paragraphs (c) through (e) of this section or in § 435.121 or as permitted under paragraph (f)(1)(ii)(B) of this section, in determining financial eligibility of individuals as categorically or medically needy, the agency must apply the financial methodologies and requirements of the cash assistance program that is most closely categorically related to the individual's status.
+>
+> ...
+>
+> (d) *Use of less restrictive methodologies than those under cash assistance programs.* (1) At State option, and subject to the conditions of paragraphs (d)(2) through (5) of this section, the agency may apply income and resource methodologies that are less restrictive than the cash assistance methodologies or methodologies permitted under paragraph (e) or (f)(1)(ii)(B) of this section in determining eligibility for the following groups:
+>
+> (i) Qualified Medicare beneficiaries specified in sections 1902(a)(10)(E) and 1905(p) of the Act;
+>
+> (ii) Optional categorically needy individuals under groups established under subpart C of this part and section 1902(a)(10)(A)(ii) of the Act;
+>
+> ...
+>
+> (2) The income and resource methodologies that an agency elects to apply to groups of individuals described in paragraph (d)(1) of this section may be less restrictive, but no more restrictive (except in States using more restrictive requirements than SSI), than:
+>
+> (i) For groups of aged, blind, and disabled individuals, the SSI methodologies; or
+>
+> (ii) For all other groups, the methodologies under the State plan most closely categorically related to the individual's status.
+>
+> (3) A financial methodology is considered to be no more restrictive if, by using the methodology, additional individuals may be eligible for Medicaid and no individuals who are otherwise eligible are by use of that methodology made ineligible for Medicaid.
+
+### S4755. SSI: support payments meet a person's needs; death benefits and inheritances counted except what is spent on the last illness and burial
+
+Document: D-53
+
+20 CFR 416.1121 (lead-in), (b), (e), (g) (eCFR). https://www.ecfr.gov/current/title-20/part-416
+
+> ## § 416.1121 Types of unearned income.
+>
+> Some types of unearned income are—
+>
+> ...
+>
+> (b) *Alimony and support payments.* For SSI purposes, alimony and support payments are cash or in-kind contributions to meet some or all of a person's needs for food or shelter. Support payments may be made voluntarily or because of a court order. Alimony (sometimes called *maintenance*) is an allowance made by a court from the funds of one spouse to the other spouse in connection with a suit for separation or divorce.
+>
+> ...
+>
+> (e) *Death benefits.* We count payments you get which were occasioned by the death of another person except for the amount of such payments that you spend on the deceased person's last illness and burial expenses. Last illness and burial expenses include related hospital and medical expenses, funeral, burial plot and interment expenses, and other related costs.
+> *
+> Example:
+>
+> If you receive $2,000 from your uncle's life insurance policy and you spend $900 on his last illness and burial expenses, the balance, $1,100, is unearned income. If you spend the entire $2,000 for the last illness and burial, there is no unearned income.
+>
+> ...
+>
+> (g) *Gifts and inheritances.* A gift is something you receive which is not repayment to you for goods or services you provided and which is not given to you because of a legal obligation on the giver's part. An inheritance is something that comes to you as a result of someone's death. It can be in cash or in kind, including any right in real or personal property. Gifts and inheritances occasioned by the death of another person, to the extent that they are used to pay the expenses of the deceased's last illness and burial, as defined in paragraph (e) of this section, are not considered income.
+
+### S4756. SSI: the expense of getting a payment subtracted; a veterans benefit's amount for a dependent is not the veteran's income
+
+Document: D-53
+
+20 CFR 416.1123(b) (lead-in), (b)(3), (e)(1)-(2) (eCFR). https://www.ecfr.gov/current/title-20/part-416
+
+> (b) *Amount considered as income.* We may include more or less of your unearned income than you actually receive.
+>
+> ...
+>
+> (3) We include less than you actually receive if part of the payment is for an expense you had in getting the payment. For example, if you are paid for damages you receive in an accident, we subtract from the amount of the payment your medical, legal, or other expenses connected with the accident. If you receive a retroactive check from a benefit program other than SSI, legal fees connected with the claim are subtracted. We do not subtract from any taxable unearned income the part you have to use to pay personal income taxes. The payment of taxes is not an expense you have in getting income.
+>
+> ...
+>
+> (e) *Certain veterans benefits.* (1) If you receive a veterans benefit that includes an amount paid to you because of a dependent, we do not count as your unearned income the amount paid to you because of the dependent.
+>
+> (2) If you are a dependent of an individual who receives a veterans benefit and a portion of the benefit is attributable to you as a dependent, we count the amount attributable to you as your unearned cash income if—
+>
+> (i) You reside with the individual who receives the veterans benefit, or
+>
+> (ii) You receive your own separate payment from the Department of Veterans Affairs.
+
+### S4757. SSI: medical and social services assistance, vocational rehabilitation included, and repayments for services already paid for are not income
+
+Document: D-53
+
+20 CFR 416.1103 (lead-in), (a)(3), (a)(5), (b)(1), (b)(3) (eCFR). https://www.ecfr.gov/current/title-20/part-416
+
+> Some things you receive are not income because you cannot use them as food or shelter, or use them to obtain food or shelter. In addition, what you receive from the sale or exchange of your own property is not income; it remains a resource. The following are some items that are not income:
+>
+> (a) *Medical care and services.* Medical care and services are not income if they are any of the following:
+>
+> ...
+>
+> (3) Assistance provided in cash or in kind (including food or shelter) under a Federal, State, or local government program whose purpose is to provide medical care or medical services (including vocational rehabilitation);
+>
+> ...
+>
+> (5) Cash provided by any nongovernmental medical care or medical services program or under a health insurance policy (except cash to cover food or shelter) if the cash is either:
+>
+> (i) Repayment for program-approved services you have already paid for; or
+>
+> (ii) A payment restricted to the future purchase of a program-approved service.
+>
+> ...
+>
+> (b) Social services.* Social services are not income if they are any of the following:
+>
+> (1) Assistance provided in cash or in kind (but not received in return for a service you perform) under any Federal, State, or local government program whose purpose is to provide social services including vocational rehabilitation (Example: Cash given you by the Department of Veterans Affairs to purchase aid and attendance);
+>
+> ...
+>
+> (3) Cash provided by a nongovernmental social services program (except cash to cover food or shelter) if the cash is either:
+>
+> (i) Repayment for program-approved services you already have paid for; or
+>
+> (ii) A payment restricted to the future purchase of a program-approved service.
+
+### S4758. SSI: housing assistance under the federal housing Acts and home energy assistance from a nonprofit agency or an energy supplier are not counted
+
+Document: D-53
+
+20 CFR 416.1124(c) (lead-in), (c)(10), (c)(14); 416.1157(b) (support and maintenance assistance), (c) (eCFR). https://www.ecfr.gov/current/title-20/part-416
+
+> (c) *Other unearned income we do not count.* We do not count as unearned income—
+>
+> ...
+>
+> (10) Certain support and maintenance assistance as described in § 416.1157;
+>
+> ...
+>
+> (14) The value of any assistance paid with respect to a dwelling unit under—
+>
+> (i) The United States Housing Act of 1937;
+>
+> (ii) The National Housing Act;
+>
+> (iii) Section 101 of the Housing and Urban Development Act of 1965;
+>
+> (iv) Title V of the Housing Act of 1949; or
+>
+> (v) Section 202(h) of the Housing Act of 1959;
+>
+> ...
+>
+> *Private nonprofit agency* means a religious, charitable, educational, or other organization such as described in section 501(c) of the Internal Revenue Code of 1954. (Actual tax exempt certification by IRS is not necessary.)
+>
+> *Rate-of-return entity* means an entity whose revenues are primarily received from the entity's charges to the public for goods or services and such charges are based on rates regulated by a State or Federal governmental body.
+>
+> *Support and maintenance assistance* means cash provided for the purpose of meeting food or shelter needs or in-kind support and maintenance as defined in § 416.1121(h). Support and maintenance assistance includes home energy assistance. Home energy assistance means any assistance related to meeting the costs of heating or cooling a home. Home energy assistance includes such items as payments for utility service or bulk fuels; assistance in kind such as portable heaters, fans, blankets, storm doors, or other items which help reduce the costs of heating and cooling such as conservation or weatherization materials and services; etc.
+>
+> (c) *What assistance we do not count as income.* We do not count as income certain support and maintenance assistance received on or after October 1, 1984, by you or your ineligible spouse, parent, sponsor (or your sponsor's spouse) if you are an alien, or an essential person. We also do not consider certain support and maintenance assistance in determining a pro rata share of household operating expenses under § 416.1133. We do not count that assistance which is certified in writing by the appropriate State agency to be both based on need and—
+>
+> (1) Provided in kind by a private nonprofit agency; or
+>
+> (2) Provided in cash or in kind by—
+>
+> (i) A supplier of home heating oil or gas;
+>
+> (ii) A rate-of-return entity providing home energy; or
+>
+> (iii) A municipal utility providing home energy.
+
+### S4759. Federal transfer look-back date: from the first date the individual is both institutionalized and has applied for medical assistance
+
+Document: D-46
+
+42 U.S.C. 1396p(c)(1)(B)(i)-(ii). https://www.law.cornell.edu/uscode/text/42/1396p
+
+>   (B)
+>
+>   (i)
+>
+>   The look-back date specified in this subparagraph is a date that is 36 months (or, in the case of payments from a trust or portions of a trust that are treated as assets disposed of by the individual pursuant to paragraph (3)(A)(iii) or (3)(B)(ii) of subsection (d) or in the case of any other disposal of assets made on or after February 8, 2006 , 60 months) before the date specified in clause (ii).
+>
+>   (ii) The date specified in this clause, with respect to—
+>
+>   (I)
+>
+>   an institutionalized individual is the first date as of which the individual both is an institutionalized individual and has applied for medical assistance under the State plan, or
+>
+>   (II)
+>
+>   a noninstitutionalized individual is the date on which the individual applies for medical assistance under the State plan or, if later, the date on which the individual disposes of assets for less than fair market value.
