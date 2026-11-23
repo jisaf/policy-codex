@@ -3641,7 +3641,7 @@ Checked 2026-11-23: 8 CCR 1403-1 3.103.C (adult caretaker), 3.103.LLL, 3.103.OOO
 Body: Coverage pass 5, X5-1. 8 CCR 1403-1 3.111.H.4.e (S2704) and 9 CCR 2503-7 3.752.21.F (S4850) count income from jointly owned property "as a percentage at least equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received". The receipt record now states the owner's share (ownership_share) and the property's income for the record's period (property_income) (receipts, CO-5000), and the readers count the larger of share x property income and the amount received (CCCAP: cccap_counted_recurring_receipts CO-5721, cccap_one_time_receipts_averaged CO-5722; LEAP: leap_counted_recurring_receipts CO-5003, leap_one_time_receipts_in_period CO-5009). Neither rule says whether the property's income is taken before or after the property's expenses, nor whose expenses a co-owner deducts: CCCAP counts rent net of the landlord's expenses (I.12, I.17; rental_property_expenses_paid, taken against the counted rent, CO-4463) and LEAP counts gross unearned income. Worked example: a half-owned rental house with $2,000 of rent and $600 of expenses, the co-owner keeping everything: gross, the share is $1,000 (LEAP) and CCCAP takes the owner's own expenses off it; net of the property's expenses, the share is $700.
 
 Class: state policy choice
-Owner: Child care policy owner (CDEC) and Energy assistance (LEAP) policy owner
+Owner: Child care policy owner (CDEC), Energy assistance (LEAP) policy owner
 Assumption: The property's income is stated as each program counts the owner's own rent: gross for LEAP; for CCCAP, the property's rent with the owner's own expenses deducted as for any rent.
 
 Checked 2026-11-23: 8 CCR 1403-1 3.111.H.4.e, I.12, I.17 (D-87); 9 CCR 2503-7 3.752.21.F, 3.752.22.A (D-86). Items: CO-5721, CO-5722, CO-4463, CO-5003, CO-5009.
@@ -3662,7 +3662,7 @@ Body: Coverage pass 5, X5-2 (with OQ-873). 8 CCR 1403-1 3.111.I (S3256, S4020) l
 
 Class: state policy choice
 Owner: Child care policy owner (CDEC)
-Assumption: Counted because no rule excludes it, at one twelfth when paid once (OQ-873's reading of the list).
+Assumption: Counted because no rule excludes it, at one twelfth when paid once (the volume's reading of the closed list, as for a diversion that is not cash assistance).
 
 Checked 2026-11-23: 8 CCR 1403-1 3.103.K, 3.111.H.4.i, I, J (D-87); no paragraph names the sale of a resource, a policy's cash value or a non-retirement savings account. Items: CO-5720, CO-5721, CO-5722.
 
@@ -3691,7 +3691,7 @@ Checked 2026-11-23: 9 CCR 2503-7 3.751.1 "Public Assistance Income", 3.752.21.L,
 Body: Field sweep of coverage pass 5 (docs/reviews/field-sweep-care-energy.md). The receipt's paid_to_former_spouse (CO-5000) states the part of military retired pay a court order divides to a former spouse, which DFAS pays to the former spouse; the record's amount is the gross pay. CCCAP counts "Retirement or pension payments paid by defense finance and accounting services (DFAS) to retired members of the Armed Forces" (8 CCR 1403-1 3.111.I.7.a, S4020) and the income "received" in the prior thirty days (H.4, S2704); LEAP counts "Pension or retirement payments - payments to an applicant or recipient following retirement" (9 CCR 2503-7 3.752.211.B, S4100) and makes "Amounts withheld from unearned income because of a garnishment" countable (3.752.21.K). The part paid to the former spouse is not paid to the member, which supports leaving it out; read as an amount withheld from the member's pay, K and I.1's "before deductions" reading count it. Neither text names a court-ordered division. The volume reads neither program's figure net of it (the counting readers take the gross amount), as before. Worked example: a retiree with $2,000 of retired pay, $800 of it paid by DFAS to a former spouse, and $2,500 of wages for two in CCCAP: gross, $4,500; net, $3,700.
 
 Class: state policy choice
-Owner: Child care policy owner (CDEC) and Energy assistance (LEAP) policy owner
-Assumption: The gross retired pay is counted (paid_to_former_spouse is not read), until the owners say otherwise.
+Owner: Child care policy owner (CDEC), Energy assistance (LEAP) policy owner
+Assumption: The gross retired pay is counted, the part paid to the former spouse included, until the owners say otherwise.
 
 Checked 2026-11-23: 8 CCR 1403-1 3.111.H.4, I.1, I.7.a, I.8 (D-87); 9 CCR 2503-7 3.752.21.K, 3.752.211.B, 3.752.22.A (D-86). Items: CO-5721, CO-5003.
