@@ -2639,9 +2639,11 @@ Checked 2026-11-22: C.R.S. 26-2-111(2)(d)(I) and (4)(c)(I) (D-59); 9 CCR 2503-5 
 
 Body: 10 CCR 2506-1 4.311.A.4 (S749) excepts from the ABAWD time limit an individual "Residing in the same physical household with an individual who is under the age of eighteen (18). The minor individual does not have to be included in the same SNAP household". 7 CFR 273.24(c)(4) (S3050) excepts a person "residing in a household where a household member is under age 18, even if the household member who is under 18 is not himself eligible for SNAP benefits", and 7 U.S.C. 2015(o)(3)(C) as amended by Pub. L. 119-21 sec. 10102 (S127, S128) speaks of "a parent or other member of a household with responsibility for a dependent child under 14". In the Act and the regulation, "household" is the SNAP household (7 U.S.C. 2012; 7 CFR 273.1), and a member under 18 who is "not himself eligible" is still a member of it; Colorado's text reaches a child who is in another SNAP household under the same roof, such as a roommate's child. snap_lives_with_child_under_abawd_dependent_child_age (CO-4250) follows Colorado's physical-household reading, with the statute's age of 14. Elsewhere the volume applies the statute where Colorado's rule is broader (OQ-1, OQ-533, CO-072); whether Colorado may keep the broader exception, or whether it is superseded by the amended 2015(o)(3)(C), is a legal reading. Answers differ only for a person living with a child under 14 who is in a different SNAP household. Coverage pass 2 N2-P2-1. Items: CO-4250, CO-414.
 
-Class: needs Legal
-Owner: Legal, SNAP policy owner
+Class: state policy choice
+Owner: SNAP policy owner (with Legal)
 Assumption: Colorado's physical-household reading: a person living in the same home as a child under 14 is excepted whether or not the child is in the person's SNAP household.
+
+Class (coverage pass 4 for SNAP, S4-16, 2026-11-23): reclassified from "needs Legal", which is not one of the stopping rule's two classes. Both texts are on file and the answer waits on no document: it is which of two texts the State applies to a case they treat differently, Colorado's broader rule or the statute's narrower one, a choice the State makes on Legal's reading. Elsewhere the volume applies the federal text where Colorado's rule is broader (CO-3700, CO-119, CO-1243, CO-308); the owner either confirms Colorado's reading, the assumption here, or adopts the statute as a statute override on CO-4250.
 
 Checked 2026-11-22: 10 CCR 2506-1 4.311.A.4 (D-82, version effective 2026-10-01, S749); 7 CFR 273.24(c)(4) (D-202, S3050); 7 U.S.C. 2015(o)(3)(C) as amended (D-3, D-5; S127, S128). No text reconciles the two; FNS's implementation memoranda for sec. 10102 are on www.usda.gov, not an allowed host.
 
@@ -2725,9 +2727,11 @@ Checked 2026-11-22: 8 CCR 1403-1 3.103.S, 3.111.I and 3.111.J (D-87, version eff
 
 Body: 10 CCR 2506-1 4.304.3.B.3 (S3475) says the foster child "may not apply for benefits separately from the foster family unless they are over eighteen (18) and no longer under the parental control of the foster parents". 7 CFR 273.1(c)(4) (S3651) says foster care individuals "cannot participate in the Program independently of the household providing the foster care services", with no age exception. snap_foster_child_applies_separately (CO-4689) reads Colorado's exception and takes 18 or older as standing for "over eighteen and no longer under the parental control of the foster parents" (the age at which parental control ends for SNAP, snap_parental_control_age). A foster youth of 18 to 20 still placed in a foster home by a governmental program who applies separately is eligible on Colorado's text and barred on the federal one.
 
-Class: needs Legal
-Owner: Legal, SNAP policy owner
+Class: state policy choice
+Owner: SNAP policy owner (with Legal)
 Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control".
+
+Class (coverage pass 4 for SNAP, S4-16, 2026-11-23): reclassified from "needs Legal", which is not one of the stopping rule's two classes. Both texts are on file and the answer waits on no document: it is which of two texts the State applies, Colorado's exception or the federal bar, a choice the State makes on Legal's reading. Elsewhere the volume applies the federal text where Colorado's rule is broader (CO-3700, CO-119, CO-1243, CO-308); the owner either confirms Colorado's exception, the assumption here, or adopts 273.1(c)(4) as a statute override on CO-4689.
 
 Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.
 
@@ -2963,7 +2967,7 @@ Assumption: Each is counted as SSI-method unearned income in the month received 
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 (D-65); 20 CFR 416.1103 (D-207). Neither names a savings account withdrawal, a premium refund or cash value taken. Items: CO-5510.
 
-### OQ-996. SNAP: a payment for meals only or for a room only
+### OQ-996. Resolved: SNAP: a payment for meals only or for a room only is a boarder's or a roomer's self-employment income
 
 Body: Receipt records, migration phase 3 gives board_only_payment (payments from persons who take regular meals in the home without lodging) and room_only_payment (payments from lodgers for a room only) kinds of their own; before, both were stated as part of the other taxable unearned income. 10 CCR 2506-1 4.403.2 (S2963) treats "payments from a boarder" as self-employment income less the cost of doing business, added to earned income, and the ledger reads a boarder as a person paying for room and meals (room_and_board_payments_received, CO-4161; snap_boarder_income, CO-4165). The text does not say whether a payment for meals only, or for a room only, is a boarder's payment under 4.403.2 or unearned income. SNAP's counting table (snap_receipt_treatment_table, CO-5010) keeps the reading before receipt records: both counted as unearned income because no rule excludes them.
 
@@ -2973,13 +2977,17 @@ Assumption: A payment for meals only or for a room only is counted as unearned i
 
 Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.
 
+Resolution (coverage pass 4 for SNAP, 2026-11-23, finding S4-9 and the class check S4-16 of docs/reviews/coverage4-snap.md): the text on file settles it, so the question was not a state policy choice. 7 CFR 273.1(c)(3)(ii) (S1815, D-7): "All other individuals or groups of individuals paying a reasonable amount for meals or meals and lodging must be considered boarders", so a person paying for meals only is a boarder; 273.1(c)(5) (S1815): roomers are "Individuals to whom a household furnishes lodging for compensation, but not meals"; and 273.9(b)(1)(ii) (S4728, D-13), the sentence the Checked line above missed: "Payments from a roomer or boarder, except foster care boarders, shall also be considered self-employment income." Both payments are earned income (self-employment), less the cost of doing business: for boarders, meals only included, the greater of the maximum allotment for the number of boarders and the documented costs (10 CCR 2506-1 4.403.2.B, S2963); for a roomer, the documented costs of providing the room (273.11(b)(1); 4.403.11.B, S4729). SNAP reads both from the boarder records (earnings, boarder_payments with provides board_only or room_only; snap_boarder_income, CO-4165; snap_room_and_board_payments, CO-5117), and its receipt rows for board_only_payment and room_only_payment are read_from_earnings (CO-5010). Worked examples (stored households CO-750, CO-751): a roomer paying $600 adds $600 of earned income, less the 20% deduction; a meals-only boarder paying $400 adds $400 - $306 (the one-person maximum allotment, FY 2027) = $94. Items: CO-5010, CO-5101, CO-4165, CO-5117, CO-5118, CO-5110.
+
 ### OQ-1020. Earnings: whether special pay, and payments for a room only or meals only, are earnings in every program
 
 Body: Earned-income records, step E0 (docs/design-earned-and-resource-records.md 2.3, decision D2) draws the boundary between the two lists of records: earnings (CO-5100) are money or in-kind value paid to the person for work the person performed, as an employee or in self-employment; every other payment is a receipt (CO-5000). Three receipt kinds fall on the earnings side: uniformed_services_special_pay (pay for service; with combat_zone, also the combat-zone pay stated today as part of wages, CO-4310), board_only_payment and room_only_payment (boarder income; room and board is already a statement of its own, CO-4161). The texts on file treat them as earned in some programs and are silent in others: Colorado Works counts board, room, and room and board payments as earned income (9 CCR 2503-6 3.605.2.E.4.c-e, S3159), Medicaid counts a board payment as earned income (10 CCR 2505-10 8.100.3.K.10.c), SNAP treats a boarder's payments as self-employment income (10 CCR 2506-1 4.403.2, S2963; OQ-996 for meals only and room only), CCCAP counts "hazard duty pay" (8 CCR 1403-1 3.111.I.1) and boarders and lodgers (I.18, S3256) as income, and LEAP, Adult Financial and the SSI method name none of them as earned or unearned. Until each program's E1 track reads its earnings table, the three kinds stay in receipts, with each program's receipt row unchanged, and a household that states one states it in both lists, both written by the translator from the receipt (the transition rule); the earnings row of each program carries the receipt row's reading. E2 retires the three receipt kinds.
 
 Class: state policy choice
-Owner: SNAP policy owner, Energy assistance (LEAP) policy owner, Cash programs policy owner, Child care policy owner (CDEC), Medicaid policy owner
+Owner: Energy assistance (LEAP) policy owner, Cash programs policy owner, Child care policy owner (CDEC), Medicaid policy owner
 Assumption: The three kinds are earnings in every program, each program counting them as its receipt row counts them today until its owner signs its earnings row.
+
+SNAP's half settled by the text (coverage pass 4 for SNAP, 2026-11-23, S4-9, S4-16): special pay is pay for service (7 CFR 273.9(b)(1)(i), S41), read from earnings since step E1; a payment for meals only or a room only is a boarder's or a roomer's self-employment income (7 CFR 273.1(c)(3)(ii), (c)(5), S1815; 273.9(b)(1)(ii), S4728), read from the boarder records (OQ-996, resolved). SNAP's receipt rows for the three kinds are read_from_earnings; the question stays open for the other programs only.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, CO-5001, CO-5010, CO-5016, CO-5650, CO-5720, CO-5730, CO-5500, CO-5510, CO-5101, CO-5102, CO-5103, CO-5104, CO-5105, CO-5106, CO-5107.
 
@@ -3363,3 +3371,43 @@ Owner: Medicaid policy owner
 Assumption: F.6.u reaches a State or local earned income tax credit (left out in the month received and the next).
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6.u (D-65); 26 U.S.C. 6409 (D-4441); 20 CFR 416.1235 (D-4440). Items: CO-5303, CO-5320.
+
+### OQ-1260. SNAP: foster care payments when some foster individuals placed with the person are members and others are not
+
+Body: 7 CFR 273.9(b)(2)(ii) (S4725) counts "foster care payments for children or adults who are considered members of the household", and 273.9(c)(15) (S4725) excludes "Governmental foster care payments received by households with foster care individuals who are considered to be boarders"; a foster individual is a member only "at the request of the household providing the foster care" (273.1(c)(4), S3651). Coverage pass 4 (S4-6) reads the payments by membership: snap_foster_care_payments_are_counted (CO-6601) is true when a foster individual placed with the person buys food and prepares meals with the person. A receipt record (foster_care_payment) or a difficulty of care payment (foster_care) does not say which foster individual it is paid for, and a record field cannot name a person a rule tests for membership inside a receipt sum (docs/operators.md, Receipt records). Where a household includes one foster child and not another, the payments for the one are counted and for the other excluded under the text, but the records cannot say which payment is which. Worked example: $600 a month for each of two foster children, one included: by the text $600 counted; as read here $1,200.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: The payments are counted in full when at least one foster individual placed with the person is a member, and excluded when none is.
+
+Checked 2026-11-23: 7 CFR 273.1(c)(4) (D-7); 7 CFR 273.9(b)(2)(ii), (c)(15) (D-13); 10 CCR 2506-1 4.304.3.B.1 (D-82, S3475). None says how payments for several foster individuals are divided. Items: CO-6601, CO-5010, CO-5101, CO-5011, CO-5113.
+
+### OQ-1261. SNAP: educational assistance and the G.I. Bill housing allowance - Colorado excludes all education assistance, the federal rule counts room and board
+
+Body: 10 CCR 2506-1 4.405.1 (S4732): "All education assistance including grants, scholarships, fellowships, work-study, veteran's educational benefits, and any other money received specifically for educational expenses are exempt from consideration as income." 7 CFR 273.9(c)(3)(i) (S4733) excludes educational assistance, "veterans' educational benefits and the like", but (c)(3)(ii)(C)(9): "Normal living expenses which are room and board are not excludable." SNAP's receipt table excludes educational_assistance in full (Colorado's text) and counts gi_bill_housing_food_allowance because no rule was read to exclude it (the federal reading of a room-and-board allowance). The two rows follow different texts. Worked example: a veteran student with a $1,800 monthly G.I. Bill housing allowance and no other income: counted (today), gross $1,800; excluded under 4.405.1, gross $0. Coverage pass 4 S4-15.
+
+Class: state policy choice
+Owner: SNAP policy owner (with Legal)
+Assumption: Each row keeps its reading: educational assistance excluded in full (4.405.1), the G.I. Bill housing or food allowance counted (273.9(c)(3)(ii)(C)(9)).
+
+Checked 2026-11-23: 10 CCR 2506-1 4.405.1 (D-82); 7 CFR 273.9(c)(3) (D-13). The volume applies the federal text where Colorado's rule is broader (CO-3700, CO-119, CO-1243, CO-308); whether that reaches 4.405.1 is the choice. Items: CO-5010.
+
+### OQ-1262. SNAP: the day of the month an age is taken on for a month evaluated
+
+Body: Coverage pass 4 (S4-11) makes snap_is_elderly (CO-301) per month: prospective budgeting computes the allotment "based on anticipated income and circumstances during the issuance month" (10 CCR 2506-1 4.402.1.A, S4734), so an application month before the determination month, or a later month, reads its own age. No SNAP text on file says on which day of a month the age is taken. CO-301 reads 60 or older on the last day of the month, so a person who turns 60 during the month is elderly for that month (the status the age grants is met on any day of the month, as Medicaid reads its qualifying ages, docs/operators.md "Ages in a month"); snap_is_in_abawd_age_range (CO-412) reads the first day; snap_student_earnings_are_excluded (CO-2569) reads the day before the month, which 4.405.C sets. Worked example (AGE60): a stepfather born 1966-11-02, applied 2026-10-12: elderly in November (60 on November 30), not in October; read on November 1 he would not be elderly until December, and the household's November allotment would be $743, not $808.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: 60 or older on the last day of the month evaluated.
+
+Checked 2026-11-23: 7 CFR 271.2 (D-6, S6: "Is 60 years of age or older"); 10 CCR 2506-1 4.000.1, 4.402.1.A (D-82). Neither names a day. Items: CO-301, CO-6603.
+
+### OQ-1263. SNAP: ages and statuses read on the determination date for an application month before the determination month
+
+Body: Coverage pass 4 (S4-11, S4-19) found that SNAP's per-person items are evaluated once per case, on the determination date (time contract month-v1), so an application month earlier than the determination month, or a later month, takes the determination date's ages and statuses, though prospective budgeting reads "anticipated income and circumstances during the issuance month" (4.402.1.A, S4734) and a household whose BCE or ECE circumstances change is re-evaluated (4.206.D, S4735). The fix round made per month the Expanded Categorical Eligibility test and the category (CO-339 to CO-342), the elderly member (CO-301, CO-303, CO-6603) and the readers of the household's elderly or disabled member that are per month (the gross income test, the shelter deduction, the net income with disqualified members). Still read on the determination date: household composition (snap_household_members, CO-305: under 22 living with a parent), the ineligible student and its exemptions (CO-411, CO-410, CO-408, CO-409, CO-401: 18 to 49, a child under 6 or 12), the non-citizen child and military-connection ages (CO-3713, CO-4260), sponsor deeming (CO-2337, CO-3708), voluntary quit (CO-2318), the separate elderly and disabled household (CO-2304), the foster child (CO-4689), and the ABAWD limit (CO-2564, S4-19: the countable months are per month, the limit's verdict per person). Making these per month changes the scope of CO-305 and the chain of per-person items that read it, the resource test's items among them (CO-343, CO-4158 to CO-4160), which the holdings track is moving now. Worked examples: a son who turns 22 between the application month and the determination is a mandatory member in the application month and not after it; a student who turns 50 after applying is an ineligible student in the application month.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: These ages and statuses are taken on the determination date for every month a determination evaluates; a birthday after the determination is a change in circumstances (4.604).
+
+Checked 2026-11-23: 10 CCR 2506-1 4.206.D, 4.304.1, 4.306, 4.311.3, 4.402.1.A (D-82). The text reads circumstances by issuance month; the day each age is taken on is OQ-1262's. Items: CO-305, CO-411, CO-410, CO-408, CO-409, CO-401, CO-3713, CO-4260, CO-2337, CO-3708, CO-2318, CO-2304, CO-4689, CO-2564.

@@ -14,8 +14,8 @@ implemented: engine
 tags: [snap, immigration, verification]
 rationale: "OQ-380: is_sponsored_non_citizen (CO-1573) had to be stated true only when deeming applied, because the exemptions of 4.305.2.E (S1619) had no facts; this item applies them, so the supplied fact means only that an affidavit of support was executed."
 tests:
-  - {id: CO-2337-T1, title: "A sponsored LPR with 12 quarters - deeming applies", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 12, date_of_birth: "1990-01-01"}, expect: true}
-  - {id: CO-2337-T2, title: "E.8 - forty quarters", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 40}, expect: false}
+  - {id: CO-2337-T1, title: "A sponsored LPR with 12 quarters - deeming applies", as_of: "2026-10-01", given: {qualifying_quarters_with_federal_means_tested_benefit: 0, is_sponsored_non_citizen: true, qualifying_quarters: 12, date_of_birth: "1990-01-01"}, expect: true}
+  - {id: CO-2337-T2, title: "E.8 - forty quarters", as_of: "2026-10-01", given: {qualifying_quarters_with_federal_means_tested_benefit: 0, is_sponsored_non_citizen: true, qualifying_quarters: 40}, expect: false}
   - {id: CO-2337-T3, title: "E.4 - indigent", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 12, snap_is_indigent_non_citizen: true}, expect: false}
   - {id: CO-2337-T4, title: "E.5 - battered non-citizen", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 12, snap_battered_non_citizen_sponsor_exemption_applies: true}, expect: false}
   - {id: CO-2337-T5, title: "E.7 - the sponsor has died", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 12, sponsor_has_died: true}, expect: false}
@@ -26,4 +26,4 @@ tests:
   - {id: CO-2337-T9, title: "A sponsored girl of 10 whose mother is also sponsored - exempt", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 0, date_of_birth: "2016-04-01"}, others: {p2: {is_sponsored_non_citizen: true}}, relationships: [[parent, p2, p1]], expect: false}
   # Final verification pass 2 N-3: 7 U.S.C. 2014(i)(2)(E), 8 U.S.C. 1631(d)(3) - every child under 18 is exempt (T10 expected true under (c)(3)(vi)).
   - {id: CO-2337-T10, title: "A sponsored boy of 12 whose parent is a citizen - exempt by age (2014(i)(2)(E))", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 0, date_of_birth: "2014-02-01"}, others: {p2: {is_sponsored_non_citizen: false}}, relationships: [[parent, p2, p1]], expect: false}
-  - {id: CO-2337-T11, title: "Turned 18 on the determination date - deeming applies", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualifying_quarters: 0, date_of_birth: "2008-10-01"}, expect: true}
+  - {id: CO-2337-T11, title: "Turned 18 on the determination date - deeming applies", as_of: "2026-10-01", given: {qualifying_quarters_with_federal_means_tested_benefit: 0, is_sponsored_non_citizen: true, qualifying_quarters: 0, date_of_birth: "2008-10-01"}, expect: true}

@@ -23823,3 +23823,30 @@ Document: D-13
 > ...
 >
 > (*9*) Normal living expenses which are room and board are not excludable.
+
+### S4734. Colorado SNAP: prospective budgeting on the income and circumstances of the issuance month
+
+Document: D-82
+
+10 CCR 2506-1 4.402.1.A (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Prospective budgeting is the process of computing a household's allotment
+> based on anticipated income and circumstances during the issuance month. All
+> SNAP households and all situations require prospective budgeting
+> determinations, including Public Assistance (PA) households under the TANF
+> /Colorado Works Program.
+
+### S4735. Colorado SNAP: a household whose BCE or ECE circumstances change is re-evaluated under the appropriate category
+
+Document: D-82
+
+10 CCR 2506-1 4.206.D (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. If the circumstances which allowed the household to meet the criteria to be
+> considered under BCE or ECE rules change during the certification period or at
+> the time of recertification or periodic report, the household’s eligibility must be re-
+> evaluated according to the appropriate category. If there is insufficient
+> documentation to make an eligibility determination based on the new category of
+> eligibility, the agency shall send the household a request for verification in
+> accordance with Sections 4.604, Action on Reported Changes, and 4.604.1,
+> Verification of Reported Changes.

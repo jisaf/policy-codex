@@ -153,6 +153,10 @@ record_fields:
     type: yes/no
     default: false
     meaning: "The wages are paid under a program funded by the Workforce Innovation and Opportunity Act (work experience, a transitional job, an internship) other than its on-the-job training, which is its own kind (wioa_on_the_job_training) (coverage pass 4 for SNAP, S4-8)."
+  capital_gain:
+    type: money
+    default: 0
+    meaning: "For a business's receipts, the part that is the gain from selling the business's capital goods or equipment, as a capital gain is figured for federal income tax purposes but counted in full (7 CFR 273.11(a)(3)); it is part of the record's amount. A rule that averages a capital gain apart from the other receipts reads it (SNAP 10 CCR 2506-1 4.403.11.D) (coverage pass 4 for SNAP, S4-17)."
 sources: [S41, S2713, S3112, S1152, S1155, S1156, S1157, S1154, S2963, S3159, S3255]
 tags: [income]
 open: [OQ-1020, OQ-1181]

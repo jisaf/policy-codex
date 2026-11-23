@@ -3,14 +3,19 @@ name: "SNAP: is elderly"
 identifier: snap_is_elderly
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
-meaning: "The person is snap_elderly_age years of age or older, the age threshold in the federal and state \"elderly or disabled member\" definitions."
-derived: [">=", age, snap_elderly_age]
+meaning: "The person is snap_elderly_age (60) years of age or older in the month: on its last day, so a person who turns 60 during the month is elderly for that month; the age threshold in the federal and state \"elderly or disabled member\" definitions (7 CFR 271.2, S6)."
+precision: "Coverage pass 4 for SNAP (docs/reviews/coverage4-snap.md), S4-11: prospective budgeting computes the allotment \"based on anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734), so the age is taken in the month evaluated, not on the determination date (time contract month-v1; docs/operators.md, Ages in a month): an application month before the determination month, and a later month of the case, each read their own age. The day within the month is not set by the text on file; the volume reads a status the age grants as met when it is met on any day of the month, the last day (OQ-1262). Before pass 4 the item was per person, the age on the determination date (AGE60: a stepfather born 1966-11-02, determined 2026-11-05, was elderly in October, so his shelter costs were uncapped there)."
+derived: [">=", ["years_between", "date_of_birth", ["days_after", -1, ["first_day", ["month_after", ["month"]]]]], "snap_elderly_age"]
 sources: [S6, S7]
 implemented: engine
 tags: [age]
+open: [OQ-1262]
 rationale: Isolates the age prong of "elderly or disabled member" (7 CFR 271.2, S6) as its own fact so snap_is_elderly_or_disabled can combine it with the disability prongs, and so other chapters (household composition, deductions) can read age alone without re-testing disability.
 tests:
-  - {id: CO-301-T1, as_of: "2026-10-01", given: {date_of_birth: "1945-07-30"}, expect: true}
-  - {id: CO-301-T2, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}
+  - {id: CO-301-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1945-07-30"}, expect: true}
+  - {id: CO-301-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}
+  # Coverage pass 4 for SNAP, S4-11: 60 or older (7 CFR 271.2, S6) on the last day of the month evaluated (OQ-1262).
+  - {"id": "CO-301-T3", "title": "S4-11 (AGE60): born 1966-11-02, read in October 2026: 59 on October 31: false", "month": "2026-10", "as_of": "2026-11-05", "given": {"date_of_birth": "1966-11-02"}, "expect": false}
+  - {"id": "CO-301-T4", "title": "S4-11: the same person in November 2026: 60 on November 30 (60 from November 2): true", "month": "2026-11", "as_of": "2026-10-20", "given": {"date_of_birth": "1966-11-02"}, "expect": true}
