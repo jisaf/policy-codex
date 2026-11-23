@@ -218,3 +218,9 @@ The consistency list comes from re-evaluating each stated derived fact with its 
 
 - **A-2 (CO-642)**: settled by the governing text. The eligibility rule (8.100.7.A.2.e, S351/S3422) and the federal limit (42 CFR 435.1005, S378) both say "does not exceed"; 8.100.6.K.5's "under" introduces the group and is read as the same standard. CO-642's precision records it; no decision changed.
 - **A-3 and A-4 (CO-609, CO-1162)**: both read one item, ma_ssi_income_test_status (CO-5516), settled by 42 U.S.C. 1382(a)(1)(A), (2)(A), "at a rate of not more than" the benefit rate (S3950, D-347). CO-1162 now reads income equal to the rate as meeting the test; CO-1162-T7 and T10 expect true. docs/reviews/receipts-migration-2-medicaid.md, section 8.
+
+## Follow-up (earned-income records E1, SNAP, 2026-11-23)
+
+- **A-5 (CO-1394-T14)**: not settled by the text (4.205.11.B.2.b says both "within thirty (30) calendar days" and "terminate ... on the thirtieth (30th) calendar day"; 7 CFR 273.2(i)(4)(iii) names no day). Recorded as OQ-1100 (SNAP policy owner), whose assumption is the test's reading; CO-1393 and CO-1394 name it. docs/reviews/records-earnings-snap.md.
+- **Givens that contradict themselves, SNAP**: CO-411-T4 and T5 state a date of birth that gives the age (2008-10-01: 18 on 2026-10-01; 1976-10-02: 49), not an age over it; CO-344-T4 states $1,000 liquid and $2,000 non-liquid resources (= the $3,000 limit), not a total over its parts; CO-340-T5 states $2,660 of monthly wages against the real FY2027 200% limit for one ($2,660, S739), not a $1,000 limit. Each expected value is unchanged (true) and computed by hand in a comment on the test.
+

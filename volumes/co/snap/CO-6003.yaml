@@ -1,0 +1,18 @@
+id: CO-6003
+name: "SNAP: ABAWD unpaid and in-kind work hours"
+identifier: snap_abawd_unpaid_work_hours
+kind: derived
+type: hours
+scope: person-month
+program: SNAP
+meaning: "The hours in the month the person worked without pay or in exchange for goods or services, verified by the provider (unpaid_or_in_kind_work_hours, CO-1915), and did community service (community_service_hours, CO-1916): work that is \"working\" for the ABAWD work requirement beside paid work (10 CCR 2506-1 4.311.B.1.a.ii-iv, S132: \"Work completed in exchange for goods or services (in-kind work)\", \"Unpaid work verified by the provider of the unpaid work\")."
+precision: "Each fact is read as zero when not stated, as snap_meets_abawd_work_requirement (CO-415) read it before this item (final verification F-12); the reading is unchanged and now made once, for both the requirement (CO-415) and the verification of the hours that meet it (snap_requires_verification_of_work_hours, CO-1386), so the two cannot disagree. Whether these facts should be required (decision 4 of 2026-11-23) is a question for the round that reviews the hours facts, not changed here."
+derived: ["+", [otherwise, unpaid_or_in_kind_work_hours, 0], [otherwise, community_service_hours, 0]]
+sources: [S132, S129, S810]
+implemented: engine
+tags: [snap, abawd]
+rationale: "Duplicate-paths audit D-S6 (docs/reviews/duplicate-paths-audit.md): CO-415 counted unpaid, in-kind and community service hours toward the work requirement, but CO-1386 read only hours_worked and work_program_hours, so an ABAWD meeting the requirement with 85 hours of unpaid work was never asked to verify them (7 CFR 273.2(f)(1)(xiv)(A), S810: the work hours of an individual \"satisfying the work requirement by working\" shall be verified). Both read this item."
+tests:
+  - {id: CO-6003-T1, month: "2026-10", as_of: "2026-10-01", given: {unpaid_or_in_kind_work_hours: 85, community_service_hours: 0}, title: "85 hours of unpaid work", expect: 85}
+  - {id: CO-6003-T2, month: "2026-10", as_of: "2026-10-01", given: {unpaid_or_in_kind_work_hours: 30, community_service_hours: 50}, title: "30 hours of in-kind work and 50 of community service: 80", expect: 80}
+  - {id: CO-6003-T3, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Neither stated: 0, as the requirement reads them", expect: 0}

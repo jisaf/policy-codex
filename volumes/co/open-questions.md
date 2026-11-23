@@ -2970,7 +2970,7 @@ Assumption: The three kinds are earnings in every program, each program counting
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, CO-5001, CO-5010, CO-5016, CO-5650, CO-5720, CO-5730, CO-5500, CO-5510, CO-5101, CO-5102, CO-5103, CO-5104, CO-5105, CO-5106, CO-5107.
 
-### OQ-1021. SNAP: wages an employer pays to a third party for the household
+### OQ-1021. Resolved: SNAP counts wages an employer pays to a third party for the household
 
 Body: The earnings kind employer_vendor_payment (earnings, CO-5100) states money an employer pays to a third party for an expense of the person's household, as part of the person's compensation, from funds the employer would otherwise pay the person (employer_vendor_payments_received, CO-4455, today). 7 CFR 273.9(c)(1)(vii)(B) (S4101) counts such a payment: "the wages are garnished or diverted by the employer and paid to a third party for a household expense, such as rent. This vendor payment is counted as income", while a payment "in addition to paying the household its regular wages" is excluded. No SNAP item reads CO-4455, so SNAP counts none of it. The earnings table (snap_earnings_treatment_table, CO-5101) keeps that reading (not_counted_text_counts) so step E0 changes no answer; the SNAP E1 track decides, as a cited difference, whether the row is counted. If the text applies as written, today's reading is a wrong answer (a P1 candidate): a household whose employer pays part of its wages to the landlord has that part left out of SNAP income.
 
@@ -2979,6 +2979,8 @@ Owner: SNAP policy owner
 Assumption: Not counted (today's reading) until the SNAP E1 track rewires SNAP's earned income.
 
 Checked 2026-11-23: 7 CFR 273.9(c)(1) (D-13); 10 CCR 2506-1 4.405 (D-82), which lists no vendor-payment exclusion of its own. Items: CO-5101, CO-4455.
+
+Resolution (earned-income records, step E1 SNAP, 2026-11-23; docs/reviews/records-earnings-snap.md): settled by the text. 10 CCR 2506-1 4.405.H.4 (D-82, S4300): "Wages earned by a household member that are garnished or diverted by an employer and paid to a third party for a household's expenses, such as rent, shall be considered as income. However, if the employer pays a household's rent directly to the landlord in addition to paying the household its regular wages, this rent payment shall be excluded as a vendor payment"; 4.405.H.2 and 7 CFR 273.9(c)(1)(vii)(B) (S4101) say the same. The kind employer_vendor_payment states money the employer would otherwise pay the person (CO-5100), which is the counted case, so snap_earnings_treatment_table (CO-5101) counts the row and SNAP's pay (snap_person_wages, CO-4324; snap_person_counted_wages, CO-5113) includes it (rule tests CO-4324-T18, CO-5113-T14). A payment an employer makes in addition to the regular wages is not this kind. No stored household states it; the generated SNAP households that do count it (harness class E1-2). Items: CO-5101, CO-4324, CO-5113.
 
 ### OQ-1022. Colorado Works: wages from WIOA on-the-job training
 
@@ -3081,3 +3083,23 @@ Owner: Child care policy owner (CDEC)
 Assumption: A child is an eligible child by age until the thirteenth birthday, in Child Welfare Child Care as in the CCDF-funded programs.
 
 Checked 2026-11-23: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.120.F (D-87, rule version 12658, re-fetched from the Secretary of State on 2026-11-23, unchanged) and 45 CFR 98.20(a)(1) (D-442, eCFR as of 2026-11-19). No state text names the thirteenth birthday.
+
+### OQ-1100. SNAP expedited service: whether a household is still in its postponement period on the thirtieth day after application
+
+Body: 10 CCR 2506-1 4.205.11.B.2.b (S835; the current text, D-82, rule version 12718, reads the same) says that "when the postponed verification is not completed within thirty (30) calendar days from the date of application, the local office shall terminate the household's participation on the thirtieth (30th) calendar day without providing a notice of adverse action". "Within thirty calendar days from the date of application" can include the thirtieth day after it, so that verification completed that day is in time; but participation is terminated "on the thirtieth calendar day", so on that day the household may already be out of its postponement. The text does not say whether the thirtieth day is the application date plus 29 days or plus 30, nor whether the household is still postponed on it. snap_expedited_postponement_end_date (CO-1393) is the application date plus snap_expedited_postponed_verification_days (30), and snap_verification_status (CO-1394) reads a determination date on or before it as postponed_expedited; rule test CO-1394-T14 (the T-9 boundary, A-5 of docs/reviews/t9-threshold-handcheck.md) fixes that reading at equality. 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310) postpones verification to the second or third month of participation and names no day.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: The postponement runs through the application date plus thirty days, inclusive: a household that completes the postponed verification on that day is in time, and its verification is still postponed on that day.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.205.11.B.2.b (D-82, rule version 12718; S835 from D-103); 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310); OQ-323 (thirty days rather than the federal months; it does not settle the day). Items: CO-1393, CO-1394.
+
+### OQ-1101. SNAP self-employment: whether a business that does not say it is the household's annual support, or that its business has changed, is averaged
+
+Body: 10 CCR 2506-1 4.403.12 (S3114) averages "Self-employment income which represents a household's annual support" over twelve months (A), averages income "intended to meet the household's needs for only part of the year" over the period it covers (B), and turns to anticipated earnings when the household "has experienced a substantial increase or decrease in business" (A, C). Before earned-income records, snap_self_employment_is_averaged (CO-4329) read self_employment_is_annual_support and self_employment_has_changed_substantially as no when not stated. The earnings records (CO-5100) declare both fields required where read (design decision D3: no rule text gives them a value), so from step E1 a business record that does not state annual_support makes SNAP's self-employment income cannot determine, and one that is annual support must state changed_substantially. Six stored households of other programs (CO-136, CO-182, CO-322, CO-382, CO-383, CO-387) and the generated business households are now cannot determine for SNAP (harness class SE-D4-1); the one SNAP household with a business (CO-447) states that its farm is not annual support. Whether 4.403.12.A's "shall be averaged ... If the averaged amount does not accurately reflect ... the local office shall calculate ... on the basis of anticipated earnings" gives changed_substantially a default of no (averaging the rule, a substantial change the exception) is a reading for the owner; a default would be declared on the field by the integration owner (CO-5100), not by SNAP's reader.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Both are required where read, as the earnings records declare them: a business that does not say whether it is the household's annual support, or an annual-support business that does not say whether it has changed substantially, cannot be determined.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.403.11-4.403.12 (D-82, S1152, S3114); 4.402.2.A.1 (S3113); 7 CFR 273.11(a)(1) (D-15). Items: CO-4329, CO-4349, CO-1702, CO-3722, CO-5100.

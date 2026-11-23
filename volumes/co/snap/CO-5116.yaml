@@ -1,0 +1,16 @@
+id: CO-5116
+name: "SNAP: farm costs"
+identifier: snap_farm_costs
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The costs of producing the person's farm income for the month that 7 CFR 273.11(b) and 10 CCR 2506-1 4.403.11 allow: the cost records of the farm (marked farm) whose row in snap_earnings_treatment_table is deducted (operating costs, interest, payments on the principal of income-producing property), paid in the month."
+precision: "A cost no rule allows (depreciation, 273.11(b)(2)(iii)) or no text on file names (home space, vehicle: not_deducted_no_rule_found) is not deducted; a cost of the boarder rule is read by snap_boarder_income (CO-4165). Earnings not stated: cannot determine; a stated list with no farm cost is 0."
+derived: ["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"deducted"],["receipt","farm"],["received_in",["month"]]],["receipt","amount"]]
+sources: [S1152, S1153, S4102, S2510]
+implemented: engine
+tags: [snap, income]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. The farm's costs apart from the other business's (CO-1701), so the loss offset of 273.11(a)(2)(ii) reads the farm's own net."
+tests:
+  - {id: CO-5116-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: farm_self_employment_receipts, amount: 200}, {kind: business_cost_operating, amount: 700, farm: true}, {kind: business_cost_depreciation, amount: 100, farm: true}, {kind: business_cost_operating, amount: 50}]}, title: "Farm operating costs $700 and depreciation $100, and $50 of another business: 700", expect: 700}

@@ -1,0 +1,18 @@
+id: CO-6001
+name: "SNAP: allotment cap for excluded disqualified members, before the minimum"
+identifier: snap_allotment_cap_before_minimum
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The allotment this person's SNAP household would receive for a full month with its members disqualified under 7 CFR 273.11(c)(1) counted in its size (snap_household_size_with_disqualified_members) and their income (snap_net_income_with_disqualified_members), before the one- and two-person minimum: the maximum allotment for that size less snap_benefit_reduction_rate of that net income, rounded down and not below zero (273.11(c)(1)(ii)); with no such member, the household's maximum allotment, which never binds."
+precision: "The maximum allotment for the larger size is read as snap_maximum_allotment (CO-383) reads it for the household's size. snap_allotment_cap_for_disqualified_members (CO-4182) raises it to the minimum allotment for a household of that size that may receive one (the full month); the initial month, which has no minimum (4.207.3.C, \"Except for an initial month\"), is capped by this figure itself (snap_full_month_allotment_before_minimum, CO-6002), so the household's initial month is never more than it would be with the member counted."
+derived: [case, [["=", snap_household_size_with_disqualified_members, snap_eligible_household_size], snap_maximum_allotment], [else, [max, 0, ["-", 0, [ceil, ["-", ["*", snap_benefit_reduction_rate, snap_net_income_with_disqualified_members], [case, [[all, [">=", snap_household_size_with_disqualified_members, snap_maximum_allotment_large_household_size], [not, [unknown, snap_maximum_allotment_large_household]]], snap_maximum_allotment_large_household], [else, [lookup_extended, snap_maximum_allotment_table, snap_household_size_with_disqualified_members, snap_maximum_allotment_each_additional]]]]]]]]]
+sources: [S2965, S1813, S85]
+implemented: engine
+tags: [snap, income]
+rationale: "Duplicate-paths audit D-S3 (docs/reviews/duplicate-paths-audit.md): the prorated initial month (CO-2308) recomputed the allotment from the maximum allotment less the benefit reduction and never applied the cap of 7 CFR 273.11(c)(1)(ii) that the full month (CO-2307) applies through CO-4182, so a household with a member disqualified under 273.11(c)(1) received more in its initial month than the rule allows (the audit's household: $546 against a $400 cap; from the 16th of a 31-day month $281 where the cap gives $206). The pieces both months share are items each reads."
+tests:
+  - {id: CO-6001-T1, as_of: "2026-10-01", month: "2026-10", title: "ZZ-10: size 2, 3 with the sanctioned member; net 2,663: 808 - ceil(0.3 x 2,663 = 798.9) = 9", given: {snap_household_size_with_disqualified_members: 3, snap_eligible_household_size: 2, snap_net_income_with_disqualified_members: 2663}, expect: 9}
+  - {id: CO-6001-T2, as_of: "2026-10-01", month: "2026-10", title: "One member and one sanctioned member, net 1,900: 562 - 570 is below 0, so 0 before the minimum", given: {snap_household_size_with_disqualified_members: 2, snap_eligible_household_size: 1, snap_net_income_with_disqualified_members: 1900}, expect: 0}
+  - {id: CO-6001-T3, as_of: "2026-10-01", month: "2026-10", title: "No disqualified member: the maximum allotment", given: {snap_household_size_with_disqualified_members: 2, snap_eligible_household_size: 2, snap_maximum_allotment: 562}, expect: 562}

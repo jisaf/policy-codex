@@ -1,0 +1,17 @@
+id: CO-5115
+name: "SNAP: farm gross receipts"
+identifier: snap_farm_gross_receipts
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The gross receipts of the person's farm that SNAP counts for the month: the earnings records whose row in snap_earnings_treatment_table is counted_loss_offset (farm_self_employment_receipts) received in the month (10 CCR 2506-1 4.403.12.E; 7 CFR 273.11(a)(2)), less those marked irregular when snap_irregular_earnings_are_excluded (4.405.A), and, in a destitute household's month of application, without the receipts dated after the date of application (4.406.1.A)."
+precision: "The farm's costs are snap_farm_costs (CO-5116); snap_self_employment_income (CO-1702) counts the farm's net and snap_farm_self_employment_loss (CO-3722) its loss. Earnings not stated: cannot determine."
+derived: ["-",["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"counted_loss_offset"],["received_in",["month"]],["not",["all",["otherwise","is_destitute_migrant_or_seasonal_farmworker",false],["=",["month"],["month_of","snap_application_date"]],[">",["receipt","date"],"snap_application_date"]]]],["receipt","amount"]],["case",["snap_irregular_earnings_are_excluded",["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatment_table",["receipt","kind"]],"counted_loss_offset"],["receipt","irregular"],["received_in",["month"]],["not",["all",["otherwise","is_destitute_migrant_or_seasonal_farmworker",false],["=",["month"],["month_of","snap_application_date"]],[">",["receipt","date"],"snap_application_date"]]]],["receipt","amount"]]],["else",0]]]
+sources: [S2510, S2511, S3100, S2964]
+implemented: engine
+tags: [snap, income]
+nearest: [CO-5114]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. The farm is told apart by its kind, not by a person fact (self_employment_is_farming, CO-3720), so a farmer with another business has both."
+tests:
+  - {id: CO-5115-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: farm_self_employment_receipts, amount: 700}, {kind: business_cost_operating, amount: 300, farm: true}]}, title: "The farm of a person who also has a business: 700", expect: 700}

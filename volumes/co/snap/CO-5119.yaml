@@ -1,0 +1,17 @@
+id: CO-5119
+name: "SNAP: pay received in the month"
+identifier: snap_person_pay_received
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's pay for work as an employee received in the month, in money, as received (not converted): every earnings record whose row in snap_earnings_treatment_table is a pay row (counted, counted_no_rule_excludes, excluded, excluded_in_combat_zone, excluded_under_19_with_parent; in-kind pay has a row of its own, excluded_in_kind), received in the month."
+precision: "The wages the work-registration and student work tests read (snap_weekly_earnings_worked, CO-403; snap_meets_student_employment_exemption, CO-407), which read wages_gross before step E1: pay of every source, whether SNAP counts it as income or not, and not the value of goods or housing given as pay, which wages_gross did not hold. Earnings not stated: cannot determine; a stated empty list is 0."
+derived: ["sum_receipts","earnings",["all",["in",["lookup","snap_earnings_treatment_table",["receipt","kind"]],["counted","counted_no_rule_excludes","excluded","excluded_in_combat_zone","excluded_under_19_with_parent"]],["received_in",["month"]]],["receipt","amount"]]
+sources: [S41, S135]
+implemented: engine
+tags: [snap, income]
+rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. Replaces the work tests' reading of wages_gross (CO-023)."
+tests:
+  - {id: CO-5119-T1, month: "2027-01", as_of: "2027-01-15", given: {earnings: [{kind: wages, amount: 1250, frequency: weekly, per_payment: 250}, {kind: work_study, amount: 200}, {kind: in_kind_pay, amount: 300}, {kind: self_employment_receipts, amount: 500}]}, title: "Five weekly pays of $250, $200 of work-study, $300 of in-kind pay and $500 of business receipts: 1,250 + 200 = 1,450", expect: 1450}
+  - {id: CO-5119-T2, month: "2027-01", as_of: "2027-01-15", given: {}, title: "Earnings not stated: cannot determine", expect: unknown}
