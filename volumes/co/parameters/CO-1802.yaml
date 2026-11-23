@@ -9,7 +9,7 @@ meaning: "The monthly amount of earnings SSA deems to constitute Substantial Gai
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 1620, source: S1711}
   - {from: "2026-01-01", to: "2027-01-01", value: 1690, source: S499}
-  - {from: "2027-01-01", value: 1770, source: S1712}
+  - {from: "2027-01-01", to: "2028-01-01", value: 1770, source: S1712}
 review_by: "2027-11-01"
 sources: [S499, S1711, S1712]
 tags: [ma, non_magi, disability]

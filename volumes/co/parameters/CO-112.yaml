@@ -13,8 +13,10 @@ versions:
     value: { "1": 1305, "2": 1763, "3": 2221, "4": 2680, "5": 3138, "6": 3596, "7": 4055, "8": 4513 }
     source: S52
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: { "1": 1330, "2": 1804, "3": 2277, "4": 2750, "5": 3224, "6": 3697, "7": 4170, "8": 4644 }
     source: S734
 rationale: "10 CCR 2506-1 4.401,A,3,a-b (S50) and 7 CFR 273.9(a)(2) require every SE household to meet a 100% net income standard; D-21's table 1 (S52) is the FY2026 FNS table for the 48 states and D.C. Phase 8 adds the FY2027 version (D-84 Table 1, S734; 10 CCR 2506-1 4.401.2, S740)."
+review_by: "2027-10-01"
 sources: [S52, S734, S740]
 tags: [income, snap]

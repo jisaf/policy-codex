@@ -12,8 +12,10 @@ versions:
     value: 24
     source: S85
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 25
     source: S733
 rationale: "7 CFR 273.10(e)(2)(ii)(C) (S104) requires a minimum benefit for one- and two-person households, computed as 8% of the one-person maximum allotment rounded to the nearest whole dollar; D-22's Table 1 (S85) is the FY2026 FNS-published dollar figure (48 states and D.C. column) already computed, which snap_allotment (CO-385) needs as a named, dated parameter rather than re-deriving 8% of snap_maximum_allotment_table. Phase 8 adds the FY2027 version (S733, S738)."
+review_by: "2027-10-01"
 sources: [S85, S104, S733, S738]
 tags: [income, snap]

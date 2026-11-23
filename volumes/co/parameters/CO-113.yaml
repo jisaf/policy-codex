@@ -12,8 +12,10 @@ versions:
     value: 459
     source: S52
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 474
     source: S734
 rationale: "7 CFR 273.9(a)(3)(ii) requires the increment for households over 8 persons; D-21's table 1 (S52) states the FY2026 dollar increment. Phase 8 adds the FY2027 version (S734)."
+review_by: "2027-10-01"
 sources: [S52, S734]
 tags: [income, snap]

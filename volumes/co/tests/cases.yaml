@@ -13670,7 +13670,13 @@
   #   so her coverage continues in January without the month-after-determination rule of L.10.
   #   ma_msp_category January 2027: qmb. (A new applicant determined in January would start in February.)
   # - Her resources 3,000 are liquid (an MSP-only renewal), at or under 9,950.
+  # Time audit T-5: the MSP resource limit is a calendar-year figure and its 2026 version now ends on 2026-12-31,
+  # so a 2027 month has none until CMS's 2027 figure is loaded (cannot determine, with a no-version warning). The
+  # case states the 2026 figure under parameters to keep testing the COLA disregard: any 2027 limit above 3,000
+  # gives the same answer.
   as_of: "2027-01-20"
+  parameters:
+    ma_msp_resource_limit_individual: 9950
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
     home_incurs_electricity_cost: true

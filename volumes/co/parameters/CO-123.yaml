@@ -16,8 +16,10 @@ versions:
     value: 918
     source: S1304
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 948
     source: S739
 rationale: "Companion figure to snap_bbce_gross_income_limit_table (CO-122), from the same codified 4.401.1 table (S59); see OQ-15 for the same dating caveat. Phase 8 adds the FY2027 200% each-additional figure (S739); the open-question sweep adds the FY2026 figure (S1304, OQ-15)."
+review_by: "2027-10-01"
 sources: [S59, S739, S1304]
 tags: [income, snap, state_election]

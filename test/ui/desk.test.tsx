@@ -52,14 +52,19 @@ beforeEach(() => {
 });
 
 describe("the Desk's counts (counts.ts)", () => {
-  it("soon is the next 90 days: nine changes on January 1, 2027 across every program", () => {
+  it("soon is the next 90 days: twenty-four changes on January 1, 2027 across every program", () => {
     expect(soonRange(DAY)).toEqual({ from: "2026-11-23", to: "2027-02-20" });
     const all = takingEffectSoon(engine, vol, DAY, null);
-    expect(all.total).toBe(9); // + CO-3379, CO-3380 (2027 SSI student earned income exclusion, probe hand-check)
+    // + CO-3379, CO-3380 (2027 SSI student earned income exclusion, probe hand-check); + 15 figures whose 2026
+    // version now ends on 2026-12-31 with no 2027 figure loaded (time audit T-5: a yearly figure closes at year end).
+    expect(all.total).toBe(24);
+    expect(all.events.filter((e) => e.kind === "figure ends")).toHaveLength(15);
     expect(new Set(all.events.map((e) => e.date))).toEqual(new Set(["2027-01-01"]));
-    // Medicaid and CHP+ hold six; the SSI individual rate and the two SSI student exclusion figures are shared by every program.
-    expect(takingEffectSoon(engine, vol, DAY, ["Medicaid", "CHP+"]).total).toBe(9);
-    expect(takingEffectSoon(engine, vol, DAY, CDHS).events.map((e) => e.item.id)).toEqual(["CO-235", "CO-3379", "CO-3380"]);
+    // Medicaid and CHP+ hold the Medicaid figures that end and start; the SSI individual rate and the two SSI student
+    // exclusion figures are shared by every program.
+    expect(takingEffectSoon(engine, vol, DAY, ["Medicaid", "CHP+"]).total).toBe(19);
+    expect(takingEffectSoon(engine, vol, DAY, CDHS).events.map((e) => e.item.id))
+      .toEqual(["CO-291", "CO-1201", "CO-4730", "CO-1202", "CO-289", "CO-1200", "CO-235", "CO-3379", "CO-3380"]);
   });
 
   it("unverified counts items citing unverified text and figures with no value, each once", () => {

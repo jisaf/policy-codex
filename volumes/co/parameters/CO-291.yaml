@@ -13,7 +13,9 @@ versions:
     value: 967
     source: S462
   - from: "2026-01-01"
+    to: "2027-01-01"
     value: 994
     source: S706
+review_by: "2027-01-01"
 sources: [S462, S706]
 rationale: No existing item states the AND-CS grant standard. af_grant_standard (CO-949) and af_and_grant (CO-952) need it.

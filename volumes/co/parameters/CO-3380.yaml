@@ -9,7 +9,8 @@ meaning: "The most of a student's earned income the SSI method excludes in a cal
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 9460, source: S2211}
   - {from: "2026-01-01", to: "2027-01-01", value: 9730, source: S2211}
-  - {from: "2027-01-01", value: 10080, source: S3700}
+  - {from: "2027-01-01", to: "2028-01-01", value: 10080, source: S3700}
+review_by: "2027-11-01"
 sources: [S2210, S2211, S3700]
 implemented: engine
 tags: [non_magi, income, student]

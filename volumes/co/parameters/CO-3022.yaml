@@ -9,7 +9,7 @@ meaning: "The average monthly private-pay cost of long-term care institution car
 precision: "The figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1230)."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: {region_i: 11556.2, region_ii: 10397.93, region_iii: 9290.77, region_iv: 10655.56}, source: S1230}
-  - {from: "2026-01-01", value: {region_i: 11522.44, region_ii: 10633.36, region_iii: 9780.17, region_iv: 11322.6}, source: S1230}
+  - {from: "2026-01-01", to: "2027-01-01", value: {region_i: 11522.44, region_ii: 10633.36, region_iii: 9780.17, region_iv: 11322.6}, source: S1230}
 review_by: "2027-01-01"
 sources: [S1229, S1230]
 tags: [ma, ltc, income]
