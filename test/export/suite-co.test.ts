@@ -89,8 +89,11 @@ describe("the co suite", () => {
     // over up to 120 months), so the window starts 119 months before October 2026,
     // before SNAP's child support payment history (CO-2002), which reads back to
     // July (dual-entry audit 2.3). CCCAP's J.28 exclusion (CO-4076, CO-4077) adds the
-    // irregular income of the whole calendar quarter, so the window runs to December.
-    expect(byId("CO-01").months_read).toEqual({ from: "2016-11", to: "2026-12" });
+    // irregular income of the whole calendar quarter, so the window ran to December
+    // while that income was a month-indexed fact. Since the earnings records (E1 SNAP
+    // and CCCAP), the quarter's irregular pay is read from dated records, which carry
+    // their month inside the record, so no month after October is read as a fact.
+    expect(byId("CO-01").months_read).toEqual({ from: "2016-11", to: "2026-10" });
     const iso = suite.cases.filter((c) => c.kind === "rule-test").map((c) => c.isolation);
     expect(iso.every((x) => x === "unit" || x === "integration")).toBe(true);
     expect(iso.filter((x) => x === "unit").length).toBeGreaterThan(500);
