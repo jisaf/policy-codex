@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The person's lottery or gambling winnings of the month, each a single game's prize, that are substantial: at least snap_resource_limit_elderly_disabled, before taxes or withholding (10 CCR 2506-1 4.000.1, 4.403.I; 7 CFR 273.11(r)): counted as unearned income in the month received."
-precision: One receipt per game (receipts, kind gambling_winnings). Other winnings are a nonrecurring lump sum, excluded as income and held as a resource (4.405.E).
-derived: [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_if_substantial], [received_in, [month]], [">=", [receipt, amount], snap_resource_limit_elderly_disabled]], [receipt, amount]]
+precision: "One receipt per game (receipts, kind gambling_winnings). Other winnings are a nonrecurring lump sum, excluded as income and held as a resource (4.405.E). In a destitute household's month of application a record dated after the date of application is not counted (4.406.1.A, S2964; coverage pass 4 S4-14)."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["lookup", "snap_receipt_treatment_table", ["receipt", "kind"]], "counted_if_substantial"], ["received_in", ["month"]], [">=", ["receipt", "amount"], "snap_resource_limit_elderly_disabled"], ["not", ["all", ["otherwise", "is_destitute_migrant_or_seasonal_farmworker", false], ["=", ["month"], ["month_of", "snap_application_date"]], [">", ["receipt", "date"], "snap_application_date"]]]], ["receipt", "amount"]]
 sources: [S2950, S2951, S2953]
 implemented: engine
 tags: [snap, income]

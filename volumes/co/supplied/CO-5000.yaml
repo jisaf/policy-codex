@@ -148,6 +148,30 @@ record_fields:
     type: money
     default: 0
     meaning: The part received for a person who does not live with the person (a beneficiary living elsewhere).
+  regular_date:
+    type: calendar date
+    when_absent: "the payment came on the day its schedule set for it"
+    meaning: "For a payment of a regular schedule that came early or late, because a holiday or a weekend fell on its payment day, because the payer changed the payment dates, or because of a mailing cycle (two monthly payments in one month and none in the next), the day the schedule set for it; the month it is for is that day's month. A rule that counts a payment by its regular schedule reads it (SNAP 10 CCR 2506-1 4.402.B.2-3); a rule that counts a payment by the day it came in reads date (coverage pass 4 for SNAP, S4-2)."
+  start_date:
+    type: calendar date
+    when_absent: "the payments began before the months the case covers"
+    meaning: "For a stream of like payments (a receipt with no month and no date), the day its first payment came in. A stream recurs from that day's month; in that month a full month's payments are not received (coverage pass 4 for SNAP, S4-1, S4-3)."
+  end_date:
+    type: calendar date
+    when_absent: "the payments continue through the months the case covers"
+    meaning: "For a stream of like payments (a receipt with no month and no date), the day its last payment came in or is expected to come in. A stream recurs through that day's month and not after it (coverage pass 4 for SNAP, S4-1, S4-3)."
+  covers_from:
+    type: calendar date
+    required: true
+    meaning: "For a payment received once that is meant for the person's expenses or needs over a period (a Colorado Works diversion payment, for example), the first day of that period (coverage pass 4 for SNAP, S4-5)."
+  covers_through:
+    type: calendar date
+    required: true
+    meaning: "For a payment received once that is meant for the person's expenses or needs over a period, the last day of that period (coverage pass 4 for SNAP, S4-5)."
+  recurs_within_twelve_months:
+    type: yes/no
+    required: true
+    meaning: "For a payment received once, another payment of the same kind is expected to be paid to the person within twelve months of its date (coverage pass 4 for SNAP, S4-5)."
   taxable_amount:
     type: money
     required: true

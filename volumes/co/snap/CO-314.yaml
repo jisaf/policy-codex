@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: At least one member of this person's SNAP household (snap_household_members) is an elderly or disabled member under 7 CFR 271.2 / 7 U.S.C. 2012(j).
-precision: Tests every member of the purchase-and-prepare unit, not only eligible members, since an elderly or disabled ineligible non-citizen still triggers the household's elderly/disabled-only deduction and income rules under 273.11(c).
-derived: [exists, snap_household_members, [of, [P], snap_is_elderly_or_disabled]]
+meaning: "At least one member of this person's SNAP household is an elderly or disabled member under 7 CFR 271.2 / 7 U.S.C. 2012(j) in the determination month: snap_household_has_elderly_or_disabled_member_in_month (CO-6603) read in that month, for the readers that are per person."
+precision: "Tests every member of the purchase-and-prepare unit, not only eligible members, since an elderly or disabled ineligible non-citizen still triggers the household's elderly/disabled-only deduction and income rules under 273.11(c). Coverage pass 4 S4-11: the readers that are per month (the gross income test, the shelter deduction, the net income with disqualified members) read CO-6603 in the month they evaluate; this item is the determination month's value of the same item, so the two cannot disagree (no second path)."
+derived: ["at", "snap_household_has_elderly_or_disabled_member_in_month", ["det_month"]]
 sources: [S6, S7]
 implemented: engine
 tags: [age, disability, household]

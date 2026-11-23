@@ -1,0 +1,16 @@
+id: CO-6605
+name: "SNAP: a business's capital gains received in the month"
+identifier: snap_self_employment_capital_gains
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The capital gains of the person's self-employment other than a farm received in the month: the capital_gain of each earnings record whose row in snap_earnings_treatment_table is counted_less_costs, placed as snap_self_employment_gross_receipts (CO-5114) places it. Part of those gross receipts."
+precision: "Coverage pass 4 for SNAP (docs/reviews/coverage4-snap.md), S4-17: read by snap_anticipated_capital_gains (CO-6606) for the twelve months beginning with the application month, and by snap_self_employment_income (CO-1702), which takes them out of the past months it averages. Earnings not stated: cannot determine; a record that states no capital_gain has none (an earmark, default 0)."
+derived: ["sum_receipts", "earnings", ["all", ["=", ["lookup", "snap_earnings_treatment_table", ["receipt", "kind"]], "counted_less_costs"], ["case", [["not", ["unknown", ["receipt", "regular_date"]]], ["=", ["month_of", ["receipt", "regular_date"]], ["month"]]], ["else", ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "job_start_date"]], ["<=", ["month_of", ["receipt", "job_start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "job_end_date"]], [">=", ["month_of", ["receipt", "job_end_date"]], ["month"]]]]]]]]], ["receipt", "capital_gain"]]
+sources: [S4730, S1152]
+implemented: engine
+tags: [snap, income]
+rationale: "Coverage pass 4 for SNAP, S4-17: capital gains were part of the receipts averaged over the past twelve months."
+tests:
+  - {"id": "CO-6605-T1", "title": "Receipts of $3,000 in March 2027, $1,200 of them the gain on a sold truck: 1,200", "month": "2027-03", "as_of": "2027-03-15", "given": {"earnings": [{"kind": "self_employment_receipts", "amount": 3000, "capital_gain": 1200, "month": "2027-03", "annual_support": true, "changed_substantially": false}]}, "expect": 1200}

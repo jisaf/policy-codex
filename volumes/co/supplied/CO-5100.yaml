@@ -75,11 +75,11 @@ record_fields:
   job_start_date:
     type: calendar date
     when_absent: "the job or business began before the months the case covers"
-    meaning: The day the job or business began.
+    meaning: "The day the job or business began. A stream (a record with no month and no date) of a job that states its start date is pay from that day's month (coverage pass 4 for SNAP, S4-3)."
   job_end_date:
     type: calendar date
     when_absent: "the job or business continues through the months the case covers"
-    meaning: The day the job or business ended (for a farm, the day the person ceased to farm the land).
+    meaning: "The day the job or business ended (for a farm, the day the person ceased to farm the land). A stream (a record with no month and no date) of a job that states its dates is pay of the months from the month the job began through the month it ended; pay received after the job ended (a last paycheck, leave paid out) is stated with its date (coverage pass 4 for SNAP, S4-3, S4-4)."
   temporary_job:
     type: yes/no
     default: false
@@ -153,6 +153,22 @@ record_fields:
     type: yes/no
     default: false
     meaning: "The boarder payments, or the difficulty of care payment, are foster care payments for a person placed in the home (paid by the county or the State for foster care), not payments for a person on a Home and Community Based Services waiver."
+  regular_date:
+    type: calendar date
+    when_absent: "the pay came on the day its schedule set for it"
+    meaning: "For a pay of a regular schedule that came early or late, because a holiday or a weekend fell on its pay day, because the employer changed the pay dates, or because the employer held it at the person's request, the day the schedule set for it; the month it is for is that day's month. A rule that counts pay by its regular schedule reads it (SNAP 10 CCR 2506-1 4.402.B.1, 4.403.A.3); a rule that counts pay by the day it came in reads date (coverage pass 4 for SNAP, S4-2)."
+  leave_or_bonus_pay:
+    type: yes/no
+    default: false
+    meaning: "The pay is sick pay, vacation pay (paid leave, or leave paid out when the job ends) or a bonus, not pay for hours worked (coverage pass 4 for SNAP, S4-4)."
+  wioa_funded:
+    type: yes/no
+    default: false
+    meaning: "The wages are paid under a program funded by the Workforce Innovation and Opportunity Act (work experience, a transitional job, an internship) other than its on-the-job training, which is its own kind (wioa_on_the_job_training) (coverage pass 4 for SNAP, S4-8)."
+  capital_gain:
+    type: money
+    default: 0
+    meaning: "For a business's receipts, the part that is the gain from selling the business's capital goods or equipment, as a capital gain is figured for federal income tax purposes but counted in full (7 CFR 273.11(a)(3)); it is part of the record's amount. A rule that averages a capital gain apart from the other receipts reads it (SNAP 10 CCR 2506-1 4.403.11.D) (coverage pass 4 for SNAP, S4-17)."
 sources: [S41, S2713, S3112, S1152, S1155, S1156, S1157, S1154, S2963, S3159, S3255, S4340, S4636, S3356]
 tags: [income]
 open: [OQ-1020, OQ-1181]
