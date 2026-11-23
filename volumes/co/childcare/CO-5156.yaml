@@ -1,0 +1,20 @@
+id: CO-5156
+name: "CCCAP: a person's self-employment gross receipts in a month"
+identifier: cccap_self_employment_gross_receipts
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The gross receipts of the person's self-employment in the month: the earnings records (earnings, CO-5100) of a business's or a farm's gross receipts, which CCCAP counts as self-employment (cccap_earnings_treatment_table, CO-5105: counted_self_employment; 8 CCR 1403-1 3.111.I.2 \"declared gross income\", I.3 \"gross receipts\" of a farm), received in the month."
+precision: "Earned-income records, step E1 (CCCAP): replaces self_employment_gross_receipts (CO-1700) for CCCAP. The month is the month determined, the prorated monthly figure H.4.c reads as received in the prior thirty days; the receipts are not placed by date. The value of farm products the family used is not a receipt (I.3.c). Read by cccap_self_employment_net_earnings (CO-1710), cccap_has_earned_income (CO-5153) and the self-employed caretaker's activity schedule (cccap_requires_verification_of_activity_schedule, CO-5154)."
+derived: [sum_receipts, earnings, [all, ["=", [lookup, cccap_earnings_treatment_table, [receipt, kind]], counted_self_employment], [received_in, [month]]], [receipt, amount]]
+sources: [S1157, S3263, S2704]
+implemented: engine
+tags: [income]
+rationale: "Earned-income records, E1 (CCCAP): one figure for the business's receipts, read by every CCCAP item that read self_employment_gross_receipts."
+tests:
+  - {id: CO-5156-T1, title: "$1,500 of receipts in October", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500}]}, expect: 1500}
+  # A farm's $700 and another business's $800: $1,500; the operating cost is not a receipt.
+  - {id: CO-5156-T2, title: "A farm and a business; a cost is not a receipt", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: farm_self_employment_receipts, amount: 700}, {kind: self_employment_receipts, amount: 800}, {kind: business_cost_operating, amount: 200}]}, expect: 1500}
+  - {id: CO-5156-T3, title: "Wages are not self-employment", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: wages, amount: 1500}]}, expect: 0}
+  - {id: CO-5156-T4, title: "Receipts stated for November only", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500, month: "2026-11"}]}, expect: 0}

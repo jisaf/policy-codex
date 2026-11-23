@@ -1,0 +1,14 @@
+id: CO-5150
+name: CCCAP application or redetermination date
+identifier: cccap_application_or_redetermination_date
+kind: supplied
+type: calendar date
+scope: case
+program: CCCAP
+meaning: "The date the county received the household's signed CCCAP application, or the date of its redetermination of eligibility: the date from which 8 CCR 1403-1 3.111.H.4-5 (S2704, S891) takes the income \"received in the prior thirty (30) day period\" \"at Application and Re-determination\"."
+precision: "One value for the case. Read only to place a pay stated with its date (an earnings record's date, earnings, CO-5100) in or out of the thirty days before it (cccap_person_earned_income, CO-3915, and the CCCAP figures that read the same days); a household whose pays are stated by the month only does not need it. The thirty days end the day before this date (OQ-680). No default: a dated pay with the date not stated cannot be placed, and the figure cannot be determined (decision 4 of 2026-11-23)."
+supplied_by: "The date the county received the signed application (3.103 \"Application date\"), or the redetermination date the county set."
+sources: [S2704, S891]
+tags: [income, application_wide]
+open: [OQ-680]
+rationale: "Earned-income records, E1 (CCCAP): CCCAP's income at application and redetermination is the income received in the prior thirty days (3.111.H.4-5); with pays stated by date the thirty days are computed from this date, replacing wages_gross_received_prior_thirty_days (CO-3910), which no record restates (docs/reviews/earnings-e0.md, section 5). No fact named the date before: CCCAP's items read the month."

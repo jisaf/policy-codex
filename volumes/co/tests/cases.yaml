@@ -13152,6 +13152,7 @@
   # verified through the child support system.
   as_of: "2026-11-01"
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: "2026-11-01"
     is_protective_services_child_care_case: false
@@ -13186,21 +13187,25 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        # Final pass F-09: five Friday paychecks of $500 in the thirty days before the application.
-        wages_gross_received_prior_thirty_days: 2500
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         # Final pass F-01: $350 under a court order, $50 of it toward arrears, verified electronically.
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         receipts: []
+        # Earned-income records, E1 (CCCAP and LEAP): her pays are stated with their dates, replacing the thirty-day total
+        # (wages_gross_received_prior_thirty_days 2,500), the pay schedule and the month's wages_gross, which the records do not
+        # restate (docs/reviews/earnings-e0.md, section 5). $500 every Friday: the eight weeks before the November 1 application
+        # (September 6 to October 31) hold eight Friday pays, the thirty days before it (October 2 to 31) five.
         earnings:
-        - {kind: wages, amount: 2000, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
       month_defaults:
-        wages_gross: 2000
         hours_worked: 160
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 350
         child_support_paid_toward_arrears: 50
         is_in_sud_treatment_iop_or_higher: false
@@ -13294,14 +13299,14 @@
     p1:
       cccap_household_members: [p1, p2, p3]
       # CCCAP (8 CCR 1403-1 3.111.H.5, I, J, K), hand derivation:
-      #   p1 earned: wages received in the thirty days, $2,500 (five paydays; the calendar month's $2,000 is not used).
+      #   p1 earned: wages received in the thirty days (October 2 to 31), $2,500: the five Friday pays of October 2, 9, 16, 23, 30.
       #   p2 unearned: unemployment received in the thirty days, $600. p3: none. p4 is not in the CCCAP household.
       #   countable $2,500 + $600 = $3,100; less the K deduction: p1's verified court-ordered current support,
       #   $350 - $50 arrears = $300; household income $3,100 - $300 = $2,800.
       cccap_child_support_paid_deduction: {"2026-11": 300}
       cccap_household_income: {"2026-11": 2800}
       # Exit limit (a redetermination, 3.111.H.1.b): 85% SMI for 3 from 2026-10-01, $8,638.03; $2,800 is within it.
-      # Activities: p1 $2,000 / 160 hours = $12.50 an hour, at least $7.25 (G.1.b). p2's job search counts because the
+      # Activities: p1 $2,500 (the thirty days' gross wages, E1) / 160 hours = $15.625 an hour, at least $7.25 (G.1.b). p2's job search counts because the
       # household is enrolled (G.3.a, G.3.f; final pass F-05), six weeks used of thirteen. Both caretakers are active.
       cccap_eligibility_status: {"2026-11": eligible_low_income}
       # Parent fee (3.124.P, formula to July 2028), on the income after the K deduction: 1% x $2,276.67 (100% FPG for 3)
@@ -13309,7 +13314,7 @@
       # cents dropped: $101. Without the deduction it would be $146 (on $3,100).
       cccap_parent_fee: {"2026-11": 101}
       # LEAP (9 CCR 2503-7 3.752.21-23), hand derivation, household p1, p2, p3, p4:
-      #   p1 wages: weekly, $500 x 4 = $2,000 (3.752.22.C.1.a; not the five paydays of the thirty days).
+      #   p1 wages: the eight Friday pays of the eight weeks (September 11 to October 30), average $500, x 4 = $2,000 (3.752.22.B, C.1.a).
       #   p2 unearned: $600 received in the income verification period (3.752.22.A).
       #   p4 unearned: SSI $967.50 -> $967 and Social Security $400.70 -> $400 (cents dropped, 3.752.21.I, 3.752.211.H),
       #   plus the $1,200 prize received on October 20, in the income verification period (3.752.21.A, 3.752.22.A; second-pass N-8:
@@ -14414,6 +14419,7 @@
   # which Low-Income Child Care counts. p3 (Kai, 6) is the child. No B.1, B.3 or B.4 circumstance is recorded.
   as_of: '2026-11-01'
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: '2026-11-01'
     is_protective_services_child_care_case: false
@@ -14450,9 +14456,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 2000
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         cccap_non_traditional_hours_are_requested: false
@@ -14466,13 +14469,20 @@
         dwelling_id: d1
         receipts:
         - {kind: child_support, amount: 600}
+        # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
+        # the pay schedule and the month's wages_gross): the thirty days before November 1 (October 2 to 31) hold four Thursday pays,
+        # October 8, 15, 22 and 29, $2,000; the eight weeks (September 6 to October 31) hold eight.
         earnings:
-        - {kind: wages, amount: 2000, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
       month_defaults:
-        wages_gross: 2000
         hours_worked: 160
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false
@@ -14543,6 +14553,7 @@
   # verification on October 1; everything has come in except proof of Kai's benefit. Today is November 1, day 31.
   as_of: '2026-11-01'
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: '2026-11-01'
     is_protective_services_child_care_case: true
@@ -14581,9 +14592,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 2500
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         verification_request_date: '2026-10-01'
@@ -14603,13 +14611,19 @@
         cccap_immunization_record_received: true
         dwelling_id: d1
         receipts: []
+        # Earned-income records, E1 (CCCAP and LEAP): $500 every Friday, stated with the dates (replacing the thirty-day total 2,500,
+        # the pay schedule and the month's wages_gross): five Friday pays in the thirty days before November 1 (October 2 to 31).
         earnings:
-        - {kind: wages, amount: 2000, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
       month_defaults:
-        wages_gross: 2000
         hours_worked: 160
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false
@@ -14690,6 +14704,7 @@
   # Receipt records (migration phase 1): the prize is a receipt of kind gambling_winnings paid once, dated inside the income verification period from the thirty-day fact (retired; scripts/receipts/retired-facts.yaml); leap_one_time_receipts_in_period 5,000.
   as_of: '2026-11-05'
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: '2026-11-05'
     is_protective_services_child_care_case: false
@@ -14737,9 +14752,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 2500
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         cccap_non_traditional_hours_are_requested: false
@@ -14752,13 +14764,21 @@
         cccap_immunization_record_received: true
         dwelling_id: d1
         receipts: []
+        # Earned-income records, E1 (CCCAP and LEAP): CO-125's pays, stated with their dates (replacing the thirty-day total 2,500, the
+        # pay schedule and the month's wages_gross). The CCCAP redetermination is CO-125's, November 1: five Friday pays in the thirty
+        # days before it (October 2 to 31). The eight weeks before the November 5 LEAP application (September 10 to November 4) hold
+        # the eight Friday pays of September 11 to October 30.
         earnings:
-        - {kind: wages, amount: 2000, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
       month_defaults:
-        wages_gross: 2000
         hours_worked: 160
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 350
         child_support_paid_toward_arrears: 50
         is_in_sud_treatment_iop_or_higher: false
@@ -33534,10 +33554,13 @@
         cccap_self_employment_in_launch_period: true
         receipts: []
         earnings:
-        - {kind: self_employment_receipts, amount: 300}
+        - {kind: self_employment_receipts, amount: 300, hours: 120}
       month_defaults:
         wages_gross: 0
         hours_worked: 120
+        # Earned-income records, E1 (CCCAP): the 120 hours are the business's (G.2.e "declared hours worked"), stated on its record;
+        # cccap_self_employment_net_earnings no longer takes all of hours_worked as the business's when they are not stated (decision 4).
+        self_employment_hours_worked: 120
         self_employment_gross_receipts: 300
         self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
@@ -53643,6 +53666,7 @@
   # activity. Rule (review): eligible_low_income.
   as_of: "2026-11-01"
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: "2026-11-01"
     is_protective_services_child_care_case: false
@@ -53676,9 +53700,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 0
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         temporary_activity_break_reason: maternity_paternity_leave
@@ -53692,13 +53713,15 @@
         cccap_immunization_record_received: true
         dwelling_id: d1
         receipts: []
+        # Earned-income records, E1 (CCCAP and LEAP): $500 every Friday until her unpaid maternity leave began on September 28,
+        # stated with the dates (replacing the thirty-day total 0, the pay schedule and the month's wages_gross 0): no pay in the
+        # thirty days before November 1 (October 2 to 31); three in the eight weeks (September 6 to October 31).
         earnings:
-        - {kind: wages, amount: 0, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
       month_defaults:
-        wages_gross: 0
         hours_worked: 0
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false
@@ -53760,6 +53783,7 @@
   # true.
   as_of: "2026-11-01"
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: "2026-11-01"
     is_protective_services_child_care_case: false
@@ -53793,9 +53817,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 0
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         verification_request_date: "2026-10-01"
@@ -53814,13 +53835,11 @@
         dwelling_id: d1
         unearned_income_verification_document_received: true
         receipts: []
-        earnings:
-        - {kind: wages, amount: 0, frequency: weekly, per_payment: 500}
+        # Earned-income records, E1 (CCCAP and LEAP): no pay, stated as an empty list (replacing the thirty-day total 0 and the month's
+        # wages_gross 0; the weekly schedule of $500 the probe generator gave her had no pay behind it and is not restated).
+        earnings: []
       month_defaults:
-        wages_gross: 0
         hours_worked: 0
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false
@@ -53886,6 +53905,7 @@
   # is 15. Rule: ineligible_child (before the fix: eligible_colorado_works). Fixed in 3447921.
   as_of: "2026-11-01"
   case_facts:
+    cccap_application_or_redetermination_date: "2026-11-01"
     home_heating_cost_arrangement: pays_vendor_directly
     leap_application_date: "2026-11-01"
     is_protective_services_child_care_case: false
@@ -53919,9 +53939,6 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
-        wages_gross_received_prior_thirty_days: 2000
-        wages_pay_frequency: weekly
-        wages_gross_per_pay_period: 500
         child_support_paid_order_type: court_order
         child_support_paid_verified_by_electronic_data_source: true
         cccap_non_traditional_hours_are_requested: false
@@ -53936,13 +53953,19 @@
         is_work_eligible_individual_in_tanf_case: true
         receipts:
         - {kind: child_support, amount: 600}
+        # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
+        # the pay schedule and the month's wages_gross): four Thursday pays in the thirty days before November 1 (October 2 to 31).
         earnings:
-        - {kind: wages, amount: 2000, frequency: weekly, per_payment: 500}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
       month_defaults:
-        wages_gross: 2000
         hours_worked: 160
-        self_employment_gross_receipts: 0
-        self_employment_net_earnings_for_tax: 0
         child_support_paid_legally_obligated: 0
         child_support_paid_toward_arrears: 0
         is_in_sud_treatment_iop_or_higher: false

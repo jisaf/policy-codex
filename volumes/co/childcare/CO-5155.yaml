@@ -1,0 +1,18 @@
+id: CO-5155
+name: "CCCAP: activity schedule verification is pending"
+identifier: cccap_activity_schedule_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether CCCAP requires this person's activity schedule (cccap_requires_verification_of_activity_schedule, CO-5154: non-traditional hours requested, 8 CCR 1403-1 3.111.C.2.e, or a self-employed caretaker's weekly schedule and expenses, 3.111.G.2.a-b) and the county has not received it (cccap_activity_schedule_received, CO-2398)."
+precision: "Read by cccap_person_pending_verification_count (CO-1448), which counts it only where CCCAP verification applies to the person (cccap_verification_is_applicable, CO-2585). Duplicate-paths audit D-K2: the pending test the count wrote inline."
+derived: [all, cccap_requires_verification_of_activity_schedule, [not, cccap_activity_schedule_received]]
+sources: [S1637, S891]
+implemented: engine
+tags: [verification]
+rationale: "Duplicate-paths audit D-K2 (step 5): the pending flag of the activity-schedule requirement, as every other CCCAP element has one."
+tests:
+  - {id: CO-5155-T1, title: "Required and not received", as_of: "2026-10-01", month: "2026-10", given: {cccap_requires_verification_of_activity_schedule: true, cccap_activity_schedule_received: false}, expect: true}
+  - {id: CO-5155-T2, title: "Required and received", as_of: "2026-10-01", month: "2026-10", given: {cccap_requires_verification_of_activity_schedule: true, cccap_activity_schedule_received: true}, expect: false}
+  - {id: CO-5155-T3, title: "Not required: the schedule is not asked for", as_of: "2026-10-01", month: "2026-10", given: {cccap_requires_verification_of_activity_schedule: false}, expect: false}
