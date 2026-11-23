@@ -1,0 +1,14 @@
+id: CO-5403
+name: "SSI method: months a retroactive SSI or Social Security payment is excluded from resources"
+identifier: ssi_retroactive_benefit_exclusion_months
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The number of months following the month a retroactive Title XVI (SSI) or Title II (Social Security) lump sum is received during which its unspent part is not a resource (10 CCR 2505-10 § 8.100.5.F.6.c, \"for nine months following receipt and the remainder countable as a resource thereafter\")."
+precision: "Months after the month of receipt, through the ninth: a payment received in March is excluded through December (ssi_countable_resources_individual, CO-800)."
+value: 9
+sources: [S3404]
+implemented: engine
+tags: [resources, non_magi]
+rationale: "Time audit T-8: the nine months were a literal in ssi_countable_resources_individual (CO-800), which the hard-coded numbers audit missed; a figure the rule states is a parameter (OQ-82)."

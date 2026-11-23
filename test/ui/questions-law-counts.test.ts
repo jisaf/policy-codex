@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 128, 19 of them partly settled", () => {
-    expect(all.total).toBe(128); // + OQ-950, OQ-951 (time audit T-1); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
-    expect(all.rows).toHaveLength(128);
+  it("holds every question still to answer: 129, 19 of them partly settled", () => {
+    expect(all.total).toBe(129); // + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
+    expect(all.rows).toHaveLength(129);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
   });
 
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(127);
+    expect(q.total).toBe(128);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });

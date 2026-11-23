@@ -259,3 +259,7 @@ Measured (every rule test and stored household, old ledger against new): CO-530 
 ### T-7: the BCCP age limit's name (fixed)
 
 `ma_bccp_max_age` (CO-1130) is renamed `ma_bccp_age_limit`: "has not yet attained the age of 65" (S608) is an exclusive limit, which conventions rule 8 names `_age_limit`, and CO-1152 already compared it with "under". A rename only: measured, no value moves.
+
+### T-8: the retroactive lump-sum window in SSI-method resources (fixed in part; OQ-952)
+
+The nine months are a parameter, `ssi_retroactive_benefit_exclusion_months` (CO-5403, 9, § 8.100.5.F.6.c, S3404), "following receipt": the months after the month of receipt, through the ninth, as CO-800 already counted them. The window stays measured to the determination month, now stated in CO-800's precision: the item is the determination date's resources, read from holdings each case states once, and its readers are per person, so the window and the holdings it applies to are the same date. Valuing a retroactive month's resources separately would make the resource facts and their readers per month, which the non-MAGI fix round owns; the assumption and its effect are OQ-952. Measured: no value moves.

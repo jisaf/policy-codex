@@ -2731,3 +2731,13 @@ Owner: Cash programs policy owner
 Assumption: The cash programs' age conditions are measured on the determination date, and the OAP birth-month transition in the determination month, for every month a determination evaluates; a birthday after the determination is a change in circumstances, outside the determination.
 
 Checked 2026-11-23: 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 (the dependent child, S401, S406); 9 CCR 2503-5 3.530 and 3.532.B.2-3 (D-80: the first month "prorated according to the number of days remaining in the month"; the AND client's transition "from the first day of the birth month"). None states the date an age is measured on for a month other than the determination month. Items: CO-901, CO-940.
+
+### OQ-952. Medicaid SSI-method resources in a retroactive month: the determination date's holdings
+
+Body: Time audit T-8. ssi_countable_resources_individual (CO-800) is per person: it counts the holdings a case states once (liquid_resources_value, the vehicles, the burial funds, retroactive_benefit_payment_unspent_value), and its readers (ssi_countable_resources_couple, CO-801; ma_ssi_countable_resources_individual, CO-4623; af_burial_responsible_person_resources, CO-1225) are per person too. So every month a determination evaluates, a retroactive month included, is judged on the determination date's holdings, and § 8.100.5.F.6.c's nine-month exclusion of a retroactive SSI or Social Security lump sum (S3404) is counted to the determination month. A retroactive month is to be one in which the person "met all applicable eligibility requirements" (§ 8.100.3.E.1), resources included. A person whose savings, or whose unspent lump sum's exclusion, differed in a retroactive month from the determination date is judged on the wrong figure in that month: for example a lump sum received eleven months before the determination is counted in every retroactive month, though it was still excluded in the earliest of them. Stating the holdings by month would make the resource facts and their readers per month, the change the non-MAGI fix round owns.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The holdings a case states are the determination date's and stand for every month the determination evaluates; the lump-sum exclusion is counted to the determination month.
+
+Checked 2026-11-23: 10 CCR 2505-10 § 8.100.3.E.1-2 and § 8.100.5.F.6.c (D-65); neither says on which date a retroactive month's resources are valued, and no fetched Colorado text adopts SSI's first-moment-of-the-month valuation for retroactive months. Items: CO-800.
