@@ -386,7 +386,7 @@ records state their worth in `value` where a receipt states `amount`. The
 noun is parse and render only: `["sum_receipts", ...]`, `["receipt", f]`
 and `["received_in", m]` are the same trees whichever noun renders them,
 and the parser reads either noun. The fact declares its record
-schema once, in `record_fields`: each field's type (a scalar codex type), a
+schema once, in `record_fields`: each field's type (a scalar codex type, or `person`: a person of the case, named by the case's id for that person; `npm run check` refuses one that names no person of the case or rule test), a
 one-line meaning, the options of a `one of` field (for the `kind`, each with its
 own one-line meaning in `option_meanings`), and exactly one of
 
@@ -445,6 +445,22 @@ application-month destitution test) reads it outside the sum and chooses
 between sums. A derived fact's own rule never sees "that receipt" (as for
 "that month", P54), so there are no per-receipt derived items: a condition
 several sums share is written in each.
+
+**A record that names a person** (coverage pass 4 for SNAP resources, SR-1 and SR-8,
+2026-11-23). A field of type `person` (holdings: `for_person`, the person a
+funeral agreement, burial fund or burial space is for; `co_owner`, the person
+of the case a holding is owned with) is compared, inside the condition, with
+**that person** (`["=", ["receipt", "for_person"], ["P"]]`), the member a
+`sum` or `filter` around the receipt sum binds: "one funeral agreement per
+household member" is the largest agreement, on the holder's list, for each
+member of the household in turn. That person is the one outer value a
+condition may read besides the month: it is not a fact of a person, and the
+type check reads `["P"]` as a person. For engines: the adapter writes, when
+it loads the case, each record's person fields as the entity id of the person
+they name, and the comparison with the bound person is an equality of entity
+ids (in a fact graph, a predicate over the record and the binder's id, like
+`inMonth`; in Drools, a join on `owner`-style ids; in Corticon, an
+association compared by key).
 
 **Counting tables.** Each program that counts receipts has one table keyed by
 option (`table keyed by option`), keyed by kind, whose rows name a treatment

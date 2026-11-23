@@ -1,13 +1,13 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 222 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks, ColoradoWorks, CCCAP, Medicaid, CHP+; 212 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 319 | 170080 | 1542 | 296 | 1542 | 0 |
-| generated households | 1626 | 696597 | 14080 | 1587 | 14080 | 0 |
+| stored households | 319 | 169172 | 1542 | 296 | 1542 | 0 |
+| generated households | 1626 | 693264 | 14080 | 1587 | 14080 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671, CO-720, CO-721, CO-722, CO-723, CO-724, CO-725, CO-726, CO-727, CO-710, CO-711, CO-712, CO-713, CO-714, CO-715, CO-716, CO-717, CO-718, CO-719, CO-740, CO-741, CO-742, CO-743, CO-750, CO-751, CO-752, CO-753, CO-754, CO-755, CO-756, CO-757, CO-758, CO-759, CO-760, CO-761, CO-762, CO-763, CO-764, CO-765, CO-766, CO-767, CO-768, CO-769.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671, CO-720, CO-721, CO-722, CO-723, CO-724, CO-725, CO-726, CO-727, CO-710, CO-711, CO-712, CO-713, CO-714, CO-715, CO-716, CO-717, CO-718, CO-719, CO-740, CO-741, CO-742, CO-743, CO-750, CO-751, CO-752, CO-753, CO-754, CO-755, CO-756, CO-757, CO-758, CO-759, CO-760, CO-761, CO-762, CO-763, CO-764, CO-765, CO-766, CO-767, CO-768, CO-769, CO-780, CO-790, CO-791, CO-792, CO-793, CO-794, CO-795, CO-796, CO-797, CO-798, CO-799.
 
 ## Allowed differences by class
 
@@ -106,12 +106,12 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 1780 | 0 |
-| MA-2 order | 1780 | 0 |
-| MA-3 month | 1780 | 0 |
-| MA-4 residual | 1780 | 0 |
-| MA-5 frequency | 1780 | 0 |
-| MA-6 date | 1780 | 0 |
+| MA-1 split | 1781 | 0 |
+| MA-2 order | 1781 | 0 |
+| MA-3 month | 1781 | 0 |
+| MA-4 residual | 1781 | 0 |
+| MA-5 frequency | 1781 | 0 |
+| MA-6 date | 1781 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
