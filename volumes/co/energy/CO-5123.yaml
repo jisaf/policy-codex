@@ -5,16 +5,21 @@ kind: derived
 type: yes/no
 scope: person-month
 program: LEAP
-meaning: "Whether 9 CCR 2503-7 3.752.23.Q (S2860) excludes this person's earned income: \"Earned income of children under the age of eighteen (18) who are residing with a parent or guardian\": the person is under leap_household_child_age_limit and is the child or ward of a member of the LEAP household (leap_household_members_for_income, CO-1009)."
+meaning: "Whether 9 CCR 2503-7 3.752.23.Q (S2860) excludes this person's earned income: \"Earned income of children under the age of eighteen (18) who are residing with a parent or guardian\": the person is under leap_household_child_age_limit on the application date (leap_age_on_application_date, CO-6400: 3.752.2 considers income and household composition \"as of the date of application\"; coverage pass 4 L4-4) and is the child or ward of a member of the LEAP household (leap_household_members_for_income, CO-1009)."
 precision: "A parent or guardian is read as a legal parent or legal guardian among the members (second-pass review P2): a child living with neither, with a grandparent say, has the earnings counted. One item for the condition leap_household_income (CO-1002) and leap_requires_verification_of_earned_income (CO-1455) both read (duplicate-paths audit D-L2, docs/reviews/duplicate-paths-audit.md: the condition was written in each, and CO-1455's precision said it must match CO-1002)."
-derived: [all, ["<", age, leap_household_child_age_limit], [exists, leap_household_members_for_income, [rel, [child, ward], [P]]]]
+derived: ["all", ["<", "leap_age_on_application_date", "leap_household_child_age_limit"], ["exists", "leap_household_members_for_income", ["rel", ["child", "ward"], ["P"]]]]
 sources: [S2860]
 implemented: engine
 tags: [income, household]
 rationale: "Duplicate-paths audit D-L2 (step 5): the 3.752.23.Q exclusion was written in two items that had to agree; it is one item now, read by both."
 tests:
-  - {id: CO-5123-T1, title: "An 11-year-old living with her mother: excluded", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-01-22", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1985-01-22"}}, relationships: [[parent, p2, p1]], expect: true}
+  - {id: CO-5123-T1, title: "An 11-year-old living with her mother: excluded", month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", date_of_birth: "2015-01-22", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1985-01-22"}}, relationships: [[parent, p2, p1]], expect: true}
   - {id: CO-5123-T2, title: "A 16-year-old living with his grandmother: not excluded", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2010-03-01", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1955-01-22"}}, relationships: [[grandparent, p2, p1]], expect: false}
   - {id: CO-5123-T3, title: "An adult: not excluded", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", leap_household_members_for_income: [p1]}, relationships: [], expect: false}
   # Born 2008-10-15: eighteen on October 15, 2026, so seventeen on October 1; leap_household_child_age_limit is 18 (S2860).
-  - {id: CO-5123-T4, title: "A 17-year-old ward of a member: excluded", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2008-10-15", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1970-01-22"}}, relationships: [[legal_guardian, p2, p1]], expect: true}
+  - {id: CO-5123-T4, title: "A 17-year-old ward of a member: excluded", month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", date_of_birth: "2008-10-15", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1970-01-22"}}, relationships: [[legal_guardian, p2, p1]], expect: true}
+  # Coverage pass 4 L4-4 (household A1, stored as CO-714): application 2026-11-10, determined 2026-11-20. The son, born 2008-11-15, is seventeen
+  # on the application date (eighteen five days later). 3.752.2 considers income and household composition "as of the date of application", so
+  # 3.752.23.Q ("children under the age of eighteen (18) who are residing with a parent") excludes his earnings: true. (Before the fix: his age
+  # on the determination date, 18: false.)
+  - {id: CO-5123-T5, title: "Seventeen on the application date, eighteen when determined: his earnings are excluded", month: "2026-11", as_of: "2026-11-20", given: {leap_application_date: "2026-11-10", date_of_birth: "2008-11-15", leap_household_members_for_income: [p1, p2]}, others: {p2: {date_of_birth: "1980-01-01"}}, relationships: [[parent, p2, p1]], expect: true}

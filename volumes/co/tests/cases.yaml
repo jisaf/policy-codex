@@ -21,6 +21,7 @@
     home_incurs_telephone_cost: true
     received_energy_assistance_within_twelve_months: false
     snap_application_date: "2026-10-01"
+    leap_application_date: "2026-10-01"  # coverage pass 4 L4-4: LEAP reads each age on its application date (leap_age_on_application_date, CO-6400); the household was determined on the date it applied
     snap_determination_is_recertification: false
     cw_meets_county_diversion_income_limit: false
     is_destitute_migrant_or_seasonal_farmworker: false
@@ -13337,18 +13338,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -14634,18 +14635,18 @@
         # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14782,18 +14783,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14944,18 +14945,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -37435,17 +37436,22 @@
       cccap_is_in_homelessness_stabilization_period: false
     2026-10:
       cccap_is_in_homelessness_stabilization_period: false
+  # Coverage pass 4 X4-1 (docs/reviews/coverage4-care-energy.md): tanf_state_diversion_payment_months is no longer read as 0 when not
+  # stated. 3.103.S makes a state diversion of four or more consecutive months cash assistance (J.26 excludes it) and any other diversion
+  # not, and the case states neither whether this diversion is a state or a county one nor its length: with a diversion received, the
+  # household income cannot be determined (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says
+  # otherwise). The expectation was 2,000 + 1,500 / 12 = 2,125, eligible_low_income, under OQ-873's reading of a county diversion.
   expect:
     p1:
       cccap_eligibility_status:
-        2026-11: eligible_low_income
+        2026-11: unknown
       cccap_household_income:
-        2026-11: 2125
+        2026-11: unknown
     p3:
       cccap_eligibility_status:
-        2026-11: eligible_low_income
+        2026-11: unknown
       cccap_household_income:
-        2026-11: 2125
+        2026-11: unknown
 
 - id: CO-346
   title: 'Probe Y-7s (CCCAP coverage 3 C3-6): a state diversion paid over six months is excluded cash assistance'
@@ -54350,9 +54356,9 @@
         # stated with the dates (replacing the thirty-day total 0, the pay schedule and the month's wages_gross 0): no pay in the
         # thirty days before November 1 (October 2 to 31); three in the eight weeks (September 6 to October 31).
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
       month_defaults:
         hours_worked: 0
         child_support_paid_legally_obligated: 0
@@ -54592,18 +54598,18 @@
         # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -58881,4 +58887,878 @@
       af_countable_income: {"2026-10": 732.5}
       af_category: {"2026-10": oap}
       af_oap_grant: {"2026-10": 299}
-
+- id: CO-710
+  title: "Coverage pass 4 L4-1: two weekly jobs stated as dated pays, each averaged apart (LEAP)"
+  # Review household L1v (docs/reviews/coverage4-care-energy.md, L4-1): one adult; application 2026-11-10, so the eight weeks are
+  # 2026-09-15 to 2026-11-09 (9 CCR 2503-7 3.752.22.B, leap_earned_ongoing_income_weeks 8). Job A pays $600 every Friday
+  # (2026-09-18 to 2026-11-06, eight pays, job_1), job B $400 every Wednesday (2026-09-16 to 2026-11-04, eight pays, job_2).
+  # C.1.a adds four gross weekly amounts per job: 4 x 600 + 4 x 400 = 2,400 + 1,600 = $4,000 > $3,774 (leap_income_limit_monthly
+  # for 1, 3.752.22.D): ineligible. Before the fix both jobs were one average: (8 x 600 + 8 x 400) / 16 x 4 = $2,000, eligible.
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 600, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-09-16", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-09-23", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-09-30", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-10-07", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-10-14", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-10-21", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-10-28", job: job_2}
+        - {kind: wages, amount: 400, frequency: weekly, date: "2026-11-04", job: job_2}
+    p2:
+      facts:
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_household_income:
+        "2026-11": 4000
+      leap_is_eligible:
+        "2026-11": false
+- id: CO-711
+  title: "Coverage pass 4 L4-2: dated pays that state no frequency are cannot determine (LEAP)"
+  # Review household L2 (L4-2): four pays of $500 dated 2026-10-16, 23, 30 and 2026-11-06, in the eight weeks before the
+  # application of 2026-11-10, with no frequency stated. A dated pay has no default schedule (CO-5100 frequency, required_if_dated;
+  # decision 4 of 2026-11-23; OQ-1181 resolved): the earned income, and so the household's eligibility, cannot be determined, naming
+  # earnings[0 wages].frequency. Before the fix the pays were read as monthly: average $500 x 1 = $500, eligible. (Stated weekly they are
+  # 4 x $500 = $2,000, CO-5121-T15.)
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 500, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, date: "2026-11-06", job: job_1}
+    p2:
+      facts:
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_household_income:
+        "2026-11": unknown
+      leap_is_eligible:
+        "2026-11": unknown
+- id: CO-712
+  title: "Coverage pass 4 L4-3: unemployment first paid after the application date is not counted (LEAP)"
+  # Review household U1 (L4-3): one adult, $3,000 of monthly wages; unemployment of $300 a week first paid 2026-11-13, then 20 and 27;
+  # application 2026-11-10, so the income verification period runs after 2026-10-10 through 2026-11-10 (CO-5002). 3.752.22.C.3.c:
+  # "If a household member has not received his/her first check from this source of income as of the income verification period, do
+  # not count any income from this source": unearned $0, household $3,000 <= $3,774: eligible. Before the fix the November receipts
+  # were counted: $900, household $3,900, ineligible.
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-11-13"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-11-20"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-11-27"}
+        earnings:
+        - {kind: wages, amount: 3000}
+    p2:
+      facts:
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_person_unearned_income:
+        "2026-11": 0
+      leap_household_income:
+        "2026-11": 3000
+      leap_is_eligible:
+        "2026-11": true
+- id: CO-713
+  title: "Coverage pass 4 L4-3: unemployment paid in the income verification period, then ended, is counted (LEAP)"
+  # Review household U2 (L4-3): the same adult; unemployment of $300 paid 2026-10-16, 23 and 30, then exhausted. 3.752.22.A counts
+  # "the countable gross unearned income received in the income verification period" and C.3.a "actual income received in the income
+  # verification period" for terminated income: 3 x $300 = $900; household $3,000 + $900 = $3,900 > $3,774: ineligible. Before the fix
+  # no November receipt was read: $3,000, eligible.
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - [other_relative, p1, p2]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-10-16"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-10-23"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-10-30"}
+        earnings:
+        - {kind: wages, amount: 3000}
+    p2:
+      facts:
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_person_unearned_income:
+        "2026-11": 900
+      leap_household_income:
+        "2026-11": 3900
+      leap_is_eligible:
+        "2026-11": false
+- id: CO-714
+  title: "Coverage pass 4 L4-4: a son who turns eighteen between the application and the determination (LEAP)"
+  # Review household A1 (L4-4): a mother with $4,000 of monthly wages and her son, born 2008-11-15, with $1,000; application 2026-11-10,
+  # determined 2026-11-20. 3.752.2 considers income and household composition "as of the date of application": on 2026-11-10 the son is
+  # seventeen (leap_age_on_application_date, CO-6400), a member under eighteen whose earnings 3.752.23.Q excludes ("Earned income of
+  # children under the age of eighteen (18) who are residing with a parent"). Size 2, income $4,000 <= $4,936 (the limit for 2):
+  # eligible. Before the fix his age on the determination date (18) put him out of the household: size 1, $4,000 > $3,774, ineligible.
+  as_of: "2026-11-20"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 4000}
+    p3:
+      facts:
+        date_of_birth: "2008-11-15"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 1000}
+  expect:
+    p1:
+      leap_household_size: 2
+      leap_household_income:
+        "2026-11": 4000
+      leap_is_eligible:
+        "2026-11": true
+    p3:
+      leap_earnings_are_excluded_as_child:
+        "2026-11": true
+- id: CO-715
+  title: "Coverage pass 4 C4-1: an irregular pay from the previous quarter is tested against its own quarter (CCCAP)"
+  # Review household C1 (C4-1), on CO-345's mother and son (Denver), application 2026-10-15: the thirty days are 2026-09-15 to
+  # 2026-10-14 (8 CCR 1403-1 3.111.H.4-5). $3,300 of monthly wages; odd-job pays (irregular) of $80 on 2026-09-20 and $50 on 2026-08-10.
+  # J.28 excludes irregular income "that totals less than ninety dollars ($90) in any calendar quarter": the $80 is in July-September,
+  # which holds $80 + $50 = $130, so it counts (the $50 is outside the thirty days). Income $3,380 > $3,336.16 (185% of the 2026 guideline
+  # for 2, from 2026-10-01): ineligible_income. Before the fix the October quarter (no irregular income) was read and the $80 excluded:
+  # $3,300, eligible_low_income.
+  as_of: "2026-10-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: "2026-10-15"
+  # Denver's entry level, 185% of the guideline (CO-3004 has no published version, OQ-121), as CO-345 states it.
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 3300}
+        - {kind: wages, amount: 80, frequency: once, date: "2026-09-20", irregular: true}
+        - {kind: wages, amount: 50, frequency: once, date: "2026-08-10", irregular: true}
+      month_defaults:
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    "2026-11":
+      cccap_is_in_homelessness_stabilization_period: false
+    "2026-10":
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_household_income:
+        "2026-10": 3380
+    p3:
+      cccap_eligibility_status:
+        "2026-10": ineligible_income
+- id: CO-716
+  title: "Coverage pass 4 C4-3: a wage job meets the minimum wage over its own hours beside a break-even business (CCCAP)"
+  # Review household C2 (C4-3), on CO-345: $1,000 of wages for 100 hours and a business with $300 of receipts and $300 of verified costs
+  # over 60 hours (hours_worked 160). 3.111.G: "at least one of the following low-income eligible activities"; G.1.b: wages / hours
+  # = $1,000 / (160 - 60) = $10.00 >= $7.25: employment is an eligible activity. Income $1,000 + $0 = $1,000: eligible_low_income.
+  # Before the fix one ratio ($1,000 + $0) / 160 = $6.25 failed: ineligible_activity.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+  # Denver's entry level, 185% of the guideline (CO-3004 has no published version, OQ-121), as CO-345 states it.
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 1000}
+        - {kind: self_employment_receipts, amount: 300, hours: 60}
+        - {kind: business_cost_operating, amount: 300}
+        temporary_activity_break_reason: none
+      month_defaults:
+        hours_worked: 160
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+        cccap_self_employment_in_launch_period: false
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    "2026-11":
+      cccap_is_in_homelessness_stabilization_period: false
+    "2026-10":
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_caretaker_in_eligible_activity:
+        "2026-11": true
+    p3:
+      cccap_eligibility_status:
+        "2026-11": eligible_low_income
+- id: CO-717
+  title: "Coverage pass 4 C4-2: unemployment first paid after the application date is outside the thirty days (CCCAP)"
+  # Review household CU1 (C4-2), on CO-345: application 2026-11-15, the thirty days 2026-10-16 to 2026-11-14; $3,000 of monthly wages;
+  # unemployment of $300 dated 2026-11-20 and 27. H.5.b: "Unearned income received during the prior thirty (30) day period" (OQ-680):
+  # none, $3,000 <= $3,336.16: eligible_low_income. Before the fix the November receipts were counted: $3,600, ineligible_income.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: "2026-11-15"
+  # Denver's entry level, 185% of the guideline (CO-3004 has no published version, OQ-121), as CO-345 states it.
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts:
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-11-20"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-11-27"}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    "2026-11":
+      cccap_is_in_homelessness_stabilization_period: false
+    "2026-10":
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_household_income:
+        "2026-11": 3000
+    p3:
+      cccap_eligibility_status:
+        "2026-11": eligible_low_income
+- id: CO-718
+  title: "Coverage pass 4 C4-2: unemployment paid in the thirty days, the month before, is counted (CCCAP)"
+  # Review household CU2 (C4-2): the same, with unemployment of $300 dated 2026-10-23 and 30, then ended: both in the thirty days,
+  # $600; $3,600 > $3,336.16: ineligible_income. Before the fix no November receipt was read: $3,000, eligible_low_income.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: "2026-11-15"
+  # Denver's entry level, 185% of the guideline (CO-3004 has no published version, OQ-121), as CO-345 states it.
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts:
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-10-23"}
+        - {kind: unemployment_compensation, amount: 300, frequency: weekly, date: "2026-10-30"}
+        earnings:
+        - {kind: wages, amount: 3000}
+      month_defaults:
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    "2026-11":
+      cccap_is_in_homelessness_stabilization_period: false
+    "2026-10":
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_household_income:
+        "2026-11": 3600
+    p3:
+      cccap_eligibility_status:
+        "2026-11": ineligible_income
+- id: CO-719
+  title: "Coverage pass 4 C4-4: a school employee's annual contract pay prorated (CCCAP)"
+  # Review household CK1 (C4-4): CO-345's mother and son with a second child (born 2022-05-01); the mother is paid $4,500 a month
+  # September to May under a contract of $40,500 a year (annual_contract_pay); application 2026-11-15. 3.111.H.4.b: "the income shall
+  # be prorated over the term of the contract": $40,500 / 12 (cccap_annual_contract_months, OQ-1221) = $3,375 <= $4,211.84 (185% for 3):
+  # eligible_low_income. Before the fix the month's $4,500 was counted: ineligible_income.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+  # Denver's entry level, 185% of the guideline (CO-3004 has no published version, OQ-121), as CO-345 states it.
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+    - [parent, p1, p3]
+    - [parent, p1, p4]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 4500, annual_contract_pay: 40500}
+      month_defaults:
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p4:
+      facts:
+        date_of_birth: "2022-05-01"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings: []
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+      month_defaults:
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+  month_facts:
+    "2026-11":
+      cccap_is_in_homelessness_stabilization_period: false
+    "2026-10":
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_household_income:
+        "2026-11": 3375
+    p3:
+      cccap_eligibility_status:
+        "2026-11": eligible_low_income

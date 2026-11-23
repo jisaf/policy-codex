@@ -45,8 +45,8 @@ describe("long rules read as bulleted clauses", () => {
     // rules that fix a figure at the determination (T-3: CCCAP's fee and
     // entry limit, LEAP's limit and guideline). 42 after earnings E1 SNAP: each
     // pay converted by its own frequency, written once per pay sum (CO-4324,
-    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces). 48 with E1 Adult Financial and Colorado Works (their pay sums). 49 with the records E1 integration (CO-3827 tests the month's irregular receipts before the quarter). 50 with resource records H1 SNAP and Adult Financial (CO-3840 reads the month's transfers from the holdings records: the latest and earliest day of them, and the value of each).
-    expect(over).toBeLessThanOrEqual(50);
+    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces). 48 with E1 Adult Financial and Colorado Works (their pay sums). 49 with the records E1 integration (CO-3827 tests the month's irregular receipts before the quarter). 60 with coverage pass 4 (CCCAP C4-1, C4-2): J.28 tests each irregular pay or receipt against the quarter of its own date, one clause list per quarter (CO-3915, CO-4464, CO-4076), the quarter's end month and total (CO-6401, CO-6402), and the deductions placed by date in the thirty days (CO-4463). 61 with resource records H1 SNAP and Adult Financial (CO-3840 reads the month's transfers from the holdings records: the latest and earliest day of them, and the value of each).
+    expect(over).toBeLessThanOrEqual(61);
   });
 
   it("relationship roles read as words", () => {

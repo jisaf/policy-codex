@@ -1,0 +1,18 @@
+id: CO-6402
+name: "CCCAP: irregular income of the calendar quarter in which the prior thirty days begin"
+identifier: cccap_irregular_income_in_first_quarter_of_period
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's irregular income that CCCAP counts, earned and unearned (cccap_irregular_receipts_in_quarter, CO-5724, and cccap_irregular_earnings_in_quarter, CO-6151), over the calendar quarter that contains the first of the thirty days before the application or redetermination date: the total 8 CCR 1403-1 3.111.J.28 (S2858) compares with ninety dollars for an irregular pay or receipt dated in that quarter (\"Irregular income in the certification period that totals less than ninety dollars ($90) in any calendar quarter\")."
+precision: "Each quarter total is read in the month containing the first of the thirty days, so it is the total of that month's quarter, every irregular record placed by its own month or date. Read by cccap_person_earned_income (CO-3915), cccap_other_countable_receipts (CO-4464) and cccap_excluded_irregular_income (CO-4076) only for an irregular record dated in that quarter (coverage pass 4 C4-1; OQ-713)."
+derived: ["at", ["+", "cccap_irregular_receipts_in_quarter", "cccap_irregular_earnings_in_quarter"], ["month_of", ["days_after", ["-", 0, "cccap_prior_income_period_days"], "cccap_application_or_redetermination_date"]]]
+sources: [S2858, S2704]
+implemented: engine
+tags: [income]
+open: [OQ-713]
+rationale: "Coverage pass 4 C4-1: an irregular pay dated in the thirty days is tested against its own quarter, which may be the quarter before the month determined."
+tests:
+  # Coverage pass 4 C4-1 (household C1, stored as CO-715): the thirty days begin September 15, in July-September; that quarter holds $80 + $50 = $130 of irregular pay.
+  - {id: CO-6402-T1, title: "Application October 15: the third quarter's irregular pays, $80 on September 20 and $50 on August 10: $130", month: "2026-10", as_of: "2026-10-15", given: {cccap_application_or_redetermination_date: "2026-10-15", receipts: [], earnings: [{kind: wages, amount: 80, frequency: once, date: "2026-09-20", irregular: true}, {kind: wages, amount: 50, frequency: once, date: "2026-08-10", irregular: true}]}, expect: 130}

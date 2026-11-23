@@ -11,6 +11,7 @@ derived: [case, [["<=", leap_self_employment_gross_receipts, 0], 0], [else, [max
 sources: [S1084, S2719, S3300]
 implemented: engine
 tags: [income]
+open: [OQ-681]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none. Earned-income records, E1 (LEAP): the receipts, costs and set-aside are read from the records."
 tests:
   - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_self_employment_allowable_costs: 400, earnings: [{kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
