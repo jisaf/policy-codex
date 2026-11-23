@@ -120,7 +120,7 @@ record_fields:
   intends_to_return:
     type: yes/no
     default: false
-    meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+    meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A), and the home stays exempt only \"so long as there is intent for the client ... to return\" (3.520.77.C.2-3, S3218)."
   temporary_absence:
     type: one of
     required: true
@@ -129,7 +129,7 @@ record_fields:
   intent_in_writing:
     type: yes/no
     default: false
-    meaning: "For a home the person intends to return to, the intent is documented in writing (the person's, the spouse's, a legal fiduciary's, a doctor's or an authorized representative's signed statement). Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+    meaning: "For a home the person intends to return to, the intent is documented in writing (the person's, the spouse's, a legal fiduciary's, a doctor's or an authorized representative's signed statement). Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: in a long-term care facility the intent \"is documented by\" a written statement (9 CCR 2503-5 3.520.77.C.3.a, S3218; field sweep fix round, FS-AF-4), so an intent not shown in writing is not documented."
   outside_colorado:
     type: yes/no
     required: true
@@ -178,6 +178,10 @@ record_fields:
     type: yes/no
     required: true
     meaning: "SNAP's finding (decision D9): for income-producing property not used in the person's trade or business, or for an installment contract, the county has found that it is producing an annual income consistent with its fair market value in the community (10 CCR 2506-1 4.410.E.1-2; 7 CFR 273.8(e)(4), (e)(6))."
+  snap_trust_inaccessible:
+    type: yes/no
+    required: true
+    meaning: "SNAP's finding (decision D9): for a trust interest, the county has established that the funds in the trust, and the income it produces, are inaccessible to the household under 10 CCR 2506-1 4.410.F.3 (the trust arrangement will not likely cease during the certification period and no household member can revoke it or change the beneficiary; the trustee is a court, an institution or organization no member directs, or a court-appointed individual under court-imposed limits; the trust's investments do not involve a business a member controls; an irrevocable trust's funds are restricted to investments or to members' educational or medical expenses, or come from someone outside the household). Which of those conditions must hold, any one (4.410.F.3's \"or\") or all (7 CFR 273.8(e)(8)'s \"and\"), is OQ-1307."
   produces_for_household_use:
     type: yes/no
     default: false
@@ -288,7 +292,7 @@ record_fields:
     type: yes/no
     required: true
     meaning: "Medicaid's finding (decision D9): the eligibility site has determined that the transfer falls under one of the exceptions of 10 CCR 2505-10 8.100.7 (to or for the sole benefit of a spouse or a disabled child, a satisfactory showing of intent, an approved undue-hardship waiver), so no transfer penalty applies."
-sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670]
+sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670, S3218]
 tags: [resources]
 open: [OQ-1200, OQ-1201]
 rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D3, D5, D8 and D9 (docs/design-earned-and-resource-records.md 7): one list of records of the same record type as receipts and earnings, read by the same operators (P55-P57) and by P58 largest for the one vehicle the rules exclude, so a holding is stated once whatever program reads it, a joint holding is stated with its share on each owner's list, money a rule treats by its source is traced in its own record, and one transfer is one record every program's look-back reads. Replaces, from step H1, the scalar resource facts the design's inventory (1.2) lists."
