@@ -110,8 +110,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     }
   });
 
-  it("figures: 462 in all; words in any order; the three flags", () => {
-    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(465); // + CO-5180 (E1 Medicaid: the six months a dependent child's WIOA wages are exempt); + CO-5125, CO-5151, the LEAP eight weeks and the CCCAP thirty days (earnings E1, LEAP and CCCAP); + CO-5101 to CO-5107, the seven earnings counting tables (earnings E0); + CO-5500, CO-5510, the Medicaid MAGI and SSI-method receipt tables (receipts migration 2, merged); + CO-5720, CO-5730, the CCCAP and SUN Bucks receipt tables (receipts migration 2, merged); + CO-5650, the Colorado Works receipt counting table (receipts migration 2); + CO-4840 (Colorado Works coverage pass 3); + CO-5400, CO-5401, - CO-1513 (time audit T-2: the ISM maximum is derived); + CO-5403 (T-8); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016, the LEAP, SNAP and Adult Financial receipt counting tables (receipts migration 1)
+  it("figures: 468 in all; words in any order; the three flags", () => {
+    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(468); // + CO-5301 to CO-5303, the three holdings counting tables (holdings H0); + CO-5180 (E1 Medicaid: the six months a dependent child's WIOA wages are exempt); + CO-5125, CO-5151, the LEAP eight weeks and the CCCAP thirty days (earnings E1, LEAP and CCCAP); + CO-5101 to CO-5107, the seven earnings counting tables (earnings E0); + CO-5500, CO-5510, the Medicaid MAGI and SSI-method receipt tables (receipts migration 2, merged); + CO-5720, CO-5730, the CCCAP and SUN Bucks receipt tables (receipts migration 2, merged); + CO-5650, the Colorado Works receipt counting table (receipts migration 2); + CO-4840 (Colorado Works coverage pass 3); + CO-5400, CO-5401, - CO-1513 (time audit T-2: the ISM maximum is derived); + CO-5403 (T-8); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016, the LEAP, SNAP and Adult Financial receipt counting tables (receipts migration 1)
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
     expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(8); // + CO-3379, CO-3380
@@ -243,11 +243,11 @@ describe("the Figures page", () => {
   it("lists every figure on a date, with a word filter and three flags", () => {
     const host = show("#/co/figures");
     expect(host.querySelectorAll("tr.figure").length).toBeGreaterThan(40);
-    expect(host.querySelector(".figcount")!.textContent).toContain("465 figures"); // + CO-5180 (E1 Medicaid); + CO-5125, CO-5151 (earnings E1, LEAP and CCCAP); + CO-5101 to CO-5107 (earnings E0); + CO-5500, CO-5510 (receipts migration 2, Medicaid, merged); + CO-5720, CO-5730 (receipts migration 2, CCCAP and SUN Bucks, merged); + CO-5650 (receipts migration 2); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016 (receipts migration 1)
+    expect(host.querySelector(".figcount")!.textContent).toContain("468 figures"); // + CO-5301 to CO-5303 (holdings H0); + CO-5180 (E1 Medicaid); + CO-5125, CO-5151 (earnings E1, LEAP and CCCAP); + CO-5101 to CO-5107 (earnings E0); + CO-5500, CO-5510 (receipts migration 2, Medicaid, merged); + CO-5720, CO-5730 (receipts migration 2, CCCAP and SUN Bucks, merged); + CO-5650 (receipts migration 2); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016 (receipts migration 1)
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 465 figures"); // + CO-5180 (E1 Medicaid); + CO-5125, CO-5151 (earnings E1); + CO-5101 to CO-5107 (earnings E0); + CO-5650, CO-5720, CO-5730, CO-5500, CO-5510 (receipts migration 2)
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 468 figures"); // + CO-5301 to CO-5303 (holdings H0); + CO-5180 (E1 Medicaid); + CO-5125, CO-5151 (earnings E1); + CO-5101 to CO-5107 (earnings E0); + CO-5650, CO-5720, CO-5730, CO-5500, CO-5510 (receipts migration 2)
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);

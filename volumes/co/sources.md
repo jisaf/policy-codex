@@ -23289,3 +23289,120 @@ Document: D-60
 > (ii) Are not intended to meet recurrent or ongoing needs; and
 >
 > (iii) Will not extend beyond four months.
+### S4500. SSI: resources are what the individual owns and could convert to cash; a property right that cannot be liquidated is not a resource; equity is market value less encumbrances
+
+Document: D-4400
+
+20 CFR 416.1201(a), (a)(1), (c)(2) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1201
+
+> (a) Resources; defined. For purposes of this subpart L, resources means cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance.
+>
+> (1) If the individual has the right, authority or power to liquidate the property or his or her share of the property, it is considered a resource. If a property right cannot be liquidated, the property will not be considered a resource of the individual (or spouse).
+>
+> (2) For purposes of this subpart L, the equity value of an item is defined as:
+>
+> (i) The price that item can reasonably be expected to sell for on the open market in the particular geographic area involved; minus
+>
+> (ii) Any encumbrances.
+
+### S4501. SSI: resources are determined as of the first moment of the month
+
+Document: D-4400
+
+20 CFR 416.1207(a) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1207
+
+> (a) General. Resources determinations are made as of the first moment of the month. A resource determination is based on what assets an individual has, what their values are, and whether or not they are excluded as of the first moment of the month.
+
+### S4502. SSI: a jointly held financial account belongs, by presumption, to the SSI claimant or recipient account holders
+
+Document: D-4400
+
+20 CFR 416.1208(c)(1) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1208
+
+> (c) Jointly-held account—(1) Account holders include one or more SSI claimants or recipients. If there is only one SSI claimant or recipient account holder on a jointly held account, we presume that all of the funds in the account belong to that individual. If there is more than one claimant or recipient account holder, we presume that all the funds in the account belong to those individuals in equal shares.
+
+### S4503. SSI: a married individual's resources include an ineligible spouse's, less the spouse's pension funds
+
+Document: D-4400
+
+20 CFR 416.1202(a), (a)(1) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1202
+
+> (a) Married individual. In the case of an individual who is living with a person not eligible under this part and who is considered to be the husband or wife of such individual under the criteria in §§ 416.1802 through 416.1835 of this part, such individual's resources shall be deemed to include any resources, not otherwise excluded under this subpart, of such spouse whether or not such resources are available to such individual. In addition to the exclusions listed in § 416.1210, we also exclude the following items:
+>
+> (1) Pension funds that the ineligible spouse may have. Pension funds are defined as funds held in individual retirement accounts (IRA), as described by the Internal Revenue Code, or in work-related pension plans (including such plans for self-employed persons, sometimes referred to as Keogh plans);
+
+### S4504. Medical Assistance, SSI method: one automobile, household goods, personal effects and the family's burial spaces are not counted (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.c, d, e, h (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. One automobile is totally excluded regardless of its value if it is used for transportation for the individual or a member of the individual's household. An automobile includes, in addition to passenger cars, other vehicles used to provide necessary transportation.
+>
+> d. Household goods are not counted as a resource to an individual (and spouse, if any) if they are:
+>
+> i) Items of personal property, found in or near the home, that are used on a regular basis; or
+>
+> ii) Items needed by the household for maintenance, use and occupancy of the premises as a home.
+>
+> iii) Such items include but are not limited to: furniture, appliances, electronic equipment such as personal computers and television sets, carpets, cooking and eating utensils, and dishes.
+>
+> e. Personal effects are not counted as a resource to an individual (and spouse, if any) if they are:
+>
+> i) Items of personal property ordinarily worn or carried by the individual; or
+>
+> ii) Articles otherwise having an intimate relation to the individual.
+>
+> iii) Such items include but are not limited to: personal jewelry including wedding and engagement rings, personal care items, prosthetic devices, and educational or recreational items such as books or musical instruments.
+>
+> h. The total value of burial spaces for the applicant/recipient, his/her spouse and any other members of his/her immediate family is exempt as a resource. If any interest is earned on the value of an agreement for the purchase of a burial space, such interest is also exempt.
+
+### S4505. Medical Assistance, SSI method: cash, accounts and securities, a joint account presumed the applicant's, personal property and automobiles beyond one are countable (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.3.a-d, i, k (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. Countable resources include the following:
+>
+> a. Cash;
+>
+> b. Funds held by a financial institution in a checking or savings account, certificate of deposit or money market account;
+>
+> c. Current market value of stocks, bonds, and mutual funds;
+>
+> d. All funds in a joint account are presumed to be a resource of the applicant or client. If there is more than one applicant or client account holder, it is presumed that the funds in the account belong to those individuals in equal shares. To rebut this presumption, evidence must be furnished that proves that some or all of the funds in a jointly held account do not belong to him or her. To rebut the sole ownership presumption, the following procedure must be followed:
+>
+> i. Personal property such as a mobile home or trailer or the like, that is not exempt as a principal place of residence or that is not income producing.
+>
+> k. The equity value of all automobiles that are in addition to one exempt vehicle.
+
+### S4506. Medical Assistance, ABD and long-term care: a bona fide loan, relocation payments, disaster assistance, Civil Liberties Act and Nazi persecution payments, and the earned income tax credit are exempt as income or resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6 (lead-in), F.6.a, f, k, r, u, x (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. For the purpose of determining eligibility for the Long Term Care and Aged, Blind, and Disabled Medical Assistance categories the following shall be exempt from consideration as either income or resources:
+>
+> a. A bona fide loan. Bona fide loans are loans, either private or commercial, which have a repayment agreement. Declaration of such loans is sufficient verification.
+>
+> f. Payments received under Title II of the Uniform Relocation Assistance and Real Property Acquisition Policies Act. Relocation payments to a displaced homeowner toward the purchase of a replacement dwelling are considered exempt for up to 6 months.
+>
+> k. Major disaster and emergency assistance provided to individuals and families, and comparable disaster assistance provided to states, local governments and disaster assistance organizations shall be exempt as income and resources in determining eligibility for Medical Assistance.
+>
+> r. Monies received pursuant to the “Civil Liberties Act of 1988” P.L. No. 100-383, (by eligible persons of Japanese ancestry or certain specified survivors, and certain eligible Aleuts).
+>
+> u. The Earned Income Tax Credit (EIC). EIC shall also be exempt as resources for the month it is received and for the following month.
+>
+> x. Payments to individuals because of their status as victims of Nazi persecution pursuant to Public Law No. 103-286.
+
+### S4507. Adult Financial exempt resources: household goods and personal effects; effects held for their value or as an investment are countable personal property
+
+Document: D-80
+
+9 CCR 2503-5 3.520.77 (introduction), 3.520.77.B (rule version 12428, effective 03/02/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> Resources that shall be exempt and not counted toward the resource limit for an individual or married couple include:
+>
+> B. Household goods and personal effects found in or on the primary residence, that the client uses on a regular basis. The client needs household goods for maintenance, use, and occupancy of the premises as a home. This also includes personal effects which are ordinarily worn or carried by the client, or items that have an intimate relation to the client. This does not include effects that the client holds because of the value or as an investment, which are countable as personal property as outlined in Section 3.520.742.

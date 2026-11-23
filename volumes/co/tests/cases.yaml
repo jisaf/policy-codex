@@ -247,6 +247,9 @@
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1900}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -448,6 +451,9 @@
         receipts:
         - {kind: social_security, amount: 1180}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 44100}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -641,6 +647,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2380}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
@@ -832,6 +839,7 @@
         receives_ssi: false
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
@@ -1025,6 +1033,7 @@
         receives_ssi: false
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -2271,6 +2280,9 @@
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1900}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2472,6 +2484,9 @@
         receipts:
         - {kind: social_security, amount: 1180}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 44100}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2665,6 +2680,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2380}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
@@ -2855,6 +2871,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
@@ -3047,6 +3064,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -4090,6 +4108,8 @@
         receipts:
         - {kind: social_security, amount: 1650}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 4200}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1100
@@ -4158,6 +4178,7 @@
         receipts:
         - {kind: social_security, amount: 900}
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -4960,6 +4981,9 @@
         - {kind: social_security, amount: 1900}
         - {kind: pension, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 172500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -5013,6 +5037,9 @@
         receipts:
         - {kind: social_security, amount: 1100}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 7500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -5064,6 +5091,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2400}
+        holdings:
+        - {kind: bank_account, value: 4200}
       month_defaults:
         wages_gross: 2400
         self_employment_net_earnings_for_tax: 0
@@ -5207,6 +5236,8 @@
         - {kind: colorado_works_cash, amount: 129}
         earnings:
         - {kind: wages, amount: 400}
+        holdings:
+        - {kind: bank_account, value: 900}
       month_defaults:
         wages_gross: 400
         self_employment_gross_receipts: 0
@@ -5262,6 +5293,8 @@
         receipts:
         - {kind: colorado_works_cash, amount: 129}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -5316,6 +5349,8 @@
         receipts:
         - {kind: ssi, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -5366,6 +5401,7 @@
         receipts:
         - {kind: colorado_works_cash, amount: 129}
         earnings: []
+        holdings: []
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -5419,6 +5455,8 @@
         receipts:
         - {kind: social_security, amount: 900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -5587,6 +5625,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2600}
+        holdings: []
       month_defaults:
         work_sanction_level_served: "none"
         wages_gross: 2600
@@ -5630,6 +5669,7 @@
         cccap_declares_assets_within_limit: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
         is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
@@ -5677,6 +5717,7 @@
         cccap_declares_assets_within_limit: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         work_sanction_level_served: "none"
         wages_gross: 0
@@ -5727,6 +5768,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 400}
+        holdings: []
       month_defaults:
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
         work_sanction_level_served: "none"
@@ -5763,6 +5805,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings: []
       month_defaults:
         wages_gross: 1500
         hours_worked: 160
@@ -5914,6 +5957,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5200}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 5200
@@ -5967,6 +6012,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2600}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 2600
@@ -6032,6 +6079,8 @@
         received_tanf_from_another_state_this_month: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -6079,6 +6128,8 @@
         received_tanf_from_another_state_this_month: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         wages_gross: 0
@@ -6205,6 +6256,8 @@
         receipts:
         - {kind: pension, amount: 900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -6287,6 +6340,8 @@
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -6564,6 +6619,8 @@
         is_enrolled_in_nslp_school: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -6704,6 +6761,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -6969,6 +7027,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1800}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         discharged_student_loan_debt: 0
@@ -7117,6 +7177,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         discharged_student_loan_debt: 0
@@ -7680,6 +7741,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -7757,6 +7820,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -7832,6 +7897,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9116,6 +9183,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9191,6 +9260,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9268,6 +9339,8 @@
         has_hardship_extension_approved: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9345,6 +9418,8 @@
         has_hardship_extension_approved: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9420,6 +9495,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9495,6 +9572,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -9992,6 +10071,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10068,6 +10149,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10179,6 +10262,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -10277,6 +10362,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -10394,6 +10481,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1200}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1100
@@ -10469,6 +10558,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10546,6 +10637,8 @@
         receipts:
         - {kind: pension, amount: 400}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: false
@@ -10663,6 +10756,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10738,6 +10833,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10846,6 +10943,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -10944,6 +11043,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -11024,6 +11125,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 3200}
+        holdings:
+        - {kind: bank_account, value: 2600}
       month_defaults:
         wages_gross: 3200
         self_employment_gross_receipts: 0
@@ -11038,6 +11141,8 @@
         liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -11673,6 +11778,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000  # the wage match reports his earnings
@@ -11813,6 +11920,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -11881,6 +11989,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -11940,6 +12050,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -11958,6 +12070,7 @@
         liquid_resources_value: 0
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -12571,6 +12684,9 @@
         - {kind: social_security, amount: 1900}
         - {kind: pension, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 52500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -12626,6 +12742,9 @@
         receipts:
         - {kind: social_security, amount: 1900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 7500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -12735,6 +12854,9 @@
         - {kind: social_security, amount: 1400}
         earnings:
         - {kind: wages, amount: 200}
+        holdings:
+        - {kind: bank_account, value: 1500}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
       month_defaults:
         wages_gross: 200
         self_employment_net_earnings_for_tax: 0
@@ -12850,6 +12972,9 @@
         - {kind: social_security, amount: 1358, month: "2027-03"}
         - {kind: social_security, amount: 1358, month: "2027-04"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 3000}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -12915,6 +13040,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -12942,6 +13069,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -12994,6 +13123,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 465}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 465
         self_employment_gross_receipts: 0
@@ -13802,6 +13933,9 @@
         - {kind: pension, amount: 300}
         - {kind: va_aid_and_attendance, amount: 300}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -14026,6 +14160,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -14104,6 +14240,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -14226,6 +14364,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -14303,6 +14443,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 3600}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -14378,6 +14520,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -15134,6 +15278,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -15172,6 +15318,9 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: retirement_account, value: 1500}
+        - {kind: life_insurance, value: 5000, face_value: 10000, purchase_date: "2010-03-01", premiums_in_lookback: 0}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -15237,6 +15386,10 @@
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+        - {kind: other_resource, value: 1000, amount_owed: 0, compensation_received: 0, disposed_date: "2026-09-02"}
+        - {kind: other_resource, value: 1000, amount_owed: 0, compensation_received: 0, disposed_date: "2026-10-02"}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -15273,6 +15426,8 @@
         - {kind: ssi, amount: 500}
         - {kind: child_support, amount: 300}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16260,6 +16415,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16319,6 +16476,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16373,6 +16532,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16404,6 +16565,8 @@
         receipts:
         - {kind: social_security, amount: 3000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16458,6 +16621,8 @@
         receipts:
         - {kind: ssi, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16511,6 +16676,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -16541,6 +16708,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 4000}
+        holdings:
+        - {kind: bank_account, value: 100}
       month_defaults:
         wages_gross: 4000
         self_employment_gross_receipts: 0
@@ -18262,6 +18431,8 @@
         - {kind: rental_income, amount: 1000}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         rental_property_costs: 600
         health_insurance_premiums_paid: 0
@@ -18403,6 +18574,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -18600,6 +18772,8 @@
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-03"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-04"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-05"}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000  # the wage match reports his earnings
@@ -18742,6 +18916,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -18845,6 +19020,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -18922,6 +19099,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -18997,6 +19176,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -19192,6 +19373,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000  # the wage match reports his earnings
@@ -19332,6 +19515,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -19505,6 +19689,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000  # the wage match reports his earnings
@@ -19646,6 +19832,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 400}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 400
@@ -19761,6 +19948,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -19858,6 +20047,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -19932,6 +20123,7 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -20041,6 +20233,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -20139,6 +20333,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -20435,6 +20631,9 @@
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1900}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -20630,6 +20829,9 @@
         receipts:
         - {kind: social_security, amount: 1180}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 44100}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -20818,6 +21020,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2380}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
@@ -21003,6 +21206,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         cccap_education_activity_time_limit_reached: false
@@ -21191,6 +21395,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -21492,6 +21697,9 @@
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1900}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -21687,6 +21895,9 @@
         receipts:
         - {kind: social_security, amount: 1180}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 44100}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -21875,6 +22086,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2380}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
@@ -22060,6 +22272,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         cccap_education_activity_time_limit_reached: false
@@ -22248,6 +22461,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -22544,6 +22758,9 @@
         - {kind: social_security, amount: 1420}
         - {kind: pension, amount: 610}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1900}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -22739,6 +22956,9 @@
         receipts:
         - {kind: social_security, amount: 1180}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 44100}
+        - {kind: home, value: 210000, amount_owed: 0}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false
@@ -22933,6 +23153,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2380}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
@@ -23118,6 +23339,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         cccap_education_activity_time_limit_reached: false
@@ -23306,6 +23528,7 @@
         state_of_residence: CO
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -24193,6 +24416,10 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
+        - {kind: real_property, listed_for_sale: true, amount_owed: 0, value: 50000, ma_sale_efforts_unsuccessful: true, co_owner_would_lose_housing: false}
+        - {kind: burial_fund, value: 2000, irrevocable: false, accrued_interest: 0}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -24270,6 +24497,7 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings: []
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -24325,6 +24553,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 8000}
+        holdings:
+        - {kind: bank_account, value: 1500}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 8000
@@ -24416,6 +24646,8 @@
         - {kind: ssi}
         earnings:
         - {kind: wages, amount: 4000}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 4000
@@ -24525,6 +24757,9 @@
         - {kind: social_security, amount: 1900}
         - {kind: pension, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 52500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -24597,6 +24832,9 @@
         receipts:
         - {kind: social_security, amount: 1900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 7500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -24684,6 +24922,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -24737,6 +24977,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: retirement_account, value: 40000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -25148,6 +25390,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -25180,6 +25424,8 @@
         - {kind: social_security, amount: 1000}
         - {kind: income_tax_refund, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -25236,6 +25482,9 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 700}
+        - {kind: life_insurance, value: 900, face_value: 1000, purchase_date: "2024-03-01", premiums_in_lookback: 900}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -25271,6 +25520,9 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 700}
+        - {kind: life_insurance, value: 900, face_value: 1000, purchase_date: "2024-03-01", premiums_in_lookback: 900}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -25333,6 +25585,8 @@
         - {kind: other_nontaxable}
         earnings:
         - {kind: self_employment_receipts}
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
   expect:
@@ -25416,6 +25670,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -25515,6 +25771,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -25619,6 +25877,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -25722,6 +25982,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -25906,6 +26168,8 @@
         earnings:
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250}
         - {kind: wages, irregular: true, amount: 20, month: "2027-02"}
+        holdings:
+        - {kind: bank_account, value: 20}
       months:
         "2027-02":
           wages_gross: 1020
@@ -26050,6 +26314,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -26243,6 +26508,8 @@
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-03"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-04"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-05"}
+        holdings:
+        - {kind: bank_account, value: 20}
       months:
         "2027-02":
           wages_gross: 1250
@@ -26386,6 +26653,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
@@ -28061,6 +28329,8 @@
         - {kind: adult_financial_cash}
         - {kind: va_aid_and_attendance, amount: 400}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -28161,6 +28431,9 @@
         - {kind: social_security, amount: 1900}
         - {kind: pension, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 52500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -28215,6 +28488,9 @@
         receipts:
         - {kind: social_security, amount: 1900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 7500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -28259,6 +28535,7 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings: []
       month_defaults:
         shelter_cost_monthly: 0
         wages_gross: 0
@@ -28363,6 +28640,9 @@
         - {kind: pension, amount: 300}
         - {kind: va_aid_and_attendance, amount: 300}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: false, intent_in_writing: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -29004,6 +29284,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -29107,6 +29389,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -29187,6 +29471,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -29244,6 +29530,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2400}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 2400
         hours_worked: 80
@@ -29262,6 +29550,7 @@
         liquid_resources_value: 0
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -29315,6 +29604,8 @@
         is_victim_of_battery_or_extreme_cruelty: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 0
         hours_worked: 0
@@ -29494,6 +29785,8 @@
         receipts:
         - {kind: vocational_training_allowance, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -29632,6 +29925,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -29828,6 +30122,8 @@
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-03"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-04"}
         - {kind: wages, amount: 1000, frequency: weekly, per_payment: 250, month: "2027-05"}
+        holdings:
+        - {kind: bank_account, value: 20}
       months:
         2027-02:
           wages_gross: 1250
@@ -29969,6 +30265,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -30140,6 +30437,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -30279,6 +30578,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -30470,6 +30770,8 @@
         - {kind: other_nontaxable, amount: 0, frequency: weekly, per_payment: 400, month: "2027-04"}
         - {kind: other_nontaxable, amount: 0, frequency: weekly, per_payment: 400, month: "2027-05"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -30609,6 +30911,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -30782,6 +31085,9 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 4000}
+        - {kind: held_excluded_payment, value: 2000}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -30920,6 +31226,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -31345,6 +31652,9 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1700}
+        - {kind: held_income_tax_refund, paid_by: federal, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31396,6 +31706,8 @@
         - {kind: social_security, amount: 600}
         - {kind: rental_income, amount: 800}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         unearned_income_offsetting_expenses: 500
         wages_gross: 0
@@ -31464,6 +31776,8 @@
         - {kind: other_nontaxable, amount: 5000, frequency: once, month: "2026-12"}
         - {kind: other_nontaxable, amount: 5000, frequency: once, month: "2027-01"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31512,6 +31826,8 @@
         residence_setting_operated_by_government: true
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31564,6 +31880,9 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 700}
+        - {kind: life_insurance, value: 900, face_value: 1000, purchase_date: "2024-03-01", premiums_in_lookback: 900}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31599,6 +31918,9 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 700}
+        - {kind: life_insurance, value: 900, face_value: 1000, purchase_date: "2024-03-01", premiums_in_lookback: 900}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31656,6 +31978,8 @@
         - {kind: other_nontaxable}
         earnings:
         - {kind: self_employment_receipts}
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
   expect:
@@ -31703,6 +32027,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31734,6 +32060,8 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31790,6 +32118,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31821,6 +32151,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 4000}
+        holdings:
+        - {kind: bank_account, value: 100}
       month_defaults:
         wages_gross: 4000
         self_employment_gross_receipts: 0
@@ -31851,6 +32183,8 @@
         sponsor_dependent_count: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 100}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31902,6 +32236,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -31933,6 +32269,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 4000}
+        holdings:
+        - {kind: bank_account, value: 100}
       month_defaults:
         wages_gross: 4000
         self_employment_gross_receipts: 0
@@ -31983,6 +32321,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32032,6 +32372,8 @@
         - {kind: gambling_winnings, amount: 2000, frequency: once, month: "2026-12"}
         - {kind: gambling_winnings, amount: 2000, frequency: once, month: "2027-01"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32081,6 +32423,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32113,6 +32457,8 @@
         - {kind: social_security, amount: 1000}
         - {kind: other_nontaxable, amount: 2000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32166,6 +32512,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32197,6 +32545,8 @@
         receipts:
         - {kind: other_taxable, amount: 2000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32248,6 +32598,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32279,6 +32631,8 @@
         receipts:
         - {kind: other_taxable, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32327,6 +32681,8 @@
         receipts:
         - {kind: other_taxable, amount: 2000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -32359,6 +32715,8 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -37934,6 +38292,8 @@
         in_diversion_period_of_ineligibility: true
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38009,6 +38369,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38119,6 +38481,8 @@
         county_approved_living_arrangement: true
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38196,6 +38560,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 3000}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38272,6 +38638,8 @@
         dwelling_id: h1
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38400,6 +38768,8 @@
         - {kind: gambling_winnings, amount: 2000, frequency: once, month: "2026-12"}
         - {kind: gambling_winnings, amount: 2000, frequency: once, month: "2027-01"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38475,6 +38845,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38588,6 +38960,8 @@
         receipts: []
         earnings:
         - {kind: boarder_payments, amount: 1500, provides: room_and_board, boarders: 2}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38666,6 +39040,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38776,6 +39152,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38851,6 +39229,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -38957,6 +39337,8 @@
         is_participating_in_strike: true
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39032,6 +39414,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39138,6 +39522,8 @@
         cw_has_refused_child_support_assignment: true
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39213,6 +39599,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39320,6 +39708,8 @@
         receipts:
         - {kind: general_assistance, amount: 300}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39395,6 +39785,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39507,6 +39899,8 @@
         qualified_status_date: "2025-06-01"
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39582,6 +39976,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39688,6 +40084,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -39763,6 +40161,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -42485,6 +42885,9 @@
         - {kind: social_security, amount: 1900}
         - {kind: pension, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 52500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -42538,6 +42941,9 @@
         receipts:
         - {kind: social_security, amount: 1900}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 7500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -42605,6 +43011,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 40000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -42658,6 +43066,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -42732,6 +43142,8 @@
         - {kind: ssi}
         earnings:
         - {kind: wages, amount: 3400}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         ma_prior_enrollment_category: none
         electronic_data_source_monthly_gross_income: 3400
@@ -42811,6 +43223,8 @@
         - {kind: other_nontaxable, amount: 5000, frequency: once, month: "2026-12"}
         - {kind: other_nontaxable, amount: 5000, frequency: once, month: "2027-01"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -43145,6 +43559,9 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -43200,6 +43617,9 @@
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -43288,6 +43708,8 @@
         - {kind: adult_financial_cash}
         - {kind: va_aid_and_attendance, amount: 400}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -43374,6 +43796,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         self_employment_gross_receipts: 0
@@ -43433,6 +43857,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 2200}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 2200
@@ -43493,6 +43919,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 2200}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 2200
@@ -43805,6 +44233,9 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
+        - {kind: home, value: 150000, amount_owed: 0, lives_in: true, beneficiary_deed: true}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -43859,6 +44290,9 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
+        - {kind: home, value: 150000, amount_owed: 0, lives_in: true, beneficiary_deed: true}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -43923,6 +44357,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 3000}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 3000
@@ -44013,6 +44449,8 @@
         receipts:
         - {kind: pension, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -44110,6 +44548,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
@@ -44175,6 +44615,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -44232,6 +44674,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 2400}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 2400
         hours_worked: 80
@@ -44250,6 +44694,7 @@
         liquid_resources_value: 0
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -44303,6 +44748,8 @@
         is_victim_of_battery_or_extreme_cruelty: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 0
         hours_worked: 0
@@ -44358,6 +44805,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -44415,6 +44864,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -44433,6 +44884,7 @@
         liquid_resources_value: 0
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -44486,6 +44938,8 @@
         is_victim_of_battery_or_extreme_cruelty: false
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 0
         hours_worked: 0
@@ -44658,6 +45112,8 @@
         - {kind: workforce_program_payment, amount: 500}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -44796,6 +45252,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -44967,6 +45424,8 @@
         - {kind: reverse_mortgage, amount: 400}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -45105,6 +45564,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -45276,6 +45736,8 @@
         - {kind: other_nontaxable, amount: 300, pass_set_aside: 300}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -45414,6 +45876,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -45586,6 +46049,8 @@
         - {kind: other_nontaxable, amount: 20, irregular: true, month: "2027-02"}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -45725,6 +46190,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -45900,6 +46366,8 @@
         - {kind: other_nontaxable, amount: 20, irregular: true, month: "2027-02"}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -46039,6 +46507,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -46207,6 +46676,8 @@
         - {kind: other_taxable, amount: 400}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -46345,6 +46816,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -46514,6 +46986,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1075}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -46652,6 +47126,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -46749,6 +47224,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -46825,6 +47302,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -46899,6 +47378,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -47075,6 +47556,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -47214,6 +47697,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 400}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -47390,6 +47874,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -47528,6 +48014,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -47697,6 +48184,9 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 4000}
+        - {kind: real_property, value: 1200, amount_owed: 0}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -47835,6 +48325,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -48005,6 +48496,9 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 3000}
+        - {kind: bank_account, value: 3000, share: 0, co_owners: outside_case, holding_id: p1-joint-liquid}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -48143,6 +48637,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -48310,6 +48805,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -48449,6 +48946,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 200}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -48625,6 +49123,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -48763,6 +49263,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -48931,6 +49432,9 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 4000}
+        - {kind: able_account, value: 2000}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -49069,6 +49573,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -49238,6 +49743,8 @@
         receipts:
         - {kind: dvsa_title_i_volunteer_payment, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -49376,6 +49883,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -49548,6 +50056,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -49686,6 +50196,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -49862,6 +50373,8 @@
         earnings:
         - {kind: boarder_payments, amount: 600, provides: room_and_board, boarders: 1}
         - {kind: business_cost_boarder_provision, amount: 200, provides: room_and_board}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -50003,6 +50516,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -50170,6 +50684,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -50309,6 +50825,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 400}
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 400
@@ -51189,6 +51706,8 @@
         - {kind: social_security, amount: 500}
         - {kind: reverse_mortgage, amount: 100}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51216,6 +51735,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51269,6 +51790,9 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
+        - {kind: other_resource, value: 5000, amount_owed: 0, compensation_received: 0, disposed_date: "2026-06-10"}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51296,6 +51820,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51341,6 +51867,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51368,6 +51896,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51417,6 +51947,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51444,6 +51976,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51494,6 +52028,9 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
+        - {kind: life_insurance, value: 5000, face_value: 10000, purchase_date: "2010-03-01", premiums_in_lookback: 0}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51521,6 +52058,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -51744,6 +52283,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -51820,6 +52361,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -51894,6 +52437,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -51994,6 +52539,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52070,6 +52617,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 6000}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -52145,6 +52694,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52245,6 +52796,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52321,6 +52874,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 6000}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -52395,6 +52950,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52501,6 +53058,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 5000}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52577,6 +53136,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 4300}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -52651,6 +53212,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52759,6 +53322,8 @@
         earnings:
         - {kind: farm_self_employment_receipts, amount: 200, net_for_tax: 0, annual_support: false}
         - {kind: business_cost_operating, amount: 700, farm: true}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52836,6 +53401,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1500}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
@@ -52910,6 +53477,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -52968,6 +53537,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -53023,6 +53594,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -53076,6 +53649,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -53130,6 +53705,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -53186,6 +53763,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
       month_defaults:
         wages_gross: 5000
         self_employment_gross_receipts: 0
@@ -53242,6 +53821,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
       month_defaults:
         wages_gross: 900
         hours_worked: 80
@@ -53340,6 +53921,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -53416,6 +53999,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 3600}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -53490,6 +54075,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -54235,6 +54822,8 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -54373,6 +54962,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -54624,6 +55214,8 @@
         - {kind: social_security, month: "2027-03"}
         - {kind: social_security, month: "2027-04"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       months:
       month_defaults:
         shelter_costs_paid_by_others: 0
@@ -54703,6 +55295,8 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -54765,6 +55359,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -54892,6 +55488,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 1000
@@ -54982,6 +55580,9 @@
         receipts:
         - {kind: social_security, amount: 1000}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -55037,6 +55638,9 @@
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 200000}
+        - {kind: home, value: 240000, amount_owed: 0}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -55111,6 +55715,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 3640}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 3640
@@ -55327,6 +55933,8 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 1000
@@ -55408,6 +56016,9 @@
         - {kind: social_security, amount: 2500}
         - {kind: loan, amount: 600, month: "2026-11"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -55476,6 +56087,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -55532,6 +56145,8 @@
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -55846,6 +56461,8 @@
         - {kind: workforce_program_payment, amount: 500}
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -55984,6 +56601,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -56317,6 +56935,8 @@
         receipts:
         - {kind: social_security, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -56609,6 +57229,8 @@
             per_payment: 300
         earnings:
         - {kind: wages, amount: 1000}
+        holdings:
+        - {kind: bank_account, value: 20}
       month_defaults:
         rental_property_costs: 600
         health_insurance_premiums_paid: 0
@@ -56748,6 +57370,7 @@
         is_enrolled_in_nslp_school: true
         receipts: []
         earnings: []
+        holdings: []
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 0
@@ -56849,6 +57472,8 @@
         - {kind: child_support_arrears, amount: 100, frequency: once, month: "2026-10"}
         - {kind: crime_victim_compensation, amount: 3000, frequency: once, month: "2026-10", date: "2026-10-05"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -56924,6 +57549,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -57041,6 +57668,8 @@
         receipts:
         - {kind: workers_compensation, amount: 500, claim_expense: 300}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -57117,6 +57746,8 @@
         receipts:
         - {kind: social_security, amount: 100}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -57231,6 +57862,8 @@
         - {kind: rental_income, amount: 900}
         - {kind: colorado_works_cash, amount: 244, frequency: once, retroactive: true, month: "2026-10"}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         rental_property_expenses_paid: 700
         health_insurance_premiums_paid: 0
@@ -57307,6 +57940,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -57396,6 +58031,8 @@
             frequency: once
             month: 2026-10
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -57485,6 +58122,9 @@
           - kind: va_aid_and_attendance
             amount: 300
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1200}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -57731,6 +58371,8 @@
             amount: 1200
             pass_set_aside: 300
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 1000}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -57815,6 +58457,7 @@
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
         earnings: []
+        holdings: []
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -57870,6 +58513,7 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 4873}
+        holdings: []
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 4873
@@ -57925,6 +58569,7 @@
         - {kind: adult_financial_cash}
         earnings:
         - {kind: wages, amount: 1665}
+        holdings: []
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 1665
@@ -58042,6 +58687,8 @@
         - {kind: wages, amount: 300}
         - {kind: wioa_on_the_job_training, amount: 300}
         - {kind: employer_vendor_payment, amount: 100}
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -58114,6 +58761,8 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -58192,6 +58841,8 @@
         earnings:
         - {kind: boarder_payments, amount: 400, provides: room_only, boarders: 1}
         - {kind: business_cost_boarder_provision, amount: 50, provides: room_only}
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         shelter_costs_paid_by_others: 0
     p2:
@@ -58222,6 +58873,8 @@
         - {kind: social_security, amount: 1000}
         - {kind: income_tax_refund, amount: 500}
         earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0

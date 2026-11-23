@@ -3219,6 +3219,66 @@ Assumption: A dated pay with no frequency is a monthly pay (the schema's default
 
 Checked 2026-11-23: 9 CCR 2503-7 3.752.22.B-C (D-86); 10 CCR 2506-1 4.402.A.2 (D-82). Neither says what schedule to assume for a pay whose schedule is not reported. Items: CO-5100, CO-5121.
 
+### OQ-1200. Holdings: whether the Medicare Savings Program has any resource rule of its own beyond the SSI method and the beneficiary-deed home
+
+Body: Resource records, step H0 (docs/design-earned-and-resource-records.md 3.3, decision D7) gives the Medicare Savings Program no holdings counting table of its own: ma_msp_countable_resources (CO-5206) reads the SSI-method couple figure (ma_ssi_countable_resources, CO-608) less the equity of a home counted only because it has a recorded beneficiary deed (ma_home_equity_counted_only_by_beneficiary_deed), so from step H1 it reads the SSI method's table (ma_ssi_holding_treatment_table, CO-5303) through that figure. Whether the MSP rules (10 CCR 2505-10 8.100.6, the resource limits of S1735) count or exclude any kind of holding differently from the SSI method, other than that home, is not settled by a text the volume has; the design records it as an owner confirmation, not an assumption made silently.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The Medicare Savings Program counts every kind of holding as the SSI method does, except the home counted only by a beneficiary deed (today's reading).
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.M (S1514, S1515, S3400-S3403, S3421) and the MSP resource limits (S1735); no MSP-specific exclusion was found. Items: CO-5300, CO-5303, CO-5206.
+
+### OQ-1201. Holdings: whether Colorado Works, LEAP and SUN Bucks have no resource test, and CCCAP keeps its asset declaration
+
+Body: Resource records, step H0 (docs/design-earned-and-resource-records.md 1.2 and 3.3, decision D10) builds holdings counting tables for SNAP, Adult Financial and the Medicaid SSI method only. No item of Colorado Works, LEAP or SUN Bucks reads a resource fact: Colorado Works reads holdings only through the death reimbursement, which adopts the SSI method (9 CCR 2503-6 3.606.7.F.2.c, as Adult Financial's burial assistance does, 9 CCR 2503-5 3.570.43.D.3.b), and CCCAP asks the household to declare that its assets are within the limit (cccap_declares_assets_within_limit, CO-1741; OQ-54), which stays the declaration it is. The design records each as an owner confirmation: that 9 CCR 2503-6 (Colorado Works) and 9 CCR 2503-7 (LEAP) set no resource test the volume has missed, that SUN Bucks has none, and that CCCAP's rule asks for the declaration rather than a count.
+
+Class: state policy choice
+Owner: Cash programs policy owner, Energy assistance (LEAP) policy owner, School meals (CDE) co-approver, Child care policy owner (CDEC)
+Assumption: Colorado Works, LEAP and SUN Bucks have no resource test, and CCCAP reads the household's declaration, not its holdings (today's reading).
+
+Checked 2026-11-23: the volume's items for the four programs read no resource fact other than CO-1741 (CCCAP) and the death reimbursement's adopted SSI method (Colorado Works); 9 CCR 2503-6 and 9 CCR 2503-7 as fetched (D-81, D-86) were not searched end to end for a resource test in this step. Items: CO-5300, CO-1741.
+
+### OQ-1202. SNAP holdings: burial spaces beyond one plot per member, and the kinds no SNAP item reads
+
+Body: Resource records, step H0 sets SNAP's holdings counting table (snap_holding_treatment_table, CO-5301) to today's reading. Two kinds of rows need the SNAP owner. (1) A finding: 7 CFR 273.8(e)(2) (S2216) and 10 CCR 2506-1 4.410.D.4 (S2967) exclude one burial plot per household member; burial spaces beyond the needs of the person's family, the only burial spaces a fact states today (burial_spaces_value_beyond_family_needs, CO-3857, read by Adult Financial only), are counted by neither text's exclusion, yet no SNAP item reads them (row not_counted_text_counts). No stored household or rule test states them. (2) Kinds no SNAP item reads and no text on file names: investment personal property (gems, collectibles), a revocable burial trust (not a funeral agreement under D.4; an irrevocable one is inaccessible under 4.410.F.1 and F.3, S2968), a trust interest the person can revoke, an annuity, a life estate (rows not_counted_no_rule_found); and money SNAP counts as liquid because no rule excludes it: loan proceeds and replacement proceeds still held, other resources (counted_no_rule_excludes), the mortgages and promissory notes the person holds, which pass the real property tests today (counted_with_real_property), and personal property other than household goods and effects (equipment), which no fact states (excluded_household_goods). The SNAP H1 track changes a row only as a cited difference.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Each row as today's items read it, until the SNAP owner signs it or the SNAP H1 track changes it with a citation.
+
+Checked 2026-11-23: 7 CFR 273.8(c)(1), (d), (e)(2) (D-191, D-12); 10 CCR 2506-1 4.409-4.410 (D-82). Items: CO-5301, CO-4176, CO-074.
+
+### OQ-1203. Adult Financial holdings: investment personal property, and the kinds no Adult Financial item reads
+
+Body: Resource records, step H0 sets Adult Financial's holdings counting table (af_holding_treatment_table, CO-5302) to today's reading. (1) A finding: 9 CCR 2503-5 3.520.77.B (S4507) exempts household goods and personal effects but "does not include effects that the client holds because of the value or as an investment, which are countable as personal property"; no Adult Financial item reads investment_personal_property_value (CO-4642), so Adult Financial counts none of it (row not_counted_text_counts). Eight stored households state CO-4642, each as 0; one rule test (CO-4623-T3, Medicaid's) states it. (2) Rows counted because 3.520.72.A (S1636) counts every resource not otherwise specified and no exclusion was found on file: an education savings account, a state or local earned income tax credit held apart from a refund (3.520.77.K names refunds and the PTC rebate), a government payment a federal statute excludes from resources, prorated income still held, other resources; rows not counted because no item reads them and no text on file names them: an annuity, a life estate; and personal property other than household goods and effects (equipment, livestock), which 3.520.72.B.3-4 (S2213) counts when not exempt and no fact states today.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Each row as today's items read it, until the owner signs it or the Adult Financial H1 track changes it with a citation.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.72-3.520.77 (D-80). Items: CO-5302, CO-4000, CO-4412.
+
+### OQ-1204. Medicaid SSI method holdings: the earned income tax credit, loans, disaster and relocation payments still held, and the kinds no rule on file settles
+
+Body: Resource records, step H0 sets the SSI method's holdings counting table (ma_ssi_holding_treatment_table, CO-5303) to today's reading. (1) Findings: 10 CCR 2505-10 8.100.5.F.6 (S4506) exempts "as either income or resources" for the ABD and long-term care categories a bona fide loan (a), relocation payments, toward a replacement dwelling for up to 6 months (f), major disaster and emergency assistance (k), Civil Liberties Act payments (r), the Earned Income Tax Credit as a resource "for the month it is received and for the following month" (u) and payments to victims of Nazi persecution (x). No SSI-method item subtracts the part of liquid_resources_value (CO-3390) that is such money still held: ssi_countable_resources_individual (CO-800) subtracts only the retroactive SSI or Social Security payment (F.6.c). So a federal refund carrying the credit, a state or local credit, loan proceeds, and disaster, relocation, Civil Liberties Act or Nazi persecution payments still held are counted (rows counted_text_excludes for held_income_tax_refund, held_eitc, held_loan_proceeds, held_excluded_payment, held_replacement_proceeds). One stored household states federal_tax_refunds_held_value above 0 and one states excluded_government_payments_held_value; neither is an SSI-method case (docs/reviews/holdings-h0.md). (2) Rows counted because 20 CFR 416.1201(a) (S4500) counts what the person owns and could convert to cash and no exclusion was found on file: an education savings account, business cash (8.100.5.J.3, S3402, excludes property used in a trade or business essential to self-support up to $6,000 with a 6% return; whether business cash is such property is open), prorated income still held, other resources; and personal property other than household goods and effects (8.100.5.M.3.i, S4505, counts a mobile home or trailer not the home and not income-producing), which no fact states today.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each row as today's items read it, until the owner signs it or the Medicaid H1 track changes it with a citation.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6, J, M, N (D-65); 20 CFR 416.1201 (D-4400). Not on file: 20 CFR 416.1235 (tax refunds), 416.1232 (replacement of excluded resources), 416.1237 (disaster assistance). Items: CO-5303, CO-800, CO-4623.
+
+### OQ-1205. Adult Financial vehicles: whether "the vehicle with the highest value" means the highest market value or the highest equity
+
+Body: 9 CCR 2503-5 3.520.77.A (S2214): "The vehicle with the highest value is exempt if it is used for the transportation of the client or a member of the household." The holdings record states each vehicle's market value (`value`) and what is owed on it (`amount_owed`). Two readings: (A) the highest equity, value less amount owed, which is what P58 `largest` returns when its value is the equity, and which matches the SSI method's practice of excluding the one automobile in the way most advantageous to the person (20 CFR 416.1218(b)(1), S2215); (B) the highest market value, whose equity is then excluded, which P58 cannot express without a key argument (the record with the highest market value, larger equity winning a tie). Worked example: car X worth $9,000 owing $8,000 (equity $1,000) and car Y worth $6,000 owing nothing (equity $6,000), both used for transportation: under A the countable vehicle equity is $1,000 (Y excluded); under B it is $6,000 (X excluded), $5,000 more against the resource limit. transportation_vehicle_equity_value (CO-3395) mixes the two ("the equity value of the ... highest-valued vehicle"). Raised by the fact-graph review of design decision D5 (P58), 2026-11-23.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Reading A, the highest equity; the Adult Financial H1 track writes the vehicle exclusion with P58 over equity floored at 0, and adds a key argument to P58 only if the owner chooses B.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.77.A (D-80); 20 CFR 416.1218(b)(1) (S2215). No definition of "value" for vehicles in 3.520.77. Items: CO-5302, CO-3395.
+
 Resolved (coverage pass 4, 2026-11-23; docs/reviews/coverage4-care-energy.md L4-2 and section 4): the question was misclassified. It is not a choice the State's text leaves open but the codex's own data default, and product-owner decision 4 of 2026-11-23 with design decision D3 already answer it: a field takes a default only where the rule text gives one, and the body above records that none does for a dated pay. CO-5100's `frequency` keeps monthly for a stream (a record with no date, whose amount is by its meaning the month's) and is required on a dated record (`required_if_dated`, docs/operators.md "Receipt records"): a rule that reads the schedule of a dated pay that states none cannot determine, naming `earnings[<i> <kind>].frequency` (leap_ongoing_dated_wages CO-5121 and leap_scsep_wages CO-5122, LEAP 3.752.22.B-C; SNAP's dated-pay conversion, 10 CCR 2506-1 4.402.A.2). Household L2 of the review (four weekly $500 pays, dated, no frequency) is stored as CO-711 and expects cannot determine; CO-5121-T14 and T15 test it. The three SNAP rule tests that stated dated pays without a frequency (CO-330-T7, CO-4930-T5, CO-5113-T9) now state them monthly, two jobs' pays, with their answers unchanged; the other six named above read no frequency. The earnings translator writes SNAP's pay after the application date as the month's pay (frequency monthly), read at its amount as before. Class: no longer open; the assumption above is withdrawn.
 
 ### OQ-1220. SUN Bucks: the Summer EBT benefit level for summer 2027

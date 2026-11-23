@@ -131,6 +131,12 @@ export interface Item {
    *  in every month). A "one of" field lists its options. docs/operators.md,
    *  "Receipt records". */
   record_fields?: Record<string, RecordFieldSpec>;
+  /** On a list of records: what one record is called where a rule reads the
+   *  list ("for each holding in", "that holding's value"); a list without
+   *  one names its records receipts. Parse and render only: the operators
+   *  read every list alike (docs/operators.md "Receipt records"; resource
+   *  records, step H0: `holdings`, CO-5300, record_noun holding). */
+  record_noun?: string;
 }
 
 /** One field of a record schema (Item.record_fields). */
@@ -249,7 +255,7 @@ export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 export const MONTH_RE = /^\d{4}-\d{2}$/;
 export const BLOCK_OPS: ReadonlySet<string> = new Set([
   "all", "any", "case", "exists", "exists_related", "each", "some_month", "filter", "sum",
-  "sum_months", "reachable", "sum_receipts",
+  "sum_months", "reachable", "sum_receipts", "largest",
 ]);
 export const MONTH_BINDING: ReadonlySet<string> = new Set([
   "each", "some_month", "count_months", "avg",
@@ -263,7 +269,7 @@ export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
   "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
-  "count", "sum", "sum_months", "sum_receipts", "band", "lookup_extended", "latest_month_of_year", "as_of",
+  "count", "sum", "sum_months", "sum_receipts", "largest", "band", "lookup_extended", "latest_month_of_year", "as_of",
 ]);
 
 export const BASE: Record<string, BaseType> = {

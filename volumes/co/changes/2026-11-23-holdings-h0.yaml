@@ -1,0 +1,8 @@
+# Resource records, step H0 (docs/reviews/holdings-h0.md): the holdings list (CO-5300) and its three counting tables
+# (CO-5301 to CO-5303), read by no rule yet; P58 largest and the record noun in the engine, read by no rule yet; every
+# stored household and rule test that states resources also states holdings records. No decision changes (the records
+# harness: 0 differences against a3ffd86), and no change-impact flag is raised: no item that a rule reads changed
+# (CHECK_BASE=origin/main npm run check, after merging origin ccr-9d19bf4c-wmnwcl at 704da6b). One entry per flag.
+date: 2026-11-23
+summary: Resource records H0 - the holdings list and its counting tables, P58 largest, the joint-holding check, and every household and rule test that states resources restated as holdings records; no decision changes.
+impact: []

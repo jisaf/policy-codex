@@ -1,8 +1,24 @@
 import type { LedgerIndex } from "./ledger-index";
 import { lit, paramValue } from "./values";
+import { RECORD_NOUNS, recordNounOf } from "./records";
 import {
   ARITH, BLOCK_OPS, CMP, DATE_RE, MONTH_RE, PAREN_OPS, type Expr,
 } from "./types";
+
+/** The nouns of the record sums ("for each receipt in", "for each holding
+ *  in") around the expression being rendered, innermost last: "that
+ *  receipt" and "that holding" name the record of the innermost one. */
+const recordNouns: string[] = [];
+function listNoun(ix: LedgerIndex, list: Expr): string {
+  const id = typeof list === "string" ? list
+    : Array.isArray(list) && list[0] === "of" && typeof list[2] === "string" ? list[2] : null;
+  return recordNounOf(id ? ix.byIdentifier.get(id) : undefined);
+}
+function withNoun<T>(noun: string, f: () => T): T {
+  recordNouns.push(noun);
+  try { return f(); } finally { recordNouns.pop(); }
+}
+const thatNoun = (): string => recordNouns[recordNouns.length - 1] ?? "receipt";
 
 export function factName(ix: LedgerIndex, id: string): string {
   const it = ix.byIdentifier.get(id);
@@ -85,12 +101,16 @@ export function inline(ix: LedgerIndex, e: Expr): string {
         : `${o(e[1])}, for ${o(e[2])}, or its last row beyond it`;
     case "latest_month_of_year": return `the most recent month number ${o(e[1])} on or before ${o(e[2])}`;
     case "as_of": return `${i(e[1])} as of ${o(e[2])}`;
-    case "receipt": return `that receipt's ${String(e[1]).replace(/_/g, " ")}`;
-    case "received_in": return `that receipt is received in ${i(e[1])}`;
+    case "receipt": return `that ${thatNoun()}'s ${String(e[1]).replace(/_/g, " ")}`;
+    case "received_in": return `that ${thatNoun()} ${(RECORD_NOUNS[thatNoun()] ?? RECORD_NOUNS.receipt).placed} ${i(e[1])}`;
   }
   // The condition is parenthesised so its comparisons never read as the
   // sum's own (the inline form is read back by parse.ts).
-  if (op === "sum_receipts") return `the sum of ${o(e[3])} for each receipt in ${i(e[1])} where (${i(e[2])})`;
+  if (op === "sum_receipts" || op === "largest") {
+    const n = listNoun(ix, e[1]);
+    const head = op === "largest" ? "the largest of" : "the sum of";
+    return withNoun(n, () => `${head} ${o(e[3])} for each ${n} in ${i(e[1])} where (${i(e[2])})`);
+  }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
   if (op === "sum_months") return `the sum of ${i(e[2])} for each month in ${i(e[1])}`;
@@ -176,14 +196,15 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
       ...block(ix, e[2], indent + 1),
     ];
   }
-  if (op === "sum_receipts") {
+  if (op === "sum_receipts" || op === "largest") {
     // The condition, then the value, each under its own heading line.
-    return [
-      pad + `the sum for each receipt in ${inline(ix, e[1])} where`,
+    const n = listNoun(ix, e[1]);
+    return withNoun(n, () => [
+      pad + `the ${op === "largest" ? "largest" : "sum"} for each ${n} in ${inline(ix, e[1])} where`,
       ...block(ix, e[2], indent + 2),
       pad + "  of",
       ...block(ix, e[3], indent + 2),
-    ];
+    ]);
   }
   if (op === "each") {
     return [pad + `in each of ${inline(ix, e[1])}:`, ...block(ix, e[2], indent + 1)];
