@@ -1,0 +1,242 @@
+# Coverage review, fifth pass: MAGI Medicaid and CHP+ (family file `coverage5-medicaid-magi-chp`)
+
+Reviewer pass: fifth exhaustive coverage matrix, 2026-11-23, on `8519814` (branch `ccr-9d19bf4c-wmnwcl`, "co: dispositions for the two flags the coverage pass 4 merge wave raised"). Review only: nothing in the volume was changed.
+
+Governing texts:
+- 10 CCR 2505-10 § 8.100.1 to § 8.100.4 (D-65, rule version 12735, effective 11/14/2026): § 8.100.3.B, E, F.1, G.1 (with G.1.c and G.1.g.ix), H.1.b.vi, K, Q, R; § 8.100.4.A to J read line by line.
+- 10 CCR 2505-3 (D-66, rule version 12687, effective 08/30/2026): § 50, § 110, § 120, § 130, § 150, § 170, § 180, § 320, § 330, § 430 read line by line.
+- 42 CFR 435.603 (D-34) as § 8.100.4.C and E adopt it; 42 U.S.C. 1396a(e)(5)-(6), (e)(16) as cited by CO-565 and CO-560; 26 U.S.C. 61, 62, 72, 104, 112, 119, 223 (on file since pass 4).
+- Fetched for this pass from Cornell LII (an allowed host), not stored: 42 U.S.C. 5044(f)(1) ("Notwithstanding any other provision of law ... payments to volunteers under this chapter shall not in any way reduce or eliminate the level of or eligibility for assistance or services any such volunteers may be receiving under any governmental program, except ... [at or above] the minimum wage").
+
+Out of scope: §§ 8.100.5 to 8.100.7 (non-MAGI reviewer), except where a MAGI outcome reads them.
+
+**Method.**
+- Scratch copy: `git worktree add --detach <scratch>/cov5magi 8519814`, node_modules linked. I built the matrix (section 3) from the rule text, not from pass 4's rows, and read the derivation of every MAGI and CHP+ item on the path to the declared outcomes (ma_magi_eligibility_status, ma_magi_category, ma_family_planning_status, ma_express_lane_status, the presumptive items, chp_eligibility_status, chp_express_lane_status, chp_copayment): 949 items reachable, 332 of them Medicaid or CHP+ derived items.
+- Probes: my own runner (`scratch5/run.ts`, scratch only) patches a stored case (CO-226 single adult, CO-228 filer and child, CO-723 separated parents) and evaluates identifiers per month with the engine. Determination date 2026-11-10 unless stated. Guidelines as the volume holds them: $1,330.00 a month for one, $1,803.33 for two, $2,276.67 for three, $2,750.00 for four.
+- All 4,088 stored household expectations pass at `8519814` (my runner over every case: 0 failures), so every finding below is a household the stored set does not cover.
+- Each finding is labeled **common case**, **rare edge combination** or **decision 4** (missing information is "cannot determine" unless the rule says otherwise).
+
+## 1. Verdict
+
+**10 P1 found. The family does not meet the stopping rule.**
+
+None is a regression of a pass-4 fix in a stored household; two are gaps in pass-4 fixes (C5-08 in C4-05's fix, C5-06 beside C4-10's fix), and one is an open question classed as a state choice that the text decides (C5-09, OQ-1230). The P1s fall in five groups:
+- **Pregnancy across months (C5-01 to C5-03), common case.** The Pregnant Women coverage period never opens for a first-time applicant whose pregnancy ended before the determination (the eligibility history "none" is read as a determination that she was not covered), so the 12 postpartum months, and the needy-newborn year of her baby, are lost; the MAGI family size counts the unborn child by the pregnancy on the determination date in every month; and CHP+ prenatal reads only the pregnancy on the determination date, so a woman who applied pregnant and delivered before the determination gets no CHP+ at all.
+- **A general requirement no outcome reads (C5-04).** The § 8.100.3.G.1.c IMD exclusion is in ma_magi_is_fully_eligible but not in ma_magi_eligibility_status, which reports `eligible`.
+- **Decision 4 (C5-05 to C5-08).** A tax dependent claimed by a filer outside the case is read as claimed by a non-parent and has 0% premium-tax-credit income; a sponsor who is not a person of the case deems nothing; an unstated expected annual income reads as "not eligible under § 8.100.4.C.5"; and the new `seasonal_or_commission` field defaults to false, the same unruled default C4-05 removed from the person.
+- **Text on file decides an "open" question (C5-09).** OQ-1230 keeps the gross pension even when the record states its taxable amount.
+- **Binary arithmetic at an exact limit (C5-10).** A child in a family of two at exactly 147% is put in CHP+.
+
+There are also 7 P2 findings (C5-11 to C5-17) and 2 P3 findings (C5-18, C5-19). Open-question classes are in section 4: OQ-1230 fails; OQ-810's text is stale.
+
+## 2. Findings
+
+P1: a wrong eligibility or benefit answer, a missing pathway or program, or an element a rule reads that is undefined. P2: a gap that does not change an answer today, or a citation or definition gap. P3: wording.
+
+| ID | Pri | Label | Paragraph | Item(s) | Governing text | What is wrong (repro, hand answer) | Proposed fix |
+|---|---|---|---|---|---|---|---|
+| C5-01 | **P1** | common case (a woman who delivers before the determination, with or without a retroactive request) | 8.100.4.G.5; 8.100.4.G.7; 8.100.3.H.1.b.vi; 8.100.3.E.2; 42 U.S.C. 1396a(e)(5), (e)(16) | CO-566 ma_is_in_pregnancy_coverage_period; CO-565 ma_pregnancy_coverage_period_start_month; CO-2424 ma_prior_enrollment_category; CO-087, CO-550 (the baby) | G.5: "Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of application ... through the last day of the 12th month following the date the pregnancy ends"; G.7: "This coverage also applies in instances where the mother received Medical Assistance to cover the child's birth through retroactive Medical Assistance"; 1396a(e)(16)(A) "including during a period of retroactive eligibility" (quoted on CO-565) | CO-566 opens the coverage period only if the eligibility history records `pregnant` for the start month, or the history is **unknown** there and the person meets the category. CO-565 likewise skips every retroactive month whose history is stated. A first-time applicant's history is truthfully `none` for the months before the determination (66 stored households state it), so for her the period never opens, whether the start month is the application month or a retroactive one. **MA-PG-DELIVERED:** applies 2026-10-05 while pregnant, delivers 2026-10-20 (baby in the case), wages $3,250, determined 2026-11-10, history `none`. Engine: October `eligible` (pregnant in the month), coverage period false in every month, November 2026 onward `ineligible_income`. By hand: October, household 2, 3,250 / 1,803.33 = 180.2% ≤ 195%: Pregnant Women; covered through October 2027 regardless of income (G.5). **PP-AFTER-BIRTH:** gives birth 2026-10-15, applies 2026-11-02 with retroactive coverage requested, wages $2,800, history `none`. Engine: October `eligible`, coverage period starts 2026-11 and is false, November 2026 onward `ineligible_income`; the baby is not a needy newborn (CO-087 reads the mother's coverage period in the birth month), Medicaid `ineligible_income`, CHP+ `eligible_child`. By hand: October 155.3% ≤ 195%, eligible through retroactive coverage; mother covered through October 2027; baby an Eligible Needy Newborn (G.7, H.1.b.vi) for the year, Medicaid not CHP+. Control: the same household with the history unstated gives the right answer (coverage August or October through the 12th month). | Read the history only for months before this application's coverage window: in the application month, the months after it and a requested retroactive month, the category is tested in the month whatever the history says (the history records earlier approvals, not this determination). State on CO-2424 that `none` for those months does not block the period. Add MA-PG-DELIVERED and PP-AFTER-BIRTH (with the baby) as stored cases. |
+| C5-02 | **P1** | common case among retroactive requests by pregnant or recently pregnant women | 8.100.4.E.2; 8.100.4.G.1; 42 CFR 435.603(b), 435.915(a)(2) | CO-501 ma_magi_household_size (and through it CO-4976, CO-504, CO-704) | E.2: "When a household includes a pregnant woman ... the pregnant woman is counted as herself plus the number of children she is expected to deliver" | CO-501 counts the unborn child by `is_pregnant`, the pregnancy on the determination date, in every month. C4-08 made the household per month, but the size still reads the determination date. **PG-RETRO-ENDED:** single woman, wages $3,000, pregnant 2026-03-01 to 2026-09-20 (pregnancy lost, no child in the case), applies 2026-11-02 with retroactive coverage requested. Engine, August and September: size 1, 225.6%, `ineligible_income`. By hand: pregnant in those months (CO-3601 agrees), size 2, 3,000 / 1,803.33 = 166.4% ≤ 195%: Pregnant Women, eligible, and (with C5-01) covered through September 2027. **PG-RETRO-LATER** (the converse): pregnant since 2026-10-01, wages $1,900, retroactive request. Engine, August and September: size 2, 105.4%, `adult` `eligible`. By hand: not pregnant then, size 1, 1,900 / 1,330 = 142.9% > 133% + 5: `ineligible_income` (limited Family Planning). | Count a member as herself plus her expected children in the months she is pregnant: `ma_is_pregnant_in_month` (CO-3601) of that member, with the expected number stated for the pregnancy (also for one that has ended). Add both probes as stored cases. |
+| C5-03 | **P1** | common case (a CHP+ prenatal applicant who delivers before the determination) | 10 CCR 2505-3 § 110.1.A.2, § 110.1.F, § 430.3 | CO-706 chp_prenatal_is_eligible; CO-704 (`is_pregnant` arm); CO-707; CO-2407 | § 430.3: "the enrollment date of a pregnant woman shall be effective as of the first of the month of the date of application ... The enrollment span shall end on the last day of the month 12 months after the birth of the child" | Every CHP+ prenatal test reads `is_pregnant`, the pregnancy on the determination date. A woman who applied while pregnant and delivered before the determination is never prenatal-eligible, so the § 430.3 span (CO-2407, which needs prenatal eligibility in the start month) never opens. **CHP-PG-DELIVERED:** applies 2026-10-05 while pregnant, delivers 2026-10-20, wages $4,200, household 2, determined 2026-11-10. Engine: October and every later month `ineligible` (Medicaid `ineligible_income`, 232.9% > 200%). By hand: October 232.9% is in (195%, 260%]: `eligible_prenatal`, the span through October 2027, exempt from cost sharing (§ 330.4). | Test pregnancy per month in CO-704, CO-706 and CO-707 (Medicaid's CO-3601 reading, months from the application month on), and open the span on the application month's eligibility. Add CHP-PG-DELIVERED as a stored case. |
+| C5-04 | **P1** | rare edge combination (a psychiatric inpatient aged 21 to 64 in an IMD) | 8.100.3.G.1.c | CO-554 ma_magi_eligibility_status (no IMD arm); CO-1179; CO-562; CO-1154 | G.1.c: "To be eligible to receive Medical Assistance, an eligible person shall: ... Not be a patient in an institution for tuberculosis or mental disease, unless the person is under 21 years of age or has attained 65 years of age" | CO-562 (fully eligible) and CO-1150 read CO-1179, but the declared outcome CO-554 does not: it reports `eligible` for any category that is not emergency-only. **IMD-ADULT:** single adult of 40, wages $1,000, a patient in a 60-bed psychiatric hospital (residence_setting_type psychiatric_hospital, primarily for mental diseases). Engine: ma_meets_imd_requirement false, ma_magi_is_fully_eligible false, yet ma_magi_eligibility_status `eligible` (and ma_family_planning_status `limited_family_planning`, since full coverage is false). By hand: not eligible while an IMD patient (G.1.c); the outcome must say so. | Add an arm to CO-554 before the category arms: not ma_meets_imd_requirement gives a new option (for example `ineligible_institution`), unless a continuous eligibility or pregnancy period protects the month (state that reading). Record whether the CMS-approved SUD demonstration (10 CCR 2505-3 § 120.1.C cites it for reentry) changes it, as an open question if the text does not. |
+| C5-05 | **P1** | decision 4; common among students 19 to 23 claimed by parents who are not applying | 8.100.4.E.1.b-c; 8.100.4.C.5; 42 CFR 435.603(f)(2), (i) | CO-563 ma_is_dependent_claimed_by_non_parent; CO-076; CO-2716 is_claimed_by_filer_outside_case; CO-4560, CO-4561, CO-4564 | E.1.b: a claimed dependent's household is "The Tax Dependent; The Tax-Filer and their spouse if living in the home; The Tax-Filer's other tax dependents"; E.1.c.i routes to non-filer rules only a dependent claimed "by someone other than a spouse, biological, adoptive or step parent" | A claim by a filer outside the case has no edge, so CO-563 ("not claimed by a spouse, child or stepchild relation of the case") reads every outside claimer as a non-parent and routes the dependent to non-filer rules; and CO-4561 sums the expected income of the premium tax credit family's taxpayers, of which there are none in the case, so the dependent's C.5 income is 0%, which meets every standard. **STUDENT-OUT:** a 20-year-old living alone, wages $900, not required to file, claimed by her parents (outside the case). Engine: routed to non-filer rules, household {p1}, ma_premium_tax_credit_household_income_pct_fpl 0, ma_magi_household_income_pct_fpl 0, `adult` `eligible`. By hand: claimed by parents, so E.1.b gives the parents' tax household, whose income the case does not state: cannot determine (a typical parental income makes her ineligible). | Say who the outside claimer is (a parent or someone else) on CO-2716 or a companion fact. A parent outside the case makes the household and the C.5 income cannot determine unless the claimer is stated as a person of the case; a non-parent keeps E.1.c.i. CO-4561 must not count a family with no taxpayer in the case as 0. |
+| C5-06 | **P1** | decision 4; common among sponsored lawful permanent residents past five years with fewer than 40 quarters | 8.100.3.K.1; 8 U.S.C. 1631(a)-(b) | CO-4551 ma_sponsor_deemed_income; CO-2713 sponsors; OQ-812 | K.1: "Income or resources of an alien sponsor or an alien sponsor's spouse ... shall be countable to the sponsored alien" | Since C4-10 the deeming is reached when `is_sponsored_non_citizen` is true or a sponsor edge exists, but it sums ma_person_magi_income over the sponsors who are persons of the case. A sponsor who lives elsewhere (the usual case) is not a person of the case, so the sum is 0. **SPONSOR-OUT:** lawful permanent resident since 2019, 0 qualifying quarters, `is_sponsored_non_citizen: true`, no sponsor in the case, wages $1,200. Engine: deemed income 0, 90.2%, `adult` `eligible`. By hand: the sponsor's income counts and is not stated: cannot determine (the affidavit of support requires the sponsor's income to be at least 125% of the guideline for the sponsor's household, so the answer is almost always ineligible). | Where the person is sponsored and the deeming is reached, a sponsor (or co-signing spouse) who is not a person of the case makes CO-4551 unknown unless the sponsor's income is stated (a person in the case with the sponsored_by edge, or a stated amount). Record in OQ-812 that the deemed income needs the sponsor's figure. |
+| C5-07 | **P1** | decision 4; common case (every applicant over a MAGI standard) | 8.100.4.C.5; 42 CFR 435.603(i) | CO-504 (`otherwise ... false` on CO-4564); CO-4556 expected_annual_income | C.5: "If an applicant does not meet the financial eligibility requirements ... the applicant shall be found eligible ... if the applicant's income, as calculated using the methodology for determining eligibility for Advanced Premium Tax Credits ..., is below 100% of the federal poverty level" | CO-504 reads an unknown C.5 test as not met, a default no rule gives. Every filer or claimed dependent over the MAGI standard whose expected annual income is not stated is `ineligible_income`, though C.5 may make the person eligible. **CO-226 itself (C5-PTC-UNSTATED):** single filer, wages $1,995 from November, expected annual income not stated. Engine: 150.0%, `ineligible_income`. With the year's income stated (the job began in November: $3,990): C.5 25.5%, `eligible`. By hand, without the figure: cannot determine. Pass 4 rated the same class of default P1 (C4-05, B-SE-noannual). | Remove the `otherwise false` in CO-504 for a person the C.5 test reaches (a filer or claimed dependent over the MAGI standard): an unstated expected annual income is cannot determine, as CO-4559 now is. Re-key the stored households over a standard (CO-226 and others) by stating the year's income. |
+| C5-08 | **P1** | decision 4; gap in C4-05's fix (seasonal and commission workers) | 8.100.4.C.4.a | CO-5100 field `seasonal_or_commission` (`default: false`); CO-6451 ma_has_annualizable_earnings | C.4.a: applicants ineligible on monthly income "whose household has earned income from ... seasonal employment, and/or commission-based employment, shall have their financial eligibility determined using annualized ... income"; design decision D3 (docs/design-earned-and-resource-records.md): an exception flag takes the default "the rule itself states ... with no such text the field is required" | C4-05 replaced the person-level fact that read "false where not stated" and proposed "a supplied fact only for seasonal or commission earnings, with no default". The fix gave the new field `default: false` "as every exception of the pay is (D3)". It is not an exception the rule states as "counted unless excluded": the default withholds C.4.a, which D3 says needs the field to be required. **SEASONAL-UNSTATED:** single adult, wages $3,000 in November from seasonal work, expected 2026 income $16,000 (C.5: 102.2%, not below 100%), flag not stated. Engine: no annualizable earnings, 225.6%, `ineligible_income`. With the flag stated: 16,000 / 12 = 1,333.33, 100.3%, `eligible`. By hand, flag unstated: cannot determine. | Make `seasonal_or_commission` required where read (on a wage or other pay record of a member whose household is over the monthly standard), as D3 and C4-05's own proposal say; or derive it from a stated work pattern. Re-key stored wage records. |
+| C5-09 | **P1** | rare edge combination; text on file decides (OQ-1230) | 8.100.4.C.1 (26 U.S.C. 61 incorporated); 8.100.4.C.1.b.vi; 42 CFR 435.603(e); 26 U.S.C. 72(b)(1), 104(a)(4) (D-4436, D-4437) | CO-5500 row `pension: counted`; CO-5501; OQ-1230 | 104(a)(4): gross income does not include "amounts received as a pension, annuity, or similar allowance for personal injuries or sickness resulting from active service in the armed forces"; 72(b)(1): the exclusion ratio of an annuity | The receipt record already has `taxable_amount` (C4-01), but MAGI ignores it for a pension even when stated. OQ-1230 keeps the gross as a "state policy choice" because making the field required would burden every pension record; but the Code on file decides the figure, and the burden is avoided by reading the field where stated (a pension is gross income unless the record states otherwise: 26 U.S.C. 61(a)(9) "Annuities", (a)(11) "Pensions"). **PENSION-104:** a retired service member of 40, military disability retired pay $2,000 a month, record stated with `taxable_amount: 0`. Engine: MAGI $2,000, 150.4%, `ineligible_income`. By hand: $0, `adult`, eligible. Likewise a civil service annuity of $2,000 with $300 a month of after-tax basis recovery: engine 150.4% ineligible, by hand $1,700, 127.8%, eligible. | Give the pension row the treatment `counted_taxable_amount` with the field optional: the stated taxable amount where stated, else the amount (the Code's rule for a pension). Do the same for a State income tax refund (111(a)): counted at its taxable amount where stated, else 0. Mark OQ-1230 settled by the Code. |
+| C5-10 | **P1** | rare edge combination (income exactly at a limit, to the cent) | 8.100.4.D.1; 8.100.4.G.2 | CO-545, CO-704 (and every ratio test: CO-546 to CO-548, CO-1155) | D.1.b: "If the countable income is below the income threshold ..., the individual is income eligible"; G.2: "does not exceed 142%" with the 5-point disregard | The tests compare `income / (annual / 12) - 0.05 <= 1.42` in binary64. For a family of two at exactly 147% (2,650.90 = 1.47 × 21,640 / 12), the ratio is 1.4700000000000002 and the test fails. **CH-147-EXACT:** filer parent and child (CO-228), the parent's wages $2,650.90, the child no income. Engine: child `ineligible_income`, CHP+ `eligible_child` (copayments). By hand: 31,810.80 / 21,640 = 1.47 exactly; 147% − 5 = 142% ≤ 142%: Medicaid `child`. A scan of sizes 1-8 and every standard finds the children's 147% wrong for sizes 2 and 6. docs/operators.md ("Numbers") accepts that "a comparison that lands exactly on a limit ... can differ" and makes binary64 "the codex's answer"; that answer is not the rule's. | Compare with the 1e-9 tolerance `ceil` and `round` already use (a limit test passes when the value is within 1e-9 of the limit), or write the tests as income × 12 ≤ standard × annual guideline. Add CH-147-EXACT as a stored case. |
+| C5-11 | P2 | rare edge combination (kinship care) | 8.100.4.E.1.c.iii; 42 CFR 435.603(f)(2)(iii) | CO-1976; CO-1946 | E.1.c.iii: "claimed as a tax dependent by a non-custodial parent" | C4-06's reading makes a child who lives with neither parent cannot determine. The stated home decides it: a parent the child does not live with is not the custodial parent (the custodial parent is the one with whom the child spends most nights). **KIN-CLAIMED:** CO-723 with the child in a third home (a grandmother outside the case), claimed by her father. Engine: routing, household and both outcomes unknown (missing ma_custodial_parent). By hand: claimed by a non-custodial parent, non-filer household {child}, `child` `eligible`. No wrong definite answer, so P2. | Read a claiming parent the child does not live with as non-custodial whether or not another parent lives with the child; keep cannot determine only where the home is not stated. |
+| C5-12 | P2 | rare edge combination | 10 CCR 2505-3 § 120.1.C; § 110.1; CHP+ outcome reasons | CO-707 chp_eligibility_status | (reason codes) | The last child or pregnant arm reports `ineligible_institution` for any remaining reason, so a child excluded as a public agency employee's family (CO-1978) or failing any later test of CO-705 is reported as an institution case. | Add an arm for the public agency exclusion (and any other CO-705 test) before the institution arm, or rename the catch-all. |
+| C5-13 | P2 | rare edge combination (self-employed or seasonal CHP+ families) | 10 CCR 2505-3 § 330.2, § 50.14; 42 CFR 457.560(a) | CO-2229 chp_cost_sharing_annual_limit | § 330.2: "The maximum yearly cost sharing ... shall be 5% of income"; § 50.14 makes income the § 8.100.4.C methodology | The cap is 5% of 12 × the determination month's MAGI income, not the income eligibility was determined on. For a family eligible on annualized income (C.4.a), the month's income can be far above it, so the cap overstates what the family may be charged. The item is informational (no outcome reads it). | Take the year's income from the figure eligibility was determined on (CO-2228's figure, or the annualized income), or record the reading in an open question. |
+| C5-14 | P2 | rare edge combination (a claimed dependent living apart from the claiming parent) | 8.100.4.C.1.f (the second "ii)"); 42 CFR 435.603(d)(2)(i) | CO-4558; CO-503 precision | f, second ii): "The income of a child or tax dependent who does not live with their natural, adopted, or step parent will always count towards the determination of their own eligibility" | The volume reads "does not live with" as "has no parent in this household". A 20-year-old student claimed by her parents but living in another home is in their household (E.1.b), so her income below the threshold is left out of her own determination, as 435.603(d)(2)(i) ("included in the household of his or her ... parent") requires, against the words of f. The answer follows the federal rule, but no statute_override says so. | Record a statute_override on CO-4558 (435.603(d)(2)(i) controls the wording of f), or an open question if the State reads f as written. |
+| C5-15 | P2 | n/a (citation) | 8.100.4.C.1; 42 U.S.C. 5044(f)(1) | CO-5500 row `dvsa_title_i_volunteer_payment: not_taxable_income` | 5044(f)(1) (fetched this pass): payments to volunteers "shall not in any way reduce or eliminate the level of or eligibility for assistance ... under any governmental program", except at or above the minimum wage | The row's reason, "not in adjusted gross income under the Code", is wrong: a VISTA living allowance is taxable. The answer (not counted) is right by 5044(f)(1), which overrides other law for "any governmental program" and is not on file. | Store 42 U.S.C. 5044 as a document and cite (f)(1) in the row's reason. |
+| C5-16 | P2 | rare edge combination | 8.100.4.J.1.a.ii, J.2.a.ii; 8.100.3.G.1.b-c, I.1 | CO-3156 ma_express_lane_child_meets_requirements | J.1.a.ii: "Children who meet all necessary eligibility requirements as outlined in this volume shall be automatically enrolled" | The Express Lane test reads age, residency and declared income only. A child who is an inmate of a public institution or an IMD patient (G.1.b-c) is `enrolled` rather than limited or referred. | Read the general requirements (CO-1179, the inmate arm of CO-554) in CO-3156, or state why Express Lane leaves them to the regular determination. |
+| C5-17 | P2 | decision 4 (minor) | 8.100.4.I.1 | CO-4205, CO-2431 (`not unknown ma_first_month_of_ineligibility`) | I.1.a | An unstated first month of ineligibility is read as "no transitional period". It changes no answer where the history is stated `none` (which most households state), but a household with an unstated history and a recent loss of the Parent and Caretaker category gets no Transitional Medical Assistance instead of cannot determine. | Make the first month required where the history shows the Parent and Caretaker category in the look-back months. |
+| C5-18 | P3 | n/a | 8.100.4.C.4.a | OQ-810 body | | OQ-810 still names has_self_employment_seasonal_or_commission_earnings (CO-4557), which no item reads since C4-05, and says "an unstated seasonal or commission statement is cannot determine", which the field's `default: false` contradicts (C5-08). | Update the body when C5-08 is fixed. |
+| C5-19 | P3 | n/a | 8.100.4.G.5 | CO-2424 meaning | | The meaning says the history is "the approval § 8.100.4.G.5's pregnancy lock-in turns on", without saying that a month of this application is not history (C5-01). | Restate with the C5-01 fix. |
+
+Checked and not a finding:
+- The pass-4 fixes on their own households and on variants: B-HSA, COMBAT-FAM, B-BOARD (costs above payments floor at 0), B-INKIND (employer convenience lodging excluded), H3, NB-CHP-late, RETRO19, CO-387 (band_d) and C4-13 (unrounded) all give the hand answer.
+- Income limits at whole-dollar and exact-cent boundaries for one to eight persons for Adults (138%), Parents and Caretakers (73%), Pregnant Women (200%), CHP+ (265%) and Family Planning (265%): correct, except the children's 147% for sizes 2 and 6 (C5-10). B-138-EXACT ($1,835.40, `eligible`) and $1,835.41 (`ineligible_income`).
+- Household composition: the filer, claimed-dependent and non-filer arms of CO-500 against E.1.a-d and E.4-E.6; E.1.c.ii for unmarried parents (files_jointly_with_spouse is derived from the edge, false without one); stepchildren through the spouse's parent edge; siblings through the shared-parent pattern.
+- C.1.f (children's and dependents' income) against 435.603(d)(2): the summing-household reading of CO-503 and CO-4558 (but C5-14 for the wording).
+- The 5-point disregard on the highest standard (CO-539) for a child, a pregnant minor, a parent outside the Adults group (Medicare, or a child without coverage) and a 19-year-old in the birthday month.
+- Cover All Coloradans: CO-562, CO-1173, CO-2707 against G.1.g.ix.1 and § 110.1.B.5.o (OQ-214 records the any-category reading).
+- Continuous eligibility (CO-561, CO-2404), Express Lane day 90 (CO-2445), presumptive eligibility (CO-558, CO-559, CO-2439, CO-708, CO-3155), TMA and the four-month extension (CO-2430, CO-2431; C5-17), needy persons under 21 (CO-2419), former foster care (CO-549).
+- CO-5500 and CO-5106, row by row, against C.1 and the Code; only C5-09 and C5-15 remain.
+
+## 3. Coverage matrix
+
+Key: **C** = carried by (the derivation was read; correct unless a finding is named). **NA** = not applicable, with the reason. **OQ** = open question. **GAP** = no item and no recorded reason.
+
+### 3.1 § 8.100.1 definitions and § 8.100.3 general requirements read by MAGI
+
+| Para | Disposition |
+|---|---|
+| § 8.100.1 Adult, Children, Pregnant Women, Parent and Caretaker Relative, Dependent Child | C: CO-548, CO-4550, CO-5402; CO-564, CO-4790; CO-546, CO-3601, CO-560; CO-547, CO-2606; CO-4791, CO-4978 |
+| § 8.100.1 MAGI, Tax-Filer, Tax Dependent, Non-Filer, AGI | C: CO-500, CO-075, CO-076 (C5-05), CO-502, CO-080 |
+| § 8.100.1 earned, unearned, in-kind income; Difficulty of Care | C: CO-5100, CO-5000, CO-5160, CO-5501, CO-5162, CO-5214 |
+| § 8.100.1 Electronic Data Source, Reasonable Compatibility | C: CO-1344, CO-1402, CO-1641 |
+| § 8.100.1 administrative and non-MAGI terms | NA: no MAGI condition |
+| 3.A.1 (all categories considered) | C: CO-551 order, CO-1176, CO-707 |
+| 3.B.2-B.5 (residency) | C: CO-2250 family. OQ-472, OQ-612 |
+| 3.E.1-E.2 (retroactive months; "does not have to be eligible in the month of application") | C: CO-4100, CO-4101, CO-557, CO-2472. **C5-01, C5-02** (pregnancy and household size in a retroactive month) |
+| 3.F.1.a, F.1.k (MAGI groups; emergency only) | C: CO-551, CO-510, CO-1150, CO-1151. OQ-200 |
+| 3.G.1.a (residency), G.1.b (inmates) | C: CO-2250, CO-1105, CO-554 `incarceration_limited` |
+| 3.G.1.c (IMD) | C: CO-1179, CO-562, CO-1150. **C5-04** (not read by CO-554); C5-16 (Express Lane). OQ-950 |
+| 3.G.1.g.i-viii (status) | C: CO-509, CO-1172, CO-2400, CO-5219. OQ-213, OQ-510, OQ-517, OQ-518, OQ-550 |
+| 3.G.1.g.ix.1-2 (Cover All Coloradans; emergency and reproductive care) | C: CO-1173, CO-1174, CO-1175, CO-562, CO-1154. OQ-214 |
+| 3.G.2-G.3, H.1-H.10, I.1 (VLP, documentation, SSN) | C: CO-1413, CO-1395 family, CO-1401 |
+| 3.H.1.b.vi (newborn of a mother covered at birth, retroactive included) | C: CO-087, CO-550. **C5-01** (the mother's retroactive coverage is not recognized) |
+| 3.J.2 (OAP-A recipients) | C: CO-500 statute_override |
+| 3.K.1 (sponsor) | C: CO-4551 to CO-4555. **C5-06**. OQ-812 |
+| 3.K.3-K.4 (cash or in kind), K.7, K.8, K.9, K.10.a-e | C: CO-5106 rows, CO-5160, CO-5161, CO-6450, CO-5214. OQ-970 (training allowances) |
+| 3.K.11-K.14 | C: CO-5500 rows. **C5-09** (pensions), C5-15 (VISTA reason) |
+| 3.L, M, N, O, P | NA: no MAGI resource test; administration; P.5 through CO-088 |
+| 3.Q.1-Q.3 (children's continuous eligibility) | C: CO-561, CO-555, CO-556, CO-2205, CO-2446, CO-2448 |
+| 3.R.1-R.9 (hospital presumptive) | C: CO-2439, CO-2432 to CO-2438, CO-3151 to CO-3154. OQ-590 |
+
+### 3.2 § 8.100.4.A-D
+
+| Para | Disposition |
+|---|---|
+| A.1-A.3 | NA: procedure |
+| B.1.a-e, B.2-B.6 (minimal verification) | C: CO-1401, CO-1395, CO-1403 (CO-5163, CO-5164), CO-1404 (CO-2870), CO-1412, CO-1406 to CO-1409 |
+| C.1 preamble (26 U.S.C. 61) | C: CO-502 = CO-5160 + CO-5161 + CO-6450 + CO-079 + CO-5501 + CO-082 + CO-5502 + CO-1190 − CO-080 − CO-5214. **C5-09** |
+| C.1.a.i-vi | C: CO-5106 (wages with combat-zone compensation, in-kind with 119(a), vendor payments, business net for tax, boarders net of costs) |
+| C.1.b.i-xv | C: CO-5500, CO-5502, CO-1185, CO-1187, CO-1188 to CO-1190, CO-2222. **C5-09** (b.vi). OQ-592, OQ-1230 |
+| C.1.c.i-iii | C: CO-5500 (tax-exempt interest, Social Security), CO-082 |
+| C.1.d.i-ix | C: CO-5500 excluded and not-taxable rows; month received (CO-5501) |
+| C.1.e.i-xv | C: CO-080 (pretax_deductions), CO-6450 (boarder costs) |
+| C.1.f.i, f.i.1, f.ii, f.ii.1, second f.ii | C: CO-4558, CO-4568, CO-563, CO-503. C5-14 |
+| C.2, C.2.a.i-iii, C.2.b | C: CO-1402, CO-1344, CO-1403, CO-1641, CO-1642. OQ-302, OQ-303 |
+| C.3 | C: CO-1403 with CO-5164 |
+| C.4 (monthly budget) | C: CO-503, CO-6452, CO-6453 |
+| C.4.a (annualized) | C: CO-6451, CO-4559, CO-4975, CO-4567. **C5-08**. OQ-810 (C5-18) |
+| C.5 (premium tax credit methodology) | C: CO-4560, CO-4561, CO-4564, CO-504. **C5-05, C5-07**. OQ-811 |
+| D.1, D.1.a-b (5-point disregard) | C: CO-539, CO-545 to CO-548, CO-704, CO-1155, CO-1402. **C5-10** (exact limit) |
+
+### 3.3 § 8.100.4.E-F
+
+| Para | Disposition |
+|---|---|
+| E.1, E.1.a.i-iii | C: CO-500 filer arm |
+| E.1.b.i-iv | C: CO-500 dependent arm. **C5-05** (claimer outside the case) |
+| E.1.c.i | C: CO-563, CO-1976. **C5-05** (an outside parent read as a non-parent) |
+| E.1.c.ii | C: CO-1976 |
+| E.1.c.iii | C: CO-1976, CO-1946. C5-11 |
+| E.1.d.i-iv | C: CO-500 non-filer arm, per month (C4-08) |
+| E.2 (pregnant woman plus expected children) | C: CO-501. **C5-02** |
+| E.3 (Family Planning as two) | C: CO-4976, CO-1153, CO-4979. OQ-204 |
+| E.4-E.6 | C: CO-500, CO-1976, CO-1947 |
+| F.1-F.9 (presumptive) | C: CO-558, CO-559, CO-3155, CO-2435 to CO-2437. F.3, F.4, F.6, F.7: NA (procedure). OQ-590 |
+
+### 3.4 § 8.100.4.G-J
+
+| Para | Disposition |
+|---|---|
+| G.1 (whole month) | C: CO-4978, CO-5402, CO-4790 and their readers |
+| G.2, G.2.a (children 142%; birthday month) | C: CO-545, CO-564. C5-10 |
+| G.3, G.3.a.i-vi (parents and caretakers 68%) | C: CO-547, CO-2606, CO-4791. OQ-540, OQ-612 |
+| G.4, G.4.a (adults 133%; child's coverage) | C: CO-548, CO-085 (a record). G.4.b: NA (expired) |
+| G.5 (pregnant 195%; from the application date through the 12th month after) | C: CO-546, CO-3601, CO-565, CO-566, CO-560. **C5-01, C5-02** |
+| G.5.a.i | C: CO-566 with CO-1624, CO-1625. OQ-813 (CHP+ half) |
+| G.6, G.6.a.i-viii (Legal Immigrant Prenatal) | C: CO-5219, CO-566 |
+| G.7, G.7.a (Eligible Needy Newborn, retroactive coverage of the birth included) | C: CO-550, CO-087, CO-3322. **C5-01** |
+| G.8 (limited Family Planning) | C: CO-1154, CO-1155, CO-4976. OQ-204 |
+| H.1.a-g (needy persons under 21) | C: CO-2419. OQ-512 |
+| H.2 (former foster care to 26) | C: CO-549, CO-095 |
+| I.1-I.5 (TMA, four-month extension) | C: CO-4205, CO-2430, CO-2425, CO-4204, CO-2431. C5-17 |
+| J.1.a.i-vi, J.1.b, J.2.a.i-vii (Express Lane) | C: CO-2440 to CO-2445, CO-3156. C5-16 |
+
+### 3.5 10 CCR 2505-3 (CHP+)
+
+| Para | Disposition |
+|---|---|
+| 50.1-50.2, 50.4-50.5, 50.8-50.12, 50.15, 50.17 | NA: administrative definitions |
+| 50.3, 50.6, 50.7, 50.13, 50.14, 50.16, 50.18 | C: CO-564, CO-4791, CO-4565, CO-500, CO-504, CO-708, CO-5500 |
+| 50.19 (woman) | C: CO-706. OQ-1232 |
+| 110.1.A.1-2 | C: CO-705, CO-706. **C5-03** (A.2 read on the determination date) |
+| 110.1.B.1-5, B.5.o | C: CO-2706, CO-2707, CO-1173 |
+| 110.1.C.1-3 | C: CO-1416, CO-2219. OQ-813 |
+| 110.1.D | C: CO-505 (is_colorado_resident). OQ-612 |
+| 110.1.E (children over 142% to 260%) | C: CO-704. C5-10 |
+| 110.1.F (pregnant over 195% to 260%) | C: CO-704. **C5-03** |
+| 110.1.G | C: CO-1416 to CO-1418 |
+| 120.1.A-C (other coverage; Title XIX; inmate and IMD, reentry) | C: CO-090, CO-1176, CO-1105, CO-1104, CO-1749. C5-12 |
+| 120.2 | C: no waiting-period item |
+| 130.1, 150.1, 150.2 | C: CO-1641, CO-1642, CO-3634; CO-704 (S245) |
+| 140.1 | NA: procedure |
+| 170.1-170.6 (presumptive) | C: CO-708. 170.2-170.4: NA (procedure; date-scoped) |
+| 180, 180.1-180.2 (Express Lane) | C: CO-4792, CO-4793, CO-2445 |
+| 200, 210, 300, 310 | NA: benefit package; fee repealed |
+| 320.1.A-D (copayments by band) | C: CO-2228, CO-2230, CO-3009 to CO-3012. OQ-470 |
+| 330.1-330.4 | C: CO-1989, CO-2229 (C5-13), CO-2230, CO-1990 |
+| 400.1, 410, 420, 430.4, 440 | NA: enrollment and plan administration |
+| 430.1 | C: CO-4565, CO-707 |
+| 430.2, 430.2.A, B.i-viii | C: CO-2404, CO-2205, CO-707 |
+| 430.3, 430.3.A.i | C: CO-2406, CO-2407. **C5-03**. OQ-813 |
+| 430.5, 430.5.A | C: CO-2408, CO-2410, CO-4565. OQ-1231 |
+
+Every numbered paragraph of the in-scope text has a row or sits in a grouped row. No GAP row: each P1 sits in a carried row whose derivation was read and found wrong.
+
+## 4. Open-question classification check
+
+The stopping rule accepts an open question classed as a genuine state policy choice, with the text checked recorded, or as blocked on a named document no allowed host serves.
+
+| OQ | Class | Check |
+|---|---|---|
+| OQ-200, OQ-302, OQ-303, OQ-410, OQ-411, OQ-412, OQ-470, OQ-512, OQ-540, OQ-590, OQ-592, OQ-593, OQ-612, OQ-811, OQ-813, OQ-950 | state policy choice | Confirmed |
+| OQ-204, OQ-213, OQ-214, OQ-472, OQ-510, OQ-518 | state policy choice (reclassified in pass 4 from "needs Legal") | Confirmed: each Class line records that the deciding texts are on file and the choice is the State's |
+| OQ-515, OQ-517, OQ-550 | blocked on a named document | Confirmed (hcpf.colorado.gov still refuses) |
+| OQ-810 annualized income | state policy choice | Confirmed as a class; the body is stale (C5-18) |
+| OQ-812 sponsor income measure | state policy choice | Confirmed as a class; its assumption does not cover a sponsor outside the case (C5-06) |
+| OQ-970 (training allowances only) | state policy choice | Confirmed: K.8.b against 1396a(e)(14)(B) is the State's reading of its own rule |
+| OQ-1020, OQ-1024 (open halves), OQ-1180 | state policy choice | Confirmed; no MAGI answer turns on the open halves |
+| OQ-1230 pension and refund taxable part | state policy choice | **Fails (C5-09).** 26 U.S.C. 72(b)(1), 104(a)(4) and 111(a), on file, decide the figure, and the field to state it exists; the assumption gives a wrong answer even when the taxable amount is stated |
+| OQ-1231 CHP+ newborn birthday month | state policy choice | Confirmed (no paragraph says how a guarantee ending within a month applies) |
+| OQ-1232 pregnant applicant under 19 | state policy choice | Confirmed |
+
+No question is needed for C5-01 to C5-03: § 8.100.4.G.5, G.7, § 8.100.3.H.1.b.vi and 10 CCR 2505-3 § 430.3 decide them.
+
+## 5. Pass 4's fixes
+
+| ID | Status | Evidence (engine at 8519814) |
+|---|---|---|
+| C4-01 taxable_amount on receipts | holds | CO-725 (B-HSA) passes. The same field should be read for pensions (C5-09) |
+| C4-02 combat-zone compensation | holds | CO-720 (COMBAT-FAM) passes; officer split as a separate record |
+| C4-03 boarders net of costs | holds | CO-724 passes; costs above payments give 0 |
+| C4-04 pay in kind, vendor payments | holds | CO-727 passes; employer-convenience lodging excluded |
+| C4-05 annualization from records | **partly**: the business half holds (CO-726); the seasonal and commission half keeps an unruled `default: false` on the new field | C5-08 (SEASONAL-UNSTATED) |
+| C4-06 custody from the home | holds for the case it fixed (CO-723); leaves a determinable case unknown | C5-11 (KIN-CLAIMED) |
+| C4-07 CHP+ newborn per month | holds | CO-721 passes |
+| C4-08 MAGI household per month | holds for membership (CO-722); the family size still reads the determination date's pregnancy | C5-02 |
+| CO-387 / OQ-810 copayment band | holds | CO-387 passes (band_d) |
+| C4-09 | recorded in OQ-1230, which fails the class check | C5-09 |
+| C4-10 sponsorship from the edge or fact | holds for what it fixed; a sponsor outside the case deems 0 | C5-06 |
+| C4-11 to C4-17 | hold | AmeriCorps counted; OQ-1124 settled; unrounded figures (C5-10 is binary noise, not rounding); data-source figure on income members; OQ-1232; WIOA reason; `net_for_tax` per month |
+
+All 4,088 stored household expectations pass at `8519814`.
+
+## 6. Probe households (scratch only)
+
+Built by patching stored cases with `scratch5/run.ts` (scratch copy, not committed). Determination 2026-11-10.
+
+| Probe | Shape | Engine | Rule |
+|---|---|---|---|
+| MA-PG-DELIVERED | applies pregnant 2026-10-05, delivers 2026-10-20, $3,250, size 2, history `none` | Oct eligible; Nov 2026 on `ineligible_income` | covered Oct 2026 to Oct 2027 (C5-01) |
+| MA-PG-CURRENT | still pregnant, applies 2026-10-05, history `none` | eligible, but the coverage period is false every month | coverage period open from October (C5-01) |
+| PP-AFTER-BIRTH | birth 2026-10-15, applies 2026-11-02 with a retroactive request, $2,800, baby in the case | mother Oct eligible, Nov on `ineligible_income`; baby not a needy newborn, CHP+ `eligible_child` | mother through Oct 2027; baby Eligible Needy Newborn (C5-01) |
+| PG-RETRO-ENDED-2000-U | as PG-RETRO-ENDED at $2,000 with the history unstated | Aug 2026 to Sep 2027 covered | the same (control for C5-01) |
+| PG-RETRO-ENDED | pregnancy 2026-03-01 to 2026-09-20, $3,000, retroactive request | Aug, Sep size 1, 225.6%, `ineligible_income` | size 2, 166.4%, eligible (C5-02) |
+| PG-RETRO-LATER | pregnant from 2026-10-01, $1,900, retroactive request | Aug, Sep size 2, 105.4%, `adult` eligible | size 1, 142.9%, `ineligible_income` (C5-02) |
+| CHP-PG-DELIVERED | applies pregnant 2026-10-05, delivers 2026-10-20, $4,200, size 2 | CHP+ `ineligible` every month | `eligible_prenatal` Oct, span to Oct 2027 (C5-03) |
+| IMD-ADULT | adult of 40 in a 60-bed psychiatric hospital, $1,000 | `eligible` (fully eligible false) | not eligible (C5-04) |
+| STUDENT-OUT | 20, living alone, $900, claimed by parents outside the case | household {p1}, C.5 0%, `adult` eligible | cannot determine (C5-05) |
+| SPONSOR-OUT | sponsored LPR, 0 quarters, sponsor outside the case, $1,200 | deemed 0, `adult` eligible | cannot determine (C5-06) |
+| C5-PTC-UNSTATED / -STATED | CO-226, expected annual income unstated / $3,990 | `ineligible_income` / eligible (C.5 25.5%) | cannot determine / eligible (C5-07) |
+| SEASONAL-UNSTATED / -STATED | seasonal wages $3,000, expected annual $16,000 | `ineligible_income` / eligible (100.3%) | cannot determine / eligible (C5-08) |
+| PENSION-104 | military disability retired pay $2,000, `taxable_amount: 0` | 150.4%, `ineligible_income` | 0%, eligible (C5-09) |
+| CH-147-EXACT | parent and child, $2,650.90 | child CHP+ `eligible_child` | Medicaid child (C5-10) |
+| B-138-EXACT, B-138-EXACT-PLUS | single adult $1,835.40 and $1,835.41 | eligible; `ineligible_income` | the same (control) |
+| KIN-CLAIMED | child in a third home claimed by her father | cannot determine | non-filer household, child eligible (C5-11) |

@@ -11,7 +11,7 @@ import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/case
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { buildIndex } from "../engine/ledger-index";
-import { jointRecordErrors, recordValueErrors, statedRecordLists } from "../engine/records";
+import { jointRecordErrors, personFieldErrors, recordValueErrors, statedRecordLists } from "../engine/records";
 import { staleApprovalMessage, type FingerprintBasis } from "../engine/fingerprint";
 import {
   changedDecisions, dispositionStub, impactFlags, parseChangeRecord, reconcileImpact,
@@ -442,6 +442,7 @@ export function recordInputErrors(engine: Engine, ledger: LoadedLedger): string[
     }
     for (const [list, vs] of byList) {
       for (const m of jointRecordErrors(by.get(list)!, vs)) out.push(`record:${id}: ${m}`);
+      for (const m of personFieldErrors(by.get(list)!, vs, persons.map(([pid]) => pid))) out.push(`record:${id}: ${m}`);
     }
   };
   for (const c of ledger.cases) {

@@ -24494,3 +24494,124 @@ Document: D-86
 >
 > F. Income from jointly owned property: - in a percentage at least equal to the percentage of
 > ownership or, if receiving more than percentage of ownership, the actual amount received;
+### S4820. Federal SNAP: the uniform national resource standards; non-liquid resources and personal property are resources unless paragraph (e) excludes them; only (e) excludes
+
+Document: D-191
+
+7 CFR 273.8(a), (c)(2), (e) (eCFR versioner, the section as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (a) Uniform standards. The State agency shall apply the uniform national resource standards of eligibility to all applicant households, including those households in which members are recipients of federally aided public assistance, general assistance, or supplemental security income. Households which are categorically eligible as defined in § 273.2(j)(2) or 273.2(j)(4) do not have to meet the resource limits or definitions in this section.
+>
+> ...
+>
+> (2) Nonliquid resources, personal property, licensed and unlicensed vehicles, buildings, land, recreational properties, and any other property, provided that these resources are not specifically excluded under paragraph (e) of this section. The value of nonexempt resources, except for licensed vehicles as specified in paragraph (f) of this section, shall be its equity value. The equity value is the fair market value less encumbrances.
+>
+> ...
+>
+> (e) Exclusions from resources. In determining the resources of a household, only the following shall be excluded:
+
+### S4821. Federal SNAP: the resources of a member who receives SSI or public assistance are excluded
+
+Document: D-191
+
+7 CFR 273.8(e)(17) (eCFR versioner, as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (17) The resources of a household member who receives SSI or PA benefits. A household member is considered a recipient of these benefits if the benefits have been authorized but not received, if the benefits are suspended or recouped, or if the benefits are not paid because they are less than a minimum amount. For purposes of this paragraph (e)(17), if an individual receives non-cash or in-kind services from a program specified in §§ 273.2(j)(2)(i)(B), 273.2(j)(2)(i)(C), 273.2(j)(2)(ii)(A), or 273.2(j)(2)(ii)(B), the State agency must determine whether the individual or the household benefits from the assistance provided, in accordance with § 273.2(j)(2)(iii). Individuals entitled to Medicaid benefits only are not considered recipients of SSI or PA.
+
+### S4822. Federal SNAP: property producing income consistent with its value, property essential to employment, and installment contracts producing such income are excluded
+
+Document: D-191
+
+7 CFR 273.8(e)(4)-(6) (eCFR versioner, as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (4) Property which annually produces income consistent with its fair market value, even if only used on a seasonal basis. Such property shall include rental homes and vacation homes.
+>
+> ...
+>
+> (5) Property, such as farm land or work related equipment, such as the tools of a tradesman or the machinery of a farmer, which is essential to the employment or self-employment of a household member. Property essential to the self-employment of a household member engaged in farming shall continue to be excluded for one year from the date the household member terminates his/her self-employment from farming.
+>
+> ...
+>
+> (6) Installment contracts for the sale of land or buildings if the contract or agreement is producing income consistent with its fair market value. The exclusion shall also apply to the value of the property sold under the installment contract, or held as security in exchange for a purchase price consistent with the fair market value of that property.
+
+### S4823. Colorado SNAP: nonexempt resources as anticipated in the issuance month; valued at the application filing date; liquid at redemption less encumbrances, non-liquid at market value less encumbrances
+
+Document: D-82
+
+10 CCR 2506-1 4.408.B, 4.408.1 (rule version 12718, effective 2026-10-01; coverage pass 4 SNAP resources fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Households that do not meet expanded or basic categorical eligibility criteria
+> shall have their nonexempt resources, as anticipated to be available in the
+> issuance month, used to determine household eligibility.
+>
+> ...
+>
+> 4.408.1 Determining the Value of Resources
+>
+> The value of nonexempt household resources at the application filing date must be
+> determined from applicant statements, documents, and/or from collateral contacts when
+> household assessment is uncertain or questionable.
+>
+> A. Valuation of Liquid Resources
+>
+> The value of liquid resources is the current redemption rate less encumbrances.
+>
+> B. Valuation of Non-Liquid Resources
+>
+> Except for real property, non-exempt non-liquid resources shall have a fair
+> market value as determined from the best source available (such as, but not
+> limited to, blue book, local dealer, or equivalent verifiable Internet web site) less
+> verified encumbrances. If warranted, the eligibility technician worker should
+> adjust the market value for poor or unusable condition of the property before
+> assigning a resource value. The eligibility technician worker shall annotate the
+> case record to show source and computation used to determine resource value.
+
+### S4824. Federal SNAP: inaccessible resources, the trust conditions joined by "and", security deposits; Indian lands; property used to maintain an excluded vehicle
+
+Document: D-191
+
+7 CFR 273.8(e)(8), (e)(10), (e)(16) (eCFR versioner, as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (8) Resources having a cash value which is not accessible to the household, such as but not limited to, irrevocable trust funds, security deposits on rental property or utilities, property in probate, and real property which the household is making a good faith effort to sell at a reasonable price and which has not been sold. The State agency may verify that the property is for sale and that the household has not declined a reasonable offer. Verification may be obtained through a collateral contact or documentation, such as an advertisement for public sale in a newspaper of general circulation or a listing with a real estate broker. Any funds in a trust or transferred to a trust, and the income produced by that trust to the extent it is not available to the household, shall be considered inaccessible to the household if:
+> (i) The trust arrangement is not likely to cease during the certification period and no household member has the power to revoke the trust arrangement or change the name of the beneficiary during the certification period;
+> (ii) The trustee administering the funds is either:
+> (A) A court, or an institution, corporation, or organization which is not under the direction or ownership of any household member, or (B) an individual appointed by the court who has court imposed limitations placed on his/her use of the funds which meet the requirements of this paragraph;
+> (iii) Trust investments made on behalf of the trust do not directly involve or assist any business or corporation under the control, direction, or influence of a household member; and
+> (iv) The funds held in irrevocable trust are either:
+> (A) Established from the household's own funds, if the trustee uses the funds solely to make investments on behalf of the trust or to pay the educational or medical expenses of any person named by the household creating the trust, or (B) established from non-household funds by a nonhousehold member.
+>
+> ...
+>
+> (10) Indian lands held jointly with the Tribe, or land that can be sold only with the approval of the Department of the Interior's Bureau of Indian Affairs; and
+>
+> ...
+>
+> (16) Property, real or personal, to the extent that it is directly related to the maintenance or use of a vehicle excluded under paragraphs (e)(3)(i)(A), (e)(3)(i)(B) or (e)(3)(i)(C) of this section. Only that portion of real property determined necessary for maintenance or use is excludable under this provision. For example, a household which owns a produce truck to earn its livelihood may be prohibited from parking the truck in a residential area. The household may own a 100-acre field and use a quarter-acre of the field to park and/or service the truck. Only the value of the quarter-acre would be excludable under this provision, not the entire 100-acre field.
+
+### S4825. Federal SNAP: excluded funds commingled with nonexcluded funds keep their exclusion for six months
+
+Document: D-191
+
+7 CFR 273.8(g) (eCFR versioner, as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (g) Handling of excluded funds. Excluded funds that are kept in a separate account, and that are not commingled in an account with nonexcluded funds, shall retain their resource exclusion for an unlimited period of time. The resources of students and self-employment households which are excluded as provided in paragraph (e)(9) of this section and are commingled in an account with nonexcluded funds shall retain their exclusion for the period of time over which they have been prorated as income. All other excluded moneys which are commingled in an account with nonexcluded funds shall retain their exemption for six months from the date they are commingled. After six months from the date of commingling, all funds in the commingled account shall be counted as a resource.
+
+### S4826. Federal SNAP: a significant return takes account of the household's ownership interest
+
+Document: D-191
+
+7 CFR 273.8(e)(18), (e)(18)(i) (eCFR versioner, as in force on 2026-11-19; coverage pass 4 SNAP resources fix round). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (18) The State agency must develop clear and uniform standards for identifying kinds of resources that, as a practical matter, the household is unable to sell for any significant return because the household's interest is relatively slight or the costs of selling the household's interest would be relatively great. The State agency must so identify a resource if its sale or other disposition is unlikely to produce any significant amount of funds for the support of the household or the cost of selling the resource would be relatively great. This provision does not apply to financial instruments such as stocks, bonds, and negotiable financial instruments. The determination of whether any part of the value of a vehicle is included as a resource must be made in accordance with the provisions of paragraphs (e)(3) and (f) of this section. The State agency may require verification of the value of a resource to be excluded if the information provided by the household is questionable. The State agencies must use the following definitions in developing these standards:
+> (i) “Significant return” means any return, after estimating costs of sale or disposition, and taking into account the ownership interest of the household, that the State agency determines are more than $1,500; and
+
+### S4827. Colorado SNAP: a written declaration of resources over the limit is acceptable verification
+
+Document: D-82
+
+10 CCR 2506-1 4.502.A.5 (rule version 12718, effective 2026-10-01; coverage pass 4 SNAP resources fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 5. For households subject to an asset test, the household's written
+> declaration of resources that declares more than the resource limit is an
+> acceptable form of verification.
+

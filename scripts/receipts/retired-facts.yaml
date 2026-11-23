@@ -4,6 +4,9 @@
 # Coverage pass 4 (CA4-1, docs/reviews/coverage4-cash.md): CO-311 p2 and CO-313 p1 are restated by hand in receipts
 # alone (their workers' compensation as one workers_compensation receipt with its claim_expense, which their old facts
 # could not say), so their retired facts are dropped and the stated receipts stand.
+# Coverage pass 4 integration (docs/reviews/coverage4-integration.md): CO-133 and CO-456 state their child support on the
+# list of the child it is paid for (p3; N4-11, CA4-5), so its retired child_support_received is the child's (600) and the
+# mother's 0; the translation writes the receipt the household states.
 CO-125:
   p4:
     lottery_gambling_winnings_received_prior_thirty_days: 1200
@@ -1946,7 +1949,7 @@ CO-133:
     social_security_income: 0
     pension_income: 0
     unemployment_income: 0
-    child_support_received: 600
+    child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
     other_unearned_income_nontaxable: 0
@@ -1957,7 +1960,7 @@ CO-133:
     social_security_income: 0
     pension_income: 0
     unemployment_income: 0
-    child_support_received: 0
+    child_support_received: 600
     tanf_cash_income: 0
     adult_financial_cash_income: 0
     other_unearned_income_nontaxable: 0
@@ -7310,7 +7313,7 @@ CO-456:
     social_security_income: 0
     pension_income: 0
     unemployment_income: 0
-    child_support_received: 600
+    child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
     other_unearned_income_nontaxable: 0
@@ -7321,7 +7324,7 @@ CO-456:
     social_security_income: 0
     pension_income: 0
     unemployment_income: 0
-    child_support_received: 0
+    child_support_received: 600
     tanf_cash_income: 0
     adult_financial_cash_income: 0
     other_unearned_income_nontaxable: 0
