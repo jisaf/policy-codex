@@ -11,6 +11,8 @@ derived: [shared_relative, parent]
 sources: [S169, S408, S1207]
 implemented: engine
 tags: [household]
+link_class: primitive
+link_basis: "The persons who share a legal parent with this person; a relationship primitive (conventions rule 16)."
 rationale: "Same-word audit SW-2: siblings were read as [shared_relative, parent] inline in three programs' items; one neutral item states the factual meaning and each program chooses whether step-siblings join it. No existing item states it."
 tests:
   - {id: CO-2609-T1, title: "Half siblings through their mother", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[parent, p3, p1], [parent, p3, p2], [parent, p4, p2]], expect: [p2]}

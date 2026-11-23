@@ -10,6 +10,8 @@ derived: [in, immigration_status, [us_citizen, us_national]]
 sources: [S844, S854, S872]
 implemented: engine
 tags: [verification, immigration]
+link_class: primitive
+link_basis: "A declared U.S. citizen or national status, as stated; no program defines it differently."
 rationale: "42 CFR 435.406(a)(1)(i) and 8.100.3.H.1 (S844, S854) attach verification to a declaration of citizenship, and Colorado Works verifies every client's citizenship (3.604.3.B.2.b, S872); the volume's citizenship items (ma_meets_citizenship_requirement, CO-509; snap_meets_citizenship_requirement, CO-309) test eligibility, not the declaration. Vocabulary fix round (U-3): renamed from claims_citizenship; the status rules of SNAP, Medicaid, Colorado Works, Adult Financial and CCCAP that restated the same test now read it.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170)."
 tests:
   - {id: CO-1358-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: true}

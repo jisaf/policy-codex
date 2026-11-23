@@ -11,6 +11,8 @@ derived: [all, [">", [count, sponsors], 0], [not, [exists, sponsors, [not, [at, 
 sources: [S1619]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "Every sponsor on the affidavit of support has died; a relationship and date primitive."
 rationale: "OQ-380: 4.305.2.E (S1619) lists the non-citizens to whom the sponsor's income and resources are not deemed; no fact stated this exemption, so snap_requires_verification_of_sponsor (CO-1616) asked every sponsored member for the sponsor's information.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. The sponsor's death is read from the sponsor's own is_deceased (dual-entry 3.14)."
 tests:
   - {id: CO-2336-T1, as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {is_deceased: true}}, relationships: [[sponsored_by, p1, p2]], expect: true}

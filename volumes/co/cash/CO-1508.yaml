@@ -13,7 +13,12 @@ sources: [S1005, S1006, S1007]
 open: [OQ-354]
 implemented: engine
 tags: [cash, tanf]
-accepts_from: [af_burial_responsible_person_excess_resources, burial_insurance_proceeds, burial_plot_cost_excluded_from_limit, burial_services_total_cost, decedent_estate_value]
+accepts_from:
+  - {from: af_burial_responsible_person_excess_resources, class: adopted_method, source: S1007}
+  - {from: burial_insurance_proceeds, class: primitive, source: S1005}
+  - {from: burial_plot_cost_excluded_from_limit, class: primitive, source: S1005}
+  - {from: burial_services_total_cost, class: primitive, source: S1005}
+  - {from: decedent_estate_value, class: primitive, source: S1005}
 rationale: "No existing item computes the Colorado Works death reimbursement (phase-8 review K-1): phase 8 built the Adult Financial burial benefit (CO-1229-CO-1232) and left 3.606.7 out. Reuses the burial cost, plot, insurance, estate and responsible-person facts (CO-1221-CO-1226) - the same quantities 3.606.7 names - and the Adult Financial excess-resource computation (CO-1229). The review said 3.606.7 has no plot exception; F.2.d (S1007) does exempt a prepaid plot of $2,000 or less and a donated one, so the plot is not counted toward the total, as for Adult Financial burial. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Colorado Works rule names the other program's result (Medicaid receipt for the lawful-presence verification exemption; the Adult Financial burial computation for the death reimbursement)."
 nearest: [CO-1232]
 tests:

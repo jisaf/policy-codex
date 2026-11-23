@@ -13,6 +13,8 @@ derived: [any, is_us_citizen_or_national, [all, is_qualified_non_citizen, [any, 
 sources: [S402, S407, S441, S449, S451, S452, S1150, S1151, S2627, S2628, S2629, S2630, S2800, S2801, S2802]
 implemented: engine
 tags: [cash, tanf, and, immigration, legal]
+link_class: primitive
+link_basis: "The citizenship requirement C.R.S. 26-2-111.8(2) sets for Colorado Works, OAP, AND and AB, stated once in the statute; neither program's rule defines it differently."
 rationale: "Phase 5 authored this rule twice, as cw_meets_citizenship_requirement (CO-905) and af_meets_citizenship_requirement_and (CO-943). Vocabulary fix round (R-4): with the federal exemption list read the same way for both, the two derivations were identical (governance dup.compact), as C.R.S. 26-2-111.8(2), which governs all four state cash programs, says they should be. CO-905 survives under a program-neutral identifier; CO-943 is retired."
 tests:
   - {id: CO-905-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: true}

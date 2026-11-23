@@ -10,6 +10,8 @@ derived: [all, [in, education_program_type, [postsecondary_career_and_technical,
 sources: [S133, S134, S135]
 implemented: engine
 tags: [student]
+link_class: primitive
+link_basis: "Full-time enrollment in higher education as the institution determines it, from stated enrollment facts; no program defines it differently."
 rationale: "The single-parent student exemption (7 U.S.C. 2015(e)(8); 10 CCR 2506-1 4.306.1.D, S133, S135) requires full-time enrollment, which is a different threshold from is_enrolled_higher_education_half_time (batch 1) and cannot be derived from it. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
 tests:
   - {id: CO-069-T1, title: "College full time", as_of: "2026-11-01", given: {education_program_type: higher_education, education_enrollment_intensity: full_time}, expect: true}

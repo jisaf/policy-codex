@@ -10,6 +10,8 @@ derived: [any, immigration_status_verified_by_electronic_data_source, immigratio
 sources: [S802, S829, S873]
 implemented: engine
 tags: [verification, immigration]
+link_class: primitive
+link_basis: "Immigration status verified by SAVE or with USCIS on submitted documents; a verification fact no program defines differently."
 rationale: 7 CFR 273.2(f)(1)(ii)(B)(1) and 4.505.6.F.1 (S802, S829) forbid delaying a SNAP applicant whose document is with USCIS, and 3.604.3.B.5 (S873) forbids delaying Colorado Works pending SAVE; Medical Assistance, Adult Financial and LEAP instead require the SAVE result itself.
 tests:
   - {id: CO-1366-T1, as_of: "2026-10-01", given: {immigration_status_verified_by_electronic_data_source: true}, expect: true}

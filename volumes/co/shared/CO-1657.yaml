@@ -12,6 +12,11 @@ sources: [S1066, S1069, S1070, S895]
 implemented: engine
 tags: [verification, immigration]
 open: [OQ-376]
+link_class: adopted_method
+link_basis: "The Department of Revenue's list of citizenship documents (1 CCR 204-30 Rule 5, Appendix A), which Colorado Works and LEAP adopt by reference."
+adopted_by:
+  - {program: ColoradoWorks, source: S1066}
+  - {program: LEAP, source: S895}
 rationale: "Same-word audit SW-36: Appendix A's own list names the six primary documents; Adult Financial's list, which matched them, is its own item (CO-1368). OQ-315 and OQ-319: 3.604.3.I.1 and 3.753.11 incorporate 1 CCR 204-30 Rule 5, Appendix A, now fetched (D-119); af_citizenship_document_is_primary (CO-1368) holds only the six documents the cash rules name."
 tests:
   - {id: CO-1657-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: census_record}, expect: true}

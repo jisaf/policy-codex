@@ -10,6 +10,8 @@ derived: [any, resources_verified_by_electronic_data_source, resources_verificat
 sources: [S866, S888]
 implemented: engine
 tags: [verification, resources]
+link_class: primitive
+link_basis: "Resources verified by an electronic data source or documents; a verification fact no program defines differently (each program decides when it is required)."
 rationale: 8.100.5.B.1.e (S866) accepts the Asset Verification Program and 3.520.72.D-F (S888) accepts documents or SVES; no existing item combines them.
 tests:
   - {id: CO-1362-T1, as_of: "2026-10-01", given: {resources_verified_by_electronic_data_source: true}, expect: true}

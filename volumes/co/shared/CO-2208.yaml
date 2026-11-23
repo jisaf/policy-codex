@@ -10,6 +10,8 @@ derived: ["=", adult_financial_program_received, oap_c]
 sources: [S701, S1510]
 implemented: engine
 tags: [ma, oap]
+link_class: primitive
+link_basis: "Receipt of OAP-C as the person's Adult Financial case records it; no program defines it differently."
 rationale: "OQ-206: § 8.941.3.B excludes OAP-C recipients from the Old Age Pension Health Care Program, and af_category (CO-953) has no OAP-C option, so receipt is a supplied fact, as receives_ssi is. Heavier-definitions audit H-3 (audit fix round): derived from the one Adult Financial case record, adult_financial_program_received (CO-2710)."
 tests:
   - {id: CO-2208-T1, as_of: "2026-10-01", given: {adult_financial_program_received: oap_c}, expect: true}

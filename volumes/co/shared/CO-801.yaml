@@ -11,6 +11,10 @@ derived: [+, ssi_countable_resources_individual, [sum, [filter, [persons], [othe
 sources: [S2215]
 implemented: engine
 tags: [non_magi, resources]
+link_class: adopted_method
+link_basis: "The SSI couple's resources (20 CFR 416.1202(a)) as 10 CCR 2505-10 8.100.5.M.1 adopts them for SSI-related Medicaid."
+adopted_by:
+  - {program: Medicaid, source: S301}
 rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. Dual-entry 2.6 stated the couple's figure once on one spouse; it is now the sum of the spouses' own countable resources."
 tests:
   - {id: CO-801-T1, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 900}, others: {p2: {ssi_countable_resources_individual: 500}}, relationships: [[spouse, p2]], expect: 1400}

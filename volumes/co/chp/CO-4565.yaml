@@ -11,6 +11,8 @@ derived: [any, [otherwise, ["<", [month], [month_of, date_of_birth]], false], [o
 sources: [S1714, S1716]
 implemented: engine
 tags: [chp]
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1714}
 rationale: "Coverage review F-09 (2026-11-22): no CHP+ item gated the months before the month of application, so chp_eligibility_status (CO-707) reported a child eligible for months before the application, which § 430.1 does not cover; Medicaid's gate (CO-4101) reads Medicaid's retroactive request, which CHP+ does not have. No existing item states the CHP+ effective date."
 tests:
   - {id: CO-4565-T1, month: "2026-08", as_of: "2026-11-10", title: "Coverage review F-09 (RV-CHPB): August, application November 2", given: {date_of_birth: "2018-02-01", ma_application_date: "2026-11-02"}, expect: true}

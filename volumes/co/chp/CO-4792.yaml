@@ -11,7 +11,9 @@ derived: [all, ma_is_under_child_age_or_turns_nineteen_this_month, is_colorado_r
 sources: [S3550, S243, S643]
 implemented: engine
 tags: [chp, income, age]
-accepts_from: [ma_is_under_child_age_or_turns_nineteen_this_month, ma_express_lane_child_meets_requirements]
+accepts_from:
+  - {from: ma_express_lane_child_meets_requirements, class: rule_required, source: S3550}
+  - {from: ma_is_under_child_age_or_turns_nineteen_this_month, class: adopted_method, source: S606}
 nearest: [CO-3156, CO-705]
 rationale: "Coverage review 2, N-05 (2026-11-22): 10 CCR 2505-3 § 180 gives CHP+ its own Express Lane, enrolling a referred child who meets CHP+'s requirements (§§ 100 to 180) on the declared income. CO-3156 tests only the Medicaid children's standard, so a referred child with declared income in the CHP+ band was sent to the Single Streamlined Application. CO-705 reads the MAGI household income, which the source application does not collect."
 tests:

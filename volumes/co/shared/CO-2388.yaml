@@ -11,6 +11,8 @@ derived: [exists, sponsor_spouses_not_cosigning, [otherwise, [of, [P], lives_wit
 sources: [S1632, S1633, S1634]
 implemented: engine
 tags: [immigration]
+link_class: primitive
+link_basis: "A sponsor's non-cosigning spouse lives with the sponsor; a relationship primitive."
 rationale: "OQ-114: Adult Financial deducts half the SSI benefit standard for a sponsor's spouse in the household, or the full standard for a co-sponsor spouse (S1632); no fact stated the spouse.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts."
 tests:
   - {id: CO-2388-T1, as_of: "2026-10-01", given: {sponsor_spouses_not_cosigning: [p3]}, others: {p3: {}}, expect: true}

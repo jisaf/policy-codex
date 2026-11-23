@@ -11,7 +11,10 @@ derived: [all, [not, [unknown, [otherwise, chp_eligibility_period_start_month, [
 sources: [S1714, S1724]
 implemented: engine
 tags: [chp, age]
-accepts_from: [ma_is_under_child_age_or_turns_nineteen_this_month, ma_continuous_eligibility_exception_applies, ma_application_date]
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1714}
+  - {from: ma_continuous_eligibility_exception_applies, class: adopted_method, source: S1714}
+  - {from: ma_is_under_child_age_or_turns_nineteen_this_month, class: adopted_method, source: S606}
 rationale: "B-2 of the HCPF review: a CHP+ child whose income rose in month 3 was reported ineligible_income although § 430.2.A keeps the child enrolled. No CHP+ item tested continuity; ma_child_is_in_continuous_eligibility_period (CO-561) is the Medicaid period and opens only from the Medicaid Children's category."
 tests:
   - {id: CO-2404-T1, month: "2027-01", as_of: "2027-01-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: true, chp_child_is_eligible: {"2026-10": true, "2027-01": false}, ma_continuous_eligibility_exception_applies: false}, title: "Found CHP+ eligible in October; income rose in January", expect: true}

@@ -10,6 +10,8 @@ derived: [any, disability_benefit_receipt_verified_by_electronic_data_source, di
 sources: [S807, S820]
 implemented: engine
 tags: [verification, disability]
+link_class: primitive
+link_basis: "Disability verified by SSA data or documents; a verification fact no program defines differently (each program decides when it is required)."
 rationale: 7 CFR 273.2(f)(1)(viii) (S807) verifies disability by proof of benefits, which SDX and BENDEX supply as verified upon receipt (S820); no existing item combines them.
 tests:
   - {id: CO-1364-T1, as_of: "2026-10-01", given: {disability_benefit_receipt_verified_by_electronic_data_source: true}, expect: true}

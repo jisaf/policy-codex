@@ -11,7 +11,8 @@ derived: [any, chp_has_qualifying_immigration_status, ma_is_cover_all_coloradans
 sources: [S606, S1906, S1907, S1908]
 implemented: engine
 tags: [chp, immigration]
-accepts_from: [ma_is_cover_all_coloradans_person]
+accepts_from:
+  - {from: ma_is_cover_all_coloradans_person, class: adopted_method, source: S606}
 rationale: "OQ-44 fix (docs/reviews/audit-dual-entry.md 3.1): CHP+ read Medicaid's ma_meets_status_for_cover_all_coloradans_categories (CO-1174), whose status half is Medicaid's list. This item states CHP+'s own requirement (110.1.B and its exception o); no existing item does."
 tests:
   - {id: CO-2707-T1, as_of: "2026-10-01", title: "Qualifying status", given: {chp_has_qualifying_immigration_status: true, ma_is_cover_all_coloradans_person: false}, expect: true}

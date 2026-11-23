@@ -11,6 +11,8 @@ derived: [all, [in, education_program_type, [secondary, secondary_career_and_tec
 sources: [S206, S401, S406]
 implemented: engine
 tags: [household, age]
+link_class: primitive
+link_basis: "Full-time secondary or equivalent enrollment expected to end before 19, from stated enrollment facts; Medicaid and Colorado Works state the same test and no program defines it differently."
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-2): ma_is_dependent_child (CO-544) and cw_is_dependent_child (CO-901) read the shared is_enrolled_in_school, which meant half-time enrollment in any secondary program, so a half-time 18-year-old counted as a dependent child. Both rules state the same full-time test with the expected-completion condition, so one shared fact serves both. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882). Medicaid and Colorado Works state the same test (S206, S406), so it stays unprefixed, as a derived item."
 tests:
   - {id: CO-1720-T1, title: "Senior finishing at 18", as_of: "2026-11-01", given: {date_of_birth: "2008-09-01", education_program_type: secondary, education_enrollment_intensity: full_time, expected_program_completion_date: "2027-05-28"}, expect: true}

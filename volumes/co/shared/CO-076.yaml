@@ -11,6 +11,8 @@ derived: [any, [exists_related, [tax_dependent], true], [otherwise, is_claimed_b
 sources: [S161, S162, S163]
 implemented: engine
 tags: [ma, magi, household]
+link_class: primitive
+link_basis: "A tax-dependent claim as the person's tax facts state it; a fact of federal tax filing that no program defines differently."
 rationale: "No existing item carries this fact. The interface note in the phase-3 brief asks that 'is claimed as a tax dependent' prefer the case's tax_filer/tax_dependent relationship edges where they are stated; this supplied fact is the fallback the household rule also reads so the rule still works when the relationship is not (yet) recorded, and is what 8.100.4.E.1.b's 'expects to be claimed' actually tests. Dual-entry audit 3.3 and 5.7 (audit fix round): derived from the tax_dependent relationship, with a supplied fact only for a claimer outside the case (CO-2716); the five contradicting statements in CO-74, CO-75, CO-76 and CO-77 are gone with the fact."
 tests:
   - {id: CO-076-T1, as_of: "2026-10-01", title: "Claimed by a parent in the case", given: {}, others: {p2: {}}, relationships: [[tax_dependent, p1, p2]], expect: true}

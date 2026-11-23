@@ -12,7 +12,8 @@ sources: [S1756]
 implemented: engine
 tags: [ma, ltc, income]
 open: [OQ-560]
-accepts_from: [snap_utility_allowance_amount]
+accepts_from:
+  - {from: snap_utility_allowance_amount, class: adopted_method, source: S1756}
 rationale: "Dual-entry audit 1.2 and 5.4 (OQ-97 finished): shelter_costs_community_spouse (CO-834, retired) stated the community spouse's own shelter costs, utility allowance included, on the institutionalized spouse, beside the community spouse's own shelter_cost_monthly, and the two disagreed in CO-01 and CO-02 (1,100 against 1,400). The rule names the SNAP standard utility allowance, so the SNAP item is read on purpose (accepts_from)."
 tests:
   - {id: CO-2802-T1, title: "Community spouse pays 1,400 rent, mortgage, tax and insurance and qualifies for the heating and cooling allowance", month: "2026-10", as_of: "2026-10-01", given: {resides_in_medical_institution: true}, others: {p2: {resides_in_medical_institution: false, shelter_cost_monthly: 1400, snap_utility_allowance_amount: 616}}, relationships: [[spouse, p1, p2]], expect: 2016}

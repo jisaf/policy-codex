@@ -11,6 +11,8 @@ derived: [filter, [persons], [any, [rel, [parent, child, stepparent, stepchild, 
 sources: [S1207, S1500]
 implemented: engine
 tags: [household]
+link_class: primitive
+link_basis: "The persons related by blood, adoption or marriage, from the stated relationships; a relationship primitive (each program applies its own degree of relationship)."
 rationale: "Same-word audit SW-5: community engagement's relative test listed its roles inline and could not see a grandparent through the parent chain, and CCCAP's \"unrelated\" was bundled into a yes/no fact. One neutral item states the factual relation."
 nearest: [CO-2609, CO-2610]
 tests:

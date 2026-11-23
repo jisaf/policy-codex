@@ -12,6 +12,8 @@ derived: [case, [[exists, [filter, [persons], [otherwise, [rel, [born_to], [P]],
 sources: [S211, S212, S1716]
 implemented: engine
 tags: [ma, chp, household]
+link_class: primitive
+link_basis: "The birth mother's enrollment in the month of birth, read across the born_to relationship; an enrollment fact no program defines differently."
 rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case."
 tests:
   - {id: CO-3322-T1, title: "Mother in the case, on Medical Assistance in the birth month", as_of: "2026-10-01", given: {date_of_birth: "2026-02-03"}, persons: {p2: {months: {"2026-02": {public_health_coverage_enrolled: medical_assistance}}}}, relationships: [[born_to, p2]], expect: medical_assistance}
