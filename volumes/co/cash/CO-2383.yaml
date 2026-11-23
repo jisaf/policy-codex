@@ -6,7 +6,8 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: "This person is the parent of a dependent child living in the home (9 CCR 2503-6 3.604.2.C.1.b), as distinct from a non-parent caretaker."
-derived: [exists_related, [parent], [of, [P], cw_is_dependent_child]]
+derived: [exists_related, [parent], [all, [of, [P], cw_is_dependent_child], [otherwise, [in_group, [P], lives_with], true], [of, [P], cw_is_considered_living_in_home]]]
+precision: "Coverage pass 4 CA4-24 (docs/reviews/coverage4-cash.md): the meaning's \"living in the home\" is tested, as the unit's own membership tests it (cw_assistance_unit_members, CO-900): the child lives with the person (lives_with, the household's stated co-residents; a household that names none is read as living together) and is considered living in the home (cw_is_considered_living_in_home, 3.604.1); before, a parent whose own minor child lives elsewhere was a parent of a dependent child, which made the caretaker's husband a stepparent (cw_budgetary_member_deemed_income, CO-2353) rather than the caretaker's spouse of 3.606.1.J."
 sources: [S1625]
 implemented: engine
 tags: [cash, tanf, household]
@@ -14,3 +15,5 @@ rationale: "OQ-140: cw_budgetary_member_deemed_income (CO-2353) treats the spous
 tests:
   - {id: CO-2383-T1, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: true}
   - {id: CO-2383-T2, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[has_primary_responsibility_for, p1, p2]], expect: false}
+  # Coverage pass 4 (docs/reviews/coverage4-cash.md): the review's repro households, by hand from the rule text.
+  - {id: "CO-2383-T3", as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false, cw_is_considered_living_in_home: false}}, relationships: [[parent, p1, p2]], title: "Coverage pass 4 CA4-24: a caretaker whose own minor child lives elsewhere (not considered living in the home) is not the parent of a dependent child living in the home (3.604.2.C.1.b)", expect: false}

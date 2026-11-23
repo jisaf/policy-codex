@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The in-kind support and maintenance the Social Security Administration counts against the person's SSI payment for the month, as SSA's record shows; 0 when none."
-precision: "A finding made outside this volume (convention rule 13 (i)). If not stated, Adult Financial reads this as 0."
+precision: "A finding made outside this volume (convention rule 13 (i)). Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise), for an SSI recipient; before, it was read as 0 when not stated."
 supplied_by: "Application (housing and shelter costs); client statement is acceptable verification (3.520.79.A)."
 sources: [S1012]
 implemented: engine

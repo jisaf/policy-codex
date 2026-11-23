@@ -182,6 +182,10 @@ record_fields:
     type: yes/no
     default: false
     meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+  household_goods_or_personal_effects:
+    type: yes/no
+    required: true
+    meaning: "For personal property (kind personal_property), it is household goods or personal effects in or on the person's home that the person uses (furniture, appliances, clothing, the person's own jewelry and the like), not other personal property: equipment, livestock, tools, or a mobile home or recreational vehicle the person does not live in."
   farm_ended_date:
     type: calendar date
     required: true

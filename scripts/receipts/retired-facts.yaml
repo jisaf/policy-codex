@@ -1,6 +1,9 @@
 # Old facts retired by the receipts migration (scripts/receipts/translate.ts, RETIRED), as each
 # stored household stated them: case -> person -> fact -> value. Written by npm run receipts:translate;
 # read only by the translation. No rule reads these facts.
+# Coverage pass 4 (CA4-1, docs/reviews/coverage4-cash.md): CO-311 p2 and CO-313 p1 are restated by hand in receipts
+# alone (their workers' compensation as one workers_compensation receipt with its claim_expense, which their old facts
+# could not say), so their retired facts are dropped and the stated receipts stand.
 CO-125:
   p4:
     lottery_gambling_winnings_received_prior_thirty_days: 1200
@@ -4242,17 +4245,6 @@ CO-311:
     other_unearned_income_nontaxable: 0
     other_unearned_income_taxable: 0
     tax_exempt_interest: 0
-  p2:
-    ssi_income: 0
-    social_security_income: 0
-    pension_income: 0
-    unemployment_income: 0
-    tanf_cash_income: 0
-    adult_financial_cash_income: 0
-    child_support_received: 0
-    other_unearned_income_nontaxable: 0
-    other_unearned_income_taxable: 2000
-    tax_exempt_interest: 0
 CO-312:
   p1:
     ssi_income: 0
@@ -4277,17 +4269,6 @@ CO-312:
     other_unearned_income_taxable: 500
     tax_exempt_interest: 0
 CO-313:
-  p1:
-    ssi_income: 0
-    social_security_income: 0
-    pension_income: 0
-    unemployment_income: 0
-    tanf_cash_income: 0
-    adult_financial_cash_income: 0
-    child_support_received: 0
-    other_unearned_income_nontaxable: 0
-    other_unearned_income_taxable: 2000
-    tax_exempt_interest: 0
   p2:
     ssi_income: 0
     social_security_income: 1000
