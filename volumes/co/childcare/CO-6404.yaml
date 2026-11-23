@@ -10,7 +10,7 @@ precision: "A business record of the month that states no hours is cannot determ
 derived: ["sum_receipts", "earnings", ["all", ["=", ["lookup", "cccap_earnings_treatment_table", ["receipt", "kind"]], "counted_self_employment"], ["received_in", ["month"]]], ["receipt", "hours"]]
 sources: [S4602, S1410]
 implemented: engine
-tags: [income, activity]
+tags: [income]
 open: [OQ-680]
 rationale: "Coverage pass 4 C4-3: G's activities are tested one by one (\"at least one of\"), so the hours of the business are taken out of the hours worked before the wage job's minimum-wage test; one item for the hours CO-1710 and CO-984 both read. cccap_self_employment_gross_receipts (CO-5156) and leap_self_employment_gross_receipts (CO-5126) sum the same records' amounts, not their hours."
 nearest: [CO-5156, CO-5126]
