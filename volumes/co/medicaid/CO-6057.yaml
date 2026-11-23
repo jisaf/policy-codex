@@ -1,0 +1,19 @@
+id: CO-6057
+name: "Medicaid Pickle: countable earned income with the $20 used against unearned income"
+identifier: ma_pickle_countable_earned_income_with_general_exclusion_used
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, the countable earned income of this person and a spouse living with the person with no part of the $20 general exclusion left for earned income: the couple's earned income after the exclusions of earnings (ma_ssi_couple_earned_income_after_exclusions), less the Ineligible Child Allocation taken from the ineligible spouse's earned income (ma_pickle_child_allocation_from_spouse_earned), less the ssi_earned_income_exclusion, impairment-related work expenses, one half of the remainder and the exclusions taken after the one half (10 CCR 2505-10 § 8.100.5.H.4.b; 20 CFR 416.1112(c)); the countable earned income once the child's unearned income, deemed income included, is at least $20 (416.1165(e)(1))."
+precision: "Sibling of ma_ssi_countable_earned_income_with_general_exclusion_used (CO-5901), which it equals when no OASDI increase moves the allocation onto earned income. Read by the Pickle deeming limit (CO-6058), as CO-5901 is by CO-5902 (duplicate-paths audit D-M3)."
+derived: [max, 0, ["-", ["*", [max, 0, ["-", [max, 0, ["-", ["-", ma_ssi_couple_earned_income_after_exclusions, ma_pickle_child_allocation_from_spouse_earned], ssi_earned_income_exclusion]], ma_ssi_impairment_related_work_expenses]], ssi_earned_income_disregard_rate], ma_ssi_earned_income_excluded_after_half]]
+sources: [S308, S310, S3413, S4080, S666]
+implemented: engine
+tags: [ma, non_magi, income]
+siblings:
+  - {id: CO-5901, reason: "the Pickle copy takes the Ineligible Child Allocation as the Pickle income does (CO-6055); every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M3 (P1): the 416.1165(e)(3) fill-up for a Pickle child needs the child's Pickle income split into its own and deemed parts, as CO-2281 was split into CO-5900 and CO-4626."
+nearest: [CO-5901, CO-6058]
+tests:
+  - {id: CO-6057-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_couple_earned_income_after_exclusions: 465, ma_pickle_child_allocation_from_spouse_earned: 0, ma_ssi_impairment_related_work_expenses: 0, ma_ssi_earned_income_excluded_after_half: 0}, title: "A child earning 465: (465 - 65) / 2 = 200", expect: 200}

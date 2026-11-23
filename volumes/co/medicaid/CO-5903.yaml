@@ -11,6 +11,8 @@ derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, [max, 0, 
 sources: [S3405, S3413, S3415]
 implemented: engine
 tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-6060, reason: "the Pickle copy reads the parents' income with their OASDI increases disregarded (CO-5221); every other term must stay the same"}
 rationale: "Coverage review, 416.1165(e)(3) fill-up: CO-4626 computed the parents' remaining income inside its equal division; the fill-up reads it for each child sharing it (ma_ssi_deeming_share_zeroes_benefit, CO-5904), so it is stated once. The terms are CO-4626's, unchanged."
 tests:
   - {id: CO-5903-T1, as_of: "2026-10-12", month: "2026-10", title: "X-DEEM: 3,957.50 - 994 = 2,963.50", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_parents_countable_income: 3957.5}, others: {p2: {}}, relationships: [[child, p2]], expect: 2963.5}

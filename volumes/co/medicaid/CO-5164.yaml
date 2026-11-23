@@ -1,0 +1,18 @@
+id: CO-5164
+name: "Medicaid: a person's self-employment receipts, for verification"
+identifier: ma_self_employment_receipts_for_verification
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The gross receipts of the month of the person's businesses (the earnings records of self-employment and farm receipts, and boarders' payments, which 10 CCR 2505-10 8.100.3.K.10.c-e list as self-employment income), which the person documents only when the attestation is questionable (10 CCR 2505-10 8.100.4.B, 8.100.5.B)."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces self_employment_gross_receipts (CO-1700) in ma_requires_verification_of_earned_income (CO-1403) and, by its adopted-method link, chp_requires_verification_of_earned_income (CO-1642). Not a counting rule. Payments for a room only or meals only were verified as unearned receipts before E1; they are earnings (design 2.3) and verified here."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [in, [receipt, kind], [self_employment_receipts, farm_self_employment_receipts, boarder_payments]]], [receipt, amount]]
+sources: [S861, S864, S869, S4107]
+implemented: engine
+tags: [verification, ma, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the verification of self-employment reads the earnings records; one item so Medicaid and CHP+ ask for the same receipts."
+nearest: [CO-1403, CO-5163]
+tests:
+  - {id: CO-5164-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1500}, {kind: self_employment_receipts, amount: 800}, {kind: farm_self_employment_receipts, amount: 200}, {kind: business_cost_operating, amount: 300}]}, title: "Business 800 + farm 200; costs and wages not read: 1,000", expect: 1000}
+  - {id: CO-5164-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: boarder_payments, amount: 300, boarders: 1, provides: board_only}]}, title: "A boarder's payments for meals are self-employment income (K.10.c): 300", expect: 300}

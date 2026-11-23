@@ -376,3 +376,42 @@
   identifier: /^(cw_|ma_)/
   old: unknown
   class: "D4-S restatement a child with no receipts states an empty list"
+
+# Earned-income records, Medicaid and CHP+ track E1 (docs/reviews/records-earnings-medicaid.md; appended by the track,
+# for the integration owner to fold in at the merge wave). Medicaid and CHP+ read earned income from the earnings list
+# (CO-5100) from E1; the records harness (npm run records:harness -- --list earnings) is the comparison for earned income.
+# EM-R1 (transition, request R-1): this harness builds its generated households from the stored households of its baseline
+# (c29d326), before the earnings list existed, and states no earnings list for them, so every Medicaid and CHP+ figure
+# that reads earned income cannot be determined on the new ledger (decision 4: a list not stated is unknown). The request
+# to the integration owner is to translate earnings (scripts/records/translate-earnings.ts) on the new side here, as the
+# records harness does for its own generated households; this entry is then removed.
+- case: /^G-/
+  identifier: /^(ma_|chp_)/
+  new: unknown
+  class: EM-R1 (transition) the receipts harness's generated households state no earnings list, which Medicaid and CHP+ read from E1
+# EM-R2 (design 2.3, OQ-1020): uniformed services special pay and payments for a room only or meals only are earnings;
+# Medicaid's receipt tables (CO-5500, CO-5510) give their rows in_earnings, read from the earnings records instead (the
+# SSI method counts boarder payments as earned income above the allotment and costs, 8.100.3.K.10.c-e; MAGI counts them
+# as rents and compensation, 8.100.4.C.1.b.ii, a.v), so they are no longer Medicaid unearned income or unearned income to
+# verify (boarder payments are verified as self-employment income, CO-5164).
+- case: /^G-[A-Za-z]+-(uniformed_services_special_pay_received_300_part_of_nontaxable_|P3_board_only_300_part_of_taxable_|P3_room_only_300_part_of_taxable_)$/
+  identifier: /^(ma_|chp_)/
+  class: EM-R2 special pay and room-only or meals-only payments are earnings, not Medicaid unearned receipts
+# EM-R3 (OQ-1023, settled; 8.100.3.K.3-4, K.10.c-e, S4107): the SSI method counts pay in kind, and boarder payments above
+# the allotment per boarder and the costs, as earned income (the records harness's classes E1-M3, E1-M4).
+- case: /^(CO-171|CO-320|CO-341|CO-354|CO-425)$/
+  identifier: /^ma_/
+  class: EM-R3 (OQ-1023 settled) pay in kind and boarder payments are SSI-method earned income
+# EM-R4 (duplicate-paths audit D-M2, fixed): the Disabled Adult Child countable income is the SSI-related countable income
+# with the current OASDI taken out (allocation, child support reduction and deemed parental income now in it); a figure
+# only (the records harness's class E1-M6).
+- case: /^CO-/
+  identifier: ma_dac_countable_income
+  class: EM-R4 (D-M2 fixed) the Disabled Adult Child income is the SSI-related income with the OASDI taken out
+# EM-R5 (8.100.3.K.10, S4107): boarder payments are verified as self-employment income when the earned-income attestation
+# is questionable, which CO-206 and CO-362 do not state (decision 4; the records harness's class E1-M8).
+- case: /^(CO-206|CO-362)$/
+  identifier: /^(ma|chp)_earned_income_verification_is_pending$/
+  old: false
+  new: unknown
+  class: EM-R5 (K.10) boarder payments are verified as self-employment income

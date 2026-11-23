@@ -1,0 +1,18 @@
+id: CO-5163
+name: "Medicaid: a person's pay from an employer, for verification"
+identifier: ma_employer_pay_for_verification
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's pay of the month from an employer, the wages an electronic data source or the person's documents verify (10 CCR 2505-10 8.100.4.B, 8.100.5.B): the earnings records of the kinds paid by an employer for work as an employee (wages, uniformed services special pay, work-study, WIOA on-the-job training, summer youth employment, SCSEP, other subsidized employment, decennial Census employment, Difficulty of Care payments, an employer's health insurance subsidy), at their gross amounts. Pay in kind, an employer's payments to a third party, a business's receipts and boarders' payments are not wages."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces wages_gross in ma_requires_verification_of_earned_income (CO-1403) and, by its adopted-method link, chp_requires_verification_of_earned_income (CO-1642). It names the kinds that restate wages_gross and its parts, so the verification element asks for the same pay it asked for before; it is not a counting rule (what counts is each method's table)."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [in, [receipt, kind], [wages, uniformed_services_special_pay, work_study, wioa_on_the_job_training, summer_youth_employment, scsep_employment, subsidized_employment, decennial_census_employment, difficulty_of_care_payment, employer_health_insurance_subsidy]]], [receipt, amount]]
+sources: [S861, S864, S869]
+implemented: engine
+tags: [verification, ma, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the verification of wages reads the earnings records; one item so Medicaid and CHP+ ask for the same pay."
+nearest: [CO-1403, CO-5164]
+tests:
+  - {id: CO-5163-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1500}, {kind: work_study, amount: 200}, {kind: in_kind_pay, amount: 300}, {kind: self_employment_receipts, amount: 800}]}, title: "Wages 1,500 + work-study 200; pay in kind and the business are not wages: 1,700", expect: 1700}
+  - {id: CO-5163-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts, amount: 800}]}, title: "Only a business: 0", expect: 0}

@@ -1,0 +1,18 @@
+id: CO-5175
+name: "Medicaid SSI method: a person's gross receipts from self-employment"
+identifier: ma_ssi_self_employment_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The gross receipts of the month of the person's businesses that the SSI method's earnings counting table counts as net profit (ma_ssi_earnings_treatment_table, CO-5107, row counted_net_of_costs: self-employment and farm receipts), before the cost of doing business is deducted (10 CCR 2505-10 8.100.3.K.9.a; 8.100.5.F.4.b)."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces self_employment_gross_receipts (CO-1700) in ma_self_employment_net_earnings (CO-1704)."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], counted_net_of_costs]], [receipt, amount]]
+sources: [S1154, S3001]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the business's gross receipts read from the earnings records through the counting table."
+nearest: [CO-1704, CO-1703, CO-5161, CO-5162, CO-5172, CO-5178]
+tests:
+  - {id: CO-5175-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: farm_self_employment_receipts, amount: 600}, {kind: business_cost_operating, amount: 200}, {kind: wages, amount: 800}]}, title: "Business 1,500 + farm 600; costs and wages not read: 2,100", expect: 2100}
+  - {id: CO-5175-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts}]}, title: "A business whose receipts are not stated: cannot determine", expect: unknown}

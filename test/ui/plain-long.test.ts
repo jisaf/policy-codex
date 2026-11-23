@@ -43,8 +43,8 @@ describe("long rules read as bulleted clauses", () => {
     // rules that fix a figure at the determination (T-3: CCCAP's fee and
     // entry limit, LEAP's limit and guideline). 42 after earnings E1 SNAP: each
     // pay converted by its own frequency, written once per pay sum (CO-4324,
-    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums).
-    expect(over).toBeLessThanOrEqual(45);
+    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces).
+    expect(over).toBeLessThanOrEqual(46);
   });
 
   it("relationship roles read as words", () => {

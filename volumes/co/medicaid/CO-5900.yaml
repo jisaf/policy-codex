@@ -11,6 +11,8 @@ derived: ["+", ["-", ma_ssi_household_unearned_income_sum, ma_ssi_child_allocati
 sources: [S1506, S308, S3405, S3413, S4080]
 implemented: engine
 tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-6056, reason: "the Pickle copy reads the countable OASDI (the Pickle Disregard and a spouse's increases subtracted, 8.100.6.E.1.e, E.3); every other term must stay the same"}
 rationale: "Coverage review, 416.1165(e)(3) fill-up (docs/reviews/coverage-medicaid-nonmagi.md): (e)(3) limits the income deemed to each eligible child by what, 'when combined with the child's own income', reduces the child's SSI benefit to zero. CO-2281 held the child's own unearned income and the deemed parental income in one sum, so the child's own income could not be read without the deemed amount; this item is CO-2281's own-income part, unchanged, and CO-2281 now adds the deemed amount to it."
 tests:
   - {id: CO-5900-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_unearned_income_sum: 1300, ma_ssi_child_allocation_from_spouse_unearned: 500, date_of_birth: "1980-01-01"}, title: "Adult: 1,300 less the 500 of the spouse's pension allocated to the children = 800", expect: 800}

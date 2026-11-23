@@ -18,10 +18,10 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 163, 19 of them partly settled", () => {
-    expect(all.total).toBe(163); // + OQ-1100, OQ-1101, - OQ-1021 resolved (earnings E1 SNAP); + OQ-1160, OQ-1162, OQ-1163 (earnings E1, LEAP and CCCAP); + OQ-1020 to OQ-1024 (earnings E0); + OQ-1050, OQ-1051 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995, OQ-996 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2: Medicaid), merged; + OQ-990, OQ-991, OQ-992 (receipts migration 2: CCCAP), OQ-993 (SUN Bucks), merged; + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-885, OQ-886, OQ-887, OQ-888 (receipts migration 1: LEAP, Adult Financial); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
-    expect(all.rows).toHaveLength(163);
-    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
+  it("holds every question still to answer: 167, 20 of them partly settled", () => {
+    expect(all.total).toBe(167); // E1 Medicaid: + OQ-1120 to OQ-1124, OQ-1023 resolved; + OQ-1100, OQ-1101, - OQ-1021 resolved (earnings E1 SNAP); + OQ-1160, OQ-1162, OQ-1163 (earnings E1, LEAP and CCCAP); + OQ-1020 to OQ-1024 (earnings E0); + OQ-1050, OQ-1051 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995, OQ-996 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2: Medicaid), merged; + OQ-990, OQ-991, OQ-992 (receipts migration 2: CCCAP), OQ-993 (SUN Bucks), merged; + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-885, OQ-886, OQ-887, OQ-888 (receipts migration 1: LEAP, Adult Financial); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
+    expect(all.rows).toHaveLength(167);
+    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(20); // + OQ-1024 partly settled (E1 Medicaid: MAGI half)
   });
 
   it("'only mine' is the persona's owned questions, the same as the Desk counts", () => {
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(162); // all but the first (see the count above)
+    expect(q.total).toBe(166); // all but the first (see the count above)
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });

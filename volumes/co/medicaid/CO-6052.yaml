@@ -1,0 +1,18 @@
+id: CO-6052
+name: "Medicaid Pickle: the person's own Pickle Disregard"
+identifier: ma_pickle_oasdi_disregard
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's Pickle Disregard for the month: the cumulative OASDI cost-of-living increases since the person lost SSI or OAP, the current OASDI (ma_social_security_receipts) less the OASDI that caused the loss (social_security_income_when_ssi_or_oap_lost), not below zero (10 CCR 2505-10 § 8.100.6.E.1.c-d). Subtracting it from the current OASDI gives the countable OASDI (E.1.e)."
+precision: "Duplicate-paths audit D-M1: the term CO-1158 wrote twice inline, stated once. The OASDI that caused the loss has no default: the person's Pickle income cannot be determined without it."
+derived: [max, 0, ["-", ma_social_security_receipts, social_security_income_when_ssi_or_oap_lost]]
+sources: [S624, S1233]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Duplicate-paths audit D-M1 (P1): the Pickle countable income reads the SSI method's figures with the countable OASDI in them; the disregard is its one input."
+nearest: [CO-1158, CO-6053]
+tests:
+  - {id: CO-6052-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 1050}], social_security_income_when_ssi_or_oap_lost: 900}, title: "OASDI 1,050 now, 900 when SSI was lost: disregard 150", expect: 150}
+  - {id: CO-6052-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [], social_security_income_when_ssi_or_oap_lost: 0}, title: "No OASDI: 0", expect: 0}

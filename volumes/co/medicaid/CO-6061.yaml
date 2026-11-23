@@ -1,0 +1,20 @@
+id: CO-6061
+name: "Medicaid Pickle: the child's share of the deemed income would reduce its benefit to zero"
+identifier: ma_pickle_deeming_share_zeroes_benefit
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, whether this child is a blind or disabled child who shares the deemed income of ineligible parents with at least one other eligible child (ma_ssi_deeming_children) and whose share of the Pickle parental income to be deemed (ma_pickle_parental_income_to_be_deemed), once each child sharing it has been given no more than reduces its SSI benefit to zero and the rest has gone to the others (20 CFR 416.1165(e)(2)-(3)), would reduce this child's benefit to zero: that income is more than the sum, over the children, of the lesser of each child's limit and this child's Pickle limit (ma_pickle_deeming_benefit_zero_amount), this child's own term being its Pickle limit and each other child's its SSI-related limit (ma_ssi_deeming_benefit_zero_amount)."
+precision: "Sibling of ma_ssi_deeming_share_zeroes_benefit (CO-5904) (duplicate-paths audit D-M3). Written as the SSI sum at this child's SSI limit with this child's own term replaced: sum over the children of min(each child's SSI limit, this child's Pickle limit), less min(this child's SSI limit, its Pickle limit), plus its Pickle limit. It reads this child as one of the children sharing the income, as CO-5904 does."
+derived: [all, [">", [count, ma_ssi_deeming_parents], 0], [">=", [count, ma_ssi_deeming_children], 2], [any, [otherwise, is_blind, false], [otherwise, meets_ssa_disability_criteria, false]], ["<", ["+", ["-", [sum, ma_ssi_deeming_children, [min, [of, [P], ma_ssi_deeming_benefit_zero_amount], ma_pickle_deeming_benefit_zero_amount]], [min, ma_ssi_deeming_benefit_zero_amount, ma_pickle_deeming_benefit_zero_amount]], ma_pickle_deeming_benefit_zero_amount], ma_pickle_parental_income_to_be_deemed]]
+sources: [S3413, S4080, S666]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-5904, reason: "the Pickle copy puts this child's Pickle limit (CO-6058) in place of its SSI-related one; every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M3 (P1)."
+nearest: [CO-5904, CO-5222]
+tests:
+  - {id: CO-6061-T1, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1, p3], is_blind: false, meets_ssa_disability_criteria: true, ma_ssi_deeming_benefit_zero_amount: 300, ma_pickle_deeming_benefit_zero_amount: 300, ma_pickle_parental_income_to_be_deemed: 2000}, others: {p2: {}, p3: {ma_ssi_deeming_benefit_zero_amount: 1014}}, title: "Duplicate-paths household MA-pickle-fill-up, p1: min(300, 300) + min(1,014, 300) - min(300, 300) + 300 = 600 < 2,000: true", expect: true}
+  - {id: CO-6061-T2, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1, p3], is_blind: false, meets_ssa_disability_criteria: true, ma_ssi_deeming_benefit_zero_amount: 1014, ma_pickle_deeming_benefit_zero_amount: 1014, ma_pickle_parental_income_to_be_deemed: 1000}, others: {p2: {}, p3: {ma_ssi_deeming_benefit_zero_amount: 300}}, title: "Income to be deemed 1,000: min(300, 1,014) + min(1,014, 1,014) - 1,014 + 1,014 = 1,314 >= 1,000: false", expect: false}

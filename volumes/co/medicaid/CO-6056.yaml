@@ -1,0 +1,20 @@
+id: CO-6056
+name: "Medicaid Pickle: unearned income after allocations, before parental deeming"
+identifier: ma_pickle_household_unearned_income_before_deeming
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, the SSI-related household's own unearned income before the $20 general disregard and before any parental income is deemed, with the countable OASDI in place of the current OASDI (10 CCR 2505-10 § 8.100.6.E.1.e, E.2-3): the combined gross unearned income of the person and a spouse living with the person (ma_ssi_household_unearned_income_sum), less the person's Pickle Disregard (ma_pickle_oasdi_disregard) and the spouse's OASDI increases (ma_pickle_oasdi_increase_as_spouse), less the Ineligible Child Allocation taken from the ineligible spouse's countable unearned income (ma_pickle_child_allocation_from_spouse_unearned), not below zero, plus, for an unemancipated child, the child support the child receives reduced by one third (§ 8.100.5.H.4.c)."
+precision: "Sibling of ma_ssi_household_unearned_income_before_deeming (CO-5900), which it equals when no OASDI increase is disregarded: the Pickle income is the SSI-related income with the countable OASDI (duplicate-paths audit D-M1, D-M3). Stated apart from the deemed parental income, as CO-5900 is, so the most parental income that can be deemed to a Pickle child (ma_pickle_deeming_benefit_zero_amount, CO-6058) is figured from the child's own income."
+derived: ["+", [max, 0, ["-", ["-", ma_ssi_household_unearned_income_sum, ["+", ma_pickle_oasdi_disregard, [sum, [filter, ma_ssi_couple_members, [otherwise, [rel, [spouse, holds_out_as_spouse_with], [P]], false]], [of, [P], ma_pickle_oasdi_increase_as_spouse]]]], ma_pickle_child_allocation_from_spouse_unearned]], [case, [ma_is_ssi_unemancipated_child, ["-", ma_ssi_child_support_receipts, ["/", ma_ssi_child_support_receipts, ma_ssi_child_support_reduction_divisor]]], [else, 0]]]
+sources: [S1233, S666, S1506, S3405]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-5900, reason: "the Pickle copy reads the countable OASDI (the Pickle Disregard and a spouse's increases subtracted, 8.100.6.E.1.e, E.3); every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M1 (P1): the Pickle countable income left out the Ineligible Child Allocation and the one-third child support reduction the SSI-related income applies; this is the SSI method's own unearned income with the countable OASDI."
+nearest: [CO-5900]
+tests:
+  - {id: CO-6056-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_unearned_income_sum: 1100, ma_pickle_oasdi_disregard: 150, ma_ssi_couple_members: [p1], ma_pickle_child_allocation_from_spouse_unearned: 0, ma_is_ssi_unemancipated_child: false}, title: "An aged person alone: 1,100 of unearned income, 150 of it OASDI increases since SSI was lost: 950", expect: 950}
+  - {id: CO-6056-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_unearned_income_sum: 1500, ma_pickle_oasdi_disregard: 100, ma_ssi_couple_members: [p1, p2], ma_pickle_child_allocation_from_spouse_unearned: 400, ma_is_ssi_unemancipated_child: false}, others: {p2: {ma_pickle_oasdi_increase_as_spouse: 200}}, relationships: [[spouse, p1, p2]], title: "A couple: 1,500 - (100 own + 200 spouse's increases) - 400 allocated to a child = 800", expect: 800}
