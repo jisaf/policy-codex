@@ -1,18 +1,41 @@
-// Receipt records, migration phases 1 to 3: the one translation of a household or
-// rule test stated in the scalar unearned-income facts into the `receipts`
-// list (CO-5000). Written once, reviewed as code (restructure review, change
-// A; ported from prototypes/receipt-spike/translate.ts and brought to the
-// adopted kinds). Phases 1 and 2 kept the old facts beside the receipts
-// (the transition rule, docs/plan-colorado.md) while some program still read
-// them. Phase 3 (docs/reviews/receipts-migration-3.md): every program reads
-// the receipts, so every old fact is retired (RETIRED) and no household or
-// rule test states one; their statements before retirement are kept in
-// retired-facts.yaml. The translation no longer needs the ledger to know
-// the old facts (RETIRED gives each one's scope) and is read for two things
-// only: the harness, which evaluates the baseline ledger on what a household
-// stated before (withRetired) and fails when a stored household's receipts
-// are not the translation of it; and the generated households, which are
-// varied by the old facts and translated.
+// Receipt records: the one translation of a household or rule test stated
+// in the old scalar unearned-income facts into the `receipts` list
+// (CO-5000). Written once, reviewed as code (restructure review, change A;
+// ported from prototypes/receipt-spike/translate.ts and brought to the
+// adopted kinds).
+//
+// End state, after the transition (receipts migration phase 3, 2026-11-23).
+// Every program reads unearned money from `receipts` alone, each through
+// its own counting table, and no rule reads an old fact. All 85 old facts
+// are retired (RETIRED, below): the 83 this translation reads (MONTH_FACTS
+// and PERSON_FACTS: the aggregates such as social_security_income, the
+// residuals other_unearned_income_taxable/_nontaxable and every part-of and
+// earmark fact carved out of them, the lump-sum and retroactive facts, the
+// LEAP thirty-day facts and the periodic income) and Medicaid's statement
+// of the VA Aid and Attendance portion (receives_va_aid_and_attendance,
+// va_aid_and_attendance_amount). None is in the ledger, so RETIRED gives
+// each one's scope. No stored household or rule test states one: what they
+// stated before retirement is kept in retired-facts.yaml (retired.ts). The
+// transition rule (docs/plan-colorado.md: a household states its money
+// both ways, both written from one statement) no longer applies; a
+// household or test added now is written in receipts alone.
+//
+// What the translation is still for (nothing in the engine or the app
+// calls it):
+// - the harness (harness.ts), which evaluates the baseline ledger (before
+//   the migration, reading the old facts) on what a stored household stated
+//   before (withRetired; with `legacy`, the kinds phase 3 added left in the
+//   receipt that held them, as the baseline's schema reads them), and fails
+//   when a stored household's receipts are not the translation of its
+//   retired statements;
+// - the generated households (generate.ts), varied one old fact at a time
+//   and translated, so the two ledgers are compared on money the stored
+//   households do not state;
+// - apply.ts (`npm run receipts:translate`), which moves a stray statement
+//   of a retired fact into retired-facts.yaml and checks that the stored
+//   receipts are the translation's fixed point.
+// Earned income and resources are not translated here; they move to
+// records of their own later (docs/design-earned-and-resource-records.md).
 //
 // The carving rule: within a month, the facts that are "part of"
 // other_unearned_income_taxable/_nontaxable are carved out of that residual;
@@ -20,9 +43,12 @@
 // it overlaps (as CO-4962 decided: as far as the lump sum reaches) and the
 // rest; the overlays (PASS, recoupment, IV-D, former spouse, living
 // elsewhere, claim expenses, VA care) become fields of the receipt they come
-// out of; the thirty-day LEAP facts stamp the one-time receipts of the
-// application month and the month before with a date inside or outside the
-// income verification period.
+// out of; Medicaid's VA Aid and Attendance portion (phase 2) and the parts
+// phase 3 gave a kind of their own (PHASE3_KINDS) are carved out of the
+// receipt that held them into receipts of their own kind; the thirty-day
+// LEAP facts stamp the one-time receipts of the application month and the
+// month before with a date inside or outside the income verification
+// period.
 import type { HouseholdCase, PersonSpec } from "../../src/engine/cases";
 import { addDays, addMonths } from "../../src/engine/evaluate";
 import type { LedgerIndex } from "../../src/engine/ledger-index";
@@ -616,10 +642,9 @@ export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
   property_or_food_tax_refund_received: "person-month",
   state_veteran_annuity_received: "person-month",
   uniformed_services_special_pay_received: "person-month",
-  // Migration phase 3 (docs/reviews/receipts-migration-3.md): every program
-  // reads the receipts, so every scalar unearned-income fact phase 2 left
-  // without a reader is retired (the last readers were Colorado Works,
-  // CCCAP, SUN Bucks, Medicaid and CHP+)
+  // Migration phase 3: every program reads the receipts, so every scalar
+  // unearned-income fact phase 2 left without a reader is retired (the last
+  // readers were Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+)
   social_security_income: "person-month",
   pension_income: "person-month",
   unemployment_income: "person-month",
