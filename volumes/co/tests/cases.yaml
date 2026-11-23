@@ -57726,6 +57726,7 @@
         - {kind: ssi}
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
+        earnings: []
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 0
@@ -57779,6 +57780,8 @@
         - {kind: ssi}
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
+        earnings:
+        - {kind: wages, amount: 4873}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 4873
@@ -57832,6 +57835,8 @@
         - {kind: ssi}
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
+        earnings:
+        - {kind: wages, amount: 1665}
       month_defaults:
         shelter_costs_paid_by_others: 0
         wages_gross: 1665
