@@ -35,6 +35,11 @@ export function variants(): Variant[] {
     f.liquid_resources_value = 2500; f.retroactive_benefit_payment_unspent_value = 800;
     f.retroactive_benefit_payment_received_date = `${shift(asOf, -4)}-10`;
   }]);
+  // holdings H1 integration: a retroactive payment past every window (MH-5 expiry merges it into the account)
+  v.push(["retroactive SSI 800 of liquid 2500 received thirty months before", (f, _m, asOf) => {
+    f.liquid_resources_value = 2500; f.retroactive_benefit_payment_unspent_value = 800;
+    f.retroactive_benefit_payment_received_date = `${shift(asOf, -30)}-10`;
+  }]);
   v.push(["replacement proceeds 800 of liquid 2500, real property, two months before", (f, _m, asOf) => {
     f.liquid_resources_value = 2500; f.replacement_proceeds_held_value = 800; f.replacement_proceeds_property_type = "real_property";
     f.replacement_proceeds_received_date = `${shift(asOf, -2)}-05`;

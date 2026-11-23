@@ -1,8 +1,8 @@
-# Records harness: earnings (74 s)
+# Records harness: earnings (67 s)
 
 ## Translation
 
-Stored households stating earnings: 351 of 361; rule tests stating earnings: 868 of 5101.
+Stored households stating earnings: 351 of 361; rule tests stating earnings: 868 of 5104.
 Stored households whose earnings are not the translation of their earned facts: none.
 Rule tests whose earnings are not the translation of their earned facts: none.
 
@@ -18,7 +18,7 @@ Ledger at 9650b0ca4ece against the ledger on disk; programs: All, Medicaid, CHP+
 
 | Source | Households | Values compared | Values that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|
-| stored households | 327 | 176167 | 1997 | 1997 | 0 |
+| stored households | 327 | 176168 | 1998 | 1998 | 0 |
 | generated households | 476 | 201824 | 3907 | 3907 | 0 |
 
 allowed (H1-M3 (D8): the CSRA from the derived snapshot (the old ledger read the supplied figure, no longer stated)) S CO-01 p1 ma_ltc_eligibility_status @2026-10: old unknown new "eligible_institutional"
@@ -1079,6 +1079,7 @@ allowed (H1A-R1 CO-300 states its dated refund in holdings alone; the baseline r
 allowed (H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states) S CO-300 p1 af_oap_grant @2026-10: old unknown new 452
 allowed (H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states) S CO-300 p1 af_and_grant @2026-10: old unknown new 0
 allowed (H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states) S CO-300 p1 af_client_and_spouse_countable_resources: old unknown new 1700
+allowed (I-2 (holdings H1 integration) CO-300 restated in holdings alone, its refund dated: the SSI method's resources 1,700; the baseline reads facts it no longer states) S CO-300 p1 ma_ssi_countable_resources_individual: old unknown new 1700
 allowed (H1-M2 (design 2.2): holdings stated with no annuity or trust record, no annuity or trust documents owed) S CO-301 p1 ma_annuity_verification_is_pending @2026-10: old unknown new false
 allowed (H1-M2 (design 2.2): holdings stated with no annuity or trust record, no annuity or trust documents owed) S CO-302 p1 ma_annuity_verification_is_pending @2026-10: old unknown new false
 allowed (H1-M2 (design 2.2): holdings stated with no annuity or trust record, no annuity or trust documents owed) S CO-304 p1 ma_annuity_verification_is_pending @2026-10: old unknown new false

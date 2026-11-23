@@ -173,3 +173,44 @@ describe("joint holdings (design 3.2)", () => {
     expect(jointRecordErrors(holdings, [["p1", [acct()]], ["p2", [acct()]]])).toEqual([]);
   });
 });
+
+describe("a field whose absence has a declared meaning (request R-2 of the H1 Medicaid track)", () => {
+  // CO-5300 declares share ("owned alone") and disposed_date ("still held") with when_absent: a holding that
+  // leaves them out has stated them. A reader that gives the absence its meaning (otherwise, unknown) does not
+  // report them as missing facts; a required field, or a when_absent field read without such a meaning, still is.
+  const withShare: Item = {
+    ...holdings,
+    record_fields: {
+      ...holdings.record_fields!,
+      share: { type: "number", when_absent: "owned alone", meaning: "The person's share of the holding." },
+      disposed_date: { type: "date", when_absent: "still held", meaning: "The day the holding was given away or sold." },
+    },
+  };
+  const held: Expr = ["all", ["received_in", ["month"]], ["unknown", ["receipt", "disposed_date"]]];
+  const missing = (e: Expr, list: unknown) => {
+    const i = buildIndex([withShare, table, derived("t", e)]);
+    const c = makeCase(i, { id: "T", as_of: "2026-11-15", persons: { p1: { facts: { holdings: list } } } });
+    const node = explain(i, c, "t", "p1", "2026-11");
+    return { value: node.value, missing: missingFacts(node).map((n) => n.identifier) };
+  };
+
+  it("reports no missing fact for share and disposed_date read with otherwise and unknown", () => {
+    const e: Expr = ["sum_receipts", "holdings", held, ["*", ["otherwise", ["receipt", "share"], 1], ["receipt", "value"]]];
+    expect(missing(e, [{ kind: "bank_account", value: 900 }, { kind: "bank_account", value: 600, share: 0.5 }])).toEqual({ value: 1200, missing: [] });
+  });
+
+  it("still reports a required field the record leaves out, beside them", () => {
+    const e: Expr = ["sum_receipts", "holdings", held, ["*", ["otherwise", ["receipt", "share"], 1], ["receipt", "value"]]];
+    expect(missing(e, [{ kind: "bank_account" }])).toEqual({ value: null, missing: ["holdings[0 bank_account].value"] });
+  });
+
+  it("still reports a required field read with a reader's own otherwise (a reader default is not a declared absence)", () => {
+    const e: Expr = ["sum_receipts", "holdings", held, ["-", ["receipt", "value"], ["otherwise", ["receipt", "amount_owed"], 0]]];
+    expect(missing(e, [{ kind: "vehicle", value: 4000 }])).toEqual({ value: 4000, missing: ["holdings[0 vehicle].amount_owed"] });
+  });
+
+  it("still reports a when_absent field read without an absence meaning (the value is unknown)", () => {
+    const e: Expr = ["sum_receipts", "holdings", held, ["*", ["receipt", "share"], ["receipt", "value"]]];
+    expect(missing(e, [{ kind: "bank_account", value: 900 }])).toEqual({ value: null, missing: ["holdings[0 bank_account].share"] });
+  });
+});

@@ -31639,6 +31639,9 @@
   # docs/reviews/records-holdings-snap-af.md): the savings are stated in the holdings records alone, the refund dated
   # (received 2026-08-14, inside the twelve months of K and of SNAP's 4.410.J.17); liquid_resources_value 2,200 and
   # federal_tax_refunds_held_value 500 are no longer stated (no program that reads p1's resources reads them).
+  # Holdings H1 integration (docs/reviews/records-holdings-h1-integration.md, I-2): the SSI method reads the same
+  # records: the 1,700 in the bank counted, the 500 federal refund received 2026-08-14 left out for twelve months from
+  # receipt (26 U.S.C. 6409, S4664; ma_federal_tax_refund_resource_exclusion_months, CO-6500): 1,700, within $2,000.
   as_of: "2026-10-01"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -31678,6 +31681,7 @@
       af_client_and_spouse_countable_resources: 1700
       af_category:
         2026-10: oap
+      ma_ssi_countable_resources_individual: 1700
 
 - id: CO-301
   title: 'Probe PR-RENT (Adult Financial coverage F-11): rental income is counted net of its allowable expenses'

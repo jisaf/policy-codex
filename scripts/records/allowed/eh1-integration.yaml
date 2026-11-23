@@ -1,0 +1,8 @@
+# Earned-income records harness: the differences the resource records' H1 integration makes, as the earnings harness
+# sees them against EARNINGS_BASELINE (docs/reviews/records-holdings-h1-integration.md, I-2). To be removed with the
+# earnings harness's baseline re-pointed past H1 (E2, request R-8 of the H1 Medicaid track).
+
+# I-2 (b): CO-300 states its savings in holdings alone, its federal refund dated 2026-08-14 (H1A-R1); the SSI method's
+# resource figure, now an expectation of the household (1,700 counted; the 500 refund left out for twelve months from
+# receipt, 26 U.S.C. 6409, CO-6500), is compared; the baseline reads the scalar facts the household no longer states.
+- {case: CO-300, person: p1, identifier: ma_ssi_countable_resources_individual, old: unknown, new: 1700, class: "I-2 (holdings H1 integration) CO-300 restated in holdings alone, its refund dated: the SSI method's resources 1,700; the baseline reads facts it no longer states"}
