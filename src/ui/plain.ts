@@ -34,6 +34,10 @@ type E = any;
 const isArr = (e: unknown): e is E[] => Array.isArray(e);
 const opOf = (e: unknown): string | null => (isArr(e) && typeof e[0] === "string" ? e[0] : null);
 const isZero = (e: unknown) => e === 0;
+/** A count of days, months or persons rounded up is a whole number (coverage pass 4 for SNAP, S4-20). */
+const countsSomething = (e: unknown): boolean =>
+  isArr(e) && (["days_between", "count", "count_months"].includes(opOf(e) ?? "") || e.some(countsSomething));
+const ceilWords = (e: unknown) => (countsSomething(e) ? ", rounded up to a whole number" : ", rounded up to the next whole dollar");
 const isBlock = (e: unknown) => {
   const op = opOf(e);
   return op !== null && BLOCK_OPS.has(op);
@@ -222,7 +226,7 @@ class Renderer {
         if (this.itemOf(a)?.kind === "parameter") return cat(p(b), ", up to ", p(a));
         return cat("the lesser of ", p(a), " and ", p(b));
       }
-      case "ceil": return cat(p(e[1]), ", rounded up to the next whole dollar");
+      case "ceil": return cat(p(e[1]), ceilWords(e[1]));
       case "round": return cat(p(e[1]), ", rounded to the nearest whole dollar");
       case "case": return this.inlineCase(e);
       case "days_after":
@@ -436,7 +440,7 @@ class Renderer {
         if (op === "min" && (capA || capB)) return following(capB ? a : b, ", up to ", this.ref(capB ? b : a));
         return [head(op === "max" ? "the greater of:" : "the lesser of:"), ...sub(a, "• "), ...sub(b, "• ")];
       }
-      case "ceil": return following(e[1], ", rounded up to the next whole dollar");
+      case "ceil": return following(e[1], ceilWords(e[1]));
       case "round": return following(e[1], ", rounded to the nearest whole dollar");
       case "otherwise": {
         const alt = this.phrase(e[2]);

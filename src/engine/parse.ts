@@ -165,6 +165,7 @@ export function parseInline(
     if (q) return ["max", p(q[0]), p(q[1])];
   }
   if (s.endsWith(" rounded up to the next whole dollar")) return ["ceil", p(s.slice(0, -36))];
+  if (s.endsWith(" rounded up to a whole number")) return ["ceil", p(s.slice(0, -29))];
   if (s.endsWith(" rounded to the nearest whole dollar")) return ["round", p(s.slice(0, -36))];
   if ((m = s.match(/^the number of persons in (.+)$/))) return ["count", p(m[1])];
   if ((m = s.match(/^that person is a (.+?) of a person in (.+)$/))) {

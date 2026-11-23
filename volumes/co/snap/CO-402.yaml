@@ -5,9 +5,9 @@ kind: derived
 type: hours
 scope: person
 program: SNAP
-meaning: "Hours worked in the month containing the determination date, converted to a weekly average by dividing by snap_weeks_per_month (CO-3041, the 7 CFR 273.10(c)(2) conversion). No reported hours counts as 0."
-precision: Reads hours_worked (a person-month fact) for the determination date's month via the "at" pattern, since this item's own scope is person.
-derived: ["/", [otherwise, [at, hours_worked, [det_month]], 0], snap_weeks_per_month]
+meaning: "Hours worked for pay in the month containing the determination date (snap_hours_worked_in_month, CO-6604), converted to a weekly average by dividing by snap_weeks_per_month (CO-3041, the 7 CFR 273.10(c)(2) conversion)."
+precision: "Reads snap_hours_worked_in_month (a person-month item) for the determination date's month via the \"at\" pattern, since this item's own scope is person. Coverage pass 4 S4-13 (decision 4): unstated hours are no longer read as 0 when the person's earnings records state pay or business receipts for the month; they are cannot determine (CO-6604)."
+derived: ["/", ["at", "snap_hours_worked_in_month", ["det_month"]], "snap_weeks_per_month"]
 sources: [S121, S123, S126, S133, S135, S2050]
 implemented: engine
 tags: [work_registration, student]
@@ -15,5 +15,7 @@ rationale: "Both the work-registration employment exemption (30 hours/week, S121
 tests:
   # Hard-coded numbers audit H-11: 4.3 weeks a month (7 CFR 273.10(c)(2), S2050) replaces 52/12. T1: 130 / 4.3 = 30.2325581395 (was 130 x 12 / 52 = 30);
   # T2: 138 / 4.3 = 32.0930232558 (was 31.846153846153847).
-  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 130}, expect: 30.232558139534884}
-  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138}, expect: 32.09302325581396}
+  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: wages, amount: 1500}], hours_worked: 130}, expect: 30.232558139534884}
+  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: wages, amount: 1500}], hours_worked: 138}, expect: 32.09302325581396}
+  - {"id": "CO-402-T3", "title": "S4-13: wages stated, hours not stated: cannot determine", "month": "2026-10", "as_of": "2026-10-01", "given": {"earnings": [{"kind": "wages", "amount": 1500}]}, "expect": "unknown"}
+  - {"id": "CO-402-T4", "title": "S4-13: no earnings stated as an empty list, hours not stated: 0 / 4.3 = 0", "month": "2026-10", "as_of": "2026-10-01", "given": {"earnings": []}, "expect": 0}
