@@ -186,3 +186,42 @@ export function statedRecordLists(
   }
   return out;
 }
+
+/** Joint holdings (resource records, step H0; docs/design-earned-and-
+ *  resource-records.md 3.2): a holding owned by several persons of a case is
+ *  stated on each owner's list with the same `holding_id`, kind and value
+ *  and that owner's `share`. Across the persons of one case, the records of
+ *  one list that state the same holding_id (in the same month) must agree on
+ *  kind and value, and their shares (1 where a record states none) must not
+ *  add to more than 1: otherwise a couple's joint account is counted twice,
+ *  or two holdings are read as one. Only for a list whose schema declares
+ *  `holding_id`; one line per disagreement. */
+export function jointRecordErrors(it: Item, lists: ReadonlyArray<readonly [string, unknown]>): string[] {
+  const fields = it.record_fields ?? {};
+  if (!fields.holding_id) return [];
+  const measure = (RECORD_NOUNS[recordNounOf(it)] ?? RECORD_NOUNS.receipt).measure;
+  const groups = new Map<string, Array<{ pid: string; index: number; rec: Record<string, unknown> }>>();
+  for (const [pid, list] of lists) {
+    if (!Array.isArray(list)) continue;
+    list.forEach((r, index) => {
+      if (r === null || typeof r !== "object" || Array.isArray(r)) return;
+      const rec = r as Record<string, unknown>;
+      if (typeof rec.holding_id !== "string" || !rec.holding_id) return;
+      const key = `${rec.holding_id}|${recordMonth(rec) ?? ""}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push({ pid, index, rec });
+    });
+  }
+  const out: string[] = [];
+  for (const [key, rs] of groups) {
+    const [id, month] = key.split("|");
+    const at = `${it.identifier} holding_id ${id}${month ? " in " + month : ""}`;
+    const kinds = new Set(rs.map((x) => String(x.rec.kind)));
+    if (kinds.size > 1) out.push(`${at}: its records disagree on kind (${[...kinds].join(", ")})`);
+    const values = new Set(rs.map((x) => JSON.stringify(x.rec[measure] ?? null)));
+    if (values.size > 1) out.push(`${at}: its records disagree on ${measure} (${rs.map((x) => `${x.pid}: ${JSON.stringify(x.rec[measure] ?? null)}`).join(", ")})`);
+    const total = rs.reduce((a, x) => a + (typeof x.rec.share === "number" ? x.rec.share : 1), 0);
+    if (total > 1 + 1e-9) out.push(`${at}: its shares add to ${Math.round(total * 1e6) / 1e6}, more than 1 (${rs.map((x) => `${x.pid}: ${typeof x.rec.share === "number" ? x.rec.share : "1 (not stated)"}`).join(", ")})`);
+  }
+  return out;
+}

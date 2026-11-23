@@ -15,7 +15,7 @@ import { check } from "../../src/engine/check";
 import { block, inline } from "../../src/engine/render";
 import { parseDerivation, parseInline } from "../../src/engine/parse";
 import { parseItemFile, stringifyItem } from "../../src/engine/yaml";
-import { schemaErrors } from "../../src/engine/records";
+import { jointRecordErrors, schemaErrors } from "../../src/engine/records";
 import type { Expr, Item } from "../../src/engine/types";
 
 const KINDS = ["bank_account", "vehicle", "home"];
@@ -138,5 +138,32 @@ describe("a list of holdings (record_noun)", () => {
     const text = stringifyItem(holdings);
     expect(text).toMatch(/\nrecord_noun: holding\nrecord_fields:\n/);
     expect(stringifyItem(parseItemFile(text))).toBe(text);
+  });
+});
+
+describe("joint holdings (design 3.2)", () => {
+  const withJoint: Item = {
+    ...holdings,
+    record_fields: {
+      ...holdings.record_fields!,
+      share: { type: "rate", when_absent: "owned alone", meaning: "The person's share of the holding." },
+      holding_id: { type: "text", required: true, meaning: "A name for a holding owned with others." },
+    },
+  };
+  const acct = (share?: number, value = 1000, kind = "bank_account") => ({ kind, value, holding_id: "joint-1", ...(share === undefined ? {} : { share }) });
+
+  it("accepts one holding stated on each owner's list with shares adding to 1", () => {
+    expect(jointRecordErrors(withJoint, [["p1", [acct(0.5)]], ["p2", [acct(0.5)]]])).toEqual([]);
+    expect(jointRecordErrors(withJoint, [["p1", [acct(0.5)]], ["p2", [{ kind: "bank_account", value: 1000 }]]])).toEqual([]);
+  });
+
+  it("refuses records of one holding that disagree on kind or value, or shares over 1", () => {
+    expect(jointRecordErrors(withJoint, [["p1", [acct(0.5, 1000)]], ["p2", [acct(0.5, 900)]]]).join(" ")).toMatch(/disagree on value/);
+    expect(jointRecordErrors(withJoint, [["p1", [acct(0.5)]], ["p2", [acct(0.5, 1000, "securities")]]]).join(" ")).toMatch(/disagree on kind/);
+    expect(jointRecordErrors(withJoint, [["p1", [acct()]], ["p2", [acct(0.5)]]]).join(" ")).toMatch(/shares add to 1.5/);
+  });
+
+  it("does not apply to a list that declares no holding_id", () => {
+    expect(jointRecordErrors(holdings, [["p1", [acct()]], ["p2", [acct()]]])).toEqual([]);
   });
 });
