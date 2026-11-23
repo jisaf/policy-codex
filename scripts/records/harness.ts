@@ -83,10 +83,12 @@ import { jointRecordErrors } from "../../src/engine/records";
 export const EARNINGS_BASELINE = "9650b0ca4eceaa0bb2e674ecbd2a8fc4964aaf7d";
 
 /** The ledger each H1 track measures itself against: the end of step H0
- *  (docs/reviews/holdings-h0.md), re-pointed by the integration owner at
+ *  (cb7eac3, its change record, the last H0 commit that changes the ledger;
+ *  docs/reviews/holdings-h0.md), re-pointed by the integration owner at
  *  each merge wave (design 4.3, rule 5). To measure H0 itself, --base the
- *  ledger just before it: a3ffd86. */
-export const HOLDINGS_BASELINE = "a3ffd86782f2a04d4997153bf3557ec6fd756c48";
+ *  ledger just before it: 704da6b (a3ffd86 with the receipts harness
+ *  classification merged into H0 before its gate). */
+export const HOLDINGS_BASELINE = "cb7eac3a137ba2a658d91cb0736ff73fa82f2f9f";
 
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
