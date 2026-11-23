@@ -1,0 +1,17 @@
+id: CO-5006
+name: "LEAP: a person's SSI without its cents"
+identifier: leap_ssi_whole_dollars
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: The person's recurring SSI receipts of the month, counted in the month received and without their cents (9 CCR 2503-7 3.752.21.I).
+precision: The month's receipts added, then rounded down to the whole dollar.
+derived: ["-", 0, [ceil, ["-", 0, [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], ["=", [receipt, kind], ssi]], [receipt, amount]]]]]
+sources: [S2714]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 1: the SSI term of leap_person_unearned_income (CO-3926), read from the receipts."
+nearest: [CO-5005]
+tests:
+  - {id: CO-5006-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: ssi, amount: 967.5}]}, title: "SSI of $967.50 counts as $967 (3.752.21.I)", expect: 967}

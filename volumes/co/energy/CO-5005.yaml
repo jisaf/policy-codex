@@ -1,0 +1,18 @@
+id: CO-5005
+name: "LEAP: a person's Social Security without its cents"
+identifier: leap_social_security_whole_dollars
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "The person's recurring Social Security receipts of the month, without their cents (9 CCR 2503-7 3.752.211.H: \"When determining income, do not consider cents in the gross income amount\")."
+precision: The month's receipts added, then rounded down to the whole dollar. A retroactive lump-sum payment is not recurring and 3.752.23.EE excludes it.
+derived: ["-", 0, [ceil, ["-", 0, [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], ["=", [receipt, kind], social_security]], [receipt, amount]]]]]
+sources: [S2714]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 1: the Social Security term of leap_person_unearned_income (CO-3926), read from the receipts."
+nearest: [CO-5006]
+tests:
+  - {id: CO-5005-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 1204.9}]}, title: "$1,204.90 counts as $1,204", expect: 1204}
+  - {id: CO-5005-T2, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 3000, frequency: once, retroactive: true, month: "2026-11", date: "2026-11-02"}]}, title: "A retroactive lump sum is not the month's benefit", expect: 0}

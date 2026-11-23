@@ -468,9 +468,46 @@ export interface Translated<T> { value: T; notes: string[]; changed: boolean }
 /** A household with each person's receipts (re)written from its old facts.
  *  Person-month facts stated under `facts` are read as every month, as the
  *  engine reads them. */
-export function translateCase(c: HouseholdCase, ix: LedgerIndex, choices?: Choices): Translated<HouseholdCase> {
-  const out = clone(c);
+/** Old facts a migration retired (no reader is left), by identifier, with
+ *  their scope. A stored household's statement of one is kept in
+ *  retired-facts.yaml, which the translation reads beside the household, so
+ *  its receipts stay the translation of everything it stated. */
+export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
+  // LEAP (migration phase 1): the thirty-day and placement facts
+  lottery_gambling_winnings_received_prior_thirty_days: "person",
+  lump_sum_received_prior_thirty_days: "person",
+  retroactive_social_security_lump_sum_received_prior_thirty_days: "person",
+  retroactive_ssi_or_public_assistance_lump_sum_received_prior_thirty_days: "person",
+  resource_liquidation_proceeds_received_prior_thirty_days: "person",
+  refugee_resettlement_grant_received_prior_thirty_days: "person",
+  insurance_proceeds_spent_on_covered_costs_prior_thirty_days: "person",
+  named_source_receipts_in_lump_sum_prior_thirty_days: "person",
+  americorps_service_hours: "person-month",
+};
+/** case id -> person -> retired fact -> value, as stated before retirement. */
+export type RetiredFacts = Record<string, Record<string, Record<string, unknown>>>;
+
+/** A household with the facts a migration retired from it put back: what
+ *  it stated before the migration (the harness evaluates the old ledger on
+ *  it; the translation reads it). */
+export function withRetired(c0: HouseholdCase, retired?: RetiredFacts): HouseholdCase {
+  const c = clone(c0);
+  for (const [pid, facts] of Object.entries(retired?.[c.id] ?? {})) {
+    const p = c.persons[pid];
+    if (!p) continue;
+    for (const [k, v] of Object.entries(facts)) {
+      if (RETIRED[k] === "person-month") (p.month_defaults ??= {})[k] = v;
+      else (p.facts ??= {})[k] = v;
+    }
+  }
+  return c;
+}
+
+export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choices, retired?: RetiredFacts): Translated<HouseholdCase> {
+  const out = clone(c0);
   const notes: string[] = [];
+  // the household as translated: its statements and its retired ones
+  const c = withRetired(c0, retired);
   const app = (c.case_facts?.leap_application_date as string | undefined) ?? undefined;
   const window = windowOf(caseMonths(c.as_of, c.expect, c.persons, app ? [app.slice(0, 7), addMonths(app.slice(0, 7), -1)] : []));
   let changed = false;
@@ -478,17 +515,15 @@ export function translateCase(c: HouseholdCase, ix: LedgerIndex, choices?: Choic
     const facts: Record<string, unknown> = {};
     const md: Record<string, unknown> = { ...(p.month_defaults ?? {}) };
     for (const [k, v] of Object.entries(p.facts ?? {})) {
-      if (ix.byIdentifier.get(k)?.scope === "person-month") md[k] = v; else facts[k] = v;
+      if ((ix.byIdentifier.get(k)?.scope ?? RETIRED[k]) === "person-month") md[k] = v; else facts[k] = v;
     }
     const t = translatePerson(`${c.id} ${pid}`, { facts, monthDefaults: md, months: p.months ?? {} }, window, app, choiceFor(choices, c.id, pid));
     notes.push(...t.notes);
     const before = JSON.stringify(p.facts?.receipts);
     const target = out.persons[pid];
-    if (t.receipts === undefined) {
-      if (target.facts && "receipts" in target.facts) delete target.facts.receipts;
-    } else {
-      target.facts = { ...(target.facts ?? {}), receipts: t.receipts };
-    }
+    // A person who states none of the old facts keeps the receipts as
+    // stated: a household written in receipts alone has nothing to translate.
+    if (t.receipts !== undefined) target.facts = { ...(target.facts ?? {}), receipts: t.receipts };
     if (JSON.stringify(target.facts?.receipts) !== before) changed = true;
   }
   return { value: out, notes, changed };
@@ -530,13 +565,13 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
   for (const [pid, s] of persons) {
     const tr = translatePerson(`${t.id} ${pid}`, { facts: s.facts, monthDefaults: s.md, months: s.months }, window, app, choiceFor(choices, t.id, pid));
     notes.push(...tr.notes);
-    const holder: Record<string, unknown> | undefined =
+    if (tr.receipts === undefined) continue; // stated in receipts alone: kept as stated
+    const holder: Record<string, unknown> =
       t.persons && pid in t.persons ? (out.persons![pid].facts ??= {})
         : pid === "p1" ? (out.given ??= {})
           : (out.others![pid] ??= {});
     const before = JSON.stringify(holder.receipts);
-    if (tr.receipts === undefined) delete holder.receipts;
-    else holder.receipts = tr.receipts;
+    holder.receipts = tr.receipts;
     if (JSON.stringify(holder.receipts) !== before) changed = true;
   }
   return { value: out, notes, changed };

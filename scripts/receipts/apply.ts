@@ -12,7 +12,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { isMap, isSeq, parseDocument, type Pair, type YAMLMap } from "yaml";
 import { parseItemFile, stringifyItem, flowValue } from "../../src/engine/yaml";
-import { translateCase, translateTest } from "./translate";
+import { RETIRED, translateCase, translateTest } from "./translate";
+import { loadRetired, saveRetired } from "./retired";
 import { CHOICES } from "./choices";
 import { currentLedger, root } from "./ledgers";
 import type { HouseholdCase } from "../../src/engine/cases";
@@ -24,17 +25,51 @@ const vol = path.join(root, L.ledger.volumePath);
 // ---- stored households ----
 const casesPath = path.join(vol, "tests/cases.yaml");
 let text = fs.readFileSync(casesPath, "utf8");
+const lineStart = (t: string, at: number) => t.lastIndexOf("\n", at - 1) + 1;
+const lineEnd = (t: string, at: number) => { const i = t.indexOf("\n", at); return i < 0 ? t.length : i + 1; };
+
+// Retirement: an old fact no reader is left for (RETIRED, and no longer in
+// the ledger) is moved out of each household into retired-facts.yaml, which
+// the translation reads beside it.
+const retired = loadRetired();
+{
+  const d0 = parseDocument(text);
+  const cuts: Array<[number, number]> = [];
+  if (isSeq(d0.contents)) for (const node of d0.contents.items) {
+    if (!isMap(node)) continue;
+    const id = String(node.get("id"));
+    const persons = node.get("persons", true);
+    if (!isMap(persons)) continue;
+    for (const pair of (persons as YAMLMap).items as Pair[]) {
+      const pid = String((pair.key as { value?: unknown }).value);
+      if (!isMap(pair.value)) continue;
+      for (const part of ["facts", "month_defaults"]) {
+        const m: unknown = (pair.value as YAMLMap).get(part, true);
+        if (!isMap(m)) continue;
+        for (const fp of ((m as YAMLMap).items as Pair[]) as Pair[]) {
+          const k = String((fp.key as { value?: unknown }).value);
+          if (!(k in RETIRED) || L.ix.byIdentifier.has(k)) continue;
+          ((retired[id] ??= {})[pid] ??= {})[k] = (fp.value as { toJSON(): unknown }).toJSON();
+          const ks = (fp.key as { range: [number, number, number] }).range[0];
+          const ve = (fp.value as { range: [number, number, number] }).range[1];
+          cuts.push([lineStart(text, ks), lineEnd(text, ve - 1)]);
+        }
+      }
+    }
+  }
+  cuts.sort((a, b) => b[0] - a[0]);
+  for (const [s, e] of cuts) text = text.slice(0, s) + text.slice(e);
+  if (cuts.length) console.log(`retired facts moved out of the households: ${cuts.length}`);
+}
 const doc = parseDocument(text);
 const seq = doc.contents;
 if (!isSeq(seq)) throw new Error("cases.yaml is not a list");
 const edits: Array<{ start: number; end: number; insert: string }> = [];
 let casesChanged = 0;
-const lineStart = (t: string, at: number) => t.lastIndexOf("\n", at - 1) + 1;
-const lineEnd = (t: string, at: number) => { const i = t.indexOf("\n", at); return i < 0 ? t.length : i + 1; };
 for (const node of seq.items) {
   if (!isMap(node)) continue;
   const c = node.toJSON() as HouseholdCase;
-  const tr = translateCase(c, L.ix, CHOICES);
+  const tr = translateCase(c, L.ix, CHOICES, retired);
   if (!tr.changed) continue;
   casesChanged++;
   const persons = node.get("persons", true);
@@ -91,9 +126,10 @@ for (const [id, dir] of Object.entries(L.ledger.chapterOf)) {
 console.log(`households re-translated: ${casesChanged}; rule tests re-translated: ${testsChanged} in ${itemFiles.length} item files`);
 if (!dry) {
   fs.writeFileSync(casesPath, text);
+  saveRetired(retired);
   for (const [f, t] of itemFiles) fs.writeFileSync(f, t);
   // the written file must read back as the translation
   const again = parseDocument(fs.readFileSync(casesPath, "utf8")).toJSON() as HouseholdCase[];
-  const stale = again.filter((c) => translateCase(c, L.ix, CHOICES).changed).map((c) => c.id);
+  const stale = again.filter((c) => translateCase(c, L.ix, CHOICES, retired).changed).map((c) => c.id);
   if (stale.length) { console.error(`not a fixed point: ${stale.join(", ")}`); process.exitCode = 1; }
 }

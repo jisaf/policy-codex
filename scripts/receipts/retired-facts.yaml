@@ -1,0 +1,21 @@
+# Old facts retired by the receipts migration (scripts/receipts/translate.ts, RETIRED), as each
+# stored household stated them: case -> person -> fact -> value. Written by npm run receipts:translate;
+# read only by the translation. No rule reads these facts.
+CO-125:
+  p4:
+    lottery_gambling_winnings_received_prior_thirty_days: 1200
+CO-135:
+  p4:
+    lottery_gambling_winnings_received_prior_thirty_days: 5000
+CO-225:
+  p1:
+    lump_sum_received_prior_thirty_days: 3000
+    lottery_gambling_winnings_received_prior_thirty_days: 0
+CO-373:
+  p1:
+    lump_sum_received_prior_thirty_days: 3000
+    lottery_gambling_winnings_received_prior_thirty_days: 0
+CO-374:
+  p1:
+    lump_sum_received_prior_thirty_days: 900
+    lottery_gambling_winnings_received_prior_thirty_days: 0

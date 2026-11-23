@@ -1,0 +1,20 @@
+id: CO-5003
+name: "LEAP: a person's counted recurring receipts"
+identifier: leap_counted_recurring_receipts
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "The person's recurring receipts of the month that LEAP's counting table counts (leap_receipt_treatment_table: counted, or counted because no rule excludes it), at the amount received in the month: one month's income (9 CCR 2503-7 3.752.22.A), other than Social Security and SSI (each counted without its cents) and Colorado Works and Adult Financial cash assistance (leap_cash_assistance_receipts)."
+precision: "A receipt is recurring when it is not paid once; it is received in the month when it states the month, or states none (it recurs in every month). Read for the month of the application (leap_household_income, CO-1002). Replaces unearned_income_prior_thirty_days (CO-3913) for LEAP: the thirty-day figure the case could state is not restated, since 3.752.22.A caps the period's unearned income at one month's income."
+derived: [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [lookup, leap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes]], [not, [in, [receipt, kind], [social_security, ssi, colorado_works_cash, adult_financial_cash]]]], [receipt, amount]]
+sources: [S2713, S2714, S1624, S3307, S3306]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 1: LEAP's recurring unearned income, read from the receipts through its counting table."
+tests:
+  - {id: CO-5003-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: pension, amount: 610}, {kind: child_support, amount: 300}, {kind: crime_victim_compensation, amount: 900}, {kind: social_security, amount: 1000}]}, title: "Pension and child support counted; crime victim compensation excluded (G); Social Security read on its own", expect: 910}
+  - {id: CO-5003-T2, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: pension, amount: 610, month: "2026-10"}, {kind: gift, amount: 50, month: "2026-11"}]}, title: "Only the month's receipts: October's pension is not November's", expect: 50}
+  - {id: CO-5003-T3, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: other_nontaxable, amount: 2000, frequency: once, month: "2026-11", date: "2026-11-03"}]}, title: "A one-time receipt is not recurring income (leap_one_time_receipts_in_period reads it)", expect: 0}
+  - {id: CO-5003-T4, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: []}, title: "No receipts: none", expect: 0}
+  - {id: CO-5003-T5, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10"}, title: "Receipts not stated: cannot determine", expect: unknown}

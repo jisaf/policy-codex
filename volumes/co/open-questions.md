@@ -2711,3 +2711,23 @@ Owner: Legal, SNAP policy owner
 Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control".
 
 Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.
+
+### OQ-885. LEAP: money a non-citizen receives from a sponsor
+
+Body: 9 CCR 2503-7 3.752.21 (S2714) counts "payments from any other source, which is considered to be a gain or benefit to the applicant or recipient", and no paragraph of 3.752.23 (S1624, S2208, S3300, S3302, S3595) names money from a sponsor. Before receipt records LEAP never read it: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts LEAP summed, so a sponsor's cash was left out of LEAP income by silence. The counting table (leap_receipt_treatment_table, CO-5001) keeps that reading, as not_counted_open_question, until the LEAP owner decides.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: Money from a sponsor is not counted (the reading before receipt records), pending this answer; 3.752.21's "any other source" suggests it is.
+
+Checked 2026-11-23: 9 CCR 2503-7 3.752.21, 3.752.211, 3.752.23 (D-86, version effective 11/01/2025, and the amendments effective 11/01/2026, D-173). Neither names sponsor support.
+
+### OQ-886. LEAP: the income verification period when the prior month has no same date
+
+Body: 9 CCR 2503-7 3.751.1 (S2712): "The income verification period is from the date of application to the same date of the prior month (approximately thirty (30) calendar days from the date of application)". An application on March 29, 30 or 31 has no same date in February, nor one on the 31st of a month after a 30-day month. leap_income_verification_period_start (CO-5002) takes the application date less the days of the prior month, which lands a day or two into the application month (March 30: March 2), so a receipt of the last days of February is outside the period.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: The application date less the number of days in the prior month (March 30 gives March 2); the alternative reading is the prior month's last day (February 28).
+
+Checked 2026-11-23: 9 CCR 2503-7 3.751.1 and 3.752.22.A (D-86, version effective 11/01/2025). Neither says which date stands for a missing same date.

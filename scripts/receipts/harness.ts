@@ -25,8 +25,9 @@ import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { valuesEqual as ve } from "../../src/engine/values";
 import { BASELINE_REF, currentLedger, ledgerAt, root, type Ledger } from "./ledgers";
 import { generated } from "./generate";
-import { translateCase } from "./translate";
+import { translateCase, withRetired } from "./translate";
 import { CHOICES } from "./choices";
+import { loadRetired } from "./retired";
 import { runMetamorphic } from "./metamorphic";
 
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && ve(a, b));
@@ -99,6 +100,7 @@ export function main(): number {
   const only = arg("--only");
   const t0 = Date.now();
   const oldL = ledgerAt(base);
+  const retired = loadRetired();
   const newL = currentLedger();
   const allowed = (parseYaml(fs.readFileSync(path.join(root, "scripts/receipts/allowed-differences.yaml"), "utf8")) ?? []) as Allowed[];
   const programs = has("--all-programs") ? (newL.ledger.meta.programs ?? []).map((p) => p.id) : MIGRATED;
@@ -112,10 +114,10 @@ export function main(): number {
   // stored households: as stored, on both ledgers; and the stored receipts
   // must be the translation of the old facts
   const stored = newL.ledger.cases.map((c) => {
-    const tr = translateCase(c, newL.ix, CHOICES);
+    const tr = translateCase(c, newL.ix, CHOICES, retired);
     notes.push(...tr.notes);
     if (tr.changed) stale.push(c.id);
-    return { old: c, new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
+    return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
   const gen = generated(oldL.ledger.cases).map((c) => {
