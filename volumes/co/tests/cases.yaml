@@ -58830,3 +58830,481 @@
   expect:
     p1:
       snap_is_disqualified_for_voluntary_quit: false
+
+# ---------------------------------------------------------------------------------------------------------------
+# Time audit (step 6 of the 2026-11-23 plan): cases CO-530 to CO-599, docs/reviews/time-audit.md. Each expectation
+# is derived by hand from the rule text, with the arithmetic in the comment; a case the codex still answers
+# differently is listed in conformance/known-failures.json and keyed to its finding (T-n) in the review.
+
+- id: CO-530
+  title: "Time audit T-1: retroactive months across a 19th birthday (MAGI Children's group)"
+  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # p1, single, born 2007-09-15, earns $1,850 a month in wages, her own tax household (size 1). She applies on
+  # 2026-11-10 and asks for retroactive coverage; she met every requirement from 2026-08-01 (ma_eligibility_start_date).
+  # Retroactive period (8.100.3.E.1, 42 CFR 435.915(a), an application before 2027): the three months before November,
+  # August to October 2026; 435.915(a) asks whether she "would have been eligible ... at the time" of each month.
+  # Income: FPL 2026 size 1 = 15,960 / 12 = 1,330.00 a month; 1,850 / 1,330 = 1.3910 (139.10%).
+  # - August 2026: she is 18 (19th birthday 2026-09-15 not yet reached). Children's group, under 19 (8.100.4.G.2):
+  #   1.3910 <= 1.42 -> child, eligible.
+  # - September 2026: the month she turns 19. She is under 19 on September 1-14, and "any person who is determined to
+  #   be eligible ... at any time during a calendar month shall be eligible for benefits during the entire month"
+  #   (8.100.4.G.1, S3351); CO-564 reads the Children's group the same way ("through the end of the month in which
+  #   they turn 19") -> child, eligible.
+  # - October 2026: 19 and past the birthday month: Adults (19-64), 1.3910 > 1.33; the 5% disregard at her highest
+  #   standard (Adults, 1.33): 1.3910 - 0.05 = 1.3410 > 1.33 -> none, ineligible_income.
+  # The codex measures the 19th birthday against the determination month (ma_is_under_child_age_or_turns_nineteen_this_month,
+  # CO-564: age on 2026-10-31 = 19) in every month, so August and September are also none / ineligible_income.
+  # A control with the birth year 2008 gives child / eligible for August to October.
+  as_of: "2026-11-10"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        has_qualifying_military_service: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "2007-09-15"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        education_program_type: none
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-10"
+        ma_retroactive_coverage_requested: true
+        ma_eligibility_start_date: "2026-08-01"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_prior_enrollment_category: none
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1850
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+  expect:
+    p1:
+      ma_magi_category: {"2026-08": child, "2026-09": child, "2026-10": none}
+      ma_magi_eligibility_status: {"2026-08": eligible, "2026-09": eligible, "2026-10": ineligible_income}
+
+- id: CO-531
+  title: "Time audit T-1: the application month is the month of the 19th birthday; determined the next month"
+  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # p1, single, born 2007-10-20, earns $1,850 a month, his own tax household (size 1). He applies on 2026-10-28 (no
+  # retroactive request) and the county determines the application on 2026-11-05 (as_of).
+  # Coverage starts in the month of application (8.100.3.E; any day eligible in a calendar month covers the whole
+  # month, 8.100.4.G.1, S3351). Income 1,850 / 1,330.00 = 1.3910.
+  # - October 2026 (the application month): the month he turns 19; he is under 19 on October 1-19, so the Children's
+  #   group covers the whole month (G.1; CO-564's "through the end of the month in which they turn 19"):
+  #   1.3910 <= 1.42 -> child, eligible.
+  # - November 2026: 19, past the birthday month: Adults, 1.3910 and 1.3410 (after the 5% disregard) > 1.33 -> none,
+  #   ineligible_income.
+  # The codex reads the birthday month as the determination month (November), so October is none / ineligible_income.
+  as_of: "2026-11-05"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        has_qualifying_military_service: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "2007-10-20"
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        education_program_type: none
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-10-28"
+        ma_retroactive_coverage_requested: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_prior_enrollment_category: none
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1850
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+  expect:
+    p1:
+      ma_magi_category: {"2026-10": child, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": ineligible_income}
+
+- id: CO-532
+  title: "Time audit T-3: retroactive months in 2026 on a January 2027 application read the 2027 SSI benefit rate"
+  # Time audit T-3 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-3.
+  # p1, 76, single, Medicare Part A, savings 1,000 (no burial funds, no other property). Social Security 1,020 a month in
+  # November and December 2026, 1,048 from January 2027 (the cost-of-living increase). Applies 2027-01-05 asking for
+  # retroactive coverage; every requirement other than income is met throughout.
+  # Retroactive months for an application on or after 2027-01-01, not an expansion adult: two (42 U.S.C. 1396a(a)(34)(B)
+  # as amended; ma_retroactive_coverage_months_for_application, CO-2472): November and December 2026.
+  # SSI-related income test (8.100.5; ma_meets_ssi_income_standard): countable unearned income = Social Security - $20
+  # general exclusion, at or below the SSI federal benefit rate for an individual in that month:
+  # - November 2026: 1,020 - 20 = 1,000 > 994 (the 2026 rate, S319) -> not SSI-related eligible -> none.
+  # - December 2026: the same -> none.
+  # - January 2027: 1,048 - 20 = 1,028 <= 1,029 (the 2027 rate, S1712) -> aged.
+  # The codex chooses every parameter version by the determination date (2027-01-12), so November and December are
+  # compared with 1,029 and come out aged.
+  as_of: '2027-01-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2027-01-05'
+        ma_retroactive_coverage_requested: true
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        education_program_type: none
+        real_property_for_sale_value: 0
+        sale_efforts_verification_document_received: true
+      months:
+        '2026-11': {social_security_income: 1020}
+        '2026-12': {social_security_income: 1020}
+        '2027-01': {social_security_income: 1048}
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: true
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_related_category: {'2026-11': none, '2026-12': none, '2027-01': aged}
+
+- id: CO-533
+  title: "Time audit T-1: retroactive months before a 65th birthday (SSI-related aged)"
+  # Time audit T-1 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-1.
+  # p1, single, born 1961-10-20 (65 on 2026-10-20), not blind or disabled, Medicare Part A, Social Security 800 a
+  # month, savings 1,000. Applies 2026-11-05 asking for retroactive coverage (August to October 2026).
+  # Aged means 65 or older (42 U.S.C. 1382c(a)(1)(A); ma_aged_age 65). Countable income 800 - 20 = 780 <= 994 (2026).
+  # - August and September 2026: 64, not aged, not blind, not disabled -> none.
+  # - November 2026: 65 -> aged (780 <= 994; resources 1,000 <= 2,000).
+  # October (the birthday month) is not asserted: whether the whole month counts is not settled by the excerpts read.
+  # The codex takes age on the determination date (2026-11-12) for every month, so August and September are aged.
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1961-10-20'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: true
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        education_program_type: none
+        real_property_for_sale_value: 0
+        sale_efforts_verification_document_received: true
+      month_defaults:
+        social_security_income: 800
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: true
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_related_category: {'2026-08': none, '2026-09': none, '2026-11': aged}
+
+- id: CO-534
+  title: "Time audit T-2: the Adult Financial maximum ISM in January 2027"
+  # Time audit T-2 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-2.
+  # CO-166's household determined on 2027-01-05: p1, 70, Social Security $600, lives rent-free in her daughter's home
+  # whose shelter costs ($1,200, market value) are all provided, so the full maximum ISM counts (3.520.79.C.3).
+  # The maximum ISM (9 CCR 2503-5 3.520.79.E.2, S1012): "the current SSI benefit standard ... by 33.33%, then adding a
+  # $20.00 disregard and rounding to the nearest whole dollar". The 2027 SSI benefit standard for an individual is
+  # $1,029 (91 FR 67380, S1712): 1,029 x 0.3333 = 342.9657; + 20 = 362.9657 -> 363. (The same formula gives the
+  # published 2026 figure: 994 x 0.3333 + 20 = 351.30 -> 351, S700; and 2025: 967 x 0.3333 + 20 = 342.30 -> 342, S1020.)
+  # Countable income (3.533.A.2): 600 + 363 = 963 unearned, less the $20 = 943.
+  # The OAP grant and category are not asserted: the 2027 OAP grant standard and payment floor are set by the State
+  # Board and are not yet published. The codex's af_ism_maximum (CO-1513) has an open 2026 version ($351), so January
+  # 2027 gives 351 and 931.
+  as_of: "2027-01-05"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        nighttime_residence_type: shared_housing_due_to_loss_or_hardship
+        owns_and_lives_in_home: false
+        lives_in_subsidized_housing: false
+        shelter_cost_monthly: 0
+        home_total_shelter_costs: 1200
+        home_shelter_costs_are_market_value: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 1200
+  expect:
+    p1:
+      af_in_kind_support_and_maintenance: {'2027-01': 363}
+      af_countable_income: {'2027-01': 943}
+
+- id: CO-535
+  title: "Time audit T-4: lottery winnings a few cents under $80,000 and $90,000"
+  # Time audit T-4 (docs/reviews/time-audit.md), generated boundary case (npm run boundaries: CO-1185 at T = 79,999, step 0.01).
+  # Still failing: registered in conformance/known-failures.json under T-4.
+  # p1 (CO-530's applicant, no retroactive request) wins $89,999.50 in September 2026 and $79,999.50 in October 2026.
+  # 42 U.S.C. 1396a(e)(14)(K)(i) (S1234), which binds MAGI eligibility: winnings "less than $80,000" count in the month
+  # received (1 month); "greater than or equal to $80,000 but less than $90,000" over 2 months.
+  # - September: 89,999.50 < 90,000 -> 2 months.
+  # - October: 79,999.50 < 80,000 -> 1 month.
+  # The codex (ma_lottery_winnings_spread_months, CO-1185) compares with $79,999 (ma_lottery_winnings_spread_floor) and
+  # counts started $10,000 increments above it: 79,999.50 > 79,999 -> 1 + ceil(0.50 / 10,000) = 2 months; 89,999.50 ->
+  # 1 + ceil(10,000.50 / 10,000) = 3 months. Its precision says the reading "matches at every boundary"; that holds
+  # for whole dollars only. (10 CCR 2505-10 8.100.4.C.1.b.xiv, S669, says "less than $79,999" and "over $79,999", which
+  # leaves the cents between $79,999 and $80,000 to the federal rule.)
+  as_of: "2026-11-10"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        has_qualifying_military_service: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "2007-09-15"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        education_program_type: none
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-10"
+        ma_retroactive_coverage_requested: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_prior_enrollment_category: none
+      months:
+        '2026-09': {lottery_gambling_winnings_received: 89999.5}
+        '2026-10': {lottery_gambling_winnings_received: 79999.5}
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1850
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+  expect:
+    p1:
+      ma_lottery_winnings_spread_months: {'2026-09': 2, '2026-10': 1}

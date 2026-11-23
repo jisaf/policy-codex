@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 18 of ${vol.cases.length} stored households; it reaches 41`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 33 and reaches 67", () => {
+  it("the children's Medicaid income limit (CO-191) is read by 33 and reaches 69", () => {
     expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(33); // + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(67); // + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up)
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(69); // + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up); + CO-530, CO-531 (time audit)
   });
 
   it("every household that reads an item is one it reaches", () => {
