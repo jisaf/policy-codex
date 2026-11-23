@@ -6296,6 +6296,13 @@
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
         date_of_death: "2026-11-05"  # dual-entry 3.14: died this month while receiving OAP (was af_died_while_receiving_af_or_medicaid: true)
         date_of_birth: "1958-08-20"
+        # Earned-income records E1 for the cash programs (decision 4 of 2026-11-23): "Walter was not a Colorado Works
+        # client" is stated (no case active at death, and his receipts: the OAP grant the narrative gives, its amount
+        # not stated, and no Colorado Works payment), so the death reimbursement (3.606.7.B.1) is answered, not read
+        # from an unstated receipts list.
+        receives_tanf_cash: false
+        receipts:
+        - {kind: adult_financial_cash}
         burial_services_total_cost: 2800
         burial_plot_cost_excluded_from_limit: 600
         burial_insurance_proceeds: 300
