@@ -184,6 +184,18 @@ record_fields:
     type: money
     required: true
     meaning: "The part of the payment that is in the person's federal gross income (26 U.S.C. 61(a)), as the person's federal income tax return reports it or will report it: for a distribution from a health savings account used only to pay qualified medical expenses, a qualified distribution from a Roth IRA, or a qualified tuition program distribution that does not exceed the qualified higher education expenses, 0 (26 U.S.C. 223(f)(1), 408A(d)(1), 529(c)(3)(B)); for a distribution from a traditional retirement account, or cash value taken from an insurance policy, the part the return includes. A fact of the federal return, the same for every reader; a program reads it only for a kind whose amount does not settle what is taxable (coverage pass 4, C4-01)."
+  early_withdrawal_penalty:
+    type: money
+    default: 0
+    meaning: "For a payment from a pension, an annuity or an account meant to provide for a person in retirement (a 401(k), an IRA) taken before the plan or the law allows it without a penalty (an early payout), the amount deducted from the payment, or owed on it, as a penalty for the early payout (the additional tax on an early distribution included); none when not stated, since a penalty is a deduction the person shows. Part of the payment's amount (coverage pass 5, C5-2: 8 CCR 1403-1 3.111.I.8 counts pensions and annuities \"minus the amount deducted for penalties, if early payouts are received from these accounts\")."
+  ownership_share:
+    type: rate
+    when_absent: "the payment is not income from property the person owns jointly with others: the person owns the property alone, or the payment is not income from property"
+    meaning: "For income from property the person owns jointly with others (rent, royalties, interest or dividends from a jointly held property, account or security), the person's part of the property, as a fraction (0.5 for half); stated with property_income (coverage pass 5, X5-1: 8 CCR 1403-1 3.111.H.4.e and 9 CCR 2503-7 3.752.21.F count such income \"as a percentage at least equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received\"). The record's amount is what the person received of it."
+  property_income:
+    type: money
+    required: true
+    meaning: "For a payment that states ownership_share, the whole income the jointly owned property produced for the same period as the record's amount (its month, its date's payment, or each month of a stream), before it was divided among the owners or kept by one of them (coverage pass 5, X5-1)."
 sources: [S2712, S2713, S2714, S1624, S3300, S42, S1620, S1622, S2608, S4631, S4633, S4634, S4635, S3002, S4755, S4756, S2803]
 tags: [income]
 rationale: "Product-owner decision of 2026-11-23 (receipt records): the rules count money by kind of receipt, by date and form, by frequency and by earmark; one record per receipt states each once, so no rule decides where a dollar stated twice sits. Replaced the scalar unearned income facts and their part-of facts for LEAP, SNAP and Adult Financial (migration phase 1) and for Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+ (phase 2); phase 3 retired the scalar facts, so the list is now the only statement of unearned money."

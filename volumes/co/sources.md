@@ -24481,6 +24481,19 @@ Document: D-82
 > accordance with Sections 4.604, Action on Reported Changes, and 4.604.1,
 > Verification of Reported Changes.
 
+### S4850. LEAP countable unearned income: income from jointly owned property, at least the share of ownership
+
+Document: D-86
+
+9 CCR 2503-7 3.752.21 (introduction), F (version effective 11/01/2025; coverage pass 5 fix round, X5-1). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Countable unearned income includes but is not limited to the following, as well as payments from any
+> other source, which is considered to be a gain or benefit to the applicant or recipient:
+>
+> ...
+>
+> F. Income from jointly owned property: - in a percentage at least equal to the percentage of
+> ownership or, if receiving more than percentage of ownership, the actual amount received;
 ### S4820. Federal SNAP: the uniform national resource standards; non-liquid resources and personal property are resources unless paragraph (e) excludes them; only (e) excludes
 
 Document: D-191
