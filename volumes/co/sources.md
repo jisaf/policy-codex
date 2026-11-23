@@ -23259,3 +23259,33 @@ Document: D-87
 > Projected income for the launch period shall be determined based
 > upon the federal minimum wage times the number of declared
 > hours worked.
+
+### S4603. TANF regulations: what "assistance" means (and excludes), for parts 260 through 265
+
+Document: D-60
+
+45 CFR 260.30 (opening) and 260.31(a)-(b)(1) (eCFR, retrieved 2026-09-18). https://www.ecfr.gov/current/title-45/part-260
+
+> The following definitions apply under parts 260 through 265 of this chapter:
+>
+> ...
+>
+> *Assistance* has the meaning specified at § 260.31.
+>
+> ## § 260.31 What does the term “assistance” mean?
+>
+> (a)(1) The term “assistance” includes cash, payments, vouchers, and other forms of benefits designed to meet a family's ongoing basic needs (i.e., for food, clothing, shelter, utilities, household goods, personal care items, and general incidental expenses).
+>
+> ...
+>
+> (3) Except where excluded under paragraph (b) of this section, it also includes supportive services such as transportation and child care provided to families who are not employed.
+>
+> (b) It excludes:
+>
+> (1) Nonrecurrent, short-term benefits that:
+>
+> (i) Are designed to deal with a specific crisis situation or episode of need;
+>
+> (ii) Are not intended to meet recurrent or ongoing needs; and
+>
+> (iii) Will not extend beyond four months.
