@@ -3,27 +3,36 @@ name: Is school aged
 identifier: sebt_is_school_aged
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SunBucks
-meaning: "Whether the child is of Colorado's compulsory school attendance age for the school year that began on the most recent August 1: the child had attained the age of six on or before that August 1 and was under seventeen on it (C.R.S. 22-33-104(1)(a)). 7 CFR 292.2 makes these the \"school aged\" years for Summer EBT."
-precision: "The August 1 is the most recent one on or before the determination date, the first day of the most recent month, on or before the determination date's month, whose calendar month number is compulsory_school_attendance_age_date_month (CO-2605, August), read with P50 as leap_program_year_start_month (CO-1006) finds the November (hard-coded numbers fix round; engineering follow-up 3 computed it with P49, and before it a fixed 2000-08-01 anchor was advanced by whole years). A determination dated in June or July (inside the summer operational period) therefore reads the school year just ended, and one dated from August 1 reads the school year just begun. The exceptions of 22-33-104(2) excuse individual children from attendance (illness, private or home schooling, graduation) and do not change the ages; 292.6 reaches a child who is school aged \"at any time during the period of eligibility\", and the item tests the one August 1 named above."
-derived: [all, [">=", [years_between, date_of_birth, [first_day, [latest_month_of_year, compulsory_school_attendance_age_date_month, [det_month]]]], compulsory_school_attendance_min_age], ["<", [years_between, date_of_birth, [first_day, [latest_month_of_year, compulsory_school_attendance_age_date_month, [det_month]]]], compulsory_school_attendance_age_limit]]
+meaning: "Whether the child is of Colorado's compulsory school attendance age for the school year that begins in the period of eligibility of the summer the month belongs to (sebt_summer_year, CO-2581): the child had attained the age of six on or before the first August 1 on or after the period's first day (the July 1 that starts the instructional year, sebt_instructional_year_start_month) and was under seventeen on it (C.R.S. 22-33-104(1)(a)). 7 CFR 292.2 makes these the \"school aged\" years for Summer EBT, and 292.6 reaches a child school aged \"at any time during the period of eligibility\"."
+precision: "Coverage pass 4 S4-2 (docs/reviews/coverage4-care-energy.md): the test reads the month evaluated, as sebt_summer_year (CO-2581) and the F3-5 fix of CO-4527 and CO-4528 do, so one summer reads one school year: the August 1 is the most recent month numbered compulsory_school_attendance_age_date_month (CO-2605, August) on or before the eleventh month after the period's first month, which is the first August on or after the period's first day (P50). A July determination is for the next summer (OQ-535) and reads the August 1 a few weeks on, which is in that summer's period; from August through June the August 1 read is the one before, as before the fix (review households S1 and S1b now agree). Before the fix the test read the most recent August 1 on or before the determination date, a year earlier for a July determination. The exceptions of 22-33-104(2) excuse individual children from attendance (illness, private or home schooling, graduation) and do not change the ages. Whether the July days of the period that fall in the school year before (the August 1 before the period's first day) also count as \"any time during the period of eligibility\", and an August 1 inside a summer operational period that runs into August, are not read: the summer operational period is in Colorado's Plan for Operations and Management, not on file (OQ-535)."
+derived: ["all", [">=", ["years_between", "date_of_birth", ["first_day", ["latest_month_of_year", "compulsory_school_attendance_age_date_month", ["months_after", 11, ["latest_month_of_year", "sebt_instructional_year_start_month", ["month"]]]]]], "compulsory_school_attendance_min_age"], ["<", ["years_between", "date_of_birth", ["first_day", ["latest_month_of_year", "compulsory_school_attendance_age_date_month", ["months_after", 11, ["latest_month_of_year", "sebt_instructional_year_start_month", ["month"]]]]]], "compulsory_school_attendance_age_limit"]]
 sources: [S1403, S793, S790]
 implemented: engine
 tags: [sebt, age]
+open: [OQ-535]
 rationale: "Phase-10 open-question sweep (OQ-255, part 2): C.R.S. 22-33-104(1)(a) is now fetched (D-141), so the age test is derived from date_of_birth instead of supplied. Kept as its own item because sebt_eligibility_status (CO-1298) and sebt_verification_status (CO-1698) both read it. Neutral (program All): the compulsory attendance ages are Colorado school law, not a Summer EBT rule. Same-word audit SW-13: SUN Bucks's own definition, so it carries SUN Bucks's prefix; CCCAP reads cccap_is_attending_school (CO-2884)."
 tests:
   # Turned six in May 2026, before the August 1, 2026 start of the school year: school aged in February 2027.
-  - {id: CO-1292-T1, as_of: "2027-02-10", given: {date_of_birth: "2020-05-20"}, expect: true}
+  - {id: CO-1292-T1, month: "2027-02", as_of: "2027-02-10", given: {date_of_birth: "2020-05-20"}, expect: true}
   # Turned six on August 2, 2026, one day after August 1: not of compulsory age until the next school year.
-  - {id: CO-1292-T2, as_of: "2027-02-10", given: {date_of_birth: "2020-08-02"}, expect: false}
+  - {id: CO-1292-T2, month: "2027-02", as_of: "2027-02-10", given: {date_of_birth: "2020-08-02"}, expect: false}
   # Turned six exactly on August 1, 2026: "on or before August 1".
-  - {id: CO-1292-T3, as_of: "2026-10-01", given: {date_of_birth: "2020-08-01"}, expect: true}
+  - {id: CO-1292-T3, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2020-08-01"}, expect: true}
   # Sixteen on August 1, 2026 (turns seventeen in September): under seventeen when the school year began.
-  - {id: CO-1292-T4, as_of: "2026-10-01", given: {date_of_birth: "2009-09-15"}, expect: true}
+  - {id: CO-1292-T4, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2009-09-15"}, expect: true}
   # Seventeen on August 1, 2026: past the compulsory age for the 2026-27 school year.
-  - {id: CO-1292-T5, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}
+  - {id: CO-1292-T5, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}
   # A June 2027 determination reads the August 1, 2026 school year: a child who turns six in March 2027 is not yet school aged.
-  - {id: CO-1292-T6, as_of: "2027-06-15", given: {date_of_birth: "2021-03-01"}, expect: false}
+  - {id: CO-1292-T6, month: "2027-06", as_of: "2027-06-15", given: {date_of_birth: "2021-03-01"}, expect: false}
   # The same child on a determination dated August 1, 2027 is school aged for the school year just begun.
-  - {id: CO-1292-T7, as_of: "2027-08-01", given: {date_of_birth: "2021-03-01"}, expect: true}
+  - {id: CO-1292-T7, month: "2027-08", as_of: "2027-08-01", given: {date_of_birth: "2021-03-01"}, expect: true}
+  # Coverage pass 4 S4-2 (review household S1): a child born 2020-07-20, determined 2026-07-15. July 2026 belongs to summer 2027 (CO-2581), whose
+  # period of eligibility starts July 1, 2026; its first August 1 is August 1, 2026, when she is six (born July 20, 2020): school aged. (Before the fix
+  # the August 1 before the determination date was read, August 1, 2025, when she was five: false.)
+  - {id: CO-1292-T8, title: "A July determination reads the August 1 of the summer's own period: six on August 1, 2026", as_of: "2026-07-15", month: "2026-07", given: {date_of_birth: "2020-07-20"}, expect: true}
+  # Review household S1b: the same child and summer determined 2026-08-15: the August 1 read is August 1, 2026 again: school aged.
+  - {id: CO-1292-T9, title: "The same summer determined in August reads the same August 1", as_of: "2026-08-15", month: "2026-08", given: {date_of_birth: "2020-07-20"}, expect: true}
+  # June 2026 belongs to summer 2026 (period from July 1, 2025): the August 1 read is August 1, 2025, when she was five: not school aged.
+  - {id: CO-1292-T10, title: "A June determination reads the August 1 of the summer under way: five on August 1, 2025", as_of: "2026-06-15", month: "2026-06", given: {date_of_birth: "2020-07-20"}, expect: false}

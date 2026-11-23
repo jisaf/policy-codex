@@ -146,6 +146,13 @@ export interface RecordFieldSpec {
   required?: boolean;
   default?: unknown;
   when_absent?: string;
+  /** With a `default`: the default is the value of a record that states no
+   *  date only; on a record that states a date the field is required, and a
+   *  rule that reads it there cannot determine (an earnings record's
+   *  frequency: a stream's amount is the month's, a dated pay's schedule is
+   *  not known unless stated; decision 4 of 2026-11-23, coverage pass 4
+   *  L4-2). docs/operators.md, "Receipt records". */
+  required_if_dated?: boolean;
   options?: string[];
   /** On a "one of" field whose options a reader must tell apart (a
    *  receipt's kind): one line per option saying what it is. Each kind names

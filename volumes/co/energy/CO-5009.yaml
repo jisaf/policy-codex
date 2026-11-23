@@ -11,7 +11,7 @@ derived: [sum_receipts, receipts, [all, ["=", [receipt, frequency], once], [not,
 sources: [S2712, S2713, S2714, S3303, S3304, S2208, S3302]
 implemented: engine
 tags: [income]
-open: [OQ-886]
+open: [OQ-886, OQ-681]
 rationale: "Receipt records, migration phase 1: the period's one-time receipts, each placed by its own date, replacing the thirty-day facts (CO-4065 to CO-4068, CO-4507 to CO-4509), the named-source part (CO-4960) and the inference of where a receipt sits (CO-4961, CO-4962)."
 tests:
   - {id: CO-5009-T1, as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: other_nontaxable, amount: 2000, frequency: once, month: "2026-10", date: "2026-10-25"}]}, title: "An inheritance on October 25, inside the period (October 10 to November 10)", expect: 2000}

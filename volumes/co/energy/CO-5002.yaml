@@ -11,7 +11,7 @@ derived: [days_after, ["-", 0, [days_between, [first_day, [month_before, [month_
 sources: [S2712]
 implemented: engine
 tags: [income]
-open: [OQ-886]
+open: [OQ-886, OQ-681]
 rationale: "Receipt records, migration phase 1: LEAP places a one-time receipt in or out of the period by its date (3.752.22.A), so the period's first day is stated once, here, instead of the thirty-day facts the case used to restate the period's receipts in."
 tests:
   - {id: CO-5002-T1, as_of: "2026-11-10", given: {leap_application_date: "2026-11-10"}, title: "Application November 10: the period starts October 10", expect: "2026-10-10"}

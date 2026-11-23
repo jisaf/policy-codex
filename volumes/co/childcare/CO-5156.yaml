@@ -11,8 +11,9 @@ derived: [sum_receipts, earnings, [all, ["=", [lookup, cccap_earnings_treatment_
 sources: [S1157, S3263, S2704]
 implemented: engine
 tags: [income]
+open: [OQ-680]
 rationale: "Earned-income records, E1 (CCCAP): one figure for the business's receipts, read by every CCCAP item that read self_employment_gross_receipts. leap_self_employment_gross_receipts (CO-5126) has the same shape over LEAP's table; it is not read here because each program builds its own income from the neutral records (product-owner decision of 2026-11-23: complex program calculations are never shared) and the two tables decide the rows apart."
-nearest: [CO-5126]
+nearest: [CO-5126, CO-6404]
 tests:
   - {id: CO-5156-T1, title: "$1,500 of receipts in October", as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500}]}, expect: 1500}
   # A farm's $700 and another business's $800: $1,500; the operating cost is not a receipt.
