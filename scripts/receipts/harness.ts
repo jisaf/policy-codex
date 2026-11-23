@@ -25,7 +25,7 @@ import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { valuesEqual as ve } from "../../src/engine/values";
 import { BASELINE_REF, currentLedger, ledgerAt, root, type Ledger } from "./ledgers";
 import { generated } from "./generate";
-import { translateCase, withRetired } from "./translate";
+import { MONTH_FACTS, PERSON_FACTS, translateCase, withRetired } from "./translate";
 import { CHOICES } from "./choices";
 import { loadRetired } from "./retired";
 import { runMetamorphic } from "./metamorphic";
@@ -113,7 +113,15 @@ export function main(): number {
   const stale: string[] = [];
   // stored households: as stored, on both ledgers; and the stored receipts
   // must be the translation of the old facts
-  const stored = newL.ledger.cases.map((c) => {
+  // A household added since the baseline and written in receipts alone has
+  // no statement the old ledger reads: it is checked by its expectations
+  // (npm run check), not compared.
+  const before = new Set(oldL.ledger.cases.map((c) => c.id));
+  const statesOld = (c: HouseholdCase) => Object.values(withRetired(c, retired).persons).some((p) =>
+    [p.facts, p.month_defaults, ...Object.values(p.months ?? {})].some((o) => Object.keys(o ?? {}).some((k) => MONTH_FACTS.has(k) || PERSON_FACTS.has(k))));
+  const compared = (c: HouseholdCase) => before.has(c.id) || statesOld(c);
+  const receiptsOnly = newL.ledger.cases.filter((c) => !compared(c)).map((c) => c.id);
+  const stored = newL.ledger.cases.filter(compared).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES, retired);
     notes.push(...tr.notes);
     if (tr.changed) stale.push(c.id);
@@ -180,6 +188,7 @@ export function main(): number {
     `# Receipt records harness: ledger at ${base.slice(0, 12)} vs the ledger on disk`, "",
     `Programs compared: ${programs.join(", ")}; ${Math.round((Date.now() - t0) / 1000)} s.`, "",
     ...table, "",
+    `Stored households written in receipts alone (no old statement to compare; checked by their expectations): ${receiptsOnly.length ? receiptsOnly.join(", ") : "none"}.`, "",
     "## Allowed differences by class", "",
     ...[...byClass].map(([k, v]) => `- ${k}: ${v.size} household(s): ${[...v].join(", ")}`), "",
     "## Stored households whose receipts are not the translation of their old facts", "",
@@ -191,6 +200,7 @@ export function main(): number {
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, text);
   console.log(table.join("\n"));
+  if (receiptsOnly.length) console.log(`stored households in receipts alone (not compared): ${receiptsOnly.join(", ")}`);
   for (const [k, v] of byClass) console.log(`allowed: ${k}: ${v.size} household(s)`);
   if (meta) console.log(meta.lines.filter((l) => l.startsWith("|")).join("\n"));
   console.log(`written ${path.relative(root, outFile)}`);
