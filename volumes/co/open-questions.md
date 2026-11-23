@@ -2990,7 +2990,7 @@ Assumption: Counted as earned income (today's reading) until the owner decides.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.2.C, 3.605.4.B.13-16 (D-81). Items: CO-5104, CO-2340.
 
-### OQ-1023. Medicaid SSI method: in-kind pay, boarder payments, and WIA wages of a dependent child
+### OQ-1023. Resolved: Medicaid SSI method: in-kind pay, boarder payments, and WIA wages of a dependent child
 
 Body: 10 CCR 2505-10 8.100.3.K (S4107), the general income rules the SSI-related method relies on, says three things the ledger does not read today: earned income is "payment in cash or in kind for services performed" and earned in-kind income is compensation "in shelter or other items in lieu of wages" (K.3-4), but no SSI-method item reads in_kind_compensation_value (CO-4506); board, room, and room and board payments are earned income above the one-person food stamp allotment per boarder and the documented costs (K.10.c-e), but no SSI-method item reads room_and_board_payments_received (CO-4161) or the payments for a room or meals only; and WIA wages paid to a dependent child applying for or receiving Medical Assistance are exempt for up to six months a calendar year (K.8.c), but the SSI method counts every WIOA on-the-job training wage as part of wages_gross. The earnings table (ma_ssi_earnings_treatment_table, CO-5107) keeps today's readings (not_counted_text_counts, counted_text_excludes) so step E0 changes no answer; the Medicaid E1 track decides each as a cited difference. If K.3-4 and K.10 apply to the SSI method as written, today's reading is a wrong answer (a P1 candidate) for an SSI-method household with in-kind pay or boarders.
 
@@ -3002,7 +3002,7 @@ Assumption: Today's readings, until the Medicaid E1 track rewires the SSI method
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.8, K.10 and 8.100.5.F.4 (D-65). Items: CO-5107.
 
-### OQ-1024. Adult Financial and Medicaid MAGI: combat-zone pay stated as part of wages
+### OQ-1024. Partly resolved: the Medicaid MAGI half is settled (26 U.S.C. 112); open: Adult Financial, combat-zone pay stated as part of wages
 
 Body: The earnings kind uniformed_services_special_pay (CO-5100) states special pay from a uniformed service for hazardous or combat duty, which today is stated two ways: as a receipt of that kind (37 U.S.C. 310 pay), and as combat_zone_pay_received (CO-4310), part of wages_gross, which only SNAP reads (4.405.2.A.12 excludes combat pay). Adult Financial's receipt table excludes the 310 pay (3.520.786, 20 CFR 416.1124(c)(19)) and Medicaid's MAGI receipt table does not count it (not_taxable_income), but both count combat-zone pay stated inside wages_gross. Each earnings table carries the receipt row's reading (excluded, not_taxable_income); the Adult Financial and Medicaid E1 tracks confirm it against the text, or keep the wages reading for pay that is not 310 special pay. No stored household or rule test states either.
 
@@ -3092,7 +3092,7 @@ Body: 26 U.S.C. 112(a)-(b) (S4340) leaves out of gross income all compensation f
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Wages are counted; only special pay stated with combat_zone is left out.
+Assumption: Wages are counted; only special pay stated as paid in a combat zone is left out.
 
 Checked 2026-11-23: 26 U.S.C. 112 (D-4340); 42 CFR 435.603(e) (D-34); CO-5100's record fields. Items: CO-5106, CO-5160.
 

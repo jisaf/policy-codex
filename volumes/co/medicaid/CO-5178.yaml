@@ -12,6 +12,6 @@ sources: [S4107]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "OQ-1023 (earned-income records E0, finding E0-F4), settled: 8.100.3.K.8.c exempts these wages for a dependent child; the pay is its own record (WIOA on-the-job training), so the exemption reads it without a part of wages_gross stated twice."
-nearest: [CO-5179]
+nearest: [CO-5179, CO-1703, CO-5161, CO-5162, CO-5172, CO-5175]
 tests:
   - {id: CO-5178-T1, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: wages, amount: 300}, {kind: wioa_on_the_job_training, amount: 650}]}, title: "WIOA on-the-job training wages 650; other wages not read: 650", expect: 650}

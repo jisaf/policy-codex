@@ -324,3 +324,16 @@
 - case: /^(CO-171|CO-320|CO-341|CO-354|CO-425)$/
   identifier: /^ma_/
   class: EM-R3 (OQ-1023 settled) pay in kind and boarder payments are SSI-method earned income
+# EM-R4 (duplicate-paths audit D-M2, fixed): the Disabled Adult Child countable income is the SSI-related countable income
+# with the current OASDI taken out (allocation, child support reduction and deemed parental income now in it); a figure
+# only (the records harness's class E1-M6).
+- case: /^CO-/
+  identifier: ma_dac_countable_income
+  class: EM-R4 (D-M2 fixed) the Disabled Adult Child income is the SSI-related income with the OASDI taken out
+# EM-R5 (8.100.3.K.10, S4107): boarder payments are verified as self-employment income when the earned-income attestation
+# is questionable, which CO-206 and CO-362 do not state (decision 4; the records harness's class E1-M8).
+- case: /^(CO-206|CO-362)$/
+  identifier: /^(ma|chp)_earned_income_verification_is_pending$/
+  old: false
+  new: unknown
+  class: EM-R5 (K.10) boarder payments are verified as self-employment income

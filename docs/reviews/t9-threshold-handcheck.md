@@ -218,3 +218,10 @@ The consistency list comes from re-evaluating each stated derived fact with its 
 
 - **A-2 (CO-642)**: settled by the governing text. The eligibility rule (8.100.7.A.2.e, S351/S3422) and the federal limit (42 CFR 435.1005, S378) both say "does not exceed"; 8.100.6.K.5's "under" introduces the group and is read as the same standard. CO-642's precision records it; no decision changed.
 - **A-3 and A-4 (CO-609, CO-1162)**: both read one item, ma_ssi_income_test_status (CO-5516), settled by 42 U.S.C. 1382(a)(1)(A), (2)(A), "at a rate of not more than" the benefit rate (S3950, D-347). CO-1162 now reads income equal to the rate as meeting the test; CO-1162-T7 and T10 expect true. docs/reviews/receipts-migration-2-medicaid.md, section 8.
+
+## Follow-up (earned-income records E1, Medicaid and CHP+, 2026-11-23)
+
+- **A-6, A-7 (CO-2442, CO-4793)**: fixed. "Shall receive 90 days of eligibility" (S1723, S3550) counts the enrollment day as the first, so the last day is the enrollment date plus 89, as the volume counts "30 calendar days beginning on the date ... received" (CO-1974). ma_express_lane_verification_period_end_date (CO-2445) was plus 90, the 91st day. CO-2442-T7 and CO-4793-T8 now state the enrollment date (2026-07-04, 2026-08-13) instead of the end date, and CO-2442-T13, CO-4793-T13 test the day after.
+- **A-9 (CO-549)**: recorded as OQ-1124 with the federal text (42 CFR 435.150(b)(3)(ii), S4343); CO-549-T95 states the foster care exit date.
+- **A-10 (CO-2419)**: settled by 42 CFR 441.151(a)(3)(ii) (S4344, D-4341): inpatient psychiatric services for one receiving them before 21 are covered "before ... the date the individual reaches 22".
+- **Givens that contradict themselves, Medicaid and CHP+**: the 26 tests listed above (and CO-549-T95) were rebuilt: the stated derived value removed and the facts it comes from stated (a date of birth on the boundary, the period's start month, the notice date, the monthly income at the exact percentage of the 2026 guideline), each title giving the arithmetic. Every rebuilt test expects what it expected before.
