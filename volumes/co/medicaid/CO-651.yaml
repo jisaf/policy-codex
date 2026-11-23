@@ -6,7 +6,8 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether this person meets every financial condition for Long-Term Care assistance for the month - the special income group income test, the LTC resource standard, no disqualifying home equity, and no current transfer-of-assets penalty - per 10 CCR 2505-10 § 8.100.7."
-precision: "Reads ma_transfer_penalty_applies (CO-660), which bounds the penalty to its calendar span, rather than the raw ma_transfer_penalty_months figure; the between-spouses apportionment of § 8.100.7.F.8 is in ma_transfer_penalty_months (OQ-94, resolved)."
+precision: "Reads ma_transfer_penalty_applies (CO-660), which bounds the penalty to its calendar span, rather than the raw ma_transfer_penalty_months figure; the between-spouses apportionment of § 8.100.7.F.8 is in ma_transfer_penalty_months (OQ-94, resolved). Blocked (OQ-1060, OQ-1061): the income-trust ceiling (through CO-642) rests on S1230 and the transfer-penalty divisor (through CO-660) on S1228, neither a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
+open: [OQ-1060, OQ-1061]
 derived: [all, ma_meets_special_income_group, ma_meets_ltc_resource_standard, [not, ma_home_equity_disqualifies], [not, ma_transfer_penalty_applies]]
 sources: [S1753]
 implemented: engine

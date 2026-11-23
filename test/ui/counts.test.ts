@@ -44,8 +44,8 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([55, 5]); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(60); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([57, 5]); // + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(62); // + OQ-1060, OQ-1061; + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {
