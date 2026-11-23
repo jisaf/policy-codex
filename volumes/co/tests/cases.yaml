@@ -65,6 +65,11 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
@@ -248,8 +253,13 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
+        long_term_care_insurance_benefits_received: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        garnishment_repaying_federal_assistance_overpayment: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        mandatory_income_tax_withheld: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_d_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_b_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
@@ -279,6 +289,10 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
@@ -451,7 +465,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-01-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -482,6 +496,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -671,6 +686,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -869,6 +885,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -2095,6 +2112,11 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
@@ -2279,8 +2301,13 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1900}
-        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
+        long_term_care_insurance_benefits_received: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        garnishment_repaying_federal_assistance_overpayment: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        mandatory_income_tax_withheld: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_d_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_b_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
@@ -2309,6 +2336,10 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
@@ -2482,7 +2513,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 44100}
-        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home}
+        - {kind: home, value: 210000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-02-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2512,6 +2543,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -2701,6 +2733,7 @@
         hours_worked: 138
     p4:
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -2898,6 +2931,7 @@
         "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -4935,6 +4969,11 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care)
         residence_setting_provides_majority_of_meals: true
@@ -4983,9 +5022,14 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 172500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
         - {kind: other_resource, value: 54000, amount_owed: 0, compensation_received: 0, disposed_date: "2025-06-15", ma_transfer_exempt: false}
       month_defaults:
+        long_term_care_insurance_benefits_received: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        garnishment_repaying_federal_assistance_overpayment: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        mandatory_income_tax_withheld: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_d_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        medicare_part_b_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -5004,6 +5048,10 @@
       # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
       # home reaches (616, snap_incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
@@ -5039,7 +5087,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-06-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -5056,6 +5104,10 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
@@ -12661,6 +12713,11 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -12705,7 +12762,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -12724,6 +12781,10 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -12762,7 +12823,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-112-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -12821,6 +12882,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -12874,7 +12938,7 @@
         - {kind: wages, amount: 200}
         holdings:
         - {kind: bank_account, value: 1500}
-        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 200
         self_employment_net_earnings_for_tax: 0
@@ -12938,6 +13002,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -12992,7 +13059,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 3000}
-        - {kind: home, value: 240000, amount_owed: 0}
+        - {kind: home, value: 240000, amount_owed: 0, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -13902,6 +13969,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -13953,7 +14023,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1200}
-        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -24712,6 +24782,9 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         ma_court_ordered_transfer_to_community_spouse: 0
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -24770,7 +24843,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -24794,6 +24867,9 @@
         ma_claims_co_owner_hardship_for_real_property: false
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -24844,7 +24920,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-188-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -28398,6 +28474,11 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         ma_institutionalized_spouse_refuses_income_allowance: false
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -28442,7 +28523,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -28461,6 +28542,9 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -28498,7 +28582,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-213-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -28599,6 +28683,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -28650,7 +28737,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1200}
-        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: false, intent_in_writing: false}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: false, intent_in_writing: false, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -42856,6 +42943,11 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
+        court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        ma_court_ordered_transfer_to_community_spouse: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         ma_institutionalized_spouse_refuses_income_allowance: true
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -42899,7 +42991,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 52500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -42918,6 +43010,9 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -42954,7 +43049,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 7500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-388-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -43521,6 +43616,9 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         ma_institutionalized_spouse_refuses_income_allowance: false
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -43571,7 +43669,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -43590,6 +43688,9 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -43628,7 +43729,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-395-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -43959,6 +44060,8 @@
   persons:
     p1:
       facts:
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -44015,6 +44118,8 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -55546,6 +55651,9 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         ma_institutionalized_spouse_refuses_income_allowance: false
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -55596,7 +55704,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -55615,6 +55723,9 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -55653,7 +55764,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 200000}
-        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home}
+        - {kind: home, value: 240000, amount_owed: 0, share: 0.5, co_owners: spouse, holding_id: CO-481-home, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         shelter_cost_monthly: 634
         wages_gross: 0
@@ -55981,6 +56092,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -56031,7 +56145,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1200}
-        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -56850,6 +56964,8 @@
   persons:
     p1:
       facts:
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -56907,6 +57023,8 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -58083,6 +58201,9 @@
     p1:
       relationships: []
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
@@ -58137,7 +58258,7 @@
         earnings: []
         holdings:
         - {kind: bank_account, value: 1200}
-        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true}
+        - {kind: home, value: 240000, amount_owed: 0, lives_in: false, intends_to_return: true, intent_in_writing: true, outside_colorado: false, held_in_trust_or_entity: false, beneficiary_deed: false}
       month_defaults:
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -61656,6 +61777,9 @@
   persons:
     p1:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         ma_institutionalized_spouse_refuses_income_allowance: false
         dwelling_id: nursing_facility
         residence_setting_type: nursing_facility
@@ -61714,6 +61838,9 @@
           share: 0.5
           co_owners: spouse
           holding_id: CO-395-home
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         ma_retroactive_coverage_requested: true
       month_defaults:
         wages_gross: 0
@@ -61733,6 +61860,9 @@
         medical_expenses_out_of_pocket: 0
     p2:
       facts:
+        home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
+        home_has_recorded_beneficiary_deed: false  # coverage pass 4 N4-13: stated (decision 4)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         has_qualifying_military_service: false
@@ -61779,6 +61909,9 @@
           share: 0.5
           co_owners: spouse
           holding_id: CO-395-home
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         ma_retroactive_coverage_requested: true
       month_defaults:
         shelter_cost_monthly: 634
@@ -61866,6 +61999,9 @@
           co_owners: spouse
           holding_id: CO-762-home
           lives_in: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         - kind: vehicle
           value: 10000
           amount_owed: 0
@@ -61919,6 +62055,9 @@
           co_owners: spouse
           holding_id: CO-762-home
           lives_in: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         - kind: vehicle
           value: 10000
           amount_owed: 0
@@ -61979,8 +62118,7 @@
           amount: 800
         earnings: []
         holdings:
-        - &id001
-          kind: bank_account
+        - kind: bank_account
           value: 1000
         - kind: vehicle
           value: 3000
@@ -62043,7 +62181,8 @@
         - kind: wages
           amount: 2200
         holdings:
-        - *id001
+        - kind: bank_account
+          value: 1000
         ma_failed_to_pursue_potential_resources_or_income: false
         ma_refuses_to_release_patient_payment: false
         adult_financial_program_received: none
@@ -62081,7 +62220,8 @@
         - kind: work_study
           amount: 2200
         holdings:
-        - *id001
+        - kind: bank_account
+          value: 1000
         ma_failed_to_pursue_potential_resources_or_income: false
         ma_refuses_to_release_patient_payment: false
         adult_financial_program_received: none
@@ -62171,6 +62311,9 @@
           lives_in: false
           intends_to_return: true
           intent_in_writing: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         - kind: bank_account
           value: 30000
           amount_owed: 0
@@ -62258,7 +62401,8 @@
           frequency: once
         earnings: []
         holdings:
-        - *id001
+        - kind: bank_account
+          value: 1000
         ma_failed_to_pursue_potential_resources_or_income: false
         ma_refuses_to_release_patient_payment: false
       month_defaults:
@@ -62336,7 +62480,8 @@
           month: 2026-11
           foster_care: true
         holdings:
-        - *id001
+        - kind: bank_account
+          value: 1000
         - kind: vehicle
           value: 3000
           amount_owed: 0
@@ -62435,6 +62580,9 @@
           lives_in: false
           intends_to_return: true
           intent_in_writing: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
         ma_failed_to_pursue_potential_resources_or_income: false
         ma_refuses_to_release_patient_payment: false
         adult_financial_program_received: none

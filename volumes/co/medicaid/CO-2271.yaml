@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the person is applying for or eligible for Supplemental Security Income. 10 CCR 2505-10 § 8.100.5.H.2.b-c defines an ineligible child, parent or spouse as one 'who is not applying or eligible for SSI', and the income allocations of § 8.100.5.H.3 are made for those persons."
-precision: "Eligible for SSI is read as SSA's award (receives_ssi) or continued SSI status without payment (1619(b)); the volume does not determine SSI. If no application is stated, Medicaid reads the person as not applying."
-derived: [any, [otherwise, has_applied_for_ssi, false], receives_ssi, [otherwise, retains_ssi_status_without_payment, false]]
+precision: "Eligible for SSI is read as SSA's award (receives_ssi) or continued SSI status without payment (1619(b)); the volume does not determine SSI. If no application is stated, Medicaid reads the person as not applying. Coverage pass 4, non-MAGI N4-13 (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; readers do not invent defaults): whether the person has applied for SSI and whether the person keeps SSI status without payment are read as stated; neither was read as no when unstated any more, since who is an ineligible parent, spouse or child (10 CCR 2505-10 8.100.5.H.2.b) turns on them and no rule gives a default."
+derived: [any, has_applied_for_ssi, receives_ssi, retains_ssi_status_without_payment]
 sources: [S1506]
 implemented: engine
 tags: [ma, non_magi, income]
@@ -16,3 +16,5 @@ tests:
   - {id: CO-2271-T1, title: "SSI application pending", as_of: "2026-11-01", given: {has_applied_for_ssi: true, receives_ssi: false}, expect: true}
   - {id: CO-2271-T2, title: "SSI recipient", as_of: "2026-11-01", given: {receives_ssi: true}, expect: true}
   - {id: CO-2271-T3, title: "Neither", as_of: "2026-11-01", given: {has_applied_for_ssi: false, receives_ssi: false, retains_ssi_status_without_payment: false}, expect: false}
+  - {id: CO-2271-T4, as_of: "2026-11-12", given: {receives_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13 (decision 4): whether the person has applied for SSI not stated: cannot determine (was read as no)", expect: unknown}
+  - {id: CO-2271-T5, as_of: "2026-11-12", given: {receives_ssi: false, has_applied_for_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13: stated no, no, no: false", expect: false}
