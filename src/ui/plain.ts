@@ -263,6 +263,7 @@ class Renderer {
       case "some_month": return cat("in at least one of ", p(e[1]), ", ", p(e[2]));
       case "sum_months": return cat("the total over ", p(e[1]), " of ", p(e[2]));
       case "sum_receipts": return cat("the total, over the receipts in ", p(e[1]), " for which ", p(e[2]), ", of ", p(e[3]));
+      case "largest": return cat("the largest, over the records in ", p(e[1]), " for which ", p(e[2]), ", of ", p(e[3]));
       case "receipt": return [`the receipt's ${String(e[1]).replace(/_/g, " ")}`];
       case "received_in": return cat("the receipt came in ", p(e[1]));
       case "all": case "any": {
@@ -471,6 +472,11 @@ class Renderer {
       case "sum_receipts":
         return [
           head("the total, over the receipts in ", this.phrase(e[1]), " for which:"), ...sub(e[2], ""),
+          { depth, parts: ["of:"] }, ...sub(e[3], ""),
+        ];
+      case "largest":
+        return [
+          head("the largest, over the records in ", this.phrase(e[1]), " for which:"), ...sub(e[2], ""),
           { depth, parts: ["of:"] }, ...sub(e[3], ""),
         ];
       case "count_months":

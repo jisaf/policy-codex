@@ -6,11 +6,12 @@ type: money
 scope: person-month
 program: LEAP
 meaning: The person's recurring SSI receipts of the month, counted in the month received and without their cents (9 CCR 2503-7 3.752.21.I).
-precision: The month's receipts added, then rounded down to the whole dollar.
-derived: ["-", 0, [ceil, ["-", 0, [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], ["=", [receipt, kind], ssi]], [receipt, amount]]]]]
+precision: "The month's receipts added, then rounded down to the whole dollar. Coverage pass 4 L4-3 (docs/reviews/coverage4-care-energy.md): a recurring receipt stated with its date is read by its date in the income verification period (9 CCR 2503-7 3.752.22.A: \"received in the income verification period, not to exceed one month's income\"; C.3.a, C.3.c), after the period's first day (leap_income_verification_period_start, CO-5002) through the application date (leap_application_date), not by the calendar month: the period is then one month long, so a monthly source paid on the application date's day of the month is counted once (the cap of A; OQ-681); a receipt stated without a date is read in the month, as before."
+derived: ["-", 0, ["ceil", ["-", 0, ["sum_receipts", "receipts", ["all", ["not", ["=", ["receipt", "frequency"], "once"]], ["case", [["unknown", ["receipt", "date"]], ["received_in", ["month"]]], ["else", ["all", [">", ["receipt", "date"], "leap_income_verification_period_start"], ["<=", ["receipt", "date"], "leap_application_date"]]]], ["=", ["receipt", "kind"], "ssi"]], ["receipt", "amount"]]]]]
 sources: [S2714]
 implemented: engine
 tags: [income]
+open: [OQ-681]
 rationale: "Receipt records, migration phase 1: the SSI term of leap_person_unearned_income (CO-3926), read from the receipts."
 nearest: [CO-5005]
 tests:

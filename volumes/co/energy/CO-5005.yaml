@@ -6,13 +6,17 @@ type: money
 scope: person-month
 program: LEAP
 meaning: "The person's recurring Social Security receipts of the month, without their cents (9 CCR 2503-7 3.752.211.H: \"When determining income, do not consider cents in the gross income amount\")."
-precision: The month's receipts added, then rounded down to the whole dollar. A retroactive lump-sum payment is not recurring and 3.752.23.EE excludes it.
-derived: ["-", 0, [ceil, ["-", 0, [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], ["=", [receipt, kind], social_security]], [receipt, amount]]]]]
+precision: "The month's receipts added, then rounded down to the whole dollar. A retroactive lump-sum payment is not recurring and 3.752.23.EE excludes it. Coverage pass 4 L4-3 (docs/reviews/coverage4-care-energy.md): a recurring receipt stated with its date is read by its date in the income verification period (9 CCR 2503-7 3.752.22.A: \"received in the income verification period, not to exceed one month's income\"; C.3.a, C.3.c), after the period's first day (leap_income_verification_period_start, CO-5002) through the application date (leap_application_date), not by the calendar month: the period is then one month long, so a monthly source paid on the application date's day of the month is counted once (the cap of A; OQ-681); a receipt stated without a date is read in the month, as before."
+derived: ["-", 0, ["ceil", ["-", 0, ["sum_receipts", "receipts", ["all", ["not", ["=", ["receipt", "frequency"], "once"]], ["case", [["unknown", ["receipt", "date"]], ["received_in", ["month"]]], ["else", ["all", [">", ["receipt", "date"], "leap_income_verification_period_start"], ["<=", ["receipt", "date"], "leap_application_date"]]]], ["=", ["receipt", "kind"], "social_security"]], ["receipt", "amount"]]]]]
 sources: [S2714]
 implemented: engine
 tags: [income]
+open: [OQ-681]
 rationale: "Receipt records, migration phase 1: the Social Security term of leap_person_unearned_income (CO-3926), read from the receipts."
 nearest: [CO-5006]
 tests:
   - {id: CO-5005-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 1204.9}]}, title: "$1,204.90 counts as $1,204", expect: 1204}
   - {id: CO-5005-T2, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 3000, frequency: once, retroactive: true, month: "2026-11", date: "2026-11-02"}]}, title: "A retroactive lump sum is not the month's benefit", expect: 0}
+  # Coverage pass 4 L4-3: Social Security of $1,234.56 dated October 3 and November 3, 2026; application November 10: the period runs after
+  # October 10 through November 10, so only November 3 is in it: $1,234 (the cents dropped, 3.752.211.H).
+  - {id: CO-5005-T3, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 1234.56, frequency: monthly, date: "2026-10-03"}, {kind: social_security, amount: 1234.56, frequency: monthly, date: "2026-11-03"}]}, title: "Dated Social Security read in the income verification period", expect: 1234}

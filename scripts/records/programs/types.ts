@@ -4,7 +4,8 @@
 // parallel never collide on the harness's lists. The harness loads every
 // file in the directory.
 
-/** A stored household varied one earned fact at a time (generate-earnings.ts). */
+/** A stored household varied one earned fact (generate-earnings.ts), or one
+ *  resource fact (generate-holdings.ts), at a time. */
 export interface Base {
   /** the stored household */
   id: string;
@@ -22,9 +23,14 @@ export interface ListEntry {
    *  compare (empty until the track moves its readers onto the list). */
   metamorphic: string[];
   /** Relations the track's rules say are NOT invariant, by relation id
-   *  (ME-1 to ME-5), with the reason; the relation is not run for the
-   *  track's figures. */
+   *  (ME-1 to ME-5; for holdings MH-1 to MH-5), with the reason; the
+   *  relation is not run for the track's figures. */
   notInvariant?: Record<string, string>;
+  /** Holdings only: the couple and household figures (the SSI couple, the
+   *  CSRA, Adult Financial's client and spouse, SNAP's household) that MH-3
+   *  joint compares; an individual's figure is not invariant under it
+   *  (design 4.4). */
+  coupleFigures?: string[];
   /** Generated-household bases for the track. */
   bases: Base[];
 }

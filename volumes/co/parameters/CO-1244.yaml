@@ -11,4 +11,5 @@ value: { "2024": 40, "2025": 40, "2026": 40 }
 review_by: "2027-02-28"
 sources: [S794, S796, S797]
 tags: [sebt, income]
+open: [OQ-1220]
 rationale: "No existing parameter states the Summer EBT benefit; sebt_benefit_amount (CO-1299) needs it. CDHS review C-10: re-keyed by summer. Final pass F-23: the summer 2027 level is set by the FNS notice of 2027 benefit levels, not yet published (fns.usda.gov), so a SUN Bucks benefit determined for summer 2027 is unknown with a lookup-miss warning; review_by marks when the notice is due (FNS has issued the summer levels by early in the year)."

@@ -11,6 +11,7 @@ derived: [case, [[any, [otherwise, self_employment_cost_receipts_received, false
 sources: [S1157, S1637, S3263]
 implemented: engine
 tags: [income]
+open: [OQ-680]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
 tests:
   # Operating $400 and vehicle $30 are deducted; interest $20 (not a farm's), capital principal $100 and home space $50 are not: $400 + $30 = $430.

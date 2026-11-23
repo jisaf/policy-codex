@@ -1,0 +1,15 @@
+id: CO-6406
+name: "CCCAP: months an annual contract's pay is prorated over"
+identifier: cccap_annual_contract_months
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The number of months over which 8 CCR 1403-1 3.111.H.4.b (S2704) prorates the pay of contract employment whose employees \"derive their annual income in a period shorter than a year\" (\"the income shall be prorated over the term of the contract\"): twelve, the term of a contract renewed on an annual basis (the earnings record's annual_contract_pay, CO-5100)."
+precision: "Read by cccap_person_earned_income (CO-3915) and cccap_person_gross_wages (CO-5152), which count a pay that states annual_contract_pay at one twelfth of the contract in place of its amount. Whether \"the term of the contract\" is the contract year or the months worked under it is OQ-1221."
+versions:
+  - {from: "2026-08-14", value: 12, source: S2704}
+sources: [S2704]
+tags: [income]
+open: [OQ-1221]
+rationale: "Coverage pass 4 C4-4: H.4.b is a \"shall\", not a case-by-case choice, and the earnings record carries the contract's yearly pay; the twelve months are a figure of the reading, not a literal in the derivations."

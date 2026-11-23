@@ -244,8 +244,8 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "that_month":
         if (!monthSums) errors.push('"that month" used outside "the sum of ... for each month in"');
         return "month";
-      case "sum_receipts": {
-        if (e.length !== 4) errors.push("the sum for each receipt in: needs a list, a condition and a value");
+      case "sum_receipts": case "largest": {
+        if (e.length !== 4) errors.push(`${op === "largest" ? "the largest" : "the sum"} for each receipt in: needs a list, a condition and a value`);
         const listId = typeof e[1] === "string" ? e[1]
           : Array.isArray(e[1]) && e[1][0] === "of" && typeof e[1][2] === "string" ? e[1][2] : null;
         const listItem = listId ? ix.byIdentifier.get(listId) : undefined;
@@ -258,7 +258,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         receiptSchemas.push({ list: listId, fields: listItem!.record_fields ?? {} });
         try {
           need(e[2], ["yes/no"], "where");
-          need(e[3], ["number"], "the sum of");
+          need(e[3], ["number"], op === "largest" ? "the largest of" : "the sum of");
         } finally { receiptSchemas.pop(); }
         return "number";
       }

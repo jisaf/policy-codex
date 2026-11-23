@@ -1,0 +1,14 @@
+id: CO-6407
+name: Received CCCAP when joining VISTA
+identifier: received_cccap_when_joined_vista
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person was receiving Colorado Child Care Assistance Program (CCCAP) child care assistance when the person joined AmeriCorps Volunteers in Service to America (VISTA), the Title I program of the Domestic Volunteer Service Act whose payments the person's receipts state (dvsa_title_i_payment_at_or_above_minimum_wage, receipts CO-5000)."
+precision: "Receipt of a benefit, stated as a fact of the person's case history (convention rule 11), with no default: 8 CCR 1403-1 3.111.I.32 (S4601) excludes VISTA payments \"if the client was receiving CCCAP when they joined vista\" and counts them as earned income \"If the client was not receiving CCCAP when they joined vista\", and neither is the case a reader may assume. Read by cccap_person_earned_income (CO-3915) only when the person has such payments."
+supplied_by: "The CCCAP case history at the date the person joined VISTA (CHATS), and the person's VISTA enrollment date."
+sources: [S4601]
+tags: [income]
+open: [OQ-1222]
+rationale: "Coverage pass 4 C4-5: I.32 turns on whether the client was receiving CCCAP when joining VISTA; no fact stated it, so full-time VISTA pay could only be stated as other taxable income and was counted whatever the answer."

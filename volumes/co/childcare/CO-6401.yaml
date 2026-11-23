@@ -1,0 +1,22 @@
+id: CO-6401
+name: "CCCAP: the last month of the calendar quarter in which the prior thirty days begin"
+identifier: cccap_prior_income_period_first_quarter_end
+kind: derived
+type: month
+scope: case
+program: CCCAP
+meaning: "The last month of the calendar quarter (January-March, April-June, July-September, October-December) that contains the first of the thirty days before the application or redetermination date (cccap_prior_income_period_days, CO-5151, before cccap_application_or_redetermination_date, CO-5150). The thirty days lie in that quarter or in the next: a pay or receipt dated in the thirty days whose month is on or before this month is in the first quarter, any other in the second. 8 CCR 1403-1 3.111.J.28 (S2858) tests irregular income by \"any calendar quarter\", so each irregular pay is tested against the quarter of its own date (coverage pass 4 C4-1)."
+precision: "The quarter is found from the calendar number of the month containing the first day, as cccap_irregular_receipts_in_quarter (CO-5724) finds it: the month's place in its quarter is its number less one, less three times the whole quarters before it, and the quarter's last month is two places on. An application date not stated is cannot determine."
+derived: ["months_after", ["-", 2, ["-", ["-", ["month_of_year", ["month_of", ["days_after", ["-", 0, "cccap_prior_income_period_days"], "cccap_application_or_redetermination_date"]]], 1], ["*", 3, ["-", 0, ["ceil", ["-", 0, ["/", ["-", ["month_of_year", ["month_of", ["days_after", ["-", 0, "cccap_prior_income_period_days"], "cccap_application_or_redetermination_date"]]], 1], 3]]]]]]], ["month_of", ["days_after", ["-", 0, "cccap_prior_income_period_days"], "cccap_application_or_redetermination_date"]]]
+sources: [S2858, S2704]
+implemented: engine
+tags: [income]
+open: [OQ-713]
+rationale: "Coverage pass 4 C4-1: J.28's quarter was read for the month determined, a quarter that need not hold an irregular pay drawn from the thirty days."
+tests:
+  # October 15 less 30 days is September 15 (cccap_prior_income_period_days 30): September is month 9, the last of July-September.
+  - {id: CO-6401-T1, title: "Application October 15, 2026: the thirty days begin September 15, in the third quarter, which ends in September", as_of: "2026-10-15", given: {cccap_application_or_redetermination_date: "2026-10-15"}, expect: "2026-09"}
+  # November 15 less 30 days is October 16: October is the first month of October-December, whose last month is December.
+  - {id: CO-6401-T2, title: "Application November 15, 2026: the thirty days begin October 16, in the fourth quarter, which ends in December", as_of: "2026-11-15", given: {cccap_application_or_redetermination_date: "2026-11-15"}, expect: "2026-12"}
+  # January 20, 2027 less 30 days is December 21, 2026: the quarter October-December 2026 ends in December 2026.
+  - {id: CO-6401-T3, title: "Application January 20, 2027: the thirty days begin December 21, 2026, whose quarter ends in December 2026", as_of: "2027-01-20", given: {cccap_application_or_redetermination_date: "2027-01-20"}, expect: "2026-12"}

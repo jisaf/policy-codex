@@ -6,7 +6,9 @@
  * fields, their types, and what an unstated field means are declared once on
  * the fact (`record_fields`): `required: true` (a rule that reads it cannot
  * determine), a `default` the rule text gives, or `when_absent` (what leaving
- * it out means, for a field an operator gives that meaning to). This module
+ * it out means, for a field an operator gives that meaning to); a default may
+ * be qualified `required_if_dated` (the default holds for a record with no
+ * date, and a dated record must state the field). This module
  * holds what the evaluator, the type check, the constraint check, the case
  * check and the export share: the schema rules, a record's effective month,
  * the name a missing field is reported under, and the validation of a stated
@@ -23,6 +25,22 @@ export const RECORD_FIELD_TYPES: readonly string[] = [
 
 export function isRecordList(it: Pick<Item, "type"> | undefined | null): boolean {
   return !!it && RECORD_LIST_TYPES.has(it.type);
+}
+
+/** What a list's records are called (Item.record_noun), and the field each
+ *  record's worth is stated in: a receipt's `amount`, a holding's `value`
+ *  (resource records, step H0, docs/design-earned-and-resource-records.md
+ *  3.1 and 3.4). The noun is parse and render only ("for each holding in",
+ *  "that holding's value", "that holding is valued in"); the operators read
+ *  every list alike. */
+export const RECORD_NOUNS: Readonly<Record<string, { measure: string; placed: string }>> = {
+  receipt: { measure: "amount", placed: "is received in" },
+  holding: { measure: "value", placed: "is valued in" },
+};
+
+/** The noun of a list of records: its record_noun, else receipt. */
+export function recordNounOf(it: Pick<Item, "record_noun"> | undefined | null): string {
+  return it?.record_noun ?? "receipt";
 }
 
 /** The base type a record field reads as. */
@@ -77,8 +95,12 @@ export function schemaErrors(it: Item): string[] {
   const fields = it.record_fields;
   if (!isRecordList(it)) {
     if (fields) out.push(`record_fields is only for a list of records (type "list of receipts"), not "${it.type}"`);
+    if (it.record_noun !== undefined) out.push(`record_noun is only for a list of records (type "list of receipts"), not "${it.type}"`);
     return out;
   }
+  const noun = recordNounOf(it);
+  const nounSpec = RECORD_NOUNS[noun];
+  if (!nounSpec) out.push(`record_noun "${noun}" is not one of: ${Object.keys(RECORD_NOUNS).join(", ")}`);
   if (it.kind !== "supplied") out.push("a list of records is a supplied fact");
   if (it.scope !== "person") out.push("a list of records is stated per person (scope person)");
   if (!fields || typeof fields !== "object") {
@@ -88,8 +110,9 @@ export function schemaErrors(it: Item): string[] {
   if (it.options && it.options.length) out.push("a list of records states its kinds in record_fields.kind.options, not options");
   const kind = fields.kind;
   if (!kind || kind.type !== "one of" || kind.required !== true) out.push('record_fields.kind is a required "one of" field');
-  const amount = fields.amount;
-  if (!amount || amount.type !== "money" || amount.required !== true) out.push("record_fields.amount is a required money field");
+  const measure = nounSpec?.measure ?? "amount";
+  const amount = fields[measure];
+  if (!amount || amount.type !== "money" || amount.required !== true) out.push(`record_fields.${measure} is a required money field`);
   for (const [name, spec] of Object.entries(fields)) {
     const at = `record_fields.${name}`;
     if (!/^[a-z][a-z0-9_]*$/.test(name)) out.push(`${at}: a field name is snake_case`);
@@ -101,6 +124,11 @@ export function schemaErrors(it: Item): string[] {
       out.push(`${at}: states exactly one of required: true, a default, or when_absent (decision 4 of 2026-11-23)`);
     }
     if (spec.required !== undefined && spec.required !== true) out.push(`${at}: required is true or left out`);
+    if (spec.required_if_dated !== undefined) {
+      if (spec.required_if_dated !== true) out.push(`${at}: required_if_dated is true or left out`);
+      else if (!("default" in spec)) out.push(`${at}: required_if_dated qualifies a default (the value of a record with no date)`);
+      else if (name === "date" || !fields.date) out.push(`${at}: required_if_dated needs a date field to qualify`);
+    }
     if (spec.type === "one of") {
       if (!spec.options || spec.options.length < 2) out.push(`${at}: a "one of" field lists at least two options`);
       else if (new Set(spec.options).size !== spec.options.length) out.push(`${at}: an option is listed twice`);
@@ -162,6 +190,45 @@ export function statedRecordLists(
   for (const [k, v] of Object.entries(facts ?? {})) {
     const it = byIdentifier.get(k);
     if (it && isRecordList(it)) out.push([it, v]);
+  }
+  return out;
+}
+
+/** Joint holdings (resource records, step H0; docs/design-earned-and-
+ *  resource-records.md 3.2): a holding owned by several persons of a case is
+ *  stated on each owner's list with the same `holding_id`, kind and value
+ *  and that owner's `share`. Across the persons of one case, the records of
+ *  one list that state the same holding_id (in the same month) must agree on
+ *  kind and value, and their shares (1 where a record states none) must not
+ *  add to more than 1: otherwise a couple's joint account is counted twice,
+ *  or two holdings are read as one. Only for a list whose schema declares
+ *  `holding_id`; one line per disagreement. */
+export function jointRecordErrors(it: Item, lists: ReadonlyArray<readonly [string, unknown]>): string[] {
+  const fields = it.record_fields ?? {};
+  if (!fields.holding_id) return [];
+  const measure = (RECORD_NOUNS[recordNounOf(it)] ?? RECORD_NOUNS.receipt).measure;
+  const groups = new Map<string, Array<{ pid: string; index: number; rec: Record<string, unknown> }>>();
+  for (const [pid, list] of lists) {
+    if (!Array.isArray(list)) continue;
+    list.forEach((r, index) => {
+      if (r === null || typeof r !== "object" || Array.isArray(r)) return;
+      const rec = r as Record<string, unknown>;
+      if (typeof rec.holding_id !== "string" || !rec.holding_id) return;
+      const key = `${rec.holding_id}|${recordMonth(rec) ?? ""}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push({ pid, index, rec });
+    });
+  }
+  const out: string[] = [];
+  for (const [key, rs] of groups) {
+    const [id, month] = key.split("|");
+    const at = `${it.identifier} holding_id ${id}${month ? " in " + month : ""}`;
+    const kinds = new Set(rs.map((x) => String(x.rec.kind)));
+    if (kinds.size > 1) out.push(`${at}: its records disagree on kind (${[...kinds].join(", ")})`);
+    const values = new Set(rs.map((x) => JSON.stringify(x.rec[measure] ?? null)));
+    if (values.size > 1) out.push(`${at}: its records disagree on ${measure} (${rs.map((x) => `${x.pid}: ${JSON.stringify(x.rec[measure] ?? null)}`).join(", ")})`);
+    const total = rs.reduce((a, x) => a + (typeof x.rec.share === "number" ? x.rec.share : 1), 0);
+    if (total > 1 + 1e-9) out.push(`${at}: its shares add to ${Math.round(total * 1e6) / 1e6}, more than 1 (${rs.map((x) => `${x.pid}: ${typeof x.rec.share === "number" ? x.rec.share : "1 (not stated)"}`).join(", ")})`);
   }
   return out;
 }

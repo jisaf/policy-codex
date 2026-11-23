@@ -13,5 +13,5 @@ implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.j requires the annuity documents; no item asked for them."
 tests:
-  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: true}, expect: true}
-  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: false}, expect: false}
+  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: true, holdings: [{kind: bank_account}, {kind: annuity}]}, expect: true}
+  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: false, holdings: [{kind: bank_account}]}, expect: false}

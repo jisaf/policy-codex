@@ -1,0 +1,18 @@
+id: CO-6403
+name: "CCCAP: irregular income of the calendar quarter in which the prior thirty days end"
+identifier: cccap_irregular_income_in_last_quarter_of_period
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's irregular income that CCCAP counts, earned and unearned (cccap_irregular_receipts_in_quarter, CO-5724, and cccap_irregular_earnings_in_quarter, CO-6151), over the calendar quarter that contains the last of the thirty days before the application or redetermination date (the day before that date): the total 8 CCR 1403-1 3.111.J.28 (S2858) compares with ninety dollars for an irregular pay or receipt dated in the thirty days after the end of the quarter they begin in."
+precision: "Read in the month containing the day before the application or redetermination date. When the thirty days lie in one quarter it is that quarter's total, and no record is tested against it (every dated record is then in the first quarter, cccap_prior_income_period_first_quarter_end, CO-6401). Coverage pass 4 C4-1; OQ-713."
+derived: ["at", ["+", "cccap_irregular_receipts_in_quarter", "cccap_irregular_earnings_in_quarter"], ["month_of", ["days_after", -1, "cccap_application_or_redetermination_date"]]]
+sources: [S2858, S2704]
+implemented: engine
+tags: [income]
+open: [OQ-713]
+rationale: "Coverage pass 4 C4-1: the thirty days can straddle two calendar quarters; each irregular record is tested against its own."
+tests:
+  # October 14 (the day before the application) is in October-December, which holds the $40 of October 2; the $80 of September 20 is in the quarter before.
+  - {id: CO-6403-T1, title: "Application October 15: the fourth quarter holds a $40 odd job on October 2 only: $40", month: "2026-10", as_of: "2026-10-15", given: {cccap_application_or_redetermination_date: "2026-10-15", receipts: [], earnings: [{kind: wages, amount: 40, frequency: once, date: "2026-10-02", irregular: true}, {kind: wages, amount: 80, frequency: once, date: "2026-09-20", irregular: true}]}, expect: 40}
