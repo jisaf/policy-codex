@@ -13,7 +13,7 @@ Rule text was read from the documents on file (D-80, 9 CCR 2503-5; D-81, 9 CCR 2
 | 9556288 | 3 | Duplicate-paths D-W1: caretaker verification and optional membership read the caretaker definition |
 | 3840877 | 4 | Decision 4: the last reader defaults over unstated receipts in the two programs |
 | 5254a53 | 5 | T-9 hand-check: AND-CS at the standard settled (A-1), contradictory tests rebuilt, citation gaps closed |
-| (later) | 6 | Stored households CO-670, CO-671; the What-if keeps a raised wage and its earnings record together; UI count pins; this review; plan section; change record re-keyed |
+| 1ad3b23 | 6 | Stored households CO-670, CO-671; the What-if keeps a raised wage and its earnings record together; UI count pins; this review; plan section |
 
 ## 2. Adult Financial (E1 AF)
 
@@ -98,11 +98,11 @@ Added: OQ-1140 (Adult Financial: combat-zone pay that is not 37 U.S.C. 310 pay; 
 | Gate | Result |
 |---|---|
 | `node scripts/sync-manifest.mjs co` | written (CO-5130, CO-5131, CO-5140, CO-5141 added) |
-| `npm run typecheck` | see the final report |
-| `npx vitest run` | see the final report; UI count pins re-pinned, each with its reason |
-| `npm run records:harness -- --list earnings --track af` / `--track cw` | OK, 0 unexplained (section 4) |
-| `npm run receipts:harness -- --all-programs` | not clean: see below |
-| `CHECK_BASE=origin/main npm run check` | see the final report; dispositions in volumes/co/changes/2026-11-23-records-cash.yaml |
+| `npm run typecheck` | passes |
+| `npx vitest run` | 1,131 tests pass (101 files); UI count pins re-pinned, each with its reason |
+| `npm run records:harness -- --list earnings --track af` / `--track cw` | OK, 0 unexplained (section 4); with `--all-programs` (every track's bases, every program's outcomes): OK, stored 248 of 167,936 values differ, generated 370 of 118,776, all allowed |
+| `npm run receipts:harness -- --all-programs` | FAILS: stored 24 unexplained (CO-13, CO-94, CO-159, CO-171, CO-206, CO-320, CO-354, CO-362, CO-425: the E1 classes AF-1, CW-4, CW-D4, AF-D4 and CO-13's stated receipts, allowed only in the records harness's files); generated 14,339 unexplained, of which 14,268 are Adult Financial (8,164) and Colorado Works (6,104) figures that are cannot determine because the receipts harness's generated households state no earnings list, and 71 are special pay moving from Colorado Works unearned to earned income on the same households. See below |
+| `CHECK_BASE=origin/main npm run check` | OK, conformance self-check OK (co: 4,990 cases, 8,526 checked, 0 failed); rule tests 4,501 of 4,501; household expectations 3,864 of 3,865 (CO-387, the known CHP+ fee band, OQ-810); 23 change-impact flags, all dispositioned (volumes/co/changes/2026-11-23-records-cash.yaml) |
 
 **The receipts harness and the earnings list (for the integration owner).** The receipts harness's generated households are built from the baseline's stored households (c29d326), which state only the scalar earned facts, and are translated into receipts but not into earnings. From E1 a program that reads earnings finds their earnings list unstated, so every Adult Financial and Colorado Works figure on them is cannot determine on the new ledger: the harness reports these as unexplained differences although no rule changed for them. The fix belongs in scripts/receipts/harness.ts: pass each generated household through the earnings translator (scripts/records/translate-earnings.ts, translateCase) as the records harness does for its own generated households. This track did not edit the receipts harness (it is a merge gate shared by every track) and did not mask the differences with an allowed class; every E1 track will meet the same.
 
