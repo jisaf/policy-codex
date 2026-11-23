@@ -67,7 +67,7 @@ record_fields:
   irregular:
     type: yes/no
     default: false
-    meaning: The pay was received infrequently (only once in the calendar quarter from this source, not in the month before or after) or irregularly (the person could not reasonably expect it), such as pay for a single odd job.
+    meaning: "The pay was received infrequently (only once in the calendar quarter from this source, not in the month before or after) or irregularly (the person could not reasonably expect it), such as pay for a single odd job. On a business's receipts (self_employment_receipts, farm_self_employment_receipts), the business's receipts come in irregularly rather than month by month, which Colorado Works and Adult Financial average over twelve months (9 CCR 2503-6 3.605.2.E.3, 9 CCR 2503-5 3.520.783.F; field sweep fix round, FS-CW-5, FS-AF-3)."
   retroactive:
     type: yes/no
     default: false
@@ -157,6 +157,11 @@ record_fields:
     type: calendar date
     when_absent: "the pay came on the day its schedule set for it"
     meaning: "For a pay of a regular schedule that came early or late, because a holiday or a weekend fell on its pay day, because the employer changed the pay dates, or because the employer held it at the person's request, the day the schedule set for it; the month it is for is that day's month. A rule that counts pay by its regular schedule reads it (SNAP 10 CCR 2506-1 4.402.B.1, 4.403.A.3); a rule that counts pay by the day it came in reads date (coverage pass 4 for SNAP, S4-2)."
+  regular_date_reason:
+    type: one of
+    required: true
+    options: [holiday_or_weekend, pay_dates_changed, held_at_request, other]
+    meaning: "For a pay that states its regular_date (it came early or late), why it did: a holiday or a weekend fell on its pay day (holiday_or_weekend), the employer changed the pay dates (pay_dates_changed), the employer held it at the person's request (held_at_request), or another reason (other). A rule that counts pay held at the person's request by its regular schedule, and any other pay when paid, reads it (9 CCR 2503-6 3.605.2.B: \"wages that are paid to an employee for a period for which services were rendered are considered available when paid rather than when earned, except that wages held at the request of the employee are considered income in the month they would otherwise have been paid\"; field sweep fix round, FS-CW-4); a rule that counts every early or late pay by its regular schedule (SNAP 10 CCR 2506-1 4.402.B.1, 4.403.A.3) does not."
   leave_or_bonus_pay:
     type: yes/no
     default: false

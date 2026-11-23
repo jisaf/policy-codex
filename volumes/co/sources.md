@@ -24642,3 +24642,51 @@ Document: D-81
 > All countable income, including earned and unearned income received, or unearned income an
 > assistance unit expects to receive in the application month and any month following shall be used
 > to determine eligibility for the assistance unit.
+
+### S4912. Colorado Works: wages are available when paid, except contract employment; wages held at the employee's request are income in the month they would otherwise have been paid
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.B (rule version 12030, effective 2025-07-01; field sweep fix round, FS-CW-4). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> B. Consideration of Earned Income
+>
+> “Earned Income” is still considered when:
+>
+> 1. Money payments obligated to the employee are diverted to a third-party for the
+> employee’s household or other expenses;
+>
+> 2. Wages are being garnished by a court order.
+>
+> With the exception of contract employment, wages that are paid to an employee for a period for
+> which services were rendered are considered available when paid rather than when earned,
+> except that wages held at the request of the employee are considered income in the month they
+> would otherwise have been paid.
+
+### S4913. Colorado Works: self-employment income received regularly is income in the month received; irregular or significantly varying self-employment income is averaged over a twelve-month period
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.E.2, E.3 (rule version 12030, effective 2025-07-01; field sweep fix round, FS-CW-5). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 2. Income Received From Self-Employment
+>
+> All self-employment income that is received regularly shall be considered income in the
+> month it is received.
+>
+> 3. Irregular Receipt of Self-Employment Income
+>
+> If receipt of self-employment income is irregular or varies significantly from month to
+> month, it shall be averaged over a twelve-month period.
+
+### S4914. Adult Financial: self-employment income in the month received; irregular self-employment income averaged over twelve months, the previous tax year or the twelve months before the application date
+
+Document: D-80
+
+9 CCR 2503-5 3.520.783.F (rule version 12428, effective 2026-03-02; field sweep fix round, FS-AF-3). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> F. All self-employment income shall be considered income in the month received. If
+> receipt of self-employment income is irregular, it shall be averaged over a twelve-
+> month period. The twelve-month period can either be the previous tax year
+> (January to December) or the most recent twelve-months prior to the application
+> date.
