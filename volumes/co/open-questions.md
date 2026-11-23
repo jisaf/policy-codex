@@ -3060,7 +3060,7 @@ Body: 10 CCR 2506-1 4.205.11.B.2.b (S835; the current text, D-82, rule version 1
 
 Class: state policy choice
 Owner: SNAP policy owner
-Assumption: The postponement runs through the application date plus thirty days, inclusive: a household that completes the postponed verification on that day is in time, and is postponed_expedited on it.
+Assumption: The postponement runs through the application date plus thirty days, inclusive: a household that completes the postponed verification on that day is in time, and its verification is still postponed on that day.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.205.11.B.2.b (D-82, rule version 12718; S835 from D-103); 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310); OQ-323 (thirty days rather than the federal months; it does not settle the day). Items: CO-1393, CO-1394.
 
@@ -3070,6 +3070,6 @@ Body: 10 CCR 2506-1 4.403.12 (S3114) averages "Self-employment income which repr
 
 Class: state policy choice
 Owner: SNAP policy owner
-Assumption: Both are required where read (CO-5100 as declared): a business that does not say whether it is the household's annual support, or an annual-support business that does not say whether it has changed substantially, cannot be determined.
+Assumption: Both are required where read, as the earnings records declare them: a business that does not say whether it is the household's annual support, or an annual-support business that does not say whether it has changed substantially, cannot be determined.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.403.11-4.403.12 (D-82, S1152, S3114); 4.402.2.A.1 (S3113); 7 CFR 273.11(a)(1) (D-15). Items: CO-4329, CO-4349, CO-1702, CO-3722, CO-5100.

@@ -41,8 +41,10 @@ describe("long rules read as bulleted clauses", () => {
     // Before the split: 226 lines over 300 characters. 41 after the time
     // audit fix round wrote "[figure] as of the determination date" into the
     // rules that fix a figure at the determination (T-3: CCCAP's fee and
-    // entry limit, LEAP's limit and guideline).
-    expect(over).toBeLessThanOrEqual(41);
+    // entry limit, LEAP's limit and guideline). 42 after earnings E1 SNAP: each
+    // pay converted by its own frequency, written once per pay sum (CO-4324,
+    // CO-5113), reads as one long clause list.
+    expect(over).toBeLessThanOrEqual(42);
   });
 
   it("relationship roles read as words", () => {
