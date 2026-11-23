@@ -1,0 +1,18 @@
+id: CO-6002
+name: "SNAP: full month allotment before the minimum"
+identifier: snap_full_month_allotment_before_minimum
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The full month's allotment an initial month is prorated from: the household's allotment from its own size and income (snap_allotment_before_minimum_and_cap, CO-6000), never more than it would receive with its disqualified members counted (snap_allotment_cap_before_minimum, CO-6001; 7 CFR 273.11(c)(1)(ii)), and without the one- and two-person minimum, which applies \"Except for an initial month\" (10 CCR 2506-1 4.207.3.C)."
+precision: "The full month (snap_full_month_allotment, CO-2307) and the initial month (snap_prorated_initial_month_allotment, CO-2308) read the same two pieces, so the cap cannot be applied in one month and missed in the other again."
+derived: [min, snap_allotment_before_minimum_and_cap, snap_allotment_cap_before_minimum]
+sources: [S2965, S1616, S104]
+implemented: engine
+tags: [snap, income]
+nearest: [CO-6000]
+rationale: "Duplicate-paths audit D-S3 (docs/reviews/duplicate-paths-audit.md): the prorated initial month (CO-2308) recomputed the allotment from the maximum allotment less the benefit reduction and never applied the cap of 7 CFR 273.11(c)(1)(ii) that the full month (CO-2307) applies through CO-4182, so a household with a member disqualified under 273.11(c)(1) received more in its initial month than the rule allows (the audit's household: $546 against a $400 cap; from the 16th of a 31-day month $281 where the cap gives $206). The pieces both months share are items each reads."
+tests:
+  - {id: CO-6002-T1, as_of: "2026-10-01", month: "2026-10", title: "Audit household SNAP-prorated-cap: own allotment $546, cap $400: 400", given: {snap_allotment_before_minimum_and_cap: 546, snap_allotment_cap_before_minimum: 400}, expect: 400}
+  - {id: CO-6002-T2, as_of: "2026-10-01", month: "2026-10", title: "Cap above the household's own allotment: its own, 322", given: {snap_allotment_before_minimum_and_cap: 322, snap_allotment_cap_before_minimum: 808}, expect: 322}
