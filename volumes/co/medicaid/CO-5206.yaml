@@ -3,10 +3,10 @@ name: "Medicaid: Medicare Savings Program countable resources"
 identifier: ma_msp_countable_resources
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: Medicaid
 meaning: "This person's countable resources for the Medicare Savings Programs (QMB, SLMB, QI-1, QDWI; 10 CCR 2505-10 § 8.100.6.L.2.b, N, O): the SSI-related figure (ma_ssi_countable_resources) less the home equity of each member of the couple that counts only because of a recorded beneficiary deed (ma_home_equity_counted_only_by_beneficiary_deed), since Medicare cost-sharing and the Medicare Savings Program benefits are not subject to estate recovery (42 U.S.C. 1396p(b)(1)(B)(ii)) and § 8.100.5.M.2.a.xiv counts only a home \"which is subject to estate recovery\"."
-precision: "Never below zero. The couple is ma_ssi_couple_members, as in ma_ssi_countable_resources. Which assistance \"subject to estate recovery\" is judged against is OQ-900 (needs Legal); the draft judges it against the assistance being determined."
+precision: "Never below zero. The couple is ma_ssi_couple_members, as in ma_ssi_countable_resources. Which assistance \"subject to estate recovery\" is judged against is OQ-900 (needs Legal); the draft judges it against the assistance being determined. Coverage pass 4, non-MAGI N4-7: per month, as ma_ssi_countable_resources (CO-608) and the couple (CO-3626) it reads."
 derived: [max, 0, ["-", ma_ssi_countable_resources, [sum, ma_ssi_couple_members, [of, [P], ma_home_equity_counted_only_by_beneficiary_deed]]]]
 sources: [S3403, S3751]
 open: [OQ-900]
@@ -15,5 +15,5 @@ tags: [ma, non_magi, msp, resources, legal]
 rationale: "Coverage pass 3 C3-5 (the common half) and the probe hand-check of CO-402: an aged QMB applicant with a beneficiary deed on her home was refused QMB on the home's equity. The QMB, SLMB, QI-1 and QDWI tests (CO-613 to CO-616) read this item instead of CO-608."
 nearest: [CO-608]
 tests:
-  - {id: CO-5206-T1, as_of: "2026-11-01", title: "Z-BDEED: 1,000 in the bank and a 150,000 home counted only by the deed", given: {ma_ssi_countable_resources: 151000, ma_ssi_couple_members: [p1], ma_home_equity_counted_only_by_beneficiary_deed: 150000}, relationships: [], expect: 1000}
-  - {id: CO-5206-T2, as_of: "2026-11-01", title: "No beneficiary deed", given: {ma_ssi_countable_resources: 4000, ma_ssi_couple_members: [p1], ma_home_equity_counted_only_by_beneficiary_deed: 0}, relationships: [], expect: 4000}
+  - {id: CO-5206-T1, month: "2026-11", as_of: "2026-11-01", title: "Z-BDEED: 1,000 in the bank and a 150,000 home counted only by the deed", given: {ma_ssi_countable_resources: 151000, ma_ssi_couple_members: [p1], ma_home_equity_counted_only_by_beneficiary_deed: 150000}, relationships: [], expect: 1000}
+  - {id: CO-5206-T2, month: "2026-11", as_of: "2026-11-01", title: "No beneficiary deed", given: {ma_ssi_countable_resources: 4000, ma_ssi_couple_members: [p1], ma_home_equity_counted_only_by_beneficiary_deed: 0}, relationships: [], expect: 4000}

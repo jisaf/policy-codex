@@ -2813,7 +2813,7 @@ Assumption: The cash programs' age conditions are measured on the determination 
 
 Checked 2026-11-23: 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 (the dependent child, S401, S406); 9 CCR 2503-5 3.530 and 3.532.B.2-3 (D-80: the first month "prorated according to the number of days remaining in the month"; the AND client's transition "from the first day of the birth month"). None states the date an age is measured on for a month other than the determination month. Items: CO-901, CO-940.
 
-### OQ-952. Medicaid SSI-method resources in a retroactive month: the determination date's holdings
+### OQ-952. Resolved: a retroactive month's SSI-method resources and couple are those of that month (8.100.3.E.1; 20 CFR 416.1207(a))
 
 Body: Time audit T-8. ssi_countable_resources_individual (CO-800) is per person: it counts the holdings a case states once (liquid_resources_value, the vehicles, the burial funds, retroactive_benefit_payment_unspent_value), and its readers (ssi_countable_resources_couple, CO-801; ma_ssi_countable_resources_individual, CO-4623; af_burial_responsible_person_resources, CO-1225) are per person too. So every month a determination evaluates, a retroactive month included, is judged on the determination date's holdings, and § 8.100.5.F.6.c's nine-month exclusion of a retroactive SSI or Social Security lump sum (S3404) is counted to the determination month. A retroactive month is to be one in which the person "met all applicable eligibility requirements" (§ 8.100.3.E.1), resources included. A person whose savings, or whose unspent lump sum's exclusion, differed in a retroactive month from the determination date is judged on the wrong figure in that month: for example a lump sum received eleven months before the determination is counted in every retroactive month, though it was still excluded in the earliest of them. Stating the holdings by month would make the resource facts and their readers per month, the change the non-MAGI fix round owns.
 
@@ -2822,6 +2822,8 @@ Owner: Medicaid policy owner
 Assumption: The holdings a case states are the determination date's and stand for every month the determination evaluates; the lump-sum exclusion is counted to the determination month.
 
 Checked 2026-11-23: 10 CCR 2505-10 § 8.100.3.E.1-2 and § 8.100.5.F.6.c (D-65); neither says on which date a retroactive month's resources are valued, and no fetched Colorado text adopts SSI's first-moment-of-the-month valuation for retroactive months. Items: CO-800.
+
+Resolved (coverage pass 4, non-MAGI, N4-7, 2026-11-23; docs/reviews/coverage4-medicaid-nonmagi.md): the premise is gone and the text decides it. The holdings records are per month (holdings, CO-5300: `month`, "The month the value is as of (its first moment, 20 CFR 416.1207(a))", S4501), and 10 CCR 2505-10 § 8.100.3.E.1 (S217) gives retroactive coverage only where the person "met all applicable eligibility requirements" in the month; 416.1207(a) values resources "as of the first moment of the month". So each month a determination evaluates is judged on its own month's holdings: ma_ssi_countable_resources (CO-608) and ma_meets_ssi_resource_standard (CO-610) are per month, from ma_ssi_countable_resources_in_month (CO-5322); the couple (ma_ssi_couple_members, CO-3626; ma_ssi_household_size, CO-604) is the month's, with institution status measured against the month (ma_excluded_from_ssi_household, CO-661; ma_is_institutionalized_spouse_in_institution, CO-5200; § 8.100.7.C.2.b; 42 U.S.C. 1396r-5(b)(1)); and F.6.c's nine-month exclusion of a held retroactive payment is counted to each month (CO-5320). Stored households CO-760 (RETRO-RES) and CO-761 (RETRO-COUPLE). ssi_countable_resources_individual (CO-800) stays the determination month's figure for the programs that adopt it at one date.
 
 ### OQ-953. Cash programs: whether the first day counts in "N consecutive days"
 
@@ -3499,6 +3501,6 @@ Body: 10 CCR 2505-10 8.100.5.F.6.aa (S4674) exempts "Any grant or loan to an und
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Every work-study pay stated as work_study is exempt, read as F.6.aa's College Work Study Program.
+Assumption: Every work-study pay is exempt, read as the College Work Study Program F.6.aa names.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6.aa-cc (D-65). No paragraph on file names a State work-study program or limits the earnings rule by the student's level. Items: CO-5107.

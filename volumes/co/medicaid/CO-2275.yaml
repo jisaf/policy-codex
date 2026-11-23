@@ -3,17 +3,20 @@ name: "Medicaid: is an unemancipated child for SSI-related income"
 identifier: ma_is_ssi_unemancipated_child
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
 meaning: "Whether the person is of an age to be an unemancipated child under 10 CCR 2505-10 § 8.100.5.H.2.a: under 18, or under ma_ssi_unemancipated_student_age_limit and regularly attending a school, college or university or receiving technical training. Living in the same household with a parent is tested where the item is read, through the parent edge."
-derived: [all, [not, [otherwise, is_emancipated_minor, false]], [any, [<, age, ma_ssi_unemancipated_child_age_limit], [all, [<, age, ma_ssi_unemancipated_student_age_limit], ma_is_regularly_attending_school_or_training]]]
+precision: "Coverage pass 4, non-MAGI N4-9 (docs/operators.md, \"Ages in a month\"): the age is taken in the month evaluated, not on the determination date: an \"under N\" test on the first day of the month (ma_age_on_first_day_of_month, CO-4978), an \"N or older\" test on the last day (ma_age_on_last_day_of_month, CO-5402), and a test that excludes the person from what is favorable on the other day. Per month: every reader is per month (the household's unearned income, the deeming and Ineligible Child Allocations, the Working Adults and Children's Buy-In income)."
+derived: [all, [not, [otherwise, is_emancipated_minor, false]], [any, [<, ma_age_on_first_day_of_month, ma_ssi_unemancipated_child_age_limit], [all, [<, ma_age_on_first_day_of_month, ma_ssi_unemancipated_student_age_limit], ma_is_regularly_attending_school_or_training]]]
 sources: [S1506]
 implemented: engine
 tags: [ma, non_magi, age]
 rationale: "Same-word audit SW-16: an emancipated minor is not an unemancipated child, so the item reads is_emancipated_minor (CO-843). OQ-83: the ineligible child allocation and the one-third child support reduction apply to unemancipated children."
 tests:
-  - {id: CO-2275-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01"}, expect: true}
-  - {id: CO-2275-T2, as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: true}, expect: true}
-  - {id: CO-2275-T3, as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: false}, expect: false}
-  - {id: CO-2275-T4, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, expect: false}
-  - {id: CO-2275-T9, title: "SW-16: an emancipated 17-year-old", as_of: "2026-11-01", given: {age: 17, is_emancipated_minor: true}, expect: false}
+  - {id: CO-2275-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-01-01"}, expect: true}
+  - {id: CO-2275-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: true}, expect: true}
+  - {id: CO-2275-T3, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: false}, expect: false}
+  - {id: CO-2275-T4, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, expect: false}
+  - {id: CO-2275-T9, month: "2026-11", title: "SW-16: an emancipated 17-year-old", as_of: "2026-11-01", given: {age: 17, is_emancipated_minor: true}, expect: false}
+  - {id: CO-2275-T10, month: "2026-10", as_of: "2026-11-20", title: "N4-9: 17 on 2026-10-01, 18 on the determination date: an unemancipated child in October", given: {date_of_birth: "2008-11-15", is_emancipated_minor: false, ma_is_regularly_attending_school_or_training: false}, expect: true}
+  - {id: CO-2275-T11, month: "2026-12", as_of: "2026-11-20", title: "N4-9: 18 on 2026-12-01, not in school: not one in December", given: {date_of_birth: "2008-11-15", is_emancipated_minor: false, ma_is_regularly_attending_school_or_training: false}, expect: false}
