@@ -26,7 +26,7 @@ export const track: Track = {
       "snap_farm_self_employment_loss", "snap_boarder_income", "snap_person_earned_income", "snap_person_pay_received",
     ],
     notInvariant: {
-      "ME-1": "a boarder record states its boarders (CO-5100), which a split repeats: two halves of the same two boarders' payments state four boarders, and the cost of doing business is the maximum allotment for the number of boarders (4.403.2.B.1). Run in step E1 with the boarders not halved, every violation was a boarder record (8 values in CO-354, CO-425 and the two boarder variants); every other SNAP figure is invariant, each pay being converted on its own (4.402.A.2)",
+      // ME-1 runs from the records E1 integration: the split halves a boarder record's boarders and a business's hours.
       "ME-3": "SNAP averages over the year (4.403.3, 4.403.12) and tests irregular pay over the quarter (4.405.A): a record stated for one month is not the same as one that recurs in the months those rules read",
     },
     bases: [

@@ -1,7 +1,7 @@
 # Earned-income records harness: allowed differences of the cw E1 track (design 4.3, rule 3).
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
 # docs/reviews/records-earnings-cash.md: {case, person?, identifier?, month?, class, old?, new?}.
-# (The inherited D4-1 difference on CO-141 is AF-0, scripts/records/allowed/e1-af.yaml.)
+# (The inherited D4-1 difference on CO-141 is gone: the E1 baseline, 9650b0c, includes that round; records E1 integration.)
 
 # CW-1: wages from WIOA on-the-job training are exempt (9 CCR 2503-6 3.605.4.B.35, S2606: "Wages earned through
 # subsidized employment programs including employment, apprenticeships, on-the-job training, and transitional jobs";

@@ -20,7 +20,7 @@ export const track: Track = {
       "cw_countable_income",
     ],
     notInvariant: {
-      "ME-1": "Colorado Works deducts a Food Assistance allotment per boarder (3.605.2.E.4.c, e, S3159): a boarder record split in two states its boarders twice",
+      // ME-1 runs from the records E1 integration: the split halves a boarder record's boarders and a business's hours.
     },
     bases: [
       { id: "CO-358", person: "p1", label: "CW applicant" },
