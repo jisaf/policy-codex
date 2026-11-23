@@ -94,3 +94,11 @@ The evaluator in `src/engine/` is the codex's test harness and the producer of t
 
 ### Product-owner decision: restructure and shared primitives (2026-11-23)
 The restructure in docs/design-restructure-proposal.md is approved. Programs are independent: a cross-program read is allowed only for a primitive with one definition everywhere (age, dates, relationships, published figures). Complex program-specific calculations (income, resources, units, homelessness, countable expenses) are never shared; each program builds its own from the shared supplied facts. Every case matters, including edge cases; the stopping rule is unchanged.
+
+### Product-owner decisions: plan for a trustworthy, approvable codex (2026-11-23)
+Following docs/reviews/restructure-proposal-review.md and docs/reviews/revised-plan-review.md:
+1. **Cross-program links, four classes.** Primitive (one meaning everywhere: age, dates, relationships, published figures); adopted method (a program adopts another method by reference, e.g. SSI-method income for Medicaid), cited; rule-required outcome link (e.g. SNAP categorical eligibility on TANF receipt, Adult Financial barred by a Colorado Works sanction), cited; program calculation (never shared). Undeclared cross-program reads are blocked.
+2. **Receipt-record spike now**, time-boxed, on LEAP unearned income, SNAP unearned income and Adult Financial deeming, behind an old-versus-new harness; adopt or reject before any exhaustive review.
+3. **Stopping rule tightened:** two independent clean exhaustive passes per program family, plus an external check on a sample (published worked examples or equivalent).
+4. **Missing information means "cannot determine" unless the rule says otherwise.** Each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults.
+Order: (1) keep every probe household, each with an independent hand computation; (2) stale-approval check; (3) receipt spike, decision, then required/default on every fact; (4) change-impact and sibling-copy flags block the merge until dispositioned; (5) no duplicate paths within a program, verification items included; (6) time audit and generated boundary cases; (7) fix open findings; (8) light reviews, two clean exhaustive passes per family, then chapter-by-chapter sign-off by the owning roles.
