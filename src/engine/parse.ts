@@ -197,6 +197,12 @@ export function parseInline(
     const qw = qr && splitTop(qr[1], " where ");
     if (qr && qw) return ["sum_receipts", p(qw[0]), p(qw[1]), p(qr[0])];
   }
+  if ((m = s.match(/^the largest of (.+)$/))) {
+    // P58: "the largest of V for each holding in L where (C)".
+    const qr = splitTop(m[1], " for each holding in ", true) ?? splitTop(m[1], " for each receipt in ", true);
+    const qw = qr && splitTop(qr[1], " where ");
+    if (qr && qw) return ["largest", p(qw[0]), p(qw[1]), p(qr[0])];
+  }
   if ((m = s.match(/^the number of months in (.+) for which (.+)$/))) {
     return ["count_months", p(m[1]), p(m[2])];
   }
@@ -314,12 +320,12 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
     if (!rest.length) throw new Error("the sum: missing value");
     return ["sum_months", p(m[1]), parseBlockLines(ix, rest, options)];
   }
-  if ((m = txt.match(/^the sum for each (?:receipt|holding) in (.+) where$/))) {
-    // P55 as a block: the condition, then "of" one step in, then the value.
+  if ((m = txt.match(/^the (sum|largest) for each (?:receipt|holding) in (.+) where$/))) {
+    // P55 (and P58) as a block: the condition, then "of" one step in, then the value.
     const ofAt = rest.findIndex((l) => l.text.trim() === "of" && l.indent === first.indent + 2);
-    if (ofAt <= 0 || ofAt === rest.length - 1) throw new Error("the sum for each receipt: needs a condition and, after \"of\", a value");
+    if (ofAt <= 0 || ofAt === rest.length - 1) throw new Error(`the ${m[1]} for each receipt: needs a condition and, after "of", a value`);
     return [
-      "sum_receipts", p(m[1]),
+      m[1] === "sum" ? "sum_receipts" : "largest", p(m[2]),
       parseBlockLines(ix, rest.slice(0, ofAt), options),
       parseBlockLines(ix, rest.slice(ofAt + 1), options),
     ];

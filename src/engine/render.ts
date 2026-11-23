@@ -106,9 +106,10 @@ export function inline(ix: LedgerIndex, e: Expr): string {
   }
   // The condition is parenthesised so its comparisons never read as the
   // sum's own (the inline form is read back by parse.ts).
-  if (op === "sum_receipts") {
+  if (op === "sum_receipts" || op === "largest") {
     const n = listNoun(ix, e[1]);
-    return withNoun(n, () => `the sum of ${o(e[3])} for each ${n} in ${i(e[1])} where (${i(e[2])})`);
+    const head = op === "largest" ? "the largest of" : "the sum of";
+    return withNoun(n, () => `${head} ${o(e[3])} for each ${n} in ${i(e[1])} where (${i(e[2])})`);
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
@@ -195,11 +196,11 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
       ...block(ix, e[2], indent + 1),
     ];
   }
-  if (op === "sum_receipts") {
+  if (op === "sum_receipts" || op === "largest") {
     // The condition, then the value, each under its own heading line.
     const n = listNoun(ix, e[1]);
     return withNoun(n, () => [
-      pad + `the sum for each ${n} in ${inline(ix, e[1])} where`,
+      pad + `the ${op === "largest" ? "largest" : "sum"} for each ${n} in ${inline(ix, e[1])} where`,
       ...block(ix, e[2], indent + 2),
       pad + "  of",
       ...block(ix, e[3], indent + 2),
