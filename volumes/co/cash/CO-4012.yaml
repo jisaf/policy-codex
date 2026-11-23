@@ -5,13 +5,13 @@ kind: derived
 type: money
 scope: person-month
 program: AdultFinancial
-meaning: "The person's infrequent or irregular earned income for the month (infrequent_or_irregular_earned_income_received) when the infrequent or irregular income of the calendar quarter containing the month, earned and unearned together (af_infrequent_income_quarter_total), is less than af_infrequent_income_quarterly_limit, which 9 CCR 2503-5 3.520.786.O exempts; otherwise 0."
-precision: "Read by af_excluded_earned_income (CO-2342), so the exempt earnings come off gross earned income before the $65 and one-half disregards."
+meaning: The person's infrequent or irregular earned income for the month (infrequent_or_irregular_earned_income_received) when the infrequent or irregular income of the calendar quarter containing the month, earned and unearned together (af_infrequent_income_quarter_total), is less than af_infrequent_income_quarterly_limit, which 9 CCR 2503-5 3.520.786.O exempts; otherwise 0.
+precision: Read by af_excluded_earned_income (CO-2342), so the exempt earnings come off gross earned income before the $65 and one-half disregards.
 derived: [case, [["<", af_infrequent_income_quarter_total, af_infrequent_income_quarterly_limit], [otherwise, infrequent_or_irregular_earned_income_received, 0]], [else, 0]]
 sources: [S2608]
 implemented: engine
 tags: [cash, income]
 rationale: "Final cash review 2, P2-3: 3.520.786.O exempts infrequent or irregular income of less than $60 in a calendar quarter without limiting it to unearned income; the earned part had no exclusion."
 tests:
-  - {id: CO-4012-T1, title: "$35 for a single odd job in May, nothing else in the quarter: exempt", as_of: "2026-05-15", month: "2026-05", given: {infrequent_or_irregular_earned_income_received: {"2026-05": 35}}, expect: 35}
-  - {id: CO-4012-T2, title: "$35 of odd-job pay and a $40 gift in the same quarter: $75, counted", as_of: "2026-05-15", month: "2026-05", given: {infrequent_or_irregular_earned_income_received: {"2026-05": 35}, infrequent_or_irregular_income_received: {"2026-04": 40}}, expect: 0}
+  - {id: CO-4012-T1, month: "2026-05", as_of: "2026-05-15", given: {infrequent_or_irregular_earned_income_received: {"2026-05": 35}}, title: "$35 for a single odd job in May, nothing else in the quarter: exempt", expect: 35}
+  - {id: CO-4012-T2, month: "2026-05", as_of: "2026-05-15", given: {infrequent_or_irregular_earned_income_received: {"2026-05": 35}, infrequent_or_irregular_income_received: {"2026-04": 40}, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}, {kind: other_nontaxable, amount: 40, irregular: true, month: "2026-04"}]}, title: "$35 of odd-job pay and a $40 gift in the same quarter: $75, counted", expect: 0}

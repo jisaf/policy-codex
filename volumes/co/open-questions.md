@@ -2718,6 +2718,46 @@ Assumption: Colorado's exception, with age 18 or older standing for "over eighte
 
 Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.
 
+### OQ-885. LEAP: money a non-citizen receives from a sponsor
+
+Body: 9 CCR 2503-7 3.752.21 (S2714) counts "payments from any other source, which is considered to be a gain or benefit to the applicant or recipient", and no paragraph of 3.752.23 (S1624, S2208, S3300, S3302, S3595) names money from a sponsor. Before receipt records LEAP never read it: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts LEAP summed, so a sponsor's cash was left out of LEAP income by silence. The counting table (leap_receipt_treatment_table, CO-5001) keeps that reading, as not_counted_open_question, until the LEAP owner decides.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: Money from a sponsor is not counted (the reading before receipt records), pending this answer; 3.752.21's "any other source" suggests it is.
+
+Checked 2026-11-23: 9 CCR 2503-7 3.752.21, 3.752.211, 3.752.23 (D-86, version effective 11/01/2025, and the amendments effective 11/01/2026, D-173). Neither names sponsor support.
+
+### OQ-886. LEAP: the income verification period when the prior month has no same date
+
+Body: 9 CCR 2503-7 3.751.1 (S2712): "The income verification period is from the date of application to the same date of the prior month (approximately thirty (30) calendar days from the date of application)". An application on March 29, 30 or 31 has no same date in February, nor one on the 31st of a month after a 30-day month. leap_income_verification_period_start (CO-5002) takes the application date less the days of the prior month, which lands a day or two into the application month (March 30: March 2), so a receipt of the last days of February is outside the period.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: The application date less the number of days in the prior month (March 30 gives March 2); the alternative reading is the prior month's last day (February 28).
+
+Checked 2026-11-23: 9 CCR 2503-7 3.751.1 and 3.752.22.A (D-86, version effective 11/01/2025). Neither says which date stands for a missing same date.
+
+### OQ-887. Adult Financial: a retroactive SSI award paid in a lump sum
+
+Body: 9 CCR 2503-5 3.520.785.B.1.a (S1622) counts unearned income "in the month received"; 3.520.786.K (S2608) incorporates the SSI unearned income exclusions of 20 CFR 416.1124, and 3.533.A.2 adds the full SSI back after the $20 disregard is taken from unearned income other than SSI. Neither says whether a retroactive SSI award (or a retroactive Adult Financial grant) paid as one sum is SSI for 3.533.A.2 or unearned income other than SSI in the month received. Before receipt records the ledger counted it with the other unearned income, because retroactive_ssi_or_public_assistance_lump_sum_received (CO-3920) was part of the lump sum, itself part of the other unearned income facts; the counting table (af_receipt_treatment_table, CO-5016) keeps that reading.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A retroactive SSI or Adult Financial lump sum is counted, in the month received, as unearned income other than SSI.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.785, 3.520.786 and 3.533 (D-85); 20 CFR 416.1123(d) and 416.1124 as K incorporates them. 416.1123(d) treats retroactive SSI as income in its own months for SSI; the Colorado rule does not adopt it for the Adult Financial grant.
+
+### OQ-888. Adult Financial: money a non-citizen receives from a sponsor
+
+Body: 9 CCR 2503-5 3.520.785 (S1622) counts gross unearned income and 3.520.786 (S2608) lists what it exempts; a sponsor's cash support to the non-citizen is not named in either. Before receipt records the ledger never read it for Adult Financial: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts, so it was left out by silence. Deeming from a sponsor (3.534.D, 3.544.G, 3.549.G) counts the sponsor's own income, not what the sponsor pays. The counting table (af_receipt_treatment_table, CO-5016) keeps the reading, as not_counted_open_question, until the owner decides.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Money a sponsor pays the non-citizen is not counted as the client's unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.785, 3.520.786, 3.534.D, 3.544.G and 3.549.G (D-85). None names sponsor support paid to the client.
+
 ### OQ-900. Medicaid: a recorded beneficiary deed and the Medicare Savings Programs: against which assistance is "subject to estate recovery" judged
 
 Body: 10 CCR 2505-10 § 8.100.5.M.2.a.xiv (S3403): "The principal place of residence, which is subject to estate recovery, becomes a countable resource upon the execution and recording of a beneficiary deed"; M.3.e counts "Any real property that is subject to a recorded beneficiary deed and on which an estate recovery claim can be made." 42 U.S.C. 1396p(b)(1) (S3751) allows recovery only from the estate of an institutionalized individual ((A)) or one who was 55 or older when the assistance was received ((B)), and (B)(ii) never reaches "medical assistance for medicare cost-sharing or for benefits described in section 1396a(a)(10)(E)" (QMB, SLMB, QI-1, QDWI). The rule does not say whether "subject to estate recovery" is judged against the assistance being determined or against the person (whose estate is reachable for other Medicaid once 55). Coverage pass 3 C3-5 and the probe hand-check of CO-402: a 76-year-old QMB applicant with a beneficiary deed on her home. Judged against the assistance being determined, nothing a Medicare Savings Program pays can be recovered, so the home stays exempt and she is QMB; judged against the person, the home counts and she is refused QMB on its equity while her full-Medicaid test (where recovery is possible) refuses her too. A person under 55 who is not institutionalized has no recoverable estate on either reading (ma_home_is_subject_to_estate_recovery, CO-5203), and the text settles that half. Items: CO-4622, CO-5203, CO-5205, CO-5206, CO-613, CO-614, CO-615, CO-616.

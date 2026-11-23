@@ -85,7 +85,12 @@ export function inline(ix: LedgerIndex, e: Expr): string {
         : `${o(e[1])}, for ${o(e[2])}, or its last row beyond it`;
     case "latest_month_of_year": return `the most recent month number ${o(e[1])} on or before ${o(e[2])}`;
     case "as_of": return `${i(e[1])} as of ${o(e[2])}`;
+    case "receipt": return `that receipt's ${String(e[1]).replace(/_/g, " ")}`;
+    case "received_in": return `that receipt is received in ${i(e[1])}`;
   }
+  // The condition is parenthesised so its comparisons never read as the
+  // sum's own (the inline form is read back by parse.ts).
+  if (op === "sum_receipts") return `the sum of ${o(e[3])} for each receipt in ${i(e[1])} where (${i(e[2])})`;
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
   if (op === "sum_months") return `the sum of ${i(e[2])} for each month in ${i(e[1])}`;
@@ -169,6 +174,15 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
     return [
       pad + `the sum for each month in ${inline(ix, e[1])} of`,
       ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "sum_receipts") {
+    // The condition, then the value, each under its own heading line.
+    return [
+      pad + `the sum for each receipt in ${inline(ix, e[1])} where`,
+      ...block(ix, e[2], indent + 2),
+      pad + "  of",
+      ...block(ix, e[3], indent + 2),
     ];
   }
   if (op === "each") {

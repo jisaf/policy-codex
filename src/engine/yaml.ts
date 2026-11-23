@@ -3,7 +3,8 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
-  "meaning", "precision", "assumption", "statute_override", "supplied_by", "value", "versions", "review_by", "derived",
+  "meaning", "precision", "assumption", "statute_override", "supplied_by", "record_fields",
+  "value", "versions", "review_by", "derived",
   "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open",
   "link_class", "link_basis", "adopted_by", "accepts_from", "siblings",
   "rationale", "nearest", "tests",
@@ -76,7 +77,25 @@ export function stringifyItem(it: Item): string {
       lines.push("versions: []");
       continue;
     }
-    if (SEQ_OF_FLOW_KEYS.has(key)) {
+    if (key === "record_fields" && typeof v === "object" && !Array.isArray(v)) {
+      // A record schema: one block per field, one line per key of its
+      // declaration, and one line per option meaning, so an approver reads
+      // (and a diff shows) each kind on its own line.
+      lines.push(`${key}:`);
+      for (const [name, spec] of Object.entries(v as Record<string, Record<string, unknown>>)) {
+        lines.push(`  ${name}:`);
+        for (const [k, x] of Object.entries(spec ?? {})) {
+          if (k === "option_meanings" && x && typeof x === "object" && !Array.isArray(x)) {
+            lines.push(`    ${k}:`);
+            for (const [o, m] of Object.entries(x as Record<string, unknown>)) lines.push(`      ${o}: ${yamlScalar(m)}`);
+          } else if (x !== null && typeof x === "object") {
+            lines.push(`    ${k}: ${flowValue(x)}`);
+          } else {
+            lines.push(`    ${k}: ${yamlScalar(x)}`);
+          }
+        }
+      }
+    } else if (SEQ_OF_FLOW_KEYS.has(key)) {
       lines.push(`${key}:`);
       for (const entry of v as unknown[]) {
         lines.push("  - " + flowValue(key === "tests" ? orderTestRow(entry) : entry));

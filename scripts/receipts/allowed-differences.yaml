@@ -1,0 +1,53 @@
+# Differences the receipts migration is expected to make (docs/reviews/receipts-migration-1.md, where
+# each class is stated with its cases and the rule text). npm run receipts:harness fails on any
+# difference no entry here matches. Patterns between slashes are regular expressions; old/new
+# "unknown" match a cannot-determine value. Keep each entry as narrow as the class is.
+
+# R1 (the spike's class 1, fixed): a one-time payment of a kind LEAP excludes (3.752.23.G, U, W-AA,
+# FF, EE) stated without the thirty-day facts made LEAP's income "cannot determine": the old
+# leap_person_one_time_income (CO-4069) needed the thirty-day facts to place any lump sum. The
+# counting table excludes the kind first, so its date is never asked.
+- case: /^G-[A-Za-z]+-(crime_victim_compensation_received|foster_care_provider_payments_received|kinship_care_payments_received|tanf_diversion_payment_received|reverse_mortgage_payments_received|housing_utility_allowance_received|gi_bill_housing_and_food_allowances_received|refugee_resettlement_payments_received|tanf_supportive_service_payments_received)_300_paid_as_a_lump_sum$/
+  identifier: /^leap_/
+  old: unknown
+  class: R1 LEAP excluded one-time receipt no longer needs the thirty-day facts
+- case: /^G-[A-Za-z]+-retroactive_(SS|SSI_PA)_lump_300$/
+  identifier: /^leap_/
+  old: unknown
+  class: R1 LEAP excluded one-time receipt no longer needs the thirty-day facts
+
+# R2 (decision 4 of 2026-11-23): AmeriCorps payments with the hours served not stated. The old
+# leap_excluded_unearned_income (CO-4511) counted them, a default no rule gives (3.752.23.F needs the
+# payments for the hours served); hours_served has no default, so LEAP cannot determine.
+- case: /^(CO-155|G-[A-Za-z]+-AmeriCorps_300_hours_not_stated)$/
+  identifier: /^leap_/
+  new: unknown
+  class: R2 decision 4, AmeriCorps hours not stated
+
+# R3 (the spike's class 5, fixed: the limit CO-4962's precision recorded, F3-2 residual): a one-time
+# crime victim payment received in the month before the application, inside the income verification
+# period, was counted as an unnamed lump sum because the placement read only the application month.
+- case: G-LEAPwin-crime_victim_3000_one_time_in_October_in
+  identifier: /^leap_/
+  class: R3 LEAP CO-4962 placement limit
+
+# R4 (the spike's class 3, fixed; a new P1 for SNAP): a one-time crime victim payment stated, as
+# CO-4960 said it must be, both as crime_victim_compensation_received and as lump_sum_received was
+# subtracted twice by snap_excluded_unearned_income (CO-2339), wiping out $900 of child support: the
+# SNAP twin of LEAP coverage-3 F3-2. A receipt paid once is excluded once (4.405.E, A.27). The
+# unearned-income verification trigger then turns on the verification fact the household does not state.
+- case: CO-225
+  identifier: /^snap_/
+  class: R4 SNAP double subtraction of a one-time excluded payment (CO-2339)
+
+# R5 (time audit T-5 met the migration at the merge of ccbb3a7): a SNAP month after the elderly or
+# disabled resource limit's last version closes (snap_resource_limit_elderly_disabled, FY2027, to
+# 2027-10-01). The old snap_has_substantial_lottery_winnings (CO-4151) compared a person's winnings,
+# 0 when none were stated, with the limit, so it could not determine and nor could the person's
+# unearned and gross income; the receipts compare only a gambling receipt with the limit (CO-5012),
+# so a person with no winnings has none, whatever the limit (4.403.I, 7 CFR 273.11(r): a prize "equal
+# to or greater than" the limit). A prize stated in such a month still cannot determine (CO-4151-T7).
+- case: /^CO-(89|93|98)$/
+  identifier: /^snap_(person_unearned_income|person_gross_income|household_gross_income|unearned_income_verification_is_pending)$/
+  old: unknown
+  class: R5 SNAP no winnings, no limit in force (T-5 closure)

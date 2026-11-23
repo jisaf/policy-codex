@@ -231,7 +231,11 @@ The fingerprint is `fp1-` and 20 hex digits of a SHA-256 over:
   program, role, meaning, assumption, statute_override, supplied_by, value,
   versions (from, to, value, source), derived, sources, effective,
   accepts_from, link_class, link_basis, adopted_by (the cross-program link
-  declarations, added 2026-11-23: an item without them hashes as before);
+  declarations, added 2026-11-23: an item without them hashes as before),
+  record_fields (a list of receipts' record schema: each field's type, options,
+  option meanings, meaning, and required, default or when_absent; added with
+  receipt records on 2026-11-23, likewise hashing as before when absent; the
+  order of fields and of options does not count);
 - the quoted text of every excerpt the item cites in sources.md (its
   `sources` and each version's `source`);
 - the fingerprint of every item it reads, so a change at any depth upstream

@@ -1,0 +1,17 @@
+id: CO-5020
+name: "Adult Financial: one-third of current child support for an SSI-age child"
+identifier: af_child_support_exclusion
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "For a person under the SSI child definition (af_is_ssi_child, 20 CFR 416.1856), the part of the current child support received in the month that 9 CCR 2503-5 3.520.786.K excludes through 20 CFR 416.1124(c)(11): the support divided by af_child_support_exclusion_divisor (one-third); otherwise 0."
+precision: Current support is the receipts of kind child_support; arrears are their own kind, which the counting table excludes (P). The child test is read only when there is current support, as before receipt records.
+derived: [case, [[all, [">", [sum_receipts, receipts, [all, ["=", [lookup, af_receipt_treatment_table, [receipt, kind]], counted_less_one_third_for_ssi_child], [received_in, [month]]], [receipt, amount]], 0], af_is_ssi_child], ["/", [sum_receipts, receipts, [all, ["=", [lookup, af_receipt_treatment_table, [receipt, kind]], counted_less_one_third_for_ssi_child], [received_in, [month]]], [receipt, amount]], af_child_support_exclusion_divisor]], [else, 0]]
+sources: [S2608, S2609]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: the child-support term of af_excluded_unearned_income (CO-2343), read outside the receipt sum because it turns on the person."
+tests:
+  - {id: CO-5020-T1, month: "2026-10", as_of: "2026-10-15", given: {af_is_ssi_child: true, receipts: [{kind: child_support, amount: 300}, {kind: child_support_arrears, amount: 60}]}, title: "A child: one-third of $300 current support", expect: 100}
+  - {id: CO-5020-T2, month: "2026-10", as_of: "2026-10-15", given: {af_is_ssi_child: false, receipts: [{kind: child_support, amount: 300}]}, title: "An adult: none", expect: 0}
