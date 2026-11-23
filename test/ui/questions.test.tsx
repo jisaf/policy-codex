@@ -348,7 +348,7 @@ describe("the view", () => {
     route.value = { ...route.value, params: { mine: "1", owner: "Cash programs policy owner", sort: "newest" } };
     render(<QuestionsView />, host);
     const cash = [...host.querySelectorAll("li.qcard")];
-    expect(cash.length).toBe(34); // + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831; + OQ-860
+    expect(cash.length).toBe(37); // + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831; + OQ-860
     for (const c of cash) {
       expect(c.getAttribute("data-owner")).toBe("Cash programs policy owner");
       expect(c.querySelector(".qowner b")!.textContent).toBe("Cash programs policy owner");

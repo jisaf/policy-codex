@@ -2817,3 +2817,33 @@ Owner: Cash programs policy owner
 Assumption: A period of N consecutive days is counted from the day after the absence or stay began, so the day of departure or entry is not counted.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.
+
+### OQ-985. Colorado Works: a kinship care payment received for a related child
+
+Body: 9 CCR 2503-6 3.605.4.B.11 (S2606): "A child receiving foster care or kinship care funds under Title IV of the Social Security Act shall be excluded from the assistance unit and his or her income shall be exempt from consideration for Colorado Works eligibility and payment." The volume reads a foster care provider's payment as exempt under it (foster_care_payment: excluded, as cw_excluded_unearned_income did before receipt records), but a kinship care payment made to the caretaker for a related child in the caretaker's care was never among the exempt sources: before receipt records it sat in the caretaker's other unearned income (kinship_care_payments_received, CO-4503, was read only by CCCAP), so Colorado Works counted it by silence. The text does not say whether B.11's "his or her income" reaches a kinship payment the caretaker receives for the child, nor whether a payment not funded under Title IV (a State kinship payment) is exempt. The counting table keeps the reading before receipt records (kinship_care_payment: counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A kinship care payment the caretaker receives for a related child is counted as the caretaker's unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.3 and 3.605.4 (D-81, version effective 2025-07-01). B.11 names "foster care or kinship care funds under Title IV" as a child's income; no paragraph names a kinship payment received by the caretaker.
+
+### OQ-986. Colorado Works: its own diversion and supportive services payments as income to the unit
+
+Body: A Colorado Works diversion payment (9 CCR 2503-6 3.606.8) and a Colorado Works supportive services payment are Colorado Works' own payments; docs/conventions.md rule 6 says a program does not count its own grant as income, and the counting table so treats basic cash assistance (colorado_works_cash: not_income_to_unit; 3.609.2.G for a retroactive one). 3.605.4 does not name either payment, and 3.606.8 does not say how a diversion payment is treated in a later basic cash assistance determination (the unit is then usually within a period of ineligibility, A.4). Before receipt records both sat in the other unearned income facts (tanf_diversion_payment_received, CO-4850, and tanf_supportive_service_payments_received, CO-4452, were read only by CCCAP), so Colorado Works counted them by silence. The counting table keeps that reading (counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A Colorado Works diversion or supportive services payment received in the month is counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.3, 3.605.4, 3.606.8 and 3.609.2.G (D-81). None names a diversion or supportive services payment as income or as exempt.
+
+### OQ-987. Colorado Works: emergency assistance to a migrant farmworker and need-based cash from a charity
+
+Body: 9 CCR 2503-6 3.605.4.A.3 (S2605) exempts "Emergency Assistance received on a one-time basis in cash or in kind from other agencies and organizations", and B.9 (S4004) "Assistance from other agencies or organizations that are provided for items not included in the need standard or do not duplicate a component of the need standard in total". Emergency assistance paid to a migrant or seasonal farmworker in the job stream (migrant_farmworker_emergency_assistance) and cash a charitable organization gives on the basis of need (charitable_need_based_cash) are receipt kinds of their own; whether either is exempt under A.3 (when received once) or B.9 (when it pays for items outside the need standard) turns on facts the receipts do not state. Before receipt records both sat in the other unearned income facts and Colorado Works counted them by silence; the counting table keeps that reading (counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Both are counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.4.A.3, B.9 and B.10 (D-81). Neither paragraph names a migrant farmworker's emergency assistance or a charity's need-based cash, and B.9 depends on what the assistance pays for.

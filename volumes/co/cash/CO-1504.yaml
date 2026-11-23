@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: The person has died and is a deceased Colorado Works client - one who received Colorado Works while alive and whose case was active in the county at death - so that a death reimbursement benefit may be paid toward the funeral, burial or cremation, per 9 CCR 2503-6 3.606.7.A.1, B.1 and F ("The county department in which the deceased client's case is active"). False for a living person.
-precision: "A Colorado Works payment in the month of death, or a case receiving or authorized to receive basic cash assistance at death (receives_tanf_cash, CO-013, the case record, which for a decedent is the record at death), is read as an active case at death after receipt while alive (3.606.7.B.1, F). Final cash review FC-19: the month-of-death payment alone was narrower than the rule (a client who died before that month's payment was issued). A payment not stated for that month, and a receipt not stated, are read as none."
-derived: [all, [not, [unknown, date_of_death]], [any, [at, [">", [otherwise, tanf_cash_income, 0], 0], [month_of, date_of_death]], [otherwise, receives_tanf_cash, false]]]
+precision: "A Colorado Works payment in the month of death (cw_basic_cash_assistance_receipts, CO-5653, in that month; receipt records, migration phase 2: before them, tanf_cash_income), or a case receiving or authorized to receive basic cash assistance at death (receives_tanf_cash, CO-013, the case record, which for a decedent is the record at death), is read as an active case at death after receipt while alive (3.606.7.B.1, F). Final cash review FC-19: the month-of-death payment alone was narrower than the rule (a client who died before that month's payment was issued). A payment not stated for that month, and a receipt not stated, are read as none."
+derived: [all, [not, [unknown, date_of_death]], [any, [at, [">", [otherwise, cw_basic_cash_assistance_receipts, 0], 0], [month_of, date_of_death]], [otherwise, receives_tanf_cash, false]]]
 sources: [S1005, S1006]
 implemented: engine
 tags: [cash, tanf]
