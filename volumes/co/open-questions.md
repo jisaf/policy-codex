@@ -2980,9 +2980,7 @@ Assumption: Not counted (today's reading) until the SNAP E1 track rewires SNAP's
 
 Checked 2026-11-23: 7 CFR 273.9(c)(1) (D-13); 10 CCR 2506-1 4.405 (D-82), which lists no vendor-payment exclusion of its own. Items: CO-5101, CO-4455.
 
-Resolution (earned-income records, step E1 SNAP, 2026-11-23; docs/reviews/records-earnings-snap.md): settled by the text. 10 CCR 2506-1 4.405.H.4 (D-82, S4300): "Wages earned by a household member that are garnished or diverted by an employer and paid to a third party for a household's expenses, such as rent, shall be considered as income. However, if the employer pays a household's rent directly to the landlord in addition to paying the household its regular wages, this rent payment shall be excluded as a vendor payment"; 4.405.H.2 and 7 CFR 273.9(c)(1)(vii)(B) (S4101) say the same. The kind employer_vendor_payment states money the employer would otherwise pay the person (CO-5100), which is the counted case, so snap_earnings_treatment_table (CO-5101) counts the row and SNAP's pay (snap_person_wages, CO-4324; snap_person_counted_wages, CO-5113) includes it (rule tests CO-4324-T18, CO-5113-T14). A payment an employer makes in addition to the regular wages is not this kind. No stored household states it; the generated SNAP households that do count it (harness class E1-2). Items: CO-5101, CO-4324, CO-5113.
-
-### OQ-1022. Colorado Works: wages from WIOA on-the-job training
+### OQ-1022. Resolved: Colorado Works: wages from WIOA on-the-job training are exempt
 
 Body: 9 CCR 2503-6 3.605.4.B.16 (S2606) exempts "Income received through the Workforce Innovation and Opportunity Act, including supportive services through that program", and B.13 training allowances. Today WIOA on-the-job training wages are stated as part of wages_gross (wioa_on_the_job_training_wages, CO-4301, read only by SNAP) and Colorado Works counts them (cw_gross_earned_income, CO-1716, subtracts work-study, subsidized and short-term wages only). Whether wages an employer pays for WIOA on-the-job training are "income received through" WIOA is not settled by the text; subsidized employment, which 3.605.2.C (S2604) does not consider, may cover them. The earnings table (cw_earnings_treatment_table, CO-5104) keeps today's reading (counted_text_excludes) so step E0 changes no answer.
 
@@ -3157,3 +3155,33 @@ Owner: Medicaid policy owner
 Assumption: A youth in foster care on the 21st birthday is covered (the federal "upon attaining ... a higher age at which ... foster care assistance ends").
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.4.H.2.a (D-65); 42 CFR 435.150(b)(3) (D-31, eCFR re-read 2026-11-23). The age at which Colorado's title IV-E foster care assistance ends is in the Colorado Department of Human Services' rules, not on file. Items: CO-549.
+
+### OQ-1140. Adult Financial: combat-zone pay that is not 37 U.S.C. 310 special pay
+
+Body: Earned-income records, step E1 Adult Financial, narrowing OQ-1024 for Adult Financial. 9 CCR 2503-5 3.520.786.K (S2608) exempts the unearned income 20 CFR 416.1124 excludes, and 416.1124(c)(19) (S2803) is "Special pay received from one of the uniformed services pursuant to 37 U.S.C. 310". 37 U.S.C. 310 (fetched from law.cornell.edu on 2026-11-23) is special pay for duty subject to hostile fire or imminent danger, at most $225 a month; it does not reach every other pay a member receives because of a deployment to a combat zone. 3.520.782.A counts "gross monetary wages received for services performed as an employee", and no paragraph of 3.520.786 names other combat-zone pay. The earnings kind uniformed_services_special_pay (CO-5100) holds both: 37 U.S.C. 310 pay, and pay received because the member is deployed to a designated combat zone (the field combat_zone, which restates combat_zone_pay_received, CO-4310). The text settles the first: Adult Financial excludes a record of the kind not stated as combat-zone pay (af_earnings_treatment_table, CO-5103: excluded_except_combat_zone). For a record stated as combat-zone pay it cannot tell how much is 310 pay. Worked example: a member with $2,000 of basic pay and $500 of pay received for a combat-zone deployment, $225 of it hostile fire pay: counting the $500 gives gross earned income $2,500, excluding the 310 part gives $2,275, excluding the whole record gives $2,000. A field or kind that separates 310 pay inside combat-zone pay is a request to the integration owner (docs/reviews/records-earnings-cash.md).
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Special pay stated as received because of a combat-zone deployment is counted as wages, as before earnings records; special pay not so stated is hostile fire or imminent danger pay and is exempt.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.782.A, 3.520.786 (D-80); 20 CFR 416.1124(c)(19) (D-207); 37 U.S.C. 310 (law.cornell.edu, not on file). No stored household or rule test outside CO-5130 states either. Items: CO-5103, CO-5130, CO-2342, CO-4012.
+
+### OQ-1141. Colorado Works: subsidized employment wages when the client was terminated or quit through the client's own fault
+
+Body: 9 CCR 2503-6 3.605.2.C (S2604): "Income received from short-term employment such as temporary employment (ninety days or less) and subsidized employment shall not be considered to determine eligibility as long as the client has not been terminated or has terminated the employment due to a fault of their own." 3.605.4.B.35 (S2606) exempts "Wages earned through subsidized employment programs including employment, apprenticeships, on-the-job training, and transitional jobs" with no proviso. Read with C, a subsidized job the client lost or left through the client's own fault would have its wages considered; read with B.35, they are exempt whatever the reason. Worked example: a client with $500 of wages from a subsidized transitional job that ended in October through her own fault, and no other income: under C the $500 is earned income ($500 - $90 = $410 at application, against a need standard of $331 for one caretaker and one child: ineligible); under B.35 nothing is counted (eligible). The ledger has read B.35 since final cash review FC-2 (cw_earnings_treatment_table, CO-5104: subsidized_employment and wioa_on_the_job_training excluded) and reads C's proviso for a temporary job only (temporary_job, ended_through_own_fault).
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Wages from subsidized employment are exempt whatever the reason the job ended, as 3.605.4.B.35 says; the own-fault proviso is applied to temporary jobs only.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.2.C, 3.605.4.B.35 (D-81, re-fetched from the Secretary of State 2026-11-23). Neither paragraph refers to the other. Items: CO-5104, CO-2340.
+
+### OQ-1142. Colorado Works: which certification period a new source of earned income first impacts
+
+Body: 9 CCR 2503-6 3.606.2.A.2.a (S1000): "A new source of earned income shall receive a one hundred percent (100%) earned income disregard for the first certification period that the income impacts according to section 3.606.3." A certification period is six months from the first month the unit is found eligible (3.606.1.E); a new source must be reported by the tenth of the following month (3.606.3.B.2), and a change that decreases the grant does not take effect until redetermination unless it is a negative change of 3.606.3.C (3.606.3.A.2). So the period a new job "impacts" may be the current one (a negative change, e.g. income over the need standard) or the next one (a decrease held until redetermination). The earnings records state each job's start date (job_start_date, CO-5100), and the ledger reads a job begun on or after the application date as a new source (cw_new_source_earnings, CO-5141); no supplied fact states the certification periods or when a reported change takes effect, so whether a month is in the first certification period the new income impacts stays the county's statement (cw_is_new_earned_income_source, CO-1502). Worked example: a unit certified April to September 2026 whose mother starts a $400-a-month job on July 6 beside a continuing $600 job: if the job first impacts the October-March period, October counts 1,000 - (400 + 600 x 0.67) = $198; if it impacted the April-September period, October is after it and counts 1,000 - 1,000 x 0.67 = $330.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The county states for each month whether it falls in the first certification period a new source impacts; the job's start date says which pay is the new source.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.606.1.E, 3.606.2.A, 3.606.3.A-C (D-81). None says, for a decrease held until redetermination, whether the period that "the income impacts" is the period the job began in or the next. Items: CO-922, CO-1502, CO-5141.

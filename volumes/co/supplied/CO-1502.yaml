@@ -6,8 +6,9 @@ type: yes/no
 scope: person-month
 program: ColoradoWorks
 meaning: Whether this person's earned income for the month is from a new source - one that began while the assistance unit was receiving basic cash assistance - and the month falls in the first certification period that the income impacts under the change-reporting rules of 9 CCR 2503-6 3.606.3, so that it receives a one hundred percent (100%) disregard under 3.606.2.A.2.a. False for a current source (3.606.2.A.2.b) and for a person with no earned income.
-precision: "One value for all of a person's earned income in the month; a person with both a new and a current source states the new part as cw_new_source_earned_income (CO-2374), which cw_payment_countable_earned_income (CO-922) reads first (phase-10 sweep, OQ-350)."
+precision: "One value for the person's month. Earned-income records, step E1 Colorado Works (docs/reviews/records-earnings-cash.md): a person with both a new and a current source states this as true for a month in the new source's first certification period, and each job as its own earnings record with its start date (job_start_date); the pay from jobs begun on or after the application date is the new part (cw_new_source_earnings, CO-5141) and the rest is current (phase-10 sweep, OQ-350); a person whose records state no start date has all of the month's earned income from the new source when this is true. The certification period the new income first impacts (3.606.2.A.2.a, 3.606.3) is not derived from the job dates: no supplied fact states the certification periods (OQ-1142). Before earnings records the new part was cw_new_source_earned_income (CO-2374)."
 supplied_by: Statewide automated system (CBMS) income record, from the change report and the certification period it falls in.
 sources: [S1000]
+open: [OQ-1142]
 tags: [cash, tanf, income]
 rationale: "No existing fact distinguishes a new from a current source of earnings; cw_payment_countable_earned_income (CO-922) needs it for 3.606.2.A.2 (phase-8 review B-1)."

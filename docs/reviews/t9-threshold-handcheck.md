@@ -231,3 +231,21 @@ The consistency list comes from re-evaluating each stated derived fact with its 
 - **A-9 (CO-549)**: recorded as OQ-1124 with the federal text (42 CFR 435.150(b)(3)(ii), S4343); CO-549-T95 states the foster care exit date.
 - **A-10 (CO-2419)**: settled by 42 CFR 441.151(a)(3)(ii) (S4344, D-4341): inpatient psychiatric services for one receiving them before 21 are covered "before ... the date the individual reaches 22".
 - **Givens that contradict themselves, Medicaid and CHP+**: the 26 tests listed above (and CO-549-T95) were rebuilt: the stated derived value removed and the facts it comes from stated (a date of birth on the boundary, the period's start month, the notice date, the monthly income at the exact percentage of the 2026 guideline), each title giving the arithmetic. Every rebuilt test expects what it expected before.
+
+## Follow-up (earned-income records E1, cash programs, 2026-11-23)
+
+The Adult Financial and Colorado Works rows (docs/reviews/records-earnings-cash.md, section 6):
+
+- **A-1 (CO-953-T19, AND-CS at $994)**: settled by the text. 9 CCR 2503-5 3.520.781.A (S4382, re-fetched from the Secretary of State on 2026-11-23): "If a client's total countable income equals or exceeds the Adult Financial program grant standard, the client shall not be eligible for that specific Adult Financial program." It is the general rule for every Adult Financial program, so 3.549 (AND-CS) needs no sentence of its own; 3.549.B's payment floor raises the grant of an eligible client only. CO-953 now cites S4382 and S453, and its precision no longer attributes the rule to 3.549. No decision changed. The test is also rebuilt (below).
+- **Givens that contradicted themselves, Adult Financial**: each test now states the underlying facts and no override, with the hand computation in a comment above it:
+  - CO-1203-T12, T13 (AND-SO age 59 and 18): born 1967-05-01 and 2008-05-01, 59 and 18 on 2026-10-01; true (3.520.61.A, S711: "eighteen (18) through fifty-nine (59)").
+  - CO-1203-T14 (AND-SO income at $248): a $268 pension, 268 - 20 = 248 (3.544.B, S2611); false ("equals or exceeds ... denied").
+  - CO-950-T5 (AND-CS age 59): born 1967-01-01, SSI $700; true (S711: "age 0 through 59").
+  - CO-1217-T23 (HCA age 5): born 2021-01-01, 5 on 2026-10-01; not under the minimum age, so ineligible_residency as before.
+  - CO-1438-T8 (AND-SO certification due date): the request dated 2026-09-20, so the elements were due 2026-10-01 and the certification 2026-10-20 (thirty days, 3.541.1.A.1.b, S1080); pending on 2026-10-20.
+  - CO-953-T18 (OAP income at $1,032): a $1,052 pension, 1,052 - 20 = 1,032 (3.533.A.2, S457); none.
+  - CO-953-T19 (AND-CS income at $994): SSI $700 and a $314 pension, (314 - 20) + 700 = 994 (3.549.A.2.b-e); none.
+  - CO-948-T3 (resources at $2,000): the client's own countable resources stated as 2,000 (the part and the total no longer disagree); true (OQ-662).
+- **Citation gaps fixed**: CO-1203 cites S2611 and S4382; CO-950 cites S711; CO-953 cites S453 and S4382; CO-948 cites S453.
+- **Colorado Works**: no row of the two lists is a Colorado Works test (CO-913-T4 is already recorded, OQ-153).
+- **Not done here**: A-11 and A-12 (CO-986, CO-995) are CCCAP items, owned by the CCCAP track.

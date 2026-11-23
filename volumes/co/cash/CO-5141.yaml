@@ -1,0 +1,21 @@
+id: CO-5141
+name: "Colorado Works: pay from a job begun since the application"
+identifier: cw_new_source_earnings
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The pay this person received in the month, of the kinds Colorado Works counts (cw_earned_pay), from a job that began on or after the unit's Colorado Works application date (cw_application_date): the earnings records whose job_start_date is on or after that date. It is the new source of earned income of 9 CCR 2503-6 3.606.2.A.2.a (\"A new source of earned income shall receive a one hundred percent (100%) earned income disregard for the first certification period that the income impacts\") when the month falls in that certification period (cw_is_new_earned_income_source, CO-1502); cw_payment_countable_earned_income (CO-922) reads it there."
+precision: "Earned-income records, step E1 Colorado Works (docs/reviews/records-earnings-cash.md): replaces cw_new_source_earned_income (CO-2374), the part of wages_gross a case stated for a month with both a new and a current source (phase-10 sweep, OQ-350): each job is now its own record, so its start date (job_start_date; a record that states none began before the months the case covers, earnings CO-5100) says which pay is new. A source is new when it began while the unit was receiving basic cash assistance (3.606.2.A.2); the unit cannot have begun receiving before it applied, so a job begun before the application date is a current source, and one begun on or after it is new; a job begun after the application but before the unit was approved is within the first certification period, which A.1 disregards in full whatever the source. Whether the month falls in the first certification period that the new income impacts depends on the certification periods (six months, 3.606.1.E) and on when the change takes effect (3.606.3.A), which no supplied fact states; it stays the county's statement, cw_is_new_earned_income_source (OQ-1142). A business begun since the application is a new source too, but its receipts are counted net of costs (cw_self_employment_net_profit) and are not in this sum; a person whose only new source is a business states cw_is_new_earned_income_source alone, as before. The application date is read only for a record that states its job_start_date. An unstated earnings list is cannot determine."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [in, [lookup, cw_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_at_value]], [not, [unknown, [receipt, job_start_date]]], [">=", [receipt, job_start_date], cw_application_date]], [receipt, amount]]
+sources: [S1000, S1019]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Earned-income records, step E1 Colorado Works (CO-922's new source by job_start_date, docs/reviews/earnings-e0.md 10): the new source of 3.606.2.A.2.a read from the records' job dates instead of a second statement of part of the wages."
+nearest: [CO-5140]
+tests:
+  # Hand computations from 3.606.2.A.2 (S1000).
+  - {id: CO-5141-T1, month: "2026-10", as_of: "2026-10-15", title: "$600 from a job held since 2024 and $400 from a job begun on September 8, 2026, after a March 2026 application: 400", given: {cw_application_date: "2026-03-02", earnings: [{kind: wages, amount: 600}, {kind: wages, amount: 400, job_start_date: "2026-09-08"}]}, expect: 400}
+  - {id: CO-5141-T2, month: "2026-10", as_of: "2026-10-15", title: "A job begun in January 2026, before the March application, is a current source: 0", given: {cw_application_date: "2026-03-02", earnings: [{kind: wages, amount: 700, job_start_date: "2026-01-05"}]}, expect: 0}
+  - {id: CO-5141-T3, month: "2026-10", as_of: "2026-10-15", title: "No record states a start date: the application date is not read: 0", given: {earnings: [{kind: wages, amount: 900}]}, expect: 0}
+  - {id: CO-5141-T4, month: "2026-10", as_of: "2026-10-15", title: "A record states a start date and the application date is not stated: cannot determine", given: {earnings: [{kind: wages, amount: 400, job_start_date: "2026-09-08"}]}, expect: unknown}

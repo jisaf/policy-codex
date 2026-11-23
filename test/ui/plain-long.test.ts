@@ -28,7 +28,9 @@ describe("long rules read as bulleted clauses", () => {
     const text = plainText(rule("CO-2392"));
     expect(text).toContain("the total of:\n");
     // Receipt records (migration 1): the child's unearned income is one term, a total over the child's receipts.
-    expect(text).toMatch(/\n +• that person's Gross wages plus /);
+    // Earned-income records, step E1 Adult Financial: the child's earned income is a total over the child's earnings
+    // records (it was "that person's Gross wages plus" the net profit before).
+    expect(text).toContain("• the total, over the receipts in that person's Earnings for which:");
     expect(text).toContain("• the total, over the receipts in that person's Receipts for which:");
     // The group the total runs over is described after it, not in one line.
     expect(text).toContain("the total, over the people described below, of:");
@@ -43,8 +45,8 @@ describe("long rules read as bulleted clauses", () => {
     // rules that fix a figure at the determination (T-3: CCCAP's fee and
     // entry limit, LEAP's limit and guideline). 42 after earnings E1 SNAP: each
     // pay converted by its own frequency, written once per pay sum (CO-4324,
-    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces).
-    expect(over).toBeLessThanOrEqual(46);
+    // CO-5113), reads as one long clause list. 45 with E1 CCCAP and LEAP merged (their dated-pay sums); 46 with E1 Medicaid (the SSI-method earned pieces). 48 with E1 Adult Financial and Colorado Works (their pay sums).
+    expect(over).toBeLessThanOrEqual(48);
   });
 
   it("relationship roles read as words", () => {

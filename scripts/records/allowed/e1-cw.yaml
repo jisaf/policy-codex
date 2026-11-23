@@ -1,4 +1,80 @@
 # Earned-income records harness: allowed differences of the cw E1 track (design 4.3, rule 3).
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
-# docs/reviews/records-earnings-cw.md: {case, person?, identifier?, month?, class, old?, new?}.
-[]
+# docs/reviews/records-earnings-cash.md: {case, person?, identifier?, month?, class, old?, new?}.
+# (The inherited D4-1 difference on CO-141 is AF-0, scripts/records/allowed/e1-af.yaml.)
+
+# CW-1: wages from WIOA on-the-job training are exempt (9 CCR 2503-6 3.605.4.B.35, S2606: "Wages earned through
+# subsidized employment programs including employment, apprenticeships, on-the-job training, and transitional jobs";
+# B.16: "Income received through the Workforce Innovation and Opportunity Act"; OQ-1022 resolved). Before, they were
+# counted as part of wages_gross. The generated applicant with $1,200 of wages, $300 of them WIOA on-the-job training:
+# gross earned income 1,200 to 900, countable 1,200 - 90 = 1,110 to 900 - 90 = 810.
+- case: /^GE-[A-Za-z0-9+]+-wages_1200_of_which_wioa_on_the_job_training_wages_300$/
+  class: CW-1 WIOA on-the-job training wages are exempt (3.605.4.B.35, B.16; OQ-1022)
+
+# CW-2: pay an employer diverts to a third party for the household's expenses is still earned income (3.605.2.B.1,
+# S4381: "'Earned Income' is still considered when: 1. Money payments obligated to the employee are diverted to a
+# third-party for the employee's household or other expenses"). Before, no Colorado Works item read
+# employer_vendor_payments_received. The generated applicant with a $300 vendor payment: gross earned income 0 to 300,
+# countable 300 - 90 = 210; and the pay is verified as earned income is (CW-4).
+- case: /^GE-[A-Za-z0-9+]+-employer_vendor_payments_received_300$/
+  class: CW-2 an employer's vendor payment from the employee's pay is earned income (3.605.2.B.1)
+
+# CW-3 (a figure only): work-study (3.605.4.A.24.a) and subsidized employment wages (B.35) are exempt by their kind
+# (cw_earnings_treatment_table: excluded), so they are never counted and no longer subtracted by
+# cw_excluded_earned_income; gross earned income is unchanged.
+- case: /^GE-[A-Za-z0-9+]+-wages_1200_of_which_(work_study_earnings|subsidized_employment_wages)_300$/
+  identifier: cw_excluded_earned_income
+  old: 300
+  new: 0
+  class: CW-3 work-study and subsidized wages are excluded by the counting table, not subtracted (figure only)
+
+# CW-4: Colorado Works verifies the earned income it counts (3.604.3.B.2.e, D, S872, S875): in-kind pay (3.605.2.A, G),
+# an employer's vendor payments (B.1) and boarder payments (E.4.c-e) are earned income, and before earnings records
+# cw_earned_income_is_unverified read wages_gross and the business's gross receipts only. A household that states no
+# verification document or SSA self-employment data for that income cannot determine whether it is verified.
+- case: /^(CO-206|CO-354|CO-362)$/
+  person: p1
+  identifier: /^cw_earned_income_(is_unverified|verification_is_pending)$/
+  old: false
+  new: unknown
+  class: CW-4 in-kind, vendor and boarder pay is earned income to verify (3.604.3.B.2.e)
+- case: /^GE-[A-Za-z0-9+]+-(in_kind_compensation_value_300|employer_vendor_payments_received_300|boarders_900_from_two_payers)$/
+  identifier: /^cw_earned_income_(is_unverified|verification_is_pending)$/
+  old: false
+  new: unknown
+  class: CW-4 in-kind, vendor and boarder pay is earned income to verify (3.604.3.B.2.e)
+
+# CW-5: a person with no counted earned income has nothing excluded, and whether the person is a dependent student
+# (3.605.4.B.24.b) is not read: cw_excluded_earned_income is 0 where it was cannot determine for a child whose school
+# facts the household does not state (the figure only: gross earned income was 0 on both ledgers, through the old
+# reader default).
+- case: /^(CO-04|CO-71|CO-122|CO-131|CO-213|CO-427|CO-428|CO-429|CO-430|CO-431|CO-432)$/
+  identifier: cw_excluded_earned_income
+  old: unknown
+  new: 0
+  class: CW-5 no earned income, nothing excluded, student status not read (figure only)
+
+# CW-D4: missing information is cannot determine unless the rule says otherwise (product-owner decision 4 of
+# 2026-11-23). (a) A person who states no earnings at all: the business costs, the boarder income and the excluded
+# earned income, read before as 0 under each cost, boarder or part fact's `otherwise 0`, are now cannot determine, as the
+# person's gross earned income already was; (b) a person whose stated earnings leave an amount or a boarder count
+# unstated (CO-171, CO-198, CO-305, CO-320): the excluded earned income, read before as 0, is cannot determine, as the
+# gross earned income was; (c) CO-159 p2, a high school student who earns $400 and whose expected completion date is
+# not stated: whether 3.605.4.B.24.b disregards her earnings is not known, so her Colorado Works earned income is
+# cannot determine where cw_gross_earned_income read the excluded income as 0 when unknown (CO-159 asserts SNAP only;
+# her Colorado Works eligibility was cannot determine on both ledgers).
+- case: /^(CO-13|CO-94|CO-95|CO-141|CO-171|CO-175|CO-176|CO-177|CO-178|CO-198|CO-209|CO-210|CO-211|CO-214|CO-224|CO-225|CO-305|CO-320|CO-367|CO-368|CO-369|CO-370|CO-371|CO-372|CO-373|CO-374|CO-438|CO-439|CO-440|CO-441|CO-442|CO-448|CO-449|CO-450|CO-458|CO-459)$/
+  identifier: /^cw_(excluded_earned_income|self_employment_business_costs|boarder_income)$/
+  old: 0
+  new: unknown
+  class: CW-D4 earnings, an amount or a boarder count not stated, the figures are cannot determine as gross earned income was
+- case: CO-159
+  person: p2
+  identifier: /^cw_(gross_earned_income|payment_countable_earned_income|excluded_earned_income)$/
+  new: unknown
+  class: CW-D4 a student's earnings with the student facts not stated are cannot determine (3.605.4.B.24.b)
+- case: /^GE-[A-Za-z0-9+]+-wages_not_stated$/
+  identifier: cw_excluded_earned_income
+  old: 0
+  new: unknown
+  class: CW-D4 earnings, an amount or a boarder count not stated, the figures are cannot determine as gross earned income was
