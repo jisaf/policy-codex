@@ -1,0 +1,10 @@
+date: 2026-11-23
+summary: >-
+  Fix round of 2026-11-23, the flags raised outside the non-MAGI record: the FY2027 version of the SNAP general asset
+  limit and the meaning of snap_is_elderly_or_disabled (written dispositions of the pre-check flags against main), and
+  the Difficulty of Care exclusion in MAGI income (coverage review MAGI F-18).
+impact:
+  - {changed: CO-118, fingerprint: fp1-d285a5a6aa0eb5b36c0e, flagged: CO-119, not_applicable: "CO-118's change gives its FY2027 figure the FNS table as source (S732); CO-119 already carries its FY2027 version ($4,750) from the same table, so nothing carries over."}
+  - {changed: CO-303, fingerprint: fp1-e3687bc7fdb902c9e06f, flagged: CO-301, not_applicable: "CO-303's meaning now names snap_is_elderly (CO-301) instead of the figure 60; CO-301 is the item named, and its meaning already reads snap_elderly_age."}
+  - {changed: CO-303, fingerprint: fp1-e3687bc7fdb902c9e06f, flagged: CO-314, not_applicable: "CO-314 states the household test over CO-303 and names no age figure in its meaning; the derivations are unchanged."}
+  - {changed: CO-502, fingerprint: fp1-6792065dab6f37be05e7, flagged: CO-657, not_applicable: "CO-502's change subtracts Difficulty of Care payments from MAGI income under 10 CCR 2505-10 § 8.100.3.K.7, which applies only to a determination 'for a MAGI Medical Assistance program'; the family allowance is a long-term care post-eligibility deduction (42 U.S.C. 1396r-5(d)(1)(C)) and counts a family member's gross income."}
