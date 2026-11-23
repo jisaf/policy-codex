@@ -22774,3 +22774,175 @@ Document: D-80
 > portion of a VA pension paid to a veteran for support of a dependent shall
 > be considered countable unearned income to the dependent rather than to
 > the veteran.
+
+### S4100. LEAP countable unearned income: dividends and interest, adoption assistance, child support and spousal maintenance, pension or retirement payments, unemployment compensation
+
+Document: D-86
+
+9 CCR 2503-7 3.752.21 (introduction), B, M, N; 3.752.211 (introduction), B, F (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.21 Countable Unearned Income [Rev. eff. 12/1/14]
+>
+> Countable unearned income includes but is not limited to the following, as well as payments from any
+> other source, which is considered to be a gain or benefit to the applicant or recipient:
+>
+> ...
+>
+> B. Dividends and interest paid out or withdrawn on savings bonds, leases, bank accounts;
+>
+> ...
+>
+> M. Income received from adoption assistance or subsidies.
+>
+> N. Income received from child support and spousal maintenance payments
+>
+> 3.752.211 Periodic Payments [Eff. 12/1/14]
+>
+> The following types of periodic payments are among those included in countable unearned income:
+>
+> ...
+>
+> B. Pension or retirement payments - payments to an applicant or recipient following retirement from
+> employment; such payments may be made by a former employer or from any insurance or other
+> public or private fund;
+>
+> ...
+>
+> F. Unemployment compensation - payments in the nature of insurance for which one qualifies by
+> reason of having been employed and which are financed by contributions made to a fund during
+> periods of employment;
+
+### S4101. SNAP: in-kind benefits excluded; wages an employer diverts to a third party counted, an employer's payment beside the wages excluded
+
+Document: D-13
+
+7 CFR 273.9(c)(1) (introduction), (c)(1)(vii) (introduction), (vii)(B). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (1) Any gain or benefit which is not in the form of money payable directly to the household, including in-kind benefits and certain vendor payments. In-kind benefits are those for which no monetary payment is made on behalf of the household and include meals, clothing, housing, or produce from a garden. A vendor payment is a money payment made on behalf of a household by a person or organization outside of the household directly to either the household's creditors or to a person or organization providing a service to the household. Payments made to a third party on behalf of the household are included or excluded as income as follows:
+>
+> ...
+>
+> (vii) *Other third-party payments.* Other third-party payments shall be handled as follows: moneys legally obligated and otherwise payable to the household which are diverted by the provider of the payment to a third party for a household expense shall be counted as income and not excluded. If a person or organization makes a payment to a third party on behalf of a household using funds that are not owed to the household, the payment shall be excluded from income. This distinction is illustrated by the following examples:
+>
+> ...
+>
+> (B) A household member earns wages. However, the wages are garnished or diverted by the employer and paid to a third party for a household expense, such as rent. This vendor payment is counted as income. However, if the employer pays a household's rent directly to the landlord in addition to paying the household its regular wages, the rent payment shall be excluded from income. Similarly, if the employer provides housing to an employee in addition to wages, the value of the housing shall not be counted as income.
+
+### S4102. SNAP: allowable costs of producing self-employment income
+
+Document: D-15
+
+7 CFR 273.11(b)(1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (b) *Allowable costs of producing self-employment income.* (1) Allowable costs of producing self-employment income include, but are not limited to, the identifiable costs of labor; stock; raw material; seed and fertilizer; payments on the principal of the purchase price of income-producing real estate and capital assets, equipment, machinery, and other durable goods; interest paid to purchase income-producing property; insurance premiums; and taxes paid on income-producing property.
+
+### S4103. Colorado Works self-employment: payments on the principal of loans for capital assets are not a business expense
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.E.1.a.3 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3) The cost of and payments on the principal of loans for capital assets or
+> durable goods shall not be considered as a business expense.
+
+### S4104. Adult Financial self-employment: payments on the principal of loans for capital assets are not a business expense
+
+Document: D-80
+
+9 CCR 2503-5 3.520.783.B.3 (rule version 12428, effective 03/02/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3. The cost of and payments on the principal of loans for capital assets or
+> durable goods shall not be considered as a business expense.
+
+### S4105. LEAP income exclusions: a child's earnings, payments made directly to others
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23 (introduction), Q, T (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.23 Income Exclusions [Rev. eff. 11/1/15]
+>
+> To determine eligibility for financial assistance and the amount of the assistance payment, the following
+> shall be exempt from consideration as either resources or income.
+>
+> ...
+>
+> Q. Earned income of children under the age of eighteen (18) who are residing with a parent or
+> guardian;
+>
+> ...
+>
+> T. Payments made on behalf of the household directly to others;
+
+### S4106. CCCAP self-employment: the verified business expenses allowed and not allowed
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.2.a-b (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> a. These verified business expenses include, but are not limited to:
+>
+> 1) The rent of business premises;
+>
+> 2) Wholesale cost of merchandise;
+>
+> 3) Utilities;
+>
+> 4) Taxes;
+>
+> 5) Mileage expense for business purposes only;
+>
+> 6) Labor; and
+>
+> 7) Upkeep of necessary equipment.
+>
+> b. The following are not allowed as business expenses from self-
+> employment:
+>
+> 1) Depreciation of equipment;
+>
+> 2) The cost of and payment on the principal of loans for capital
+> asset or durable goods; and
+>
+> 3) Personal expenses such as personal income tax payments,
+> lunches, and transportation to and from work.
+
+### S4107. Medical Assistance: earned income in cash or in kind; WIA wages and allowances; business expenses not allowed; board, room, and room and board payments are earned income
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.K.3-4, K.8.a-c, K.9.b, K.10.c-e (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. Earned income is payment in cash or in kind for services performed as an employee or from self-employment.
+>
+> 4. Earned in kind income shall be income produced as a result of the performance of services by the applicant/client, for which he/she is compensated in shelter or other items in lieu of wages.
+>
+> ...
+>
+> 8. Participation in the Workforce Investment Act (WIA) affects eligibility for Medical Assistance as follows:
+>
+> a. Wages derived from participation in a program carried out under WIA (work experience or on-the-job training) and paid to a caretaker relative is considered countable earned income.
+>
+> b. Training allowances granted by WIA to a dependent child or a caretaker relative of a dependent child to participate in a training program is exempt.
+>
+> c. Wages derived from participation in a program carried out the under Workforce Investment Act (WIA) and paid to any dependent child who is applying for or receiving Medical Assistance are exempt in determining eligibility for a period not to exceed six months in each calendar year.
+>
+> ...
+>
+> b. The following are not allowed as business expenses:
+>
+> i) Depreciation of equipment;
+>
+> 1) Exception: For the purpose of calculating MAGI-based income, depreciation of equipment is an allowable business expense if the equipment is not used for capital improvements.
+>
+> ii) The cost of and payment on the principal of loans for capital asset or durable goods;
+>
+> iii) Personal expenses such as personal income tax payments, lunches, and transportation to and from work.
+>
+> ...
+>
+> c. Board (to provide a person with regular meals only) payment shall be considered earned income in the month received to the extent that the board payment exceeds the maximum food stamp allotment for one-person household per boarder and other documentable expenses directly related to the provision of board.
+>
+> d. Room (to provide a person with lodging only) payments shall be considered earned income in the month received to the extent that the room payment exceeds documentable expenses directly related to the provision of the room.
+>
+> e. Room and board payments shall be considered earned income in the month received to the extent that the payment for room and board exceeds the food stamp allotment for a one-person household per room and boarder and documentable expenses directly related to the provision of room and board.

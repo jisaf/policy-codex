@@ -2969,3 +2969,43 @@ Owner: each program's policy owner (SNAP, LEAP, Adult Financial, Colorado Works,
 Assumption: The three kinds are earnings in every program, each program counting them as its receipt row counts them today until its owner signs its earnings row.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, the earnings and receipt counting tables.
+
+### OQ-1021. SNAP: wages an employer pays to a third party for the household
+
+Body: The earnings kind employer_vendor_payment (earnings, CO-5100) states money an employer pays to a third party for an expense of the person's household, as part of the person's compensation, from funds the employer would otherwise pay the person (employer_vendor_payments_received, CO-4455, today). 7 CFR 273.9(c)(1)(vii)(B) (S4101) counts such a payment: "the wages are garnished or diverted by the employer and paid to a third party for a household expense, such as rent. This vendor payment is counted as income", while a payment "in addition to paying the household its regular wages" is excluded. No SNAP item reads CO-4455, so SNAP counts none of it. The earnings table (snap_earnings_treatment_table, CO-5101) keeps that reading (not_counted_text_counts) so step E0 changes no answer; the SNAP E1 track decides, as a cited difference, whether the row is counted.
+
+Class: possible defect (P1 candidate: a household whose employer pays part of its wages to the landlord has that part left out of SNAP income)
+Owner: SNAP policy owner
+Assumption: Not counted (today's reading) until the SNAP E1 track rewires SNAP's earned income.
+
+Checked 2026-11-23: 7 CFR 273.9(c)(1) (D-13); 10 CCR 2506-1 4.405 (D-82), which lists no vendor-payment exclusion of its own. Items: CO-5101, CO-4455.
+
+### OQ-1022. Colorado Works: wages from WIOA on-the-job training
+
+Body: 9 CCR 2503-6 3.605.4.B.16 (S2606) exempts "Income received through the Workforce Innovation and Opportunity Act, including supportive services through that program", and B.13 training allowances. Today WIOA on-the-job training wages are stated as part of wages_gross (wioa_on_the_job_training_wages, CO-4301, read only by SNAP) and Colorado Works counts them (cw_gross_earned_income, CO-1716, subtracts work-study, subsidized and short-term wages only). Whether wages an employer pays for WIOA on-the-job training are "income received through" WIOA is not settled by the text; subsidized employment, which 3.605.2.C (S2604) does not consider, may cover them. The earnings table (cw_earnings_treatment_table, CO-5104) keeps today's reading (counted_text_excludes) so step E0 changes no answer.
+
+Class: state policy choice
+Owner: Colorado Works policy owner
+Assumption: Counted as earned income (today's reading) until the owner decides.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.2.C, 3.605.4.B.13-16 (D-81). Items: CO-5104, CO-2340.
+
+### OQ-1023. Medicaid SSI method: in-kind pay, boarder payments, and WIA wages of a dependent child
+
+Body: 10 CCR 2505-10 8.100.3.K (S4107), the general income rules the SSI-related method relies on, says three things the ledger does not read today: earned income is "payment in cash or in kind for services performed" and earned in-kind income is compensation "in shelter or other items in lieu of wages" (K.3-4), but no SSI-method item reads in_kind_compensation_value (CO-4506); board, room, and room and board payments are earned income above the one-person food stamp allotment per boarder and the documented costs (K.10.c-e), but no SSI-method item reads room_and_board_payments_received (CO-4161) or the payments for a room or meals only; and WIA wages paid to a dependent child applying for or receiving Medical Assistance are exempt for up to six months a calendar year (K.8.c), but the SSI method counts every WIOA on-the-job training wage as part of wages_gross. The earnings table (ma_ssi_earnings_treatment_table, CO-5107) keeps today's readings (not_counted_text_counts, counted_text_excludes) so step E0 changes no answer; the Medicaid E1 track decides each as a cited difference.
+
+Class: possible defect (P1 candidate for an SSI-method household with in-kind pay or boarders)
+Owner: Medicaid policy owner
+Assumption: Today's readings, until the Medicaid E1 track rewires the SSI method's earned income.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.8, K.10 and 8.100.5.F.4 (D-65). Items: CO-5107.
+
+### OQ-1024. Adult Financial and Medicaid MAGI: combat-zone pay stated as part of wages
+
+Body: The earnings kind uniformed_services_special_pay (CO-5100) states special pay from a uniformed service for hazardous or combat duty, which today is stated two ways: as a receipt of that kind (37 U.S.C. 310 pay), and as combat_zone_pay_received (CO-4310), part of wages_gross, which only SNAP reads (4.405.2.A.12 excludes combat pay). Adult Financial's receipt table excludes the 310 pay (3.520.786, 20 CFR 416.1124(c)(19)) and Medicaid's MAGI receipt table does not count it (not_taxable_income), but both count combat-zone pay stated inside wages_gross. Each earnings table carries the receipt row's reading (excluded, not_taxable_income); the Adult Financial and Medicaid E1 tracks confirm it against the text, or keep the wages reading for pay that is not 310 special pay. No stored household or rule test states either.
+
+Class: state policy choice
+Owner: Adult Financial policy owner; Medicaid policy owner
+Assumption: The earnings row carries the receipt row's reading.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.786 (D-80); 10 CCR 2505-10 8.100.4.C (D-65); 10 CCR 2506-1 4.405.2.A.12 (D-82). Items: CO-5103, CO-5106, CO-4310.
