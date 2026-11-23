@@ -22342,3 +22342,77 @@ Document: D-346
 > Full Colorado minimum wage $14.81 per hour
 > (A)
 > (R. 3.1)
+
+### S3753. Colorado Works: when more than one caretaker exercises responsibility for a child, the one highest in the hierarchy is the caretaker
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.H (rule version 12030, effective 07/01/2025; D-81:1366-1387). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> H. When more than one caretaker exercises responsibility for a child, the following hierarchy shall be
+> followed. A caretaker:
+>
+> 1. Is a parent; or,
+>
+> 2. Is a relative by blood, marriage, or adoption who is within the fifth degree of kinship to the
+> dependent child (not to be separated due to death or divorce); or is appointed by the
+> court to be the legal guardian or legal custodian of the dependent child; or,
+>
+> ...
+>
+> 3. If those identified in a-b above are not available, is a person who exercises responsibility
+> for a dependent child within the person’s home and provides verification of such
+> responsibility such as a court order, school or medical records listing the individual as the
+> child’s contact, collateral contact with child welfare, or another document acceptable to
+> the county department. the prudent person principle may be used to determine that a
+> non-parent caretaker other than a guardian, legal custodian, or a relative exercises
+> responsibility for a child. The individual who exercises responsibility and is highest in the
+> above hierarchy list shall be deemed the caretaker for the assistance unit.
+
+### S3754. Difficulty of Care payments: definition, and the MAGI exclusion for a live-in provider (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1 (definition) and § 8.100.3.K.7, K.7.a-c (rule version effective 11/14/2026; D-65:103, 1283-1293). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Difficulty of Care Payments is a payment to an applicant or member as compensation for providing live-in home care to an individual who qualifies for foster care or Home and Community Based Services (HCBS) waiver program and lives in the home of the care recipient. This additional care must be required due to a physical, mental, or emotional handicap.
+>
+> ...
+>
+> 7. An applicant or member who is a live-In home care provider to a care recipient receiving a Difficulty of Care Payment and who is being determined for a MAGI Medical Assistance program, must meet the following requirements for Difficulty of Care payments to be excluded as countable income:
+>
+> a. The care provider receiving payments for personal care or supportive services provided to a care recipient must live full-time in the same home with the care recipient; and
+>
+> b. The care recipient must either
+>
+> i) receiving personal care or supportive services must be enrolled in Long Term Service Supports (LTSS), with additional services through a Home-Based Services (HCBS) waiver program; or
+>
+> ii) The care recipient must be enrolled in the Buy-In Program for Working Adults with Disabilities, and receive additional services through the Home and Community Based Services (HCBS) waiver program.
+>
+> c. Exception: Difficulty of Care Payments are not excluded if the payments are for more than 10 qualified foster individuals under the age of 19 or 5 qualified foster individuals who are over the age of 19
+
+### S3755. Legal Immigrant Prenatal: the population, and the events that end its guaranteed eligibility period (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.6, G.6.a.i-viii (rule version effective 11/14/2026; D-65:1967-1987). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. A lawfully residingnon-citizen who is pregnant and who has been in the United States for less than five years may qualify for Medical Assistance if she meets all other eligibility requirements specified at 8.100.4.G.5 and falls into one of the immigration categories listed in Sections 8.100.3.G.1.g.iii.1 and 8.100.3.G.1.g.vi.1-29. This population is referenced as Legal Immigrant Prenatal.
+>
+> a. A members guaranteed eligibility period will end effective in the earliest possible month if any of the following occurs:
+>
+> i) The member is deceased;
+>
+> ii) Becomes an inmate of a public institution;
+>
+> iii) The member is no longer part of the Medical Assistance required household;
+>
+> iv) Is no longer a Colorado resident;
+>
+> v) Is unable to be located; based on evidence or reasonable assumption;
+>
+> vi) Requests to be withdrawn from Legal Immigrant Prenatal eligibility;
+>
+> vii) Fails to provide documentation during a reasonable opportunity period as specified in section 8.100.3.G.3 and 8.100.3.H.9; or
+>
+> viii) Eligibility was erroneously granted at the most recent determination, redetermination, or renewal of eligibility because of agency error, or a finding of fraud or perjury attributed to the member or the member’s responsible party.

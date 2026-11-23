@@ -1,0 +1,20 @@
+id: CO-5214
+name: "Medicaid: Difficulty of Care payments excluded from MAGI income"
+identifier: ma_excluded_difficulty_of_care_payments
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's Difficulty of Care payments for the month (difficulty_of_care_payments_received) when 10 CCR 2505-10 § 8.100.3.K.7 excludes them from MAGI income: the person lives full-time in the same home as the care recipient (K.7.a), the care recipient receives HCBS waiver services through long-term services and supports or the Working Adults Buy-In (K.7.b), and the payments are for no more than ma_difficulty_of_care_foster_under_19_max qualified foster individuals under 19 and no more than ma_difficulty_of_care_foster_19_or_older_max over 19 (K.7.c); otherwise 0, so the payments stay in the wages MAGI income counts."
+precision: "With no payment in the month nothing else is read. K.7.c's \"over the age of 19\" is read as 19 or older, the complement of its \"under the age of 19\"."
+derived: [case, [["<=", [otherwise, difficulty_of_care_payments_received, 0], 0], 0], [[all, lives_full_time_with_care_recipient, care_recipient_receives_hcbs_waiver_services, ["<=", difficulty_of_care_foster_individuals_under_19, ma_difficulty_of_care_foster_under_19_max], ["<=", difficulty_of_care_foster_individuals_19_or_older, ma_difficulty_of_care_foster_19_or_older_max]], difficulty_of_care_payments_received], [else, 0]]
+sources: [S3754]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): ma_person_magi_income (CO-502) subtracts this amount from the wages it counts."
+nearest: [CO-502]
+tests:
+  - {id: CO-5214-T1, as_of: "2026-10-01", month: "2026-10", title: "Live-in provider for an HCBS waiver member: excluded", given: {difficulty_of_care_payments_received: 1800, lives_full_time_with_care_recipient: true, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_foster_individuals_under_19: 0, difficulty_of_care_foster_individuals_19_or_older: 0}, expect: 1800}
+  - {id: CO-5214-T2, as_of: "2026-10-01", month: "2026-10", title: "Provider who does not live with the recipient: counted", given: {difficulty_of_care_payments_received: 1800, lives_full_time_with_care_recipient: false, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_foster_individuals_under_19: 0, difficulty_of_care_foster_individuals_19_or_older: 0}, expect: 0}
+  - {id: CO-5214-T3, as_of: "2026-10-01", month: "2026-10", title: "Payments for six foster adults: counted (K.7.c)", given: {difficulty_of_care_payments_received: 1800, lives_full_time_with_care_recipient: true, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_foster_individuals_under_19: 0, difficulty_of_care_foster_individuals_19_or_older: 6}, expect: 0}
+  - {id: CO-5214-T4, as_of: "2026-10-01", month: "2026-10", title: "No payment: nothing else read", given: {difficulty_of_care_payments_received: 0}, expect: 0}

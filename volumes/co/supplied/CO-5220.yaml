@@ -1,0 +1,14 @@
+id: CO-5220
+name: "OASDI when the child lost SSI or OAP"
+identifier: social_security_income_when_child_lost_ssi_or_oap
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "This person's monthly OASDI (Social Security) benefit in the month this person's child lost SSI because of OASDI: the base from which the parent's cost-of-living increases since then are measured."
+precision: "If not stated, Medicaid reads it as the person's current social_security_income (no increase to disregard), as for a spouse (CO-4635)."
+supplied_by: "SSA benefit records."
+sources: [S666]
+tags: [ma, non_magi, income]
+rationale: "Coverage review NM-17 (parent half) and the Pickle child under 18 with ineligible parents, deferred P2s (fix round 2026-11-23): 10 CCR 2505-10 § 8.100.6.E.3 applies the Pickle disregard to the OASDI cost-of-living increases \"paid to any financially responsible individual such as a parent or spouse\"; the spouse's base is CO-4635, and no fact stated a parent's."
+nearest: [CO-4635]

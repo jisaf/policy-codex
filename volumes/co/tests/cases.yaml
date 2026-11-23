@@ -4389,6 +4389,7 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
+        ma_eligibility_was_erroneously_granted: false  # coverage review F-16 (fix round 2026-11-23): a Legal Immigrant Prenatal member; none of the G.6.a events
       month_defaults:
         lottery_gambling_winnings_received: 0
         wages_gross: 1600
@@ -4408,6 +4409,9 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
       months:
         "2026-11": {wages_gross: 5000}
     p2:
@@ -59678,3 +59682,869 @@
     p1:
       af_category:
         2026-10: oap
+
+- id: CO-488
+  title: 'Colorado Works CW-18 fix round: a grandmother who shares the care of a child living with his mother is not a second caretaker'
+  # Fix round for docs/reviews/coverage-colorado-works.md CW-18 (deferred P2). 9 CCR 2503-6 3.604.2.H: "When more than one
+  # caretaker exercises responsibility for a child, the following hierarchy shall be followed. A caretaker: 1. Is a parent;
+  # or, 2. Is a relative ... within the fifth degree of kinship ...; or, 3. ... The individual who exercises responsibility and
+  # is highest in the above hierarchy list shall be deemed the caretaker for the assistance unit."
+  # p1, 30, lives with her son p2, 5, and her mother p3, 55, who shares his care (primary responsibility) and asks to join
+  # the assistance unit. No income; applied 2026-10-12.
+  # Rule: p1, the parent, is the caretaker; p3 is not a caretaker of p2, so she does not join as one: the unit is p1 and
+  # p2, one caretaker and one child, need standard 331, grant standard 488. Before the fix p3's request made her a second
+  # caretaker in the unit.
+  as_of: "2026-10-15"
+  case_facts:
+    cw_application_date: "2026-10-12"
+  relationships:
+    - [parent, p1, p2]
+    - [parent, p3, p1]
+    - [grandparent, p3, p2]
+    - [has_primary_responsibility_for, p3, p2]
+  persons:
+    p1:
+      # 30, the mother.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "1996-03-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      # Her son, 5.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2021-06-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      # Her mother, 55, who shares the boy's care and asks to join.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: true
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "1971-01-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+  expect:
+    p1:
+      cw_assistance_unit_members: [p1, p2]
+      cw_caretaker_of: [p2]
+      cw_need_standard: 331
+      cw_grant_standard: 488
+    p3:
+      cw_assistance_unit_members: [p3]
+
+- id: CO-489
+  title: 'SNAP non-financial P2-3 fix round: a reported probation violation without an impartial finding does not disqualify'
+  # Fix round for docs/reviews/coverage-snap-nonfinancial.md P2-3 (the probation-or-parole half; the fleeing-felon half
+  # was fixed as N2-P2-2). 10 CCR 2506-1 4.304.4.C: a probation or parole violator is ineligible only when "an impartial
+  # party designated by the agency has determined" the violation and law enforcement is "actively seeking" the person
+  # (C.1.a-c); 7 CFR 273.11(n).
+  # CO-115's household (a homeless father, 34, earning 1,000, and his daughter of 6; applied 2026-11-02, evaluated
+  # 2027-02-10). His probation officer reports that he missed a meeting (a violation of a condition of probation); no
+  # impartial party has made a finding and no law enforcement agency is seeking him.
+  # Rule: he is not disqualified, so the household is the base's: gross 1,000, allotment 387 for February 2027. Before
+  # the fix SNAP read the neutral violation fact alone and treated him as an ineligible member.
+  as_of: "2027-02-10"
+  case_facts:
+    home_heating_cost_arrangement: none
+    snap_application_date: "2026-11-02"
+    snap_determination_is_recertification: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    has_primary_heating_source: false
+    cccap_determination_type: application
+  relationships:
+  - [parent, p1, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        is_tax_filer: false
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        af_and_so_medical_certification_received: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: emergency_or_transitional_shelter
+        receives_snap: true
+        county_of_residence: denver
+        leap_is_in_another_approved_household: false
+        date_of_birth: "1992-08-15"
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        mother_coverage_at_birth: none
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: true
+        snap_probation_violation_found_by_impartial_party: false
+        law_enforcement_is_actively_seeking_person: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        cccap_is_in_job_search_activity: true
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_child_has_additional_care_needs: false
+        is_referred_for_colorado_works_child_care: false
+        is_emancipated_minor: false
+        marital_status: single
+        liquid_resources_value: 20
+        cccap_declares_assets_within_limit: true
+        ma_application_date: "2026-11-02"
+        verification_request_date: "2026-11-02"
+        ma_reasonable_opportunity_notice_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        disability_benefit_or_statement_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        cccap_eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_eligibility_directly_verified: false
+        nslp_school_enrollment_confirmed: false
+        is_enrolled_in_nslp_school: false
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        electronic_data_source_monthly_gross_income: 1000
+        wages_gross: 1000
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 100
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 500
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 150
+        dependent_care_expense: 200
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+        workforce_program_payments_received: 500
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: elementary
+        education_enrollment_intensity: full_time
+        is_tax_filer: false
+        cccap_care_is_part_time: false
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        af_and_so_medical_certification_received: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: emergency_or_transitional_shelter
+        receives_snap: true
+        cccap_child_needs_care_for_part_of_day: true
+        county_of_residence: denver
+        leap_is_in_another_approved_household: false
+        date_of_birth: "2020-05-20"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        mother_coverage_at_birth: none
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        is_referred_for_colorado_works_child_care: false
+        is_emancipated_minor: false
+        marital_status: single
+        liquid_resources_value: 0
+        cccap_declares_assets_within_limit: true
+        ma_application_date: "2026-11-02"
+        verification_request_date: "2026-11-02"
+        ma_reasonable_opportunity_notice_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        identity_verification_document_type: child_medical_or_school_record
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        disability_benefit_or_statement_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_eligibility_directly_verified: false
+        nslp_school_enrollment_confirmed: true
+        is_enrolled_in_nslp_school: true
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        electronic_data_source_monthly_gross_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+  expect:
+    p1:
+      snap_is_ineligible_member: false
+      snap_household_gross_income:
+        2027-02: 1000
+      snap_allotment:
+        2027-02: 387
+
+- id: CO-490
+  title: 'MAGI F-18 fix round: a live-in provider''s Difficulty of Care payments are not MAGI income'
+  # Fix round for docs/reviews/coverage-medicaid-magi-chp.md F-18 (deferred P2). 10 CCR 2505-10 8.100.3.K.7: Difficulty of
+  # Care payments to a live-in provider are excluded from MAGI income when the provider "must live full-time in the same
+  # home with the care recipient" (a) and the recipient is enrolled in long-term services and supports with additional
+  # HCBS waiver services, or in the Working Adults Buy-In with HCBS services (b), unless the payments are for more than 10
+  # foster individuals under 19 or 5 over 19 (c).
+  # p1, 40, single tax filer, no Medicare, applied 2026-11-02. She lives full-time with her brother, an HCBS waiver
+  # member, and is paid 1,800 a month by the provider agency for his care; she also earns 600 a month elsewhere. Her
+  # wages are 2,400, of which 1,800 are Difficulty of Care payments for the care of no foster individual.
+  # MAGI income: 2,400 - 1,800 = 600 = 45.1% of 1,330: the Adults group (133%, 138% with the disregard): adult, eligible.
+  # Before the fix the payments were counted: 2,400 = 180.5%, over every MAGI standard, so not eligible.
+  as_of: "2026-11-10"
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: "1986-03-01"
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        lives_full_time_with_care_recipient: true
+        care_recipient_receives_hcbs_waiver_services: true
+        difficulty_of_care_foster_individuals_under_19: 0
+        difficulty_of_care_foster_individuals_19_or_older: 0
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 2400
+        difficulty_of_care_payments_received: 1800
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+      relationships: []
+  expect:
+    p1:
+      ma_person_magi_income:
+        2026-11: 600
+      ma_magi_category:
+        2026-11: adult
+      ma_magi_eligibility_status:
+        2026-11: eligible
+
+- id: CO-491
+  title: 'MAGI F-16 fix round: a Legal Immigrant Prenatal member who asks to be withdrawn leaves her guaranteed period'
+  # Fix round for docs/reviews/coverage-medicaid-magi-chp.md F-16 (deferred P2). 10 CCR 2505-10 8.100.4.G.6: a lawfully
+  # residing pregnant non-citizen in the United States for less than five years is Legal Immigrant Prenatal; G.6.a: "A
+  # members guaranteed eligibility period will end effective in the earliest possible month if ... vi) Requests to be
+  # withdrawn from Legal Immigrant Prenatal eligibility".
+  # p1, 40, a lawful permanent resident since 2024-03-01, pregnant, single tax filer, wages 1,200 a month; applied
+  # 2026-10-05 and was enrolled in the Pregnant Women group for October (CBMS); in November she asks to be withdrawn.
+  # Rule: October is in her coverage period; November is not (G.6.a.vi). Before the fix the period ran on regardless of
+  # the request (G.5's guarantee was applied with no G.6.a exception).
+  as_of: "2026-11-10"
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 1
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: lawful_permanent_resident
+        qualified_status_date: "2024-03-01"
+        us_entry_date: "2024-03-01"
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-05"
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        date_of_birth: "1986-03-01"
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1200
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_prior_enrollment_category: none
+        ma_needy_young_person_basis: none
+      months:
+        "2026-10": {ma_prior_enrollment_category: pregnant}
+        "2026-11": {ma_has_requested_withdrawal_from_continuous_eligibility: true}
+      relationships: []
+  expect:
+    p1:
+      ma_is_legal_immigrant_prenatal_population: true
+      ma_is_in_pregnancy_coverage_period:
+        2026-10: true
+        2026-11: false
+
+- id: CO-492
+  title: 'NM-17 fix round: a Pickle child of 10 living with an ineligible parent is tested with the parent''s deemed income'
+  # Fix round for docs/reviews/coverage-medicaid-nonmagi.md NM-17 (the parent half) and the Pickle child under 18 with
+  # ineligible parents, deferred P2s. 10 CCR 2505-10 8.100.6.D: Pickle protects a person who would be eligible for SSI
+  # but for the OASDI cost-of-living increases; 8.100.6.E.3: "This disregard must also be applied to any OASDI cost of
+  # living increases paid to any financially responsible individual such as a parent or spouse"; 8.100.5.H.3.a and 20 CFR
+  # 416.1165 deem an ineligible parent's income to a child under 18.
+  # p3, 10, disabled, lost SSI in 2024 when his child's benefit began; the benefit was 450 then and is 500 now. He lives
+  # with his mother p1 (not on SSI or Medicaid), who earns 3,000 a month and receives a Social Security benefit of 800
+  # (760 when her son lost SSI). Resources 1,000 each. October 2026.
+  # Parent's countable income with her increase disregarded (E.3): 760 - 20 = 740; (3,000 - 65) / 2 = 1,467.50; 2,207.50
+  # less the individual allocation 994 = 1,213.50 deemed. Pickle income: 500 - (500 - 450) + 1,213.50 - 20 = 1,643.50
+  # > 994: not Pickle-eligible. Before the fix no parental income was deemed in the Pickle test: 500 - 50 - 20 = 430,
+  # pickle.
+  as_of: "2026-10-12"
+  relationships:
+  - [parent, p1, p3]
+  - [tax_filer, p1, p3]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1996-08-14"
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-05"
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        employer_family_coverage_employer_premium_share: 0.6
+        is_enrolled_in_employer_family_coverage: true
+        social_security_income_when_child_lost_ssi_or_oap: 760
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 3000
+        social_security_income: 800
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        adoption_subsidy_received: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        receives_ssi: false
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2016-05-20"
+        sex: male
+        immigration_status: us_citizen
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_custodial_parent: p1
+        ma_application_date: "2026-10-05"
+        employer_family_coverage_employer_premium_share: 0.6
+        is_enrolled_in_employer_family_coverage: true
+        disability_benefit_or_statement_document_received: true
+        ma_buy_in_determination_month: 2026-10
+        lost_ssi_due_to_social_security_benefits: true
+        lost_oap_due_to_social_security_benefits: false
+        social_security_income_when_ssi_or_oap_lost: 450
+        title_ii_benefit_type: retirement_or_survivor
+        liquid_resources_value: 1000
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p3:
+      ma_pickle_parental_income_deemed:
+        2026-10: 1213.5
+      ma_pickle_countable_income:
+        2026-10: 1643.5
+      ma_pickle_eligible:
+        2026-10: false

@@ -1,0 +1,13 @@
+id: CO-5215
+name: "SNAP: an impartial party found a probation or parole violation"
+identifier: snap_probation_violation_found_by_impartial_party
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "Whether an impartial party designated by the State agency has determined that the person violated a condition of probation or parole (10 CCR 2506-1 4.304.4.C; 7 CFR 273.11(n)): the finding SNAP's probation-or-parole disqualification requires."
+precision: "If not stated, SNAP reads it as false: the violation must be determined and verified before the member is disqualified (4.304.4.C), as for the fleeing-felon facts (CO-4684, CO-4685)."
+supplied_by: "The designated impartial party's determination, recorded by the local office."
+sources: [S3066]
+tags: [snap, legal]
+rationale: "SNAP non-financial coverage P2-3, second half (fix round 2026-11-23): the impartial party's finding was stated only inside the meaning of the neutral fact is_probation_or_parole_violator (CO-1732). A finding made under SNAP's rule is a SNAP-prefixed supplied fact (convention rule 13, exception i)."

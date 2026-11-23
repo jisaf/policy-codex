@@ -706,3 +706,9 @@ Fix agent, SNAP non-financial coverage round (2026-11-22), on branch `ccr-9d19bf
 | P3-7 | Fixed `d20c888`. CO-004's precision states 4.305.B.3.b.1.c (S3075). |
 | P3-8 | Partly fixed `d20c888`: CO-046's meaning includes a UIB denial under appeal (4.310.3.F). Deferred: a migrant under contract to begin work within 30 days (4.310.3.E.1) needs a fact for the contract. |
 | P3-9 | Accepted: one-person treatment-center households follow the stated edges; a facility's FNS authorization is its standing, not a household fact. |
+
+## Disposition (fix round, 2026-11-23): P2-3
+
+| Finding | Disposition |
+|---|---|
+| P2-3 | Fleeing-felon half fixed in c97135d (N2-P2-2: snap_is_fleeing_felon, CO-4683 to CO-4685). Probation-or-parole half fixed now: is_probation_or_parole_violator (CO-1732) states only the violation (convention rule 13: a neutral fact carries no program's classification); SNAP's conditions (4.304.4.C: an impartial party's determination, and law enforcement actively seeking the person, C.1.a-c) are snap_is_probation_or_parole_violator (CO-5216), reading the new SNAP finding snap_probation_violation_found_by_impartial_party (CO-5215) and the existing law_enforcement_is_actively_seeking_person (CO-4685). CO-311 and CO-2302 read CO-5216. Stored case CO-489 (a reported violation with no finding and no one seeking him: not disqualified, allotment 387). |

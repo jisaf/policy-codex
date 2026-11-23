@@ -603,3 +603,10 @@ Fix round of 2026-11-22 on branch ccr-9d19bf4c-wmnwcl (from a2ed7f0). Commits: 6
 | P3-7 | fixed (c622cfa): CO-3385, CO-1716's test comment, S1621 and OQ-613 cite 3.605.4.B.24. |
 
 Not P1: none; each P1's reading was confirmed against D-81 before it was fixed. Rule-test expectations changed with justification: CO-916-T1 (true -> false, CW-2), CO-918-T4 (false -> true, CW-3), CO-926-T3 (0 -> 1, CW-2), CO-2364-T1 (re-based to $3,200, CW-4); several older tests now state the new items to stay isolated.
+
+## Disposition (fix round, 2026-11-23): the deferred P2s
+
+| Finding | Disposition |
+|---|---|
+| CW-18 | Fixed. 9 CCR 2503-6 3.604.2.H (S3753): when more than one person exercises responsibility for a child, the one highest in the hierarchy is the caretaker. cw_caretaker_of (CO-2608) and both caretaker edges of cw_assistance_unit_members (CO-900) now apply it: a parent always; a legal guardian, or a relative (is_related_to) with primary responsibility, only when no parent is in the home (cw_parents_in_home, CO-5207); anyone else with primary responsibility only when neither is in the home (cw_relative_or_guardian_caretakers_in_home, CO-5208). "Within the fifth degree" is read from the relationship roles, which name no more distant relative (precision). Stored case CO-488: a grandmother who shares the care of her grandson and asks to join beside his mother is not a second caretaker (unit p1, p2; need 331, grant 488). |
+| CW-25 | Already fixed in 4b03b46 (coverage pass 3: ssn_application_date CO-4838, the good-cause finding CO-4839, cw_ssn_application_proof_validity_months CO-4840). No change. |

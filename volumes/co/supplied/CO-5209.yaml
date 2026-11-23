@@ -1,0 +1,13 @@
+id: CO-5209
+name: "Difficulty of Care payments received"
+identifier: difficulty_of_care_payments_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Payments the person received in the month as compensation for providing live-in home care to someone who qualifies for foster care or a Home and Community Based Services (HCBS) waiver and lives in the same home, where the care is needed because of the care recipient's physical, mental or emotional handicap (a Difficulty of Care payment, 10 CCR 2505-10 § 8.100.1)."
+precision: "Part of the person's gross wages for the month (wages_gross), not added to it. If not stated, every program reads it as 0, as for the other facts that name part of a gross figure."
+supplied_by: "Pay records of the provider agency or the payer; applicant statement."
+sources: [S3754]
+tags: [income]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): no fact named Difficulty of Care payments, so whether a supplier put them in wages (counted) or nowhere (not counted) was unstated and § 8.100.3.K.7's conditions were never tested. Stated as part of wages, as the payments are compensation for care; Medicaid's MAGI income takes them out when K.7's conditions hold (ma_excluded_difficulty_of_care_payments, CO-5214)."

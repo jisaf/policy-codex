@@ -1,0 +1,12 @@
+id: CO-5218
+name: "Medicaid: Difficulty of Care, most foster individuals 19 or older"
+identifier: ma_difficulty_of_care_foster_19_or_older_max
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The most qualified foster individuals over 19 for whom Difficulty of Care payments may be made and still be excluded from MAGI income (10 CCR 2505-10 § 8.100.3.K.7.c: not excluded if the payments are for more than \"5 qualified foster individuals who are over the age of 19\")."
+value: 5
+sources: [S3754]
+tags: [ma, magi, income]
+rationale: "Coverage review F-18 (fix round 2026-11-23): the figure K.7.c states, read by ma_excluded_difficulty_of_care_payments (CO-5214)."
