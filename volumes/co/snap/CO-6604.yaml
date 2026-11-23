@@ -10,7 +10,7 @@ precision: "Coverage pass 4 for SNAP (docs/reviews/coverage4-snap.md), S4-13, de
 derived: ["case", [["all", ["=", "snap_person_pay_received", 0], ["=", ["sum_receipts", "earnings", ["all", ["in", ["lookup", "snap_earnings_treatment_table", ["receipt", "kind"]], ["counted_less_costs", "counted_loss_offset"]], ["case", [["not", ["unknown", ["receipt", "regular_date"]]], ["=", ["month_of", ["receipt", "regular_date"]], ["month"]]], ["else", ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "job_start_date"]], ["<=", ["month_of", ["receipt", "job_start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "job_end_date"]], [">=", ["month_of", ["receipt", "job_end_date"]], ["month"]]]]]]]]], ["receipt", "amount"]], 0]], ["otherwise", "hours_worked", 0]], ["else", "hours_worked"]]
 sources: [S135, S132, S810, S121]
 implemented: engine
-tags: [snap, work]
+tags: [snap]
 rationale: "Coverage pass 4 for SNAP, S4-13: hours_worked was read as 0 when not stated by CO-402, CO-407 and CO-415, and with no default by CO-1386, so the two disagreed and the default contradicted the person's own earnings records."
 tests:
   - {"id": "CO-6604-T1", "title": "S4-13 (STU): wages of $1,500 in the month, hours not stated: cannot determine (decision 4)", "month": "2026-10", "as_of": "2026-10-12", "given": {"earnings": [{"kind": "wages", "amount": 1500}]}, "expect": "unknown"}

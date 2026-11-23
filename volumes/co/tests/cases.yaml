@@ -1397,7 +1397,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
@@ -1570,7 +1570,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: true
       snap_meets_citizenship_requirement: false
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
@@ -1743,7 +1743,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
@@ -1915,7 +1915,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
@@ -3400,7 +3400,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
@@ -3570,7 +3570,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: true
       snap_meets_citizenship_requirement: false
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
@@ -3743,7 +3743,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
@@ -3909,7 +3909,7 @@
       snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
@@ -4225,7 +4225,7 @@
       snap_eligible_household_size: 2
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2550}
       snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
@@ -4238,7 +4238,7 @@
       snap_eligible_household_size: 2
       snap_is_ineligible_member: false
       snap_meets_citizenship_requirement: true
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2550}
       snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
@@ -11995,6 +11995,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        qualifying_quarters_with_federal_means_tested_benefit: 0  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (20 qualifying quarters, none with a federal means-tested benefit)
         date_of_birth: "1990-02-20"
         immigration_status: lawful_permanent_resident
         qualified_status_date: "2020-06-01"
@@ -12103,7 +12104,7 @@
       snap_sponsor_deemed_resources: 1500
       snap_household_gross_income: {2026-10: 1325}
       snap_household_countable_resources: 1700
-      snap_eligibility_category: expanded_categorical
+      snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_net_income: {2026-10: 276}
       snap_allotment: {2026-10: 223}
       snap_eligibility_status: {2026-10: eligible}
@@ -14164,6 +14165,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        qualifying_quarters_with_federal_means_tested_benefit: 0  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (20 qualifying quarters, none with a federal means-tested benefit)
         date_of_birth: "1990-02-20"
         immigration_status: lawful_permanent_resident
         qualified_status_date: "2020-06-01"
@@ -14274,7 +14276,7 @@
       snap_sponsor_deemed_income: {2026-10: 0}
       snap_sponsor_deemed_resources: 0
       snap_eligible_household_size: 0
-      snap_eligibility_category: standard
+      snap_eligibility_category: {"2026-10": standard}  # per month since coverage pass 4 S4-11
       snap_verification_status: {2026-10: members_excluded}
       snap_eligibility_status: {2026-10: no_eligible_members}
       snap_allotment: {2026-10: 0}
@@ -22978,6 +22980,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        qualifying_quarters_with_federal_means_tested_benefit: 0  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (no qualifying quarters)
         dwelling_id: h1
         residence_setting_type: private_dwelling
         ltc_services_received: none
@@ -53639,6 +53642,8 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        qualifying_quarters_with_federal_means_tested_benefit: 0  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (a permanent resident with no earlier status)
+        status_before_lpr_adjustment: none  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (a permanent resident with no earlier status)
         date_of_birth: "1990-02-20"
         immigration_status: lawful_permanent_resident
         qualified_status_date: "2024-01-15"
