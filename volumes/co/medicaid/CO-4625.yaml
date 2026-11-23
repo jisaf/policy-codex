@@ -6,7 +6,7 @@ type: group of persons
 scope: person
 program: Medicaid
 meaning: "The blind or disabled children under ma_ssi_unemancipated_child_age_limit, not emancipated and not in a medical institution, who are children or stepchildren of a parent in this person's ma_ssi_deeming_parents (this person among them when blind or disabled): the eligible children among whom the parents' deemed income is divided equally (20 CFR 416.1165(e)(2))."
-precision: "Blind is is_blind and disabled is meets_ssa_disability_criteria. A child whose own income already makes the child ineligible is not taken out of the division (416.1165(e)(3) is not modeled); the division is equal."
+precision: "Blind is is_blind and disabled is meets_ssa_disability_criteria. A child whose own income already makes the child ineligible stays in the group: 416.1165(e)(3) does not take it out of the division but limits what it is deemed and passes the rest to the others, which ma_ssi_parental_income_deemed (CO-4626) does through ma_ssi_deeming_share_zeroes_benefit (CO-5904); the division is equal only among the children whose limit is not reached."
 derived: [filter, [persons], [all, [otherwise, [has_relative_in, [child, stepchild], ma_ssi_deeming_parents], false], ["<", [of, [P], age], ma_ssi_unemancipated_child_age_limit], [not, [otherwise, [of, [P], is_emancipated_minor], false]], [not, [otherwise, [of, [P], resides_in_medical_institution], false]], [any, [otherwise, [of, [P], is_blind], false], [otherwise, [of, [P], meets_ssa_disability_criteria], false]]]]
 sources: [S3413]
 implemented: engine

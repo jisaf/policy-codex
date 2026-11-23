@@ -56544,3 +56544,214 @@
         2026-10: 880
       ma_ssi_related_category:
         2026-10: disabled
+- id: CO-610
+  title: Two disabled children of a working mother; the older child's own earnings use up part of its share of her deemed income
+  # Coverage review, 20 CFR 416.1165(e)(3) fill-up (S4080). p1, 10, and p3, 16, both meet the SSA disability
+  # criteria and live with their mother p2 (40), who earns 4,873 a month, has no savings and is not applying for
+  # SSI. p3 has left school and earns 1,665 a month; p1 has no income. Hand derivation, October 2026 (FBR 994;
+  # 8.100.5.H.3; 20 CFR 416.1165):
+  # - No ineligible child in the home: no Ineligible Child Allocation. The mother has no unearned income, so the
+  #   whole $20 goes to earnings: (4,873 - 20 - 65) / 2 = 2,394; less the Ineligible Parent Allocation for one
+  #   parent (994): 1,400 to deem to the two eligible children ((e)(2): 700 each).
+  # - Each child's limit ((e)(3): what, with its own income, brings its countable income to 994): p1 has no income,
+  #   994 + 20 = 1,014. p3's earnings count (1,665 - 65) / 2 = 800 once the $20 is used against the deemed income,
+  #   so 994 - 800 + 20 = 214.
+  # - p3's share of 700 is over its limit: p3 is deemed 214 and the other 486 goes to p1, who would then have
+  #   700 + 486 = 1,186, over p1's own limit of 1,014: p1 is deemed 1,014 and the last 172 is deemed to no one.
+  #   (As one test: 214 + 214 = 428 and 1,014 + 214 = 1,228 are both under 1,400, so both limits are reached.)
+  # - p1: 1,014 - 20 = 994 countable; p3: 214 - 20 = 194 plus 800 earned = 994 countable. Each share reduces the
+  #   child's SSI benefit to zero, which (e)(3) says makes the child ineligible: SSI income test not met, no
+  #   SSI-related category for either child.
+  # Before the fix (equal division) p1 was deemed 700, countable 680, under 994: disabled. p3: 680 + 800 = 1,480,
+  # not met, either way.
+  as_of: '2026-10-12'
+  relationships:
+  - - parent
+    - p2
+    - p1
+  - - parent
+    - p2
+    - p3
+  persons:
+    p1:
+      facts:
+        date_of_birth: '2016-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        has_applied_for_ssi: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+        receipts:
+        - {kind: ssi}
+        - {kind: colorado_works_cash}
+        - {kind: adult_financial_cash}
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+    p2:
+      facts:
+        date_of_birth: '1986-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        has_applied_for_ssi: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+        receipts:
+        - {kind: ssi}
+        - {kind: colorado_works_cash}
+        - {kind: adult_financial_cash}
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        wages_gross: 4873
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+    p3:
+      facts:
+        date_of_birth: '2010-05-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        has_applied_for_ssi: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+        receipts:
+        - {kind: ssi}
+        - {kind: colorado_works_cash}
+        - {kind: adult_financial_cash}
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        wages_gross: 1665
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_deeming_benefit_zero_amount:
+        2026-10: 1014
+      ma_ssi_parental_income_deemed:
+        2026-10: 1014
+      ma_ssi_countable_income:
+        2026-10: 994
+      ma_ssi_income_test_status:
+        2026-10: not_met
+      ma_ssi_related_category:
+        2026-10: none
+    p3:
+      ma_ssi_deeming_benefit_zero_amount:
+        2026-10: 214
+      ma_ssi_parental_income_deemed:
+        2026-10: 214
+      ma_ssi_countable_income:
+        2026-10: 994
+      ma_ssi_income_test_status:
+        2026-10: not_met
+      ma_ssi_related_category:
+        2026-10: none

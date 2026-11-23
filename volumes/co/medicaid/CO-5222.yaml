@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The income of this child's ineligible parents deemed to the child for the Pickle test (10 CCR 2505-10 §§ 8.100.6.D-E): as ma_ssi_parental_income_deemed (CO-4626), from the parents' countable income with their OASDI cost-of-living increases since the child lost SSI disregarded (ma_pickle_deeming_parents_countable_income, § 8.100.6.E.3), less the Ineligible Parent(s) Allocation, divided equally among the blind or disabled children sharing it; zero when no parent's income is deemed."
-precision: "The same derivation as CO-4626, reading CO-5221 instead of CO-4634 (siblings)."
+precision: "The equal division CO-4626 made before the 416.1165(e)(3) fill-up of 2026-11-23, reading CO-5221 instead of CO-4634 (siblings). The fill-up is not carried to the Pickle copy: each child's limit there would have to be figured from the Pickle income (CO-1158, the child's own cost-of-living increases disregarded), which does not separate the child's own income from the deemed amount, while the other children's limits are their SSI-related ones (CO-5902). With two or more blind or disabled children under 18 and a Pickle child among them, a child whose own income uses up part of its share leaves the others less deemed income than (e)(3) gives them; recorded in docs/reviews/coverage-medicaid-nonmagi.md."
 derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, ["/", [max, 0, ["-", ma_pickle_deeming_parents_countable_income, [case, [[">=", [count, ma_ssi_deeming_parents], 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]], [max, 1, [count, ma_ssi_deeming_children]]]]]
 sources: [S3405, S3413, S3415, S666]
 implemented: engine
