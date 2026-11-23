@@ -1,0 +1,26 @@
+id: CO-6200
+name: "Medicaid: the person has pay for work or business receipts in the month"
+identifier: ma_has_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is paid in the month for services performed as an employee or receives gross receipts from self-employment (10 CCR 2505-10 8.100.3.K.3-4: 'payment in cash or in kind for services performed as an employee or from self-employment'), read from the earnings records through the SSI method's earnings counting table (ma_ssi_earnings_treatment_table, CO-5107): pay the table holds in gross earned income, counted or exempt (ma_ssi_wage_earnings, CO-5170), or a business's receipts (ma_ssi_self_employment_receipts, CO-5175). The test of employment of the Working Adults Buy-In (8.100.6.P.1.e, 'Individuals must be employed'), of an employed child of 16 to 18 in the Children's Buy-In (8.100.6.Q.1.e) and of an employed parent or caretaker relative in Transitional Medical Assistance (8.100.4.I.1.b.i)."
+precision: "Records E1 integration (docs/reviews/records-earnings-e1-integration.md): Medicaid's own presence test, replacing has_earned_income (CO-1356, program All), which read wages_gross and self_employment_gross_receipts after every Medicaid figure had moved to the earnings records, so a person stated in earnings alone was cannot determine (CO-454, CO-455: ma_buy_in_category). Gross, before any exclusion, as CO-1356 was: work-study, Census and a dependent child's WIOA wages are pay for work (the table holds them exempt, not outside gross income). Pay in kind counts (K.3-4); CO-1356 did not read in_kind_compensation_value. A business's cost records and payments from boarders do not (K.10.c-e makes boarders' payments self-employment income; whether taking in a boarder is being employed for these three tests is OQ-1180, and the reading CO-1356 gave, not employed, is kept). An unstated earnings list is cannot determine (decision 4); a stated empty list is no."
+derived: [any, [">", ma_ssi_wage_earnings, 0], [">", ma_ssi_self_employment_receipts, 0]]
+sources: [S4107, S3001, S317, S318, S1719]
+implemented: engine
+tags: [ma, income, verification]
+rationale: "Design 2.5 dissolves has_earned_income into each program's own item; CCCAP did it in E1 (cccap_has_earned_income, CO-5153). Medicaid's three readers (CO-618, CO-620, CO-2425) were the last, and the households the CCCAP and LEAP track restated in dated earnings alone made the interaction visible (records harness, whole-phase run)."
+nearest: [CO-5153, CO-5170, CO-5175, CO-5171]
+open: [OQ-1180]
+tests:
+  - {id: CO-6200-T1, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: wages, amount: 900}]}, title: "Wages of $900 in the month: employed", expect: true}
+  - {id: CO-6200-T2, month: "2026-11", as_of: "2026-11-01", given: {earnings: []}, title: "A stated empty list: no earned income", expect: false}
+  - {id: CO-6200-T3, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: self_employment_receipts, amount: 400}, {kind: business_cost_operating, amount: 500}]}, title: "Business receipts of $400 (a loss after $500 of costs): self-employed in the month, gross receipts 400 > 0", expect: true}
+  - {id: CO-6200-T4, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: business_cost_operating, amount: 200}]}, title: "Only a business cost record: no pay, no receipts", expect: false}
+  - {id: CO-6200-T5, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: in_kind_pay, amount: 300}]}, title: "Shelter worth $300 given for building work, in lieu of wages: pay in kind is earned income (K.3-4)", expect: true}
+  - {id: CO-6200-T6, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: work_study, amount: 250}]}, title: "Work-study of $250: pay for work, in gross income before the SSI-method exclusions", expect: true}
+  - {id: CO-6200-T7, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: boarder_payments, amount: 600, provides: room_and_board, boarders: 1}]}, title: "Only a boarder's $600 for room and board: not employed (OQ-1180, CO-1356's reading kept)", expect: false}
+  - {id: CO-6200-T8, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}]}, title: "A pay dated October 30, none in November: not employed in November", expect: false}
+  - {id: CO-6200-T9, month: "2026-11", as_of: "2026-11-01", given: {}, title: "Earnings not stated: cannot determine (decision 4)", expect: unknown}

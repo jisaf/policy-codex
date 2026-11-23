@@ -6,11 +6,11 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether at least one Parent/Caretaker Relative in the person's Medical Assistance household is employed this month, or left employment with good cause (10 CCR 2505-10 § 8.100.4.I.1.b.i; it need not be the same person every month).
-derived: [exists, ma_magi_household_members, [all, [of, [P], ma_is_parent_or_caretaker_relative_of_dependent_child], [any, [of, [P], has_earned_income], [otherwise, [of, [P], left_employment_with_good_cause], false]]]]
+derived: [exists, ma_magi_household_members, [all, [of, [P], ma_is_parent_or_caretaker_relative_of_dependent_child], [any, [of, [P], ma_has_earned_income], [otherwise, [of, [P], left_employment_with_good_cause], false]]]]
 sources: [S1719]
 implemented: engine
 tags: [ma, magi, income]
-rationale: "C-4 of the HCPF review. Dual-entry audit 2.1: derived from the MAGI household, each member's parent or caretaker relation (ma_caretaker_relative_of) and earned income (has_earned_income), with good cause for leaving employment (CO-2860)."
+rationale: "C-4 of the HCPF review. Dual-entry audit 2.1: derived from the MAGI household, each member's parent or caretaker relation (ma_caretaker_relative_of) and earned income (ma_has_earned_income, CO-6200; has_earned_income, CO-1356, before the records E1 integration), with good cause for leaving employment (CO-2860)."
 tests:
   - {id: CO-2425-T1, title: "The mother works", month: "2026-11", as_of: "2026-11-01", given: {ma_magi_household_members: [p1, p2], wages_gross: 900, self_employment_gross_receipts: 0, earnings: [{kind: wages, amount: 900}]}, others: {p2: {ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: true}
   - {id: CO-2425-T2, title: "No one works", month: "2026-11", as_of: "2026-11-01", given: {ma_magi_household_members: [p1, p2], wages_gross: 0, self_employment_gross_receipts: 0, left_employment_with_good_cause: false, earnings: []}, others: {p2: {ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: false}

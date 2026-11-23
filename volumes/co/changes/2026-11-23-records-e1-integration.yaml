@@ -1,0 +1,14 @@
+# Earned-income records, step E1: the integration of the six tracks (2026-11-23;
+# docs/reviews/records-earnings-e1-integration.md). The whole-phase records harness is measured against the E1 wave's
+# baseline (EARNINGS_BASELINE re-pointed to 9650b0c, design 4.3 rule 5); the five thirty-day households the CCCAP and
+# LEAP track restated in dated earnings alone state their November pays too, so every program reads them (request R-1);
+# Medicaid reads its own presence test of earned income from the records (ma_has_earned_income, CO-6200) where its
+# buy-in and Transitional Medical Assistance tests still read has_earned_income (CO-1356) over the scalar facts; the
+# earnings translator keeps a stated tax net of 0 (request R-4); the metamorphic split halves hours and boarders.
+# Dispositions moved by this change: CO-616 and CO-654 (their fingerprints moved because ma_buy_in_category and the
+# WAwD and Children's Buy-In tests below them now read CO-6200) are re-keyed in place in the earlier change records,
+# their reasons unchanged, as the merges did (cef0a32, de7774e).
+date: 2026-11-23
+summary: "Records E1 integration: the whole-phase baseline, the thirty-day households read by every program, Medicaid's own earned-income presence test (CO-6200), the translator's net-of-0 fix, the metamorphic split for hours and boarders."
+impact:
+  - {changed: CO-620, fingerprint: fp1-7e899fa8bd3588d35d70, flagged: CO-6200, applies: "CO-6200 (ma_has_earned_income) is new in this change and read by CO-620: Q.1.e excludes a child of 16 to 18 who is employed, the test CO-6200 now makes from the earnings records in place of has_earned_income (CO-1356). Both cite S318 (8.100.6.Q.1) because CO-620 applies the employment test CO-6200 figures; CO-620's own derivation changes only by that identifier, and its rule tests CO-620-T11 and T12 give ma_has_earned_income false where they gave has_earned_income false."}
