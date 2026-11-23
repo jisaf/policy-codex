@@ -1,0 +1,514 @@
+- id: RV2-L0
+  title: probe control hotel 70 days, fixed residence
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    lives_in_subsidized_housing: false
+    leap_households_sharing_living_arrangement: 1
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: hotel
+        institution_entry_date: '2026-09-01'
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+- id: RV2-L1
+  title: probe hotel for lack of alternative
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    lives_in_subsidized_housing: false
+    leap_households_sharing_living_arrangement: 1
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: hotel
+        institution_entry_date: '2026-09-01'
+        nighttime_residence_type: motel_or_hotel_for_lack_of_alternative
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+- id: RV2-S1
+  title: probe foster care payment ended in December
+  as_of: '2027-03-01'
+  case_facts:
+    school_meal_household_income: 6000
+  relationships:
+  - - legal_guardian
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+      month_defaults:
+        receives_snap: false
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        nighttime_residence_type: fixed_regular_adequate
+        child_welfare_payment_type: none
+        is_migrant_child: false
+        is_runaway_child: false
+        receives_fdpir: false
+        sebt_other_documented_categorical_basis: false
+        is_head_start_child: false
+        is_individually_certified_for_free_or_reduced_price_meals: false
+      month_defaults:
+        receives_snap: false
+  expect: {}
+- id: RV2-S0
+  title: probe control foster care now
+  as_of: '2027-03-01'
+  case_facts:
+    school_meal_household_income: 6000
+  relationships:
+  - - legal_guardian
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+      month_defaults:
+        receives_snap: false
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        nighttime_residence_type: fixed_regular_adequate
+        child_welfare_payment_type: title_iv_e_foster_care
+        is_migrant_child: false
+        is_runaway_child: false
+        receives_fdpir: false
+        sebt_other_documented_categorical_basis: false
+        is_head_start_child: false
+        is_individually_certified_for_free_or_reduced_price_meals: false
+      month_defaults:
+        receives_snap: false
+  expect: {}
+- id: RV2-L2
+  title: 'Coverage round (LEAP): $1,000 of wages and $3,000 of Colorado crime victim compensation; the compensation is not income'
+  # Coverage review C-1 (probe RV-L1). 9 CCR 2503-7 3.752.23.G (S3300). One adult applies for LEAP on November 10, 2026,
+  # paying a vendor for the primary heating source. Wages $1,000 a month (no pay schedule stated, so the month's wages are the
+  # thirty days', CO-3925, CO-3912). Other unearned income of $3,000 is all crime victim compensation.
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913, monthly fallback) = 3,000 (no part has its own fact in CO-3913's list)
+  #   leap_excluded_unearned_income (CO-4511) = 3,000 (crime_victim_compensation_received)
+  #   leap_person_unearned_income (CO-3926) = max(0, 3,000 - 3,000) + 0 = 0
+  #   leap_person_wages (CO-3925) = 1,000; leap_household_income (CO-1002) = 1,000
+  #   leap_income_limit_monthly for 1 (CO-875) = 3,774, so leap_income_within_limit is true and leap_is_eligible is true.
+  # Before the fix: leap_household_income 4,000 > 3,774, leap_is_eligible false.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 3500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 400
+        tanf_supportive_service_payments_received: 400
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+- id: RV2-L3
+  title: 'Coverage round (LEAP): $1,000 of wages and $3,000 of Colorado crime victim compensation; the compensation is not income'
+  # Coverage review C-1 (probe RV-L1). 9 CCR 2503-7 3.752.23.G (S3300). One adult applies for LEAP on November 10, 2026,
+  # paying a vendor for the primary heating source. Wages $1,000 a month (no pay schedule stated, so the month's wages are the
+  # thirty days', CO-3925, CO-3912). Other unearned income of $3,000 is all crime victim compensation.
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913, monthly fallback) = 3,000 (no part has its own fact in CO-3913's list)
+  #   leap_excluded_unearned_income (CO-4511) = 3,000 (crime_victim_compensation_received)
+  #   leap_person_unearned_income (CO-3926) = max(0, 3,000 - 3,000) + 0 = 0
+  #   leap_person_wages (CO-3925) = 1,000; leap_household_income (CO-1002) = 1,000
+  #   leap_income_limit_monthly for 1 (CO-875) = 3,774, so leap_income_within_limit is true and leap_is_eligible is true.
+  # Before the fix: leap_household_income 4,000 > 3,774, leap_is_eligible false.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 4000
+        pass_set_aside_earned_income: 500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        tanf_supportive_service_payments_received: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+- id: RV2-S2
+  title: probe Colorado Works ended in December
+  as_of: '2027-03-01'
+  case_facts:
+    school_meal_household_income: 6000
+  relationships:
+  - - legal_guardian
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+      month_defaults:
+        receives_snap: false
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        nighttime_residence_type: fixed_regular_adequate
+        child_welfare_payment_type: none
+        is_migrant_child: false
+        is_runaway_child: false
+        receives_fdpir: false
+        sebt_other_documented_categorical_basis: false
+        is_head_start_child: false
+        is_individually_certified_for_free_or_reduced_price_meals: false
+      month_defaults:
+        receives_snap: false
+        tanf_cash_income: 0
+      months:
+        2026-09: {tanf_cash_income: 300}
+        2026-10: {tanf_cash_income: 300}
+        2026-11: {tanf_cash_income: 300}
+        2026-12: {tanf_cash_income: 300}
+  expect: {}
+- id: PR3-L1
+  title: probe
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        title_ii_benefit_type: own_disability
+      month_defaults:
+        wages_gross: 2000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 2000
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+        pass_set_aside_income: 400
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+
+- id: PR3-L2
+  title: probe
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        lump_sum_received_prior_thirty_days: 3000
+        lottery_gambling_winnings_received_prior_thirty_days: 0
+      month_defaults:
+        wages_gross: 3000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 3000
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 3000
+        crime_victim_compensation_received: 3000
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+
+- id: PR3-L3
+  title: probe
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        lump_sum_received_prior_thirty_days: 3000
+        lottery_gambling_winnings_received_prior_thirty_days: 0
+      month_defaults:
+        wages_gross: 2500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 900
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 3000
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 3000
+        crime_victim_compensation_received: 3000
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}
+
+- id: PR3-L4
+  title: probe
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        lump_sum_received_prior_thirty_days: 900
+        lottery_gambling_winnings_received_prior_thirty_days: 0
+      month_defaults:
+        wages_gross: 3000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 900
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 900
+        refugee_resettlement_payments_received: 900
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}

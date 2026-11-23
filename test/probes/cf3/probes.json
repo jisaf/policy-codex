@@ -1,0 +1,198 @@
+[
+{
+"name": "C31-allowance",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1@default": {
+"wages_gross": 0,
+"electronic_data_source_monthly_gross_income": 0,
+"other_unearned_income_taxable": 1000,
+"workforce_program_payments_received": 1000,
+"vocational_training_allowance_received": 1000
+}
+}
+},
+{
+"name": "C31-vista",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"received_snap_or_public_assistance_when_joined_vista": false
+},
+"p1@default": {
+"wages_gross": 0,
+"electronic_data_source_monthly_gross_income": 0,
+"other_unearned_income_nontaxable": 1000,
+"federally_excluded_payments_received": 1000,
+"dvsa_title_i_volunteer_payments_received": 1000
+}
+}
+},
+{
+"name": "C32-recert-allow",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"case": {
+"snap_determination_is_recertification": true
+},
+"p1": {
+"snap_income_at_last_certification": 1500,
+"snap_income_source_changed_since_last_certification": false,
+"snap_income_information_is_outdated": false,
+"snap_is_striker": false
+},
+"p1@default": {
+"other_unearned_income_taxable": 500,
+"workforce_program_payments_received": 500,
+"vocational_training_allowance_received": 500
+}
+}
+},
+{
+"name": "C32-recert-ctrl",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"case": {
+"snap_determination_is_recertification": true
+},
+"p1": {
+"snap_income_at_last_certification": 1000,
+"snap_income_source_changed_since_last_certification": false,
+"snap_income_information_is_outdated": false,
+"snap_is_striker": false
+}
+}
+},
+{
+"name": "C33-othercharges",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"shelter_costs_attestation_is_questionable": true
+},
+"p1@default": {
+"shelter_other_continuing_charges": 400
+}
+}
+},
+{
+"name": "C34-weekly-ui",
+"base": "CO-115",
+"month": "2027-01",
+"ov": {
+"p1@default": {
+"wages_gross": 0,
+"electronic_data_source_monthly_gross_income": 0
+},
+"p1@2027-01": {
+"unemployment_income": 2000
+}
+}
+},
+{
+"name": "C35-liquid",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"liquid_resources_value": 6000
+}
+}
+},
+{
+"name": "C37-boarder-q",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"earned_income_attestation_is_questionable": true,
+"room_and_board_payments_are_foster_care": false,
+"self_employment_is_farming": false
+},
+"p1@default": {
+"wages_gross": 0,
+"room_and_board_payments_received": 600,
+"other_unearned_income_taxable": 600,
+"room_and_board_payers_count": 1,
+"room_and_board_provision_costs": 200
+}
+}
+},
+{
+"name": "CF1-cvc",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1@default": {
+"crime_victim_compensation_received": 500,
+"other_unearned_income_nontaxable": 500
+}
+}
+},
+{
+"name": "CF2-rent",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1@default": {
+"rental_income_received": 1000,
+"other_unearned_income_taxable": 1000,
+"rental_property_expenses": 600
+}
+}
+},
+{
+"name": "C21-weekly",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"wages_pay_frequency": "weekly"
+},
+"p1@default": {
+"wages_gross_per_pay_period": 250
+}
+}
+},
+{
+"name": "C22-able",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"liquid_resources_value": 6000,
+"able_account_value": 2000
+}
+}
+},
+{
+"name": "N3P22-age60-quit",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"date_of_birth": "1966-01-15",
+"snap_voluntary_quit_date": "2026-10-20",
+"snap_voluntary_quit_disqualification_start_month": "2026-12",
+"snap_work_requirement_violation_number": 1
+}
+}
+},
+{
+"name": "N3P22-age40-quit",
+"base": "CO-115",
+"month": "2027-02",
+"ov": {
+"p1": {
+"snap_voluntary_quit_date": "2026-10-20",
+"snap_voluntary_quit_disqualification_start_month": "2026-12",
+"snap_work_requirement_violation_number": 1
+}
+}
+}
+]

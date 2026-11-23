@@ -1,0 +1,825 @@
+# Cases this scratch copy of the repository added to volumes/co/tests/cases.yaml
+# (ids not in the repository at the time of preservation), extracted verbatim with their comments.
+# Source: scratchpad/cw2/volumes/co/tests/cases.yaml
+
+- id: ZQ-1
+  title: probe N.3.a
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - has_primary_responsibility_for
+    - p3
+    - p1
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1960-01-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+
+- id: ZQ-2
+  title: probe CO-2000
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - parent
+    - p3
+    - p1
+  - - parent
+    - p4
+    - p1
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1960-01-01'
+      month_defaults:
+        wages_gross: 600
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p4:
+      facts:
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h2
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1960-01-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+
+- id: ZQ-3
+  title: control
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - parent
+    - p3
+    - p1
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1960-01-01'
+      month_defaults:
+        wages_gross: 600
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+
+- id: ZR-1
+  title: 'Colorado Works coverage review CW-2: an emancipated 16-year-old living alone
+    with her baby is assisted as an adult'
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+        in_diversion_period_of_ineligibility: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+
+- id: ZR-2
+  title: 'Colorado Works coverage review CW-2: an emancipated 16-year-old living alone
+    with her baby is assisted as an adult'
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        lottery_gambling_winnings_received: 2000
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+
+- id: ZR-3
+  title: 'Colorado Works coverage review CW-2: an emancipated 16-year-old living alone
+    with her baby is assisted as an adult'
+  as_of: '2026-10-15'
+  case_facts:
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2010-03-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        room_and_board_payments_received: 1500
+        room_and_board_payers_count: 2
+        room_and_board_provision_costs: 0
+    p2:
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2026-06-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0

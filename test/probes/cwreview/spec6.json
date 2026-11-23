@@ -1,0 +1,11 @@
+[
+ {"id":"CWZ-9","title":"mother wins $2,000 lottery prize in the month","relationships":[["parent","p1","p2"]],
+  "persons":{"p1":{"facts":{},"month":{"lottery_gambling_winnings_received":2000}},
+             "p2":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}},
+ {"id":"CWZ-10","title":"mother receives $1,500 from two boarders","relationships":[["parent","p1","p2"]],
+  "persons":{"p1":{"facts":{},"month":{"room_and_board_payments_received":1500,"room_and_board_payers_count":2,"room_and_board_provision_costs":0}},
+             "p2":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}},
+ {"id":"CWZ-11","title":"applicant unit in October 12 application month, no income","relationships":[["parent","p1","p2"]],
+  "persons":{"p1":{"facts":{}},
+             "p2":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}}
+]

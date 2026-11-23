@@ -1,0 +1,394 @@
+- id: CO-111
+  title: Hospital presumptive eligibility, with and without the status declaration
+  # Final verification F-2 (docs/reviews/final-medicaid-chp.md; the reviewer's scratch household X-HPE,
+  # built from CO-78). Six applicants at a qualified hospital site (10 CCR 2505-10 § 8.100.3.R), November
+  # 2026, none enrolled in Medical Assistance and none with presumptive eligibility in the last year.
+  # Hand derivation (2026 guideline: 1 person 15,960 / 12 = 1,330; 2 persons 21,640 / 12 = 1,803.33):
+  # p1, 45, citizen, alone, declares 1,596 = 120%: adult (R.2.d, at or under 133%).
+  # p2, 25, citizen, employed, declares a disability, own income 3,990 = 300%: over 133% for adults,
+  #   so employed_disabled (R.2.f, at or under 450%).
+  # p3, 22, citizen, pregnant, household of two declaring 3,426 = 190%: pregnant (R.2.a, 195%).
+  # p4, 39, undocumented, pregnant, alone, declares 1,197 = 90%: pregnant. R.2.a asks the declaration
+  #   of status "unless they meet the exceptions outlined under 8.100.3.G.1.g.viii", read as ix.1
+  #   (OQ-56), which every pregnant woman meets. Was none before the fix.
+  # p5, 36, undocumented, not pregnant, alone, declares 1,197 = 90%: none; R.2.d has no exception.
+  # p6, 8, undocumented, household of two declaring 2,732 = 151.5%: over the 142% child standard, so
+  #   not child; no other group reaches a child, so none. (At or under 142% he would be child
+  #   without a declaration, CO-2439-T12.)
+  as_of: '2026-11-10'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - parent
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1981-04-04'
+        sex: female
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 1596
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: true
+        claims_disability: false
+        declared_own_income_monthly: 1596
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2001-02-14'
+        sex: male
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3990
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: true
+        claims_disability: true
+        declared_own_income_monthly: 3990
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2004-09-09'
+        sex: female
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3426
+        declared_household_size: 2
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: false
+        claims_disability: false
+        declared_own_income_monthly: 3426
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1986-12-01'
+        sex: female
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 1197
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_size: 1
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p5:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1990-06-15'
+        sex: female
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 1197
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_size: 1
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p6:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2018-03-01'
+        sex: male
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 2732
+        declared_household_size: 2
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_hospital_presumptive_eligibility_category: adult
+    p2:
+      ma_hospital_presumptive_eligibility_category: employed_disabled
+    p3:
+      ma_hospital_presumptive_eligibility_category: pregnant
+    p4:
+      ma_hospital_presumptive_eligibility_category: pregnant
+    p5:
+      ma_hospital_presumptive_eligibility_category: none
+    p6:
+      ma_hospital_presumptive_eligibility_category: none

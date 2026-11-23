@@ -71,17 +71,17 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 10 stored households and reaches 21", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 18 stored households and reaches 41", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible)
-    expect(reach).toHaveLength(21); // + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3)
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 10 of ${vol.cases.length} stored households; it reaches 21`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up)
+    expect(reach).toHaveLength(41); // + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 18 of ${vol.cases.length} stored households; it reaches 41`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 25 and reaches 42", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(25); // + CO-228 (MAGI coverage pass 3: a stepchild of 16)
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(42); // + CO-226 to CO-228 (MAGI coverage pass 3)
+  it("the children's Medicaid income limit (CO-191) is read by 33 and reaches 67", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(33); // + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(67); // + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up)
   });
 
   it("every household that reads an item is one it reaches", () => {

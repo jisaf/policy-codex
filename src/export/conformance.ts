@@ -575,12 +575,19 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
   return { suiteCase, notes };
 }
 
-function householdSuiteCase(engine: Engine, c: HouseholdCase): { suiteCase: SuiteCase; notes: string[] } {
+function householdSuiteCase(
+  engine: Engine, c: HouseholdCase, knownFailures: ReadonlySet<string> = new Set(),
+): { suiteCase: SuiteCase; notes: string[] } {
   const notes: string[] = [];
   const report = engine.runCase(c);
   const expect: SuiteExpectation[] = report.results.map((r) => {
+    // A stored expectation listed in conformance/known-failures.json (the
+    // `case:person:identifier[@month]` key npm run check uses) is a tracked
+    // gap between the rule and the codex, not a stale pin: no note. The suite
+    // still carries the codex's own value, as for every case.
+    const known = knownFailures.has(`${c.id}:${r.person}:${r.identifier}${r.month ? `@${r.month}` : ""}`);
     if (r.err) notes.push(`${c.id} ${r.person}.${r.identifier}: evaluation error: ${r.err}`);
-    else if (!r.ok) notes.push(staleNote(c.id, r.person, r.identifier, r.month, r.got));
+    else if (!r.ok && !known) notes.push(staleNote(c.id, r.person, r.identifier, r.month, r.got));
     return {
       person: r.person, identifier: r.identifier, month: r.month,
       value: r.err ? null : JSON.parse(JSON.stringify(r.got ?? null)),
@@ -713,6 +720,10 @@ function cannotDetermineCases(engine: Engine, base: SuiteCase[]): {
 export interface BuildSuiteOptions {
   /** Add one cannot-determine case per program outcome (default true). */
   cannotDetermine?: boolean;
+  /** Keys from conformance/known-failures.json: a household expectation
+   *  listed there that the codex does not meet adds no stale-expectation note
+   *  (npm run check tracks it as a known failure instead). */
+  knownFailures?: readonly string[];
   /** Re-evaluate every case from its exported form: records `months_read`
    *  and notes any expectation the export does not reproduce (default true). */
   replay?: boolean;
@@ -749,8 +760,9 @@ export function buildSuite(
       notes.push(...n);
     }
   }
+  const known = new Set(opts.knownFailures ?? []);
   for (const c of volume.cases) {
-    const { suiteCase, notes: n } = householdSuiteCase(engine, c);
+    const { suiteCase, notes: n } = householdSuiteCase(engine, c, known);
     cases.push(suiteCase);
     notes.push(...n);
   }

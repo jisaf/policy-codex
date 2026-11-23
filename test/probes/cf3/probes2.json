@@ -1,0 +1,5 @@
+[
+ {"name":"C34-weekly-ui-conv","base":"CO-115","month":"2027-01","ov":{"p1":{"periodic_unearned_income_frequency":"weekly","periodic_unearned_income_per_payment":400},"p1@default":{"wages_gross":0,"electronic_data_source_monthly_gross_income":0},"p1@2027-01":{"unemployment_income":2000,"periodic_unearned_income_received":2000}}},
+ {"name":"C35-liquid-held","base":"CO-115","month":"2027-02","ov":{"p1":{"liquid_resources_value":6000,"excluded_government_payments_held_value":2000}}},
+ {"name":"C31-allowance-zz","base":"CO-115","month":"2027-02","ov":{"p1@default":{"wages_gross":0,"electronic_data_source_monthly_gross_income":0,"other_unearned_income_taxable":1000,"workforce_program_payments_received":1000,"vocational_training_allowance_received":1000}}}
+]

@@ -1,0 +1,831 @@
+- id: PZ-1
+  title: "probe spouse tax refund"
+  # p1, 70, with $600 of Social Security, is married to p2, 68, who lives in another home (dwelling d2) with $3,000 of
+  # Social Security; they are not legally separated or divorced. p2 receives no Adult Financial, SSI or Medicaid, pays
+  # no court-ordered support and has no dependent children. Determination on October 1, 2026.
+  # Spouse deeming (3.534.A-B, S1632; 3.520.63.D, S3204; af_deemed_relative_income, CO-2384): the spouse is deemed wherever
+  # he lives. Not exempt under 3.534.C (not on AF, SSI or Medicaid). Earned: none. Unearned: 3,000 less the OAP grant
+  # standard 1,032, no children's needs, medical payments or support: 1,968 deemed.
+  # Countable income: 600 - 10 (the married client's half of the $20, 3.533.A.2.c.1) + 1,968 = 2,558 >= 1,032: none.
+  # Before the coverage round nothing was deemed from a spouse living elsewhere: countable 590, oap, grant 442. Probe
+  # PR-APART (with p2's court-ordered support and medical payments for dependents stated, as 3.534.B.4-5 ask).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        tax_refunds_and_credits_received: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 500
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}
+
+- id: PZ-2
+  title: "probe life insurance spouse apart"
+  # p1, 70, with $600 of Social Security, is married to p2, 68, who lives in another home (dwelling d2) with $3,000 of
+  # Social Security; they are not legally separated or divorced. p2 receives no Adult Financial, SSI or Medicaid, pays
+  # no court-ordered support and has no dependent children. Determination on October 1, 2026.
+  # Spouse deeming (3.534.A-B, S1632; 3.520.63.D, S3204; af_deemed_relative_income, CO-2384): the spouse is deemed wherever
+  # he lives. Not exempt under 3.534.C (not on AF, SSI or Medicaid). Earned: none. Unearned: 3,000 less the OAP grant
+  # standard 1,032, no children's needs, medical payments or support: 1,968 deemed.
+  # Countable income: 600 - 10 (the married client's half of the $20, 3.533.A.2.c.1) + 1,968 = 2,558 >= 1,032: none.
+  # Before the coverage round nothing was deemed from a spouse living elsewhere: countable 590, oap, grant 442. Probe
+  # PR-APART (with p2's court-ordered support and medical payments for dependents stated, as 3.534.B.4-5 ask).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d2
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}
+
+- id: PZ-2B
+  title: "probe life insurance spouse apart"
+  # p1, 70, with $600 of Social Security, is married to p2, 68, who lives in another home (dwelling d2) with $3,000 of
+  # Social Security; they are not legally separated or divorced. p2 receives no Adult Financial, SSI or Medicaid, pays
+  # no court-ordered support and has no dependent children. Determination on October 1, 2026.
+  # Spouse deeming (3.534.A-B, S1632; 3.520.63.D, S3204; af_deemed_relative_income, CO-2384): the spouse is deemed wherever
+  # he lives. Not exempt under 3.534.C (not on AF, SSI or Medicaid). Earned: none. Unearned: 3,000 less the OAP grant
+  # standard 1,032, no children's needs, medical payments or support: 1,968 deemed.
+  # Countable income: 600 - 10 (the married client's half of the $20, 3.533.A.2.c.1) + 1,968 = 2,558 >= 1,032: none.
+  # Before the coverage round nothing was deemed from a spouse living elsewhere: countable 590, oap, grant 442. Probe
+  # PR-APART (with p2's court-ordered support and medical payments for dependents stated, as 3.534.B.4-5 ask).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}
+
+- id: PZ-4
+  title: "probe death before month"
+  # p1, 70, with $600 of Social Security, is married to p2, 68, who lives in another home (dwelling d2) with $3,000 of
+  # Social Security; they are not legally separated or divorced. p2 receives no Adult Financial, SSI or Medicaid, pays
+  # no court-ordered support and has no dependent children. Determination on October 1, 2026.
+  # Spouse deeming (3.534.A-B, S1632; 3.520.63.D, S3204; af_deemed_relative_income, CO-2384): the spouse is deemed wherever
+  # he lives. Not exempt under 3.534.C (not on AF, SSI or Medicaid). Earned: none. Unearned: 3,000 less the OAP grant
+  # standard 1,032, no children's needs, medical payments or support: 1,968 deemed.
+  # Countable income: 600 - 10 (the married client's half of the $20, 3.533.A.2.c.1) + 1,968 = 2,558 >= 1,032: none.
+  # Before the coverage round nothing was deemed from a spouse living elsewhere: countable 590, oap, grant 442. Probe
+  # PR-APART (with p2's court-ordered support and medical payments for dependents stated, as 3.534.B.4-5 ask).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        date_of_death: "2026-09-15"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d2
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}
+
+- id: PZ-3
+  title: "probe HCA in assisted living"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: assisted_living_residence
+        institution_entry_date: "2026-01-05"
+        expects_institutional_stay_of_thirty_days: true
+        nighttime_residence_type: fixed_regular_adequate
+        date_of_birth: "1980-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: never_married
+        receives_ssi: true
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        ltc_services_received: none
+        days_out_of_state_in_calendar_year: 0
+        received_financial_assistance_from_another_state_this_month: false
+        meets_nursing_facility_level_of_care: false
+        hca_functional_capacity_score: 25
+        hca_need_for_paid_care_score: 30
+        hca_authorized_amount: 500
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        ssi_income: 500
+  expect: {}
+
+- id: PZ-3H
+  title: "probe HCA in assisted living"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        date_of_birth: "1980-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: never_married
+        receives_ssi: true
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        ltc_services_received: none
+        days_out_of_state_in_calendar_year: 0
+        received_financial_assistance_from_another_state_this_month: false
+        meets_nursing_facility_level_of_care: false
+        hca_functional_capacity_score: 25
+        hca_need_for_paid_care_score: 30
+        hca_authorized_amount: 500
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        ssi_income: 500
+  expect: {}
+
+- id: PZ-5
+  title: "Coverage round (Adult Financial F-2): an OAP client, a sponsored LPR since 2010 with forty qualifying quarters"
+  # p1, 70, a lawful permanent resident since March 1, 2010, sponsored on a Form I-864 by p2, 51, a U.S. citizen who
+  # earns $4,000 a month. SSA credits p1 with 40 qualifying quarters. p1 has $600 of Social Security and $500 in the bank.
+  # Determination on October 1, 2026.
+  # Sponsor's obligation (3.520.69.B.2, S3203; af_sponsor_deeming_applies, CO-4400): it ends when the non-citizen has 40
+  # qualifying quarters, so nothing is deemed: af_deemed_sponsor_income 0 and none of p2's $100 of resources.
+  # Countable income: 600 - 20 = 580 < 1,032: oap (citizenship: an LPR for more than five years, CO-929). Grant: 1,032 -
+  # 580 = 452. Before the coverage round 4,000 - 994 = 3,006 was deemed and the category was none. Probe PR-SPON.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [sponsor, p2, p1]
+    - [spouse, p2, p3]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: lawful_permanent_resident
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: true
+        dwelling_id: d1
+        child_welfare_payment_type: none
+        is_pregnant: false
+        qualified_status_date: "2010-03-01"
+        us_entry_date: "2010-03-01"
+        qualifying_quarters: 10
+        has_qualifying_military_service: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1975-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 100
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        sponsor_household_size: 1
+        sponsor_dependent_count: 0
+      month_defaults:
+        wages_gross: 4000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p3:
+      relationships: []
+      facts:
+        dwelling_id: d9
+        residence_setting_type: private_dwelling
+        date_of_birth: "1975-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 100
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        sponsor_household_size: 1
+        sponsor_dependent_count: 0
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}
+
+
+- id: PR-IMD
+  title: "probe: AND-SO client in a State psychiatric hospital since August (C.R.S. 26-2-111(1)(d))"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: psychiatric_hospital
+        date_of_birth: "1986-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        af_has_met_and_so_benefit_application_duty: true
+        institution_entry_date: "2026-08-01"
+        residence_setting_is_licensed_or_certified: true
+        residence_setting_operated_by_government: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-PTC
+  title: "probe: OAP client holding a $500 PTC rebate received in August among $2,200 of savings (3.520.77.K, 3.520.786.A)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 2200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        federal_tax_refunds_held_value: 500
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-RENT
+  title: "probe: OAP client with $800 gross rent from a house she does not manage, $500 of allowable expenses (3.520.785.B.20)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 800
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PZ-5C
+  title: "Coverage round (Adult Financial F-2): an OAP client, a sponsored LPR since 2010 with forty qualifying quarters"
+  # p1, 70, a lawful permanent resident since March 1, 2010, sponsored on a Form I-864 by p2, 51, a U.S. citizen who
+  # earns $4,000 a month. SSA credits p1 with 40 qualifying quarters. p1 has $600 of Social Security and $500 in the bank.
+  # Determination on October 1, 2026.
+  # Sponsor's obligation (3.520.69.B.2, S3203; af_sponsor_deeming_applies, CO-4400): it ends when the non-citizen has 40
+  # qualifying quarters, so nothing is deemed: af_deemed_sponsor_income 0 and none of p2's $100 of resources.
+  # Countable income: 600 - 20 = 580 < 1,032: oap (citizenship: an LPR for more than five years, CO-929). Grant: 1,032 -
+  # 580 = 452. Before the coverage round 4,000 - 994 = 3,006 was deemed and the category was none. Probe PR-SPON.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [sponsor, p2, p1]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: lawful_permanent_resident
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: true
+        dwelling_id: d1
+        child_welfare_payment_type: none
+        is_pregnant: false
+        qualified_status_date: "2010-03-01"
+        us_entry_date: "2010-03-01"
+        qualifying_quarters: 10
+        has_qualifying_military_service: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1975-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 100
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        sponsor_household_size: 1
+        sponsor_dependent_count: 0
+      month_defaults:
+        wages_gross: 4000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect: {}

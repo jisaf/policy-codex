@@ -1,0 +1,20 @@
+- id: DIR1
+  title: direction test, parent p1 of child p2 aged 10
+  as_of: '2026-11-01'
+  relationships:
+  - [parent, p1, p2]
+  persons:
+    p1:
+      facts: {residence_setting_type: nursing_facility, dwelling_id: nf1, resides_in_medical_institution: true, date_of_birth: '1980-01-01'}
+    p2:
+      facts: {residence_setting_type: private_dwelling, dwelling_id: h1, resides_in_medical_institution: false, date_of_birth: '2016-01-01', is_blind: false, meets_ssa_disability_criteria: false}
+- id: DIR2
+  title: direction test, child p1 of parent p2 aged 10 (reverse)
+  as_of: '2026-11-01'
+  relationships:
+  - [parent, p2, p1]
+  persons:
+    p1:
+      facts: {residence_setting_type: nursing_facility, dwelling_id: nf1, resides_in_medical_institution: true, date_of_birth: '1980-01-01'}
+    p2:
+      facts: {residence_setting_type: private_dwelling, dwelling_id: h1, resides_in_medical_institution: false, date_of_birth: '2016-01-01', is_blind: false, meets_ssa_disability_criteria: false}

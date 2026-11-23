@@ -630,6 +630,13 @@ export interface RunCheckOptions {
   knownFailuresPath?: string;
 }
 
+/** The keys in `conformance/known-failures.json` (or `file`), or none when
+ *  the file is absent. Read by the check and by the conformance suite build. */
+export function loadKnownFailures(root: string, file?: string): string[] {
+  const p = file ?? path.join(root, "conformance/known-failures.json");
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf8")) as string[]) : [];
+}
+
 /** Loads the ledger and the diff from disk and returns the full report. This
  *  is what `scripts/check.ts` runs; kept separate from `buildCheckReport` so
  *  tests can supply their own ledger and diff without touching git. */
@@ -637,11 +644,7 @@ export function runCheck(opts: RunCheckOptions): CheckReport {
   const base = opts.base ?? process.env.CHECK_BASE ?? "origin/main";
   const ledger = loadLedgerFromDisk(opts.root, opts.volume);
   const diff = diffAgainstBase(opts.root, base);
-  const knownFailuresPath =
-    opts.knownFailuresPath ?? path.join(opts.root, "conformance/known-failures.json");
-  const knownFailures: string[] = fs.existsSync(knownFailuresPath)
-    ? JSON.parse(fs.readFileSync(knownFailuresPath, "utf8"))
-    : [];
+  const knownFailures = loadKnownFailures(opts.root, opts.knownFailuresPath);
   const report = buildCheckReport(
     ledger, diff, knownFailures, diff ? { root: opts.root, base } : {},
   );
