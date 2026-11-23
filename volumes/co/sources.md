@@ -24109,3 +24109,280 @@ Document: D-46
 >   (II)
 >
 >   a noninstitutionalized individual is the date on which the individual applies for medical assistance under the State plan or, if later, the date on which the individual disposes of assets for less than fair market value.
+### S4720. Colorado SNAP: pay or benefits received early or late counted by the regular schedule
+
+Document: D-82
+
+10 CCR 2506-1 4.402.B (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Variations in Date of Pay
+>
+> 1. Regular ongoing earned income that is received early or late by a
+> household due to a holiday, a weekend, or pay dates being changed will
+> have income counted based on the regular pay schedule instead of the
+> actual date of pay.
+>
+> 2. Households receiving monthly benefits such as public assistance or social
+> security payments shall not have their monthly income varied merely
+> because mailing cycles resulted in two (2) payments in one month and
+> none in the next month.
+>
+> 3. Households containing a member of the Armed Services of the United
+> States shall not have their monthly income varied merely because the first
+> day of the month falls on a holiday or weekend which resulted in two (2)
+> payments in the month and none in the subsequent month.
+
+### S4721. Colorado SNAP: wages held at the employee's request; sick, vacation and bonus pay earned income while still employed
+
+Document: D-82
+
+10 CCR 2506-1 4.403.A.3-4 (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 3. Wages held at the request of the employee shall be considered income to
+> the household in the month the wages would otherwise have been paid by
+> the employer. Advances on wages shall count as income in the month
+>
+> received, if reasonably anticipated. However, wages held by the employer
+> as a general practice shall not be counted as income unless the
+> household anticipates that it will receive income from such wages
+> previously withheld by the employer.
+>
+> When an advance on wages is subsequently repaid from current wages,
+> only the wages received is considered as income. The amount of
+> repayment is disregarded, even if the wage-earner was not a SNAP
+> participant at the time of the advance.
+>
+> 4. Payment for sick leave, vacation pay, and bonus pay shall be considered
+> as earned income, if the person was still employed while receiving the
+> pay.
+
+### S4722. Colorado SNAP: income whose date of receipt or amount is uncertain not counted
+
+Document: D-82
+
+10 CCR 2506-1 4.402.1.B (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. If the date of receipt or the amount of any anticipated income is uncertain, such
+> as a new job or a PA application, that portion of income shall not be considered.
+> Only the portion of income which can be anticipated with reasonable certainty
+> concerning the amount and month in which monies will be received shall be
+> counted as income.
+
+### S4723. Colorado SNAP: vacation, sick or bonus pay after termination: installments unearned income, a lump sum a resource
+
+Document: D-82
+
+10 CCR 2506-1 4.404.F (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> F. Vacation Pay, Sick Pay, and Bonus Pay
+>
+> If vacation pay, sick pay, or bonus pay is received in installment payments after a
+> person has terminated employment, it is considered unearned income. If the pay
+> is received in a lump sum, it shall be considered as a resource in the month
+> received.
+
+### S4724. Colorado SNAP: income intended to cover a period divided by the months it covers
+
+Document: D-82
+
+10 CCR 2506-1 4.402.2, first paragraph (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> To obtain a household's average monthly income, income intended to cover a specific
+> period of time is divided by the number of months the income is intended to cover.
+
+### S4725. Federal: foster care payments counted for foster individuals who are members, excluded for foster care boarders
+
+Document: D-13
+
+7 CFR 273.9(b)(2)(ii), (c)(15). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (ii) Annuities; pensions; retirement, veteran's, or disability benefits; worker's or unemployment compensation including any amounts deducted to repay claims for intentional program violations as provided in § 272.12; old-age, survivors, or social security benefits; strike benefits; foster care payments for children or adults who are considered members of the household; gross income minus the cost of doing business derived from rental property in which a household member is not actively engaged in the management of the property at least 20 hours a week.
+>
+> ...
+>
+> (15) Governmental foster care payments received by households with foster care individuals who are considered to be boarders in accordance with § 273.1(c).
+
+### S4726. Federal: energy assistance under federal law excluded, HUD and Rural Housing Service utility reimbursements included
+
+Document: D-13
+
+7 CFR 273.9(c)(11), (c)(11)(i). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (11) Energy assistance as follows:
+> (i) Any payments or allowances made for the purpose of providing energy assistance under any Federal law other than part A of Title IV of the Social Security Act (42 U.S.C. 601 *et seq.*), including utility reimbursements made by the Department of Housing and Urban Development and the Rural Housing Service, or
+
+### S4727. Federal: Workforce Investment Act allowances, earnings and payments excluded, except on-the-job training earnings
+
+Document: D-13
+
+7 CFR 273.9(c)(10), (c)(10)(v). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (10) Any income that is specifically excluded by any other Federal statute from consideration as income for the purpose of determining eligibility for SNAP. The following laws provide such an exclusion:
+> (v) Allowances, earnings, or payments (including reimbursements) to individuals participating in programs under the Workforce Investment Act of 1998, except as provided for under paragraph (b)(1)(v) of this section.
+
+### S4728. Federal: payments from a roomer or boarder, except foster care boarders, are self-employment income
+
+Document: D-13
+
+7 CFR 273.9(b)(1)(ii). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (ii) The gross income from a self-employment enterprise, including the total gain from the sale of any capital goods or equipment related to the business, excluding the costs of doing business as provided in paragraph (c) of this section. Ownership of rental property shall be considered a self-employment enterprise; however, income derived from the rental property shall be considered earned income only if a member of the household is actively engaged in the management of the property at least an average of 20 hours a week. Payments from a roomer or boarder, except foster care boarders, shall also be considered self-employment income.
+
+### S4729. Colorado SNAP: allowable costs of doing business "include, but are not limited to"; the costs not allowed
+
+Document: D-82
+
+10 CCR 2506-1 4.403.11.B-C (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Allowable costs of doing business include, but are not limited to: identifiable costs
+> of labor; stock; raw materials; seed; fertilizer; payments on the principal of the
+> purchase price of income producing real estate; capital assets, equipment,
+>
+> machinery and other durable goods; interest paid to purchase income-producing
+> property; insurance premiums; taxes paid on income-producing property; and,
+> other similar items that are necessary costs of doing business.
+>
+> C. The following shall not be allowed as a deduction for business costs:
+>
+> 1. Any amount that exceeds the payment a household receives from a
+> boarder for lodging and meals is not allowable as a cost of doing
+> business.
+>
+> 2. Any amount claimed as a net loss sustained in any prior period.
+>
+> 3. Federal, state, and local income taxes, money set aside for retirement
+> purposes, and other work-related personal expenses (such as meals).
+> These expenses are accounted for by the earned income deduction.
+> However, any taxes paid by the business for employees (such as the
+> business share of social security taxes) are allowed as a business
+> deduction.
+
+### S4730. Colorado SNAP: anticipated capital gains over the next twelve months, from the date of application, averaged
+
+Document: D-82
+
+10 CCR 2506-1 4.403.11.D (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Anticipating Capital Gains and Other Self-Employment Income
+>
+> When self-employment income is calculated on an anticipated basis, any capital
+> gains that the household anticipates receiving in the next twelve (12) months,
+> beginning with the date the application is filed, are added, and divided by twelve
+> (12). This amount is used in successive certification periods over the next twelve
+> months unless a change occurs. A new average monthly amount must be
+> calculated over this twelve-month period if the anticipated amount of capital gains
+> changes. The anticipated monthly amount of capital gains and the anticipated
+> monthly self-employment income then are added and the anticipated cost of
+> producing the income deducted. The cost is calculated by anticipating the
+> monthly allowable costs of producing the self-employment income.
+>
+> The monthly net self-employment income will be added to any other earned and
+> unearned income received by the household to determine eligibility of self-
+> employed SNAP applicants.
+>
+> For those households with self-employment income, which is not annualized, the
+> eligibility technician shall anticipate income. Any anticipated proceeds from the
+> sale of capital gains shall be used as income in the month the proceeds are
+> anticipated to be received.
+
+### S4731. Colorado SNAP: reimbursements for identified expenses other than normal living expenses not income; types of reimbursement
+
+Document: D-82
+
+10 CCR 2506-1 4.405.I (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> I. Reimbursements
+>
+> 1. Reimbursement for past or future expenses, to the extent they do not
+> exceed actual expenses, and do not represent a gain or benefit to the
+> household shall not be considered income.
+>
+> To be excluded, the reimbursement must be provided specifically and
+> used for an identified expense, other than normal living expenses, and
+> used for the purpose intended. When a reimbursement, including a flat
+> allowance, covers multiple expenses, each expense does not have to be
+> separately identified as long as none of the reimbursement covers normal
+> living expenses. Reimbursements for normal household living expenses
+> such as rent or mortgage, personal clothing, or food eaten at home are a
+> gain or benefit and, therefore, are not exempt.
+>
+> 2. No portion of benefits provided under Title IV-A of the Social Security Act,
+> to the extent such benefit is attributed to an adjustment for work related or
+> child care expenses, except for payment or reimbursement for such
+> expenses made under an education, employment, or training program
+> initiated under such Title after September 18, 1988, shall be considered
+> exempt under this provision.
+>
+> 3. The amount by which a reimbursement exceeds the actual incurred
+> expense shall be counted as income. However, reimbursements shall not
+> be considered to exceed actual expenses unless the provider or the
+> household indicates the amount is excessive.
+>
+> 4. Types of reimbursement for expenses include:
+>
+> a. Reimbursement or flat allowances for job or training related
+> expenses, such as travel, per diem, uniforms, and transportation
+> to and from the job or training site including migrant travel.
+>
+> b. Reimbursements for out of pocket expenses of volunteers incurred
+> in the course of their work.
+>
+> c. Medical or dependent care reimbursements.
+>
+> d. Reimbursements received by households to pay for services
+> provided by Title XX of the Social Security Act.
+>
+> e. Reimbursements made to the household for expenses necessary
+> for participation in an education component under the
+> Employment First program.
+
+### S4732. Colorado SNAP: all education assistance, veterans' educational benefits included, exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.405.1 (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.405.1 Loans and Reimbursements to Students
+>
+> All education assistance including grants, scholarships, fellowships, work-study,
+> veteran's educational benefits, and any other money received specifically for
+> educational expenses are exempt from consideration as income.
+
+### S4733. Federal: educational assistance excluded; normal living expenses which are room and board not excludable
+
+Document: D-13
+
+7 CFR 273.9(c)(3)(i), (c)(3)(ii)(C)(9). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (3)(i) Educational assistance, including grants, scholarships, fellowships, work study, educational loans on which payment is deferred, veterans' educational benefits and the like.
+>
+> ...
+>
+> (*9*) Normal living expenses which are room and board are not excludable.
+
+### S4734. Colorado SNAP: prospective budgeting on the income and circumstances of the issuance month
+
+Document: D-82
+
+10 CCR 2506-1 4.402.1.A (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Prospective budgeting is the process of computing a household's allotment
+> based on anticipated income and circumstances during the issuance month. All
+> SNAP households and all situations require prospective budgeting
+> determinations, including Public Assistance (PA) households under the TANF
+> /Colorado Works Program.
+
+### S4735. Colorado SNAP: a household whose BCE or ECE circumstances change is re-evaluated under the appropriate category
+
+Document: D-82
+
+10 CCR 2506-1 4.206.D (version effective 2026-10-01; coverage pass 4 SNAP fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. If the circumstances which allowed the household to meet the criteria to be
+> considered under BCE or ECE rules change during the certification period or at
+> the time of recertification or periodic report, the household’s eligibility must be re-
+> evaluated according to the appropriate category. If there is insufficient
+> documentation to make an eligibility determination based on the new category of
+> eligibility, the agency shall send the household a request for verification in
+> accordance with Sections 4.604, Action on Reported Changes, and 4.604.1,
+> Verification of Reported Changes.

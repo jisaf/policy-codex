@@ -27,6 +27,13 @@ export function factName(ix: LedgerIndex, id: string): string {
   return it.name;
 }
 
+/** Whether an expression counts days, months or persons (a ceil of it is a whole number). */
+function countsSomething(e: Expr): boolean {
+  if (!Array.isArray(e)) return false;
+  if (["days_between", "count", "count_months"].includes(e[0] as string)) return true;
+  return e.some((x) => countsSomething(x as Expr));
+}
+
 export function inline(ix: LedgerIndex, e: Expr): string {
   if (e === null || e === undefined) return "…";
   if (e === true || e === false || typeof e === "number") return lit(e);
@@ -59,7 +66,9 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     // (1,500 minus A minus B)" cannot be read as "(the greater of 0 and 1,500 minus A) minus B".
     case "min": return `the lesser of ${o(e[1])} and ${o(e[2])}`;
     case "max": return `the greater of ${o(e[1])} and ${o(e[2])}`;
-    case "ceil": return `${i(e[1])} rounded up to the next whole dollar`;
+    // A count (of paydays, of days, of months) rounded up is a whole number, not a sum of money
+    // (coverage pass 4 for SNAP, S4-20); both phrases parse to the same tree.
+    case "ceil": return `${i(e[1])} rounded up to ${countsSomething(e[1]) ? "a whole number" : "the next whole dollar"}`;
     case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
     case "persons": return "every person in the case";
     case "count": return `the number of persons in ${i(e[1])}`;
