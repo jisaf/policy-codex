@@ -39,6 +39,7 @@ describe("buildSuite", () => {
   it("names the resolution contract its expectations were computed under (time audit T-1, T-3)", () => {
     expect(suite.volume.resolution.contract).toBe("month-v1");
     expect(suite.volume.resolution.parameter_versions).toMatch(/first day of any other month/);
+    expect(suite.volume.resolution.numbers).toMatch(/within 1e-9/);
     expect(suite.volume.resolution.ages).toMatch(/month evaluated/);
   });
 

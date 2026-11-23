@@ -135,7 +135,9 @@ here to read a case the way the codex does:
   by the month evaluated (on the first day of a month other than the
   determination month) and by `as_of` outside a month: docs/operators.md,
   Resolution step 2. `suite.volume.resolution` names the contract the
-  expectations were computed under (`month-v1`).
+  expectations were computed under (`month-v1`), and `resolution.numbers`
+  the tolerance numbers compare with (two numbers within 1e-9 of each other
+  are equal; docs/operators.md, Comparison).
 - **Relationships** are already expanded: each case-level edge is recorded
   on both persons, the second with the inverse role from
   `suite.volume.relationship_roles`. A person with no `relationships` key has
