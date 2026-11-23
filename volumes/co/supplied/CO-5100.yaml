@@ -98,8 +98,8 @@ record_fields:
     meaning: The wages are paid by a limited liability company or S corporation the person owns.
   combat_zone:
     type: yes/no
-    default: false
-    meaning: The special pay is received because the member is deployed to a designated combat zone and was not received immediately before the deployment.
+    required: true
+    meaning: "The special pay is received because the member is deployed to a designated combat zone and was not received immediately before the deployment. Required where read (field sweep defaults list; decision 4): no rule presumes special pay was not received for a combat-zone deployment (10 CCR 2506-1 4.405.2.A.12; 9 CCR 2503-5's row, OQ-1140); each program reads it only on a uniformed_services_special_pay record (its row for combat pay), so that record states it."
   combat_zone_compensation:
     type: yes/no
     default: false
@@ -168,8 +168,8 @@ record_fields:
     meaning: "The pay is sick pay, vacation pay (paid leave, or leave paid out when the job ends) or a bonus, not pay for hours worked (coverage pass 4 for SNAP, S4-4)."
   wioa_funded:
     type: yes/no
-    default: false
-    meaning: "The wages are paid under a program funded by the Workforce Innovation and Opportunity Act (work experience, a transitional job, an internship) other than its on-the-job training, which is its own kind (wioa_on_the_job_training) (coverage pass 4 for SNAP, S4-8)."
+    required: true
+    meaning: "The wages are paid under a program funded by the Workforce Innovation and Opportunity Act (work experience, a transitional job, an internship) other than its on-the-job training, which is its own kind (wioa_on_the_job_training) (coverage pass 4 for SNAP, S4-8). Required where read (field sweep defaults list; decision 4): no rule presumes subsidized wages are not WIOA-funded; SNAP reads it only on a subsidized_employment record (its row counted_unless_wioa_funded), so that record states it."
   capital_gain:
     type: money
     default: 0

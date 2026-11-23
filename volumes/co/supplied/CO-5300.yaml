@@ -165,11 +165,11 @@ record_fields:
   income_producing:
     type: yes/no
     default: false
-    meaning: "The holding (real or personal property other than the home) is used to produce income, or goods or services for the person's own support: rental property, farm or ranch land, the property of a trade or business. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+    meaning: "The holding (real or personal property other than the home) is used to produce income, or goods or services for the person's own support: rental property, farm or ranch land, the property of a trade or business. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
   used_in_trade_or_business:
     type: yes/no
     default: false
-    meaning: "For income-producing property, it is used in a trade or business the person runs, rather than held to produce rents or goods for the person's own use. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+    meaning: "For income-producing property, it is used in a trade or business the person runs, rather than held to produce rents or goods for the person's own use. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
   net_annual_return:
     type: money
     required: true
@@ -185,7 +185,7 @@ record_fields:
   produces_for_household_use:
     type: yes/no
     default: false
-    meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+    meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
   household_goods_or_personal_effects:
     type: yes/no
     required: true
@@ -196,8 +196,8 @@ record_fields:
     meaning: "For property that was essential to the person's self-employment in farming (land, machinery, equipment and supplies), the day the person stopped farming."
   taxes_on_withdrawal:
     type: money
-    required: true
-    meaning: "For a retirement account, the income taxes the person would owe on withdrawing its value, as the person documents them."
+    when_absent: "the person has not provided the taxes due: the value is read less 20% (9 CCR 2503-5 3.520.73.B.1.b; 10 CCR 2505-10 8.100.5.N.5.b)"
+    meaning: "For a retirement account, the income taxes the person would owe on withdrawing its value, as the person documents them. When the person cannot provide them the rules give the reading: \"If the client is not able to provide the amount of taxes that are due, the value shall be determined by deducting 20% from the gross value of the account\" (9 CCR 2503-5 3.520.73.B.1.b, S3208; 10 CCR 2505-10 8.100.5.N.5.b, S4667), so leaving the field out is that statement, read as 20% of the value by Adult Financial's and the SSI method's retirement account readers (CO-5341, CO-5326; field sweep defaults list)."
   self_funded:
     type: yes/no
     required: true
@@ -261,8 +261,8 @@ record_fields:
     meaning: "Medicaid's finding (decision D9): for real property beyond the home, reasonable efforts to sell it, as 10 CCR 2505-10 8.100.5.M.2.b defines them, have been unsuccessful. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   af_found_unsaleable:
     type: yes/no
-    required: true
-    meaning: "Adult Financial's finding (decision D9): the county department exempts the property because it cannot be sold for two-thirds of its actual value despite continuing reasonable efforts to sell it, its sale would cause a co-owner other than a spouse or sponsor undue hardship, or legal reasons prevent its sale (9 CCR 2503-5 3.520.741.D.2-4, 3.520.742.C)."
+    default: false
+    meaning: "Adult Financial's finding (decision D9): the county department exempts the property because it cannot be sold for two-thirds of its actual value despite continuing reasonable efforts to sell it, its sale would cause a co-owner other than a spouse or sponsor undue hardship, or legal reasons prevent its sale (9 CCR 2503-5 3.520.741.D.2-4, 3.520.742.C). Default false, the rule's: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and the exemptions of 3.520.741.D and 742.C hold only while the county department finds and verifies them (S3209), so property with no finding stated is not exempted under them (field sweep defaults list)."
   disposed_date:
     type: calendar date
     when_absent: "the person still holds it"
@@ -282,12 +282,12 @@ record_fields:
     meaning: "For a holding transferred, the day the whole of it was returned to the person."
   snap_transfer_to_qualify:
     type: yes/no
-    required: true
-    meaning: "SNAP's finding (decision D9): the county has established that the transfer was made knowingly to qualify, or attempt to qualify, for SNAP, and is not a transfer 10 CCR 2506-1 4.408.2.A exempts."
+    default: false
+    meaning: "SNAP's finding (decision D9): the county has established that the transfer was made knowingly to qualify, or attempt to qualify, for SNAP, and is not a transfer 10 CCR 2506-1 4.408.2.A exempts. Default false, the rule's: the disqualification applies \"In the event the local office establishes that an applicant household knowingly transferred resources\" (10 CCR 2506-1 4.408.2.B, S2962), so a transfer with no finding stated is one the county has not established (field sweep defaults list)."
   af_found_not_twfc:
     type: yes/no
-    required: true
-    meaning: "Adult Financial's finding (decision D9): the county department has found that the transfer is not a transfer without fair consideration under 9 CCR 2503-5 3.520.76 (the presumption disproved, a hardship sale, or an involuntary transfer)."
+    default: false
+    meaning: "Adult Financial's finding (decision D9): the county department has found that the transfer is not a transfer without fair consideration under 9 CCR 2503-5 3.520.76 (the presumption disproved, a hardship sale, or an involuntary transfer). Default false, the rule's: \"The county department shall make a rebuttable presumption that the transaction was made for the purpose of becoming or remaining eligible for Adult Financial program benefits\" within the thirty-six months before the application or while receiving assistance, and the presumption is nullified only when the client demonstrates another purpose (9 CCR 2503-5 3.520.76.A.4.a-b, S2614): a transfer with no finding stated is one the county has not found not to be a TWFC (field sweep defaults list)."
   ma_transfer_exempt:
     type: yes/no
     required: true
