@@ -262,3 +262,29 @@
 - case: /^G-[A-Za-z]+-P3_military_allotment_for_persons_elsewhere_300_part_of_nontaxable_$/
   identifier: /^snap_(person_unearned_income|person_gross_income|unearned_income_verification_is_pending)$/
   class: P3-4 SNAP leaves out an allotment received for persons not in the household (4.405.B)
+
+# ---------------------------------------------------------------------------------------------------
+# The decision-4 round for the reader defaults (2026-11-23; volumes/co/changes/2026-11-23-receipts-reader-defaults.yaml).
+# Nine readers kept an `otherwise 0` on a sum over the receipts from before the migration (CO-3701, CO-3827, CO-4023,
+# CO-4361, CO-4363, CO-4369, CO-4412, CO-4518, CO-4930). None of the rules they cite gives a reading for money not
+# reported, so an unstated receipts list is now cannot determine and a stated empty list is 0 (product-owner decision 4
+# of 2026-11-23, docs/plan-colorado.md: missing information is cannot determine unless the rule says otherwise).
+
+# D4-1: the sponsor money SNAP (CO-3701, 10 CCR 2506-1 4.305.2.D.4) and Colorado Works (CO-4363, 9 CCR 2503-6
+# 3.605.3.A.14) read, for a person who states no receipts. Every other unearned-income figure of such a person reads
+# the receipts with no default and was already cannot determine on both ledgers, so no outcome changes; the sponsor
+# figure now joins them. Stored: CO-13, CO-95, CO-141, CO-175 to CO-178, CO-209 to CO-211, CO-214, CO-224, CO-367 to
+# CO-374, CO-438 to CO-442, CO-448 to CO-450, CO-458, CO-459 (no expectation names the figure).
+- case: /.*/
+  identifier: /^(snap_sponsor_deemed_income|cw_sponsor_contributions_counted)$/
+  old: 0
+  new: unknown
+  class: D4-1 sponsor money with the receipts not stated is cannot determine (decision 4)
+
+# D4-2: CO-94 expects snap_sponsor_deemed_income 0 for p3 ("p1 pays nothing") but stated no receipts for the two
+# sponsored children; the household now states receipts: [] for p3 and p4, as its narrative says (no unearned money),
+# so their unearned-income figures, cannot determine on the baseline for the same reason, are now 0.
+- case: CO-94
+  person: /^(p3|p4)$/
+  old: unknown
+  class: D4-2 a household whose narrative states no unearned money states an empty receipts list

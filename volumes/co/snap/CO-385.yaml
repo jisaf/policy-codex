@@ -65,6 +65,7 @@ tests:
         snap_is_elderly_or_disabled: false
         immigration_status: undocumented
         wages_gross: 2380
+        receipts: []
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
         is_fleeing_felon: false

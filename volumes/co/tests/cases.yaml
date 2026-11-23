@@ -10870,6 +10870,9 @@
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        # No unearned money: p1 pays the children nothing (the SNAP note below) and the household states no income of
+        # either child; stated as an empty list (decision 4 of 2026-11-23: an unstated list is cannot determine).
+        receipts: []
         has_qualifying_military_service: false
         date_of_birth: "2011-05-01"
         immigration_status: lawful_permanent_resident
@@ -10893,6 +10896,7 @@
     p4:
       # Nephew, 12, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        receipts: []  # no unearned money, as for p3
         has_qualifying_military_service: false
         date_of_birth: "2014-02-01"
         immigration_status: lawful_permanent_resident
