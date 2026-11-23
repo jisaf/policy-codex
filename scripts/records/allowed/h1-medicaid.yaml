@@ -67,3 +67,12 @@
 # them (federal_tax_refunds_held_value, CO-4172; snap_eitc_held_while_participating_value, CO-4173) carry no date, and
 # before no SSI-method item read them. CO-300 is the Adult Financial track's to date (docs/reviews/holdings-h0.md 10).
 - {case: "/^(CO-300|GH-.*-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-.*-liquid_2500_of_which_snap_eitc_held_while_participating_value_800)$/", identifier: "/^(ssi_countable_resources_individual|ssi_countable_resources_couple|af_burial_responsible_person_resources|ma_ssi_countable_resources_individual|ma_ssi_countable_resources|ma_msp_countable_resources|ma_institutionalized_spouse_countable_resources|ma_ssi_parental_resources_deemed|ma_ssi_related_category|ma_msp_category|ma_protected_group_category|ma_family_planning_status)$/", class: "H1-M8 (decision 4; 6409, F.6.u): a refund or credit held with no date of receipt cannot be placed in its window", new: unknown}
+
+# H1-M9 (10 CCR 2505-10 8.100.5.N.5.a-b, S4667): a retirement account counts at "The gross value of the account, less any
+# taxes due", or less 20% when the applicant is not able to provide them. The holdings record states the value before
+# taxes and the taxes apart (taxes_on_withdrawal; retirement_accounts_value, CO-3392, "The value before income taxes", and
+# retirement_accounts_taxes_due, CO-4429); before, no Medicaid item deducted them, so the account was counted in full.
+# CO-130 p2 (1,500 of an IRA: 0.2 x 1,500 = 300 less) and CO-189 p2 (40,000: 8,000 less; p1's figure, which leaves the
+# spouse's account out by N.3, does not move); the generated H2 variants (4,000, no tax figure: 3,200; 4,000 with 500 of
+# taxes: 3,500). Figures only: no outcome moves.
+- {case: "/^(CO-130|CO-189|GH-.*-IRA_4000_no_tax_figure_H2_|GH-.*-IRA_4000_taxes_500)$/", identifier: "/^(ssi_countable_resources_individual|ssi_countable_resources_couple|af_burial_responsible_person_resources|ma_ssi_countable_resources_individual|ma_ssi_countable_resources|ma_msp_countable_resources|ma_institutionalized_spouse_countable_resources|ma_ssi_parental_resources_deemed)$/", class: "H1-M9 (N.5.a-b): a retirement account counted at its gross value less the taxes due, or less 20%"}
