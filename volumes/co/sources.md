@@ -22997,3 +22997,31 @@ Document: D-47
 > (B)
 >
 > the amount of monthly income otherwise available to the community spouse (determined without regard to such an allowance).
+
+### S4340. Federal income tax: compensation for a month served in a combat zone is not gross income; for an officer, up to the highest enlisted basic pay plus the officer's 37 U.S.C. 310 special pay
+
+Document: D-4340
+
+26 U.S.C. 112(a)(1), (b)(1), (c)(5) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/112
+
+> (a) Enlisted personnel
+>
+> Gross income does not include compensation received for active service as a member below the grade of commissioned officer in the Armed Forces of the United States for any month during any part of which such member—
+>
+> (1) served in a combat zone, or
+>
+> ...
+>
+> (b) Commissioned officers
+>
+> Gross income does not include so much of the compensation as does not exceed the maximum enlisted amount received for active service as a commissioned officer in the Armed Forces of the United States for any month during any part of which such officer—
+>
+> (1) served in a combat zone, or
+>
+> ...
+>
+> (5) The term “maximum enlisted amount” means, for any month, the sum of—
+>
+> (A) the highest rate of basic pay payable for such month to any enlisted member of the Armed Forces of the United States at the highest pay grade applicable to enlisted members, and
+>
+> (B) in the case of an officer entitled to special pay under section 310, or paragraph (1) or (3) of section 351(a), of title 37, United States Code, for such month, the amount of such special pay payable to such officer for such month.

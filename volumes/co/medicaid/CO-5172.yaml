@@ -1,0 +1,18 @@
+id: CO-5172
+name: "Medicaid SSI method: a person's exempt earned income"
+identifier: ma_ssi_exempt_earned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's earnings of the month that the SSI method's earnings counting table holds exempt (ma_ssi_earnings_treatment_table, CO-5107, row exempt): earned income in gross income that 10 CCR 2505-10 8.100.5.F.6 does not count, such as all wages the Census Bureau paid for temporary decennial Census employment (F.6.z)."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces decennial_census_wages_received (CO-4881) in ma_ssi_excluded_earned_income (CO-2471) and ma_cbwd_household_earned_income (CO-4200). The exempt pay is its own record, so the exclusions that follow (infrequent pay, the student exclusion) never reach it."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], exempt]], [receipt, amount]]
+sources: [S3617]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the exempt earned income read through the counting table, not a named fact subtracted from wages_gross."
+nearest: [CO-2471]
+tests:
+  - {id: CO-5172-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 900}, {kind: decennial_census_employment, amount: 600}]}, title: "Census wages 600 exempt (F.6.z); wages not: 600", expect: 600}
+  - {id: CO-5172-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 900}]}, title: "None: 0", expect: 0}

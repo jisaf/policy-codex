@@ -6,11 +6,12 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The person's cost of doing business for the month that 10 CCR 2505-10 8.100.3.K.9 allows (rent of business premises, wholesale cost of merchandise, utilities, taxes, labor, upkeep of necessary equipment): the operating costs; not depreciation, payments on the principal of loans for capital assets, or personal expenses."
-precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0."
-derived: [otherwise, self_employment_operating_costs, 0]
-sources: [S1154]
+precision: "Earned-income records, Medicaid and CHP+ track E1: the cost records of the month the SSI method's earnings counting table deducts (ma_ssi_earnings_treatment_table, CO-5107, row deducted: the operating costs, K.9.a), each at its amount; the cost kinds K.9.b disallows (depreciation, payments on the principal of loans for capital assets) are rows not_deducted, and the kinds no text on file names are rows for the owner's signature. Replaces self_employment_operating_costs (CO-3370); a cost not stated is not deducted, since only stated records are summed (the old reader's otherwise 0 is gone with the fact)."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], deducted]], [receipt, amount]]
+sources: [S1154, S4107]
 implemented: engine
+nearest: [CO-5161, CO-5162, CO-5172, CO-5175]
 tags: [ma, income]
-rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived. Earned-income records, step E1 (Medicaid and CHP+): the costs are the earnings records of cost kinds, read through the SSI method's counting table, so every cost kind has a row and none is deducted by silence (design D4)."
 tests:
   - {id: CO-1703-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30, earnings: [{kind: wages}, {kind: self_employment_receipts}, {kind: business_cost_operating, amount: 400}, {kind: business_cost_interest, amount: 20}, {kind: business_cost_capital_principal, amount: 100}, {kind: business_cost_home_space, amount: 50}, {kind: business_cost_vehicle, amount: 30}]}, expect: 400}

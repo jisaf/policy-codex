@@ -1,0 +1,21 @@
+id: CO-5174
+name: "Medicaid SSI method: student earned income exclusion basis for the month"
+identifier: ma_ssi_student_earned_income_exclusion_basis
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For a student under 22 regularly attending school, the month's earned income as the SSI method counts it (ma_ssi_gross_earned_income, CO-5171) up to the monthly maximum of the student earned income exclusion (20 CFR 416.1112(c)(3), incorporated by 10 CCR 2505-10 8.100.5.H.4.e; H.4.d); 0 for anyone else. ma_ssi_excluded_earned_income (CO-2471) applies the yearly maximum to the running total of it."
+precision: "Earned-income records, Medicaid and CHP+ track E1: Medicaid's own statement of the basis, which the shared ssi_student_earned_income_exclusion_basis (CO-3387) said it was to become (its link_basis); CO-2471 reads this item, and CO-3387, which then had no reader, is removed (the split the cross-program allowlist held it for)."
+derived: [case, [[all, ["<", age, ssi_student_age_limit], ssi_is_student_regularly_attending_school], [min, ma_ssi_gross_earned_income, ssi_student_earned_income_exclusion_monthly]], [else, 0]]
+sources: [S2210, S2211, S3002]
+implemented: engine
+accepts_from:
+  - {from: ssi_is_student_regularly_attending_school, class: adopted_method, source: S3412}
+tags: [ma, non_magi, income, student]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the student exclusion's monthly basis read from the earnings records through Medicaid's own earned income figure; the yearly maximum needs the months before, so the basis is kept apart and CO-2471 sums it without reading itself (same-word audit SW-28)."
+nearest: [CO-2471]
+tests:
+  - {id: CO-5174-T1, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true, earnings: [{kind: wages, amount: 3000}]}, title: "A student of 18 earning 3,000: the 2026 monthly maximum, 2,410 (CO-3379)", expect: 2410}
+  - {id: CO-5174-T2, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "1990-01-01", ssi_is_student_regularly_attending_school: true, earnings: [{kind: wages, amount: 3000}]}, title: "A student of 36: 0", expect: 0}
+  - {id: CO-5174-T3, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true, earnings: [{kind: wages, amount: 500}]}, title: "Under the monthly maximum: the whole 500", expect: 500}

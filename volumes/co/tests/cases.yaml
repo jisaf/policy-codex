@@ -12749,7 +12749,7 @@
   expect:
     p1:
       ma_ltc_eligibility_status: {"2026-11": eligible_institutional}
-      ma_ltc_earned_income: {"2026-11": 200}
+      ma_ssi_gross_earned_income: {"2026-11": 200}
       ma_patient_payment_available_income: {"2026-11": 1357.14}
       ma_home_maintenance_allowance_max: 1672
       ma_home_maintenance_allowance: {"2026-11": 890, "2027-04": 0}

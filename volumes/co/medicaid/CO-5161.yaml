@@ -1,0 +1,20 @@
+id: CO-5161
+name: "Medicaid MAGI: a person's self-employment income"
+identifier: ma_magi_self_employment_earnings
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's income from self-employment for the month as MAGI counts it: for each business record the MAGI counting table counts net for tax (ma_magi_earnings_treatment_table, CO-5106: self-employment and farm receipts), the business's net earnings as the person's federal income tax return reports them (net_for_tax), not its gross receipts (10 CCR 2505-10 8.100.4.C.1.a.ii; 42 CFR 435.603(e)). The business's costs are not read: the net for tax already reflects them."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces self_employment_net_earnings_for_tax (CO-024) in ma_person_magi_income (CO-502). A business record that does not state net_for_tax cannot be counted (the field is required where read; decision 4 of 2026-11-23): the outcome is cannot determine, not the gross receipts and not zero. A loss for tax is counted as stated (a negative net_for_tax), as the tax figure was."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], counted_net_for_tax]], [receipt, net_for_tax]]
+sources: [S165, S166]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the MAGI self-employment figure is the record's net_for_tax, one per business, read through the counting table (design 2.2, 2.5)."
+nearest: [CO-5160]
+tests:
+  - {id: CO-5161-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts, amount: 3000, net_for_tax: 2100}, {kind: business_cost_operating, amount: 700}, {kind: business_cost_depreciation, amount: 200}, {kind: wages, amount: 500}]}, title: "Net for tax 2,100 (receipts 3,000 less the costs the return deducts); costs and wages not read: 2,100", expect: 2100}
+  - {id: CO-5161-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts, amount: 3000}]}, title: "A business that does not state its net for tax: cannot determine (not its gross receipts)", expect: unknown}
+  - {id: CO-5161-T3, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: farm_self_employment_receipts, amount: 0, net_for_tax: 818}]}, title: "A farm with no receipts this month and 818 of net earnings for tax: 818", expect: 818}
+  - {id: CO-5161-T4, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1500}]}, title: "No business stated: 0", expect: 0}

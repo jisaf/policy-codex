@@ -1,4 +1,23 @@
 # Earned-income records harness: allowed differences of the medicaid E1 track (design 4.3, rule 3).
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
 # docs/reviews/records-earnings-medicaid.md: {case, person?, identifier?, month?, class, old?, new?}.
-[]
+
+# Not this track: a SNAP figure a stored household's expectation names, changed by the receipts-readers merge
+# (bb4b8ee, "unstated receipts are cannot determine", decision 4), which landed after EARNINGS_BASELINE (20004af).
+# The integration owner re-points the baseline at the merge wave (design 4.3, rule 5); listed so the track's
+# gate measures the track.
+- {case: CO-141, person: p3, identifier: snap_sponsor_deemed_income, class: "E1-M0 (baseline drift, not this track): bb4b8ee merged after EARNINGS_BASELINE", old: 0, new: unknown}
+
+# E1-M1 (decision 4 of 2026-11-23): a person whose earnings are not stated has exclusions of earnings that cannot be
+# determined; the old readers read each unstated part as none (difficulty_of_care_payments_received otherwise 0,
+# decennial_census_wages_received otherwise 0, infrequent_or_irregular_earned_income_received otherwise 0). Only the
+# figures change: every reader also reads the person's earned income, which was and is unknown for that person.
+- {case: "/^CO-\\d+$/", identifier: ma_excluded_difficulty_of_care_payments, class: "E1-M1 (decision 4): earnings not stated, the Difficulty of Care exclusion cannot be determined", old: 0, new: unknown}
+- {case: "/^CO-\\d+$/", identifier: ma_ssi_excluded_earned_income, class: "E1-M1 (decision 4): earnings not stated, the SSI earned income exclusions cannot be determined", old: 0, new: unknown}
+
+# E1-M2 (design 2.2; decision 4: a stated list is the whole statement): a person whose earnings are stated with no
+# business record has no self-employment income for MAGI. The generated bases state self_employment_gross_receipts 0
+# and leave self_employment_net_earnings_for_tax unstated, so the old MAGI income (CO-502 read the tax figure with no
+# default) could not be determined; the records state no business, so CO-5161 is 0 and the MAGI figures and outcomes
+# follow. Stored households state the tax figure and are unchanged.
+- {case: "/^GE-/", identifier: "/^(ma_person_magi_income|ma_magi_household_income|ma_magi_category|ma_magi_eligibility_status|ma_family_planning_status|chp_eligibility_status|ma_msp_category)$/", class: "E1-M2 (design 2.2, decision 4): earnings with no business, no MAGI self-employment income (the old tax figure was unstated)", old: unknown}

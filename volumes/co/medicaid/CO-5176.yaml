@@ -1,0 +1,19 @@
+id: CO-5176
+name: "Medicaid SSI method: a person's earned income set aside under a plan for self-support"
+identifier: ma_ssi_pass_set_aside_earned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the person's earnings of the month that is set aside under a Plan to Achieve Self-Support the Social Security Administration approved and used for the plan (each earnings record's pass_set_aside), which 20 CFR 416.1112(c)(9) and 10 CCR 2505-10 8.100.5.F.6.q exclude after the one-half disregard for a blind or disabled person under 65 (ma_ssi_earned_income_excluded_after_half, CO-4629; ma_wawd_countable_income, CO-1715)."
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces pass_set_aside_earned_income (CO-4618). A record that states no set-aside sets aside none (the field's default, 0); a person whose earnings are not stated cannot be determined (decision 4), where the old reader read an unstated set-aside as none (otherwise 0)."
+derived: [sum_receipts, earnings, [received_in, [month]], [receipt, pass_set_aside]]
+sources: [S3412, S3404]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Earned-income records, step E1 (Medicaid and CHP+): the PASS set-aside is an earmark of a pay (design 2.2), read from the records."
+nearest: [CO-4629, CO-1715]
+tests:
+  - {id: CO-5176-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1200, pass_set_aside: 300}, {kind: self_employment_receipts, amount: 500, pass_set_aside: 100}]}, title: "300 of the wages and 100 of the business set aside: 400", expect: 400}
+  - {id: CO-5176-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1200}]}, title: "No set-aside stated: 0", expect: 0}
+  - {id: CO-5176-T3, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Earnings not stated: cannot determine", expect: unknown}

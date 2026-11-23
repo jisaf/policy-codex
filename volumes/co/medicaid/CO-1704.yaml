@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The person's net profit from self-employment for the month for the non-MAGI Medical Assistance groups (SSI-related, Buy-In, long-term care, spousal allowances): gross receipts less the cost of doing business 10 CCR 2505-10 8.100.3.K.9 allows, not below zero."
-precision: "MAGI-based income reads the federal tax figure (self_employment_net_earnings_for_tax, CO-024) instead, because 8.100.3.K.9.b.i.1 allows depreciation for MAGI only. The SSI method's offset of a self-employment loss against wages (20 CFR 416.1111(b)) is not modeled; the net is floored at zero. A person with no gross receipts has none, whatever the cost fact says."
-derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, ma_self_employment_business_costs]]]]
+precision: "MAGI-based income reads the federal tax figure (self_employment_net_earnings_for_tax, CO-024) instead, because 8.100.3.K.9.b.i.1 allows depreciation for MAGI only. The SSI method's offset of a self-employment loss against wages (20 CFR 416.1111(b)) is not modeled; the net is floored at zero. A person with no gross receipts has none, whatever the cost records say. Earned-income records, Medicaid and CHP+ track E1: the gross receipts are the business records the SSI method's earnings counting table counts net of costs (ma_ssi_self_employment_receipts, CO-5175), replacing self_employment_gross_receipts (CO-1700)."
+derived: [case, [["<=", ma_ssi_self_employment_receipts, 0], 0], [else, [max, 0, ["-", ma_ssi_self_employment_receipts, ma_self_employment_business_costs]]]]
 sources: [S1154]
 implemented: engine
 tags: [ma, income]
