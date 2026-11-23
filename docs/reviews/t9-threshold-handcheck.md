@@ -213,3 +213,8 @@ A scratch copy at ccbb3a7 was used (`git archive` with `node_modules` linked). T
 2. Each `<`/`<=`/`>`/`>=` node whose operands match X and Y is flipped strict/inclusive across every item. The test is re-run against the mutated ledger, and the check expects it to fail.
 
 The consistency list comes from re-evaluating each stated derived fact with its own override removed. The wording verdicts are by hand from `volumes/co/sources.md`. `npm run boundaries -- --only boundaries` was used only as a locator for wording, not for any verdict.
+
+## Follow-up (receipts migration phase 2, 2026-11-23)
+
+- **A-2 (CO-642)**: settled by the governing text. The eligibility rule (8.100.7.A.2.e, S351/S3422) and the federal limit (42 CFR 435.1005, S378) both say "does not exceed"; 8.100.6.K.5's "under" introduces the group and is read as the same standard. CO-642's precision records it; no decision changed.
+- **A-3 and A-4 (CO-609, CO-1162)**: both read one item, ma_ssi_income_test_status (CO-5516), settled by 42 U.S.C. 1382(a)(1)(A), (2)(A), "at a rate of not more than" the benefit rate (S3950, D-347). CO-1162 now reads income equal to the rate as meeting the test; CO-1162-T7 and T10 expect true. docs/reviews/receipts-migration-2-medicaid.md, section 8.
