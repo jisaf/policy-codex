@@ -1,0 +1,19 @@
+id: CO-5216
+name: "SNAP: is a probation or parole violator"
+identifier: snap_is_probation_or_parole_violator
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person is a probation or parole violator for SNAP (10 CCR 2506-1 4.304.4.C, C.1.a-c; 7 CFR 273.11(n)): violating a condition of probation or parole (is_probation_or_parole_violator, CO-1732), as an impartial party designated by the agency has determined (snap_probation_violation_found_by_impartial_party, CO-5215), and federal, state or local law enforcement is actively seeking the person as 4.304.4.C.1 defines it (law_enforcement_is_actively_seeking_person, CO-4685)."
+precision: "The two conditions beyond the violation are read as false when not stated, as snap_is_fleeing_felon (CO-4683) reads its warrant and actively-seeking facts: the status must be determined and verified before a member is disqualified."
+derived: [all, is_probation_or_parole_violator, [otherwise, snap_probation_violation_found_by_impartial_party, false], [otherwise, law_enforcement_is_actively_seeking_person, false]]
+sources: [S3066, S19]
+implemented: engine
+tags: [snap, legal]
+rationale: "SNAP non-financial coverage P2-3, second half (fix round 2026-11-23; the fleeing-felon half was N2-P2-2, CO-4683): snap_is_ineligible_member (CO-311) and snap_is_disqualified_member_counted_in_full (CO-2302) read the neutral fact directly, so a worker stating it by its plain meaning disqualified a person the rule does not. They now read this item."
+nearest: [CO-4683]
+tests:
+  - {id: CO-5216-T1, as_of: "2026-10-01", title: "Violation found by an impartial party; law enforcement actively seeking", given: {is_probation_or_parole_violator: true, snap_probation_violation_found_by_impartial_party: true, law_enforcement_is_actively_seeking_person: true}, expect: true}
+  - {id: CO-5216-T2, as_of: "2026-10-01", title: "A violation the probation officer reports, no impartial finding, no one seeking the person", given: {is_probation_or_parole_violator: true}, expect: false}
+  - {id: CO-5216-T3, as_of: "2026-10-01", title: "No violation", given: {is_probation_or_parole_violator: false}, expect: false}

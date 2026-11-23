@@ -485,3 +485,10 @@ Fix agent, 2026-11-22. Commits on the worktree branch: 2299782 (documents, OQ-50
 | F-27 | Already carried: hospital_pe declaration fact CO-3154's meaning names "a legally appointed guardian or conservator"; no change. |
 
 New open questions: OQ-810 (annualization period and scope), OQ-811 (C.5 as 435.603(i) substitution), OQ-812 (sponsor income measure), OQ-813 (CHP+ income reasonable opportunity period). Resolved: OQ-50, OQ-513; partly resolved: OQ-540; reclassified: OQ-302.
+
+## Disposition (fix round, 2026-11-23): the deferred P2s
+
+| Finding | Disposition |
+|---|---|
+| F-16 | Fixed. ma_is_legal_immigrant_prenatal_population (CO-5219) names § 8.100.4.G.6's population (lawfully present non-citizens who are not qualified non-citizens of five years), and ma_is_in_pregnancy_coverage_period (CO-566) ends the guaranteed period for it on G.6.a's events: death (i), leaving the required household (iii), unable to be located (v), a withdrawal request (vi) and an erroneous grant (viii), from the facts the continuous-eligibility exceptions read. Residency (iv) and becoming an inmate (ii) are carried by CO-554 (ineligible_residency, incarceration_limited). A reasonable opportunity period that ends with documents pending (vii) is carried by the verification outcome: reading it inside the period would be circular (the pending status count reads the period). Excerpt S3755. CO-04's pregnant LPR now states the G.6.a facts. Stored case CO-491 (withdrawal: October in the period, November not). |
+| F-18 | Fixed. New neutral facts: difficulty_of_care_payments_received (CO-5209, part of wages_gross), lives_full_time_with_care_recipient (CO-5210), care_recipient_receives_hcbs_waiver_services (CO-5211), and the two foster counts (CO-5212, CO-5213); parameters for K.7.c's 10 and 5 (CO-5217, CO-5218). ma_excluded_difficulty_of_care_payments (CO-5214) is the amount § 8.100.3.K.7 excludes, and ma_person_magi_income (CO-502) subtracts it. Excerpt S3754. Stored case CO-490 (a live-in provider for an HCBS member: MAGI 600, adult, eligible). |

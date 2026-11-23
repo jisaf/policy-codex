@@ -137,3 +137,16 @@ in known-failures.json). All percentages are of the FPL for the household size s
 4. CO-402: record an open question (needs Legal) on whether § 8.100.5.M.2.a.xiv makes the home countable for an
    applicant whose assistance cannot be recovered (MSP only), since the stored expectation rests on that reading.
 5. CO-387: no change; it waits on OQ-810.
+
+## Disposition (fix round, 2026-11-23)
+
+All five recommended actions are done; details in docs/reviews/coverage3-medicaid-nonmagi.md, "Disposition (fix round, 2026-11-23)".
+
+| Action | Disposition |
+|---|---|
+| 1. CO-395 p1 | p1 stays `aged`, now for the right reason: an institutionalized spouse in the institution is counted alone from the admission month (42 U.S.C. 1396r-5(b)(1); ma_is_institutionalized_spouse_in_institution, CO-5200), so his 980 is compared with the individual FBR 994 (`ma_ssi_income_standard` 994, household size 1). p2 is `none` on the couple's 1,680 (C3-1); `CO-395:p2:ma_ssi_related_category@2026-11` removed from known-failures.json. |
+| 2. CO-404 and the 2027 student exclusion | The 2027 versions of CO-3379 and CO-3380 were added in 76eea33. CO-404's 207.5 is reached once C3-6 is fixed and the case is determined in January 2027 (parameter versions follow the determination date, docs/conventions.md, Scopes); both CO-404 keys removed. |
+| 3. CO-396, CO-397 facts | CO-396 states sex, pregnancy, the tax facts, no retroactive request and no long-term-care setting, so `ma_has_full_coverage_category` is false (not cannot-determine) and `ma_oap_health_care_status` eligible_state_only. CO-397 was restated so the stored false tests C3-2 alone: retroactive coverage requested, Medicare (no Adults group), a private pension and no earnings (no Buy-In); August is before the onset. |
+| 4. CO-402 open question | OQ-900 (needs Legal): against which assistance § 8.100.5.M.2.a.xiv's "subject to estate recovery" is judged. The under-55 half (CO-403) is settled by 1396p(b)(1) and needs no question. |
+| 5. CO-387 | Unchanged; waits on OQ-810. |
+| CO-394 comment | Corrected: the child turns 19 on 2026-10-20 and is 18 until then. |

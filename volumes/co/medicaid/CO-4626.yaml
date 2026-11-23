@@ -12,6 +12,7 @@ sources: [S3405, S3413, S3415]
 implemented: engine
 tags: [ma, non_magi, income, household]
 rationale: "Coverage review NM-10 (OQ-83 resolved): the volume deemed no part of a parent's income to an applicant child. § 8.100.5.H.3.a's allocations reduce 'the gross income that is deemed available to the applicant/client', and H.3.a.ii's Ineligible Parent(s) Allocation is deducted after the standard disregards (H.3.b.iii), the sequence of 20 CFR 416.1165."
+siblings: [{id: CO-5222, reason: "the Pickle copy reads CO-5221; every other term must stay the same"}]
 tests:
   - {id: CO-4626-T1, as_of: "2026-10-12", month: "2026-10", title: "X-DEEM: 3,957.50 - 994", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1], ma_ssi_deeming_parents_countable_income: 3957.5}, others: {p2: {}}, relationships: [[child, p2]], expect: 2963.5}
   - {id: CO-4626-T2, as_of: "2026-10-12", month: "2026-10", title: "two parents, two disabled children: (2,000 - 1,491) / 2", given: {ma_ssi_deeming_parents: [p2, p3], ma_ssi_deeming_children: [p1, p4], ma_ssi_deeming_parents_countable_income: 2000}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[child, p2], [child, p3]], expect: 254.5}

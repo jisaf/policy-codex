@@ -232,7 +232,7 @@ Where contiguous subparagraphs share one status, they are on one row.
 | 3.520.783.C.3.a-d (child care provider: $55, $22 each more, or documented costs if greater) | C: CO-1707 (re-read: max of the documented costs and the allowance), CO-4724, CO-4725 |
 | 3.520.783.E-F (verification; irregular receipts averaged over 12 months) | C: CO-1665; the averaging is in the supplied amount |
 | 3.520.784.A.1-4 (donated work: regular, necessary, would be hired, more than 5 hours) | C: CO-4443 (`>` CO-4442) |
-| 3.520.784.B.1-2 (greater of the going rate or the minimum wage) | C: CO-4443, CO-4730 (D-330 to D-332, $15.16 for 2026); H-3 for 2025 |
+| 3.520.784.B.1-2 (greater of the going rate or the minimum wage) | C: CO-4443, CO-4730 (D-330 to D-332, $15.16 for 2026; D-346, $14.81 for 2025: H-3 fixed 2026-11-23, stored CO-486) |
 | 3.520.784.C, C.1-4 (volunteering under 30 hours is not income) | C: CO-4443 counts only work that meets A |
 | 3.520.785.A, B intro (unearned income of the client, spouse or sponsor) | C: CO-3831 (client); CO-4720 (spouse, parent, sponsor), **H-1, H-2** |
 | 3.520.785.B.1, a-b (SSA benefits; lump sums; gross before recovery) | C: social_security_income (gross); lump_sum_received is part of the unearned facts (CO-3367); unspent after 9 months CO-4414 |
@@ -417,9 +417,9 @@ Where contiguous subparagraphs share one status, they are on one row.
 | (1)(a) (resident or legal immigrant) | C: CO-942 |
 | (1)(b) (insufficient income and resources) | C: CO-953, CO-1203, CO-948 |
 | (1)(c)(I)-(II) (transfers within 36 months; presumption; home transfers; bona fide sales) | C: CO-4008, CO-3836 |
-| (1)(d) (public institution inmate; patient in a TB or mental-disease institution) | C: CO-4446 for AND; the OAP reading H-4; inmates CO-3343 |
+| (1)(d) (public institution inmate; patient in a TB or mental-disease institution) | C: CO-4446 for AND; the OAP reading is OQ-901 (needs Legal; H-4, 2026-11-23; stored CO-487); inmates CO-3343 |
 | (2)(a)(I) (citizen or qualified alien, 60 or older, SSI resource requirements) | C: CO-940, CO-929, CO-948; OQ-662 |
-| (2)(a)(III) (inmate of a non-penal public institution, 60 or older) | C: OAP is not barred by CO-4446 (H-4 for its scope) |
+| (2)(a)(III) (inmate of a non-penal public institution, 60 or older) | C: OAP is not barred by CO-4446; its scope beyond the (2)(a)(III) class is OQ-901 (H-4) |
 | (2)(b) (relatives' ability not considered; spouse and sponsor are) | C: CO-2384, CO-2386, CO-2389, CO-2390 |
 | (2)(c)(I)-(III) (qualified alien: 26-2-111.8 entry, five-year bar, sponsor deeming; hardship; SSI) | C: CO-929 (CO-2572); OQ-591 |
 | (2)(d)(I) (member of a Colorado Works household) | C: CO-1511; OQ-845 |
@@ -519,3 +519,9 @@ P2 count: 2 (H-3, H-4). P3: 1 (H-5).
 - H-1 (P1): fixed. CO-4720 adds `lottery_gambling_winnings_received`, as CO-3831 does for the client. Test CO-4720-T3 (QZ-1: 3,000 deemable).
 - H-2 (P1): fixed. CO-4720 subtracts `unearned_income_offsetting_expenses`, never below zero. Tests CO-4720-T4 (QZ-2: 500), T5 (floor).
 - H-3 (P2), H-4 (P2), H-5 (P3): open, handed to the next Adult Financial round (2025 minimum wage version from sos.state.co.us; a needs-Legal question on C.R.S. 26-2-111(1)(d) and OAP in private psychiatric hospitals; HCA stated only in adult_financial_cash_income).
+
+## Disposition (fix round, 2026-11-23)
+
+- H-3 (P2): fixed. The 2025 PAY CALC Order is on sos.state.co.us (7 CCR 1103-14, rule version 11747, effective January 1, 2025), so nothing was blocked: it is D-346, and colorado_minimum_wage (CO-4730) carries a 2025 version of $14.81 (S3752) before the 2026 one. CDLE's own site (cdle.colorado.gov) is a refused host, but the figure does not depend on it. Stored case CO-486: an OAP client's 26 donated hours in October 2025 at the greater of 12.00 and 14.81: 385.06; oap.
+- H-4 (P2): recorded as OQ-901 (needs Legal; owner Legal, Cash programs policy owner): whether C.R.S. 26-2-111(1)(d) bars an OAP client who is a patient in a private psychiatric hospital, since its proviso spares only the (2)(a)(III) class. Assumption: the bar is not read for OAP (the rule's 3.520.61.B and 3.532.D.3). CO-4446's meaning now states the reading modeled; CO-4446 and CO-953 cite OQ-901. Stored case CO-487 records the assumption (an OAP client of 70 in a private psychiatric hospital: oap).
+- H-5 (P3): not changed in this round, by instruction: the fix sits in af_relative_deemable_unearned_income (CO-4720), a deeming item, and in the unearned-income facts adult_financial_cash_income and in_home_care_allowance_received (CO-3824), which the receipt-record migration adopted on 2026-11-23 (docs/plan-colorado.md, "Decision, 2026-11-23: adopt receipt records") is moving for Adult Financial unearned income and deeming. In the receipt model the Home Care Allowance is one receipt kind, stated once, so the double statement this finding turns on cannot arise; the migration's Adult Financial counting table must exempt that kind in the 3.534.C, 3.544.F and 3.549.F exemption tests (3.520.786.E). Handed to that track.

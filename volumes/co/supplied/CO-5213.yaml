@@ -1,0 +1,12 @@
+id: CO-5213
+name: "Difficulty of Care: older qualified foster individuals (19 or older)"
+identifier: difficulty_of_care_older_foster_individuals
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The number of qualified foster individuals 19 or older for whose care the person's Difficulty of Care payments (difficulty_of_care_payments_received) are paid; 0 when the payments are for the care of someone who is not a foster individual."
+supplied_by: "The payer's records; applicant statement."
+sources: [S3754]
+tags: [income]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): § 8.100.3.K.7.c's exception counts the qualified foster individuals the payments are for, by age."

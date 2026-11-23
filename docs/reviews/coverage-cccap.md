@@ -632,3 +632,9 @@ Fix round 2026-11-22 (branch `worktree-agent-a2cadfae7e8577c94`). Commits: `739c
 | F-29 | P3 | No change (the reviewer's note; consistent). |
 
 New items: 15 supplied facts (CO-4450 to CO-4462, CO-4465, CO-4466), 3 derived items (CO-4463, CO-4464, CO-4467) and the relationship role pair. New open question: OQ-790 (education time limit reached during the period against 3.132.B.3; state policy choice). Shared items whose meaning changed: `nighttime_residence_type` (CO-2810, options split), `cccap_caretaker_is_incapacitated` (CO-1744, no longer "as verified"), `cccap_self_employment_in_launch_period` (CO-2113, read as false when not stated).
+
+## Disposition (fix round, 2026-11-23): the deferred P2
+
+| Finding | Disposition |
+|---|---|
+| F-24 | Not modeled, with the rule and the document that bound it. 8 CCR 1403-1 3.126 (D-87:4326-4390) applies only "if a county has been granted approval by the Department, as described in rule section 3.104, to accept and authorize pre-eligibility determinations"; it governs when a provider is reimbursed for care given before the county's final determination (B, D) and, in C, says the county "may" find an application ineligible when the provider's documents are not in by the thirtieth day, and sets the start date from the day the documents arrive when they come between the thirty-first and sixtieth day. The household's eligibility is decided by the ordinary rules the volume carries; only the start date of a pre-eligibility application differs, and only in a county with Department approval. The list of counties approved under 3.104 is published by the Department of Early Childhood on cdec.colorado.gov, which refuses requests (docs/plan-colorado.md, network note), so no item could say where 3.126 applies; the provider's signification on the application (A) is not stated by any fact either. |
