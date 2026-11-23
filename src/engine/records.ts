@@ -18,9 +18,12 @@ import { BASE, DATE_RE, MONTH_RE, type BaseType, type Item, type RecordFieldSpec
 /** The item types a list-of-records fact may have. */
 export const RECORD_LIST_TYPES: ReadonlySet<string> = new Set(["list of receipts"]);
 
-/** Field types a record field may have: the scalar codex types. */
+/** Field types a record field may have: the scalar codex types, and a
+ *  person of the case (`person`: the person's id in the case, compared with
+ *  that person, ["P"]; coverage pass 4 for SNAP resources, SR-1: a funeral
+ *  agreement or burial space names the member it is for). */
 export const RECORD_FIELD_TYPES: readonly string[] = [
-  "yes/no", "whole number", "money", "hours", "rate", "calendar date", "month", "text", "one of",
+  "yes/no", "whole number", "money", "hours", "rate", "calendar date", "month", "text", "one of", "person",
 ];
 
 export function isRecordList(it: Pick<Item, "type"> | undefined | null): boolean {
@@ -82,7 +85,7 @@ function typeOk(spec: RecordFieldSpec, v: unknown): boolean {
     case "money": case "hours": case "rate": return typeof v === "number" && Number.isFinite(v);
     case "calendar date": return typeof v === "string" && DATE_RE.test(v);
     case "month": return typeof v === "string" && MONTH_RE.test(v);
-    case "text": return typeof v === "string";
+    case "text": case "person": return typeof v === "string";
     case "one of": return typeof v === "string" && (spec.options ?? []).includes(v);
     default: return false;
   }
@@ -229,6 +232,31 @@ export function jointRecordErrors(it: Item, lists: ReadonlyArray<readonly [strin
     if (values.size > 1) out.push(`${at}: its records disagree on ${measure} (${rs.map((x) => `${x.pid}: ${JSON.stringify(x.rec[measure] ?? null)}`).join(", ")})`);
     const total = rs.reduce((a, x) => a + (typeof x.rec.share === "number" ? x.rec.share : 1), 0);
     if (total > 1 + 1e-9) out.push(`${at}: its shares add to ${Math.round(total * 1e6) / 1e6}, more than 1 (${rs.map((x) => `${x.pid}: ${typeof x.rec.share === "number" ? x.rec.share : "1 (not stated)"}`).join(", ")})`);
+  }
+  return out;
+}
+
+/** A record field of type `person` names a person of the case (its id in the
+ *  case): one line per record whose person field names no person of the
+ *  case or test (coverage pass 4 for SNAP resources, SR-1). */
+export function personFieldErrors(
+  it: Item, lists: ReadonlyArray<readonly [string, unknown]>, persons: readonly string[],
+): string[] {
+  const fields = Object.entries(it.record_fields ?? {}).filter(([, f]) => f?.type === "person").map(([k]) => k);
+  if (!fields.length) return [];
+  const out: string[] = [];
+  for (const [pid, list] of lists) {
+    if (!Array.isArray(list)) continue;
+    list.forEach((r, i) => {
+      if (r === null || typeof r !== "object" || Array.isArray(r)) return;
+      const rec = r as Record<string, unknown>;
+      for (const f of fields) {
+        const v = rec[f];
+        if (typeof v === "string" && !persons.includes(v)) {
+          out.push(`${pid} ${recordFieldName(it.identifier, i, rec.kind, f)}: "${v}" is not a person of the case`);
+        }
+      }
+    });
   }
   return out;
 }

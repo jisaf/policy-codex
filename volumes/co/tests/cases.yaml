@@ -11231,7 +11231,7 @@
       snap_sponsor_income_after_reductions: {"2026-10": 0}
       snap_sponsor_deeming_divisor: 2
       snap_sponsor_deemed_income: {"2026-10": 0}
-      snap_sponsor_deemed_resources: 0
+      snap_sponsor_deemed_resources: {"2026-10": 0}
       snap_meets_citizenship_requirement: true
       ma_meets_citizenship_requirement: true
       chp_has_qualifying_immigration_status: true
@@ -11243,7 +11243,7 @@
       af_sponsor_countable_resources: 2900
       snap_sponsor_deeming_applies: false  # final verification pass 2 N-3: under 18 (was true)
       snap_sponsor_deeming_divisor: 2
-      snap_sponsor_deemed_resources: 0  # was 550: no deeming to a child under 18
+      snap_sponsor_deemed_resources: {"2026-10": 0}  # was 550: no deeming to a child under 18
       ma_meets_citizenship_requirement: true
 
 - id: CO-95
@@ -12120,9 +12120,9 @@
       snap_sponsor_income_after_reductions: {2026-10: 425}
       snap_sponsor_deeming_divisor: 1
       snap_sponsor_deemed_income: {2026-10: 425}
-      snap_sponsor_deemed_resources: 1500
+      snap_sponsor_deemed_resources: {"2026-10": 1500}
       snap_household_gross_income: {2026-10: 1325}
-      snap_household_countable_resources: 1700
+      snap_household_countable_resources: {"2026-10": 1700}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_net_income: {2026-10: 276}
       snap_allotment: {2026-10: 223}
@@ -14296,7 +14296,7 @@
       snap_is_ineligible_non_citizen: true
       snap_person_participation_status: ineligible_member_non_citizen_verification
       snap_sponsor_deemed_income: {2026-10: 0}
-      snap_sponsor_deemed_resources: 0
+      snap_sponsor_deemed_resources: {"2026-10": 0}
       snap_eligible_household_size: 0
       snap_eligibility_category: {"2026-10": standard}  # per month since coverage pass 4 S4-11
       snap_verification_status: {2026-10: members_excluded}
@@ -29631,7 +29631,7 @@
       snap_person_participation_status: ineligible_member_non_citizen
       snap_sponsor_deemed_income:
         2026-10: 0
-      snap_sponsor_deemed_resources: 0
+      snap_sponsor_deemed_resources: {"2026-10": 0}
       snap_requires_verification_of_sponsor:
         2026-10: false
     p4:
@@ -29639,7 +29639,7 @@
         2026-10: eligible
       snap_household_gross_income:
         2026-10: 1200
-      snap_household_countable_resources: 400
+      snap_household_countable_resources: {"2026-10": 400}
       snap_allotment:
         2026-10: 306
 - id: CO-219
@@ -31253,8 +31253,8 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_countable_liquid_resources: 4000
-      snap_household_countable_resources: 4000
+      snap_countable_liquid_resources: {"2027-02": 4000}
+      snap_household_countable_resources: {"2027-02": 4000}
 - id: CO-226
   title: 'Single adult at 150% of the poverty guideline: over the Adult limit, limited Family Planning (coverage pass 3 C3-01)'
   # Coverage pass 3 (2026-11-22), promoted from the reviewer's probe RV3-FPH. Determination 2026-11-10; application 2026-11-02.
@@ -48355,7 +48355,7 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_countable_nonliquid_resources: 0
+      snap_countable_nonliquid_resources: {"2027-02": 0}
 
 - id: CO-419
   title: 'Probe CF-8 (SNAP financial coverage): a joint account with a non-member counts in its entirety'
@@ -48667,7 +48667,7 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_countable_liquid_resources: 6000
+      snap_countable_liquid_resources: {"2027-02": 6000}
 
 - id: CO-420
   title: 'Probe CF-10 (SNAP financial coverage): a child student''s excluded wages need no verification'
@@ -49603,7 +49603,7 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_countable_liquid_resources: 4000
+      snap_countable_liquid_resources: {"2027-02": 4000}
 
 - id: CO-423
   title: 'Probe C3-1 (SNAP financial coverage 3 fix): counted VISTA payments are earned income that must be verified'
@@ -53255,7 +53255,7 @@
         complies_with_refugee_program_work_requirements: false
   expect:
     p2:
-      snap_household_countable_resources: 600
+      snap_household_countable_resources: {"2026-10": 600}
       snap_eligible_household_members: [p2, p3]
 
 - id: CO-447
@@ -61427,7 +61427,7 @@
         - {kind: wages, amount: 1000}
         holdings:
         - {kind: bank_account, value: 1000}
-        - {kind: burial_space, value: 2000, amount_owed: 0, for_immediate_family: false}
+        - {kind: burial_space, value: 2000, amount_owed: 0, for_immediate_family: false, burial_for: outside_case}
       month_defaults:
         health_insurance_premiums_paid: 0
         electronic_data_source_monthly_gross_income: 1000
@@ -61577,8 +61577,8 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_countable_nonliquid_resources: 2000
-      snap_household_countable_resources: 3000
+      snap_countable_nonliquid_resources: {"2027-02": 2000}
+      snap_household_countable_resources: {"2027-02": 3000}
 
 - id: "CO-750"
   title: "Coverage pass 4 SNAP S4-9 (ROOM): a roomer's payment is self-employment income"
