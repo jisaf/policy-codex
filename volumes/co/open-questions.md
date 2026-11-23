@@ -3244,7 +3244,7 @@ Body: 10 CCR 2505-10 8.100.4.C.1 (S166) counts gross income "pursuant to 26 U.S.
 
 Class: state policy choice
 Owner: Medicaid policy owner, Data steward
-Assumption: A pension or annuity is counted at its amount, and an income tax refund is not counted, as before; a household whose pension is partly or wholly excluded, or whose refund is taxable, is answered on that reading until the owner decides whether intake asks every pension and refund for its taxable part (taxable_amount required on those kinds) or keeps the gross reading.
+Assumption: A pension or annuity is counted at its full amount, and an income tax refund is not counted, as before; a household whose pension is partly or wholly excluded, or whose refund is taxable, is answered on that reading until the owner decides whether the application asks every pension and refund for its taxable part or keeps the gross reading.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.4.C.1.b.vi-vii, d (D-65, D-40); 42 CFR 435.603(e) (D-34); 26 U.S.C. 61(a), 72(b)(1), 104(a)(4), 111(a) (D-4430, D-4436, D-4437, D-4438, fetched from Cornell LII 2026-11-23). The Code settles what is taxable; no Colorado text says whether the State's intake asks for the taxable part of a pension or a refund, and asking is a change to every program's statement of a pension. Coverage pass 4, C4-09 (docs/reviews/coverage4-medicaid-magi-chp.md). Items: CO-5500, CO-5501, CO-5000.
 
