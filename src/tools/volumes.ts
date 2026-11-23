@@ -7,7 +7,7 @@ import path from "node:path";
 import { createEngine, type Engine } from "../engine/engine";
 import { parseCases } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
-import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger/markdown";
+import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { parseDocuments } from "../ledger/documents";
 import { AID_CODES_FILE, parseAidCodes } from "../ledger/aid-codes";
 import type { LoadedVolume } from "../ledger/load";
@@ -92,6 +92,7 @@ export function loadVolume(root: string, volumeId: string): { vol: LoadedVolume;
     sourceIds: sources.map((s) => s.id),
     questionIds: openQuestions.map((q) => q.id),
     unverifiedSourceIds: unverifiedSourceIds(sources),
+    sourceTexts: sourceTextMap(sources),
   });
   return { vol, engine };
 }

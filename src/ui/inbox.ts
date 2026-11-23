@@ -10,6 +10,7 @@ import type { Item, VolumeMeta } from "../engine/types";
 import { paramInForce } from "../engine/versions";
 import type { Source } from "../ledger/markdown";
 import { isUnchanged, type ChangeEntry, type ChangeSet, type FileEntry } from "../changes/types";
+import { applyChangeSet, isSignatureOnly } from "../changes/apply";
 import {
   approvalStatus, hasSigned, outcomeCones, signItem, upstreamOf, whyRequired,
   type ItemStatus, type Signature, type SignAction,
@@ -483,6 +484,11 @@ export function signatureEntries(
   ids: readonly string[], sig: Signature, action: SignAction, tainted: ReadonlySet<string>,
 ): ChangeEntry[] {
   const existing = new Map((cs?.entries ?? []).map((e) => [e.id, e]));
+  // The fingerprint covers what the ledger will be once the tray merges: the
+  // staged edits applied (signatures alone change no fingerprint).
+  const content = cs && cs.entries.some((e) => !isSignatureOnly(e))
+    ? base.withItems(applyChangeSet(base.items(), cs))
+    : base;
   const out: ChangeEntry[] = [];
   for (const id of ids) {
     const prior = existing.get(id);
@@ -492,7 +498,7 @@ export function signatureEntries(
     if (hasSigned(before, sig.role)) continue;
     out.push({
       id, chapter: prior?.chapter ?? chapterOf[id] ?? "supplied", before,
-      after: signItem(base, current, sig, action, tainted.has(current.identifier)),
+      after: signItem(base, current, sig, action, tainted.has(current.identifier), content),
     });
   }
   return out;

@@ -4,6 +4,7 @@ import { usesOf } from "./check";
 import { compact } from "./render";
 import { tagIds } from "./tags";
 import { approvalsFor } from "./constraints";
+import { staleApprovalMessage, type FingerprintBasis } from "./fingerprint";
 import type { EngineRefs, Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
@@ -181,7 +182,11 @@ export function nearest(ix: LedgerIndex, it: Item, _meta: VolumeMeta): Candidate
  *  repeat what it already checks. */
 export function governance(
   ix: LedgerIndex, meta: VolumeMeta, it: Item,
-  opts: { isNew?: boolean; refs?: EngineRefs | null; today?: string } = {},
+  opts: {
+    isNew?: boolean; refs?: EngineRefs | null; today?: string;
+    /** The ledger at the base ref, so a stale approval names what changed. */
+    baseline?: FingerprintBasis | null;
+  } = {},
 ): Finding[] {
   const F: Finding[] = [];
   const err = (rule: string, msg: string) => F.push({ ok: false, level: "error", rule, msg });
@@ -484,6 +489,18 @@ export function governance(
     if (missing.length) {
       err("approval.missing", `Approved without a signature from ${missing.join(", ")}`);
     }
+  }
+
+  // 10b. A signature covers what was signed (docs/governance.md "Stale
+  //      approvals"): a Reviewed or Approved item whose fingerprint no longer
+  //      matches a signature's, or whose signature records none, goes back
+  //      for review. Needs the excerpt texts; without them it stands down.
+  if (opts.refs?.sourceTexts) {
+    const msg = staleApprovalMessage(
+      { ix, sourceTexts: opts.refs.sourceTexts }, it,
+      { baseline: opts.baseline },
+    );
+    if (msg) err("approval.stale", msg);
   }
 
   // 11. An indexed parameter names the date its next version is due; once

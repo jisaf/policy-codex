@@ -181,7 +181,7 @@ are advisory only.
 A merge records that a change was reviewed; it does not say which items an
 agency has signed. Each item therefore carries its own `status` (Draft,
 Reviewed, Approved; absent reads as Draft) and an `approval` record, one row
-per signing role: `{role, by, date, commit}` (docs/conventions.md). An agency
+per signing role: `{role, by, date, commit, fingerprint}` (docs/conventions.md). An agency
 approves a chapter by a pull request that sets those fields on that chapter's
 items only, so the Medicaid and CHP+ chapter can be approved without SNAP or
 cash. Governance refuses an Approved item that lacks a signature from any
@@ -196,6 +196,72 @@ the CHP+ policy owner signs the shared and Medicaid items CHP+ reads. The
 teams (for example `@org/hcpf-medicaid`, `@org/hcpf-chp`); the agencies
 replace them with their reviewers' teams before branch protection is turned
 on.
+
+### Stale approvals
+
+A signature approves what the item was when it was signed, including
+everything it reads. Step 2 of the 2026-11-23 plan (docs/plan-colorado.md)
+makes that checkable: each approval row records `fingerprint`, a content
+hash of what was signed (`src/engine/fingerprint.ts`), and governance
+recomputes it on every item whose status is Reviewed or Approved. When any
+row's fingerprint differs from the item's current one, or a row records none,
+governance reports `approval.stale` ("approval is stale: <what changed>"),
+an error. `npm run check` blocks on it wherever the item is, changed in the
+pull request or not (the change that makes an approval stale is usually to
+something upstream), and it is never ratcheted. The pull request then either
+re-signs the item (each stale role signs again, which records the new
+fingerprint) or returns it to Draft. A Draft item's signatures are not
+checked.
+
+The fingerprint is `fp1-` and 20 hex digits of a SHA-256 over:
+
+- the item's approvable fields: id, identifier, kind, type, options, scope,
+  program, role, meaning, assumption, statute_override, supplied_by, value,
+  versions (from, to, value, source), derived, sources, effective,
+  accepts_from;
+- the quoted text of every excerpt the item cites in sources.md (its
+  `sources` and each version's `source`);
+- the fingerprint of every item it reads, so a change at any depth upstream
+  (a parameter's versions, a supplied fact's meaning, type or options, a rule
+  in between, an excerpt one of them cites) changes it.
+
+What does not invalidate, by decision: `precision`, `rationale`, `nearest`,
+`name`, `tags`, `open`, `tests`, `implemented`, `implemented_by`,
+`review_by`, the citation line of an excerpt, and the order of `sources`,
+`options`, `accepts_from` and `versions`. Free text is compared with
+whitespace collapsed, so reflowing a paragraph is not a change, but any
+change of words in meaning, assumption, statute_override or supplied_by is:
+the check cannot tell a wording change from a change of meaning, so it errs
+toward review. Precision and rationale explain a rule without changing what
+it decides, and the tests are checked on their own by `npm run check`.
+Adding a field that changes what an item decides (for example the
+required/default statement of step 3) means adding it to
+`APPROVABLE_FIELDS` and bumping the scheme tag (`fp1`), which makes every
+earlier signature stale at once.
+
+When the check has a base ref (`CHECK_BASE`), it reads the ledger at that ref
+and names what changed: "the item itself changed (meaning)", "CO-12
+earned_income changed (versions)", "it now reads CO-40 ...", "excerpt S123
+text changed". Without one it says that the item or something it reads
+changed after it was signed.
+
+Where the fingerprint comes from:
+
+- The app writes it when a role signs (`signItem` and `signatureEntries` in
+  `src/ui/approvals.ts`, `src/ui/inbox.ts`; the item page's sign-off panel and
+  the Desk's sign-off list both stage through them). It is computed against
+  the ledger with the tray's staged edits applied, so a signature on a staged
+  edit covers the edit. Validating the tray (`src/changes/validate.ts`)
+  reports an approval that a staged upstream edit makes stale.
+- A signature written by hand copies it from `npm run fingerprint -- --item
+  CO-n` (add `--volume co` to load one volume, `--explain` to list every item
+  and excerpt it covers, `--signed` to list every Reviewed or Approved item
+  and whether its signatures still match). The script writes nothing.
+
+The `commit` field stays as the record of the commit signed; the fingerprint
+is what the check compares. The engineer handoff (handoff/, the ledger JSON
+and the conformance suite) carries neither status nor approvals, so engine
+teams see no change.
 
 ## Known follow-ups
 

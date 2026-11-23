@@ -18,6 +18,7 @@ import {
 import {
   aCodes, buildGraph, impactOf, projectionA, type AProjection, type DependencyGraph,
 } from "./graph";
+import { fingerprintItem, type FingerprintBasis } from "./fingerprint";
 import { renameIdentifier, type RenameResult } from "./rename";
 import { baseType, fmt, lit, paramValue, slug } from "./values";
 import type {
@@ -59,7 +60,15 @@ export interface Engine {
   parseTestLine(line: string): TestSpec;
   approvals(it: Item): string[];
   constraints(it: Item): Constraint[];
-  governance(it: Item, opts?: { isNew?: boolean; today?: string }): Finding[];
+  governance(
+    it: Item, opts?: { isNew?: boolean; today?: string; baseline?: FingerprintBasis | null },
+  ): Finding[];
+  /** The ledger and excerpt texts approval fingerprints read, or null when
+   *  the engine was built without sources.md texts. */
+  fingerprintBasis(): FingerprintBasis | null;
+  /** The approval fingerprint of `it` as it stands (it may be a staged edit),
+   *  or null without sources.md texts. */
+  fingerprint(it: Item): string | null;
   nearest(it: Item): Candidate[];
   rename(from: string, to: string): RenameResult;
   readonly graph: DependencyGraph;
@@ -115,6 +124,8 @@ export function createEngine(
     constraints: (it) => constraints(ix, meta, refs, it),
     governance: (it, opts) => governance(ix, meta, it, { ...opts, refs }),
     nearest: (it) => nearest(ix, it, meta),
+    fingerprintBasis: () => (refs?.sourceTexts ? { ix, sourceTexts: refs.sourceTexts } : null),
+    fingerprint: (it) => (refs?.sourceTexts ? fingerprintItem({ ix, sourceTexts: refs.sourceTexts }, it) : null),
     rename: (from, to) => renameIdentifier(ix, from, to),
     graph,
     usedBy: (identifier) => graph.usedBy.get(identifier) ?? [],

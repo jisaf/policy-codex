@@ -9,7 +9,9 @@ import { execFileSync } from "node:child_process";
 import { createEngine } from "../engine/engine";
 import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
-import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger/markdown";
+import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
+import { buildIndex } from "../engine/ledger-index";
+import { staleApprovalMessage, type FingerprintBasis } from "../engine/fingerprint";
 import { ratchetGovernance } from "../changes/validate";
 import { householdInputs, ruleTestInputs, type Audit } from "../export/conformance";
 import { versionInForce } from "../engine/versions";
@@ -29,6 +31,9 @@ export interface LoadedLedger {
   questionIds: string[];
   /** excerpts marked `Verification: unverified`. */
   unverifiedSourceIds?: string[];
+  /** excerpt id -> quoted text from sources.md, which approval fingerprints
+   *  hash. Absent (an older caller), the stale-approval check stands down. */
+  sourceTexts?: Record<string, string>;
   /** the placeholder aid-code layer, when the volume has `aid-codes.yaml`. */
   aidCodes?: AidCodeMap | null;
 }
@@ -76,6 +81,7 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
     sourceIds: sources.map((s) => s.id),
     questionIds: openQuestions.map((q) => q.id),
     unverifiedSourceIds: unverifiedSourceIds(sources),
+    sourceTexts: sourceTextMap(sources),
     aidCodes,
   };
 }
@@ -396,6 +402,43 @@ export interface BuildCheckReportOptions {
   /** the base ref the diff was computed against (same ref `diffAgainstBase`
    *  used). */
   base?: string;
+  /** The ledger at the base ref, so a stale approval names what changed
+   *  since. Tests pass one; otherwise it is read from git (`root`, `base`
+   *  and the diff) only when some approval is stale. */
+  baseline?: { items: Item[]; sourceTexts: Record<string, string> } | null;
+}
+
+/** The ledger as it stood at `base`: the current items with every item file
+ *  the diff touches read back from git (added ones dropped, deleted ones
+ *  restored), and sources.md read back when the diff touches it. An item
+ *  file git cannot read at `base` is taken as unchanged. */
+export function loadBaseline(
+  root: string, base: string, ledger: LoadedLedger, diff: readonly DiffEntry[],
+): { items: Item[]; sourceTexts: Record<string, string> } {
+  const byId = new Map(ledger.items.map((it) => [it.id, it]));
+  let sourceTexts = ledger.sourceTexts ?? {};
+  const prefix = `${ledger.volumePath}/`;
+  for (const e of diff) {
+    if (!e.path.startsWith(prefix)) continue;
+    if (e.path === `${prefix}sources.md`) {
+      try {
+        const text = execFileSync(
+          "git", ["show", `${base}:${e.path}`],
+          { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+        );
+        sourceTexts = sourceTextMap(parseSources(text));
+      } catch {
+        sourceTexts = {};
+      }
+      continue;
+    }
+    const m = /\/([A-Za-z]+-\d+)\.yaml$/.exec(e.path);
+    if (!m) continue;
+    if (e.status.startsWith("A")) { byId.delete(m[1]); continue; }
+    const was = loadBaseItem(root, base, e.path);
+    if (was) byId.set(was.id, was);
+  }
+  return { items: [...byId.values()], sourceTexts };
 }
 
 /** Reads a changed item's base version with `git show <base>:<path>` (the
@@ -429,7 +472,22 @@ export function buildCheckReport(
   const engine = createEngine(ledger.items, ledger.meta, {
     sourceIds: ledger.sourceIds, questionIds: ledger.questionIds,
     unverifiedSourceIds: ledger.unverifiedSourceIds ?? [],
+    ...(ledger.sourceTexts ? { sourceTexts: ledger.sourceTexts } : {}),
   });
+
+  // The ledger at the base ref, built at most once and only when some
+  // approval is stale, so the message can name what changed since.
+  let baselineBasis: FingerprintBasis | null | undefined;
+  const baseline = (): FingerprintBasis | null => {
+    if (baselineBasis !== undefined) return baselineBasis;
+    const b = opts.baseline !== undefined
+      ? opts.baseline
+      : opts.root && opts.base && diff ? loadBaseline(opts.root, opts.base, ledger, diff) : null;
+    baselineBasis = b
+      ? { ix: buildIndex(b.items, ledger.meta.relationship_roles ?? null), sourceTexts: b.sourceTexts }
+      : null;
+    return baselineBasis;
+  };
 
   const idByPath = new Map<string, string>();
   for (const it of ledger.items) {
@@ -454,6 +512,10 @@ export function buildCheckReport(
     const isChanged = changedItems.has(it.id);
     const constraintResults = engine.constraints(it);
     let findings = engine.governance(it, { isNew });
+    // A stale approval is never ratcheted: it is about the signatures, not
+    // the item's content, and it blocks wherever it is (below).
+    let stale = findings.filter((f) => f.rule === "approval.stale");
+    findings = findings.filter((f) => f.rule !== "approval.stale");
     // The ratchet: a *changed* (not added) item's base version is read from
     // git and governed too — on the current engine's index with the base
     // item substituted (cheaper than a second engine, and acceptable per the
@@ -467,6 +529,14 @@ export function buildCheckReport(
       const baseItem = loadBaseItem(opts.root, opts.base, filePath);
       if (baseItem) findings = ratchetGovernance(findings, engine.governance(baseItem));
     }
+    if (stale.length && ledger.sourceTexts) {
+      const named = staleApprovalMessage(
+        { ix: engine.index, sourceTexts: ledger.sourceTexts }, it,
+        { baseline: baseline() },
+      );
+      if (named) stale = [{ ...stale[0], msg: named }];
+    }
+    findings = [...findings, ...stale];
     return {
       id: it.id,
       identifier: it.identifier,
@@ -540,8 +610,12 @@ export function buildCheckReport(
 
   const blockingItemErrors: BlockingError[] = [];
   for (const it of items) {
-    if (!it.isChanged && !it.isNew) continue;
-    for (const msg of [...it.errors, ...it.governanceErrors]) {
+    // A stale approval blocks on every item, changed or not: the change that
+    // made it stale is usually to something upstream of it.
+    const msgs = !it.isChanged && !it.isNew
+      ? it.governanceErrors.filter((m) => m.startsWith("approval.stale:"))
+      : [...it.errors, ...it.governanceErrors];
+    for (const msg of msgs) {
       blockingItemErrors.push({ id: it.id, identifier: it.identifier, msg });
     }
   }

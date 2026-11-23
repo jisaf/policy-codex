@@ -99,7 +99,10 @@ describe("signing sets the status per the approval policy", () => {
   it("adds a Role: name, date signature, and governance accepts the result", () => {
     const [r1, r2] = engine.approvals(multi);
     const once = signItem(engine, multi, { role: r1, by: "Dana Lee", date: "2026-11-21" }, "approve", false);
-    expect(once.approval).toEqual([{ role: r1, by: "Dana Lee", date: "2026-11-21" }]);
+    // The row records the fingerprint of what was signed (docs/governance.md
+    // "Stale approvals").
+    expect(once.approval).toEqual([{ role: r1, by: "Dana Lee", date: "2026-11-21", fingerprint: engine.fingerprint(multi) }]);
+    expect(once.approval![0].fingerprint).toMatch(/^fp1-[0-9a-f]{20}$/);
     expect(once.status).toBe("Reviewed");
     let all = once;
     for (const r of engine.approvals(multi).slice(1)) {
@@ -226,7 +229,7 @@ describe("what changed, in plain words", () => {
     const role = "Legal";
     const id = rowsFor(role)[0].item.id;
     const [e] = signatureEntries(engine, null, vol.chapterOf, [id], { role, by: "Priya", date: "2026-11-21" }, "review", tainted);
-    expect(e.after!.approval).toEqual([{ role, by: "Priya", date: "2026-11-21" }]);
+    expect(e.after!.approval).toEqual([{ role, by: "Priya", date: "2026-11-21", fingerprint: engine.fingerprint(e.after!) }]);
     expect(withoutSignature(e, role)).toBeNull();
   });
 });
@@ -350,7 +353,10 @@ describe("Desk › To sign (the sign-off list and the approval card)", () => {
     act(() => { host.querySelector<HTMLButtonElement>(`article[data-item="${id}"] button.approve`)!.click(); });
     const entry = changeSetSig.value.entries.find((e) => e.id === id)!;
     expect(entry.after!.approval).toEqual([
-      { role: "Medicaid policy owner", by: "Dana Lee (HCPF)", date: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/) },
+      {
+        role: "Medicaid policy owner", by: "Dana Lee (HCPF)", date: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+        fingerprint: engineSig.value!.fingerprint(entry.after!),
+      },
     ]);
     const notice = host.querySelector(".inbox-notice")!.textContent!;
     expect(notice).toContain("saved in this browser only");

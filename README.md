@@ -77,6 +77,8 @@ npm run conform:self
 npm run handoff    # writes handoff/<volume>.md
 npm run export     # writes conformance/<volume>/ledger.json, the items as JSON
 npm run governance # governance findings, item by item
+npm run fingerprint -- --item CO-n
+    # the approval fingerprint a signature records; --signed checks every signed item
 npm run e2e        # Playwright tests against a local build (vite preview)
 ```
 

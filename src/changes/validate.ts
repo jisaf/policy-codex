@@ -1,5 +1,6 @@
 import type { Engine } from "../engine/engine";
 import type { Finding } from "../engine/governance";
+import { staleApprovalMessage } from "../engine/fingerprint";
 import type { Item } from "../engine/types";
 import { applyChangeSet, changedIdentifiers, isSignatureOnly } from "./apply";
 import type { ChangeEntry, ChangeSet } from "./types";
@@ -35,8 +36,11 @@ export function findingKey(f: Finding): string {
  *  (not present in `base`) is never downgraded. */
 export function ratchetGovernance(current: Finding[], base: Finding[]): Finding[] {
   const known = new Set(base.map(findingKey));
+  // A stale approval is about the signatures, not the item's content, so it
+  // is never inherited: it blocks until the item is re-signed or returned to
+  // Draft (docs/governance.md "Stale approvals").
   return current.map((f) =>
-    f.level === "error" && known.has(findingKey(f))
+    f.level === "error" && f.rule !== "approval.stale" && known.has(findingKey(f))
       ? { ...f, level: "warn" as const }
       : f);
 }
@@ -107,6 +111,11 @@ export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport 
     const baseItem = base.itemById(item.id);
     const known = new Set(baseItem ? errorsOf(base, baseItem) : []);
     const fresh = errorsOf(applied, item).filter((m) => !known.has(m));
+    // An upstream edit makes a downstream signature stale: the item goes
+    // back for review unless the change set re-signs it.
+    const basis = applied.fingerprintBasis();
+    const stale = basis ? staleApprovalMessage(basis, item) : null;
+    if (stale) fresh.push(stale);
     if (fresh.length) {
       reports.push({ id: item.id, identifier, errors: fresh, warnings: [], governance: [] });
     }
