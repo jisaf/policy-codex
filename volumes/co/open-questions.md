@@ -3664,7 +3664,7 @@ Body: 10 CCR 2506-1 4.410.F.3 (S2968) makes "Any funds in a trust or transferred
 
 Class: state policy choice
 Owner: SNAP policy owner, Legal
-Assumption: A trust interest is counted at its value unless the county has found its funds inaccessible under 4.410.F.3 (snap_trust_inaccessible, SNAP's finding on the holdings record; field sweep fix round FS-SNAP-4): the county applies F.3's conditions as the owner reads them, and the volume reads its finding, so a revocable trust with no finding cannot be determined (decision 4) rather than being left out. Annuities are not counted, as before; if the owner reads the federal "and" as governing, a surrenderable annuity's value is counted.
+Assumption: A trust interest is counted at its value unless the county has found its funds inaccessible under 4.410.F.3 (SNAP's finding on the holdings record): the county applies F.3's conditions as the owner reads them, and the volume reads its finding, so a revocable trust with no finding cannot be determined (decision 4) rather than being left out. Annuities are not counted, as before; if the owner reads the federal "and" as governing, a surrenderable annuity's value is counted.
 
 Field sweep fix round (2026-11-23; docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-SNAP-4): before, the trust_interest row was not_counted_reading_open, so a revocable trust of $10,000 counted nothing under either reading (F.3.a fails for it, so under "or" it is inaccessible only if a trustee or investment condition holds, and under "and" it is never inaccessible). The row is now counted_unless_found_inaccessible; the open part is how the county applies F.3 ("or" or "and"), not whether the volume reads the trust.
 
@@ -3705,7 +3705,7 @@ Checked 2026-11-23: 10 CCR 2506-1 4.408.B, 4.408.1, 4.402.1.A (D-82); 7 CFR 273.
 Body: 9 CCR 2503-6 3.605.2.E.3 (S4913): "If receipt of self-employment income is irregular or varies significantly from month to month, it shall be averaged over a twelve-month period." The paragraph names no period (Adult Financial's 9 CCR 2503-5 3.520.783.F, S4914, names two: the previous tax year or the twelve months before the application date) and no measure of a significant variation. The field sweep fix round (FS-CW-5) averages, in each month, the net profit of the twelve months ending with that month, for a person with a business receipts record marked irregular in those twelve months (cw_self_employment_net_profit, CO-1706; cw_irregular_self_employment_averaging_months, CO-7100). Worked example: $2,400 of irregular receipts in February 2027: $200 in each month from February 2027 to January 2028 under the assumption; under the previous tax year, $200 in each month of 2028 and nothing in 2027; under the twelve months before an application in March 2027, $200 in each month of the certification. A business whose receipts are regular but vary from month to month has no field: it is stated irregular meanwhile.
 
 Class: state policy choice
-Owner: Colorado Works policy owner
+Owner: Cash programs policy owner
 Assumption: The twelve months ending with the month evaluated; "varies significantly" is stated as irregular on the business receipts record.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.1, 3.605.2.E (D-81); 9 CCR 2503-5 3.520.783.F (D-80) for comparison. Neither names the Colorado Works period. Items: CO-1706, CO-7100, CO-5100.
@@ -3715,7 +3715,7 @@ Checked 2026-11-23: 9 CCR 2503-6 3.605.1, 3.605.2.E (D-81); 9 CCR 2503-5 3.520.7
 Body: 9 CCR 2503-5 3.520.783.F (S4914): "If receipt of self-employment income is irregular, it shall be averaged over a twelve-month period. The twelve-month period can either be the previous tax year (January to December) or the most recent twelve-months prior to the application date." The text allows either and does not say whether the county department or the client chooses, or by what test (the period that better represents expected income). The field sweep fix round (FS-AF-3) reads the period the determination used as a supplied fact (af_self_employment_averaging_period, CO-7102), required for a person with irregular business receipts. Worked example: $2,400 of irregular receipts in May 2026, a client applying in March 2027: $200 a month under either period; with the receipts in February 2027 instead, $200 under the twelve months before the application and nothing under the previous tax year.
 
 Class: state policy choice
-Owner: Adult Financial policy owner
+Owner: Cash programs policy owner
 Assumption: The county department states the period it used; no default.
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.783.E-F (D-80). Items: CO-1708, CO-7101, CO-7102.
