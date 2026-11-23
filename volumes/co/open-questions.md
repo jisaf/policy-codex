@@ -3225,3 +3225,33 @@ Owner: Cash programs policy owner, Energy assistance (LEAP) policy owner, School
 Assumption: Colorado Works, LEAP and SUN Bucks have no resource test, and CCCAP reads the household's declaration, not its holdings (today's reading).
 
 Checked 2026-11-23: the volume's items for the four programs read no resource fact other than CO-1741 (CCCAP) and the death reimbursement's adopted SSI method (Colorado Works); 9 CCR 2503-6 and 9 CCR 2503-7 as fetched (D-81, D-86) were not searched end to end for a resource test in this step. Items: CO-5300, CO-1741.
+
+### OQ-1202. SNAP holdings: burial spaces beyond one plot per member, and the kinds no SNAP item reads
+
+Body: Resource records, step H0 sets SNAP's holdings counting table (snap_holding_treatment_table, CO-5301) to today's reading. Two kinds of rows need the SNAP owner. (1) A finding: 7 CFR 273.8(e)(2) (S2216) and 10 CCR 2506-1 4.410.D.4 (S2967) exclude one burial plot per household member; burial spaces beyond the needs of the person's family, the only burial spaces a fact states today (burial_spaces_value_beyond_family_needs, CO-3857, read by Adult Financial only), are counted by neither text's exclusion, yet no SNAP item reads them (row not_counted_text_counts). No stored household or rule test states them. (2) Kinds no SNAP item reads and no text on file names: investment personal property (gems, collectibles), a revocable burial trust (not a funeral agreement under D.4; an irrevocable one is inaccessible under 4.410.F.1 and F.3, S2968), a trust interest the person can revoke, an annuity, a life estate (rows not_counted_no_rule_found); and money SNAP counts as liquid because no rule excludes it: loan proceeds and replacement proceeds still held, other resources (counted_no_rule_excludes), the mortgages and promissory notes the person holds, which pass the real property tests today (counted_with_real_property), and personal property other than household goods and effects (equipment), which no fact states (excluded_household_goods). The SNAP H1 track changes a row only as a cited difference.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Each row as today's items read it, until the SNAP owner signs it or the SNAP H1 track changes it with a citation.
+
+Checked 2026-11-23: 7 CFR 273.8(c)(1), (d), (e)(2) (D-191, D-12); 10 CCR 2506-1 4.409-4.410 (D-82). Items: CO-5301, CO-4176, CO-074.
+
+### OQ-1203. Adult Financial holdings: investment personal property, and the kinds no Adult Financial item reads
+
+Body: Resource records, step H0 sets Adult Financial's holdings counting table (af_holding_treatment_table, CO-5302) to today's reading. (1) A finding: 9 CCR 2503-5 3.520.77.B (S4507) exempts household goods and personal effects but "does not include effects that the client holds because of the value or as an investment, which are countable as personal property"; no Adult Financial item reads investment_personal_property_value (CO-4642), so Adult Financial counts none of it (row not_counted_text_counts). Eight stored households state CO-4642, each as 0; one rule test (CO-4623-T3, Medicaid's) states it. (2) Rows counted because 3.520.72.A (S1636) counts every resource not otherwise specified and no exclusion was found on file: an education savings account, a state or local earned income tax credit held apart from a refund (3.520.77.K names refunds and the PTC rebate), a government payment a federal statute excludes from resources, prorated income still held, other resources; rows not counted because no item reads them and no text on file names them: an annuity, a life estate; and personal property other than household goods and effects (equipment, livestock), which 3.520.72.B.3-4 (S2213) counts when not exempt and no fact states today.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Each row as today's items read it, until the owner signs it or the Adult Financial H1 track changes it with a citation.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.72-3.520.77 (D-80). Items: CO-5302, CO-4000, CO-4412.
+
+### OQ-1204. Medicaid SSI method holdings: the earned income tax credit, loans, disaster and relocation payments still held, and the kinds no rule on file settles
+
+Body: Resource records, step H0 sets the SSI method's holdings counting table (ma_ssi_holding_treatment_table, CO-5303) to today's reading. (1) Findings: 10 CCR 2505-10 8.100.5.F.6 (S4506) exempts "as either income or resources" for the ABD and long-term care categories a bona fide loan (a), relocation payments, toward a replacement dwelling for up to 6 months (f), major disaster and emergency assistance (k), Civil Liberties Act payments (r), the Earned Income Tax Credit as a resource "for the month it is received and for the following month" (u) and payments to victims of Nazi persecution (x). No SSI-method item subtracts the part of liquid_resources_value (CO-3390) that is such money still held: ssi_countable_resources_individual (CO-800) subtracts only the retroactive SSI or Social Security payment (F.6.c). So a federal refund carrying the credit, a state or local credit, loan proceeds, and disaster, relocation, Civil Liberties Act or Nazi persecution payments still held are counted (rows counted_text_excludes for held_income_tax_refund, held_eitc, held_loan_proceeds, held_excluded_payment, held_replacement_proceeds). One stored household states federal_tax_refunds_held_value above 0 and one states excluded_government_payments_held_value; neither is an SSI-method case (docs/reviews/holdings-h0.md). (2) Rows counted because 20 CFR 416.1201(a) (S4500) counts what the person owns and could convert to cash and no exclusion was found on file: an education savings account, business cash (8.100.5.J.3, S3402, excludes property used in a trade or business essential to self-support up to $6,000 with a 6% return; whether business cash is such property is open), prorated income still held, other resources; and personal property other than household goods and effects (8.100.5.M.3.i, S4505, counts a mobile home or trailer not the home and not income-producing), which no fact states today.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each row as today's items read it, until the owner signs it or the Medicaid H1 track changes it with a citation.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6, J, M, N (D-65); 20 CFR 416.1201 (D-4400). Not on file: 20 CFR 416.1235 (tax refunds), 416.1232 (replacement of excluded resources), 416.1237 (disaster assistance). Items: CO-5303, CO-800, CO-4623.
