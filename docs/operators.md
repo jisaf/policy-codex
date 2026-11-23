@@ -346,12 +346,22 @@ rules count unearned money by the kind of receipt, by whether it is paid once
 or recurs, by the date it came in and by how often it is paid, and a scalar
 fact per source cannot say all four of one payment without stating the same
 money twice. The rule text that needs each operator is in the table below.
-No other list-of-records input exists; earned income and resources are
-decided separately (plan-colorado.md, condition 3).
+A second input of the same type, `earnings` (CO-5100), states the pay for
+work the person performed, under the same recorded exception and read by
+the same three operators (product-owner decision of 2026-11-23, "earned
+income and resources move to records too"; earned-income records, step E0,
+docs/design-earned-and-resource-records.md 2.6 and docs/reviews/earnings-e0.md):
+the rules count earnings by the source of the pay, by its date and how
+often it is paid, and a business's costs by kind, exactly as they count
+receipts. No other list-of-records input exists; resources are step H0,
+which adds P58 `largest` (design 3.4).
 
 **The input.** A supplied fact of type `list of receipts`, scope `person`
-(Colorado: `receipts`, CO-5000): one record per payment, or per stream of
-like payments, each a mapping of field to value. The fact declares its record
+(Colorado: `receipts`, CO-5000, and `earnings`, CO-5100): one record per
+payment, or per stream of like payments, each a mapping of field to value.
+"That receipt" names a record of either list; the operators do not tell
+the lists apart, and a program's counting table for each list is keyed by
+that list's kinds. The fact declares its record
 schema once, in `record_fields`: each field's type (a scalar codex type), a
 one-line meaning, the options of a `one of` field (for the `kind`, each with its
 own one-line meaning in `option_meanings`), and exactly one of
@@ -406,7 +416,8 @@ not state is reported on the trace as a missing supplied fact of the list's
 owner, named `<list>[<index> <kind>].<field>` with the index from 0 in the
 stated list: `receipts[0 other_one_time].date` for an undated one-time
 payment that must be placed in or out of the LEAP income verification
-period, `receipts[1 ?].kind` for a record that states no kind. The app's
+period, `receipts[1 ?].kind` for a record that states no kind,
+`earnings[0 wages].per_payment` for a weekly pay that states no amount per pay. The app's
 "cannot determine" list and the conformance suite's `expect[].missing` carry
 the same name (`src/engine/records.ts`, `recordFieldName`).
 
