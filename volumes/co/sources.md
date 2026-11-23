@@ -24602,3 +24602,43 @@ Document: D-82
 > declaration of resources that declares more than the resource limit is an
 > acceptable form of verification.
 
+
+### S4910. Adult Financial: all income countable in the month it is actually received or legally becomes available
+
+Document: D-80
+
+9 CCR 2503-5 3.520.781.G (introduction), G.1 (rule version 12428, effective 2026-03-02; field sweep fix round, FS-AF-1). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> G. All income shall be countable in the month it is actually received or legally
+> becomes available, whichever comes first, with the following exceptions:
+>
+> 1. Income that can be anticipated with reasonable certainty concerning the
+> amount and the month it is expected to be received shall be counted in the
+> month anticipated.
+
+### S4911. Colorado Works: income received or expected; available when legally available, received during a calendar month; income received or expected in the application month and any month following
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A (introduction), A.2, B (rule version 12030, effective 2025-07-01; field sweep fix round, FS-CW-1). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.605.1 Income
+>
+> A. For Colorado Works grant payments, all countable gross income that members of the assistance
+> unit and budgetary unit have received or expect to receive shall be used to determine eligibility.
+>
+> ...
+>
+> 2. Availability of income - income shall be countable when actually available, when the client
+> has a legal interest in a sum, and has the legal ability to make such sum available for
+> support and maintenance. Income, in general, is the receipt by a client of a gain or
+> benefit in cash or in-kind during a calendar month. Received means the date on which
+> the income becomes legally available.
+>
+> ...
+>
+> B. Countable Income
+>
+> All countable income, including earned and unearned income received, or unearned income an
+> assistance unit expects to receive in the application month and any month following shall be used
+> to determine eligibility for the assistance unit.

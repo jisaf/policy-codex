@@ -6,11 +6,14 @@ type: money
 scope: person-month
 program: AdultFinancial
 meaning: "The Adult Financial Home Care Allowance the person received in the month (receipts of kind home_care_allowance), other than a retroactive lump sum: the receipt 9 CCR 2503-5 3.570.43.A.1 and 3.570.52 ask about beside the Old Age Pension and Aid to the Needy Disabled grants. It is never the client's or a relative's countable income (3.520.786.E; af_receipt_treatment_table excludes it)."
-derived: [sum_receipts, receipts, [all, ["=", [receipt, kind], home_care_allowance], [not, [receipt, retroactive]], [received_in, [month]]], [receipt, amount]]
-sources: [S2608]
+precision: "Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since \"All income shall be countable in the month it is actually received or legally becomes available\" (9 CCR 2503-5 3.520.781.G, S4910): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "home_care_allowance"], ["not", ["receipt", "retroactive"]], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]]
+sources: [S2608, S4910]
 implemented: engine
 tags: [cash, income]
 rationale: "Receipt records, migration phase 1, coverage review 3 of Adult Financial H-5: the Home Care Allowance was stated only inside adult_financial_cash_income (CO-1713), so its exemption (3.520.786.E) could not be read apart from the grants; it is its own kind now, and the rules that ask whether the person receives it read this item."
 nearest: [CO-5019, CO-5018]
 tests:
   - {id: CO-5023-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: home_care_allowance, amount: 300}, {kind: adult_financial_cash, amount: 452}]}, title: "A $300 Home Care Allowance beside a $452 OAP grant", expect: 300}
+  # Field sweep fix round (FS-AF-1): hand-computed from 9 CCR 2503-5 3.520.781.G (S4910): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-5023-T2", "month": "2026-10", "as_of": "2026-10-15", "title": "A $300 Home Care Allowance that ended 2026-09-30, read for October: 0", "given": {"receipts": [{"kind": "home_care_allowance", "amount": 300, "end_date": "2026-09-30"}]}, "expect": 0}
