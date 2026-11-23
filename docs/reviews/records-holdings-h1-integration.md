@@ -12,7 +12,10 @@ The integration owner's round for H1 (docs/design-earned-and-resource-records.md
 | 6873306 | `proceeds_source` on held replacement proceeds (R-4); keepJointHome reviewed and applied to rule tests (R-1); CO-300's new expectation allowed precisely in the earnings and receipts harnesses; dispositions re-keyed after the schema change |
 | 5e142cf | Merge origin ccr-9d19bf4c-wmnwcl at 05cd48c (coverage pass 4 review of Adult Financial and Colorado Works; docs only) |
 | 43eb7f4 | MH-5 merges only refunds and retroactive benefits and runs for Medicaid (section 6); a generated retroactive payment thirty months old; harness results; docs/plan-colorado.md "H1 integration" |
-| (last) | This review |
+| e0eadc6 | This review |
+| 260c0cc | Merge origin ccr-9d19bf4c-wmnwcl at 10b6312 (coverage pass 4 fixes for SNAP, 24c5d36; the handoff) before the final gate: docs/plan-colorado.md and scripts/receipts/allowed-differences.yaml keep both sections |
+| 137a74d | Change-impact dispositions re-keyed to the merged ledger's fingerprints (relations unchanged) |
+| (last) | Gate figures in this review; harness results |
 
 ## 2. The baseline (design 4.3 rule 5)
 
@@ -92,26 +95,26 @@ Stored households: no expectation changes (`npm run check`: every household expe
 
 ## 9. Gates
 
-On the merged head (origin ccr-9d19bf4c-wmnwcl at 05cd48c merged, 5e142cf), after 43eb7f4:
+On the merged head (origin ccr-9d19bf4c-wmnwcl at 10b6312 merged, 260c0cc; dispositions re-keyed, 137a74d). The SNAP coverage round merged last moved no value this round classifies: the whole-phase run is 0 unexplained with its own file (allowed/h1-coverage4-snap.yaml) beside this one, and its stored households CO-750 to CO-759 are checked by their expectations.
 
 | Gate | Result |
 |---|---|
-| `node scripts/sync-manifest.mjs co` | written (medicaid 359 items) |
+| `node scripts/sync-manifest.mjs co` | written (snap 240, medicaid 359 items) |
 | `npm run typecheck` | passes |
 | `npx vitest run` | 1,150 tests pass (102 files); no pin moved |
-| `npm run records:harness -- --list holdings --all-programs` | OK: translation 0 stale (168 households, 341 persons; 368 rule tests), 0 joint-holding findings, every relation's output accepted; stored 329 households, 160,862 values, 5,384 differ, all allowed; generated 368, 144,992 values, 2,765 differ, all allowed; **0 unexplained**; metamorphic **0 violations** |
-| `--track medicaid` | OK: stored 49,465 values, 1,255 differ, all allowed; generated 184, 18,032 values, 1,353 differ, all allowed |
-| `--track snap` | OK: stored 35,238 values, 1,438 differ, all allowed; generated 92, 8,740 values, 89 differ, all allowed |
-| `--track af` | OK: stored 38,249 values, 2,582 differ, all allowed; generated 92, 7,728 values, 158 differ, all allowed |
-| `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 176,186 values, 1,976 differ, all allowed; generated 476, 201,824 values, 3,850 differ, all allowed; 0 unexplained; translation 0 stale; boundary 0 findings |
-| `npm run receipts:harness -- --all-programs` | OK: stored 319, 170,114 values, 1,496 differ, all allowed; generated 1,626, 696,597 values, 8,428 differ, all allowed; 0 unexplained; MA-1 to MA-6 0 violations |
+| `npm run records:harness -- --list holdings --all-programs` | OK: translation 0 stale (178 households, 363 persons; 368 rule tests), 0 joint-holding findings, every relation's output accepted; stored 329 households, 160,844 values, 5,400 differ, all allowed; generated 368, 144,992 values, 2,765 differ, all allowed; **0 unexplained**; metamorphic **0 violations** |
+| `--track medicaid` | OK: stored 49,447 values, 1,255 differ, all allowed; generated 184, 18,032 values, 1,353 differ, all allowed; 0 unexplained |
+| `--track snap` | OK: stored 35,220 values, 1,454 differ, all allowed; generated 92, 8,740 values, 89 differ, all allowed; 0 unexplained |
+| `--track af` | OK: stored 38,231 values, 2,582 differ, all allowed; generated 92, 7,728 values, 158 differ, all allowed; 0 unexplained |
+| `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 176,168 values, 1,998 differ, all allowed; generated 476, 201,824 values, 3,907 differ, all allowed; 0 unexplained; translation 0 stale (351 households, 868 rule tests); boundary 0 findings |
+| `npm run receipts:harness -- --all-programs` | OK: stored 319, 170,096 values, 1,522 differ, all allowed; generated 1,626, 696,597 values, 8,658 differ, all allowed; 0 unexplained; MA-1 to MA-6 0 violations |
 | `CHECK_BASE=origin/main npm run check` | see section 10 |
 
-Metamorphic relations (whole phase): MH-1 split, MH-2 order, MH-4 encumbrance 0 violations for every track (518 households); MH-3 joint 0 for Adult Financial (202 values) and Medicaid (404), not run for SNAP (section 6); MH-5 expiry 0 for every track, Medicaid included.
+Metamorphic relations (whole phase): MH-1 split, MH-2 order, MH-4 encumbrance 0 violations for every track (528 households); MH-3 joint 0 for Adult Financial (208 values) and Medicaid (416), not run for SNAP (section 6); MH-5 expiry 0 for every track, Medicaid included.
 
 ## 10. Check
 
-(filled at the final gate)
+`CHECK_BASE=origin/main npm run check` on 137a74d (before this section was written; the run after it is in the report): OK; co rule tests 5,104 of 5,104 (CO-5320-T21 to T23 among them), household expectations 3,976 of 3,976 (CO-300's new one among them); change impact 29 flags, 29 dispositioned, 0 open; conformance self-check OK. Four stale entries that the check names as "no longer flagged" (CO-303 to CO-301 and CO-314, in 2026-11-23-fix-round-other-families.yaml and 2026-11-23-receipts-3.yaml) came with the SNAP round's merge and are not this round's; they do not block.
 
 ## 11. Left open
 
