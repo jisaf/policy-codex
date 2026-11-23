@@ -13,5 +13,5 @@ implemented: engine
 tags: [cash]
 rationale: "No existing fact records death or the programs a decedent was receiving; af_burial_eligible (CO-1231) needs it. Dual-entry audit 3.14: derived from the date of death and the Medicaid and Adult Financial receipt records of the month of death."
 tests:
-  - {id: CO-1220-T5, title: "On OAP in the month of death", as_of: "2026-12-01", given: {date_of_death: "2026-11-20", adult_financial_cash_income: 800, is_enrolled_in_medical_assistance: false}, expect: true}
-  - {id: CO-1220-T6, title: "Living", as_of: "2026-12-01", given: {}, expect: false}
+  - {id: CO-1220-T5, as_of: "2026-12-01", given: {date_of_death: "2026-11-20", adult_financial_cash_income: 800, is_enrolled_in_medical_assistance: false, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash, amount: 800}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "On OAP in the month of death", expect: true}
+  - {id: CO-1220-T6, as_of: "2026-12-01", given: {}, title: Living, expect: false}

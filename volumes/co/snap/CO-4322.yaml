@@ -13,6 +13,6 @@ implemented: engine
 tags: [snap, income]
 rationale: "Coverage review snap-financial CF-2: passive rents were counted gross as other_unearned_income_taxable, and stating them as self-employment receipts would have made them earned income with the 20% deduction, which 4.403.E.1 (S3111) allows only at twenty hours of management a week."
 tests:
-  - {id: CO-4322-T1, title: "$1,000 of rent with $600 of costs: $400", month: "2026-11", given: {rental_income_received: 1000, rental_property_costs: 600}, expect: 400}
-  - {id: CO-4322-T2, title: "Costs above the rent: no income, and no loss", month: "2026-11", given: {rental_income_received: 300, rental_property_costs: 500}, expect: 0}
-  - {id: CO-4322-T3, title: "No rent stated", month: "2026-11", given: {}, expect: 0}
+  - {id: CO-4322-T1, month: "2026-11", given: {rental_income_received: 1000, rental_property_costs: 600, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: rental_income, amount: 1000}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "$1,000 of rent with $600 of costs: $400", expect: 400}
+  - {id: CO-4322-T2, month: "2026-11", given: {rental_income_received: 300, rental_property_costs: 500, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: rental_income, amount: 300}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "Costs above the rent: no income, and no loss", expect: 0}
+  - {id: CO-4322-T3, month: "2026-11", given: {}, title: "No rent stated", expect: 0}

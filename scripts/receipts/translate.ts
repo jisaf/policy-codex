@@ -364,17 +364,33 @@ export function translatePerson(
   if (app && (lot30 !== undefined || lump30 !== undefined)) {
     const am = app.slice(0, 7), bm = addMonths(am, -1);
     const start = addDays(app, -((Date.UTC(+am.slice(0, 4), +am.slice(5, 7) - 1, 1) - Date.UTC(+bm.slice(0, 4), +bm.slice(5, 7) - 1, 1)) / 86400000));
-    const inside = addDays(app, -1);
-    const outsideFor = (m: string | undefined) => (m === bm ? addDays(start, -1) : addDays(app, 1));
+    // A date inside the period in the receipt's own month (the application
+    // date, or the last day of the month before), and one outside it: the
+    // day before the period starts, or the day after the application. When
+    // the record's month has no day outside the period, it stays undated.
+    const lastOfBm = addDays(`${am}-01`, -1);
+    const dayBefore = addDays(app, -1);
+    const insideFor = (m: string | undefined) => (m === bm ? lastOfBm : dayBefore.slice(0, 7) === am ? dayBefore : app);
+    const inside = insideFor(am);
+    const outsideFor = (m: string | undefined): string | undefined => {
+      const d = m === bm ? addDays(start, -1) : addDays(app, 1);
+      if (d.slice(0, 7) !== (m ?? am)) { notes.push(`${id}: no day of ${m ?? am} is outside the income verification period; the receipt is left undated`); return undefined; }
+      return d;
+    };
+    const isIn = (r: Receipt) => r.date === insideFor(am) || r.date === lastOfBm;
+    const setDate = (r: Receipt, d: string | undefined) => { if (d === undefined) delete r.date; else r.date = d; };
     const inWin = (r: Receipt) => r.frequency === "once" && (r.month === undefined || r.month === am || r.month === bm);
     const place = (cands: Receipt[], target: number, mk: () => Receipt, what: string) => {
       let left = target;
       for (const r of cands) {
         const amt = r.amount as number;
-        if (left <= 1e-9) { r.date = outsideFor(r.month as string | undefined); continue; }
-        if (amt <= left) { r.date = inside; left -= amt; continue; }
-        receipts.push({ ...r, amount: amt - left, date: outsideFor(r.month as string | undefined) });
-        r.amount = left; r.date = inside; left = 0;
+        const rm = r.month as string | undefined;
+        if (left <= 1e-9) { setDate(r, outsideFor(rm)); continue; }
+        if (amt <= left) { r.date = insideFor(rm); left -= amt; continue; }
+        const rest: Receipt = { ...r, amount: amt - left };
+        setDate(rest, outsideFor(rm));
+        receipts.push(rest);
+        r.amount = left; r.date = insideFor(rm); left = 0;
       }
       if (left > 1e-9) {
         receipts.push({ ...mk(), amount: left, month: inside.slice(0, 7), date: inside });
@@ -395,11 +411,11 @@ export function translatePerson(
       place(cands, lump30, () => ({ kind: "other_nontaxable", frequency: "once" }), "lump_sum_received_prior_thirty_days");
       const rss30 = num(pf.retroactive_social_security_lump_sum_received_prior_thirty_days) ?? 0;
       const rssi30 = num(pf.retroactive_ssi_or_public_assistance_lump_sum_received_prior_thirty_days) ?? 0;
-      const retroIn = receipts.filter((r) => r.retroactive && r.date === inside).reduce((t, r) => t + (r.amount as number), 0);
+      const retroIn = receipts.filter((r) => r.retroactive && isIn(r)).reduce((t, r) => t + (r.amount as number), 0);
       if (rss30 + rssi30 > retroIn + 1e-9) {
         // the thirty-day retroactive parts the month facts do not state
         let left = rss30 + rssi30 - retroIn;
-        for (const r of receipts.filter((x) => x.date === inside && x.kind === "other_nontaxable" && !x.retroactive)) {
+        for (const r of receipts.filter((x) => isIn(x) && x.kind === "other_nontaxable" && !x.retroactive)) {
           if (left <= 1e-9) break;
           const a = r.amount as number;
           const take = Math.min(a, left);
@@ -413,7 +429,7 @@ export function translatePerson(
       const ins = num(pf.insurance_proceeds_spent_on_covered_costs_prior_thirty_days) ?? 0;
       const ref = num(pf.refugee_resettlement_grant_received_prior_thirty_days);
       if (liq > 0 || ins > 0) {
-        const h = receipts.find((r) => r.kind === "other_nontaxable" && r.date === inside && !r.retroactive);
+        const h = receipts.find((r) => r.kind === "other_nontaxable" && isIn(r) && !r.retroactive);
         if (h && liq > 0) {
           const a = h.amount as number;
           if (liq >= a) h.kind = "resource_liquidation";
@@ -423,7 +439,7 @@ export function translatePerson(
         if (!h) notes.push(`${id}: liquidation or insurance part with no one-time receipt`);
       }
       if (ref !== undefined && ref > 0) {
-        const inRef = receipts.filter((r) => r.kind === "refugee_resettlement" && r.date === inside).reduce((t, r) => t + (r.amount as number), 0);
+        const inRef = receipts.filter((r) => r.kind === "refugee_resettlement" && isIn(r)).reduce((t, r) => t + (r.amount as number), 0);
         if (Math.abs(inRef - ref) > 1e-9) notes.push(`${id}: refugee_resettlement_grant_received_prior_thirty_days ${ref} against ${inRef} placed in the period`);
       }
     }
@@ -478,9 +494,11 @@ export function translateCase(c: HouseholdCase, ix: LedgerIndex, choices?: Choic
   return { value: out, notes, changed };
 }
 
-/** A rule test with each person's receipts (re)written from its old facts,
- *  routed as makeCase routes a test's facts: a person-month value stated
- *  plainly is the test month's (or every month's, with no test month). */
+/** A rule test with each person's receipts (re)written from its old facts.
+ *  A person-month value stated plainly is the test month's (makeCase); it is
+ *  restated as a recurring receipt with no month, which the test month reads
+ *  the same, so the test's receipts stay as short as its facts. A value
+ *  keyed by month is stated for its months. */
 export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choices?: Choices): Translated<TestSpec> {
   const out = clone(t);
   const notes: string[] = [];
@@ -495,8 +513,7 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
       if (it?.scope === "person-month") {
         if (v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).every((x) => /^\d{4}-\d{2}$/.test(x))) {
           for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
-        } else if (testMonth === null) s.md[k] = v;
-        else (s.months[testMonth] ??= {})[k] = v;
+        } else s.md[k] = v;
       } else s.facts[k] = v;
     }
     persons.set(pid, s);

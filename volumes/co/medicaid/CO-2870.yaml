@@ -1,18 +1,18 @@
 id: CO-2870
-name: "ma has unearned income for verification"
+name: ma has unearned income for verification
 identifier: ma_has_unearned_income_for_verification
 kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person has unearned income in the month that Medical Assistance counts, and so an unearned-income element to verify: for an aged, blind or disabled person (the SSI method), any unearned income; otherwise MAGI-based income, which counts Social Security, pensions, unemployment, other taxable income and tax-exempt interest, and not child support received, Colorado Works or Adult Financial cash assistance, or other non-taxable income (42 CFR 435.603(e), S164-S167)."
-derived: [case, [ma_is_aged_blind_or_disabled, [">", [+, social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], 0]], [else, [">", [+, social_security_income, pension_income, unemployment_income, other_unearned_income_taxable, tax_exempt_interest], 0]]]
+derived: [case, [ma_is_aged_blind_or_disabled, [">", ["+", social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], 0]], [else, [">", ["+", social_security_income, pension_income, unemployment_income, other_unearned_income_taxable, tax_exempt_interest], 0]]]
 sources: [S164, S165, S166, S167]
 implemented: engine
 tags: [ma, income, verification]
 rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
 nearest: [CO-2871, CO-2872, CO-2873, CO-2874]
 tests:
-  - {id: CO-2870-T1, title: "Only the Colorado Works grant", month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, tanf_cash_income: 488, ma_is_aged_blind_or_disabled: false}, expect: false}
-  - {id: CO-2870-T3, title: "Child support received by an aged person (the SSI method)", month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: true}, expect: true}
-  - {id: CO-2870-T2, title: "Child support received", month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: false}, expect: false}
+  - {id: CO-2870-T1, month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, tanf_cash_income: 488, ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: false}
+  - {id: CO-2870-T3, month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: true, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received by an aged person (the SSI method)", expect: true}
+  - {id: CO-2870-T2, month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received", expect: false}

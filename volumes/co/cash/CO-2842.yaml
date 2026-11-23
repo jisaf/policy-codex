@@ -5,13 +5,13 @@ kind: derived
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: "Whether the person is a half sibling of a dependent child and receives child support, an optional member of the assistance unit whom the caretaker decides whether to include (9 CCR 2503-6 3.604.2.C.2.d, S1625). A half sibling who receives no child support is a mandatory member (C.1.d)."
-precision: "Child support received for the person (child_support_received, CO-028) in the determination month above zero."
+meaning: Whether the person is a half sibling of a dependent child and receives child support, an optional member of the assistance unit whom the caretaker decides whether to include (9 CCR 2503-6 3.604.2.C.2.d, S1625). A half sibling who receives no child support is a mandatory member (C.1.d).
+precision: Child support received for the person (child_support_received, CO-028) in the determination month above zero.
 derived: [all, [exists, half_siblings, [of, [P], cw_is_dependent_child]], [">", [at, child_support_received, [det_month]], 0]]
 sources: [S1625]
 implemented: engine
 tags: [cash, tanf, household]
 rationale: "Same-word audit SW-2: the half-sibling arm of cw_is_optional_member_by_custody_or_support (CO-2347) was entered by hand; it follows from the parent edges and the child support the half sibling receives."
 tests:
-  - {id: CO-2842-T1, title: "Half brother of the dependent child, child support 300", month: "2026-11", as_of: "2026-11-01", given: {child_support_received: 300}, others: {p2: {}, p3: {cw_is_dependent_child: true}, p4: {}}, relationships: [[parent, p2, p1], [parent, p2, p3], [parent, p4, p3]], expect: true}
-  - {id: CO-2842-T2, title: "Half brother with no child support", month: "2026-11", as_of: "2026-11-01", given: {child_support_received: 0}, others: {p2: {}, p3: {cw_is_dependent_child: true}, p4: {}}, relationships: [[parent, p2, p1], [parent, p2, p3], [parent, p4, p3]], expect: false}
+  - {id: CO-2842-T1, month: "2026-11", as_of: "2026-11-01", given: {child_support_received: 300, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support, amount: 300}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "Half brother of the dependent child, child support 300", others: {p2: {}, p3: {cw_is_dependent_child: true}, p4: {}}, relationships: [[parent, p2, p1], [parent, p2, p3], [parent, p4, p3]], expect: true}
+  - {id: CO-2842-T2, month: "2026-11", as_of: "2026-11-01", given: {child_support_received: 0, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "Half brother with no child support", others: {p2: {}, p3: {cw_is_dependent_child: true}, p4: {}}, relationships: [[parent, p2, p1], [parent, p2, p3], [parent, p4, p3]], expect: false}
