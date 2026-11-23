@@ -59558,3 +59558,123 @@
         2026-11: 2500
       ma_ltc_eligibility_status:
         2026-11: eligible_institutional
+
+- id: CO-486
+  title: 'Adult Financial H-3 fix round: donated work hours in a 2025 month read the 2025 Colorado minimum wage'
+  # Fix round for docs/reviews/coverage3-adult-financial.md H-3. 9 CCR 2503-5 3.520.784.B: donated work is valued at "The
+  # going rate in the community for similar work" or "The current minimum wage standard, whichever is greater"; the 2025
+  # PAY CALC Order (7 CCR 1103-14, effective January 1, 2025; D-346): "Full Colorado minimum wage $14.81 per hour".
+  # p1, 69, single, Social Security 600, savings 1,200, determined 2025-10-01. She keeps the books for her church six hours a
+  # week, regular and scheduled work the church would otherwise have to hire someone for (3.520.784.A), 26 hours in
+  # October; the going community rate for the work is 12.00 an hour.
+  # Donated work income: 26 x max(12.00, 14.81) = 385.06. Before the fix colorado_minimum_wage had no 2025 version, so the
+  # figure was unknown for a 2025 month. Countable income stays under the 2025 OAP standard (1,005): oap.
+  as_of: "2025-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        federal_tax_refunds_held_value: 0
+        donated_work_meets_paid_work_tests: true
+        donated_work_community_hourly_rate: 12
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+        donated_work_hours_in_month: 26
+        donated_work_hours_per_week: 6
+  expect:
+    p1:
+      af_donated_work_income:
+        2025-10: 385.06
+      af_category:
+        2025-10: oap
+
+- id: CO-487
+  title: 'Adult Financial H-4 (OQ-901): an Old Age Pension client in a private psychiatric hospital is paid on the draft reading'
+  # Records the assumption of OQ-901 (docs/reviews/coverage3-adult-financial.md H-4, needs Legal). C.R.S. 26-2-111(1)(d)
+  # bars a patient "in any institution for tuberculosis or mental diseases" but "shall not be applicable to or in any way
+  # affect the class of old age pension recipients provided for in subsection (2)(a)(III)" (an inmate of a non-penal
+  # institution maintained by the state, a municipality or a county). 9 CCR 2503-5 3.520.61.B bars only correctional inmates
+  # and 3.532.D.3 gives an OAP client in a psychiatric facility a personal needs allowance.
+  # p1, 70, single, Social Security 600, savings 500, a patient in a licensed private psychiatric hospital since
+  # 2026-08-01. Draft reading (OQ-901's assumption): the (1)(d) bar is not read for OAP: af_category oap. Read literally,
+  # the proviso spares only the (2)(a)(III) class, and this client would be none. AND-SO in the same setting is barred
+  # (CO-303).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: psychiatric_hospital
+        date_of_birth: "1956-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        af_has_met_and_so_benefit_application_duty: true
+        institution_entry_date: "2026-08-01"
+        residence_setting_is_licensed_or_certified: true
+        residence_setting_operated_by_government: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_category:
+        2026-10: oap

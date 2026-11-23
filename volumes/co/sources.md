@@ -22320,3 +22320,25 @@ Document: D-46
 > (ii)
 >
 > at the option of the State, any items or services under the State plan (but not including medical assistance for medicare cost-sharing or for benefits described in section 1396a(a)(10)(E) of this title ).
+
+### S3752. Colorado minimum wage for 2025: $14.81 per hour (PAY CALC Order, effective January 1, 2025)
+
+Document: D-346
+
+7 CCR 1103-14 Rule 1.1, 1.2 (A) (rule version 11747, effective 01/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=11747&fileName=7%20CCR%201103-14
+
+> Adopted November 7, 2024, effective January 1, 2025.
+>
+> ...
+>
+> Coverage and Application. Following are the 2025 minimum pay and income levels and future
+> adjustments in each cited COMPS Order rule, and/or mandated by constitutional, statutory, or
+> rule provisions the COMPS Order implements, or from which it derives.
+>
+> Minimum Pay Level in
+> 2025 Level
+> COMPS Order Rule
+> (Yearly Calculation)
+> Full Colorado minimum wage $14.81 per hour
+> (A)
+> (R. 3.1)
