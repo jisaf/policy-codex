@@ -11,7 +11,8 @@ derived: ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_mont
 sources: [S2618, S3217]
 implemented: engine
 tags: [cash, resources]
-rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Read by af_life_insurance_countable_value_for_oap and af_life_insurance_countable_value_other_than_oap (CO-4001, CO-4002) for the person and the spouse, in place of life_insurance_face_value (CO-3397)."
+rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Read by af_life_insurance_countable_value_for_oap and af_life_insurance_countable_value_other_than_oap (CO-4001, CO-4002) for the person and the spouse, in place of life_insurance_face_value (CO-3397). Not the same figure as af_life_insurance_premiums_in_lookback (CO-5349): both total one field over the person's life insurance records, the original face value here (3.520.75.D), the premiums of the forty-eight months there (E.2)."
+nearest: [CO-5349]
 tests:
   # Hand-computed from 9 CCR 2503-5 3.520.75.A, D (S2618).
   - {id: CO-5347-T1, title: "Two policies of $1,000 and $10,000 face: 11,000", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 300, face_value: 1000}, {kind: life_insurance, value: 5000, face_value: 10000}]}, expect: 11000}
