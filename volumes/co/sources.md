@@ -22997,3 +22997,25 @@ Document: D-47
 > (B)
 >
 > the amount of monthly income otherwise available to the community spouse (determined without regard to such an allowance).
+
+### S4420. CCDF: a child eligible for child care services is under 13, or at the Lead Agency's option under 19 and incapable of self-care or under court supervision
+
+Document: D-442
+
+45 CFR 98.20(a)(1) (eCFR as of 2026-11-19, retrieved 2026-11-23). https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-98/subpart-C/section-98.20
+
+> (a) To be eligible for services under § 98.50, a child shall, at the time of eligibility determination or redetermination:
+>
+> (1)(i) Be under 13 years of age; or,
+>
+> (ii) At the option of the Lead Agency, be under age 19 and physically or mentally incapable of caring for himself or herself, or under court supervision;
+
+### S4421. CCCAP: the entry income eligibility level is the level above which a caretaker is not eligible at original application
+
+Document: D-87
+
+8 CCR 1403-1 3.103.YY (version effective 2026-08-14, re-fetched 2026-11-23 and unchanged). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> YY. “Entry income eligibility level” means the level set by the Department for each
+> county above which an adult caretaker(s) or teen parent(s) is not eligible at
+> original application.

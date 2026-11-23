@@ -3071,3 +3071,13 @@ Owner: Energy assistance (LEAP) policy owner
 Assumption: The gross payment counts; the cost of providing the room or meals is not deducted.
 
 Checked 2026-11-23: 9 CCR 2503-7 3.752.21, 3.752.211, 3.752.23 (D-86, re-fetched 2026-11-23); none names boarders, lodgers or a room-and-board cost.
+
+### OQ-1163. CCCAP Child Welfare Child Care: whether "from birth to the age of thirteen" reaches a child of thirteen
+
+Body: 8 CCR 1403-1 3.103.UU (S2853) defines an eligible child as "a child, from birth to the age of thirteen (13) years", and 3.111.F (S482) "from birth to the age thirteen (13) years"; neither says whether a child of thirteen is included (T-9 hand check A-8, docs/reviews/t9-threshold-handcheck.md). For Low-Income and Colorado Works child care, paid from the Child Care and Development Fund, 45 CFR 98.20(a)(1)(i) (S4420) settles it: a child must "Be under 13 years of age", so cccap_is_child_of_eligible_age_needing_care (CO-4056) reads "under thirteen" (CO-4056-T7). Child Welfare Child Care "is not funded through the Child Care Development Fund" (3.120.F, S2853), so the federal limit does not bind it, and its eligible child rests on the state words alone. The volume reads them the same way for it. Items: CO-4056, CO-989.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A child is an eligible child by age until the thirteenth birthday, in Child Welfare Child Care as in the CCDF-funded programs.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.120.F (D-87, rule version 12658, re-fetched from the Secretary of State on 2026-11-23, unchanged) and 45 CFR 98.20(a)(1) (D-442, eCFR as of 2026-11-19). No state text names the thirteenth birthday.
