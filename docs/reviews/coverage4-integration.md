@@ -9,8 +9,10 @@ The integration owner's round for the coverage pass 4 merge wave, on ccr-9d19bf4
 | d4cced5 | The classification (sections 3 and 4): scripts/records/allowed/coverage4-integration.yaml (earnings, new), scripts/records/allowed/h4-coverage4-integration.yaml (holdings, new), the integration section of scripts/receipts/allowed-differences.yaml; the cash section's fourteen SSI-method entries for CO-311 and CO-313, written on a ledger without N4-4 and matching nothing now, removed; CO-580's two N4-3 entries moved from allowed/c4-nonmagi.yaml to the integration file (its baseline values moved with the restatement). Child support on the child's list in CO-133, CO-456, CO-562 and CO-580 (section 5); CO-133's and CO-456's retired child_support_received moved to the child with it (scripts/receipts/retired-facts.yaml); CO-580's Colorado Works person expectations |
 | da04219 | Merge origin ccr-9d19bf4c-wmnwcl at 534d7e4 (the coverage pass 5 review of CCCAP, LEAP and SUN Bucks; docs only) |
 | b3e8870 | The change record volumes/co/changes/2026-11-23-coverage4-integration.yaml, docs/plan-colorado.md "Coverage pass 4 integration", this review |
-| 97b7df4 | Merge origin ccr-9d19bf4c-wmnwcl at 44a4dac (the coverage pass 5 review of MAGI Medicaid and CHP+; docs only) before the final gate |
-| (last) | Gate figures (section 8); harness results |
+| 97b7df4 | Merge origin ccr-9d19bf4c-wmnwcl at 44a4dac (the coverage pass 5 review of MAGI Medicaid and CHP+; docs only) |
+| 82f79b8 | Gate figures on 97b7df4; harness results |
+| df9e65b | Merge origin ccr-9d19bf4c-wmnwcl at e647703 (coverage pass 4 fixes for SNAP's resource test), which had classified the same merge-wave differences (section 3, note): one entry per difference, so this round's duplicates are dropped (allowed/h4-coverage4-integration.yaml removed; fourteen entries of allowed/coverage4-integration.yaml and the receipts integration section's sixteen CO-311 and CO-313 entries); the child support placement entries (I4-5) stay |
+| (last) | This review brought to the merged state; gate figures (section 8); harness results |
 
 ## 2. What the merged head reported
 
@@ -28,6 +30,8 @@ The brief listed the receipts harness as OK; run with `--all-programs` on the me
 
 ## 3. Classification
 
+**Note after merging e647703.** The SNAP resources round, merged and pushed while this round was running, met the same 116 differences at its merge bases and allowed each precisely with its traced cause (scripts/records/allowed/h1-coverage4-snap-resources.yaml, e1-coverage4-snap-resources.yaml and its section of scripts/receipts/allowed-differences.yaml). Every one of this round's entries for I4-1 to I4-4 matched a difference one of those entries already matched (checked tuple by tuple: case, person, figure, month, both values), so they were dropped; the tables below remain the trace this round made, and agree with that round's classes, with one addition on CO-100 (section 4.3). The entries this round keeps are I4-5's, the differences its own restatement brought (section 5): 2 in allowed/coverage4-integration.yaml, 2 in the receipts file's integration section (5 values).
+
 | Class | Kind | Values (earnings / holdings / receipts) | What |
 |---|---|---|---|
 | I4-1 | (b) | 20 / 12 / 22 | Non-MAGI N4-4 on the households the cash round restated for CA4-1 (section 4.1) |
@@ -37,7 +41,7 @@ The brief listed the receipts harness as OK; run with `--all-programs` on the me
 | I4-5 | (b) | 2 / 0 / 3 | This round's restatement of child support on the child's list (section 5) |
 | **Total** | | **22 / 74 / 25 = 121** | (a) a real defect of two rounds interacting: none; (b) 121; (c) a translator or harness-input artefact: none |
 
-The 116 of section 2 and the 5 the restatement of section 5 brought (CO-580's two N4-3 values in the earnings harness took new baseline values, and three of CO-133's and CO-456's values moved off an earlier class's exact value) are each in one entry: allowed/coverage4-integration.yaml (16 entries), allowed/h4-coverage4-integration.yaml (50), scripts/receipts/allowed-differences.yaml's integration section (18).
+Before the merge of e647703, the 116 of section 2 and the 5 the restatement of section 5 brought (CO-580's two N4-3 values in the earnings harness took new baseline values, and three of CO-133's and CO-456's values moved off an earlier class's exact value) are each in one entry: allowed/coverage4-integration.yaml (16 entries), allowed/h4-coverage4-integration.yaml (50), scripts/receipts/allowed-differences.yaml's integration section (18).
 
 ## 4. The classes
 
@@ -63,7 +67,7 @@ CO-159's student turns 18 after the first of the month; CA4-15 made the dependen
 
 ### 4.3 I4-3: CO-100's SNAP transfer finding
 
-The non-MAGI round stated, for N4-13, the facts its readers now require on every stored household that reached them, each with the value the reader gave it unstated; on CO-100 (a Colorado Works application, a mother and son) residence_setting_type private_dwelling among them. That fact also settles the baseline's SNAP household, so the baseline (0224913, reading the scalar resource facts) now answers snap_is_disqualified_for_resource_transfer for November 2026: false, for p1 and p2. The ledger on disk reads it from holdings, which CO-100 does not state: cannot determine, the SNAP track's class H1S-D4-1 (decision 4), which the SNAP track's file allows for every stored household that states no holdings and showed a difference then. CO-100 was not in that list only because its baseline was also cannot determine before N4-13's statement. Its story says nothing of resources ("Applicant mother, no income"), so holdings are not invented.
+The non-MAGI round stated, for N4-13, the facts its readers now require on every stored household that reached them, each with the value the reader gave it unstated; on CO-100 (a Colorado Works application, a mother and son) residence_setting_type private_dwelling among them. That fact also settles the baseline's SNAP household, so the baseline (0224913, reading the scalar resource facts) now answers snap_is_disqualified_for_resource_transfer for November 2026: false, for p1 and p2. The ledger on disk reads it from holdings, which CO-100 does not state: cannot determine, the SNAP track's class H1S-D4-1 (decision 4), which the SNAP track's file allows for every stored household that states no holdings and showed a difference then. CO-100 was not in that list only because its baseline was also cannot determine before N4-13's statement (checked: the baseline ledger with CO-100's text less the stated residence_setting_type gives cannot determine again). The SNAP resources round's entry for these two values names the new side's other unstated facts (the November household's dwelling_id and categorical eligibility read per month, S4-11 and S4-19, besides H1S-D4-1); both readings are true of the new value, and the old value's move is N4-13's. Its story says nothing of resources ("Applicant mother, no income"), so holdings are not invented.
 
 ### 4.4 I4-4: N4-13's holdings fields on the other tracks' generated bases
 

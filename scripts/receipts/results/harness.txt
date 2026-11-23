@@ -1,6 +1,6 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks, ColoradoWorks, CCCAP, Medicaid, CHP+; 237 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 236 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ Stored households written in receipts alone (no old statement to compare; checke
 - R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C): 7 household(s): CO-125, CO-133, CO-134, CO-135, CO-454, CO-455, CO-456
 - EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1): 7 household(s): CO-125, CO-133, CO-134, CO-135, CO-454, CO-455, CO-456
 - M2 VA Aid and Attendance stated inside a pension is a veterans' benefit: 4 household(s): CO-139, CO-212, CO-214, CO-396
+- coverage pass 4 integration I4-5 (b): the child support placement (non-MAGI N4-11, cash CA4-5; receipts, CO-5000: child_support on the list of the child it is paid for): CO-133 and CO-456 now state the mother's $600 of support on the list of the child it is paid for (p3), so her own figures leave it out: SNAP gross income 2,150 (her earned income, records E1 integration I-1) and the Colorado Works budgetary deemed income 2,510 - 600 = 1,910; the baseline reads the scalar facts the thirty-day household no longer states (EI-1): 2 household(s): CO-133, CO-456
 - EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4): 6 household(s): CO-136, CO-182, CO-322, CO-382, CO-383, CO-387
 - coverage pass 4 non-MAGI N4-8 (20 CFR 416.1207(a), S4501: "Resources determinations are made as of the first moment of the month"): a holding given away in a month is still held at that month's first moment and in the months before (CO-131's gifts of 2026-09-02 and 2026-10-02: September 500 + 1,000 + 1,000 = 2,500 > 2,000, not aged; the determination month October 500 + 1,000 = 1,500); the family planning status then reads facts the household does not state: 1 household(s): CO-131
 - coverage pass 4 SNAP S4-14: the quarters with a federal means-tested benefit are read with no default (decision 4): 1 household(s): CO-169
@@ -556,10 +557,10 @@ allowed (D4-1 sponsor money with the receipts not stated is cannot determine (de
 allowed (D4-1 sponsor money with the receipts not stated is cannot determine (decision 4)) S CO-141 p3 cw_sponsor_contributions_counted @2026-10: old 0 new unknown
 allowed (coverage pass 4 L4-4: LEAP reads each age on the application date (leap_age_on_application_date, CO-6400; 9 CCR 2503-7 3.752.2, 3.751.1 Point in Time); a household that states no LEAP application date cannot determine the LEAP figures that turn on a member's age (decision 4 of 2026-11-23)) S CO-142 p3 leap_zero_income_verification_is_pending @2026-10: old false new unknown
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-133 p1 leap_household_income @2026-11: old unknown new 2600
-allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-133 p1 snap_person_gross_income @2026-11: old unknown new 2750
+allowed (coverage pass 4 integration I4-5 (b): the child support placement (non-MAGI N4-11, cash CA4-5; receipts, CO-5000: child_support on the list of the child it is paid for): CO-133 and CO-456 now state the mother's $600 of support on the list of the child it is paid for (p3), so her own figures leave it out: SNAP gross income 2,150 (her earned income, records E1 integration I-1) and the Colorado Works budgetary deemed income 2,510 - 600 = 1,910; the baseline reads the scalar facts the thirty-day household no longer states (EI-1)) S CO-133 p1 snap_person_gross_income @2026-11: old unknown new 2150
 allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-133 p1 snap_person_earned_income @2026-11: old unknown new 2150
-allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-133 p1 cw_budgetary_member_deemed_income @2026-11: old unknown new 2510
-allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-133 p1 cccap_person_countable_income @2026-11: old unknown new 2600
+allowed (coverage pass 4 integration I4-5 (b): the child support placement (non-MAGI N4-11, cash CA4-5; receipts, CO-5000: child_support on the list of the child it is paid for): CO-133 and CO-456 now state the mother's $600 of support on the list of the child it is paid for (p3), so her own figures leave it out: SNAP gross income 2,150 (her earned income, records E1 integration I-1) and the Colorado Works budgetary deemed income 2,510 - 600 = 1,910; the baseline reads the scalar facts the thirty-day household no longer states (EI-1)) S CO-133 p1 cw_budgetary_member_deemed_income @2026-11: old unknown new 1910
+allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-133 p1 cccap_person_countable_income @2026-11: old unknown new 2000
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-133 p1 cccap_household_income @2026-11: old unknown new 2600 expected 2600 (new matches)
 allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-133 p1 ma_community_spouse_income @2026-11: old unknown new 2000
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-133 p1 cccap_eligibility_status @2026-11: old unknown new "eligible_low_income" expected "eligible_low_income" (new matches)
@@ -1675,9 +1676,9 @@ allowed (EM-R4 (D-M2 fixed) the Disabled Adult Child income is the SSI-related i
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-455 p3 cccap_verification_status @2026-11: old unknown new "pending"
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-455 p3 cccap_pending_verification_count @2026-11: old unknown new 1
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-456 p1 leap_household_income @2026-11: old unknown new 2600
-allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-456 p1 snap_person_gross_income @2026-11: old unknown new 2750
+allowed (coverage pass 4 integration I4-5 (b): the child support placement (non-MAGI N4-11, cash CA4-5; receipts, CO-5000: child_support on the list of the child it is paid for): CO-133 and CO-456 now state the mother's $600 of support on the list of the child it is paid for (p3), so her own figures leave it out: SNAP gross income 2,150 (her earned income, records E1 integration I-1) and the Colorado Works budgetary deemed income 2,510 - 600 = 1,910; the baseline reads the scalar facts the thirty-day household no longer states (EI-1)) S CO-456 p1 snap_person_gross_income @2026-11: old unknown new 2150
 allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-456 p1 snap_person_earned_income @2026-11: old unknown new 2150
-allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-456 p1 cccap_person_countable_income @2026-11: old unknown new 2600
+allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-456 p1 cccap_person_countable_income @2026-11: old unknown new 2000
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-456 p1 cccap_household_income @2026-11: old unknown new 2600
 allowed (EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)) S CO-456 p1 ma_community_spouse_income @2026-11: old unknown new 2000
 allowed (R-30 thirty-day household restated in dated earnings (3.111.H.4-5; 3.752.22.B-C)) S CO-456 p1 leap_is_eligible @2026-11: old unknown new true
