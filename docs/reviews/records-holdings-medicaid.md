@@ -109,5 +109,5 @@ origin ccr-9d19bf4c-wmnwcl fetched before the gate: still at 0224913 (nothing to
 | `npx vitest run` | 1,145 tests pass (102 files), after the UI pins moved by the track were re-pinned with their reasons (figures 471; the question queue 182, 21 partly settled; the Medicaid policy owner 63 and 5; the HCPF persona 71 and 7, 78; rule lines over the limit 52) |
 | `npm run records:harness -- --list holdings --track medicaid` | OK: 0 unexplained (section 8) |
 | `npm run records:harness -- --list earnings --all-programs` | OK: 0 unexplained |
-| `npm run receipts:harness -- --all-programs` | RECEIPTS-RESULT |
-| `CHECK_BASE=origin/main npm run check` | CHECK-RESULT |
+| `npm run receipts:harness -- --all-programs` | OK: 0 unexplained (319 stored households, 1,198 values differ, all allowed; 1,626 generated, 7,258 differ, all allowed: the earlier classes, the H1 classes on the stored households and HM-R1 on the generated ones) |
+| `CHECK_BASE=origin/main npm run check` | OK; conformance self-check OK; rule tests 4,849 of 4,849; households 3,864 of 3,865 (CO-387's CHP+ copayment band, a known failure before H1); 28 change-impact flags, 28 dispositioned (volumes/co/changes/2026-11-23-holdings-medicaid.yaml: five new) |
