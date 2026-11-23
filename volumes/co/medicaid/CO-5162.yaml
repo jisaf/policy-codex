@@ -12,7 +12,7 @@ sources: [S3754]
 implemented: engine
 tags: [ma, magi, income]
 rationale: "Earned-income records, step E1 (Medicaid and CHP+): the Difficulty of Care payments read from the earnings records through the MAGI counting table."
-nearest: [CO-5214]
+nearest: [CO-5214, CO-1703, CO-5161, CO-5172, CO-5175, CO-5178]
 tests:
   - {id: CO-5162-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 400}, {kind: difficulty_of_care_payment, amount: 1800}]}, title: "Difficulty of Care 1,800; wages not read: 1,800", expect: 1800}
   - {id: CO-5162-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 400}]}, title: "None: 0", expect: 0}

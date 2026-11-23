@@ -12,7 +12,7 @@ sources: [S3617]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "Earned-income records, step E1 (Medicaid and CHP+): the exempt earned income read through the counting table, not a named fact subtracted from wages_gross."
-nearest: [CO-2471]
+nearest: [CO-2471, CO-1703, CO-5161, CO-5162, CO-5175, CO-5178]
 tests:
   - {id: CO-5172-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 900}, {kind: decennial_census_employment, amount: 600}]}, title: "Census wages 600 exempt (F.6.z); wages not: 600", expect: 600}
   - {id: CO-5172-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 900}]}, title: "None: 0", expect: 0}

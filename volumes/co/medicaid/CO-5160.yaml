@@ -11,6 +11,7 @@ derived: [sum_receipts, earnings, [all, [received_in, [month]], [any, [in, [look
 sources: [S165, S166, S3754, S4340]
 implemented: engine
 tags: [ma, magi, income]
+open: [OQ-1121, OQ-1123]
 rationale: "Earned-income records, step E1 (Medicaid and CHP+): MAGI's pay from employment read from the earnings records through its counting table, so a part of a pay is never stated twice and no kind is counted by silence (design decisions D1, D4)."
 nearest: [CO-5501, CO-5161]
 tests:

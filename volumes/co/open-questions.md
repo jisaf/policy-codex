@@ -2994,6 +2994,8 @@ Checked 2026-11-23: 9 CCR 2503-6 3.605.2.C, 3.605.4.B.13-16 (D-81). Items: CO-51
 
 Body: 10 CCR 2505-10 8.100.3.K (S4107), the general income rules the SSI-related method relies on, says three things the ledger does not read today: earned income is "payment in cash or in kind for services performed" and earned in-kind income is compensation "in shelter or other items in lieu of wages" (K.3-4), but no SSI-method item reads in_kind_compensation_value (CO-4506); board, room, and room and board payments are earned income above the one-person food stamp allotment per boarder and the documented costs (K.10.c-e), but no SSI-method item reads room_and_board_payments_received (CO-4161) or the payments for a room or meals only; and WIA wages paid to a dependent child applying for or receiving Medical Assistance are exempt for up to six months a calendar year (K.8.c), but the SSI method counts every WIOA on-the-job training wage as part of wages_gross. The earnings table (ma_ssi_earnings_treatment_table, CO-5107) keeps today's readings (not_counted_text_counts, counted_text_excludes) so step E0 changes no answer; the Medicaid E1 track decides each as a cited difference. If K.3-4 and K.10 apply to the SSI method as written, today's reading is a wrong answer (a P1 candidate) for an SSI-method household with in-kind pay or boarders.
 
+Resolved (earned-income records, Medicaid and CHP+ track E1, 2026-11-23; docs/reviews/records-earnings-medicaid.md): the text settles each part, and the Medicaid E1 track fixed the three rows as cited differences. 8.100.5.F.1 (S3001) sends the ABD programs to 8.100.3 for general income types, and 8.100.3.K is written for Medical Assistance as a whole. (1) Pay in kind: K.3-4 (S4107) and 20 CFR 416.1110(a)(3) (S4342) make it earned income; the SSI table counts in_kind_pay at its stated value (row counted). (2) Boarders: K.10.c-e count board, room, and room and board payments as earned income to the extent they exceed the one-person food stamp allotment per boarder (meals, room and board) and the documentable costs; ma_ssi_boarder_earned_income (CO-5177) reads each record's boarders and provides and the boarder provision costs (rows counted_above_boarder_allowance, deducted_from_boarder_payments), foster care payments exempt (F.6.l). Before, the SSI method counted payments for a room or meals only in full as unearned income and room and board payments not at all. (3) WIOA wages: K.8.c exempts them for a dependent child (8.100.1, S4341) applying for or receiving Medical Assistance for up to six months a calendar year (ma_ssi_excluded_wioa_wages, CO-5179; row exempt_dependent_child_six_months); K.8.a counts a caretaker relative's. Two narrower points the text leaves open are recorded apart: a domestic or agricultural worker's in-kind pay (OQ-1120). Items: CO-5107, CO-5170, CO-5171, CO-5177, CO-5178, CO-5179, CO-2471.
+
 Class: state policy choice
 Owner: Medicaid policy owner
 Assumption: Today's readings, until the Medicaid E1 track rewires the SSI method's earned income.
@@ -3003,6 +3005,8 @@ Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.8, K.10 and 8.100.5.F.4 (D-6
 ### OQ-1024. Adult Financial and Medicaid MAGI: combat-zone pay stated as part of wages
 
 Body: The earnings kind uniformed_services_special_pay (CO-5100) states special pay from a uniformed service for hazardous or combat duty, which today is stated two ways: as a receipt of that kind (37 U.S.C. 310 pay), and as combat_zone_pay_received (CO-4310), part of wages_gross, which only SNAP reads (4.405.2.A.12 excludes combat pay). Adult Financial's receipt table excludes the 310 pay (3.520.786, 20 CFR 416.1124(c)(19)) and Medicaid's MAGI receipt table does not count it (not_taxable_income), but both count combat-zone pay stated inside wages_gross. Each earnings table carries the receipt row's reading (excluded, not_taxable_income); the Adult Financial and Medicaid E1 tracks confirm it against the text, or keep the wages reading for pay that is not 310 special pay. No stored household or rule test states either.
+
+Resolved for Medicaid MAGI (earned-income records, Medicaid and CHP+ track E1, 2026-11-23): 26 U.S.C. 112 (S4340, D-4340) leaves out of gross income the compensation for active service of an enlisted member for any month served in a combat zone (a), and of an officer up to the maximum enlisted amount, which includes the officer's own 37 U.S.C. 310 special pay (b), (c)(5)(B); MAGI follows the federal tax figure (42 CFR 435.603(e), S165). The MAGI earnings row for uniformed_services_special_pay is excluded_in_combat_zone: special pay with combat_zone is not counted, and special pay outside a combat zone is compensation for services, counted (8.100.4.C.1.a.v, S166). The Medicaid receipt row for the kind is in_earnings (no longer read there). Wages paid for a month served in a combat zone, which 112 also excludes, are OQ-1123 (the earnings record has no field for them). The Adult Financial half stays with the cash programs owner. Items: CO-5106, CO-5160.
 
 Class: state policy choice
 Owner: Cash programs policy owner, Medicaid policy owner
@@ -3051,3 +3055,53 @@ Assumption: The 2025 and 2026 regional income-trust ceilings are the figures the
 Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23)
 
 Checked 2026-11-23: D-65 (§ 8.100.7.G.6.a.i.a)), D-72. Items: CO-3022, CO-1985, CO-642, CO-651, CO-3310.
+
+### OQ-1120. Medicaid SSI method: a domestic or agricultural worker's pay in kind
+
+Body: 10 CCR 2505-10 8.100.3.K.3-4 (S4107) makes pay in kind for services earned income for Medical Assistance, and the SSI method now counts in_kind_pay as earned income (ma_ssi_earnings_treatment_table, CO-5107, OQ-1023 resolved). 20 CFR 416.1110(a)(3) (S4342), which the SSI method follows elsewhere, says "if you are a domestic or agricultural worker, the law requires us to treat your in-kind pay as unearned income". The difference matters: earned income gets the $65 and one-half disregard (8.100.5.H.4.b), unearned income only the $20. Worked example: a farm worker given housing worth $500 a month in place of wages, no other income: as earned income (500 - 20 - 65) / 2 = 207.50 countable; as unearned income 500 - 20 = 480. Colorado's text does not carve out domestic or agricultural workers, and the earnings record does not say whether the person is one.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Pay in kind is earned income for every worker, as 8.100.3.K.3-4 says.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, 8.100.5.F.1, F.4 (D-65); 20 CFR 416.1110(a)(3) (D-53). Items: CO-5107, CO-5170.
+
+### OQ-1121. Medicaid MAGI: boarder payments, gross or net of the costs of providing the room or meals
+
+Body: MAGI counts payments from boarders as rents (10 CCR 2505-10 8.100.4.C.1.b.ii, "Rents") and, for meals, compensation for services (a.v) (S166), at their gross amount, as the MAGI receipt table counts rents (rental_income, CO-5500): ma_magi_earnings_treatment_table (CO-5106) row counted, and the boarder provision cost row not_deducted_open_question. MAGI follows the federal tax figure (42 CFR 435.603(e), S165), where rent and boarders' payments are reported net of the expenses of providing them; the gross reading overstates income by those expenses. Worked example: two boarders paying $900 a month for room and board, $250 a month of food and utilities for them: gross $900; net $650. Before E1, MAGI counted payments for a room only or meals only in full (as receipts) and room and board payments not at all.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Gross, as rents are counted in the MAGI receipt table.
+
+Checked 2026-11-23: 42 CFR 435.603(e) (D-34); 10 CCR 2505-10 8.100.4.C.1.a-b (D-40). Neither says whether the costs of providing a room or meals are deducted; the Code's rules on rental expenses are not on file. Items: CO-5106, CO-5160.
+
+### OQ-1122. Medicaid SSI method: an ineligible child's own income for the Ineligible Child Allocation
+
+Body: 10 CCR 2505-10 8.100.5.H.3.a.i (S3405) reduces the allocation "by any of the ineligible child's own income", and H.4.c says only that the one-third child support reduction does not apply. 20 CFR 416.1161(c) (D-53) reduces it by the child's income less what 416.1161(a) excludes (which includes the exclusions of 416.1112 and 416.1124 that apply to an ineligible parent or spouse) and, for a student, less the student earned income exclusion of 416.1112(c)(3). The ledger reads the child's gross income (ma_ssi_ineligible_child_allocation_generated, CO-6050), as before. Worked example: an ineligible child of 16, a student, earning $400 a month: Colorado's words give an allocation of 497 - 400 = 97; 416.1161(c) gives 497 (the student exclusion takes the $400).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The child's gross income, as H.3.a.i reads.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.H.3.a.i, H.4.c (D-65); 20 CFR 416.1161(a), (c), 416.1163(b) (D-53). Items: CO-6050, CO-2277, CO-4633.
+
+### OQ-1123. Medicaid MAGI: wages for a month served in a combat zone
+
+Body: 26 U.S.C. 112(a)-(b) (S4340) leaves out of gross income all compensation for active service for a month during any part of which the member served in a combat zone (an officer's up to the maximum enlisted amount), basic pay included, not only the special pay. MAGI follows the federal tax figure (42 CFR 435.603(e), S165). The earnings record states combat_zone only on uniformed services special pay (CO-5100), so a service member's basic pay for such a month is counted. Worked example: an enlisted member deployed to a designated combat zone in October, basic pay $2,800 and hostile fire pay $225: the federal tax figure counts neither; the ledger counts $2,800. Fixing it needs a field on the wages record (paid for a month served in a combat zone), a request to the integration owner (docs/reviews/records-earnings-medicaid.md, R-3).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Wages are counted; only special pay stated with combat_zone is left out.
+
+Checked 2026-11-23: 26 U.S.C. 112 (D-4340); 42 CFR 435.603(e) (D-34); CO-5100's record fields. Items: CO-5106, CO-5160.
+
+### OQ-1124. Medicaid: former foster care youth who were in foster care on their 21st birthday
+
+Body: 10 CCR 2505-10 8.100.4.H.2.a (S1718) extends Medical Assistance to "individuals that were formerly in foster care ... on their 18th, 19th, 20th or up to their 21st birthday and were receiving Medical Assistance"; "up to" can stop before the 21st birthday. 42 CFR 435.150(b)(3) (S214, S4343) covers youth in foster care and enrolled in Medicaid "upon attaining: (i) Age 18; or (ii) A higher age at which the State's or such Tribe's foster care assistance ends under title IV-E of the Act", which reaches a youth in care on the birthday on which that assistance ends. Whether Colorado's title IV-E foster care assistance ends at 21 is not in any text on file. ma_is_former_foster_care_category (CO-549) reads a youth whose foster care ended at 21 as covered (CO-549-T95).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: A youth in foster care on the 21st birthday is covered (the federal "upon attaining ... a higher age at which ... foster care assistance ends").
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.4.H.2.a (D-65); 42 CFR 435.150(b)(3) (D-31, eCFR re-read 2026-11-23). The age at which Colorado's title IV-E foster care assistance ends is in the Colorado Department of Human Services' rules, not on file. Items: CO-549.

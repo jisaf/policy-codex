@@ -23025,3 +23025,49 @@ Document: D-4340
 > (A) the highest rate of basic pay payable for such month to any enlisted member of the Armed Forces of the United States at the highest pay grade applicable to enlisted members, and
 >
 > (B) in the case of an officer entitled to special pay under section 310, or paragraph (1) or (3) of section 351(a), of title 37, United States Code, for such month, the amount of such special pay payable to such officer for such month.
+
+### S4341. Medical Assistance: "Dependent Child" (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1 (definitions; rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Dependent Child is a child who lives with a parent, legal guardian, caretaker relative or foster parent and is under the age of 18, or, is age 18 and a full-time student, and expected to graduate by age 19.
+
+### S4342. SSI: earned income in cash or in kind; wages paid in kind (and the domestic or agricultural worker's in-kind pay treated as unearned)
+
+Document: D-53
+
+20 CFR 416.1110 (lead-in), (a)(1), (a)(3) (eCFR text fetched 2026-09-18). https://www.ecfr.gov/current/title-20/part-416
+
+> Earned income may be in cash or in kind. We may include more of your earned income than you actually receive. We include more than you actually receive if amounts are withheld from earned income because of a garnishment or to pay a debt or other legal obligation, or to make any other payments. Earned income consists of the following types of payments:
+>
+> (a) *Wages*—(1) *Wages paid in cash—general.* Wages are what you receive (before any deductions) for working as someone else's employee. Wages are the same for SSI purposes as for the social security retirement program's earnings test. (*See* § 404.429(c) of this chapter.) Wages include salaries, commissions, bonuses, severance pay, and any other special payments received because of your employment.
+>
+> ...
+>
+> (3) *Wages paid in kind.* Wages may also include the value of food, clothing, shelter, or other items provided instead of cash. We refer to this type of income as in-kind earned income. However, if you are a domestic or agricultural worker, the law requires us to treat your in-kind pay as unearned income.
+
+### S4343. Federal former foster care children: in foster care upon attaining age 18 or the higher age at which title IV-E foster care assistance ends
+
+Document: D-31
+
+42 CFR 435.150(b)(3) (eCFR re-read 2026-11-23, unchanged). https://www.ecfr.gov/current/title-42/section-435.150
+
+> (3) Were in foster care under the responsibility of the State or a Tribe within the State and enrolled in Medicaid under the State's Medicaid State plan or under a section 1115 demonstration project upon attaining:
+>
+> (i) Age 18; or
+>
+> (ii) A higher age at which the State's or such Tribe's foster care assistance ends under title IV-E of the Act.
+
+### S4344. Inpatient psychiatric services for individuals under 21: until 21, or for one receiving them just before 21, until the earlier of no longer needing them or reaching 22
+
+Document: D-4341
+
+42 CFR 441.151(a)(3) (eCFR, title 42 as of 2026-11-01, fetched 2026-11-23). https://www.ecfr.gov/current/title-42/section-441.151
+
+> (3) Provided before the individual reaches age 21, or, if the individual was receiving the services immediately before he or she reached age 21, before the earlier of the following—
+>
+> (i) The date the individual no longer requires the services; or
+>
+> (ii) The date the individual reaches 22; and

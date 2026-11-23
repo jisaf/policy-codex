@@ -10,7 +10,7 @@ precision: "Earned-income records, Medicaid and CHP+ track E1: the cost records 
 derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], deducted]], [receipt, amount]]
 sources: [S1154, S4107]
 implemented: engine
-nearest: [CO-5161, CO-5162, CO-5172, CO-5175]
+nearest: [CO-5161, CO-5162, CO-5172, CO-5175, CO-5178]
 tags: [ma, income]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived. Earned-income records, step E1 (Medicaid and CHP+): the costs are the earnings records of cost kinds, read through the SSI method's counting table, so every cost kind has a row and none is deducted by silence (design D4)."
 tests:

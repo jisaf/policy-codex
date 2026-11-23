@@ -12,7 +12,7 @@ sources: [S1154, S3001]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "Earned-income records, step E1 (Medicaid and CHP+): the business's gross receipts read from the earnings records through the counting table."
-nearest: [CO-1704]
+nearest: [CO-1704, CO-1703, CO-5161, CO-5162, CO-5172, CO-5178]
 tests:
   - {id: CO-5175-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: farm_self_employment_receipts, amount: 600}, {kind: business_cost_operating, amount: 200}, {kind: wages, amount: 800}]}, title: "Business 1,500 + farm 600; costs and wages not read: 2,100", expect: 2100}
   - {id: CO-5175-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: self_employment_receipts}]}, title: "A business whose receipts are not stated: cannot determine", expect: unknown}

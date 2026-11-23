@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: "The person's earnings of the month that are received infrequently or irregularly (each record's irregular field: received only once in the calendar quarter from a single source and not in the month before or after, or not reasonably expected; 20 CFR 416.1112(c)(2)) and that the SSI method's earnings counting table counts (ma_ssi_earnings_treatment_table, CO-5107): pay counted as such or because no rule excludes it, and a business's receipts."
 precision: "Earned-income records, Medicaid and CHP+ track E1: replaces infrequent_or_irregular_earned_income_received (CO-4010) in ma_ssi_excluded_infrequent_earned_income (CO-4883). A business's irregular receipts are read at their amount, as the scalar fact stated them. Pay the table holds exempt (Census wages) is not read: it is excluded before (c)(2) is applied (20 CFR 416.1112(a): the exclusions apply 'in the order listed ... to the rest of your income'). An irregular field not stated is false (the field's default: pay counts unless the exception is shown, design D3)."
-derived: [sum_receipts, earnings, [all, [received_in, [month]], [receipt, irregular], [in, [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_text_excludes, counted_net_of_costs]]], [receipt, amount]]
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [receipt, irregular], [in, [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, exempt_dependent_child_six_months, counted_net_of_costs]]], [receipt, amount]]
 sources: [S3618, S3412]
 implemented: engine
 tags: [ma, non_magi, income]
