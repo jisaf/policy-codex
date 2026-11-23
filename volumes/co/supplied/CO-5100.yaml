@@ -91,7 +91,7 @@ record_fields:
   annual_contract_pay:
     type: money
     when_absent: "the pay is not paid under a contract renewed on an annual basis"
-    meaning: "For pay under a contract renewed on an annual basis (a school employee's contract), the contract's pay for the year, which a rule averages over twelve months (SNAP 10 CCR 2506-1 4.403.3; CCCAP 8 CCR 1403-1 3.111.H.4.b, prorated over the term of the contract). It is stated on one record of the contract's pay for each month: the job's stream (no date), or one record for the month, never on each of several dated pays of one month, since a rule reads the record at one twelfth of the contract in place of the pay it states."
+    meaning: "For pay under a contract renewed on an annual basis (a school employee's contract) that is not paid on an hourly or piecework basis (10 CCR 2506-1 4.403.3.A; 8 CCR 1403-1 3.111.H.4.b), the contract's pay for the year, which a rule averages over twelve months (SNAP 10 CCR 2506-1 4.403.3; CCCAP 8 CCR 1403-1 3.111.H.4.b, prorated over the term of the contract). It is stated on one record of the contract's pay for each month: the job's stream (no date), or one record for the month, never on each of several dated pays of one month, since a rule reads the record at one twelfth of the contract in place of the pay it states."
   paid_as_business_owner:
     type: yes/no
     default: false

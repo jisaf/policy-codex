@@ -23192,3 +23192,70 @@ Document: D-86
 >
 > “Point in Time”: Point in time indicates that eligibility is determined by accounting for the circumstances of
 > the household on the date of the application, regardless of any changes thereafter.
+
+### S4601. CCCAP: VISTA payments are excluded if the client was receiving CCCAP when joining VISTA, otherwise earned income; Title I payments under the minimum wage excluded
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.32 and J.11 (rule version 12658, effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 32. Earned AmeriCorps income includes government payments from
+> agricultural stabilization and conservation service and wages of
+> AmeriCorps volunteers in service to America (vista) workers. Vista
+> payments are excluded if the client was receiving CCCAP when they
+> joined vista. If the client was not receiving CCCAP when they joined vista,
+> the vista payments shall count as earned income.
+>
+> ...
+>
+> 11. Payments to volunteers serving as foster grandparents, senior health
+> aides, or senior companions, and to persons serving in the Service Corps
+> of Retired Executives (SCORE) and Active Corps of Executives (ACE)
+> and any other program under Title I (VISTA) when the value of all such
+> payments adjusted to reflect the number of hours such volunteers are
+> serving is not equivalent to or greater than the minimum wage, and Title II
+> and III of the Domestic Volunteer Services Act
+
+### S4602. CCCAP: at least one of the low-income eligible activities; employment and self-employment each meet the minimum wage over their own hours
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G (opening), G.1.b, G.2.c-e (rule version 12658, effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> G. Low-Income Eligible Activities
+>
+> An adult caretaker(s) or teen parent(s) shall meet the criteria of at least one of the
+> following low-income eligible activities:
+>
+> 1. Employment Criteria
+>
+> ...
+>
+> b. Adult caretaker(s) or teen parent(s) must verify that his/her gross
+> income divided by the number of hours worked equals at least the
+> current federal minimum wage.
+>
+> ...
+>
+> 2. Self-Employed Criteria
+>
+> ...
+>
+> c. The adult caretaker(s) or teen parent(s) shall show that they have
+> maintained an average income that exceeds their business
+> expenses from self-employment.
+>
+> d. The adult caretaker(s) or teen parent(s) shall show that their
+> taxable gross income divided by the number of hours worked
+> equals at least the current federal minimum wage.
+>
+> e. Adult caretakers or teen parent(s) whose self-employment
+> endeavor is less than twelve (12) months old, may be granted
+> child care for six (6) months or until their next re-determination,
+> whichever is longer, to establish their business. At the end of the
+> launch period, adult caretakers shall provide documentation of
+> income, verification of expenses, and proof that they are making
+> at least federal minimum wage for the number of hours worked.
+> Projected income for the launch period shall be determined based
+> upon the federal minimum wage times the number of declared
+> hours worked.

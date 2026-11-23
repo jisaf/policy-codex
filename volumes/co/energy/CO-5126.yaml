@@ -13,7 +13,7 @@ implemented: engine
 tags: [income]
 open: [OQ-681]
 rationale: "Earned-income records, E1 (LEAP): the business's receipts are records, read by LEAP's counting table, so the self-employment income and its PASS set-aside (CO-1712) read one figure. cccap_self_employment_gross_receipts (CO-5156) has the same shape over CCCAP's table; it is not read here because each program builds its own income from the neutral records (product-owner decision of 2026-11-23: complex program calculations are never shared) and the two tables decide the rows apart."
-nearest: [CO-5156]
+nearest: [CO-5156, CO-6404]
 tests:
   - {id: CO-5126-T1, title: "$1,500 of business receipts in October", as_of: "2026-11-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500, month: "2026-10"}]}, expect: 1500}
   # A farm's $700 and a repair business's $800 in October: $1,500; a cost record is not a receipt.
