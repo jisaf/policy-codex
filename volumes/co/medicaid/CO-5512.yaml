@@ -1,0 +1,16 @@
+id: CO-5512
+name: "Medicaid SSI method: a person's gambling winnings received in the month"
+identifier: ma_ssi_gambling_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The person's lottery and gambling winnings received in the month (receipts the SSI method's counting table, CO-5510, gives counted_winnings), unearned income in the month received (10 CCR 2505-10 8.100.5.F.4-5, F.5.i). The rules that read it leave it out for a person granted the hardship exemption of F.5.i.1.
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted_winnings]]], [receipt, amount]]
+sources: [S3001]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Receipt records, migration phase 2: replaces lottery_gambling_winnings_received in the SSI-method and long-term care items. Nearest: the gambling and child support sums of the other method's table (ma_magi_gambling_receipts, CO-5502; ma_ssi_gambling_receipts, CO-5512; ma_ssi_child_support_receipts, CO-5513) have the same shape over a different table or treatment: MAGI and the SSI method count different money, so each method keeps its own sum rather than one sum with the table as a constant."
+nearest: [CO-5502, CO-5513]
+tests:
+  - {id: CO-5512-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: gambling_winnings, amount: 1000, frequency: once, month: "2026-10"}, {kind: gambling_winnings, amount: 700, frequency: once, month: "2026-08"}, {kind: pension, amount: 300}]}, title: "A win in the month counted; a win in another month not", expect: 1000}

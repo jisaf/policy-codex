@@ -2827,3 +2827,23 @@ Owner: Medicaid (HCPF) eligibility policy owner
 Assumption: The four kinds are not MAGI-based income (the reading before receipt records).
 
 Checked 2026-11-23: 42 CFR 435.603(e) (D-34) and 10 CCR 2505-10 8.100.4.C.1.a-d (D-40). Neither names these payments; the Code sections that would decide them (26 U.S.C. 61, 112, 3121) are not on file. Items: CO-5500.
+
+### OQ-971. Medicaid SSI method: kinds of receipt counted only because no Colorado rule on file excludes them, where 20 CFR 416 Subpart K would
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts unearned income "including, but not limited to" its list, and 8.100.5.F.6 (S3404, S3617) exempts named receipts; the ledger also reads 20 CFR 416 Subpart K where it cited it before (416.1103, 416.1124(b), (c)(3), (c)(5), (c)(23); S2209, S3618). For the following kinds no Colorado paragraph on file excludes the payment and the ledger counted it before receipt records (each was part of the other unearned income facts and not among ma_ssi_excluded_unearned_income's sources, CO-2470), although Subpart K excludes it or Colorado's own F.6.j might reach it: a property or food tax refund (416.1124(c)(1)), crime victim compensation ((c)(17)), uniformed services special pay ((c)(19)), a gift for a life-threatening condition ((c)(21)), a State's annuity for a veteran ((c)(24)), a reimbursement and the proceeds of converting a resource (416.1103(b), (c)), reverse mortgage payments (a loan, 416.1103(f)), Colorado Works diversion and supportive services payments and migrant farmworker emergency assistance (F.6.j, "Assistance from other agencies and organizations", which the ledger reads as General Assistance, emergency assistance and charity), kinship care, housing utility allowances, refugee resettlement money, in-home care allowances and vocational training allowances. Home energy assistance from a nonprofit or the supplier is exempt as the ledger read energy assistance before (416.1124(b), (c)(5)), though neither paragraph names non-federal assistance. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps the earlier readings until the owner decides, row by row.
+
+Class: state policy choice
+Owner: Medicaid (HCPF) eligibility policy owner
+Assumption: Each kind listed is counted (energy assistance from a nonprofit or supplier exempt), as before receipt records.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.4-6 (D-65) and the Subpart K paragraphs on file (D-53, D-207). Colorado's text neither adopts Subpart K's exclusions by reference nor lists these payments. Items: CO-5510.
+
+### OQ-972. Medicaid SSI method: money a non-citizen receives from a sponsor
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts "Gifts and inheritances" and unearned income generally; cash a sponsor gives the non-citizen is not named in 8.100.5.F.6. Before receipt records the ledger never read it for Medicaid: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts, so it was left out by silence; Medicaid's sponsor deeming (ma_sponsor_deemed_income, CO-4551) counts the sponsor's own income under 8.100.3.K.1. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps that reading, as not_counted_open_question; MAGI leaves it out as a gift (not taxable income).
+
+Class: state policy choice
+Owner: Medicaid (HCPF) eligibility policy owner
+Assumption: Money a sponsor pays the non-citizen is not counted as the person's SSI-method unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 and 8.100.3.K.1 (D-65). None names sponsor support paid to the person. Items: CO-5510.

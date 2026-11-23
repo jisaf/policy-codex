@@ -1,0 +1,16 @@
+id: CO-5514
+name: "Medicaid SSI method: a person's gross unearned receipts"
+identifier: ma_ssi_gross_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's unearned income received in the month before any exemption, deduction or disregard: every receipt the SSI method's counting table (CO-5510) treats as income (counted, counted because no rule excludes it, rents, child support, exempt) and a retroactive SSI payment, at its gross amount; not a loan, an income tax refund or VA Aid and Attendance, which are not income (20 CFR 416.1103(d), (f); 10 CCR 2505-10 8.100.5.K), not current SSI, not money from a sponsor (OQ-972), and not gambling winnings, which the readers add with the hardship exemption (ma_ssi_gambling_receipts). The gross income of long-term care (8.100.7.A.1, ma_ltc_gross_income) and the unearned income to verify for an aged, blind or disabled applicant (8.100.5.B.1.d)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses, child_support, exempt]], [all, [receipt, retroactive], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [ssi_benefit]]]]], [receipt, amount]]
+sources: [S3001, S2209, S2900, S3404, S351]
+implemented: engine
+tags: [ma, non_magi, ltc, income]
+rationale: "Receipt records, migration phase 2: replaces the sum of the scalar unearned income facts less loans, tax refunds and VA Aid and Attendance in ma_ltc_gross_income (CO-641) and the reasonable compatibility of a long-term care applicant (CO-1640), and the aged, blind and disabled arm of ma_has_unearned_income_for_verification (CO-2870)."
+tests:
+  - {id: CO-5514-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 900}, {kind: foster_care_payment, amount: 600}, {kind: colorado_works_cash, amount: 300}, {kind: child_support, amount: 100}, {kind: loan, amount: 600}, {kind: income_tax_refund, amount: 250}, {kind: va_aid_and_attendance, amount: 400}, {kind: ssi, amount: 200}]}, title: "Exempt income is gross income; loans, refunds and VA Aid and Attendance are not income", expect: 1900}
+  - {id: CO-5514-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: ssi, amount: 1500, frequency: once, retroactive: true, month: "2026-10"}, {kind: gambling_winnings, amount: 500, frequency: once, month: "2026-10"}]}, title: "A retroactive SSI payment is gross income in the month received; gambling is added by the readers", expect: 1500}

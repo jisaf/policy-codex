@@ -22439,3 +22439,17 @@ Document: D-35
 42 CFR 435.915(b). https://www.ecfr.gov/current/title-42/section-435.915
 
 > (b) The agency may make eligiblity for Medicaid effective on the first day of a month if an individual was eligible at any time during that month.
+
+### S3950. SSI: an aged, blind or disabled individual is eligible whose countable income is at a rate of not more than the benefit rate
+
+Document: D-347
+
+42 U.S.C. 1382(a)(1)(A), (a)(2)(A) (Cornell text fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/42/1382
+
+> (1) Each aged, blind, or disabled individual who does not have an eligible spouse and—
+>
+> (A) whose income, other than income excluded pursuant to section 1382a(b) of this title, is at a rate of not more than $1,752 (or, if greater, the amount determined under section 1382f of this title) for the calendar year 1974 or any calendar year thereafter, and
+>
+> (2) Each aged, blind, or disabled individual who has an eligible spouse and—
+>
+> (A) whose income (together with the income of such spouse), other than income excluded pursuant to section 1382a(b) of this title, is at a rate of not more than $2,628 (or, if greater, the amount determined under section 1382f of this title) for the calendar year 1974, or any calendar year thereafter, and

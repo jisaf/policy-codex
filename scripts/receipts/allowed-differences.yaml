@@ -71,3 +71,41 @@
 - case: /^CO-(139|214)$/
   identifier: /^ma_(person_magi_income|magi_household_income|magi_household_income_pct_fpl)$/
   class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
+
+# M3 (fixed): VA Aid and Attendance stated in the SNAP and Colorado Works earmark fact. A household that
+# states va_aid_and_attendance_used_for_uncovered_care as part of the non-taxable other income states
+# Aid and Attendance, which 10 CCR 2505-10 8.100.5.K says "shall not be considered as income when
+# determining eligibility"; the old SSI method counted it, because Medicaid read only its own VA facts
+# (receives_va_aid_and_attendance, va_aid_and_attendance_amount) and these households did not restate it
+# there. The receipts state it once, as va_aid_and_attendance, which the SSI method's table does not
+# count (not income) and MAGI excludes (8.100.4.C.1.d.vi).
+- case: /^G-[A-Za-z]+-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_$/
+  identifier: /^(ma_|chp_)/
+  class: M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)
+
+# M4 (fixed): a loan, an income tax refund or VA Aid and Attendance is not unearned income an aged, blind
+# or disabled applicant must verify. The old ma_has_unearned_income_for_verification (CO-2870) summed
+# the other non-taxable income, which held loan proceeds and tax refunds; 20 CFR 416.1103(d) ("Any
+# amount refunded on income taxes you have already paid is not income") and (f) ("Money you borrow ...
+# is not income"), S2209, and 8.100.5.K. The verification element of 8.100.5.B.1.d is unearned income.
+- case: /^G-[A-Za-z]+-(loan_proceeds_received|tax_refunds_and_credits_received)_300_part_of_nontaxable_$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
+
+# M5: a household written in receipts alone after phase 1 (CO-460, the spike's family F3) states no
+# scalar unearned-income fact, so the baseline's Medicaid could not determine its income; Medicaid now
+# reads the receipts. Not a change of rule: the receipts are the household's only statement.
+- case: CO-460
+  identifier: /^(ma_|chp_)/
+  old: unknown
+  class: M5 household in receipts alone now read by Medicaid
+
+# M6 (OQ-970): a training allowance stated in the taxable other income. CO-219 and CO-220 (coverage
+# pass 3 C3-1) state a $1,000 vocational training allowance in other_unearned_income_taxable with its
+# part facts; the translation states it once, as vocational_training_allowance, which MAGI's table does
+# not count (not_taxable_income, the reading of the part facts, pending OQ-970), so MAGI finds no
+# unearned income to verify. 42 CFR 435.603(e) (S165) follows the federal tax treatment, which OQ-970
+# asks the owner to settle.
+- case: /^CO-(219|220)$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M6 a training allowance stated as taxable income is not MAGI income pending OQ-970

@@ -1,0 +1,23 @@
+id: CO-5511
+name: "Medicaid SSI method: a person's counted unearned receipts"
+identifier: ma_ssi_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's receipts of the month that the SSI method's counting table counts (ma_ssi_receipt_treatment_table, CO-5510: counted, counted because no rule excludes it, or rents), each less the part set aside under a plan for self-support (10 CCR 2505-10 8.100.5.F.6.q), a retroactive Title II or SSI payment left out (F.6.c), rents less the ordinary and necessary expenses of the rental property paid in the month, up to the rents (20 CFR 416.1121(d); 8.100.5.J.1). Before child support (the child's, ma_ssi_child_support_receipts), in-kind support and maintenance, gambling winnings (ma_ssi_gambling_receipts) and the $20 general income disregard, which the rules that read it apply."
+precision: Rental expenses are rental_property_expenses_paid (CO-4458), read as 0 when not stated (the reading of ma_ssi_excluded_unearned_income, CO-2470, which this item replaces; an expense, not a receipt).
+derived: ["-", [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses]], [not, [all, [receipt, retroactive], [in, [receipt, kind], [social_security, ssi]]]]], ["-", [receipt, amount], [receipt, pass_set_aside]]], [min, [otherwise, rental_property_expenses_paid, 0], [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted_net_of_expenses]]], [receipt, amount]]]]
+sources: [S3001, S3404, S3617, S2209, S3618, S3619, S3620, S2900]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Receipt records, migration phase 2: the SSI method's unearned income read from the receipts through its counting table, replacing the scalar unearned income facts less ma_ssi_excluded_unearned_income (CO-2470) in every SSI-method sum (the couple, deemed parents, an ineligible spouse, the buy-ins)."
+tests:
+  - {id: CO-5511-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 900}, {kind: pension, amount: 300}, {kind: ssi, amount: 200}, {kind: colorado_works_cash, amount: 400}, {kind: loan, amount: 600}]}, title: "Social Security and a pension counted; SSI, Colorado Works cash and a loan not (F.5.j; 8.100.6.C; F.6.j; 416.1103(f))", expect: 1200}
+  - {id: CO-5511-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 900, pass_set_aside: 300}, {kind: social_security, amount: 2400, frequency: once, retroactive: true, month: "2026-10"}, {kind: foster_care_payment, amount: 600}]}, title: "NM-7, NM-23: 300 of Social Security set aside under a PASS, a retroactive Social Security payment and foster care payments are exempt (F.6.q, c, l)", expect: 600}
+  - {id: CO-5511-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: pension, amount: 500}, {kind: va_aid_and_attendance, amount: 400}]}, title: "N2-1: VA Aid and Attendance is not income (8.100.5.K); the rest of the VA pension is", expect: 500}
+  - {id: CO-5511-T4, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: general_assistance, amount: 200}, {kind: charitable_need_based_cash, amount: 100}, {kind: workforce_program_payment, amount: 300}, {kind: vocational_training_allowance, amount: 50}, {kind: americorps, amount: 400}, {kind: rental_income, amount: 900}], rental_property_expenses_paid: 1100}, title: "NM-23, NM-26, NM-27: General Assistance, charity, WIOA payments and AmeriCorps exempt; a vocational allowance counted by silence; rents 900 less 1,100 of expenses count 0", expect: 50}
+  - {id: CO-5511-T5, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: child_support, amount: 250}, {kind: gambling_winnings, amount: 1000, frequency: once, month: "2026-10"}]}, title: "Child support and gambling winnings are read apart (ma_ssi_child_support_receipts, ma_ssi_gambling_receipts)", expect: 0}
+  - {id: CO-5511-T6, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: interest_and_dividends, amount: 40}, {kind: other_nontaxable, amount: 5000, frequency: once, month: "2026-10"}]}, title: "Interest and dividends on resources are counted (F.5.e); an inheritance in the month received (F.5.c)", expect: 5040}
+  - {id: CO-5511-T7, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}
+  - {id: CO-5511-T8, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: sponsor_payment, amount: 300}]}, title: "Money from a sponsor is not counted pending OQ-972", expect: 0}
