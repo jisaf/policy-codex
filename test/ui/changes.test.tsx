@@ -86,20 +86,20 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 9 and reaches 35", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 19 and reaches 74", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
     // The five Adult Financial coverage-round households (CO-165 to CO-169) are reached through af_barred_by_colorado_works.
-    expect([r.read.length, r.reach.length]).toEqual([9, 35]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached
+    expect([r.read.length, r.reach.length]).toEqual([19, 74]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
   });
 
-  it("$100 for the $90 disregard moves 12 steps on the way (countable income) and no outcome", () => {
+  it("$100 for the $90 disregard moves 22 steps on the way (countable income) and no outcome", () => {
     const it0 = item(DISREGARD);
     const rows = changedBy(engine, vol.cases, [{ id: it0.id, chapter: "parameters", before: it0, after: { ...it0, value: 100 } }]);
     const { outcomes, steps } = changedSplit(engine, rows);
-    expect([outcomes.length, steps.length]).toEqual([0, 12]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90 (257 to 247, still not below 245); pass 3: CO-206's countable income (310 to 300, still eligible)
+    expect([outcomes.length, steps.length]).toEqual([0, 22]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90 (257 to 247, still not below 245); pass 3: CO-206's countable income (310 to 300, still eligible); probe-preservation round (CO-300 and up): CO-354 and CO-361 to CO-364 (earned income and deemed wages, no outcome crosses a line)
     expect(steps.map((s) => s.caseId)).toContain("CO-83");
   });
 
@@ -235,11 +235,11 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     // The draft reaches the effect panel after the editor's effect runs.
     await until(() => Boolean(effect.querySelector(".reach")));
-    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 9 of ${vol.cases.length} stored households; it reaches 35.`);
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 74.`);
     await until(() => effect.getAttribute("aria-busy") === "false");
-    expect(effect.textContent).toMatch(/12 stored results in \d+ households would change/);
+    expect(effect.textContent).toMatch(/22 stored results in \d+ households would change/);
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);
-    expect(effect.textContent).toMatch(/Steps on the way that change \(12\)/);
+    expect(effect.textContent).toMatch(/Steps on the way that change \(22\)/);
 
     const approvers = host.querySelector("section.approvers")!;
     const roles = [...approvers.querySelectorAll("li[data-role]")].map((li) => li.getAttribute("data-role"));
@@ -262,7 +262,7 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     await until(() => /Applied on the households' own dates/.test(effect.textContent ?? ""));
     expect(effect.querySelector(".nochange")!.textContent).toMatch(/No stored household result would change\. Their results are for dates before July 1, 2027/);
-    expect(effect.textContent).toMatch(/12 stored results in \d+ households would change/);
+    expect(effect.textContent).toMatch(/22 stored results in \d+ households would change/);
   });
 
   it("lists what the proposal holds by name, with the no-GitHub download path", () => {

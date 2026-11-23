@@ -93,7 +93,7 @@ describe("Law", () => {
     expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(39);
   });
 
-  it("what rests on the unverified sources: 14 outcomes, and 10 stored households read them (Blind A said 3, Blind B 11)", () => {
+  it("what rests on the unverified sources: 14 outcomes, and 11 stored households read them (Blind A said 3, Blind B 11)", () => {
     const early = unverifiedReach(engine, vol.sources, unverified, null);
     expect(early.households).toBeNull();
     restingIndex(engine, vol.cases);
@@ -102,7 +102,7 @@ describe("Law", () => {
     expect(r.citing).toHaveLength(6);
     expect(r.resting).toHaveLength(44);
     expect(r.outcomes).toHaveLength(14);
-    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214"]);
+    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214", "CO-388"]); // + CO-388 (probe X-REFUSE, CO-112 with the refused income allowance; probe-preservation round (CO-300 and up))
   }, 60_000);
 
   it("an excerpt is cited by an item through its sources or a dated version", () => {
