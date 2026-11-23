@@ -667,8 +667,9 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2380}
+        - {kind: wages, amount: 2380, seasonal_or_commission: false}
         holdings: []
       month_defaults:
         donated_work_hours_per_week: 0
@@ -2733,8 +2734,9 @@
         immigration_status: undocumented
         state_of_residence: CO
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2380}
+        - {kind: wages, amount: 2380, seasonal_or_commission: false}
         holdings: []
       month_defaults:
         donated_work_hours_per_week: 0
@@ -4386,26 +4388,27 @@
         receives_ssi: false
         ma_eligibility_was_erroneously_granted: false  # coverage review F-16 (fix round 2026-11-23): a Legal Immigrant Prenatal member; none of the G.6.a events
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1600, month: "2025-08"}
-        - {kind: wages, amount: 1600, month: "2025-09"}
-        - {kind: wages, amount: 1600, month: "2025-10"}
-        - {kind: wages, amount: 1600, month: "2025-11"}
-        - {kind: wages, amount: 1600, month: "2025-12"}
-        - {kind: wages, amount: 1600, month: "2026-01"}
-        - {kind: wages, amount: 1600, month: "2026-02"}
-        - {kind: wages, amount: 1600, month: "2026-03"}
-        - {kind: wages, amount: 1600, month: "2026-04"}
-        - {kind: wages, amount: 1600, month: "2026-05"}
-        - {kind: wages, amount: 1600, month: "2026-06"}
-        - {kind: wages, amount: 1600, month: "2026-07"}
-        - {kind: wages, amount: 1600, month: "2026-08"}
-        - {kind: wages, amount: 1600, month: "2026-09"}
-        - {kind: wages, amount: 1600, month: "2026-10"}
-        - {kind: wages, amount: 5000, month: "2026-11"}
-        - {kind: wages, amount: 1600, month: "2026-12"}
-        - {kind: wages, amount: 1600, month: "2027-01"}
-        - {kind: wages, amount: 1600, month: "2027-02"}
+        - {kind: wages, amount: 1600, month: "2025-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2025-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2025-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2025-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2025-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 5000, month: "2026-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2026-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2027-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 1600, month: "2027-02", seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1600
@@ -4454,8 +4457,9 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 600}
+        - {kind: wages, amount: 600, seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -4584,8 +4588,9 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 5000}
+        - {kind: wages, amount: 5000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 5000
@@ -4861,9 +4866,10 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1850, month: "2027-01"}
-        - {kind: wages, amount: 1850, month: "2027-04"}
+        - {kind: wages, amount: 1850, month: "2027-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 1850, month: "2027-04", seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -6147,8 +6153,9 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 5200}
+        - {kind: wages, amount: 5200, seasonal_or_commission: false}
         holdings:
         - {kind: bank_account, value: 300}
       month_defaults:
@@ -6205,8 +6212,9 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2600}
+        - {kind: wages, amount: 2600, seasonal_or_commission: false}
         holdings:
         - {kind: bank_account, value: 300}
       month_defaults:
@@ -7264,8 +7272,9 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1800}
+        - {kind: wages, amount: 1800, seasonal_or_commission: false}
         holdings:
         - {kind: bank_account, value: 300}
       month_defaults:
@@ -7838,8 +7847,9 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1400}
+        - {kind: wages, amount: 1400, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1400
@@ -8284,8 +8294,9 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1800}
+        - {kind: wages, amount: 1800, seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -8546,8 +8557,9 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1800}
+        - {kind: wages, amount: 1800, seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -8876,29 +8888,30 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 7500, month: "2025-08"}
-        - {kind: wages, amount: 7500, month: "2025-09"}
-        - {kind: wages, amount: 7500, month: "2025-10"}
-        - {kind: wages, amount: 7500, month: "2025-11"}
-        - {kind: wages, amount: 7500, month: "2025-12"}
-        - {kind: wages, amount: 7500, month: "2026-01"}
-        - {kind: wages, amount: 7500, month: "2026-02"}
-        - {kind: wages, amount: 7500, month: "2026-03"}
-        - {kind: wages, amount: 7500, month: "2026-04"}
-        - {kind: wages, amount: 7500, month: "2026-05"}
-        - {kind: wages, amount: 7500, month: "2026-06"}
-        - {kind: wages, amount: 7500, month: "2026-07"}
-        - {kind: wages, amount: 7500, month: "2026-08"}
-        - {kind: wages, amount: 7500, month: "2026-09"}
-        - {kind: wages, amount: 5700, month: "2026-10"}
-        - {kind: wages, amount: 7500, month: "2026-11"}
-        - {kind: wages, amount: 7500, month: "2026-12"}
-        - {kind: wages, amount: 7500, month: "2027-01"}
-        - {kind: wages, amount: 7500, month: "2027-02"}
-        - {kind: wages, amount: 7500, month: "2027-03"}
-        - {kind: wages, amount: 7500, month: "2027-04"}
-        - {kind: wages, amount: 7500, month: "2027-05"}
+        - {kind: wages, amount: 7500, month: "2025-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2025-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2025-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2025-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2025-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 5700, month: "2026-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2026-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2027-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2027-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2027-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2027-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 7500, month: "2027-05", seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -9090,8 +9103,9 @@
         ma_first_month_of_ineligibility: "2026-10"
         ma_ineligibility_reason: increased_earnings
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2600}
+        - {kind: wages, amount: 2600, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2600
@@ -12019,8 +12033,9 @@
         receipts:
         - {kind: gambling_winnings, amount: 100000, frequency: once, month: "2026-10"}
         - {kind: gambling_winnings, amount: 90000, frequency: once, month: "2026-12"}
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1000}
+        - {kind: wages, amount: 1000, seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -12118,8 +12133,9 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1500}
+        - {kind: wages, amount: 1500, seasonal_or_commission: false}
       month_defaults:
         cw_support_paid_to_tax_dependents_outside_home: 0
         spousal_maintenance_paid: 0
@@ -12734,8 +12750,9 @@
         earned_income_verification_document_received: true
         earned_income_verified_by_electronic_data_source: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2700}
+        - {kind: wages, amount: 2700, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2700
@@ -14186,32 +14203,33 @@
         earned_income_verified_by_electronic_data_source: true
         pregnancy_verification_document_received: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2700, month: "2025-03"}
-        - {kind: wages, amount: 2700, month: "2025-04"}
-        - {kind: wages, amount: 2700, month: "2025-05"}
-        - {kind: wages, amount: 2700, month: "2025-06"}
-        - {kind: wages, amount: 2700, month: "2025-07"}
-        - {kind: wages, amount: 2700, month: "2025-08"}
-        - {kind: wages, amount: 2700, month: "2025-09"}
-        - {kind: wages, amount: 2700, month: "2025-10"}
-        - {kind: wages, amount: 2700, month: "2025-11"}
-        - {kind: wages, amount: 2700, month: "2025-12"}
-        - {kind: wages, amount: 2700, month: "2026-01"}
-        - {kind: wages, amount: 2700, month: "2026-02"}
-        - {kind: wages, amount: 2700, month: "2026-03"}
-        - {kind: wages, amount: 2700, month: "2026-04"}
-        - {kind: wages, amount: 2700, month: "2026-05"}
-        - {kind: wages, amount: 2700, month: "2026-06"}
-        - {kind: wages, amount: 2700, month: "2026-07"}
-        - {kind: wages, amount: 2700, month: "2026-08"}
-        - {kind: wages, amount: 4600, month: "2026-09"}
-        - {kind: wages, amount: 4600, month: "2026-10"}
-        - {kind: wages, amount: 4600, month: "2026-11"}
-        - {kind: wages, amount: 4600, month: "2026-12"}
-        - {kind: wages, amount: 2700, month: "2027-01"}
-        - {kind: wages, amount: 2700, month: "2027-02"}
-        - {kind: wages, amount: 2700, month: "2027-03"}
+        - {kind: wages, amount: 2700, month: "2025-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-03", seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2700
@@ -14379,31 +14397,32 @@
         earned_income_verified_by_electronic_data_source: true
         pregnancy_verification_document_received: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2700, month: "2025-04"}
-        - {kind: wages, amount: 2700, month: "2025-05"}
-        - {kind: wages, amount: 2700, month: "2025-06"}
-        - {kind: wages, amount: 2700, month: "2025-07"}
-        - {kind: wages, amount: 2700, month: "2025-08"}
-        - {kind: wages, amount: 2700, month: "2025-09"}
-        - {kind: wages, amount: 2700, month: "2025-10"}
-        - {kind: wages, amount: 2700, month: "2025-11"}
-        - {kind: wages, amount: 2700, month: "2025-12"}
-        - {kind: wages, amount: 2700, month: "2026-01"}
-        - {kind: wages, amount: 2700, month: "2026-02"}
-        - {kind: wages, amount: 2700, month: "2026-03"}
-        - {kind: wages, amount: 2700, month: "2026-04"}
-        - {kind: wages, amount: 2700, month: "2026-05"}
-        - {kind: wages, amount: 2700, month: "2026-06"}
-        - {kind: wages, amount: 2700, month: "2026-07"}
-        - {kind: wages, amount: 2700, month: "2026-08"}
-        - {kind: wages, amount: 4600, month: "2026-09"}
-        - {kind: wages, amount: 4600, month: "2026-10"}
-        - {kind: wages, amount: 4600, month: "2026-11"}
-        - {kind: wages, amount: 4600, month: "2026-12"}
-        - {kind: wages, amount: 2700, month: "2027-01"}
-        - {kind: wages, amount: 2700, month: "2027-02"}
-        - {kind: wages, amount: 2700, month: "2027-03"}
+        - {kind: wages, amount: 2700, month: "2025-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2025-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-03", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-04", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-05", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-06", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-07", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2026-08", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-09", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-10", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-11", seasonal_or_commission: false}
+        - {kind: wages, amount: 4600, month: "2026-12", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-01", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-02", seasonal_or_commission: false}
+        - {kind: wages, amount: 2700, month: "2027-03", seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2700
@@ -14697,8 +14716,9 @@
         employer_family_coverage_employer_premium_share: 0.6
         is_enrolled_in_employer_family_coverage: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 5050}
+        - {kind: wages, amount: 5050, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 5050
@@ -16245,8 +16265,9 @@
         employer_family_coverage_employer_premium_share: 0.6
         is_enrolled_in_employer_family_coverage: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 5600}
+        - {kind: wages, amount: 5600, seasonal_or_commission: false}
       month_defaults:
         rental_property_expenses_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
@@ -16627,8 +16648,9 @@
         ma_first_month_of_ineligibility: 2026-10
         ma_ineligibility_reason: increased_earnings
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3000}
+        - {kind: wages, amount: 3000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3000
@@ -24662,8 +24684,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2800}
+        - {kind: wages, amount: 2800, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2800
@@ -24947,8 +24970,9 @@
         dwelling_id: h2
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 5000}
+        - {kind: wages, amount: 5000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 5000
@@ -25176,8 +25200,9 @@
         us_entry_date: '2019-03-01'
         is_sponsored_non_citizen: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1000}
+        - {kind: wages, amount: 1000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1000
@@ -25330,8 +25355,9 @@
         chp_eligibility_period_start_month: 2026-03
         chp_service_type: office_visit
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 4000}
+        - {kind: wages, amount: 4000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 4000
@@ -28421,8 +28447,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1262}
+        - {kind: wages, amount: 1262, seasonal_or_commission: false}
       month_defaults:
         rental_property_expenses_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
@@ -28575,8 +28602,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3066}
+        - {kind: wages, amount: 3066, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3066
@@ -28730,8 +28758,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1500}
+        - {kind: wages, amount: 1500, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1500
@@ -28854,8 +28883,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2500}
+        - {kind: wages, amount: 2500, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2500
@@ -28958,8 +28988,9 @@
         is_claimed_by_filer_outside_case: false
         ma_is_requesting_coverage: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2615}
+        - {kind: wages, amount: 2615, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2615
@@ -32750,8 +32781,9 @@
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_self_employment_seasonal_or_commission_earnings: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1995}
+        - {kind: wages, amount: 1995, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1995
@@ -32850,8 +32882,9 @@
         ma_is_requesting_coverage: true
         has_self_employment_seasonal_or_commission_earnings: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3000}
+        - {kind: wages, amount: 3000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3000
@@ -32947,8 +32980,9 @@
         continuous_eligibility_period_start_month: 2020-01
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2300}
+        - {kind: wages, amount: 2300, seasonal_or_commission: false}
       month_defaults:
         rental_property_expenses_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
@@ -43514,8 +43548,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3700}
+        - {kind: wages, amount: 3700, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3700
@@ -43660,8 +43695,9 @@
         is_claimed_by_filer_outside_case: false
         expected_annual_income: 14000
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2400}
+        - {kind: wages, amount: 2400, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2400
@@ -43741,8 +43777,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1262}
+        - {kind: wages, amount: 1262, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1262
@@ -43889,8 +43926,9 @@
         is_claimed_by_filer_outside_case: false
         ma_is_requesting_coverage: true
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2615}
+        - {kind: wages, amount: 2615, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2615
@@ -44048,8 +44086,9 @@
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3607}
+        - {kind: wages, amount: 3607, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3607
@@ -44385,8 +44424,9 @@
         ma_is_requesting_coverage: true
         has_self_employment_seasonal_or_commission_earnings: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3000}
+        - {kind: wages, amount: 3000, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3000
@@ -44478,8 +44518,9 @@
         continuous_eligibility_period_start_month: 2020-01
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 2300}
+        - {kind: wages, amount: 2300, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 2300
@@ -44649,8 +44690,9 @@
         continuous_eligibility_period_start_month: 2020-01
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3066}
+        - {kind: wages, amount: 3066, seasonal_or_commission: false}
       month_defaults:
         rental_property_expenses_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
@@ -57688,8 +57730,9 @@
         ma_is_incapable_of_indicating_intent: false
         ma_prior_enrollment_category: none
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1850}
+        - {kind: wages, amount: 1850, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1850
@@ -57763,8 +57806,9 @@
         ma_eligibility_was_erroneously_granted: false
         expected_annual_income: 22200
         receipts: []
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 1850}
+        - {kind: wages, amount: 1850, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 1850
@@ -61009,8 +61053,9 @@
             amount: 400
           - kind: gift
             amount: 150
+        # coverage pass 5, C5-08: the pay is not seasonal or commission-based, as the household's story has it; stated (decision 4: the field had default false)
         earnings:
-        - {kind: wages, amount: 3066}
+        - {kind: wages, amount: 3066, seasonal_or_commission: false}
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 3066
@@ -62134,6 +62179,7 @@
         earnings:
           - kind: wages
             amount: 5410
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
       month_defaults:
         donated_work_hours_per_week: 0
         magi_other_taxable_income: 0
@@ -62312,6 +62358,7 @@
         earnings:
           - kind: wages
             amount: 2000
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
       month_defaults:
         donated_work_hours_per_week: 0
         magi_other_taxable_income: 0
@@ -62760,6 +62807,7 @@
         earnings:
           - kind: wages
             amount: 1100
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
           - kind: boarder_payments
             amount: 900
             boarders: 2
@@ -62863,6 +62911,7 @@
         earnings:
           - kind: wages
             amount: 1500
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
       month_defaults:
         donated_work_hours_per_week: 0
         magi_other_taxable_income: 0
@@ -63055,8 +63104,10 @@
         earnings:
           - kind: wages
             amount: 1200
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
           - kind: in_kind_pay
             amount: 800
+            seasonal_or_commission: false  # coverage pass 5, C5-08: not seasonal or commission-based pay; stated (decision 4)
       month_defaults:
         donated_work_hours_per_week: 0
         magi_other_taxable_income: 0
