@@ -3287,7 +3287,7 @@ Body: 7 CFR 292.15(e) (S794) sets the Summer EBT benefit per child at a publishe
 
 Class: blocked on a named document
 Owner: School meals (CDE) co-approver, SNAP policy owner
-Assumption: None: the summer 2027 benefit is cannot determine until the notice is loaded as a row of CO-1244.
+Assumption: None: the summer 2027 benefit cannot be determined until the notice is published and its figure loaded.
 Blocked on: the FNS notice "Summer Electronic Benefits Transfer for Children Program; 2027 Benefit Levels" in the Federal Register (not yet published).
 
 Checked 2026-11-23: the Federal Register's document search (federalregister.gov, terms "Summer Electronic Benefits Transfer" and "Benefit Levels") lists the 2026 notice (document 2026-07843, published 2026-04-22) and the 2025 notice (2025-03760, 2025-03-10), and no 2027 notice.
