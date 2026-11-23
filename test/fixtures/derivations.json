@@ -475,7 +475,7 @@
  {
   "id": "WR-221",
   "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
-  "english": "County unemployment rate is at least (the lesser of Hardship unemployment rate cap (0.08) and Hardship national rate multiplier (1.5) times National unemployment rate)",
+  "english": "County unemployment rate is at least (the lesser of Hardship unemployment rate cap (0.08) and (Hardship national rate multiplier (1.5) times National unemployment rate))",
   "compact": "(county_unemployment_rate >= min(hardship_unemployment_rate_cap, (hardship_national_rate_multiplier * national_unemployment_rate)))",
   "expr": [
    ">=",

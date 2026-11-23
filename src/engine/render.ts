@@ -55,8 +55,10 @@ export function inline(ix: LedgerIndex, e: Expr): string {
       const w = { "+": " plus ", "*": " times ", "-": " minus ", "/": " divided by " }[op]!;
       return e.slice(1).map((x: Expr) => o(x)).join(w);
     }
-    case "min": return `the lesser of ${i(e[1])} and ${i(e[2])}`;
-    case "max": return `the greater of ${i(e[1])} and ${i(e[2])}`;
+    // An arithmetic operand is bracketed (coverage pass 4, non-MAGI N4-16), so "the greater of 0 and
+    // (1,500 minus A minus B)" cannot be read as "(the greater of 0 and 1,500 minus A) minus B".
+    case "min": return `the lesser of ${o(e[1])} and ${o(e[2])}`;
+    case "max": return `the greater of ${o(e[1])} and ${o(e[2])}`;
     case "ceil": return `${i(e[1])} rounded up to the next whole dollar`;
     case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
     case "persons": return "every person in the case";
