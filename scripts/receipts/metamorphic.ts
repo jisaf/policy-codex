@@ -234,16 +234,21 @@ function families(m: Ledger, households: HouseholdCase[]) {
   // F6: CCCAP averages any receipt paid once (3.111.H.4.i), whatever its kind
   const cccapSrc = households.find((c) => c.id === "CO-345");
   if (cccapSrc && readsReceipts.has("cccap_household_income")) {
+    // A county diversion is stated as one (tanf_state_diversion_payment_months 0, CO-4911): with the
+    // diversion's kind and length unstated CCCAP cannot determine (3.103.S; decision 4; coverage pass 4
+    // X4-1), and CO-345 states neither, so the relation's input says what its label says.
+    const county = clone(cccapSrc);
+    county.persons.p1.facts = { ...(county.persons.p1.facts ?? {}), tanf_state_diversion_payment_months: 0 };
     for (const [label, r] of [
       ["a county diversion paid once", { kind: "colorado_works_diversion", amount: 1500, frequency: "once", month: "2026-11" }],
       ["a gift paid once", { kind: "gift", amount: 1500, frequency: "once", month: "2026-11" }],
       ["a lump-sum child support payment", { kind: "child_support_arrears", amount: 1500, frequency: "once", month: "2026-11" }],
       ["an inheritance", { kind: "other_nontaxable", amount: 1500, frequency: "once", month: "2026-11" }],
     ] as Array<[string, Receipt]>) {
-      out.push({ family: "F6", label, id: "cccap_household_income", got: ev(withReceipts(cccapSrc, [r]), "cccap_household_income", "2026-11"), want: 2125 });
+      out.push({ family: "F6", label, id: "cccap_household_income", got: ev(withReceipts(county, [r]), "cccap_household_income", "2026-11"), want: 2125 });
     }
     out.push({ family: "F6", label: "the diversion stated as recurring", id: "cccap_household_income",
-      got: ev(withReceipts(cccapSrc, [{ kind: "colorado_works_diversion", amount: 1500 }]), "cccap_household_income", "2026-11"), want: 3500 });
+      got: ev(withReceipts(county, [{ kind: "colorado_works_diversion", amount: 1500 }]), "cccap_household_income", "2026-11"), want: 3500 });
   }
   // F7: SUN Bucks reads a Colorado Works cash payment as TANF receipt, not a diversion
   const sebtSrc = households.find((c) => c.id === "CO-372");

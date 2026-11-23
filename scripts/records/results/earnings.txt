@@ -1,8 +1,8 @@
-# Records harness: earnings (69 s)
+# Records harness: earnings (60 s)
 
 ## Translation
 
-Stored households stating earnings: 319 of 329; rule tests stating earnings: 771 of 4824.
+Stored households stating earnings: 329 of 339; rule tests stating earnings: 775 of 4828.
 Stored households whose earnings are not the translation of their earned facts: none.
 Rule tests whose earnings are not the translation of their earned facts: none.
 
@@ -5079,30 +5079,30 @@ allowed (AF-1 boarder payments are earned income less provision costs (3.520.783
 
 | Relation | Track | Figures | Households | Values | Violations |
 |---|---|---|---|---|---|
-| ME-1 split | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 673 | 11320 | 0 |
-| ME-1 split | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 673 | 9905 | 0 |
-| ME-1 split | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 673 | 12735 | 0 |
+| ME-1 split | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 683 | 11488 | 0 |
+| ME-1 split | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 683 | 10052 | 0 |
+| ME-1 split | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 683 | 12924 | 0 |
 | ME-1 split | leap | not run: LEAP averages the pays of four of the eight weeks before application (3.752.22.B-C), not dollars | | | |
-| ME-1 split | medicaid | ma_magi_wage_earnings, ma_magi_self_employment_earnings, ma_person_magi_income, ma_ssi_gross_earned_income, ma_self_employment_net_earnings, ma_ssi_countable_income, ma_ltc_gross_income, ma_wawd_countable_income, ma_employer_pay_for_verification | 673 | 12735 | 0 |
-| ME-1 split | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 673 | 11320 | 0 |
-| ME-2 order | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 673 | 11320 | 0 |
-| ME-2 order | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 673 | 9905 | 0 |
-| ME-2 order | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 673 | 12735 | 0 |
-| ME-2 order | leap | leap_ongoing_wage_streams, leap_scsep_wages, leap_person_wages, leap_self_employment_gross_receipts, leap_self_employment_allowable_costs, leap_self_employment_income, leap_boarder_payments | 673 | 9905 | 0 |
-| ME-2 order | medicaid | ma_magi_wage_earnings, ma_magi_self_employment_earnings, ma_person_magi_income, ma_ssi_gross_earned_income, ma_self_employment_net_earnings, ma_ssi_countable_income, ma_ltc_gross_income, ma_wawd_countable_income, ma_employer_pay_for_verification | 673 | 12735 | 0 |
-| ME-2 order | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 673 | 11320 | 0 |
+| ME-1 split | medicaid | ma_magi_wage_earnings, ma_magi_self_employment_earnings, ma_person_magi_income, ma_ssi_gross_earned_income, ma_self_employment_net_earnings, ma_ssi_countable_income, ma_ltc_gross_income, ma_wawd_countable_income, ma_employer_pay_for_verification | 683 | 12924 | 0 |
+| ME-1 split | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 683 | 11488 | 0 |
+| ME-2 order | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 683 | 11488 | 0 |
+| ME-2 order | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 683 | 10052 | 0 |
+| ME-2 order | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 683 | 12924 | 0 |
+| ME-2 order | leap | leap_ongoing_wage_streams, leap_scsep_wages, leap_person_wages, leap_self_employment_gross_receipts, leap_self_employment_allowable_costs, leap_self_employment_income, leap_boarder_payments | 683 | 10052 | 0 |
+| ME-2 order | medicaid | ma_magi_wage_earnings, ma_magi_self_employment_earnings, ma_person_magi_income, ma_ssi_gross_earned_income, ma_self_employment_net_earnings, ma_ssi_countable_income, ma_ltc_gross_income, ma_wawd_countable_income, ma_employer_pay_for_verification | 683 | 12924 | 0 |
+| ME-2 order | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 683 | 11488 | 0 |
 | ME-3 month | af | not run: Adult Financial averages a farm's income over the year (3.520.783, S3505) and tests infrequent pay over the quarter | | | |
 | ME-3 month | cccap | not run: CCCAP reads the prior thirty days at application (3.111.H.5.a.1) and may average a business over twelve months (I.2.c) | | | |
-| ME-3 month | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 673 | 12735 | 0 |
+| ME-3 month | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 683 | 12924 | 0 |
 | ME-3 month | leap | not run: LEAP places pays by date against the application date (3.752.22.A-C) | | | |
 | ME-3 month | medicaid | not run: the SSI method tests infrequent pay over the quarter (416.1112(c)(2)) and the student exclusion over the year | | | |
 | ME-3 month | snap | not run: SNAP averages over the year (4.403.3, 4.403.12) and tests irregular pay over the quarter (4.405.A): a record stated for one month is not the same as one that recurs in the months those rules read | | | |
-| ME-4 cost | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 673 | 11320 | 0 |
-| ME-4 cost | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 673 | 9905 | 0 |
-| ME-4 cost | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 673 | 12735 | 0 |
-| ME-4 cost | leap | leap_ongoing_wage_streams, leap_scsep_wages, leap_person_wages, leap_self_employment_gross_receipts, leap_self_employment_allowable_costs, leap_self_employment_income, leap_boarder_payments | 673 | 9905 | 0 |
+| ME-4 cost | af | af_earned_pay, af_boarder_income, af_excluded_earned_income, af_self_employment_business_costs, af_self_employment_net_profit, af_gross_earned_income, af_countable_income, af_deemed_relative_income | 683 | 11488 | 0 |
+| ME-4 cost | cccap | cccap_person_gross_wages, cccap_self_employment_gross_receipts, cccap_self_employment_business_expenses, cccap_self_employment_net_earnings, cccap_other_countable_receipts, cccap_person_earned_income, cccap_has_earned_income | 683 | 10052 | 0 |
+| ME-4 cost | cw | cw_earned_pay, cw_new_source_earnings, cw_excluded_earned_income, cw_self_employment_business_costs, cw_self_employment_net_profit, cw_boarder_income, cw_gross_earned_income, cw_payment_countable_earned_income, cw_countable_income | 683 | 12924 | 0 |
+| ME-4 cost | leap | leap_ongoing_wage_streams, leap_scsep_wages, leap_person_wages, leap_self_employment_gross_receipts, leap_self_employment_allowable_costs, leap_self_employment_income, leap_boarder_payments | 683 | 10052 | 0 |
 | ME-4 cost | medicaid | ma_magi_wage_earnings, ma_magi_self_employment_earnings, ma_person_magi_income, ma_ssi_gross_earned_income, ma_self_employment_net_earnings, ma_ssi_countable_income, ma_ltc_gross_income, ma_wawd_countable_income, ma_employer_pay_for_verification | 0 | 0 | 0 |
-| ME-4 cost | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 673 | 11320 | 0 |
+| ME-4 cost | snap | snap_person_wages, snap_person_counted_wages, snap_excluded_earned_income, snap_self_employment_income, snap_farm_self_employment_loss, snap_boarder_income, snap_person_earned_income, snap_person_pay_received | 683 | 11488 | 0 |
 | ME-5 dated | snap | a family the SNAP track adds with its readers (design 4.4) | | | |
 
 ## Translation notes

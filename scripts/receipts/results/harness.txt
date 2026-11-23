@@ -1,13 +1,13 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 225 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 202 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
 | stored households | 319 | 170188 | 1254 | 269 | 973 | 281 |
 | generated households | 1626 | 696597 | 6684 | 1405 | 5630 | 1054 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671, CO-710, CO-711, CO-712, CO-713, CO-714, CO-715, CO-716, CO-717, CO-718, CO-719.
 
 ## Allowed differences by class
 
@@ -67,12 +67,12 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 1759 | 0 |
-| MA-2 order | 1759 | 0 |
-| MA-3 month | 1759 | 0 |
-| MA-4 residual | 1759 | 0 |
-| MA-5 frequency | 1759 | 0 |
-| MA-6 date | 1759 | 0 |
+| MA-1 split | 1763 | 0 |
+| MA-2 order | 1763 | 0 |
+| MA-3 month | 1763 | 0 |
+| MA-4 residual | 1763 | 0 |
+| MA-5 frequency | 1763 | 0 |
+| MA-6 date | 1763 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
@@ -102,11 +102,11 @@ none
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | af_relative_deemable_unearned_income | 200 | 200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | cw_countable_unearned_income | 200 | 200 |
-| F6 | a county diversion paid once | cccap_household_income | null | 2125 **VIOLATION** |
+| F6 | a county diversion paid once | cccap_household_income | 2125 | 2125 |
 | F6 | a gift paid once | cccap_household_income | 2125 | 2125 |
 | F6 | a lump-sum child support payment | cccap_household_income | 2125 | 2125 |
 | F6 | an inheritance | cccap_household_income | 2125 | 2125 |
-| F6 | the diversion stated as recurring | cccap_household_income | null | 3500 **VIOLATION** |
+| F6 | the diversion stated as recurring | cccap_household_income | 3500 | 3500 |
 | F7 | Colorado Works cash in September | sebt_eligibility_status | "eligible_categorical" | eligible_categorical |
 | F7 | a diversion in September (the same as no receipt) | sebt_eligibility_status | "ineligible" | ineligible |
 | M1 | recurring | ma_magi_unearned_receipts | 1050 | 1050 |
