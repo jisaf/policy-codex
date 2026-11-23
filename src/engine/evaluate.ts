@@ -625,6 +625,20 @@ export function evaluate(
     return null;
   }
 
+  /** ["receipt", field] read where the reader gives the field's absence its
+   *  meaning (["otherwise", that, x] or ["unknown", that]), for a field whose
+   *  schema declares what leaving it out means (`when_absent`: a holding's
+   *  share, co_owners, disposed_date, returned_date). A record that leaves
+   *  such a field out has stated it, so it is not reported as a missing
+   *  supplied fact (resource records H1 integration, request R-2). A field
+   *  that is required, or one read without an absence meaning, is reported
+   *  as before. */
+  function declaredAbsence(x: Expr): boolean {
+    if (!Array.isArray(x) || x[0] !== "receipt" || thatReceipt === null) return false;
+    const spec = thatReceipt.fields[x[1] as string];
+    return !!spec && typeof spec.when_absent === "string";
+  }
+
   /** Every operator's result passes here: a number that is not finite is
    *  unknown from the operator that produced it on (never NaN or Infinity
    *  compared, summed or rounded), and reported. */
@@ -704,7 +718,7 @@ export function evaluate(
         let chosen: number | null = null;
         try {
           if (f) f.role = "left";
-          const v = g(e[1]);
+          const v = declaredAbsence(e[1]) ? receiptField(thatReceipt!, (e[1] as Expr[])[1] as string, false) : g(e[1]);
           if (v !== null) { chosen = 0; return v; }
           if (f) { f.branch = 1; f.role = "right"; }
           chosen = 1;
@@ -713,7 +727,9 @@ export function evaluate(
           if (f) closeFrame(f, chosen, (b) => b === chosen, p, m);
         }
       }
-      case "unknown": return g(e[1]) === null;
+      case "unknown":
+        if (declaredAbsence(e[1])) return receiptField(thatReceipt!, (e[1] as Expr[])[1] as string, false) === null;
+        return g(e[1]) === null;
       case "<": case "<=": case ">": case ">=": case "=": {
         // Neither side decides a comparison on its own; both operands matter.
         const f = trace ? openFrame(op) : null;

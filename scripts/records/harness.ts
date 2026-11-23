@@ -45,12 +45,13 @@
 //    below, applied to every stored household, gives a statement the schema
 //    and this check accept. Fails on any finding not dispositioned in
 //    allowed/joint.yaml.
-// 3. Old against new, as for earnings, against HOLDINGS_BASELINE (the end
-//    of step H0, so each H1 track measures itself; --base the commit before
-//    H0 measures H0), on every stored household and the generated
-//    households of each track's holdings bases (generate-holdings.ts);
-//    differences pass only when allowed/h0.yaml or h1-<track>.yaml explains
-//    them.
+// 3. Old against new, as for earnings, against HOLDINGS_BASELINE (the
+//    commit the H1 wave started from, so each H1 track measures itself;
+//    --base the commit before H0 measures H0), on every stored household and
+//    the generated households of each track's holdings bases
+//    (generate-holdings.ts); differences pass only when allowed/h0.yaml,
+//    h1-<track>.yaml or h1-integration.yaml (the whole-phase run's classes)
+//    explains them.
 // 4. Metamorphic relations MH-1 to MH-5 (metamorphic-holdings.ts) on the
 //    figures each track registers as reading the holdings records.
 import fs from "node:fs";
@@ -82,13 +83,21 @@ import { jointRecordErrors } from "../../src/engine/records";
  *  and the SSI parental deeming fill-up, merged into E0 before its gate). */
 export const EARNINGS_BASELINE = "9650b0ca4eceaa0bb2e674ecbd2a8fc4964aaf7d";
 
-/** The ledger each H1 track measures itself against: the end of step H0
- *  (cb7eac3, its change record, the last H0 commit that changes the ledger;
- *  docs/reviews/holdings-h0.md), re-pointed by the integration owner at
- *  each merge wave (design 4.3, rule 5). To measure H0 itself, --base the
- *  ledger just before it: 704da6b (a3ffd86 with the receipts harness
- *  classification merged into H0 before its gate). */
-export const HOLDINGS_BASELINE = "cb7eac3a137ba2a658d91cb0736ff73fa82f2f9f";
+/** The ledger the H1 wave is measured against: 0224913, the merge of step H0
+ *  into the branch (H0 ended at cb7eac3 and was merged with the coverage
+ *  pass 4 review documents and the P58 follow-up, fe36e2e), the commit every
+ *  H1 track (Medicaid; SNAP and Adult Financial) started from. Re-pointed by
+ *  the integration owner at the merge wave (design 4.3, rule 5;
+ *  docs/reviews/records-holdings-h1-integration.md): it was cb7eac3, the end
+ *  of step H0 alone; the two ledgers read the same (0224913 adds only
+ *  open-question text), so no track's classes move. Rounds merged after
+ *  0224913 that are not H1 (coverage pass 4 for CCCAP, LEAP and SUN Bucks,
+ *  7c56f14; for MAGI Medicaid and CHP+, fa59e3b) are measured as theirs, by
+ *  their own classes, in allowed/h1-integration.yaml. H2 re-points it to the
+ *  end of the H1 integration. To measure H0 itself, --base the ledger just
+ *  before it: 704da6b (a3ffd86 with the receipts harness classification
+ *  merged into H0 before its gate). */
+export const HOLDINGS_BASELINE = "0224913938304f02e834462d4ccfb39b14d99cb3";
 
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
