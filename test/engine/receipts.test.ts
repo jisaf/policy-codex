@@ -172,6 +172,30 @@ describe("receipt (P56) and received_in (P57)", () => {
     expect(run(oneTime, [{ kind: "inheritance", amount: 9, frequency: "once", date: "2026-11-12" }])).toBe(0);
     expect(run(oneTime, [{ kind: "inheritance", amount: 9, frequency: "once", month: "2026-11" }])).toBeNull();
   });
+  it("a receipt summed for a month reads that month's parameter versions; another month is an error", () => {
+    // A limit that changes on November 1: a receipt counted for October is
+    // compared with October's figure, also from a November rule ("in that month").
+    const limit: Item = {
+      id: "R-4", name: "Limit", identifier: "limit", kind: "parameter", type: "money", scope: "global",
+      program: "All", meaning: "A limit that changes.", versions: [
+        { from: "2026-01-01", to: "2026-11-01", value: 100 }, { from: "2026-11-01", value: 200 },
+      ],
+    } as Item;
+    const big: Expr = ["sum_receipts", "receipts",
+      ["all", ["received_in", ["month"]], [">=", ["receipt", "amount"], "limit"]], ["receipt", "amount"]];
+    const quarter: Expr = ["sum_months", ["months_from_to", "2026-10", "2026-11"], ["at", big, ["that_month"]]];
+    const list = [{ kind: "pension", amount: 150, month: "2026-10" }, { kind: "pension", amount: 150, month: "2026-11" }];
+    const i = buildIndex([receipts, table, appDate, limit, derived("q", quarter), derived("b", big)]);
+    const c = makeCase(i, { id: "T", as_of: "2026-11-15", persons: { p1: { facts: { receipts: list } } } });
+    expect(evaluate(i, c, "b", "p1", "2026-10")).toBe(150);
+    expect(evaluate(i, c, "b", "p1", "2026-11")).toBe(0);
+    expect(evaluate(i, c, "q", "p1", "2026-11")).toBe(150);
+    const wrong: Expr = ["sum_months", ["months_from_to", "2026-10", "2026-11"],
+      ["sum_receipts", "receipts", ["received_in", ["that_month"]], ["receipt", "amount"]]];
+    const i2 = buildIndex([receipts, table, appDate, derived("w", wrong)]);
+    const c2 = makeCase(i2, { id: "T", as_of: "2026-11-15", persons: { p1: { facts: { receipts: list } } } });
+    expect(() => evaluate(i2, c2, "w", "p1", "2026-11")).toThrow(/evaluated in 2026-11/);
+  });
   it("errors outside a sum, and on a field the schema does not declare", () => {
     expect(() => run(["receipt", "amount"], [])).toThrow(/outside/);
     expect(() => run(["sum_receipts", "receipts", true, ["receipt", "amout"]], [{ kind: "pension", amount: 1 }])).toThrow(/no such field/);

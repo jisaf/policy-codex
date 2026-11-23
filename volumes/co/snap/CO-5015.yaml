@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: SNAP
 meaning: The month's need-based charitable cash receipts, up to what the earlier months of the calendar quarter left of snap_charitable_cash_quarterly_limit (10 CCR 2506-1 4.405.A.10).
-precision: The limit applies to the quarter's donations in the order received. Each earlier month is read as 0 when the receipts are not stated.
-derived: [min, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [month]]], [receipt, amount]], [max, 0, ["-", snap_charitable_cash_quarterly_limit, [sum_months, snap_calendar_quarter_months_before, [otherwise, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [that_month]]], [receipt, amount]], 0]]]]]
+precision: The limit applies to the quarter's donations in the order received. Each earlier month is read as 0 when the receipts are not stated. Each earlier month's receipts are summed in that month ("in that month"), so a receipt is counted with the treatment table in force in the month it is received (docs/operators.md, Resolution step 2 and P57).
+derived: [min, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [month]]], [receipt, amount]], [max, 0, ["-", snap_charitable_cash_quarterly_limit, [sum_months, snap_calendar_quarter_months_before, [otherwise, [at, [sum_receipts, receipts, [all, ["=", [lookup, snap_receipt_treatment_table, [receipt, kind]], counted_beyond_quarterly_limit], [not, ["=", [receipt, frequency], once]], [received_in, [month]]], [receipt, amount]], [that_month]], 0]]]]]
 sources: [S3109]
 implemented: engine
 tags: [snap, income]

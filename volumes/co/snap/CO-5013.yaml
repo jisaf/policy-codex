@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: SNAP
 meaning: The person's receipts marked infrequent or irregular received in the months of the calendar quarter that contains the month (10 CCR 2506-1 4.405.A; 7 CFR 273.9(c)(2) "in a quarter"), whatever their kind.
-precision: Each month of the quarter is read as 0 when the receipts are not stated, as infrequent_or_irregular_income_in_quarter (CO-4077, which CCCAP still reads) read the month's fact. The calendar quarter is also the federal fiscal quarter.
-derived: [sum_months, snap_calendar_quarter_months, [otherwise, [sum_receipts, receipts, [all, [receipt, irregular], [received_in, [that_month]]], [receipt, amount]], 0]]
+precision: Each month of the quarter is read as 0 when the receipts are not stated, as infrequent_or_irregular_income_in_quarter (CO-4077, which CCCAP still reads) read the month's fact. The calendar quarter is also the federal fiscal quarter. Each earlier month's receipts are summed in that month ("in that month"), so a receipt is counted with the treatment table in force in the month it is received (docs/operators.md, Resolution step 2 and P57).
+derived: [sum_months, snap_calendar_quarter_months, [otherwise, [at, [sum_receipts, receipts, [all, [receipt, irregular], [received_in, [month]]], [receipt, amount]], [that_month]], 0]]
 sources: [S3128]
 implemented: engine
 tags: [snap, income]

@@ -268,7 +268,7 @@ Receipt records (the recorded exception to the engine guardrail, product-owner d
 
 - P55 `the sum of [number] for each receipt in [receipts] where [condition]` (`sum_receipts`), with `that receipt` naming each record in turn. As a block: `the sum for each receipt in [receipts] where`, the condition indented two steps, `of` one step in, the value indented two steps. The condition and the value read only that receipt's fields, the month, case facts and parameters; a fact of the person is read outside the sum. Unknown when the list is not stated or when any record's condition, or a counted record's value, is unknown; a stated empty list is 0
 - P56 `that receipt's [field]` (`receipt`): the field as the record states it, or the default the schema declares; a field with no default the record does not state is unknown and is reported as `receipts[<i> <kind>].<field>`
-- P57 `that receipt is received in [month]` (`received_in`): its month, or its date's month, is the month; a record that states neither recurs in every month, unless it is paid once (then its month is needed)
+- P57 `that receipt is received in [month]` (`received_in`): its month, or its date's month, is the month; a record that states neither recurs in every month, unless it is paid once (then its month is needed); the month is the month in context (a sum for an earlier month is written "in that month"), so a receipt counted for a month reads that month's figures
 
 ## Receipt records
 

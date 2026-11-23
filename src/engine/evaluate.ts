@@ -967,6 +967,18 @@ export function evaluate(
         if (thatReceipt === null) throw new Error('"that receipt" outside "for each receipt in"');
         const mm = g(e[1]);
         if (mm === null) return null;
+        // The month a receipt is summed for is the month in context (the
+        // determination month outside one), so the parameters its sum reads
+        // are that month's versions (Resolution step 2): a sum for another
+        // month (a quarter's or a year's months) is written in that month,
+        // ["at", sum, ["that_month"]], never as received in "that month"
+        // under the context's month.
+        if (mm !== (m ?? detMonth)) {
+          throw new Error(
+            `that receipt is received in ${mm} while the sum is evaluated in ${m ?? detMonth}: ` +
+            'evaluate the sum in that month ("in that month") so its parameters are that month\'s',
+          );
+        }
         const rm = recordMonth(thatReceipt.rec);
         if (rm !== undefined) return rm === mm;
         if (thatReceipt.fields.frequency && receiptField(thatReceipt, "frequency", false) === "once") {
