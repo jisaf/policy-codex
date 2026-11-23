@@ -94,3 +94,19 @@
   old: unknown
   new: 1700
   class: "H1S-R restated in holdings alone (the refund dated): the ledger before H1 does not read it"
+
+# ---------------------------------------------------------------------------------------------------
+# Not this track's (the harness compares every outcome a stored household expects, CCCAP's among them): coverage
+# pass 4 X4-1 (docs/reviews/coverage4-care-energy.md; scripts/records/allowed/coverage4-care-energy.yaml), merged
+# after HOLDINGS_BASELINE: CCCAP reads a Colorado Works diversion's length with no default, and CO-345 does not
+# state it. No holdings figure is involved; the entry goes when the integration owner re-points HOLDINGS_BASELINE.
+- case: CO-345
+  person: p1
+  identifier: /^cccap_(eligibility_status|household_income)$/
+  new: unknown
+  class: "not this track's: coverage pass 4 X4-1, a diversion whose kind and length are not stated (merged after HOLDINGS_BASELINE)"
+- case: CO-345
+  person: p3
+  identifier: /^cccap_(eligibility_status|household_income)$/
+  new: unknown
+  class: "not this track's: coverage pass 4 X4-1, a diversion whose kind and length are not stated (merged after HOLDINGS_BASELINE)"

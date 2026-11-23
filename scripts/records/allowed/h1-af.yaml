@@ -82,11 +82,13 @@
 # full). Stored households and tests that hold such money are dated (CO-300; CO-4412-T1, T2, T6).
 # The same for personal property held as an investment (finding H0-F2 fixed, 3.520.77.B, S4507): it is counted at
 # its appraised value less liabilities (3.520.742.A.3, B, S4692), and the variant states no amount owed; stated,
-# it counts (rule tests CO-5345-T1, T2; CO-4000-T21: 2,800, over the $2,000 limit).
-- case: /^(GH-AFclientresources-investment_jewelry_2000|GH-AFspouseresources-investment_jewelry_2000|GH-AFclientresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800|GH-AFspouseresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800)$/
+# it counts (rule tests CO-5345-T1, T2; CO-4000-T21: 2,800, over the $2,000 limit). The same for a burial space
+# beyond the family's needs, counted at its value less what is owed on it (3.520.72.B.9, 3.520.742.A.3); the
+# variant states no amount owed (rule tests CO-5344-T3: 1,200 with nothing owed).
+- case: /^(GH-AFclientresources-investment_jewelry_2000|GH-AFspouseresources-investment_jewelry_2000|GH-AFclientresources-burial_spaces_beyond_the_family_800|GH-AFspouseresources-burial_spaces_beyond_the_family_800|GH-AFclientresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_state_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFspouseresources-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-AFclientresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800|GH-AFspouseresources-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800)$/
   identifier: /^af_(exempt_liquid_resources|person_countable_resources_other_than_life_insurance|client_and_spouse_countable_resources|meets_resource_limit|category|oap_grant|and_grant)$/
   new: unknown
-  class: "H1A-D4-3 a held refund or retroactive payment with no date of receipt, or investment property with no amount owed: cannot determine (decision 4)"
+  class: "H1A-D4-3 a held refund or retroactive payment with no date of receipt, or investment property or a burial space with no amount owed: cannot determine (decision 4)"
 
 # ---------------------------------------------------------------------------------------------------
 # H1A-1 (cited fix): one retroactive SSI or Social Security payment was stated twice, for the SSI method
