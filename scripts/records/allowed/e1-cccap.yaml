@@ -30,3 +30,12 @@
 # CO-194 (a $20 odd job in February 2027): 1,020 to 1,000. CO-483 (a $30 irregular payment in November 2026): 4,900 to 4,870.
 - {case: CO-194, identifier: "/^cccap_(person_earned_income|household_income)$/", month: "2027-02", class: "E1-C3 J.28 excludes irregular earnings under $90 a quarter", old: 1020, new: 1000}
 - {case: CO-483, identifier: "/^cccap_(person_earned_income|household_income)$/", month: "2026-11", class: "E1-C3 J.28 excludes irregular earnings under $90 a quarter", old: 4900, new: 4870}
+
+# D4-S (decision 4 of 2026-11-23; SUN Bucks has no records track, so its class is listed here): sebt_household_child_receives_snap_or_tanf
+# (CO-2708) reads a child's Colorado Works receipts with no default (7 CFR 292.2 and 292.12(d) give no reading for assistance not
+# reported). A person whose receipts are not stated and whom no flag shows receiving SNAP or TANF cannot be determined (CO-211's
+# guardian, an adult the item is evaluated for beside the child; the child states her empty receipts list and stays false).
+- {case: "/.*/", identifier: sebt_household_child_receives_snap_or_tanf, class: "D4-S a child's Colorado Works receipts not stated: SUN Bucks' categorical test cannot be determined", old: false, new: unknown}
+# D4-C1 and D4-E at CO-211: its child now states receipts: [] and no earnings, so her CCCAP other income and LEAP boarders, and with
+# them whether her unearned income waits on verification, cannot be determined (decision 4).
+- {case: CO-211, person: p2, identifier: "/^(cccap|leap)_unearned_income_verification_is_pending$/", class: "D4-C1/D4-E earnings not stated: CCCAP other income and LEAP boarders cannot be determined", old: false, new: unknown}
