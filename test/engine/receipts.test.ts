@@ -157,6 +157,11 @@ describe("receipt (P56) and received_in (P57)", () => {
     expect(run(amountIn, [{ kind: "pension", amount: 7, date: "2026-10-25" }], "2026-10")).toBe(7);
     expect(run(amountIn, [{ kind: "pension", amount: 7, date: "2026-10-25" }], "2026-11")).toBe(0);
   });
+  it("that receipt's month is its month, or its date's month", () => {
+    const m: Expr = ["sum_receipts", "receipts", ["=", ["receipt", "month"], "2026-10"], ["receipt", "amount"]];
+    expect(run(m, [{ kind: "pension", amount: 7, date: "2026-10-25" }, { kind: "pension", amount: 1, month: "2026-10" }])).toBe(8);
+    expect(run(m, [{ kind: "pension", amount: 7 }])).toBeNull();
+  });
   it("a one-time record with no month or date cannot be placed, and its month is named", () => {
     const events: TraceEvent[] = [];
     expect(run(amountIn, [{ kind: "inheritance", amount: 7, frequency: "once" }], "2026-11", events)).toBeNull();

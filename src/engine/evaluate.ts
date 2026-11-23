@@ -593,6 +593,11 @@ export function evaluate(
     if (!spec) throw new Error(`that receipt's ${field}: the ${f.list} schema declares no such field`);
     const v = f.rec[field];
     if (v !== undefined && v !== null) return v;
+    // A record that states a date and no month came in the date's month.
+    if (field === "month") {
+      const rm = recordMonth(f.rec);
+      if (rm !== undefined) return rm;
+    }
     if ("default" in spec) return spec.default ?? null;
     if (report) missingField(f, field);
     return null;
