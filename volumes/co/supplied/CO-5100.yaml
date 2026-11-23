@@ -140,7 +140,7 @@ record_fields:
   foster_care:
     type: yes/no
     default: false
-    meaning: The boarder payments are foster care payments for a person placed in the home.
+    meaning: "The boarder payments, or the difficulty of care payment, are foster care payments for a person placed in the home (paid by the county or the State for foster care), not payments for a person on a Home and Community Based Services waiver."
 sources: [S41, S2713, S3112, S1152, S1155, S1156, S1157, S1154, S2963, S3159, S3255]
 tags: [income]
 open: [OQ-1020, OQ-1181]
