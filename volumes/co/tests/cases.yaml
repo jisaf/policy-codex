@@ -1245,14 +1245,14 @@
       ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-10": false}
       chp_eligibility_status: {"2026-10": ineligible}
-      snap_household_members: []
-      snap_eligible_household_members: []
-      snap_eligible_household_size: 0
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": []}
+      snap_eligible_household_members: {"2026-10": []}
+      snap_eligible_household_size: {"2026-10": 0}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_status: {"2026-10": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
       snap_verification_status: {"2026-10": not_applicable}
       snap_pending_verification_count: {"2026-10": 0}
       ma_verification_status: {"2026-10": pending}
@@ -1354,7 +1354,7 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
-      snap_person_participation_status: not_in_household
+      snap_person_participation_status: {"2026-10": not_in_household}
       cw_person_participation_status: not_in_unit_no_dependent_child
       leap_person_participation_status: not_in_household
       cccap_person_participation_status: {"2026-10": other_household_member}
@@ -1412,18 +1412,18 @@
       ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-10": false}
       chp_eligibility_status: {"2026-10": ineligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-10": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-10": 3}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
       snap_verification_status: {"2026-10": pending}
       snap_pending_verification_count: {"2026-10": 2}
       ma_verification_status: {"2026-10": pending}
@@ -1526,7 +1526,7 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-10": eligible_member}
       cw_person_participation_status: not_in_unit_no_dependent_child
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-10": other_household_member}
@@ -1585,18 +1585,18 @@
       ma_magi_eligibility_status: {"2026-10": emergency_only}
       ma_continuous_eligibility_applies: {"2026-10": false}
       chp_eligibility_status: {"2026-10": ineligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: true
-      snap_meets_citizenship_requirement: false
+      snap_household_members: {"2026-10": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-10": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-10": 3}
+      snap_is_ineligible_member: {"2026-10": true}
+      snap_meets_citizenship_requirement: {"2026-10": false}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
       snap_verification_status: {"2026-10": pending}
       snap_pending_verification_count: {"2026-10": 2}
       ma_verification_status: {"2026-10": pending}
@@ -1698,7 +1698,7 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
-      snap_person_participation_status: ineligible_member_non_citizen
+      snap_person_participation_status: {"2026-10": ineligible_member_non_citizen}
       cw_person_participation_status: not_in_unit_did_not_request
       leap_person_participation_status: ineligible_member_status
       cccap_person_participation_status: {"2026-10": other_household_member}
@@ -1758,18 +1758,18 @@
       ma_magi_eligibility_status: {"2026-10": eligible}
       ma_continuous_eligibility_applies: {"2026-10": true}
       chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-10": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-10": 3}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
       snap_verification_status: {"2026-10": pending}
       snap_pending_verification_count: {"2026-10": 2}
       # Final verification V-3: p4's MAGI household is p3, p4 and p5 (p3 claims her); p3's pay stubs are
@@ -1878,7 +1878,7 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-10": eligible_member}
       cw_person_participation_status: eligible_member
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-10": caretaker}
@@ -1930,18 +1930,18 @@
       ma_magi_eligibility_status: {"2026-10": eligible}
       ma_continuous_eligibility_applies: {"2026-10": true}
       chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-10": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-10": 3}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2965}
       snap_household_net_income: {"2026-10": 1571}
       snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
       snap_verification_status: {"2026-10": pending}
       snap_pending_verification_count: {"2026-10": 2}
       ma_verification_status: {"2026-10": not_required}
@@ -2044,7 +2044,7 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-10": eligible_member}
       cw_person_participation_status: eligible_member
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-10": eligible_child}
@@ -3263,14 +3263,14 @@
       ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-11": false}
       chp_eligibility_status: {"2026-11": ineligible}
-      snap_household_members: []
-      snap_eligible_household_members: []
-      snap_eligible_household_size: 0
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-11": []}
+      snap_eligible_household_members: {"2026-11": []}
+      snap_eligible_household_size: {"2026-11": 0}
+      snap_is_ineligible_member: {"2026-11": false}
+      snap_meets_citizenship_requirement: {"2026-11": true}
       snap_eligibility_status: {"2026-11": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-11": false}
       snap_verification_status: {"2026-11": not_applicable}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
@@ -3372,7 +3372,7 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
-      snap_person_participation_status: not_in_household
+      snap_person_participation_status: {"2026-11": not_in_household}
       cw_person_participation_status: not_in_unit_no_dependent_child
       leap_person_participation_status: not_in_household
       cccap_person_participation_status: {"2026-11": other_household_member}
@@ -3435,18 +3435,18 @@
       ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-11": false}
       chp_eligibility_status: {"2026-11": ineligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-11": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-11": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-11": 3}
+      snap_is_ineligible_member: {"2026-11": false}
+      snap_meets_citizenship_requirement: {"2026-11": true}
       snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-11": false}
       snap_verification_status: {"2026-11": complete}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
@@ -3549,7 +3549,7 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-11": eligible_member}
       cw_person_participation_status: not_in_unit_no_dependent_child
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-11": other_household_member}
@@ -3605,18 +3605,18 @@
       ma_magi_eligibility_status: {"2026-11": emergency_only}
       ma_continuous_eligibility_applies: {"2026-11": false}
       chp_eligibility_status: {"2026-11": ineligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: true
-      snap_meets_citizenship_requirement: false
+      snap_household_members: {"2026-11": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-11": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-11": 3}
+      snap_is_ineligible_member: {"2026-11": true}
+      snap_meets_citizenship_requirement: {"2026-11": false}
       snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-11": false}
       snap_verification_status: {"2026-11": complete}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
@@ -3718,7 +3718,7 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
-      snap_person_participation_status: ineligible_member_non_citizen
+      snap_person_participation_status: {"2026-11": ineligible_member_non_citizen}
       cw_person_participation_status: not_in_unit_did_not_request
       leap_person_participation_status: ineligible_member_status
       cccap_person_participation_status: {"2026-11": other_household_member}
@@ -3778,18 +3778,18 @@
       ma_magi_eligibility_status: {"2026-11": eligible}
       ma_continuous_eligibility_applies: {"2026-11": true}
       chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-11": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-11": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-11": 3}
+      snap_is_ineligible_member: {"2026-11": false}
+      snap_meets_citizenship_requirement: {"2026-11": true}
       snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-11": false}
       snap_verification_status: {"2026-11": complete}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": pending_reasonable_opportunity}
@@ -3892,7 +3892,7 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-11": eligible_member}
       cw_person_participation_status: ineligible_member_verification   # CW-12: citizenship not verified within thirty days (was eligible_member)
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-11": caretaker}
@@ -3944,18 +3944,18 @@
       ma_magi_eligibility_status: {"2026-11": eligible}
       ma_continuous_eligibility_applies: {"2026-11": true}
       chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
-      snap_household_members: [p2, p3, p4, p5]
-      snap_eligible_household_members: [p2, p4, p5]
-      snap_eligible_household_size: 3
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-11": [p2, p3, p4, p5]}
+      snap_eligible_household_members: {"2026-11": [p2, p4, p5]}
+      snap_eligible_household_size: {"2026-11": 3}
+      snap_is_ineligible_member: {"2026-11": false}
+      snap_meets_citizenship_requirement: {"2026-11": true}
       snap_eligibility_category: {"2026-11": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-11": false}
       snap_verification_status: {"2026-11": complete}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": not_required}
@@ -4058,7 +4058,7 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-11": eligible_member}
       cw_person_participation_status: ineligible_member_verification   # CW-12: citizenship not verified within thirty days (was eligible_member)
       leap_person_participation_status: eligible_member
       cccap_person_participation_status: {"2026-11": eligible_child}
@@ -4260,31 +4260,31 @@
   # the net income is 2152 (was 2182); the minimum allotment ($25) is unchanged. (C-5) No SUA: no utility costs.
   expect:
     p1:
-      snap_household_members: [p1, p2]
-      snap_eligible_household_members: [p1, p2]
-      snap_eligible_household_size: 2
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": [p1, p2]}
+      snap_eligible_household_members: {"2026-10": [p1, p2]}
+      snap_eligible_household_size: {"2026-10": 2}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2550}
       snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
     p2:
-      snap_household_members: [p1, p2]
-      snap_eligible_household_members: [p1, p2]
-      snap_eligible_household_size: 2
-      snap_is_ineligible_member: false
-      snap_meets_citizenship_requirement: true
+      snap_household_members: {"2026-10": [p1, p2]}
+      snap_eligible_household_members: {"2026-10": [p1, p2]}
+      snap_eligible_household_size: {"2026-10": 2}
+      snap_is_ineligible_member: {"2026-10": false}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_gross_income: {"2026-10": 2550}
       snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_is_work_registrant: false
+      snap_is_work_registrant: {"2026-10": false}
 
 - id: CO-04
   title: Pregnant LPR inside the five-year bar; stepparent filing jointly; a child claimed by a non-custodial parent; an 18-year-old in school
@@ -8049,7 +8049,7 @@
   # One Caretaker, no children) = 1,157, which is over the 331 need standard for one caretaker and one child.
   expect:
     p1:
-      snap_household_members: [p1, p2, p3]
+      snap_household_members: {"2026-10": [p1, p2, p3]}
       snap_is_initial_month: {"2026-10": true, "2026-11": false}
       snap_shelter_costs: {"2026-10": 1816}
       snap_full_month_allotment: {"2026-10": 743}
@@ -10583,13 +10583,13 @@
   expect:
     p1:
       snap_abawd_time_limit_status: {"2026-10": limit_reached}
-      snap_is_ineligible_member: true
-      snap_person_participation_status: ineligible_member_abawd_time_limit
+      snap_is_ineligible_member: {"2026-10": true}
+      snap_person_participation_status: {"2026-10": ineligible_member_abawd_time_limit}
       snap_counted_income_of_ineligible_member: {"2026-10": 300}
     p2:
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_person_participation_status: eligible_member
-      snap_eligible_household_size: 1
+      snap_person_participation_status: {"2026-10": eligible_member}
+      snap_eligible_household_size: {"2026-10": 1}
       snap_household_gross_income: {"2026-10": 1800}
       snap_household_net_income: {"2026-10": 514}
       snap_full_month_allotment: {"2026-10": 151}
@@ -10870,17 +10870,17 @@
         complies_with_refugee_program_work_requirements: false
   expect:
     p1:
-      snap_person_participation_status: ineligible_member_ssn
+      snap_person_participation_status: {"2026-10": ineligible_member_ssn}
       snap_counted_income_of_ineligible_member: {"2026-10": 800}
     p2:
-      snap_person_participation_status: eligible_member
-      snap_eligible_household_size: 1
+      snap_person_participation_status: {"2026-10": eligible_member}
+      snap_eligible_household_size: {"2026-10": 1}
       snap_household_gross_income: {"2026-10": 1200}
       snap_full_month_allotment: {"2026-10": 289}
       snap_allotment: {"2026-10": 289}
       snap_eligibility_status: {"2026-10": eligible}
     p3:
-      snap_person_participation_status: ineligible_member_disqualified
+      snap_person_participation_status: {"2026-10": ineligible_member_disqualified}
       snap_counted_income_of_ineligible_member: {"2026-10": 400}
 - id: CO-89
   title: "CDHS review B-5: a Colorado Works unit determined in August 2028, after SB 26-181's two years without a cost-of-living adjustment, has no published grant standard"
@@ -11429,7 +11429,7 @@
       af_sponsor_deeming_applies: true
       af_deemed_sponsor_income: {"2026-10": 1212}
       af_sponsor_countable_resources: 2900
-      snap_sponsor_deeming_applies: false
+      snap_sponsor_deeming_applies: {"2026-10": false}
       # SNAP final verification F-2 (4.305.2.D, S2502): sponsor household = p1 + her husband p2 + her son (tax
       # dependent) = 3, 130% limit 2,960; 3,200 - 640 - 2,960 < 0, so the sponsor's income after the reductions is 0.
       # Two sponsored children share the sponsor (divisor 2). Final verification pass 2 N-3: neither child is deemed
@@ -11437,10 +11437,10 @@
       # nothing) and deemed resources 0 (was (2,600 - 1,500) / 2 = 550 each).
       snap_sponsor_deeming_household_size: 3
       snap_sponsor_income_after_reductions: {"2026-10": 0}
-      snap_sponsor_deeming_divisor: 2
+      snap_sponsor_deeming_divisor: {"2026-10": 2}
       snap_sponsor_deemed_income: {"2026-10": 0}
-      snap_sponsor_deemed_resources: 0
-      snap_meets_citizenship_requirement: true
+      snap_sponsor_deemed_resources: {"2026-10": 0}
+      snap_meets_citizenship_requirement: {"2026-10": true}
       ma_meets_citizenship_requirement: true
       chp_has_qualifying_immigration_status: true
       cccap_child_meets_citizenship_requirement: true
@@ -11449,9 +11449,9 @@
       sponsors: [p1]
       af_deemed_sponsor_income: {"2026-10": 1212}  # coverage review F-16: was 715 (see the derivation above)
       af_sponsor_countable_resources: 2900
-      snap_sponsor_deeming_applies: false  # final verification pass 2 N-3: under 18 (was true)
-      snap_sponsor_deeming_divisor: 2
-      snap_sponsor_deemed_resources: 0  # was 550: no deeming to a child under 18
+      snap_sponsor_deeming_applies: {"2026-10": false}  # final verification pass 2 N-3: under 18 (was true)
+      snap_sponsor_deeming_divisor: {"2026-10": 2}
+      snap_sponsor_deemed_resources: {"2026-10": 0}  # was 550: no deeming to a child under 18
       ma_meets_citizenship_requirement: true
 
 - id: CO-95
@@ -11500,7 +11500,7 @@
       ma_meets_citizenship_requirement: false
       chp_has_qualifying_immigration_status: false
       chp_meets_status_requirement: false
-      snap_meets_citizenship_requirement: false
+      snap_meets_citizenship_requirement: {"2026-10": false}
       leap_meets_citizenship_requirement: false
     p2:
       is_qualified_non_citizen: false
@@ -11509,7 +11509,7 @@
       ma_meets_citizenship_requirement: true
       chp_has_qualifying_immigration_status: true
       chp_meets_status_requirement: true
-      snap_meets_citizenship_requirement: false
+      snap_meets_citizenship_requirement: {"2026-10": false}
       cccap_child_meets_citizenship_requirement: false
       leap_meets_citizenship_requirement: false
 
@@ -12330,14 +12330,14 @@
     #   Without the deeming: gross 900, adjusted 503, excess shelter 1,116 - 251.5 = 864.5, capped at 769, net 0,
     #   allotment 306.
     p2:
-      snap_sponsor_deeming_applies: true
+      snap_sponsor_deeming_applies: {"2026-10": true}
       snap_sponsor_deeming_household_size: 4
       snap_sponsor_income_after_reductions: {2026-10: 425}
-      snap_sponsor_deeming_divisor: 1
+      snap_sponsor_deeming_divisor: {"2026-10": 1}
       snap_sponsor_deemed_income: {2026-10: 425}
-      snap_sponsor_deemed_resources: 1500
+      snap_sponsor_deemed_resources: {"2026-10": 1500}
       snap_household_gross_income: {2026-10: 1325}
-      snap_household_countable_resources: 1700
+      snap_household_countable_resources: {"2026-10": 1700}
       snap_eligibility_category: {"2026-10": expanded_categorical}  # per month since coverage pass 4 S4-11
       snap_household_net_income: {2026-10: 276}
       snap_allotment: {2026-10: 223}
@@ -14556,14 +14556,14 @@
     #   so the verification status is members_excluded. A household with no eligible member is not Expanded
     #   Categorical (CO-340), so its category is standard.
     p2:
-      snap_sponsor_deeming_applies: true
+      snap_sponsor_deeming_applies: {"2026-10": true}
       snap_sponsor_verification_is_pending: {2026-10: true}
-      snap_is_ineligible_pending_non_citizen_verification: true
-      snap_is_ineligible_non_citizen: true
-      snap_person_participation_status: ineligible_member_non_citizen_verification
+      snap_is_ineligible_pending_non_citizen_verification: {"2026-10": true}
+      snap_is_ineligible_non_citizen: {"2026-10": true}
+      snap_person_participation_status: {"2026-10": ineligible_member_non_citizen_verification}
       snap_sponsor_deemed_income: {2026-10: 0}
-      snap_sponsor_deemed_resources: 0
-      snap_eligible_household_size: 0
+      snap_sponsor_deemed_resources: {"2026-10": 0}
+      snap_eligible_household_size: {"2026-10": 0}
       snap_eligibility_category: {"2026-10": standard}  # per month since coverage pass 4 S4-11
       snap_verification_status: {2026-10: members_excluded}
       snap_eligibility_status: {2026-10: no_eligible_members}
@@ -14850,9 +14850,9 @@
     #   standard deduction for 3 is also 217, so adjusted and net stay 2,663; 808 - 798.9 = 9.1, rounded down to 9;
     #   a household of three gets no minimum. Allotment = the lesser of 25 and 9 = 9 (was 25).
     p1:
-      snap_person_participation_status: ineligible_member_disqualified
-      snap_eligible_household_size: 2
-      snap_household_size_with_disqualified_members: 3
+      snap_person_participation_status: {"2026-10": ineligible_member_disqualified}
+      snap_eligible_household_size: {"2026-10": 2}
+      snap_household_size_with_disqualified_members: {"2026-10": 3}
       snap_household_net_income: {2026-10: 2663}
       snap_net_income_with_disqualified_members: {2026-10: 2663}
       snap_allotment_cap_for_disqualified_members: {2026-10: 9}
@@ -14860,7 +14860,7 @@
       snap_allotment: {2026-10: 9}
       snap_eligibility_status: {2026-10: eligible}
     p2:
-      snap_person_participation_status: eligible_member
+      snap_person_participation_status: {"2026-10": eligible_member}
       snap_allotment: {2026-10: 9}
 - id: CO-133
   title: 'Second pass (CCCAP): a mother transitioning off Colorado Works with child support received; the fee stays at the referral fee'
@@ -20528,8 +20528,8 @@
       snap_has_responsibility_for_abawd_dependent_child: {"2026-10": false}
       snap_lives_with_child_under_abawd_dependent_child_age: {"2026-10": true}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
-      snap_person_participation_status: eligible_member
-      snap_eligible_household_size: 3
+      snap_person_participation_status: {"2026-10": eligible_member}
+      snap_eligible_household_size: {"2026-10": 3}
       snap_household_gross_income: {"2026-10": 2100}
       snap_household_net_income: {"2026-10": 859}
       snap_allotment: {"2026-10": 550}
@@ -20737,13 +20737,13 @@
   expect:
     p1:
       snap_meets_residency_requirement: true
-      snap_person_participation_status: ineligible_member_abawd_time_limit
-      snap_eligible_household_size: 1
+      snap_person_participation_status: {"2026-10": ineligible_member_abawd_time_limit}
+      snap_eligible_household_size: {"2026-10": 1}
       snap_allotment: {"2026-10": 151}
     p2:
       snap_meets_residency_requirement: true
-      snap_meets_citizenship_requirement: true
-      snap_person_participation_status: eligible_member
+      snap_meets_citizenship_requirement: {"2026-10": true}
+      snap_person_participation_status: {"2026-10": eligible_member}
       snap_household_gross_income: {"2026-10": 1800}
       snap_household_net_income: {"2026-10": 514}
       snap_allotment: {"2026-10": 151}
@@ -21813,10 +21813,10 @@
   expect:
     p4:
       snap_is_ineligible_pending_citizenship_verification: true
-      snap_person_participation_status: ineligible_member_citizenship_verification
-      snap_is_ineligible_member_prorated: true
+      snap_person_participation_status: {"2026-11": ineligible_member_citizenship_verification}
+      snap_is_ineligible_member_prorated: {"2026-11": true}
     p2:
-      snap_eligible_household_size: 2
+      snap_eligible_household_size: {"2026-11": 2}
       snap_household_gross_income: {"2026-11": 2965}
       snap_household_net_income: {"2026-11": 1571}
       snap_allotment: {"2026-11": 90}
@@ -22886,9 +22886,9 @@
   expect:
     p1:
       snap_resides_in_institution_providing_meals: true
-      snap_person_participation_status: not_in_household
+      snap_person_participation_status: {"2026-11": not_in_household}
     p2:
-      snap_eligible_household_size: 3
+      snap_eligible_household_size: {"2026-11": 3}
       snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
 - id: CO-154
@@ -23960,13 +23960,13 @@
         shelter_cost_monthly: 0
   expect:
     p3:
-      snap_has_military_connection: false
+      snap_has_military_connection: {"2026-11": false}
       has_military_connection: true
-      snap_meets_immigrant_additional_condition: false
-      snap_person_participation_status: ineligible_member_non_citizen
+      snap_meets_immigrant_additional_condition: {"2026-11": false}
+      snap_person_participation_status: {"2026-11": ineligible_member_non_citizen}
     p2:
-      snap_has_military_connection: true
-      snap_eligible_household_size: 3
+      snap_has_military_connection: {"2026-11": true}
+      snap_eligible_household_size: {"2026-11": 3}
       snap_allotment: {"2026-11": 336}
 - id: CO-180
   title: Non-filer mother with a 17-year-old daughter and the daughter's baby (coverage round F-01)
@@ -26457,9 +26457,9 @@
   expect:
     p2:
       snap_meets_student_employment_exemption: true
-      snap_is_ineligible_student: false
-      snap_person_participation_status: eligible_member
-      snap_eligible_household_size: 1
+      snap_is_ineligible_student: {"2026-10": false}
+      snap_person_participation_status: {"2026-10": eligible_member}
+      snap_eligible_household_size: {"2026-10": 1}
       snap_eligibility_status: {"2026-10": eligible}
       snap_allotment: {"2026-10": 151}
 
@@ -29930,11 +29930,11 @@
         2026-10: no_eligible_members
       snap_allotment:
         2026-10: 0
-      snap_person_participation_status: ineligible_member_abawd_time_limit
+      snap_person_participation_status: {"2026-10": ineligible_member_abawd_time_limit}
     p2:
       snap_resides_in_institution_providing_meals: true
       snap_is_household_member: false
-      snap_person_participation_status: not_in_household
+      snap_person_participation_status: {"2026-10": not_in_household}
 - id: CO-218
   title: 'Coverage pass 3 N3-2 (ZZ-D3): a sponsored permanent resident whose household declines to document her status - no sponsor deeming for her citizen son''s household'
   # Coverage pass 3 N3-2 (the reviewer's scratch ZZ-D3). CO-116's sponsored permanent resident p2, earning $2,400 in wages, with her
@@ -30139,10 +30139,10 @@
         abawd_waiver_area_month: false
   expect:
     p2:
-      snap_person_participation_status: ineligible_member_non_citizen
+      snap_person_participation_status: {"2026-10": ineligible_member_non_citizen}
       snap_sponsor_deemed_income:
         2026-10: 0
-      snap_sponsor_deemed_resources: 0
+      snap_sponsor_deemed_resources: {"2026-10": 0}
       snap_requires_verification_of_sponsor:
         2026-10: false
     p4:
@@ -30150,7 +30150,7 @@
         2026-10: eligible
       snap_household_gross_income:
         2026-10: 1200
-      snap_household_countable_resources: 400
+      snap_household_countable_resources: {"2026-10": 400}
       snap_allotment:
         2026-10: 306
 - id: CO-219
@@ -31785,7 +31785,7 @@
   expect:
     p1:
       snap_countable_liquid_resources: 4000
-      snap_household_countable_resources: 4000
+      snap_household_countable_resources: {"2027-02": 4000}
 - id: CO-226
   title: 'Single adult at 150% of the poverty guideline: over the Adult limit, limited Family Planning (coverage pass 3 C3-01)'
   # Coverage pass 3 (2026-11-22), promoted from the reviewer's probe RV3-FPH. Determination 2026-11-10; application 2026-11-02.
@@ -54102,8 +54102,8 @@
         complies_with_refugee_program_work_requirements: false
   expect:
     p2:
-      snap_household_countable_resources: 600
-      snap_eligible_household_members: [p2, p3]
+      snap_household_countable_resources: {"2026-10": 600}
+      snap_eligible_household_members: {"2026-10": [p2, p3]}
 
 - id: CO-447
   title: 'Probe ZZ-5 (final SNAP 2, F-8): a farm loss offsets other income'
@@ -54488,7 +54488,7 @@
         dwelling_id: d1
   expect:
     p2:
-      snap_is_eligible_non_citizen: true
+      snap_is_eligible_non_citizen: {"2026-10": true}
 
 - id: CO-449
   title: 'Probe ZZ-7 (final SNAP 2, control for F-3): a permanent resident since 2024 with no earlier status is ineligible'
@@ -54601,8 +54601,8 @@
         dwelling_id: d1
   expect:
     p2:
-      snap_is_eligible_non_citizen: false
-      snap_person_participation_status: ineligible_member_non_citizen
+      snap_is_eligible_non_citizen: {"2026-10": false}
+      snap_person_participation_status: {"2026-10": ineligible_member_non_citizen}
 
 - id: CO-450
   title: 'Probe ZZ-8 (final SNAP 2, F-7): a railroad disability annuitant with Medicare is a disabled member'
@@ -55867,7 +55867,7 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_is_disqualified_for_voluntary_quit: false
+      snap_is_disqualified_for_voluntary_quit: {"2027-02": false}
 
 # ---------------------------------------------------------------------------------------------------------------
 # Time audit (step 6 of the 2026-11-23 plan): cases CO-530 to CO-599, docs/reviews/time-audit.md. Each expectation
@@ -57527,7 +57527,7 @@
         shelter_cost_monthly: 0
   expect:
     p1:
-      snap_is_ineligible_member: false
+      snap_is_ineligible_member: {"2027-02": false}
       snap_household_gross_income:
         2027-02: 1000
       snap_allotment:
@@ -62495,7 +62495,7 @@
   expect:
     p1:
       snap_countable_nonliquid_resources: 2000
-      snap_household_countable_resources: 3000
+      snap_household_countable_resources: {"2027-02": 3000}
 
 - id: "CO-750"
   title: "Coverage pass 4 SNAP S4-9 (ROOM): a roomer's payment is self-employment income"
@@ -66569,3 +66569,310 @@
         2026-11: 1180
       ma_ssi_related_category:
         2026-11: none
+
+- id: "CO-780"
+  title: "SNAP ages by month (S4-11, OQ-1263): a grandson who turns 18 and a grandmother who turns 60 change the household month by month"
+  # Coverage pass 4 SNAP, S4-11 and S4-19 finished (docs/reviews/coverage4-snap.md, section 7). Applied 2026-10-12, determined 2026-11-05.
+  # p1, 36, works 130 hours for $1,000 a month. Her mother p2 turns 60 on 2026-11-10; she cannot purchase and prepare her meals because of a
+  # permanent disability and asks to be a separate household (no income). p1's son p3 turns 18 on 2026-11-15 and attends college half time
+  # (no job, no other exemption). All three buy and prepare together; no shelter costs and no heating costs.
+  # October (the application month): p2 is 59 on October 31, so not 60 or older (7 CFR 273.1(b)(2), S1604; snap_is_elderly, 60 on the last
+  #   day, OQ-1262) and stays in the household; p3 is 17 on October 1, "seventeen (17) or under" (4.306.B.1, S135), so not an ineligible
+  #   student. Household {p1, p2, p3}, size 3. Gross 1,000; earned deduction 1,000 x 0.20 = 200 (S86); standard deduction for 3, 217 (S731);
+  #   net 1,000 - 200 - 217 = 583; 30% = 174.90, rounded up 175 (S104); maximum for 3, 808 (S730); full month 808 - 175 = 633; prorated from
+  #   October 12, 20 of 31 days: 633 x 20 / 31 = 408.39, rounded down 408 (S1617). Expanded categorical (gross 1,000 within 200% for 3).
+  # November (the determination month): p2 is 60 on November 30, so she is a separate household with no income: the others' income, 1,000,
+  #   is within 165% of the poverty line for two (S1604, S1605). p2: {p2}, net 0, allotment 306 (the maximum for 1). p3 is 17 on November 1,
+  #   so still not an ineligible student: p1's household {p1, p3}, size 2: net 583, 175; 562 - 175 = 387.
+  # December: p3 is 18 on December 1, "age eighteen (18) through forty-nine (49)" and enrolled half time with no exemption (4.306.A, S135):
+  #   an ineligible student, a non-household member (4.411.2.C). p1's household {p1, p3}, eligible size 1: net 1,000 - 200 - 217 = 583, 175;
+  #   306 - 175 = 131. p2: 306.
+  # Before (measured by running this household on 980b5d9): the separate household was read for the determination month (November, p2 60)
+  #   and the student on the determination date (p3 17) in every month, so p2 was a separate household in October too and p3 an eligible
+  #   member in December too: p1 October 387 x 20 / 31 = 249.68, 249; November and December 387; p2 October 306 x 20 / 31 = 197.42, 197.
+  as_of: "2026-11-05"
+  case_facts:
+    home_heating_cost_arrangement: "none"
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
+  relationships:
+    - - "parent"
+      - "p2"
+      - "p1"
+    - - "parent"
+      - "p1"
+      - "p3"
+    - - "buys_prepares_with"
+      - "p1"
+      - "p2"
+    - - "buys_prepares_with"
+      - "p1"
+      - "p3"
+  persons:
+    p1:
+      facts:
+        residence_setting_type: "private_dwelling"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        child_welfare_payment_type: "none"
+        title_ii_benefit_type: "none"
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: "none"
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: "fixed_regular_adequate"
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: "none"
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1990-03-01"
+        sex: "female"
+        immigration_status: "us_citizen"
+        state_of_residence: "CO"
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: "single"
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings:
+          - kind: "wages"
+            amount: 1000
+        holdings:
+          - kind: "bank_account"
+            value: 300
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 130
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 1000
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      facts:
+        residence_setting_type: "private_dwelling"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        child_welfare_payment_type: "none"
+        title_ii_benefit_type: "none"
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: "none"
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: "fixed_regular_adequate"
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: "none"
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: true
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1966-11-10"
+        sex: "female"
+        immigration_status: "us_citizen"
+        state_of_residence: "CO"
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: "widowed"
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_requests_elderly_disabled_separate_household: true
+        receipts: []
+        earnings: []
+        holdings:
+          - kind: "bank_account"
+            value: 300
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p3:
+      facts:
+        residence_setting_type: "private_dwelling"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "higher_education"
+        has_qualifying_military_service: false
+        child_welfare_payment_type: "none"
+        title_ii_benefit_type: "none"
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: "none"
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: "fixed_regular_adequate"
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: "none"
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2008-11-15"
+        sex: "male"
+        immigration_status: "us_citizen"
+        state_of_residence: "CO"
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: "single"
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        education_enrollment_intensity: "half_time"
+        is_assigned_to_higher_education_through_et_program: false
+        receipts: []
+        earnings: []
+        holdings:
+          - kind: "bank_account"
+            value: 300
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      snap_household_members:
+        "2026-10": [p1, p2, p3]
+        "2026-11": [p1, p3]
+        "2026-12": [p1, p3]
+      snap_eligible_household_size:
+        "2026-10": 3
+        "2026-11": 2
+        "2026-12": 1
+      snap_allotment:
+        "2026-10": 408
+        "2026-11": 387
+        "2026-12": 131
+    p2:
+      snap_household_members:
+        "2026-10": [p1, p2, p3]
+        "2026-11": [p2]
+        "2026-12": [p2]
+      snap_allotment:
+        "2026-10": 408
+        "2026-11": 306
+        "2026-12": 306
+    p3:
+      snap_person_participation_status:
+        "2026-10": "eligible_member"
+        "2026-11": "eligible_member"
+        "2026-12": "ineligible_member_student"

@@ -112,7 +112,7 @@ describe("outcomes and per-person participation", () => {
 
 describe("the walk", () => {
   it("steps from the outcome down and marks the step that decided it", () => {
-    const w = walkOf("CO-01", "snap_person_participation_status", "p3");
+    const w = walkOf("CO-01", "snap_person_participation_status", "p3", "2026-10");
     expect(w.steps[0].n).toBe(1);
     expect(w.steps[0].node.identifier).toBe("snap_person_participation_status");
     expect(w.why!.node.identifier).toBe("snap_meets_citizenship_requirement");
@@ -122,7 +122,7 @@ describe("the walk", () => {
   });
 
   it("carries the statute-over-rule note to the walk (Legal, task 5)", () => {
-    const w = walkOf("CO-87", "snap_person_participation_status", "p1");
+    const w = walkOf("CO-87", "snap_person_participation_status", "p1", "2026-10");
     expect(w.why!.node.identifier).toBe("snap_abawd_time_limit_status");
     expect(overrideNotes(w).map((o) => o.text).join(" ")).toMatch(/4\.000/);
     expect(w.sources.length).toBeGreaterThan(0);
@@ -197,7 +197,7 @@ describe("the budget (cash lead, task 2; county supervisor, task 2)", () => {
   });
 
   it("is drawn for money outcomes only", () => {
-    expect(budgetRows(engine, walkOf("CO-01", "snap_person_participation_status", "p3"))).toEqual([]);
+    expect(budgetRows(engine, walkOf("CO-01", "snap_person_participation_status", "p3", "2026-10"))).toEqual([]);
     const host = show({ arg: "CO-01", params: { person: "p2", program: "SNAP", outcome: "snap_allotment", month: "2026-10" } });
     const shown = budgetRows(engine, w, { effect: budgetEffect(engine, kase("CO-01")) });
     expect(host.querySelectorAll("table.wk-budget tbody tr").length).toBe(shown.length);
@@ -283,7 +283,7 @@ describe("the determination page", () => {
   });
 
   it("shows every step with ?all=1", () => {
-    const w = walkOf("CO-87", "snap_person_participation_status", "p1");
+    const w = walkOf("CO-87", "snap_person_participation_status", "p1", "2026-10");
     const host = show({ arg: "CO-87", params: { person: "p1", program: "SNAP", all: "1" } });
     expect(host.querySelectorAll("ol.stepper > li.step").length).toBe(w.steps.length);
   });

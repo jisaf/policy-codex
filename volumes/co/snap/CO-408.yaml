@@ -3,14 +3,20 @@ name: "SNAP: has a care responsibility that exempts a student"
 identifier: snap_has_care_responsibility_for_student_exemption
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
 meaning: The student is a parent or caretaker of a household member under snap_student_young_child_age (6), or of a household member at least that age but under snap_student_older_child_age (12) for whom adequate child care is not available.
-derived: [exists, snap_household_members, [all, [in_group, [P], snap_persons_cared_for], [any, ["<", [of, [P], age], snap_student_young_child_age], [all, [">=", [of, [P], age], snap_student_young_child_age], ["<", [of, [P], age], snap_student_older_child_age], [not, adequate_child_care_available]]]]]
-sources: [S133, S135]
+precision: "Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): the child's age is taken in the month evaluated, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734), and a child is under 6 or under 12 when under it on the first day of the month (the age on the first day of the month; OQ-1262), so a parent whose child turns 6 during a month keeps the exemption for that month. Before, the age on the determination date in every month."
+derived: [exists, snap_household_members, [all, [in_group, [P], snap_persons_cared_for], [any, ["<", [years_between, [of, [P], date_of_birth], [first_day, [month]]], snap_student_young_child_age], [all, [">=", [years_between, [of, [P], date_of_birth], [first_day, [month]]], snap_student_young_child_age], ["<", [years_between, [of, [P], date_of_birth], [first_day, [month]]], snap_student_older_child_age], [not, adequate_child_care_available]]]]]
+sources: [S133, S135, S4734]
 implemented: engine
 tags: [student, age]
+open: [OQ-1262]
 rationale: 7 U.S.C. 2015(e)(5) and 10 CCR 2506-1 4.306.1.D-E (S133, S135) state two dependent-care student exemptions with different age bands and different conditions (the older band requires unavailable child care); this item combines both into the single fact snap_is_student_exempt reads.
 tests:
-  - {id: CO-408-T1, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: false}, others: {p2: {date_of_birth: "2024-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
-  - {id: CO-408-T2, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2017-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-408-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: false}, others: {p2: {date_of_birth: "2024-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-408-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2017-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: false}
+  # Coverage pass 4 S4-11 (OQ-1263 resolved): adequate child care is available, so only the under-6 prong can exempt (7 U.S.C. 2015(e)(5)(A), S133).
+  # The son is born 2020-11-15: 5 on November 1, 6 on December 1. Determined 2026-11-20 (6 that day). November true, December false; before, false in both.
+  - {id: CO-408-T3, month: "2026-11", as_of: "2026-11-20", title: "S4-11: a son who turns 6 on November 15 is under 6 on November 1: exempt in November", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2020-11-15", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-408-T4, month: "2026-12", as_of: "2026-11-20", title: "S4-11: December - the son is 6 on December 1 and child care is available: not exempt", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2020-11-15", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: false}
