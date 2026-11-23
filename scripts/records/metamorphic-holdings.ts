@@ -22,12 +22,14 @@
 //   MH-4 encumbrance  value v owed d against value v - d owed 0, for every
 //                     record that states what is owed: invariant for the
 //                     rows that count equity.
-//   MH-5 expiry       a held_ record whose source_date is more than two
-//                     years before the determination date (past every
-//                     window the tables name: twelve months for refunds and
-//                     credits, nine for retroactive benefits, six for
-//                     replacement proceeds) merged into the person's
-//                     bank_account.
+//   MH-5 expiry       a held refund or retroactive benefit whose
+//                     source_date is more than two years before the
+//                     determination date (past every window the tables
+//                     name for them: twelve months for refunds, nine for
+//                     retroactive benefits) merged into the person's
+//                     bank_account. Since the H1 integration, only those
+//                     two kinds (EXPIRING): other held_ kinds have rows
+//                     with no time limit in some table.
 // In step H0 no figure reads the records, so every relation is run on no
 // figure and reports so; the machinery is here for the H1 tracks. The
 // harness also checks that every relation, applied to every stored
@@ -46,6 +48,19 @@ const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && valuesEqual(a, b));
 const ACCOUNTS = new Set(["cash", "bank_account", "securities", "retirement_account", "held_income_tax_refund", "held_eitc",
   "held_retroactive_ssa_benefit", "held_excluded_payment", "held_loan_proceeds", "held_replacement_proceeds", "held_prorated_income"]);
+/** MH-5: the held_ kinds whose every table row ends within two years of
+ *  receipt or counts them throughout (refunds: twelve months, 26 U.S.C.
+ *  6409, 4.410.J.17, 3.520.77.K, a State refund counted; retroactive
+ *  benefits: nine months, 8.100.5.F.6.c, 3.520.77.J, or counted by SNAP).
+ *  Not the others (holdings H1 integration,
+ *  docs/reviews/records-holdings-h1-integration.md, section 4): SNAP excludes
+ *  held excluded payments and prorated income with no time limit (4.410.J)
+ *  and an EITC for as long as the household participates (J.12); the SSI
+ *  method excludes loans and the F.6 payments with no time limit; Adult
+ *  Financial extends the replacement-proceeds window on the county's grant
+ *  (3.520.77.E, F); so for them the same dollars held two years and merged
+ *  into an account are not the same statement. */
+const EXPIRING = new Set(["held_income_tax_refund", "held_retroactive_ssa_benefit"]);
 
 function mapHoldings(c: HouseholdCase, f: (rs: Rec[], pid: string) => Rec[]): HouseholdCase {
   const out = clone(c);
@@ -101,7 +116,7 @@ export const RELATIONS: Relation[] = [
   { id: "MH-5", name: "expiry", apply: (c) => {
     const cutoff = `${Number(c.as_of.slice(0, 4)) - 2}${c.as_of.slice(4)}`;
     return mapHoldings(c, (rs) => {
-      const old = rs.filter((r) => String(r.kind).startsWith("held_") && typeof r.source_date === "string" && r.source_date < cutoff && typeof r.value === "number");
+      const old = rs.filter((r) => EXPIRING.has(String(r.kind)) && typeof r.source_date === "string" && r.source_date < cutoff && typeof r.value === "number");
       if (!old.length) return rs;
       const add = old.reduce((s, r) => s + (r.value as number), 0);
       const keep = rs.filter((r) => !old.includes(r));
