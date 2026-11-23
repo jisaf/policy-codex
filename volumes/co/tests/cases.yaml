@@ -29536,6 +29536,7 @@
         education_program_type: elementary
         education_enrollment_intensity: full_time
         is_tax_filer: false
+        is_required_to_file_tax_return: false  # coverage pass 4, C4-14: a child with no income, no return required (the data-source figure counts the members whose income counts)
         cccap_care_is_part_time: false
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -30513,6 +30514,7 @@
         education_program_type: elementary
         education_enrollment_intensity: full_time
         is_tax_filer: false
+        is_required_to_file_tax_return: false  # coverage pass 4, C4-14: a child with no income, no return required (the data-source figure counts the members whose income counts)
         cccap_care_is_part_time: false
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -49277,6 +49279,7 @@
         education_program_type: elementary
         education_enrollment_intensity: full_time
         is_tax_filer: false
+        is_required_to_file_tax_return: false  # coverage pass 4, C4-14: a child with no income, no return required (the data-source figure counts the members whose income counts)
         cccap_care_is_part_time: false
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -58260,8 +58263,8 @@
 - id: CO-720
   title: "Probe COMBAT-FAM (coverage pass 4, C4-02): an enlisted member's pay for a month in a combat zone is not MAGI income"
   # Probe COMBAT-FAM of docs/reviews/coverage4-medicaid-magi-chp.md (C4-02, P1), built from CO-228. Determined 2026-11-10.
-  # p1, an enlisted member deployed to a designated combat zone in November, earns basic pay 3,800 (all of it combat zone
-  # compensation, combat_zone_exclusion 3,800) and hostile fire pay 225 (combat_zone); p2 is at home with p3 and p4; p1 and p2
+  # p1, an enlisted member deployed to a designated combat zone in November, earns basic pay 3,800 (combat zone compensation,
+  # combat_zone_compensation) and hostile fire pay 225 (combat_zone); p2 is at home with p3 and p4; p1 and p2
   # file jointly and claim both children: one household of four (E.1.a). 26 U.S.C. 112(a) (S4340): "Gross income does not
   # include compensation received for active service as a member below the grade of commissioned officer ... for any month
   # during any part of which such member ... served in a combat zone", so MAGI income is 0 + 0 = 0, 0% of 2,750: p2 is a
@@ -58325,7 +58328,7 @@
         earnings:
           - kind: wages
             amount: 3800
-            combat_zone_exclusion: 3800
+            combat_zone_compensation: true
           - kind: uniformed_services_special_pay
             amount: 225
             combat_zone: true

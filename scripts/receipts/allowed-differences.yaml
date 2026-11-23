@@ -722,3 +722,21 @@
 # p2 is CHP+ eligible on the month's 4,328 / 1,803.33 = 240.0%: band_d (above 200%); before, the annualized 160.0%: band_c.
 # p1, the parent, reads the same family figure.
 - {case: CO-387, identifier: chp_copayment_income_band, old: band_c, new: band_d, class: "C4-CPB (2505-3 320.1, 8.100.4.C.4.a): the copayment band of the income CHP+ eligibility was determined on"}
+# C4-13: MAGI income is no longer rounded to the whole dollar (10 CCR 2505-10 8.100.4.C-D and 42 CFR 435.603(e) state no
+# rounding; docs/conventions.md P41: a value no rule rounds is not rounded). Figures only; no outcome of these households
+# moves. CO-182: annualized 11,998 / 12 = 999.83 (was 1,000), 999.83 / 1,330 = 75.18% (was 75.19%). CO-387: annualized
+# 34,624 / 12 = 2,885.33, 2,885.33 / 1,803.33 = 160.0% (was 2,885 / 1,803.33 = 159.98%). CO-535: a month's half-dollar
+# receipts kept (91,849.50, was 91,850; the household figures follow).
+- {case: CO-182, identifier: "/^(ma_annualized_household_income|ma_magi_household_income_pct_fpl)$/", class: "C4-13 (8.100.4.C-D state no rounding): MAGI income not rounded to the dollar"}
+- {case: CO-387, identifier: ma_magi_household_income_pct_fpl, class: "C4-13 (8.100.4.C-D state no rounding): MAGI income not rounded to the dollar"}
+- {case: CO-535, identifier: "/^(ma_person_magi_income|ma_magi_household_income|ma_magi_household_income_pct_fpl)$/", class: "C4-13 (8.100.4.C-D state no rounding): MAGI income not rounded to the dollar"}
+# C4-11 (OQ-970 settled for AmeriCorps): 26 U.S.C. 61(a) (S4631) counts all income "Except as otherwise provided", and
+# 42 U.S.C. 12637(d) (S4640) keeps AmeriCorps allowances out of income for need-based programs "other than as provided under
+# the Social Security Act", which leaves Medicaid to MAGI (42 U.S.C. 1396a(e)(14)(A), S4630): the MAGI receipt table counts
+# americorps (was not_taxable_income). In the three AmeriCorps variants the 300 is now MAGI income (the MAGI figures rise by
+# 300 and the unearned-income verification element of a MAGI applicant is asked for). In the MAGI parent base (CO-202) the
+# parent's 1,262 + 300 = 1,562 / 1,803.33 = 86.6% is over the Parents and Caretaker Relatives' 68% + 5: ineligible_income
+# (was eligible on 1,262, 70.0%); limited Family Planning is then reached, and its reasonable compatibility test reads the
+# data-source income, which the generated household does not state (decision 4): cannot determine.
+- {case: "/^G-[A-Za-z]+-AmeriCorps_300_(for_40_hours|for_10_hours|hours_not_stated)$/", identifier: "/^(ma_person_magi_income|ma_magi_household_income|ma_magi_household_income_pct_fpl|ma_has_unearned_income_for_verification|ma_requires_verification_of_unearned_income|ma_unearned_income_verification_is_pending|ma_verification_status|chp_verification_status|ma_pending_verification_count|chp_pending_verification_count)$/", class: "C4-11 (26 U.S.C. 61(a); 42 U.S.C. 12637(d)): AmeriCorps payments are MAGI income"}
+- {case: "/^G-MAMAGIparent-AmeriCorps_300_(for_40_hours|for_10_hours|hours_not_stated)$/", person: p1, identifier: "/^(ma_magi_category|ma_magi_eligibility_status|ma_family_planning_status)$/", month: "2026-11", class: "C4-11 (26 U.S.C. 61(a); 42 U.S.C. 12637(d)): AmeriCorps payments are MAGI income; the parent is over 68% + 5"}
