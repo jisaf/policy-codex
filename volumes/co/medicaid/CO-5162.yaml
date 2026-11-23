@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The person's earnings of the month that the MAGI counting table treats as Difficulty of Care payments, counted unless 10 CCR 2505-10 8.100.3.K.7 excludes them for a live-in provider (ma_magi_earnings_treatment_table, CO-5106, row excluded_live_in_provider): the payments ma_excluded_difficulty_of_care_payments (CO-5214) tests against K.7.a-c."
-precision: "Earned-income records, Medicaid and CHP+ track E1: replaces difficulty_of_care_payments_received (CO-5209) in CO-5214. Earnings not stated cannot be determined (decision 4)."
-derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], excluded_live_in_provider]], [receipt, amount]]
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces difficulty_of_care_payments_received (CO-5209) in CO-5214. Earnings not stated cannot be determined (decision 4). Field sweep (coverage pass 5, docs/reviews/field-sweep-magi.md): a stream of pay (a record with no month and no date) is the pay of the months its job ran, from the month of its job_start_date through the month of its job_end_date (CO-5100), and MAGI counts the month's income (10 CCR 2505-10 § 8.100.4.C.4: \"current or previous monthly household income\"; § 8.100.4.G.1, the month evaluated), so a stream is counted only in those months. Before, a stream was counted in every month, a job that ended in September included in a retroactive or later month."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, job_start_date]], ["<=", [month_of, [receipt, job_start_date]], [month]]], [any, [unknown, [receipt, job_end_date]], [">=", [month_of, [receipt, job_end_date]], [month]]]]], ["=", [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], excluded_live_in_provider]], [receipt, amount]]
 sources: [S3754]
 implemented: engine
 tags: [ma, magi, income]
