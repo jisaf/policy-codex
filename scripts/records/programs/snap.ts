@@ -36,17 +36,29 @@ export const track: Track = {
   },
   holdings: {
     // Resource records, step H0 (docs/reviews/holdings-h0.md): set up by the
-    // integration owner with today's resource figures; the SNAP H1 track
-    // moves SNAP's readers onto the holdings records and registers them in
-    // metamorphic (and coupleFigures, for MH-3).
+    // integration owner with today's resource figures. Step H1 SNAP
+    // (docs/reviews/records-holdings-snap-af.md) moved SNAP's readers onto
+    // the holdings records and registers the figures that read them.
     tables: ["snap_holding_treatment_table"],
     figures: [
       "snap_countable_liquid_resources", "snap_countable_nonliquid_resources", "snap_household_countable_resources",
       "snap_sponsor_deemed_resources", "snap_resource_transfer_disqualification_months", "snap_resource_transfer_is_disqualifying",
       "snap_is_disqualified_for_resource_transfer",
+      // step H1: the figures that read the holdings records (CO-5310 to CO-5315)
+      "snap_real_property_not_exempt", "snap_countable_real_property", "snap_countable_funeral_agreements",
+      "snap_countable_burial_spaces", "snap_disqualifying_transfer_value", "snap_disqualifying_transfer_value_before_application",
+      "snap_household_liquid_resources",
     ],
-    metamorphic: [],
-    coupleFigures: [],
+    metamorphic: [
+      "snap_countable_liquid_resources", "snap_countable_nonliquid_resources", "snap_real_property_not_exempt",
+      "snap_countable_real_property", "snap_countable_funeral_agreements", "snap_countable_burial_spaces",
+      "snap_disqualifying_transfer_value", "snap_household_countable_resources",
+    ],
+    // The SNAP household's figures; MH-3 is not run (below).
+    coupleFigures: ["snap_household_countable_resources", "snap_household_liquid_resources"],
+    notInvariant: {
+      "MH-3": "SNAP's household is not the couple: a spouse who is not a member of the SNAP household (in an institution that provides meals, or an ineligible student) is outside it, so the spouse's half of a joint account is not counted where the whole account stated on the member is (CO-01, CO-02 and the other long-term care couples); 10 CCR 2506-1 4.409.C would count a holding shared with a separate household in its entirety, which co_owners spouse cannot say (OQ-1252)",
+    },
     bases: [
       { id: "CO-223", person: "p1", label: "SNAP resources" },
       { id: "CO-447", person: "p2", label: "SNAP member" },

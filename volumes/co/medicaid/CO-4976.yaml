@@ -3,7 +3,7 @@ name: "Medicaid: limited Family Planning household size, the applicant counted a
 identifier: ma_family_planning_household_size
 kind: derived
 type: whole number
-scope: person
+scope: person-month
 program: Medicaid
 meaning: "The size of the person's MAGI household for the limited Family Planning category, with the applicant counted as ma_family_planning_applicant_household_count persons: 10 CCR 2505-10 § 8.100.4.E.3 counts an individual applying for the category \"as a household of two in addition to any other household members\"."
 precision: "ma_magi_household_size (CO-501), which counts the applicant once, plus ma_family_planning_applicant_household_count (CO-3029) less one (OQ-204). 42 CFR 435.214(c)(2) determines the group's household income under § 435.603, whose paragraph (k) options the State plan selects (S3680)."
@@ -15,5 +15,5 @@ open: [OQ-204]
 nearest: [CO-501]
 rationale: "Coverage review 3, C3-03 (2026-11-22): the Family Planning income figure (CO-1153) and the data source figure on the same size (CO-4977) both need the enlarged size; it was inline in CO-1153, so it is factored out for both to read."
 tests:
-  - {id: CO-4976-T1, title: "A single applicant: size 1 counted as 2", given: {ma_magi_household_size: 1}, expect: 2}
-  - {id: CO-4976-T2, title: "A parent of two: size 3 counted as 4", given: {ma_magi_household_size: 3}, expect: 4}
+  - {id: CO-4976-T1, month: "2026-10", title: "A single applicant: size 1 counted as 2", given: {ma_magi_household_size: 1}, expect: 2}
+  - {id: CO-4976-T2, month: "2026-10", title: "A parent of two: size 3 counted as 4", given: {ma_magi_household_size: 3}, expect: 4}

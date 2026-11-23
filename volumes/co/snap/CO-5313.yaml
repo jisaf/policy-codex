@@ -1,0 +1,23 @@
+id: CO-5313
+name: "SNAP: countable burial spaces"
+identifier: snap_countable_burial_spaces
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The equity of the person's burial spaces that SNAP counts (7 CFR 273.8(e)(2); 10 CCR 2506-1 4.410.D.1, D.4): the text excludes one burial plot per household member, so a burial space beyond the burial needs of the immediate family (a burial_space record not for_immediate_family; row counted_beyond_one_plot_per_member) is counted at its value less what is owed on it, unless that equity is snap_low_return_resource_maximum ($1,500) or less, which makes it an inaccessible resource (4.410.F.2)."
+precision: "Finding H0-F3 (docs/reviews/holdings-h0.md; OQ-1202): no SNAP item read burial spaces, so spaces beyond the family's needs were never counted. A space for the person, the spouse or another member of the immediate family (for_immediate_family) is read as the one plot per household member the text excludes; the record does not say whether the person it is for is a member of the SNAP household or already has a plot, which 4.410.D.1 would count (OQ-1250, with that assumption). Each space is a resource of its own for the $1,500 test (4.410.F.2, the equity value): a space whose value is $1,500 or less is inaccessible without reading what is owed on it. A space the person cannot reach (accessible) or no longer holds is not read."
+assumption: "A burial space for the immediate family is one household member's excluded plot (OQ-1250)."
+derived: ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["receipt", "accessible"], ["=", ["lookup", "snap_holding_treatment_table", ["receipt", "kind"]], "counted_beyond_one_plot_per_member"], ["not", ["receipt", "for_immediate_family"]]], ["case", [["<=", ["receipt", "value"], "snap_low_return_resource_maximum"], 0], [["<=", ["-", ["receipt", "value"], ["receipt", "amount_owed"]], "snap_low_return_resource_maximum"], 0], ["else", ["-", ["receipt", "value"], ["receipt", "amount_owed"]]]]]
+sources: [S2216, S2967, S3119, S4690]
+implemented: engine
+tags: [snap, resources]
+open: [OQ-1250]
+rationale: "Resource records, step H1 SNAP (docs/reviews/records-holdings-snap-af.md): SNAP reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (snap_holding_treatment_table, CO-5301), never from the scalar resource facts. Finding H0-F3: 273.8(e)(2) and 4.410.D.1 exclude one burial plot per household member, and burial spaces beyond the family's needs (burial_spaces_value_beyond_family_needs, CO-3857) were read by Adult Financial only."
+tests:
+  # Hand-computed from 7 CFR 273.8(e)(2) (S2216), 10 CCR 2506-1 4.410.D.1 (S4690) and F.2 (S3119).
+  - {id: CO-5313-T1, title: "H0-F3: a $2,000 crypt bought for an unrelated friend, nothing owed: 2,000 > 1,500, counted", as_of: "2027-02-10", given: {holdings: [{kind: burial_space, value: 2000, amount_owed: 0, for_immediate_family: false}]}, expect: 2000}
+  - {id: CO-5313-T2, title: "A plot beyond the family's needs worth $800: 800 <= 1,500, inaccessible (F.2); what is owed is not read", as_of: "2027-02-10", given: {holdings: [{kind: burial_space, value: 800, for_immediate_family: false}]}, expect: 0}
+  - {id: CO-5313-T3, title: "A $2,500 space owing $1,200: 2,500 - 1,200 = 1,300 <= 1,500, inaccessible", as_of: "2027-02-10", given: {holdings: [{kind: burial_space, value: 2500, amount_owed: 1200, for_immediate_family: false}]}, expect: 0}
+  - {id: CO-5313-T4, title: "The person's own $4,000 plot (for the immediate family) is the one plot excluded (OQ-1250's assumption); a $3,000 space for a friend counts: 3,000", as_of: "2027-02-10", given: {holdings: [{kind: burial_space, value: 4000, for_immediate_family: true}, {kind: burial_space, value: 3000, amount_owed: 0, for_immediate_family: false}]}, expect: 3000}
+  - {id: CO-5313-T5, title: "Decision 4: a $3,000 space that does not say what is owed on it - cannot determine", as_of: "2027-02-10", given: {holdings: [{kind: burial_space, value: 3000, for_immediate_family: false}]}, expect: unknown}

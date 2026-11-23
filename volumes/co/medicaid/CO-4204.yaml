@@ -3,7 +3,7 @@ name: "Medicaid: Transitional Medical Assistance household"
 identifier: ma_tma_household_members
 kind: derived
 type: group of persons
-scope: person
+scope: person-month
 program: Medicaid
 meaning: "The persons who share this person's Medical Assistance household for Transitional Medical Assistance (10 CCR 2505-10 § 8.100.4.I.2-3: \"part of the Medical Assistance household\", \"the household must include a dependent child\"): the members of the person's MAGI household (ma_magi_household_members), the persons of whom the person is a parent or caretaker relative (ma_caretaker_relative_of), and the persons who are the person's parent, stepparent or caretaker relative and live with the person."
 precision: "The MAGI household alone would leave out a caretaker relative's dependent child (a grandchild the grandparent does not claim has a non-filer household of its own) and, from the child's side, that caretaker; the parent and caretaker edges are read both ways so the family the Parent/Caretaker Relative category was granted on is one household. Living together is read from lives_with (CO-1925); where a case states no dwelling_id, a stated parent or caretaker edge is read as living together, as ma_caretaker_relative_of (CO-2606) does."
@@ -13,6 +13,6 @@ implemented: engine
 tags: [ma, magi]
 rationale: "Final verification pass 3, F3-4: ma_is_eligible_for_transitional_medical_assistance (CO-2430) tested the person's own caretaker relationships, so a dependent child of the family could never be eligible, though § 8.100.4.I.2 gives the family's remaining months to a dependent child or Parent/Caretaker Relative of the household. No existing group joins a caretaker relative and the child both ways."
 tests:
-  - {id: CO-4204-T1, title: "A child claimed by her mother: the mother and the child", as_of: "2026-10-01", given: {ma_magi_household_members: [p1, p2]}, others: {p2: {}}, relationships: [[child, p1, p2]], expect: [p1, p2]}
-  - {id: CO-4204-T2, title: "A grandchild in a grandmother's care, with a household of her own: the grandmother is in the grandchild's TMA household", as_of: "2026-10-01", given: {ma_magi_household_members: [p1]}, others: {p2: {}}, relationships: [[in_primary_care_of, p1, p2]], expect: [p1, p2]}
-  - {id: CO-4204-T3, title: "The grandmother's side: the grandchild is in hers", as_of: "2026-10-01", given: {ma_magi_household_members: [p1]}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p1, p2]], expect: [p1, p2]}
+  - {id: CO-4204-T1, month: "2026-10", title: "A child claimed by her mother: the mother and the child", as_of: "2026-10-01", given: {ma_magi_household_members: [p1, p2]}, others: {p2: {}}, relationships: [[child, p1, p2]], expect: [p1, p2]}
+  - {id: CO-4204-T2, month: "2026-10", title: "A grandchild in a grandmother's care, with a household of her own: the grandmother is in the grandchild's TMA household", as_of: "2026-10-01", given: {ma_magi_household_members: [p1]}, others: {p2: {}}, relationships: [[in_primary_care_of, p1, p2]], expect: [p1, p2]}
+  - {id: CO-4204-T3, month: "2026-10", title: "The grandmother's side: the grandchild is in hers", as_of: "2026-10-01", given: {ma_magi_household_members: [p1]}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p1, p2]], expect: [p1, p2]}

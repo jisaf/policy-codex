@@ -1,0 +1,23 @@
+id: CO-6451
+name: "Medicaid: has self-employment, seasonal or commission earnings, for annualized income"
+identifier: ma_has_annualizable_earnings
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has earned income from self-employment, seasonal employment or commission-based employment, the earnings 10 CCR 2505-10 8.100.4.C.4.a annualizes, as the person's earnings records state it: a business or a farm (a record the MAGI earnings table counts net for tax: self_employment_receipts, farm_self_employment_receipts), or pay stated as seasonal or commission-based (the record's seasonal_or_commission, CO-5100)."
+precision: "Coverage pass 4, C4-05 (2026-11-23): before, a supplied fact (has_self_employment_seasonal_or_commission_earnings, CO-4557) said it, read as false where not stated, a default no rule gave, so a person whose own records stated a business was not annualized unless the fact was also stated, and the two statements could disagree. The records are now the one statement: a business record is self-employment, and seasonal or commission pay is a property of the pay (seasonal_or_commission, false unless shown, as every exception of a pay is under design decision D3; a person with a steady job and a seasonal one states the seasonal pay as its own record). A record of any month counts: C.4.a turns on the household having such income, which annualizing the year presumes. Earnings not stated: unknown (decision 4). Annualizing still needs the member's expected annual income, which has no default (ma_annualized_household_income, CO-4559)."
+derived: [">", [sum_receipts, earnings, [any, ["=", [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], counted_net_for_tax], [receipt, seasonal_or_commission]], 1], 0]
+sources: [S3356, S166]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-810]
+rationale: "Coverage pass 4, C4-05: C.4.a's self-employment test was a supplied fact read as false where not stated, while the person's earnings records already say whether there is a business; the records are the one statement, and seasonal or commission pay a field of the pay."
+
+tests:
+  - {id: CO-6451-T1, as_of: "2026-11-10", given: {earnings: [{kind: self_employment_receipts, amount: 4000, net_for_tax: 3000, month: "2026-11"}]}, title: "Coverage pass 4, C4-05 (B-SE-noflag): a business record: self-employed, with no other statement", expect: true}
+  - {id: CO-6451-T2, as_of: "2026-11-10", given: {earnings: [{kind: wages, amount: 1500}, {kind: farm_self_employment_receipts, amount: 900, net_for_tax: 200}]}, title: "Wages and a farm: yes", expect: true}
+  - {id: CO-6451-T3, as_of: "2026-11-10", given: {earnings: []}, title: "No earnings at all: no", expect: false}
+  - {id: CO-6451-T4, as_of: "2026-11-10", given: {earnings: [{kind: wages, amount: 2000, seasonal_or_commission: true}]}, title: "Commission-based wages: yes", expect: true}
+  - {id: CO-6451-T5, as_of: "2026-11-10", given: {earnings: [{kind: wages, amount: 2000}]}, title: "Wages not stated as seasonal or commission-based: no (false unless shown, D3)", expect: false}
+  - {id: CO-6451-T6, as_of: "2026-11-10", given: {}, title: "Earnings not stated: cannot determine (decision 4)", expect: unknown}

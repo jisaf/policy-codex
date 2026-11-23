@@ -1,0 +1,20 @@
+id: CO-5312
+name: "SNAP: countable funeral agreements"
+identifier: snap_countable_funeral_agreements
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The equity of the person's pre-purchased funeral agreements that SNAP counts (10 CCR 2506-1 4.410.D.4): the paid-up amounts of the person's prepaid_burial_contract records (row counted_above_funeral_agreement_exclusion) that are not irrevocable and that the person can reach, less the one agreement per household member D.4 excludes up to snap_funeral_agreement_exclusion ($1,500): the lesser of $1,500 and the largest of them (P58 largest)."
+precision: "4.410.D.4 (S2967) excludes \"One bona fide pre-purchased funeral agreement per household member ... provided that the agreement does not exceed one thousand five hundred dollars ($1,500) in equity value; the equity value over one thousand five hundred dollars ($1,500) is counted as a resource\": with several agreements, one is excluded, the person's largest (with every agreement over $1,500 any one gives the same count). Before step H1 the agreements were stated as one total and $1,500 was subtracted from it (CO-074's assumption, retired): two agreements of $1,000 counted 2,000 - 1,500 = 500 and now count 2,000 - 1,000 = 1,000. A prepaid burial contract's value is its paid-up amount (the holdings schema), its equity. An irrevocable agreement is inaccessible (4.410.F.1). A burial plot in an agreement is exempted before the agreement's equity is determined (D.4): a case states the plot as its own burial_space record (snap_countable_burial_spaces, CO-5313)."
+derived: ["max", 0, ["-", ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["receipt", "accessible"], ["=", ["lookup", "snap_holding_treatment_table", ["receipt", "kind"]], "counted_above_funeral_agreement_exclusion"], ["not", ["receipt", "irrevocable"]]], ["receipt", "value"]], ["min", "snap_funeral_agreement_exclusion", ["largest", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["receipt", "accessible"], ["=", ["lookup", "snap_holding_treatment_table", ["receipt", "kind"]], "counted_above_funeral_agreement_exclusion"], ["not", ["receipt", "irrevocable"]]], ["receipt", "value"]]]]]
+sources: [S2967, S2968]
+implemented: engine
+tags: [snap, resources]
+rationale: "Resource records, step H1 SNAP (docs/reviews/records-holdings-snap-af.md): SNAP reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (snap_holding_treatment_table, CO-5301), never from the scalar resource facts. The funeral agreement part of snap_countable_nonliquid_resources (CO-074), which read revocable_prepaid_burial_contract_value (CO-3856) as one total."
+tests:
+  # Hand-computed from 10 CCR 2506-1 4.410.D.4 (S2967).
+  - {id: CO-5312-T1, title: "N-8: one $2,300 agreement: 2,300 - 1,500 = 800", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 2300, irrevocable: false}]}, expect: 800}
+  - {id: CO-5312-T2, title: "Two agreements of $1,000: one excluded, the other counted - 2,000 - 1,000 = 1,000 (was 500 on the total)", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 1000, irrevocable: false}, {kind: prepaid_burial_contract, value: 1000, irrevocable: false}]}, expect: 1000}
+  - {id: CO-5312-T3, title: "$2,300 and $900: 3,200 - min(1,500, 2,300) = 1,700", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 2300, irrevocable: false}, {kind: prepaid_burial_contract, value: 900, irrevocable: false}]}, expect: 1700}
+  - {id: CO-5312-T4, title: "An irrevocable $5,000 agreement is inaccessible (4.410.F.1): 0", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 5000, irrevocable: true}]}, expect: 0}
