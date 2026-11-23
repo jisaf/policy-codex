@@ -73528,3 +73528,503 @@
         2027-02: eligible
       snap_allotment:
         2027-02: 131
+- id: CO-835
+  title: 'Field-effect sweep (non-MAGI) FS-MA-1: a pension stream that ends 2026-11-20 is income in November and not in December (8.100.5.F.5; 20 CFR 416.1123(a))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        - kind: pension
+          amount: 500
+          end_date: '2026-11-20'
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-11: 1280
+        2026-12: 780
+      ma_ssi_related_category:
+        2026-11: none
+        2026-12: aged
+- id: CO-836
+  title: 'Field-effect sweep (non-MAGI) FS-MA-2: wages of a job that ends 2026-11-15 are earned income in November and not in December (8.100.5.F.4; 20 CFR 416.1111(a))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings:
+        - kind: wages
+          amount: 1500
+          job_end_date: '2026-11-15'
+        holdings:
+        - kind: bank_account
+          value: 1000
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-11: 1297.5
+        2026-12: 580
+      ma_ssi_related_category:
+        2026-11: none
+        2026-12: aged
+- id: CO-837
+  title: 'Field-effect sweep (non-MAGI) FS-MA-4: an account held in probate is not a resource (8.100.5.E.3.c; 20 CFR 416.1201(a)(1))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        - kind: bank_account
+          value: 5000
+          accessible: false
+          inaccessible_reason: probate
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 1000
+      ma_ssi_related_category:
+        2026-11: aged
+        2026-12: aged
+- id: CO-838
+  title: 'Field-effect sweep (non-MAGI) FS-MA-4 and FS-MA-7: a joint account a co-owner outside the case refuses to release is still the applicant''s, whole (8.100.5.E.4, M.3.d)'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        - kind: bank_account
+          value: 3000
+          share: 0.5
+          co_owners: outside_case
+          holding_id: CO-838-joint
+          accessible: false
+          inaccessible_reason: co_owner_refuses
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 4000
+      ma_ssi_related_category:
+        2026-11: none
+- id: CO-839
+  title: 'Field-effect sweep (non-MAGI) FS-MA-5: a burial space for a friend is a resource; the person''s own plot is not (8.100.5.M.2.h; 20 CFR 416.1231(a))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        - kind: burial_space
+          value: 2500
+          amount_owed: 0
+          for_immediate_family: false
+        - kind: burial_space
+          value: 3000
+          for_immediate_family: true
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 3500
+      ma_ssi_related_category:
+        2026-11: none
+- id: CO-840
+  title: 'Field-effect sweep (non-MAGI) FS-MA-6: a travel trailer the person does not live in is a resource; household goods are not (8.100.5.M.3.i, M.2.d)'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        - kind: personal_property
+          value: 6000
+          household_goods_or_personal_effects: true
+        - kind: personal_property
+          value: 1500
+          amount_owed: 0
+          household_goods_or_personal_effects: false
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 2500
+      ma_ssi_related_category:
+        2026-11: none
+- id: CO-841
+  title: 'Field-effect sweep (non-MAGI) FS-MA-7: a joint account presumed the applicant''s in November, the presumption rebutted in December (8.100.5.M.3.d; 20 CFR 416.1208(c))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+        - kind: bank_account
+          value: 3000
+          month: 2026-11
+          share: 0.5
+          co_owners: outside_case
+          holding_id: CO-841-joint
+        - kind: bank_account
+          value: 3000
+          month: 2026-12
+          share: 0.5
+          co_owners: outside_case
+          holding_id: CO-841-joint
+          ma_joint_account_presumption_rebutted: true
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 3500
+        2026-12: 2000
+      ma_ssi_related_category:
+        2026-11: none
+        2026-12: aged
+- id: CO-842
+  title: 'Field-effect sweep (non-MAGI) FS-MA-8: the legal fees of a retroactive unemployment award are subtracted, its income taxes are not (20 CFR 416.1123(b)(3))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 600
+        - kind: unemployment_compensation
+          amount: 700
+          date: '2026-11-05'
+          frequency: once
+          retroactive: true
+          designated_for_lump_sum_costs: 500
+          designated_for_legal_fees: 400
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-11: 880
+        2026-12: 580
+      ma_ssi_related_category:
+        2026-11: aged
+        2026-12: aged
+- id: CO-843
+  title: 'Field-effect sweep (non-MAGI) FS-MA-9: insurance received to replace a stolen car is excluded nine months (20 CFR 416.1232(a))'
+  as_of: '2026-11-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        - kind: held_replacement_proceeds
+          value: 5000
+          source_date: '2026-10-20'
+          replacement_property: personal_property
+          proceeds_source: insurance
+          ma_replaces_lost_excluded_resource: true
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources:
+        2026-11: 1000
+        2026-12: 1000
+      ma_ssi_related_category:
+        2026-11: aged
+        2026-12: aged

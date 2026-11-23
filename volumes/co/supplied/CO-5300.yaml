@@ -82,6 +82,11 @@ record_fields:
     type: yes/no
     default: true
     meaning: "The person can get at the holding's value: false when a joint owner who must agree refuses and the holding cannot practically be divided, when the money is in probate or under a creditor's lien or court order, or when it is held in a trust the person can neither revoke nor direct. Presumed true: each rule counts a resource as available until it is shown otherwise (10 CCR 2506-1 4.409.C, 7 CFR 273.8(d); 20 CFR 416.1201(a))."
+  inaccessible_reason:
+    type: one of
+    required: true
+    meaning: "For a holding the person cannot get at (accessible false), why: a joint owner whose agreement is needed refuses and the holding cannot practically be divided (co_owner_refuses); it is held in an estate in probate (probate); a creditor's lien or levy, or a court order, freezes it (lien_or_court_order); it is held in a trust whose terms the person can neither revoke nor direct (trust_terms). A rule that treats a legal restriction on using the holding apart from a co-owner's refusal reads it: Medical Assistance counts a resource the person 'is not legally restricted from using' and does not hold it unavailable 'merely because' the person 'may need to initiate legal proceedings to access' it (10 CCR 2505-10 8.100.5.E.3.c, E.4, S4670; field-effect sweep, FS-MA-4). Stated only with accessible false."
+    options: [co_owner_refuses, probate, lien_or_court_order, trust_terms]
   source_date:
     type: calendar date
     required: true
@@ -107,7 +112,7 @@ record_fields:
   proceeds_source:
     type: one of
     required: true
-    meaning: "For held replacement proceeds, where the money came from: an insurance settlement for property lost, damaged or stolen (insurance); a relocation payment to a displaced person (relocation); the sale of the home (home_sale); an award for property taken by condemnation (condemnation); anything else (other). Read by no rule yet: the exclusion periods turn on it in the text on file (10 CCR 2505-10 8.100.5.F.6.f, S4506: relocation payments toward a replacement dwelling, six months; 20 CFR 416.1232(a), S4662: cash received from any source to repair or replace an excluded resource lost, damaged or stolen, nine months), and which periods each program applies is OQ-1240's (request R-4 of the H1 Medicaid track; holdings H1 integration)."
+    meaning: "For held replacement proceeds, where the money came from: an insurance settlement for property lost, damaged or stolen (insurance); a relocation payment to a displaced person (relocation); the sale of the home (home_sale); an award for property taken by condemnation (condemnation); anything else (other). The SSI method reads it (field-effect sweep, FS-MA-9; OQ-1240 narrowed): the proceeds of the sale of an exempt home three months (10 CCR 2505-10 8.100.5.P.4, S4669); relocation payments toward a replacement dwelling six months (F.6.f, S4506); cash from insurance or any other source to repair or replace a lost, damaged or stolen excluded resource nine months (20 CFR 416.1232(a), S4662, by 42 CFR 435.601(b)(2), S4754; ma_replaces_lost_excluded_resource); a condemnation award as before (OQ-1240)."
     options: [insurance, relocation, home_sale, condemnation, other]
   used_for_transportation:
     type: yes/no
@@ -192,8 +197,8 @@ record_fields:
     meaning: "For property that was essential to the person's self-employment in farming (land, machinery, equipment and supplies), the day the person stopped farming."
   taxes_on_withdrawal:
     type: money
-    required: true
-    meaning: "For a retirement account, the income taxes the person would owe on withdrawing its value, as the person documents them."
+    when_absent: "20% of the value: the person did not provide the taxes due (10 CCR 2505-10 8.100.5.N.5.b, S4667; 9 CCR 2503-5 3.520.73.B.1.b)"
+    meaning: "For a retirement account, the income taxes the person would owe on withdrawing its value, as the person documents them. Left out, the person has not provided them: each rule that reads it then deducts 20% from the gross value of the account (Medical Assistance 8.100.5.N.5.b, S4667, ma_retirement_account_default_tax_rate; Adult Financial 3.520.73.B.1.b, af_retirement_account_default_tax_rate), so the rule gives its absence that meaning and it is not reported missing (field-effect sweep, defaults list)."
   self_funded:
     type: yes/no
     required: true
@@ -255,6 +260,14 @@ record_fields:
     type: yes/no
     default: false
     meaning: "Medicaid's finding (decision D9): for real property beyond the home, reasonable efforts to sell it, as 10 CCR 2505-10 8.100.5.M.2.b defines them, have been unsuccessful. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+  ma_joint_account_presumption_rebutted:
+    type: yes/no
+    default: false
+    meaning: "Medicaid's finding (decision D9): for a financial institution account the person holds jointly (co_owners stated), the evidence 10 CCR 2505-10 8.100.5.M.3.d requires has been furnished (the account holders' statements, the account records for the months at issue, and the account title corrected or the funds separated within 45 days) and proves that some or all of the funds do not belong to the person, whose part is then the share the record states. Default false, the rule's: M.3.d (S4941) presumes 'All funds in a joint account' the applicant's (in equal shares among applicant or client account holders) until that evidence rebuts it (20 CFR 416.1208(c), S4502, S4942; field-effect sweep, FS-MA-7)."
+  ma_replaces_lost_excluded_resource:
+    type: yes/no
+    required: true
+    meaning: "Medicaid's finding (decision D9): for held replacement proceeds from insurance or another source (proceeds_source insurance or other), the money is cash received to repair or replace a resource the SSI method excludes (20 CFR 416.1210: the home, the one automobile, household goods and personal effects, property essential to self-support, burial spaces and the like) that was lost, damaged or stolen, and the person intends to use it so (20 CFR 416.1232(a), S4662; field-effect sweep, FS-MA-9)."
   af_found_unsaleable:
     type: yes/no
     required: true
@@ -288,7 +301,7 @@ record_fields:
     type: yes/no
     required: true
     meaning: "Medicaid's finding (decision D9): the eligibility site has determined that the transfer falls under one of the exceptions of 10 CCR 2505-10 8.100.7 (to or for the sole benefit of a spouse or a disabled child, a satisfactory showing of intent, an approved undue-hardship waiver), so no transfer penalty applies."
-sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670]
+sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670, S4941, S4942, S4662, S4667, S4669, S4506, S4754]
 tags: [resources]
 open: [OQ-1200, OQ-1201]
 rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D3, D5, D8 and D9 (docs/design-earned-and-resource-records.md 7): one list of records of the same record type as receipts and earnings, read by the same operators (P55-P57) and by P58 largest for the one vehicle the rules exclude, so a holding is stated once whatever program reads it, a joint holding is stated with its share on each owner's list, money a rule treats by its source is traced in its own record, and one transfer is one record every program's look-back reads. Replaces, from step H1, the scalar resource facts the design's inventory (1.2) lists."

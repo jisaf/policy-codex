@@ -6,9 +6,9 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The part of the person's earnings of the month that is set aside under a Plan to Achieve Self-Support the Social Security Administration approved and used for the plan (each earnings record's pass_set_aside), which 20 CFR 416.1112(c)(9) and 10 CCR 2505-10 8.100.5.F.6.q exclude after the one-half disregard for a blind or disabled person under 65 (ma_ssi_earned_income_excluded_after_half, CO-4629; ma_wawd_countable_income, CO-1715)."
-precision: "Earned-income records, Medicaid and CHP+ track E1: replaces pass_set_aside_earned_income (CO-4618). A record that states no set-aside sets aside none (the field's default, 0); a person whose earnings are not stated cannot be determined (decision 4), where the old reader read an unstated set-aside as none (otherwise 0)."
-derived: [sum_receipts, earnings, [received_in, [month]], [receipt, pass_set_aside]]
-sources: [S3412, S3404]
+precision: "Earned-income records, Medicaid and CHP+ track E1: replaces pass_set_aside_earned_income (CO-4618). A record that states no set-aside sets aside none (the field's default, 0); a person whose earnings are not stated cannot be determined (decision 4), where the old reader read an unstated set-aside as none (otherwise 0). Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-2: a record stated as a stream (no month and no date) is received only in the months from the month its job or business began through the month it ended (job_start_date, job_end_date; each absent: before, or through, the months the case covers; CO-5100), since earned income \"is countable as income in the month received\" (10 CCR 2505-10 8.100.5.F.4, S3001) and wages are counted \"when you receive them\" (20 CFR 416.1111(a), S4940); a pay stated with its month or date is placed by it, a final pay after the job ended included. Before, a stream was counted in every month whatever its job's dates. The clause is Adult Financial's and Colorado Works' (af_earned_pay, CO-5130; cw_earned_pay, CO-5140)."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, job_start_date]], ["<=", [month_of, [receipt, job_start_date]], [month]]], [any, [unknown, [receipt, job_end_date]], [">=", [month_of, [receipt, job_end_date]], [month]]]]]], [receipt, pass_set_aside]]
+sources: [S3412, S3404, S4940]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "Earned-income records, step E1 (Medicaid and CHP+): the PASS set-aside is an earmark of a pay (design 2.2), read from the records."
@@ -17,3 +17,5 @@ tests:
   - {id: CO-5176-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1200, pass_set_aside: 300}, {kind: self_employment_receipts, amount: 500, pass_set_aside: 100}]}, title: "300 of the wages and 100 of the business set aside: 400", expect: 400}
   - {id: CO-5176-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 1200}]}, title: "No set-aside stated: 0", expect: 0}
   - {id: CO-5176-T3, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Earnings not stated: cannot determine", expect: unknown}
+  # Field-effect sweep, non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md); hand-computed from the text quoted in each title.
+  - {id: CO-5176-T4, month: "2026-11", as_of: "2026-11-12", title: "FS-MA-2: 200 set aside under a PASS from pay of a job that ended 2026-10-31: 0", given: {earnings: [{kind: wages, amount: 1000, pass_set_aside: 200, job_end_date: "2026-10-31"}]}, expect: 0}
