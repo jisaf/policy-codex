@@ -79,8 +79,8 @@ Settled: OQ-1023 (all three parts); OQ-1024 for MAGI (the Adult Financial half s
 | Gate | Result |
 |---|---|
 | `node scripts/sync-manifest.mjs co` | written |
-| `npm run typecheck` | see the final commit |
-| `npx vitest run` | see the final commit |
-| `npm run receipts:harness -- --all-programs` | see the final commit |
-| `npm run records:harness -- --list earnings --track medicaid` | OK, 0 unexplained |
-| `CHECK_BASE=origin/main npm run check` | see the final commit; flags dispositioned in volumes/co/changes/2026-11-23-records-medicaid.yaml |
+| `npm run typecheck` | passes |
+| `npx vitest run` | 1,131 tests pass (101 files), after the UI pins moved by OQ-1120 to OQ-1124, OQ-1023 resolved, OQ-1024 partly resolved and CO-5180 were re-pinned with their reasons |
+| `npm run receipts:harness -- --all-programs` | OK, 0 unexplained (319 stored: 776 differ, all allowed; 1,626 generated: 23,551 differ, all allowed, almost all EM-R1, request R-1) |
+| `npm run records:harness -- --list earnings --track medicaid` | OK, 0 unexplained (stored 230 of 49,393 values differ, generated 989 of 24,192, all allowed by E1-M0 to E1-M8); translation 0 stale; boundary 0 findings |
+| `CHECK_BASE=origin/main npm run check` | OK; 4,520 rule tests pass; every household expectation but CO-387's CHP+ copayment band (OQ-810, as before); 24 change-impact flags, all dispositioned (volumes/co/changes/2026-11-23-records-medicaid.yaml); conformance self-check OK |
