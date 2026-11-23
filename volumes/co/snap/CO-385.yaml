@@ -56,6 +56,7 @@ tests:
       medical_expenses_out_of_pocket: 0
       health_insurance_premiums_paid: 0
       earnings: []
+      receipts: [{kind: social_security, amount: 1180}]
     others:
       p2:
         snap_expense_verification_period_has_ended: false
@@ -79,6 +80,7 @@ tests:
         earnings: [{kind: wages, amount: 2380}]
       p3:
         earnings: []
+        receipts: []
         snap_expense_verification_period_has_ended: false
         shelter_cost_monthly: 0
         snap_is_ineligible_member: false
@@ -88,6 +90,7 @@ tests:
         medical_expenses_out_of_pocket: 0
       p4:
         earnings: []
+        receipts: []
         snap_expense_verification_period_has_ended: false
         shelter_cost_monthly: 0
         snap_is_ineligible_member: false
