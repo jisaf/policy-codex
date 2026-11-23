@@ -750,7 +750,7 @@ export function formatSummary(r: CheckReport): string {
     lines.push(`outcomes affected: ${r.outcomesAffected.join(", ")}`);
   }
   if (r.blockingItemErrors.length) {
-    lines.push(`blocking errors on changed/added items:`);
+    lines.push(`blocking errors (changed or added items; stale approvals anywhere):`);
     for (const e of r.blockingItemErrors) lines.push(`  ${e.id} ${e.identifier}: ${e.msg}`);
   }
   if (r.openQuestions.errors.length) {
