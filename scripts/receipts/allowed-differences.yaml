@@ -415,3 +415,74 @@
   old: false
   new: unknown
   class: EM-R5 (K.10) boarder payments are verified as self-employment income
+
+# ---------------------------------------------------------------------------------------------------
+# Earned-income records, E1 integration (2026-11-23; docs/reviews/records-earnings-e1-integration.md, section 5). The
+# stored households' differences the E1 tracks' classes explain in the records harness (scripts/records/allowed/), which
+# this harness had no entry for, each by case, person, figure and both values. Measured here against c29d326. EM-R1 and
+# E1-G above (the generated households, which state no earnings list) are unchanged: whether this harness passes its
+# generated households through the earnings translator is with the product owner.
+# EI-1 (scripts/records/allowed/e1-integration.yaml, I-1): the thirty-day households restated in dated earnings; the old
+# side reads the scalar wages they no longer state. New values checked against the ledger at 9650b0c on each household's
+# text before the restatement: equal (CO-454 and CO-455: 0, as their wages_gross of 0 said; the old SNAP converted a pay
+# schedule they stated with no pay, 4.402.A.2).
+- {case: "/^(CO-134|CO-454|CO-455)$/", person: p1, identifier: af_earned_income_verification_is_pending, month: "2026-11", old: unknown, new: false, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: cw_budgetary_member_deemed_income, month: "2026-11", old: unknown, new: 0, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-125|CO-134|CO-135)$/", person: p1, identifier: cw_budgetary_member_deemed_income, month: "2026-11", old: unknown, new: 1910, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "CO-133", person: p1, identifier: cw_budgetary_member_deemed_income, month: "2026-11", old: unknown, new: 2510, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: cw_earned_income_verification_is_pending, month: "2026-11", old: unknown, new: false, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: ma_buy_in_category, month: "2026-11", old: unknown, new: "none", class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: ma_community_spouse_income, month: "2026-11", old: unknown, new: 0, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-133|CO-134|CO-456)$/", person: p1, identifier: ma_community_spouse_income, month: "2026-11", old: unknown, new: 2000, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-125|CO-135)$/", person: p1, identifier: ma_community_spouse_income, month: "2026-11", old: unknown, new: 2600, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: snap_earned_income_verification_is_pending, month: "2026-11", old: unknown, new: false, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: unknown, new: 0, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-125|CO-133|CO-134|CO-135|CO-456)$/", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: unknown, new: 2150, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-454|CO-455)$/", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: unknown, new: 0, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-125|CO-134|CO-135)$/", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: unknown, new: 2150, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-133|CO-456)$/", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: unknown, new: 2750, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+- {case: "/^(CO-125|CO-135)$/", person: p2, identifier: ma_community_spouse_income, month: "2026-11", old: unknown, new: 2600, class: "EI-1 (records E1 integration, I-1) thirty-day household restated in dated earnings, read by every program (R-1)"}
+# EI-13 (the cash track's decision-4 round, docs/reviews/records-earnings-cash.md, section 4): CO-13 states Walter's
+# receipts as its narrative gives them, so the figures read from them are known (0) where the old side could not tell.
+- {case: "CO-13", person: p2, identifier: cw_counted_child_support, month: "2026-11", old: unknown, new: 0, class: "EI-13 (the cash track, decision-4 round) CO-13 states its p2 receipts as its narrative gives them"}
+- {case: "CO-13", person: p2, identifier: ma_title_ii_cola_increase, month: "2026-11", old: unknown, new: 0, class: "EI-13 (the cash track, decision-4 round) CO-13 states its p2 receipts as its narrative gives them"}
+# EI-AF1 (AF-1, scripts/records/allowed/e1-af.yaml): board, room, and room and board payments are Adult Financial earned
+# income less the costs of providing them (9 CCR 2503-5 3.520.783.C.2.b-d), no longer unearned income; the new
+# self-employment income is verified (3.520.5.A, 3.520.783.E), which these households do not state. CO-425 counts its $600
+# once (the SNAP track's restatement): (600 - 200 - 65) / 2 = 167.5.
+- {case: "CO-354", person: p1, identifier: af_countable_income, month: "2026-10", old: 0, new: 717.5, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-206", person: p1, identifier: af_countable_income, month: "2026-10", old: 380, new: 167.5, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-362", person: p1, identifier: af_countable_income, month: "2026-10", old: 580, new: 267.5, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-425", person: p1, identifier: af_countable_income, month: "2027-02", old: 0, new: 167.5, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-354", person: p1, identifier: af_earned_income_verification_is_pending, month: "2026-10", old: false, new: unknown, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "/^(CO-171|CO-320)$/", person: p1, identifier: af_earned_income_verification_is_pending, month: "2026-11", old: false, new: unknown, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-206", person: p1, identifier: af_relative_deemable_unearned_income, month: "2026-10", old: 400, new: 0, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-362", person: p1, identifier: af_relative_deemable_unearned_income, month: "2026-10", old: 600, new: 0, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-206", person: p1, identifier: af_unearned_income_other_than_ssi, month: "2026-10", old: 400, new: 0, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+- {case: "CO-362", person: p1, identifier: af_unearned_income_other_than_ssi, month: "2026-10", old: 600, new: 0, class: "EI-AF1 (AF-1 of the Adult Financial track) boarder payments are earned income less provision costs (3.520.783.C.2.b-d)"}
+# EI-CW4 (CW-4, scripts/records/allowed/e1-cw.yaml): boarder and in-kind pay is earned income Colorado Works verifies
+# (3.604.3.B.2.e); no verification is stated.
+- {case: "/^(CO-206|CO-354|CO-362)$/", person: p1, identifier: cw_earned_income_verification_is_pending, month: "2026-10", old: false, new: unknown, class: "EI-CW4 (CW-4 of the Colorado Works track) in-kind, vendor and boarder pay is earned income to verify (3.604.3.B.2.e)"}
+# EI-CWD4 (CW-D4, scripts/records/allowed/e1-cw.yaml): CO-159 p2, a high school student earning $400 with no completion
+# date stated: whether 3.605.4.B.24.b disregards her earnings is not known.
+- {case: "CO-159", person: p2, identifier: cw_budgetary_member_deemed_income, month: "2027-02", old: 310, new: unknown, class: "EI-CWD4 (CW-D4 of the Colorado Works track) a students earnings with the student facts not stated are cannot determine (3.605.4.B.24.b)"}
+- {case: "CO-159", person: p2, identifier: cw_budgetary_member_deemed_income, month: "2027-03", old: 310, new: unknown, class: "EI-CWD4 (CW-D4 of the Colorado Works track) a students earnings with the student facts not stated are cannot determine (3.605.4.B.24.b)"}
+# EI-SE (SE-D4-1, scripts/records/allowed/e1-snap.yaml; listed as missing here by docs/reviews/records-earnings-snap.md):
+# a business record that does not say whether it is the household's annual support (10 CCR 2506-1 4.403.12.A-B; D3;
+# OQ-1101).
+- {case: "/^(CO-382|CO-383)$/", person: p1, identifier: snap_abawd_time_limit_status, month: "2026-11", old: "not_subject", new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-182", person: p1, identifier: snap_person_earned_income, month: "2026-10", old: 0, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-182", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 0, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-322", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 300, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-383", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 3000, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-136", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 4150, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-387", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 4328, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-382", person: p1, identifier: snap_person_earned_income, month: "2026-11", old: 6000, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-182", person: p1, identifier: snap_person_gross_income, month: "2026-10", old: 0, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-182", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 0, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-322", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 300, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-383", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 3000, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-136", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 4150, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-387", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 4328, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "CO-382", person: p1, identifier: snap_person_gross_income, month: "2026-11", old: 6000, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
+- {case: "/^(CO-382|CO-383)$/", person: p1, identifier: snap_work_hours_verification_is_pending, month: "2026-11", old: false, new: unknown, class: "EI-SE (SE-D4-1 of the SNAP track) a business not stated as annual support is cannot determine for SNAP (4.403.12; decision 4)"}
