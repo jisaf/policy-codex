@@ -116,8 +116,10 @@
 # fact reads as every month, so October was read as a month with a $5,000 transfer (4 months). The transfer is
 # one record with its disposed_date and is read in June only (3.520.76.D.5: the period begins the month after the
 # transfer); af_is_in_twfc_penalty_period and the household's expectation (af_category none in October) are
-# unchanged.
-- case: CO-434
+# unchanged. CO-06 (restated by the H1 Medicaid track with its June 2025 transfer stated in the facts with no
+# month, and as a dated record): the ledger before H1 read the transfer in every month and, with no Adult
+# Financial application date, could not determine November and December; the record has no transfer in them: no.
+- case: /^(CO-06|CO-434)$/
   person: p1
   identifier: /^af_twfc_(transfer_is_counted|penalty_months)$/
   class: "H1A-3 a transfer is read in the month of its disposed_date only (3.520.76.D.5)"
