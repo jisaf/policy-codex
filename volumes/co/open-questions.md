@@ -3191,8 +3191,8 @@ Checked 2026-11-23: 9 CCR 2503-6 3.606.1.E, 3.606.2.A, 3.606.3.A-C (D-81). None 
 Body: Three Medicaid tests turn on employment: the Working Adults Buy-In ("Individuals must be employed", 10 CCR 2505-10 8.100.6.P.1.e, S317), the Children's Buy-In's exclusion of an employed child of 16 to 18 (8.100.6.Q.1.e, S318), and Transitional Medical Assistance ("At least one Parent/Caretaker Relative must continue to be employed", 8.100.4.I.1.b.i, S1719). They read ma_has_earned_income (CO-6200), which the records E1 integration made from the earnings records in place of has_earned_income (CO-1356): pay for services as an employee, in cash or in kind (8.100.3.K.3-4, S4107), or a business's gross receipts. 8.100.3.K.10.c-e (S4107) makes "board, room, and room and board payments" self-employment income, but none of the three paragraphs says whether taking in a boarder or lodger is being employed. Worked example: a disabled adult of 40 whose only income is $600 a month from a lodger for room and board: employed, the Working Adults Buy-In is open to her (income after the disregards within 450% of the poverty level); not employed, it is not.
 
 Class: state policy choice
-Owner: Medicaid eligibility policy owner (HCPF)
-Assumption: Not employed: a boarder's payments alone do not meet the employment tests, as has_earned_income read them (it read wages and business receipts, not room and board payments).
+Owner: Medicaid policy owner
+Assumption: Not employed: a boarder's payments alone do not meet the employment tests, as the volume read them before earnings records (wages and business receipts counted, room and board payments did not).
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.10 (S4107), 8.100.6.P.1, Q.1 (S317, S318), 8.100.4.I.1.b.i (S1719). None defines "employed". Items: CO-6200, CO-618, CO-620, CO-2425.
 
@@ -3200,8 +3200,8 @@ Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.10 (S4107), 8.100.6.P.1, Q.1
 
 Body: The earnings record (CO-5100) gives `frequency` the default monthly. Under decision D3 (docs/design-earned-and-resource-records.md, section 7) a field takes a default only where the rule's own text gives one; no rule says a pay is monthly unless stated. Where a rule converts dated pays by their schedule, a missing frequency matters: LEAP averages the pays of each schedule over the eight weeks before application and multiplies by the pays per month (3.752.22.B-C; leap_ongoing_dated_wages, CO-5121), so four weekly pays of $500 stated with their dates but no frequency are read as four monthly pays, $500 a month, where the weekly reading gives $2,000 (request R-6 of docs/reviews/records-earnings-care-energy.md). Making `frequency` required where a dated pay is read would make such a household cannot determine instead. No stored household states a dated pay without its frequency; nine rule tests do (CO-330-T7, CO-4930-T5, CO-5113-T9, CO-3915-T2, CO-3915-T10, CO-5152-T3, CO-5152-T5, CO-3912-T6, CO-3912-T8), each for a rule that reads the pay at its amount (CCCAP's thirty days, the pay of a job that ended, SNAP's pay after the application date), where the frequency is not read. A dated pay the earnings translator writes (SNAP's pay after the application date) states no frequency, and the translator notes each one.
 
-Class: ledger design
-Owner: Product owner, with the LEAP and SNAP policy owners
+Class: state policy choice
+Owner: Data steward, Energy assistance (LEAP) policy owner, SNAP policy owner
 Assumption: A dated pay with no frequency is a monthly pay (the schema's default); a household that states dated weekly or bi-weekly pays states their frequency.
 
 Checked 2026-11-23: 9 CCR 2503-7 3.752.22.B-C (D-86); 10 CCR 2506-1 4.402.A.2 (D-82). Neither says what schedule to assume for a pay whose schedule is not reported. Items: CO-5100, CO-5121.
