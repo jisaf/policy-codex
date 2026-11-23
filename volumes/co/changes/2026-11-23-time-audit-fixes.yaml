@@ -1,0 +1,4 @@
+date: 2026-11-23
+summary: "Time audit fix round (docs/reviews/time-audit.md, step 7): parameters and ages read in the month evaluated (T-3, T-1), the Adult Financial maximum ISM by its formula (T-2), the lottery bands to the cent (T-4), and the P2 findings T-5 to T-9."
+impact:
+  - {changed: CO-1513, fingerprint: fp1-6c5052c596a2d046c43e, flagged: CO-952, not_applicable: "CO-952 (af_and_grant) cites S707 for 3.546.E's AND-CS payment floor ($13), not for the ISM maximum; it reaches the ISM only through af_countable_income, which reads af_ism_maximum by identifier and so takes the formula's figure with no change."}
