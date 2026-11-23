@@ -1,0 +1,14 @@
+# Coverage pass 4 integration (2026-11-23; docs/reviews/coverage4-integration.md). The non-MAGI Medicaid, SNAP ages by
+# month and Adult Financial and Colorado Works fix rounds, each passing every harness alone, were merged (d9c4af2,
+# d6db76d, 286d8f7; dispositions re-keyed in 8788b85 and 8519814). The whole-phase runs of the three harnesses are
+# classified difference by difference (scripts/records/allowed/coverage4-integration.yaml,
+# scripts/records/allowed/h4-coverage4-integration.yaml, the integration section of
+# scripts/receipts/allowed-differences.yaml): every one is a round's cited change met on a household or generated base
+# another round restated or built (I4-1 to I4-5); none is a defect of the rounds interacting, and no item changes.
+# Stored households: CO-133, CO-456, CO-562 and CO-580 state their child support on the list of the child it is paid
+# for (receipts, CO-5000; N4-11, CA4-5), as their stories say; CO-580's Colorado Works person figures are now the
+# child's (the unit's income, eligibility and grant unchanged). No item, rule or excerpt changes, so this round raises
+# no change-impact flag and moves no disposition.
+date: 2026-11-23
+summary: "Coverage pass 4 integration: the merged non-MAGI, SNAP-ages and cash rounds' differences classified (I4-1 to I4-5, no defect of the rounds interacting); child support stated on the child's list in CO-133, CO-456, CO-562 and CO-580."
+impact: []
