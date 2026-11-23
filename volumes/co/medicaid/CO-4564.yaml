@@ -17,3 +17,5 @@ tests:
   - {id: CO-4564-T1, as_of: "2026-11-10", title: "Coverage review F-05 (RV-SE): 76.7% under the methodology", given: {ma_premium_tax_credit_family: [p1], ma_premium_tax_credit_household_income_pct_fpl: 0.767}, expect: true}
   - {id: CO-4564-T2, as_of: "2026-11-10", title: "At 100%: not below", given: {ma_premium_tax_credit_family: [p1], ma_premium_tax_credit_household_income_pct_fpl: 1}, expect: false}
   - {id: CO-4564-T3, as_of: "2026-11-10", title: "A non-filer, not claimed", given: {ma_premium_tax_credit_family: []}, expect: false}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-4564-T4", "as_of": "2026-11-10", "title": "T-9: ma_premium_tax_credit_household_income_pct_fpl equal to ma_premium_tax_credit_methodology_income_limit_pct (ma_premium_tax_credit_household_income_pct_fpl under ma_premium_tax_credit_methodology_income_limit_pct)", "given": {"ma_premium_tax_credit_family": ["p1"], "ma_premium_tax_credit_household_income_pct_fpl": 1}, "expect": false}

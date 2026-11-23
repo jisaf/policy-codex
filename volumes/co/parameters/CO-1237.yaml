@@ -13,8 +13,10 @@ versions:
     value: 71
     source: S747
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 73
     source: S745
+review_by: "2027-10-01"
 sources: [S745, S747]
 tags: [income, snap, state_election]
 rationale: No existing parameter states it (OQ-36); snap_utility_allowance_amount (CO-1500) needs it. Same table as CO-1235, a different tier.

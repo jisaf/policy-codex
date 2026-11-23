@@ -6,8 +6,8 @@ type: whole number
 scope: person-month
 program: Medicaid
 meaning: "The number of months between this person's scheduled redeterminations: ma_expansion_adult_renewal_interval_months (CO-2453, six months for a redetermination scheduled from January 1, 2027) for a person in the Adults group, unless the person is an Indian (42 U.S.C. 1396a(e)(14)(L)(ii) exempts the individuals 1396a(xx)(9)(A)(ii)(II) describes), and ma_standard_renewal_interval_months (CO-2454) otherwise."
-precision: "The statute dates the change by when the redetermination is scheduled; the determination date stands for it, through the versions of CO-2453 (hard-coded numbers audit E-1; before, a comparison with ma_six_month_renewal_start_date). ma_is_indian (CO-1938) is the Indian definition the community engagement exclusion reads, the same 1396a(xx)(9)(A)(ii)(II) group."
-derived: [case, [[all, ["=", ma_magi_category, adult], [not, ma_is_indian]], ma_expansion_adult_renewal_interval_months], [else, ma_standard_renewal_interval_months]]
+precision: "The statute dates the change by when the redetermination is scheduled; the determination date stands for it, through the versions of CO-2453 read as of that date (time audit T-3) (hard-coded numbers audit E-1; before, a comparison with ma_six_month_renewal_start_date). ma_is_indian (CO-1938) is the Indian definition the community engagement exclusion reads, the same 1396a(xx)(9)(A)(ii)(II) group."
+derived: [case, [[all, ["=", ma_magi_category, adult], [not, ma_is_indian]], [as_of, ma_expansion_adult_renewal_interval_months, [det_date]]], [else, ma_standard_renewal_interval_months]]
 sources: [S1707]
 implemented: engine
 tags: [ma, magi]

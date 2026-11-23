@@ -12,8 +12,10 @@ versions:
     value: 198.99
     source: S84
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 205.66
     source: S732
 rationale: "7 CFR 273.9(d)(6)(i) (S92) authorizes a state-elected standard homeless shelter deduction (the federal text itself states $143); Colorado's own 4.407.3,C (S97) and D-20's Table 4 (S84) state the FY2026 dollar figure CDHS actually uses, which snap_homeless_shelter_deduction (CO-378) needs as a named, dated parameter distinct from the unadjusted federal figure. Phase 8 adds the FY2027 version (S732, S742)."
+review_by: "2027-10-01"
 sources: [S84, S92, S97, S732, S742]
 tags: [income, snap, state_election]

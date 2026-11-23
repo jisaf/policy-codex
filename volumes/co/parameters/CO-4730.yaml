@@ -13,8 +13,10 @@ versions:
     value: 14.81
     source: S3752
   - from: "2026-01-01"
+    to: "2027-01-01"
     value: 15.16
     source: S3506
+review_by: "2027-01-01"
 sources: [S3752, S3506, S3507, S3508]
 tags: [income]
 rationale: "Coverage review 2, G-8 (3): OQ-781 assumed the Colorado figure was published only on cdle.colorado.gov; the PAY CALC Order is filed with the Secretary of State as 7 CCR 1103-14 (D-330, D-331), so the figure the Adult Financial donated work rule reads (3.520.784.B, \"The current minimum wage standard\") is now a dated parameter. Adult Financial coverage pass 3 H-3: the parameter had only a 2026 version, so a 2025 month with countable donated work hours read no figure; the 2025 order is on sos.state.co.us as rule version 11747 (D-346), not only on cdle.colorado.gov."

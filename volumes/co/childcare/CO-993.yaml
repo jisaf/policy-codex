@@ -15,3 +15,5 @@ rationale: "No existing item states 3.111.H.1.b's exit income test; the review (
 tests:
   - {id: CO-993-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 6000, cccap_household_size: 3}, expect: true}
   - {id: CO-993-T2, title: "Figures effective October 1, 2024 (S485)", as_of: "2025-09-30", month: "2025-09", given: {cccap_household_income: 8000, cccap_household_size: 3}, expect: false}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-993-T3", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: cccap_household_income equal to [\"lookup_extended\",\"cccap_smi_income_limit_table\",\"cccap_household_size\",\"cccap_smi_income_limit_each_additional\"] (cccap_household_income at or under [\"lookup_extended\",\"cccap_smi_income_limit_table\",\"cccap_household_size\",\"cccap_smi_income_limit_each_additional\"])", "given": {"cccap_household_income": 8638.03, "cccap_household_size": 3}, "expect": true}

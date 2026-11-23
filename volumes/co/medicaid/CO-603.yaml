@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether the person meets any one of the three SSI-related non-financial categories - aged, blind, or disabled - per 42 U.S.C. 1382c(a)(1)(A) and 10 CCR 2505-10 8.100.6.A.
-derived: [any, ma_is_aged, is_blind, meets_ssa_disability_criteria]
+derived: [any, [at, ma_is_aged, [det_month]], is_blind, meets_ssa_disability_criteria]
 sources: [S303, S304, S305]
 implemented: engine
 tags: [ma, non_magi, age, disability]

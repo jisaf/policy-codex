@@ -12,8 +12,10 @@ versions:
     value: 744
     source: S83
   - from: "2026-10-01"
+    to: "2027-10-01"
     value: 769
     source: S732
 rationale: "7 U.S.C. 2014(e)(6)(B) and 7 CFR 273.9(d)(6)(ii) (S93) cap the excess shelter deduction for households without an elderly or disabled member; D-20's Table 3 (S83) is the FY2026 FNS-published dollar figure (48 states and D.C. column), which snap_excess_shelter_deduction (CO-377) needs as a named, dated parameter. Phase 8 adds the FY2027 version (S732, S742)."
+review_by: "2027-10-01"
 sources: [S83, S93, S732, S742]
 tags: [income, snap]

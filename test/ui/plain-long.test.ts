@@ -36,8 +36,11 @@ describe("long rules read as bulleted clauses", () => {
   it("most of the volume's rule lines fit the limit", () => {
     const lines = engine.items().filter((it) => it.kind === "derived").flatMap((it) => plainRule(engine, it));
     const over = lines.filter((l) => partsText(l.parts).length > 300).length;
-    // Before the split: 226 lines over 300 characters.
-    expect(over).toBeLessThanOrEqual(40);
+    // Before the split: 226 lines over 300 characters. 41 after the time
+    // audit fix round wrote "[figure] as of the determination date" into the
+    // rules that fix a figure at the determination (T-3: CCCAP's fee and
+    // entry limit, LEAP's limit and guideline).
+    expect(over).toBeLessThanOrEqual(41);
   });
 
   it("relationship roles read as words", () => {

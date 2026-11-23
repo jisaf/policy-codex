@@ -75,19 +75,44 @@ An expression is evaluated for:
    determination date is unknown. Its rule never runs and a value stated for
    it in the case is ignored. `effective.from` and `effective.to` are both
    inclusive (`to: present` never ends).
-2. **Parameter.** A value under the case's `parameters` wins. Otherwise a
-   parameter with `versions` takes the version in force **on the
-   determination date**: `from <= date < to` (`from` inclusive, `to`
-   exclusive; the latest `from` wins). A date no version covers gives
-   unknown and a `no-version` warning. A parameter whose `versions` is an
-   empty list (a figure the State sets but has not published where it can be
-   fetched; the item names the open question) is covered on no date: unknown,
-   with a `no-version` warning, every time. A parameter without versions has
-   its one `value`. The version is chosen by the determination date even when
-   the expression is evaluating another month (an ABAWD look-back, a
-   retroactive month, a future month of a case); a rule that applies a figure
-   from another date says so with `as_of` (P25, Tables), which picks the
-   version in force on the date it names.
+2. **Parameter.** A value under the case's `parameters` wins (it states one
+   value for every date). Otherwise a parameter with `versions` takes the
+   version in force on **the version date of the context**: `from <= date <
+   to` (`from` inclusive, `to` exclusive; the latest `from` wins). The version
+   date is:
+   - with no month in context (a `person`, `global` or `case` item's rule,
+     outside `at`, `each`, `some_month`, `count_months` and `avg`): the
+     determination date;
+   - in a month-scoped evaluation (a `person-month` item's rule, or under an
+     operator that sets the month): the determination date when the month is
+     the determination month, and **the first day of the month** for any
+     other month.
+
+   So each month is judged by the figures in force in it: a retroactive
+   month, an ABAWD or lottery look-back month, an application month before
+   the determination month and a future month of a case each read their own
+   month's version (42 CFR 435.915(a)(2), "would have been eligible ... at the
+   time"; 10 CCR 2505-10 8.100.4.G.1 and 8.100.5.C.1; each figure's own
+   "effective October 1" or "effective January 1" version date). A rule whose
+   text applies another date's figure to every month it evaluates says so
+   with `as_of` (P25, Tables), which picks the version in force on the date
+   it names: `[as_of, x, [det_date]]` for a figure fixed when the
+   determination is made (the CCCAP parent fee assessed at application or
+   redetermination, 3.124.C; LEAP's heating-season limit). The first day is
+   used because the figures change on the first of a month (a COLA on
+   January 1, a SNAP figure on October 1, a State fiscal year on July 1); a
+   version that starts later in a month (an enactment date such as
+   2025-07-04) is read from the next month, except in the determination
+   month, and a rule that needs another day says so with `as_of`.
+
+   A date no version covers gives unknown and a `no-version` warning. A
+   parameter whose `versions` is an empty list (a figure the State sets but
+   has not published where it can be fetched; the item names the open
+   question) is covered on no date: unknown, with a `no-version` warning,
+   every time. A parameter without versions has its one `value`. Before time
+   audit T-3 (docs/reviews/time-audit.md) the version was chosen by the
+   determination date in every month; the conformance suite names the
+   contract it was built under (`volume.resolution.contract`, `month-v1`).
 3. **Case scope.** `determination_date` is the determination date. Any other
    `case`-scope supplied item is the value stated in the case's
    `case_facts` (a rule test may give it among its facts; it is the case's,
@@ -105,10 +130,42 @@ An expression is evaluated for:
 6. A supplied item with no stated value is unknown.
 7. A derived item's rule is evaluated with this person and the month,
    `that person` unset, and the result is memoised per (identifier, person,
-   month). A `person`-scope derived item is memoised per person, so it is
-   computed once per case: `age` is the age on the determination date, used
-   unchanged in every month (a past month's "child under 22" uses today's
-   age). A `global` derived item is computed once per case.
+   month). A `person`-scope derived item is memoised per person and a
+   `global` one once per case, and their rules run **with no month in
+   context** whichever month asked for them first (so their parameters are
+   read on the determination date): each is one value per case, on the
+   determination date. `age` (CO-300) is the age on the determination date
+   wherever it is read; a rule that tests an age in the month it evaluates
+   reads an age taken in that month instead (Ages in a month, below).
+
+### Ages in a month
+
+A month-scoped rule that tests an age condition **for the month it
+evaluates** measures it in that month, never on the determination date (time
+audit T-1). Where the program's text makes any day of the month count
+(Medicaid: 10 CCR 2505-10 8.100.4.G.1 for MAGI, "eligible ... at any time
+during a calendar month shall be eligible ... during the entire month";
+8.100.5.C.1 for the Aged, Blind and Disabled categories, effective "the first
+day of the month the person becomes eligible"; 8.100.5.C.3 for the
+Children's Buy-In), a condition is met for the month if it is met on any day
+of it, and since an age only grows, one day decides each condition:
+
+| Condition | Day the age is taken on | Item |
+|---|---|---|
+| under N (a qualifying upper limit) | the first day of the month | `ma_age_on_first_day_of_month` (CO-4978) |
+| N or older (a qualifying lower limit) | the last day of the month | `ma_age_on_last_day_of_month` (CO-5402) |
+| under N "through the end of the month" of the Nth birthday | the last day of the month before | `ma_age_before_month` (CO-4790) |
+
+A disqualifying condition takes the other day (a person is outside a group
+for the whole month only if the condition holds on every day of it): the IMD
+exclusion's "21 or older" reads the first day and its "under 65" the last.
+These are ordinary items over `years_between`, `first_day`, `days_after` and
+`month`; no operator is involved. A per-person rule about the determination
+itself (presumptive eligibility, a person-scope category read by
+person-scope rules) states the determination month explicitly:
+`[at, ma_is_aged, [det_month]]`. The cash programs' per-person age items
+(`cw_is_dependent_child`, `af_is_oap_age`) are measured on the determination
+date in every month (OQ-951).
 
 ## Logic
 
@@ -175,7 +232,7 @@ they differ, binary64 in written order is the codex's answer.
 | `lookup` | table, key | the row for the key | unknown if the table or the key is unknown. **A key with no row is unknown** and reported as a `lookup-miss` warning. |
 | `band` (P48) | table keyed by income band, number | the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number (bounds compared with a 1e-9 tolerance). A row keyed `"above"` is the open top band: its value is the value for every number above the last bound | unknown if the table or the number is unknown. **A number above the last bound of a table with no `"above"` row is unknown** and reported as a `lookup-miss` warning. |
 | `lookup_extended` (P51) | table keyed by a whole number, number, optionally an amount | up to the table's last (largest whole-number) row, the row for the number, as `lookup`; above it, the last row plus the amount for each number beyond the last row, or, with no amount, the last row itself ("6 or more") | unknown if the table or the number is unknown, or (above the last row) the amount is. **A number at or below the last row with no row is unknown** and reported as a `lookup-miss` warning. |
-| `as_of` (P25) | a parameter's identifier (not evaluated), a date | the parameter's version in force on that date, chosen as on the determination date (`from` inclusive, `to` exclusive); a case's `parameters` override still wins, and the item's own effective range is still read on the determination date | unknown if the date is unknown; **a date no version covers is unknown** and reported as a `no-version` warning. |
+| `as_of` (P25) | a parameter's identifier (not evaluated), a date | the parameter's version in force on that date (`from` inclusive, `to` exclusive), whatever month is in context; a case's `parameters` override still wins, and the item's own effective range is still read on the determination date | unknown if the date is unknown; **a date no version covers is unknown** and reported as a `no-version` warning. |
 
 Table keys are strings. A number key is looked up as its decimal string (a
 household size of 3 reads row `"3"`, and 3.0 is the same key); a person key
@@ -257,7 +314,7 @@ members' groups need not be equal.
 |---|---|---|---|
 | `month` | none | the month in context | an error (not unknown) outside a month context |
 | `det_date`, `det_month` | none | the determination date, its month | never unknown |
-| `at` | expression, month | the expression evaluated with **the month** = the given month; this person, that person and the determination date are unchanged (parameter versions and effective ranges are still chosen by the determination date) | unknown if the month is unknown |
+| `at` | expression, month | the expression evaluated with **the month** = the given month; this person, that person and the determination date are unchanged. Parameters read inside it take the given month's version (Resolution step 2); effective ranges are still read on the determination date | unknown if the month is unknown |
 | `first_day` | month | its first day | unknown in, unknown out |
 | `month_of` | date | the month containing it | unknown in, unknown out |
 | `month_of_year` | month | its calendar month number, 1 (January) to 12 (December) | unknown in, unknown out |
@@ -286,7 +343,7 @@ Four unknowns have no unstated supplied fact behind them: a number that is
 not finite (see Numbers), a `lookup` key
 with no row (or a `band` number above the last bound of a table with no open
 top band, or a `lookup_extended` number below the last row with no row), a
-versioned parameter with no version on the determination date (or on the date
+versioned parameter with no version on the date it is read on (Resolution step 2; or on the date
 `as_of` names; a parameter awaiting its figure has none on any date), and a
 division by zero. The engine reports each one (the non-finite one as a
 `non-finite` warning, against the fact stated as one or the rule that produced it): as a warning in

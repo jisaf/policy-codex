@@ -3,20 +3,22 @@ name: "SNAP: maximum allotment"
 identifier: snap_maximum_allotment
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: SNAP
 meaning: The maximum monthly SNAP allotment (Thrifty Food Plan cost) for this person's SNAP household's size, before the 30 percent reduction for net income.
-precision: "The table is read for the household's eligible size, and above its last row snap_maximum_allotment_each_additional is added for each member beyond it (P51; hard-coded numbers audit S-1: before, a case on a literal 8). Final verification F-11: from October 1, 2026 a household of snap_maximum_allotment_large_household_size (18) or more takes the single \"18+\" figure (snap_maximum_allotment_large_household, CO-3726); before then the 18+ amount has no version, and the each-additional amount applies to every size above the table."
+precision: "The table is read for the household's eligible size, and above its last row snap_maximum_allotment_each_additional is added for each member beyond it (P51; hard-coded numbers audit S-1: before, a case on a literal 8). Final verification F-11: from October 1, 2026 a household of snap_maximum_allotment_large_household_size (18) or more takes the single \"18+\" figure (snap_maximum_allotment_large_household, CO-3726); before then the 18+ amount has no version, and the each-additional amount applies to every size above the table. Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month."
 derived: [case, [[all, [">=", snap_eligible_household_size, snap_maximum_allotment_large_household_size], [not, [unknown, snap_maximum_allotment_large_household]]], snap_maximum_allotment_large_household], [else, [lookup_extended, snap_maximum_allotment_table, snap_eligible_household_size, snap_maximum_allotment_each_additional]]]
 sources: [S82, S104, S730, S2514]
 implemented: engine
 tags: [income]
 rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) and 7 U.S.C. 2017 key the allotment to the maximum allotment for the household's size; no existing item composes snap_maximum_allotment_table with its each-additional parameter into the dollar figure snap_benefit_reduction and snap_allotment both need.
 tests:
-  - {id: CO-383-T1, title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 3}, expect: 785}
-  - {id: CO-383-T2, title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 9}, expect: 2007}
-  - {id: CO-383-T3, title: "FY2027 figures (S730, S738)", as_of: "2026-10-01", given: {snap_eligible_household_size: 3}, expect: 808}
-  - {id: CO-383-T4, title: "FY2027 figures: 1841 + 225", as_of: "2026-10-01", given: {snap_eligible_household_size: 9}, expect: 2066}
-  - {id: CO-383-T5, title: "Final verification F-11: seventeen persons, 1,841 + 9 x 225 = 3,866", as_of: "2026-10-01", given: {snap_eligible_household_size: 17}, expect: 3866}
-  - {id: CO-383-T6, title: "Final verification F-11: eighteen persons take the 18+ figure, 3,887 (not 4,091)", as_of: "2026-10-01", given: {snap_eligible_household_size: 18}, expect: 3887}
-  - {id: CO-383-T7, title: "Final verification F-11: twenty persons, still 3,887", as_of: "2026-10-01", given: {snap_eligible_household_size: 20}, expect: 3887}
+  - {id: CO-383-T1, month: "2026-09", title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 3}, expect: 785}
+  - {id: CO-383-T2, month: "2026-09", title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 9}, expect: 2007}
+  - {id: CO-383-T3, month: "2026-10", title: "FY2027 figures (S730, S738)", as_of: "2026-10-01", given: {snap_eligible_household_size: 3}, expect: 808}
+  - {id: CO-383-T4, month: "2026-10", title: "FY2027 figures: 1841 + 225", as_of: "2026-10-01", given: {snap_eligible_household_size: 9}, expect: 2066}
+  - {id: CO-383-T5, month: "2026-10", title: "Final verification F-11: seventeen persons, 1,841 + 9 x 225 = 3,866", as_of: "2026-10-01", given: {snap_eligible_household_size: 17}, expect: 3866}
+  - {id: CO-383-T6, month: "2026-10", title: "Final verification F-11: eighteen persons take the 18+ figure, 3,887 (not 4,091)", as_of: "2026-10-01", given: {snap_eligible_household_size: 18}, expect: 3887}
+  - {id: CO-383-T7, month: "2026-10", title: "Final verification F-11: twenty persons, still 3,887", as_of: "2026-10-01", given: {snap_eligible_household_size: 20}, expect: 3887}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-383-T8", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: snap_eligible_household_size equal to snap_maximum_allotment_large_household_size (snap_eligible_household_size at or over snap_maximum_allotment_large_household_size)", "given": {"snap_eligible_household_size": 18}, "expect": 3887}

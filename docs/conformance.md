@@ -126,8 +126,12 @@ here to read a case the way the codex does:
   only in a relationship triple (who is not a person of the case) are
   dropped and listed in `ignored` with the reason. `npm run check` warns
   about each one in the source test, so they get fixed at the source.
-- **Parameters** come from the ledger (their versions, chosen by `as_of`;
-  see `ledger.json`), except where the case's `parameters` overrides one.
+- **Parameters** come from the ledger (their versions; see `ledger.json`),
+  except where the case's `parameters` overrides one. The version is chosen
+  by the month evaluated (on the first day of a month other than the
+  determination month) and by `as_of` outside a month: docs/operators.md,
+  Resolution step 2. `suite.volume.resolution` names the contract the
+  expectations were computed under (`month-v1`).
 - **Relationships** are already expanded: each case-level edge is recorded
   on both persons, the second with the inverse role from
   `suite.volume.relationship_roles`. A person with no `relationships` key has

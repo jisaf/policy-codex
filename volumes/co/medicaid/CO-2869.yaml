@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the person is a parent or caretaker relative (ma_caretaker_relative_of, CO-2606) of a person who is a dependent child (ma_is_dependent_child)."
-derived: [exists, ma_caretaker_relative_of, [of, [P], ma_is_dependent_child_in_month]]
+derived: [exists, ma_caretaker_relative_of, [at, [of, [P], ma_is_dependent_child_in_month], [det_month]]]
 sources: [S1500, S1719]
 implemented: engine
 tags: [ma, magi, household]

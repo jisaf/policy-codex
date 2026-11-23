@@ -36,6 +36,12 @@ describe("buildSuite", () => {
     expect(typeof suite.codex.generated).toBe("string");
   });
 
+  it("names the resolution contract its expectations were computed under (time audit T-1, T-3)", () => {
+    expect(suite.volume.resolution.contract).toBe("month-v1");
+    expect(suite.volume.resolution.parameter_versions).toMatch(/first day of any other month/);
+    expect(suite.volume.resolution.ages).toMatch(/month evaluated/);
+  });
+
   it("lists one item per ledger entry, carrying implemented/implemented_by", () => {
     expect(suite.items).toHaveLength(138);
     const age = suite.items.find((i) => i.identifier === "age")!;

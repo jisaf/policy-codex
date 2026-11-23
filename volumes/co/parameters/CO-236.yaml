@@ -10,7 +10,7 @@ precision: Set annually by SSA's cost-of-living notice; versioned by effective d
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 1450, source: S1711}
   - {from: "2026-01-01", to: "2027-01-01", value: 1491, source: S319}
-  - {from: "2027-01-01", value: 1544, source: S1712}
+  - {from: "2027-01-01", to: "2028-01-01", value: 1544, source: S1712}
 review_by: "2027-11-01"
 sources: [S319, S1711, S1712]
 tags: [ma, non_magi, income]

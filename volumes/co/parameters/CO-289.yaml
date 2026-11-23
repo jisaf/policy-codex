@@ -13,7 +13,9 @@ versions:
     value: 1005
     source: S455
   - from: "2026-01-01"
+    to: "2027-01-01"
     value: 1032
     source: S700
+review_by: "2027-01-01"
 sources: [S455, S700, S702]
 rationale: No existing item states the OAP grant standard. af_grant_standard (CO-949), af_oap_grant (CO-951), and af_category's income test (CO-953) need it. Versioned (not a bare value) because 3.530.A states an explicit effective date.

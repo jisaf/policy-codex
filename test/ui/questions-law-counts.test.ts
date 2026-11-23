@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 128, 19 of them partly settled", () => {
-    expect(all.total).toBe(128); // + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
-    expect(all.rows).toHaveLength(128);
+  it("holds every question still to answer: 130, 19 of them partly settled", () => {
+    expect(all.total).toBe(130); // + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
+    expect(all.rows).toHaveLength(130);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
   });
 
@@ -41,7 +41,7 @@ describe("the question queue", () => {
       expect(r.others).not.toContain(r.owner);
     }
     const cash = questionQueue(engine, vol.sources, vol.openQuestions, cdhs, { mine: true, owner: "Cash programs policy owner" });
-    expect(cash.rows).toHaveLength(30); // + OQ-901 (fix round 2026-11-23)
+    expect(cash.rows).toHaveLength(31); // + OQ-951 (time audit T-1), OQ-953 (T-6)
     expect(cash.rows.every((r) => r.owner === "Cash programs policy owner")).toBe(true);
     expect(cash.groups.map((g) => g.owner)).toEqual(["Cash programs policy owner"]);
     // Without a filter the first owner is named, and the groups add up.
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(127); // + OQ-900, OQ-901
+    expect(q.total).toBe(129);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });
@@ -75,7 +75,7 @@ describe("the question queue", () => {
 describe("Law", () => {
   const unverified = unverifiedIds(vol.sources);
 
-  it("counts 39 departures in force, 2 unverified sources, 6 items citing them, 57 more resting on them (63 in all), 5 figures with no value", () => {
+  it("counts 40 departures in force, 2 unverified sources, 6 items citing them, 44 more resting on them (50 in all), 5 figures with no value", () => {
     const c = lawCounts(engine, vol, unverified, DATE);
     expect(c).toEqual({
       departures: departureItems(engine, { asOf: DATE }).length,
@@ -86,23 +86,23 @@ describe("Law", () => {
       excerpts: vol.sources.length,
       documents: vol.documents.length,
     });
-    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([39, 6, 57, 5]); // + 13 resting: the fix round 2026-11-23 has ma_ssi_countable_resources (CO-608) read the 1396r-5(c)(2) figure (CO-647), whose CSRA rests on S1228/S1230, so the SSI-related and MSP items above it now rest on them too; + CO-1155, CO-2439, CO-3155 (the state plan S59 over the Family Planning floor), CO-500 (OAP-A in the MAGI household): MAGI coverage pass 3
+    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([40, 6, 44, 5]); // + CO-1155, CO-2439, CO-3155 (the state plan S59 over the Family Planning floor), CO-500 (OAP-A in the MAGI household): MAGI coverage pass 3; + CO-1183 (time audit T-4: the statute's $80,000 over Colorado's $79,999)
   });
 
   it("the departures by program add up to the whole", () => {
-    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(39);
+    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(40);
   });
 
-  it("what rests on the unverified sources: 16 outcomes, and 14 stored households read them (Blind A said 3, Blind B 11)", () => {
+  it("what rests on the unverified sources: 14 outcomes, and 11 stored households read them (Blind A said 3, Blind B 11)", () => {
     const early = unverifiedReach(engine, vol.sources, unverified, null);
     expect(early.households).toBeNull();
     restingIndex(engine, vol.cases);
     const r = unverifiedReach(engine, vol.sources, unverified, vol.cases);
     expect(r.sources.map((s) => s.id)).toEqual(["S1228", "S1230"]);
     expect(r.citing).toHaveLength(6);
-    expect(r.resting).toHaveLength(57); // + 13 (fix round 2026-11-23, CO-608 reads CO-647)
-    expect(r.outcomes).toHaveLength(16); // + ma_ssi_related_category, ma_protected_group_category (fix round 2026-11-23: an institutionalized spouse is tested on CO-647, whose CSRA rests on S1228/S1230)
-    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214", "CO-388", "CO-395", "CO-481", "CO-485"]); // + CO-395, CO-481 (the institutionalized spouse on CO-647), CO-485 (an institutional case; fix round 2026-11-23); + CO-388 (probe X-REFUSE, CO-112 with the refused income allowance; probe-preservation round (CO-300 and up))
+    expect(r.resting).toHaveLength(44);
+    expect(r.outcomes).toHaveLength(14);
+    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214", "CO-388"]); // + CO-388 (probe X-REFUSE, CO-112 with the refused income allowance; probe-preservation round (CO-300 and up))
   }, 60_000);
 
   it("an excerpt is cited by an item through its sources or a dated version", () => {

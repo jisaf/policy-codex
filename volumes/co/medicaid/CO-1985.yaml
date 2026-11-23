@@ -3,14 +3,15 @@ name: "Medicaid: income trust gross income limit"
 identifier: ma_income_trust_gross_income_limit
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: Medicaid
 meaning: The average private-pay cost of Long-Term Care institution care in the person's region (ma_ltc_private_pay_region), below which an individual's gross monthly income must be for an income trust to establish income eligibility (10 CCR 2505-10 § 8.100.7.G.6.a.i.a)).
+precision: "Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month."
 derived: [lookup, ma_income_trust_limit_table, ma_ltc_private_pay_region]
 sources: [S1229, S1230]
 implemented: engine
 tags: [ma, ltc, income]
 rationale: "OQ-99: ma_meets_special_income_group (CO-642) compares gross income with the person's regional rate. Hard-coded numbers audit H-7(b): reads ma_income_trust_limit_table (CO-3022) instead of a case over four regional parameters."
 tests:
-  - {id: CO-1985-T1, as_of: "2026-10-01", given: {county_of_residence: pueblo}, expect: 9780.17}
-  - {id: CO-1985-T2, as_of: "2025-10-01", given: {county_of_residence: adams}, title: "2025 rate", expect: 11556.2}
+  - {id: CO-1985-T1, month: "2026-10", as_of: "2026-10-01", given: {county_of_residence: pueblo}, expect: 9780.17}
+  - {id: CO-1985-T2, month: "2025-10", as_of: "2025-10-01", given: {county_of_residence: adams}, title: "2025 rate", expect: 11556.2}

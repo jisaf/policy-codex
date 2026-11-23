@@ -1,0 +1,13 @@
+id: CO-5400
+name: Adult Financial maximum ISM, share of the SSI benefit standard
+identifier: af_ism_benefit_standard_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The share of the current SSI benefit standard that the Adult Financial maximum In-Kind Support and Maintenance amount starts from - 9 CCR 2503-5 3.520.79.E.2 (\"multiplying the current SSI benefit standard, as defined in Section 3.510, by 33.33%\")."
+precision: "33.33% as a decimal fraction, 0.3333, exactly as the rule writes it (not one third)."
+value: 0.3333
+sources: [S1012]
+tags: [cash, oap, and, income]
+rationale: "Time audit T-2: af_ism_maximum (CO-1513) is now computed by E.2's formula, and a figure the rule states is a parameter (OQ-82)."

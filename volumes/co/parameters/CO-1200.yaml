@@ -9,8 +9,10 @@ meaning: The minimum monthly OAP grant payment an eligible OAP client may receiv
 precision: The floor is updated annually with the cost-of-living adjustment (3.510); each update is a new version. MOE lump-sum payments (3.531.D.1) are irregular, are not an entitlement and are not modeled.
 versions:
   - from: "2026-01-01"
+    to: "2027-01-01"
     value: 189
     source: S700
+review_by: "2027-01-01"
 sources: [S700, S702, S703, S704]
 tags: [cash, oap, income]
 rationale: No existing item states the OAP payment floor, which the version of 9 CCR 2503-5 effective 2026-03-02 (D-80) adds; af_oap_grant (CO-951) needs it to raise a grant below the floor. Versioned because 3.530.C states an effective date and 3.510 says the floor is updated annually.

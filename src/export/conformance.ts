@@ -95,6 +95,24 @@ export interface SuiteItem {
   implemented_by?: string;
 }
 
+/** The date rules of docs/operators.md, Resolution, that decide which
+ *  parameter version and which age a month reads (time audit T-1 and T-3).
+ *  Bumped when either changes, so a suite says which contract it was built
+ *  under. */
+export const RESOLUTION = {
+  contract: "month-v1",
+  parameter_versions:
+    "the version in force on the determination date outside a month; in a month-scoped evaluation, " +
+    "on the determination date in the determination month and on the first day of any other month; " +
+    "as_of names any other date",
+  person_items:
+    "a person or global derived item is one value per case, evaluated with no month in context " +
+    "(its parameters on the determination date)",
+  ages:
+    "age is the age on the determination date; a month rule's age condition reads an age item " +
+    "taken in the month evaluated (docs/operators.md, Ages in a month)",
+} as const;
+
 export interface Suite {
   codex: { volume: string; sha: string; generated: string };
   /** The volume's determination date default and relationship roles, which
@@ -103,6 +121,10 @@ export interface Suite {
     default_as_of: string;
     relationship_roles: RelationshipRoleDecl[];
     outcomes: string[];
+    /** The resolution contract the expectations were computed under
+     *  (docs/operators.md, Resolution), so an adapter can tell which one it
+     *  must implement. */
+    resolution: typeof RESOLUTION;
   };
   items: SuiteItem[];
   cases: SuiteCase[];
@@ -783,6 +805,7 @@ export function buildSuite(
         ? engine.index.roles.map((r) => ({ ...r }))
         : Object.entries(engine.index.inverseRole).map(([id, inverse]) => ({ id, inverse })),
       outcomes: [...new Set((meta.programs || []).flatMap((p) => p.outcomes || []))],
+      resolution: RESOLUTION,
     },
     items,
     cases,

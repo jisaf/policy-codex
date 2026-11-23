@@ -207,3 +207,100 @@ The expectations in these cases that already pass are the controls: CO-530 Octob
 ## Validation
 
 `npm run typecheck`, `npm test`, and `CHECK_BASE=origin/main npm run check` all pass. The check reports co rule tests 4104/4104, household expectations 3729/3759 (the 30 failures are all listed in known-failures.json: 16 existing and 14 added here), and the conformance self-check passes 8,023/8,023.
+
+## Fix round (step 7 of the plan), 2026-11-23
+
+Each finding's disposition, in the order the fixes were committed. Every engine change was measured first: every rule test and every stored household expectation (7,862 units) was evaluated under the old and the new resolution, with every derived value and every parameter read recorded, and each value that moved is listed with the text that explains it.
+
+### T-3: parameter versions in the month evaluated (fixed)
+
+The contract, decided from the programs' texts (docs/operators.md, Resolution step 2): in a month-scoped evaluation a versioned parameter takes the version in force on the first day of the month (on the determination date in the determination month); outside a month, on the determination date. A rule whose text fixes a figure at the determination says so with `as_of`.
+
+| Program | Past month (retroactive, look-back) | Future month (prospective) | Basis |
+|---|---|---|---|
+| Medicaid, CHP+ | its own month's figure | its own month's figure | 42 CFR 435.915(a)(2) "would have been eligible ... at the time" (S218); 8.100.4.G.1 month by month (S3351); 8.100.5.C.1 (ABD, from the first day of the month eligible) |
+| SNAP | its own month's figure | its own month's figure | each figure's "effective October 1" version (S738-S742) and the month's allotment; a lottery prize is compared with the limit in force when received (273.11(r)(2)) |
+| Colorado Works, Adult Financial | its own month's figure | its own month's figure | standards dated by State fiscal year and by January 1 (S414, S700, S706) for the month's grant; CW boarder income deducts the month's allotment (3.605.2.E.4) |
+| CCCAP | determination date (fee, entry limit) | determination date (fee, entry limit) | the fee is assessed at referral, application or redetermination and is not raised during the twelve months (3.124.C, S2850); the entry limit is the application or redetermination test (3.111.H.1.a). The exit limit (85% SMI) is the month's |
+| LEAP | determination date | determination date | the heating season's limit table (3.752.22.D) and the guideline on the determination date (OQ-253) |
+| Medicaid community engagement, renewal interval | determination date | determination date | assessed by a determination made once the requirement is in force; the interval is dated by when the redetermination is scheduled |
+
+Made explicit before the engine changed (no answer moved): CO-1289, CO-986, CO-995, CO-1003, CO-1278, CO-1975 and CO-2455 read their figures `as of` the determination date; CO-379-T2 and CO-380-T1 test the FY2026 SNAP figures in September rather than in October read on September 30.
+
+Measured moves (old resolution to new), all explained:
+
+| Unit | Old | New | Explanation |
+|---|---|---|---|
+| CO-532 p1 ma_ssi_related_category @2026-11, @2026-12 | aged | none | the fix: the 2026 retroactive months read the 2026 SSI rate, 994 (S319), not 2027's 1,029; inside them ssi_federal_benefit_rate_individual moves 1,029 to 994 and ssi_student_earned_income_exclusion_annual 10,080 to 9,730 |
+
+Before the `as_of` refactor, five more units moved, and each was a rule whose text fixes the figure at the determination: CO-1289-T8 (the September 2028 fee for July 2028: 45.27 would have become 131.27 under 3.124.P), CO-1975-T5 (January 2027 of a December 2026 determination), CO-176 leap_is_eligible @2026-11 and @2026-12 (the October 2026 income month has no season table before November 1), and CO-379-T2 and CO-380-T1 (October figures of a September 30 determination). CO-379-T3 now states the October figure ($769) for that case.
+
+### T-4: lottery bands to the cent (fixed)
+
+`ma_lottery_winnings_spread_floor` (CO-1183) is the statute's $80,000, compared with "less than" (42 U.S.C. 1396a(e)(14)(K)(i)(I)-(II), S1234), and `ma_lottery_winnings_spread_months` (CO-1185) is 2 plus the whole $10,000 increments above it, at most 120. Colorado's "$79,999" and "$89,999" (S669) agree at whole dollars only; both items now carry a statute_override for the cents between, and OQ-216's boundary sentence says so. CO-1185-T1 to T9 still pass; T10 to T15 test $79,999.01, $79,999.99, $80,000.00, $89,999.99, $99,999.99 and $1,259,999.99. Measured: two values move, both CO-535 (September 3 to 2, October 2 to 1), the fix; CO-535 leaves known-failures.json.
+
+### T-2: the Adult Financial maximum ISM follows the SSI rate (fixed)
+
+`af_ism_maximum` (CO-1513) keeps its identifier and is now derived by 3.520.79.E.2 (S1012): round(ssi_federal_benefit_rate_individual x af_ism_benefit_standard_rate + af_ism_disregard), with the rule's figures as parameters (CO-5400, 0.3333; CO-5401, $20) and the SSI benefit standard of 3.510 (S448) as the individual federal benefit rate (CO-235), read in the month evaluated ("current"). It is per person per month so each month reads its own SSI rate; it moved from the parameters chapter to the cash chapter. The rule's stated figures come out of the formula and are its tests: 2025, 342 (CO-1513-T1); 2026, 351 (T2); 2027, 363 (T3); a December 2026 month of a January 2027 determination, 351 (T4). Measured: two values move, both CO-534 (af_in_kind_support_and_maintenance 351 to 363, af_countable_income 931 to 943), the fix; CO-534 leaves known-failures.json. af_countable_income (CO-946) and af_unearned_income_other_than_ssi (CO-3831), which the receipt-records track is migrating, are not edited: they read the identifier.
+
+### T-1: ages in the month evaluated (fixed for Medicaid; OQ-950, OQ-951)
+
+The contract (docs/operators.md, "Ages in a month"): `age` (CO-300) is the age on the determination date wherever it is read. A month-scoped rule that tests an age for the month it evaluates reads an age taken in that month, on the day the program's text makes decisive. Medicaid makes any day of the month count: 8.100.4.G.1 for MAGI (S3351), 8.100.5.C.1 for the Aged, Blind and Disabled categories ("the first day of the month the person becomes eligible", new excerpt S3900), 8.100.5.C.3 for the Children's Buy-In; 42 CFR 435.915(b) (S3901) is the federal option. Since an age only grows, "under N" is decided on the first day of the month, "N or older" on the last, and "through the end of the month" of a birthday on the last day of the month before; a disqualifying condition takes the other day. No operator was needed: the three ages are items over existing operators.
+
+- `ma_age_on_first_day_of_determination_month` (CO-4978) is now `ma_age_on_first_day_of_month`, and `ma_age_before_determination_month` (CO-4790) is `ma_age_before_month`, both per month and anchored on the month evaluated; `ma_age_on_last_day_of_month` (CO-5402) is new.
+- Per month now, reading the month: ma_is_under_child_age_or_turns_nineteen_this_month (CO-564), ma_is_under_adult_upper_age_through_birthday_month (CO-4550), ma_is_former_foster_care_category (CO-549), ma_is_needy_newborn (CO-550), ma_is_dependent_child_in_month (CO-4791), ma_is_aged (CO-600).
+- Month readers of `age` that now read the month's age: CO-539, CO-548, CO-552 (the Adults group's 19 and the bar for a parent of a child under 19 without coverage), CO-1161 (DAC 18), CO-1162 (disabled widow 50 to 64), CO-1179 (IMD exclusion, 21 to 64, days flipped), CO-1152 (BCCP under 65), CO-618 (WAWD 16), CO-620 (CBWD's working-child bar), CO-654 (PACE 55). CO-1152, CO-654 and CO-1179 are groups neither Colorado rule names; the assumption is OQ-950.
+- The explicit exception: a per-person rule about the determination reads these [at] the determination month: ma_is_aged_blind_or_disabled (CO-603), ma_is_parent_or_caretaker_relative_of_dependent_child (CO-2869), ma_is_cover_all_coloradans_person (CO-1173), the presumptive eligibility items CO-2439, CO-3155 and CO-708. Person-scope Medicaid items that read `age` (household membership, citizenship, HCBS and others) stay on the determination date by their scope.
+- docs/operators.md's "a past month's 'child under 22' uses today's age" is gone; step 7 now says `age` is the determination date's age and points to the month ages.
+- Colorado Works (cw_is_dependent_child, CO-901) and Adult Financial (af_is_oap_age, CO-940): no fetched text states the date for a prorated first month or a later month; both stay on the determination date, recorded as OQ-951. CO-05's p3 note is rewritten: she is 17 in April 2027 (the Children's group reads the month), and no expectation moves.
+
+Measured (every rule test and stored household, old ledger against new): CO-530 August and September (none to child, ineligible_income to eligible), CO-531 October (none to child, ineligible_income to eligible) and CO-533 August and September (aged to none), the fix; nothing else. CO-531 now also states the continuous eligibility exceptions and his expected annual income, which the child path reads in October. CO-533 asserts October as aged (8.100.5.C.1), which the audit had left open. Four household expectations of items now per month (CO-06 ma_is_aged, CO-147 CO-564, CO-149 CO-549, CO-203 CO-550) are keyed by their determination month with the same values. Rule tests of the re-scoped items carry the determination month; those that stated `age` also state the month ages. CO-530, CO-531 and CO-533 leave known-failures.json.
+
+### T-7: the BCCP age limit's name (fixed)
+
+`ma_bccp_max_age` (CO-1130) is renamed `ma_bccp_age_limit`: "has not yet attained the age of 65" (S608) is an exclusive limit, which conventions rule 8 names `_age_limit`, and CO-1152 already compared it with "under". A rename only: measured, no value moves.
+
+### T-8: the retroactive lump-sum window in SSI-method resources (fixed in part; OQ-952)
+
+The nine months are a parameter, `ssi_retroactive_benefit_exclusion_months` (CO-5403, 9, § 8.100.5.F.6.c, S3404), "following receipt": the months after the month of receipt, through the ninth, as CO-800 already counted them. The window stays measured to the determination month, now stated in CO-800's precision: the item is the determination date's resources, read from holdings each case states once, and its readers are per person, so the window and the holdings it applies to are the same date. Valuing a retroactive month's resources separately would make the resource facts and their readers per month, which the non-MAGI fix round owns; the assumption and its effect are OQ-952. Measured: no value moves.
+
+### T-6: consecutive days (one convention, stated per item; OQ-953)
+
+None of the texts (3.604.2.O, S2602; 3.532.D, 3.543.D, 3.548.D, S1008 to S1010; 3.520.64.E, S3201) says whether the day of departure or entry is one of the N days. The volume keeps one convention, now written beside P47 in docs/conventions.md: "N consecutive days" is the days elapsed since the day the absence or stay began (`days_between`), the day itself not counted. Each reader states its reading and the example date in its precision and carries OQ-953: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401. Measured: no value moves.
+
+### T-5: yearly figures close at the end of their year (fixed)
+
+Decided from product-owner decision 4 (missing information is "cannot determine"): a figure published for a year has its version closed at the end of that year and a `review_by` no later than that day, so a later date is "cannot determine" with a `no-version` warning, on every stored household or rule test that asks for it, until the next figure is loaded; a figure in force until replaced (the poverty guideline) stays open with `review_by`, and a fixed statutory figure stays open. Recorded in docs/conventions.md, "Effective dating and change sets". Because a month reads its own month's version (T-3), the warning names the month a stored household asks about (`no-version: ... no version in force on 2027-01-01`).
+
+Applied to every listed item, closed at 2027-01-01, with `review_by` added where it was missing: CO-289, CO-291, CO-1200, CO-1201, CO-1202, CO-4730, CO-807, CO-808, CO-827, CO-828, CO-830, CO-831, CO-832, CO-887, CO-3022 (CO-1513 is now derived, T-2). For the same rule, the other yearly figures with an open latest version: the SSA 2027 figures CO-235, CO-236, CO-1802, CO-1803, CO-3379, CO-3380 (closed at 2028-01-01, `review_by` 2027-11-01, SSA's notice); the SNAP federal fiscal year 2027 figures CO-110 to CO-114, CO-118, CO-119, CO-122, CO-123, CO-130 to CO-135, CO-1235 to CO-1238, CO-3043 and CCCAP's 85% SMI table CO-1804, CO-1805 (closed at 2027-10-01); the Buy-In premium tables CO-2457, CO-2458, re-based each State fiscal year (closed at 2027-07-01). The poverty guideline (CO-181, CO-182, CO-3625) stays open with `review_by`, being in force until the next is published.
+
+Measured: two values move, CO-114's January 2027 QMB eligibility and MSP category (true and qmb to cannot determine), because the 2026 MSP resource limit no longer answers 2027. CO-114 tests the cost-of-living disregard, so it now states the 2026 limit under `parameters:` with the reason (any 2027 limit above her $3,000 gives the same answer), and its expectations are unchanged. No other stored household or rule test reads a closed figure past its year.
+
+### T-9: rule tests at the limit (fixed for the eligibility gates and benefit amounts)
+
+129 rule tests in 77 items, each stating one side of a threshold comparison equal to the other, so that the comparison's strict/inclusive flip changes the item's answer. The items are the eligibility gates and benefit amounts first (identifiers naming eligibility, a category or status, an income or resource test, a grant, allotment, benefit, premium or fee): the income and resource limits of every program, the age gates of the Medicaid groups, the verification due dates, the presumptive eligibility standards. Each test starts from a passing rule test of the item that reaches the comparison and states the one value; its expectation is the item's answer with the two sides equal, the side the audit's wording check (section 4 of the generated report, "Checked and found consistent") confirmed for these limits ("does not exceed" as at or under; "less than" and "equals or exceeds" as under). Adult Financial unearned income (CO-946, CO-3831), which the receipt-records track is migrating, is left out.
+
+Mutation score (`npm run boundaries -- --only coverage,mutation`), comparison flips killed, before and after:
+
+| Program | Flips | Killed before | Killed after | Score before (killed / all) | Score after |
+|---|---|---|---|---|---|
+| AdultFinancial | 93 | 34 | 49 | 63% | 72% |
+| All (shared) | 25 | 5 | 5 | 35% | 35% |
+| CCCAP | 33 | 15 | 20 | 81% | 86% |
+| CHP+ | 44 | 8 | 19 | 49% | 65% |
+| ColoradoWorks | 63 | 30 | 33 | 70% | 73% |
+| LEAP | 26 | 11 | 12 | 71% | 73% |
+| Medicaid | 233 | 65 | 121 | 54% | 69% |
+| SNAP | 156 | 62 | 78 | 67% | 72% |
+| SunBucks | 13 | 5 | 6 | 58% | 63% |
+| **all** | 686 | 235 | 343 | 62% | 71% |
+
+(The score columns count the arm swaps too: 523 of 540 killed before, 524 after.) Comparisons some test evaluates with both sides equal rise from 293 to 396 of 686 (43% to 58%); the regenerated [time-audit-generated.md](time-audit-generated.md) has the tables by program. The 327 flips that still survive are listed in the regenerated report; most are in items that are not gates (verification counts, household composition, shared definitions) or are compared to an expression no rule test states directly.
+
+### T-3, part 2: per-person figures read by month rules are per month (fixed)
+
+Under the contract a per-person or global item is one value per case, on the determination date, so a per-person item that only looks up a figure gave the determination date's figure to every month its month-scoped readers evaluate, the T-3 defect one step removed. Ten such items, every reader of which is already per month, are now per month: snap_standard_deduction (CO-370), snap_maximum_allotment (CO-383), snap_gross_income_limit (CO-345), snap_net_income_limit (CO-346), snap_utility_allowance_amount (CO-1500), snap_meets_resource_limit (CO-344), cw_need_standard (CO-911), cw_grant_standard (CO-912), ma_ssi_poverty_guideline_monthly (CO-1750) and ma_income_trust_gross_income_limit (CO-1985). SNAP's October 1 figures then reach an October month of a September determination with the excess shelter cap (7 CFR 273.12(e)(1)'s mass change), Colorado Works' fiscal-year standards a July month, and the MSP guideline a retroactive month. Their rule tests carry the determination month, and the 17 household expectations of cw_need_standard and cw_grant_standard are keyed by it, with the same values. Measured: no value moves. Per-person items with a per-person reader stay on the determination date: ma_personal_needs_allowance (CO-1987, read by ma_csra_increased), snap_bbce_gross_income_limit (CO-339, read by snap_meets_ece_eligibility, a test at the determination) and the presumptive and declared-income items, which are determinations made on a date.
+
+### Fix round validation
+
+`node scripts/sync-manifest.mjs co`, `npm run typecheck`, `npm test` (1,092 tests) and `CHECK_BASE=origin/main npm run check` pass. The check reports co rule tests 4255/4255 and household expectations 3744/3760; the 16 failures are the ones known-failures.json held before the time audit (CO-387 to CO-404), and CO-530 to CO-535 have left it, each passing for the reason its finding states. Change impact: 12 flags, each dispositioned in volumes/co/changes/2026-11-23-time-audit-fixes.yaml. The conformance self-check passes 8,175/8,175, and the suite names its contract (`volume.resolution.contract`, `month-v1`).

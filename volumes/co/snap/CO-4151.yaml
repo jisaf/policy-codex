@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "This person received substantial lottery or gambling winnings in the month: a cash prize won in a single game, before taxes or withholding, the person's own portion of a shared ticket, hand or bet, equal to or greater than the resource limit for households with a member aged sixty or older or with a disability (snap_resource_limit_elderly_disabled), whatever the household's own resource limit (10 CCR 2506-1 4.000.1; 7 CFR 273.11(r)(2)(i))."
-precision: "The prize is lottery_gambling_largest_single_game_winnings_received (CO-4150); where it is not stated, the month's winnings (lottery_gambling_winnings_received, CO-1181) are read as one prize, and a month with neither stated has none. The limit is the one in force on the determination date ($4,750 from October 1, 2026), which 273.11(r)(2)(ii) adjusts with the resource limit."
+precision: "The prize is lottery_gambling_largest_single_game_winnings_received (CO-4150); where it is not stated, the month's winnings (lottery_gambling_winnings_received, CO-1181) are read as one prize, and a month with neither stated has none. The limit is the one in force in the month the winnings are received ($4,750 from October 1, 2026), which 273.11(r)(2)(ii) adjusts with the resource limit (read in the month evaluated, docs/operators.md, Resolution; time audit T-3)."
 derived: [">=", [otherwise, lottery_gambling_largest_single_game_winnings_received, [otherwise, lottery_gambling_winnings_received, 0]], snap_resource_limit_elderly_disabled]
 sources: [S2950, S2951, S2953]
 implemented: engine

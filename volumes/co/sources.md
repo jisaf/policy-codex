@@ -22416,3 +22416,26 @@ Document: D-65
 > vii) Fails to provide documentation during a reasonable opportunity period as specified in section 8.100.3.G.3 and 8.100.3.H.9; or
 >
 > viii) Eligibility was erroneously granted at the most recent determination, redetermination, or renewal of eligibility because of agency error, or a finding of fraud or perjury attributed to the member or the member’s responsible party.
+### S3900. Colorado Aged, Blind and Disabled Medical Assistance: effective from the first day of the month of application or of the month the person becomes eligible; the Children's Buy-In covers the whole month (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.C.1, C.3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.5.C. Effective Date of Eligibility
+>
+> 1. Eligibility for the Aged, Blind and Disabled categories shall be approved effective on the later of:
+>
+> a. The first day of the month of the Single Streamlined Application for Medical Assistance; or
+>
+> b. The first day of the month the person becomes eligible for Medical Assistance.
+>
+> 3. For the Medicaid Buy-In Program for Children with Disabilities, any child who is determined to be eligible for Medical Assistance at any time during a calendar month shall be eligible for benefits during the entire month.
+
+### S3901. Federal: eligibility may be made effective on the first day of a month if the individual was eligible at any time during it
+
+Document: D-35
+
+42 CFR 435.915(b). https://www.ecfr.gov/current/title-42/section-435.915
+
+> (b) The agency may make eligiblity for Medicaid effective on the first day of a month if an individual was eligible at any time during that month.

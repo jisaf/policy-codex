@@ -1,0 +1,20 @@
+id: CO-1513
+name: Adult Financial maximum in-kind support and maintenance amount
+identifier: af_ism_maximum
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The maximum monthly In-Kind Support and Maintenance (ISM) amount for shelter costs that OAP and AND-CS count as unearned income for a client not paying a fair share of shelter costs, per 9 CCR 2503-5 3.520.79, 3.530.B and 3.546.D: the current SSI benefit standard (ssi_federal_benefit_rate_individual, CO-235) times af_ism_benefit_standard_rate, plus af_ism_disregard, rounded to the nearest whole dollar (3.520.79.E.2)."
+precision: "The SSI benefit standard is 3.510's \"maximum monthly Federal amount for a SSI recipient\" (S448), the individual federal benefit rate, read in the month evaluated (\"current\"; docs/operators.md, Resolution), so each January's SSI rate gives that year's maximum with no further figure to load. A half rounds up (round). The rule also states each year's figure (3.530.B): 2025, $342 (967 x 0.3333 + 20 = 342.30, S1020); 2026, $351 (994 x 0.3333 + 20 = 351.30, S700); both come out of the formula and are its tests. 2027: 1,029 x 0.3333 + 20 = 362.97, $363 (S1712). Time audit T-2: this was a parameter carrying the stated figures, whose open 2026 version answered 2027 with $351."
+derived: [round, [+, ["*", ssi_federal_benefit_rate_individual, af_ism_benefit_standard_rate], af_ism_disregard]]
+sources: [S1012, S448, S700, S707, S1020]
+implemented: engine
+tags: [cash, oap, and, income]
+rationale: "No existing item states the Adult Financial ISM maximum (phase-8 review K-4); af_in_kind_support_and_maintenance (CO-1512) and af_unearned_income_other_than_ssi (CO-3831) read it. Not the SSI-methodology in-kind figure the Medicaid chapter's ssi_in_kind_support_and_maintenance (CO-802) carries, which is valued under 20 CFR 416.1130-416.1140 without the Adult Financial cap or valuation steps. Time audit T-2 (2026-11-23): computed by 3.520.79.E.2's formula from the SSI benefit standard instead of a parameter of the stated yearly figures, so the 2027 maximum follows the 2027 SSI rate (CO-534)."
+tests:
+  - {id: CO-1513-T1, as_of: "2025-06-01", month: "2025-06", title: "2025: 967 x 0.3333 + 20 = 342.30, the stated $342 (S1020)", given: {}, expect: 342}
+  - {id: CO-1513-T2, as_of: "2026-06-01", month: "2026-06", title: "2026: 994 x 0.3333 + 20 = 351.30, the stated $351 (S700)", given: {}, expect: 351}
+  - {id: CO-1513-T3, as_of: "2027-01-05", month: "2027-01", title: "T-2, 2027: 1,029 x 0.3333 + 20 = 362.97, $363", given: {}, expect: 363}
+  - {id: CO-1513-T4, as_of: "2027-01-05", month: "2026-12", title: "T-3: a December 2026 month of a January 2027 determination reads the 2026 rate", given: {}, expect: 351}
+  - {id: CO-1513-T5, as_of: "2027-01-05", month: "2027-01", title: "Rounded to the nearest dollar: 1,500 x 0.3333 + 20 = 519.95, $520", given: {}, parameters: {ssi_federal_benefit_rate_individual: 1500}, expect: 520}

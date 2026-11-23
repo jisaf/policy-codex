@@ -72,7 +72,7 @@ Numbers are IEEE 754 binary64, computed in the order written; see `docs/operator
 | Per month | One value for everyone for each calendar month, such as a national rate. |
 | Global | One value for everyone, as of the determination date. Parameters are Global unless stated. |
 
-Every parameter version and every item's effective range is chosen by the **determination date**, also when a rule evaluates another month (a look-back, a retroactive or future month). A per-person derived fact is computed once per case, on the determination date: `age` is today's age in every month evaluated.
+A parameter's version is chosen by **the month evaluated** (time audit T-3; docs/operators.md, Resolution step 2): in a per-month rule, the version in force on the first day of the month (on the determination date in the determination month), so a retroactive, look-back, application or future month reads its own month's figure; outside a month, the version in force on the determination date. A rule whose text fixes a figure at the determination and applies it to every month it evaluates says so with `as_of` (P25): `[as_of, cccap_parent_fee_second_band_rate, [det_date]]`. An item's own effective range is chosen by the determination date. A per-person or global derived fact is computed once per case, on the determination date, with no month in context: `age` is the age on the determination date wherever it is read. A per-month rule that tests an age for the month it evaluates reads an age taken in that month (`ma_age_on_first_day_of_month` for "under N", `ma_age_on_last_day_of_month` for "N or older", `ma_age_before_month` for "through the month of the Nth birthday"; docs/operators.md, Ages in a month); a per-person rule that reads a per-month age condition says which month with `[at, x, [det_month]]`.
 
 ### Completeness
 
@@ -202,7 +202,7 @@ Persons and relationships
 Parameters
 
 - P24 `[parameter table] for [key]`
-- P25 `[parameter] as of [date]` (`as_of`) selects the version in effect on that date, for a rule that applies a figure from a date other than the determination date (the poverty guideline a program adopts each July 1 or October 1, read from the one federal table). Every other read of a parameter is as of the determination date (see Scopes). Implemented in the hard-coded numbers fix round
+- P25 `[parameter] as of [date]` (`as_of`) selects the version in effect on that date, for a rule that applies a figure from a date other than the determination date (the poverty guideline a program adopts each July 1 or October 1, read from the one federal table). Every other read of a parameter is in the month evaluated, or on the determination date outside a month (see Scopes); a rule that fixes a figure at the determination writes `[x] as of [the determination date]`. Implemented in the hard-coded numbers fix round
 
 Added during the work-requirements spike, because the policy needed them
 
@@ -239,7 +239,7 @@ Added for verification deadlines (phase 9)
 
 Added for SNAP initial-month proration (phase-10 open-question sweep)
 
-- P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown
+- P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown. A period of "N consecutive days" since an absence or a stay began is counted with P47 from the day it began, so the day of departure or entry is not itself counted: "at least 30 consecutive days" is `days_between(start, date) >= 30` and "not more than 90" is `<= 90`. One convention for the volume (time audit T-6); none of the texts says whether the first day counts, recorded as OQ-953, and each reader's precision states its reading
 
 Added for the HCPF stakeholder fix round (Buy-In premiums re-based each state fiscal year)
 
@@ -319,9 +319,11 @@ Every item carries `Effective`. A policy change produces a new version of an ite
 Two kinds of date range are in the ledger, with different ends:
 
 - An item's own `effective` range: `from` is the first day in force and `to` the **last** day in force (inclusive; `to: present` never ends). On a determination date outside it the item is unknown, its rule does not run, and a value stated for it is ignored.
-- A parameter's `versions`: each `from` is the first day the value is in force and `to` the first day it is **not** (exclusive), so consecutive versions share a date. A determination date no version covers gives unknown (reported as a warning).
+- A parameter's `versions`: each `from` is the first day the value is in force and `to` the first day it is **not** (exclusive), so consecutive versions share a date. A date no version covers (the determination date, or the first day of a month evaluated) gives unknown (reported as a warning).
 
 Date logic belongs in these ranges, not inside a derivation: a rule that changes on a date is two versions, not a comparison with a literal date.
+
+A figure published for a year (a calendar year, a State fiscal year or a federal fiscal year: an SSA or CMS cost-of-living figure, a SNAP figure "effective October 1", an Adult Financial standard set each January, a Buy-In premium table re-based each July) has its version closed at the end of that year (`to:` the first day of the next) and a `review_by` no later than that day, so a date after it is *cannot determine*, with a `no-version` warning on every stored household or rule test that asks for it, until the next year's published figure is loaded (product-owner decision 4 of 2026-11-23: missing information is cannot determine; time audit T-5). It is never left open to answer the next year with the old figure. A figure that stays in force until it is replaced (the HHS poverty guideline, until the next year's is published) keeps an open version with a `review_by`, and a figure the rule fixes (a statutory amount) has an open version and no `review_by`. A stored household dated in a year whose figure is not yet loaded either expects *cannot determine* or states the figure it tests with under `parameters:`, saying why.
 
 A figure the State sets but has not published where it can be fetched (the LEAP program-year benefit levels, the CCCAP county entry limits) is still a parameter, never a supplied fact entered on each person: it carries an empty list of versions (`versions: []`) and names, in `open`, the question that records where the figure will come from. It is unknown on every date, with a `no-version` warning, until a dated version is loaded; a rule test or household case that needs a value states one under `parameters:`. A change set names the items changed, the reason, the source of the change, and the approvals collected. The diff between versions is the diff of the item text; the engineer's work is the diff of the generated engineer view.
 

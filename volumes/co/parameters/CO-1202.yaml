@@ -9,8 +9,10 @@ meaning: The minimum monthly Home Care Allowance payment for an eligible HCA cli
 precision: "Updated annually with the cost-of-living adjustment (3.510); each update is a new version. CDHS's Adult Financial Programs page corroborates the 2026 figure for all three tiers (D-135, S1319); no source in the volume states a per-tier maximum (OQ-250)."
 versions:
   - from: "2026-01-01"
+    to: "2027-01-01"
     value: 977
     source: S713
+review_by: "2027-01-01"
 sources: [S704, S713, S1319]
 tags: [cash, income]
 rationale: No existing item states the HCA payment floor; af_hca_grant (CO-1219) needs it. Same shape as af_oap_payment_floor (CO-1200), a third program's figure.
