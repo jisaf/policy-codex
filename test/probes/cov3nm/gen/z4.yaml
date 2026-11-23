@@ -1,0 +1,105 @@
+- id: Z-BDEED
+  title: scratch - aged homeowner at home with a recorded beneficiary deed
+  as_of: '2026-10-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 150000
+        ma_lottery_winnings_hardship_exemption_granted: false
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        lives_in_owned_home: true
+        home_has_recorded_beneficiary_deed: true
+      month_defaults:
+        social_security_income: 1150
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+- id: Z-BDEED40
+  title: scratch - disabled 40-year-old homeowner with beneficiary deed
+  as_of: '2026-10-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1986-02-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 150000
+        ma_lottery_winnings_hardship_exemption_granted: false
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        lives_in_owned_home: true
+        home_has_recorded_beneficiary_deed: true
+        retains_ssi_status_without_payment: false
+      month_defaults:
+        social_security_income: 800
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0

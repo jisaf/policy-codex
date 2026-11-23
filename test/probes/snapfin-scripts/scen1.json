@@ -1,0 +1,17 @@
+[
+{"name":"base","case":"CO-115","ids":["snap_household_gross_income","snap_allotment","snap_verification_status"]},
+{"name":"CF1 crime victim 500","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":500,"crime_victim_compensation_received":500}}}},"ids":["snap_allotment"]},
+{"name":"CF1 WIOA 500","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":500,"workforce_program_payments_received":500}}}},"ids":["snap_allotment"]},
+{"name":"CF1 reverse mortgage 400","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":400,"reverse_mortgage_payments_received":400}}}},"ids":["snap_allotment"]},
+{"name":"CF1 AmeriCorps 300","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":300,"americorps_payments_received":300}}}},"ids":["snap_allotment"]},
+{"name":"CF1 PASS 300","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":300,"pass_set_aside_income":300}}}},"ids":["snap_allotment"]},
+{"name":"CF1 irregular 20","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":20,"infrequent_or_irregular_income_received":20}}}},"ids":["snap_allotment"]},
+{"name":"CF1 irregular 20 + 20 earlier in quarter (counted)","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_nontaxable":20,"infrequent_or_irregular_income_received":20}}}},"ids":["snap_allotment"]},
+{"name":"CF2 rent 1000 costs 600","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_taxable":1000,"rental_income_received":1000,"rental_property_costs":600}}}},"ids":["snap_allotment"]},
+{"name":"CF2 control net rent 400 stated","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"other_unearned_income_taxable":400}}}},"ids":["snap_allotment"]},
+{"name":"CF3 weekly 250 five paydays","case":"CO-115","ov":{"persons":{"p1":{"facts":{"wages_pay_frequency":"weekly","wages_gross_per_pay_period":250},"month_defaults":{"wages_gross":1250,"electronic_data_source_monthly_gross_income":1250}}}},"ids":["snap_household_gross_income","snap_allotment"]},
+{"name":"CF3 control 1075","case":"CO-115","ov":{"persons":{"p1":{"month_defaults":{"wages_gross":1075}}}},"ids":["snap_allotment"]},
+{"name":"CF9 striker","case":"CO-115","ov":{"persons":{"p1":{"facts":{"is_participating_in_strike":true}}}},"ids":["snap_eligibility_status","snap_allotment"]},
+{"name":"CF10 child excluded wages 200","case":"CO-115","ov":{"persons":{"p2":{"month_defaults":{"wages_gross":200}}}},"ids":["snap_household_gross_income","snap_verification_status","snap_pending_verification_count"]},
+{"name":"CF11 recert child support 300 vs 280","case":"CO-115","ov":{"case_facts":{"snap_determination_is_recertification":true},"persons":{"p1":{"facts":{"snap_child_support_paid_at_last_certification":280,"snap_child_support_paid_source_changed_since_last_certification":false},"month_defaults":{"child_support_paid_legally_obligated":300}}}},"ids":["snap_requires_verification_of_child_support_paid"]}
+]

@@ -1,0 +1,1079 @@
+[
+ {
+  "id": "CO-170",
+  "title": "Coverage round (CCCAP): two parents; the mother works, the father is incapacitated and his physician's statement has not come in",
+  "as_of": "2026-11-15",
+  "case_facts": {
+   "is_protective_services_child_care_case": false,
+   "cccap_application_county": "denver",
+   "cccap_determination_type": "application",
+   "uses_top_quality_rated_provider": false,
+   "cccap_is_child_welfare_child_care_household": false
+  },
+  "parameters": {
+   "cccap_entry_income_limit_pct_fpl_table": {
+    "denver": 1.85
+   }
+  },
+  "relationships": [
+   [
+    "parent",
+    "p1",
+    "p3"
+   ],
+   [
+    "parent",
+    "p2",
+    "p3"
+   ],
+   [
+    "spouse",
+    "p1",
+    "p2"
+   ]
+  ],
+  "persons": {
+   "p1": {
+    "facts": {
+     "date_of_birth": "1988-04-02",
+     "sex": "female",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-11-10",
+     "cccap_caretaker_is_incapacitated": false
+    },
+    "month_defaults": {
+     "wages_gross": 2000,
+     "hours_worked": 120,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   },
+   "p3": {
+    "facts": {
+     "date_of_birth": "2020-03-10",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "elementary",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-11-10",
+     "cccap_child_needs_care_for_part_of_day": true,
+     "cccap_care_is_part_time": false
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   },
+   "p2": {
+    "facts": {
+     "date_of_birth": "1986-01-01",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-11-10",
+     "cccap_caretaker_is_incapacitated": true
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   }
+  },
+  "month_facts": {
+   "2026-11": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   },
+   "2026-10": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   }
+  },
+  "expect": {
+   "p1": {
+    "cccap_household_caretakers_in_eligible_activity": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_household_income": {
+     "2026-11": 2000
+    },
+    "cccap_parent_fee": {
+     "2026-11": 20
+    },
+    "cccap_verification_status": {
+     "2026-11": "pending"
+    }
+   },
+   "p2": {
+    "cccap_household_caretakers_in_eligible_activity": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_household_income": {
+     "2026-11": 2000
+    },
+    "cccap_parent_fee": {
+     "2026-11": 20
+    },
+    "cccap_verification_status": {
+     "2026-11": "pending"
+    },
+    "cccap_incapacity_verification_is_pending": {
+     "2026-11": true
+    }
+   },
+   "p3": {
+    "cccap_household_caretakers_in_eligible_activity": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_household_income": {
+     "2026-11": 2000
+    },
+    "cccap_parent_fee": {
+     "2026-11": 20
+    },
+    "cccap_verification_status": {
+     "2026-11": "pending"
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-171",
+  "title": "Coverage round (CCCAP): a kin foster mother with her own son: wages, a foster care payment and a boarder",
+  "as_of": "2026-11-15",
+  "case_facts": {
+   "is_protective_services_child_care_case": false,
+   "cccap_application_county": "denver",
+   "cccap_determination_type": "application",
+   "uses_top_quality_rated_provider": false,
+   "cccap_is_child_welfare_child_care_household": false
+  },
+  "parameters": {
+   "cccap_entry_income_limit_pct_fpl_table": {
+    "denver": 1.85
+   }
+  },
+  "relationships": [
+   [
+    "parent",
+    "p1",
+    "p3"
+   ]
+  ],
+  "persons": {
+   "p1": {
+    "facts": {
+     "date_of_birth": "1988-04-02",
+     "sex": "female",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "unearned_income_verification_document_received": true
+    },
+    "month_defaults": {
+     "wages_gross": 2000,
+     "hours_worked": 120,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 1500,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0,
+     "foster_care_provider_payments_received": 1500,
+     "room_and_board_payments_received": 300
+    }
+   },
+   "p3": {
+    "facts": {
+     "date_of_birth": "2020-03-10",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "elementary",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_child_needs_care_for_part_of_day": true,
+     "cccap_care_is_part_time": false
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   }
+  },
+  "month_facts": {
+   "2026-11": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   },
+   "2026-10": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   }
+  },
+  "expect": {
+   "p1": {
+    "cccap_household_income": {
+     "2026-11": 2300
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 92
+    },
+    "cccap_excluded_unearned_receipts": {
+     "2026-11": 1500
+    },
+    "cccap_other_countable_receipts": {
+     "2026-11": 300
+    },
+    "cccap_person_unearned_income": {
+     "2026-11": 300
+    }
+   },
+   "p3": {
+    "cccap_household_income": {
+     "2026-11": 2300
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 92
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-172",
+  "title": "Coverage round (CCCAP): a change during the period: the family moved from Denver to Arapahoe and the only child turned thirteen",
+  "as_of": "2026-11-15",
+  "case_facts": {
+   "is_protective_services_child_care_case": false,
+   "cccap_application_county": "denver",
+   "cccap_determination_type": "change_during_eligibility_period",
+   "uses_top_quality_rated_provider": false,
+   "cccap_is_child_welfare_child_care_household": false,
+   "cccap_parent_fee_at_last_determination": 60
+  },
+  "parameters": {
+   "cccap_entry_income_limit_pct_fpl_table": {
+    "denver": 1.85
+   }
+  },
+  "relationships": [
+   [
+    "parent",
+    "p1",
+    "p3"
+   ]
+  ],
+  "persons": {
+   "p1": {
+    "facts": {
+     "date_of_birth": "1988-04-02",
+     "sex": "female",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "arapahoe",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01"
+    },
+    "month_defaults": {
+     "wages_gross": 2000,
+     "hours_worked": 120,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   },
+   "p3": {
+    "facts": {
+     "date_of_birth": "2013-11-10",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "arapahoe",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "elementary",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_child_needs_care_for_part_of_day": true,
+     "cccap_care_is_part_time": false,
+     "cccap_child_was_authorized_at_last_determination": true
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   }
+  },
+  "month_facts": {
+   "2026-11": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   },
+   "2026-10": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   }
+  },
+  "expect": {
+   "p1": {
+    "cccap_meets_income_guidelines": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 47
+    },
+    "cccap_meets_county_residency": {
+     "2026-11": true
+    }
+   },
+   "p3": {
+    "cccap_meets_income_guidelines": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 47
+    },
+    "cccap_is_eligible_child": {
+     "2026-11": true
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-173",
+  "title": "Coverage round (CCCAP): a Colorado Works mother, work eligible and referred, in an unpaid work activity; her son reads her case",
+  "as_of": "2026-11-15",
+  "case_facts": {
+   "is_protective_services_child_care_case": false,
+   "cccap_application_county": "denver",
+   "cccap_determination_type": "application",
+   "uses_top_quality_rated_provider": false,
+   "cccap_is_child_welfare_child_care_household": false
+  },
+  "parameters": {
+   "cccap_entry_income_limit_pct_fpl_table": {
+    "denver": 1.85
+   }
+  },
+  "relationships": [
+   [
+    "parent",
+    "p1",
+    "p3"
+   ]
+  ],
+  "persons": {
+   "p1": {
+    "facts": {
+     "date_of_birth": "1988-04-02",
+     "sex": "female",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": true,
+     "is_referred_for_colorado_works_child_care": true,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01"
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0,
+     "is_work_eligible_individual_in_tanf_case": true
+    }
+   },
+   "p3": {
+    "facts": {
+     "date_of_birth": "2020-03-10",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "elementary",
+     "receives_tanf_cash": true,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_child_needs_care_for_part_of_day": true,
+     "cccap_care_is_part_time": false
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0,
+     "is_work_eligible_individual_in_tanf_case": false
+    }
+   }
+  },
+  "month_facts": {
+   "2026-11": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   },
+   "2026-10": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   }
+  },
+  "expect": {
+   "p1": {
+    "cccap_colorado_works_child_care_eligible": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_colorado_works"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 0
+    }
+   },
+   "p3": {
+    "cccap_colorado_works_child_care_eligible": {
+     "2026-11": true
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_colorado_works"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-174",
+  "title": "Coverage round (CCCAP): the mother's partner lives with them and pays toward her son's keep; both work",
+  "as_of": "2026-11-15",
+  "case_facts": {
+   "is_protective_services_child_care_case": false,
+   "cccap_application_county": "denver",
+   "cccap_determination_type": "application",
+   "uses_top_quality_rated_provider": false,
+   "cccap_is_child_welfare_child_care_household": false
+  },
+  "parameters": {
+   "cccap_entry_income_limit_pct_fpl_table": {
+    "denver": 1.85
+   }
+  },
+  "relationships": [
+   [
+    "parent",
+    "p1",
+    "p3"
+   ],
+   [
+    "contributes_financially_to",
+    "p2",
+    "p3"
+   ]
+  ],
+  "persons": {
+   "p1": {
+    "facts": {
+     "date_of_birth": "1988-04-02",
+     "sex": "female",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_caretaker_is_incapacitated": false
+    },
+    "month_defaults": {
+     "wages_gross": 2000,
+     "hours_worked": 120,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   },
+   "p3": {
+    "facts": {
+     "date_of_birth": "2020-03-10",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "elementary",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_financially_contributing_to_child": true,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_child_needs_care_for_part_of_day": true,
+     "cccap_care_is_part_time": false
+    },
+    "month_defaults": {
+     "wages_gross": 0,
+     "hours_worked": 0,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   },
+   "p2": {
+    "facts": {
+     "date_of_birth": "1986-01-01",
+     "sex": "male",
+     "immigration_status": "us_citizen",
+     "ssn_furnished_or_application_shown": true,
+     "state_of_residence": "CO",
+     "county_of_residence": "denver",
+     "residence_setting_type": "private_dwelling",
+     "nighttime_residence_type": "fixed_regular_adequate",
+     "education_program_type": "none",
+     "receives_tanf_cash": false,
+     "is_referred_for_colorado_works_child_care": false,
+     "cccap_is_in_job_search_activity": false,
+     "cccap_child_has_additional_care_needs": false,
+     "cccap_declares_assets_within_limit": true,
+     "is_emancipated_minor": false,
+     "child_support_paid_order_type": "court_order",
+     "self_employment_cost_receipts_received": false,
+     "cccap_non_traditional_hours_are_requested": false,
+     "cccap_custody_schedule_is_outstanding": false,
+     "age_attestation_is_questionable": false,
+     "identity_attestation_is_questionable": false,
+     "citizenship_attestation_is_questionable": false,
+     "cccap_care_is_from_unrelated_exempt_provider_outside_home": false,
+     "cccap_is_serving_ipv_disqualification": false,
+     "cccap_activity_schedule_received": true,
+     "cccap_immunization_record_received": true,
+     "dwelling_id": "d1",
+     "residency_verification_document_received": true,
+     "cccap_eligible_activity_verification_document_received": true,
+     "earned_income_verification_document_received": true,
+     "work_hours_verification_document_received": true,
+     "verification_request_date": "2026-10-01",
+     "cccap_caretaker_is_incapacitated": false
+    },
+    "month_defaults": {
+     "wages_gross": 1500,
+     "hours_worked": 100,
+     "self_employment_gross_receipts": 0,
+     "self_employment_net_earnings_for_tax": 0,
+     "social_security_income": 0,
+     "pension_income": 0,
+     "unemployment_income": 0,
+     "child_support_received": 0,
+     "tanf_cash_income": 0,
+     "adult_financial_cash_income": 0,
+     "ssi_income": 0,
+     "other_unearned_income_nontaxable": 0,
+     "other_unearned_income_taxable": 0,
+     "tax_exempt_interest": 0,
+     "child_support_paid_legally_obligated": 0,
+     "child_support_paid_toward_arrears": 0,
+     "is_in_sud_treatment_iop_or_higher": false,
+     "self_employment_operating_costs": 0
+    }
+   }
+  },
+  "month_facts": {
+   "2026-11": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   },
+   "2026-10": {
+    "cccap_is_in_homelessness_stabilization_period": false
+   }
+  },
+  "expect": {
+   "p2": {
+    "cccap_is_adult_caretaker": true,
+    "cccap_household_size": {
+     "2026-11": 3
+    },
+    "cccap_household_income": {
+     "2026-11": 3500
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 206
+    }
+   },
+   "p1": {
+    "cccap_household_size": {
+     "2026-11": 3
+    },
+    "cccap_household_income": {
+     "2026-11": 3500
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 206
+    }
+   },
+   "p3": {
+    "cccap_household_size": {
+     "2026-11": 3
+    },
+    "cccap_household_income": {
+     "2026-11": 3500
+    },
+    "cccap_eligibility_status": {
+     "2026-11": "eligible_low_income"
+    },
+    "cccap_parent_fee": {
+     "2026-11": 206
+    }
+   }
+  }
+ }
+]

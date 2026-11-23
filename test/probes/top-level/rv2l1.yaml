@@ -1,0 +1,47 @@
+- id: RV2-L1
+  title: probe hotel for lack of alternative
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    lives_in_subsidized_housing: false
+    leap_households_sharing_living_arrangement: 1
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: hotel
+        institution_entry_date: '2026-09-01'
+        nighttime_residence_type: motel_or_hotel_for_lack_of_alternative
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect: {}

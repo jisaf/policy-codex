@@ -1,0 +1,255 @@
+[
+ {
+  "id": "CO-217",
+  "base": "ZZ-M1",
+  "title": "Coverage pass 3 N3-1 (ZZ-M1): a student living at home whose college meal plan provides most of her meals is in no SNAP household",
+  "comment": [
+   "Coverage pass 3 N3-1 (the reviewer's scratch ZZ-M1). CO-193 with p2, the half-time college student of 25 employed 82 hours,",
+   "living at home (residence_setting_type private_dwelling) with a meal plan bought through her college that provides more than half",
+   "of her meals (has_higher_education_meal_plan_providing_majority_of_meals true). Hand derivation, October 2026:",
+   "- 4.304.4.D.3: a student whose meal plan provides more than 50% of her meals is a resident of an institution; no 4.304.41",
+   "  exemption applies (a private dwelling, not a shelter, treatment centre or group living arrangement): CO-007 true.",
+   "- She states no institution_entry_date (CO-008 is stated only for a setting other than a private dwelling); the meal-plan arm",
+   "  does not need it: p2 is in no SNAP household, participation not_in_household.",
+   "- p1 is past the ABAWD time limit (CO-87's facts): ineligible member. No eligible member remains: no_eligible_members, allotment 0.",
+   "Before the fix CO-304 read the entry date for p2 as well, and every SNAP outcome of the household was null (unknown)."
+  ],
+  "ov": {},
+  "expect": {
+   "p1": {
+    "snap_eligibility_status": {
+     "2026-10": "no_eligible_members"
+    },
+    "snap_allotment": {
+     "2026-10": 0
+    },
+    "snap_person_participation_status": "ineligible_member_abawd_time_limit"
+   },
+   "p2": {
+    "snap_resides_in_institution_providing_meals": true,
+    "snap_is_household_member": false,
+    "snap_person_participation_status": "not_in_household"
+   }
+  }
+ },
+ {
+  "id": "CO-218",
+  "base": "ZZ-D3",
+  "title": "Coverage pass 3 N3-2 (ZZ-D3): a sponsored permanent resident whose household declines to document her status - no sponsor deeming for her citizen son's household",
+  "comment": [
+   "Coverage pass 3 N3-2 (the reviewer's scratch ZZ-D3). CO-116's sponsored permanent resident p2, earning $2,400 in wages, with her",
+   "citizen son p4 (10) in her unit; her brother p1 signed the I-864 (sponsor income $5,000, savings $3,000; his wife p3 did not sign).",
+   "The household says p2's status documentation will not be provided (declines_to_provide_immigration_documentation, 4.505.6.J).",
+   "Hand derivation, October 2026:",
+   "- 4.505.6.J: p2 is an ineligible non-citizen (CO-310); 4.305.2.C: \"Only when a sponsored non-citizen is an eligible non-citizen\"",
+   "  is the sponsor's income and resources considered, so nothing is deemed (CO-3701, CO-3702 0) and no sponsor verification is",
+   "  pursued (CO-1616 false).",
+   "- 4.411.1.B.2: p2's wages are prorated to the remaining member: 2,400 x 1/2 = 1,200 gross; eligible size 1.",
+   "- Earned income deduction 20% = 240; standard 217; adjusted 743. Shelter 1,366; excess 1,366 - 371.50 = 994.50, capped at 769.",
+   "  Net 743 - 769 -> 0. Allotment 306 (maximum for 1) - 0 = 306. Resources p2 200 + p4 200 = 400.",
+   "Before the fix: deemed income 212.50 and resources 750 were attributed, gross 1,306, resources 1,150, allotment 282, and the",
+   "sponsor's verification was required."
+  ],
+  "ov": {},
+  "expect": {
+   "p2": {
+    "snap_person_participation_status": "ineligible_member_non_citizen",
+    "snap_sponsor_deemed_income": {
+     "2026-10": 0
+    },
+    "snap_sponsor_deemed_resources": 0,
+    "snap_requires_verification_of_sponsor": {
+     "2026-10": false
+    }
+   },
+   "p4": {
+    "snap_eligibility_status": {
+     "2026-10": "eligible"
+    },
+    "snap_household_gross_income": {
+     "2026-10": 1200
+    },
+    "snap_household_countable_resources": 400,
+    "snap_allotment": {
+     "2026-10": 306
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-219",
+  "base": "CO-115",
+  "title": "Coverage pass 3 C3-1: a homeless father whose only income is a $1,000 vocational training allowance - counted as earned income and verified",
+  "comment": [
+   "Coverage pass 3 C3-1. CO-115 with no wages; p1 receives a $1,000 vocational training allowance (not WIOA) each month, stated in",
+   "other_unearned_income_taxable with its part workforce_program_payments_received and vocational_training_allowance_received.",
+   "Hand derivation, February 2027:",
+   "- 4.403.B.1: a training allowance other than WIOA is earned income: earned 1,000 (CO-4930, CO-330); gross 1,000.",
+   "- Earned deduction 200, standard 217: net 583; no shelter cost. Allotment 562 - 175 (30% of 583, rounded up) = 387.",
+   "- 4.506: counted gross nonexempt income is verified before certification: earned-income verification required (true).",
+   "Before the fix the verification item read wages only and was false; the budget is unchanged (387)."
+  ],
+  "ov": {
+   "p1@default": {
+    "wages_gross": 0,
+    "electronic_data_source_monthly_gross_income": 0,
+    "other_unearned_income_taxable": 1000,
+    "workforce_program_payments_received": 1000,
+    "vocational_training_allowance_received": 1000
+   }
+  },
+  "expect": {
+   "p1": {
+    "snap_person_earned_income": {
+     "2027-02": 1000
+    },
+    "snap_household_gross_income": {
+     "2027-02": 1000
+    },
+    "snap_allotment": {
+     "2027-02": 387
+    },
+    "snap_requires_verification_of_earned_income": {
+     "2027-02": true
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-220",
+  "base": "CO-195",
+  "title": "Coverage pass 3 C3-2: CO-195's recertification with a $500 training allowance as well - unchanged income is not a change",
+  "comment": [
+   "Coverage pass 3 C3-2. CO-195's recertification (p1 paid $250 weekly, five Fridays in February, same source) with a $500 non-WIOA",
+   "training allowance as well, and $1,575 last verified for SNAP (snap_income_at_last_certification, CO-1568). Hand derivation:",
+   "- SNAP's wages 250 x 4.3 = 1,075 plus the allowance, earned income under 4.403.B.1: 1,575 (snap_person_earned_income); no",
+   "  unearned income remains. 1,575 - 1,575 = 0, not more than $50, same source (273.2(f)(8)(i)(A); 4.506): no change, and earned",
+   "  income is not verified again.",
+   "Before the fix CO-1619 compared wages alone (1,075) with 1,575: a change of 500, so verification was required."
+  ],
+  "ov": {
+   "p1": {
+    "snap_income_at_last_certification": 1575
+   },
+   "p1@default": {
+    "other_unearned_income_taxable": 500,
+    "workforce_program_payments_received": 500,
+    "vocational_training_allowance_received": 500
+   }
+  },
+  "expect": {
+   "p1": {
+    "snap_person_earned_income": {
+     "2027-02": 1575
+    },
+    "snap_income_changed_since_last_certification": {
+     "2027-02": false
+    },
+    "snap_requires_verification_of_earned_income": {
+     "2027-02": false
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-221",
+  "base": "CO-115",
+  "title": "Coverage pass 3 C3-3: questionable home-equity loan payments as the only shelter cost are verified, and left out when still unverified",
+  "comment": [
+   "Coverage pass 3 C3-3. CO-115 with $400 a month of payments on a home-equity loan (shelter_other_continuing_charges, 4.407.3.E) as",
+   "the only shelter cost, and the statement questionable; no shelter document has been received. Hand derivation, February 2027:",
+   "- 4.507.B.1: the declaration is accepted \"unless questionable\": verification required (true), requested 2026-11-02, pending.",
+   "- 4.507.B.3: still unverified after the thirtieth day, the cost is left out: shelter costs 0, net 583, allotment 387 as in CO-115.",
+   "Before the fix verification was not required and the $400 was counted: net 377, allotment 448."
+  ],
+  "ov": {
+   "p1": {
+    "shelter_costs_attestation_is_questionable": true
+   },
+   "p1@default": {
+    "shelter_other_continuing_charges": 400
+   }
+  },
+  "expect": {
+   "p1": {
+    "snap_requires_verification_of_shelter_costs": {
+     "2027-02": true
+    },
+    "snap_shelter_costs_verification_is_pending": {
+     "2027-02": true
+    },
+    "snap_shelter_costs": {
+     "2027-02": 0
+    },
+    "snap_allotment": {
+     "2027-02": 387
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-222",
+  "base": "CO-115",
+  "title": "Coverage pass 3 C3-4: $400 of unemployment compensation paid weekly, five payments in January, is converted by 4.3",
+  "comment": [
+   "Coverage pass 3 C3-4. CO-115 with no wages; p1 is paid $400 of unemployment compensation every week, five Fridays in January 2027",
+   "($2,000 received; periodic_unearned_income_frequency weekly, periodic_unearned_income_per_payment 400). Hand derivation, January:",
+   "- 4.402.A.2: weekly income is converted by 4.3: 400 x 4.3 = 1,720 unearned; gross 1,720.",
+   "- Standard deduction 217; no earned income or shelter cost: net 1,503. Allotment 562 - 451 (30% of 1,503, rounded up) = 111.",
+   "Before the fix weekly was not a statable frequency and the five payments counted as received: gross 2,000, net 1,783, allotment 27."
+  ],
+  "ov": {
+   "p1": {
+    "periodic_unearned_income_frequency": "weekly",
+    "periodic_unearned_income_per_payment": 400
+   },
+   "p1@default": {
+    "wages_gross": 0,
+    "electronic_data_source_monthly_gross_income": 0
+   },
+   "p1@2027-01": {
+    "unemployment_income": 2000,
+    "periodic_unearned_income_received": 2000
+   }
+  },
+  "expect": {
+   "p1": {
+    "snap_person_unearned_income": {
+     "2027-01": 1720
+    },
+    "snap_household_gross_income": {
+     "2027-01": 1720
+    },
+    "snap_household_net_income": {
+     "2027-01": 1503
+    },
+    "snap_allotment": {
+     "2027-01": 111
+    }
+   }
+  }
+ },
+ {
+  "id": "CO-223",
+  "base": "CO-115",
+  "title": "Coverage pass 3 C3-5: $6,000 in the bank of which $2,000 is federal disaster assistance still held - countable resources 4,000",
+  "comment": [
+   "Coverage pass 3 C3-5. CO-115 with $6,000 in the bank, $2,000 of it federal disaster assistance still held",
+   "(excluded_government_payments_held_value). Hand derivation: 4.410.J.3 excludes payments precipitated by a major disaster as a",
+   "resource: countable liquid 6,000 - 2,000 = 4,000, the household's countable resources 4,000 (under the $4,750 limit where a",
+   "resource test applies; this household is expanded categorical). Before the fix the whole 6,000 was counted."
+  ],
+  "ov": {
+   "p1": {
+    "liquid_resources_value": 6000,
+    "excluded_government_payments_held_value": 2000
+   }
+  },
+  "expect": {
+   "p1": {
+    "snap_countable_liquid_resources": 4000,
+    "snap_household_countable_resources": 4000
+   }
+  }
+ }
+]

@@ -1,0 +1,145 @@
+- id: ZZ-1
+  title: "SNAP final verification F-2: a sponsored permanent resident of six years living alone; her sponsor's income and resources are deemed to her"
+  # p2 (36) was admitted for permanent residence on 2020-06-01 on a Form I-864 her brother p1 signed; she has
+  # 20 qualifying quarters, so the affidavit is still in force (4.305.2.D.1). She lives alone, works part time
+  # ($900 a month in wages) and rents a room for $500 with a $616 heating and cooling utility allowance (her
+  # rent includes no utilities; she pays heat). Her brother p1 (40, U.S. citizen) lives in his own home with
+  # his wife p3, who did not sign, and their two children, whom he claims as tax dependents; he earns $5,000
+  # a month, has $3,000 in savings, and pays p2 nothing. She applied on 2026-10-01 (not an initial month
+  # for proration: the whole month). Determination on 2026-10-01.
+  as_of: "2026-10-01"
+  case_facts:
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
+    home_heating_cost_arrangement: pays_vendor_directly
+    received_energy_assistance_within_twelve_months: false
+    home_incurs_separate_cooling_cost: false
+    home_incurs_electricity_cost: true
+    home_incurs_water_cost: false
+    home_incurs_sewer_cost: false
+    home_incurs_trash_cost: false
+    home_incurs_cooking_fuel_cost: false
+    home_incurs_telephone_cost: false
+  relationships:
+    - [sponsor, p1, p2]
+    - [spouse, p1, p3]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1986-03-12"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        tax_dependents_claimed_or_claimable_count: 2
+        liquid_resources_value: 3000
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 5000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        ssi_income: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        date_of_birth: "1990-02-20"
+        immigration_status: lawful_permanent_resident
+        qualified_status_date: "2020-06-01"
+        us_entry_date: "2020-06-01"
+        is_sponsored_non_citizen: true
+        qualifying_quarters: 20
+        has_qualifying_military_service: false
+        state_of_residence: CO
+        dwelling_id: d2
+        liquid_resources_value: 200
+        residence_setting_type: private_dwelling
+        receives_ssi: false
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        va_disability_rating_type: none
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        complies_with_refugee_program_work_requirements: false
+        complies_with_tanf_work_requirements: false
+        education_program_type: none
+        is_approved_for_work_study: false
+        is_assigned_to_higher_education_through_et_program: false
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        is_pregnant: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_surviving_spouse_of_veteran: false
+        marital_status: single
+        participates_in_drug_alcohol_treatment: false
+        receives_tanf_cash: false
+        receives_unemployment_compensation_or_applied: false
+        snap_is_disqualified_drug_felony: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_serving_ipv_disqualification: false
+        shelter_costs_attestation_is_questionable: false
+        claims_shelter_costs_for_unoccupied_home: false
+        nighttime_residence_type: fixed_regular_adequate
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_victim_of_battery_or_extreme_cruelty: false
+        sponsor_information_verified: false
+        snap_is_head_of_household: true
+        earned_income_verification_document_received: true
+        residency_verification_document_received: true
+        immigration_status_verified_by_electronic_data_source: true
+        verification_request_date: "2026-10-01"
+        age_verified_by_electronic_data_source: true
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        unearned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        zero_income_verified: false
+        ssn_furnished_or_application_shown: true
+        ssn_verified_by_electronic_data_source: true
+        identity_verified_by_electronic_data_source: true
+        residency_verification_cannot_reasonably_be_accomplished: false
+        resources_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        identity_verification_document_received: true
+        immigration_status_is_verified_or_submitted: true
+      month_defaults:
+        wages_gross: 900
+        hours_worked: 80
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        ssi_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        shelter_cost_monthly: 500
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+    p3:
+      facts:
+        date_of_birth: "1987-07-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        dwelling_id: d1

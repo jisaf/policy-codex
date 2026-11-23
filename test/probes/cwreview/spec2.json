@@ -1,0 +1,10 @@
+[
+ {"id":"ZZ-3","title":"unmarried parents; non-head father has 60 counted months","relationships":[["parent","p1","p3"],["parent","p2","p3"]],
+  "persons":{"p1":{"facts":{"months_of_assistance_received":10}},
+             "p2":{"facts":{"date_of_birth":"1990-01-01","sex":"male","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"months_of_assistance_received":60}},
+             "p3":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"months_of_assistance_received":0}}}},
+ {"id":"ZZ-4","title":"sponsored LPR mother; sponsor income between 125% of 2021 and 2026 FPG","relationships":[["parent","p1","p2"],["sponsor","p3","p1"]],
+  "persons":{"p1":{"facts":{"immigration_status":"lawful_permanent_resident","us_entry_date":"2015-01-01","qualified_status_date":"2015-01-01","is_sponsored_non_citizen":true,"qualifying_quarters":0,"status_before_lpr_adjustment":"none","is_victim_of_battery_or_extreme_cruelty":false,"cw_sponsor_income_availability_rebutted":false,"dwelling_id":"h1"}},
+             "p2":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"dwelling_id":"h1"}},
+             "p3":{"facts":{"date_of_birth":"1970-01-01","sex":"male","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"dwelling_id":"h2","sponsor_household_size":2},"month":{"wages_gross":2900}}}}
+]

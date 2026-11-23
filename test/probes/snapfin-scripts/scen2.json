@@ -1,0 +1,7 @@
+[
+{"name":"CF1 irregular 20 in Feb only","case":"CO-115","ov":{"persons":{"p1":{"months":{"2027-02":{"other_unearned_income_nontaxable":20,"infrequent_or_irregular_income_received":20}}}}},"ids":["snap_allotment"]},
+{"name":"CF1 irregular 20 in Feb and 20 in Jan (counted)","case":"CO-115","ov":{"persons":{"p1":{"months":{"2027-01":{"infrequent_or_irregular_income_received":20},"2027-02":{"other_unearned_income_nontaxable":20,"infrequent_or_irregular_income_received":20}}}}},"ids":["snap_allotment"]},
+{"name":"CF9 striker not eligible day before","case":"CO-115","ov":{"persons":{"p1":{"facts":{"snap_is_striker":true,"snap_household_was_eligible_day_before_strike":false}}}},"ids":["snap_eligibility_status","snap_allotment"]},
+{"name":"CF10 base pending count","case":"CO-115","ids":["snap_pending_verification_count"]},
+{"name":"CF11 recert unchanged 300","case":"CO-115","ov":{"case_facts":{"snap_determination_is_recertification":true},"persons":{"p1":{"facts":{"snap_child_support_paid_at_last_certification":300,"snap_child_support_paid_source_changed_since_last_certification":false},"month_defaults":{"child_support_paid_legally_obligated":300}}}},"ids":["snap_requires_verification_of_child_support_paid"]}
+]

@@ -1,0 +1,10 @@
+[
+ {"id":"CWZ-6","title":"minor mother, her own mother requests inclusion (C.2.g) with earnings","relationships":[["parent","p3","p1"],["parent","p1","p5"]],
+  "persons":{"p1":{"facts":{"date_of_birth":"2010-03-01","is_requesting_assistance_for_own_child":true,"is_full_time_secondary_student_finishing_before_nineteen":true}},
+             "p3":{"facts":{"date_of_birth":"1985-01-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"cw_requests_inclusion_in_assistance_unit":true},"month":{"wages_gross":1000}},
+             "p5":{"facts":{"date_of_birth":"2026-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}},
+ {"id":"CWZ-7","title":"minor mother in county-approved setting; her own mother lives elsewhere with earnings","relationships":[["parent","p3","p1"],["parent","p1","p5"]],
+  "persons":{"p1":{"facts":{"date_of_birth":"2010-03-01","is_requesting_assistance_for_own_child":true,"dwelling_id":"h1","county_approved_living_arrangement":true}},
+             "p3":{"facts":{"date_of_birth":"1985-01-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"dwelling_id":"h2"},"month":{"wages_gross":3000}},
+             "p5":{"facts":{"date_of_birth":"2026-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false,"dwelling_id":"h1"}}}}
+]

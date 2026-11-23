@@ -1,0 +1,315 @@
+- id: S6-nh60-child-away
+  title: 'Final verification review V-2 / final cash review FC-12: a stepfather''s
+    undocumented wages are pending for the Colorado Works unit'
+  as_of: '2026-10-05'
+  case_facts:
+    cw_application_date: '2026-10-01'
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - spouse
+    - p1
+    - p3
+  - - stepparent
+    - p3
+    - p2
+  persons:
+    p1:
+      facts:
+        residence_setting_type: nursing_facility
+        child_welfare_payment_type: none
+        date_of_birth: '1996-03-03'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        cw_determination_is_redetermination: false
+        verification_request_date: '2026-10-01'
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: colorado_drivers_license_or_id
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+        institution_entry_date: '2026-08-01'
+        temporary_absence_reason: medical_treatment
+        temporary_absence_start_date: '2026-08-01'
+        residence_setting_is_primarily_for_mental_diseases: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: '2020-06-15'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: single
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        verification_request_date: '2026-10-01'
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: child_medical_or_school_record
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+        temporary_absence_reason: other_with_intent_to_return
+        temporary_absence_start_date: '2026-08-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: '1993-01-20'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_requests_inclusion_in_assistance_unit: false
+        earned_income_verification_document_received: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+- id: S8-nh60-child-away-no-reason
+  title: 'Final verification review V-2 / final cash review FC-12: a stepfather''s
+    undocumented wages are pending for the Colorado Works unit'
+  as_of: '2026-10-05'
+  case_facts:
+    cw_application_date: '2026-10-01'
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - spouse
+    - p1
+    - p3
+  - - stepparent
+    - p3
+    - p2
+  persons:
+    p1:
+      facts:
+        residence_setting_type: nursing_facility
+        child_welfare_payment_type: none
+        date_of_birth: '1996-03-03'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        cw_determination_is_redetermination: false
+        verification_request_date: '2026-10-01'
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: colorado_drivers_license_or_id
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+        institution_entry_date: '2026-08-01'
+        temporary_absence_start_date: '2026-08-01'
+        residence_setting_is_primarily_for_mental_diseases: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: '2020-06-15'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: single
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        verification_request_date: '2026-10-01'
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: child_medical_or_school_record
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+        temporary_absence_reason: other_with_intent_to_return
+        temporary_absence_start_date: '2026-08-01'
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: '1993-01-20'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_requests_inclusion_in_assistance_unit: false
+        earned_income_verification_document_received: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0

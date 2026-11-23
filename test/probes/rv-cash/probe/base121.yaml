@@ -1,0 +1,55 @@
+- id: CO-121
+  title: "Final cash review FC-5: an AND-SO client with $465 of wages and no unearned income - no rollover of the $20"
+  # Built for the final cash review's FC-5 probe, which the reviewer confirmed with the engine.
+  # p1 Dana, 40, single, totally disabled for six months by the county's medical certification, not on SSI
+  # or SSDI, has applied for SSI (the AND-SO duty of 3.520.71.B), a citizen and Colorado resident with $200 in the
+  # bank. She earns $465 a month and has no unearned income.
+  # Countable income (3.544): earned 465 - 65 = 400, divided by two = 200. 3.544 has no paragraph that rolls the
+  # unused $20 onto earnings (3.533.A.2.f and 3.549.A.2.f are OAP's and AND-CS's), so countable income is 200
+  # (was 190 with the rollover). 200 < the $248 AND-SO standard: and_so.
+  # Grant (3.544.C): 248 - 200 = $48 (was $58).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1986-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 465
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_income: {"2026-10": 200}   # (465 - 65) / 2; no rollover in 3.544
+      af_category: {"2026-10": and_so}
+      af_and_grant: {"2026-10": 48}           # 248 - 200

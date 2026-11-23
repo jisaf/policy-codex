@@ -1,0 +1,15 @@
+[
+ {"id":"RV2-MEC","persons":{
+   "p1":{"facts":{"date_of_birth":"1986-03-01"},"md":{"wages_gross":1262}},
+   "p2":{"facts":{"date_of_birth":"2016-05-01","dependent_child_has_minimum_essential_coverage":false},"md":{"wages_gross":0}}},
+  "rels":[["parent","p1","p2"]]},
+ {"id":"RV2-NB","persons":{
+   "p1":{"facts":{"date_of_birth":"1996-03-01"},"md":{"wages_gross":3066}},
+   "p2":{"facts":{"date_of_birth":"2025-11-05","mother_coverage_at_birth":"medical_assistance"},"md":{"wages_gross":0}}},
+  "rels":[["parent","p1","p2"]]},
+ {"id":"RV2-DSP","persons":{
+   "p1":{"facts":{"date_of_birth":"1981-03-01","is_tax_filer":true,"is_required_to_file_tax_return":true},"md":{"wages_gross":1500}},
+   "p2":{"facts":{"date_of_birth":"2006-01-01","expects_to_be_claimed_as_dependent":true},"md":{"wages_gross":0}},
+   "p3":{"facts":{"date_of_birth":"2005-01-01","sex":"male","is_tax_filer":true,"is_required_to_file_tax_return":true},"md":{"wages_gross":2500}}},
+  "rels":[["parent","p1","p2"],["tax_filer","p1","p2"],["spouse","p2","p3"]]}
+]

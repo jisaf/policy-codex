@@ -1,0 +1,12 @@
+[
+{"name":"CF4 CO-83 base","case":"CO-83","month":"2026-11","ids":["snap_household_gross_income","snap_allotment"]},
+{"name":"CF4 CO-83 earner p2 pays 300","case":"CO-83","month":"2026-11","ov":{"persons":{"p2":{"month_defaults":{"child_support_paid_legally_obligated":300}}}},"ids":["snap_household_gross_income","snap_allotment"]},
+{"name":"CF4 CO-83 no-income p1 pays 300","case":"CO-83","month":"2026-11","ov":{"persons":{"p1":{"month_defaults":{"child_support_paid_legally_obligated":300}}}},"ids":["snap_household_gross_income","snap_allotment"]},
+{"name":"CF5 child born 2009-02-05 earns 400","case":"CO-115","ov":{"persons":{"p2":{"facts":{"date_of_birth":"2009-02-05"},"month_defaults":{"wages_gross":400}}}},"ids":["snap_household_gross_income","snap_allotment"],"persons":["p2"]},
+{"name":"CF5 child born 2009-02-15 earns 400","case":"CO-115","ov":{"persons":{"p2":{"facts":{"date_of_birth":"2009-02-15"},"month_defaults":{"wages_gross":400}}}},"ids":["snap_household_gross_income","snap_allotment"],"persons":["p2"]},
+{"name":"CF5 child born 2009-02-05 earns 400, March","case":"CO-115","month":"2027-03","ov":{"persons":{"p2":{"facts":{"date_of_birth":"2009-02-05"},"month_defaults":{"wages_gross":400}}}},"ids":["snap_household_gross_income"],"persons":["p2"]},
+{"name":"CF6 disabled p1, $100 medical verified, no meals","case":"CO-115","ov":{"persons":{"p1":{"facts":{"snap_is_elderly_or_disabled":true,"medical_expenses_verification_document_received":true},"month_defaults":{"medical_expenses_out_of_pocket":100}}}},"ids":["snap_excess_medical_deduction","snap_allotment"]},
+{"name":"CF6 same, household feeds the attendant","case":"CO-115","ov":{"persons":{"p1":{"facts":{"snap_is_elderly_or_disabled":true,"medical_expenses_verification_document_received":true,"furnishes_majority_of_attendant_meals":true},"month_defaults":{"medical_expenses_out_of_pocket":100}}}},"ids":["snap_excess_medical_deduction","snap_allotment"]},
+{"name":"CF7 land 1200 equity","case":"CO-115","ov":{"persons":{"p1":{"facts":{"liquid_resources_value":4000,"real_property_other_than_home_equity":1200}}}},"ids":["snap_household_countable_resources"]},
+{"name":"CF8 joint account 3000 + 3000 other owner","case":"CO-115","ov":{"persons":{"p1":{"facts":{"liquid_resources_value":3000,"joint_liquid_resources_other_owners_share_value":3000}}}},"ids":["snap_household_countable_resources"]}
+]
