@@ -1,0 +1,19 @@
+id: CO-5330
+name: "Medicaid: the person owns an annuity in the month"
+identifier: ma_holds_annuity_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person owns an annuity in the month: an annuity holdings record (CO-5300) valued in the month and not transferred (10 CCR 2505-10 8.100.7.B.2.a, S1741: documents verifying that an annuity conforms to 8.100.7.I)."
+precision: "Resource records, Medicaid track H1: replaces owns_annuity (CO-1579) in ma_requires_verification_of_annuity (CO-1635). A person whose holdings are not stated: unknown, as the fact was when not stated."
+derived: [">", [sum_receipts, holdings, [all, ["=", [receipt, kind], annuity], [received_in, [month]], [unknown, [receipt, disposed_date]]], 1], 0]
+sources: [S1741, S3408]
+implemented: engine
+tags: [verification, ma, ltc, resources]
+rationale: "Resource records, step H1 (Medicaid): whether the person owns an annuity is read from the holdings records, so an annuity is stated once, with what the Department finds available from it (ma_found_available_value). Not ma_holds_trust_interest_in_month (CO-5329): an annuity and a trust are verified by different documents (8.100.7.B.2.a)."
+nearest: [CO-5329]
+tests:
+  - {id: CO-5330-T1, month: "2026-10", as_of: "2026-10-01", title: "an annuity record: yes", given: {holdings: [{kind: annuity, ma_found_available_value: 0}]}, expect: true}
+  - {id: CO-5330-T2, month: "2026-10", as_of: "2026-10-01", title: "no annuity record: no", given: {holdings: [{kind: bank_account, value: 300}]}, expect: false}
+  - {id: CO-5330-T3, month: "2026-10", as_of: "2026-10-01", title: "holdings not stated: unknown", given: {}, expect: unknown}

@@ -1,0 +1,14 @@
+id: CO-6502
+name: "Medicaid SSI method: share of a retirement account deducted for taxes when the taxes due are not provided"
+identifier: ma_retirement_account_default_tax_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The part of a self-funded retirement account's gross value deducted as the taxes due when the applicant is not able to provide them (10 CCR 2505-10 8.100.5.N.5.b, S4667: \"If the applicant is not able to provide the amount of taxes that are due, the value shall be determined by deducting 20% from the gross value of the account\")."
+precision: "Resource records, Medicaid track H1: read by ma_ssi_retirement_accounts_counted_in_month (CO-5326) for a retirement account holdings record whose taxes_on_withdrawal is not stated (the record states no figure the applicant provided). The default is the rule's own (decision 4: the rule says otherwise), as Adult Financial's af_retirement_account_default_tax_rate is 3.520.73.B.1.b's."
+value: 0.2
+sources: [S4667]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Resource records, step H1 (Medicaid): 8.100.5.N.5 counts a self-funded retirement account at its gross value less the taxes due, 20% when they are not provided; the scalar fact (retirement_accounts_value, CO-3392) stated the value before taxes and no Medicaid item deducted them, so an applicant's IRA was counted in full."

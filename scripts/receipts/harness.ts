@@ -159,10 +159,9 @@ export function main(): number {
     // Earned income (product owner, 2026-11-23): every program now reads it
     // from the earnings records, so the new side also gets the earnings
     // translation of the household's earned facts, as every stored household
-    // states it (step E0); the baseline reads the scalar facts it always read.
-    // Resources (step H1): SNAP and Adult Financial read the holdings records,
-    // so the new side also gets the holdings translation of the household's
-    // resource facts, as every stored household states it (step H0).
+    // states it (step E0), and likewise the holdings translation of its resource
+    // facts (step H0; Medicaid reads holdings from H1); the baseline reads the
+    // scalar facts it always read.
     return { old: translateCase(c, newL.ix, CHOICES, undefined, true).value, new: translateHoldings(translateEarnings(tr.value, newL.ix).value, newL.ix).value };
   });
   sources.push({ label: "generated households", cases: gen });

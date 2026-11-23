@@ -27,14 +27,14 @@ describe("owns: the question's Owner line names the role", () => {
     expect(unsettled.filter((q) => !explicitField(q.body, "Owner")).map((q) => q.id)).toEqual([]);
   });
 
-  it("counts the Medicaid policy owner's questions once: 59 open and 4 partly settled (the App said 24 and 49)", () => {
+  it("counts the Medicaid policy owner's questions once: 63 open and 5 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(59); // + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050 (reader-defaults round); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
-    expect(med.partly.length).toBe(4); // E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124
+    expect(med.open.length).toBe(63); // holdings H1 Medicaid: + OQ-1240 to OQ-1244, OQ-1204 partly settled (part 1 by the text); + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050 (reader-defaults round); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
+    expect(med.partly.length).toBe(5); // holdings H1 Medicaid: + OQ-1240 to OQ-1244, OQ-1204 partly settled (part 1 by the text); E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("59 open questions you own, and 4 partly settled"); // + OQ-1200, OQ-1204 (holdings H0)
+    expect(ownedPhrase(med)).toBe("63 open questions you own, and 5 partly settled"); // holdings H1 Medicaid: + OQ-1240 to OQ-1244, OQ-1204 partly settled (part 1 by the text); + OQ-1200, OQ-1204 (holdings H0)
   });
 
   it("counts the Cash programs policy owner's: 43 open and 5 partly settled", () => {
@@ -44,8 +44,8 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([67, 6]); // + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(73); // + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050; + OQ-1060, OQ-1061; + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([71, 7]); // holdings H1 Medicaid: + OQ-1240 to OQ-1244, OQ-1204 partly settled (part 1 by the text); + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050 (reader-defaults round); + OQ-1060, OQ-1061 (OM 25-073 excerpts blocked); + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(78); // holdings H1 Medicaid: + OQ-1240 to OQ-1244, OQ-1204 partly settled (part 1 by the text); + OQ-1200, OQ-1204 (holdings H0); records E1 integration: + OQ-1180; E1 Medicaid: OQ-1023 resolved, OQ-1024 partly resolved (MAGI half settled), + OQ-1120 to OQ-1124; + OQ-1020, OQ-1023, OQ-1024 (earnings E0); + OQ-1050; + OQ-1060, OQ-1061; + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {

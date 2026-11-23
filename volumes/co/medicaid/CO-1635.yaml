@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether documents verifying that an annuity conforms to 8.100.7.I must be submitted: for a long-term care applicant who (or whose spouse) owns an annuity."
-precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631)."
-derived: [all, ma_owes_long_term_care_asset_disclosure, [any, owns_annuity, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], owns_annuity]]]]
+meaning: "Whether documents verifying that an annuity conforms to 8.100.7.I must be submitted: for a long-term care applicant who (or whose spouse) owns an annuity (ma_holds_annuity_in_month, CO-5330: an annuity holdings record)."
+precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631). Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): an annuity is an annuity holdings record (CO-5300), in place of owns_annuity (CO-1579); a person whose holdings are stated with no such record has none."
+derived: [all, ma_owes_long_term_care_asset_disclosure, [any, ma_holds_annuity_in_month, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ma_holds_annuity_in_month]]]]
 sources: [S1741, S3408]
 implemented: engine
 tags: [verification, ma, ltc, resources]
