@@ -2966,7 +2966,7 @@ Body: The community spouse monthly income allowance is the amount by which the c
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Reading B: VA Aid and Attendance and Unusual Medical Expenses are left out of the community spouse's and the family members' income (ma_spousal_unearned_receipts, CO-5531), as for eligibility.
+Assumption: Reading B: VA Aid and Attendance and Unusual Medical Expenses are left out of the community spouse's and the family members' income, as for eligibility.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5, 8.100.5.K, 8.100.7.R.2, 8.100.7.T.1 (D-65); 42 U.S.C. 1396r-5(b)(2), (d)(1)-(2) (D-47); 20 CFR 416.1103 (D-207). None says how the community spouse's Aid and Attendance is treated in the allowances; no CMS or HCPF guidance on file addresses it. Items: CO-5531 (read by CO-2467 and CO-657).
 
@@ -2976,6 +2976,6 @@ Body: 9 CCR 2503-6 3.605.4.A.6 (S2605): "VA Aid and Attendance is exempt income 
 
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: The meaning of lives_in_own_home above: a member of the household whose home it is lives in the person's own home; a guest, a boarder, a resident of a facility and a person in a shelter or with no fixed dwelling do not.
+Assumption: The meaning of the own-home fact above: a member of the household whose home it is lives in the person's own home; a guest, a boarder, a resident of a facility and a person in a shelter or with no fixed dwelling do not.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.4.A.6 (D-81, rule version 12030, the text matches S2605); a search of the whole of 9 CCR 2503-6 (D-81) finds "own home" only in A.6, and C.R.S. 26-2-703 (D-59, S401) defines "assistance unit" and "dependent child" but not a home. Items: CO-5940, CO-5651.
