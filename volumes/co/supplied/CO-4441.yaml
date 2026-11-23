@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The going hourly rate in the community for work similar to the person's donated work (CO-4438)."
-precision: "If not stated, Adult Financial reads it as 0, so the minimum wage applies."
+precision: "Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise), for donated work that counts; before, it was read as 0, so the minimum wage applied."
 supplied_by: "County department's determination from local wage information."
 sources: [S3211]
 tags: [income]

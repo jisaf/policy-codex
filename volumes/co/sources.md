@@ -23846,3 +23846,98 @@ Document: D-65
 > bb. Any portion of educational loans and grants obtained and used under conditions that preclude their use for current living cost (need-based).
 >
 > cc. Financial assistance received under the Carl D. Perkins Vocational and Applied Technology Education Act that is made available for attendance cost shall not be considered as income or resources. Attendance cost includes tuition, fees, rental or purchase of equipment, materials or supplies required of all students in the same course of study, books, supplies, transportation, dependent care, and miscellaneous personal expenses of students attending the institution on at least a half-time basis, as determined by the institution.
+
+### S4790. Adult Financial: "Earned Income" and "Income" defined (any financial gain)
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Earned Income", "Income") (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Earned Income” means payment in cash or in-kind received by a client, spouse of a
+> client, or sponsor(s) of the client for services performed as an employee or as a result of
+> the client, spouse of the client, or sponsor(s) of the client being engaged in self-
+> employment.
+>
+> “Income” means any financial gain by means of money payment or in-kind payment.
+
+### S4791. Adult Financial: "Resources" held as of the first day of a month or the date of application; "Effective date of eligibility"
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Effective date of eligibility", "Resources") (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Effective date of eligibility” means the first date a client is eligible for the public
+> assistance program.
+>
+> "Resources" or “assets” means real property, personal property, and cash or convertible
+> assets held as of the first day of a calendar month or as of the date of application, less
+> the value counted as income in the same month.
+
+### S4792. Adult Financial: income counted in the month received; contract employment prorated over the term of the contract
+
+Document: D-80
+
+9 CCR 2503-5 3.520.781.G (introduction), G.1, G.2 (introduction), G.2.b (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> G. All income shall be countable in the month it is actually received or legally
+> becomes available, whichever comes first, with the following exceptions:
+>
+> 1. Income that can be anticipated with reasonable certainty concerning the
+> amount and the month it is expected to be received shall be counted in the
+> month anticipated.
+>
+> 2. The anticipated monthly income shall be based on the income received in
+> the previous month, except when the previous month does not provide an
+> accurate indication of anticipated income, or under other circumstances as
+> specified below:
+> ...
+>
+> b. For contract employment, such as in some school systems, where
+> the employees derive their annual income in a period shorter than a
+> year, the income shall be prorated over the term of the contract,
+> provided that the income from the contract is not earned on an
+> hourly or piecework basis;
+
+### S4793. Adult Financial countable unearned income: current child support received for the client
+
+Document: D-80
+
+9 CCR 2503-5 3.520.785.B.25 (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 25. Current child support payments received for the client.
+
+### S4794. Adult Financial: eligibility begins on the date of application or the date the client meets all eligibility requirements, whichever is later
+
+Document: D-80
+
+9 CCR 2503-5 3.542.B (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Eligibility shall begin with the date of application or the date the client meets all
+> eligibility requirements, whichever is later.
+
+### S4795. Colorado Works: "Income" defined (any financial gain); income in general is the receipt of a gain or benefit
+
+Document: D-81
+
+9 CCR 2503-6 3.601 ("Income"), 3.605.1.A.2 (version effective 2025-07-01; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Income” means any financial gain by means of money payment or in-kind payment. Payments made
+> directly to a vendor are not income.
+>
+> 2. Availability of income - income shall be countable when actually available, when the client
+> has a legal interest in a sum, and has the legal ability to make such sum available for
+> support and maintenance. Income, in general, is the receipt by a client of a gain or
+> benefit in cash or in-kind during a calendar month. Received means the date on which
+> the income becomes legally available.
+
+### S4796. Adult Financial: "Convertible asset" defined (investment vehicles among them)
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Convertible asset") (rule version 12428, effective 03/02/2026; read from the document on file 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> "Convertible asset" means any asset which can be converted into cash and is defined
+> by its cash value. This includes a savings or checking account, other accessible
+> electronic currency and/or cryptocurrency, stocks, bonds, mutual fund shares, 401Ks,
+> 457Ks, IRAs, Certificates of Deposit (CDs), PERA accounts, gold/silver, cryptocurrency,
+> pensions, and other retirement or investment accounts and investment vehicles.

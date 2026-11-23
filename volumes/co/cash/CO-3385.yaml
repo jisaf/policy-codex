@@ -6,14 +6,14 @@ type: yes/no
 scope: person-month
 program: ColoradoWorks
 meaning: "Whether all the person's earned income for the month is disregarded under 9 CCR 2503-6 3.605.4.B.24.b: a dependent child in a secondary education or undergraduate degree program who is a full-time student, or a part-time student who is not a full-time employee."
-precision: "A full-time employee is read as working cw_full_time_employee_hours_per_month or more (OQ-613). Secondary education includes career and technical and high school equivalency programs; an undergraduate degree program is higher education."
-derived: [all, cw_is_dependent_child, [in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, higher_education]], [any, ["=", education_enrollment_intensity, full_time], ["<", [otherwise, hours_worked, 0], cw_full_time_employee_hours_per_month]]]
+precision: "A full-time employee is read as working cw_full_time_employee_hours_per_month or more (OQ-613). Secondary education includes career and technical and high school equivalency programs; an undergraduate degree program is higher education. Coverage pass 4 CA4-15: the dependent child is the child of the month evaluated (cw_is_dependent_child_in_month, CO-6807), the age taken in that month. Coverage pass 4 CA4-16 (docs/reviews/coverage4-cash.md): a part-time student's hours worked are required, never read as 0 when not stated (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; B.24.b turns on whether the student is a full-time employee; probe W6: a part-time student of 16 earning $800 with her hours not stated is cannot determine)."
+derived: [all, cw_is_dependent_child_in_month, [in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, higher_education]], [any, ["=", education_enrollment_intensity, full_time], ["<", hours_worked, cw_full_time_employee_hours_per_month]]]
 sources: [S1621]
 implemented: engine
 open: [OQ-613]
 tags: [cash, income, student]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). Colorado Works expected a dependent child student's earnings in cw_excluded_earned_income while SNAP derived its own student exclusion (CO-2569); the same fact was handled two ways (SW-28)."
 tests:
-  - {id: CO-3385-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_is_dependent_child: true, education_program_type: secondary, education_enrollment_intensity: full_time}, expect: true}
+  - {id: "CO-3385-T1", month: "2026-10", as_of: "2026-10-01", given: {cw_is_dependent_child_in_month: true, education_program_type: secondary, education_enrollment_intensity: full_time}, expect: true}
   - {id: CO-3385-T2, title: "Part-time student working 140 hours", month: "2026-10", as_of: "2026-10-01", given: {cw_is_dependent_child: true, education_program_type: secondary, education_enrollment_intensity: half_time, hours_worked: 140}, expect: false}
-  - {id: CO-3385-T3, month: "2026-10", as_of: "2026-10-01", given: {cw_is_dependent_child: false}, expect: false}
+  - {id: CO-3385-T3, month: "2026-10", as_of: "2026-10-01", given: {cw_is_dependent_child_in_month: false}, expect: false}

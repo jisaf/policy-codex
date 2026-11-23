@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The spousal maintenance (alimony) the person paid in the month to a spouse or former spouse who does not live in the person's home, under a court order or a separation or divorce agreement. 0 if none."
-precision: "Amounts actually paid in the month, the gross payment. Child support is child_support_paid_legally_obligated (CO-033), not this fact. If not stated, Colorado Works reads it as 0."
+precision: "Amounts actually paid in the month, the gross payment. Child support is child_support_paid_legally_obligated (CO-033), not this fact. Colorado Works requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise); before, it was read as 0 when not stated."
 supplied_by: Applicant statement, with the order or agreement and proof of payment.
 sources: [S3155]
 tags: [income]

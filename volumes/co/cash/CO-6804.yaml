@@ -1,0 +1,19 @@
+id: CO-6804
+name: "Adult Financial: vehicle exemption a spouse's own vehicle duplicates"
+identifier: af_vehicle_exemption_shared_with_spouse
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The part of a married couple's vehicle exemptions this person's own exemption repeats: the lesser of the equity of this person's exempt vehicle (af_exempt_transportation_vehicle_equity) and that of the person's spouse's, 0 for a person with no spouse in the case. Each spouse's own count leaves out that spouse's largest transportation vehicle, but 9 CCR 2503-5 3.520.77 exempts \"for an individual or married couple ... The vehicle with the highest value\" used for transportation: one vehicle for the couple, so the couple's count adds this amount back, and the vehicle left exempt is the larger of the two."
+precision: "Coverage pass 4 CA4-10 (docs/reviews/coverage4-cash.md; probe A8: her $6,000 car and his $4,000 truck, both used for transportation: each spouse's own count exempted one, resources 1,000; the couple's one exemption leaves the truck counted, 5,000). The spouse is the person this person is the spouse of (rel spouse), as af_client_and_spouse_countable_resources (CO-2389) reads; a sponsor couple's resources are attributed \"in the same manner\" (3.520.72.E) and read it in af_sponsor_countable_resources (CO-2390)."
+derived: [min, af_exempt_transportation_vehicle_equity, [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], af_exempt_transportation_vehicle_equity]]]
+sources: [S2214, S1636]
+implemented: engine
+tags: [cash, oap, and, resources]
+nearest: [CO-6803]
+rationale: "Coverage pass 4 CA4-10: the couples' holdings class (non-MAGI Medicaid N4-6), one vehicle for a married couple."
+tests:
+  - {id: CO-6804-T1, month: "2026-10", as_of: "2026-10-01", relationships: [[spouse, p2]], given: {af_exempt_transportation_vehicle_equity: 6000}, others: {p2: {af_exempt_transportation_vehicle_equity: 4000}}, title: "Probe A8: her car $6,000, his truck $4,000: min(6,000, 4,000) = 4,000 added back for the couple", expect: 4000}
+  - {id: CO-6804-T2, month: "2026-10", as_of: "2026-10-01", relationships: [], given: {af_exempt_transportation_vehicle_equity: 6000}, title: "No spouse: nothing", expect: 0}
+  - {id: CO-6804-T3, month: "2026-10", as_of: "2026-10-01", relationships: [[spouse, p2]], given: {af_exempt_transportation_vehicle_equity: 6000}, others: {p2: {af_exempt_transportation_vehicle_equity: 0}}, title: "The spouse has no vehicle for transportation: nothing", expect: 0}

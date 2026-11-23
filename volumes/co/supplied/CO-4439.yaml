@@ -6,7 +6,7 @@ type: hours
 scope: person-month
 program: All
 meaning: "The average number of hours a week, over the month, of the donated work donated_work_hours_in_month (CO-4438) states."
-precision: "If not stated, Adult Financial reads it as 0."
+precision: "Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise): a person with no donated work states 0; before, it was read as 0 when not stated."
 supplied_by: "Applicant statement, as the county establishes it."
 sources: [S3211]
 tags: [income]

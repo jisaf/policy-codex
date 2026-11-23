@@ -65,6 +65,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
@@ -279,6 +280,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
@@ -482,6 +484,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -647,6 +650,8 @@
         - {kind: wages, amount: 2380}
         holdings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -671,6 +676,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -1178,7 +1184,8 @@
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-10": 0}
-      af_meets_resource_limit: false
+      af_meets_resource_limit:
+        2026-10: false
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1]  # SW-7 (was [p1, p2]): CCCAP's household is the persons in the home (8 CCR 1403-1 3.103, S481); p1 has lived in the nursing facility since 2026-10-01 (dwelling_id), so the spouse edge to p2 at home is not crossed, and she is her own household
@@ -2095,6 +2102,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
@@ -2309,6 +2317,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
@@ -2512,6 +2521,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -2678,6 +2688,8 @@
         - {kind: wages, amount: 2380}
         holdings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2701,6 +2713,7 @@
         hours_worked: 138
     p4:
       facts:
+        days_out_of_state_in_calendar_year: 0
         dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
@@ -3176,7 +3189,8 @@
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-11": 0}
-      af_meets_resource_limit: false
+      af_meets_resource_limit:
+        2026-11: false
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1]  # SW-7 (was [p1, p2]): CCCAP's household is the persons in the home (8 CCR 1403-1 3.103, S481); p1 has lived in the nursing facility since 2026-10-01 (dwelling_id), so the spouse edge to p2 at home is not crossed, and she is her own household
@@ -5239,6 +5253,7 @@
         holdings:
         - {kind: bank_account, value: 900}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 400
         self_employment_gross_receipts: 0
         hours_worked: 60
@@ -5296,6 +5311,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         hours_worked: 0
@@ -5308,6 +5324,7 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -5352,6 +5369,8 @@
         holdings:
         - {kind: bank_account, value: 1500}
       month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         hours_worked: 0
@@ -5415,6 +5434,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -5458,6 +5478,7 @@
         holdings:
         - {kind: bank_account, value: 1200}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         hours_worked: 0
@@ -5541,7 +5562,8 @@
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": true}   # C-6: she receives no TANF and lives with no TANF child of her own
       af_countable_income: {"2026-10": 880}
-      af_meets_resource_limit: true
+      af_meets_resource_limit:
+        2026-10: true
       af_category: {"2026-10": oap}
       af_oap_grant: {"2026-10": 189}    # phase 8: 1032 - 880 = 152 is below the $189 OAP payment floor (3.532.B, S703), so a State Supplementary Payment raises it to 189
       af_and_grant: {"2026-10": 0}
@@ -6029,6 +6051,7 @@
         has_emergency_medical_condition: false
     p3:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was is_enrolled_in_pace false)
         has_qualifying_military_service: false
@@ -6085,6 +6108,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -6316,6 +6340,8 @@
   persons:
     p1:
       facts:
+        is_pregnant: false
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         child_welfare_payment_type: none
@@ -6347,12 +6373,14 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         hca_authorized_amount: 900
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
+        af_burial_request_is_timely: true
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
         date_of_death: "2026-11-05"  # dual-entry 3.14: died this month while receiving OAP (was af_died_while_receiving_af_or_medicaid: true)
         date_of_birth: "1958-08-20"
@@ -7829,6 +7857,8 @@
         holdings:
         - {kind: bank_account, value: 300}
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
         participates_in_workfare: false
@@ -11143,6 +11173,7 @@
         holdings:
         - {kind: bank_account, value: 2600}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 3200
         self_employment_gross_receipts: 0
     p2:
@@ -11220,7 +11251,8 @@
       sponsor_has_died: false
       af_sponsor_deeming_applies: true
       af_deemed_sponsor_income: {"2026-10": 1212}
-      af_sponsor_countable_resources: 2900
+      af_sponsor_countable_resources:
+        2026-10: 2900
       snap_sponsor_deeming_applies: false
       # SNAP final verification F-2 (4.305.2.D, S2502): sponsor household = p1 + her husband p2 + her son (tax
       # dependent) = 3, 130% limit 2,960; 3,200 - 640 - 2,960 < 0, so the sponsor's income after the reductions is 0.
@@ -11240,7 +11272,8 @@
     p4:
       sponsors: [p1]
       af_deemed_sponsor_income: {"2026-10": 1212}  # coverage review F-16: was 715 (see the derivation above)
-      af_sponsor_countable_resources: 2900
+      af_sponsor_countable_resources:
+        2026-10: 2900
       snap_sponsor_deeming_applies: false  # final verification pass 2 N-3: under 18 (was true)
       snap_sponsor_deeming_divisor: 2
       snap_sponsor_deemed_resources: 0  # was 550: no deeming to a child under 18
@@ -13037,6 +13070,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -13061,11 +13095,13 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-07-22"
         immigration_status: us_citizen
@@ -13090,6 +13126,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -13120,6 +13157,8 @@
     p1:
       relationships: []
       facts:
+        af_im14_signed: true
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1986-05-01"
         immigration_status: us_citizen
@@ -13144,6 +13183,7 @@
         holdings:
         - {kind: bank_account, value: 200}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 465
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -13283,6 +13323,8 @@
         earnings:
         - {kind: wages, amount: 2000}
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 2000
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -15255,6 +15297,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -15299,6 +15342,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -15340,6 +15384,7 @@
         - {kind: retirement_account, value: 1500}
         - {kind: life_insurance, value: 5000, face_value: 10000, purchase_date: "2010-03-01", premiums_in_lookback: 0}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -15347,8 +15392,10 @@
     p1:
       # Coverage review F-8: Rosa's $1,500 retirement account counts at its gross value less the taxes due, and no tax
       # figure is given, so less 20% (3.520.73.B.1.b, S3208): 1,500 - 300 = 1,200. 1,000 + 1,200 + 0 = 2,200 (was 2,500).
-      af_client_and_spouse_countable_resources: 2200   # 1,000 + 1,200 + 0 (Rosa's old policy exempt for an OAP client, 3.520.75.E.1); was 2,500, and 7,500 before N-1
-      af_meets_resource_limit: true                     # 2,200 <= 3,000
+      af_client_and_spouse_countable_resources:
+        2026-10: 2200   # 1,000 + 1,200 + 0 (Rosa's old policy exempt for an OAP client, 3.520.75.E.1); was 2,500, and 7,500 before N-1
+      af_meets_resource_limit:
+        2026-10: true                     # 2,200 <= 3,000
       af_countable_income: {"2026-10": 490}             # 500 - 10 (split $20, 3.533.A.2.c.1)
       af_category: {"2026-10": oap}                     # was none (over the resource limit)
       af_oap_grant: {"2026-10": 542}                    # 1,032 - 490
@@ -15382,6 +15429,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -15409,6 +15457,7 @@
         - {kind: other_resource, value: 1000, amount_owed: 0, compensation_received: 0, disposed_date: "2026-09-02"}
         - {kind: other_resource, value: 1000, amount_owed: 0, compensation_received: 0, disposed_date: "2026-10-02"}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -15422,6 +15471,7 @@
     p2:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "2017-05-01"
         immigration_status: us_citizen
@@ -15447,6 +15497,8 @@
         holdings:
         - {kind: bank_account, value: 200}
       month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -16436,6 +16488,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -16467,6 +16520,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -16497,6 +16551,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 1200
@@ -16528,6 +16583,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -16553,6 +16609,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -16586,6 +16643,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -16616,6 +16674,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: nursing_facility
         date_of_birth: "1996-03-01"
         immigration_status: us_citizen
@@ -16642,6 +16701,8 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -16669,6 +16730,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: lawful_permanent_resident
@@ -16697,6 +16759,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -25292,6 +25355,8 @@
         earnings:
         - {kind: wages, amount: 600}
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 600
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -25378,6 +25443,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -25403,6 +25469,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -25437,6 +25504,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -25539,7 +25607,8 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_countable_resources: 3200
+      af_countable_resources:
+        2026-10: 3200
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
 
@@ -31643,6 +31712,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -31667,12 +31737,14 @@
         - {kind: bank_account, value: 1700}
         - {kind: held_income_tax_refund, paid_by: federal, value: 500, source_date: "2026-08-14"}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 1700
+      af_client_and_spouse_countable_resources:
+        2026-10: 1700
       af_category:
         2026-10: oap
 
@@ -31687,7 +31759,8 @@
   # Translation: the rent is also stated as rental_income_received (CO-4457) and its expenses as
   # rental_property_expenses_paid (CO-4458), the program-neutral facts other programs read. PR-RENT itself (rent in
   # other_unearned_income_taxable, no expense fact) is not kept separately: no fact for the expenses existed when it was
-  # written, and PR-RENT2 is the same household with them stated.
+  # written, and PR-RENT2 is the same household with them stated. Coverage pass 4 CA4-1: Adult Financial reads the
+  # expenses from rental_property_expenses_paid (af_rental_expenses_deducted, CO-6801); CO-4444 is no longer read or stated.
   as_of: "2026-10-01"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -31695,6 +31768,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -31720,7 +31794,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
-        unearned_income_offsetting_expenses: 500
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -31748,6 +31822,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -31790,6 +31865,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -31938,7 +32014,8 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 3200
+      af_client_and_spouse_countable_resources:
+        2026-10: 3200
       af_category:
         2026-10: none
 
@@ -32103,6 +32180,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: lawful_permanent_resident
@@ -32132,6 +32210,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32165,6 +32244,7 @@
         holdings:
         - {kind: bank_account, value: 100}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 4000
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32221,6 +32301,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: lawful_permanent_resident
@@ -32250,6 +32331,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32283,6 +32365,7 @@
         holdings:
         - {kind: bank_account, value: 100}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 4000
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32310,6 +32393,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -32335,6 +32419,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32386,6 +32471,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32412,6 +32498,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -32437,6 +32524,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32471,6 +32559,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32491,7 +32580,9 @@
   # Security, $2,000 of workers' compensation in October (other_unearned_income_taxable) and $1,500 of claim expenses
   # (unearned_income_offsetting_expenses). Rule: his unearned income is 500, nothing is deemed; countable income 590, oap,
   # $442. Before the fix: 968 deemed, 1,558, none. Fixed (CO-4720 subtracts CO-4444; rule test CO-4720-T4); no household
-  # case was stored.
+  # case was stored. Coverage pass 4 CA4-1: the award and its claim expenses are one receipt, kind workers_compensation
+  # with claim_expense 1,500 (receipts, CO-5000), which af_counted_unearned_receipts (CO-5017) leaves out; CO-4444 is no
+  # longer read. The answer is unchanged.
   as_of: "2026-10-01"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -32501,6 +32592,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -32526,6 +32618,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32554,15 +32647,15 @@
         is_pregnant: false
         dwelling_id: d1
         receipts:
-        - {kind: other_taxable, amount: 2000}
+        - {kind: workers_compensation, amount: 2000, claim_expense: 1500}
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
-        unearned_income_offsetting_expenses: 1500
   expect:
     p1:
       af_deemed_relative_income:
@@ -32587,6 +32680,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -32612,6 +32706,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32645,6 +32740,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -32660,7 +32756,9 @@
 - id: CO-313
   title: 'Probe QZ-2K (Adult Financial coverage 3, control for H-2): the client''s own workers'' compensation and expenses'
   # Control probe QZ-2K of docs/reviews/coverage3-adult-financial.md (H-2). The workers' compensation and its claim expenses
-  # are the client's own (3.520.785.B.9, F-11 fixed): countable income 490, oap, $542 (review table).
+  # are the client's own (3.520.785.B.9, F-11 fixed): countable income 490, oap, $542 (review table). Coverage pass 4
+  # CA4-1: stated as one workers_compensation receipt with its claim_expense 1,500 (receipts, CO-5000), which
+  # af_counted_unearned_receipts (CO-5017) leaves out; CO-4444 is no longer read. The answer is unchanged.
   as_of: "2026-10-01"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -32670,6 +32768,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -32690,15 +32789,15 @@
         is_pregnant: false
         dwelling_id: d1
         receipts:
-        - {kind: other_taxable, amount: 2000}
+        - {kind: workers_compensation, amount: 2000, claim_expense: 1500}
         earnings: []
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
-        unearned_income_offsetting_expenses: 1500
     p2:
       relationships: []
       facts:
@@ -32729,6 +32828,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -40326,6 +40426,8 @@
         earnings:
         - {kind: wages, amount: 600}
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 600
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -50982,6 +51084,8 @@
         receipts: []
         earnings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -51118,6 +51222,8 @@
         receipts: []
         earnings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -51396,6 +51502,8 @@
         receipts: []
         earnings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -51668,6 +51776,8 @@
         receipts: []
         earnings: []
       month_defaults:
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
@@ -51694,6 +51804,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -51719,6 +51830,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -51748,6 +51860,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -51933,6 +52046,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -51960,6 +52074,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -51989,6 +52104,7 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -52013,6 +52129,7 @@
   persons:
     p1:
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
@@ -52042,6 +52159,7 @@
         - {kind: bank_account, value: 1000}
         - {kind: life_insurance, value: 5000, face_value: 10000, purchase_date: "2010-03-01", premiums_in_lookback: 0}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -52071,12 +52189,14 @@
         holdings:
         - {kind: bank_account, value: 1000}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 2000
+      af_client_and_spouse_countable_resources:
+        2026-10: 2000
       af_category:
         2026-10: oap
 
@@ -55377,6 +55497,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 1200
@@ -56076,6 +56197,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -56133,6 +56255,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: psychiatric_hospital
         date_of_birth: "1956-05-01"
         immigration_status: us_citizen
@@ -56161,6 +56284,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -58830,6 +58954,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -58857,6 +58982,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         shelter_costs_paid_by_others: 0
     p2:
       relationships: []
@@ -58889,6 +59015,7 @@
         holdings:
         - {kind: bank_account, value: 500}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
@@ -61170,7 +61297,8 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 2800
+      af_client_and_spouse_countable_resources:
+        2026-10: 2800
       af_category:
         2026-10: none
 
@@ -61217,7 +61345,8 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 4000
+      af_client_and_spouse_countable_resources:
+        2026-10: 4000
       af_category:
         2026-10: none
 
@@ -61235,6 +61364,7 @@
     p1:
       relationships: []
       facts:
+        days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         date_of_birth: "1956-04-10"
         immigration_status: us_citizen
@@ -61260,12 +61390,14 @@
         - {kind: vehicle, value: 9000, amount_owed: 8000, used_for_transportation: true}
         - {kind: vehicle, value: 6000, amount_owed: 0, used_for_transportation: true}
       month_defaults:
+        donated_work_hours_per_week: 0
         wages_gross: 0
         self_employment_gross_receipts: 0
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_client_and_spouse_countable_resources: 2000
+      af_client_and_spouse_countable_resources:
+        2026-10: 2000
       af_category:
         2026-10: oap
 
