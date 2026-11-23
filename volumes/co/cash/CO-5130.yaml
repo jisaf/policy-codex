@@ -1,0 +1,23 @@
+id: CO-5130
+name: "Adult Financial: pay received in the month"
+identifier: af_earned_pay
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The pay this person received in the month for services performed as an employee, as 9 CCR 2503-5 3.520.782 counts it: the earnings records (earnings, CO-5100) received in the month whose kind Adult Financial's earnings table (af_earnings_treatment_table, CO-5103) counts as pay, gross monetary wages (3.520.782.A) at their amount and in-kind pay at the value of the item supplied (3.520.782.B), and special pay stated as combat-zone pay (combat_zone, OQ-1140). A business's receipts, boarder payments and costs are counted elsewhere (af_self_employment_net_profit, CO-1708; af_boarder_income, CO-5131); exempt pay (work-study, 37 U.S.C. 310 special pay) is not counted (3.520.786)."
+precision: "Earned-income records, step E1 Adult Financial (docs/reviews/records-earnings-cash.md). The same for the client, the client's spouse and the sponsor(s) (3.520.782.B.2 names all three). A record that recurs (no month and no date) is received in every month; a pay received once is placed by its month or date. The exemptions that turn on a field of the pay (a PASS set-aside, 3.520.786.I; infrequent or irregular pay, O) are taken off by af_excluded_earned_income (CO-2342). An unstated earnings list is cannot determine (product-owner decision 4 of 2026-11-23); a stated empty list is no pay."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [any, [in, [lookup, af_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_at_value]], [all, ["=", [lookup, af_earnings_treatment_table, [receipt, kind]], excluded_except_combat_zone], [receipt, combat_zone]]]], [receipt, amount]]
+sources: [S3211, S2206, S2608, S2803]
+implemented: engine
+tags: [cash, oap, and, income]
+rationale: "Earned-income records, step E1 Adult Financial: the pay part of af_gross_earned_income (CO-3830), which read wages_gross and in_kind_compensation_value and subtracted the parts of wages_gross the rule exempts; the counting table now decides each kind, so no part is stated twice and none is counted by silence."
+nearest: [CO-5017]
+tests:
+  # Hand computations from 3.520.782.A-B (S3211) and 3.520.786.H (S2206), K with 20 CFR 416.1124(c)(19) (S2803).
+  - {id: CO-5130-T1, month: "2026-10", as_of: "2026-10-01", title: "$465 of wages, $100 of work-study and $200 of free rent for building maintenance: 465 + 200 = 665 (work-study is exempt, H)", given: {earnings: [{kind: wages, amount: 465}, {kind: work_study, amount: 100}, {kind: in_kind_pay, amount: 200}]}, expect: 665}
+  - {id: CO-5130-T2, month: "2026-10", as_of: "2026-10-01", title: "$150 of hostile fire pay (37 U.S.C. 310) is exempt; $300 stated as combat-zone pay is counted as wages (OQ-1140): 300", given: {earnings: [{kind: uniformed_services_special_pay, amount: 150}, {kind: uniformed_services_special_pay, amount: 300, combat_zone: true}]}, expect: 300}
+  - {id: CO-5130-T3, month: "2026-10", as_of: "2026-10-01", title: "A business's receipts and its costs are not pay; a $300 bonus paid in September is not October's: 0", given: {earnings: [{kind: self_employment_receipts, amount: 1500}, {kind: business_cost_operating, amount: 400}, {kind: wages, amount: 300, frequency: once, month: "2026-09"}]}, expect: 0}
+  - {id: CO-5130-T4, month: "2026-10", as_of: "2026-10-01", title: "Earnings not stated: cannot determine (decision 4)", given: {}, expect: unknown}
+  - {id: CO-5130-T5, month: "2026-10", as_of: "2026-10-01", title: "Earnings stated empty: no pay", given: {earnings: []}, expect: 0}
+  - {id: CO-5130-T6, month: "2026-10", as_of: "2026-10-01", title: "Wages from a WIOA on-the-job training job and Census wages, counted because no Adult Financial rule exempts them (3.520.782.A): 400 + 250 = 650", given: {earnings: [{kind: wioa_on_the_job_training, amount: 400}, {kind: decennial_census_employment, amount: 250}]}, expect: 650}

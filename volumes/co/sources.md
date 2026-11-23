@@ -22997,3 +22997,57 @@ Document: D-47
 > (B)
 >
 > the amount of monthly income otherwise available to the community spouse (determined without regard to such an allowance).
+
+### S4380. Adult Financial self-employment: board, room, and room and board payments are earned income less the expenses of providing them
+
+Document: D-80
+
+9 CCR 2503-5 3.520.783.C.2.b-d (rule version 12428, effective 03/02/2026; re-fetched from the Secretary of State 2026-11-23 and identical). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> b. Board (to provide a person with regular meals only) payments to
+> the client, client’s spouse, or sponsor(s) shall be considered earned
+> income in the month received. For each boarder, calculate
+> documentable expenses directly related to provision of board.
+> Subtract the result from the board payment to determine the
+> countable earned income.
+>
+> c. Room (to provide a person with lodging only) payments to the
+> client, client’s spouse, or sponsor(s) shall be considered earned
+> income in the month received. For each boarder calculate the
+> documentable expenses directly related to the provision of the
+> room. Subtract the result from the room payment to determine the
+> countable earned income.
+>
+> d. Room and board (to provide a person regular meals and lodging)
+> payments shall be considered earned income in the month
+> received. For each boarder, calculate the documentable expenses
+> directly related to the provision of room and board. Subtract the
+> result from the room and board payment to determine the countable
+> earned income.
+
+### S4381. Colorado Works earned income: pay diverted to a third party for the employee's household, and garnished wages, are still earned income
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.B (rule version 12030, effective 07/01/2025; re-fetched from the Secretary of State 2026-11-23 and identical). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> B. Consideration of Earned Income
+>
+> “Earned Income” is still considered when:
+>
+> 1. Money payments obligated to the employee are diverted to a third-party for the
+> employee’s household or other expenses;
+>
+> 2. Wages are being garnished by a court order.
+
+### S4382. Adult Financial income: total countable income that equals or exceeds the program's grant standard makes the client ineligible for that program
+
+Document: D-80
+
+9 CCR 2503-5 3.520.781.A (rule version 12428, effective 03/02/2026; re-fetched from the Secretary of State 2026-11-23 and identical). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.781 INCOME
+>
+> A. If a client's total countable income equals or exceeds the Adult Financial program
+> grant standard, the client shall not be eligible for that specific Adult Financial
+> program.

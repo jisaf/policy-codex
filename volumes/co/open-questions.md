@@ -3051,3 +3051,13 @@ Assumption: The 2025 and 2026 regional income-trust ceilings are the figures the
 Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23)
 
 Checked 2026-11-23: D-65 (§ 8.100.7.G.6.a.i.a)), D-72. Items: CO-3022, CO-1985, CO-642, CO-651, CO-3310.
+
+### OQ-1140. Adult Financial: combat-zone pay that is not 37 U.S.C. 310 special pay
+
+Body: Earned-income records, step E1 Adult Financial, narrowing OQ-1024 for Adult Financial. 9 CCR 2503-5 3.520.786.K (S2608) exempts the unearned income 20 CFR 416.1124 excludes, and 416.1124(c)(19) (S2803) is "Special pay received from one of the uniformed services pursuant to 37 U.S.C. 310". 37 U.S.C. 310 (fetched from law.cornell.edu on 2026-11-23) is special pay for duty subject to hostile fire or imminent danger, at most $225 a month; it does not reach every other pay a member receives because of a deployment to a combat zone. 3.520.782.A counts "gross monetary wages received for services performed as an employee", and no paragraph of 3.520.786 names other combat-zone pay. The earnings kind uniformed_services_special_pay (CO-5100) holds both: 37 U.S.C. 310 pay, and pay received because the member is deployed to a designated combat zone (the field combat_zone, which restates combat_zone_pay_received, CO-4310). The text settles the first: Adult Financial excludes a record of the kind not stated as combat-zone pay (af_earnings_treatment_table, CO-5103: excluded_except_combat_zone). For a record stated as combat-zone pay it cannot tell how much is 310 pay. Worked example: a member with $2,000 of basic pay and $500 of pay received for a combat-zone deployment, $225 of it hostile fire pay: counting the $500 gives gross earned income $2,500, excluding the 310 part gives $2,275, excluding the whole record gives $2,000. A field or kind that separates 310 pay inside combat-zone pay is a request to the integration owner (docs/reviews/records-earnings-cash.md).
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Special pay stated as received because of a combat-zone deployment is counted as wages, as before earnings records; special pay not so stated is hostile fire or imminent danger pay and is exempt.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.782.A, 3.520.786 (D-80); 20 CFR 416.1124(c)(19) (D-207); 37 U.S.C. 310 (law.cornell.edu, not on file). No stored household or rule test outside CO-5130 states either. Items: CO-5103, CO-5130, CO-2342, CO-4012.
