@@ -8728,9 +8728,13 @@
   # p1 Maria, 30, and p2 Tom, 32, citizens, file jointly and claim p3 and p4. Tom earned $5,700 in October 2026
   # and $7,500 a month from January 2027. Maria applied 2026-10-05 while pregnant and was enrolled in CHP+
   # prenatal from October; she gave birth to p3 on 2026-12-03. p4 Sam, 10, was enrolled in CHP+ from October.
-  # October 2026: Sam's household (p1, p2, p4; Maria's unborn child counts only in her own household) is 3:
-  # 5,700 / (27,320 / 12 = 2,276.67) = 250.4% FPL - above the 142% Medicaid children's standard and within the
-  # CHP+ 260% ceiling: eligible_child, opening a 12-month period through September 2027 (§ 430.2).
+  # October 2026: Sam's household is p1, p2 and p4, with Maria, pregnant in October, counted as herself plus the
+  # one child she was expected to deliver (8.100.4.E.2, "regardless of the Medical Assistance category"; p3, not yet
+  # born, is not counted himself), so 4: 5,700 / (33,000 / 12 = 2,750) = 207.3% FPL - above the 142% Medicaid
+  # children's standard and within the CHP+ 260% ceiling: eligible_child, opening a 12-month period through
+  # September 2027 (§ 430.2). Coverage pass 5, C5-02 (2026-11-23): the size is the month's pregnancy, so Maria's
+  # pregnancy start (2026-03-01) and her expected child (1, the pregnancy that ended with p3's birth) are stated;
+  # this comment said 3 (250.4%), but the ledger counted 4 then too (the unborn p3 as a member).
   # February 2027: the household is 4 (p3 born): 7,500 / (33,000 / 12 = 2,750) = 272.7% FPL, over 260% even with
   # the 5% disregard. Without continuity Sam would be ineligible_income; § 430.2.A keeps him eligible_child.
   # Maria: not pregnant now; her CHP+ span began in October, before the birth, and runs to the last day of the
@@ -8768,7 +8772,7 @@
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
-        expected_number_of_children: 0
+        expected_number_of_children: 1  # coverage pass 5, C5-02: the number expected in the pregnancy that ended with p3's birth (CO-083)
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -8789,6 +8793,7 @@
         ma_application_date: "2026-10-05"
         chp_eligibility_period_start_month: "2026-10"
         pregnancy_end_date: "2026-12-03"
+        pregnancy_start_date: "2026-03-01"  # coverage pass 5, C5-02/C5-03: she applied pregnant on 2026-10-05; the months to the birth read the dates
         receipts: []
         earnings: []
       month_defaults:
@@ -12667,7 +12672,7 @@
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
-        expected_number_of_children: 0
+        expected_number_of_children: 1  # coverage pass 5, C5-02: the number expected in the pregnancy that ended with p3's birth (CO-083); June and July count her as herself plus p3 to come, size 2 as the comment above reads it
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -25245,7 +25250,7 @@
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
-        expected_number_of_children: 0
+        expected_number_of_children: 1  # coverage pass 5, C5-02: the number expected in the pregnancy that ended 2026-08-10 (CO-083 is stated for an ended pregnancy)
         qualifying_quarters: 0
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false

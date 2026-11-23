@@ -5,8 +5,8 @@ kind: supplied
 type: whole number
 scope: person
 program: All
-meaning: For a pregnant person, the number of children the person is expected to deliver, used to count the pregnant person's family size as herself plus that number.
-precision: "As declared at application or renewal; zero for a person who is not pregnant. Vocabulary fix round (C-4): a pregnant person with this fact unstated is unknown, not one expected child; state it for every pregnant person."
+meaning: "For a pregnant person, the number of children the person is expected to deliver in the current pregnancy; for a person whose most recent pregnancy has ended (pregnancy_end_date), the number she was expected to deliver in that pregnancy. Used to count the pregnant person's family size as herself plus that number in the months she is pregnant."
+precision: "As declared at application or renewal; zero for a person who has not been pregnant in the months the case covers. Vocabulary fix round (C-4): a pregnant person with this fact unstated is unknown, not one expected child; state it for every pregnant person. Coverage pass 5, C5-02 (2026-11-23): Medicaid counts the expected children in each month the person was pregnant (ma_expected_children_in_month, CO-7050), a retroactive month of a pregnancy that has since ended included, so the number stays stated for an ended pregnancy (a child born and a person of the case is then counted as itself from the month of birth); it is not reset to zero when the pregnancy ends. Medicaid is the only reader."
 supplied_by: Applicant statement (CBMS/PEAK), consistent with the person's is_pregnant status.
 sources: []
 tags: [ma, magi, household]
