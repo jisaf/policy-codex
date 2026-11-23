@@ -5,6 +5,7 @@ import { compact } from "./render";
 import { tagIds } from "./tags";
 import { approvalsFor } from "./constraints";
 import { staleApprovalMessage, type FingerprintBasis } from "./fingerprint";
+import { linkFindings } from "./links";
 import type { EngineRefs, Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
@@ -355,36 +356,29 @@ export function governance(
     }
   }
 
-  // 8a. A rule reads another program's facts only when it says so. A derived
-  //     item of one program that reads a supplied fact or derived item owned
-  //     by a different program (not a shared, program-All item) is a
-  //     cross-program read: legitimate when the rule names the other
-  //     program's result (CHP+ reading the MAGI household, CCCAP reading
-  //     Colorado Works eligibility), a definitional borrow otherwise. The item
-  //     acknowledges the legitimate ones by listing them in `accepts_from`.
-  //     A warning, not an error: the reader decides which kind it is.
-  if (it.kind === "derived" && it.derived !== undefined && it.derived !== null && meta.programs) {
-    const accepted = new Set(it.accepts_from ?? []);
-    let refs: string[] = [];
-    try { refs = usesOf(ix, it.derived); } catch { refs = []; }
-    for (const r of [...new Set(refs)].sort()) {
-      const dep = ix.byIdentifier.get(r);
-      if (!dep || dep.id === it.id) continue;
-      if (dep.kind !== "supplied" && dep.kind !== "derived") continue;
-      if (dep.program === "All" || dep.program === it.program) continue;
-      if (accepted.has(r)) continue;
-      warn(
-        "read.cross_program",
-        `${it.program} rule reads ${dep.program}'s ${r} (${dep.id}); ` +
-          "list it in accepts_from if the rule names that program's result, " +
-          "otherwise give this program its own fact",
-      );
+  // 8a. Cross-program links (src/engine/links.ts; docs/conventions.md
+  //     "Cross-program links"): a shared rule declares its class, and a rule
+  //     reads another program's item only through a declared, cited link.
+  F.push(...linkFindings(ix, meta, it, opts.refs));
+
+  // 8a'. Siblings (docs/governance.md "Change impact"): a deliberate
+  //      per-program copy names its siblings, each with a reason, and each
+  //      sibling names it back, so a change to one flags the others.
+  for (const s of it.siblings ?? []) {
+    const other = ix.byId.get(s.id);
+    if (!other) {
+      err("siblings.symmetric", `siblings names ${s.id}, which is not in the ledger`);
+      continue;
     }
-  }
-  for (const r of it.accepts_from ?? []) {
-    const dep = ix.byIdentifier.get(r);
-    if (!dep) {
-      warn("read.cross_program", `accepts_from names ${r}, which is not in the ledger`);
+    if (other.id === it.id) {
+      err("siblings.symmetric", "an item is not its own sibling");
+      continue;
+    }
+    if (!(s.reason || "").trim()) {
+      err("siblings.symmetric", `siblings ${s.id}: give a one-line reason`);
+    }
+    if (!(other.siblings ?? []).some((o) => o.id === it.id)) {
+      err("siblings.symmetric", `siblings names ${s.id} ${other.identifier}, which does not name ${it.id} back`);
     }
   }
 

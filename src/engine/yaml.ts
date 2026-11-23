@@ -4,14 +4,15 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
   "meaning", "precision", "assumption", "statute_override", "supplied_by", "value", "versions", "review_by", "derived",
-  "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open", "accepts_from",
+  "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open",
+  "link_class", "link_basis", "adopted_by", "accepts_from", "siblings",
   "rationale", "nearest", "tests",
 ];
 
 const FLOW_KEYS = new Set([
-  "options", "derived", "sources", "effective", "tags", "open", "nearest", "accepts_from",
+  "options", "derived", "sources", "effective", "tags", "open", "nearest",
 ]);
-const SEQ_OF_FLOW_KEYS = new Set(["versions", "approval", "tests"]);
+const SEQ_OF_FLOW_KEYS = new Set(["versions", "approval", "adopted_by", "accepts_from", "siblings", "tests"]);
 /** Key order of a test row as the ledger files write it; a parsed example
  *  line arrives in a different order and must serialise identically. */
 const TEST_KEY_ORDER = ["id", "month", "as_of", "parameters", "given"];
@@ -148,6 +149,10 @@ export function stringifyVolume(meta: VolumeMeta): string {
       if (p.outcomes) L.push(`    outcomes: ${flowValue(p.outcomes)}`);
       if (p.names) L.push(`    names: ${flowValue(p.names)}`);
     }
+  }
+  if (meta.link_classes) {
+    L.push("");
+    L.push("link_classes: true");
   }
   if (meta.tags) {
     L.push("");

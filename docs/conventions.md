@@ -28,7 +28,11 @@ Examples      rule-level tests; the given facts and the expected value
 Approval      roles that must sign, drawn from the volume's approval policy
 Status        Draft | Reviewed | Approved
 Open          numbered interpretation questions, cross-referenced to open-questions.md
-Accepts from  other programs' facts a derived item reads on purpose (YAML accepts_from)
+Link class    on a shared (All) derived item: primitive | adopted_method | program_calculation, with a one-line
+              basis and, for an adopted method, the adopting programs (YAML link_class, link_basis, adopted_by)
+Accepts from  other programs' items a derived item reads on purpose, each with its link class and the citation
+              of the rule that requires or adopts it (YAML accepts_from)
+Siblings      deliberate per-program copies of the same logic, each with a one-line reason; symmetric (YAML siblings)
 ```
 
 Fields that do not apply are omitted, not left blank.
@@ -80,7 +84,7 @@ Adopted from the Colorado vocabulary review (docs/reviews/vocabulary-reuse.md, s
 
 1. **A prefix means "defined by this program's rule".** An item whose meaning cites one program's rule carries that program's prefix (`ma_`, `chp_`, `snap_`, `cw_`, `af_`, `cccap_`, `leap_`, `sebt_`), supplied facts included, and its program field is that program.
 2. **No prefix means neutral.** A shared item's meaning names no program and no program's exclusions and is true as written for every reader; its program is `All`. Method prefixes are allowed for items defined by a method several programs adopt by reference: `ssi_` (the SSI financial methodology), `magi_` (MAGI-based income); `federal_` marks a federal figure (`federal_poverty_guideline_annual_table`).
-3. **A program reads another program's prefixed item only when its rule names that program's result** (CHP+ applying the MAGI household and income rules, CCCAP's Colorado Works Child Care reading Colorado Works eligibility, SUN Bucks reading SNAP eligibility, Medicaid reading OAP receipt). The reading item lists each such identifier in `accepts_from`; governance warns on any other cross-program read (`read.cross_program`). A definitional borrow is fixed by giving the program its own fact, or by making the fact neutral.
+3. **A program reads another program's prefixed item only when its rule names that program's result** (CHP+ applying the MAGI household and income rules, CCCAP's Colorado Works Child Care reading Colorado Works eligibility, SUN Bucks reading SNAP eligibility, Medicaid reading OAP receipt). The reading item declares each such read in `accepts_from` with its link class and citation ("Cross-program links", below); governance refuses any other cross-program read (`read.cross_program`). A definitional borrow is fixed by giving the program its own fact, or by making the fact neutral.
 4. **Yes/no:** `<prefix>is_<state>`, `<prefix>has_<thing>`, `<prefix>receives_<payment>` (a payment actually made), `<prefix>meets_<named test>` (a comparison with a limit or requirement), `<prefix>requires_verification_of_<element>`. An eligibility result is `<prefix>is_eligible` or `<prefix><group>_is_eligible`. Never a bare noun or participle.
 5. **Money:** monthly unless the name says otherwise. The noun alone when it is the thing (`grant`, `allotment`, `deduction`, `premium`); no `_amount`. A period suffix only when not monthly: `_annual`, `_for_season`, `_at_<event>`. Plural `costs` and `expenses`.
 6. **Income vocabulary:** supplied income facts state the gross amount received, before any program's exclusions; `_gross` says so where the name could be read otherwise (`wages_gross`). A "countable" or "net" figure is always a program's or a method's own derived item and carries its prefix (`snap_self_employment_income`, `cw_self_employment_net_profit`); `_net` is never shared, except for a figure as the person figures it for federal income tax, which is a neutral fact of the return, not a program's computation (`self_employment_net_earnings_for_tax`; same-word audit SW-37). A program does not count its own grant as income.
@@ -104,9 +108,51 @@ Adopted from the same-word audit (docs/reviews/audit-same-word-different-meaning
 
 Naming of the program items: `<prefix><the program's own term>`, using the rule's term rather than the shared word (`cccap_adult_caretaker_of`, `ma_caretaker_relative_of`, `cw_caretaker_of`, `snap_is_under_parental_control_of_household_member`, `sebt_is_homeless_child`).
 
-**accepts_from.** Rule 3 is unchanged: a program reads another program's prefixed item only when its rule names that program's result, and lists it in `accepts_from`. A neutral fact or a one-meaning shared derived item needs no `accepts_from`. Governance enforces the class with two checks: `read.shared_definition` warns when a program's rule reads an unprefixed derived item whose meaning names other programs but not the reader (each program's names are declared in volume.yaml, `programs[].names`); and `name.prefix` warns on a supplied fact whose program is one program but whose identifier lacks that program's prefix (rule 13: a program's finding carries its prefix; anything else is made neutral).
+**accepts_from.** Rule 3 is unchanged: a program reads another program's prefixed item only when its rule names that program's result, and declares it in `accepts_from` (as a classified, cited link since 2026-11-23; see "Cross-program links"). A neutral fact or a shared primitive needs no `accepts_from`. Governance enforces the class with two checks: `read.shared_definition` warns when a program's rule reads an unprefixed derived item whose meaning names other programs but not the reader (each program's names are declared in volume.yaml, `programs[].names`); and `name.prefix` warns on a supplied fact whose program is one program but whose identifier lacks that program's prefix (rule 13: a program's finding carries its prefix; anything else is made neutral).
 
 **Another program's exemption or status (rule 11 applied).** Where a rule names another program's status that this volume itself determines (community engagement's "not exempt from a work requirement under" SNAP, 42 CFR 435.554(c)(7)), the reader reads this volume's own item through `accepts_from`, and a supplied case fact stands in only as `otherwise` for a household the case does not determine.
+
+## Cross-program links
+
+Product-owner decision of 2026-11-23 (docs/plan-colorado.md): programs are independent except where a rule links them, and every link is one of four classes. A volume opts in with `link_classes: true` in volume.yaml (Colorado does); governance then enforces this section as errors, and `npm run check` blocks on them wherever they are (docs/governance.md, "Cross-program links").
+
+| Class | Meaning | Example |
+|---|---|---|
+| `primitive` | One meaning everywhere: age, a date, a relationship, a fact as stated, a published figure, a definition in law every reader applies as written | `age`, `lives_with`, `is_qualified_non_citizen` (8 U.S.C. 1641) |
+| `adopted_method` | A program adopts a method another program or body defines, by reference | the SSI resource method for SSI-related Medicaid; Revenue's Appendix A citizenship documents for Colorado Works and LEAP; CHP+ applying Medicaid's MAGI household and income (42 CFR 457.310, S248) |
+| `rule_required` | A rule makes one program's outcome an input to another | CHP+ excludes a child eligible for Medicaid (10 CCR 2505-3 § 120.1.B, S653); Adult Financial is barred by Colorado Works (9 CCR 2503-5 3.520.61.F, S1011) |
+| `program_calculation` | Never shared: income, resources, units, homelessness, countable expenses as a program counts them | a shared one is held by the dated allowlist until split |
+
+**A shared (All) derived item declares its class.**
+
+```yaml
+link_class: primitive
+link_basis: "Whole years from date of birth to the determination date; an age primitive (birthday-month rules are each program's own items)."
+```
+
+A primitive's `link_basis` is one line stating that no program defines it differently. An adopted method names each program that adopts it and the excerpt of that program's rule that does so; a program not listed may not read it:
+
+```yaml
+link_class: adopted_method
+link_basis: "The SSI resource methodology (20 CFR 416.1201-416.1266) as SSI-related Medicaid adopts it ..."
+adopted_by:
+  - {program: Medicaid, source: S301}
+  - {program: AdultFinancial, source: S721}
+```
+
+A shared `program_calculation` is a violation: its `link_basis` says whose calculation it is, and the volume's `cross-program-allowlist.yaml` holds it, with its readers, until it is split (docs/reviews/cross-program-audit.md proposes each split). A program's own item carries no link class.
+
+**A program item reading another program's item declares the link** in `accepts_from`, one entry per identifier read, with its class (`adopted_method` or `rule_required`; `primitive` only for another program's supplied fact) and the excerpt of the rule that requires or adopts it:
+
+```yaml
+accepts_from:
+  - {from: ma_has_full_coverage_category, class: rule_required, source: S653}
+  - {from: ma_magi_household_income_pct_fpl, class: adopted_method, source: S248}
+```
+
+An undeclared read, a bare identifier (the pre-2026-11-23 form), an unknown class or a missing citation is an error; an entry the derivation does not read is a warning. Reading another program's parameter needs no declaration. The ledger export carries each declared link with its class (`links` in `conformance/<volume>/ledger.json`).
+
+**Siblings.** Where two programs deliberately keep their own copy of the same logic (the split of a shared calculation, or two rules stating the same test), each copy names the other in `siblings: [{id: CO-n, reason: "<one line>"}]`. The list is symmetric (`siblings.symmetric`), is not part of what an approval covers, and makes a change to one copy flag the other for a disposition (docs/governance.md, "Change impact").
 
 ## Pattern catalog
 
@@ -264,7 +310,7 @@ A policy may set `upstream_of_outcomes: true`: an item that any program's declar
 
 In the item file, `status` is `Draft`, `Reviewed` or `Approved` (absent reads as Draft), and `approval` is the record of signatures, one row per role: `{role, by, date, commit, fingerprint}`, where `fingerprint` is the hash of what the role signed (`npm run fingerprint -- --item CO-n`; the app records it when a role signs). Governance rejects an unknown status, a role the policy does not declare, an `Approved` item missing a required role's signature, and a `Reviewed` or `Approved` item that rests (directly or through what it reads) on an excerpt marked `Verification: unverified`; it warns on every item citing such an excerpt. An indexed parameter may carry `review_by`, the date its next version is due; governance warns once that date has passed.
 
-A signature goes stale when, after it, the item or anything it reads changes in a way that can change what was approved: meaning, derivation, type, options, scope, program, values, parameter versions, sources, effective range, assumption, statute override, supplied_by, accepts_from, identifiers, or the text of a cited excerpt, at any depth upstream. Precision, rationale, name, tags, open questions, tests and comments do not, nor does reflowing whitespace or reordering a list. Governance reports a Reviewed or Approved item with a stale or missing fingerprint as `approval.stale`, and `npm run check` blocks on it until the item is re-signed or returned to Draft (docs/governance.md, "Stale approvals").
+A signature goes stale when, after it, the item or anything it reads changes in a way that can change what was approved: meaning, derivation, type, options, scope, program, values, parameter versions, sources, effective range, assumption, statute override, supplied_by, accepts_from, the link class and its basis and adopters, identifiers, or the text of a cited excerpt, at any depth upstream. Precision, rationale, name, tags, open questions, tests, siblings and comments do not, nor does reflowing whitespace or reordering a list. Governance reports a Reviewed or Approved item with a stale or missing fingerprint as `approval.stale`, and `npm run check` blocks on it until the item is re-signed or returned to Draft (docs/governance.md, "Stale approvals").
 
 ## Effective dating and change sets
 
@@ -279,6 +325,8 @@ Date logic belongs in these ranges, not inside a derivation: a rule that changes
 
 A figure the State sets but has not published where it can be fetched (the LEAP program-year benefit levels, the CCCAP county entry limits) is still a parameter, never a supplied fact entered on each person: it carries an empty list of versions (`versions: []`) and names, in `open`, the question that records where the figure will come from. It is unknown on every date, with a `no-version` warning, until a dated version is loaded; a rule test or household case that needs a value states one under `parameters:`. A change set names the items changed, the reason, the source of the change, and the approvals collected. The diff between versions is the diff of the item text; the engineer's work is the diff of the generated engineer view.
 
+A pull request that changes what an existing item decides adds a change record, `volumes/<volume>/changes/<YYYY-MM-DD>-<slug>.yaml` (`date`, `summary`, and an `impact` list), giving a disposition for each unchanged item `npm run check` flags as probably needing the same change: `{changed: CO-n, fingerprint: fp1-..., flagged: CO-m, applies: "<how it is fixed in this pull request>"}` or `{..., not_applicable: "<reason>"}`. docs/governance.md, "Change impact", has the signals and how a disposition is keyed.
+
 ## Engineer handoff
 
 For a volume, the handoff is:
@@ -286,7 +334,7 @@ For a volume, the handoff is:
 1. The items, which the engineer reads for meaning and provenance.
 2. `handoff/<volume>.md` (`npm run handoff`, every volume by default), the engineer sheet: every item with its identifier, type, scope, target layer, dependencies, and the derivation in pattern English and as the expression tree.
 3. `docs/operators.md`, the meaning of every operator in those trees.
-4. `conformance/<volume>/ledger.json` (`npm run export`), the same items as JSON: trees, types, scopes, options, parameter versions, uses.
+4. `conformance/<volume>/ledger.json` (`npm run export`), the same items as JSON: trees, types, scopes, options, parameter versions, uses, and each declared cross-program link with its class (`links`; a shared item's `link_class`).
 5. `conformance/<volume>/suite.json` (`npm run conformance`), the conformance suite built from the rule tests and `tests/cases.yaml`; see `docs/conformance.md`.
 6. `open-questions.md`, interpretation questions still open. An engineer never resolves one of these; they implement the stated assumption and flag the item.
 
