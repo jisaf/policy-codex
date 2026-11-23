@@ -23441,3 +23441,23 @@ Document: D-65
 > b. Convincing and objective evidence is presented proving that the resources were transferred exclusively for a purpose other than to qualify or remain eligible for Medical Assistance.
 >
 > c. All of the resources transferred without fair consideration have been returned to the individual.
+
+### S4673. Medical Assistance, ABD and long-term care: income calculated on a monthly basis whatever the period it is received for (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.E.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Income, which includes earned and unearned income, shall be calculated on a monthly basis regardless of whether it is received annually, semi-annually, quarterly or weekly.
+
+### S4674. Medical Assistance, ABD and long-term care: student grants and loans and vocational education aid exempt as income or resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6.aa, bb, cc (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> aa. Any grant or loan to an undergraduate student for educational purposes made or insured under any programs administered by the Commissioner of Education (Basic Education Opportunity Grants, Supplementary Education Opportunity Grants, National Direct Student Loans and Guaranteed Student Loans), Pell Grant Program, the PLUS Program, the BYRD Honor Scholarship programs, and the College Work Study Program.
+>
+> bb. Any portion of educational loans and grants obtained and used under conditions that preclude their use for current living cost (need-based).
+>
+> cc. Financial assistance received under the Carl D. Perkins Vocational and Applied Technology Education Act that is made available for attendance cost shall not be considered as income or resources. Attendance cost includes tuition, fees, rental or purchase of equipment, materials or supplies required of all students in the same course of study, books, supplies, transportation, dependent care, and miscellaneous personal expenses of students attending the institution on at least a half-time basis, as determined by the institution.
