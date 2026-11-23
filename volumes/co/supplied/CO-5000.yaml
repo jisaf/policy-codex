@@ -124,6 +124,10 @@ record_fields:
     type: money
     default: 0
     meaning: "The part of a payment received once that is designated or legally obligated for legal fees related to obtaining it, medical bills, funeral and burial expenses, or income taxes, beyond what spent_on_covered_costs states."
+  designated_for_legal_fees:
+    type: money
+    required: true
+    meaning: "Of designated_for_lump_sum_costs, the part that is legal fees connected with the claim that obtained the payment (an attorney's fee for a retroactive benefit award, for example), not stated again in claim_expense. A rule that subtracts the legal fees of a claim and not the payment's other designated costs reads it (20 CFR 416.1123(b)(3), S4756: 'If you receive a retroactive check from a benefit program other than SSI, legal fees connected with the claim are subtracted'; field-effect sweep, FS-MA-8); required where read (decision 4 of 2026-11-23)."
   used_for_uncovered_medical_care:
     type: money
     default: 0

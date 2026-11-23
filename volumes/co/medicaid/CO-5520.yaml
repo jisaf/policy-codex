@@ -6,9 +6,9 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person received unearned income in the month other than interest and dividends: the gross unearned receipts of the SSI method (ma_ssi_gross_unearned_receipts) less the person's interest, dividends and tax-exempt interest, more than 0. A Medicare Savings Program applicant's interest and dividends are taken on attestation (42 CFR 435.952(e)(1)(i)), so only the rest is an unearned-income element to verify (10 CCR 2505-10 § 8.100.5.B.1.d)."
-precision: Gambling winnings were not part of the old sum and are not here. A loan, an income tax refund and VA Aid and Attendance are not income (CO-5514).
-derived: [">", ["-", ma_ssi_gross_unearned_receipts, [sum_receipts, receipts, [all, [received_in, [month]], [in, [receipt, kind], [interest_and_dividends, tax_exempt_interest]]], [receipt, amount]]], 0]
-sources: [S1089, S3000, S2209]
+precision: "Gambling winnings were not part of the old sum and are not here. A loan, an income tax refund and VA Aid and Attendance are not income (CO-5514). Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-1: a receipt stated as a stream (no month and no date) is received only in the months from the month of its start_date through the month of its end_date (each absent: before, or through, the months the case covers; CO-5000), since unearned income \"is countable as income in the month received\" (10 CCR 2505-10 8.100.5.F.5, S3001) and is counted \"when you receive it\" (20 CFR 416.1123(a), S4940); in its first and last months it is read at its amount, and a payment stated with its month or date is placed by it, a final payment after the stream ended included. Before, a stream was counted in every month whatever its dates. The clause is SNAP's (snap_counted_recurring_receipts, CO-5011)."
+derived: [">", ["-", ma_ssi_gross_unearned_receipts, [sum_receipts, receipts, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, start_date]], ["<=", [month_of, [receipt, start_date]], [month]]], [any, [unknown, [receipt, end_date]], [">=", [month_of, [receipt, end_date]], [month]]]]], [in, [receipt, kind], [interest_and_dividends, tax_exempt_interest]]], [receipt, amount]]], 0]
+sources: [S1089, S3000, S2209, S4940]
 implemented: engine
 tags: [ma, non_magi, verification, income]
 rationale: "Receipt records, migration phase 2: Medicaid's own item for the Medicare Savings Program verification trigger (CO-1404), read from the receipts, replacing the shared has_unearned_income_other_than_interest_and_dividends (CO-3159), a program calculation the cross-program allowlist held for CO-1404 alone (docs/reviews/cross-program-audit.md proposed the split)."
@@ -18,3 +18,5 @@ tests:
   - {id: CO-5520-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 1200}, {kind: interest_and_dividends, amount: 40}]}, title: "Social Security and interest", expect: true}
   - {id: CO-5520-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: rental_income, amount: 300}]}, title: "Rent of $300", expect: true}
   - {id: CO-5520-T4, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}
+  # Field-effect sweep, non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md); hand-computed from the text quoted in each title.
+  - {id: CO-5520-T5, month: "2026-11", as_of: "2026-11-12", title: "FS-MA-1: interest of 10 and a pension that ended 2026-10-31: no unearned income other than interest in November", given: {receipts: [{kind: interest_and_dividends, amount: 10}, {kind: pension, amount: 500, end_date: "2026-10-31"}]}, expect: false}

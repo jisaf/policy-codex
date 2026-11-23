@@ -24647,3 +24647,87 @@ Document: D-82
 > declaration of resources that declares more than the resource limit is an
 > acceptable form of verification.
 
+### S4940. SSI: wages and unearned income counted at the earliest of when received, credited or set aside, and determined for each month
+
+Document: D-53
+
+20 CFR 416.1111(a), 416.1123(a) (eCFR; field-effect sweep fix round, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> ## § 416.1111 How we count earned income.
+>
+> (a) *Wages.* We count wages at the earliest of the following points: when you receive them or when they are credited to your account or set aside for your use. We determine wages for each month. We count wages for services performed as a member of a uniformed service (as defined in § 404.1330 of this chapter) as received in the month in which they are earned.
+>
+> ## § 416.1123 How we count unearned income.
+>
+> (a) *When we count unearned income.* We count unearned income at the earliest of the following points: when you receive it or when it is credited to your account or set aside for your use. We determine your unearned income for each month. We describe exceptions to the rule on how we count unearned income in paragraphs (d), (e) and (f) of this section.
+
+### S4941. Medical Assistance, SSI method: a joint account presumed the applicant's, and the evidence that rebuts the presumption (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.3.d (rule version effective 11/14/2026; field-effect sweep fix round, non-MAGI Medicaid). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> d. All funds in a joint account are presumed to be a resource of the applicant or client. If there is more than one applicant or client account holder, it is presumed that the funds in the account belong to those individuals in equal shares. To rebut this presumption, evidence must be furnished that proves that some or all of the funds in a jointly held account do not belong to him or her. To rebut the sole ownership presumption, the following procedure must be followed:
+>
+> i) Submit statements from all of the account holders regarding who owns the funds, why there is a joint account, who has made deposits and withdrawals, and how withdrawals have been spent.
+>
+> ii) Submit account records showing deposits, withdrawals and interest in the months for which ownership of funds is at issue.
+>
+> iii) Correct the account title and submit revised account records showing that the applicant or client is no longer an account holder or separate the funds to show they are solely owned by the individual within 45 days.
+
+### S4942. SSI: deemors' joint accounts, the right to rebut an ownership presumption, and the rebuttal procedure
+
+Document: D-4400
+
+20 CFR 416.1208(c)(2)-(4) (eCFR versioner API, as in force on 2026-11-19; retrieved 2026-11-23; field-effect sweep fix round, non-MAGI Medicaid). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1208
+
+> (2) Account holders include one or more deemors. If none of the account holders is a claimant or recipient, we presume that all of the funds in a jointly-held account belong to the deemor(s), in equal shares if there is more than one deemor. A deemor is a person whose income and resources are required to be considered when determining eligibility and computing the SSI benefit for an eligible individual (see §§ 416.1160 and 416.1202).
+>
+> (3) Right to rebut presumption of ownership. If the claimant, recipient, or deemor objects or disagrees with an ownership presumption as described in paragraph (c)(1) or (c)(2) of this section, we give the individual the opportunity to rebut the presumption. Rebuttal is a procedure as described in paragraph (c)(4) of this section, which permits an individual to furnish evidence and establish that some or all of the funds in a jointly-held account do not belong to him or her. Successful rebuttal establishes that the individual does not own some or all of the funds. The effect of successful rebuttal may be retroactive as well as prospective.
+>
+> Example:
+>
+> The recipient's first month of eligibility is January 1993. In May 1993 the recipient successfully establishes that none of the funds in a 5-year-old jointly-held account belong to her. We do not count any of the funds as resources for the months of January 1993 and continuing.
+>
+> (4) Procedure for rebuttal. To rebut an ownership presumption as described in paragraph (c)(1) or (c)(2) of this section, the individual must:
+>
+> (i) Submit his/her statement, along with corroborating statements from other account holders, regarding who owns the funds in the joint account, why there is a joint account, who has made deposits to and withdrawals from the account, and how withdrawals have been spent;
+>
+> (ii) Submit account records showing deposits, withdrawals, and interest (if any) in the months for which ownership of funds is at issue; and
+>
+> (iii) Correct the account title to show that the individual is no longer a co-owner if the individual owns none of the funds; or, if the individual owns only a portion of the funds, separate the funds owned by the other account holder(s) from his/her own funds and correct the account title on the individual's own funds to show they are solely-owned by the individual.
+
+### S4943. SSI: burial spaces for the individual, the spouse and the immediate family are excluded; immediate family defined
+
+Document: D-54
+
+20 CFR 416.1231(a)(1), (a)(4) (eCFR; field-effect sweep fix round, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> ## § 416.1231 Burial spaces and certain funds set aside for burial expenses.
+>
+> (a) *Burial spaces*—(1) *General.* In determining the resources of an individual, the value of burial spaces for the individual, the individual's spouse or any member of the individual's immediate family will be excluded from resources.
+>
+> (4) *Immediate family defined.* For purposes of this section *immediate family* means an individual's minor and adult children, including adopted children and step-children; an individual's brothers, sisters, parents, adoptive parents, and the spouses of those individuals. Neither dependency nor living-in-the-same-household will be a factor in determining whether a person is an immediate family member.
+
+### S4944. SSI: replacement cash for a lost, damaged or stolen excluded resource: good-cause and disaster extensions, a change of intent
+
+Document: D-54
+
+20 CFR 416.1232(b)-(d) (eCFR; field-effect sweep fix round, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> (b) The initial 9-month time period will be extended for a reasonable period up to an additional 9 months where we find the individual had good cause for not replacing or repairing the resource. An individual will be found to have good cause when circumstances beyond his or her control prevented the repair or replacement or the contracting for the repair or replacement of the resource. The 9-month extension can only be granted if the individual intends to use the cash or in-kind replacement items to repair or replace the lost, stolen, or damaged excluded resource in addition to having good cause for not having done so. If good cause is found for an individual, any unused cash (and interest) is counted as a resource beginning with the month after the good cause extension period expires. *Exception: For victims of Hurricane Andrew only,* the extension period for good cause may be extended for up to an additional 12 months beyond the 9-month extension when we find that the individual had good cause for not replacing or repairing an excluded resource within the 9-month extension.
+>
+> (c) The time period described in paragraph (b) of this section (except the time period for individuals granted an additional extension under the Hurricane Andrew provision) may be extended for a reasonable period up to an additional 12 months in the case of a catastrophe which is declared to be a major disaster by the President of the United States if the excluded resource is geographically located within the disaster area as defined by the Presidential order; the individual intends to repair or replace the excluded resource; and, the individual demonstrates good cause why he or she has not been able to repair or replace the excluded resource within the 18-month period.
+>
+> (d) Where an extension of the time period is made for good cause and the individual changes his or her intent to repair or replace the excluded resource, funds previously held for replacement or repair will be counted as a resource effective with the month that the individual reports this change of intent.
+
+### S4945. Medical Assistance: the net proceeds from selling a resource are available resources (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.P.1-2 (rule version effective 11/14/2026; field-effect sweep fix round, non-MAGI Medicaid). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. The net proceeds from the sale of exempt or non-exempt resources are considered available resources.
+>
+> 2. The net proceeds are the selling price less any valid encumbrances and costs of sale.
+

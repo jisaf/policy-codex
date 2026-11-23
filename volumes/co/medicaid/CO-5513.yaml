@@ -6,11 +6,14 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The child support the person received in the month, arrears included (receipts the SSI method's counting table, CO-5510, gives child_support): support for a child, counted as the child's income less one-third (10 CCR 2505-10 8.100.5.H.4.c), and in full in the gross income of long-term care (8.100.7.A.1) and of an ineligible child (H.3.a.i)."
-derived: [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [child_support]]], [receipt, amount]]
-sources: [S1506, S3001]
+precision: "Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-1: a receipt stated as a stream (no month and no date) is received only in the months from the month of its start_date through the month of its end_date (each absent: before, or through, the months the case covers; CO-5000), since unearned income \"is countable as income in the month received\" (10 CCR 2505-10 8.100.5.F.5, S3001) and is counted \"when you receive it\" (20 CFR 416.1123(a), S4940); in its first and last months it is read at its amount, and a payment stated with its month or date is placed by it, a final payment after the stream ended included. Before, a stream was counted in every month whatever its dates. The clause is SNAP's (snap_counted_recurring_receipts, CO-5011)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, start_date]], ["<=", [month_of, [receipt, start_date]], [month]]], [any, [unknown, [receipt, end_date]], [">=", [month_of, [receipt, end_date]], [month]]]]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [child_support]]], [receipt, amount]]
+sources: [S1506, S3001, S4940]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "Receipt records, migration phase 2: replaces child_support_received in the SSI-method items. Nearest: the gambling and child support sums of the other method's table (ma_magi_gambling_receipts, CO-5502; ma_ssi_gambling_receipts, CO-5512; ma_ssi_child_support_receipts, CO-5513) have the same shape over a different table or treatment: MAGI and the SSI method count different money, so each method keeps its own sum rather than one sum with the table as a constant."
 nearest: [CO-5502, CO-5512]
 tests:
   - {id: CO-5513-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: child_support, amount: 200}, {kind: child_support_arrears, amount: 100}, {kind: social_security, amount: 400}]}, title: "Current support and arrears", expect: 300}
+  # Field-effect sweep, non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md); hand-computed from the text quoted in each title.
+  - {id: CO-5513-T2, month: "2026-11", as_of: "2026-11-12", title: "FS-MA-1: child support of 250 that ended 2026-10-31 and 300 that began 2026-11-01: 300", given: {receipts: [{kind: child_support, amount: 250, end_date: "2026-10-31"}, {kind: child_support, amount: 300, start_date: "2026-11-01"}]}, expect: 300}

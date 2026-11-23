@@ -39,7 +39,12 @@
 // MA-6. MA-3 does not pin Social Security: the Medicare Savings
 // Programs' cost-of-living disregard reads the December before the month
 // (CO-3627), so a benefit stated for one month only is not the same
-// statement there.
+// statement there. Nor does MA-3 pin a stream bounded by its source's dates
+// (start_date, end_date): CCCAP's thirty days and LEAP's income verification
+// period read such a stream from its source's dated records when the source
+// began or ended inside the period (docs/conventions.md, "A record's time";
+// OQ-680, OQ-681), so the stream and one month's record are not the same
+// statement there (field-effect sweep, non-MAGI Medicaid: household CO-835).
 // Families (each with the rule's answer, checked):
 //   F1 $900 child support and a $3,000 one-time crime victim compensation
 //      payment on 2026-11-03 (LEAP application 2026-11-10, wages $2,000):
@@ -138,7 +143,9 @@ const mapReceipts = (c: HouseholdCase, f: (rs: Receipt[]) => Receipt[]) => {
 };
 const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "used_for_uncovered_medical_care",
   "transferred_to_child_support_agency", "paid_to_former_spouse", "recouped", "recouped_for_intentional_violation",
-  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "per_payment", "hours_served"];
+  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served"];
+// designated_for_legal_fees (receipts, CO-5000): the legal-fee part of designated_for_lump_sum_costs, an earmark of the
+// amount, split with it (field-effect sweep, non-MAGI Medicaid, FS-MA-8; household CO-842).
 const split = (rs: Receipt[]) => rs.flatMap((r) => {
   if (typeof r.amount !== "number" || r.amount === 0 || r.kind === "gambling_winnings") return [r];
   const a = { ...r }, b = { ...r };
@@ -163,6 +170,7 @@ export function runMetamorphic(m: Ledger, households: HouseholdCase[]): { lines:
     rel("MA-2 order", base, outcomes(m, mapReceipts(c, (rs) => [...rs].reverse())), c.id);
     const mo = c.as_of.slice(0, 7);
     const pinned = mapReceipts(c, (rs) => rs.map((r) => (r.month === undefined && r.date === undefined && r.frequency !== "once" && !r.irregular &&
+      r.start_date === undefined && r.end_date === undefined &&
       !["charitable_need_based_cash", "charitable_gift_life_threatening_condition", "child_support", "social_security"].includes(r.kind) ? { ...r, month: mo } : r)));
     rel("MA-3 month", outcomes(m, c, mo), outcomes(m, pinned, mo), c.id);
     const baseNoMa = outcomes(m, c, undefined, IDS);

@@ -6,12 +6,14 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The person's wages of the month from participation in a program under the Workforce Innovation and Opportunity Act (the successor of the Workforce Investment Act that 10 CCR 2505-10 8.100.3.K.8 names): the earnings records the SSI method's earnings counting table counts except for a dependent child applying for or receiving Medical Assistance (ma_ssi_earnings_treatment_table, CO-5107, row exempt_dependent_child_six_months; K.8.a, K.8.c)."
-precision: "Earned-income records, Medicaid and CHP+ track E1 (OQ-1023): read by ma_ssi_excluded_wioa_wages (CO-5179), which counts the months of the calendar year the wages are exempted in."
-derived: [sum_receipts, earnings, [all, [received_in, [month]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], exempt_dependent_child_six_months]], [receipt, amount]]
-sources: [S4107]
+precision: "Earned-income records, Medicaid and CHP+ track E1 (OQ-1023): read by ma_ssi_excluded_wioa_wages (CO-5179), which counts the months of the calendar year the wages are exempted in. Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-2: a record stated as a stream (no month and no date) is received only in the months from the month its job or business began through the month it ended (job_start_date, job_end_date; each absent: before, or through, the months the case covers; CO-5100), since earned income \"is countable as income in the month received\" (10 CCR 2505-10 8.100.5.F.4, S3001) and wages are counted \"when you receive them\" (20 CFR 416.1111(a), S4940); a pay stated with its month or date is placed by it, a final pay after the job ended included. Before, a stream was counted in every month whatever its job's dates. The clause is Adult Financial's and Colorado Works' (af_earned_pay, CO-5130; cw_earned_pay, CO-5140)."
+derived: [sum_receipts, earnings, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, job_start_date]], ["<=", [month_of, [receipt, job_start_date]], [month]]], [any, [unknown, [receipt, job_end_date]], [">=", [month_of, [receipt, job_end_date]], [month]]]]], ["=", [lookup, ma_ssi_earnings_treatment_table, [receipt, kind]], exempt_dependent_child_six_months]], [receipt, amount]]
+sources: [S4107, S4940]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "OQ-1023 (earned-income records E0, finding E0-F4), settled: 8.100.3.K.8.c exempts these wages for a dependent child; the pay is its own record (WIOA on-the-job training), so the exemption reads it without a part of wages_gross stated twice."
 nearest: [CO-5179, CO-1703, CO-5161, CO-5162, CO-5172, CO-5175]
 tests:
   - {id: CO-5178-T1, month: "2026-11", as_of: "2026-11-01", given: {earnings: [{kind: wages, amount: 300}, {kind: wioa_on_the_job_training, amount: 650}]}, title: "WIOA on-the-job training wages 650; other wages not read: 650", expect: 650}
+  # Field-effect sweep, non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md); hand-computed from the text quoted in each title.
+  - {id: CO-5178-T2, month: "2026-11", as_of: "2026-11-12", title: "FS-MA-2: WIOA on-the-job training pay of 600 a month from training that ended 2026-10-31: 0", given: {earnings: [{kind: wioa_on_the_job_training, amount: 600, job_end_date: "2026-10-31"}]}, expect: 0}
