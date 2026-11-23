@@ -415,6 +415,22 @@ export function translatePerson(
 
 export interface Translated<T> { value: T; notes: string[]; changed: boolean }
 
+/** A home the case states as a joint holding (resource records, step H1,
+ *  the Medicaid track; holdings-h0.md 6): no scalar fact states that a home
+ *  is owned jointly (home_equity, CO-826, is stated on each spouse who owns
+ *  it), so the records are its one statement, and the translation keeps the
+ *  holding_id, co_owners and share stated on the home record of the same
+ *  equity. Every other field is still the translation of the facts. */
+function keepJointHome(out: Holding[] | undefined, stated: unknown): void {
+  if (!out || !Array.isArray(stated)) return;
+  for (const r of out) {
+    if (r.kind !== "home") continue;
+    const s = (stated as Holding[]).find((x) => x && x.kind === "home" && x.holding_id !== undefined && x.value === r.value);
+    if (!s) continue;
+    for (const k of ["share", "co_owners", "holding_id"]) if (s[k] !== undefined) r[k] = s[k];
+  }
+}
+
 /** A person-month value stated by month ({"2026-07": ...}). */
 const isByMonth = (v: unknown): boolean =>
   !!v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).length > 0 && Object.keys(v).every((x) => /^\d{4}-\d{2}$/.test(x));
@@ -435,6 +451,7 @@ export function translateCase(c0: HouseholdCase, ix: LedgerIndex): Translated<Ho
     }
     const t = translatePerson(`${c0.id} ${pid}`, { facts, monthDefaults: md, months }, c0.as_of.slice(0, 7), c0.as_of);
     for (const n of t.notes) notes.push(`${c0.id} ${pid}: ${n}`);
+    keepJointHome(t.holdings, p.facts?.holdings);
     const before = JSON.stringify(p.facts?.holdings);
     const target = out.persons[pid];
     // a person who states none of the resource facts keeps the holdings as stated
@@ -442,10 +459,12 @@ export function translateCase(c0: HouseholdCase, ix: LedgerIndex): Translated<Ho
     if (JSON.stringify(target.facts?.holdings) !== before) changed = true;
   }
   // A home of the same equity stated on two persons (a couple's home, today
-  // stated on each spouse): two records, as the facts state it; whether it
-  // is one joint home (holding_id, shares) is the Medicaid track's to restate.
+  // stated on each spouse): two records, as the facts state it, unless the
+  // case states it as one joint home (holding_id, co_owners, shares), which
+  // keepJointHome keeps (the Medicaid track restated the twelve stored
+  // couples so).
   const homes = Object.entries(out.persons).flatMap(([pid, p]) =>
-    ((p.facts?.holdings as Holding[] | undefined) ?? []).filter((r) => r.kind === "home" && (r.value ?? 0) > 0).map((r) => [pid, r.value] as const));
+    ((p.facts?.holdings as Holding[] | undefined) ?? []).filter((r) => r.kind === "home" && (r.value ?? 0) > 0 && r.holding_id === undefined).map((r) => [pid, r.value] as const));
   for (let i = 0; i < homes.length; i++) for (let j = i + 1; j < homes.length; j++) {
     if (homes[i][1] === homes[j][1]) notes.push(`${c0.id}: ${homes[i][0]} and ${homes[j][0]} each state a home of equity ${homes[i][1]}: two records, as the facts state (one joint home is the Medicaid track's to restate)`);
   }

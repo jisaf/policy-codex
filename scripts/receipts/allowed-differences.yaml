@@ -852,3 +852,26 @@
 - {"case": "/^(G\\-CWsponsordeemed\\-tanf_diversion_payment_received_300_part_of_nontaxable_|G\\-MACBWDchild\\-tanf_diversion_payment_received_300_part_of_nontaxable_)$/", "person": "p3", "identifier": "cccap_person_unearned_income", "old": 300, "new": "unknown", "class": "coverage pass 4 X4-1: CCCAP reads tanf_state_diversion_payment_months only with a diversion and without a default (8 CCR 1403-1 3.103.S gives none); a diversion whose kind and length are not stated is cannot determine (decision 4 of 2026-11-23)"}
 - {"case": "/^(G\\-SNAP\\-tanf_diversion_payment_received_300_paid_as_a_lump_sum|G\\-SNAP\\-tanf_diversion_payment_received_300_part_of_nontaxable_)$/", "person": "p1", "identifier": "cccap_verification_status", "old": "past_due", "new": "unknown", "class": "coverage pass 4 X4-1: CCCAP reads tanf_state_diversion_payment_months only with a diversion and without a default (8 CCR 1403-1 3.103.S gives none); a diversion whose kind and length are not stated is cannot determine (decision 4 of 2026-11-23)"}
 - {"case": "/^(G\\-SNAP\\-tanf_diversion_payment_received_300_paid_as_a_lump_sum|G\\-SNAP\\-tanf_diversion_payment_received_300_part_of_nontaxable_)$/", "person": "p2", "identifier": "cccap_verification_status", "old": "past_due", "new": "unknown", "class": "coverage pass 4 X4-1: CCCAP reads tanf_state_diversion_payment_months only with a diversion and without a default (8 CCR 1403-1 3.103.S gives none); a diversion whose kind and length are not stated is cannot determine (decision 4 of 2026-11-23)"}
+
+# Resource records, Medicaid track H1 (2026-11-23; docs/reviews/records-holdings-medicaid.md, sections 4 and 6): the SSI
+# method's resource readers read the holdings records (CO-5300). Measured against c29d326. Stored households: the classes
+# of scripts/records/allowed/h1-medicaid.yaml, each cited there.
+# H1-M2 (design 2.2): a stated holdings list with no annuity, trust or home record holds none.
+- {case: "/^CO-\\d+$/", identifier: "/^(ma_annuity_verification_is_pending|ma_trust_verification_is_pending)$/", old: unknown, new: false, class: "H1-M2 (design 2.2) holdings stated with no annuity or trust record, no annuity or trust documents owed"}
+- {case: "/^(CO-01|CO-02)$/", person: p5, identifier: ma_home_equity_disqualifies, old: unknown, new: false, class: "H1-M2 (design 2.2) holdings stated with no home record, no home equity over the limit"}
+# H1-M3 (D8; 10 CCR 2505-10 8.100.7.L, M.1): the CSRA snapshot derived from the couple's holdings at the application month;
+# the baseline reads the supplied figure, which the twelve couples no longer state (every expectation passes).
+- {case: "/^(CO-01|CO-02|CO-06|CO-112|CO-152|CO-153|CO-154|CO-188|CO-213|CO-388|CO-395|CO-481)$/", identifier: "/^(ma_csra|ma_institutionalized_spouse_countable_resources|ma_ssi_countable_resources|ma_msp_countable_resources|ma_meets_ltc_resource_standard|ma_ltc_eligibility_status|ma_patient_payment|ma_family_planning_status|ma_ssi_related_category|ma_msp_category|ma_protected_group_category)$/", old: unknown, class: "H1-M3 (D8) the CSRA from the derived snapshot (the baseline read the supplied figure, no longer stated)"}
+# H1-M1 (decision 4): CO-214 p2 states no holdings; whether the home is countable cannot be determined.
+- {case: CO-214, person: p2, identifier: ma_home_is_countable_resource, old: false, new: unknown, class: "H1-M1 (decision 4) holdings not stated, whether the home is countable cannot be determined"}
+# H1-M8 (decision 4; 26 U.S.C. 6409): CO-300's federal refund held has no date of receipt (the Adult Financial track dates it).
+- {case: CO-300, person: p1, identifier: ma_ssi_related_category, month: "2026-10", old: none, new: unknown, class: "H1-M8 (decision 4; 6409) a refund held with no date of receipt cannot be placed in its twelve months"}
+# H1-M9 (8.100.5.N.5): CO-189 p2's 40,000 IRA counted less 20%.
+- {case: CO-189, person: p2, identifier: ma_ssi_countable_resources, old: 41000, new: 33000, class: "H1-M9 (N.5.a-b) a retirement account counted at its gross value less the taxes due, or less 20%"}
+
+# H1-M2 on the generated households (holdings translated on the new side, 2026-11-23, as the product owner approved for
+# earned income): a stated holdings list with no annuity or trust record states that the person has none (decision 4: an
+# empty list is a statement, as for receipts), so Medicaid's annuity and trust verification items, unknown at the baseline
+# (no fact said whether an annuity or trust existed), are now false. docs/reviews/records-holdings-medicaid.md.
+- {case: "/^G-/", identifier: ma_annuity_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no annuity record means no annuity to verify"}
+- {case: "/^G-/", identifier: ma_trust_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no trust record means no trust to verify"}

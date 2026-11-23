@@ -6,9 +6,9 @@ type: money
 scope: person
 program: Medicaid
 meaning: "The person's home equity when the home is a countable resource only because a beneficiary deed on it has been executed and recorded (10 CCR 2505-10 § 8.100.5.M.2.a.xiv, M.3.e): home_equity when ma_home_is_countable_resource holds and ma_home_is_countable_resource_without_beneficiary_deed does not; otherwise 0."
-precision: "Subtracted by the Medicare Savings Program resources (ma_msp_countable_resources, CO-5206; OQ-900) and by parental deeming (ma_ssi_parental_resources_deemed, CO-4627), where no estate recovery reaches the home: 42 U.S.C. 1396p(b)(1)(B)(ii) never recovers Medicare cost-sharing or the Medicare Savings Program benefits, and a deeming parent receives nothing that could be recovered from the parent's estate."
-derived: [case, [[all, ma_home_is_countable_resource, [not, ma_home_is_countable_resource_without_beneficiary_deed]], home_equity], [else, 0]]
-sources: [S3403, S3751]
+precision: "Subtracted by the Medicare Savings Program resources (ma_msp_countable_resources, CO-5206; OQ-900) and by parental deeming (ma_ssi_parental_resources_deemed, CO-4627), where no estate recovery reaches the home: 42 U.S.C. 1396p(b)(1)(B)(ii) never recovers Medicare cost-sharing or the Medicare Savings Program benefits, and a deeming parent receives nothing that could be recovered from the parent's estate. Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): the equity is the person's equity interest in the home at the determination month (ma_home_equity_interest_in_month, CO-5327): for a couple's joint home, each spouse's share, so the couple's figures subtract the home once."
+derived: [case, [[all, ma_home_is_countable_resource, [not, ma_home_is_countable_resource_without_beneficiary_deed]], [at, ma_home_equity_interest_in_month, [det_month]]], [else, 0]]
+sources: [S3403, S3751, S4665]
 open: [OQ-900]
 implemented: engine
 tags: [ma, non_magi, resources]
