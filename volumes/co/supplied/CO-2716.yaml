@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the person expects to be claimed as a tax dependent, for the taxable year of the determination, by a taxpayer who is not a person of the case (a parent or relative living elsewhere). A claim by a person of the case is the tax_filer / tax_dependent relationship instead."
-precision: "If not stated, programs read this as false: a claimer outside the case is stated when there is one."
+precision: "If not stated, programs read this as false: a claimer outside the case is stated when there is one. Coverage pass 5, C5-05 (2026-11-23): where it is true, the claimer's relationship to the person is stated in outside_claimer_is_parent (CO-7052), which Medicaid reads for 10 CCR 2505-10 § 8.100.4.E.1.c.i; a claimer whose household and income a rule needs (a parent, E.1.b; the premium tax credit family, 26 CFR 1.36B-1(d)) is declared as a person of the case with the tax_filer relationship, or the rule cannot determine."
 supplied_by: "Applicant statement on the application (tax filing questions)."
 sources: [S161, S162, S163]
 tags: [ma, magi, household]

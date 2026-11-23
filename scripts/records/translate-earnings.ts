@@ -298,7 +298,7 @@ export function translatePerson(
     for (const n of cv.notes) notes.push(`${id}${m ? " " + m : ""}: ${n}`);
     perBucket.push([m, cv.earnings]);
   }
-  if (!expand) return { earnings: perBucket[0][1], notes };
+  if (!expand) return { earnings: withJobFacts(perBucket[0][1], pf.earnings), notes };
   // the recurring receipts of a moving kind are copied once, beside the months
   const recurringMoving = carve({}, { month: null, defaultMonth, person: {}, receipts: receipts.filter((r) => r.month === undefined && r.date === undefined) }).earnings
     .filter((r) => r.kind === "uniformed_services_special_pay" || r.kind === "boarder_payments");
@@ -329,7 +329,36 @@ export function translatePerson(
     }
   }
   out = [...out.filter((r) => r.month === undefined && r.date === undefined), ...out.filter((r) => r.month !== undefined || r.date !== undefined)];
-  return { earnings: out, notes };
+  return { earnings: withJobFacts(out, pf.earnings), notes };
+}
+
+/** Record kinds that are a business, its costs or boarders: a fact of the job
+ *  (seasonal_or_commission) is not stated on them. */
+const NOT_JOB_PAY: ReadonlySet<string> = new Set([
+  "self_employment_receipts", "farm_self_employment_receipts", "boarder_payments", ...COSTS.map((c) => c[1]),
+  "business_cost_depreciation", "business_cost_boarder_provision",
+]);
+
+/** Fields of a pay no scalar earned fact states, kept as the household's own
+ *  records state them (coverage pass 5, C5-08): seasonal_or_commission is
+ *  required where read and has no scalar fact since C4-05 retired the
+ *  person-level one from every reader, so a household states it on its
+ *  records and the translation keeps it. It is kept only where the person's
+ *  stated pay records all give it the same value (a fact of the person's
+ *  jobs), and copied to each translated pay record (not to a business, its
+ *  costs or boarders), so a varied household (generate-earnings.ts) keeps it. */
+export const KEPT_JOB_FIELDS: ReadonlyArray<string> = ["seasonal_or_commission"];
+function withJobFacts(out: Earning[], stated: unknown): Earning[] {
+  if (!Array.isArray(stated)) return out;
+  const pay = (stated as Earning[]).filter((r) => r && !NOT_JOB_PAY.has(String(r.kind)));
+  let res = out;
+  for (const f of KEPT_JOB_FIELDS) {
+    const vals = new Set(pay.map((r) => JSON.stringify(r[f])));
+    if (!pay.length || vals.size !== 1 || pay[0][f] === undefined) continue;
+    const v = pay[0][f];
+    res = res.map((r) => (NOT_JOB_PAY.has(r.kind) ? r : { ...r, [f]: v }));
+  }
+  return res;
 }
 
 export interface Translated<T> { value: T; notes: string[]; changed: boolean }

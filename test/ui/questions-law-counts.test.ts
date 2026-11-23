@@ -86,11 +86,11 @@ describe("Law", () => {
       excerpts: vol.sources.length,
       documents: vol.documents.length,
     });
-    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([43, 6, 57, 5]); // + 3 departures: coverage pass 4 (SNAP resources) applies 7 CFR 273.8(e)(2) over 10 CCR 2506-1 4.410.D.4 (CO-5312) and 273.8(e)(17) over 4.410 and 4.408.C (CO-343, CO-1740); + 13 resting: C3-1 of the fix round 2026-11-23 has ma_ssi_countable_resources (CO-608) read the institutionalized spouse's share (CO-647), which rests on CO-1987 through the CSRA, and the SSI-method and Medicare Savings Program items read CO-608; + CO-1155, CO-2439, CO-3155 (the state plan S59 over the Family Planning floor), CO-500 (OAP-A in the MAGI household): MAGI coverage pass 3; + CO-1183 (time audit T-4: the statute's $80,000 over Colorado's $79,999)
+    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([44, 6, 57, 5]); // + 1 departure: coverage pass 5 (MAGI, C5-14) records 42 CFR 435.603(d)(2)(i) over 10 CCR 2505-10 8.100.4.C.1.f's last paragraph (CO-4558); + 3 departures: coverage pass 4 (SNAP resources) applies 7 CFR 273.8(e)(2) over 10 CCR 2506-1 4.410.D.4 (CO-5312) and 273.8(e)(17) over 4.410 and 4.408.C (CO-343, CO-1740); + 13 resting: C3-1 of the fix round 2026-11-23 has ma_ssi_countable_resources (CO-608) read the institutionalized spouse's share (CO-647), which rests on CO-1987 through the CSRA, and the SSI-method and Medicare Savings Program items read CO-608; + CO-1155, CO-2439, CO-3155 (the state plan S59 over the Family Planning floor), CO-500 (OAP-A in the MAGI household): MAGI coverage pass 3; + CO-1183 (time audit T-4: the statute's $80,000 over Colorado's $79,999)
   });
 
   it("the departures by program add up to the whole", () => {
-    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(43); // 40 + the three of coverage pass 4 (SNAP resources)
+    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(44); // 40 + the three of coverage pass 4 (SNAP resources) + CO-4558 (coverage pass 5, MAGI, C5-14)
   });
 
   it("what rests on the unverified sources: 16 outcomes, and 18 stored households read them (Blind A said 3, Blind B 11)", () => {

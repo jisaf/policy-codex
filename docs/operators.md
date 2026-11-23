@@ -197,9 +197,39 @@ the day before `first_day` of `month_after`).
 
 | Operator | Arguments | Result | Unknown |
 |---|---|---|---|
-| `<` `<=` `>` `>=` | two numbers, dates or months | the comparison | unknown if either side is unknown (both are always evaluated) |
-| `=` | two values | strict equality: same type and value | unknown if either side is unknown. Two groups are never `=` (arrays compare by identity); no item compares groups. |
+| `<` `<=` `>` `>=` | two numbers, dates or months | the comparison; two numbers within 1e-9 of each other are equal (below) | unknown if either side is unknown (both are always evaluated) |
+| `=` | two values | equality: same type and value; two numbers are equal when they are within 1e-9 of each other (below) | unknown if either side is unknown. Two groups are never `=` (arrays compare by identity); no item compares groups. |
 | `in` | value, a literal list | whether the value is in the list | unknown if the value is unknown |
+
+**Numbers compare with a tolerance of 1e-9** (coverage pass 5, C5-10,
+2026-11-23), the tolerance `ceil`, `round` and `band` already use:
+
+| Operator | Two numbers a, b |
+|---|---|
+| `a < b` | a < b − 1e-9 |
+| `a <= b` | a ≤ b + 1e-9 |
+| `a > b` | a > b + 1e-9 |
+| `a >= b` | a ≥ b − 1e-9 |
+| `a = b` | \|a − b\| ≤ 1e-9 |
+
+So a figure that is exactly at a limit in decimal arithmetic is at the limit,
+whatever noise binary64 adds to it. The case that needed it: a child in a
+family of two whose parent earns $2,650.90 a month is at exactly 147% of the
+2026 guideline (2,650.90 × 12 = 31,810.80 = 1.47 × 21,640), and 10 CCR 2505-10
+8.100.4.G.2 with the 5-point disregard of D.1 makes her eligible at "does not
+exceed 142%"; binary64 gives 2650.9 / (21640 / 12) = 1.4700000000000002, so
+the plain comparison put her over the limit and in CHP+ (a scan of family
+sizes 1 to 8 found the same for sizes 2 and 6). Every quantity the codex
+compares is money, hours, a whole number or a ratio of them: two values that
+differ in fact differ by far more than 1e-9 (a cent over a limit of about one
+thousand dollars is a ratio difference near 1e-5), and binary noise in those
+values is near 1e-12 or less. Dates and months compare as strings, exactly.
+The change moved no stored household's expectation, no rule test and no
+outcome of the receipts, earnings or holdings harnesses' generated
+households (docs/reviews/coverage5-medicaid-magi-chp.md, section 7). An
+implementation in decimal arithmetic that compares exactly gives the same
+answers on every figure the codex states; one in binary64 must apply the
+tolerance.
 
 ## Numbers
 
@@ -236,9 +266,11 @@ or `round`; nothing rounds to cents. An implementation in decimal arithmetic
 (BigDecimal, FEEL, a Dollar type) must not round intermediate values, and
 should keep at least 15 significant digits in division; the conformance
 harness compares numbers within 1e-9, so a result that differs only in binary
-noise passes, but a comparison that lands exactly on a limit, or a rounding
-of an exact half, can differ between binary and decimal arithmetic. Where
-they differ, binary64 in written order is the codex's answer.
+noise passes. A comparison that lands exactly on a limit, and a rounding of
+an exact half, are decided with the same 1e-9 tolerance (Comparison, above;
+`ceil` and `round`), so binary and decimal arithmetic give the same answer
+there. Before coverage pass 5 (C5-10) the comparisons were exact in binary64,
+and a figure exactly at a limit in decimal could fall on either side of it.
 
 ## Tables
 
