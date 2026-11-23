@@ -12,6 +12,6 @@ implemented: engine
 tags: [ma, resources, verification]
 rationale: "OQ-379: verification of joint ownership was not modeled."
 tests:
-  - {id: CO-2248-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: true}, expect: true}
-  - {id: CO-2248-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: false}, expect: false}
+  - {id: CO-2248-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: true, holdings: [{kind: bank_account}]}, expect: true}
+  - {id: CO-2248-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: false, holdings: [{kind: bank_account}]}, expect: false}
   - {id: CO-2248-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: false}, expect: false}
