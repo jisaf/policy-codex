@@ -34,9 +34,10 @@ const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null &&
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
 
-/** The programs migrated in phase 1, whose outcomes are always compared;
- *  with --all-programs, every program's. */
-const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks"];
+/** The programs migrated (phase 1: LEAP, SNAP, Adult Financial; phase 2:
+ *  Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+), whose outcomes are
+ *  always compared; with --all-programs, every program's. */
+const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "ColoradoWorks", "CCCAP", "Medicaid", "CHP+"];
 /** Intermediate figures compared beside the outcomes. */
 const FIGURES = [
   "leap_person_unearned_income", "leap_household_income", "leap_person_countable_income",
@@ -44,6 +45,20 @@ const FIGURES = [
   "snap_person_earned_income", "snap_sponsor_deemed_income",
   "af_countable_income", "af_unearned_income_other_than_ssi", "af_deemed_relative_income", "af_deemed_sponsor_income",
   "af_relative_deemable_unearned_income", "af_is_oap_age", "af_and_cs_eligible",
+  // Colorado Works (phase 2): the unit's and each deemed person's income
+  "cw_countable_unearned_income", "cw_payment_countable_unearned_income", "cw_counted_child_support",
+  "cw_countable_income", "cw_payment_countable_income", "cw_sponsor_contributions_counted", "cw_sponsor_deemed_income",
+  "cw_budgetary_member_deemed_income", "cw_deemed_parent_income_of_minor_parent", "cw_has_countable_unearned_income",
+  // CCCAP and SUN Bucks (phase 2)
+  "cccap_person_unearned_income", "cccap_person_countable_income", "cccap_household_income", "cccap_protective_services_income",
+  "cccap_has_countable_unearned_income", "sebt_household_child_receives_snap_or_tanf",
+  // phase 2: Medicaid and CHP+
+  "ma_person_magi_income", "ma_magi_household_income", "ma_magi_household_income_pct_fpl",
+  "ma_ssi_countable_income", "ma_ssi_countable_unearned_income", "ma_meets_ssi_income_standard",
+  "ma_ltc_gross_income", "ma_meets_special_income_group", "ma_community_spouse_income", "ma_family_allowance",
+  "ma_wawd_countable_income", "ma_cbwd_household_unearned_income", "ma_ssi_parental_income_deemed",
+  "ma_dac_countable_income", "ma_pickle_countable_income", "ma_title_ii_cola_increase",
+  "ma_has_unearned_income_for_verification", "ma_requires_verification_of_unearned_income",
 ];
 
 interface Allowed {
@@ -125,13 +140,21 @@ export function main(): number {
     const tr = translateCase(c, newL.ix, CHOICES, retired);
     notes.push(...tr.notes);
     if (tr.changed) stale.push(c.id);
-    return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
+    // the baseline reads the receipts in its own schema: the legacy
+    // translation, the parts phase 3 gave kinds of their own left in the
+    // receipt that held them (a person written in receipts alone keeps them)
+    const legacy = translateCase(c, newL.ix, CHOICES, retired, true).value;
+    return { old: withRetired(legacy, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
+  // A generated household is stated in the old facts and translated, as a
+  // stored household is (the transition rule): both ledgers read the
+  // translated household, so a baseline on which some programs already read
+  // the receipts (phase 2's baseline is phase 1's end) reads them too.
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);
-    return { old: c, new: tr.value };
+    return { old: translateCase(c, newL.ix, CHOICES, undefined, true).value, new: tr.value };
   });
   sources.push({ label: "generated households", cases: gen });
 
@@ -175,7 +198,9 @@ export function main(): number {
       (d.expected !== undefined ? ` expected ${fmt(d.expected)}${eq(d.new, d.expected === "unknown" ? null : d.expected) ? " (new matches)" : eq(d.old, d.expected === "unknown" ? null : d.expected) ? " (old matches)" : ""}` : ""));
   }
   // metamorphic relations, over every translated household
-  const meta = has("--no-metamorphic") ? null : runMetamorphic(newL, [...stored.map((x) => x.new), ...gen.map((x) => x.new)]);
+  // (the households written in receipts alone among them, from phase 2)
+  const meta = has("--no-metamorphic") ? null : runMetamorphic(newL, [...stored.map((x) => x.new),
+    ...newL.ledger.cases.filter((c) => receiptsOnly.includes(c.id)), ...gen.map((x) => x.new)]);
   const table = [
     "| Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |",
     "|---|---|---|---|---|---|---|",

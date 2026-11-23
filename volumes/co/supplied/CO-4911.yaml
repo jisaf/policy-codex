@@ -5,7 +5,7 @@ kind: supplied
 type: whole number
 scope: person-month
 program: All
-meaning: "The number of consecutive months over which the Colorado Works diversion the person receives this month (tanf_diversion_payment_received, CO-4850) is paid, as the diversion agreement sets it, when it is a state diversion; 0 when it is a county diversion or no diversion is received."
+meaning: "The number of consecutive months over which the Colorado Works diversion the person receives this month (a receipt of kind colorado_works_diversion, receipts CO-5000) is paid, as the diversion agreement sets it, when it is a state diversion; 0 when it is a county diversion or no diversion is received."
 precision: "A fact of the Colorado Works case record. If not stated, every program reads it as 0 (a diversion read as one that is not cash assistance under 8 CCR 1403-1 3.103.S)."
 supplied_by: "The Colorado Works diversion agreement in the case record."
 sources: [S3638]

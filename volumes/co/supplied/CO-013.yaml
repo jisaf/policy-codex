@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The person receives, or is authorized to receive, a cash grant under a state program funded under part A of title IV of the Social Security Act (Colorado Works). A fact about the person's current Colorado Works case (the unit is receiving basic cash assistance), not this volume's own determination of Colorado Works eligibility (cw_eligibility_status, CO-921); the amount paid for the month is tanf_cash_income (CO-029)."
+meaning: "The person receives, or is authorized to receive, a cash grant under a state program funded under part A of title IV of the Social Security Act (Colorado Works). A fact about the person's current Colorado Works case (the unit is receiving basic cash assistance), not this volume's own determination of Colorado Works eligibility (cw_eligibility_status, CO-921); the amount paid for the month is a receipt of kind colorado_works_cash (receipts, CO-5000)."
 precision: "True only for a member of the Colorado Works assistance unit, a person whose needs the grant includes. A payee or caretaker relative outside the unit (a grandmother who receives a child-only grant for her grandson) does not receive it; the grandson does. Coverage pass 2 C2-3: cccap_eligibility_status (CO-989) reads it as unit membership (8 CCR 1403-1 3.115.C, S3253)."
 supplied_by: CBMS Colorado Works case record.
 sources: [S47]

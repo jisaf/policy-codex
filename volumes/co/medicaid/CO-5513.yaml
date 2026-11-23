@@ -1,0 +1,16 @@
+id: CO-5513
+name: "Medicaid SSI method: child support received in the month"
+identifier: ma_ssi_child_support_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The child support the person received in the month, arrears included (receipts the SSI method's counting table, CO-5510, gives child_support): support for a child, counted as the child's income less one-third (10 CCR 2505-10 8.100.5.H.4.c), and in full in the gross income of long-term care (8.100.7.A.1) and of an ineligible child (H.3.a.i)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [child_support]]], [receipt, amount]]
+sources: [S1506, S3001]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Receipt records, migration phase 2: replaces child_support_received in the SSI-method items. Nearest: the gambling and child support sums of the other method's table (ma_magi_gambling_receipts, CO-5502; ma_ssi_gambling_receipts, CO-5512; ma_ssi_child_support_receipts, CO-5513) have the same shape over a different table or treatment: MAGI and the SSI method count different money, so each method keeps its own sum rather than one sum with the table as a constant."
+nearest: [CO-5502, CO-5512]
+tests:
+  - {id: CO-5513-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: child_support, amount: 200}, {kind: child_support_arrears, amount: 100}, {kind: social_security, amount: 400}]}, title: "Current support and arrears", expect: 300}

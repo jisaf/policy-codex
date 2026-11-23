@@ -1,14 +1,18 @@
-// Receipt records, migration phase 1: the one translation of a household or
+// Receipt records, migration phases 1 to 3: the one translation of a household or
 // rule test stated in the scalar unearned-income facts into the `receipts`
 // list (CO-5000). Written once, reviewed as code (restructure review, change
 // A; ported from prototypes/receipt-spike/translate.ts and brought to the
-// adopted kinds). Transition rule (docs/plan-colorado.md): the old facts are
-// kept, so the programs that still read them (Colorado Works, CCCAP,
-// Medicaid, CHP+, SUN Bucks) read what they read before, and the receipts
-// list states the same money once for LEAP, SNAP and Adult Financial. The
-// translator is the only writer of both, so the two cannot disagree; the
-// harness re-translates every stored household and reports any whose stored
-// receipts differ from the translation of its old facts.
+// adopted kinds). Phases 1 and 2 kept the old facts beside the receipts
+// (the transition rule, docs/plan-colorado.md) while some program still read
+// them. Phase 3 (docs/reviews/receipts-migration-3.md): every program reads
+// the receipts, so every old fact is retired (RETIRED) and no household or
+// rule test states one; their statements before retirement are kept in
+// retired-facts.yaml. The translation no longer needs the ledger to know
+// the old facts (RETIRED gives each one's scope) and is read for two things
+// only: the harness, which evaluates the baseline ledger on what a household
+// stated before (withRetired) and fails when a stored household's receipts
+// are not the translation of it; and the generated households, which are
+// varied by the old facts and translated.
 //
 // The carving rule: within a month, the facts that are "part of"
 // other_unearned_income_taxable/_nontaxable are carved out of that residual;
@@ -57,6 +61,9 @@ export const PARTS: ReadonlyArray<readonly [string, string, boolean, boolean]> =
   ["refugee_resettlement_payments_received", "refugee_resettlement", false, true],
   ["tanf_supportive_service_payments_received", "colorado_works_supportive_services", false, true],
   ["workers_compensation_claim_expense_amounts_received", "workers_compensation", false, true],
+  // Colorado Works' statement of the same earmark (CO-4366, part of the
+  // nontaxable residual): phase 2 reads it as the receipt's claim_expense
+  ["workers_compensation_award_expenses", "workers_compensation", false, true],
   ["americorps_payments_received", "americorps", false, false],
   ["workforce_program_payments_received", "workforce_program_payment", false, false],
   ["general_or_emergency_assistance_received", "general_assistance", false, false],
@@ -70,16 +77,43 @@ export const PARTS: ReadonlyArray<readonly [string, string, boolean, boolean]> =
   ["charitable_gifts_for_life_threatening_condition_received", "charitable_gift_life_threatening_condition", false, false],
   ["taxable_interest_and_dividend_income", "interest_and_dividends", true, false],
   ["rental_income_received", "rental_income", true, false],
+  // migration phase 3: the parts stated of a receipt that had no kind of its
+  // own until every program's counting table gave each a row
+  ["adoption_subsidy_received", "adoption_subsidy", false, false],
+  ["early_childhood_research_study_payments_received", "early_childhood_research_payment", true, false],
+  ["board_only_payments_received", "board_only_payment", true, false],
+  ["room_only_payments_received", "room_only_payment", true, false],
+  // received for persons outside the home: the whole receipt is for them
+  // (for_person_living_elsewhere); an allotment for persons in the home was
+  // stated in the residual only and stays there
+  ["military_allotment_received_for_persons_outside_home", "military_allotment", false, false],
 ];
 /** Parts of a part: [fact, kind, the part fact it is carved out of]. */
 export const SUBPARTS: ReadonlyArray<readonly [string, string, string]> = [
   ["energy_assistance_from_nonprofit_or_supplier_received", "energy_assistance_other", "energy_assistance_received"],
   ["dvsa_title_i_volunteer_payments_received", "dvsa_title_i_volunteer_payment", "federally_excluded_payments_received"],
   ["vocational_training_allowance_received", "vocational_training_allowance", "workforce_program_payments_received"],
+  // migration phase 3
+  ["school_attendance_conditional_benefits_received", "school_attendance_conditional_benefit", "educational_assistance_received"],
 ];
+/** Parts of a receipt that may sit in an aggregate as well as in a residual
+ *  (migration phase 3): [fact, kind, the kinds that may hold it, in order]. */
+export const HOSTED: ReadonlyArray<readonly [string, string, readonly string[]]> = [
+  ["savings_account_distributions_received", "savings_account_distribution", ["pension", "other_taxable", "other_nontaxable"]],
+  ["medicare_premium_refund_received", "medicare_premium_refund", ["other_nontaxable", "social_security"]],
+  ["insurance_cash_value_withdrawn", "insurance_cash_value", ["other_nontaxable", "other_taxable"]],
+];
+/** The kinds migration phase 3 added (the parts above that had no kind of
+ *  their own): a legacy translation, which the phase-2 baseline's schema
+ *  reads, leaves each in the receipt that held it. */
+export const PHASE3_KINDS: ReadonlySet<string> = new Set<string>([
+  "adoption_subsidy", "early_childhood_research_payment", "board_only_payment", "room_only_payment", "military_allotment",
+  "school_attendance_conditional_benefit", "savings_account_distribution", "medicare_premium_refund", "insurance_cash_value",
+]);
 /** Every person-month fact the translation reads. */
 export const MONTH_FACTS: ReadonlySet<string> = new Set<string>([
-  ...AGG.map((a) => a[0]), ...PARTS.map((p) => p[0]), ...SUBPARTS.map((s) => s[0]),
+  ...AGG.map((a) => a[0]), ...PARTS.map((p) => p[0]), ...SUBPARTS.map((s) => s[0]), ...HOSTED.map((h) => h[0]),
+  "lump_sum_amounts_spent_or_designated",
   "other_unearned_income_taxable", "other_unearned_income_nontaxable", "lump_sum_received",
   "retroactive_social_security_lump_sum_received", "retroactive_ssi_or_public_assistance_lump_sum_received",
   "lottery_gambling_winnings_received", "lottery_gambling_largest_single_game_winnings_received",
@@ -87,7 +121,7 @@ export const MONTH_FACTS: ReadonlySet<string> = new Set<string>([
   "overpayment_recoupment_for_intentional_violation_withheld", "child_support_received_transferred_to_child_support_agency",
   "military_retirement_paid_to_former_spouse", "income_received_for_person_living_elsewhere",
   "infrequent_or_irregular_income_received", "periodic_unearned_income_received", "americorps_service_hours",
-  "money_received_from_sponsor",
+  "money_received_from_sponsor", "retroactive_colorado_works_lump_sum_received", "insurance_proceeds_spent_on_medical_or_burial",
 ]);
 /** Person-scope facts the translation reads (the LEAP thirty-day facts and the periodic income). */
 export const PERSON_FACTS: ReadonlySet<string> = new Set<string>([
@@ -117,11 +151,14 @@ export interface Choices {
 }
 
 interface Carve { receipts: Receipt[]; notes: string[] }
+/** The kinds chosen for a fact naming two sources, and whether the
+ *  translation is the legacy one (no phase-3 kinds, for the baseline). */
+interface Kinds { rssi: string; gea: string; hca: string; legacy?: boolean }
 
 /** Carves one month's statement (fact -> value) into receipts. */
 function carve(
   v: Record<string, unknown>, person: { per_payment?: number; frequency?: string },
-  kinds: { rssi: string; gea: string; hca: string }, overlapCap?: number,
+  kinds: Kinds, overlapCap?: number,
 ): Carve {
   const notes: string[] = [];
   const R: Receipt[] = [];
@@ -144,11 +181,11 @@ function carve(
   const oneTimeAble: Receipt[] = [];
   for (const [f, kind0, taxable, ota] of PARTS) {
     let amt = get(f);
-    if (amt <= 0) continue;
+    if (amt <= 0 || (kinds.legacy && PHASE3_KINDS.has(kind0))) continue;
     const kind = f === "general_or_emergency_assistance_received" ? kinds.gea
       : f === "in_home_care_allowance_received" ? kinds.hca : kind0;
     for (const [sf, skind, parent] of SUBPARTS) {
-      if (parent !== f) continue;
+      if (parent !== f || (kinds.legacy && PHASE3_KINDS.has(skind))) continue;
       const s = Math.min(amt, get(sf));
       if (get(sf) > amt) notes.push(`${sf} ${get(sf)} exceeds ${f} ${amt}`);
       if (s > 0) { R.push({ kind: skind, amount: s }); amt -= s; take(s, taxable); }
@@ -157,6 +194,7 @@ function carve(
     const r: Receipt = { kind, amount: amt };
     if (kind === "workers_compensation") r.claim_expense = amt;
     if (kind === "va_aid_and_attendance") r.used_for_uncovered_medical_care = amt;
+    if (f === "military_allotment_received_for_persons_outside_home") r.for_person_living_elsewhere = amt;
     if (kind === "americorps" && v.americorps_service_hours !== undefined) r.hours_served = v.americorps_service_hours;
     R.push(r);
     take(amt, taxable);
@@ -164,6 +202,7 @@ function carve(
   }
   // a subpart stated with its parent not stated
   for (const [sf, skind, parent] of SUBPARTS) {
+    if (kinds.legacy && PHASE3_KINDS.has(skind)) continue;
     if (get(sf) > 0 && get(parent) <= 0) {
       notes.push(`${sf} stated without ${parent}: taken as part of the residual`);
       R.push({ kind: skind, amount: get(sf) });
@@ -173,12 +212,22 @@ function carve(
   // the sponsor's money is not part of any other fact
   if (get("money_received_from_sponsor") > 0) R.push({ kind: "sponsor_payment", amount: get("money_received_from_sponsor") });
   // lump sums: retroactive parts, the named receipts the lump sum reaches, the rest
+  if (get("retroactive_colorado_works_lump_sum_received") > get("retroactive_ssi_or_public_assistance_lump_sum_received")) {
+    notes.push("retroactive_colorado_works_lump_sum_received exceeds the retroactive SSI or public assistance lump sum it is part of");
+  }
   const lump = get("lump_sum_received");
   const rss = get("retroactive_social_security_lump_sum_received");
   const rssi = get("retroactive_ssi_or_public_assistance_lump_sum_received");
   if (lump > 0 || rss > 0 || rssi > 0) {
     if (rss > 0) { R.push({ kind: "social_security", amount: rss, frequency: "once", retroactive: true }); take(rss, false); }
-    if (rssi > 0) { R.push({ kind: kinds.rssi, amount: rssi, frequency: "once", retroactive: true }); take(rssi, false); }
+    if (rssi > 0) {
+      // the part that is a retroactive Colorado Works payment (CO-4371, phase
+      // 2) is that kind; the rest is the kind chosen for the case
+      const rcw = Math.min(get("retroactive_colorado_works_lump_sum_received"), rssi);
+      if (rcw > 0) R.push({ kind: "colorado_works_cash", amount: rcw, frequency: "once", retroactive: true });
+      if (rssi - rcw > 0) R.push({ kind: kinds.rssi, amount: rssi - rcw, frequency: "once", retroactive: true });
+      take(rssi, false);
+    }
     if (rss + rssi > lump) notes.push(`retroactive parts ${rss + rssi} exceed lump_sum_received ${lump}`);
     let reach = Math.max(0, lump - rss - rssi);
     // the overlap the old facts force (CO-4962): named receipts lie in the
@@ -195,6 +244,16 @@ function carve(
       else { r.amount = a - inLump; R.push({ ...r, amount: inLump, frequency: "once" }); }
     }
     if (reach > 0) { R.push({ kind: "other_nontaxable", amount: reach, frequency: "once" }); take(reach, false); }
+  }
+  // insurance or injury proceeds spent on medical care or burial (CO-4460,
+  // part of lump_sum_received): the spent_on_covered_costs of the one-time
+  // receipt that holds the proceeds (migration phase 2, CCCAP 3.111.I.21-22)
+  const insSpent = get("insurance_proceeds_spent_on_medical_or_burial");
+  if (insSpent > 0) {
+    const once = R.filter((r) => r.frequency === "once" && !r.retroactive && typeof r.amount === "number");
+    const h = once.find((r) => r.kind === "other_nontaxable" && (r.amount as number) >= insSpent) ?? once.find((r) => (r.amount as number) >= insSpent) ?? once[0];
+    if (h) h.spent_on_covered_costs = Math.min(insSpent, h.amount as number);
+    else notes.push("insurance_proceeds_spent_on_medical_or_burial with no one-time receipt to hold it");
   }
   // irregular income: a receipt of its own, out of the residual
   const irr = get("infrequent_or_irregular_income_received");
@@ -241,6 +300,45 @@ function carve(
   } else if (big !== undefined && big > 0) {
     R.push({ kind: "gambling_winnings", amount: big, frequency: "once" });
     notes.push("largest single game stated with no month's winnings: one game");
+  }
+  // the parts phase 3 gave a kind that may sit in an aggregate (a pension,
+  // Social Security) as well as in the other unearned income: carved out of
+  // the first receipt of the kinds named that holds them, which keeps its
+  // month, date and frequency
+  for (const [f, kind, hosts] of HOSTED) {
+    const amt = get(f);
+    if (amt <= 0 || kinds.legacy) continue;
+    const h = hosts.map((k) => R.find((r) => r.kind === k && typeof r.amount === "number" && (r.amount as number) >= amt &&
+      r.per_payment === undefined)).find(Boolean);
+    if (!h) { notes.push(`${f} ${amt} with no ${hosts.join(" or ")} receipt to hold it: not restated`); continue; }
+    h.amount = (h.amount as number) - amt;
+    const r: Receipt = { kind, amount: amt };
+    for (const k of ["month", "date", "frequency", "irregular", "retroactive"]) if (h[k] !== undefined) r[k] = h[k];
+    R.push(r);
+  }
+  // lump sums spent or designated (Colorado Works' CO-4365, part of the
+  // amounts the unearned income facts state): the designated_for_lump_sum_costs
+  // of the one-time receipt that holds them (3.605.4.B.33; the old fact also
+  // held the A.5 and A.6 amounts, which no household stated apart)
+  const designated = kinds.legacy ? 0 : get("lump_sum_amounts_spent_or_designated");
+  if (designated > 0) {
+    const once = R.filter((r) => r.frequency === "once" && typeof r.amount === "number");
+    const h = once.find((r) => r.kind === "other_nontaxable" && (r.amount as number) >= designated) ?? once.find((r) => (r.amount as number) >= designated);
+    if (h) h.designated_for_lump_sum_costs = designated;
+    else notes.push("lump_sum_amounts_spent_or_designated with no one-time receipt to hold it");
+  }
+  // Medicaid's VA Aid and Attendance (phase 2; 10 CCR 2505-10 8.100.5.K): the
+  // portion of a VA pension a household states as va_aid_and_attendance_amount
+  // (when receives_va_aid_and_attendance) is a receipt of its own kind,
+  // carved out of the receipt that holds it: the other non-taxable money
+  // (veterans' benefits), else the pension. Read only when stated, so a
+  // household that states neither keeps its receipts as they were.
+  const va = v.receives_va_aid_and_attendance === true ? get("va_aid_and_attendance_amount") : 0;
+  if (va > 0 && !R.some((r) => r.kind === "va_aid_and_attendance" && typeof r.amount === "number" && r.amount >= va)) {
+    const vh = ["other_nontaxable", "pension"].map((k) => R.find((r) => r.kind === k && typeof r.amount === "number" &&
+      r.amount >= va && r.frequency === undefined && !r.irregular && r.per_payment === undefined)).find(Boolean);
+    if (vh) { vh.amount = (vh.amount as number) - va; R.push({ kind: "va_aid_and_attendance", amount: va }); }
+    else notes.push("VA Aid and Attendance amount with no pension or other non-taxable receipt to hold it: not restated");
   }
   // earmarks onto the receipt they come out of
   const recurring = (r: Receipt) => typeof r.amount === "number" && r.frequency !== "once";
@@ -310,7 +408,7 @@ export interface PersonInput {
  *  facts the receipts restate (then the list stays unstated: unknown, as
  *  each old fact was). */
 export function translatePerson(
-  id: string, input: PersonInput, window: string[], applicationDate: string | undefined, choices: { rssi: string; gea: string; hca: string },
+  id: string, input: PersonInput, window: string[], applicationDate: string | undefined, choices: Kinds,
 ): { receipts: Receipt[] | undefined; notes: string[] } {
   const notes: string[] = [];
   const pf = input.facts;
@@ -461,9 +559,10 @@ function windowOf(months: string[]): string[] {
   return out;
 }
 
-function choiceFor(choices: Choices | undefined, caseId: string, pid: string) {
+function choiceFor(choices: Choices | undefined, caseId: string, pid: string, legacy = false): Kinds {
   const key = `${caseId}:${pid}`;
   return {
+    legacy,
     rssi: choices?.retroactiveSsiOrPa?.[key] ?? choices?.retroactiveSsiOrPa?.[caseId] ?? "ssi",
     gea: choices?.generalOrEmergency?.[key] ?? choices?.generalOrEmergency?.[caseId] ?? "general_assistance",
     hca: choices?.homeCareAllowance?.[key] ?? choices?.homeCareAllowance?.[caseId] ?? "in_home_care_allowance",
@@ -517,9 +616,76 @@ export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
   property_or_food_tax_refund_received: "person-month",
   state_veteran_annuity_received: "person-month",
   uniformed_services_special_pay_received: "person-month",
+  // Migration phase 3 (docs/reviews/receipts-migration-3.md): every program
+  // reads the receipts, so every scalar unearned-income fact phase 2 left
+  // without a reader is retired (the last readers were Colorado Works,
+  // CCCAP, SUN Bucks, Medicaid and CHP+)
+  social_security_income: "person-month",
+  pension_income: "person-month",
+  unemployment_income: "person-month",
+  child_support_received: "person-month",
+  tanf_cash_income: "person-month",
+  adult_financial_cash_income: "person-month",
+  tax_exempt_interest: "person-month",
+  other_unearned_income_taxable: "person-month",
+  other_unearned_income_nontaxable: "person-month",
+  lottery_gambling_winnings_received: "person-month",
+  taxable_interest_and_dividend_income: "person-month",
+  rental_income_received: "person-month",
+  educational_assistance_received: "person-month",
+  loan_proceeds_received: "person-month",
+  expense_reimbursements_received: "person-month",
+  energy_assistance_received: "person-month",
+  tax_refunds_and_credits_received: "person-month",
+  federally_excluded_payments_received: "person-month",
+  crime_victim_compensation_received: "person-month",
+  foster_care_provider_payments_received: "person-month",
+  kinship_care_payments_received: "person-month",
+  tanf_diversion_payment_received: "person-month",
+  tanf_supportive_service_payments_received: "person-month",
+  reverse_mortgage_payments_received: "person-month",
+  refugee_resettlement_payments_received: "person-month",
+  workers_compensation_award_expenses: "person-month",
+  americorps_payments_received: "person-month",
+  workforce_program_payments_received: "person-month",
+  vocational_training_allowance_received: "person-month",
+  general_or_emergency_assistance_received: "person-month",
+  in_home_care_allowance_received: "person-month",
+  va_aid_and_attendance_used_for_uncovered_care: "person-month",
+  charitable_need_based_cash_received: "person-month",
+  child_support_arrears_received: "person-month",
+  pass_set_aside_income: "person-month",
+  lump_sum_received: "person-month",
+  retroactive_social_security_lump_sum_received: "person-month",
+  retroactive_ssi_or_public_assistance_lump_sum_received: "person-month",
+  retroactive_colorado_works_lump_sum_received: "person-month",
+  insurance_proceeds_spent_on_medical_or_burial: "person-month",
+  infrequent_or_irregular_income_received: "person-month",
+  money_received_from_sponsor: "person-month",
+  unearned_income_received_prior_thirty_days: "person",
+  // Medicaid's statement of the VA Aid and Attendance portion of a pension,
+  // carved into its own receipt by the translation (phase 2)
+  receives_va_aid_and_attendance: "person-month",
+  va_aid_and_attendance_amount: "person-month",
+  // Migration phase 3, step 2: the parts of a receipt given a kind (or, for
+  // the amounts spent or designated, a field) of their own
+  adoption_subsidy_received: "person-month",
+  early_childhood_research_study_payments_received: "person-month",
+  board_only_payments_received: "person-month",
+  room_only_payments_received: "person-month",
+  military_allotment_received_for_persons_outside_home: "person-month",
+  school_attendance_conditional_benefits_received: "person-month",
+  savings_account_distributions_received: "person-month",
+  medicare_premium_refund_received: "person-month",
+  insurance_cash_value_withdrawn: "person-month",
+  lump_sum_amounts_spent_or_designated: "person-month",
 };
-/** case id -> person -> retired fact -> value, as stated before retirement. */
+/** case id -> person -> retired fact -> value, as stated before retirement.
+ *  A person-month fact stated by month is { <month>: value, ... }; one stated
+ *  for every month and also for some months keeps the every-month value
+ *  under EVERY_MONTH beside them. */
 export type RetiredFacts = Record<string, Record<string, Record<string, unknown>>>;
+export const EVERY_MONTH = "every_month";
 
 /** A household with the facts a migration retired from it put back: what
  *  it stated before the migration (the harness evaluates the old ledger on
@@ -532,15 +698,22 @@ export function withRetired(c0: HouseholdCase, retired?: RetiredFacts): Househol
     for (const [k, v] of Object.entries(facts)) {
       if (RETIRED[k] !== "person-month") (p.facts ??= {})[k] = v;
       else if (v && typeof v === "object" && !Array.isArray(v)) {
-        // stated month by month: { "2026-10": value, ... }
-        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) ((p.months ??= {})[m] ??= {})[k] = mv;
+        // stated month by month: { "2026-10": value, ... }, with the value
+        // for every month under EVERY_MONTH when it was stated too
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) {
+          if (m === EVERY_MONTH) (p.month_defaults ??= {})[k] = mv;
+          else ((p.months ??= {})[m] ??= {})[k] = mv;
+        }
       } else (p.month_defaults ??= {})[k] = v;
     }
   }
   return c;
 }
 
-export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choices, retired?: RetiredFacts): Translated<HouseholdCase> {
+/** With `legacy`, the translation the phase-2 baseline's schema reads: the
+ *  parts phase 3 gave a kind of their own stay in the receipt that held them
+ *  (the harness evaluates the baseline ledger on it). */
+export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choices, retired?: RetiredFacts, legacy = false): Translated<HouseholdCase> {
   const out = clone(c0);
   const notes: string[] = [];
   // the household as translated: its statements and its retired ones
@@ -552,9 +725,9 @@ export function translateCase(c0: HouseholdCase, ix: LedgerIndex, choices?: Choi
     const facts: Record<string, unknown> = {};
     const md: Record<string, unknown> = { ...(p.month_defaults ?? {}) };
     for (const [k, v] of Object.entries(p.facts ?? {})) {
-      if ((ix.byIdentifier.get(k)?.scope ?? RETIRED[k]) === "person-month") md[k] = v; else facts[k] = v;
+      if ((RETIRED[k] ?? ix.byIdentifier.get(k)?.scope) === "person-month") md[k] = v; else facts[k] = v;
     }
-    const t = translatePerson(`${c.id} ${pid}`, { facts, monthDefaults: md, months: p.months ?? {} }, window, app, choiceFor(choices, c.id, pid));
+    const t = translatePerson(`${c.id} ${pid}`, { facts, monthDefaults: md, months: p.months ?? {} }, window, app, choiceFor(choices, c.id, pid, legacy));
     notes.push(...t.notes);
     const before = JSON.stringify(p.facts?.receipts);
     const target = out.persons[pid];
@@ -582,7 +755,7 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
     const s: Slot = { facts: {}, md: { ...(md0 ?? {}) }, months: clone(months0 ?? {}) };
     for (const [k, v] of Object.entries(src ?? {})) {
       const it = ix.byIdentifier.get(k);
-      if ((it?.scope ?? RETIRED[k]) === "person-month") {
+      if ((RETIRED[k] ?? it?.scope) === "person-month") {
         if (v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).every((x) => /^\d{4}-\d{2}$/.test(x))) {
           for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
         } else s.md[k] = v;
@@ -591,7 +764,9 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string, choice
     for (const [k, v] of Object.entries(retired?.[t.id]?.[pid] ?? {})) {
       if (RETIRED[k] !== "person-month") s.facts[k] = v;
       else if (v && typeof v === "object" && !Array.isArray(v)) {
-        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) (s.months[m] ??= {})[k] = mv;
+        for (const [m, mv] of Object.entries(v as Record<string, unknown>)) {
+          if (m === EVERY_MONTH) s.md[k] = mv; else (s.months[m] ??= {})[k] = mv;
+        }
       } else s.md[k] = v;
     }
     persons.set(pid, s);

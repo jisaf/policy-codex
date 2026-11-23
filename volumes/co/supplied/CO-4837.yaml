@@ -5,8 +5,8 @@ kind: supplied
 type: whole number
 scope: person-month
 program: All
-meaning: "The number of persons, not living in the person's home, on whose behalf the allotment that military_allotment_received_for_persons_outside_home (CO-4836) states is received."
-precision: "Stated with military_allotment_received_for_persons_outside_home; read only where that allotment is more than 0."
+meaning: "The number of persons, not living in the person's home, on whose behalf the allotment is received that the person's receipts of kind military_allotment state as for persons living elsewhere (for_person_living_elsewhere; receipts, CO-5000)."
+precision: "Stated with that allotment; read only where it is more than 0."
 supplied_by: "Applicant statement, the allotment statement."
 sources: [S3580]
 tags: [income]

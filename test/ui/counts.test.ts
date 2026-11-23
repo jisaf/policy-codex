@@ -27,25 +27,25 @@ describe("owns: the question's Owner line names the role", () => {
     expect(unsettled.filter((q) => !explicitField(q.body, "Owner")).map((q) => q.id)).toEqual([]);
   });
 
-  it("counts the Medicaid policy owner's questions once: 43 open and 3 partly settled (the App said 24 and 49)", () => {
+  it("counts the Medicaid policy owner's questions once: 49 open and 3 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(43); // + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
+    expect(med.open.length).toBe(49); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
     expect(med.partly.length).toBe(3);
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("43 open questions you own, and 3 partly settled");
+    expect(ownedPhrase(med)).toBe("49 open questions you own, and 3 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 30 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 33 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([30, 4]); // + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
+    expect([cash.open.length, cash.partly.length]).toEqual([33, 4]); // + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([49, 5]); // + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(54); // + OQ-950, OQ-952; + OQ-900
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([55, 5]); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(60); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {
@@ -71,17 +71,17 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 19 stored households and reaches 42", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 22 stored households and reaches 45", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432", "CO-488"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up); + CO-488 (non-MAGI fix round 2026-11-23 households)
-    expect(reach).toHaveLength(42); // + CO-488 (fix round 2026-11-23); + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 42`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432", "CO-488", "CO-580", "CO-581", "CO-582"]); // + CO-580 to CO-582 (receipts migration 2, Colorado Works households in receipts alone); + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up); + CO-488 (non-MAGI fix round 2026-11-23 households)
+    expect(reach).toHaveLength(45); // + CO-580 to CO-582 (receipts migration 2); + CO-488 (fix round 2026-11-23); + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 22 of ${vol.cases.length} stored households; it reaches 45`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 35 and reaches 75", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(35); // + CO-530, CO-531 (time audit T-1: the 19th-birthday month is the Children's group's); + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(75); // + CO-480, CO-483, CO-484, CO-490, CO-491, CO-492 (non-MAGI fix round 2026-11-23 households); + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up); + CO-530, CO-531 (time audit)
+  it("the children's Medicaid income limit (CO-191) is read by 36 and reaches 77", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(36); // + CO-562 (receipts migration 2: CO-386's CHP+ child in receipts alone); + CO-530, CO-531 (time audit T-1: the 19th-birthday month is the Children's group's); + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(77); // + CO-560, CO-562 (receipts migration 2, households in receipts alone); + CO-480, CO-483, CO-484, CO-490, CO-491, CO-492 (non-MAGI fix round 2026-11-23 households); + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up); + CO-530, CO-531 (time audit)
   });
 
   it("every household that reads an item is one it reaches", () => {

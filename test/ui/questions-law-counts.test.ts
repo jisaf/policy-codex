@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 136, 19 of them partly settled", () => {
-    expect(all.total).toBe(136); // + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-885, OQ-886, OQ-887, OQ-888 (receipts migration 1: LEAP, Adult Financial); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
-    expect(all.rows).toHaveLength(136);
+  it("holds every question still to answer: 150, 19 of them partly settled", () => {
+    expect(all.total).toBe(150); // + OQ-995, OQ-996 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2: Medicaid), merged; + OQ-990, OQ-991, OQ-992 (receipts migration 2: CCCAP), OQ-993 (SUN Bucks), merged; + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-950, OQ-951 (time audit T-1), OQ-952 (T-8), OQ-953 (T-6); + OQ-900, OQ-901 (fix round 2026-11-23); + OQ-885, OQ-886, OQ-887, OQ-888 (receipts migration 1: LEAP, Adult Financial); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-863 (LEAP coverage pass 2)
+    expect(all.rows).toHaveLength(150);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
   });
 
@@ -41,7 +41,7 @@ describe("the question queue", () => {
       expect(r.others).not.toContain(r.owner);
     }
     const cash = questionQueue(engine, vol.sources, vol.openQuestions, cdhs, { mine: true, owner: "Cash programs policy owner" });
-    expect(cash.rows).toHaveLength(34); // + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial)
+    expect(cash.rows).toHaveLength(37); // + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial)
     expect(cash.rows.every((r) => r.owner === "Cash programs policy owner")).toBe(true);
     expect(cash.groups.map((g) => g.owner)).toEqual(["Cash programs policy owner"]);
     // Without a filter the first owner is named, and the groups add up.
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(135); // all but the first (see the count above)
+    expect(q.total).toBe(149); // all but the first (see the count above)
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });
@@ -93,7 +93,7 @@ describe("Law", () => {
     expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(40);
   });
 
-  it("what rests on the unverified sources: 16 outcomes, and 14 stored households read them (Blind A said 3, Blind B 11)", () => {
+  it("what rests on the unverified sources: 16 outcomes, and 15 stored households read them (Blind A said 3, Blind B 11)", () => {
     const early = unverifiedReach(engine, vol.sources, unverified, null);
     expect(early.households).toBeNull();
     restingIndex(engine, vol.cases);
@@ -102,7 +102,7 @@ describe("Law", () => {
     expect(r.citing).toHaveLength(6);
     expect(r.resting).toHaveLength(57); // + 13 through CO-608 (C3-1, fix round 2026-11-23; see above)
     expect(r.outcomes).toHaveLength(16); // + ma_ssi_related_category, ma_protected_group_category (through CO-608, C3-1 of the fix round 2026-11-23)
-    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214", "CO-388", "CO-395", "CO-481", "CO-485"]); // + CO-388 (probe X-REFUSE, CO-112 with the refused income allowance; probe-preservation round (CO-300 and up)); + CO-395, CO-481, CO-485 (households that read the SSI-method resources, CO-608 and CO-647, C3-1 of the fix round 2026-11-23)
+    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214", "CO-388", "CO-395", "CO-481", "CO-485", "CO-561"]); // + CO-561 (receipts migration 2: CO-139's State Veterans Home resident in receipts alone); + CO-388 (probe X-REFUSE, CO-112 with the refused income allowance; probe-preservation round (CO-300 and up)); + CO-395, CO-481, CO-485 (households that read the SSI-method resources, CO-608 and CO-647, C3-1 of the fix round 2026-11-23)
   }, 60_000);
 
   it("an excerpt is cited by an item through its sources or a dated version", () => {

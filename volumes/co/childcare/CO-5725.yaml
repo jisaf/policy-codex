@@ -1,0 +1,17 @@
+id: CO-5725
+name: "CCCAP: a person's counted child support"
+identifier: cccap_counted_child_support
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The child support the person's countable unearned income holds for the month (8 CCR 1403-1 3.111.I.29), as it is counted there: current support and arrears received in the month at their amount, a lump-sum child support payment received in the month at one twelfth (H.4.i). The amount a protective services household does not count (3.119.A: \"Child support income shall not be included as income\")."
+precision: "Reads the receipts of the kinds the counting table treats as child support (counted_child_support: child_support and child_support_arrears). Replaces child_support_received (CO-028, which held arrears as a part) for cccap_protective_services_income (CO-994) and cccap_has_countable_unearned_income (CO-2873)."
+derived: [sum_receipts, receipts, [all, ["=", [lookup, cccap_receipt_treatment_table, [receipt, kind]], counted_child_support], [received_in, [month]]], [case, [["=", [receipt, frequency], once], ["/", [receipt, amount], cccap_lump_sum_averaging_months]], [else, [receipt, amount]]]]
+sources: [S488, S4020, S2704]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 2: the child support 3.119.A leaves out of a protective services household's income, read from the receipts as the countable income counts it."
+tests:
+  - {id: CO-5725-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: child_support, amount: 250}, {kind: child_support_arrears, amount: 50}, {kind: social_security, amount: 400}]}, title: "Current support and arrears; Social Security is not child support", expect: 300}
+  - {id: CO-5725-T2, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: child_support_arrears, amount: 1200, frequency: once, month: "2026-11"}]}, title: "A lump-sum child support payment, at the twelfth it is counted at (H.4.i)", expect: 100}

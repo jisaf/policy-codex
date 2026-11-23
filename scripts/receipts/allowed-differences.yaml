@@ -51,3 +51,214 @@
   identifier: /^snap_(person_unearned_income|person_gross_income|household_gross_income|unearned_income_verification_is_pending)$/
   old: unknown
   class: R5 SNAP no winnings, no limit in force (T-5 closure)
+
+# ---------------------------------------------------------------------------------------------------
+# Phase 2, Colorado Works (docs/reviews/receipts-migration-2-cw.md, section 6, where each class is
+# stated with its cases and the rule text). Baseline c29d326: phase 1 merged, Colorado Works still on
+# the scalar facts, so the harness measures the Colorado Works move alone.
+
+# CW1: the households written in receipts alone (CO-458 to CO-460, the spike's families) stated none
+# of the scalar facts Colorado Works read, so its income could not be determined; it now reads their
+# receipts and gives the rule's answer (3.605.3, 3.605.5.A; CO-458: $900 current support counted for
+# eligibility at application and not in the grant, the crime victim payment exempt, 3.605.4.A.8).
+- case: /^CO-(458|459|460)$/
+  identifier: /^cw_/
+  old: unknown
+  class: CW1 Colorado Works reads the households written in receipts alone
+
+# CW2: the unearned-income verification element reads the income Colorado Works counts (3.604.3.B.2.e:
+# "income ... used to determine eligibility and payment"). The old cw_has_countable_unearned_income
+# (CO-2871) summed the scalar facts, whose other unearned income held receipts 3.605.4 exempts and
+# whose child support held arrears (3.605.5.D), and left out a lottery prize (3.605.3.A.14), stated
+# outside them. Stored: an exempt receipt only (crime victim compensation, foster care, WIOA and
+# training allowances, General Assistance) or a prize only (CO-99, CO-353, CO-535).
+- case: /^CO-(99|171|175|219|220|319|353|358|373|374|408|409|410|423|432|489|535)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending|pending_verification_count|person_pending_verification_count|verification_status)$/
+  class: CW2 Colorado Works verifies the unearned income it counts
+- case: /^G-[A-Za-z]+-(crime_victim_compensation_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|educational_assistance_received_300_part_of_nontaxable_|energy_300_of_which_nonprofit_300|energy_assistance_received_300_part_of_nontaxable_|expense_reimbursements_received_300_part_of_nontaxable_|federally_excluded_300_of_which_VISTA_200|federally_excluded_payments_received_300_part_of_nontaxable_|foster_care_provider_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|general_or_emergency_assistance_received_300_part_of_nontaxable_|in_home_care_allowance_received_300_part_of_nontaxable_|loan_proceeds_received_300_part_of_nontaxable_|lottery_(300|5000)|refugee_resettlement_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|retroactive_SSI_PA_lump_300|reverse_mortgage_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|tax_refunds_and_credits_received_300_part_of_nontaxable_|va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_|workers_compensation_claim_expense_amounts_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|workforce_300_of_which_vocational_allowance_200|workforce_program_payments_received_300_part_of_nontaxable_)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending|pending_verification_count|person_pending_verification_count|verification_status)$/
+  class: CW2 Colorado Works verifies the unearned income it counts
+
+# CW3: a retroactive "SSI or public assistance" lump sum, translated as the default kind ssi (the old
+# fact could not say which, CO-3920), is SSI, which 3.605.4.B.27 exempts. The scalar facts could state
+# it only inside other_unearned_income_nontaxable, which Colorado Works counted.
+- case: /^G-[A-Za-z]+-retroactive_SSI_PA_lump_300$/
+  identifier: /^cw_/
+  class: CW3 a retroactive SSI award is SSI (3.605.4.B.27)
+
+# CW4: workers' compensation claim expenses stated as the receipt's claim_expense (the translation of
+# the retired LEAP fact workers_compensation_claim_expense_amounts_received) are deducted (3.605.3.B.4).
+# The old Colorado Works read them only from its own second statement of the same amount,
+# workers_compensation_award_expenses (CO-4366), which these households do not state.
+- case: /^G-[A-Za-z]+-workers_compensation_claim_expense_amounts_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)$/
+  identifier: /^cw_/
+  class: CW4 workers' compensation claim expenses are a field of the award (3.605.3.B.4)
+# ---- Migration phase 2: CCCAP and SUN Bucks (docs/reviews/receipts-migration-2-cccap-sunbucks.md, section 7) ----
+# Baseline: c29d326, the ledger at the end of phase 1 (npm run receipts:harness -- --base c29d326); the
+# entries also hold against the phase-1 baseline (ccbb3a7), where the phase-1 entries above explain the rest.
+
+# C1 (8 CCR 1403-1 3.111.J.12, J.17, J.24; counted because no rule excludes it, OQ-873's reading): three kinds the
+# old scalar facts folded into a fact CCCAP excluded, which no paragraph of J names. J.12 excludes "Low-Income Energy
+# Assistance Program (LEAP) benefits" (energy_assistance_received held a nonprofit's or supplier's assistance too);
+# J.17 excludes "Training allowances granted by Workforce Investment Act (WIA)" (workforce_program_payments_received
+# held a training allowance from another vocational program too); J.24 excludes the "Home Care Allowance under adult
+# categories of assistance" (in_home_care_allowance_received held another program's personal care allowance too).
+# The receipts name each source apart, and cccap_receipt_treatment_table counts the three by silence, marked for the
+# owner's sign-off. CO-219 and CO-220 state a $1,000 and a $500 vocational training allowance (coverage pass 3 C3-1).
+- case: /^(CO-219|CO-220|G-[A-Za-z]+-(energy_300_of_which_nonprofit_300|workforce_300_of_which_vocational_allowance_200|in_home_care_allowance_received_300_part_of_nontaxable_))$/
+  identifier: /^cccap_/
+  class: C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)
+
+# C2 (the transition rule): a stored household written in receipts alone (CO-458 to CO-460, the spike's families) states
+# none of the scalar facts CCCAP read before phase 2, so the baseline's CCCAP could not determine its income; CCCAP now
+# reads the receipts. No expectation of these households names a CCCAP figure.
+- case: /^CO-(458|459|460)$/
+  identifier: /^cccap_/
+  old: unknown
+  class: C2 CCCAP reads a household stated in receipts alone
+
+# R1 again, met only against the phase-1 baseline (ccbb3a7): CO-345 now states its county diversion as one payment in
+# November 2026 (lump_sum_received with tanf_diversion_payment_received; 9 CCR 2503-6 3.606.8.A, "non-recurring cash
+# payment"), and the old leap_person_one_time_income (CO-4069) needed the thirty-day facts to place any lump sum;
+# leap_receipt_treatment_table excludes a diversion (3.752.23.W), so its date is never asked.
+- case: CO-345
+  identifier: /^leap_/
+  old: unknown
+  class: R1 LEAP excluded one-time receipt no longer needs the thirty-day facts
+# ---- Phase 2: Medicaid and CHP+ (docs/reviews/receipts-migration-2-medicaid.md, section 7) ----
+# Baseline c29d326 (phase 1 merged). Each class is stated there with its cases and the rule text.
+
+# M1 (fixed): MAGI counts a retroactive Social Security payment in the month it is paid. The old
+# retroactive_social_security_lump_sum_received was part of lump_sum_received and so of the non-taxable
+# other unearned income (CO-030), which ma_person_magi_income (CO-502) left out; the receipt is Social
+# Security (10 CCR 2505-10 8.100.4.C.1.b.xi, c.iii) paid once, "counted as income only in the month
+# received" (8.100.4.C.1.d.i; 42 CFR 435.603(e)(1)). CHP+ reads the same MAGI household income.
+- case: /^G-[A-Za-z]+-retroactive_SS_lump_300$/
+  identifier: /^(ma_|chp_)/
+  class: M1 MAGI counts a retroactive Social Security payment in the month received
+
+# M2 (fixed): VA Aid and Attendance stated inside a pension. A household that states the VA pension in
+# pension_income and its Aid and Attendance part in va_aid_and_attendance_amount states the part twice;
+# the receipts state it once, as va_aid_and_attendance, which MAGI excludes as a veterans' benefit
+# (8.100.4.C.1.d.vi "Veteran's Benefits"). The old MAGI income counted the whole pension.
+- case: /^CO-(139|214)$/
+  identifier: /^ma_(person_magi_income|magi_household_income|magi_household_income_pct_fpl)$/
+  class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
+# The same statement in the spousal impoverishment figures: the person's own income at home (CO-212,
+# CO-396, an aged veteran whose VA pension includes Aid and Attendance) no longer counts the portion
+# 8.100.5.K says "shall not be considered as income".
+- case: /^CO-(212|396)$/
+  identifier: ma_community_spouse_income
+  class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
+
+# M3 (fixed): VA Aid and Attendance stated in the SNAP and Colorado Works earmark fact. A household that
+# states va_aid_and_attendance_used_for_uncovered_care as part of the non-taxable other income states
+# Aid and Attendance, which 10 CCR 2505-10 8.100.5.K says "shall not be considered as income when
+# determining eligibility"; the old SSI method counted it, because Medicaid read only its own VA facts
+# (receives_va_aid_and_attendance, va_aid_and_attendance_amount) and these households did not restate it
+# there. The receipts state it once, as va_aid_and_attendance, which the SSI method's table does not
+# count (not income) and MAGI excludes (8.100.4.C.1.d.vi).
+- case: /^G-[A-Za-z]+-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_$/
+  identifier: /^(ma_|chp_)/
+  class: M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)
+
+# M4 (fixed): a loan, an income tax refund or VA Aid and Attendance is not unearned income an aged, blind
+# or disabled applicant must verify. The old ma_has_unearned_income_for_verification (CO-2870) summed
+# the other non-taxable income, which held loan proceeds and tax refunds; 20 CFR 416.1103(d) ("Any
+# amount refunded on income taxes you have already paid is not income") and (f) ("Money you borrow ...
+# is not income"), S2209, and 8.100.5.K. The verification element of 8.100.5.B.1.d is unearned income.
+- case: /^G-[A-Za-z]+-(loan_proceeds_received|tax_refunds_and_credits_received)_300_part_of_nontaxable_$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
+# The same in a community spouse's income (8.100.7.R.2; CO-196, coverage pass 2 G-1: a husband's $500
+# income tax refund stated in his other non-taxable income): not income, so not part of the income the
+# monthly income allowance is measured against.
+- case: /^(CO-196|G-[A-Za-z]+-(loan_proceeds_received|tax_refunds_and_credits_received)_300_part_of_nontaxable_)$/
+  identifier: ma_community_spouse_income
+  class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
+
+# M5: a household written in receipts alone after phase 1 (CO-458 to CO-460, the spike's families F1
+# to F3) states no scalar unearned-income fact, so the baseline's Medicaid could not determine its
+# income; Medicaid now reads the receipts. Not a change of rule: the receipts are the household's only
+# statement.
+- case: /^CO-(458|459|460)$/
+  identifier: /^(ma_|chp_)/
+  old: unknown
+  class: M5 household in receipts alone now read by Medicaid
+
+# M6 (OQ-970): a training allowance stated in the taxable other income. CO-219 and CO-220 (coverage
+# pass 3 C3-1) state a $1,000 vocational training allowance in other_unearned_income_taxable with its
+# part facts; the translation states it once, as vocational_training_allowance, which MAGI's table does
+# not count (not_taxable_income, the reading of the part facts, pending OQ-970), so MAGI finds no
+# unearned income to verify. 42 CFR 435.603(e) (S165) follows the federal tax treatment, which OQ-970
+# asks the owner to settle.
+- case: /^CO-(219|220)$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M6 a training allowance stated as taxable income is not MAGI income pending OQ-970
+
+# M7: long-term care gross income no longer needs the VA flag stated. The old ma_ltc_gross_income
+# (CO-641) subtracted va_aid_and_attendance_amount when receives_va_aid_and_attendance was true and read
+# the flag with no default, so a person who did not state it (anyone outside a long-term care case)
+# had no gross income, and ma_meets_special_income_group (CO-642) none either. The VA portion is now a
+# receipt of its own kind, stated once with the person's other receipts, which 8.100.5.K leaves out of
+# income; gross income is known whenever the receipts are (decision 4 of 2026-11-23: a fact that states
+# the same money twice is not asked for). Only a figure that was cannot-determine becomes known.
+- case: /.*/
+  identifier: /^ma_(ltc_gross_income|meets_special_income_group)$/
+  old: unknown
+  class: M7 long-term care gross income no longer needs the VA flag stated
+
+# ---------------------------------------------------------------------------------------------------
+# Phase 3, the cleanup (docs/reviews/receipts-migration-3.md, section 6, where each class is stated
+# with its cases and the rule text). Baseline c29d326, read through the legacy translation (the parts
+# phase 3 gave kinds of their own left in the receipt that held them), so the harness measures phase 3
+# beside phase 2.
+
+# P3-1: an adoption subsidy is a receipt kind of its own (adoption_subsidy), which Colorado Works'
+# counting table excludes: 9 CCR 2503-6 3.605.4.B.32 (S4040), "A child receiving subsidized adoption
+# funds shall be excluded from the assistance unit and his or her income shall be exempt". The subsidy
+# is the child's income though paid to the adoptive parent (as Medicaid reads 8.100.5.F.6.t). Before,
+# it was stated inside the parent's other non-taxable income, which Colorado Works counted by silence.
+- case: /^CO-(400|401)$/
+  identifier: /^cw_(countable_unearned_income|payment_countable_unearned_income|has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-1 Colorado Works excludes an adoption subsidy (3.605.4.B.32)
+- case: /^G-[A-Za-z]+-P3_adoption_subsidy_300_part_of_nontaxable_$/
+  identifier: /^cw_/
+  class: P3-1 Colorado Works excludes an adoption subsidy (3.605.4.B.32)
+
+# P3-2: the SSI method's counting table exempts an adoption subsidy (8.100.5.F.6.t, S4041: "his income
+# shall be exempt"), so it is not the adoptive parent's own SSI-method income either; before, it was
+# counted there as part of the other non-taxable income and subtracted only where the parent's income
+# was deemed to the child (the double handling the phase-2 Medicaid review names). The deemed figure
+# and the child's outcomes do not change.
+- case: /^(CO-(400|401)|G-[A-Za-z]+-P3_adoption_subsidy_300_part_of_nontaxable_)$/
+  identifier: /^ma_(ssi_countable_income|ssi_countable_unearned_income|wawd_countable_income|dac_countable_income)$/
+  class: P3-2 the SSI method exempts an adoption subsidy for the adoptive parent too (8.100.5.F.6.t)
+
+# P3-3: a lodger's payment for a room only is a receipt kind of its own (room_only_payment), which
+# Colorado Works counts as earned income (3.605.2.E.4.d, S3159; cw_boarder_income), as it did before,
+# but no longer also as unearned income to verify: before, it sat in the other taxable income, so the
+# unearned-income verification element (3.604.3.B.2.e) asked for it although cw_unearned_income_deductions
+# took it out of the unearned income counted.
+- case: /^CO-(206|362)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-3 Colorado Works reads a room-only payment as earned income only (3.605.2.E.4.d)
+# The same for the generated households that state each part Colorado Works took back out of the
+# unearned income it counted (cw_unearned_income_deductions) and now reads as its own kind: a board-only
+# or room-only payment (earned income, 3.605.2.E.4.c-d), a savings account distribution (exempt,
+# 3.605.4.B.21), insurance cash value taken (B.30), an SMIB refund (3.605.3.B.9). Before, the
+# verification element (cw_has_countable_unearned_income, 3.604.3.B.2.e: income "used to determine
+# eligibility and payment") asked for each, although none was counted; phase 2's CW2 is the same reading.
+- case: /^G-[A-Za-z]+-P3_(board_only_300_part_of_taxable_|room_only_300_part_of_taxable_|pension_300_of_which_savings_distribution_300|insurance_cash_value_300_part_of_nontaxable_|SMIB_refund_120_part_of_nontaxable_)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-3 Colorado Works does not verify as unearned income a part it never counted
+
+# P3-4: a military allotment received for persons who do not live with the person is a receipt of kind
+# military_allotment whose for_person_living_elsewhere is the whole amount, and SNAP leaves that field out
+# of every receipt it counts: 10 CCR 2506-1 4.405.B (S3100), "Monies received and used for the care and
+# maintenance of a third-party beneficiary who is not a household member". Before, the scalar fact for
+# the allotment (military_allotment_received_for_persons_outside_home, Colorado Works' own) was part of
+# the other non-taxable income, which SNAP counted, since SNAP's own earmark fact did not state it.
+- case: /^G-[A-Za-z]+-P3_military_allotment_for_persons_elsewhere_300_part_of_nontaxable_$/
+  identifier: /^snap_(person_unearned_income|person_gross_income|unearned_income_verification_is_pending)$/
+  class: P3-4 SNAP leaves out an allotment received for persons not in the household (4.405.B)

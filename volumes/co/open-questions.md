@@ -2698,13 +2698,15 @@ Checked 2026-11-22: 8 CCR 1403-1 3.103.LLL, 3.111.A, 3.111.D.1.a-b and 3.111.H.5
 
 ### OQ-873. CCCAP: a diversion payment that is not cash assistance
 
-Body: 8 CCR 1403-1 3.103.S (S3638): "All state diversion payments of less than four (4) consecutive months are not cash assistance. For the purpose of child care, county diversion payments are not cash assistance." 3.111.J.26 (S2706) excludes "Public cash assistance grants including ... (TANF)/Colorado Works", so a state diversion paid over four or more consecutive months is excluded (cccap_excluded_unearned_receipts, CO-4463, reading tanf_state_diversion_payment_months, CO-4911). 3.111.I lists countable income ("Each of the following are considered countable income") and does not name a diversion payment; J does not exclude one that is not cash assistance. The draft counts a shorter state diversion and a county diversion as unearned income, as it counts any unearned receipt that J does not exclude; read the other way, I is a closed list and they are not income at all. Coverage pass 3 C3-6. Items: CO-4463, CO-4911.
+Body: 8 CCR 1403-1 3.103.S (S3638): "All state diversion payments of less than four (4) consecutive months are not cash assistance. For the purpose of child care, county diversion payments are not cash assistance." 3.111.J.26 (S2706) excludes "Public cash assistance grants including ... (TANF)/Colorado Works", so a state diversion paid over four or more consecutive months is excluded (cccap_excluded_unearned_receipts, CO-4463, reading tanf_state_diversion_payment_months, CO-4911). 3.111.I lists countable income ("Each of the following are considered countable income") and does not name a diversion payment; J does not exclude one that is not cash assistance. The draft counts a shorter state diversion and a county diversion as unearned income, as it counts any unearned receipt that J does not exclude; read the other way, I is a closed list and they are not income at all. Coverage pass 3 C3-6. Items: CO-4463, CO-4911, CO-5720, CO-5722.
 
 Probe hand-check (docs/reviews/probe-handcheck-cash-food-care.md, CO-345; fix round 2026-11-23): even counted as income, a one-time county diversion payment is a non-recurring lump sum. 8 CCR 1403-1 3.111.H.4.i: "Non-recurring lump sum payments, including lump sum child support payments, may be included as income in the month received or averaged over a twelve (12) month period, whichever is most beneficial for the recipient." cccap_person_unearned_income (CO-3916) averages only lump_sum_received (CO-3367), whose meaning includes "a similar one-time payment"; a one-time payment the case states only in the other unearned income facts is counted in full in the month. Stored CO-345 states its 1,500 county diversion that way: counted in full the household is at 3,500, over 185% of the guideline (3,336.16), ineligible_income; averaged it would be 2,000 + 125 = 2,125, eligible_low_income. So a second question sits under this one: whether CCCAP must average every one-time payment whatever fact the case states it in (which would need a program reading of "non-recurring" over the other unearned facts), or only a payment the case states as a lump sum.
 
+Receipt records, migration phase 2 (2026-11-23; docs/reviews/receipts-migration-2-cccap-sunbucks.md): the second question is settled by the text once the payment's form is a fact of its own. H.4.i reaches "Non-recurring lump sum payments, including lump sum child support payments", whatever their source, and a receipt record states whether a payment is paid once (frequency once) apart from its kind, so CCCAP averages every counted receipt paid once (cccap_one_time_receipts_averaged, CO-5722); no fact the case chose decides it any more. A diversion is a non-recurring payment by its own rule: 9 CCR 2503-6 3.606.8.A (S762) calls it a "non-recurring cash payment" ("Specify the need(s) for and the specific type(s) of non-recurring cash payment"; "All diversion clients who receive a one-time cash payment"). Stored CO-345 now states its county diversion as one payment in November 2026 and expects the averaged figure, 2,000 + 1,500 / 12 = 2,125, eligible_low_income. The first question stays open: whether a diversion that is not cash assistance is income at all.
+
 Class: state policy choice
 Owner: Child care policy owner (CDEC)
-Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. It is averaged over twelve months under 3.111.H.4.i only when the case states it as a lump sum ("a similar one-time payment" in the lump-sum fact); stated only as other unearned income it is counted in the month received.
+Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income. A diversion paid once, like any counted receipt paid once, is averaged over twelve months under 3.111.H.4.i (receipt records; before them, only when the case stated it as a lump sum).
 
 Checked 2026-11-22: 8 CCR 1403-1 3.103.S, 3.111.I and 3.111.J (D-87, version effective 2026-08-14). Neither I nor J names a diversion payment, and S defines cash assistance without saying how a payment that is not cash assistance is treated. Checked 2026-11-23: 3.111.H.4.h-i (D-87, same version). H.4.i lets a non-recurring lump sum be averaged "whichever is most beneficial" but does not define "non-recurring" or say whether a diversion payment is one; 3.103.S calls a county diversion payment not cash assistance without saying whether it recurs.
 
@@ -2817,3 +2819,143 @@ Owner: Cash programs policy owner
 Assumption: A period of N consecutive days is counted from the day after the absence or stay began, so the day of departure or entry is not counted.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.
+
+### OQ-970. Medicaid MAGI: whether AmeriCorps living allowances, workforce and vocational training allowances and uniformed services special pay are MAGI income
+
+Body: 42 CFR 435.603(e) (S165) counts "income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code", and 10 CCR 2505-10 8.100.4.C.1 (S166) lists what it counts and excludes without naming these payments. Before receipt records the ledger stated each of them as part of the non-taxable other unearned income (americorps_payments_received, workforce_program_payments_received with vocational_training_allowance_received, uniformed_services_special_pay_received, all part of other_unearned_income_nontaxable, CO-030), so ma_person_magi_income (CO-502) left them out. The federal tax treatment is not that simple: an AmeriCorps living allowance and most training allowances are taxable compensation, and hostile fire or imminent danger pay is excluded only for service in a combat zone. Medicaid's MAGI counting table (ma_magi_receipt_treatment_table, CO-5500) keeps the earlier reading, as not_taxable_income, until the owner decides.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The four kinds are not MAGI-based income (the reading before receipt records).
+
+Checked 2026-11-23: 42 CFR 435.603(e) (D-34) and 10 CCR 2505-10 8.100.4.C.1.a-d (D-40). Neither names these payments; the Code sections that would decide them (26 U.S.C. 61, 112, 3121) are not on file. Items: CO-5500.
+
+### OQ-971. Medicaid SSI method: kinds of receipt counted only because no Colorado rule on file excludes them, where 20 CFR 416 Subpart K would
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts unearned income "including, but not limited to" its list, and 8.100.5.F.6 (S3404, S3617) exempts named receipts; the ledger also reads 20 CFR 416 Subpart K where it cited it before (416.1103, 416.1124(b), (c)(3), (c)(5), (c)(23); S2209, S3618). For the following kinds no Colorado paragraph on file excludes the payment and the ledger counted it before receipt records (each was part of the other unearned income facts and not among ma_ssi_excluded_unearned_income's sources, CO-2470), although Subpart K excludes it or Colorado's own F.6.j might reach it: a property or food tax refund (416.1124(c)(1)), crime victim compensation ((c)(17)), uniformed services special pay ((c)(19)), a gift for a life-threatening condition ((c)(21)), a State's annuity for a veteran ((c)(24)), a reimbursement and the proceeds of converting a resource (416.1103(b), (c)), reverse mortgage payments (a loan, 416.1103(f)), Colorado Works diversion and supportive services payments and migrant farmworker emergency assistance (F.6.j, "Assistance from other agencies and organizations", which the ledger reads as General Assistance, emergency assistance and charity), kinship care, housing utility allowances, refugee resettlement money, in-home care allowances and vocational training allowances. Home energy assistance from a nonprofit or the supplier is exempt as the ledger read energy assistance before (416.1124(b), (c)(5)), though neither paragraph names non-federal assistance. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps the earlier readings until the owner decides, row by row.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each kind listed is counted (energy assistance from a nonprofit or supplier exempt), as before receipt records.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.4-6 (D-65) and the Subpart K paragraphs on file (D-53, D-207). Colorado's text neither adopts Subpart K's exclusions by reference nor lists these payments. Items: CO-5510.
+
+### OQ-972. Medicaid SSI method: money a non-citizen receives from a sponsor
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts "Gifts and inheritances" and unearned income generally; cash a sponsor gives the non-citizen is not named in 8.100.5.F.6. Before receipt records the ledger never read it for Medicaid: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts, so it was left out by silence; Medicaid's sponsor deeming (ma_sponsor_deemed_income, CO-4551) counts the sponsor's own income under 8.100.3.K.1. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps that reading, as not_counted_open_question; MAGI leaves it out as a gift (not taxable income).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Money a sponsor pays the non-citizen is not counted as the person's SSI-method unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 and 8.100.3.K.1 (D-65). None names sponsor support paid to the person. Items: CO-5510.
+
+### OQ-973. Medicaid: whether 8.100.5.K reaches a VA housebound allowance
+
+Body: 10 CCR 2505-10 8.100.5.K (S2900) leaves out "The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA" when determining eligibility, and uses it as patient payment under K.2. The receipt kind va_aid_and_attendance (receipts, CO-5000) means "VA Aid and Attendance or housebound allowance", a kind the receipts share with the other programs; a household states the VA's Unusual Medical Expenses portion as a receipt of that kind too (the translation of va_aid_and_attendance_amount does). K does not name the housebound allowance, which the VA pays on the same pension for a veteran confined to the home. The SSI method's counting table (ma_ssi_receipt_treatment_table, CO-5510) treats the whole kind as not income.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The housebound allowance is treated as K treats Aid and Attendance (not income; patient payment under K.2), since the receipt kind does not separate them.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.K (D-65). It names Aid and Attendance and Unusual Medical Expenses only. Items: CO-5510, CO-5530.
+
+### OQ-974. Medicaid spousal impoverishment: whether a community spouse's or family member's child support and cash assistance are part of their income
+
+Body: The community spouse monthly income allowance and the family allowance subtract the community spouse's and each dependent family member's own income (10 CCR 2505-10 § 8.100.7.R.2, S1756; § 8.100.7.T.1.c, S1736; 42 U.S.C. 1396r-5(d)(1)(C), (d)(3)). Before receipt records ma_community_spouse_income (CO-2467) and ma_family_allowance (CO-657) summed Social Security, pensions, wages, self-employment, other unearned income and tax-exempt interest (and, for the community spouse, unemployment), and left out child support received and Colorado Works and Adult Financial cash, which had their own facts. The texts on file say "income" without listing it. ma_spousal_unearned_receipts (CO-5531) keeps the earlier reading; long-term care gross income (CO-641) counts both.
+
+Class: state policy choice
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: A community spouse's or family member's child support and Colorado Works or Adult Financial cash are not part of their income for the allowances.
+
+Checked 2026-11-23: 10 CCR 2505-10 § 8.100.7.R, T (D-65); the federal text the family allowance follows, 42 U.S.C. 1396r-5(d)(1)(C). Neither lists the income counted. Items: CO-5510, CO-5531.
+
+### OQ-985. Colorado Works: a kinship care payment received for a related child
+
+Body: 9 CCR 2503-6 3.605.4.B.11 (S2606): "A child receiving foster care or kinship care funds under Title IV of the Social Security Act shall be excluded from the assistance unit and his or her income shall be exempt from consideration for Colorado Works eligibility and payment." The volume reads a foster care provider's payment as exempt under it (foster_care_payment: excluded, as cw_excluded_unearned_income did before receipt records), but a kinship care payment made to the caretaker for a related child in the caretaker's care was never among the exempt sources: before receipt records it sat in the caretaker's other unearned income (kinship_care_payments_received, CO-4503, was read only by CCCAP), so Colorado Works counted it by silence. The text does not say whether B.11's "his or her income" reaches a kinship payment the caretaker receives for the child, nor whether a payment not funded under Title IV (a State kinship payment) is exempt. The counting table keeps the reading before receipt records (kinship_care_payment: counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A kinship care payment the caretaker receives for a related child is counted as the caretaker's unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.3 and 3.605.4 (D-81, version effective 2025-07-01). B.11 names "foster care or kinship care funds under Title IV" as a child's income; no paragraph names a kinship payment received by the caretaker.
+
+### OQ-986. Colorado Works: its own diversion and supportive services payments as income to the unit
+
+Body: A Colorado Works diversion payment (9 CCR 2503-6 3.606.8) and a Colorado Works supportive services payment are Colorado Works' own payments; docs/conventions.md rule 6 says a program does not count its own grant as income, and the counting table so treats basic cash assistance (colorado_works_cash: not_income_to_unit; 3.609.2.G for a retroactive one). 3.605.4 does not name either payment, and 3.606.8 does not say how a diversion payment is treated in a later basic cash assistance determination (the unit is then usually within a period of ineligibility, A.4). Before receipt records both sat in the other unearned income facts (tanf_diversion_payment_received, CO-4850, and tanf_supportive_service_payments_received, CO-4452, were read only by CCCAP), so Colorado Works counted them by silence. The counting table keeps that reading (counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A Colorado Works diversion or supportive services payment received in the month is counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.3, 3.605.4, 3.606.8 and 3.609.2.G (D-81). None names a diversion or supportive services payment as income or as exempt.
+
+### OQ-987. Colorado Works: emergency assistance to a migrant farmworker and need-based cash from a charity
+
+Body: 9 CCR 2503-6 3.605.4.A.3 (S2605) exempts "Emergency Assistance received on a one-time basis in cash or in kind from other agencies and organizations", and B.9 (S4004) "Assistance from other agencies or organizations that are provided for items not included in the need standard or do not duplicate a component of the need standard in total". Emergency assistance paid to a migrant or seasonal farmworker in the job stream (migrant_farmworker_emergency_assistance) and cash a charitable organization gives on the basis of need (charitable_need_based_cash) are receipt kinds of their own; whether either is exempt under A.3 (when received once) or B.9 (when it pays for items outside the need standard) turns on facts the receipts do not state. Before receipt records both sat in the other unearned income facts and Colorado Works counted them by silence; the counting table keeps that reading (counted_no_rule_excludes) until the owner decides. Items: CO-5650.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Both are counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.4.A.3, B.9 and B.10 (D-81). Neither paragraph names a migrant farmworker's emergency assistance or a charity's need-based cash, and B.9 depends on what the assistance pays for.
+
+### OQ-990. CCCAP: kinds of receipt a paragraph of 3.111.J names only in part, or may name
+
+Body: CCCAP's counting table (cccap_receipt_treatment_table, CO-5720) gives each kind of receipt one treatment. For five kinds the paragraph of 8 CCR 1403-1 3.111.J that bears on it names only part of what the kind holds, or may reach it. J.12 (S2207) excludes "Low-Income Energy Assistance Program (LEAP) benefits"; energy_assistance_federal holds LEAP and any other federally funded energy assistance. J.14 excludes "Earned Income Tax Credit (EIC) payments"; income_tax_refund holds every income tax refund or credit. J.27 (S2706) excludes "Reimbursements for expenses paid related to a settlement or lawsuit"; reimbursement holds any reimbursement of expenses that is not a gain. These three are excluded whole, as the ledger excluded them before receipt records (unearned_income_prior_thirty_days, CO-3913, subtracted energy_assistance_received, tax_refunds_and_credits_received and expense_reimbursements_received). J.20 (S4021) excludes Carl D. Perkins assistance "made available for attendance costs", which a vocational_training_allowance may be; J.25 excludes "Loans from private individuals as well as commercial institutions", which a reverse_mortgage may be read as. These two are counted because no rule excludes them (3.111.I names neither). 3.111.I says what is "considered countable income" and J what is not; neither says how a receipt that I does not name and J names only in part is treated.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: Federally funded energy assistance, income tax refunds and credits, and reimbursements of expenses are excluded whole (J.12, J.14, J.27, the reading before receipt records); a vocational training allowance and reverse mortgage payments are counted because no rule excludes them.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.111.I and J (D-87, version effective 2026-08-14). No paragraph treats non-LEAP energy assistance, income tax refunds other than the EIC, reimbursements unrelated to a settlement, vocational training allowances outside WIA or Perkins attendance costs, or reverse mortgage payments. Items: CO-5720.
+
+### OQ-991. CCCAP: General Assistance and emergency assistance, and J.26's "public cash assistance grants including"
+
+Body: 8 CCR 1403-1 3.111.J.26 (S2706) excludes "Public cash assistance grants including Old Age Pension (OAP), Aid to the Needy Disabled (AND), and Temporary Assistance to Needy Families (TANF)/Colorado Works", and 3.103.S (S3638) defines cash assistance as "payments, vouchers, and other forms of benefits designed to meet a household's ongoing basic needs". County General Assistance and one-time emergency assistance are public payments the list does not name; read as illustrations ("including"), J.26 may exclude General Assistance, which meets basic needs, and perhaps not emergency assistance received once. Before receipt records the ledger counted both (general_or_emergency_assistance_received, CO-3812, was part of the other unearned income CO-3913 counted); the counting table keeps that reading and marks both rows counted because no rule excludes them.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: General Assistance and emergency assistance are counted (the reading before receipt records): J.26 is read as naming its grants.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.103.S, 3.111.I and J.26 (D-87, version effective 2026-08-14). Neither names General Assistance or emergency assistance. Items: CO-5720.
+
+### OQ-992. CCCAP: money a non-citizen receives from a sponsor
+
+Body: 8 CCR 1403-1 3.111.I (S4020) lists what is "considered countable income" and J (S1623) what is not; neither names a sponsor's cash support to a non-citizen. Before receipt records the ledger never read it for CCCAP: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts CCCAP summed. On OQ-873's reading (a receipt J does not exclude is counted) it would be counted; on the reading that I is a closed list it would not. The counting table (cccap_receipt_treatment_table, CO-5720) keeps the reading before receipt records, as not_counted_open_question, until the owner decides, as LEAP (OQ-885) and Adult Financial (OQ-888) do.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: Money a sponsor pays the non-citizen is not counted (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.111.I and J (D-87, version effective 2026-08-14). Neither names sponsor support. Items: CO-5720.
+
+### OQ-993. SUN Bucks: whether a Colorado Works diversion or supportive service payment is "assistance under TANF"
+
+Body: 7 CFR 292.2 (S792) makes a child categorically eligible for Summer EBT when "one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR". Colorado Works pays basic cash assistance, diversion payments and supportive service payments from TANF funds. 9 CCR 2503-6 3.606.8.A (S762) says a diversion addresses "a specific crisis situation or episode of need", is "not designed to meet clients' basic ongoing needs", is a "non-recurring cash payment", and that its receipt "does not count toward their Federal TANF assistance time limit", which suggests it is not TANF "assistance"; neither 292.2 nor 292.12(d) defines "assistance" or says whether the federal definition (45 CFR 260.31, not on file) applies. SUN Bucks read only tanf_cash_income (basic cash assistance) before receipt records, and its table of receipts (sebt_receipt_treatment_table, CO-5730) keeps that reading.
+
+Class: state policy choice
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Only Colorado Works basic cash assistance is assistance under TANF for 292.2; a diversion or supportive service payment does not make a child categorically eligible.
+
+Checked 2026-11-23: 7 CFR 292.2, 292.6, 292.12(d) (D-88); 9 CCR 2503-6 3.606.8.A (D-81). None defines TANF "assistance" for Summer EBT; 45 CFR 260.31 is not among the documents on file. Items: CO-5730, CO-5731.
+
+### OQ-995. Medicaid SSI method: whether a withdrawal from a savings account, a Medicare premium refund or cash value taken from a policy is income
+
+Body: Receipt records, migration phase 3 gives three receipts that were parts of other receipts kinds of their own: savings_account_distribution (a withdrawal from an IRA, 401(k), health, education or development account the person owns), medicare_premium_refund (a lump-sum refund of Part B premiums) and insurance_cash_value (cash value taken out of a life or disability insurance policy). 10 CCR 2505-10 8.100.5.F (S3001) counts unearned income and F.6 lists what is exempt; neither names these three. 20 CFR 416.1103(c) (S4042) says "Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form", which may reach a withdrawal from an account the person owns and cash value taken from a policy; 416.1103 names no premium refund, and (a)(6) makes only the direct payment of medical insurance premiums by someone else not income. The ledger reads money obtained by converting a resource (resource_liquidation) as counted because no rule on file excludes it (OQ-971). Before receipt records the three were counted as part of the Social Security, pension or other non-taxable income that held them; the counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps that reading, counted because no rule on file excludes them, until the owner decides.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each is counted as SSI-method unearned income in the month received (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 (D-65); 20 CFR 416.1103 (D-207). Neither names a savings account withdrawal, a premium refund or cash value taken. Items: CO-5510.
+
+### OQ-996. SNAP: a payment for meals only or for a room only
+
+Body: Receipt records, migration phase 3 gives board_only_payment (payments from persons who take regular meals in the home without lodging) and room_only_payment (payments from lodgers for a room only) kinds of their own; before, both were stated as part of the other taxable unearned income. 10 CCR 2506-1 4.403.2 (S2963) treats "payments from a boarder" as self-employment income less the cost of doing business, added to earned income, and the ledger reads a boarder as a person paying for room and meals (room_and_board_payments_received, CO-4161; snap_boarder_income, CO-4165). The text does not say whether a payment for meals only, or for a room only, is a boarder's payment under 4.403.2 or unearned income. SNAP's counting table (snap_receipt_treatment_table, CO-5010) keeps the reading before receipt records: both counted as unearned income because no rule excludes them.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: A payment for meals only or for a room only is counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.

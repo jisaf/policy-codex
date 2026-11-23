@@ -22439,3 +22439,301 @@ Document: D-35
 42 CFR 435.915(b). https://www.ecfr.gov/current/title-42/section-435.915
 
 > (b) The agency may make eligiblity for Medicaid effective on the first day of a month if an individual was eligible at any time during that month.
+
+### S4000. Colorado Works countable unearned income: veterans' benefits, spousal maintenance, dividends and interest, annuities and pensions, disability and survivor's benefits, workers' compensation, unemployment, Social Security
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.A (introduction), A.1, A.3, A.12, A.15-20 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. Countable Unearned Income
+>
+> Countable unearned income includes, but is not limited to the following, as well as other
+> payments from any source, which can be construed to be a gain or benefit to the client and which
+> are not earned income:
+>
+> 1. Veteran’s Compensation and pension.
+>
+> ...
+>
+> 3. Current spousal maintenance (also referred to as alimony).
+>
+> ...
+>
+> 12. Amounts withheld from unearned income because of a garnishment are countable as
+> unearned income.
+>
+> ...
+>
+> 15. Dividends and interest received on savings bonds, leases, etc.
+>
+> 16. Annuities, pensions, or retirements payments.
+>
+> 17. Disability or survivor's benefits.
+>
+> 18. Worker's Compensation payments.
+>
+> 19. Unemployment Compensation.
+>
+> 20. Social Security benefits.
+
+### S4001. Colorado Works periodic payments: annuities, pensions, disability and survivor's benefits, veterans' compensation, unemployment, railroad retirement and Social Security are countable unearned income
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.B (introduction), B.1-3, B.5-8 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> B. Periodic Payments
+>
+> The following types of periodic payments are countable unearned income:
+>
+> 1. Annuities - payments calculated on an annual basis which are in the nature of returns on
+> prior payments or services; they may be received from any source;
+>
+> 2. Pension or retirement payments - payments to a client following retirement from
+> employment, such payments made by a former employer or from any insurance or other
+> public or private fund;
+>
+> 3. Disability or survivor's benefits - payment to a client who has suffered injury or
+> impairment, or to such client’s dependents or survivors; such payments may be made by
+> an employer or from any insurance or other public or private fund;
+>
+> ...
+>
+> 5. Veteran compensation and pension - payments based on service in the armed forces;
+> such payments may be made by the VA, another country, a state or local government, or
+> other organization. Any portion of a VA pension that is paid to a veteran for support of a
+> dependent shall be considered countable unearned income to the dependent rather than
+> the veteran.
+>
+> 6. Unemployment Compensation - payments in the nature of insurance for which one
+> qualifies by reason of having been employed and which are financed by contributions
+> made to a fund during periods of employment;
+>
+> 7. Railroad retirement payments - payments, such as sick pay, annuities, pensions, and
+> unemployment insurance benefits, which are paid by the Railroad Retirement Board
+> (RRB) to a client who is or was a railroad worker, or to such worker's dependents or
+> survivors;
+>
+> 8. Social Security benefits - old age (or retirement), survivors, dependent, and disability
+> insurance payments (OASDI or RSDI) made by the Social Security Administration; also
+> included are special payments at age seventy-two (72) (Prouty Benefits and Black Lung
+> benefits);
+
+### S4002. Colorado Works exempt income: income tax refunds and the Earned Income Tax Credit
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.A (introduction), A.1, A.1.a (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+> consideration as income:
+>
+> 1. Income Tax refunds.
+>
+> a. The Earned Income Tax Credit (EITC) shall also be exempt for the month in
+> which the EITC payment is received and for the following month.
+
+### S4003. Colorado Works general income exemptions: payments federal law excludes, and volunteers' payments under the Domestic Volunteer Services Act
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B.7, B.12, B.17, B.19, B.23 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 7. Payments from Indian judgment funds and tribal funds held in trust by the Secretary of
+> the Interior and/or distributed per capita; and the initial purchase made with such funds.
+>
+> ...
+>
+> 12. Payments to volunteers serving as foster grandparents, senior health aids, or senior
+> companions, and to persons serving in the Service Corps of Retired Executives (SCORE)
+> and Active Corps of Executives (ACE) and any other program under Title I (AmeriCorps
+> VISTA) when the value of all such payments adjusted to reflect the number of hours such
+> volunteers are serving is not equivalent to or greater than the minimum wage, and Title II
+> and Title III of the Domestic Volunteer Services Act.
+>
+> ...
+>
+> 17. Money received from the Radiation Exposure Compensation Trust Fund, P.L. No. 101-
+> 426 as amended by P.L. No. 101-510.
+>
+> ...
+>
+> 19. Payments received by clients because of their status as victims of Nazi persecution
+> pursuant to P.L. No. 103-286.
+>
+> ...
+>
+> 23. Income paid to children of Vietnam veterans who were born with spina bifida pursuant to
+> P. L. No. 104-204.
+
+### S4004. Colorado Works general income exemptions: assistance for items outside the need standard, disaster assistance, an SSI client's income, exempt income tax credits
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B.9, B.10, B.27, B.34 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 9. Assistance from other agencies or organizations that are provided for items not included
+> in the need standard or do not duplicate a component of the need standard in total.
+>
+> 10. Major disaster and emergency assistance provided to clients, and comparable disaster
+> assistance provided to states, local governments, and disaster assistance organizations.
+>
+> ...
+>
+> 27. A client receiving SSI payments shall be excluded from the assistance unit and his or her
+> income shall be exempt from consideration for Colorado works eligibility and payment.
+>
+> ...
+>
+> 34. Income tax credits when identified as exempt by the state or federal government.
+### S4020. CCCAP countable income: railroad retirement, veterans payments, dividends and interest, estates and trusts, royalties, Social Security, unemployment, workers' compensation, maintenance, child support, military allotments, WIOA wages, AmeriCorps and refugee payments
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I (introduction), I.6-7, I.9-11, I.13-16, I.19, I.23-33 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> I. Income Inclusions
+>
+> Each of the following are considered countable income and are taken into consideration
+> for eligibility for child care.
+>
+> ...
+>
+> 6. Railroad retirement insurance
+>
+> 7. Veterans Payments
+>
+> a. Retirement or pension payments paid by defense finance and
+> accounting services (DFAS) to retired members of the Armed
+> Forces;
+>
+> b. Pension payments paid by the Veteran’s Administration to disabled
+> members of the Armed Forces or to survivors of deceased
+> veterans;
+>
+> ...
+>
+> 9. Dividends
+>
+> 10. Interest on savings or bonds
+>
+> 11. Income from estates or trusts
+>
+> ...
+>
+> 13. Royalties
+>
+> 14. Dividends from stockholders
+>
+> 15. Memberships in association
+>
+> 16. Periodic receipts from estates or trust funds
+>
+> ...
+>
+> 19. Net royalties
+>
+> ...
+>
+> 23. Strike benefits
+>
+> 24. Lease bonuses and royalties (e.g., oil and mineral)
+>
+> 25. Social Security pensions, survivor's benefits and permanent disability
+> insurance payments made prior to deductions for medical insurance
+>
+> 26. Unemployment insurance benefits
+>
+> 27. Worker's compensation received for injuries incurred at work
+>
+> 28. Maintenance payments made by an ex-spouse as a result of dissolution of
+> a marriage
+>
+> 29. Child support payments
+>
+> 30. Military allotments
+>
+> 31. Workforce innovation opportunity act (WIOA) wages earned in work
+> experience or on the-job training
+>
+> 32. Earned AmeriCorps income includes government payments from
+> agricultural stabilization and conservation service and wages of
+> AmeriCorps volunteers in service to America (vista) workers. Vista
+> payments are excluded if the client was receiving CCCAP when they
+> joined vista. If the client was not receiving CCCAP when they joined vista,
+> the vista payments shall count as earned income.
+>
+> 33. CARES payments – refugee payments from Refugee Services
+
+### S4021. CCCAP income exclusions: nutrition assistance, Perkins attendance-cost assistance, radiation exposure compensation, refugee resettlement and placement vendor payments
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.4, J.20-22 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+>
+> Each of the following are not considered countable income and are not taken into
+> consideration for eligibility for child care.
+>
+> ...
+>
+> 4. Nutrition related public assistance
+>
+> ...
+>
+> 20. Financial assistance received under the Carl D. Perkins Vocational and
+> Applied Technology Education Act that is made available for attendance
+> costs. Attendance costs include: tuition, fees, rental or purchase of
+> equipment, materials, supplies, transportation, dependent care and
+> miscellaneous personal expenses
+>
+> 21. Any money received from the Radiation Exposure Compensation Trust
+> Fund, pursuant to Public Law No. 101-426 as amended by Public Law No.
+> 101-510
+>
+> 22. Resettlement and Placement (R & P) vendor payments for refugees
+### S3950. SSI: an aged, blind or disabled individual is eligible whose countable income is at a rate of not more than the benefit rate
+
+Document: D-347
+
+42 U.S.C. 1382(a)(1)(A), (a)(2)(A) (Cornell text fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/42/1382
+
+> (1) Each aged, blind, or disabled individual who does not have an eligible spouse and—
+>
+> (A) whose income, other than income excluded pursuant to section 1382a(b) of this title, is at a rate of not more than $1,752 (or, if greater, the amount determined under section 1382f of this title) for the calendar year 1974 or any calendar year thereafter, and
+>
+> (2) Each aged, blind, or disabled individual who has an eligible spouse and—
+>
+> (A) whose income (together with the income of such spouse), other than income excluded pursuant to section 1382a(b) of this title, is at a rate of not more than $2,628 (or, if greater, the amount determined under section 1382f of this title) for the calendar year 1974, or any calendar year thereafter, and
+
+### S4040. Colorado Works general income exemptions: a child receiving subsidized adoption funds is excluded from the unit and the child's income is exempt
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B.32 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 32. A child receiving subsidized adoption funds shall be excluded from the assistance unit
+> and his or her income shall be exempt from consideration for Colorado Works eligibility
+> and payment.
+
+### S4041. SSI-related income: a child receiving subsidized adoption funds is excluded from the budget unit and the child's income is exempt (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6.t (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> t. A child receiving subsidized adoption funds shall be excluded from the Medical Assistance budget unit and his income shall be exempt from consideration in determining eligibility, unless such exclusion results in ineligibility for the other members of the household.
+
+### S4042. SSI: receipts from the sale, exchange or replacement of a resource are not income
+
+Document: D-207
+
+20 CFR 416.1103 (introduction), (c) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> Some things you receive are not income because you cannot use them as food or shelter, or use them to obtain food or shelter. In addition, what you receive from the sale or exchange of your own property is not income; it remains a resource. The following are some items that are not income:
+>
+> ...
+>
+> (c) Receipts from the sale, exchange, or replacement of a resource. Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form. This includes any cash or in-kind item that is provided to replace or repair a resource (see subpart L) that has been lost, damaged, or stolen. Sections 416.1150 and 416.1151 discuss treatment of receipts to replace or repair a resource following a major disaster or following some other event causing damage or loss of a resource.

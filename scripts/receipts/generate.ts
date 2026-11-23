@@ -7,6 +7,7 @@
 // verification period families. Stated in the old facts; the harness
 // translates them like any stored household.
 import type { HouseholdCase } from "../../src/engine/cases";
+import { MONTH_FACTS } from "./translate";
 
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 
@@ -59,6 +60,18 @@ export function variants(): Variant[] {
   v.push(["AmeriCorps 300 for 10 hours", (md) => { add(md, "americorps_payments_received", 300); add(md, NONTAX, 300); md.americorps_service_hours = 10; }]);
   v.push(["AmeriCorps 300, hours not stated", (md) => { add(md, "americorps_payments_received", 300); add(md, NONTAX, 300); }]);
   v.push(["other nontaxable not stated", (md) => { delete md[NONTAX]; }]);
+  // migration phase 3: the parts a receipt kind of their own replaced, each
+  // stated in the fact that held it
+  v.push(["P3 adoption subsidy 300 (part of nontaxable)", (md) => { add(md, "adoption_subsidy_received", 300); add(md, NONTAX, 300); }]);
+  v.push(["P3 early childhood research 300 (part of taxable)", (md) => { add(md, "early_childhood_research_study_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 board only 300 (part of taxable)", (md) => { add(md, "board_only_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 room only 300 (part of taxable)", (md) => { add(md, "room_only_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 military allotment for persons elsewhere 300 (part of nontaxable)", (md) => { add(md, "military_allotment_received_for_persons_outside_home", 300); add(md, NONTAX, 300); md.military_allotment_persons_outside_home_count = 1; }]);
+  v.push(["P3 educational assistance 300 of which school conditional 200", (md) => { add(md, "educational_assistance_received", 300); add(md, "school_attendance_conditional_benefits_received", 200); add(md, NONTAX, 300); }]);
+  v.push(["P3 pension 300 of which savings distribution 300", (md) => { add(md, "pension_income", 300); add(md, "savings_account_distributions_received", 300); }]);
+  v.push(["P3 SMIB refund 120 (part of nontaxable)", (md) => { add(md, "medicare_premium_refund_received", 120); add(md, NONTAX, 120); }]);
+  v.push(["P3 insurance cash value 300 (part of nontaxable)", (md) => { add(md, "insurance_cash_value_withdrawn", 300); add(md, NONTAX, 300); }]);
+  v.push(["P3 lump sum 3000 of which 1000 spent or designated", (md) => { add(md, "lump_sum_received", 3000); add(md, NONTAX, 3000); add(md, "lump_sum_amounts_spent_or_designated", 1000); }]);
   return v;
 }
 
@@ -69,18 +82,51 @@ const BASES: Base[] = [
   { id: "CO-196", person: "p1", label: "AF client" },
   { id: "CO-196", person: "p2", label: "AF spouse (deemed)" },
   { id: "CO-94", person: "", label: "AF sponsor (deemed)" },
+  // Colorado Works (phase 2): a member of the unit, a stepparent whose income
+  // is deemed to it (3.605.1.A.4), and a sponsor living elsewhere (A.5)
+  { id: "CO-358", person: "p1", label: "CW applicant" },
+  { id: "CO-83", person: "p2", label: "CW stepparent (deemed)" },
+  { id: "CO-162", person: "", label: "CW sponsor (deemed)" },
+  // migration phase 2: a CCCAP parent earning $2,000 (probe Y-7's household)
+  // and a SUN Bucks child tested on income (probe RV2-S2's household, its
+  // Colorado Works payments taken out by cleanBase)
+  { id: "CO-345", person: "p1", label: "CCCAP" },
+  { id: "CO-372", person: "p2", label: "SUN Bucks child" },
+  // phase 2: Medicaid and CHP+ (MAGI, the SSI method, deeming, long-term
+  // care, the buy-ins, the Medicare Savings Programs)
+  { id: "CO-202", person: "p1", label: "MA MAGI parent" },
+  { id: "CO-185", person: "p1", label: "MA aged" },
+  { id: "CO-189", person: "p2", label: "MA aged spouse" },
+  { id: "CO-186", person: "p2", label: "MA deeming parent" },
+  { id: "CO-112", person: "p1", label: "MA LTC" },
+  { id: "CO-112", person: "p2", label: "MA community spouse" },
+  { id: "CO-187", person: "p1", label: "MA WAWD" },
+  { id: "CO-145", person: "p3", label: "MA CBWD child" },
+  { id: "CO-114", person: "p1", label: "MA MSP" },
+  { id: "CO-386", person: "p1", label: "CHP parent" },
 ];
 
-/** Zeroes the money a base household states beyond its wages, so each variant starts clean. */
-function cleanBase(c: HouseholdCase): void {
+/** Zeroes the money a base household states beyond its wages, so each
+ *  variant starts clean. A phase-2 (Medicaid, CHP+) base is cleaned gently:
+ *  only the unearned-income facts the translation reads are zeroed, so the
+ *  other facts its outcomes need (MAGI's other taxable income, deductions,
+ *  in-kind support) stay as stated. */
+function cleanBase(c: HouseholdCase, gentle = false): void {
+  const money = (k: string, v: unknown) => typeof v === "number" && /income|received|lump|set_aside|recoup|withheld|paid_to|_value$/.test(k) && !/paid_legally|toward_arrears|cost|expense|premium/.test(k);
   for (const p of Object.values(c.persons)) {
     if (p.facts) delete p.facts.receipts;
-    const md = p.month_defaults ?? {};
+    const md = (p.month_defaults ??= {});
+    if (gentle) for (const k of AGG) md[k] = 0;
     for (const k of Object.keys(md)) {
+      if (gentle) { if (MONTH_FACTS.has(k) && typeof md[k] === "number") md[k] = 0; continue; }
       if (k === "wages_gross" || k === "hours_worked") continue;
       if (AGG.includes(k)) md[k] = 0;
-      else if (typeof md[k] === "number" && /income|received|lump|set_aside|recoup|withheld|paid_to|_value$/.test(k) && !/paid_legally|toward_arrears|cost|expense|premium/.test(k)) delete md[k];
+      else if (money(k, md[k])) delete md[k];
     }
+    // a month's money facts (the phase-2 bases state none in the baselines
+    // the harness has used; a later baseline's CO-345 states its diversion
+    // in November); a gently cleaned base keeps its months as stated
+    if (!gentle) for (const mf of Object.values(p.months ?? {})) for (const k of Object.keys(mf)) if (AGG.includes(k) || money(k, mf[k])) delete mf[k];
   }
 }
 
@@ -91,7 +137,7 @@ export function generated(cases: readonly HouseholdCase[]): HouseholdCase[] {
     const src = cases.find((c) => c.id === b.id);
     if (!src) throw new Error(`generated households: no base household ${b.id}`);
     const base = clone(src);
-    cleanBase(base);
+    cleanBase(base, /^(MA|CHP) /.test(b.label));
     let person = b.person;
     if (!person) {
       // the sponsor: the person a sponsor edge points to

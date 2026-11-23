@@ -1,0 +1,21 @@
+id: CO-5501
+name: "Medicaid MAGI: a person's counted unearned receipts"
+identifier: ma_magi_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's receipts of the month that Medicaid's MAGI counting table counts (ma_magi_receipt_treatment_table, CO-5500: counted, or counted because no rule excludes it), each at its gross amount, a receipt paid once in the month received (42 CFR 435.603(e)(1); 10 CCR 2505-10 8.100.4.C.1.d.i). Gambling winnings are counted apart (ma_magi_gambling_receipts, CO-5502), since b.xiv spreads them for the winner."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_magi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes]]], [receipt, amount]]
+sources: [S165, S166]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "Receipt records, migration phase 2: MAGI unearned income read from the receipts through the MAGI counting table, replacing social_security_income + pension_income + unemployment_income + other_unearned_income_taxable + tax_exempt_interest in ma_person_magi_income (CO-502) and the MAGI arm of ma_has_unearned_income_for_verification (CO-2870)."
+tests:
+  - {id: CO-5501-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 1420}, {kind: pension, amount: 610}, {kind: tax_exempt_interest, amount: 50}, {kind: ssi, amount: 300}, {kind: child_support, amount: 250}, {kind: colorado_works_cash, amount: 400}]}, title: "Social Security, a pension and tax-exempt interest counted; SSI, child support and Colorado Works cash not (8.100.4.C.1.b-d)", expect: 2080}
+  - {id: CO-5501-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: other_taxable, amount: 100}, {kind: other_nontaxable, amount: 400}, {kind: gift, amount: 75}]}, title: "Taxable residual counted, non-taxable residual not (the old other_unearned_income_taxable / _nontaxable split)", expect: 100}
+  - {id: CO-5501-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 2400, frequency: once, retroactive: true, month: "2026-10"}, {kind: social_security, amount: 900}]}, title: "A retroactive Social Security payment counts in the month received (435.603(e)(1); 8.100.4.C.1.c.iii, d.i)", expect: 3300}
+  - {id: CO-5501-T4, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: unemployment_compensation, amount: 1200, frequency: once, month: "2026-09"}]}, title: "A one-time payment of another month is not counted in this one", expect: 0}
+  - {id: CO-5501-T5, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: gambling_winnings, amount: 5000, frequency: once, month: "2026-10"}]}, title: "Gambling winnings are counted apart (CO-5502); unearned receipts 0", expect: 0}
+  - {id: CO-5501-T6, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}
+  - {id: CO-5501-T7, month: "2026-10", as_of: "2026-10-01", given: {receipts: []}, title: "A stated empty list: no unearned income", expect: 0}

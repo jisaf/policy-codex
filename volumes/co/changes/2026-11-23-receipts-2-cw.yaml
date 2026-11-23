@@ -1,0 +1,8 @@
+# Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-cw.md): Colorado Works reads
+# the receipts (CO-5000) through one counting table (cw_receipt_treatment_table, CO-5650). One entry
+# per change-impact flag the move raises.
+date: 2026-11-23
+summary: Colorado Works reads unearned income from receipt records through one counting table.
+impact:
+  - {changed: CO-2871, fingerprint: fp1-166fe8eedff79f4817cb, flagged: CO-985, not_applicable: "CO-985 (cccap_household_income) is CCCAP's own income, which shares only the CCCAP exclusions excerpt (S1623) that CO-2871 has always cited; CO-2871 changed to read Colorado Works' counted receipts, and CCCAP still reads the scalar facts until its own migration (a parallel phase), so nothing in CO-985 follows from it"}
+  - {changed: CO-2871, fingerprint: fp1-166fe8eedff79f4817cb, flagged: CO-994, not_applicable: "CO-994 (cccap_protective_services_income) is CCCAP's own income test; it shares only the excerpt S1623 with CO-2871, whose change is the Colorado Works verification element reading Colorado Works' counted receipts, which CCCAP does not read"}

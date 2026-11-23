@@ -6,9 +6,8 @@ type: money
 scope: person-month
 program: All
 meaning: "The penalty deducted in the month from an early payout the person received from a pension, annuity, 401(k), IRA or other retirement account, because the payout was taken early."
-precision: "Part of the gross payout pension_income (CO-026) states, not added to it. If not stated, every program reads it as 0."
+precision: "Part of the gross payout a receipt of kind pension (receipts, CO-5000) states, not added to it. If not stated, every program reads it as 0."
 supplied_by: "The payer's distribution statement."
 sources: [S3256]
 tags: [income]
-nearest: [CO-026]
 rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-10): 8 CCR 1403-1 3.111.I.8 (S3256) counts pensions and annuities \"minus the amount deducted for penalties, if early payouts are received from these accounts\"; pension_income states the gross payout, and no fact stated the penalty."

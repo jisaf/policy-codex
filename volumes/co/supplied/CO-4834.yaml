@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The documented expenses, for the month, directly related to providing meals to the persons whose payments board_only_payments_received (CO-4832) states (their food, for example). 0 if none are documented."
-precision: "Stated with board_only_payments_received. If not stated, Colorado Works reads it as 0."
+meaning: "The documented expenses, for the month, directly related to providing meals to the persons whose payments the person's receipts of kind board_only_payment (receipts, CO-5000) state (their food, for example). 0 if none are documented."
+precision: "Stated with the board_only_payment receipts. If not stated, Colorado Works reads it as 0."
 supplied_by: "Receipts and records of the costs, as the county establishes them."
 sources: [S3159]
 tags: [income]
