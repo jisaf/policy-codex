@@ -11,7 +11,7 @@ import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/case
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { buildIndex } from "../engine/ledger-index";
-import { recordValueErrors, statedRecordLists } from "../engine/records";
+import { jointRecordErrors, recordValueErrors, statedRecordLists } from "../engine/records";
 import { staleApprovalMessage, type FingerprintBasis } from "../engine/fingerprint";
 import {
   changedDecisions, dispositionStub, impactFlags, parseChangeRecord, reconcileImpact,
@@ -430,14 +430,31 @@ export function recordInputErrors(engine: Engine, ledger: LoadedLedger): string[
       for (const m of recordValueErrors(it, v)) out.push(`record:${id}:${pid}: ${m}`);
     }
   };
+  // A joint holding stated on several persons' lists must agree on kind and
+  // value, with shares adding to at most 1 (resource records, design 3.2).
+  const joint = (id: string, persons: Array<[string, Record<string, unknown> | undefined]>) => {
+    const byList = new Map<string, Array<[string, unknown]>>();
+    for (const [pid, facts] of persons) {
+      for (const [it, v] of statedRecordLists(by, facts)) {
+        if (!byList.has(it.identifier)) byList.set(it.identifier, []);
+        byList.get(it.identifier)!.push([pid, v]);
+      }
+    }
+    for (const [list, vs] of byList) {
+      for (const m of jointRecordErrors(by.get(list)!, vs)) out.push(`record:${id}: ${m}`);
+    }
+  };
   for (const c of ledger.cases) {
     for (const [pid, p] of Object.entries(c.persons || {})) person(c.id, pid, p.facts);
+    joint(c.id, Object.entries(c.persons || {}).map(([pid, p]) => [pid, p.facts] as [string, Record<string, unknown> | undefined]));
   }
   for (const it of ledger.items) {
     for (const t of it.tests || []) {
       person(t.id, "p1", t.given);
       for (const [pid, f] of Object.entries(t.others || {})) person(t.id, pid, f);
       for (const [pid, p] of Object.entries(t.persons || {})) person(t.id, pid, p.facts);
+      joint(t.id, [["p1", t.given], ...Object.entries(t.others || {}),
+        ...Object.entries(t.persons || {}).map(([pid, p]) => [pid, p.facts] as [string, Record<string, unknown> | undefined])]);
     }
   }
   return out;

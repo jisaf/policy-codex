@@ -950,6 +950,47 @@ export function evaluate(
         }
         return total;
       }
+      case "largest": {
+        // P58: ["largest", list, condition, value]: the largest value over
+        // the records of the list whose condition is true, with "that
+        // receipt" (or "that holding") naming each record in turn, in list
+        // order (negative when every such value is); 0 only when no record's
+        // condition is true. Unknown exactly as
+        // P55: when the list is not stated, or when the condition of any
+        // record, or the value of a record whose condition is true, is
+        // unknown (the largest of values one of which is unknown is not
+        // known). The rule text that needs it excludes one vehicle of a
+        // kind: 20 CFR 416.1218(b)(1), "One automobile is totally excluded
+        // regardless of value if it is used for transportation"; 9 CCR
+        // 2503-5 3.520.77.A, "The vehicle with the highest value is exempt
+        // if it is used for the transportation of the client" (resource
+        // records, step H0; docs/operators.md "P58").
+        const src = receiptList(e[1], p, m, P);
+        if (src === null) return null;
+        const outer = thatReceipt;
+        let best: number | null = null;
+        try {
+          for (let i = 0; i < src.list.length; i++) {
+            const rec = src.list[i];
+            if (rec === null || typeof rec !== "object" || Array.isArray(rec)) {
+              throw new Error(`${src.identifier}[${i}] is not a record`);
+            }
+            thatReceipt = {
+              rec: rec as Record<string, unknown>, index: i, list: src.identifier,
+              owner: src.owner, fields: src.fields,
+            };
+            const cond = ev(e[2], p, m, P);
+            if (cond === null) return null;
+            if (cond !== true) continue;
+            const v = ev(e[3], p, m, P);
+            if (v === null) return null;
+            if (best === null || v > best) best = v;
+          }
+        } finally {
+          thatReceipt = outer;
+        }
+        return best ?? 0;
+      }
       case "receipt": {
         // P56: ["receipt", field]: that receipt's field as the record states
         // it, else the default its schema declares; a field with no default

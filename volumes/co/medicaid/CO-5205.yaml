@@ -15,6 +15,6 @@ tags: [ma, non_magi, resources]
 rationale: "Coverage pass 3 C3-5 and the probe hand-check of CO-402: the beneficiary-deed home counted in the Medicare Savings Program and parental-deeming resources, where § 8.100.5.M.2.a.xiv's \"subject to estate recovery\" cannot be met."
 nearest: [CO-4622, CO-5204]
 tests:
-  - {id: CO-5205-T1, as_of: "2026-11-01", title: "Counted only by the deed", given: {home_equity: 150000, ma_home_is_countable_resource: true, ma_home_is_countable_resource_without_beneficiary_deed: false}, expect: 150000}
-  - {id: CO-5205-T2, as_of: "2026-11-01", title: "Counted anyway (left for good, no one at home)", given: {home_equity: 150000, ma_home_is_countable_resource: true, ma_home_is_countable_resource_without_beneficiary_deed: true}, expect: 0}
-  - {id: CO-5205-T3, as_of: "2026-11-01", title: "Not counted", given: {home_equity: 150000, ma_home_is_countable_resource: false, ma_home_is_countable_resource_without_beneficiary_deed: false}, expect: 0}
+  - {id: CO-5205-T1, as_of: "2026-11-01", title: "Counted only by the deed", given: {home_equity: 150000, ma_home_is_countable_resource: true, ma_home_is_countable_resource_without_beneficiary_deed: false, holdings: [{kind: bank_account}, {kind: home, value: 150000, amount_owed: 0}]}, expect: 150000}
+  - {id: CO-5205-T2, as_of: "2026-11-01", title: "Counted anyway (left for good, no one at home)", given: {home_equity: 150000, ma_home_is_countable_resource: true, ma_home_is_countable_resource_without_beneficiary_deed: true, holdings: [{kind: bank_account}, {kind: home, value: 150000, amount_owed: 0}]}, expect: 0}
+  - {id: CO-5205-T3, as_of: "2026-11-01", title: "Not counted", given: {home_equity: 150000, ma_home_is_countable_resource: false, ma_home_is_countable_resource_without_beneficiary_deed: false, holdings: [{kind: bank_account}, {kind: home, value: 150000, amount_owed: 0}]}, expect: 0}

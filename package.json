@@ -27,7 +27,8 @@
     "receipts:harness": "vite-node scripts/receipts/harness.ts",
     "receipts:translate": "vite-node scripts/receipts/apply.ts",
     "records:harness": "vite-node scripts/records/harness.ts",
-    "records:translate": "vite-node scripts/records/apply-earnings.ts"
+    "records:translate": "vite-node scripts/records/apply-earnings.ts",
+    "records:translate-holdings": "vite-node scripts/records/apply-holdings.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "1.1.4",

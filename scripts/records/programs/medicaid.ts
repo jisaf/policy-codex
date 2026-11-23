@@ -42,4 +42,27 @@ export const track: Track = {
       { id: "CO-145", person: "p3", label: "MA CBWD child" },
     ],
   },
+  holdings: {
+    // Resource records, step H0 (docs/reviews/holdings-h0.md): set up by the
+    // integration owner with today's resource figures (the SSI method,
+    // shared ssi_countable_resources_individual included, the MSP, LTC and
+    // the CSRA, transfers); the Medicaid H1 track moves its readers onto the
+    // holdings records, in sequential sub-commits (design 4.2).
+    tables: ["ma_ssi_holding_treatment_table"],
+    figures: [
+      "ssi_countable_resources_individual", "ssi_countable_resources_couple", "ma_excluded_real_property_value",
+      "ma_countable_income_producing_property_value", "ma_home_is_countable_resource", "ma_home_is_countable_resource_without_beneficiary_deed",
+      "ma_home_equity_counted_only_by_beneficiary_deed", "ma_ssi_countable_resources_individual", "ma_ssi_countable_resources",
+      "ma_ssi_parental_resources_deemed", "ma_msp_countable_resources", "ma_csra", "ma_institutionalized_spouse_countable_resources",
+      "ma_home_equity_disqualifies", "ma_transfer_penalty_months", "ma_transfer_penalty_days", "ma_transfer_penalty_applies",
+    ],
+    metamorphic: [],
+    coupleFigures: [],
+    bases: [
+      { id: "CO-185", person: "p1", label: "MA aged resources" },
+      { id: "CO-189", person: "p2", label: "MA aged spouse resources" },
+      { id: "CO-186", person: "p2", label: "MA deeming parent resources" },
+      { id: "CO-112", person: "p1", label: "MA LTC resources" },
+    ],
+  },
 };

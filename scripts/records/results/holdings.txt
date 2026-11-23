@@ -1,0 +1,101 @@
+# Records harness: holdings (29 s)
+
+## Translation
+
+Stored households stating holdings: 164 of 329 (336 persons); rule tests stating holdings: 189 of 4781.
+Stored households whose holdings are not the translation of their resource facts: none.
+Rule tests whose holdings are not the translation of their resource facts: none.
+
+## Joint-holding consistency
+
+Stored households stating a joint holding (holding_id): CO-419.
+Known and dispositioned (allowed/joint.yaml): 0.
+Findings: none.
+Relations MH-1 to MH-5 applied to every stored household give statements the schema and this check accept: yes.
+
+## Old against new
+
+Ledger at cb7eac3a137b against the ledger on disk; programs: AdultFinancial, Medicaid, CHP+, SNAP; tracks: af, medicaid, snap.
+
+| Source | Households | Values compared | Values that differ | Allowed | Unexplained |
+|---|---|---|---|---|---|
+| stored households | 329 | 111450 | 0 | 0 | 0 |
+| generated households | 360 | 97200 | 0 | 0 | 0 |
+
+
+## Metamorphic relations
+
+| Relation | Track | Figures | Households | Values | Violations |
+|---|---|---|---|---|---|
+| MH-1 split | af | none reads the records yet | 0 | 0 | 0 |
+| MH-1 split | medicaid | none reads the records yet | 0 | 0 | 0 |
+| MH-1 split | snap | none reads the records yet | 0 | 0 | 0 |
+| MH-2 order | af | none reads the records yet | 0 | 0 | 0 |
+| MH-2 order | medicaid | none reads the records yet | 0 | 0 | 0 |
+| MH-2 order | snap | none reads the records yet | 0 | 0 | 0 |
+| MH-3 joint | af | none reads the records yet | 0 | 0 | 0 |
+| MH-3 joint | medicaid | none reads the records yet | 0 | 0 | 0 |
+| MH-3 joint | snap | none reads the records yet | 0 | 0 | 0 |
+| MH-4 encumbrance | af | none reads the records yet | 0 | 0 | 0 |
+| MH-4 encumbrance | medicaid | none reads the records yet | 0 | 0 | 0 |
+| MH-4 encumbrance | snap | none reads the records yet | 0 | 0 | 0 |
+| MH-5 expiry | af | none reads the records yet | 0 | 0 | 0 |
+| MH-5 expiry | medicaid | none reads the records yet | 0 | 0 | 0 |
+| MH-5 expiry | snap | none reads the records yet | 0 | 0 | 0 |
+
+## Translation notes
+
+- CO-01 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-01 p1: ma_csra_annuity_lowest_estimate not restated (stays a person fact)
+- CO-01 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-01: p1 and p2 each state a home of equity 210000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-02 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-02 p1: ma_csra_annuity_lowest_estimate not restated (stays a person fact)
+- CO-02 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-02: p1 and p2 each state a home of equity 210000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-06 p1: uncompensated_transfer_value_in_lookback 54000 is not the total of a dated transfer stated: not restated (the Medicaid track states the transfer with its date)
+- CO-06 p1: transfer_penalty_period_start_date not restated (stays a person fact)
+- CO-06 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-06 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-06: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-112 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-112 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-112: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-152 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-152 p1: ma_csra_annuity_lowest_estimate not restated (stays a person fact)
+- CO-152 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-152: p1 and p2 each state a home of equity 210000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-153 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-153 p1: ma_csra_annuity_lowest_estimate not restated (stays a person fact)
+- CO-153 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-153: p1 and p2 each state a home of equity 210000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-154 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-154 p1: ma_csra_annuity_lowest_estimate not restated (stays a person fact)
+- CO-154 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-154: p1 and p2 each state a home of equity 210000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-188 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-188 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-188: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-213 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-213 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-213: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-300 p1: federal_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-388 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-388 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-388: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-395: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-481 p1: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-481 p2: ma_spousal_resources_at_snapshot not restated (stays a person fact)
+- CO-481: p1 and p2 each state a home of equity 240000: two records, as the facts state (one joint home is the Medicaid track's to restate)
+- CO-074-T1 p1: vehicles_equity_value with no transportation_vehicle_equity_value: one vehicle, used_for_transportation not stated
+- CO-1740-T3 p1: federal_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-343-T6 p1: federal_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-4176-T1 p1: federal_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-4176-T3 p1: snap_eitc_held_while_participating_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-1634-T1 p1: has_income_trust not restated (stays a person fact)
+- CO-4620-T4 p1: real_property_co_owned_with_resident_value 20000 exceeds what is left of real_property_other_than_home_equity (5000): capped
+- CO-4623-T3 p1: value found available with no trust or annuity stated: a life estate
+- CO-4412-T1 p1: state_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-4412-T2 p1: retroactive payment held with no date: source_date not stated (CO-4414 says only that it came in the determination month or the nine before)
+- CO-4412-T6 p1: state_tax_refunds_held_value: source_date not stated (the fact says only that it came in the twelve months before the determination date)
+- CO-4412-T6 p1: state_tax_refunds_held_value 500 exceeds what is left of liquid_resources_value (300): capped
