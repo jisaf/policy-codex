@@ -27580,7 +27580,9 @@
         dwelling_id: d2
   expect:
     p1:
-      leap_person_wages: {"2026-11": 4000}
+      # Earned-income records, E1 (LEAP): the set-aside is taken off the pay it is part of (3.752.23.DD), $4,000 - $500 = $3,500, in
+      # leap_person_wages; leap_household_income no longer subtracts it again. Before E1 the wages figure was $4,000 and the household took the $500 off.
+      leap_person_wages: {"2026-11": 3500}
       leap_household_income: {"2026-11": 3500}
       leap_is_eligible: {"2026-11": true}
 - id: CO-211

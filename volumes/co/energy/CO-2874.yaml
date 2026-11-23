@@ -14,6 +14,6 @@ tags: [income, verification]
 rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
 nearest: [CO-2870, CO-2871, CO-2872, CO-2873]
 tests:
-  - {id: CO-2874-T1, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: true}
-  - {id: CO-2874-T2, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: child_support, amount: 200}]}, title: "Child support received", expect: true}
-  - {id: CO-2874-T3, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: ssi, amount: 994}]}, title: "F-10: SSI only", expect: true}
+  - {id: CO-2874-T1, month: "2026-11", as_of: "2026-11-01", given: {earnings: [], ma_is_aged_blind_or_disabled: false, receipts: [{kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: true}
+  - {id: CO-2874-T2, month: "2026-11", as_of: "2026-11-01", given: {earnings: [], ma_is_aged_blind_or_disabled: false, receipts: [{kind: child_support, amount: 200}]}, title: "Child support received", expect: true}
+  - {id: CO-2874-T3, month: "2026-11", as_of: "2026-11-01", given: {earnings: [], receipts: [{kind: ssi, amount: 994}]}, title: "F-10: SSI only", expect: true}
