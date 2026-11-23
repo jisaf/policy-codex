@@ -13,11 +13,11 @@ record_fields:
     type: one of
     required: true
     meaning: "What the payment is: its source, one kind per source."
-    options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, gambling_winnings, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance_federal, energy_assistance_other, income_tax_refund, property_or_food_tax_refund, federally_excluded_payment, dvsa_title_i_volunteer_payment, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, vocational_training_allowance, general_assistance, emergency_assistance, in_home_care_allowance, home_care_allowance, va_aid_and_attendance, uniformed_services_special_pay, state_veteran_annuity, charitable_need_based_cash, charitable_gift_life_threatening_condition, gift, sponsor_payment, migrant_farmworker_emergency_assistance, other_taxable, other_nontaxable]
+    options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, gambling_winnings, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance_federal, energy_assistance_other, income_tax_refund, property_or_food_tax_refund, federally_excluded_payment, dvsa_title_i_volunteer_payment, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, vocational_training_allowance, general_assistance, emergency_assistance, in_home_care_allowance, home_care_allowance, va_aid_and_attendance, uniformed_services_special_pay, state_veteran_annuity, charitable_need_based_cash, charitable_gift_life_threatening_condition, gift, sponsor_payment, migrant_farmworker_emergency_assistance, adoption_subsidy, early_childhood_research_payment, board_only_payment, room_only_payment, savings_account_distribution, medicare_premium_refund, insurance_cash_value, military_allotment, school_attendance_conditional_benefit, other_taxable, other_nontaxable]
     option_meanings:
-      social_security: "Social Security (title II) benefits: retirement, survivors' or disability insurance, on the person's own record or another's."
+      social_security: "Social Security (title II) benefits: retirement, survivors' or disability insurance, on the person's own record or another's; not a refund of Medicare premiums (medicare_premium_refund)."
       ssi: Supplemental Security Income paid by the Social Security Administration (title XVI).
-      pension: A pension, annuity or retirement benefit from a former employer, a union, the military or a government retirement system, Railroad Retirement included.
+      pension: A pension, annuity or retirement benefit from a former employer, a union, the military or a government retirement system, Railroad Retirement included; not a distribution from an account the person owns (savings_account_distribution).
       unemployment_compensation: Unemployment insurance benefits paid by a State or the federal government.
       child_support: Current child support paid to the person for a child, other than arrears.
       child_support_arrears: Child support paid to the person toward support owed for months before the month received.
@@ -29,7 +29,7 @@ record_fields:
       workers_compensation: Workers' compensation benefits for a work injury or illness, an award's amounts for the claim's expenses included (see claim_expense).
       gambling_winnings: Winnings from a lottery or any other game of chance, one record per game.
       resource_liquidation: Money the person obtained by selling or converting a personal resource the person owned.
-      educational_assistance: Grants, scholarships, fellowships and educational loans for the cost of education or training, other than a training allowance from a workforce program.
+      educational_assistance: Grants, scholarships, fellowships and educational loans for the cost of education or training, other than a training allowance from a workforce program and other than benefits paid only on condition of school attendance (school_attendance_conditional_benefit).
       loan: The proceeds of a bona fide loan the person must repay, a reverse mortgage excepted.
       reimbursement: A reimbursement of expenses the person paid or will pay, which is not a gain to the person.
       energy_assistance_federal: "Home energy assistance under federal law: LEAP (LIHEAP) or other federally funded assistance with energy costs."
@@ -62,6 +62,15 @@ record_fields:
       gift: Money a person outside the household gave the person, with no obligation to repay and not for work, other than a gift from a charitable organization.
       sponsor_payment: Money a non-citizen received from a sponsor, or a sponsor's spouse, who does not live with the non-citizen.
       migrant_farmworker_emergency_assistance: Emergency assistance paid to a migrant or seasonal farmworker in the job stream.
+      adoption_subsidy: "An adoption subsidy (adoption assistance, under Title IV-E or State-funded) the county or the State pays the person for a child the person adopted; not a kinship care or guardianship payment (kinship_care_payment) or a foster care payment (foster_care_payment)."
+      early_childhood_research_payment: Money paid to the person for taking part in a grant-funded research study on early childhood development.
+      board_only_payment: "Payments from persons who pay to take regular meals in the person's home without lodging there (meals only); not payments for room and meals (room_and_board_payments_received, an earning) or for a room only (room_only_payment), and not the receipts of a commercial food business (self-employment)."
+      room_only_payment: "Payments from persons who pay to live in the person's home for lodging only, without regular meals (lodgers or roomers), contributions toward the home's shelter expenses included; not payments for room and meals (room_and_board_payments_received) or for meals only (board_only_payment), and not rent from property the person does not live in (rental_income)."
+      savings_account_distribution: "A withdrawal or distribution from an account the person owns to save for retirement (an IRA, a 401(k) or another defined-contribution account), for health costs (a health savings account), for education (an educational savings account) or under an individual development account; a pension or annuity a plan pays is pension."
+      medicare_premium_refund: "A lump-sum refund of Medicare Part B (Supplementary Medical Insurance) premiums, such as the refund paid when the State's buy-in begins paying the premium for past months."
+      insurance_cash_value: "Cash value the person takes out of a life or disability insurance policy the person owns (a withdrawal, a policy loan or a surrender of the cash value)."
+      military_allotment: "A military allotment: the part of a uniformed service member's pay allotted to dependents, received by the person on their behalf (the part for persons who do not live with the person is its for_person_living_elsewhere)."
+      school_attendance_conditional_benefit: "Educational benefits paid only on condition of the person's school attendance rather than as a grant, scholarship, fellowship, stipend or loan: U.S. Department of Veterans Affairs educational assistance (G.I. Bill) payments and other military, veterans' or similar benefits paid only while the person attends school; not the G.I. Bill housing or food allowance (gi_bill_housing_food_allowance)."
       other_taxable: "Federally taxable unearned money no other kind names: alimony under a divorce or separation executed before 2019, income from an estate or trust, and the like."
       other_nontaxable: "Unearned money that is not federally taxable and that no other kind names: veterans' benefits, alimony under a divorce or separation executed after 2018, an inheritance, an insurance settlement, and the like."
   amount:
@@ -109,6 +118,10 @@ record_fields:
     type: money
     default: 0
     meaning: The part of an insurance or injury settlement spent, or to be spent, on the costs it covers (the last illness and burial, medical care).
+  designated_for_lump_sum_costs:
+    type: money
+    default: 0
+    meaning: "The part of a payment received once that is designated or legally obligated for legal fees related to obtaining it, medical bills, funeral and burial expenses, or income taxes, beyond what spent_on_covered_costs states."
   used_for_uncovered_medical_care:
     type: money
     default: 0

@@ -27,14 +27,14 @@ describe("owns: the question's Owner line names the role", () => {
     expect(unsettled.filter((q) => !explicitField(q.body, "Owner")).map((q) => q.id)).toEqual([]);
   });
 
-  it("counts the Medicaid policy owner's questions once: 48 open and 3 partly settled (the App said 24 and 49)", () => {
+  it("counts the Medicaid policy owner's questions once: 49 open and 3 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(48); // + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
+    expect(med.open.length).toBe(49); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (non-MAGI fix round 2026-11-23, merged with the time audit)
     expect(med.partly.length).toBe(3);
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("48 open questions you own, and 3 partly settled");
+    expect(ownedPhrase(med)).toBe("49 open questions you own, and 3 partly settled");
   });
 
   it("counts the Cash programs policy owner's: 33 open and 4 partly settled", () => {
@@ -44,8 +44,8 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([54, 5]); // + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(59); // + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([55, 5]); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950 (time audit T-1), OQ-952 (T-8); + OQ-900 (fix round 2026-11-23)
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(60); // + OQ-995 (receipts migration 3); + OQ-970 to OQ-974 (receipts migration 2); + OQ-950, OQ-952; + OQ-900
   });
 
   it("a persona with no role owns nothing and is told so", () => {

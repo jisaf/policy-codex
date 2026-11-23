@@ -138,7 +138,7 @@ const mapReceipts = (c: HouseholdCase, f: (rs: Receipt[]) => Receipt[]) => {
 };
 const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "used_for_uncovered_medical_care",
   "transferred_to_child_support_agency", "paid_to_former_spouse", "recouped", "recouped_for_intentional_violation",
-  "for_person_living_elsewhere", "per_payment", "hours_served"];
+  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "per_payment", "hours_served"];
 const split = (rs: Receipt[]) => rs.flatMap((r) => {
   if (typeof r.amount !== "number" || r.amount === 0 || r.kind === "gambling_winnings") return [r];
   const a = { ...r }, b = { ...r };

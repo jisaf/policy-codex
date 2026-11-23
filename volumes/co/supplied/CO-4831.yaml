@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The documented expenses, for the month, directly related to providing the room to the lodgers whose payments room_only_payments_received (CO-4830) states (the lodger's share of utilities the person pays, linens and furnishings for the room, for example). Not costs also stated in rental_property_expenses_paid (CO-4458). 0 if none are documented."
-precision: "Stated with room_only_payments_received. If not stated, Colorado Works reads it as 0."
+meaning: "The documented expenses, for the month, directly related to providing the room to the lodgers whose payments the person's receipts of kind room_only_payment (receipts, CO-5000) state (the lodger's share of utilities the person pays, linens and furnishings for the room, for example). Not costs also stated in rental_property_expenses_paid (CO-4458). 0 if none are documented."
+precision: "Stated with the room_only_payment receipts. If not stated, Colorado Works reads it as 0."
 supplied_by: "Receipts and records of the costs, as the county establishes them."
 sources: [S3159]
 tags: [income]

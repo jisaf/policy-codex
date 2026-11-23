@@ -3612,6 +3612,7 @@ CO-206:
     other_unearned_income_taxable: 400
     other_unearned_income_nontaxable: 0
     tax_exempt_interest: 0
+    room_only_payments_received: 400
   p2:
     ssi_income: 0
     social_security_income: 0
@@ -5522,6 +5523,7 @@ CO-362:
     other_unearned_income_taxable: 600
     other_unearned_income_nontaxable: 0
     tax_exempt_interest: 0
+    room_only_payments_received: 600
   p2:
     ssi_income: 0
     social_security_income: 0
@@ -6053,6 +6055,7 @@ CO-400:
     child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
+    adoption_subsidy_received: 900
   p3:
     ssi_income: 0
     lottery_gambling_winnings_received: 0
@@ -6078,6 +6081,7 @@ CO-401:
     child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
+    adoption_subsidy_received: 900
   p3:
     ssi_income: 0
     lottery_gambling_winnings_received: 0
@@ -8911,6 +8915,7 @@ CO-483:
     child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
+    adoption_subsidy_received: 0
   p3:
     ssi_income: 0
     lottery_gambling_winnings_received: 0
@@ -9065,6 +9070,7 @@ CO-492:
     child_support_received: 0
     tanf_cash_income: 0
     adult_financial_cash_income: 0
+    adoption_subsidy_received: 0
   p3:
     ssi_income: 0
     lottery_gambling_winnings_received: 0

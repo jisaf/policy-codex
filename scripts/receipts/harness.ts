@@ -140,7 +140,11 @@ export function main(): number {
     const tr = translateCase(c, newL.ix, CHOICES, retired);
     notes.push(...tr.notes);
     if (tr.changed) stale.push(c.id);
-    return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
+    // the baseline reads the receipts in its own schema: the legacy
+    // translation, the parts phase 3 gave kinds of their own left in the
+    // receipt that held them (a person written in receipts alone keeps them)
+    const legacy = translateCase(c, newL.ix, CHOICES, retired, true).value;
+    return { old: withRetired(legacy, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
   // A generated household is stated in the old facts and translated, as a
@@ -150,7 +154,7 @@ export function main(): number {
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);
-    return { old: tr.value, new: tr.value };
+    return { old: translateCase(c, newL.ix, CHOICES, undefined, true).value, new: tr.value };
   });
   sources.push({ label: "generated households", cases: gen });
 

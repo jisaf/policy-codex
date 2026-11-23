@@ -5,8 +5,8 @@ kind: supplied
 type: whole number
 scope: person-month
 program: All
-meaning: "The number of persons whose meals-only payments board_only_payments_received (CO-4832) states for the month."
-precision: "Stated with board_only_payments_received; read only where those payments are more than 0."
+meaning: "The number of persons whose meals-only payments the person's receipts of kind board_only_payment (receipts, CO-5000) state for the month."
+precision: "Stated with the board_only_payment receipts; read only where those payments are more than 0."
 supplied_by: "Applicant statement on the household's arrangements."
 sources: [S3159]
 tags: [income]

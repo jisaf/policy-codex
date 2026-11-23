@@ -60,6 +60,18 @@ export function variants(): Variant[] {
   v.push(["AmeriCorps 300 for 10 hours", (md) => { add(md, "americorps_payments_received", 300); add(md, NONTAX, 300); md.americorps_service_hours = 10; }]);
   v.push(["AmeriCorps 300, hours not stated", (md) => { add(md, "americorps_payments_received", 300); add(md, NONTAX, 300); }]);
   v.push(["other nontaxable not stated", (md) => { delete md[NONTAX]; }]);
+  // migration phase 3: the parts a receipt kind of their own replaced, each
+  // stated in the fact that held it
+  v.push(["P3 adoption subsidy 300 (part of nontaxable)", (md) => { add(md, "adoption_subsidy_received", 300); add(md, NONTAX, 300); }]);
+  v.push(["P3 early childhood research 300 (part of taxable)", (md) => { add(md, "early_childhood_research_study_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 board only 300 (part of taxable)", (md) => { add(md, "board_only_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 room only 300 (part of taxable)", (md) => { add(md, "room_only_payments_received", 300); add(md, TAX, 300); }]);
+  v.push(["P3 military allotment for persons elsewhere 300 (part of nontaxable)", (md) => { add(md, "military_allotment_received_for_persons_outside_home", 300); add(md, NONTAX, 300); md.military_allotment_persons_outside_home_count = 1; }]);
+  v.push(["P3 educational assistance 300 of which school conditional 200", (md) => { add(md, "educational_assistance_received", 300); add(md, "school_attendance_conditional_benefits_received", 200); add(md, NONTAX, 300); }]);
+  v.push(["P3 pension 300 of which savings distribution 300", (md) => { add(md, "pension_income", 300); add(md, "savings_account_distributions_received", 300); }]);
+  v.push(["P3 SMIB refund 120 (part of nontaxable)", (md) => { add(md, "medicare_premium_refund_received", 120); add(md, NONTAX, 120); }]);
+  v.push(["P3 insurance cash value 300 (part of nontaxable)", (md) => { add(md, "insurance_cash_value_withdrawn", 300); add(md, NONTAX, 300); }]);
+  v.push(["P3 lump sum 3000 of which 1000 spent or designated", (md) => { add(md, "lump_sum_received", 3000); add(md, NONTAX, 3000); add(md, "lump_sum_amounts_spent_or_designated", 1000); }]);
   return v;
 }
 

@@ -207,3 +207,58 @@
   identifier: /^ma_(ltc_gross_income|meets_special_income_group)$/
   old: unknown
   class: M7 long-term care gross income no longer needs the VA flag stated
+
+# ---------------------------------------------------------------------------------------------------
+# Phase 3, the cleanup (docs/reviews/receipts-migration-3.md, section 6, where each class is stated
+# with its cases and the rule text). Baseline c29d326, read through the legacy translation (the parts
+# phase 3 gave kinds of their own left in the receipt that held them), so the harness measures phase 3
+# beside phase 2.
+
+# P3-1: an adoption subsidy is a receipt kind of its own (adoption_subsidy), which Colorado Works'
+# counting table excludes: 9 CCR 2503-6 3.605.4.B.32 (S4040), "A child receiving subsidized adoption
+# funds shall be excluded from the assistance unit and his or her income shall be exempt". The subsidy
+# is the child's income though paid to the adoptive parent (as Medicaid reads 8.100.5.F.6.t). Before,
+# it was stated inside the parent's other non-taxable income, which Colorado Works counted by silence.
+- case: /^CO-(400|401)$/
+  identifier: /^cw_(countable_unearned_income|payment_countable_unearned_income|has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-1 Colorado Works excludes an adoption subsidy (3.605.4.B.32)
+- case: /^G-[A-Za-z]+-P3_adoption_subsidy_300_part_of_nontaxable_$/
+  identifier: /^cw_/
+  class: P3-1 Colorado Works excludes an adoption subsidy (3.605.4.B.32)
+
+# P3-2: the SSI method's counting table exempts an adoption subsidy (8.100.5.F.6.t, S4041: "his income
+# shall be exempt"), so it is not the adoptive parent's own SSI-method income either; before, it was
+# counted there as part of the other non-taxable income and subtracted only where the parent's income
+# was deemed to the child (the double handling the phase-2 Medicaid review names). The deemed figure
+# and the child's outcomes do not change.
+- case: /^(CO-(400|401)|G-[A-Za-z]+-P3_adoption_subsidy_300_part_of_nontaxable_)$/
+  identifier: /^ma_(ssi_countable_income|ssi_countable_unearned_income|wawd_countable_income|dac_countable_income)$/
+  class: P3-2 the SSI method exempts an adoption subsidy for the adoptive parent too (8.100.5.F.6.t)
+
+# P3-3: a lodger's payment for a room only is a receipt kind of its own (room_only_payment), which
+# Colorado Works counts as earned income (3.605.2.E.4.d, S3159; cw_boarder_income), as it did before,
+# but no longer also as unearned income to verify: before, it sat in the other taxable income, so the
+# unearned-income verification element (3.604.3.B.2.e) asked for it although cw_unearned_income_deductions
+# took it out of the unearned income counted.
+- case: /^CO-(206|362)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-3 Colorado Works reads a room-only payment as earned income only (3.605.2.E.4.d)
+# The same for the generated households that state each part Colorado Works took back out of the
+# unearned income it counted (cw_unearned_income_deductions) and now reads as its own kind: a board-only
+# or room-only payment (earned income, 3.605.2.E.4.c-d), a savings account distribution (exempt,
+# 3.605.4.B.21), insurance cash value taken (B.30), an SMIB refund (3.605.3.B.9). Before, the
+# verification element (cw_has_countable_unearned_income, 3.604.3.B.2.e: income "used to determine
+# eligibility and payment") asked for each, although none was counted; phase 2's CW2 is the same reading.
+- case: /^G-[A-Za-z]+-P3_(board_only_300_part_of_taxable_|room_only_300_part_of_taxable_|pension_300_of_which_savings_distribution_300|insurance_cash_value_300_part_of_nontaxable_|SMIB_refund_120_part_of_nontaxable_)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending)$/
+  class: P3-3 Colorado Works does not verify as unearned income a part it never counted
+
+# P3-4: a military allotment received for persons who do not live with the person is a receipt of kind
+# military_allotment whose for_person_living_elsewhere is the whole amount, and SNAP leaves that field out
+# of every receipt it counts: 10 CCR 2506-1 4.405.B (S3100), "Monies received and used for the care and
+# maintenance of a third-party beneficiary who is not a household member". Before, the scalar fact for
+# the allotment (military_allotment_received_for_persons_outside_home, Colorado Works' own) was part of
+# the other non-taxable income, which SNAP counted, since SNAP's own earmark fact did not state it.
+- case: /^G-[A-Za-z]+-P3_military_allotment_for_persons_elsewhere_300_part_of_nontaxable_$/
+  identifier: /^snap_(person_unearned_income|person_gross_income|unearned_income_verification_is_pending)$/
+  class: P3-4 SNAP leaves out an allotment received for persons not in the household (4.405.B)

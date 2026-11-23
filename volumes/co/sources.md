@@ -22707,3 +22707,33 @@ Document: D-347
 > (2) Each aged, blind, or disabled individual who has an eligible spouse and—
 >
 > (A) whose income (together with the income of such spouse), other than income excluded pursuant to section 1382a(b) of this title, is at a rate of not more than $2,628 (or, if greater, the amount determined under section 1382f of this title) for the calendar year 1974, or any calendar year thereafter, and
+
+### S4040. Colorado Works general income exemptions: a child receiving subsidized adoption funds is excluded from the unit and the child's income is exempt
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B.32 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 32. A child receiving subsidized adoption funds shall be excluded from the assistance unit
+> and his or her income shall be exempt from consideration for Colorado Works eligibility
+> and payment.
+
+### S4041. SSI-related income: a child receiving subsidized adoption funds is excluded from the budget unit and the child's income is exempt (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6.t (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> t. A child receiving subsidized adoption funds shall be excluded from the Medical Assistance budget unit and his income shall be exempt from consideration in determining eligibility, unless such exclusion results in ineligibility for the other members of the household.
+
+### S4042. SSI: receipts from the sale, exchange or replacement of a resource are not income
+
+Document: D-207
+
+20 CFR 416.1103 (introduction), (c) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> Some things you receive are not income because you cannot use them as food or shelter, or use them to obtain food or shelter. In addition, what you receive from the sale or exchange of your own property is not income; it remains a resource. The following are some items that are not income:
+>
+> ...
+>
+> (c) Receipts from the sale, exchange, or replacement of a resource. Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form. This includes any cash or in-kind item that is provided to replace or repair a resource (see subpart L) that has been lost, damaged, or stolen. Sections 416.1150 and 416.1151 discuss treatment of receipts to replace or repair a resource following a major disaster or following some other event causing damage or loss of a resource.

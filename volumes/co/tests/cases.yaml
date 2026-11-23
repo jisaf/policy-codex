@@ -27142,11 +27142,10 @@
         county_approved_living_arrangement: false
         date_of_birth: "2010-03-01"
         receipts:
-        - {kind: other_taxable, amount: 400}
+        - {kind: room_only_payment, amount: 400}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
-        room_only_payments_received: 400
         child_support_paid_legally_obligated: 0
     p2:
       # Her baby.
@@ -39124,12 +39123,11 @@
         county_approved_living_arrangement: false
         date_of_birth: "2010-03-01"
         receipts:
-        - {kind: other_taxable, amount: 600}
+        - {kind: room_only_payment, amount: 600}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
         child_support_paid_legally_obligated: 0
-        room_only_payments_received: 600
     p2:
       facts:
         sex: female
@@ -42623,7 +42621,7 @@
         employer_family_coverage_employer_premium_share: 0.6
         is_enrolled_in_employer_family_coverage: true
         receipts:
-        - {kind: other_nontaxable, amount: 900}
+        - {kind: adoption_subsidy, amount: 900}
       month_defaults:
         wages_gross: 9500
         self_employment_net_earnings_for_tax: 0
@@ -42637,7 +42635,6 @@
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
-        adoption_subsidy_received: 900
     p3:
       facts:
         residence_setting_type: private_dwelling
@@ -42747,7 +42744,7 @@
         employer_family_coverage_employer_premium_share: 0.6
         is_enrolled_in_employer_family_coverage: true
         receipts:
-        - {kind: other_nontaxable, amount: 900}
+        - {kind: adoption_subsidy, amount: 900}
       month_defaults:
         wages_gross: 5600
         self_employment_net_earnings_for_tax: 0
@@ -42761,7 +42758,6 @@
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
-        adoption_subsidy_received: 900
     p3:
       facts:
         residence_setting_type: private_dwelling
@@ -54058,7 +54054,6 @@
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
-        adoption_subsidy_received: 0
         infrequent_or_irregular_earned_income_received: 0
         decennial_census_wages_received: 0
       months:
@@ -55101,7 +55096,6 @@
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
-        adoption_subsidy_received: 0
     p3:
       facts:
         residence_setting_type: private_dwelling

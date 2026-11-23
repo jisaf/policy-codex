@@ -2939,3 +2939,23 @@ Owner: SNAP policy owner, School meals (CDE) co-approver
 Assumption: Only Colorado Works basic cash assistance is assistance under TANF for 292.2; a diversion or supportive service payment does not make a child categorically eligible.
 
 Checked 2026-11-23: 7 CFR 292.2, 292.6, 292.12(d) (D-88); 9 CCR 2503-6 3.606.8.A (D-81). None defines TANF "assistance" for Summer EBT; 45 CFR 260.31 is not among the documents on file. Items: CO-5730, CO-5731.
+
+### OQ-995. Medicaid SSI method: whether a withdrawal from a savings account, a Medicare premium refund or cash value taken from a policy is income
+
+Body: Receipt records, migration phase 3 gives three receipts that were parts of other receipts kinds of their own: savings_account_distribution (a withdrawal from an IRA, 401(k), health, education or development account the person owns), medicare_premium_refund (a lump-sum refund of Part B premiums) and insurance_cash_value (cash value taken out of a life or disability insurance policy). 10 CCR 2505-10 8.100.5.F (S3001) counts unearned income and F.6 lists what is exempt; neither names these three. 20 CFR 416.1103(c) (S4042) says "Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form", which may reach a withdrawal from an account the person owns and cash value taken from a policy; 416.1103 names no premium refund, and (a)(6) makes only the direct payment of medical insurance premiums by someone else not income. The ledger reads money obtained by converting a resource (resource_liquidation) as counted because no rule on file excludes it (OQ-971). Before receipt records the three were counted as part of the Social Security, pension or other non-taxable income that held them; the counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps that reading, counted because no rule on file excludes them, until the owner decides.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each is counted as SSI-method unearned income in the month received (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 (D-65); 20 CFR 416.1103 (D-207). Neither names a savings account withdrawal, a premium refund or cash value taken. Items: CO-5510.
+
+### OQ-996. SNAP: a payment for meals only or for a room only
+
+Body: Receipt records, migration phase 3 gives board_only_payment (payments from persons who take regular meals in the home without lodging) and room_only_payment (payments from lodgers for a room only) kinds of their own; before, both were stated as part of the other taxable unearned income. 10 CCR 2506-1 4.403.2 (S2963) treats "payments from a boarder" as self-employment income less the cost of doing business, added to earned income, and the ledger reads a boarder as a person paying for room and meals (room_and_board_payments_received, CO-4161; snap_boarder_income, CO-4165). The text does not say whether a payment for meals only, or for a room only, is a boarder's payment under 4.403.2 or unearned income. SNAP's counting table (snap_receipt_treatment_table, CO-5010) keeps the reading before receipt records: both counted as unearned income because no rule excludes them.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: A payment for meals only or for a room only is counted as unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.
