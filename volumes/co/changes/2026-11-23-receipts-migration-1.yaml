@@ -5,5 +5,4 @@ date: 2026-11-23
 summary: LEAP, SNAP and Adult Financial read unearned income from receipt records through one counting table each.
 impact:
   - {changed: CO-4930, fingerprint: fp1-24916a701ad3368f13b4, flagged: CO-330, applies: "CO-330 (snap_person_earned_income) reads CO-4930 and changes with it; the training allowances and Title I payments it adds are now the receipts of those kinds, nothing else in CO-330 reads an unearned-income fact"}
-  - {changed: CO-946, fingerprint: fp1-5539f905d60ef51d464c, flagged: CO-952, applies: "CO-952 (af_and_grant) reads CO-946 and af_grant_is_reduced_by_ssi_income, both of which now read the SSI receipts (af_ssi_receipts, CO-5018); it reads no unearned-income fact of its own and needs no change"}
-  - {changed: CO-946, fingerprint: fp1-5539f905d60ef51d464c, flagged: CO-953, applies: "CO-953 (af_category) reads CO-946, which now reads the SSI receipts (af_ssi_receipts, CO-5018); it reads no unearned-income fact of its own and needs no change"}
+  - {changed: CO-946, fingerprint: fp1-de16c791a87419c98d17, flagged: CO-952, applies: "CO-952 (af_and_grant) reads CO-946 and af_grant_is_reduced_by_ssi_income, both of which now read the SSI receipts (af_ssi_receipts, CO-5018); it reads no unearned-income fact of its own and needs no change"}
