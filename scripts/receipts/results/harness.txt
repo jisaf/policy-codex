@@ -1,13 +1,13 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 228 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 251 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 319 | 170096 | 1522 | 298 | 1522 | 0 |
-| generated households | 1626 | 696597 | 8658 | 1544 | 8658 | 0 |
+| stored households | 319 | 169196 | 1522 | 298 | 1522 | 0 |
+| generated households | 1626 | 693264 | 8658 | 1544 | 8658 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671, CO-720, CO-721, CO-722, CO-723, CO-724, CO-725, CO-726, CO-727, CO-710, CO-711, CO-712, CO-713, CO-714, CO-715, CO-716, CO-717, CO-718, CO-719, CO-740, CO-741, CO-742, CO-743, CO-750, CO-751, CO-752, CO-753, CO-754, CO-755, CO-756, CO-757, CO-758, CO-759.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610, CO-670, CO-671, CO-720, CO-721, CO-722, CO-723, CO-724, CO-725, CO-726, CO-727, CO-710, CO-711, CO-712, CO-713, CO-714, CO-715, CO-716, CO-717, CO-718, CO-719, CO-740, CO-741, CO-742, CO-743, CO-750, CO-751, CO-752, CO-753, CO-754, CO-755, CO-756, CO-757, CO-758, CO-759, CO-780.
 
 ## Allowed differences by class
 
