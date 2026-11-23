@@ -59171,7 +59171,7 @@
 
 - id: CO-534
   title: "Time audit T-2: the Adult Financial maximum ISM in January 2027"
-  # Time audit T-2 (docs/reviews/time-audit.md). Still failing: registered in conformance/known-failures.json under T-2.
+  # Time audit T-2 (docs/reviews/time-audit.md). Passes since the fix round: af_ism_maximum (CO-1513) is E.2's formula.
   # CO-166's household determined on 2027-01-05: p1, 70, Social Security $600, lives rent-free in her daughter's home
   # whose shelter costs ($1,200, market value) are all provided, so the full maximum ISM counts (3.520.79.C.3).
   # The maximum ISM (9 CCR 2503-5 3.520.79.E.2, S1012): "the current SSI benefit standard ... by 33.33%, then adding a
@@ -59180,8 +59180,8 @@
   # published 2026 figure: 994 x 0.3333 + 20 = 351.30 -> 351, S700; and 2025: 967 x 0.3333 + 20 = 342.30 -> 342, S1020.)
   # Countable income (3.533.A.2): 600 + 363 = 963 unearned, less the $20 = 943.
   # The OAP grant and category are not asserted: the 2027 OAP grant standard and payment floor are set by the State
-  # Board and are not yet published. The codex's af_ism_maximum (CO-1513) has an open 2026 version ($351), so January
-  # 2027 gives 351 and 931.
+  # Board and are not yet published. Before the fix, af_ism_maximum (CO-1513) was a parameter with an open 2026 version
+  # ($351), so January 2027 gave 351 and 931.
   as_of: "2027-01-05"
   case_facts:
     cw_meets_county_diversion_income_limit: false
