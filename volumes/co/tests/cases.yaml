@@ -61982,3 +61982,400 @@
         2027-02: 529.9999
       snap_person_unearned_income:
         2027-02: 529.9999
+
+- id: CO-560
+  title: "Receipts phase 2: an aged veteran at home, written in receipts alone; the VA Aid and Attendance portion, an income tax refund and a gift"
+  # Receipts migration phase 2 (docs/reviews/receipts-migration-2-medicaid.md). CO-212's veteran (p1, 76, single, at home, Medicare
+  # Part A, savings 1,000, applied 2026-10-05) stated in receipts alone: Social Security 400; a VA pension of 900 stated as
+  # pension 500 and va_aid_and_attendance 400 (the VA award letter); a 250 income tax refund and a 50 gift from a friend, both
+  # received in October.
+  # Hand derivation, October 2026 (SSI method, ma_ssi_receipt_treatment_table):
+  # - Counted: Social Security 400 (8.100.5.F.5.j.ii), pension 500 (j.i), the gift 50 (F.5.c, in the month received).
+  # - Not income: the Aid and Attendance portion (8.100.5.K, "shall not be considered as income when determining
+  #   eligibility"), the refund (20 CFR 416.1103(d)). Unearned 950, less the 20 general exclusion: countable 930.
+  # - 930 at or under the individual FBR (994): aged ("not more than", 42 U.S.C. 1382(a), S3950); resources 1,000.
+  # - November: no gift: 880, at or under 100% of the poverty level for one (1,330): QMB from November, as in CO-212.
+  as_of: 2026-10-12
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: 1950-03-01
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: 2026-10-05
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        receipts:
+          - kind: social_security
+            amount: 400
+          - kind: pension
+            amount: 500
+          - kind: va_aid_and_attendance
+            amount: 400
+          - kind: income_tax_refund
+            amount: 250
+            frequency: once
+            month: 2026-10
+          - kind: gift
+            amount: 50
+            frequency: once
+            month: 2026-10
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-10: 930
+        2026-11: 880
+      ma_ssi_related_category:
+        2026-10: aged
+      ma_msp_category:
+        2026-10: none
+        2026-11: qmb
+
+- id: CO-561
+  title: "Receipts phase 2: a widowed veteran in a State Veterans Home, written in receipts alone; the Aid and Attendance portion is patient payment"
+  # Receipts migration phase 2. CO-139's veteran stated in receipts alone: Social Security 1,300; a VA pension of 600 stated as
+  # pension 300 and va_aid_and_attendance 300.
+  # Hand derivation, November 2026:
+  # - Long-term care gross income (8.100.7.A.1): 1,300 + 300 = 1,600; the Aid and Attendance portion is not income
+  #   (8.100.5.K). 1,600 at or under 300% of the FBR (2,982): eligible_institutional, as in CO-139.
+  # - The patient payment adds the portion back for a veteran with no dependents in a State Veterans Home (K.2):
+  #   ma_va_aid_and_attendance_receipts 300, read from the receipt instead of receives_va_aid_and_attendance.
+  as_of: 2026-11-01
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: 2026-11-02
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: true
+        receives_va_non_service_connected_pension: true
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: 1946-03-12
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: 2026-09-14
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 1200
+        ma_physician_certified_return_home: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
+        home_equity: 240000
+        intends_to_return_home: true
+        intent_to_return_home_is_documented_in_writing: true
+        lives_in_owned_home: false
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: 2026-11-02
+        marital_status: widowed
+        resides_in_state_veterans_home: true
+        receipts:
+          - kind: social_security
+            amount: 1300
+          - kind: pension
+            amount: 300
+          - kind: va_aid_and_attendance
+            amount: 300
+      month_defaults:
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        health_insurance_premiums_paid: 0
+        medicare_part_b_premium_paid: 0
+        medicare_part_d_premium_paid: 0
+        mandatory_income_tax_withheld: 0
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 0
+        shelter_cost_monthly: 0
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 0
+        medical_expenses_out_of_pocket: 0
+  expect:
+    p1:
+      ma_ltc_gross_income:
+        2026-11: 1600
+      ma_ltc_eligibility_status:
+        2026-11: eligible_institutional
+      ma_personal_needs_allowance: 90
+      ma_patient_payment_available_income:
+        2026-11: 1510
+      ma_va_aid_and_attendance_is_patient_payment:
+        2026-11: true
+      ma_patient_payment:
+        2026-11: 1810
+        2026-12: 1810
+
+- id: CO-562
+  title: "Receipts phase 2: a CHP+ child whose mother receives child support and a gift, written in receipts alone; MAGI counts neither"
+  # Receipts migration phase 2. CO-386's household (the mother p1, the child p2 born 2025-11-01; determined 2026-11-10) with
+  # the mother's receipts stated: 400 of child support for p2 and a 150 gift from her sister each month.
+  # Hand derivation, November 2026 (MAGI, ma_magi_receipt_treatment_table; CHP+ reads the MAGI household income by the
+  # adopted-method link of 10 CCR 2505-3 150.1, S245):
+  # - Child support received is excluded (8.100.4.C.1.d.iii); a gift is not taxable income and no paragraph of
+  #   8.100.4.C.1.b-c adds it: MAGI-based income is the mother's wages alone, 3,066, as in CO-386, so the household stays at
+  #   170% of the poverty level: p2 is CHP+ eligible_child, not needy_newborn.
+  as_of: 2026-11-10
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: 2026-11-02
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: 2026-01-01
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: 1996-03-01
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: false
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        receipts:
+          - kind: child_support
+            amount: 400
+          - kind: gift
+            amount: 150
+      month_defaults:
+        wages_gross: 3066
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+      relationships:
+        - - parent
+          - p2
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: medical_assistance
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: 2026-11-02
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: 2026-01-01
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: 2025-11-01
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: false
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        receipts: []
+      month_defaults:
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+      relationships:
+        - - child
+          - p1
+  relationships:
+    - - parent
+      - p1
+      - p2
+  expect:
+    p2:
+      ma_magi_category:
+        2026-11: none
+      chp_eligibility_status:
+        2026-11: eligible_child
+    p1:
+      ma_person_magi_income:
+        2026-11: 3066
+      ma_magi_household_income_pct_fpl:
+        2026-11: 1.700184842883549
+
+- id: CO-563
+  title: "Receipts phase 2: Social Security set aside under a PASS, written in receipts alone"
+  # Receipts migration phase 2. CO-390 (probe X-PASS, non-MAGI coverage NM-7) stated in receipts alone: the PASS set-aside is
+  # a field of the Social Security receipt (pass_set_aside), not a second statement of the money.
+  # Hand derivation: as CO-390; 8.100.5.F.6.q exempts the part set aside under the plan, so the countable unearned
+  # income is the benefit less the set-aside, less the 20 general exclusion.
+  as_of: 2026-10-12
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: 1986-03-01
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: 2026-10-05
+        liquid_resources_value: 1000
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        receipts:
+          - kind: social_security
+            amount: 1200
+            pass_set_aside: 300
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-10: 880
+      ma_ssi_related_category:
+        2026-10: disabled

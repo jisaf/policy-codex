@@ -1,13 +1,13 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 88 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 114 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
 | stored households | 319 | 157263 | 408 | 94 | 408 | 0 |
 | generated households | 1071 | 399703 | 2082 | 589 | 2082 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): none.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-560, CO-561, CO-562, CO-563.
 
 ## Allowed differences by class
 
@@ -31,6 +31,8 @@ none
 | MA-2 order | 1196 | 0 |
 | MA-3 month | 1196 | 0 |
 | MA-4 residual | 1196 | 0 |
+| MA-5 frequency | 1196 | 0 |
+| MA-6 date | 1196 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
@@ -48,6 +50,13 @@ none
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | leap_household_income | 2200 | 2200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | af_relative_deemable_unearned_income | 200 | 200 |
+| M1 | recurring | ma_magi_unearned_receipts | 1050 | 1050 |
+| M1 | stated for the month | ma_magi_unearned_receipts | 1050 | 1050 |
+| M1 | Social Security split in two records | ma_magi_unearned_receipts | 1050 | 1050 |
+| M2 | PASS, VA, foster care and a retroactive payment by month | ma_ssi_unearned_receipts | 600 | 600 |
+| M2 | the retroactive payment dated | ma_ssi_unearned_receipts | 600 | 600 |
+| M3 | long-term care gross | ma_ssi_gross_unearned_receipts | 1900 | 1900 |
+| M4 | pension 300 + VA 300 (equals pension 300 alone) | ma_ssi_unearned_receipts | 300 | 300 |
 
 ## Differences
 
