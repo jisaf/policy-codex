@@ -21,6 +21,7 @@
     home_incurs_telephone_cost: true
     received_energy_assistance_within_twelve_months: false
     snap_application_date: "2026-10-01"
+    leap_application_date: "2026-10-01"  # coverage pass 4 L4-4: LEAP reads each age on its application date (leap_age_on_application_date, CO-6400); the household was determined on the date it applied
     snap_determination_is_recertification: false
     cw_meets_county_diversion_income_limit: false
     is_destitute_migrant_or_seasonal_farmworker: false

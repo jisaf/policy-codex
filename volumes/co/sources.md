@@ -23177,3 +23177,18 @@ Document: D-80
 > A. If a client's total countable income equals or exceeds the Adult Financial program
 > grant standard, the client shall not be eligible for that specific Adult Financial
 > program.
+
+### S4600. LEAP: eligibility factors, household composition and income among them, are considered as of the date of application
+
+Document: D-86
+
+9 CCR 2503-7 3.752.2 and 3.751.1 "Point in Time" (rule version 12221, effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.2 PROGRAM ELIGIBILITY REQUIREMENTS [Rev. eff. 12/1/14]
+>
+> The following factors shall be considered as of the date of application: Colorado state residency, U.S.
+> citizenship/alien status, income, vulnerability, fuel type, household composition, shared living
+> arrangements, dwelling type, and estimated home heating costs.
+>
+> “Point in Time”: Point in time indicates that eligibility is determined by accounting for the circumstances of
+> the household on the date of the application, regardless of any changes thereafter.
