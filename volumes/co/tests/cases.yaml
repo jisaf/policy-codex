@@ -4554,6 +4554,7 @@
       facts:
         days_out_of_state_in_calendar_year: 0
         dwelling_id: h2  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
+        residence_setting_type: private_dwelling  # coverage pass 5, C5-04: stated (decision 4); ma_magi_eligibility_status reads the 8.100.3.G.1.c exclusion; he lives in his own home (h2)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -4773,6 +4774,7 @@
       # exit), citizen, earns $4,200/month throughout.
       facts:
         days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling  # coverage pass 5, C5-04: stated (decision 4); ma_magi_eligibility_status reads the 8.100.3.G.1.c exclusion; he lives in the community
         has_qualifying_military_service: false
         foster_care_exit_date: "2022-06-19"  # dual-entry 2.9: aged out at 20 (was ma_age_at_foster_care_exit: 20)
         medicare_part_a_entitled: false
