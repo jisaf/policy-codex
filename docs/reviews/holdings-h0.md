@@ -11,7 +11,12 @@ Step H0 of docs/design-earned-and-resource-records.md (4.2, H0 row), by the inte
 | 3ea1eda | 3 | P58 `largest` in the engine (evaluate, type check, parse, render, plain English), docs/operators.md entry, engine tests (test/engine/holdings.test.ts) |
 | c3ab76a | 4 | Translator (scripts/records/translate-holdings.ts), apply script (`npm run records:translate-holdings`), `npm run records:harness -- --list holdings`, the joint-holding check in `npm run check`, generated households and metamorphic relations, the H1 registry entries and allowed files |
 | b59f5b0 | 5 | 164 stored households and 189 rule tests restated with holdings by the translator |
-| (later) | 6, 7 | docs (operators.md, conventions.md, plan-colorado.md, this review), the change record, UI count pins, the merge of origin and the gate (section 9 lists them) |
+| 88f3efd | 6 | docs/operators.md (P58, the record noun, holdings as the third input), conventions.md (Holdings records, P58), plan-colorado.md ("Resource records, H0"), this review |
+| 9d6f93f | pins | UI count pins (figures +3, open questions +5), each with its reason |
+| 4466fd0 | merge | origin ccr-9d19bf4c-wmnwcl at 704da6b (the receipts harness classification, CO-6250) merged before the gate; the translation still a fixed point (0 households, 0 tests re-translated) |
+| cb7eac3 | 7 | volumes/co/changes/2026-11-23-holdings-h0.yaml (no flag raised); the last commit that changes the ledger (HOLDINGS_BASELINE) |
+| 819c2c1 | baseline | HOLDINGS_BASELINE set to cb7eac3 |
+| (last) | gate | harness results; section 9 |
 
 ## 2. The `holdings` list (CO-5300)
 
@@ -128,7 +133,18 @@ H0 changes no answer, so each is kept as today's reading and named here, for the
 
 ## 9. Gates
 
-(Filled in by the gate commit.)
+On 819c2c1 (origin ccr-9d19bf4c-wmnwcl at 704da6b merged):
+
+| Gate | Result |
+|---|---|
+| `node scripts/sync-manifest.mjs co` | written; 4 items added by H0 (CO-5300 to CO-5303) |
+| `npm run typecheck` | passes |
+| `npx vitest run` | 1,144 tests pass (102 files), after the UI pins moved by the three tables and five questions were re-pinned with their reasons |
+| `npm run receipts:harness -- --all-programs` | OK: 0 unexplained (319 stored households, 975 allowed differences; 1,626 generated households, 5,619 allowed; the classes of the receipts phases and of the merged classification only, none from H0) |
+| `npm run records:harness -- --list earnings --all-programs` | OK: translation 0 stale (319 households, 746 rule tests), boundary 0 findings, 0 unexplained (1,204 and 2,623 allowed differences, all the E1 wave's classes) |
+| `npm run records:harness -- --list holdings` | OK: translation 0 stale (164 households, 336 persons; 189 rule tests), 0 joint-holding findings, every relation's output accepted; against HOLDINGS_BASELINE (cb7eac3): 329 stored households, 111,450 values, 0 differences; 360 generated households, 97,200 values, 0 differences |
+| `npm run records:harness -- --list holdings --all-programs --base 704da6b` (H0 itself: the ledger just before H0, with the merged classification) | OK: 329 stored households, 160,236 values, **0 differences**; 360 generated households (each track's bases varied one resource fact at a time), 141,120 values, **0 differences**; metamorphic relations run on no figure (none reads the records yet) |
+| `CHECK_BASE=origin/main npm run check` | OK, conformance self-check OK (5,270 cases, 8,806 checked); rule tests 4,781 of 4,781; households 3,864 of 3,865 (CO-387's CHP+ copayment band, a known failure in conformance/known-failures.json before H0); 0 change-impact flags open, none raised by H0 (volumes/co/changes/2026-11-23-holdings-h0.yaml, `impact: []`) |
 
 ## 10. What each H1 track starts from
 

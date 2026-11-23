@@ -1,8 +1,8 @@
-# Records harness: holdings (19 s)
+# Records harness: holdings (29 s)
 
 ## Translation
 
-Stored households stating holdings: 164 of 329 (336 persons); rule tests stating holdings: 189 of 4776.
+Stored households stating holdings: 164 of 329 (336 persons); rule tests stating holdings: 189 of 4781.
 Stored households whose holdings are not the translation of their resource facts: none.
 Rule tests whose holdings are not the translation of their resource facts: none.
 
@@ -15,11 +15,12 @@ Relations MH-1 to MH-5 applied to every stored household give statements the sch
 
 ## Old against new
 
-Ledger at a3ffd86782f2 against the ledger on disk; programs: AdultFinancial, Medicaid, CHP+, SNAP; tracks: af, medicaid, snap.
+Ledger at cb7eac3a137b against the ledger on disk; programs: AdultFinancial, Medicaid, CHP+, SNAP; tracks: af, medicaid, snap.
 
 | Source | Households | Values compared | Values that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|
 | stored households | 329 | 111450 | 0 | 0 | 0 |
+| generated households | 360 | 97200 | 0 | 0 | 0 |
 
 
 ## Metamorphic relations
