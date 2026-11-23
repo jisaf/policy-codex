@@ -6,8 +6,8 @@ type: yes/no
 scope: person-month
 program: LEAP
 meaning: Whether the LEAP household's countable income (leap_household_income, CO-1002) is at or below sixty percent of the state median income level for the household's size, under 9 CCR 2503-7 3.752.22.D.
-precision: "Reads leap_income_limit_monthly (CO-875), the Department's season table keyed by household size 1 through 15 (S1406), by this person's leap_household_size (CO-1001); 3.751.2.C caps a household at fifteen members (S1407), so a larger size has no figure and is unknown."
-derived: ["<=", leap_household_income, [lookup, leap_income_limit_monthly, leap_household_size]]
+precision: "Reads leap_income_limit_monthly (CO-875), the Department's season table keyed by household size 1 through 15 (S1406), by this person's leap_household_size (CO-1001); 3.751.2.C caps a household at fifteen members (S1407), so a larger size has no figure and is unknown. The table is read as of the determination date, not in the month whose income is tested: the limit is the heating season's (3.752.22.D, the Department's table for each season), and CO-875 keeps a season's table in force until the next season begins, so the determination of an application for the season reads it even when the income month falls before November 1 (a public assistance household's October application, 3.752.1; time audit T-3, docs/operators.md, Resolution)."
+derived: ["<=", leap_household_income, [lookup, [as_of, leap_income_limit_monthly, [det_date]], leap_household_size]]
 sources: [S491, S1406, S1407]
 implemented: engine
 tags: [income]
