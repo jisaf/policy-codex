@@ -22737,3 +22737,40 @@ Document: D-207
 > ...
 >
 > (c) Receipts from the sale, exchange, or replacement of a resource. Receipts from the sale, exchange, or replacement of a resource are not income but are resources that have changed their form. This includes any cash or in-kind item that is provided to replace or repair a resource (see subpart L) that has been lost, damaged, or stolen. Sections 416.1150 and 416.1151 discuss treatment of receipts to replace or repair a resource following a major disaster or following some other event causing damage or loss of a resource.
+
+### S4043. LEAP periodic payments: veteran compensation and pension are countable unearned income
+
+Document: D-86
+
+9 CCR 2503-7 3.752.211 (introduction), E (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.211 Periodic Payments [Eff. 12/1/14]
+>
+> The following types of periodic payments are among those included in countable unearned income:
+>
+> ...
+>
+> E. Veteran compensation and pension - payments based on service in the armed forces; such
+> payments may be made by the U.S. Veterans Administration, another country, a state or local
+> government, or other organization. Any portion of a VA pension that is paid to a veteran for
+> support of a dependent shall be considered countable unearned income to the dependent rather
+> than the veteran.
+
+### S4044. Adult Financial countable unearned income: veteran compensation and pension
+
+Document: D-80
+
+9 CCR 2503-5 3.520.785.B (introduction), B.4 (rule version 12428, effective 03/02/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Countable unearned income includes the following and any other payments that
+> could be construed to be a gain or benefit to the client, client’s spouse, or
+> sponsor(s) and which are not earned income.
+>
+> ...
+>
+> 4. Veteran compensation and pension based on service in the armed forces.
+> Such payments may be made by the U.S. Veterans Administration (VA),
+> another country, a state or local government, or other organization. Any
+> portion of a VA pension paid to a veteran for support of a dependent shall
+> be considered countable unearned income to the dependent rather than to
+> the veteran.
