@@ -881,3 +881,8 @@
 # refund needs its date of receipt to be placed in its window). The baseline reads the facts it no longer states, so the
 # old values are unknown; the new values are the household's expectations (af_category oap, countable resources 1,700).
 - {case: CO-300, person: p1, identifier: "/^(ma_ssi_related_category|ma_family_planning_status|af_category|af_oap_grant|af_and_grant|af_client_and_spouse_countable_resources)$/", old: unknown, class: "H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states"}
+
+# Holdings H1 integration (docs/reviews/records-holdings-h1-integration.md, I-2): the SSI method reads CO-300's records
+# (1,700 counted; the 500 federal refund left out for twelve months from receipt, 26 U.S.C. 6409, CO-6500), and the
+# figure is now one of the household's expectations, so this harness compares it; the baseline reads facts it no longer states.
+- {case: CO-300, person: p1, identifier: ma_ssi_countable_resources_individual, old: unknown, new: 1700, class: "I-2 (holdings H1 integration) CO-300 restated in holdings alone, its refund dated: the SSI method's resources 1,700; the baseline reads facts it no longer states"}

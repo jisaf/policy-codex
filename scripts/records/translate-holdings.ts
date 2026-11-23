@@ -420,7 +420,13 @@ export interface Translated<T> { value: T; notes: string[]; changed: boolean }
  *  is owned jointly (home_equity, CO-826, is stated on each spouse who owns
  *  it), so the records are its one statement, and the translation keeps the
  *  holding_id, co_owners and share stated on the home record of the same
- *  equity. Every other field is still the translation of the facts. */
+ *  equity. Every other field is still the translation of the facts.
+ *  Reviewed by the integration owner (request R-1; docs/reviews/
+ *  records-holdings-h1-integration.md, section 5): kept, and applied to rule
+ *  tests as to households. A home is matched by kind and equity, the one
+ *  thing the facts state of it; lives_in and intends_to_return stay the
+ *  translation of lives_in_owned_home and intends_to_return_home (a person's
+ *  own facts, which differ between spouses). */
 function keepJointHome(out: Holding[] | undefined, stated: unknown): void {
   if (!out || !Array.isArray(stated)) return;
   for (const r of out) {
@@ -505,6 +511,8 @@ export function translateTest(t: TestSpec, ix: LedgerIndex, asOf: string): Trans
         : pid === "p1" ? (out.given ??= {})
           : (out.others![pid] ??= {});
     const before = JSON.stringify(holder.holdings);
+    // a rule test states a joint home as a household does (keepJointHome; holdings H1 integration, R-1)
+    keepJointHome(tr.holdings, holder.holdings);
     holder.holdings = tr.holdings;
     if (JSON.stringify(holder.holdings) !== before) changed = true;
   }
