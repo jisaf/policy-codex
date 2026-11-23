@@ -102,3 +102,12 @@ Following docs/reviews/restructure-proposal-review.md and docs/reviews/revised-p
 3. **Stopping rule tightened:** two independent clean exhaustive passes per program family, plus an external check on a sample (published worked examples or equivalent).
 4. **Missing information means "cannot determine" unless the rule says otherwise.** Each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults.
 Order: (1) keep every probe household, each with an independent hand computation; (2) stale-approval check; (3) receipt spike, decision, then required/default on every fact; (4) change-impact and sibling-copy flags block the merge until dispositioned; (5) no duplicate paths within a program, verification items included; (6) time audit and generated boundary cases; (7) fix open findings; (8) light reviews, two clean exhaustive passes per family, then chapter-by-chapter sign-off by the owning roles.
+
+### Decision, 2026-11-23: adopt receipt records (step 3 outcome)
+The product owner adopted receipt records (docs/reviews/receipt-spike.md, Model A) with the spike's four conditions:
+1. Record the engine-guardrail exception: a list-of-records input (receipts) and the operators that sum it by kind, attribute and period, justified because the rule texts count money by kind of receipt and by date received; documented in docs/operators.md for engine teams, with the fact-graph reviewer's concerns answered in the same change.
+2. Split facts that name two sources (starting with CO-3920) into separate kinds; each program owner signs its counting table row by row, including rows counted only because no rule excludes them.
+3. Unearned income first, program by program; earned income and resources are decided explicitly after unearned is done.
+4. The old-versus-new harness is the merge gate: every migration commit shows zero unexplained answer changes against every stored household and probe.
+Missing receipts: an unstated receipts list is "cannot determine"; an empty list means no unearned income (decision 4 of 2026-11-23).
+Step 4 starts from impact-baseline 762a730; the 8 SNAP flags against origin/main (CO-118, CO-138, CO-303, CO-314, CO-335, CO-381) go to the next fix round for a written disposition.
