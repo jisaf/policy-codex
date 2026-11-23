@@ -1,0 +1,19 @@
+id: CO-6803
+name: "Adult Financial: equity of the vehicle exempt for transportation"
+identifier: af_exempt_transportation_vehicle_equity
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The equity of the one vehicle of this person's own that 9 CCR 2503-5 3.520.77.A exempts: \"The vehicle with the highest value is exempt if it is used for the transportation of the client or a member of the household\": the largest equity (value less what is owed, times the person's share, never below zero) among the person's vehicle records used for transportation (used_for_transportation; P58 largest; OQ-1205), valued in the month; 0 when none is."
+precision: "Coverage pass 4 CA4-10 (docs/reviews/coverage4-cash.md): split out of af_countable_vehicles (CO-5343) so a married couple's one exemption can be taken over both spouses' vehicles (af_vehicle_exemption_shared_with_spouse, CO-6804): 3.520.77 exempts the vehicle \"for an individual or married couple\"."
+derived: [largest, holdings, [all, [all, [received_in, [month]], [unknown, [receipt, disposed_date]]], ["=", [lookup, af_holding_treatment_table, [receipt, kind]], counted_less_highest_transportation_vehicle], [receipt, used_for_transportation]], [max, 0, ["*", ["-", [receipt, value], [receipt, amount_owed]], [otherwise, [receipt, share], 1]]]]
+sources: [S2214, S1636, S4791]
+implemented: engine
+tags: [cash, oap, and, resources]
+nearest: [CO-5343]
+rationale: "Coverage pass 4 CA4-10: one statement of the vehicle P58 picks, read by the person's own count and by the couple's."
+tests:
+  - {id: "CO-6803-T1", month: "2026-10", as_of: "2026-10-01", given: {holdings: [{kind: vehicle, value: 6000, used_for_transportation: true, amount_owed: 0}, {kind: vehicle, value: 4000, used_for_transportation: true, amount_owed: 0}]}, title: "Two cars used for transportation, $6,000 and $4,000: the $6,000 one", expect: 6000}
+  - {id: "CO-6803-T2", month: "2026-10", as_of: "2026-10-01", given: {holdings: [{kind: vehicle, value: 6000, used_for_transportation: false, amount_owed: 0}, {kind: bank_account, value: 500}]}, title: "A vehicle not used for transportation: none exempt", expect: 0}
+  - {id: "CO-6803-T3", month: "2026-10", as_of: "2026-10-01", given: {holdings: [{amount_owed: 7000, kind: vehicle, value: 9000, used_for_transportation: true}, {amount_owed: 0, kind: vehicle, value: 4000, used_for_transportation: true}]}, title: "Equity decides: $9,000 owing $7,000 is $2,000; the $4,000 truck is exempt", expect: 4000}

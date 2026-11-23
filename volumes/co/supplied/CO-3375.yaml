@@ -6,7 +6,7 @@ type: whole number
 scope: person-month
 program: All
 meaning: "For a person who is a licensed, certified or approved day care provider, the number of children for whom the person provided day care in the month; 0 otherwise."
-precision: "If not stated, every program reads it as 0. Each program's allowable cost is its own derived item."
+precision: "If not stated, the programs that do not say otherwise read it as 0; Adult Financial and Colorado Works require it where they read a business's costs (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise). Each program's allowable cost is its own derived item."
 supplied_by: "Application (income and expenses), verified as each program requires."
 sources: [S1155]
 implemented: engine

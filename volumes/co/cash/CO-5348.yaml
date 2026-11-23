@@ -3,16 +3,16 @@ name: "Adult Financial: a life insurance policy bought within the look-back"
 identifier: af_life_insurance_bought_within_lookback
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: AdultFinancial
 meaning: "Whether any of this person's life insurance policies was bought within af_oap_life_insurance_lookback_months (48) months of the determination month (9 CCR 2503-5 3.520.75.E.3): a life_insurance record whose purchase_date falls in the month forty-eight months before the determination month or later."
-precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): the person's policies are life_insurance records (row counted_life_insurance_rules), each with its cash surrender value (value), face value, purchase date and the premiums paid in the forty-eight months, in place of the person's totals (CO-3396, CO-3397, CO-3850, CO-3851). A policy that does not state the field read is cannot determine (decision 4). Before step H1 the person stated only the newest policy's purchase date (CO-3850); each policy's own date gives the same answer."
-derived: [">", ["sum_receipts", "holdings", ["all", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted_life_insurance_rules"]], [">=", ["month_of", ["receipt", "purchase_date"]], ["months_before", "af_oap_life_insurance_lookback_months", ["det_month"]]]], 1], 0]
-sources: [S2618, S3204]
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): the person's policies are life_insurance records (row counted_life_insurance_rules), each with its cash surrender value (value), face value, purchase date and the premiums paid in the forty-eight months, in place of the person's totals (CO-3396, CO-3397, CO-3850, CO-3851). A policy that does not state the field read is cannot determine (decision 4). Before step H1 the person stated only the newest policy's purchase date (CO-3850); each policy's own date gives the same answer. Coverage pass 4 CA4-13 (docs/reviews/coverage4-cash.md): a figure of the month evaluated, from the holdings valued in that month (3.510 \"Resources\", S4791: \"held as of the first day of a calendar month or as of the date of application\"), so an application month before the determination month is judged by its own holdings; before, every month read the determination month's."
+derived: [">", [sum_receipts, holdings, [all, [all, [all, [received_in, [month]], [unknown, [receipt, disposed_date]]], ["=", [lookup, af_holding_treatment_table, [receipt, kind]], counted_life_insurance_rules]], [">=", [month_of, [receipt, purchase_date]], [months_before, af_oap_life_insurance_lookback_months, [month]]]], 1], 0]
+sources: [S2618, S3204, S4791]
 implemented: engine
 tags: [cash, oap, resources]
 rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Read by af_life_insurance_countable_cash_value (CO-3854) for the person and the spouse."
 tests:
   # Hand-computed from 9 CCR 2503-5 3.520.75.E (S2618): forty-eight months before October 2026 is October 2022.
-  - {id: CO-5348-T1, title: "Policies bought 2010-03-01 and 2022-10-15: the second is within the 48 months (October 2022 included)", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 5000, purchase_date: "2010-03-01"}, {kind: life_insurance, value: 800, purchase_date: "2022-10-15"}]}, expect: true}
-  - {id: CO-5348-T2, title: "Bought 2022-09-30: before the 48 months", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 800, purchase_date: "2022-09-30"}]}, expect: false}
+  - {id: "CO-5348-T1", month: "2026-10", title: "Policies bought 2010-03-01 and 2022-10-15: the second is within the 48 months (October 2022 included)", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 5000, purchase_date: "2010-03-01"}, {kind: life_insurance, value: 800, purchase_date: "2022-10-15"}]}, expect: true}
+  - {id: "CO-5348-T2", month: "2026-10", title: "Bought 2022-09-30: before the 48 months", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 800, purchase_date: "2022-09-30"}]}, expect: false}

@@ -6,7 +6,7 @@ type: hours
 scope: person-month
 program: All
 meaning: "The hours in the month the person worked or performed personal services without monetary compensation for a business, a self-employed person, or another person or business in need of a regular, temporary or non-traditional employee (a seasonal worker, for example). Not volunteer work for the betterment of the community (visiting nursing home residents, delivering meals, giving rides to medical appointments)."
-precision: "Stated with donated_work_hours_per_week (CO-4439). If not stated, Adult Financial reads it as 0."
+precision: "Stated with donated_work_hours_per_week (CO-4439). Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise), for donated work that counts; before, it was read as 0 when not stated."
 supplied_by: "Applicant statement and the statement of the business or person served, as the county establishes them."
 sources: [S3211]
 tags: [income]

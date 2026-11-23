@@ -2813,7 +2813,7 @@ Body: Time audit T-1 also asked about the cash programs. cw_is_dependent_child (
 
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: The cash programs' age conditions are measured on the determination date, and the OAP birth-month transition in the determination month, for every month a determination evaluates; a birthday after the determination is a change in circumstances, outside the determination.
+Assumption: (narrowed by coverage pass 4, CA4-15) Each age condition is measured in the month evaluated: an "under N" or "N or younger" limit on the month's first day, an "N or older" limit on its last day, as docs/operators.md "Ages in a month" reads them; Adult Financial's first month is prorated from the eligibility date (3.542.B), and Colorado Works' unit takes in a child who is a dependent child in any month from the application month through the determination month. Open: which day of the month an age is read on, which neither program's text names.
 
 Checked 2026-11-23: 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 (the dependent child, S401, S406); 9 CCR 2503-5 3.530 and 3.532.B.2-3 (D-80: the first month "prorated according to the number of days remaining in the month"; the AND client's transition "from the first day of the birth month"). None states the date an age is measured on for a month other than the determination month. Items: CO-901, CO-940.
 
@@ -3328,6 +3328,8 @@ Checked 2026-11-23: 9 CCR 2503-5 3.520.72-3.520.77 (D-80). Items: CO-5302, CO-40
 
 Resolution in part (resource records, step H1 Adult Financial, 2026-11-23; docs/reviews/records-holdings-snap-af.md): (1) the finding is fixed as the text reads: personal property held because of its value or as an investment is counted at its appraised value less liabilities (3.520.77.B, S4507; 3.520.742.A.3, B, S4692): row counted, af_countable_personal_property (CO-5345). (2) Settled by the text: an education savings account is an investment account 3.520.72.B.5 (S2213) counts ("other retirement or investment accounts and investment vehicles"): row counted. Stays open, with its assumption: a state or local earned income tax credit held apart from a refund, a government payment a federal statute excludes, prorated income still held and other resources (counted_no_rule_excludes); an annuity and a life estate (not_counted_no_rule_found); personal property other than household goods and investments (excluded_household_goods; 3.520.72.B.3-4 counts it when not exempt).
 
+Resolution in part (coverage pass 4, 2026-11-23; docs/reviews/coverage4-cash.md, CA4-11 and CA4-12): two more parts are settled by the text and leave this question. Personal property other than household goods and personal effects (equipment, livestock, tools, a mobile home or recreational vehicle not lived in) is counted at its appraised value less liabilities (3.520.72.B.3-4, S2213; 3.520.742.B, S4692: "i.e., vehicles, farm equipment and livestock"), unless the county finds it cannot be sold or it is used for self-support: the holdings record states which it is (household_goods_or_personal_effects, CO-5300), row counted_unless_household_goods, af_countable_personal_property (CO-5345). An annuity the person can assign or surrender is an investment vehicle convertible to cash (3.520.72.B.5, S2213; 3.510 "Convertible asset", S4796) and is counted at its value, row counted_if_revocable, af_cash_and_convertible_holdings (CO-5340). A life estate is not negotiable (3.520.741.D.1), so not counting it follows the text. Stays open, with its assumption: a state or local earned income tax credit held apart from a refund, a government payment a federal statute excludes, prorated income still held and other resources (counted_no_rule_excludes).
+
 ### OQ-1204. Partly resolved: part (1), the earned income tax credit, loans, disaster and relocation payments still held, is settled by the text; open: (2), the kinds no rule on file settles
 
 Body: Resource records, step H0 sets the SSI method's holdings counting table (ma_ssi_holding_treatment_table, CO-5303) to today's reading. (1) Findings: 10 CCR 2505-10 8.100.5.F.6 (S4506) exempts "as either income or resources" for the ABD and long-term care categories a bona fide loan (a), relocation payments, toward a replacement dwelling for up to 6 months (f), major disaster and emergency assistance (k), Civil Liberties Act payments (r), the Earned Income Tax Credit as a resource "for the month it is received and for the following month" (u) and payments to victims of Nazi persecution (x). No SSI-method item subtracts the part of liquid_resources_value (CO-3390) that is such money still held: ssi_countable_resources_individual (CO-800) subtracts only the retroactive SSI or Social Security payment (F.6.c). So a federal refund carrying the credit, a state or local credit, loan proceeds, and disaster, relocation, Civil Liberties Act or Nazi persecution payments still held are counted (rows counted_text_excludes for held_income_tax_refund, held_eitc, held_loan_proceeds, held_excluded_payment, held_replacement_proceeds). One stored household states federal_tax_refunds_held_value above 0 and one states excluded_government_payments_held_value; neither is an SSI-method case (docs/reviews/holdings-h0.md). (2) Rows counted because 20 CFR 416.1201(a) (S4500) counts what the person owns and could convert to cash and no exclusion was found on file: an education savings account, business cash (8.100.5.J.3, S3402, excludes property used in a trade or business essential to self-support up to $6,000 with a 6% return; whether business cash is such property is open), prorated income still held, other resources; and personal property other than household goods and effects (8.100.5.M.3.i, S4505, counts a mobile home or trailer not the home and not income-producing), which no fact states today.
@@ -3479,8 +3481,9 @@ Checked 2026-11-23: 9 CCR 2503-5 3.520.77.G.3, H.2 (D-80). No paragraph on file 
 
 Body: 9 CCR 2503-5 3.520.76.D.1-3 and E (S2614, S2806) compute the months of ineligibility for each resource transferred: "Divide the uncompensated value by the TWFC monthly penalty value and round down to the nearest whole number"; "depending on the amount of the uncompensated value for each resource transferred". A.3 counts a transfer "within thirty-six (36) months prior to the application date". Since step H1 each transfer is a holdings record (CO-5300), but the divisor (af_twfc_monthly_penalty_value, the client's program's grant standard) and the application date (af_application_date) are facts of the person, which the receipt operators do not let a sum over the records read (docs/operators.md, P55: a condition or value inside the sum reads only the record's fields, the month, case facts and parameters). So (1) when two or more resources transferred in one month are not returned, the months are cannot determine (af_twfc_penalty_months, CO-3840): rounding their total overstates them by up to one month per extra resource; and (2) in the month thirty-six months before the application month, when transfers fall on both sides of the application's day of the month, the value within the thirty-six months cannot be read and the months are cannot determine. Worked example: an OAP client (standard $1,032) gives $3,000 and $2,200 away in December 2025: 2 + 2 = 4 months; the month's total, 5,200 / 1,032, would give 5.
 
-Class: state policy choice
+Class: state policy choice, held open by an operator limitation (coverage pass 4, CA4-19, docs/reviews/coverage4-cash.md: the text decides the per-resource count, so the owner only confirms it; what is open is an operator limitation the integration owner owns, below; the stopping rule's two classes keep it a recorded choice until then)
 Owner: Cash programs policy owner
+Due: the next records integration round after 2026-11-23, when the integration owner gives the operators a per-record penalty the sum can read, or a case-scope Adult Financial application date and grant standard, which closes it
 Assumption: Cannot determine in those two cases; with one transfer in the month, or all on one side of the day, the answer is given (the reading before step H1, when one value was stated per month). The owner confirms the per-resource reading of D.3 and E; the integration owner is asked for a way to compute it (a case-scope Adult Financial application date and grant standard, or a per-record penalty the sum can read; docs/reviews/records-holdings-snap-af.md, requests).
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.76.A.3, D, E (D-80); docs/operators.md (P55, P58). Items: CO-3840, CO-4008, CO-3841.
@@ -3558,3 +3561,65 @@ Owner: Medicaid policy owner
 Assumption: Every work-study pay is exempt, read as the College Work Study Program F.6.aa names.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.6.aa-cc (D-65). No paragraph on file names a State work-study program or limits the earnings rule by the student's level. Items: CO-5107.
+
+Reclassified 2026-11-23 (coverage pass 4, CA4-19): the text decides the count, per resource transferred (3.520.76.D.3: "Divide the uncompensated value by the TWFC monthly penalty value and round down"; E: "for each resource transferred"), so this is not a state policy choice; what is open is how the operators let af_twfc_penalty_months read the divisor and the application date inside the sum over the records.
+
+### OQ-1290. Adult Financial: a qualified Roth IRA distribution, counted by its taxable amount
+
+Body: Coverage pass 4 CA4-3 (docs/reviews/coverage4-cash.md). 9 CCR 2503-5 3.510 (S4790): "“Income” means any financial gain by means of money payment or in-kind payment." 3.520.73.B.1.a (S3208) counts a retirement account as a resource at its gross value less the taxes due "regardless of whether the client, spouse of the client, or sponsor(s) of the client is receiving any monthly income from the account", so money paid from a retirement account is the account's income, while a withdrawal from the person's own health savings, education savings or individual development account for its purpose moves the person's own money and is no gain. The receipt kind savings_account_distribution holds both, and the record states the part the person's federal return counts (taxable_amount, CO-5000), the one statement of the split Medicaid MAGI reads too. Adult Financial counts that part (row counted_taxable_amount): a traditional IRA or 401(k) distribution is counted, an HSA, education account or IDA withdrawal for its purpose is not. A qualified Roth IRA distribution is paid from a retirement account but its taxable amount is 0 (26 U.S.C. 408A(d)(1)), so it is not counted; no Adult Financial text names a Roth distribution. Worked example: an OAP client with $600 of Social Security takes $500 a month from a Roth IRA: read as modeled, countable income 600 - 20 = 580; if a Roth distribution is the account's income, 1,080.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A savings account distribution counts at its taxable amount: a qualified Roth IRA distribution is not counted.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.510 ("Income"), 3.520.73.B.1, 3.520.785, 3.520.786 (D-80). No paragraph names a distribution from a Roth IRA or a savings account. Items: CO-5016, CO-5017.
+
+### OQ-1291. Adult Financial: "the term of the contract" for pay under an annual contract
+
+Body: Coverage pass 4 CA4-8. 9 CCR 2503-5 3.520.781.G.2.b (S4792): "For contract employment, such as in some school systems, where the employees derive their annual income in a period shorter than a year, the income shall be prorated over the term of the contract, provided that the income from the contract is not earned on an hourly or piecework basis". The earnings record states such pay with the contract's pay for the year (annual_contract_pay, CO-5100, a contract renewed on an annual basis). The volume reads "the term of the contract" as the contract year, twelve months (af_annual_contract_months, CO-6802), so the annual pay is spread over every month, the months without pay included: review household A10b, a $24,000 school cafeteria contract paid September to May, counts $2,000 in July. The other reading is the months the contract pays (nine), which gives $24,000 / 9 in a month of the school year and nothing in summer. SNAP (10 CCR 2506-1 4.403.3) and CCCAP (OQ-1221) read twelve months.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The term of an annual contract is twelve months: one twelfth of the contract's annual pay is counted in each month.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.510 and 3.520.781.G.2.b (D-80); neither defines "contract employment" or "term of the contract". Items: CO-6802, CO-5130.
+
+### OQ-1292. Adult Financial: whether exempt income uses up the $60 of infrequent or irregular income in a quarter
+
+Body: Coverage pass 4 CA4-18. 9 CCR 2503-5 3.520.786.O (S2608) exempts "Infrequent or irregular income of less than $60 in a calendar quarter." af_infrequent_income_quarter_total (CO-4011) adds every receipt and pay of the quarter stated as irregular, the kinds the counting tables exclude included (an income tax refund marked irregular, work-study pay), so exempt money can use up the $60 and make a small gift countable. The text does not say whether the $60 is measured on all infrequent income or only on the income that would otherwise count; 20 CFR 416.1124(c)(6) (S2609), which K incorporates, applies its own $60 after the other exclusions ("infrequent or irregular income ... if such income does not exceed $60 in a calendar quarter", read in the order of 416.1124(b)). Worked example (review probe A19): an OAP client with $600 of Social Security receives a $40 irregular gift in October and an $800 income tax refund in November marked irregular: read as modeled, the quarter's total is 840, the gift is counted, countable income 620, grant $412; read over countable income only, the total is 40, the gift is exempt, 580, grant $452.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Every receipt and pay stated as irregular counts toward the quarter's $60, exempt kinds included (today's reading), until the owner decides.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.786.O and K (D-80); 20 CFR 416.1124(b), (c)(6) (D-207). Items: CO-4011, CO-3827, CO-4012.
+
+### OQ-1293. Adult Financial: kinship care payments, adoption subsidies and Medicare premium refunds counted because no rule excludes them
+
+Body: Coverage pass 4 CA4-23. Adult Financial's receipt table (af_receipt_treatment_table, CO-5016) counts kinship_care_payment, adoption_subsidy and medicare_premium_refund because no paragraph of 9 CCR 2503-5 3.520.785-786 names them. 3.520.786.N (S2608) exempts "Child support payments made to the client, client’s spouse, or sponsor(s) for another person", and M exempts "Payments received for providing foster care"; a kinship care payment or an adoption subsidy is paid to the caretaker for a child, as support for another person is, but is not child support. A lump-sum refund of Medicare Part B premiums the person paid returns the person's own money, which may be no "financial gain" (3.510 "Income", S4790), or a gain because the premiums were paid from income already counted. The text on file settles none of the three.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Each is counted as unearned income of the person it is paid to (today's reading), until the owner signs the row or excludes it.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.510, 3.520.785, 3.520.786 (D-80); 20 CFR 416.1124 (D-207) names none of them. Items: CO-5016.
+
+### OQ-1294. Adult Financial: the cost of a home used for the business and a business vehicle
+
+Body: Coverage pass 4 CA4-20. 9 CCR 2503-5 3.520.783.B.1 (S1156): "Cost of doing business expenses include, but are not limited to, the rent of business premises, wholesale cost of merchandise, utilities, interest, taxes, labor and upkeep of necessary equipment". Adult Financial's earnings table (af_earnings_treatment_table, CO-5103) does not deduct business_cost_home_space or business_cost_vehicle (not_deducted_no_rule_found): "not limited to" leaves both open, and Colorado Works' own rule names the room cost (9 CCR 2503-6 3.605.2.E.1.a.1). Worked example: a client earns $900 a month from a home business with $200 of supplies and $150 of the home's costs for its room: read as modeled, net profit 700; deducting the room, 550.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Neither cost is deducted (today's reading), until the owner signs the rows or deducts them.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.783.B.1-3, D (D-80). Items: CO-5103, CO-1707.
+
+### OQ-1295. Colorado Works: the exception for contract employment in 3.605.2.B
+
+Body: Coverage pass 4 CA4-21. 9 CCR 2503-6 3.605.2.B (D-81): "With the exception of contract employment, wages that are paid to an employee for a period for which services were rendered are considered available when paid rather than when earned, except that wages held at the request of the employee are considered income in the month they would otherwise have been paid." The rule makes contract employment an exception but does not say how its wages are counted: "when earned" (the opposite of "when paid"), or prorated over the contract, as SNAP (4.403.3), CCCAP (3.111.H.4.b) and Adult Financial (3.520.781.G.2.b) read their own words. The earnings record states the contract's yearly pay (annual_contract_pay, CO-5100); cw_earned_pay (CO-5140) does not read it and counts every pay when paid. Worked example: a school aide's $18,000 contract paid $2,000 a month September to May: read as modeled, $2,000 in each month of the school year and nothing in summer; prorated, $1,500 every month.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Contract pay is counted when paid (today's reading), until the owner says how the exception is read.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.601, 3.605.2.B (D-81); neither defines contract employment. Items: CO-5140, CO-5104.

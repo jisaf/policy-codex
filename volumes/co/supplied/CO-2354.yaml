@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: ColoradoWorks
 meaning: "The amount this stepparent or non-participant parent of a minor parent actually paid in the month to individuals not living in the home whom the person could claim as dependents for federal income tax purposes (9 CCR 2503-6 3.605.1.A.4.a)."
-precision: "If not stated, Colorado Works reads this as 0."
+precision: "Colorado Works requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise); before, it was read as 0 when not stated."
 supplied_by: "Applicant statement with proof of payment."
 sources: [S1307]
 tags: [cash, tanf, income]
