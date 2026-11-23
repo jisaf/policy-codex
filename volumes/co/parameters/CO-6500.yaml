@@ -1,0 +1,14 @@
+id: CO-6500
+name: "Medicaid SSI method: months a federal tax refund held is not a resource"
+identifier: ma_federal_tax_refund_resource_exclusion_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of months from its receipt during which a federal income tax refund, or an advance payment of a refundable credit, the person still holds is not taken into account as a resource (26 U.S.C. 6409, S4664: \"shall not be taken into account as resources for a period of 12 months from receipt, for purposes of determining the eligibility of such individual ... under any Federal program or under any State or local program financed in whole or in part with Federal funds\")."
+precision: "Resource records, Medicaid track H1: read by ma_ssi_holdings_countable_in_month (CO-5320) for the holdings counting table's row excluded_federal_within_twelve_months (held_income_tax_refund paid_by federal): a refund received in month M is left out through month M + 12, as the twelve months from receipt are counted in months, as every other window of the table is. The earned income tax credit paid with a federal refund is such a refund (it is paid under title 26), so 6409's twelve months govern it, not the shorter months of 10 CCR 2505-10 8.100.5.F.6.u (\"notwithstanding any other provision of law\"). Medical Assistance is a State program financed in part with Federal funds."
+value: 12
+sources: [S4664]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Resource records, step H1 (Medicaid), finding H0-F1 (OQ-1204): no SSI-method item left a held federal refund out, so an aged, blind or disabled applicant holding a refund carrying the earned income tax credit had it counted against the resource limit; the federal statute excludes it for twelve months from receipt."

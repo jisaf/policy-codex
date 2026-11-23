@@ -72,6 +72,9 @@ export const track: Track = {
     // MH-3 joint: the couple's figures (20 CFR 416.1202(a); 8.100.7.L "whether owned jointly or individually")
     // (ma_institutionalized_spouse_countable_resources is the person's own figure for anyone not an LTC couple, CO-647)
     coupleFigures: ["ssi_countable_resources_couple", "ma_spousal_resources_at_snapshot"],
+    notInvariant: {
+      "MH-5": "10 CCR 2505-10 8.100.5.F.6.a, f, k, r, s, v, x exempt loan proceeds and the payments they name with no time limit: held two years, they are still not resources, while the same dollars merged into an account are",
+    },
     bases: [
       { id: "CO-185", person: "p1", label: "MA aged resources" },
       { id: "CO-189", person: "p2", label: "MA aged spouse resources" },

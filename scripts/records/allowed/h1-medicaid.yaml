@@ -52,3 +52,18 @@
 # SSI method's figures and the outcomes that read them cannot be determined. Before, the SSI method read only its own
 # fact (CO-4639, with its date), not stated, and counted the payment inside liquid resources.
 - {case: "/^GH-.*-liquid_2500_of_which_retroactive_ssa_benefits_held_value_800$/", identifier: "/^(ssi_countable_resources_individual|ssi_countable_resources_couple|af_burial_responsible_person_resources|ma_ssi_countable_resources_individual|ma_ssi_countable_resources|ma_msp_countable_resources|ma_institutionalized_spouse_countable_resources|ma_ssi_parental_resources_deemed|ma_ssi_related_category|ma_msp_category|ma_protected_group_category|ma_family_planning_status)$/", class: "H1-M6 (decision 4; F.6.c): a retroactive payment held with no date of receipt cannot be placed in the nine months", new: unknown}
+
+# H1-M7 (finding H0-F1, OQ-1204 part 1, settled by the text; 10 CCR 2505-10 8.100.5.F.6, S4506, S4668; 8.100.5.P.4, S4669):
+# money the SSI method's table now leaves out of resources while held: the payments F.6 exempts (held_excluded_payment,
+# restated from excluded_government_payments_held_value, CO-4932: CO-223's 2,000 and the generated 800) and proceeds held
+# toward replacing real property in the three months after receipt (the generated 800 received two months before). Before,
+# no SSI-method item subtracted either from liquid resources. The generated aged base with 2,500 of which 800 is such money:
+# 2,500 - 800 = 1,700 is within the 2,000 limit (8.100.5.M.1), so the person is aged-eligible where the old reading refused.
+- {case: "/^(CO-223|GH-.*-liquid_2500_of_which_excluded_government_payments_held_value_800|GH-.*-replacement_proceeds_800_of_liquid_2500_real_property_two_months_before)$/", identifier: "/^(ssi_countable_resources_individual|ssi_countable_resources_couple|af_burial_responsible_person_resources|ma_ssi_countable_resources_individual|ma_ssi_countable_resources|ma_msp_countable_resources|ma_institutionalized_spouse_countable_resources|ma_ssi_parental_resources_deemed|ma_ssi_related_category|ma_family_planning_status|ma_protected_group_category)$/", class: "H1-M7 (H0-F1; F.6, P.4): the F.6 payments and replacement proceeds toward a home left out while held"}
+
+# H1-M8 (decision 4; 26 U.S.C. 6409, S4664; 8.100.5.F.6.u, S4506): a federal refund or a State or local credit held whose
+# date of receipt is not stated cannot be placed in its window (twelve months from receipt; the month of receipt and the
+# next), so the SSI method's figures and the outcomes that read them cannot be determined. The scalar facts that state
+# them (federal_tax_refunds_held_value, CO-4172; snap_eitc_held_while_participating_value, CO-4173) carry no date, and
+# before no SSI-method item read them. CO-300 is the Adult Financial track's to date (docs/reviews/holdings-h0.md 10).
+- {case: "/^(CO-300|GH-.*-liquid_2500_of_which_federal_tax_refunds_held_value_800|GH-.*-liquid_2500_of_which_snap_eitc_held_while_participating_value_800)$/", identifier: "/^(ssi_countable_resources_individual|ssi_countable_resources_couple|af_burial_responsible_person_resources|ma_ssi_countable_resources_individual|ma_ssi_countable_resources|ma_msp_countable_resources|ma_institutionalized_spouse_countable_resources|ma_ssi_parental_resources_deemed|ma_ssi_related_category|ma_msp_category|ma_protected_group_category|ma_family_planning_status)$/", class: "H1-M8 (decision 4; 6409, F.6.u): a refund or credit held with no date of receipt cannot be placed in its window", new: unknown}

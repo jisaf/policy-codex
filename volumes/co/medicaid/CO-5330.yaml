@@ -11,7 +11,8 @@ derived: [">", [sum_receipts, holdings, [all, ["=", [receipt, kind], annuity], [
 sources: [S1741, S3408]
 implemented: engine
 tags: [verification, ma, ltc, resources]
-rationale: "Resource records, step H1 (Medicaid): whether the person owns an annuity is read from the holdings records, so an annuity is stated once, with what the Department finds available from it (ma_found_available_value)."
+rationale: "Resource records, step H1 (Medicaid): whether the person owns an annuity is read from the holdings records, so an annuity is stated once, with what the Department finds available from it (ma_found_available_value). Not ma_holds_trust_interest_in_month (CO-5329): an annuity and a trust are verified by different documents (8.100.7.B.2.a)."
+nearest: [CO-5329]
 tests:
   - {id: CO-5330-T1, month: "2026-10", as_of: "2026-10-01", title: "an annuity record: yes", given: {holdings: [{kind: annuity, ma_found_available_value: 0}]}, expect: true}
   - {id: CO-5330-T2, month: "2026-10", as_of: "2026-10-01", title: "no annuity record: no", given: {holdings: [{kind: bank_account, value: 300}]}, expect: false}
