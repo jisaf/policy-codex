@@ -3063,3 +3063,13 @@ Owner: SNAP policy owner
 Assumption: The postponement runs through the application date plus thirty days, inclusive: a household that completes the postponed verification on that day is in time, and is postponed_expedited on it.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.205.11.B.2.b (D-82, rule version 12718; S835 from D-103); 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310); OQ-323 (thirty days rather than the federal months; it does not settle the day). Items: CO-1393, CO-1394.
+
+### OQ-1101. SNAP self-employment: whether a business that does not say it is the household's annual support, or that its business has changed, is averaged
+
+Body: 10 CCR 2506-1 4.403.12 (S3114) averages "Self-employment income which represents a household's annual support" over twelve months (A), averages income "intended to meet the household's needs for only part of the year" over the period it covers (B), and turns to anticipated earnings when the household "has experienced a substantial increase or decrease in business" (A, C). Before earned-income records, snap_self_employment_is_averaged (CO-4329) read self_employment_is_annual_support and self_employment_has_changed_substantially as no when not stated. The earnings records (CO-5100) declare both fields required where read (design decision D3: no rule text gives them a value), so from step E1 a business record that does not state annual_support makes SNAP's self-employment income cannot determine, and one that is annual support must state changed_substantially. Six stored households of other programs (CO-136, CO-182, CO-322, CO-382, CO-383, CO-387) and the generated business households are now cannot determine for SNAP (harness class SE-D4-1); the one SNAP household with a business (CO-447) states that its farm is not annual support. Whether 4.403.12.A's "shall be averaged ... If the averaged amount does not accurately reflect ... the local office shall calculate ... on the basis of anticipated earnings" gives changed_substantially a default of no (averaging the rule, a substantial change the exception) is a reading for the owner; a default would be declared on the field by the integration owner (CO-5100), not by SNAP's reader.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Both are required where read (CO-5100 as declared): a business that does not say whether it is the household's annual support, or an annual-support business that does not say whether it has changed substantially, cannot be determined.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.403.11-4.403.12 (D-82, S1152, S3114); 4.402.2.A.1 (S3113); 7 CFR 273.11(a)(1) (D-15). Items: CO-4329, CO-4349, CO-1702, CO-3722, CO-5100.
