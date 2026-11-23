@@ -46650,6 +46650,11 @@
   # + 700 - 20 = 1,680 > the couple FBR 1,491: none for both (engine: household size 2, but p1 980 and p2 680 each against
   # the couple standard, aged for both). The finding is open (no fix round has run on coverage pass 3 non-MAGI); the
   # engine's answer differs and the expectation is registered in conformance/known-failures.json under C3-1.
+  # Independent hand-check (docs/reviews/probe-handcheck-medicaid.md): p1 is an institutionalized spouse (stay of 30 days
+  # expected), and 42 U.S.C. 1396r-5(b)(1) supersedes: "During any month in which an institutionalized spouse is in the
+  # institution ... no income of the community spouse shall be deemed available to the institutionalized spouse" (8.100.7.C.1,
+  # C.2.c). p1: 1,000 - 20 = 980 <= the individual FBR 994: aged (the engine's answer is right, though it reaches it against
+  # the couple rate). p2, the community spouse, stays none (mutual availability, 8.100.5.H.1.a); only p2 is a known failure.
   as_of: "2026-11-20"
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
@@ -46797,7 +46802,7 @@
   expect:
     p1:
       ma_ssi_related_category:
-        2026-11: none
+        2026-11: aged
     p2:
       ma_ssi_related_category:
         2026-11: none
@@ -47493,7 +47498,9 @@
   # Probe Z-WAWDSTU of docs/reviews/coverage3-medicaid-nonmagi.md (C3-6, P2, open), kept by the probe-preservation round
   # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.6.P.1.b: income "after income allocations and disregards. See 8.100.5.F
   # ... and 8.100.5.H", which include the student earned income exclusion (416.1112(c)(3)). A disabled college student of 19
-  # with wages 3,000, January 2027. Rule: (3,000 - 2,410 - 85) / 2 = 252.5 (19% FPL): no premium. Engine: 1,457.5 and a $25
+  # with wages 3,000, January 2027. Rule: (3,000 - 2,500 - 85) / 2 = 207.5: no premium. The probe used the 2026 exclusion
+  # (2,410, giving 252.5); the independent hand-check (docs/reviews/probe-handcheck-medicaid.md) applied the 2027 figure,
+  # $2,500 a month (91 FR 67380, S3700), which CO-3379 now carries. Engine: 1,457.5 and a $25
   # premium. The finding is open (no fix round has run on coverage pass 3 non-MAGI); the engine's answer differs and the
   # expectation is registered in conformance/known-failures.json under C3-6.
   as_of: "2026-10-12"
@@ -47553,7 +47560,7 @@
   expect:
     p1:
       ma_wawd_countable_income:
-        2027-01: 252.5
+        2027-01: 207.5
       ma_wawd_premium:
         2027-01: 0
 

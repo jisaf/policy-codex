@@ -52,14 +52,14 @@ beforeEach(() => {
 });
 
 describe("the Desk's counts (counts.ts)", () => {
-  it("soon is the next 90 days: seven changes on January 1, 2027 across every program, one for CDHS", () => {
+  it("soon is the next 90 days: nine changes on January 1, 2027 across every program", () => {
     expect(soonRange(DAY)).toEqual({ from: "2026-11-23", to: "2027-02-20" });
     const all = takingEffectSoon(engine, vol, DAY, null);
-    expect(all.total).toBe(7);
+    expect(all.total).toBe(9); // + CO-3379, CO-3380 (2027 SSI student earned income exclusion, probe hand-check)
     expect(new Set(all.events.map((e) => e.date))).toEqual(new Set(["2027-01-01"]));
-    // Medicaid and CHP+ hold six; the SSI individual rate is shared by every program.
-    expect(takingEffectSoon(engine, vol, DAY, ["Medicaid", "CHP+"]).total).toBe(7);
-    expect(takingEffectSoon(engine, vol, DAY, CDHS).events.map((e) => e.item.id)).toEqual(["CO-235"]);
+    // Medicaid and CHP+ hold six; the SSI individual rate and the two SSI student exclusion figures are shared by every program.
+    expect(takingEffectSoon(engine, vol, DAY, ["Medicaid", "CHP+"]).total).toBe(9);
+    expect(takingEffectSoon(engine, vol, DAY, CDHS).events.map((e) => e.item.id)).toEqual(["CO-235", "CO-3379", "CO-3380"]);
   });
 
   it("unverified counts items citing unverified text and figures with no value, each once", () => {
@@ -109,7 +109,7 @@ describe("a program's counts and its steps (counts.ts)", () => {
     expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(442); // + CO-4840 (Colorado Works coverage pass 3)
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
-    expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(6);
+    expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(8); // + CO-3379, CO-3380
     expect(figuresOnDate(engine, unverified, { asOf: DAY, unverified: true }, wordsMatch)).toHaveLength(3);
     expect(figuresOnDate(engine, unverified, { asOf: DAY, noValue: true }, wordsMatch).map((x) => x.item.id))
       .toEqual(expect.arrayContaining(figuresWithoutValue(engine, DAY).map((it) => it.id)));

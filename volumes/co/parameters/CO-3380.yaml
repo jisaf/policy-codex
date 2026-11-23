@@ -8,8 +8,9 @@ program: All
 meaning: "The most of a student's earned income the SSI method excludes in a calendar year (20 CFR 416.1112(c)(3))."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 9460, source: S2211}
-  - {from: "2026-01-01", value: 9730, source: S2211}
-sources: [S2210, S2211]
+  - {from: "2026-01-01", to: "2027-01-01", value: 9730, source: S2211}
+  - {from: "2027-01-01", value: 10080, source: S3700}
+sources: [S2210, S2211, S3700]
 implemented: engine
 tags: [non_magi, income, student]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). A figure the rule states is a parameter, not a literal (OQ-82)."

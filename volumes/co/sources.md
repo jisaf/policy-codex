@@ -22264,3 +22264,13 @@ Document: D-65
 > 2. Any family member who is receiving financial assistance from SSI or OAP-A is not considered a member of the Medical Assistance required household, is not counted as a member of the household, and the individual's income and resources are disregarded in making the determination of need for Medical Assistance.
 >
 > a. Exception: For MAGI Medical Assistance a family member who is receiving SSI, when appropriate can be counted as a member of the household and their income when appropriate can be considered in making the determination of eligibility for MAGI Medical Assistance. For treatment of income and household construction for MAGI Medical Assistance cases, see section 8.100.4.
+
+### S3700. SSA: the 2027 student earned income exclusion, $2,500 a month and $10,080 a year
+
+Document: D-166
+
+SSA, "Cost-of-Living Increase and Other Determinations for 2027," 91 FR 67380 (Oct. 26, 2026), "Student Earned Income Exclusion". https://www.govinfo.gov/content/pkg/FR-2026-10-26/html/2026-21796.htm
+
+> Therefore, the maximum amount of the income
+> exclusion applicable to a student in 2027 is $2,500 per month, but not
+> more than $10,080 in all of 2027.
