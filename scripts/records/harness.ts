@@ -49,11 +49,13 @@ import { lintPerson, type BoundaryFinding } from "./boundary";
 import { generated } from "./generate-earnings";
 import { runMetamorphic } from "./metamorphic-earnings";
 
-/** The ledger an E1 track is measured against: the end of step E0 (its last
- *  commit that changes the ledger). Re-pointed by the integration owner
- *  after each merge wave (design 4.3, rule 5). The commit before E0 is
- *  f5275a6 (receipts phase 3 merged): --base it to measure E0 itself. */
-export const EARNINGS_BASELINE = "f5275a645ee2cf49b14a2fb0e7f69cd1912ad373";
+/** The ledger an E1 track is measured against: the end of step E0 (20004af,
+ *  its last commit that changes the ledger; the commits after it change
+ *  scripts and docs only). Re-pointed by the integration owner after each
+ *  merge wave (design 4.3, rule 5). To measure E0 itself, --base the ledger
+ *  just before it: f5275a6 (receipts phase 3 merged), or 2b8dcef (that
+ *  and the SSI parental deeming fill-up, merged into E0 before its gate). */
+export const EARNINGS_BASELINE = "20004af5b1dd722b23b47485330ce3b58410af6e";
 
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);

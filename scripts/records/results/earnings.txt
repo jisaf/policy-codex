@@ -1,8 +1,8 @@
-# Records harness: earnings (51 s)
+# Records harness: earnings (48 s)
 
 ## Translation
 
-Stored households stating earnings: 316 of 326; rule tests stating earnings: 456 of 4383.
+Stored households stating earnings: 317 of 327; rule tests stating earnings: 459 of 4412.
 Stored households whose earnings are not the translation of their earned facts: none.
 Rule tests whose earnings are not the translation of their earned facts: none.
 
@@ -14,11 +14,11 @@ Findings: none.
 
 ## Old against new
 
-Ledger at f5275a645ee2 against the ledger on disk; programs: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; tracks: af, cccap, cw, leap, medicaid, snap.
+Ledger at 2b8dcefce192 against the ledger on disk; programs: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; tracks: af, cccap, cw, leap, medicaid, snap.
 
 | Source | Households | Values compared | Values that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|
-| stored households | 326 | 163164 | 0 | 0 | 0 |
+| stored households | 327 | 163761 | 0 | 0 | 0 |
 | generated households | 308 | 115836 | 0 | 0 | 0 |
 
 

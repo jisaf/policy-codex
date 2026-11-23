@@ -11,8 +11,12 @@ Step E0 of docs/design-earned-and-resource-records.md (4.2, E0 row), by the inte
 | e7f1154 | 3 | The boundary in every receipt table and CO-5000; LEAP's receipt rows the rule names cited (S4100) |
 | d9a5879 | 4 | Translator, `npm run records:harness -- --list earnings\|holdings\|receipts`, the registry split, the boundary lint |
 | b7926f7 | 5 | 316 stored households and 456 rule tests restated with earnings records by the translator |
-| (docs) | 6 | docs/operators.md, conventions.md, plan-colorado.md, this review, docs/reviews/receipts-migration-3.md |
-| (changes) | 7 | volumes/co/changes/2026-11-23-earnings-e0.yaml (change-impact dispositions); UI count pins |
+| 0faaf63 | 6 | docs/operators.md, conventions.md, plan-colorado.md, this review, docs/reviews/receipts-migration-3.md |
+| 63f88fc | merge | origin ccr-9d19bf4c-wmnwcl at 2b8dcef (the SSI parental deeming fill-up) merged before the gate |
+| 150d4dd | 5 | the merged household and CO-5901's three rule tests restated with earnings |
+| d9adcbd | pins | UI count pins (figures +7, open questions +5), each with its reason |
+| 20004af | 7 | volumes/co/changes/2026-11-23-earnings-e0.yaml: 11 dispositions re-keyed, reasons unchanged; the last commit that changes the ledger (EARNINGS_BASELINE) |
+| (last) | gate | EARNINGS_BASELINE set to 20004af; harness results; this table |
 
 ## 2. The `earnings` list (CO-5100)
 
@@ -82,9 +86,9 @@ Not restated, by design: wages_gross_received_prior_thirty_days (CO-3910) and em
 
 `npm run records:harness -- --list earnings` (scripts/records/harness.ts; `--list receipts` runs the receipts harness unchanged; `--list holdings` reports that H0 has not started):
 
-1. **Translation**: every stored household's and rule test's earnings are the translation of its earned facts. Result: 316 of 326 households and 456 rule tests state earnings; 0 are not the translation.
+1. **Translation**: every stored household's and rule test's earnings are the translation of its earned facts. Result: 317 stored households and 459 rule tests state earnings (after the merge); 0 are not the translation.
 2. **Boundary lint**: 0 findings; 6 transition copies; 1 known pair dispositioned (allowed/boundary.yaml, E0-F1).
-3. **Old against new**, every program's outcomes and each track's earned figures, against f5275a6 (the commit before E0): 326 stored households, 163,164 values, **0 differences**; 308 generated households (each track's bases varied one earned fact at a time), 115,836 values, **0 differences**.
+3. **Old against new**, every program's outcomes and each track's earned figures, against the ledger just before E0: f5275a6 before the merge (326 stored households, 163,164 values, **0 differences**), and 2b8dcef (f5275a6 with the SSI parental deeming fill-up) after it (327 stored households, 163,761 values, **0 differences**); 308 generated households (each track's bases varied one earned fact at a time), 115,836 values, **0 differences**.
 4. **Metamorphic relations** ME-1 split, ME-2 order, ME-3 month, ME-4 cost relabel (ME-5 dated against stream is a SNAP family): run on the figures each track registers as reading the records, none yet; each track's relations its rules say are not invariant are listed with the rule (SNAP and LEAP ME-1, ME-3; Adult Financial, CCCAP and Medicaid ME-3).
 
 `npm run receipts:harness -- --all-programs`: 0 unexplained (section 9).
@@ -191,10 +195,10 @@ E0 changes no answer, so each is kept as today's reading and named here, for the
 |---|---|
 | `node scripts/sync-manifest.mjs co` | written; 8 items added (CO-5100 to CO-5107) |
 | `npm run typecheck` | passes (scripts/records added to tsconfig) |
-| `npx vitest run` | see the commit of step 7 |
-| `npm run receipts:harness -- --all-programs` | 0 unexplained (319 stored, 1,626 generated households; the classes of phases 2 and 3 only) |
-| `npm run records:harness -- --list earnings --all-programs` | OK: translation 0 stale, boundary 0 findings, 0 differences |
-| `CHECK_BASE=origin/main npm run check` | see the commit of step 7 (dispositions in volumes/co/changes/2026-11-23-earnings-e0.yaml) |
+| `npx vitest run` | 1,131 tests pass (101 files), after the UI pins moved by the seven tables and five questions were re-pinned with their reasons |
+| `npm run receipts:harness -- --all-programs` | OK: 0 unexplained (319 stored, 1,626 generated households; the classes of phases 2 and 3 only) |
+| `npm run records:harness -- --list earnings --all-programs --base 2b8dcef` | OK: translation 0 stale (317 households, 459 rule tests), boundary 0 findings (1 known, 6 transition copies), 0 differences |
+| `CHECK_BASE=origin/main npm run check` | OK, conformance self-check OK; 11 flags dispositioned in volumes/co/changes/2026-11-23-earnings-e0.yaml (re-keyed, reasons unchanged). 34 non-blocking "stale disposition" lines remain in older change records for the same pairs, now carried by this record |
 
 ## 10. What each E1 track starts from
 

@@ -247,7 +247,7 @@ describe("the Figures page", () => {
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 455 figures"); // + CO-5650, CO-5720, CO-5730, CO-5500, CO-5510 (receipts migration 2)
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 462 figures"); // + CO-5101 to CO-5107 (earnings E0); + CO-5650, CO-5720, CO-5730, CO-5500, CO-5510 (receipts migration 2)
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);
