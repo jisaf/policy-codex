@@ -49572,13 +49572,16 @@
 
 - id: CO-412
   title: 'Probe CF-1 (SNAP financial coverage): irregular income over $30 in the quarter is counted'
-  # Probe "CF1 irregular 20 in Feb and 20 in Jan (counted)" of docs/reviews/coverage-snap-financial.md (CF-1, control), kept
-  # by the probe-preservation round; the fix round's reproduction of the reviewer's override
-  # (test/probes/snapfin-scripts/scen*.json). Materialized from an override probe on CO-115 (a homeless father, 34, earning
-  # $1,000, and his daughter of 6; applied 2026-11-02, evaluated 2027-02-10; base gross 1,000, allotment 387 in February
-  # 2027): CO-115's facts as stored today with the probe's overrides applied. $20 of irregular income in January and $20 in
-  # February: $40 in the quarter is over the $30 exclusion, so February's $20 counts: gross 1,020. (The fix round's scen1
-  # variant with $20 in every month is the same answer and is kept only in test/probes.)
+  # Probe "CF1 irregular 20 in Feb and 20 in Jan (counted)" of docs/reviews/coverage-snap-financial.md (CF-1, control),
+  # kept by the probe-preservation round; the fix round's reproduction of the reviewer's override
+  # (test/probes/snapfin-scripts/scen*.json). Materialized from an override probe on CO-115 (a homeless father, 34,
+  # earning $1,000, and his daughter of 6; applied 2026-11-02, evaluated 2027-02-10; base gross 1,000, allotment 387 in
+  # February 2027): CO-115's facts as stored today with the probe's overrides applied. $20 of irregular income in
+  # January and $20 in February: $40 in the quarter is over the $30 exclusion, so February's $20 counts: gross 1,020.
+  # (The fix round's scen1 variant with $20 in every month is the same answer and is kept only in test/probes.) Data
+  # correction (fix round 2026-11-23, docs/reviews/probe-handcheck-cash-food-care.md): January stated the irregular 20
+  # (infrequent_or_irregular_income_received) while other_unearned_income_nontaxable was 0, a part larger than the whole
+  # it belongs to; January now states the 20 in both, as February does. February's answer is unchanged.
   as_of: "2027-02-10"
   case_facts:
     home_heating_cost_arrangement: none
@@ -49742,6 +49745,7 @@
         shelter_cost_monthly: 0
       months:
         2027-01:
+          other_unearned_income_nontaxable: 20  # fix round 2026-11-23 (probe hand-check): the irregular 20 is part of the month's unearned income, as in February
           infrequent_or_irregular_income_received: 20
         2027-02:
           other_unearned_income_nontaxable: 20
@@ -55848,15 +55852,20 @@
 
 - id: CO-440
   title: 'Probe IMM-afghan_humanitarian_parolee (final cash 2 N-3): an Afghan humanitarian parolee and the public assistance citizenship requirement'
-  # Probe IMM-afghan_humanitarian_parolee of docs/reviews/final2-cash.md (N-3, P1), kept by the probe-preservation round. A
-  # single adult, 36, immigration_status afghan_humanitarian_parolee, entered 2024-03-01
-  # (test/probes/rv-cash/probe/p_imm.yaml). 9 CCR 2503-6 3.604.1.B.3 and 9 CCR 2503-5 3.520 admit refugees and those treated
-  # as refugees; 22 U.S.C. 7105(b)(1)(A) makes a victim of trafficking eligible for programs "funded or administered by" the
-  # federal agencies it names; Pub. L. 117-43 (Afghan parolees) and 117-128 (Ukrainian parolees) treat those parolees as
-  # refugees. Rule (the fix round's reading, 35b760e): Colorado Works accepts an Afghan humanitarian parolee
-  # (cw_meets_citizenship_and_immigration_requirement true); the Adult Financial requirement
+  # Probe IMM-afghan_humanitarian_parolee of docs/reviews/final2-cash.md (N-3, P1), kept by the probe-preservation
+  # round. A single adult, 36, immigration_status afghan_humanitarian_parolee, entered 2024-03-01
+  # (test/probes/rv-cash/probe/p_imm.yaml). 9 CCR 2503-6 3.604.1.B.3 and 9 CCR 2503-5 3.520 admit refugees and those
+  # treated as refugees; 22 U.S.C. 7105(b)(1)(A) makes a victim of trafficking eligible for programs "funded or
+  # administered by" the federal agencies it names; Pub. L. 117-43 (Afghan parolees) and 117-128 (Ukrainian parolees)
+  # treat those parolees as refugees. Rule (the fix round's reading, 35b760e): Colorado Works accepts an Afghan
+  # humanitarian parolee (cw_meets_citizenship_and_immigration_requirement true); the Adult Financial requirement
   # (meets_public_assistance_citizenship_requirement) is met as well. Translation of facts now derived:
-  # has_military_connection false (now derived, CO-005) is stated as has_qualifying_military_service false.
+  # has_military_connection false (now derived, CO-005) is stated as has_qualifying_military_service false. Note (fix
+  # round 2026-11-23, docs/reviews/probe-handcheck-cash-food-care.md): the entry on 2024-03-01 falls outside the parole
+  # window of Pub. L. 117-43 sec. 2502(a)(1)(A) (July 31, 2021 to September 30, 2022); the status option itself asserts
+  # coverage under the section (CO-002), which for a parole on that date is sec. 2502(a)(1)(B), the later parole of a
+  # spouse or child of an earlier parolee (or of a parent or guardian of one who is an unaccompanied child). The case
+  # reads the status as stated.
   as_of: "2026-10-01"
   persons:
     p1:
@@ -55873,15 +55882,21 @@
 
 - id: CO-441
   title: 'Probe IMM-ukrainian_humanitarian_parolee (final cash 2 N-3): a Ukrainian humanitarian parolee and the public assistance citizenship requirement'
-  # Probe IMM-ukrainian_humanitarian_parolee of docs/reviews/final2-cash.md (N-3, P1), kept by the probe-preservation round.
-  # A single adult, 36, immigration_status ukrainian_humanitarian_parolee, entered 2024-03-01
-  # (test/probes/rv-cash/probe/p_imm.yaml). 9 CCR 2503-6 3.604.1.B.3 and 9 CCR 2503-5 3.520 admit refugees and those treated
-  # as refugees; 22 U.S.C. 7105(b)(1)(A) makes a victim of trafficking eligible for programs "funded or administered by" the
-  # federal agencies it names; Pub. L. 117-43 (Afghan parolees) and 117-128 (Ukrainian parolees) treat those parolees as
-  # refugees. Rule (the fix round's reading, 35b760e): Colorado Works accepts a Ukrainian humanitarian parolee
-  # (cw_meets_citizenship_and_immigration_requirement true); the Adult Financial requirement
-  # (meets_public_assistance_citizenship_requirement) is met as well (no parole end date stated). Translation of facts now
-  # derived: has_military_connection false (now derived, CO-005) is stated as has_qualifying_military_service false.
+  # Probe IMM-ukrainian_humanitarian_parolee of docs/reviews/final2-cash.md (N-3, P1), kept by the probe-preservation
+  # round. A single adult, 36, immigration_status ukrainian_humanitarian_parolee, entered 2024-03-01
+  # (test/probes/rv-cash/probe/p_imm.yaml). 9 CCR 2503-6 3.604.1.B.3 and 9 CCR 2503-5 3.520 admit refugees and those
+  # treated as refugees; 22 U.S.C. 7105(b)(1)(A) makes a victim of trafficking eligible for programs "funded or
+  # administered by" the federal agencies it names; Pub. L. 117-43 (Afghan parolees) and 117-128 (Ukrainian parolees)
+  # treat those parolees as refugees. Rule (the fix round's reading, 35b760e): Colorado Works accepts a Ukrainian
+  # humanitarian parolee (cw_meets_citizenship_and_immigration_requirement true); the Adult Financial requirement
+  # (meets_public_assistance_citizenship_requirement) is met as well (no parole end date stated). Translation of facts
+  # now derived: has_military_connection false (now derived, CO-005) is stated as has_qualifying_military_service false.
+  # Note (fix round 2026-11-23, docs/reviews/probe-handcheck-cash-food-care.md): the entry on 2024-03-01 falls outside
+  # the parole window of Pub. L. 117-128 sec. 401(a)(1)(A) (February 24, 2022 to September 30, 2023); the status option
+  # itself asserts coverage under the section (CO-002), which for a parole on that date is sec. 401(a)(1)(B), the later
+  # parole of a spouse or child of an earlier parolee (or of a parent or guardian of one who is an unaccompanied child).
+  # The case reads the status as stated. 10 CCR 2506-1 also cites sec. 401 "as amended by section 301 of the Ukraine
+  # Security Supplemental Appropriations Act, 2024", whose text the volume does not hold.
   as_of: "2026-10-01"
   persons:
     p1:

@@ -237,3 +237,14 @@ child support paid (150) and dependent care (200) were never verified, so after 
 5. CO-440/CO-441 comments: say that a parole on 2024-03-01 is covered by sec. 2502(a)(1)(B) / sec. 401(a)(1)(B) (a
    family member of an earlier parolee), as the status option asserts, since the date alone falls outside (a)(1)(A).
 6. CO-412: make January's other_unearned_income_nontaxable 20 so the part-of fact does not exceed its whole.
+
+## Disposition (fix round, 2026-11-23)
+
+| Recommendation | Disposition |
+|---|---|
+| 1. No expectation change | Agreed; none made from this hand-check. |
+| 2. OQ-871 (CO-338) | Widened: the body now quotes 8 CCR 1403-1 3.114.A.3 ("not involved in a low-income eligible activity and their job search period has expired") and 3.111.G.3.a-b (no fewer than 13 weeks of job search "for each instance of non-temporary cessation of activity", for a caretaker who met the criteria at the last determination), states the reading under which CO-338 would be eligible_low_income through job search, and adds a Checked line for G.3 and 3.114.A. Class unchanged (state policy choice); assumption unchanged. |
+| 3. OQ-873 (CO-345) | Widened: the body now quotes 3.111.H.4.i (a non-recurring lump sum "may be included as income in the month received or averaged over a twelve (12) month period, whichever is most beneficial"), gives the averaged figure for CO-345 (2,125, eligible) and adds the second question, whether CCCAP must average every one-time payment whatever fact the case states it in or only one stated as lump_sum_received (whose meaning, CO-3367, includes "a similar one-time payment"). The assumption now says so: averaged only when stated as a lump sum. CO-345 is unchanged (it states the diversion as other unearned income). |
+| 4. SNAP child support at recertification (CO-421) | Already recorded, as a statute override rather than an open question: the paragraph cited as 4.505.B.3.c is 10 CCR 2506-1 4.502.B.3.c (the same text in the 2026-10-01 version, D-82), and snap_requires_verification_of_child_support_paid (CO-1382) has carried since coverage review CF-11 a statute_override naming 7 CFR 273.2(f)(8)(i)(A) over 4.502.B.3 and 4.507.D.5. CO-1382's precision now says so and names the reviewer's citation. docs/conventions.md gives a governing federal rule the statute_override form; no open question is added. |
+| 5. CO-440, CO-441 comments | Done: each comment now says the 2024-03-01 parole is outside the (a)(1)(A) window and that the status option asserts coverage under the section, which for that date is (a)(1)(B) (a spouse or child of an earlier parolee, or a parent or guardian of an unaccompanied child); CO-441 notes that 10 CCR 2506-1 cites sec. 401 as amended in 2024, whose text the volume does not hold. |
+| 6. CO-412 | Done: January now states other_unearned_income_nontaxable 20 beside the irregular 20, so the part no longer exceeds its whole. February's expectation (1,020) is unchanged and passes. |
