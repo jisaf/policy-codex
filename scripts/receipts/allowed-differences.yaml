@@ -833,20 +833,10 @@
 - {case: CO-300, person: p1, identifier: ma_ssi_related_category, month: "2026-10", old: none, new: unknown, class: "H1-M8 (decision 4; 6409) a refund held with no date of receipt cannot be placed in its twelve months"}
 # H1-M9 (8.100.5.N.5): CO-189 p2's 40,000 IRA counted less 20%.
 - {case: CO-189, person: p2, identifier: ma_ssi_countable_resources, old: 41000, new: 33000, class: "H1-M9 (N.5.a-b) a retirement account counted at its gross value less the taxes due, or less 20%"}
-# HM-R1 (transition; request R-7 of docs/reviews/records-holdings-medicaid.md): this harness builds its generated households
-# (G-) from the stored households of c29d326, before the holdings list existed, and translates their receipts and earnings
-# (product owner, 2026-11-23) but not their resource facts into holdings records. Medicaid's SSI-method readers read the
-# holdings records only, so a generated household that states liquid_resources_value but no holdings list has resources
-# that cannot be determined (decision 4), and every outcome that reads them with it. Each entry names the base, person,
-# outcome, month and both values; none stands for a base or figure it was not checked on. Translating the generated
-# households' resource facts on the new side (translate-holdings.ts), as their earned facts are, removes this class.
-- {case: "/^G-(AFclient|AFspousedeemed)-/", person: "/^(p1|p2)$/", identifier: "/^(ma_ssi_related_category)$/", month: "2026-10", old: aged, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-(AFclient|AFspousedeemed)-/", person: "/^(p1|p2)$/", identifier: ma_family_planning_status, month: "2026-10", old: full_coverage, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_ssi_related_category, month: "2026-10", old: aged, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_family_planning_status, month: "2026-10", old: full_coverage, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-(MAaged|MAagedspouse)-/", person: p1, identifier: ma_msp_category, month: "2026-10", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-(MALTC|MAcommunityspouse)-/", person: p2, identifier: "/^(ma_ssi_related_category|ma_msp_category)$/", month: "2026-11", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-MAMSP-/", person: p1, identifier: ma_msp_category, month: "2027-01", old: qmb, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-MAMSP-/", person: p1, identifier: ma_ssi_related_category, month: "2027-01", old: none, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-MAWAWD-/", person: p1, identifier: ma_ltc_eligibility_status, month: "2026-10", old: eligible_hcbs, new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
-- {case: "/^G-MAcommunityspouse-/", person: p1, identifier: "/^(ma_family_planning_status|ma_ltc_eligibility_status|ma_msp_category|ma_patient_payment|ma_ssi_related_category)$/", month: "2026-11", new: unknown, class: "HM-R1 (transition, R-7) the generated households state no holdings; the SSI method's resources cannot be determined"}
+
+# H1-M2 on the generated households (holdings translated on the new side, 2026-11-23, as the product owner approved for
+# earned income): a stated holdings list with no annuity or trust record states that the person has none (decision 4: an
+# empty list is a statement, as for receipts), so Medicaid's annuity and trust verification items, unknown at the baseline
+# (no fact said whether an annuity or trust existed), are now false. docs/reviews/records-holdings-medicaid.md.
+- {case: "/^G-/", identifier: ma_annuity_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no annuity record means no annuity to verify"}
+- {case: "/^G-/", identifier: ma_trust_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no trust record means no trust to verify"}
