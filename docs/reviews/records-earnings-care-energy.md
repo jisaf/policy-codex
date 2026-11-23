@@ -9,7 +9,7 @@ Step E1 of docs/design-earned-and-resource-records.md (4.2, the E1 CCCAP and E1 
 | e1d2e50 | E1 LEAP: pays by date, each job by its own schedule; SCSEP apart; business, costs and PASS from the records; the 3.752.23.Q child test one item (D-L2); boarders counted (E1-L2); OQ-1160, OQ-1162 |
 | c20d04c | E1 CCCAP: the thirty days by dates; gross wages, has-earned-income, business receipts, costs, launch-period hours and other income from the records; J.28 pools irregular earnings (E1-C3); D-K2; the seven thirty-day households and CO-322 restated |
 | e6a68b2 | SUN Bucks: decision 4 on a child's unstated Colorado Works receipts (CO-2708); CO-211 states its child's empty receipts |
-| 55bde3a | CCCAP T-9 rows: A-8 settled by 45 CFR 98.20 (S4420, D-442; OQ-1163 for Child Welfare Child Care), A-11 and A-12 by 3.103.YY (S4421); the contradictory-given tests rebuilt; D-K1 |
+| 55bde3a | CCCAP T-9 rows: A-8 settled by 45 CFR 98.20 (S4420, D-442; OQ-1163 for Child Welfare Child Care), A-11 and A-12 by 3.103.YY (S4421); the contradictory-given tests rebuilt (D-K1 built there and backed out at the gate, section 8) |
 | (docs) | this review, the change record, docs/plan-colorado.md, the receipts harness classes, UI count pins |
 
 ## 2. LEAP (9 CCR 2503-7 3.751.1, 3.752.21-23, 3.755.21)
@@ -39,7 +39,6 @@ The table (CO-5102): the business rows read `counted_self_employment` (a name fo
 | cccap_other_countable_receipts CO-4464 | in-kind pay (I.4), an employer's vendor payments (I.5), boarders (I.18) from the records, the same days and J.28 | in_kind_compensation_value, employer_vendor_payments_received, room_and_board_payments_received, each read as 0 |
 | cccap_irregular_earnings CO-6150, cccap_irregular_earnings_in_quarter CO-6151 (new); CO-4076 | J.28's quarterly total pools irregular earnings with irregular receipts | |
 | cccap_requires_verification_of_activity_schedule CO-5154, cccap_activity_schedule_verification_is_pending CO-5155 (new); CO-1447, CO-1448 | the self-employed caretaker's schedule from the records | the condition written in both counts (duplicate-paths D-K2) |
-| cccap_household_has_eligible_child CO-6152 (new); CO-987, CO-989, CO-2585 | | the test written three times (duplicate-paths D-K1) |
 
 The table (CO-5105): wioa_on_the_job_training `counted` (I.31 names it, S4020; it was marked counted because no rule excludes it); employer_vendor_payment and boarder_payments `counted_other_income`, the business rows `counted_self_employment` (names for the readers, no change of reading). CCCAP's receipt table (CO-5720): the three kinds that are earnings read `counted_in_earnings`. CO-425 (E0-F1) states $600 of room and board as a boarder's earnings record and again as an other_taxable receipt; CCCAP reads the boarder record once (I.18, CO-4464) and the receipt once more until the SNAP track removes it; evaluated without the receipt, CCCAP's household income is $600 (checked).
 
@@ -88,7 +87,7 @@ The CCCAP, LEAP and SUN Bucks rows. The "Ambiguous: not recorded" table has thre
 |---|---|
 | D-L2 (CO-1455 / CO-1002, 3.752.23.Q) | Done: leap_earnings_are_excluded_as_child (CO-5123). |
 | D-K2 (CO-1447 / CO-1448, activity schedule) | Done: CO-5154 with its pending flag CO-5155. |
-| D-K1 (eligible child written three times) | Done: cccap_household_has_eligible_child (CO-6152). |
+| D-K1 (eligible child written three times) | Left listed: the one household item has the derivation of cccap_verification_is_applicable (CO-2585), so either CO-2585 becomes a bare reference to it, which `npm run check` refuses (derived.alias: "an alias is not a rule"), or CO-2585's eighteen readers and their rule tests move to the new item. Built and backed out in this round; the move is larger than the audit's small dispositions. |
 | D-L1 (CO-1000 / CO-1009) | Left listed: CO-1000 filtering CO-1009 is not a pure refactor. `filter` is unknown when any member's condition is unknown, so a member whose other-household status is unknown and who fails the citizenship test, excluded today, would make the whole list unknown. The owner should decide the reading first. |
 | D-K3 (verification exemptions) | Left listed: several items, each with a rule paragraph to check; outside this round. |
 | D-K4 (CO-5721 to CO-5723), D-K5 (CO-4463 / CO-5725) | Left listed: the shared part is a test or value of one receipt, and a derived item cannot read "that receipt" (P55, docs/operators.md); it can only be written in each sum. |

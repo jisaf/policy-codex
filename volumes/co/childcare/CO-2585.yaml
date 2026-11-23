@@ -6,8 +6,8 @@ type: yes/no
 scope: person-month
 program: CCCAP
 meaning: "CCCAP verification applies to this person: the person's CCCAP household has an eligible child. For anyone else CCCAP's verification status is not_applicable and no CCCAP element is pending."
-precision: "The test that cccap_verification_status (CO-1451) used for its not_applicable branch, made its own item so that every CCCAP pending element and count reads it: an element is pending only where verification applies (county case worker review B2). The test is cccap_household_has_eligible_child (CO-6152), which CO-987 and CO-989 read too (duplicate-paths audit D-K1)."
-derived: cccap_household_has_eligible_child
+precision: "The test that cccap_verification_status (CO-1451) used for its not_applicable branch, made its own item so that every CCCAP pending element and count reads it: an element is pending only where verification applies (county case worker review B2)."
+derived: [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]
 sources: [S891, S892, S1631]
 implemented: engine
 tags: [verification]
