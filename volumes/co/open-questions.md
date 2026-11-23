@@ -2551,9 +2551,11 @@ Body: § 8.100.3.K.1 (S3352) makes the "Income or resources of an alien sponsor 
 
 Class: state policy choice
 Owner: Medicaid policy owner, Legal
-Assumption: The sponsor's and the sponsor's spouse's own MAGI-based monthly income counts in full to a sponsored adult who is not pregnant, added to the adult's own household income, with 1631(e) and (f) applied. The figure needs the sponsor's income: a sponsor (or a co-signing spouse) who is not declared as a person of the case is a sponsor whose income is not stated, and the deemed income is then cannot determine (coverage pass 5, C5-06; before, it was 0). The same deemed income counts in the premium tax credit figure of § 8.100.4.C.5 (8 U.S.C. 1631(a), "notwithstanding any other provision of law"; CO-4561).
+Assumption: The sponsor's and the sponsor's spouse's own MAGI-based monthly income counts in full to a sponsored adult who is not pregnant, added to the adult's own household income, with 1631(e) and (f) applied. The sponsor's income must be known: a sponsor who is not part of the case has an income the case does not state, so the answer cannot be determined until it is. The same income counts when the person is tested under the premium tax credit methodology, since the federal deeming rule applies notwithstanding any other provision of law.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.K.1 and K.1.a (D-65, S3352); 8 U.S.C. 1631(a), (b), (e), (f) (D-275, S2970, S3353-S3355). Neither text states a measure of income or an allowance for Medicaid; no published Colorado text does.
+
+Coverage pass 5 (C5-06, 2026-11-23): a sponsor who is not a person of the case (no sponsored_by relationship) leaves ma_sponsor_deemed_income (CO-4551) cannot determine, where before it was 0 (SPONSOR-OUT, CO-817); and ma_premium_tax_credit_household_income_pct_fpl (CO-4561) adds twelve times the deemed income of the determination month (8 U.S.C. 1631(a), S2970).
 
 ### OQ-813. CHP+ income reasonable opportunity period: 90 days (§ 430.3.A.i) or 30 days (§ 130.1 through § 8.100.4.C.2)
 
@@ -3290,9 +3292,10 @@ Checked 2026-11-23: 10 CCR 2505-3 § 50.19, § 110.1.A, § 320.1, § 330.4, § 4
 
 Body: 10 CCR 2505-10 § 8.100.3.G.1.c (D-65, S659) makes it a condition of Medical Assistance that the person "Not be a patient in an institution for tuberculosis or mental disease, unless the person is under 21 years of age or has attained 65 years of age". Since coverage pass 5 (C5-04) ma_magi_eligibility_status (CO-554) and ma_family_planning_status (CO-1154) report a patient of 21 to 64 in an institution for mental diseases (ma_meets_imd_requirement, CO-1179) as ineligible_institution. § 8.100.3.G.1.b.ii and 10 CCR 2505-3 § 120.1.C incorporate the CMS Demonstration Approval of October 14, 2025 for the 1115 demonstration "Colorado Expanding the Substance Use Disorder (SUD) Continuum of Care", but only for Reentry Demonstration Initiative services to inmates. Section 1115 SUD demonstrations commonly authorize federal payment for short-term residential and inpatient SUD treatment in an institution for mental diseases; whether Colorado's approval does, and whether the State reads it as lifting G.1.c's eligibility condition for such a stay (rather than only paying for the service), is not in any text on file: G.1.c names no exception for it. Worked example: an adult of 40 in a 60-bed residential substance use treatment facility that is an institution for mental diseases, income within the Adults standard: ineligible_institution on G.1.c's words; eligible if the demonstration lifts the condition for the stay.
 
-Class: blocked on a named document (the CMS Demonstration Approval of October 14, 2025, Colorado Expanding the Substance Use Disorder Continuum of Care, Special Terms and Conditions; medicaid.gov refused the automated fetch, HTTP 403, 2026-11-23)
+Class: blocked on a named document
 Owner: Medicaid policy owner, Legal
-Assumption: G.1.c applies as written: a patient of 21 to 64 in an institution for mental diseases is not eligible while a patient, whatever the treatment.
+Assumption: A patient aged 21 to 64 in an institution for mental diseases is not eligible while a patient, whatever the treatment, as the rule is written.
+Blocked on: CMS's Demonstration Approval of October 14, 2025 for Colorado Expanding the Substance Use Disorder Continuum of Care, its special terms and conditions (medicaid.gov refused the automated fetch)
 
 Checked 2026-11-23: 10 CCR 2505-10 § 8.100.3.G.1.b.ii, G.1.c (D-65, rule version effective 11/14/2026); 10 CCR 2505-3 § 120.1.C (D-66). Neither text applies the demonstration to G.1.c. Coverage pass 5, C5-04. Items: CO-554, CO-1154, CO-1179.
 
