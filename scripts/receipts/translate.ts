@@ -242,6 +242,19 @@ function carve(
     R.push({ kind: "gambling_winnings", amount: big, frequency: "once" });
     notes.push("largest single game stated with no month's winnings: one game");
   }
+  // Medicaid's VA Aid and Attendance (phase 2; 10 CCR 2505-10 8.100.5.K): the
+  // portion of a VA pension a household states as va_aid_and_attendance_amount
+  // (when receives_va_aid_and_attendance) is a receipt of its own kind,
+  // carved out of the receipt that holds it: the other non-taxable money
+  // (veterans' benefits), else the pension. Read only when stated, so a
+  // household that states neither keeps its receipts as they were.
+  const va = v.receives_va_aid_and_attendance === true ? get("va_aid_and_attendance_amount") : 0;
+  if (va > 0 && !R.some((r) => r.kind === "va_aid_and_attendance" && typeof r.amount === "number" && r.amount >= va)) {
+    const vh = ["other_nontaxable", "pension"].map((k) => R.find((r) => r.kind === k && typeof r.amount === "number" &&
+      r.amount >= va && r.frequency === undefined && !r.irregular && r.per_payment === undefined)).find(Boolean);
+    if (vh) { vh.amount = (vh.amount as number) - va; R.push({ kind: "va_aid_and_attendance", amount: va }); }
+    else notes.push("VA Aid and Attendance amount with no pension or other non-taxable receipt to hold it: not restated");
+  }
   // earmarks onto the receipt they come out of
   const recurring = (r: Receipt) => typeof r.amount === "number" && r.frequency !== "once";
   const host = (kinds2: string[] | null, amt: number): Receipt => {

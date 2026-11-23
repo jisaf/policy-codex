@@ -14820,7 +14820,8 @@
         resides_in_state_veterans_home: true
         receipts:
         - {kind: social_security, amount: 1300}
-        - {kind: pension, amount: 600}
+        - {kind: pension, amount: 300}
+        - {kind: va_aid_and_attendance, amount: 300}
       month_defaults:
         lottery_gambling_winnings_received: 0
         social_security_income: 1300
@@ -30349,9 +30350,10 @@
         receipts:
         - {kind: social_security, amount: 400}
         - {kind: ssi}
-        - {kind: pension, amount: 900}
+        - {kind: pension, amount: 500}
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
+        - {kind: va_aid_and_attendance, amount: 400}
       month_defaults:
         social_security_income: 400
         shelter_costs_paid_by_others: 0
@@ -30697,7 +30699,8 @@
         resides_in_state_veterans_home: true
         receipts:
         - {kind: social_security, amount: 1300}
-        - {kind: pension, amount: 600}
+        - {kind: pension, amount: 300}
+        - {kind: va_aid_and_attendance, amount: 300}
       month_defaults:
         lottery_gambling_winnings_received: 0
         social_security_income: 1300
@@ -47292,9 +47295,10 @@
         receipts:
         - {kind: social_security, amount: 400}
         - {kind: ssi}
-        - {kind: pension, amount: 900}
+        - {kind: pension, amount: 500}
         - {kind: colorado_works_cash}
         - {kind: adult_financial_cash}
+        - {kind: va_aid_and_attendance, amount: 400}
       month_defaults:
         social_security_income: 400
         shelter_costs_paid_by_others: 0

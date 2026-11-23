@@ -17,8 +17,11 @@ export const root = path.resolve(import.meta.dirname, "../..");
  *  adoption commit (41ec04b) until the non-MAGI fix round (82a29d0) was
  *  merged in, then the time-audit fix round (ccbb3a7) when the migration was
  *  merged into it; the baseline moves with each merge, so the harness
- *  measures the migration and nothing the other track changed. */
-export const BASELINE_REF = "ccbb3a7fe315276cc68c03500538ec585dd99697";
+ *  measures the migration and nothing the other track changed. Phase 2
+ *  (Medicaid and CHP+) starts from c29d326, phase 1 merged: LEAP, SNAP and
+ *  Adult Financial read the receipts there, every other program the scalar
+ *  facts, so the harness measures the phase-2 change alone. */
+export const BASELINE_REF = "c29d3262ed69d9fbc7589a949149aa75dc8ba182";
 
 export interface Ledger { ledger: LoadedLedger; ix: LedgerIndex }
 

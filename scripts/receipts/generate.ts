@@ -7,6 +7,7 @@
 // verification period families. Stated in the old facts; the harness
 // translates them like any stored household.
 import type { HouseholdCase } from "../../src/engine/cases";
+import { MONTH_FACTS } from "./translate";
 
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 
@@ -69,14 +70,32 @@ const BASES: Base[] = [
   { id: "CO-196", person: "p1", label: "AF client" },
   { id: "CO-196", person: "p2", label: "AF spouse (deemed)" },
   { id: "CO-94", person: "", label: "AF sponsor (deemed)" },
+  // phase 2: Medicaid and CHP+ (MAGI, the SSI method, deeming, long-term
+  // care, the buy-ins, the Medicare Savings Programs)
+  { id: "CO-202", person: "p1", label: "MA MAGI parent" },
+  { id: "CO-185", person: "p1", label: "MA aged" },
+  { id: "CO-189", person: "p2", label: "MA aged spouse" },
+  { id: "CO-186", person: "p2", label: "MA deeming parent" },
+  { id: "CO-112", person: "p1", label: "MA LTC" },
+  { id: "CO-112", person: "p2", label: "MA community spouse" },
+  { id: "CO-187", person: "p1", label: "MA WAWD" },
+  { id: "CO-145", person: "p3", label: "MA CBWD child" },
+  { id: "CO-114", person: "p1", label: "MA MSP" },
+  { id: "CO-386", person: "p1", label: "CHP parent" },
 ];
 
-/** Zeroes the money a base household states beyond its wages, so each variant starts clean. */
-function cleanBase(c: HouseholdCase): void {
+/** Zeroes the money a base household states beyond its wages, so each
+ *  variant starts clean. A phase-2 (Medicaid, CHP+) base is cleaned gently:
+ *  only the unearned-income facts the translation reads are zeroed, so the
+ *  other facts its outcomes need (MAGI's other taxable income, deductions,
+ *  in-kind support) stay as stated. */
+function cleanBase(c: HouseholdCase, gentle = false): void {
   for (const p of Object.values(c.persons)) {
     if (p.facts) delete p.facts.receipts;
-    const md = p.month_defaults ?? {};
+    const md = (p.month_defaults ??= {});
+    if (gentle) for (const k of AGG) md[k] = 0;
     for (const k of Object.keys(md)) {
+      if (gentle) { if (MONTH_FACTS.has(k) && typeof md[k] === "number") md[k] = 0; continue; }
       if (k === "wages_gross" || k === "hours_worked") continue;
       if (AGG.includes(k)) md[k] = 0;
       else if (typeof md[k] === "number" && /income|received|lump|set_aside|recoup|withheld|paid_to|_value$/.test(k) && !/paid_legally|toward_arrears|cost|expense|premium/.test(k)) delete md[k];
@@ -91,7 +110,7 @@ export function generated(cases: readonly HouseholdCase[]): HouseholdCase[] {
     const src = cases.find((c) => c.id === b.id);
     if (!src) throw new Error(`generated households: no base household ${b.id}`);
     const base = clone(src);
-    cleanBase(base);
+    cleanBase(base, /^(MA|CHP) /.test(b.label));
     let person = b.person;
     if (!person) {
       // the sponsor: the person a sponsor edge points to

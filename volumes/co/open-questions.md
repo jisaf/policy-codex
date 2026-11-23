@@ -2817,3 +2817,13 @@ Owner: Cash programs policy owner
 Assumption: A period of N consecutive days is counted from the day after the absence or stay began, so the day of departure or entry is not counted.
 
 Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.
+
+### OQ-970. Medicaid MAGI: whether AmeriCorps living allowances, workforce and vocational training allowances and uniformed services special pay are MAGI income
+
+Body: 42 CFR 435.603(e) (S165) counts "income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code", and 10 CCR 2505-10 8.100.4.C.1 (S166) lists what it counts and excludes without naming these payments. Before receipt records the ledger stated each of them as part of the non-taxable other unearned income (americorps_payments_received, workforce_program_payments_received with vocational_training_allowance_received, uniformed_services_special_pay_received, all part of other_unearned_income_nontaxable, CO-030), so ma_person_magi_income (CO-502) left them out. The federal tax treatment is not that simple: an AmeriCorps living allowance and most training allowances are taxable compensation, and hostile fire or imminent danger pay is excluded only for service in a combat zone. Medicaid's MAGI counting table (ma_magi_receipt_treatment_table, CO-5500) keeps the earlier reading, as not_taxable_income, until the owner decides.
+
+Class: state policy choice
+Owner: Medicaid (HCPF) eligibility policy owner
+Assumption: The four kinds are not MAGI-based income (the reading before receipt records).
+
+Checked 2026-11-23: 42 CFR 435.603(e) (D-34) and 10 CCR 2505-10 8.100.4.C.1.a-d (D-40). Neither names these payments; the Code sections that would decide them (26 U.S.C. 61, 112, 3121) are not on file. Items: CO-5500.

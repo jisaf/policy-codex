@@ -1,0 +1,17 @@
+id: CO-5502
+name: "Medicaid MAGI: a person's gambling winnings received in the month"
+identifier: ma_magi_gambling_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's lottery and gambling winnings received in the month (receipts that ma_magi_receipt_treatment_table, CO-5500, gives counted_winnings), every game added: the amount 10 CCR 2505-10 8.100.4.C.1.b.xiv counts in the month received for the members of the winner's household (xiv.4) and spreads over months for the winner (xiv.1-3; ma_lottery_winnings_spread_months, CO-1185)."
+precision: "The month's winnings are spread together, as the ledger read the month's lottery_gambling_winnings_received before receipt records: xiv states the bands by the winnings, not by game, and no text on file says that two games won in one month are spread apart (receipts let a rule read them apart if the owner decides so)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [in, [lookup, ma_magi_receipt_treatment_table, [receipt, kind]], [counted_winnings]]], [receipt, amount]]
+sources: [S669, S165]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "Receipt records, migration phase 2: replaces lottery_gambling_winnings_received in the MAGI items (CO-502, CO-503, CO-1185, CO-1187)."
+tests:
+  - {id: CO-5502-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: gambling_winnings, amount: 60000, frequency: once, month: "2026-10"}, {kind: gambling_winnings, amount: 30000, frequency: once, month: "2026-10"}, {kind: gambling_winnings, amount: 500, frequency: once, month: "2026-09"}, {kind: pension, amount: 700}]}, title: "Two games won in October added; a win in September is not October's", expect: 90000}
+  - {id: CO-5502-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 900}]}, title: "No winnings", expect: 0}

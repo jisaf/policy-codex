@@ -1,21 +1,18 @@
-# Receipt records harness: ledger at ccbb3a7fe315 vs the ledger on disk
+# Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 26 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 75 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 316 | 77688 | 27 | 5 | 27 | 0 |
-| generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
+| stored households | 319 | 157263 | 7 | 2 | 7 | 0 |
+| generated households | 1071 | 399703 | 23 | 6 | 23 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-458, CO-459, CO-460.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): none.
 
 ## Allowed differences by class
 
-- R5 SNAP no winnings, no limit in force (T-5 closure): 3 household(s): CO-89, CO-93, CO-98
-- R2 decision 4, AmeriCorps hours not stated: 6 household(s): CO-155, G-LEAP-AmeriCorps_300_hours_not_stated, G-SNAP-AmeriCorps_300_hours_not_stated, G-AFclient-AmeriCorps_300_hours_not_stated, G-AFspousedeemed-AmeriCorps_300_hours_not_stated, G-AFsponsordeemed-AmeriCorps_300_hours_not_stated
-- R4 SNAP double subtraction of a one-time excluded payment (CO-2339): 1 household(s): CO-225
-- R1 LEAP excluded one-time receipt no longer needs the thirty-day facts: 55 household(s): G-LEAP-retroactive_SS_lump_300, G-LEAP-retroactive_SSI_PA_lump_300, G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-SNAP-retroactive_SS_lump_300, G-SNAP-retroactive_SSI_PA_lump_300, G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFclient-retroactive_SS_lump_300, G-AFclient-retroactive_SSI_PA_lump_300, G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-retroactive_SS_lump_300, G-AFspousedeemed-retroactive_SSI_PA_lump_300, G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-retroactive_SS_lump_300, G-AFsponsordeemed-retroactive_SSI_PA_lump_300, G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum
-- R3 LEAP CO-4962 placement limit: 1 household(s): G-LEAPwin-crime_victim_3000_one_time_in_October_in
+- M2 VA Aid and Attendance stated inside a pension is a veterans' benefit: 2 household(s): CO-139, CO-214
+- M1 MAGI counts a retroactive Social Security payment in the month received: 6 household(s): G-MAMAGIparent-retroactive_SS_lump_300, G-MALTC-retroactive_SS_lump_300, G-MAcommunityspouse-retroactive_SS_lump_300, G-MACBWDchild-retroactive_SS_lump_300, G-MAMSP-retroactive_SS_lump_300, G-CHPparent-retroactive_SS_lump_300
 
 ## Stored households whose receipts are not the translation of their old facts
 
@@ -25,10 +22,10 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 487 | 0 |
-| MA-2 order | 487 | 0 |
-| MA-3 month | 487 | 0 |
-| MA-4 residual | 487 | 0 |
+| MA-1 split | 1196 | 0 |
+| MA-2 order | 1196 | 0 |
+| MA-3 month | 1196 | 0 |
+| MA-4 residual | 1196 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
@@ -49,202 +46,36 @@ none
 
 ## Differences
 
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_person_unearned_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_person_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_household_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_unearned_income_verification_is_pending @2028-08: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_person_unearned_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_person_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_household_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_unearned_income_verification_is_pending @2028-08: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_person_unearned_income @2028-06: old unknown new 600
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_person_gross_income @2028-06: old unknown new 600
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_household_gross_income @2028-06: old unknown new 1800
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_person_unearned_income @2028-06: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_person_gross_income @2028-06: old unknown new 1500
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_household_gross_income @2028-06: old unknown new 1800
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_unearned_income_verification_is_pending @2028-06: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_person_unearned_income @2027-11: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_person_gross_income @2027-11: old unknown new 300
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_unearned_income_verification_is_pending @2027-11: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_person_unearned_income @2027-11: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_person_gross_income @2027-11: old unknown new 300
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_unearned_income_verification_is_pending @2027-11: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_person_unearned_income @2027-02: old 1300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_household_income @2027-02: old 2300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p2 leap_household_income @2027-02: old 2300 new unknown
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_unearned_income @2026-11: old 0 new 900
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_gross_income @2026-11: old 2500 new 3400
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_unearned_income_verification_is_pending @2026-11: old false new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-11: old 300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_household_income @2026-11: old 2300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_is_eligible @2026-11: old true new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_zero_income_verification_is_pending @2026-11: old false new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2027-02: old 300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p1 leap_household_income @2027-02: old 1300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p2 leap_household_income @2027-02: old 1300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFclient-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SS_lump_300 p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SS_lump_300 p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SSI_PA_lump_300 p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SSI_PA_lump_300 p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFspousedeemed-AmeriCorps_300_hours_not_stated p2 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFsponsordeemed-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_person_unearned_income @2026-11: old 3000 new 0
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_household_income @2026-11: old 5000 new 2000
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_is_eligible @2026-11: old false new true
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_benefit_amount @2026-11: old 0 new unknown
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_person_magi_income @2026-11: old 1900 new 1600
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_person_magi_income @2026-12: old 1900 new 1600
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_magi_household_income @2026-11: old 1900 new 1600
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_magi_household_income @2026-12: old 1900 new 1600
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_magi_household_income_pct_fpl @2026-11: old 1.4285714285714286 new 1.2030075187969924
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-139 p1 ma_magi_household_income_pct_fpl @2026-12: old 1.4285714285714286 new 1.2030075187969924
+allowed (M2 VA Aid and Attendance stated inside a pension is a veterans' benefit) S CO-214 p1 ma_person_magi_income @2026-11: old 1900 new 1600
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 1262 new 1562
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_household_income @2026-11: old 1262 new 1562
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2026-11: old 0.699815157116451 new 0.8661737523105361
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_category @2026-11: old "parent_caretaker" new "none"
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_magi_eligibility_status @2026-11: old "eligible" new "ineligible_income"
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p1 ma_family_planning_status @2026-11: old "full_coverage" new unknown
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p2 ma_magi_household_income @2026-11: old 1262 new 1562
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMAGIparent-retroactive_SS_lump_300 p2 ma_magi_household_income_pct_fpl @2026-11: old 0.699815157116451 new 0.8661737523105361
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MALTC-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MALTC-retroactive_SS_lump_300 p1 ma_magi_household_income @2026-11: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MALTC-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2026-11: old 0 new 0.22556390977443608
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAcommunityspouse-retroactive_SS_lump_300 p2 ma_person_magi_income @2026-11: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAcommunityspouse-retroactive_SS_lump_300 p2 ma_magi_household_income @2026-11: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAcommunityspouse-retroactive_SS_lump_300 p2 ma_magi_household_income_pct_fpl @2026-11: old 0 new 0.22556390977443608
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MACBWDchild-retroactive_SS_lump_300 p3 ma_person_magi_income @2026-10: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMSP-retroactive_SS_lump_300 p1 ma_person_magi_income @2027-01: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMSP-retroactive_SS_lump_300 p1 ma_magi_household_income @2027-01: old 0 new 300
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-MAMSP-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2027-01: old 0 new 0.22556390977443608
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p1 ma_person_magi_income @2026-11: old 3066 new 3366
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p1 ma_magi_household_income @2026-11: old 3066 new 3366
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p1 ma_magi_household_income_pct_fpl @2026-11: old 1.700184842883549 new 1.866543438077634
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p2 ma_magi_household_income @2026-11: old 3066 new 3366
+allowed (M1 MAGI counts a retroactive Social Security payment in the month received) G G-CHPparent-retroactive_SS_lump_300 p2 ma_magi_household_income_pct_fpl @2026-11: old 1.700184842883549 new 1.866543438077634
 
 ## Translation notes
 

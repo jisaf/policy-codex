@@ -34,9 +34,9 @@ const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null &&
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
 
-/** The programs migrated in phase 1, whose outcomes are always compared;
- *  with --all-programs, every program's. */
-const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks"];
+/** The programs migrated in phase 1 and phase 2 (Medicaid and CHP+), whose
+ *  outcomes are always compared; with --all-programs, every program's. */
+const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "Medicaid", "CHP+"];
 /** Intermediate figures compared beside the outcomes. */
 const FIGURES = [
   "leap_person_unearned_income", "leap_household_income", "leap_person_countable_income",
@@ -44,6 +44,13 @@ const FIGURES = [
   "snap_person_earned_income", "snap_sponsor_deemed_income",
   "af_countable_income", "af_unearned_income_other_than_ssi", "af_deemed_relative_income", "af_deemed_sponsor_income",
   "af_relative_deemable_unearned_income", "af_is_oap_age", "af_and_cs_eligible",
+  // phase 2: Medicaid and CHP+
+  "ma_person_magi_income", "ma_magi_household_income", "ma_magi_household_income_pct_fpl",
+  "ma_ssi_countable_income", "ma_ssi_countable_unearned_income", "ma_meets_ssi_income_standard",
+  "ma_ltc_gross_income", "ma_meets_special_income_group", "ma_community_spouse_income", "ma_family_allowance",
+  "ma_wawd_countable_income", "ma_cbwd_household_unearned_income", "ma_ssi_parental_income_deemed",
+  "ma_dac_countable_income", "ma_pickle_countable_income", "ma_title_ii_cola_increase",
+  "ma_has_unearned_income_for_verification", "ma_requires_verification_of_unearned_income",
 ];
 
 interface Allowed {
@@ -128,10 +135,14 @@ export function main(): number {
     return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
+  // Generated households are stated in the old facts and translated; both
+  // ledgers read the translation (since phase 2 the baseline's LEAP, SNAP
+  // and Adult Financial read the receipts, the scalar facts kept beside them
+  // for the programs that still read them).
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);
-    return { old: c, new: tr.value };
+    return { old: tr.value, new: tr.value };
   });
   sources.push({ label: "generated households", cases: gen });
 

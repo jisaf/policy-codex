@@ -51,3 +51,23 @@
   identifier: /^snap_(person_unearned_income|person_gross_income|household_gross_income|unearned_income_verification_is_pending)$/
   old: unknown
   class: R5 SNAP no winnings, no limit in force (T-5 closure)
+
+# ---- Phase 2: Medicaid and CHP+ (docs/reviews/receipts-migration-2-medicaid.md, section 7) ----
+# Baseline c29d326 (phase 1 merged). Each class is stated there with its cases and the rule text.
+
+# M1 (fixed): MAGI counts a retroactive Social Security payment in the month it is paid. The old
+# retroactive_social_security_lump_sum_received was part of lump_sum_received and so of the non-taxable
+# other unearned income (CO-030), which ma_person_magi_income (CO-502) left out; the receipt is Social
+# Security (10 CCR 2505-10 8.100.4.C.1.b.xi, c.iii) paid once, "counted as income only in the month
+# received" (8.100.4.C.1.d.i; 42 CFR 435.603(e)(1)). CHP+ reads the same MAGI household income.
+- case: /^G-[A-Za-z]+-retroactive_SS_lump_300$/
+  identifier: /^(ma_|chp_)/
+  class: M1 MAGI counts a retroactive Social Security payment in the month received
+
+# M2 (fixed): VA Aid and Attendance stated inside a pension. A household that states the VA pension in
+# pension_income and its Aid and Attendance part in va_aid_and_attendance_amount states the part twice;
+# the receipts state it once, as va_aid_and_attendance, which MAGI excludes as a veterans' benefit
+# (8.100.4.C.1.d.vi "Veteran's Benefits"). The old MAGI income counted the whole pension.
+- case: /^CO-(139|214)$/
+  identifier: /^ma_(person_magi_income|magi_household_income|magi_household_income_pct_fpl)$/
+  class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
