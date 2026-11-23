@@ -3597,7 +3597,7 @@ Body: 10 CCR 2506-1 4.410.F.3 (S2968) makes "Any funds in a trust or transferred
 
 Class: state policy choice
 Owner: SNAP policy owner, Legal
-Assumption: Trust interests and annuities are not counted (rows not_counted_reading_open), as before; if the owner reads (e)(8) as governing, the rows count a revocable trust's available corpus and a surrenderable annuity's value, and fields for the trustee and the investments are requested.
+Assumption: Trust interests and annuities are not counted, as before; if the owner reads the federal "and" as governing, a revocable trust's available corpus and a surrenderable annuity's value are counted, and fields for the trustee and the trust's investments are requested.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.410.F.3 (D-82); 7 CFR 273.8(c)(2), (e)(8) (D-191). Items: CO-5301, CO-6900, CO-074.
 
@@ -3617,7 +3617,7 @@ Body: 10 CCR 2506-1 4.408.2 (S2961) reads transfers "within the three (3) month 
 
 Class: state policy choice
 Owner: SNAP policy owner
-Assumption: The day runs forward (March 3), as since final verification pass 2 (CO-4159).
+Assumption: The day runs forward (March 3), as since the second final verification pass.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.408.2 (D-82); 7 CFR 273.8(h) (D-191). Neither says. Items: CO-5314, CO-5315.
 
