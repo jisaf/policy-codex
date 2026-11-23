@@ -8,7 +8,7 @@
 # B.16: "Income received through the Workforce Innovation and Opportunity Act"; OQ-1022 resolved). Before, they were
 # counted as part of wages_gross. The generated applicant with $1,200 of wages, $300 of them WIOA on-the-job training:
 # gross earned income 1,200 to 900, countable 1,200 - 90 = 1,110 to 900 - 90 = 810.
-- case: /^GE-CW[a-z]+-wages_1200_of_which_wioa_on_the_job_training_wages_300$/
+- case: /^GE-[A-Za-z0-9+]+-wages_1200_of_which_wioa_on_the_job_training_wages_300$/
   class: CW-1 WIOA on-the-job training wages are exempt (3.605.4.B.35, B.16; OQ-1022)
 
 # CW-2: pay an employer diverts to a third party for the household's expenses is still earned income (3.605.2.B.1,
@@ -16,13 +16,13 @@
 # third-party for the employee's household or other expenses"). Before, no Colorado Works item read
 # employer_vendor_payments_received. The generated applicant with a $300 vendor payment: gross earned income 0 to 300,
 # countable 300 - 90 = 210; and the pay is verified as earned income is (CW-4).
-- case: /^GE-CW[a-z]+-employer_vendor_payments_received_300$/
+- case: /^GE-[A-Za-z0-9+]+-employer_vendor_payments_received_300$/
   class: CW-2 an employer's vendor payment from the employee's pay is earned income (3.605.2.B.1)
 
 # CW-3 (a figure only): work-study (3.605.4.A.24.a) and subsidized employment wages (B.35) are exempt by their kind
 # (cw_earnings_treatment_table: excluded), so they are never counted and no longer subtracted by
 # cw_excluded_earned_income; gross earned income is unchanged.
-- case: /^GE-CW[a-z]+-wages_1200_of_which_(work_study_earnings|subsidized_employment_wages)_300$/
+- case: /^GE-[A-Za-z0-9+]+-wages_1200_of_which_(work_study_earnings|subsidized_employment_wages)_300$/
   identifier: cw_excluded_earned_income
   old: 300
   new: 0
@@ -38,7 +38,7 @@
   old: false
   new: unknown
   class: CW-4 in-kind, vendor and boarder pay is earned income to verify (3.604.3.B.2.e)
-- case: /^GE-CW[a-z]+-(in_kind_compensation_value_300|employer_vendor_payments_received_300|boarders_900_from_two_payers)$/
+- case: /^GE-[A-Za-z0-9+]+-(in_kind_compensation_value_300|employer_vendor_payments_received_300|boarders_900_from_two_payers)$/
   identifier: /^cw_earned_income_(is_unverified|verification_is_pending)$/
   old: false
   new: unknown
@@ -73,7 +73,7 @@
   identifier: /^cw_(gross_earned_income|payment_countable_earned_income|excluded_earned_income)$/
   new: unknown
   class: CW-D4 a student's earnings with the student facts not stated are cannot determine (3.605.4.B.24.b)
-- case: /^GE-CW[a-z]+-wages_not_stated$/
+- case: /^GE-[A-Za-z0-9+]+-wages_not_stated$/
   identifier: cw_excluded_earned_income
   old: 0
   new: unknown

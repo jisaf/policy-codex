@@ -94,12 +94,12 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 110, 50, 35, 27]); // earnings E0: + CO-5104 (figure), + OQ-1020, OQ-1022; reader-defaults round: + OQ-1051; receipts migration 2: + CO-5651, CO-5652, CO-5653, CO-5654, - CO-2341, + CO-5650 (figure), + OQ-985 to OQ-987; + OQ-951 (time audit T-1), OQ-953 (T-6); + CO-5207, CO-5208 (the child's caretakers and parents in the home, fix round 2026-11-23); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 112, 50, 35, 28]); // earned-income records E1, cash: + CO-5140, CO-5141, + OQ-1141, OQ-1142, - OQ-1022 (resolved); earnings E0: + CO-5104 (figure), + OQ-1020, OQ-1022; reader-defaults round: + OQ-1051; receipts migration 2: + CO-5651, CO-5652, CO-5653, CO-5654, - CO-2341, + CO-5650 (figure), + OQ-985 to OQ-987; + OQ-951 (time audit T-1), OQ-953 (T-6); + CO-5207, CO-5208 (the child's caretakers and parents in the home, fix round 2026-11-23); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
-  it("explains the grant amount in 5 main steps, 20 at two levels, 47 at three, 102 in all; the result last", () => {
-    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 20, 47, 102]); // receipts migration 2: + CO-5651, CO-5652, CO-5654, - CO-2341; coverage pass 2: CO-1265 reads the partial-month factor; + CO-4660; + CO-5207, CO-5208 (fix round 2026-11-23)
+  it("explains the grant amount in 5 main steps, 20 at two levels, 47 at three, 104 in all; the result last", () => {
+    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 20, 47, 104]); // earned-income records E1, cash: + CO-5140 (cw_earned_pay), CO-5141 (cw_new_source_earnings); receipts migration 2: + CO-5651, CO-5652, CO-5654, - CO-2341; coverage pass 2: CO-1265 reads the partial-month factor; + CO-4660; + CO-5207, CO-5208 (fix round 2026-11-23)
     const steps = explainSteps(engine, "cw_grant_amount", 1);
     expect(steps[steps.length - 1]).toMatchObject({ level: 0, item: { identifier: "cw_grant_amount" } });
     // Each rule comes after the rules it reads.
@@ -223,11 +223,11 @@ describe("the Programs pages", () => {
     expect(host.querySelector("ol.steplist > li.step:last-child .step-n")!.textContent).toBe("Result");
     expect(host.querySelector("button.print")!.textContent).toBe("Print for a training");
     const chips = [...host.querySelectorAll("nav.depthchips a")].map((a) => a.textContent);
-    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (102)"]); // + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2); + CO-5207, CO-5208 (fix round 2026-11-23)
+    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (104)"]); // + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2); + CO-5207, CO-5208 (fix round 2026-11-23)
     // The rule reads in plain words, never "-1 times".
     expect(host.querySelector("li.step.result")!.textContent).not.toMatch(/-1 times/);
     expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2").querySelectorAll("li.step")).toHaveLength(20);
-    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(102); // + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2)
+    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(104); // + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2)
   });
 
   it("shows a stored household's values beside each step", () => {

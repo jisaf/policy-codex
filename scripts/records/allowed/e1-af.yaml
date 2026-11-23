@@ -26,7 +26,7 @@
 - case: /^(CO-171|CO-206|CO-320|CO-354|CO-362|CO-425)$/
   identifier: /^af_(gross_earned_income|countable_income|earned_income_is_unverified|earned_income_verification_is_pending)$/
   class: AF-1 boarder payments are earned income less provision costs (3.520.783.C.2.b-d)
-- case: /^GE-AF[a-z]+-boarders_/
+- case: /^GE-[A-Za-z0-9+]+-boarders_/
   class: AF-1 boarder payments are earned income less provision costs (3.520.783.C.2.b-d)
 
 # AF-2: a pay's PASS set-aside is exempt (3.520.786.I, S2608: "Income and resources set aside as part of a Plan to Achieve
@@ -37,12 +37,12 @@
   person: p1
   identifier: /^af_(excluded_earned_income|gross_earned_income)$/
   class: AF-2 a PASS set-aside of earnings is exempt (3.520.786.I)
-- case: /^GE-AF[a-z]+-PASS_/
+- case: /^GE-[A-Za-z0-9+]+-PASS_/
   class: AF-2 a PASS set-aside of earnings is exempt (3.520.786.I)
 
 # AF-3 (a figure only): work-study is exempt by its kind (3.520.786.H; af_earnings_treatment_table: excluded), so it is
 # never counted and no longer subtracted by af_excluded_earned_income; gross earned income is unchanged.
-- case: /^GE-AF[a-z]+-wages_1200_of_which_work_study_earnings_300$/
+- case: /^GE-[A-Za-z0-9+]+-wages_1200_of_which_work_study_earnings_300$/
   identifier: af_excluded_earned_income
   old: 300
   new: 0
@@ -51,7 +51,7 @@
 # AF-4 (a figure only): a farm's costs are read with the farm's receipts over the prior year (3.520.783.C.1;
 # af_self_employment_net_profit), not in af_self_employment_business_costs, which is now the other business's costs; the
 # net profit is unchanged.
-- case: /^(CO-447|GE-AF[a-z]+-farm_1500_operating_400)$/
+- case: /^(CO-447|GE-[A-Za-z0-9+]+-farm_1500_operating_400)$/
   identifier: af_self_employment_business_costs
   new: 0
   class: AF-4 a farm's costs are read apart from another business's (figure only)
@@ -59,7 +59,7 @@
 # AF-5: in-kind pay is earned income Adult Financial counts (3.520.782.B) and so verifies (3.520.5.A, S880); before,
 # af_earned_income_is_unverified read wages_gross only. A generated household that states no verification document
 # for its in-kind pay cannot determine whether it is verified.
-- case: /^GE-AF[a-z]+-in_kind_compensation_value_300$/
+- case: /^GE-[A-Za-z0-9+]+-in_kind_compensation_value_300$/
   identifier: /^af_earned_income_(is_unverified|verification_is_pending)$/
   old: false
   new: unknown
@@ -74,3 +74,23 @@
   old: 0
   new: unknown
   class: AF-D4 earnings not stated, the cost and exemption figures are cannot determine as gross earned income was
+
+# AF-0 (continued), seen only with --all-programs: the generated LEAP households' p2 states no receipts, and SNAP's
+# earned income reads its training-allowance receipts with no default since the decision-4 round for the receipts
+# readers (b49a7f2: CO-4930), merged after the earnings baseline. Not this track's change.
+- case: /^GE-LEAP-/
+  person: p2
+  identifier: /^snap_(person_earned_income|person_earned_income_other_than_self_employment|earned_income_verification_is_pending)$/
+  new: unknown
+  class: AF-0 inherited D4 (receipts reader defaults, merged after the earnings baseline)
+
+# AF-D4 (continued): a person who states earnings but no receipts. 3.520.786.O tests infrequent or irregular income,
+# earned and unearned together, over the calendar quarter (af_infrequent_income_quarter_total, CO-4011), and each month's
+# unearned part is no longer read as 0 when the receipts are not stated (step 4 of this track; decision 4), so the
+# exempt infrequent pay, and with it gross earned income, is cannot determine. The generated LEAP households' p2.
+- case: /^GE-LEAP-/
+  person: p2
+  identifier: /^af_(excluded_earned_income|gross_earned_income)$/
+  old: 0
+  new: unknown
+  class: AF-D4 receipts not stated, the infrequent-income quarter and so gross earned income are cannot determine

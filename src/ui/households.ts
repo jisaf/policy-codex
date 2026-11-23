@@ -378,19 +378,41 @@ export function amountKey(a: Pick<StatedAmount, "person" | "identifier">): strin
   return `${a.person}:${a.identifier}`;
 }
 
+/** The earnings record a scalar earned fact restates one to one during the
+ *  earned-income records transition (docs/reviews/earnings-e0.md 5: what is
+ *  left of wages_gross after its parts is the wages record; the business's
+ *  gross receipts are its receipts record). A raise of the fact is a raise of
+ *  that record too, so a program that reads the records sees it (the
+ *  transition rule: both statements move together). */
+const RESTATED_AS: Readonly<Record<string, string>> = {
+  wages_gross: "wages",
+  self_employment_gross_receipts: "self_employment_receipts",
+};
+
 /** The stored household with `delta` added to one stated amount, wherever
- *  the case states it (every month it is stated for). The original is not
- *  changed. */
+ *  the case states it (every month it is stated for), and to the earnings
+ *  record that restates it: the person's one recurring record of that kind
+ *  with no field that marks a part (a record is added when the person's
+ *  stated earnings list has none). The original is not changed. */
 export function withRaise(hc: HouseholdCase, a: Pick<StatedAmount, "person" | "identifier">, delta: number): HouseholdCase {
   const x = JSON.parse(JSON.stringify(hc)) as HouseholdCase;
   const p = x.persons[a.person];
   if (!p) return x;
+  let raised = false;
   const bump = (rec: Record<string, unknown> | undefined) => {
-    if (rec && typeof rec[a.identifier] === "number") rec[a.identifier] = (rec[a.identifier] as number) + delta;
+    if (rec && typeof rec[a.identifier] === "number") { rec[a.identifier] = (rec[a.identifier] as number) + delta; raised = true; }
   };
   bump(p.facts as Record<string, unknown> | undefined);
   bump(p.month_defaults);
   for (const m of Object.values(p.months ?? {})) bump(m);
+  const kind = RESTATED_AS[a.identifier];
+  const earnings = (p.facts as Record<string, unknown> | undefined)?.earnings;
+  if (raised && kind && Array.isArray(earnings)) {
+    const parts = ["month", "date", "irregular", "temporary_job", "paid_as_business_owner", "job_start_date", "farm"];
+    const own = (earnings as Array<Record<string, unknown>>).filter((r) => r.kind === kind && parts.every((k) => r[k] === undefined));
+    if (own.length === 1 && typeof own[0].amount === "number") own[0].amount = (own[0].amount as number) + delta;
+    else if (own.length === 0) earnings.push({ kind, amount: delta });
+  }
   return x;
 }
 
@@ -400,7 +422,8 @@ export interface Watched { person: string; identifier: string }
  *  outcome that reads it (counts.ts `outcomesAffected`, verification flags
  *  left out), for every person. */
 export function watchedResults(engine: Engine, hc: HouseholdCase, identifier: string): Watched[] {
-  const outs = new Set(outcomesAffected(engine, identifier));
+  // a fact restated as an earnings record moves what reads the record too (RESTATED_AS)
+  const outs = new Set([...outcomesAffected(engine, identifier), ...(RESTATED_AS[identifier] ? outcomesAffected(engine, "earnings") : [])]);
   const declared = declaredOutcomePrograms(engine).flatMap((p) => p.outcomes).filter((o) => outs.has(o));
   const tested = new Set(programsOfCase(engine.index, hc));
   const ids = declared.filter((o) => tested.has(engine.item(o)?.program ?? ""));

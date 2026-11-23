@@ -57882,3 +57882,279 @@
         2026-10: not_met
       ma_ssi_related_category:
         2026-10: none
+- id: CO-670
+  title: 'Earned-income records E1 (Colorado Works): WIOA on-the-job training wages are exempt; pay diverted to the landlord is earned income'
+  # Built on CO-358 (a single mother of 24 and her daughter of 6, applying 2026-10-12, determined 2026-10-15; need standard
+  # 331, grant standard 488, October paid from the twelfth at .65754), written in earnings records alone (docs/reviews/
+  # records-earnings-cash.md). The mother earns $300 of wages, $300 of wages in a WIOA on-the-job training job, and her
+  # employer pays $100 of what it owes her straight to her landlord; no unearned income.
+  # 9 CCR 2503-6 3.605.4.B.35 and B.16 (S2606) exempt the on-the-job training wages; 3.605.2.B.1 (S4381) keeps the $100
+  # diverted to the landlord as earned income. Gross earned income 300 + 100 = 400; at application 400 - 90 = 310
+  # (3.606.2.A.1) < 331: eligible; the payment disregards 100% of earned income in the first certification period, so the
+  # grant is 488 and October .65754 x 488 = 320.88, cents dropped, 320.
+  # Before earnings records: the WIOA wages were counted and the vendor payment was not: 600 - 90 = 510 >= 331,
+  # ineligible_income, $0.
+  as_of: "2026-10-15"
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
+  relationships:
+  - [parent, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "2002-02-02"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 300}
+        - {kind: wioa_on_the_job_training, amount: 300}
+        - {kind: employer_vendor_payment, amount: 100}
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2020-06-01"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      cw_eligibility_status:
+        2026-10: eligible
+      cw_grant_amount:
+        2026-10: 320
+      cw_countable_income:
+        2026-10: 310
+      cw_gross_earned_income:
+        2026-10: 400
+    p2:
+      cw_eligibility_status:
+        2026-10: eligible
+      cw_grant_amount:
+        2026-10: 320
+      cw_countable_income:
+        2026-10: 310
+
+- id: CO-671
+  title: "Earned-income records E1 (Adult Financial): a lodger's payment for a room is earned income less its costs"
+  # Built on CO-196 (an OAP client of 70 with $600 of Social Security and her husband of 68 with $1,000 of Social
+  # Security and a $500 income tax refund, nothing deemed), written in earnings records alone for p1
+  # (docs/reviews/records-earnings-cash.md): she also lets a room to a lodger for $400 a month, lodging only, with $50
+  # of documented costs of the room.
+  # 9 CCR 2503-5 3.520.783.C.2.c (S4380): room payments are earned income in the month received, less the documentable
+  # expenses of providing the room: 400 - 50 = 350. 3.533.A (S457): countable earned income (350 - 65) / 2 = 142.5;
+  # countable unearned income 600 - 10 (her half of the couple's $20, 3.533.A.2.c.1) = 590; total 732.5 < 1,032: oap.
+  # The husband's income is unchanged, so nothing is deemed (CO-196). Grant: 1,032 - 732.5 = 299.5, cents dropped
+  # (3.581.E, S1825): 299.
+  # Before earnings records the payment could be stated only as a room-only receipt, counted as unearned income:
+  # 600 + 400 - 10 = 990, grant 1,032 - 990 = 42, raised to the OAP payment floor ($189).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - {kind: social_security, amount: 600}
+        earnings:
+        - {kind: boarder_payments, amount: 400, provides: room_only, boarders: 1}
+        - {kind: business_cost_boarder_provision, amount: 50, provides: room_only}
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - {kind: social_security, amount: 1000}
+        - {kind: income_tax_refund, amount: 500}
+        earnings: []
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_deemed_relative_income: {"2026-10": 0}
+      af_gross_earned_income: {"2026-10": 350}
+      af_countable_income: {"2026-10": 732.5}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 299}
+
