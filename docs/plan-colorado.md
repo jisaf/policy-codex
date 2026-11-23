@@ -91,3 +91,6 @@ Added (product owner, 2026-11-22): a visual design pass after the UI fix round (
 
 ### Product-owner decision: the engine's role (2026-11-22)
 The evaluator in `src/engine/` is the codex's test harness and the producer of the conformance suite, not a product. It runs definitions so rule tests and stored households prove each rule does what its meaning says, explains stored households, and shows a proposed change's effect to approvers. It does not do intake or live calculation for arbitrary households, and it is not to grow into a production engine. Guardrails: every new operator is justified by rule text that needs it and is documented in docs/operators.md (with its P-number in docs/conventions.md) for the engine teams in the same change.
+
+### Product-owner decision: restructure and shared primitives (2026-11-23)
+The restructure in docs/design-restructure-proposal.md is approved. Programs are independent: a cross-program read is allowed only for a primitive with one definition everywhere (age, dates, relationships, published figures). Complex program-specific calculations (income, resources, units, homelessness, countable expenses) are never shared; each program builds its own from the shared supplied facts. Every case matters, including edge cases; the stopping rule is unchanged.

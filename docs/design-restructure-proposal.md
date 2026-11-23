@@ -1,6 +1,6 @@
 # Proposal: restructure so edge cases are hard to get wrong (awaiting product-owner approval)
 
-Status: proposed 2026-11-22, not started. Work is paused until approved.
+Status: approved by the product owner 2026-11-23, with the cross-program rule below. In progress.
 
 ## Why
 Three exhaustive coverage passes per program family found 101, then ~31, then 25 P1s. The counts fall, but every pass finds new ones, and about half of each pass's P1s are regressions of the previous fix round. Measured causes in the current design:
@@ -14,13 +14,14 @@ Three exhaustive coverage passes per program family found 101, then ~31, then 25
 - Every case matters; edge cases are not deprioritised.
 - Programs are independent of each other except where a rule or policy requires a link.
 - Verification should not drift from counting.
+- **Shared primitives, not shared calculations** (2026-11-23): a cross-program read is fine when it reads the same primitive with the same definition in every program (for example age, a date difference, a relationship, a published figure such as the poverty guideline). Complex calculations whose definition differs by program (income, resources, household or unit composition, homelessness, countable expenses) are never shared: each program builds its own from the shared supplied facts, so changing one program's definition cannot change another's.
 
 ## Proposed changes, in order
 1. **Keep every probe household.** Promote all reviewer probes to stored cases with the reviewer's hand-derived expectations. From now on every probe goes straight into `volumes/co/tests/cases.yaml`.
 2. **One record per dollar.** Supplied income and resource facts become disjoint, program-neutral leaves (wages, SSDI, lump sum, G.I. Bill allowance, crime-victim payment, ...), each stated once. Aggregates become derived sums, never entered. Each program gets one counting table (receipt type → counted / excluded / special rule, with citations) as the only place it decides what counts. Resources the same.
 3. **Verification reads what is counted.** Each program's verification starts from its own counting table; rule-text differences (statement accepted, verify only if questionable, excluded-but-verified) are explicit, cited exceptions. A check in `npm run check` fails if a counted receipt type is neither verified nor on the cited exemption list.
 4. **No duplicate paths within a program.** Alternate paths (Family Planning, allotment, deeming, the second Medicaid gate) read the program's main items. A governance check flags an item that re-sums the same leaves another item of the same program already sums.
-5. **No cross-program derived dependencies unless a rule requires them.** Only supplied facts are shared across programs. Shared derived items in `volumes/co/shared/` are split into per-program items. The 32 existing cross-program reads are audited; each stays only with `accepts_from` and a rule citation, and governance blocks any undeclared cross-program read.
+5. **No shared complex calculations across programs.** Only primitives cross programs: supplied facts, published parameters, and derived primitives whose meaning is identical everywhere (age, dates, relationships). Each item in `volumes/co/shared/` is classified primitive or complex; complex ones are split into per-program items built from the supplied facts. The 32 existing cross-program reads are audited the same way. Governance enforces it: a shared derived item must be marked as a primitive with a one-line statement that no program defines it differently, and a program item that reads another program's derived item needs `accepts_from` with the rule citation that requires it.
 6. **Every fix ships with a whole-household test**, not only an item test with mocked inputs.
 
 Step 2 touches every program (~180 items). It is done one program at a time, sequentially, with the full stored-case set as the safety net: any household whose answer moves is visible immediately.
