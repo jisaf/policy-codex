@@ -8,10 +8,11 @@ import { buildSuite, gradeCase, ruleTestInputs, type SuiteCase } from "../../src
 import { buildLedgerJson } from "../../src/export/ledger-json";
 import { loadVolume, selectedVolumeIds, manifestVolumes } from "../../src/tools/volumes";
 import { evaluateCase, resolveVolume } from "../../scripts/adapters/codex-self-lib";
+import { loadKnownFailures } from "../../src/tools/check";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
-const suite = buildSuite(engine, vol, "deadbeef");
+const suite = buildSuite(engine, vol, "deadbeef", { knownFailures: loadKnownFailures(root) });
 const byId = (id: string) => suite.cases.find((c) => c.id === id)!;
 
 describe("the co suite", () => {

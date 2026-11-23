@@ -9,6 +9,7 @@ import {
   buildSuite, gradeCase, type AdapterValue, type ConformanceResults, type Suite, type SuiteCase,
 } from "../export/conformance";
 import { conformanceDir, loadVolume } from "./volumes";
+import { loadKnownFailures } from "./check";
 import { gitShaWithDirtySuffix } from "../../scripts/git-sha";
 
 /** The reference adapter, as `npm run conform:self` and the check run it. */
@@ -80,7 +81,9 @@ export function formatResults(r: ConformanceResults): string {
  *  `conformance/<volume>/suite.json`. */
 export function writeSuite(root: string, volumeId: string): { suite: Suite; file: string } {
   const { vol, engine } = loadVolume(root, volumeId);
-  const suite = buildSuite(engine, vol, gitShaWithDirtySuffix(root));
+  const suite = buildSuite(engine, vol, gitShaWithDirtySuffix(root), {
+    knownFailures: loadKnownFailures(root),
+  });
   const dir = conformanceDir(root, volumeId);
   fs.mkdirSync(dir, { recursive: true });
   const file = path.join(dir, "suite.json");

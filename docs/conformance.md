@@ -167,7 +167,10 @@ here to read a case the way the codex does:
 case does not reproduce: after building each case, `buildSuite` evaluates it
 again from its exported form, as an adapter would, and notes any difference.
 An empty array means the suite is current and self-consistent; `npm run
-check` fails otherwise.
+check` fails otherwise. A stored household expectation whose key is listed in
+`conformance/known-failures.json` (a rule's answer the codex does not give yet,
+tracked against an open finding) is not noted as stale; as for every case,
+the suite carries the codex's own value for it.
 
 ## The adapter contract
 
@@ -285,7 +288,8 @@ ambiguity about which version of the rules that means.
 Only `known-failures.json` in `conformance/` is tracked; everything under
 `conformance/<volume>/` is regenerated on demand (each carries a fresh
 `generated` timestamp). `npm run check` reads `known-failures.json` to
-decide which already-known rule-test or case failures do not block a merge.
+decide which already-known rule-test or case failures do not block a merge,
+and the suite build reads it so a listed case expectation adds no note.
 
 ## Running it in another repo's CI
 
