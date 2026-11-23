@@ -48,16 +48,18 @@ export const track: Track = {
       "snap_real_property_not_exempt", "snap_countable_real_property", "snap_countable_funeral_agreements",
       "snap_countable_burial_spaces", "snap_disqualifying_transfer_value", "snap_disqualifying_transfer_value_before_application",
       "snap_household_liquid_resources",
+      // coverage pass 4 SNAP resources (SR-3, SR-5): non-liquid personal property and installment contracts
+      "snap_countable_other_nonliquid_resources",
     ],
     metamorphic: [
       "snap_countable_liquid_resources", "snap_countable_nonliquid_resources", "snap_real_property_not_exempt",
       "snap_countable_real_property", "snap_countable_funeral_agreements", "snap_countable_burial_spaces",
-      "snap_disqualifying_transfer_value", "snap_household_countable_resources",
+      "snap_disqualifying_transfer_value", "snap_household_countable_resources", "snap_countable_other_nonliquid_resources",
     ],
     // The SNAP household's figures; MH-3 is not run (below).
     coupleFigures: ["snap_household_countable_resources", "snap_household_liquid_resources"],
     notInvariant: {
-      "MH-3": "SNAP's household is not the couple: a spouse who is not a member of the SNAP household (in an institution that provides meals, or an ineligible student) is outside it, so the spouse's half of a joint account is not counted where the whole account stated on the member is (CO-01, CO-02 and the other long-term care couples); 10 CCR 2506-1 4.409.C would count a holding shared with a separate household in its entirety, which co_owners spouse cannot say (OQ-1252)",
+      "MH-3": "SNAP's household is not the couple: a spouse who is not a member of the SNAP household (in an institution that provides meals, or an ineligible student) is outside it, so an account stated whole on that spouse is not the household's, while the same account stated jointly is counted in its entirety on the member's list (10 CCR 2506-1 4.409.C, a separate household's joint resource; coverage pass 4 SNAP resources SR-8, OQ-1252 resolved in part): the two statements are not the same household's resources (CO-01, CO-02 and the other long-term care couples)",
     },
     bases: [
       { id: "CO-223", person: "p1", label: "SNAP resources" },

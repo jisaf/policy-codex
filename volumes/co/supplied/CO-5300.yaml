@@ -6,7 +6,7 @@ type: list of receipts
 scope: person
 program: All
 meaning: "Everything of value the person owns, in whole or in part, or gave away, one record per holding per owner, each stated once: what it is (its kind: the kind of property, or the source of money still held that a rule treats by where it came from and when, in words no program's rule is needed to apply), its fair market value as of a month, what is owed against it, the person's share and who else owns it, whether the person can get at it, and the properties of the holding a rule reads (used for transportation, the home the person lives in, listed for sale, producing income, the face value of a policy, set aside for burial, disposed of and to whom). It is the third list of records beside receipts (CO-5000) and earnings (CO-5100): money received in a month is a receipt or an earnings record in that month and, what is left of it at the first moment of a later month, a holding (docs/design-earned-and-resource-records.md 3.1). What a record counts for is decided by each program's own counting table (snap_, af_ and ma_ssi_holding_treatment_table; the Medicare Savings Program, Adult Financial burial assistance and the Colorado Works death reimbursement read the SSI method by their cited links; Colorado Works, LEAP, CCCAP and SUN Bucks have no resource test that reads holdings), never by a second statement of the holding. A stated empty list means the person owns nothing of value and gave nothing away; a list not stated means the person's resources are not known, and an outcome that depends on them cannot be determined (product-owner decision 4 of 2026-11-23)."
-precision: "Resource records, step H0 (2026-11-23; docs/design-earned-and-resource-records.md 3.1-3.4, decisions D3, D5, D8 and D9; docs/reviews/holdings-h0.md). Records are disjoint: money a rule treats by its source and date (a tax refund, a retroactive benefit, insurance proceeds held for replacement) is its own held_ record dated by source_date, and the account it sits in states the rest, so no rule has to decide where a dollar stated twice sits; a part of real property a rule treats apart (for sale, a lot for a future home, former farm property) is its own record. Joint ownership (3.2): a holding owned with others is stated on the list of each owner who is a person of the case, with the same holding_id, kind and value and that owner's share; an owner outside the case is named by co_owners; npm run check refuses a holding_id whose records disagree on kind or value or whose shares add to more than 1. value is the fair market value of the whole holding and amount_owed what is owed against the whole; a program that counts equity reads value less amount_owed, times share. A record with no month is the same in every month the case covers; a record valued in a month states it. A transfer is the holding's record with disposed_date, what was received for it and to whom it went: one transfer, one record, read by every program's look-back (ends the two statements of one transfer in the SNAP and Adult Financial facts and in Medicaid's). An agency's finding about one holding or one transfer is a field named for its program (snap_, af_, ma_; decision D9), because a finding is not a neutral fact. The exception fields (accessible) take the default the rules state: each rule presumes a resource available until it is shown otherwise (D3). Transition (step H0 to H1): no rule reads this list yet; every program still reads the scalar resource facts it read before, and a stored household or rule test that states resources states them in those facts and, beside them, as these records, both written by the translator from one statement (npm run records:translate-holdings, scripts/records/translate-holdings.ts), so the two cannot disagree; npm run records:harness -- --list holdings fails when they do. Each program's H1 track moves its readers to this list; H2 retires the scalar facts. Not restated: the Medicaid look-back total and its exemption with no dated transfer (CO-824, CO-825), the penalty start (CO-886), the couple's resources at the snapshot (CO-888, derived from dated holdings in H1 where stated: decision D8), the CSRA figures and findings (CO-1948, CO-1950, CO-4636, CO-4637) and the qualifying income trust (CO-823, an income arrangement); each stays the person fact it is."
+precision: "Resource records, step H0 (2026-11-23; docs/design-earned-and-resource-records.md 3.1-3.4, decisions D3, D5, D8 and D9; docs/reviews/holdings-h0.md). Records are disjoint: money a rule treats by its source and date (a tax refund, a retroactive benefit, insurance proceeds held for replacement) is its own held_ record dated by source_date, and the account it sits in states the rest, so no rule has to decide where a dollar stated twice sits; a part of real property a rule treats apart (for sale, a lot for a future home, former farm property) is its own record. Joint ownership (3.2): a holding owned with others is stated on the list of each owner who is a person of the case, with the same holding_id, kind and value and that owner's share; an owner outside the case is named by co_owners; npm run check refuses a holding_id whose records disagree on kind or value or whose shares add to more than 1. value is the fair market value of the whole holding and amount_owed what is owed against the whole; a program that counts equity reads value less amount_owed, times share. A record with no month is the same in every month the case covers; a record valued in a month states it. A transfer is the holding's record with disposed_date, what was received for it and to whom it went: one transfer, one record, read by every program's look-back (ends the two statements of one transfer in the SNAP and Adult Financial facts and in Medicaid's). An agency's finding about one holding or one transfer is a field named for its program (snap_, af_, ma_; decision D9), because a finding is not a neutral fact. The exception fields (accessible) take the default the rules state: each rule presumes a resource available until it is shown otherwise (D3). Transition (step H0 to H1): no rule reads this list yet; every program still reads the scalar resource facts it read before, and a stored household or rule test that states resources states them in those facts and, beside them, as these records, both written by the translator from one statement (npm run records:translate-holdings, scripts/records/translate-holdings.ts), so the two cannot disagree; npm run records:harness -- --list holdings fails when they do. Each program's H1 track moves its readers to this list; H2 retires the scalar facts. Not restated: the Medicaid look-back total and its exemption with no dated transfer (CO-824, CO-825), the penalty start (CO-886), the couple's resources at the snapshot (CO-888, derived from dated holdings in H1 where stated: decision D8), the CSRA figures and findings (CO-1948, CO-1950, CO-4636, CO-4637) and the qualifying income trust (CO-823, an income arrangement); each stays the person fact it is. Coverage pass 4 for SNAP resources (docs/reviews/coverage4-snap-resources.md, SR-1, SR-4, SR-5, SR-6, SR-7, SR-10; 2026-11-23): neutral fields added for what the rules read and no field said: whom a burial fund, funeral agreement or burial space is for (burial_for, and for_person, a field naming a person of the case: the first record field of type person, which npm run check holds to a person of the case or test), why a home is unoccupied and whether the person will return (temporary_absence), whether a loan receivable is a negotiable instrument (negotiable_instrument), and the part of a refund that is an earned income tax credit (eitc_share, a fraction of the value); the costs of sale are of the whole holding, as its value is (only SNAP reads them); and SNAP's finding that property or an installment contract returns income consistent with its value (snap_return_consistent_with_value, decision D9). No kind's meaning changed."
 supplied_by: "The applicant's statement and the holder's records (bank and brokerage statements, a deed and the county assessor's value, a vehicle's title and its market value, a policy's statement of cash value, a burial contract or trust, the trust instrument, the record of a sale or gift), one record per holding per owner."
 record_noun: holding
 record_fields:
@@ -74,6 +74,10 @@ record_fields:
     when_absent: "no one else owns any of the holding"
     meaning: "Who else owns part of the holding: the person's spouse, another person of the case, or someone outside the case (whose own list is not stated)."
     options: [spouse, other_in_case, outside_case]
+  co_owner:
+    type: person
+    required: true
+    meaning: "For a holding owned with another person of the case (co_owners other_in_case), that person: the person's id in the case."
   accessible:
     type: yes/no
     default: true
@@ -90,7 +94,11 @@ record_fields:
   received_while_on_snap:
     type: yes/no
     required: true
-    meaning: "For a held earned income tax credit, the person was participating in SNAP when it was received and has participated since (temporary non-participation for administrative reasons does not interrupt it)."
+    meaning: "For a held earned income tax credit, or a held income tax refund with an earned income tax credit in it (eitc_share), the person was participating in SNAP when it was received and has participated since (temporary non-participation for administrative reasons does not interrupt it)."
+  eitc_share:
+    type: rate
+    default: 0
+    meaning: "For a held income tax refund, the part of it that is an earned income tax credit claimed on the same return and paid with the refund, as a fraction of its value (0.8 for $1,200 of a $1,500 refund; 1 for a refund that is all credit); none when the refund includes no such credit. A rule that treats the credit apart from the rest of the refund reads it (10 CCR 2506-1 4.410.J.12)."
   replacement_property:
     type: one of
     required: true
@@ -113,6 +121,11 @@ record_fields:
     type: yes/no
     default: false
     meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
+  temporary_absence:
+    type: one of
+    required: true
+    options: [employment, training_for_employment, illness, uninhabitable_after_casualty_or_disaster, other_reason, not_returning]
+    meaning: "For a home the person does not live in now (lives_in false), whether the person is away for a time and intends to return, and why: for employment, for training for future employment, because of illness, because the home is not habitable as a result of a casualty or natural disaster, or for another reason; not_returning when the person does not intend to return to it."
   intent_in_writing:
     type: yes/no
     default: false
@@ -136,7 +149,7 @@ record_fields:
   costs_of_sale:
     type: money
     required: true
-    meaning: "For real property, the estimated costs of selling or otherwise disposing of the person's interest in it (commissions, closing costs and the like)."
+    meaning: "For real property, or other property a rule tests for what its sale would return, the estimated costs of selling or otherwise disposing of the whole holding (commissions, closing costs and the like): for a holding owned with others, the same figure on each owner's record, as its value is."
   co_owner_lives_in_it:
     type: yes/no
     required: true
@@ -160,7 +173,11 @@ record_fields:
   net_annual_return:
     type: money
     required: true
-    meaning: "For income-producing property, the net income it produced over the last twelve months (or is expected to produce in the next twelve, for property newly acquired): its gross receipts less the expenses of producing them."
+    meaning: "For income-producing property, or an installment contract, the net income it produced over the last twelve months (or is expected to produce in the next twelve, for property newly acquired): its gross receipts less the expenses of producing them."
+  snap_return_consistent_with_value:
+    type: yes/no
+    required: true
+    meaning: "SNAP's finding (decision D9): for income-producing property not used in the person's trade or business, or for an installment contract, the county has found that it is producing an annual income consistent with its fair market value in the community (10 CCR 2506-1 4.410.E.1-2; 7 CFR 273.8(e)(4), (e)(6))."
   produces_for_household_use:
     type: yes/no
     default: false
@@ -205,6 +222,19 @@ record_fields:
     type: yes/no
     required: true
     meaning: "For a burial space, it is intended for the person, the person's spouse or another member of the immediate family, or a brother or sister of one of them, or that person's spouse."
+  burial_for:
+    type: one of
+    required: true
+    options: [person_of_case, outside_case]
+    meaning: "For a burial fund, a prepaid burial contract or a burial space, whom it is for: a person of the case (named in for_person; the owner when it is the owner's own), or someone who is not a person of the case."
+  for_person:
+    type: person
+    required: true
+    meaning: "For a burial fund, a prepaid burial contract or a burial space that is for a person of the case (burial_for person_of_case), that person: the person's id in the case (the owner's own id for the owner's own)."
+  negotiable_instrument:
+    type: yes/no
+    required: true
+    meaning: "For a loan receivable, the note or other instrument is a negotiable instrument (as C.R.S. 4-3-104 defines it)."
   revocable:
     type: yes/no
     required: true
