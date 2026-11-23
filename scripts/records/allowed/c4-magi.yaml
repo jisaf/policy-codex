@@ -1,0 +1,11 @@
+# Earned-income records harness: allowed differences of coverage pass 4, MAGI Medicaid and CHP+
+# (docs/reviews/coverage4-medicaid-magi-chp.md, dispositions). Each entry is a cited fix with its rule text and the
+# household it moves: {case, person?, identifier?, month?, class, old?, new?}.
+
+# C4-CPB (CO-387, coverage pass 3 C3-08, formerly a known failure under OQ-810): 10 CCR 2505-3 320.1 (D-66) sets the
+# copayment band by "income, at the time of eligibility determination", and 10 CCR 2505-10 8.100.4.C.4.a (S3356)
+# annualizes only for "Applicants who are found financially ineligible based on current or previous monthly household
+# income". CO-387's p2 is CHP+ eligible on the month's 4,328 / 1,803.33 = 240.0% (at most 260%), so the band is set on
+# 240.0%: above 200%, band_d; before, on the annualized 34,624 / 12 / 1,803.33 = 160.0%, band_c. p1, the parent, reads
+# the same figure (the band is the family's).
+- {case: CO-387, identifier: chp_copayment_income_band, class: "C4-CPB (2505-3 320.1, 8.100.4.C.4.a): the copayment band of the income CHP+ eligibility was determined on", old: band_c, new: band_d}
