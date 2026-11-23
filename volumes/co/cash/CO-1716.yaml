@@ -12,7 +12,7 @@ implemented: engine
 tags: [cash, tanf, income]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): the Colorado Works need test, payment and minor-parent deeming read wages only, so a self-employed applicant's earnings were left out; one item now states the earned income the three of them disregard from."
 tests:
-  - {id: CO-1716-T1, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 800, self_employment_gross_receipts: 1500, cw_self_employment_business_costs: 400}, expect: 1900}
-  - {id: CO-1716-T2, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 2380, self_employment_gross_receipts: 0}, expect: 2380}
+  - {id: CO-1716-T1, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 800, self_employment_gross_receipts: 1500, cw_self_employment_business_costs: 400, earnings: [{kind: wages, amount: 800}, {kind: self_employment_receipts, amount: 1500}]}, expect: 1900}
+  - {id: CO-1716-T2, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 2380, self_employment_gross_receipts: 0, earnings: [{kind: wages, amount: 2380}]}, expect: 2380}
   # Phase-10 sweep (OQ-390): a full-time student dependent child's $800 of wages is disregarded (3.605.4.B.24.b).
-  - {id: CO-1716-T3, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 800, self_employment_gross_receipts: 0, cw_self_employment_business_costs: 0, cw_excluded_earned_income: 800}, expect: 0}
+  - {id: CO-1716-T3, as_of: "2026-10-01", month: "2026-10", given: {receipts: [], wages_gross: 800, self_employment_gross_receipts: 0, cw_self_employment_business_costs: 0, cw_excluded_earned_income: 800, earnings: [{kind: wages, amount: 800}]}, expect: 0}

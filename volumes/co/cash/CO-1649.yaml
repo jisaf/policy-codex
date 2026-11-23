@@ -14,6 +14,6 @@ implemented: engine
 tags: [verification, cash, tanf]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1649-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 1200, self_employment_gross_receipts: 0, earned_income_verification_document_received: false}, expect: true}
-  - {id: CO-1649-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 0, self_employment_gross_receipts: 500, self_employment_net_earnings_for_tax: 500, earned_income_verification_document_received: false, self_employment_income_verified_by_electronic_data_source: true}, expect: false}
-  - {id: CO-1649-T3, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: false}
+  - {id: CO-1649-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 1200, self_employment_gross_receipts: 0, earned_income_verification_document_received: false, earnings: [{kind: wages, amount: 1200}]}, expect: true}
+  - {id: CO-1649-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 0, self_employment_gross_receipts: 500, self_employment_net_earnings_for_tax: 500, earned_income_verification_document_received: false, self_employment_income_verified_by_electronic_data_source: true, earnings: [{kind: self_employment_receipts, amount: 500, net_for_tax: 500}]}, expect: false}
+  - {id: CO-1649-T3, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, wages_gross: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, earnings: []}, expect: false}

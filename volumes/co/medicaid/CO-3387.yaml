@@ -16,5 +16,5 @@ accepts_from:
   - {from: ma_self_employment_net_earnings, class: adopted_method, source: S2210}
 rationale: "Same-word audit SW-28: the student earned income exclusion's yearly maximum needs the months before; this item is the month's amount before the yearly cap, so the exclusion is computed without an item reading itself."
 tests:
-  - {id: CO-3387-T1, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 3000, ma_self_employment_net_earnings: 0}, expect: 2410}
-  - {id: CO-3387-T2, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "1990-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 3000}, expect: 0}
+  - {id: CO-3387-T1, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 3000, ma_self_employment_net_earnings: 0, earnings: [{kind: wages, amount: 3000}, {kind: self_employment_receipts}]}, expect: 2410}
+  - {id: CO-3387-T2, month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "1990-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 3000, earnings: [{kind: wages, amount: 3000}, {kind: self_employment_receipts}]}, expect: 0}

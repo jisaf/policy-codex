@@ -1,0 +1,10 @@
+# Boundary lint (scripts/records/boundary.ts): pairs a stored household or rule test states on both sides of
+# the receipts/earnings boundary that are known and dispositioned, each with the reason and who restates it.
+# Owned by the integration owner; a track that restates the household removes its entry.
+# {case, person, receipt, earning, amount, reason}
+- case: CO-425
+  person: p1
+  receipt: other_taxable
+  earning: boarder_payments
+  amount: 600
+  reason: "Probe C3-7 (SNAP financial coverage 3), materialized from an override probe on CO-115, states the $600 of room and board twice: as room_and_board_payments_received (CO-4161, which is 'not part of the wages, self-employment or unearned income facts') and as other_unearned_income_taxable 600 (retired; its receipt is other_taxable 600), although its own description says p1 has 'no wages, $600 of room and board payments'. SNAP, Colorado Works and CCCAP count the $600 both as unearned income and as boarder income today; its one expectation (earned-income verification) does not turn on it. Kept as stated in step E0, which changes no answer; the SNAP E1 track restates the household (other_taxable removed) as a cited fix (docs/reviews/earnings-e0.md, finding E0-F1)."

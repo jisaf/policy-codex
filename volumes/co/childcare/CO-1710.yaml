@@ -13,10 +13,10 @@ implemented: engine
 tags: [income]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
 tests:
-  - {id: CO-1710-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, cccap_self_employment_business_expenses: 400}, expect: 1100}
-  - {id: CO-1710-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
-  - {id: CO-1710-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, cccap_self_employment_business_expenses: 450}, expect: 0}
+  - {id: CO-1710-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, cccap_self_employment_business_expenses: 400, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
+  - {id: CO-1710-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0, earnings: [{kind: wages}]}, expect: 0}
+  - {id: CO-1710-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, cccap_self_employment_business_expenses: 450, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 300}]}, expect: 0}
   # Coverage round F-11 (probe RV-H): a business under twelve months old in its launch period, $300 of receipts, 120 declared hours: $7.25 x 120 = $870 (G.2.e).
-  - {id: CO-1710-T4, title: "F-11: launch period income is the federal minimum wage times the declared hours", as_of: "2026-11-01", month: "2026-11", given: {self_employment_gross_receipts: 300, hours_worked: 120, cccap_self_employment_in_launch_period: true}, expect: 870}
+  - {id: CO-1710-T4, title: "F-11: launch period income is the federal minimum wage times the declared hours", as_of: "2026-11-01", month: "2026-11", given: {self_employment_gross_receipts: 300, hours_worked: 120, cccap_self_employment_in_launch_period: true, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 300}]}, expect: 870}
   # A caretaker with a wage job and a new business states the self-employment hours: $7.25 x 40 = $290.
-  - {id: CO-1710-T5, title: "F-11: with a wage job, only the self-employment hours are projected", as_of: "2026-11-01", month: "2026-11", given: {self_employment_gross_receipts: 0, hours_worked: 160, self_employment_hours_worked: 40, cccap_self_employment_in_launch_period: true}, expect: 290}
+  - {id: CO-1710-T5, title: "F-11: with a wage job, only the self-employment hours are projected", as_of: "2026-11-01", month: "2026-11", given: {self_employment_gross_receipts: 0, hours_worked: 160, self_employment_hours_worked: 40, cccap_self_employment_in_launch_period: true, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 0, hours: 40}]}, expect: 290}

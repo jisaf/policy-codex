@@ -1,13 +1,13 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 222 s.
+Programs compared: All, Medicaid, CHP+, SNAP, ColoradoWorks, AdultFinancial, CCCAP, LEAP, SunBucks; 228 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
 | stored households | 319 | 170191 | 564 | 111 | 564 | 0 |
 | generated households | 1626 | 696597 | 4085 | 1009 | 4085 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-580, CO-581, CO-582, CO-560, CO-561, CO-562, CO-563, CO-610.
 
 ## Allowed differences by class
 
@@ -38,12 +38,12 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 1758 | 0 |
-| MA-2 order | 1758 | 0 |
-| MA-3 month | 1758 | 0 |
-| MA-4 residual | 1758 | 0 |
-| MA-5 frequency | 1758 | 0 |
-| MA-6 date | 1758 | 0 |
+| MA-1 split | 1759 | 0 |
+| MA-2 order | 1759 | 0 |
+| MA-3 month | 1759 | 0 |
+| MA-4 residual | 1759 | 0 |
+| MA-5 frequency | 1759 | 0 |
+| MA-6 date | 1759 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|

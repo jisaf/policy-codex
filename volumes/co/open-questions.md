@@ -2960,6 +2960,56 @@ Assumption: A payment for meals only or for a room only is counted as unearned i
 
 Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.
 
+### OQ-1020. Earnings: whether special pay, and payments for a room only or meals only, are earnings in every program
+
+Body: Earned-income records, step E0 (docs/design-earned-and-resource-records.md 2.3, decision D2) draws the boundary between the two lists of records: earnings (CO-5100) are money or in-kind value paid to the person for work the person performed, as an employee or in self-employment; every other payment is a receipt (CO-5000). Three receipt kinds fall on the earnings side: uniformed_services_special_pay (pay for service; with combat_zone, also the combat-zone pay stated today as part of wages, CO-4310), board_only_payment and room_only_payment (boarder income; room and board is already a statement of its own, CO-4161). The texts on file treat them as earned in some programs and are silent in others: Colorado Works counts board, room, and room and board payments as earned income (9 CCR 2503-6 3.605.2.E.4.c-e, S3159), Medicaid counts a board payment as earned income (10 CCR 2505-10 8.100.3.K.10.c), SNAP treats a boarder's payments as self-employment income (10 CCR 2506-1 4.403.2, S2963; OQ-996 for meals only and room only), CCCAP counts "hazard duty pay" (8 CCR 1403-1 3.111.I.1) and boarders and lodgers (I.18, S3256) as income, and LEAP, Adult Financial and the SSI method name none of them as earned or unearned. Until each program's E1 track reads its earnings table, the three kinds stay in receipts, with each program's receipt row unchanged, and a household that states one states it in both lists, both written by the translator from the receipt (the transition rule); the earnings row of each program carries the receipt row's reading. E2 retires the three receipt kinds.
+
+Class: state policy choice
+Owner: SNAP policy owner, Energy assistance (LEAP) policy owner, Cash programs policy owner, Child care policy owner (CDEC), Medicaid policy owner
+Assumption: The three kinds are earnings in every program, each program counting them as its receipt row counts them today until its owner signs its earnings row.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, CO-5001, CO-5010, CO-5016, CO-5650, CO-5720, CO-5730, CO-5500, CO-5510, CO-5101, CO-5102, CO-5103, CO-5104, CO-5105, CO-5106, CO-5107.
+
+### OQ-1021. SNAP: wages an employer pays to a third party for the household
+
+Body: The earnings kind employer_vendor_payment (earnings, CO-5100) states money an employer pays to a third party for an expense of the person's household, as part of the person's compensation, from funds the employer would otherwise pay the person (employer_vendor_payments_received, CO-4455, today). 7 CFR 273.9(c)(1)(vii)(B) (S4101) counts such a payment: "the wages are garnished or diverted by the employer and paid to a third party for a household expense, such as rent. This vendor payment is counted as income", while a payment "in addition to paying the household its regular wages" is excluded. No SNAP item reads CO-4455, so SNAP counts none of it. The earnings table (snap_earnings_treatment_table, CO-5101) keeps that reading (not_counted_text_counts) so step E0 changes no answer; the SNAP E1 track decides, as a cited difference, whether the row is counted. If the text applies as written, today's reading is a wrong answer (a P1 candidate): a household whose employer pays part of its wages to the landlord has that part left out of SNAP income.
+
+Class: state policy choice
+Owner: SNAP policy owner
+Assumption: Not counted (today's reading) until the SNAP E1 track rewires SNAP's earned income.
+
+Checked 2026-11-23: 7 CFR 273.9(c)(1) (D-13); 10 CCR 2506-1 4.405 (D-82), which lists no vendor-payment exclusion of its own. Items: CO-5101, CO-4455.
+
+### OQ-1022. Colorado Works: wages from WIOA on-the-job training
+
+Body: 9 CCR 2503-6 3.605.4.B.16 (S2606) exempts "Income received through the Workforce Innovation and Opportunity Act, including supportive services through that program", and B.13 training allowances. Today WIOA on-the-job training wages are stated as part of wages_gross (wioa_on_the_job_training_wages, CO-4301, read only by SNAP) and Colorado Works counts them (cw_gross_earned_income, CO-1716, subtracts work-study, subsidized and short-term wages only). Whether wages an employer pays for WIOA on-the-job training are "income received through" WIOA is not settled by the text; subsidized employment, which 3.605.2.C (S2604) does not consider, may cover them. The earnings table (cw_earnings_treatment_table, CO-5104) keeps today's reading (counted_text_excludes) so step E0 changes no answer.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Counted as earned income (today's reading) until the owner decides.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.2.C, 3.605.4.B.13-16 (D-81). Items: CO-5104, CO-2340.
+
+### OQ-1023. Medicaid SSI method: in-kind pay, boarder payments, and WIA wages of a dependent child
+
+Body: 10 CCR 2505-10 8.100.3.K (S4107), the general income rules the SSI-related method relies on, says three things the ledger does not read today: earned income is "payment in cash or in kind for services performed" and earned in-kind income is compensation "in shelter or other items in lieu of wages" (K.3-4), but no SSI-method item reads in_kind_compensation_value (CO-4506); board, room, and room and board payments are earned income above the one-person food stamp allotment per boarder and the documented costs (K.10.c-e), but no SSI-method item reads room_and_board_payments_received (CO-4161) or the payments for a room or meals only; and WIA wages paid to a dependent child applying for or receiving Medical Assistance are exempt for up to six months a calendar year (K.8.c), but the SSI method counts every WIOA on-the-job training wage as part of wages_gross. The earnings table (ma_ssi_earnings_treatment_table, CO-5107) keeps today's readings (not_counted_text_counts, counted_text_excludes) so step E0 changes no answer; the Medicaid E1 track decides each as a cited difference. If K.3-4 and K.10 apply to the SSI method as written, today's reading is a wrong answer (a P1 candidate) for an SSI-method household with in-kind pay or boarders.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Today's readings, until the Medicaid E1 track rewires the SSI method's earned income.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, K.8, K.10 and 8.100.5.F.4 (D-65). Items: CO-5107.
+
+### OQ-1024. Adult Financial and Medicaid MAGI: combat-zone pay stated as part of wages
+
+Body: The earnings kind uniformed_services_special_pay (CO-5100) states special pay from a uniformed service for hazardous or combat duty, which today is stated two ways: as a receipt of that kind (37 U.S.C. 310 pay), and as combat_zone_pay_received (CO-4310), part of wages_gross, which only SNAP reads (4.405.2.A.12 excludes combat pay). Adult Financial's receipt table excludes the 310 pay (3.520.786, 20 CFR 416.1124(c)(19)) and Medicaid's MAGI receipt table does not count it (not_taxable_income), but both count combat-zone pay stated inside wages_gross. Each earnings table carries the receipt row's reading (excluded, not_taxable_income); the Adult Financial and Medicaid E1 tracks confirm it against the text, or keep the wages reading for pay that is not 310 special pay. No stored household or rule test states either.
+
+Class: state policy choice
+Owner: Cash programs policy owner, Medicaid policy owner
+Assumption: The earnings row carries the receipt row's reading.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.786 (D-80); 10 CCR 2505-10 8.100.4.C (D-65); 10 CCR 2506-1 4.405.2.A.12 (D-82). Items: CO-5103, CO-5106, CO-4310.
+
 ### OQ-1050. Medicaid spousal impoverishment: whether a community spouse's or family member's VA Aid and Attendance is income for the monthly income and family allowances
 
 Body: The community spouse monthly income allowance is the amount by which the community spouse's minimum monthly needs exceed "his/her income from sources other than the institutionalized spouse", calculated "by using the gross income less mandatory deductions for FICA and Medicare tax" (10 CCR 2505-10 8.100.7.R.2, S1756); the family allowance is reduced "by the monthly income of that family member" (8.100.7.T.1.c, S1736). Both are deducted after the institutionalized spouse is determined eligible (42 U.S.C. 1396r-5(d)(1)-(2), S4201: "After an institutionalized spouse is determined or redetermined to be eligible ..."; "the amount of monthly income otherwise available to the community spouse"). 8.100.5.K (S2900) says the Aid and Attendance and Unusual Medical Expenses portion "shall not be considered as income when determining eligibility" and then speaks of post-eligibility only for the institutionalized veteran's patient payment (K.1-2). Two readings: (A) K's exclusion is for eligibility only, so in this post-eligibility figure the community spouse's or family member's portion is gross income and is counted; (B) the portion is not income at all: 8.100.5.F.5.j.vi (S3001), the income section for the ABD and long-term care programs, lists only "Veterans benefits other than Aid and Attendance (A&A) and Unusual Medical Expenses (UME)" as unearned income, and 20 CFR 416.1103(b)(1) (S4200) gives "Cash given you by the Department of Veterans Affairs to purchase aid and attendance" as not income; neither is limited to eligibility. Worked example: a community spouse with $1,500 Social Security and a $400 Aid and Attendance portion, minimum monthly needs of $2,100 (CO-655-T2), the institutionalized spouse's income sufficient: reading A gives income $1,900 and a monthly income allowance of $200; reading B gives income $1,500 and an allowance of $600. A dependent family member living with the community spouse (a dependent parent who is a veteran's surviving spouse) with a $400 portion and no other income: under A the family allowance is one third of the MMMNA standard less $400; under B, the full third. The ledger follows B (it did before receipt records too, since va_aid_and_attendance_amount was not among the facts the spousal sums read).

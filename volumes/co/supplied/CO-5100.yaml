@@ -1,0 +1,141 @@
+id: CO-5100
+name: Earnings
+identifier: earnings
+kind: supplied
+type: list of receipts
+scope: person
+program: All
+meaning: "Every payment, in money or in kind, the person received or receives for work the person performed, as an employee or in self-employment, one record per pay, or per stream of like pays from one job or business, each stated once: what it is (its kind: the source of the pay, in words no program's rule is needed to apply), how much, when it came (the month, and the day where known), how often it is paid, and the properties of the pay a rule reads (irregular, a temporary job, the job's dates, an annual contract, the parts set aside or deducted); and, for a business, each cost of doing business as a record of its own kind. It is the second list of records beside receipts (CO-5000), which states every other payment: a payment is in one list or the other, never both (docs/design-earned-and-resource-records.md 2.3). What a record counts for is decided by each program's own counting table (snap_, leap_, af_, cw_, cccap_, ma_magi_ and ma_ssi_earnings_treatment_table; CHP+ reads Medicaid's MAGI income by its adopted-method link, SUN Bucks reads no earnings), never by a second statement of the pay. A stated empty list means the person has no earnings; a list not stated means the person's earnings are not known, and an outcome that depends on them cannot be determined (product-owner decision 4 of 2026-11-23)."
+precision: "Earned-income records, step E0 (2026-11-23; docs/design-earned-and-resource-records.md 2.2, decisions D1-D4). Records are disjoint: a part of a pay that a rule treats apart (work-study, SCSEP, WIOA on-the-job training, Census wages, an irregular pay, a temporary job) is its own record, and the record it came out of states the rest, so no rule has to decide where a dollar stated twice sits. A record with no month and no date recurs, at its amount, in every month the case covers; a record paid once states its month or its date. A business states its gross receipts as one record (self_employment_receipts, or farm_self_employment_receipts for a farm) and each cost as a record of a cost kind, so every program's table decides every cost (D4: no deduction by silence). The exception fields (irregular, retroactive, temporary_job, paid_as_business_owner, combat_zone, foster_care) default to false because each rule counts pay unless the exception is shown (D3); a field no rule text gives a value for is required where read. Transition (step E0 to E1): no rule reads this list yet; every program still reads the scalar earned-income facts it read before (wages_gross, self_employment_gross_receipts and the parts and properties of each), and a stored household or rule test that states earned income states it in those facts and, beside them, as these records, both written by the translator from one statement (npm run records:translate, scripts/records/translate-earnings.ts), so the two cannot disagree; npm run records:harness -- --list earnings fails when they do. Each program's E1 track moves its readers to this list; E2 retires the scalar facts. The thirty-day wages figure and the job-began-or-ended flag (CO-3910, CO-3923) are not restated: a thirty-day total is not one pay, and the LEAP and CCCAP tracks state those households' pays with their dates. Not in this list: hours worked (CO-022, an activity test), impairment-related and blind work expenses (CO-4616, CO-4617, the person's costs, not pay), donated work (CO-4438-4441), tax-return figures (CO-079, CO-080, CO-082) and the verification flags."
+supplied_by: "The applicant's statement and the payer's records (pay stubs, an employer's statement, the State's wage data, a business's books or tax return, a boarder's receipts), one record per pay, stream of pays or cost."
+record_fields:
+  kind:
+    type: one of
+    required: true
+    meaning: "What the record is: the source of the pay (one kind per source), or a cost of doing business."
+    options: [wages, uniformed_services_special_pay, work_study, wioa_on_the_job_training, summer_youth_employment, scsep_employment, subsidized_employment, decennial_census_employment, difficulty_of_care_payment, in_kind_pay, employer_vendor_payment, employer_health_insurance_subsidy, self_employment_receipts, farm_self_employment_receipts, boarder_payments, business_cost_operating, business_cost_interest, business_cost_capital_principal, business_cost_depreciation, business_cost_home_space, business_cost_vehicle, business_cost_boarder_provision]
+    option_meanings:
+      wages: "Pay an employer gives the person for work as an employee: salary, hourly wages, tips, commissions, bonuses, overtime, paid leave and military basic pay; not pay another kind names."
+      uniformed_services_special_pay: "Special pay from a uniformed service for hazardous or combat duty: hostile fire or imminent danger pay under 37 U.S.C. 310, and other pay received because the member is deployed to a designated combat zone (combat_zone)."
+      work_study: Pay for work under a federal or State work-study program for students.
+      wioa_on_the_job_training: Wages for on-the-job training under the Workforce Innovation and Opportunity Act.
+      summer_youth_employment: Wages from a summer youth employment and training program.
+      scsep_employment: Wages for community service employment under the Senior Community Service Employment Program (Title V of the Older Americans Act).
+      subsidized_employment: "Wages from subsidized employment other than WIOA on-the-job training: an apprenticeship, on-the-job training or a transitional job whose wages a public program subsidizes."
+      decennial_census_employment: Wages the U.S. Census Bureau paid for temporary employment related to the decennial Census.
+      difficulty_of_care_payment: "A Difficulty of Care payment: compensation for live-in home care of a person who qualifies for foster care or a Home and Community Based Services waiver, needed because of that person's physical, mental or emotional handicap (10 CCR 2505-10 8.100.1)."
+      in_kind_pay: "The value of goods, shelter, housing or services (not money) the person received in place of cash as compensation for work, as an employee or in self-employment: the value the payer supplies or the person declares, or the current market value where none is given."
+      employer_vendor_payment: "Money an employer paid to a third party for an expense of the person's household (rent, utilities, a bill), as part of the person's compensation, from funds the employer would otherwise pay the person."
+      employer_health_insurance_subsidy: "Money an employer paid directly to the person, recurring or not, to help the person buy private health insurance; not a premium the employer pays to the insurer."
+      self_employment_receipts: "Gross receipts, capital gains included, of a business, trade or profession the person carries on as sole proprietor, partner, independent contractor or consultant, other than a farm (farm_self_employment_receipts) and boarders (boarder_payments)."
+      farm_self_employment_receipts: "Gross receipts of a farm the person operates on the person's own account, as owner, renter or tenant: the value of the products sold and the other receipts of the farm."
+      boarder_payments: "Payments from persons who pay to live, or to take regular meals, in the person's home (provides), contributions toward the home's shelter expenses included; not an amount a boarder pays directly to someone outside the home, not rent from property the person does not live in, and not the receipts of a commercial boarding house (self_employment_receipts)."
+      business_cost_operating: "A cost of doing business no other cost kind names, paid for the person's self-employment: rent of business premises, wholesale cost of merchandise, stock, raw materials, seed and fertilizer, utilities, taxes on the business or its property, labor, insurance and upkeep of necessary equipment."
+      business_cost_interest: Interest paid on a loan for the business or to buy income-producing property.
+      business_cost_capital_principal: "Payments on the principal of the purchase price of, or of a loan for, income-producing real estate, capital assets, equipment, machinery or other durable goods."
+      business_cost_depreciation: Depreciation of the business's equipment or property as its books or tax return state it.
+      business_cost_home_space: The cost of the room or space in the person's home used for the business.
+      business_cost_vehicle: The cost of using a vehicle for the business (mileage for business purposes only).
+      business_cost_boarder_provision: "The documented cost of providing the room or meals that boarders pay for (boarder_payments)."
+  amount:
+    type: money
+    required: true
+    meaning: "The gross amount, before anything withheld: for a pay that recurs, the amount received in each month it covers (in its month, when it states one); for a pay received once, the payment; for in-kind pay, its value; for a cost kind, the cost paid in the month."
+  month:
+    type: month
+    when_absent: "every month: the record recurs, at its amount, in every month the case covers"
+    meaning: The month the pay came in or the cost was paid. A record stated with a date and no month came in the date's month; one with neither recurs in every month, unless it is paid once.
+  date:
+    type: calendar date
+    required: true
+    meaning: "The day the pay came in, needed where a rule counts pays by date (LEAP's eight weeks before application, CCCAP's prior thirty days, SNAP's income received after the application date); in the month the record states, when it states one."
+  frequency:
+    type: one of
+    default: monthly
+    meaning: How often the pay is made; once for a pay received only once.
+    options: [once, monthly, weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual]
+  per_payment:
+    type: money
+    required: true
+    meaning: "For a pay made other than monthly, the gross amount of one pay, which a rule converting by frequency reads (SNAP 10 CCR 2506-1 4.402.A.2, LEAP 9 CCR 2503-7 3.752.22.C)."
+  irregular:
+    type: yes/no
+    default: false
+    meaning: The pay was received infrequently (only once in the calendar quarter from this source, not in the month before or after) or irregularly (the person could not reasonably expect it), such as pay for a single odd job.
+  retroactive:
+    type: yes/no
+    default: false
+    meaning: The pay is back pay for months before the month received.
+  job_start_date:
+    type: calendar date
+    when_absent: "the job or business began before the months the case covers"
+    meaning: The day the job or business began.
+  job_end_date:
+    type: calendar date
+    when_absent: "the job or business continues through the months the case covers"
+    meaning: The day the job or business ended (for a farm, the day the person ceased to farm the land).
+  temporary_job:
+    type: yes/no
+    default: false
+    meaning: The pay is from short-term employment, a temporary job of ninety days or less.
+  ended_through_own_fault:
+    type: yes/no
+    required: true
+    meaning: For a temporary job that ended, the person left it, or lost it, through the person's own fault.
+  annual_contract_pay:
+    type: money
+    when_absent: "the pay is not paid under a contract renewed on an annual basis"
+    meaning: "For pay under a contract renewed on an annual basis (a school employee's contract), the contract's pay for the year, which a rule averages over twelve months (SNAP 10 CCR 2506-1 4.403.3)."
+  paid_as_business_owner:
+    type: yes/no
+    default: false
+    meaning: The wages are paid by a limited liability company or S corporation the person owns.
+  combat_zone:
+    type: yes/no
+    default: false
+    meaning: The special pay is received because the member is deployed to a designated combat zone and was not received immediately before the deployment.
+  pass_set_aside:
+    type: money
+    default: 0
+    meaning: The part of the pay set aside under a Plan to Achieve Self-Support the Social Security Administration approved, and used for the plan.
+  education_deduction:
+    type: money
+    default: 0
+    meaning: The part of military pay withheld as a mandatory deduction for education (the Montgomery G.I. Bill contribution).
+  net_for_tax:
+    type: money
+    required: true
+    meaning: "For a business, its net earnings from self-employment as the person's federal income tax return reports them (for MAGI, 42 CFR 435.603(e))."
+  hours:
+    type: hours
+    required: true
+    meaning: For self-employment, the hours the person worked in the business in the month.
+  farm:
+    type: yes/no
+    default: false
+    meaning: The cost is a cost of the person's farm (farm_self_employment_receipts) rather than of another business.
+  annual_support:
+    type: yes/no
+    required: true
+    meaning: "The self-employment is intended to meet the household's needs for the whole year, though the income is received over a shorter period (SNAP 10 CCR 2506-1 4.403.12)."
+  changed_substantially:
+    type: yes/no
+    required: true
+    meaning: The business's income or costs have changed substantially from what its past records show, so the past does not represent what is expected.
+  boarders:
+    type: whole number
+    required: true
+    meaning: For boarder payments, the number of persons whose payments the record states.
+  provides:
+    type: one of
+    required: true
+    meaning: "For boarder payments, what the payers receive: room and regular meals, a room only, or regular meals only."
+    options: [room_and_board, room_only, board_only]
+  foster_care:
+    type: yes/no
+    default: false
+    meaning: The boarder payments are foster care payments for a person placed in the home.
+sources: [S41, S2713, S3112, S1152, S1155, S1156, S1157, S1154, S2963, S3159, S3255]
+tags: [income]
+open: [OQ-1020]
+rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D1-D4 (docs/design-earned-and-resource-records.md 7): a separate list of the same record type, read by the same operators (P55-P57), so the signed unearned counting tables stay closed and no operator is added; one record per pay, so a part of a pay is never stated twice, two jobs on different pay schedules can be stated, and a business's costs are kinds every program must decide. Replaces, from step E1, the 51 scalar earned-income facts the design's inventory (1.1) lists."

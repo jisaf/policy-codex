@@ -12,5 +12,5 @@ implemented: engine
 tags: [verification, income]
 rationale: "Review K-4: 3.111.G.1.b and G.2.d make hours worked a verified element of the employment activity; no item asked for them."
 tests:
-  - {id: CO-1684-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_eligible_activity: true, wages_gross: 1200, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: true}
+  - {id: CO-1684-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_eligible_activity: true, wages_gross: 1200, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, earnings: [{kind: wages, amount: 1200}]}, expect: true}
   - {id: CO-1684-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_eligible_activity: false}, expect: false}
