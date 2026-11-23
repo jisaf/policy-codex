@@ -1,0 +1,20 @@
+id: CO-6055
+name: "Medicaid Pickle: Ineligible Child Allocation from the spouse's earned income"
+identifier: ma_pickle_child_allocation_from_spouse_earned
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, the rest of the Ineligible Child Allocation, after the part taken from the ineligible spouse's countable unearned income (ma_pickle_child_allocation_from_spouse_unearned), deducted from that spouse's earned income, up to it (10 CCR 2505-10 § 8.100.5.H.3.a.i, H.3.b.i-ii; § 8.100.6.E.2-3)."
+precision: "Sibling of ma_ssi_child_allocation_from_spouse_earned (CO-2279), which it equals when the spouse has no OASDI increase disregarded (duplicate-paths audit D-M1)."
+derived: [case, [["=", ma_ssi_ineligible_child_allocation, 0], 0], [else, [min, ["-", ma_ssi_ineligible_child_allocation, ma_pickle_child_allocation_from_spouse_unearned], [sum, [filter, ma_ssi_couple_members, [all, [rel, [spouse, holds_out_as_spouse_with], [P]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]], [of, [P], ma_ssi_gross_earned_income]]]]]
+sources: [S1506, S1955, S666]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-2279, reason: "the Pickle copy takes the rest of the allocation after the spouse's countable unearned income (OASDI increases disregarded, 8.100.6.E.3); every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M1 (P1): the Pickle countable income took no Ineligible Child Allocation; an aged applicant whose ineligible spouse earned 3,300 with a child of 10 at home had Pickle income 1,607.50 where the SSI method gives 1,359, against the couple FBR of 1,491."
+nearest: [CO-2279, CO-6054]
+tests:
+  - {id: CO-6055-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_ineligible_child_allocation: 497, ma_pickle_child_allocation_from_spouse_unearned: 0, ma_ssi_couple_members: [p1, p2]}, others: {p2: {ma_is_applying_for_or_eligible_for_ssi: false, earnings: [{kind: wages, amount: 3300}]}}, relationships: [[spouse, p1, p2]], title: "Duplicate-paths household MA-pickle-eligibility: the whole 497 from the spouse's wages of 3,300", expect: 497}
+  - {id: CO-6055-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_ineligible_child_allocation: 497, ma_pickle_child_allocation_from_spouse_unearned: 400, ma_ssi_couple_members: [p1, p2]}, others: {p2: {ma_is_applying_for_or_eligible_for_ssi: false, earnings: [{kind: wages, amount: 50}]}}, relationships: [[spouse, p1, p2]], title: "97 left after the unearned income, but the spouse earns only 50: 50", expect: 50}

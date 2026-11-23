@@ -11,6 +11,8 @@ derived: [case, [[">=", ssi_federal_benefit_rate_individual, ma_ssi_countable_ea
 sources: [S3413, S4080, S310, S309, S706]
 implemented: engine
 tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-6058, reason: "the Pickle copy reads the child's Pickle income (CO-6056, CO-6057); every other term must stay the same"}
 rationale: "Coverage review, 416.1165(e)(3) fill-up: 'We do not deem more income to an eligible child than the amount which, when combined with the child's own income, reduces his or her SSI benefit to zero.' ma_ssi_parental_income_deemed (CO-4626) divided the parents' income equally whatever each child's own income; this item states each child's limit, from the child's own income alone."
 tests:
   - {id: CO-5902-T1, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_household_unearned_income_before_deeming: 0, ma_ssi_countable_earned_income_with_general_exclusion_used: 0}, title: "a child with no income of its own: 994 - 0 + 20 - 0 = 1,014 (1,014 deemed less the $20 is 994, the FBR)", expect: 1014}

@@ -1,0 +1,17 @@
+id: CO-6059
+name: "Medicaid SSI method: deemed income the children can take at this child's limit"
+identifier: ma_ssi_deeming_limit_sum
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For this child, the sum over the blind or disabled children sharing the deemed income of ineligible parents (ma_ssi_deeming_children) of the lesser of each child's ma_ssi_deeming_benefit_zero_amount and this child's: the parental income the children can be deemed when no child is deemed more than this child's limit (20 CFR 416.1165(e)(2)-(3)). This child's share would reduce its benefit to zero when the income to be deemed is more than this sum (ma_ssi_deeming_share_zeroes_benefit, CO-5904)."
+precision: "Duplicate-paths audit D-M3: the sum CO-5904 wrote inline, stated once so the Pickle division (ma_pickle_parental_income_deemed, CO-5222) reads each other child's sum and puts the Pickle child's own limit in place of its SSI-related one."
+derived: [sum, ma_ssi_deeming_children, [min, [of, [P], ma_ssi_deeming_benefit_zero_amount], ma_ssi_deeming_benefit_zero_amount]]
+sources: [S3413, S4080]
+implemented: engine
+tags: [ma, non_magi, income, household]
+rationale: "Duplicate-paths audit D-M3 (P1)."
+nearest: [CO-5904]
+tests:
+  - {id: CO-6059-T1, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_deeming_children: [p1, p3], ma_ssi_deeming_benefit_zero_amount: 1014}, others: {p3: {ma_ssi_deeming_benefit_zero_amount: 300}}, title: "Limits 1,014 (this child) and 300: min(1,014, 1,014) + min(300, 1,014) = 1,314", expect: 1314}

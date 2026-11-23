@@ -1,0 +1,20 @@
+id: CO-6054
+name: "Medicaid Pickle: Ineligible Child Allocation from the spouse's unearned income"
+identifier: ma_pickle_child_allocation_from_spouse_unearned
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, the part of the Ineligible Child Allocation (ma_ssi_ineligible_child_allocation) taken from the unearned income of the person's ineligible spouse living with the person, unearned income first (10 CCR 2505-10 § 8.100.5.H.3.a.i, H.3.b.i), up to that spouse's unearned income as the SSI method counts it less the spouse's OASDI increases the Pickle disregard leaves out (ma_pickle_oasdi_increase_as_spouse; § 8.100.6.E.3)."
+precision: "Sibling of ma_ssi_child_allocation_from_spouse_unearned (CO-2278), which it equals when the spouse has no increase disregarded: the Pickle income is the SSI method's countable income with the countable OASDI in place of the current OASDI (§ 8.100.6.E.1.e, E.2), so the allocation is taken from the spouse's countable income (duplicate-paths audit D-M1)."
+derived: [case, [["=", ma_ssi_ineligible_child_allocation, 0], 0], [else, [min, ma_ssi_ineligible_child_allocation, [sum, [filter, ma_ssi_couple_members, [all, [rel, [spouse, holds_out_as_spouse_with], [P]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]], [max, 0, ["-", ["+", [of, [P], ma_ssi_unearned_receipts], [of, [P], ssi_in_kind_support_and_maintenance], [of, [P], ma_ssi_gambling_receipts]], [of, [P], ma_pickle_oasdi_increase_as_spouse]]]]]]]
+sources: [S1506, S1955, S666]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-2278, reason: "the Pickle copy takes the allocation from the spouse's countable unearned income (OASDI increases disregarded, 8.100.6.E.3); every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M1 (P1): the Pickle countable income (CO-1158) took no Ineligible Child Allocation at all; it now takes it as the SSI method does, from the spouse's countable unearned income first."
+nearest: [CO-2278, CO-6055]
+tests:
+  - {id: CO-6054-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_ineligible_child_allocation: 497, ma_ssi_couple_members: [p1, p2]}, others: {p2: {ma_is_applying_for_or_eligible_for_ssi: false, receipts: [{kind: social_security, amount: 600}], ssi_in_kind_support_and_maintenance: 0, social_security_income_when_spouse_lost_ssi_or_oap: 400}}, relationships: [[spouse, p1, p2]], title: "Spouse's OASDI 600, of which 200 is increases since the loss: 400 of countable unearned income covers 400 of the 497", expect: 400}
+  - {id: CO-6054-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_ineligible_child_allocation: 0}, title: "No allocation: 0", expect: 0}
