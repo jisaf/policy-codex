@@ -3116,7 +3116,7 @@ Assumption: Pay in kind is earned income for every worker, as 8.100.3.K.3-4 says
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.3.K.3-4, 8.100.5.F.1, F.4 (D-65); 20 CFR 416.1110(a)(3) (D-53). Items: CO-5107, CO-5170.
 
-### OQ-1121. Medicaid MAGI: boarder payments, gross or net of the costs of providing the room or meals
+### OQ-1121. Resolved: Medicaid MAGI counts boarder payments net of the documentable costs of providing the room or meals
 
 Body: MAGI counts payments from boarders as rents (10 CCR 2505-10 8.100.4.C.1.b.ii, "Rents") and, for meals, compensation for services (a.v) (S166), at their gross amount, as the MAGI receipt table counts rents (rental_income, CO-5500): ma_magi_earnings_treatment_table (CO-5106) row counted, and the boarder provision cost row not_deducted_open_question. MAGI follows the federal tax figure (42 CFR 435.603(e), S165), where rent and boarders' payments are reported net of the expenses of providing them; the gross reading overstates income by those expenses. Worked example: two boarders paying $900 a month for room and board, $250 a month of food and utilities for them: gross $900; net $650. Before E1, MAGI counted payments for a room only or meals only in full (as receipts) and room and board payments not at all.
 
@@ -3125,6 +3125,8 @@ Owner: Medicaid policy owner
 Assumption: Gross, as rents are counted in the MAGI receipt table.
 
 Checked 2026-11-23: 42 CFR 435.603(e) (D-34); 10 CCR 2505-10 8.100.4.C.1.a-b (D-40). Neither says whether the costs of providing a room or meals are deducted; the Code's rules on rental expenses are not on file. Items: CO-5106, CO-5160.
+
+Resolved (coverage pass 4, C4-03, 2026-11-23; docs/reviews/coverage4-medicaid-magi-chp.md): the text on file, and the Code section fetched for this round, settle it; it was not a policy choice. 10 CCR 2505-10 8.100.3.K.10.c-e (S4107, D-65), which applies to MAGI since 8.100.4 does not carve it out (K.7 and K.11.a.i.1 name MAGI where they do), counts board, room, and room and board payments as earned income "to the extent that the payment ... exceeds ... documentable expenses directly related to the provision" of them; and 26 U.S.C. 62(a)(4) (S4632, D-4431, fetched from Cornell LII 2026-11-23), which 8.100.4.C.1 incorporates, takes "The deductions ... which are attributable to property held for the production of rents" out of adjusted gross income. The food stamp allotment per boarder of K.10.c and e is an income disregard, which 42 U.S.C. 1396a(e)(14)(B) (S4630, D-26) bars for MAGI, so only the costs come off. ma_magi_boarder_earnings (CO-6450) counts the month's boarder payments less the month's business_cost_boarder_provision records, never below 0; CO-5106's rows are counted_net_of_provision_costs and deducted_from_boarder_payments. Worked example (B-BOARD, CO-502-T8): wages 1,100 + (900 - 250) = 1,750, 131.6% for one: adult, eligible (before: 2,000, 150.4%, ineligible). Items: CO-5106, CO-5160, CO-6450, CO-502.
 
 ### OQ-1122. Medicaid SSI method: an ineligible child's own income for the Ineligible Child Allocation
 
@@ -3136,7 +3138,7 @@ Assumption: The child's gross income, as H.3.a.i reads.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.H.3.a.i, H.4.c (D-65); 20 CFR 416.1161(a), (c), 416.1163(b) (D-53). Items: CO-6050, CO-2277, CO-4633.
 
-### OQ-1123. Medicaid MAGI: wages for a month served in a combat zone
+### OQ-1123. Resolved: Medicaid MAGI leaves out compensation for a month served in a combat zone, basic pay included (26 U.S.C. 112)
 
 Body: 26 U.S.C. 112(a)-(b) (S4340) leaves out of gross income all compensation for active service for a month during any part of which the member served in a combat zone (an officer's up to the maximum enlisted amount), basic pay included, not only the special pay. MAGI follows the federal tax figure (42 CFR 435.603(e), S165). The earnings record states combat_zone only on uniformed services special pay (CO-5100), so a service member's basic pay for such a month is counted. Worked example: an enlisted member deployed to a designated combat zone in October, basic pay $2,800 and hostile fire pay $225: the federal tax figure counts neither; the ledger counts $2,800. Fixing it needs a field on the wages record (paid for a month served in a combat zone), a request to the integration owner (docs/reviews/records-earnings-medicaid.md, R-3).
 
@@ -3145,6 +3147,8 @@ Owner: Medicaid policy owner
 Assumption: Wages are counted; only special pay stated as paid in a combat zone is left out.
 
 Checked 2026-11-23: 26 U.S.C. 112 (D-4340); 42 CFR 435.603(e) (D-34); CO-5100's record fields. Items: CO-5106, CO-5160.
+
+Resolved (coverage pass 4, C4-02, 2026-11-23): 26 U.S.C. 112(a)-(b) (S4340, D-4340, on file) decides it, so it was not a policy choice; the block was a missing record field. The earnings record now has combat_zone_exclusion (CO-5100; request R-3 of docs/reviews/records-earnings-medicaid.md), the part of a pay that is compensation for active service for a month during any part of which the member served in a combat zone (all of an enlisted member's, an officer's up to the maximum enlisted amount), a fact of the federal return, 0 unless shown (D3). ma_magi_wage_earnings (CO-5160) leaves it out of every pay it counts. Worked example (COMBAT-FAM, stored household CO-720): an enlisted member's basic pay of 3,800 for a combat-zone month and 225 of hostile fire pay are both out of gross income, so the spouse's household of four has MAGI 0 and the spouse is a parent or caretaker relative, eligible (before: 3,800, 138.2%, ineligible). Items: CO-5100, CO-5106, CO-5160.
 
 ### OQ-1124. Medicaid: former foster care youth who were in foster care on their 21st birthday
 
@@ -3205,3 +3209,13 @@ Owner: Data steward, Energy assistance (LEAP) policy owner, SNAP policy owner
 Assumption: A dated pay with no frequency is a monthly pay (the schema's default); a household that states dated weekly or bi-weekly pays states their frequency.
 
 Checked 2026-11-23: 9 CCR 2503-7 3.752.22.B-C (D-86); 10 CCR 2506-1 4.402.A.2 (D-82). Neither says what schedule to assume for a pay whose schedule is not reported. Items: CO-5100, CO-5121.
+
+### OQ-1230. Medicaid MAGI: the taxable part of a pension or annuity, and of an income tax refund
+
+Body: 10 CCR 2505-10 8.100.4.C.1 (S166) counts gross income "pursuant to 26 U.S.C. § 61" (S4631), and MAGI follows the federal tax figure (42 CFR 435.603(e), S165). Two kinds of receipt hold money the Code counts and money it does not, and MAGI reads the receipt's amount: a pension or annuity is counted in full (ma_magi_receipt_treatment_table, CO-5500, row counted; 8.100.4.C.1.b.vi), although the part that returns the person's own investment in the contract (26 U.S.C. 72(b)(1), S4637) and a pension for injuries or sickness resulting from active service in the armed forces (104(a)(4), S4638) are not gross income; and an income tax refund is not counted at all (row not_taxable_income), although a State income tax refund is gross income to a person who deducted the tax in an earlier year to the extent the deduction reduced the tax (111(a), S4639, read the other way). Since coverage pass 4 (C4-01) the receipt record has the field that states the federal figure, taxable_amount (CO-5000), and MAGI reads it for savings account distributions and insurance cash value, whose kinds hold mostly non-taxable money. Reading it for pensions and refunds too would make the field required on every pension and refund record any MAGI household states (about thirty stored households and as many rule tests state a pension, none its taxable part), so a pension record without it would be cannot determine. Worked example: a retired service member receives a 1,600 military disability pension excluded under 104(a)(4) and has no other income: the ledger counts 1,600 (1,600 / 1,330 = 120.3% of the guideline for one); the tax figure is 0 (0%), which meets every MAGI standard. A filer who itemized last year and receives a 400 State refund: the ledger counts 0, the tax figure up to 400.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Data steward
+Assumption: A pension or annuity is counted at its amount, and an income tax refund is not counted, as before; a household whose pension is partly or wholly excluded, or whose refund is taxable, is answered on that reading until the owner decides whether intake asks every pension and refund for its taxable part (taxable_amount required on those kinds) or keeps the gross reading.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.4.C.1.b.vi-vii, d (D-65, D-40); 42 CFR 435.603(e) (D-34); 26 U.S.C. 61(a), 72(b)(1), 104(a)(4), 111(a) (D-4430, D-4436, D-4437, D-4438, fetched from Cornell LII 2026-11-23). The Code settles what is taxable; no Colorado text says whether the State's intake asks for the taxable part of a pension or a refund, and asking is a change to every program's statement of a pension. Coverage pass 4, C4-09 (docs/reviews/coverage4-medicaid-magi-chp.md). Items: CO-5500, CO-5501, CO-5000.

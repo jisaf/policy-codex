@@ -340,6 +340,11 @@ function carve(
     h.amount = (h.amount as number) - amt;
     const r: Receipt = { kind, amount: amt };
     for (const k of ["month", "date", "frequency", "irregular", "retroactive"]) if (h[k] !== undefined) r[k] = h[k];
+    // coverage pass 4, C4-01: the old statement said whether the part was
+    // taxable by the receipt that held it (the other non-taxable money, or the
+    // pension or other taxable money), which the record's taxable_amount
+    // (CO-5000) now states; Medicaid MAGI reads it for these two kinds
+    if (kind === "savings_account_distribution" || kind === "insurance_cash_value") r.taxable_amount = h.kind === "other_nontaxable" ? 0 : amt;
     R.push(r);
   }
   // lump sums spent or designated (Colorado Works' CO-4365, part of the
