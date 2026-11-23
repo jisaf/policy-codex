@@ -8,8 +8,9 @@ The integration owner's round for the coverage pass 4 merge wave, on ccr-9d19bf4
 |---|---|
 | d4cced5 | The classification (sections 3 and 4): scripts/records/allowed/coverage4-integration.yaml (earnings, new), scripts/records/allowed/h4-coverage4-integration.yaml (holdings, new), the integration section of scripts/receipts/allowed-differences.yaml; the cash section's fourteen SSI-method entries for CO-311 and CO-313, written on a ledger without N4-4 and matching nothing now, removed; CO-580's two N4-3 entries moved from allowed/c4-nonmagi.yaml to the integration file (its baseline values moved with the restatement). Child support on the child's list in CO-133, CO-456, CO-562 and CO-580 (section 5); CO-133's and CO-456's retired child_support_received moved to the child with it (scripts/receipts/retired-facts.yaml); CO-580's Colorado Works person expectations |
 | da04219 | Merge origin ccr-9d19bf4c-wmnwcl at 534d7e4 (the coverage pass 5 review of CCCAP, LEAP and SUN Bucks; docs only) |
-| (this) | The change record volumes/co/changes/2026-11-23-coverage4-integration.yaml, docs/plan-colorado.md "Coverage pass 4 integration", this review |
-| (last) | Gate figures (section 8) |
+| b3e8870 | The change record volumes/co/changes/2026-11-23-coverage4-integration.yaml, docs/plan-colorado.md "Coverage pass 4 integration", this review |
+| 97b7df4 | Merge origin ccr-9d19bf4c-wmnwcl at 44a4dac (the coverage pass 5 review of MAGI Medicaid and CHP+; docs only) before the final gate |
+| (last) | Gate figures (section 8); harness results |
 
 ## 2. What the merged head reported
 
@@ -113,7 +114,7 @@ Stored expectations: CO-580's Colorado Works person figures, as in section 5 (un
 
 ## 8. Gates
 
-On da04219 (origin ccr-9d19bf4c-wmnwcl merged at 534d7e4, docs only) with this round's commits:
+On 97b7df4 (origin ccr-9d19bf4c-wmnwcl merged at 44a4dac, the latest; both merges docs only), the final gate:
 
 | Gate | Result |
 |---|---|
