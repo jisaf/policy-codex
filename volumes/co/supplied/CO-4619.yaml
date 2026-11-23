@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The monthly amount a court has ordered the person to pay for the support of the person's spouse."
-precision: "If not stated, every program reads it as 0 (no such order)."
+precision: "Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). A case with no such order states 0."
 supplied_by: "The court order."
 sources: [S3409]
 tags: [income, legal]

@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The person has an application for Supplemental Security Income pending with SSA. If not stated, Medicaid reads this as false."
+meaning: "The person has an application for Supplemental Security Income pending with SSA. Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default)."
 supplied_by: County department case record (SSI application confirmation, SDX match).
 sources: [S443, S1506]
 rationale: "Dual-entry audit 3.12 and same-word audit SW-24: the Aid to the Blind prong this fact was written for is no longer modeled (CO-945 retired), so it states the neutral record, a pending SSI application, which ma_is_applying_for_or_eligible_for_ssi (CO-2271) reads. No existing fact in this volume's interface captures the 26-2-111(5)(a)(II) SSI-application requirement; af_ab_eligible (CO-945) needs it. Acknowledged as the nearest same-shape fact to the AND-SO program's own SSI/SSDI application duty (3.520.75.B), which no supplied fact yet carries either (K-7, out of this round's scope) - this fact is scoped to Aid to the Blind's own statutory prong (II), not AND-SO's regulatory duty."
