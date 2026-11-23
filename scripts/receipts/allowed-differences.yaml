@@ -840,3 +840,9 @@
 # (no fact said whether an annuity or trust existed), are now false. docs/reviews/records-holdings-medicaid.md.
 - {case: "/^G-/", identifier: ma_annuity_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no annuity record means no annuity to verify"}
 - {case: "/^G-/", identifier: ma_trust_verification_is_pending, old: unknown, new: false, class: "H1-M2 (decision 4) a stated holdings list with no trust record means no trust to verify"}
+
+# H1A-R1 (H1 SNAP and Adult Financial; docs/reviews/records-holdings-snap-af.md section 9.1): CO-300 states its held refund
+# in holdings alone, dated 2026-08-14, because the translator cannot write a date the old facts lack (decision 4: a held
+# refund needs its date of receipt to be placed in its window). The baseline reads the facts it no longer states, so the
+# old values are unknown; the new values are the household's expectations (af_category oap, countable resources 1,700).
+- {case: CO-300, person: p1, identifier: "/^(ma_ssi_related_category|ma_family_planning_status|af_category|af_oap_grant|af_and_grant|af_client_and_spouse_countable_resources)$/", old: unknown, class: "H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states"}
