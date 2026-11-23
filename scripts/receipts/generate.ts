@@ -69,6 +69,11 @@ const BASES: Base[] = [
   { id: "CO-196", person: "p1", label: "AF client" },
   { id: "CO-196", person: "p2", label: "AF spouse (deemed)" },
   { id: "CO-94", person: "", label: "AF sponsor (deemed)" },
+  // Colorado Works (phase 2): a member of the unit, a stepparent whose income
+  // is deemed to it (3.605.1.A.4), and a sponsor living elsewhere (A.5)
+  { id: "CO-358", person: "p1", label: "CW applicant" },
+  { id: "CO-83", person: "p2", label: "CW stepparent (deemed)" },
+  { id: "CO-162", person: "", label: "CW sponsor (deemed)" },
 ];
 
 /** Zeroes the money a base household states beyond its wages, so each variant starts clean. */

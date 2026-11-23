@@ -51,3 +51,45 @@
   identifier: /^snap_(person_unearned_income|person_gross_income|household_gross_income|unearned_income_verification_is_pending)$/
   old: unknown
   class: R5 SNAP no winnings, no limit in force (T-5 closure)
+
+# ---------------------------------------------------------------------------------------------------
+# Phase 2, Colorado Works (docs/reviews/receipts-migration-2-cw.md, section 6, where each class is
+# stated with its cases and the rule text). Baseline c29d326: phase 1 merged, Colorado Works still on
+# the scalar facts, so the harness measures the Colorado Works move alone.
+
+# CW1: the households written in receipts alone (CO-458 to CO-460, the spike's families) stated none
+# of the scalar facts Colorado Works read, so its income could not be determined; it now reads their
+# receipts and gives the rule's answer (3.605.3, 3.605.5.A; CO-458: $900 current support counted for
+# eligibility at application and not in the grant, the crime victim payment exempt, 3.605.4.A.8).
+- case: /^CO-(458|459|460)$/
+  identifier: /^cw_/
+  old: unknown
+  class: CW1 Colorado Works reads the households written in receipts alone
+
+# CW2: the unearned-income verification element reads the income Colorado Works counts (3.604.3.B.2.e:
+# "income ... used to determine eligibility and payment"). The old cw_has_countable_unearned_income
+# (CO-2871) summed the scalar facts, whose other unearned income held receipts 3.605.4 exempts and
+# whose child support held arrears (3.605.5.D), and left out a lottery prize (3.605.3.A.14), stated
+# outside them. Stored: an exempt receipt only (crime victim compensation, foster care, WIOA and
+# training allowances, General Assistance) or a prize only (CO-99, CO-353, CO-535).
+- case: /^CO-(99|171|175|219|220|319|353|358|373|374|408|409|410|423|432|489|535)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending|pending_verification_count|person_pending_verification_count|verification_status)$/
+  class: CW2 Colorado Works verifies the unearned income it counts
+- case: /^G-[A-Za-z]+-(crime_victim_compensation_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|educational_assistance_received_300_part_of_nontaxable_|energy_300_of_which_nonprofit_300|energy_assistance_received_300_part_of_nontaxable_|expense_reimbursements_received_300_part_of_nontaxable_|federally_excluded_300_of_which_VISTA_200|federally_excluded_payments_received_300_part_of_nontaxable_|foster_care_provider_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|general_or_emergency_assistance_received_300_part_of_nontaxable_|in_home_care_allowance_received_300_part_of_nontaxable_|loan_proceeds_received_300_part_of_nontaxable_|lottery_(300|5000)|refugee_resettlement_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|retroactive_SSI_PA_lump_300|reverse_mortgage_payments_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|tax_refunds_and_credits_received_300_part_of_nontaxable_|va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_|workers_compensation_claim_expense_amounts_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)|workforce_300_of_which_vocational_allowance_200|workforce_program_payments_received_300_part_of_nontaxable_)$/
+  identifier: /^cw_(has_countable_unearned_income|unearned_income_verification_is_pending|pending_verification_count|person_pending_verification_count|verification_status)$/
+  class: CW2 Colorado Works verifies the unearned income it counts
+
+# CW3: a retroactive "SSI or public assistance" lump sum, translated as the default kind ssi (the old
+# fact could not say which, CO-3920), is SSI, which 3.605.4.B.27 exempts. The scalar facts could state
+# it only inside other_unearned_income_nontaxable, which Colorado Works counted.
+- case: /^G-[A-Za-z]+-retroactive_SSI_PA_lump_300$/
+  identifier: /^cw_/
+  class: CW3 a retroactive SSI award is SSI (3.605.4.B.27)
+
+# CW4: workers' compensation claim expenses stated as the receipt's claim_expense (the translation of
+# the retired LEAP fact workers_compensation_claim_expense_amounts_received) are deducted (3.605.3.B.4).
+# The old Colorado Works read them only from its own second statement of the same amount,
+# workers_compensation_award_expenses (CO-4366), which these households do not state.
+- case: /^G-[A-Za-z]+-workers_compensation_claim_expense_amounts_received_300_(paid_as_a_lump_sum|part_of_nontaxable_)$/
+  identifier: /^cw_/
+  class: CW4 workers' compensation claim expenses are a field of the award (3.605.3.B.4)

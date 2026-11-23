@@ -37,9 +37,9 @@ describe("owns: the question's Owner line names the role", () => {
     expect(ownedPhrase(med)).toBe("43 open questions you own, and 3 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 30 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 33 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([30, 4]); // + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
+    expect([cash.open.length, cash.partly.length]).toEqual([33, 4]); // + OQ-985, OQ-986, OQ-987 (receipts migration 2, Colorado Works); + OQ-951 (time audit T-1), OQ-953 (T-6); + OQ-901 (C.R.S. 26-2-111(1)(d) and OAP, fix round 2026-11-23); + OQ-887, OQ-888 (receipts migration 1, Adult Financial); + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
@@ -71,12 +71,12 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 19 stored households and reaches 42", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 22 stored households and reaches 45", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432", "CO-488"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up); + CO-488 (non-MAGI fix round 2026-11-23 households)
-    expect(reach).toHaveLength(42); // + CO-488 (fix round 2026-11-23); + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 19 of ${vol.cases.length} stored households; it reaches 42`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208", "CO-352", "CO-355", "CO-358", "CO-359", "CO-363", "CO-427", "CO-430", "CO-432", "CO-488", "CO-580", "CO-581", "CO-582"]); // + CO-580 to CO-582 (receipts migration 2, Colorado Works households in receipts alone); + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible); + the eligible Colorado Works probes of the probe-preservation round (CO-300 and up); + CO-488 (non-MAGI fix round 2026-11-23 households)
+    expect(reach).toHaveLength(45); // + CO-580 to CO-582 (receipts migration 2); + CO-488 (fix round 2026-11-23); + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3); + 20 Colorado Works and cash probes of the probe-preservation round (CO-300 and up)
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 22 of ${vol.cases.length} stored households; it reaches 45`);
   });
 
   it("the children's Medicaid income limit (CO-191) is read by 35 and reaches 75", () => {

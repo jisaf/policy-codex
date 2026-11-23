@@ -1,11 +1,11 @@
-// Receipt records, migration phase 1: the one translation of a household or
+// Receipt records, migration phases 1 and 2: the one translation of a household or
 // rule test stated in the scalar unearned-income facts into the `receipts`
 // list (CO-5000). Written once, reviewed as code (restructure review, change
 // A; ported from prototypes/receipt-spike/translate.ts and brought to the
 // adopted kinds). Transition rule (docs/plan-colorado.md): the old facts are
-// kept, so the programs that still read them (Colorado Works, CCCAP,
-// Medicaid, CHP+, SUN Bucks) read what they read before, and the receipts
-// list states the same money once for LEAP, SNAP and Adult Financial. The
+// kept, so the programs that still read them (CCCAP, Medicaid, CHP+, SUN
+// Bucks) read what they read before, and the receipts list states the same
+// money once for LEAP, SNAP, Adult Financial and Colorado Works. The
 // translator is the only writer of both, so the two cannot disagree; the
 // harness re-translates every stored household and reports any whose stored
 // receipts differ from the translation of its old facts.
@@ -57,6 +57,9 @@ export const PARTS: ReadonlyArray<readonly [string, string, boolean, boolean]> =
   ["refugee_resettlement_payments_received", "refugee_resettlement", false, true],
   ["tanf_supportive_service_payments_received", "colorado_works_supportive_services", false, true],
   ["workers_compensation_claim_expense_amounts_received", "workers_compensation", false, true],
+  // Colorado Works' statement of the same earmark (CO-4366, part of the
+  // nontaxable residual): phase 2 reads it as the receipt's claim_expense
+  ["workers_compensation_award_expenses", "workers_compensation", false, true],
   ["americorps_payments_received", "americorps", false, false],
   ["workforce_program_payments_received", "workforce_program_payment", false, false],
   ["general_or_emergency_assistance_received", "general_assistance", false, false],
@@ -87,7 +90,7 @@ export const MONTH_FACTS: ReadonlySet<string> = new Set<string>([
   "overpayment_recoupment_for_intentional_violation_withheld", "child_support_received_transferred_to_child_support_agency",
   "military_retirement_paid_to_former_spouse", "income_received_for_person_living_elsewhere",
   "infrequent_or_irregular_income_received", "periodic_unearned_income_received", "americorps_service_hours",
-  "money_received_from_sponsor",
+  "money_received_from_sponsor", "retroactive_colorado_works_lump_sum_received",
 ]);
 /** Person-scope facts the translation reads (the LEAP thirty-day facts and the periodic income). */
 export const PERSON_FACTS: ReadonlySet<string> = new Set<string>([
@@ -173,12 +176,22 @@ function carve(
   // the sponsor's money is not part of any other fact
   if (get("money_received_from_sponsor") > 0) R.push({ kind: "sponsor_payment", amount: get("money_received_from_sponsor") });
   // lump sums: retroactive parts, the named receipts the lump sum reaches, the rest
+  if (get("retroactive_colorado_works_lump_sum_received") > get("retroactive_ssi_or_public_assistance_lump_sum_received")) {
+    notes.push("retroactive_colorado_works_lump_sum_received exceeds the retroactive SSI or public assistance lump sum it is part of");
+  }
   const lump = get("lump_sum_received");
   const rss = get("retroactive_social_security_lump_sum_received");
   const rssi = get("retroactive_ssi_or_public_assistance_lump_sum_received");
   if (lump > 0 || rss > 0 || rssi > 0) {
     if (rss > 0) { R.push({ kind: "social_security", amount: rss, frequency: "once", retroactive: true }); take(rss, false); }
-    if (rssi > 0) { R.push({ kind: kinds.rssi, amount: rssi, frequency: "once", retroactive: true }); take(rssi, false); }
+    if (rssi > 0) {
+      // the part that is a retroactive Colorado Works payment (CO-4371, phase
+      // 2) is that kind; the rest is the kind chosen for the case
+      const rcw = Math.min(get("retroactive_colorado_works_lump_sum_received"), rssi);
+      if (rcw > 0) R.push({ kind: "colorado_works_cash", amount: rcw, frequency: "once", retroactive: true });
+      if (rssi - rcw > 0) R.push({ kind: kinds.rssi, amount: rssi - rcw, frequency: "once", retroactive: true });
+      take(rssi, false);
+    }
     if (rss + rssi > lump) notes.push(`retroactive parts ${rss + rssi} exceed lump_sum_received ${lump}`);
     let reach = Math.max(0, lump - rss - rssi);
     // the overlap the old facts force (CO-4962): named receipts lie in the
