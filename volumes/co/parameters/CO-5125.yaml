@@ -1,0 +1,15 @@
+id: CO-5125
+name: "LEAP: the weeks before the application in which earned ongoing income is read"
+identifier: leap_earned_ongoing_income_weeks
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: "The number of weeks before the application date in which 9 CCR 2503-7 3.752.22.B reads earned ongoing income: \"the countable gross income in any four (4) weeks of the eight (8) weeks prior to the application date\"."
+versions:
+  - from: "2015-11-01"
+    value: 8
+    source: S2713
+sources: [S2713]
+tags: [income]
+rationale: "Earned-income records, E1 (LEAP): leap_ongoing_dated_wages (CO-5121) places dated pays in the eight weeks before the application date; the eight weeks are the rule's figure, not a literal. 3.752.22 is marked \"[Rev. eff. 11/1/15]\" in the version effective November 1, 2025 (D-86), and the amendments effective November 1, 2026 (D-173) do not change it."

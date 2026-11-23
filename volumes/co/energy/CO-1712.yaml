@@ -5,14 +5,17 @@ kind: derived
 type: money
 scope: person-month
 program: LEAP
-meaning: "The person's self-employment income for the month for LEAP: the declared monthly gross income less the receipted business expenses 9 CCR 2503-7 3.755.21.I allows, not below zero."
-precision: "Owners of an LLC or S corporation are employees for LEAP (3.755.21.J) and state wages instead. A person with no gross receipts has none, whatever the cost fact says."
-derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, leap_self_employment_allowable_costs]]]]
-sources: [S1084]
+meaning: "The person's self-employment income for the month for LEAP: the declared monthly gross income (leap_self_employment_gross_receipts, CO-5126) less the receipted business expenses 9 CCR 2503-7 3.755.21.I allows (leap_self_employment_allowable_costs, CO-1711) and less the part of the receipts set aside under a Plan for Achieving Self-Support (3.752.23.DD), not below zero."
+precision: "Owners of an LLC or S corporation are employees for LEAP (3.755.21.J) and state wages instead. A person with no gross receipts has none, whatever the cost records say. Earned-income records, step E1 (LEAP): the set-aside is the pass_set_aside of the receipt records counted in the month (earnings, CO-5100), replacing pass_set_aside_earned_income (CO-4618), which leap_household_income (CO-1002) took off the wages and self-employment together; each pay's set-aside is now taken off that pay, so it is subtracted once. leap_household_income reads this item for the month before the application month (3.755.21.I.1 as amended effective November 1, 2026; OQ-681)."
+derived: [case, [["<=", leap_self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", leap_self_employment_gross_receipts, ["+", leap_self_employment_allowable_costs, [sum_receipts, earnings, [all, ["=", [lookup, leap_earnings_treatment_table, [receipt, kind]], counted_self_employment], [received_in, [month]]], [receipt, pass_set_aside]]]]]]]
+sources: [S1084, S2719, S3300]
 implemented: engine
 tags: [income]
-rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none. Earned-income records, E1 (LEAP): the receipts, costs and set-aside are read from the records."
 tests:
-  - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, leap_self_employment_allowable_costs: 400, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
-  - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0, earnings: [{kind: wages}]}, expect: 0}
-  - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, leap_self_employment_allowable_costs: 450, earnings: [{kind: wages}, {kind: self_employment_receipts, amount: 300}]}, expect: 0}
+  - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_self_employment_allowable_costs: 400, earnings: [{kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
+  - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {earnings: [{kind: wages, amount: 1000}]}, expect: 0}
+  - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {leap_self_employment_allowable_costs: 450, earnings: [{kind: self_employment_receipts, amount: 300}]}, expect: 0}
+  # $1,500 of receipts, $300 of receipted operating costs, $200 set aside under an approved PASS (3.752.23.DD): $1,500 - $300 - $200 = $1,000.
+  - {id: CO-1712-T4, as_of: "2026-10-01", month: "2026-10", title: "A PASS set-aside from the business", given: {self_employment_cost_receipts_received: true, earnings: [{kind: self_employment_receipts, amount: 1500, pass_set_aside: 200}, {kind: business_cost_operating, amount: 300}]}, expect: 1000}
+  - {id: CO-1712-T5, as_of: "2026-10-01", month: "2026-10", title: "Earnings not stated: cannot determine", given: {}, expect: unknown}

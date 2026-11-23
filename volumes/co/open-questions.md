@@ -3051,3 +3051,33 @@ Assumption: The 2025 and 2026 regional income-trust ceilings are the figures the
 Blocked on: HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (hcpf.colorado.gov refused, HTTP 403 on 2026-11-23)
 
 Checked 2026-11-23: D-65 (§ 8.100.7.G.6.a.i.a)), D-72. Items: CO-3022, CO-1985, CO-642, CO-651, CO-3310.
+
+### OQ-1160. LEAP: earned pay of a frequency 3.752.22.C does not convert, and pay received once
+
+Body: 9 CCR 2503-7 3.752.22.B (S2713) counts earned ongoing income as "the countable gross income in any four (4) weeks of the eight (8) weeks prior to the application date", and C converts the pay of a household member "paid less than monthly": four weekly, two bi-weekly or two semi-monthly amounts. C.3 reads "actual income received in the income verification period" for a job that began or ended. The text does not say how pay made less often than monthly (every other month, quarterly, twice a year, annually) or pay received once (a bonus, an odd job) is counted, and 3.752.23 excludes no irregular earned income. With earnings records (CO-5100) each such pay is a record of its own, so the question can be answered by date. The volume reads (1) a pay of one of those frequencies stated as a stream (no date) at the amount the record states for the month determined, as a program whose text gives no conversion counts the amount received in the month (design 2.4); (2) one stated with its date at its amount when received in the income verification period, as 3.752.22.A counts income received once; (3) an odd job stated beside a converted pay schedule as its own record, counted in its month (CO-194). The other readings: half of what was received in the eight weeks (four weeks of the eight); the pay averaged over its period (a quarterly pay divided by three); or not counted as ongoing income at all. Items: CO-5120, CO-5121, CO-5122, CO-3925.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: A stream of such pay counts at its stated monthly amount; a dated pay of that kind, or one paid once, counts when received in the income verification period; an odd job beside regular pay counts in its month.
+
+Checked 2026-11-23: 9 CCR 2503-7 3.751.1, 3.752.21-23 (D-86, rule version 12221, re-fetched from the Secretary of State on 2026-11-23, unchanged: "any four (4) weeks of the eight (8) weeks prior to the application date"; C.1-2 name weekly, bi-weekly and semi-monthly pay only) and the amendments effective 11/01/2026 (D-173), which do not change 3.752.22. No paragraph settles it.
+
+### OQ-1162. LEAP: payments from boarders, at their gross or less the cost of the room and meals
+
+Body: 9 CCR 2503-7 3.752.21 (S4100) counts as unearned income "payments from any other source, which is considered to be a gain or benefit to the applicant or recipient", and no paragraph of 3.752.23 excludes a boarder's payment; before earnings records LEAP counted a lodger's payment for a room only or meals only (receipts counted because no rule excludes them) and not a payment for room and board. leap_boarder_payments (CO-5124) now counts all three, at the gross payment. Whether the "gain or benefit" is the gross payment or the payment less what the room and meals cost the household (as other programs deduct a boarder's costs: Colorado Works 3.605.2.E.4, SNAP 4.403.F) the LEAP text does not say; business_cost_boarder_provision is not deducted (a row for the owner's signature in leap_earnings_treatment_table, CO-5102). Items: CO-5124, CO-5102, CO-3926.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: The gross payment counts; the cost of providing the room or meals is not deducted.
+
+Checked 2026-11-23: 9 CCR 2503-7 3.752.21, 3.752.211, 3.752.23 (D-86, re-fetched 2026-11-23); none names boarders, lodgers or a room-and-board cost.
+
+### OQ-1163. CCCAP Child Welfare Child Care: whether "from birth to the age of thirteen" reaches a child of thirteen
+
+Body: 8 CCR 1403-1 3.103.UU (S2853) defines an eligible child as "a child, from birth to the age of thirteen (13) years", and 3.111.F (S482) "from birth to the age thirteen (13) years"; neither says whether a child of thirteen is included (T-9 hand check A-8, docs/reviews/t9-threshold-handcheck.md). For Low-Income and Colorado Works child care, paid from the Child Care and Development Fund, 45 CFR 98.20(a)(1)(i) (S4420) settles it: a child must "Be under 13 years of age", so cccap_is_child_of_eligible_age_needing_care (CO-4056) reads "under thirteen" (CO-4056-T7). Child Welfare Child Care "is not funded through the Child Care Development Fund" (3.120.F, S2853), so the federal limit does not bind it, and its eligible child rests on the state words alone. The volume reads them the same way for it. Items: CO-4056, CO-989.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A child is an eligible child by age until the thirteenth birthday, in Child Welfare Child Care as in the CCDF-funded programs.
+
+Checked 2026-11-23: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.120.F (D-87, rule version 12658, re-fetched from the Secretary of State on 2026-11-23, unchanged) and 45 CFR 98.20(a)(1) (D-442, eCFR as of 2026-11-19). No state text names the thirteenth birthday.

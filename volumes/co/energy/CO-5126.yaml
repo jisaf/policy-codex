@@ -1,0 +1,22 @@
+id: CO-5126
+name: "LEAP: a person's self-employment gross receipts in a month"
+identifier: leap_self_employment_gross_receipts
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "The gross income the person's self-employment received in the month (9 CCR 2503-7 3.755.21.I.1 as amended effective November 1, 2026, S2719: \"total gross income received in the full month prior to the application date\"): the earnings records (earnings, CO-5100) of a business's gross receipts, a farm's included (leap_earnings_treatment_table, CO-5102: counted_self_employment), received in the month."
+precision: "Earned-income records, step E1 (LEAP): replaces self_employment_gross_receipts (CO-1700) for LEAP. leap_household_income (CO-1002) reads leap_self_employment_income (CO-1712), and so this figure, for the month before the application month (OQ-681). Owners of a limited liability company or S corporation are employees for LEAP (3.755.21.J) and state wages instead."
+derived: [sum_receipts, earnings, [all, ["=", [lookup, leap_earnings_treatment_table, [receipt, kind]], counted_self_employment], [received_in, [month]]], [receipt, amount]]
+sources: [S1084, S2719]
+implemented: engine
+tags: [income]
+open: [OQ-681]
+rationale: "Earned-income records, E1 (LEAP): the business's receipts are records, read by LEAP's counting table, so the self-employment income and its PASS set-aside (CO-1712) read one figure. cccap_self_employment_gross_receipts (CO-5156) has the same shape over CCCAP's table; it is not read here because each program builds its own income from the neutral records (product-owner decision of 2026-11-23: complex program calculations are never shared) and the two tables decide the rows apart."
+nearest: [CO-5156]
+tests:
+  - {id: CO-5126-T1, title: "$1,500 of business receipts in October", as_of: "2026-11-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500, month: "2026-10"}]}, expect: 1500}
+  # A farm's $700 and a repair business's $800 in October: $1,500; a cost record is not a receipt.
+  - {id: CO-5126-T2, title: "A farm and another business: both receipts", as_of: "2026-11-01", month: "2026-10", given: {earnings: [{kind: farm_self_employment_receipts, amount: 700, month: "2026-10"}, {kind: self_employment_receipts, amount: 800, month: "2026-10"}, {kind: business_cost_operating, amount: 200, month: "2026-10"}]}, expect: 1500}
+  - {id: CO-5126-T3, title: "Receipts of another month are not this month's", as_of: "2026-11-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1500, month: "2026-11"}]}, expect: 0}
+  - {id: CO-5126-T4, title: "Earnings not stated: cannot determine", as_of: "2026-11-01", month: "2026-10", given: {}, expect: unknown}
