@@ -114,7 +114,7 @@ Metamorphic relations (whole phase): MH-1 split, MH-2 order, MH-4 encumbrance 0 
 
 ## 10. Check
 
-`CHECK_BASE=origin/main npm run check` on 137a74d (before this section was written; the run after it is in the report): OK; co rule tests 5,104 of 5,104 (CO-5320-T21 to T23 among them), household expectations 3,976 of 3,976 (CO-300's new one among them); change impact 29 flags, 29 dispositioned, 0 open; conformance self-check OK. Four stale entries that the check names as "no longer flagged" (CO-303 to CO-301 and CO-314, in 2026-11-23-fix-round-other-families.yaml and 2026-11-23-receipts-3.yaml) came with the SNAP round's merge and are not this round's; they do not block.
+`CHECK_BASE=origin/main npm run check` on c4cd658 (committed, clean tree): OK; co rule tests 5,104 of 5,104 (CO-5320-T21 to T23 among them), household expectations 3,976 of 3,976 (CO-300's new one among them); change impact 29 flags, 29 dispositioned, 0 open; conformance self-check OK (co 5,625 cases, 9,240 checked, 0 failed; mwr 150 cases, 197 checked, 0 failed). Four stale entries that the check names as "no longer flagged" (CO-303 to CO-301 and CO-314, in 2026-11-23-fix-round-other-families.yaml and 2026-11-23-receipts-3.yaml) came with the SNAP round's merge and are not this round's; they do not block.
 
 ## 11. Left open
 
