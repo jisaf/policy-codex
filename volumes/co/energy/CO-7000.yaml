@@ -1,0 +1,19 @@
+id: CO-7000
+name: "LEAP: the determination is made as of the application date"
+identifier: leap_determination_is_as_of_application_date
+kind: derived
+type: yes/no
+scope: case
+program: LEAP
+meaning: "Whether the case is determined as of its LEAP application date (leap_application_date, CO-2122), the date 9 CCR 2503-7 fixes the household's circumstances on: \"The following factors shall be considered as of the date of application: Colorado state residency, U.S. citizenship/alien status, income, vulnerability, fuel type, household composition, shared living arrangements, dwelling type, and estimated home heating costs\" (3.752.2, S4600), and \"eligibility is determined by accounting for the circumstances of the household on the date of the application, regardless of any changes thereafter\" (3.751.1 \"Point in Time\", S776; 3.752.1, S3308: \"Eligibility will be determined based on the applicant's circumstances on the date the application is received by the county department\")."
+precision: "Coverage pass 5, L5-5 (docs/reviews/coverage5-care-energy.md; the time contract, docs/conventions.md \"Scopes\"): a person's facts are stated as of the case's determination date (nighttime_residence_type CO-2810, immigration_status CO-002, residence_setting_type CO-3330, the relationships and the household's living arrangement among them), so a LEAP determination is made with its application date as the determination date, and the case states the facts as they stood on that date. leap_is_eligible (CO-1007) reads this item before the point-in-time factors: a case whose determination date is another day cannot determine LEAP eligibility, rather than answer from facts of the wrong day (the shelter a household moved to after applying from an apartment, a status granted after the application). Before coverage pass 5 only the age was read on the application date (leap_age_on_application_date, CO-6400; L4-4). An application date not stated is cannot determine."
+derived: ["=", ["det_date"], "leap_application_date"]
+sources: [S4600, S776, S3308]
+implemented: engine
+tags: [household]
+open: []
+rationale: "Coverage pass 5, L5-5: LEAP read the point-in-time factors other than age (dwelling type, homelessness, alien status) from facts stated on the determination date; the time contract makes a LEAP determination's determination date its application date, and this item lets leap_is_eligible refuse a case stated for another day."
+tests:
+  - {id: CO-7000-T1, title: "Determined on the application date, November 10, 2026: true", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10"}, expect: true}
+  - {id: CO-7000-T2, title: "Applied November 10, determined as of November 20 (review household LP1): false", as_of: "2026-11-20", given: {leap_application_date: "2026-11-10"}, expect: false}
+  - {id: CO-7000-T3, title: "Application date not stated: cannot determine", as_of: "2026-11-20", given: {}, expect: unknown}
