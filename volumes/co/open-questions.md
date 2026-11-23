@@ -976,7 +976,7 @@ Hard-coded numbers fix round (audit H-21): the count is a parameter, ma_family_p
 
 Coverage pass 3 (C3-01, 2026-11-22): the plus-one household also moves G.8's floor. 133% of the two-person guideline is 180.3% of the one-person guideline, so a single adult between 138% (the Adults limit with the disregard) and 180.3% (a family of three: 138% to 160.6%) was over the Adults limit and under the floor, and had no coverage. The approved state plan page for the group, S59 (D-315; S3681), covers under 42 CFR 435.214 (S3680) individuals "who are not pregnant, and have household income at or below a standard established by the state", with no floor; G.8's last sentence gives the group's purpose as covering "those not eligible for a Medicaid eligibility category that provides full coverage". The volume now follows the state plan: ma_family_planning_income_in_band (CO-1155) and the presumptive tests (CO-2439, CO-3155) test only the 260% ceiling, each with a statute_override note; the full-coverage exclusion is applied by ma_family_planning_status's order (CO-1154) and, for presumptive eligibility, by testing the full-coverage groups first (CO-2439) or on the declarations (CO-3155); ma_family_planning_income_lower_pct (CO-1131) is no longer read. A consequence beyond the gap: a person who is not eligible for full coverage and whose income is at or below 133% on the enlarged household is now limited_family_planning (CO-01 and CO-02 p2, 81 and on Medicare, at 65.4%; was ineligible_income). The size and disregard readings above are unchanged. Items added: CO-4976 (the enlarged size, factored out of CO-1153), CO-4977 (the data source on that size). The class moves to needs Legal: the rule's floor and the approved state plan conflict, and only HCPF can say whether the rule or the state plan is to be amended.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: the two readings each rest on text on file (the rule's "greater than 133%" and its silence on the disregard, against the approved state plan page S59, which sets no floor); no document not on file would decide it, and which one governs is the State's to settle by amending the rule or the plan, with Legal advising)
 Owner: Legal, Medicaid policy owner
 Assumption: The family planning applicant is counted as two in the household, which adds one to its size; the 5 percent disregard applies only at the 260 percent ceiling; and, as the approved state plan sets no floor, a person who is not eligible for full coverage qualifies at any income at or below 260 percent.
 
@@ -1062,7 +1062,7 @@ HCPF fix round (2026-11-21, docs/reviews/stakeholder-hcpf.md), B-1: the open hal
 
 OQ-44 fix (audit fix round, 2026-11-21): ma_five_year_bar_exempt_category (CO-1170) is retired; CO-1172 reads the trafficking victim from immigration_status (trafficking_victim) and the other iv categories from status_before_lpr_adjustment (CO-2700), is_american_indian_born_in_canada_or_tribal_member (CO-2701) and is_hmong_or_highland_lao_veteran (CO-2702); the lumped other_qualified_non_citizen is now parolee_one_year_or_more, conditional_entrant, battered_non_citizen or deportation_withheld, each still qualified (CO-506). The open half is unchanged.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: 8 U.S.C. 1612(b) (D-25, on file) makes covering these adults after five years a State option, and the current rule's list differs from the earlier text; no document not on file would decide it: it is Colorado's choice under the option, with Legal advising on the rule's wording)
 Owner: Legal, Medicaid policy owner
 Assumption: For a determination dated before October 2026, an adult parolee, conditional entrant or battered non-citizen waits five years and is then covered.
 
@@ -1074,7 +1074,7 @@ Body: § 8.100.3.G.1.g.ix.1 (S607) says persons under 19, pregnant or within 12 
 
 Open-question sweep (2026-11-21): partly resolved. C.R.S. 25.5-2-104(2) (S1217) makes a child under 19 who would be eligible for medical assistance but for immigration status eligible for state medical assistance, with the same benefits (25.5-2-104(1)); C.R.S. 25.5-5-201(6)(a) (S1218) makes a pregnant non-citizen who meets every other requirement eligible for medical assistance, with twelve months postpartum under (6)(b). Neither is limited to the categories § 8.100.3.G.1.g.ix.1.a-b lists, so for a child or a pregnant person the exhaustive reading was wrong: ma_magi_is_fully_eligible (CO-562) now counts a child or pregnant person in any MAGI category, and ma_is_covered_under_cover_all_coloradans (CO-1175) covers a child or pregnant person who meets every requirement of any categorical program other than status (an undocumented disabled child meeting only the SSI-related standards is covered, not emergency-only). What stays open: a postpartum person who was not covered while pregnant, whom the statute does not reach, still reaches only the rule's ix.1.a-b list (CO-1173 carries the postpartum term). No household expectation changed.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: the rule's list (S607) and the statutes (S1217, S1218) are on file and the statutes reach only children and people covered while pregnant; whether Colorado extends the exception beyond its list for a postpartum person is the State's choice, with Legal advising; no unfetched document would decide it)
 Owner: Legal, Medicaid policy owner
 Assumption: A postpartum person who was not covered while pregnant is exempt from the immigration test only in the categories the Colorado rule lists.
 
@@ -1749,7 +1749,7 @@ Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7 (D-65, S1508) first allows every d
 
 Body: 10 CCR 2505-10 § 8.100.3.B.2.b (S1518) makes the state of residence of an institutionalized person who became incapable of indicating intent at or after age 21 "the state in which the person was living when he or she became incapable of indicating intent", or, if that cannot be determined, when first so determined. B.2.c says that "upon placement in another state, the new state is the state of residence unless the current state of residence is involved in the placement", and 42 CFR 435.403(h)(4) (D-33) makes it "the State in which the individual is physically present, except where another State makes a placement". For a person who became incapable in one state and was then placed privately in an institution in another, B.2.b gives the first state and B.2.c and the federal rule the second. ma_institutionalized_state_of_residence (CO-2257) follows B.2.c and the federal rule (the institution's state, ma_institution_state), because the federal definition binds the State plan. Checked 2026-11-21: § 8.100.3.B.2-3 (D-65) and 42 CFR 435.403(e), (h) (D-33); no published rule reconciles them. Items: CO-2257, CO-2250, CO-2254.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: both texts are on file (§ 8.100.3.B.2.b-c, 42 CFR 435.403(h)(4)); reconciling the State's rule with the federal residency rule a state plan must follow is the State's (HCPF amends B.2.b or confirms the reading in force), with Legal advising; no unfetched document would decide it)
 Owner: Legal, Medicaid policy owner
 Assumption: A person who became unable to state intent at or after 21 and was then placed privately in another state's institution is a resident of the state where the institution is.
 
@@ -1783,7 +1783,7 @@ Body: 42 U.S.C. 1396b(v)(5) (S1700) limits payment "beginning on October 1, 2026
 
 Hard-coded numbers fix round (audit E-1): the switch is a dated yes/no parameter, ma_alien_payment_restriction_applies (CO-3034), false before October 1, 2026 and true from it, rather than a comparison of the determination date with ma_alien_payment_restriction_start_date (CO-2401, retired). The question, determination date or month of service, stands.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: the statute (S1700) and CMS's implementing letter (SHO #26-001, S1704) are on file and support the determination-date reading in force; how Colorado applies the limit to a retroactive month before October 2026 is the State's implementation choice, with Legal advising; no unfetched document would decide it)
 Owner: Legal, Medicaid policy owner
 Assumption: The October 2026 limit on federal payment for some non-citizens is applied to every month of a determination made on or after October 1, 2026, including earlier months of retroactive coverage.
 
@@ -1853,7 +1853,7 @@ Blocked on: HCPF's implementation guidance for 42 U.S.C. 1396b(v)(5) (redetermin
 
 Body: The current § 8.100.3.G.1.g (version effective 11/14/2026, D-65) has not been amended for 1396b(v)(5) and still admits refugees, asylees, Cuban and Haitian entrants, COFA migrants and other qualified non-citizens (iii-v). From October 1, 2026 federal payment for those who are not lawful permanent residents, entrants or COFA migrants is limited to emergency services (S1700). No fetched Colorado statute funds full coverage for those adults with state money: C.R.S. 25.5-2-104(2) reaches children under 19 and 25.5-5-201(6) pregnant people (S1729, S1730), who keep full coverage in any case through the lawfully residing option or Cover All Coloradans. The codex applies the federal limit (CO-509) and reports such adults emergency-only; whether HCPF will amend § 8.100.3.G.1.g or fund the adults otherwise is HCPF's to decide by rule (HCPF review B-1). Items: CO-509, CO-2400.
 
-Class: needs Legal
+Class: state policy choice (reclassified from "needs Legal" in coverage pass 4, 2026-11-23, docs/reviews/coverage4-medicaid-magi-chp.md section 4: the rule, the federal limit and the state statutes are all on file; whether Colorado amends § 8.100.3.G.1.g or funds these adults with state money is HCPF's policy decision by rule, with Legal advising; no unfetched document would decide it)
 Owner: Legal, Medicaid policy owner
 Assumption: From October 2026, adult refugees, asylees and other qualified non-citizens who are not permanent residents, Cuban or Haitian entrants or compact migrants get emergency services only, although Colorado's rule still lists them.
 
@@ -2822,7 +2822,7 @@ Assumption: A period of N consecutive days is counted from the day after the abs
 
 Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.
 
-### OQ-970. Medicaid MAGI: whether AmeriCorps living allowances, workforce and vocational training allowances and uniformed services special pay are MAGI income
+### OQ-970. Partly resolved: AmeriCorps payments are MAGI income and special pay is earnings; open: whether workforce and vocational training allowances are MAGI income
 
 Body: 42 CFR 435.603(e) (S165) counts "income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code", and 10 CCR 2505-10 8.100.4.C.1 (S166) lists what it counts and excludes without naming these payments. Before receipt records the ledger stated each of them as part of the non-taxable other unearned income (americorps_payments_received, workforce_program_payments_received with vocational_training_allowance_received, uniformed_services_special_pay_received, all part of other_unearned_income_nontaxable, CO-030), so ma_person_magi_income (CO-502) left them out. The federal tax treatment is not that simple: an AmeriCorps living allowance and most training allowances are taxable compensation, and hostile fire or imminent danger pay is excluded only for service in a combat zone. Medicaid's MAGI counting table (ma_magi_receipt_treatment_table, CO-5500) keeps the earlier reading, as not_taxable_income, until the owner decides.
 
@@ -2831,6 +2831,17 @@ Owner: Medicaid policy owner
 Assumption: The four kinds are not MAGI-based income (the reading before receipt records).
 
 Checked 2026-11-23: 42 CFR 435.603(e) (D-34) and 10 CCR 2505-10 8.100.4.C.1.a-d (D-40). Neither names these payments; the Code sections that would decide them (26 U.S.C. 61, 112, 3121) are not on file. Items: CO-5500.
+
+Coverage pass 4 (C4-11, 2026-11-23; docs/reviews/coverage4-medicaid-magi-chp.md). Fetched for this pass from Cornell LII: 26 U.S.C. 61(a) (D-4430, S4631), 42 U.S.C. 12637(d) and 29 U.S.C. 3241(a)(2) (D-4439, S4640); 26 U.S.C. 112 was already on file (D-4340); IRS Publication 525, Taxable and Nontaxable Income (irs.gov, fetched 2026-11-23, not stored), names neither AmeriCorps payments nor WIOA training allowances.
+- Uniformed services special pay: no longer part of this question. It is earnings (OQ-1020), and MAGI's earnings row leaves it out for a combat zone (26 U.S.C. 112; OQ-1024, settled for MAGI); the receipt row is in_earnings.
+- AmeriCorps: settled. 26 U.S.C. 61(a) makes gross income "all income from whatever source derived" "Except as otherwise provided", and no Code section on file provides otherwise for an AmeriCorps living allowance, stipend or award. 42 U.S.C. 12637(d) keeps such allowances out of income for need-based programs "other than as provided under the Social Security Act", and Medicaid is a Social Security Act program whose income rule is MAGI (42 U.S.C. 1396a(e)(14)(A), S4630). ma_magi_receipt_treatment_table (CO-5500) counts americorps (counted_no_rule_excludes; the owner signs). Before, not counted.
+- Workforce and vocational training allowances: still open, and a genuine state choice. 61(a) counts them unless the Code excludes them, and 29 U.S.C. 3241(a)(2) does not reach a Social Security Act program; but Colorado's own rule says "Training allowances granted by WIA to a dependent child or a caretaker relative of a dependent child to participate in a training program is exempt" (10 CCR 2505-10 8.100.3.K.8.b, S4107), and 8.100.3.K applies to MAGI except where 8.100.4 says otherwise. Whether that State exemption stands for MAGI against 42 U.S.C. 1396a(e)(14)(B)'s bar on income disregards (S4630), and whether the State counts the allowances of other persons and of non-WIOA vocational programs as 61(a) income, is the State's reading of its own rule against the federal one (Medicaid policy owner with Legal); no fetched text reconciles the two.
+
+Class: state policy choice (training allowances only)
+Owner: Medicaid policy owner, Legal
+Assumption: Workforce and vocational training allowances are not MAGI-based income (the reading before receipt records, and K.8.b's exemption for the persons it names).
+
+Checked 2026-11-23 (coverage pass 4): 26 U.S.C. 61(a) (D-4430); 42 U.S.C. 12637(d), 29 U.S.C. 3241(a)(2) (D-4439); 42 U.S.C. 1396a(e)(14)(A)-(B) (D-26); 10 CCR 2505-10 8.100.3.K.8.a-c (D-65); IRS Publication 525 (irs.gov). Items: CO-5500.
 
 ### OQ-971. Medicaid SSI method: kinds of receipt counted only because no Colorado rule on file excludes them, where 20 CFR 416 Subpart K would
 
@@ -3152,7 +3163,7 @@ Checked 2026-11-23: 26 U.S.C. 112 (D-4340); 42 CFR 435.603(e) (D-34); CO-5100's 
 
 Resolved (coverage pass 4, C4-02, 2026-11-23): 26 U.S.C. 112(a)-(b) (S4340, D-4340, on file) decides it, so it was not a policy choice; the block was a missing record field. The earnings record now has combat_zone_exclusion (CO-5100; request R-3 of docs/reviews/records-earnings-medicaid.md), the part of a pay that is compensation for active service for a month during any part of which the member served in a combat zone (all of an enlisted member's, an officer's up to the maximum enlisted amount), a fact of the federal return, 0 unless shown (D3). ma_magi_wage_earnings (CO-5160) leaves it out of every pay it counts. Worked example (COMBAT-FAM, stored household CO-720): an enlisted member's basic pay of 3,800 for a combat-zone month and 225 of hostile fire pay are both out of gross income, so the spouse's household of four has MAGI 0 and the spouse is a parent or caretaker relative, eligible (before: 3,800, 138.2%, ineligible). Items: CO-5100, CO-5106, CO-5160.
 
-### OQ-1124. Medicaid: former foster care youth who were in foster care on their 21st birthday
+### OQ-1124. Resolved: a former foster care youth in Colorado's foster care on the 21st birthday is covered (foster care ends at 21, 12 CCR 2509-3 7.203.41.A)
 
 Body: 10 CCR 2505-10 8.100.4.H.2.a (S1718) extends Medical Assistance to "individuals that were formerly in foster care ... on their 18th, 19th, 20th or up to their 21st birthday and were receiving Medical Assistance"; "up to" can stop before the 21st birthday. 42 CFR 435.150(b)(3) (S214, S4343) covers youth in foster care and enrolled in Medicaid "upon attaining: (i) Age 18; or (ii) A higher age at which the State's or such Tribe's foster care assistance ends under title IV-E of the Act", which reaches a youth in care on the birthday on which that assistance ends. Whether Colorado's title IV-E foster care assistance ends at 21 is not in any text on file. ma_is_former_foster_care_category (CO-549) reads a youth whose foster care ended at 21 as covered (CO-549-T95).
 
@@ -3161,6 +3172,8 @@ Owner: Medicaid policy owner
 Assumption: A youth in foster care on the 21st birthday is covered (the federal "upon attaining ... a higher age at which ... foster care assistance ends").
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.4.H.2.a (D-65); 42 CFR 435.150(b)(3) (D-31, eCFR re-read 2026-11-23). The age at which Colorado's title IV-E foster care assistance ends is in the Colorado Department of Human Services' rules, not on file. Items: CO-549.
+
+Resolved (coverage pass 4, C4-12, 2026-11-23): the Colorado Department of Human Services' rules are served by the Secretary of State (an allowed host). Fetched: 12 CCR 2509-3 § 7.203.4-7.203.41 (D-4433, S4641, rule version 12365), the Foster Youth in Transition Program, Colorado's foster care after 18: "An eligible youth is an individual who: A. Is at least eighteen but less than twenty-one years of age or such greater age of foster care eligibility as required by federal law"; the closure rules list "The child reaches his/her 21st birthday"; and 12 CCR 2509-4 § 7.304.4.A (rule version 11000) continues placement services after 18 through that program. Colorado's foster care therefore ends when the youth attains 21, the "higher age at which the State's ... foster care assistance ends" of 42 CFR 435.150(b)(3)(ii) (S4343), and a youth in foster care and enrolled in Medicaid on the 21st birthday is a former foster care youth, as ma_is_former_foster_care_category (CO-549) already reads it (CO-549-T95); 8.100.4.H.2.a's "up to their 21st birthday" reaches the same youth. The rule does not name the funding (title IV-E or State), which 435.150(b)(3)(ii) names; the age is the same for the program either way. No item changes. Items: CO-549.
 
 ### OQ-1140. Adult Financial: combat-zone pay that is not 37 U.S.C. 310 special pay
 
@@ -3231,3 +3244,13 @@ Owner: CHP+ policy owner
 Assumption: The month of the first birthday is covered (the guarantee reaches its first days, and coverage is by the month); the month after it is not.
 
 Checked 2026-11-23: 10 CCR 2505-3 § 430.1, § 430.2, § 430.3, § 430.5 (D-66, rule version effective 08/30/2026). None states how a guarantee that ends within a month is applied to that month; Medicaid's whole-month rule (10 CCR 2505-10 8.100.4.G.1) is not adopted by 2505-3. Coverage pass 4, C4-07. Items: CO-2410.
+
+### OQ-1232. CHP+: whether a pregnant applicant under 19 is a Prenatal Care Program client
+
+Body: 10 CCR 2505-3 § 110.1.A (D-66) makes a person eligible who is "less than 19 years of age" (A.1) or "a pregnant woman" (A.2), and § 50.19 defines "Woman" as "a female who is 19 years in age or older". A pregnant applicant of 17 is therefore a CHP+ child, and chp_eligibility_status (CO-707) reports her eligible_child (the child test comes first, on the child's band). chp_prenatal_is_eligible (CO-706) has no age test, so the ledger also reads her as a Prenatal Care Program client, which § 330.4 exempts from cost sharing (chp_is_exempt_from_cost_sharing, CO-1990) and § 430.3 gives an enrollment span through the twelfth month after the birth (chp_is_in_prenatal_coverage_period, CO-2407). On § 50.19's words she is not a "woman", so she would pay the § 320.1 copayments of her family's band and keep the child's 12-month continuous eligibility (§ 430.2) instead of the postpartum span. Federal CHIP rules on cost sharing for pregnancy-related services (not on file) may bear on it. Worked example: a pregnant 17-year-old in a family at 180% of the guideline: band_c copayments on § 50.19's reading; none under the ledger's.
+
+Class: state policy choice
+Owner: CHP+ policy owner
+Assumption: A pregnant applicant under 19 who meets the prenatal tests is also a Prenatal Care Program client (exempt from cost sharing, with the postpartum span), as the ledger read before coverage pass 4.
+
+Checked 2026-11-23: 10 CCR 2505-3 § 50.19, § 110.1.A, § 320.1, § 330.4, § 430.2, § 430.3 (D-66, rule version effective 08/30/2026). § 330.4 names "Prenatal Care Program clients" without an age, and no paragraph says whether a pregnant person under 19 is one. Coverage pass 4, C4-15. Items: CO-706, CO-1990, CO-2407.

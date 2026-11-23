@@ -117,7 +117,7 @@ record_fields:
   net_for_tax:
     type: money
     required: true
-    meaning: "For a business, its net earnings from self-employment as the person's federal income tax return reports them (for MAGI, 42 CFR 435.603(e))."
+    meaning: "For a business, its net earnings from self-employment for the month the record covers, as the person's federal income tax return figures them (for MAGI, 42 CFR 435.603(e)): the month's own net, or the year's net divided over the months the record recurs in; not the return's annual figure on a record that recurs, which a rule summing month by month would count in every month (coverage pass 4, C4-17)."
   hours:
     type: hours
     required: true

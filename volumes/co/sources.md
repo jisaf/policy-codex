@@ -23268,7 +23268,7 @@ Document: D-4432
 
 ### S4634. Federal income tax: a qualified distribution from a Roth IRA is not gross income
 
-Document: D-4433
+Document: D-4432
 
 26 U.S.C. 408A(d)(1) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/408A
 
@@ -23282,7 +23282,7 @@ Document: D-4433
 
 ### S4635. Federal income tax: a qualified tuition program distribution is not gross income to the extent of the qualified higher education expenses
 
-Document: D-4434
+Document: D-4432
 
 26 U.S.C. 529(c)(3)(A), (B)(i)-(ii) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/26/529
 
@@ -23357,3 +23357,33 @@ Document: D-4438
 > (a) Deductions
 >
 > Gross income does not include income attributable to the recovery during the taxable year of any amount deducted in any prior taxable year to the extent such amount did not reduce the amount of tax imposed by this chapter.
+
+### S4640. AmeriCorps and WIOA allowances are not income for federal need-based programs, other than as the Social Security Act provides
+
+Document: D-4439
+
+42 U.S.C. 12637(d); 29 U.S.C. 3241(a)(2) (Legal Information Institute, fetched 2026-11-23). https://www.law.cornell.edu/uscode/text/42/12637
+
+> (d) Treatment of benefits
+>
+> Allowances, earnings, and payments to individuals participating in programs that receive assistance under this subchapter shall not be considered to be income for the purposes of determining eligibility for and the amount of income transfer and in-kind aid furnished under any Federal or federally assisted program based on need, other than as provided under the Social Security Act (42 U.S.C. 301 et seq.).
+>
+> ...
+>
+> (2) Treatment of allowances, earnings, and payments
+>
+> Allowances, earnings, and payments to individuals participating in programs under this subchapter shall not be considered as income for the purposes of determining eligibility for and the amount of income transfer and in-kind aid furnished under any Federal or federally assisted program based on need, other than as provided under the Social Security Act (42 U.S.C. 301 et seq.).
+
+### S4641. Colorado Foster Youth in Transition Program: an eligible youth is at least eighteen but less than twenty-one
+
+Document: D-4433
+
+12 CCR 2509-3 § 7.203.4, 7.203.41.A (rule version 12365, fetched from the Secretary of State 2026-11-23). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12365&fileName=12%20CCR%202509-3
+
+> 7.203.4 FOSTER YOUTH IN TRANSITION PROGRAM The Foster Youth in Transition Program provides developmentally appropriate, voluntary services to eligible youth and shall be available to all eligible youth. Services shall be offered using a housing first strategy to provide housing solutions to participating youth who are experiencing, or are at imminent risk of, homelessness.
+>
+> 7.203.41 Eligibility
+>
+> An eligible youth is an individual who:
+>
+> A. Is at least eighteen but less than twenty-one years of age or such greater age of foster care eligibility as required by federal law;
