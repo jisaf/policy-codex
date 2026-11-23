@@ -27,10 +27,7 @@ export const track: Track = {
     ],
     notInvariant: {
       "ME-3": "the SSI method tests infrequent pay over the quarter (416.1112(c)(2)) and the student exclusion over the year",
-      // E1: the split keeps a boarder record's boarders on both halves (it halves amounts only), so the allowance per
-      // boarder is taken twice; a request to the integration owner (docs/reviews/records-earnings-medicaid.md, R-2):
-      // halve or leave whole the boarder records in ME-1, after which this line is removed.
-      "ME-1": "the SSI method's boarder allowance is per boarder (10 CCR 2505-10 8.100.3.K.10.c, e), and the split states each record's boarders on both halves",
+      // ME-1 runs from the records E1 integration: the split halves a boarder record's boarders and a business's hours (R-2).
     },
     bases: [
       { id: "CO-202", person: "p1", label: "MA MAGI parent" },

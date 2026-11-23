@@ -11,7 +11,7 @@ derived: ["+", [case, [[">", [sum_receipts, earnings, [all, [in, [lookup, leap_e
 sources: [S2712, S2713, S3300, S3301, S2208]
 implemented: engine
 tags: [income]
-open: [OQ-681, OQ-1160]
+open: [OQ-681, OQ-1160, OQ-1181]
 rationale: "Earned-income records, E1 (LEAP; design 2.5: \"dated pays in the eight weeks before application, averaged and multiplied by pays per month\"). The thirty-day households (docs/reviews/earnings-e0.md, section 5) state their pays with dates, so one statement serves LEAP's eight weeks and CCCAP's thirty days."
 tests:
   # Application November 1, 2026: the eight weeks are September 6 to October 31. Weekly pays of $500 on the Fridays

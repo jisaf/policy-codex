@@ -2,17 +2,8 @@
 # Owned by the track; each entry is a cited fix or a product-owner decision, with its class named in
 # docs/reviews/records-earnings-cash.md: {case, person?, identifier?, month?, class, old?, new?}.
 
-# AF-0: inherited, not this track. The decision-4 round for the receipts reader defaults (b49a7f2, class D4-1 of
-# scripts/receipts/allowed-differences.yaml) was merged after the earnings baseline (EARNINGS_BASELINE, 20004af), so the
-# records harness sees its one change on a stored household that expects the figure: SNAP's sponsor money for a person
-# who states no receipts is cannot determine (decision 4 of 2026-11-23).
-- case: CO-141
-  person: p3
-  identifier: snap_sponsor_deemed_income
-  old: 0
-  new: unknown
-  class: AF-0 inherited D4-1 (receipts reader defaults, merged after the earnings baseline)
-
+# (Records E1 integration: the entry for the receipts readers' decision-4 round merged after 20004af is removed;
+# EARNINGS_BASELINE is the E1 wave's baseline, 9650b0c, which includes it. docs/reviews/records-earnings-e1-integration.md.)
 # AF-1: board, room, and room and board payments are Adult Financial earned income in the month received, less the
 # documentable expenses of providing them (9 CCR 2503-5 3.520.783.C.2.b-d, S4380). Before, Adult Financial read no room and
 # board payment and counted a payment for a room or for meals only as unearned income (af_receipt_treatment_table, counted
@@ -74,15 +65,6 @@
   old: 0
   new: unknown
   class: AF-D4 earnings not stated, the cost and exemption figures are cannot determine as gross earned income was
-
-# AF-0 (continued), seen only with --all-programs: the generated LEAP households' p2 states no receipts, and SNAP's
-# earned income reads its training-allowance receipts with no default since the decision-4 round for the receipts
-# readers (b49a7f2: CO-4930), merged after the earnings baseline. Not this track's change.
-- case: /^GE-LEAP-/
-  person: p2
-  identifier: /^snap_(person_earned_income|person_earned_income_other_than_self_employment|earned_income_verification_is_pending)$/
-  new: unknown
-  class: AF-0 inherited D4 (receipts reader defaults, merged after the earnings baseline)
 
 # AF-D4 (continued): a person who states earnings but no receipts. 3.520.786.O tests infrequent or irregular income,
 # earned and unearned together, over the calendar quarter (af_infrequent_income_quarter_total, CO-4011), and each month's

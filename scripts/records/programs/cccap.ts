@@ -20,7 +20,7 @@ export const track: Track = {
       "cccap_self_employment_net_earnings", "cccap_other_countable_receipts", "cccap_person_earned_income", "cccap_has_earned_income",
     ],
     notInvariant: {
-      "ME-1": "CCCAP's launch-period income is the federal minimum wage times the declared hours of the business (3.111.G.2.e), and ME-1 does not halve a record's hours: two records with the same hours state twice the hours (request R-3, docs/reviews/records-earnings-care-energy.md)",
+      // ME-1 runs from the records E1 integration: the split halves a boarder record's boarders and a business's hours.
       "ME-3": "CCCAP reads the prior thirty days at application (3.111.H.5.a.1) and may average a business over twelve months (I.2.c)",
     },
     bases: [

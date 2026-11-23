@@ -7,7 +7,13 @@
 // is not invariant (`notInvariant`), and that relation is not run for it.
 //
 //   ME-1 split   a record split into two records with the same fields, the
-//                amounts (amount, per_payment and the earmarks) halved.
+//                amounts (amount, per_payment and the earmarks) halved, and
+//                what the record states per record halved with them: a
+//                business's hours, a boarder record's boarders (a record for
+//                an odd number of boarders is left whole: half a boarder is
+//                not a statement). Records E1 integration: requests R-3 of
+//                docs/reviews/records-earnings-care-energy.md and R-2 of
+//                docs/reviews/records-earnings-medicaid.md.
 //   ME-2 order   the records in reverse order.
 //   ME-3 month   a recurring record (no month, no date) stated for the month
 //                evaluated, compared in that month.
@@ -28,7 +34,7 @@ import type { Track } from "./programs/types";
 type Rec = Record<string, unknown>;
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && valuesEqual(a, b));
-const HALVED = ["amount", "per_payment", "pass_set_aside", "education_deduction", "net_for_tax", "annual_contract_pay"];
+const HALVED = ["amount", "per_payment", "pass_set_aside", "education_deduction", "net_for_tax", "annual_contract_pay", "hours"];
 
 function mapEarnings(c: HouseholdCase, f: (rs: Rec[]) => Rec[]): HouseholdCase {
   const out = clone(c);
@@ -44,7 +50,9 @@ export interface Relation { id: string; name: string; apply: (c: HouseholdCase, 
 export const RELATIONS: Relation[] = [
   { id: "ME-1", name: "split", apply: (c) => mapEarnings(c, (rs) => rs.flatMap((r) => {
     if (typeof r.amount !== "number" || r.amount === 0) return [r];
+    if (typeof r.boarders === "number" && r.boarders % 2 !== 0) return [r];
     const a = { ...r }, b = { ...r };
+    if (typeof r.boarders === "number") { a.boarders = r.boarders / 2; b.boarders = r.boarders / 2; }
     for (const k of HALVED) if (typeof r[k] === "number") { a[k] = (r[k] as number) / 2; b[k] = (r[k] as number) / 2; }
     return [a, b];
   })) },

@@ -13202,6 +13202,9 @@
         # (wages_gross_received_prior_thirty_days 2,500), the pay schedule and the month's wages_gross, which the records do not
         # restate (docs/reviews/earnings-e0.md, section 5). $500 every Friday: the eight weeks before the November 1 application
         # (September 6 to October 31) hold eight Friday pays, the thirty days before it (October 2 to 31) five.
+        # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
+        # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
+        # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
@@ -13211,6 +13214,10 @@
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -14479,6 +14486,9 @@
         # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
         # the pay schedule and the month's wages_gross): the thirty days before November 1 (October 2 to 31) hold four Thursday pays,
         # October 8, 15, 22 and 29, $2,000; the eight weeks (September 6 to October 31) hold eight.
+        # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
+        # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
+        # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
@@ -14488,6 +14498,10 @@
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14620,6 +14634,9 @@
         receipts: []
         # Earned-income records, E1 (CCCAP and LEAP): $500 every Friday, stated with the dates (replacing the thirty-day total 2,500,
         # the pay schedule and the month's wages_gross): five Friday pays in the thirty days before November 1 (October 2 to 31).
+        # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
+        # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
+        # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
@@ -14629,6 +14646,10 @@
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14775,6 +14796,9 @@
         # pay schedule and the month's wages_gross). The CCCAP redetermination is CO-125's, November 1: five Friday pays in the thirty
         # days before it (October 2 to 31). The eight weeks before the November 5 LEAP application (September 10 to November 4) hold
         # the eight Friday pays of September 11 to October 30.
+        # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
+        # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
+        # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
@@ -14784,6 +14808,10 @@
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -14976,7 +15004,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 0, frequency: weekly, per_payment: 500}
-        - {kind: self_employment_receipts, amount: 5000}
+        - {kind: self_employment_receipts, amount: 5000, net_for_tax: 0}
         - {kind: business_cost_operating, amount: 3000}
       month_defaults:
         wages_gross: 0
@@ -33563,7 +33591,7 @@
         cccap_self_employment_in_launch_period: true
         receipts: []
         earnings:
-        - {kind: self_employment_receipts, amount: 300, hours: 120}
+        - {kind: self_employment_receipts, amount: 300, net_for_tax: 0, hours: 120}
       month_defaults:
         wages_gross: 0
         hours_worked: 120
@@ -52723,7 +52751,7 @@
         cw_months_received_in_exempt_indian_country: 0
         receipts: []
         earnings:
-        - {kind: farm_self_employment_receipts, amount: 200, annual_support: false}
+        - {kind: farm_self_employment_receipts, amount: 200, net_for_tax: 0, annual_support: false}
         - {kind: business_cost_operating, amount: 700, farm: true}
       month_defaults:
         health_insurance_premiums_paid: 0
@@ -53972,6 +54000,9 @@
         - {kind: child_support, amount: 600}
         # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
         # the pay schedule and the month's wages_gross): four Thursday pays in the thirty days before November 1 (October 2 to 31).
+        # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
+        # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
+        # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
@@ -53981,6 +54012,10 @@
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
         - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0

@@ -9,5 +9,5 @@ summary: >-
 impact:
   - {changed: CO-608, fingerprint: fp1-3f2921071b8b6687dcb2, flagged: CO-647, not_applicable: "CO-647 is the 42 U.S.C. 1396r-5(c)(2) figure CO-608 now reads for an institutionalized spouse in the institution; its own derivation (both spouses' resources less the CSRA) is what the fix needs and does not change."}
   - {changed: CO-613, fingerprint: fp1-edd248ba9c1e43313ba3, flagged: CO-617, not_applicable: "ma_msp_category only orders the QMB, SLMB, QI-1 and QDWI results; the resource change sits in CO-613 to CO-616, which it reads."}
-  - {changed: CO-616, fingerprint: fp1-5e338faba7645f966ed3, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
+  - {changed: CO-616, fingerprint: fp1-edf7dc5a0d8ccad27e34, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
   - {changed: CO-4628, fingerprint: fp1-9015be8246be3be94e99, flagged: CO-612, not_applicable: "CO-612 reads SSI-related eligibility (CO-611), where the C3-2 gates now sit, and its own disability and onset arm is unchanged; the IRWE couple change does not apply to it."}

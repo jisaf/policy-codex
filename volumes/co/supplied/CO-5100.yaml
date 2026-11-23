@@ -137,5 +137,5 @@ record_fields:
     meaning: The boarder payments are foster care payments for a person placed in the home.
 sources: [S41, S2713, S3112, S1152, S1155, S1156, S1157, S1154, S2963, S3159, S3255]
 tags: [income]
-open: [OQ-1020]
+open: [OQ-1020, OQ-1181]
 rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D1-D4 (docs/design-earned-and-resource-records.md 7): a separate list of the same record type, read by the same operators (P55-P57), so the signed unearned counting tables stay closed and no operator is added; one record per pay, so a part of a pay is never stated twice, two jobs on different pay schedules can be stated, and a business's costs are kinds every program must decide. Replaces, from step E1, the 51 scalar earned-income facts the design's inventory (1.1) lists."

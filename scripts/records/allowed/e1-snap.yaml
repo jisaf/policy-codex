@@ -3,16 +3,8 @@
 # docs/reviews/records-earnings-snap.md: {case, person?, identifier?, month?, class, old?, new?}.
 
 # ---------------------------------------------------------------------------------------------------
-# Not this track's change: the decision-4 round for the receipts readers (b49a7f2, class D4-1 of
-# scripts/receipts/allowed-differences.yaml), merged into this branch after the end of step E0
-# (EARNINGS_BASELINE), so the earnings harness sees it against that baseline. CO-141 p3 states no receipts.
-- case: CO-141
-  person: p3
-  identifier: snap_sponsor_deemed_income
-  old: 0
-  new: unknown
-  class: "R-D4-1 (receipts reader defaults, merged after the baseline): sponsor money with the receipts not stated is cannot determine (decision 4)"
-
+# (Records E1 integration: the entry for the receipts readers' decision-4 round merged after 20004af is removed;
+# EARNINGS_BASELINE is the E1 wave's baseline, 9650b0c, which includes it. docs/reviews/records-earnings-e1-integration.md.)
 # ---------------------------------------------------------------------------------------------------
 # SE-D4-1, decision 4 of 2026-11-23 and design decision D3: SNAP reads the business's own records, whose
 # annual_support is required where read (CO-5100: no rule text gives it a value; 10 CCR 2506-1 4.403.12.A-B,

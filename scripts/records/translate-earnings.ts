@@ -150,8 +150,13 @@ function carve(v: Record<string, unknown>, cx: Ctx): { earnings: Earning[]; note
     }
     if (f === "cw_new_source_earned_income") r.job_start_date = `${month}-01`;
     if (f === "snap_earned_income_received_after_application_date") {
-      if (cx.snapApplicationDate && cx.snapApplicationDate.slice(0, 7) === month) r.date = addDays(cx.snapApplicationDate, 1);
-      else notes.push("earned income after the SNAP application date with no application date in the month: left undated");
+      if (cx.snapApplicationDate && cx.snapApplicationDate.slice(0, 7) === month) {
+        r.date = addDays(cx.snapApplicationDate, 1);
+        // the fact is a total received after the date, not one pay of a
+        // schedule, so no frequency is written; a rule that converts dated
+        // pays by schedule reads it as monthly (request R-6; OQ-1181)
+        notes.push("earned income after the SNAP application date: dated, with no frequency (read as monthly where a rule converts dated pays; OQ-1181)");
+      } else notes.push("earned income after the SNAP application date with no application date in the month: left undated");
       r.month = month;
     }
     if (take > 0 || W === undefined) carved.push(r);
@@ -190,7 +195,12 @@ function carve(v: Record<string, unknown>, cx: Ctx): { earnings: Earning[]; note
   const costs = COSTS.filter(([f]) => get(f) > 0);
   const biz: Earning = { kind: farm ? "farm_self_employment_receipts" : "self_employment_receipts" };
   if (G !== undefined) biz.amount = G;
-  if (net !== undefined && net !== 0) biz.net_for_tax = net;
+  // A stated net of 0 is kept unless the receipts are stated 0 too (no
+  // business: the record has nothing to say and is dropped below). Dropping
+  // every 0 left a business with receipts, or with receipts not stated, and a
+  // tax figure of 0 as "net not stated", cannot determine for MAGI (request
+  // R-4 of docs/reviews/records-earnings-medicaid.md; records E1 integration).
+  if (net !== undefined && (net !== 0 || G !== 0)) biz.net_for_tax = net;
   if (num(v.self_employment_hours_worked) !== undefined) biz.hours = num(v.self_employment_hours_worked);
   if (typeof pf.self_employment_is_annual_support === "boolean") biz.annual_support = pf.self_employment_is_annual_support;
   if (typeof pf.self_employment_has_changed_substantially === "boolean") biz.changed_substantially = pf.self_employment_has_changed_substantially;
