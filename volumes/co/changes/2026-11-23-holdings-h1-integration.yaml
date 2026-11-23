@@ -1,0 +1,16 @@
+# Resource records, step H1: the integration of the tracks (2026-11-23; docs/reviews/records-holdings-h1-integration.md).
+# The whole-phase holdings harness is measured against the H1 wave's baseline (HOLDINGS_BASELINE re-pointed to 0224913,
+# the commit both H1 tracks started from, design 4.3 rule 5), and every difference it meets is classified
+# (scripts/records/allowed/h1-integration.yaml). One real defect of the tracks meeting is fixed: the SSI method counted
+# personal property held as an investment at its value, not its equity (ma_ssi_holdings_countable_in_month, CO-5320;
+# 20 CFR 416.1201(c)(1), S2420), so an encumbrance the Adult Financial track's household CO-740 states was counted (the
+# metamorphic relation MH-4 on CO-740); CO-300, restated in holdings alone by the Adult Financial track, carries the SSI
+# method's resource figure the Medicaid ledger now reads (1,700). The engine no longer reports a holding's share or
+# disposed_date as a missing fact when a reader gives its absence the declared meaning (request R-2; trace only).
+# Dispositions moved by this change: CO-613, CO-616, CO-654 and CO-659, whose fingerprints moved because the SSI
+# method's resource figure below them (CO-5320) now reads investment property at its equity, are re-keyed in place in
+# the earlier change records, their reasons unchanged (the relations each names are as they were: no flagged item's
+# rule or excerpt changes, and each reads the resource figure as before), as the merges did (03fb971, d5db282).
+date: 2026-11-23
+summary: "Holdings H1 integration: the whole-phase baseline, every difference classified, the SSI method's investment property at equity (CO-5320), CO-300 read by the SSI method, when_absent fields not reported missing where the reader gives their meaning."
+impact: []

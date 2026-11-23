@@ -7,6 +7,6 @@ summary: >-
   OQ-900), the Children's Buy-In infrequent and Census exclusions (C3-8), 1619(b) before the denial (C3-9), and loans
   and tax refunds in the 300% test (C3-10).
 impact:
-  - {changed: CO-613, fingerprint: fp1-0d13a47952e30bab47e7, flagged: CO-617, not_applicable: "ma_msp_category only orders the QMB, SLMB, QI-1 and QDWI results; the resource change sits in CO-613 to CO-616, which it reads."}
-  - {changed: CO-616, fingerprint: fp1-59d467ed2d55e4ba50ad, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
+  - {changed: CO-613, fingerprint: fp1-644bae156d28be360f06, flagged: CO-617, not_applicable: "ma_msp_category only orders the QMB, SLMB, QI-1 and QDWI results; the resource change sits in CO-613 to CO-616, which it reads."}
+  - {changed: CO-616, fingerprint: fp1-2a2dbcf06756aef56d27, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
   - {changed: CO-4628, fingerprint: fp1-9015be8246be3be94e99, flagged: CO-612, not_applicable: "CO-612 reads SSI-related eligibility (CO-611), where the C3-2 gates now sit, and its own disability and onset arm is unchanged; the IRWE couple change does not apply to it."}
