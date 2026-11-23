@@ -1,6 +1,6 @@
 # Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, CCCAP, SunBucks; 40 s.
+Programs compared: LEAP, SNAP, AdultFinancial, CCCAP, SunBucks; 42 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
@@ -48,6 +48,8 @@ none
 | F5 | a lump-sum child support payment | cccap_household_income | 2125 | 2125 |
 | F5 | an inheritance | cccap_household_income | 2125 | 2125 |
 | F5 | the diversion stated as recurring | cccap_household_income | 3500 | 3500 |
+| F6 | Colorado Works cash in September | sebt_eligibility_status | "eligible_categorical" | eligible_categorical |
+| F6 | a diversion in September (the same as no receipt) | sebt_eligibility_status | "ineligible" | ineligible |
 
 ## Differences
 

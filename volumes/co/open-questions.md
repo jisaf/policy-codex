@@ -2850,3 +2850,12 @@ Assumption: Money a sponsor pays the non-citizen is not counted (the reading bef
 
 Checked 2026-11-23: 8 CCR 1403-1 3.111.I and J (D-87, version effective 2026-08-14). Neither names sponsor support. Items: CO-5720.
 
+### OQ-993. SUN Bucks: whether a Colorado Works diversion or supportive service payment is "assistance under TANF"
+
+Body: 7 CFR 292.2 (S792) makes a child categorically eligible for Summer EBT when "one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR". Colorado Works pays basic cash assistance, diversion payments and supportive service payments from TANF funds. 9 CCR 2503-6 3.606.8.A (S762) says a diversion addresses "a specific crisis situation or episode of need", is "not designed to meet clients' basic ongoing needs", is a "non-recurring cash payment", and that its receipt "does not count toward their Federal TANF assistance time limit", which suggests it is not TANF "assistance"; neither 292.2 nor 292.12(d) defines "assistance" or says whether the federal definition (45 CFR 260.31, not on file) applies. SUN Bucks read only tanf_cash_income (basic cash assistance) before receipt records, and its table of receipts (sebt_receipt_treatment_table, CO-5730) keeps that reading.
+
+Class: state policy choice
+Owner: SNAP policy owner, School meals (CDE) co-approver
+Assumption: Only Colorado Works basic cash assistance is assistance under TANF for 292.2; a diversion or supportive service payment does not make a child categorically eligible.
+
+Checked 2026-11-23: 7 CFR 292.2, 292.6, 292.12(d) (D-88); 9 CCR 2503-6 3.606.8.A (D-81). None defines TANF "assistance" for Summer EBT; 45 CFR 260.31 is not among the documents on file. Items: CO-5730, CO-5731.
