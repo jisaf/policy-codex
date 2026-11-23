@@ -2847,3 +2847,23 @@ Owner: Medicaid (HCPF) eligibility policy owner
 Assumption: Money a sponsor pays the non-citizen is not counted as the person's SSI-method unearned income (the reading before receipt records), pending this answer.
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 and 8.100.3.K.1 (D-65). None names sponsor support paid to the person. Items: CO-5510.
+
+### OQ-973. Medicaid: whether 8.100.5.K reaches a VA housebound allowance
+
+Body: 10 CCR 2505-10 8.100.5.K (S2900) leaves out "The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA" when determining eligibility, and uses it as patient payment under K.2. The receipt kind va_aid_and_attendance (receipts, CO-5000) means "VA Aid and Attendance or housebound allowance", a kind the receipts share with the other programs; a household states the VA's Unusual Medical Expenses portion as a receipt of that kind too (the translation of va_aid_and_attendance_amount does). K does not name the housebound allowance, which the VA pays on the same pension for a veteran confined to the home. The SSI method's counting table (ma_ssi_receipt_treatment_table, CO-5510) treats the whole kind as not income.
+
+Class: state policy choice
+Owner: Medicaid (HCPF) eligibility policy owner
+Assumption: The housebound allowance is treated as K treats Aid and Attendance (not income; patient payment under K.2), since the receipt kind does not separate them.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.K (D-65). It names Aid and Attendance and Unusual Medical Expenses only. Items: CO-5510, CO-5530.
+
+### OQ-974. Medicaid spousal impoverishment: whether a community spouse's or family member's child support and cash assistance are part of their income
+
+Body: The community spouse monthly income allowance and the family allowance subtract the community spouse's and each dependent family member's own income (10 CCR 2505-10 § 8.100.7.R.2, S1756; § 8.100.7.T.1.c, S1736; 42 U.S.C. 1396r-5(d)(1)(C), (d)(3)). Before receipt records ma_community_spouse_income (CO-2467) and ma_family_allowance (CO-657) summed Social Security, pensions, wages, self-employment, other unearned income and tax-exempt interest (and, for the community spouse, unemployment), and left out child support received and Colorado Works and Adult Financial cash, which had their own facts. The texts on file say "income" without listing it. ma_spousal_unearned_receipts (CO-5531) keeps the earlier reading; long-term care gross income (CO-641) counts both.
+
+Class: state policy choice
+Owner: Medicaid (HCPF) long-term care policy owner
+Assumption: A community spouse's or family member's child support and Colorado Works or Adult Financial cash are not part of their income for the allowances.
+
+Checked 2026-11-23: 10 CCR 2505-10 § 8.100.7.R, T (D-65); the federal text the family allowance follows, 42 U.S.C. 1396r-5(d)(1)(C). Neither lists the income counted. Items: CO-5510, CO-5531.

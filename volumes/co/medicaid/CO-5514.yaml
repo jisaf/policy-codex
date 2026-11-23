@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The person's unearned income received in the month before any exemption, deduction or disregard: every receipt the SSI method's counting table (CO-5510) treats as income (counted, counted because no rule excludes it, rents, child support, exempt) and a retroactive SSI payment, at its gross amount; not a loan, an income tax refund or VA Aid and Attendance, which are not income (20 CFR 416.1103(d), (f); 10 CCR 2505-10 8.100.5.K), not current SSI, not money from a sponsor (OQ-972), and not gambling winnings, which the readers add with the hardship exemption (ma_ssi_gambling_receipts). The gross income of long-term care (8.100.7.A.1, ma_ltc_gross_income) and the unearned income to verify for an aged, blind or disabled applicant (8.100.5.B.1.d)."
-derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses, child_support, exempt]], [all, [receipt, retroactive], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [ssi_benefit]]]]], [receipt, amount]]
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses, child_support, exempt, exempt_public_assistance]], [all, [receipt, retroactive], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [ssi_benefit]]]]], [receipt, amount]]
 sources: [S3001, S2209, S2900, S3404, S351]
 implemented: engine
 tags: [ma, non_magi, ltc, income]

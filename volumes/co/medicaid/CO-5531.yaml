@@ -1,0 +1,18 @@
+id: CO-5531
+name: "Medicaid: a community spouse's or family member's unearned receipts"
+identifier: ma_spousal_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The unearned income of a community spouse or a dependent family member received in the month, as the spousal impoverishment rules count the person's own income (10 CCR 2505-10 § 8.100.7.R.2, T.1.c; 42 U.S.C. 1396r-5(d)): every receipt the SSI method's counting table (CO-5510) treats as income other than child support and the cash assistance of Colorado Works and Adult Financial (counted, counted because no rule excludes it, rents, exempt), and a retroactive SSI payment, at its gross amount; not a loan, an income tax refund or VA Aid and Attendance, which are not income. Gambling winnings are added by the readers (ma_ssi_gambling_receipts)."
+precision: Child support and Colorado Works or Adult Financial cash are left out, as the ledger read the community spouse's and the family members' income before receipt records (child_support_received, tanf_cash_income and adult_financial_cash_income were not among the facts summed); OQ-974 asks whether they belong.
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_net_of_expenses, exempt]], [all, [receipt, retroactive], [in, [lookup, ma_ssi_receipt_treatment_table, [receipt, kind]], [ssi_benefit]]]]], [receipt, amount]]
+sources: [S1756, S1736, S3001, S2209, S2900]
+implemented: engine
+tags: [ma, ltc, income]
+open: [OQ-974]
+rationale: "Receipt records, migration phase 2: replaces the scalar facts summed for the community spouse's income (CO-2467) and a family member's income (CO-657). Nearest: ma_ssi_gross_unearned_receipts (CO-5514), the gross income of long-term care, which counts child support and cash assistance; the spousal rules' sum left them out, so the two are kept apart rather than one subtracted from the other."
+nearest: [CO-5514]
+tests:
+  - {id: CO-5531-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 900}, {kind: pension, amount: 300}, {kind: general_assistance, amount: 100}, {kind: child_support, amount: 200}, {kind: colorado_works_cash, amount: 400}, {kind: loan, amount: 500}, {kind: va_aid_and_attendance, amount: 250}]}, title: "Social Security, a pension and General Assistance counted; child support, Colorado Works cash, a loan and VA Aid and Attendance not", expect: 1300}
