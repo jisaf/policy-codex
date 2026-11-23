@@ -393,7 +393,13 @@ own one-line meaning in `option_meanings`), and exactly one of
 - `default: <value>`: the value the rule text gives an unstated field
   (`frequency: monthly`, every earmark `0`, `retroactive: false`);
 - `when_absent: "<meaning>"`: what leaving the field out means, for a field an
-  operator gives that meaning to (`month`: the receipt recurs in every month).
+  operator gives that meaning to (`month`: the receipt recurs in every month),
+  or a reader gives it with `otherwise` or `unknown` (a holding's `share`,
+  "owned alone": `["otherwise", ["receipt", "share"], 1]`; `disposed_date`,
+  "still held": `["unknown", ["receipt", "disposed_date"]]`). A record that
+  leaves such a field out has stated it, so a field read so is not reported
+  as a missing supplied fact on the trace; read any other way, it is unknown
+  and reported, as a required field is (holdings H1 integration, request R-2).
 
 A `default` may be qualified `required_if_dated: true`: the default is then
 the value of a record that states **no date** only, and a record that states

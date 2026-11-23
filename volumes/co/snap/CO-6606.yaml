@@ -1,0 +1,17 @@
+id: CO-6606
+name: "SNAP: anticipated capital gains, monthly"
+identifier: snap_anticipated_capital_gains
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The capital gains of the person's self-employment that the household anticipates receiving in the twelve (snap_annual_averaging_months) months beginning with the month of the application, divided by twelve (10 CCR 2506-1 4.403.11.D, S4730: \"any capital gains that the household anticipates receiving in the next twelve (12) months, beginning with the date the application is filed, are added, and divided by twelve (12)\")."
+precision: "Coverage pass 4 for SNAP, S4-17: read by snap_self_employment_income (CO-1702) for self-employment that is averaged as the household's annual support (4.403.12), which adds it to the average of the past months' receipts less their capital gains (snap_self_employment_capital_gains, CO-6605). The twelve months are counted from the month of the application date, the month that contains the date the application is filed. A farm's receipts are averaged as stated, a capital gain included (the farm records state none apart). Earnings not stated: cannot determine."
+derived: ["/", ["sum_months", ["months_from_to", ["month_of", "snap_application_date"], ["months_after", ["-", "snap_annual_averaging_months", 1], ["month_of", "snap_application_date"]]], ["at", "snap_self_employment_capital_gains", ["that_month"]]], "snap_annual_averaging_months"]
+sources: [S4730, S3114]
+implemented: engine
+tags: [snap, income]
+rationale: "Coverage pass 4 for SNAP, S4-17: an annual-support business was averaged over the twelve months before the application, capital gains included, so a gain received last year was averaged and one anticipated in the next twelve months was not."
+tests:
+  - {"id": "CO-6606-T1", "title": "Applied 2026-11-10; a $1,200 gain anticipated in March 2027: 1,200 / 12 = 100", "as_of": "2026-11-15", "given": {"snap_application_date": "2026-11-10", "earnings": [{"kind": "self_employment_receipts", "amount": 1200, "capital_gain": 1200, "month": "2027-03", "annual_support": true, "changed_substantially": false}]}, "expect": 100}
+  - {"id": "CO-6606-T2", "title": "Applied 2026-11-10; a $1,200 gain received in March 2026, before the application: 0", "as_of": "2026-11-15", "given": {"snap_application_date": "2026-11-10", "earnings": [{"kind": "self_employment_receipts", "amount": 1200, "capital_gain": 1200, "month": "2026-03", "annual_support": true, "changed_substantially": false}]}, "expect": 0}

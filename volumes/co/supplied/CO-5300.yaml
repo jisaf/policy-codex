@@ -96,6 +96,11 @@ record_fields:
     required: true
     meaning: "For held replacement proceeds, the kind of property they are to restore or replace: personal property (a vehicle, household goods), or real property (the home or other real property; home-sale, relocation and condemnation proceeds are always real property)."
     options: [personal_property, real_property]
+  proceeds_source:
+    type: one of
+    required: true
+    meaning: "For held replacement proceeds, where the money came from: an insurance settlement for property lost, damaged or stolen (insurance); a relocation payment to a displaced person (relocation); the sale of the home (home_sale); an award for property taken by condemnation (condemnation); anything else (other). Read by no rule yet: the exclusion periods turn on it in the text on file (10 CCR 2505-10 8.100.5.F.6.f, S4506: relocation payments toward a replacement dwelling, six months; 20 CFR 416.1232(a), S4662: cash received from any source to repair or replace an excluded resource lost, damaged or stolen, nine months), and which periods each program applies is OQ-1240's (request R-4 of the H1 Medicaid track; holdings H1 integration)."
+    options: [insurance, relocation, home_sale, condemnation, other]
   used_for_transportation:
     type: yes/no
     required: true
