@@ -258,7 +258,8 @@ function carve(
   const pass = get("pass_set_aside_income");
   const ss = R.find((r) => r.kind === "social_security" && recurring(r) && (r.amount as number) >= pass);
   if (ss && pass > 0) ss.pass_set_aside = pass;
-  else mark("pass_set_aside_income", "pass_set_aside", null);
+  // never SSI: the old fact was subtracted from the income other than SSI
+  else mark("pass_set_aside_income", "pass_set_aside", [...new Set(R.map((r) => r.kind))].filter((k) => k !== "ssi"));
   mark("overpayment_recoupment_withheld", "recouped", null);
   // the intentional-violation part sits on the receipt the recoupment does
   const iv = get("overpayment_recoupment_for_intentional_violation_withheld");
@@ -503,6 +504,13 @@ export const RETIRED: Readonly<Record<string, "person" | "person-month">> = {
   periodic_unearned_income_frequency: "person",
   periodic_unearned_income_per_payment: "person",
   periodic_unearned_income_received: "person-month",
+  // Adult Financial (migration phase 1): SSI, and the sources only its
+  // exclusions named
+  ssi_income: "person-month",
+  charitable_gifts_for_life_threatening_condition_received: "person-month",
+  property_or_food_tax_refund_received: "person-month",
+  state_veteran_annuity_received: "person-month",
+  uniformed_services_special_pay_received: "person-month",
 };
 /** case id -> person -> retired fact -> value, as stated before retirement. */
 export type RetiredFacts = Record<string, Record<string, Record<string, unknown>>>;

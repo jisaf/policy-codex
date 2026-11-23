@@ -6,12 +6,13 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the person has unearned income in the month that Adult Financial counts (af_countable_income, CO-946, reads these sources): every unearned source but the Adult Financial grant itself."
-derived: [">", ["+", social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], 0]
+precision: "Receipt records, migration phase 1: the month's receipts of every kind but SSI and the grant (other than a retroactive lump sum of either), gambling winnings and a sponsor's money, as the unearned income facts it summed held them."
+derived: [">", [sum_receipts, receipts, [all, [received_in, [month]], [not, [in, [receipt, kind], [gambling_winnings, sponsor_payment]]], [any, [receipt, retroactive], [not, [in, [receipt, kind], [ssi, adult_financial_cash]]]]], [receipt, amount]], 0]
 sources: [S875, S880]
 implemented: engine
 tags: [cash, income, verification]
 rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
 nearest: [CO-2870, CO-2871, CO-2873, CO-2874]
 tests:
-  - {id: CO-2872-T1, month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, tanf_cash_income: 488, ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: true}
-  - {id: CO-2872-T2, month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received", expect: true}
+  - {id: CO-2872-T1, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: true}
+  - {id: CO-2872-T2, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received", expect: true}

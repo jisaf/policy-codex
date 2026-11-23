@@ -37,9 +37,9 @@ describe("owns: the question's Owner line names the role", () => {
     expect(ownedPhrase(med)).toBe("40 open questions you own, and 3 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 25 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 27 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([25, 4]); // + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
+    expect([cash.open.length, cash.partly.length]).toEqual([27, 4]); // + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3); + OQ-887, OQ-888 (receipts migration 1, Adult Financial)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {

@@ -1,10 +1,10 @@
 # Receipt records harness: ledger at 41ec04b4d62c vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 21 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 24 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 297 | 74180 | 6 | 2 | 6 | 0 |
+| stored households | 297 | 74176 | 6 | 2 | 6 | 0 |
 | generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
 
 ## Allowed differences by class
@@ -31,14 +31,18 @@ none
 |---|---|---|---|---|
 | F1 | dated | leap_household_income | 2900 | 2900 |
 | F1 | dated | snap_person_unearned_income | 900 | 900 |
+| F1 | dated | af_relative_deemable_unearned_income | 900 | 900 |
 | F1 | by month only | leap_household_income | 2900 | 2900 |
 | F1 | by month only | snap_person_unearned_income | 900 | 900 |
+| F1 | by month only | af_relative_deemable_unearned_income | 900 | 900 |
 | F1 | frequency left at its default | leap_household_income | 2900 | 2900 |
 | F1 | frequency left at its default | snap_person_unearned_income | 900 | 900 |
+| F1 | frequency left at its default | af_relative_deemable_unearned_income | 900 | 900 |
 | F2 | dated in the period | leap_household_income | 4000 | 4000 |
 | F3 | two receipts, each with its own frequency | snap_person_unearned_income | 529.9999 | 529.9999 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | leap_household_income | 2200 | 2200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | af_relative_deemable_unearned_income | 200 | 200 |
 
 ## Differences
 

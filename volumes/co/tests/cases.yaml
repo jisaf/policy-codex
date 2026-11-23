@@ -269,7 +269,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -483,7 +482,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -681,7 +679,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -886,7 +883,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -1089,7 +1085,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -2347,7 +2342,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -2561,7 +2555,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -2758,7 +2751,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -2963,7 +2955,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -3164,7 +3155,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -4209,7 +4199,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -4286,7 +4275,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -4428,7 +4416,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
       months:
         "2026-11": {wages_gross: 5000}
     p2:
@@ -4478,7 +4465,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
@@ -4529,7 +4515,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p4:
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5; lives with his
       # mother p1 (custodial parent), stepfather p2 and half-sibling p3 (OQ-42).
@@ -4579,7 +4564,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p5:
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
@@ -4623,7 +4607,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
   # Hand arithmetic, 2026 FPL monthly guidelines (annual/12): size2 1,803.33; size4 2,750.00.
   #
   # October 2026 (household income $2,200 = p1 $1,600 + p2 $600).
@@ -4813,7 +4796,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p2:
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
@@ -4857,7 +4839,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p3:
       # Tasha, 16, citizen, in school, claimed by her grandmother p1 (not her parent, so the
       # 435.603(f)(2)(i) exception routes her to the non-filer household rules: herself alone, since
@@ -4920,7 +4901,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
       months:
         "2027-01": {wages_gross: 1850}
         "2027-04": {wages_gross: 1850}
@@ -5146,7 +5126,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
@@ -5212,7 +5191,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
@@ -5273,7 +5251,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         magi_other_taxable_income: 0
@@ -5423,7 +5400,6 @@
         unemployment_income: 0
         tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -5487,7 +5463,6 @@
         unemployment_income: 0
         tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -5543,7 +5518,6 @@
         receipts:
         - {kind: ssi, amount: 700}
       month_defaults:
-        ssi_income: 700
         wages_gross: 0
         self_employment_gross_receipts: 0
         social_security_income: 0
@@ -5609,7 +5583,6 @@
         unemployment_income: 0
         tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -5671,7 +5644,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -5851,7 +5823,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -5905,7 +5876,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -5959,7 +5929,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -6018,7 +5987,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -6060,7 +6028,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -6227,7 +6194,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         has_emergency_medical_condition: false
     p2:
       facts:
@@ -6289,7 +6255,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         has_emergency_medical_condition: false
     p3:
       facts:
@@ -6363,7 +6328,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method and Adult Financial ISM are derived (was ssi_ and af_in_kind_support_and_maintenance 0)
       months:
         "2026-10": {has_emergency_medical_condition: true}
@@ -6421,7 +6385,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
   expect:
     # Hand arithmetic is in the case comment above. p1 and p4 are in the limited family planning income band:
     # their household [p1, p4] plus the expected child, counted one larger (8.100.4.E.3), is size 4,
@@ -6556,7 +6519,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         receives_va_aid_and_attendance: false
       months:
@@ -6639,7 +6601,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -6700,7 +6661,6 @@
         unemployment_income: 0
         tanf_cash_income: 183  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (366 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -6743,7 +6703,6 @@
         unemployment_income: 0
         tanf_cash_income: 183  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (366 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -6941,7 +6900,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -7090,7 +7048,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -7365,7 +7322,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -7523,7 +7479,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -7843,7 +7798,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
       months:
@@ -7903,7 +7857,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
       months:
@@ -7962,7 +7915,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
         hours_worked: 160
@@ -8013,7 +7965,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
   expect:
     p1:
       ma_community_engagement_activity_hours: {"2027-02": 85}
@@ -8133,7 +8084,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -8218,7 +8168,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -8302,7 +8251,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -8421,7 +8369,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8478,7 +8425,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8536,7 +8482,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8593,7 +8538,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8697,7 +8641,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8754,7 +8697,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8812,7 +8754,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8869,7 +8810,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -8982,7 +8922,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9040,7 +8979,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9098,7 +9036,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9156,7 +9093,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9248,7 +9184,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9312,7 +9247,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9368,7 +9302,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9468,7 +9401,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9530,7 +9462,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9592,7 +9523,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9649,7 +9579,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; the SSI-method ISM is derived (was ssi_in_kind_support_and_maintenance 0)
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -9759,7 +9688,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -9843,7 +9771,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -9929,7 +9856,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10015,7 +9941,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10099,7 +10024,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10183,7 +10107,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10273,7 +10196,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10319,7 +10241,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 550
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10368,7 +10289,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10434,7 +10354,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 700
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10487,7 +10406,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10533,7 +10451,6 @@
         unemployment_income: 0
         tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 450
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10611,7 +10528,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10655,7 +10571,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 200
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -10762,7 +10677,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10847,7 +10761,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -10989,7 +10902,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11073,7 +10985,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11198,7 +11109,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11282,7 +11192,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11377,7 +11286,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11494,7 +11402,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11578,7 +11485,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11689,7 +11595,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11801,7 +11706,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -11886,7 +11790,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
     p2:
       # The sponsor's husband, 48, U.S. citizen, did not sign; countable resources $300. No income (stated in the
       # coverage round, C-14: since OQ-730 was resolved on 8 U.S.C. 1631(a)(2), SNAP reads his income with p1's; the
@@ -11909,7 +11812,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
@@ -12130,7 +12032,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
     p2:
@@ -12191,7 +12092,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
   expect:
@@ -12302,7 +12202,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
       months:
@@ -12357,7 +12256,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
     p3:
       facts:
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
@@ -12413,7 +12311,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         complies_with_tanf_work_requirements: false
         receives_snap: false
   expect:
@@ -12597,7 +12494,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -12746,7 +12642,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -12821,7 +12716,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -12889,7 +12783,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -12915,7 +12808,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
   expect:
     # Coverage round C-14 (OQ-730 resolved on 8 U.S.C. 1631(a)(2)): the income and resources of p3, the sponsor's
@@ -13048,7 +12940,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13109,7 +13000,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13210,7 +13100,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13272,7 +13161,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13334,7 +13222,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13392,7 +13279,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13452,7 +13338,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13509,7 +13394,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -13616,7 +13500,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -13684,7 +13567,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -13803,7 +13685,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -13925,7 +13806,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -13998,7 +13878,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -14034,7 +13913,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -14094,7 +13972,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -14178,7 +14055,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -14227,7 +14103,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -14259,7 +14134,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -14341,7 +14215,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -14383,7 +14256,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -14419,7 +14291,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -14457,7 +14328,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 967.5
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -14591,7 +14461,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -14658,7 +14527,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -14770,7 +14638,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -14837,7 +14704,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -14957,7 +14823,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -15078,7 +14943,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -15138,7 +15002,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -15211,7 +15074,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -15298,7 +15160,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -15431,7 +15292,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -15516,7 +15376,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -15600,7 +15459,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -15714,7 +15572,6 @@
         child_support_received: 600
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -15761,7 +15618,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -15868,7 +15724,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -15924,7 +15779,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16034,7 +15888,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16085,7 +15938,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16130,7 +15982,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16176,7 +16027,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 967.5
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16270,7 +16120,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16318,7 +16167,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -16412,7 +16260,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -16459,7 +16306,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -16495,6 +16341,7 @@
   # which 3.520.786.K incorporates, excludes one-third of support from an absent parent for a child (416.1856:
   # under 18, not married): 300 / 3 = 100, so 200 counted; less the $20 general disregard = 180; plus SSI 500 =
   # 680. AND-CS standard 994, so the grant is 994 - 680 = 314. Before N-4 all 300 counted: 780, grant 214.
+  # Receipt records (migration phase 1): the one-third exclusion is af_child_support_exclusion (CO-5020), af_excluded_unearned_income (CO-2343) being retired.
   as_of: "2026-10-05"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -16532,7 +16379,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -16577,7 +16423,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 500
         child_support_received: 300
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -16591,7 +16436,7 @@
       af_category: {"2026-10": oap}                           # was none
       af_oap_grant: {"2026-10": 352}                          # 1,032 - 680
     p2:
-      af_excluded_unearned_income: {"2026-10": 100}           # one-third of the $300 current support (416.1124(c)(11))
+      af_child_support_exclusion: {"2026-10": 100}            # one-third of the $300 current support (416.1124(c)(11))
       af_countable_income: {"2026-10": 680}                   # (300 - 100) - 20 + SSI 500; was 780
       af_category: {"2026-10": and_cs}
       af_and_grant: {"2026-10": 314}                          # 994 - 680; was 214
@@ -16676,7 +16521,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -16736,7 +16580,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -16837,7 +16680,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -16898,7 +16740,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 300
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -16989,7 +16830,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -17086,7 +16926,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -17156,7 +16995,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -17212,7 +17050,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -17308,7 +17145,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -17370,7 +17206,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 3000
         crime_victim_compensation_received: 3000
         other_unearned_income_taxable: 0
@@ -17437,7 +17272,6 @@
         child_support_received: 0
         tanf_cash_income: 500
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -17499,7 +17333,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -17621,7 +17454,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -17649,7 +17481,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -17709,7 +17540,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -17777,7 +17607,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -17840,7 +17669,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -17880,7 +17708,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -17943,7 +17770,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 500
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -18005,7 +17831,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -18043,7 +17868,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -18112,7 +17936,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18160,7 +17983,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18237,7 +18059,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18285,7 +18106,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18333,7 +18153,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18416,7 +18235,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18464,7 +18282,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18514,7 +18331,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18589,7 +18405,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18637,7 +18452,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18685,7 +18499,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18764,7 +18577,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18812,7 +18624,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18860,7 +18671,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -18954,7 +18764,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19011,7 +18820,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19067,7 +18875,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19192,7 +18999,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19251,7 +19057,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19358,7 +19163,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19416,7 +19220,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19518,7 +19321,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19576,7 +19378,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19679,7 +19480,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19736,7 +19536,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -19791,7 +19590,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -20006,7 +19804,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 800
         other_unearned_income_taxable: 1000
         tax_exempt_interest: 0
@@ -20155,7 +19952,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -20342,7 +20138,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -20493,7 +20288,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -20607,7 +20401,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -20692,7 +20485,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -20776,7 +20568,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -20977,7 +20768,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -21126,7 +20916,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -21307,7 +21096,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -21456,7 +21244,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -21604,7 +21391,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -21687,7 +21473,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -21770,7 +21555,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -21910,7 +21694,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -21994,7 +21777,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -22309,7 +22091,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -22517,7 +22298,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -22709,7 +22489,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -22909,7 +22688,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -23106,7 +22884,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -23419,7 +23196,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -23627,7 +23403,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -23819,7 +23594,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -24019,7 +23793,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -24216,7 +23989,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -24524,7 +24296,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -24732,7 +24503,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -24930,7 +24700,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -25130,7 +24899,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -25327,7 +25095,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
@@ -25422,7 +25189,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25491,7 +25257,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25560,7 +25325,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25663,7 +25427,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25732,7 +25495,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25830,7 +25592,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -25943,7 +25704,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -26012,7 +25772,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -26107,7 +25866,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -26178,7 +25936,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -26675,7 +26432,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -26764,7 +26520,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -27018,7 +26773,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27065,7 +26819,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27112,7 +26865,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27199,7 +26951,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27246,7 +26997,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27293,7 +27043,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27340,7 +27089,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -27420,7 +27168,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -27462,7 +27209,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 500
         other_unearned_income_taxable: 0
@@ -27527,7 +27273,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -27571,7 +27316,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -27636,7 +27380,6 @@
       month_defaults:
         wages_gross: 0
         social_security_income: 0
-        ssi_income: 500
   expect:
     p1:
       af_hca_eligibility_status: {"2026-10": ineligible_setting}
@@ -27754,7 +27497,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -27839,7 +27581,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -27974,7 +27715,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -28063,7 +27803,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -28256,7 +27995,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28405,7 +28143,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28592,7 +28329,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28741,7 +28477,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28822,7 +28557,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28879,7 +28613,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -28980,7 +28713,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -29039,7 +28771,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -29143,7 +28874,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -29200,7 +28930,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -29256,7 +28985,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -29369,7 +29097,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29438,7 +29165,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29532,7 +29258,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29601,7 +29326,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29694,7 +29418,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29763,7 +29486,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29832,7 +29554,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -29937,7 +29658,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -30008,7 +29728,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -30081,7 +29800,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 400
         tanf_supportive_service_payments_received: 400
         other_unearned_income_taxable: 0
@@ -30144,7 +29862,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -30277,7 +29994,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 400
         room_only_payments_received: 400
@@ -30326,7 +30042,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -30401,7 +30116,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -30449,7 +30163,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -30522,7 +30235,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -30570,7 +30282,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -30755,7 +30466,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -30822,7 +30532,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -30878,7 +30587,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -30992,7 +30700,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -31106,7 +30813,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31164,7 +30870,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31220,7 +30925,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31325,7 +31029,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31382,7 +31085,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31438,7 +31140,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31519,7 +31220,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31608,7 +31308,6 @@
         child_support_received: 900
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 3000
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -31743,7 +31442,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -31832,7 +31530,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -31917,7 +31614,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -31983,7 +31679,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -32009,7 +31704,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p4:
       facts:
@@ -32072,7 +31766,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -32260,7 +31953,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 1000
         tax_exempt_interest: 0
@@ -32409,7 +32101,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -32599,7 +32290,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 500
         tax_exempt_interest: 0
@@ -32748,7 +32438,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -32927,7 +32616,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33075,7 +32763,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33275,7 +32962,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33425,7 +33111,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33606,7 +33291,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33753,7 +33437,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -33848,7 +33531,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -33954,7 +33636,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -34055,7 +33736,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -34134,7 +33814,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -34218,7 +33897,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34279,7 +33957,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 800
@@ -34356,7 +34033,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 5000
         other_unearned_income_taxable: 0
@@ -34414,7 +34090,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34475,7 +34150,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34519,7 +34193,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34579,7 +34252,6 @@
       month_defaults:
         wages_gross: 0
         social_security_income: 0
-        ssi_income: 500
   expect:
     p1:
       af_hca_eligibility_status:
@@ -34632,7 +34304,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34672,7 +34343,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34737,7 +34407,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34776,7 +34445,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34815,7 +34483,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34875,7 +34542,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34914,7 +34580,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -34973,7 +34638,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35031,7 +34695,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35090,7 +34753,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35131,7 +34793,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 2000
         other_unearned_income_taxable: 0
@@ -35193,7 +34854,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35233,7 +34893,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 2000
@@ -35293,7 +34952,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35333,7 +34991,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 500
@@ -35390,7 +35047,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 2000
@@ -35431,7 +35087,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -35517,7 +35172,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35574,7 +35228,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35630,7 +35283,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35721,7 +35373,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35778,7 +35429,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35835,7 +35485,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35926,7 +35575,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -35983,7 +35631,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36073,7 +35720,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36130,7 +35776,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36225,7 +35870,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36283,7 +35927,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36376,7 +36019,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36434,7 +36076,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36529,7 +36170,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36587,7 +36227,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36683,7 +36322,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36741,7 +36379,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36834,7 +36471,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36891,7 +36527,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -36987,7 +36622,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37045,7 +36679,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37133,7 +36766,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37190,7 +36822,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37284,7 +36915,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37341,7 +36971,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37396,7 +37025,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37486,7 +37114,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37543,7 +37170,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37630,7 +37256,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37684,7 +37309,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37777,7 +37401,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37834,7 +37457,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37929,7 +37551,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -37986,7 +37607,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38041,7 +37661,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38132,7 +37751,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38189,7 +37807,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38246,7 +37863,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38344,7 +37960,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38401,7 +38016,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38495,7 +38109,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38554,7 +38167,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38644,7 +38256,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38702,7 +38313,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38799,7 +38409,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 1500
         tax_exempt_interest: 0
@@ -38857,7 +38466,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -38953,7 +38561,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 1500
         tax_exempt_interest: 0
@@ -39012,7 +38619,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39111,7 +38717,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39169,7 +38774,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39224,7 +38828,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39314,7 +38917,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39372,7 +38974,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39428,7 +39029,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39520,7 +39120,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39578,7 +39177,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39669,7 +39267,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39727,7 +39324,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39783,7 +39379,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39887,7 +39482,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -39945,7 +39539,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40001,7 +39594,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40107,7 +39699,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40165,7 +39756,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40259,7 +39849,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40316,7 +39905,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40409,7 +39997,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40466,7 +40053,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40555,7 +40141,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40612,7 +40197,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40702,7 +40286,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40760,7 +40343,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40852,7 +40434,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -40911,7 +40492,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41009,7 +40589,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41066,7 +40645,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41120,7 +40698,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41217,7 +40794,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41274,7 +40850,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41330,7 +40905,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41426,7 +41000,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41485,7 +41058,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41573,7 +41145,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41632,7 +41203,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -41745,7 +41315,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -41829,7 +41398,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -41948,7 +41516,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42033,7 +41600,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42118,7 +41684,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42255,7 +41820,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42340,7 +41904,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42461,7 +42024,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42548,7 +42110,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42667,7 +42228,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42751,7 +42311,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42866,7 +42425,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -42950,7 +42508,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43065,7 +42622,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43149,7 +42705,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43265,7 +42820,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 300
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43350,7 +42904,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43471,7 +43024,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43555,7 +43107,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43670,7 +43221,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43754,7 +43304,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -43830,7 +43379,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -43877,7 +43425,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -43924,7 +43471,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44003,7 +43549,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 600
         other_unearned_income_nontaxable: 0
@@ -44051,7 +43596,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44126,7 +43670,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44173,7 +43716,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44248,7 +43790,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44295,7 +43836,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44370,7 +43910,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44417,7 +43956,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44492,7 +44030,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44539,7 +44076,6 @@
         unemployment_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -44589,7 +44125,6 @@
         leap_is_in_another_approved_household: false
         wages_gross: 1000
         social_security_income: 0
-        ssi_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
@@ -44648,7 +44183,6 @@
         leap_is_in_another_approved_household: false
         wages_gross: 1000
         social_security_income: 0
-        ssi_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
@@ -44710,7 +44244,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -44767,7 +44300,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -44947,7 +44479,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 3000
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -45021,7 +44552,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 900
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -45111,7 +44641,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45199,7 +44728,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45286,7 +44814,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45356,7 +44883,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45445,7 +44971,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45531,7 +45056,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45600,7 +45124,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45689,7 +45212,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45760,7 +45282,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45858,7 +45379,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -45931,7 +45451,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46031,7 +45550,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46125,7 +45643,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46219,7 +45736,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46316,7 +45832,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46395,7 +45910,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46497,7 +46011,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46576,7 +46089,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46679,7 +46191,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46759,7 +46270,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -46851,7 +46361,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -46917,7 +46426,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -47324,7 +46832,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -47384,7 +46891,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -47462,7 +46968,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -47522,7 +47027,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -47615,7 +47119,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -47683,7 +47186,6 @@
         other_unearned_income_taxable: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         shelter_costs_paid_by_others: 0
         magi_other_taxable_income: 0
@@ -48070,7 +47572,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -48131,7 +47632,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -48215,7 +47715,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -48276,7 +47775,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -48615,7 +48113,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -48698,7 +48195,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -48768,7 +48264,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -48834,7 +48329,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -48860,7 +48354,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p4:
       facts:
@@ -48923,7 +48416,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -48985,7 +48477,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -49051,7 +48542,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -49077,7 +48567,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p4:
       facts:
@@ -49140,7 +48629,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -49320,7 +48808,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 500
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -49468,7 +48955,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -49647,7 +49133,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 400
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -49795,7 +49280,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -49974,7 +49458,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 300
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50122,7 +49605,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50302,7 +49784,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50453,7 +49934,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50633,7 +50113,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50786,7 +50265,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -50962,7 +50440,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 400
         tax_exempt_interest: 0
@@ -51109,7 +50586,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -51286,7 +50762,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -51433,7 +50908,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -51541,7 +51015,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -51625,7 +51098,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -51708,7 +51180,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -51890,7 +51361,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52037,7 +51507,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52221,7 +51690,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52368,7 +51836,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52545,7 +52012,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52692,7 +52158,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -52870,7 +52335,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53017,7 +52481,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53192,7 +52655,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53339,7 +52801,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53523,7 +52984,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53670,7 +53130,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53846,7 +53305,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -53993,7 +53451,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -54171,7 +53628,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 1000
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -54319,7 +53775,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -54499,7 +53954,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -54646,7 +54100,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -54825,7 +54278,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 600
         tax_exempt_interest: 0
@@ -54975,7 +54427,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -55150,7 +54601,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -55297,7 +54747,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -55383,7 +54832,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55432,7 +54880,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55464,7 +54911,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55546,7 +54992,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55595,7 +55040,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55627,7 +55071,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55714,7 +55157,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55765,7 +55207,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55797,7 +55238,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55878,7 +55318,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55927,7 +55366,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -55959,7 +55397,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56044,7 +55481,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56095,7 +55531,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56127,7 +55562,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56203,7 +55637,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56253,7 +55686,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 400
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56286,7 +55718,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         child_support_paid_legally_obligated: 0
         other_unearned_income_nontaxable: 0
@@ -56344,7 +55775,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 100
         other_unearned_income_taxable: 0
@@ -56381,7 +55811,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56443,7 +55872,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56479,7 +55907,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56533,7 +55960,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56569,7 +55995,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56627,7 +56052,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56663,7 +56087,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56722,7 +56145,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56758,7 +56180,6 @@
         unemployment_income: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         child_support_received: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
@@ -56986,7 +56407,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57070,7 +56490,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57153,7 +56572,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57262,7 +56680,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57346,7 +56763,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57430,7 +56846,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57539,7 +56954,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57623,7 +57037,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57706,7 +57119,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57821,7 +57233,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57905,7 +57316,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -57988,7 +57398,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58099,7 +57508,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58184,7 +57592,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58267,7 +57674,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58330,7 +57736,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -58394,7 +57799,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -58454,7 +57858,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -58517,7 +57920,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -58580,7 +57982,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
     p2:
       facts:
@@ -58645,7 +58046,6 @@
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
         tax_exempt_interest: 0
-        ssi_income: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         shelter_cost_monthly: 500
@@ -58754,7 +58154,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58838,7 +58237,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -58921,7 +58319,6 @@
         tax_exempt_interest: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
-        ssi_income: 0
         adult_financial_cash_income: 0
         tanf_cash_income: 0
         child_support_received: 0
@@ -59008,7 +58405,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -59068,7 +58464,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -59149,7 +58544,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         shelter_costs_paid_by_others: 0
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
@@ -59231,7 +58625,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59278,7 +58671,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59370,7 +58762,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59423,7 +58814,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59509,7 +58899,6 @@
         child_support_received: 600
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59558,7 +58947,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59744,7 +59132,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
@@ -59891,7 +59278,6 @@
         child_support_received: 0
         tanf_cash_income: 0
         adult_financial_cash_income: 0
-        ssi_income: 0
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0

@@ -6,13 +6,13 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether SSI income reduces this month's Adult Financial grant: the client receives SSI and has SSI income this month, which af_countable_income counts. 9 CCR 2503-5 3.581.E drops the cents from every Adult Financial payment except in that case."
-precision: Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read.
-derived: [all, receives_ssi, [">", ssi_income, 0]]
+precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read. Receipt records, migration phase 1: the SSI of the month is af_ssi_receipts is read from the receipts (CO-5000)."
+derived: [all, receives_ssi, [">", af_ssi_receipts, 0]]
 sources: [S1825]
 implemented: engine
 tags: [cash, income]
 rationale: "Engineering follow-up 4: 3.581.E (S1825) drops the cents from Adult Financial payments except where SSI income reduces the grant; af_oap_grant (CO-951) and af_and_grant (CO-952) need the exception. No existing item states it."
 tests:
-  - {id: CO-2604-T1, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, ssi_income: 700, receipts: [{kind: social_security}, {kind: ssi, amount: 700}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, expect: true}
+  - {id: CO-2604-T1, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, receipts: [{kind: social_security}, {kind: ssi, amount: 700}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, expect: true}
   - {id: CO-2604-T2, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: false}, expect: false}
-  - {id: CO-2604-T3, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, ssi_income: 0, receipts: [{kind: social_security}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "SSI recipient with no SSI paid this month", expect: false}
+  - {id: CO-2604-T3, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, receipts: [{kind: social_security}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "SSI recipient with no SSI paid this month", expect: false}

@@ -27,7 +27,9 @@ describe("long rules read as bulleted clauses", () => {
     // CO-2384 was the example until coverage pass 2 (G-1) moved its income sums into CO-3830 and CO-4720.
     const text = plainText(rule("CO-2392"));
     expect(text).toContain("the total of:\n");
-    expect(text).toMatch(/\n +• that person's Social Security income\n/);
+    // Receipt records (migration 1): the child's unearned income is one term, a total over the child's receipts.
+    expect(text).toMatch(/\n +• that person's Gross wages plus /);
+    expect(text).toContain("• the total, over the receipts in that person's Receipts for which:");
     // The group the total runs over is described after it, not in one line.
     expect(text).toContain("the total, over the people described below, of:");
     expect(text).toContain("\n  where the people are:\n");

@@ -2731,3 +2731,23 @@ Owner: Energy assistance (LEAP) policy owner
 Assumption: The application date less the number of days in the prior month (March 30 gives March 2); the alternative reading is the prior month's last day (February 28).
 
 Checked 2026-11-23: 9 CCR 2503-7 3.751.1 and 3.752.22.A (D-86, version effective 11/01/2025). Neither says which date stands for a missing same date.
+
+### OQ-887. Adult Financial: a retroactive SSI award paid in a lump sum
+
+Body: 9 CCR 2503-5 3.520.785.B.1.a (S1622) counts unearned income "in the month received"; 3.520.786.K (S2608) incorporates the SSI unearned income exclusions of 20 CFR 416.1124, and 3.533.A.2 adds the full SSI back after the $20 disregard is taken from unearned income other than SSI. Neither says whether a retroactive SSI award (or a retroactive Adult Financial grant) paid as one sum is SSI for 3.533.A.2 or unearned income other than SSI in the month received. Before receipt records the ledger counted it with the other unearned income, because retroactive_ssi_or_public_assistance_lump_sum_received (CO-3920) was part of the lump sum, itself part of the other unearned income facts; the counting table (af_receipt_treatment_table, CO-5016) keeps that reading.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A retroactive SSI or Adult Financial lump sum is counted, in the month received, as unearned income other than SSI.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.785, 3.520.786 and 3.533 (D-85); 20 CFR 416.1123(d) and 416.1124 as K incorporates them. 416.1123(d) treats retroactive SSI as income in its own months for SSI; the Colorado rule does not adopt it for the Adult Financial grant.
+
+### OQ-888. Adult Financial: money a non-citizen receives from a sponsor
+
+Body: 9 CCR 2503-5 3.520.785 (S1622) counts gross unearned income and 3.520.786 (S2608) lists what it exempts; a sponsor's cash support to the non-citizen is not named in either. Before receipt records the ledger never read it for Adult Financial: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts, so it was left out by silence. Deeming from a sponsor (3.534.D, 3.544.G, 3.549.G) counts the sponsor's own income, not what the sponsor pays. The counting table (af_receipt_treatment_table, CO-5016) keeps the reading, as not_counted_open_question, until the owner decides.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Money a sponsor pays the non-citizen is not counted as the client's unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.785, 3.520.786, 3.534.D, 3.544.G and 3.549.G (D-85). None names sponsor support paid to the client.

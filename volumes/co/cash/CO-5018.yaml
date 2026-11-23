@@ -1,0 +1,15 @@
+id: CO-5018
+name: "Adult Financial: a person's SSI receipts"
+identifier: af_ssi_receipts
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The person's SSI received in the month (9 CCR 2503-5 3.533.A.2: the full SSI is added back after the $20 disregard is taken from unearned income other than SSI), other than a retroactive lump sum (counted with the other unearned income, af_counted_unearned_receipts)."
+derived: [sum_receipts, receipts, [all, ["=", [receipt, kind], ssi], [not, [receipt, retroactive]], [received_in, [month]]], [receipt, amount]]
+sources: [S1622, S2608]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: the SSI that af_countable_income, af_and_cs_eligible, af_grant_is_reduced_by_ssi_income and the deeming items read, from the receipts, replacing ssi_income (CO-849)."
+tests:
+  - {id: CO-5018-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: ssi, amount: 943}, {kind: ssi, amount: 2000, frequency: once, retroactive: true, month: "2026-10"}]}, title: "The month's SSI; the retroactive award is not", expect: 943}

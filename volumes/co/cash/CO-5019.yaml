@@ -1,0 +1,15 @@
+id: CO-5019
+name: "Adult Financial: a person's grant receipts"
+identifier: af_grant_receipts
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The Adult Financial grant payments (Old Age Pension, Aid to the Needy Disabled, Aid to the Blind) the person received in the month, other than a retroactive lump sum: the receipt of a grant that 3.532.B.3, 3.534.C, 3.570.43.A.1 and 3.570.52 ask about, and a relative's or sponsor's income (3.534.C)."
+derived: [sum_receipts, receipts, [all, ["=", [lookup, af_receipt_treatment_table, [receipt, kind]], not_income_to_client], [not, [receipt, retroactive]], [received_in, [month]]], [receipt, amount]]
+sources: [S2608, S3500]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: the grant receipt the Adult Financial rules read, from the receipts, replacing their read of adult_financial_cash_income (CO-1713)."
+tests:
+  - {id: CO-5019-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: adult_financial_cash, amount: 452}]}, title: "An OAP grant of $452", expect: 452}
