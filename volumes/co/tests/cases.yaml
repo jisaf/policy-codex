@@ -13206,18 +13206,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -14490,18 +14490,18 @@
         # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14638,18 +14638,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0
@@ -14800,18 +14800,18 @@
         # now, so the month determined states its pays too: the four Friday pays of November (6, 13, 20, 27), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-02", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-09", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-16", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-23", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-30", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-06", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-13", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-20", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-27", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 350
@@ -53762,9 +53762,9 @@
         # stated with the dates (replacing the thirty-day total 0, the pay schedule and the month's wages_gross 0): no pay in the
         # thirty days before November 1 (October 2 to 31); three in the eight weeks (September 6 to October 31).
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-11", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-18", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-25", job: job_1}
       month_defaults:
         hours_worked: 0
         child_support_paid_legally_obligated: 0
@@ -54004,18 +54004,18 @@
         # now, so the month determined states its pays too: the four Thursday pays of November (5, 12, 19, 26), $2,000, the
         # month's wages_gross stated before the restatement. They fall after the CCCAP and LEAP dates, which do not read them.
         earnings:
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19"}
-        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26"}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-10", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-17", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-09-24", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-01", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-08", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-15", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-22", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-10-29", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-05", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-12", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-19", job: job_1}
+        - {kind: wages, amount: 500, frequency: weekly, date: "2026-11-26", job: job_1}
       month_defaults:
         hours_worked: 160
         child_support_paid_legally_obligated: 0

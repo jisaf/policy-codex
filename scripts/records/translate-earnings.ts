@@ -152,10 +152,12 @@ function carve(v: Record<string, unknown>, cx: Ctx): { earnings: Earning[]; note
     if (f === "snap_earned_income_received_after_application_date") {
       if (cx.snapApplicationDate && cx.snapApplicationDate.slice(0, 7) === month) {
         r.date = addDays(cx.snapApplicationDate, 1);
-        // the fact is a total received after the date, not one pay of a
-        // schedule, so no frequency is written; a rule that converts dated
-        // pays by schedule reads it as monthly (request R-6; OQ-1181)
-        notes.push("earned income after the SNAP application date: dated, with no frequency (read as monthly where a rule converts dated pays; OQ-1181)");
+        // the fact is the month's total received after the date, written as
+        // the month's pay: a dated record states its frequency (CO-5100,
+        // required_if_dated; coverage pass 4 L4-2, OQ-1181 resolved), and
+        // monthly is how the total was read before
+        r.frequency = "monthly";
+        notes.push("earned income after the SNAP application date: dated, as the month's pay (frequency monthly; OQ-1181 resolved)");
       } else notes.push("earned income after the SNAP application date with no application date in the month: left undated");
       r.month = month;
     }

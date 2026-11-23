@@ -374,6 +374,19 @@ own one-line meaning in `option_meanings`), and exactly one of
 - `when_absent: "<meaning>"`: what leaving the field out means, for a field an
   operator gives that meaning to (`month`: the receipt recurs in every month).
 
+A `default` may be qualified `required_if_dated: true`: the default is then
+the value of a record that states **no date** only, and a record that states
+a `date` must state the field, so a rule that reads it there cannot determine
+and the field is reported missing (`earnings[0 wages].frequency`). The
+earnings record's `frequency` is so qualified (coverage pass 4 L4-2, decision
+4 of 2026-11-23): a stream's `amount` is by its meaning the month's amount,
+so monthly is what an unstated schedule means there; a pay stated with its
+date is one pay of a schedule the rule text gives no default for, and a rule
+that groups or converts dated pays by schedule (LEAP 3.752.22.C, SNAP
+4.402.A.2) needs it stated. An engine applies the qualifier where it applies
+defaults (`P56`): the default when the record states no date, unknown
+otherwise.
+
 A list that is not stated is **unknown**: every sum over it is unknown, and
 the outcome is "cannot determine" (decision 4 of 2026-11-23). A **stated empty
 list** means the person received no such money: every sum over it is 0.

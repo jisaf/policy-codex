@@ -615,7 +615,12 @@ export function evaluate(
       const rm = recordMonth(f.rec);
       if (rm !== undefined) return rm;
     }
-    if ("default" in spec) return spec.default ?? null;
+    // A default qualified required_if_dated is the value of a record with no
+    // date only: a dated record that leaves the field out does not state it
+    // (an earnings record's frequency; docs/operators.md, "Receipt records").
+    if ("default" in spec && !(spec.required_if_dated === true && f.rec.date !== undefined && f.rec.date !== null)) {
+      return spec.default ?? null;
+    }
     if (report) missingField(f, field);
     return null;
   }

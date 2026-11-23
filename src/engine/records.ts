@@ -6,7 +6,9 @@
  * fields, their types, and what an unstated field means are declared once on
  * the fact (`record_fields`): `required: true` (a rule that reads it cannot
  * determine), a `default` the rule text gives, or `when_absent` (what leaving
- * it out means, for a field an operator gives that meaning to). This module
+ * it out means, for a field an operator gives that meaning to); a default may
+ * be qualified `required_if_dated` (the default holds for a record with no
+ * date, and a dated record must state the field). This module
  * holds what the evaluator, the type check, the constraint check, the case
  * check and the export share: the schema rules, a record's effective month,
  * the name a missing field is reported under, and the validation of a stated
@@ -101,6 +103,11 @@ export function schemaErrors(it: Item): string[] {
       out.push(`${at}: states exactly one of required: true, a default, or when_absent (decision 4 of 2026-11-23)`);
     }
     if (spec.required !== undefined && spec.required !== true) out.push(`${at}: required is true or left out`);
+    if (spec.required_if_dated !== undefined) {
+      if (spec.required_if_dated !== true) out.push(`${at}: required_if_dated is true or left out`);
+      else if (!("default" in spec)) out.push(`${at}: required_if_dated qualifies a default (the value of a record with no date)`);
+      else if (name === "date" || !fields.date) out.push(`${at}: required_if_dated needs a date field to qualify`);
+    }
     if (spec.type === "one of") {
       if (!spec.options || spec.options.length < 2) out.push(`${at}: a "one of" field lists at least two options`);
       else if (new Set(spec.options).size !== spec.options.length) out.push(`${at}: an option is listed twice`);

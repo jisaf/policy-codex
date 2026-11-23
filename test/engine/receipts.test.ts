@@ -172,6 +172,22 @@ describe("receipt (P56) and received_in (P57)", () => {
     expect(run(oneTime, [{ kind: "inheritance", amount: 9, frequency: "once", date: "2026-11-12" }])).toBe(0);
     expect(run(oneTime, [{ kind: "inheritance", amount: 9, frequency: "once", month: "2026-11" }])).toBeNull();
   });
+  it("a default qualified required_if_dated holds for an undated record only (coverage pass 4 L4-2)", () => {
+    const fields = { ...receipts.record_fields!, frequency: { ...receipts.record_fields!.frequency, required_if_dated: true } };
+    const i = buildIndex([{ ...receipts, record_fields: fields }, table, appDate, derived("w", ["sum_receipts", "receipts",
+      ["all", ["received_in", ["month"]], ["=", ["receipt", "frequency"], "monthly"]], ["receipt", "amount"]])]);
+    const at = (list: unknown, events?: TraceEvent[]) => evaluate(i, makeCase(i, {
+      id: "T", as_of: "2026-11-15", persons: { p1: { facts: { receipts: list } } }, case_facts: { application_date: "2026-11-10" },
+    }), "w", "p1", "2026-11", events ? (ev) => { events.push(ev); } : undefined);
+    expect(at([{ kind: "pension", amount: 5 }])).toBe(5);
+    expect(at([{ kind: "pension", amount: 5, date: "2026-11-03", frequency: "monthly" }])).toBe(5);
+    const events: TraceEvent[] = [];
+    expect(at([{ kind: "pension", amount: 5, date: "2026-11-03" }], events)).toBeNull();
+    expect(events.filter((e) => e.origin === "missing").map((e) => e.identifier)).toEqual(["receipts[0 pension].frequency"]);
+    expect(schemaErrors({ ...receipts, record_fields: fields })).toEqual([]);
+    const noDefault = { ...receipts.record_fields!, amount: { ...receipts.record_fields!.amount, required_if_dated: true } };
+    expect(schemaErrors({ ...receipts, record_fields: noDefault })).toContain("record_fields.amount: required_if_dated qualifies a default (the value of a record with no date)");
+  });
   it("a receipt summed for a month reads that month's parameter versions; another month is an error", () => {
     // A limit that changes on November 1: a receipt counted for October is
     // compared with October's figure, also from a November rule ("in that month").
