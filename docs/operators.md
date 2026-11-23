@@ -296,7 +296,8 @@ decided separately (plan-colorado.md, condition 3).
 (Colorado: `receipts`, CO-5000): one record per payment, or per stream of
 like payments, each a mapping of field to value. The fact declares its record
 schema once, in `record_fields`: each field's type (a scalar codex type), a
-one-line meaning, the options of a `one of` field, and exactly one of
+one-line meaning, the options of a `one of` field (for the `kind`, each with its
+own one-line meaning in `option_meanings`), and exactly one of
 
 - `required: true`: a rule that reads the field cannot determine when the
   record does not state it (`kind`, `amount`, `date`, a payment's

@@ -1,11 +1,13 @@
 # Receipt records harness: ledger at 41ec04b4d62c vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 24 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 26 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
 | stored households | 297 | 74176 | 6 | 2 | 6 | 0 |
 | generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
+
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-458, CO-459, CO-460.
 
 ## Allowed differences by class
 
