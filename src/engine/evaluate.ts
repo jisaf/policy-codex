@@ -26,7 +26,7 @@ export interface TestResult {
 
 /** An unknown the evaluator produced although no supplied fact was missing:
  *  a table lookup whose key has no row, a versioned parameter with no version
- *  in force on the determination date, a division by zero, or a number that
+ *  in force on the date it is read on, a division by zero, or a number that
  *  is not finite (NaN or Infinity, stated in a case or produced by
  *  arithmetic), which is never an answer. Each is
  *  reported (to the `warn` hook, and on the derived fact's trace event) so it
@@ -232,8 +232,8 @@ export interface TraceEvent {
     // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
     // missing: supplied fact absent (unknown); not-in-force: the item's effective range does not
     // cover the determination date (unknown, and its rule never runs);
-    // no-version: a versioned parameter with no version in force on the
-    // determination date (unknown, and reported as a warning);
+    // no-version: a versioned parameter with no version in force on its
+    // version date (Resolution step 2; unknown, and reported as a warning);
     // decision: an operator's choice, not a fact
   parentKey: string | null;    // the derived fact whose evaluation asked for this one
   error?: string;              // when evaluation of this node threw

@@ -343,7 +343,7 @@ Four unknowns have no unstated supplied fact behind them: a number that is
 not finite (see Numbers), a `lookup` key
 with no row (or a `band` number above the last bound of a table with no open
 top band, or a `lookup_extended` number below the last row with no row), a
-versioned parameter with no version on the determination date (or on the date
+versioned parameter with no version on the date it is read on (Resolution step 2; or on the date
 `as_of` names; a parameter awaiting its figure has none on any date), and a
 division by zero. The engine reports each one (the non-finite one as a
 `non-finite` warning, against the fact stated as one or the rule that produced it): as a warning in
