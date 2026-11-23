@@ -3,7 +3,7 @@ export type Scope = "person" | "person-month" | "case" | "month" | "global";
 export type Program = string;
 export type BaseType =
   | "yes/no" | "number" | "date" | "month" | "text" | "enum"
-  | "person" | "group" | "relationships" | "table" | "months" | "unknown";
+  | "person" | "group" | "relationships" | "table" | "months" | "records" | "unknown";
 
 /** An expression node. Payloads are arbitrary nested JSON, exactly as the
  *  ledger stores them, so the element type stays `any` on purpose. */
@@ -122,6 +122,29 @@ export interface Item {
    *  lists this item back. A change to one flags the others. */
   siblings?: Sibling[];
   tests?: TestSpec[];
+  /** On a supplied fact whose type is a list of records (`list of receipts`):
+   *  the record schema, declared once. Each field states its type, its
+   *  meaning, and exactly one of `required: true` (a rule that reads the
+   *  field cannot determine when a record does not state it), a `default`
+   *  the rule text gives, or `when_absent` (what leaving it out means, for a
+   *  field an operator gives that meaning to: a receipt with no month recurs
+   *  in every month). A "one of" field lists its options. docs/operators.md,
+   *  "Receipt records". */
+  record_fields?: Record<string, RecordFieldSpec>;
+}
+
+/** One field of a record schema (Item.record_fields). */
+export interface RecordFieldSpec {
+  type: string;
+  meaning?: string;
+  required?: boolean;
+  default?: unknown;
+  when_absent?: string;
+  options?: string[];
+  /** On a "one of" field whose options a reader must tell apart (a
+   *  receipt's kind): one line per option saying what it is. Each kind names
+   *  one source (docs/conventions.md, "Receipt records"). */
+  option_meanings?: Record<string, string>;
 }
 
 /** The class of a shared (program All) derived item. */
@@ -219,7 +242,7 @@ export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 export const MONTH_RE = /^\d{4}-\d{2}$/;
 export const BLOCK_OPS: ReadonlySet<string> = new Set([
   "all", "any", "case", "exists", "exists_related", "each", "some_month", "filter", "sum",
-  "sum_months", "reachable",
+  "sum_months", "reachable", "sum_receipts",
 ]);
 export const MONTH_BINDING: ReadonlySet<string> = new Set([
   "each", "some_month", "count_months", "avg",
@@ -233,7 +256,7 @@ export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
   "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
-  "count", "sum", "sum_months", "band", "lookup_extended", "latest_month_of_year", "as_of",
+  "count", "sum", "sum_months", "sum_receipts", "band", "lookup_extended", "latest_month_of_year", "as_of",
 ]);
 
 export const BASE: Record<string, BaseType> = {
@@ -247,4 +270,6 @@ export const BASE: Record<string, BaseType> = {
   "table keyed by number of days": "table",
   "table keyed by option": "table",
   "list of months": "months",
+  // A list of records (receipts): read only by "for each receipt in" (P55).
+  "list of receipts": "records",
 };

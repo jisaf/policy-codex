@@ -1,0 +1,16 @@
+id: CO-5014
+name: "SNAP: excluded infrequent or irregular unearned receipts"
+identifier: snap_excluded_irregular_receipts
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The month's recurring receipts marked infrequent or irregular that SNAP's counting table counts, when the calendar quarter's infrequent or irregular income, unearned (snap_irregular_unearned_receipts_in_quarter) and earned (infrequent_or_irregular_earned_income_received over the quarter), is no more than snap_irregular_income_quarterly_limit (10 CCR 2506-1 4.405.A); otherwise 0.
+derived: [case, [["<=", ["+", snap_irregular_unearned_receipts_in_quarter, [sum_months, snap_calendar_quarter_months, [at, [otherwise, infrequent_or_irregular_earned_income_received, 0], [that_month]]]], snap_irregular_income_quarterly_limit], [sum_receipts, receipts, [all, [receipt, irregular], [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [lookup, snap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_beyond_quarterly_limit]]], [receipt, amount]]], [else, 0]]
+sources: [S3128]
+implemented: engine
+tags: [snap, income]
+rationale: "Receipt records, migration phase 1: the irregular-income term of snap_excluded_unearned_income (CO-2339), read from the receipts."
+tests:
+  - {id: CO-5014-T1, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: other_nontaxable, amount: 10, irregular: true}]}, title: "$10 a month, $30 in the quarter: within the limit, excluded", expect: 10}
+  - {id: CO-5014-T2, month: "2026-11", as_of: "2026-11-15", given: {receipts: [{kind: other_nontaxable, amount: 20, irregular: true}]}, title: "$20 a month, $60 in the quarter: over the limit, counted", expect: 0}

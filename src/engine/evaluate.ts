@@ -1,7 +1,8 @@
 import { DEFAULT_INVERSE_ROLE, indexWith, type LedgerIndex } from "./ledger-index";
 import { valuesEqual } from "./values";
 import { inForce, paramInForce, versionInForce } from "./versions";
-import { DATE_RE, MONTH_RE, type Expr, type Item, type TestSpec } from "./types";
+import { isRecordList, recordFieldName, recordMonth } from "./records";
+import { DATE_RE, MONTH_RE, type Expr, type Item, type RecordFieldSpec, type TestSpec } from "./types";
 
 export interface CaseData {
   det: string;
@@ -276,6 +277,17 @@ export function evaluate(
    *  evaluates its value; null outside one. A derived fact's own rule never
    *  sees it (value() clears it), so memoised values do not depend on it. */
   let thatMonth: string | null = null;
+  /** P55-P57: the receipt record "that receipt" names while a "for each
+   *  receipt in" sum evaluates its condition and value, with what the
+   *  record's fields need: the schema (`record_fields` of the list's fact),
+   *  the list's identifier and the record's index (to name a field a rule
+   *  needs and the record does not state), and the person whose list it is.
+   *  Like thatMonth, a derived fact's own rule never sees it. */
+  interface ReceiptFrame {
+    rec: Record<string, unknown>; index: number; list: string; owner: string | null;
+    fields: Readonly<Record<string, RecordFieldSpec>>;
+  }
+  let thatReceipt: ReceiptFrame | null = null;
   /** Warnings raised while each derived fact's rule ran, by memo key, so the
    *  fact's trace event can carry them. Only filled when a hook is present. */
   const warningsByKey = new Map<string, string[]>();
@@ -450,12 +462,15 @@ export function evaluate(
       stack.push(ckey);
       let cv: unknown;
       const outer = thatMonth;
+      const outerReceipt = thatReceipt;
       thatMonth = null;
+      thatReceipt = null;
       try {
         cv = ev(it.derived ?? null, null, null, null);
       } finally {
         stack.pop();
         thatMonth = outer;
+        thatReceipt = outerReceipt;
       }
       memo[ckey] = cv;
       return seen(cv, "evaluated");
@@ -492,7 +507,9 @@ export function evaluate(
     stack.push(key);
     let v: unknown;
     const outerThatMonth = thatMonth;
+    const outerThatReceipt = thatReceipt;
     thatMonth = null;
+    thatReceipt = null;
     try {
       // A person or global fact is one value per case, memoised without a
       // month, so its rule runs with no month in context (its parameters are
@@ -508,6 +525,7 @@ export function evaluate(
     } finally {
       stack.pop();
       thatMonth = outerThatMonth;
+      thatReceipt = outerThatReceipt;
     }
     memo[key] = v;
     return seen(v, "evaluated", undefined, warningsByKey.get(key));
@@ -545,6 +563,61 @@ export function evaluate(
       return seen(v.value, "parameter");
     }
     return seen(it.value === undefined ? null : it.value, "parameter");
+  }
+
+  /** The records a "for each receipt in" sum reads: a list-of-receipts fact
+   *  named bare (this person's) or as that person's (["of", person, list]).
+   *  Null when it is not stated. */
+  function receiptList(
+    x: Expr, p: string | null, m: string | null, P: string | null,
+  ): { list: unknown[]; identifier: string; owner: string | null; fields: Record<string, RecordFieldSpec> } | null {
+    let identifier: string;
+    let owner: string | null;
+    if (typeof x === "string") {
+      identifier = x;
+      owner = p;
+    } else if (Array.isArray(x) && x[0] === "of" && typeof x[2] === "string") {
+      identifier = x[2];
+      owner = ev(x[1], p, m, P);
+      if (owner === null) return null;
+    } else {
+      throw new Error("for each receipt in: expected a list of receipts");
+    }
+    const it = ix.byIdentifier.get(identifier);
+    if (!isRecordList(it)) throw new Error(`for each receipt in: ${identifier} is not a list of receipts`);
+    const list = ev(x, p, m, P);
+    if (list === null || list === undefined) return null;
+    if (!Array.isArray(list)) throw new Error(`for each receipt in: ${identifier} is not a list`);
+    return { list, identifier, owner, fields: it!.record_fields ?? {} };
+  }
+
+  /** Reports a record field a rule needs and the record does not state, as a
+   *  missing supplied fact of the list's owner. */
+  function missingField(f: ReceiptFrame, field: string): void {
+    if (!trace) return;
+    const name = recordFieldName(f.list, f.index, f.rec.kind, field);
+    emit({
+      key: name + "|" + (f.owner ?? "") + "|", identifier: name, person: f.owner, month: null,
+      kind: "supplied", value: null, origin: "missing",
+      parentKey: stack.length ? stack[stack.length - 1] : null,
+    });
+  }
+
+  /** A field of a record: as stated, else its declared default, else
+   *  unknown (and reported as missing, unless `report` is false). */
+  function receiptField(f: ReceiptFrame, field: string, report = true): unknown {
+    const spec = f.fields[field];
+    if (!spec) throw new Error(`that receipt's ${field}: the ${f.list} schema declares no such field`);
+    const v = f.rec[field];
+    if (v !== undefined && v !== null) return v;
+    // A record that states a date and no month came in the date's month.
+    if (field === "month") {
+      const rm = recordMonth(f.rec);
+      if (rm !== undefined) return rm;
+    }
+    if ("default" in spec) return spec.default ?? null;
+    if (report) missingField(f, field);
+    return null;
   }
 
   /** Every operator's result passes here: a number that is not finite is
@@ -842,6 +915,66 @@ export function evaluate(
       case "that_month":
         if (thatMonth === null) throw new Error('"that month" outside "for each month in"');
         return thatMonth;
+      case "sum_receipts": {
+        // P55: ["sum_receipts", list, condition, value]: the sum of the value
+        // for each record of the list whose condition is true, with "that
+        // receipt" naming each record in turn, in list order. The list is a
+        // list-of-receipts fact of this person, or of that person
+        // (["of", person, list]). Unknown when the list is not stated, or
+        // when the condition of any record, or the value of a record whose
+        // condition is true, is unknown; a record whose condition is false
+        // is skipped and its value never read. A stated empty list: 0.
+        const src = receiptList(e[1], p, m, P);
+        if (src === null) return null;
+        const outer = thatReceipt;
+        let total = 0;
+        try {
+          for (let i = 0; i < src.list.length; i++) {
+            const rec = src.list[i];
+            if (rec === null || typeof rec !== "object" || Array.isArray(rec)) {
+              throw new Error(`${src.identifier}[${i}] is not a record`);
+            }
+            thatReceipt = {
+              rec: rec as Record<string, unknown>, index: i, list: src.identifier,
+              owner: src.owner, fields: src.fields,
+            };
+            const cond = ev(e[2], p, m, P);
+            if (cond === null) return null;
+            if (cond !== true) continue;
+            const v = ev(e[3], p, m, P);
+            if (v === null) return null;
+            total += v;
+          }
+        } finally {
+          thatReceipt = outer;
+        }
+        return total;
+      }
+      case "receipt": {
+        // P56: ["receipt", field]: that receipt's field as the record states
+        // it, else the default its schema declares; a field with no default
+        // the record does not state is unknown, and is reported as a missing
+        // supplied fact named for the record and the field
+        // (receipts[2 other_one_time].date).
+        if (thatReceipt === null) throw new Error('"that receipt" outside "for each receipt in"');
+        return receiptField(thatReceipt, e[1] as string);
+      }
+      case "received_in": {
+        // P57: ["received_in", month]: that receipt is received in the
+        // month: its month (or its date's month) is the month. A record that
+        // states neither recurs in every month, unless it is paid once: the
+        // month it came in is then needed, and unknown (reported as missing).
+        if (thatReceipt === null) throw new Error('"that receipt" outside "for each receipt in"');
+        const mm = g(e[1]);
+        if (mm === null) return null;
+        const rm = recordMonth(thatReceipt.rec);
+        if (rm !== undefined) return rm === mm;
+        if (thatReceipt.fields.frequency && receiptField(thatReceipt, "frequency", false) === "once") {
+          missingField(thatReceipt, "month");
+          return null;
+        }
+        return true;
+      }
       case "avg": {
         const ms = g(e[2]);
         if (ms === null) return null;

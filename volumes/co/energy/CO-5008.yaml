@@ -1,0 +1,16 @@
+id: CO-5008
+name: "LEAP: a person's income set aside"
+identifier: leap_receipts_set_aside
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: The parts of the person's counted recurring receipts of the month set aside under a Plan for Achieving Self-Support (9 CCR 2503-7 3.752.23.DD) or paid in a workers' compensation award for the claim's medical, legal or related expenses (3.752.211.D).
+precision: "Read from the receipt the part comes out of (pass_set_aside, claim_expense). leap_person_unearned_income (CO-3926) subtracts it from the recurring receipts and Social Security together, not below zero (coverage review 3 F3-1: a PASS set-aside is most often Social Security disability income)."
+derived: [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [lookup, leap_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_at_or_above_minimum_wage]]], ["+", [receipt, pass_set_aside], [receipt, claim_expense]]]
+sources: [S3300, S3304]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 1: the PASS and claim-expense terms of leap_excluded_unearned_income (CO-4511), each a field of its receipt."
+tests:
+  - {id: CO-5008-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: social_security, amount: 900, pass_set_aside: 100}, {kind: workers_compensation, amount: 800, claim_expense: 200}]}, title: "PASS set-aside and the award's claim expenses", expect: 300}

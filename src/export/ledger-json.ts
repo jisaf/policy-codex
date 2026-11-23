@@ -40,6 +40,11 @@ export interface LedgerJsonItem {
   precision?: string;
   assumption?: string;
   supplied_by?: string;
+  /** A list of records (type `list of receipts`): the record schema, each
+   *  field's type, meaning, options, and exactly one of `required: true`, a
+   *  `default`, or `when_absent` (docs/operators.md, "Receipt records"). The
+   *  fact's value in a case is a list of mappings of these fields. */
+  record_fields?: Item["record_fields"];
   /** Parameters without versions: the one value. */
   value?: unknown;
   /** Parameters with versions: `from` inclusive, `to` exclusive. */
@@ -147,6 +152,7 @@ export function buildLedgerJson(engine: Engine, vol: LoadedVolume, sha: string):
     for (const k of ["meaning", "precision", "assumption", "supplied_by", "implemented_by"] as const) {
       if (it[k]) row[k] = it[k];
     }
+    if (it.record_fields) row.record_fields = it.record_fields;
     if (it.kind === "parameter") {
       if (Array.isArray(it.versions)) row.versions = it.versions;
       else if (it.value !== undefined) row.value = it.value;

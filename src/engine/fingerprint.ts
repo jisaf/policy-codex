@@ -6,7 +6,9 @@
  *
  * What a fingerprint covers, and nothing else:
  * - the item's approvable fields (APPROVABLE_FIELDS): what it means and how it
- *   is computed, its type and options, its values and parameter versions, its
+ *   is computed, its type and options, its record schema (a list of
+ *   receipts' fields: type, options, meaning, required or default), its
+ *   values and parameter versions, its
  *   sources and effective range, and the names engineers implement. Free text
  *   is compared with whitespace collapsed, and the order of sets (sources,
  *   options, accepts_from, adopted_by) and of versions does not count;
@@ -36,6 +38,9 @@ export const APPROVABLE_FIELDS: readonly (keyof Item)[] = [
   "meaning", "assumption", "statute_override", "supplied_by",
   "value", "versions", "derived", "sources", "effective", "accepts_from",
   "link_class", "link_basis", "adopted_by",
+  // The record schema of a list of receipts (added 2026-11-23 with receipt
+  // records). An item without one hashes as before, so no scheme bump.
+  "record_fields",
 ];
 
 const TEXT_FIELDS: ReadonlySet<string> = new Set([
@@ -82,6 +87,22 @@ function normField(it: Item, f: keyof Item): unknown {
     for (const x of v) keyed.set(setKey(x), x);
     const xs = [...keyed.keys()].sort().map((k) => keyed.get(k));
     return xs.length ? xs : undefined;
+  }
+  if (f === "record_fields" && typeof v === "object") {
+    // Field order does not count (canonicalJson sorts keys), nor the order
+    // of a field's options; a field's meaning is free text.
+    const out: Record<string, unknown> = {};
+    for (const [name, spec] of Object.entries(v as Record<string, Record<string, unknown>>)) {
+      const s: Record<string, unknown> = { ...spec };
+      if (Array.isArray(s.options)) s.options = [...(s.options as string[])].sort();
+      if (typeof s.meaning === "string") s.meaning = normText(s.meaning);
+      if (s.option_meanings && typeof s.option_meanings === "object") {
+        s.option_meanings = Object.fromEntries(Object.entries(s.option_meanings as Record<string, unknown>)
+          .map(([o, m]) => [o, typeof m === "string" ? normText(m) : m]));
+      }
+      out[name] = s;
+    }
+    return Object.keys(out).length ? out : undefined;
   }
   if (f === "versions" && Array.isArray(v)) {
     return (it.versions ?? [])

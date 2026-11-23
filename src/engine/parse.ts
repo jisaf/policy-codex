@@ -116,6 +116,11 @@ export function parseInline(
     return ["in", p(sp[0]), sp[1].split(",").map((x) => x.trim()).filter(Boolean)];
   }
   if (s.endsWith(" is unknown")) return ["unknown", p(s.slice(0, -11))];
+  // P56, P57: a field of the receipt a "for each receipt in" sum is at
+  // (after the comparisons, which may hold one on either side).
+  let rm: RegExpMatchArray | null;
+  if ((rm = s.match(/^that receipt's ([a-z][a-z0-9 ]*)$/))) return ["receipt", rm[1].trim().replace(/ /g, "_")];
+  if ((rm = s.match(/^that receipt is received in (.+)$/))) return ["received_in", p(rm[1])];
   // P51, read before arithmetic: its own words hold no arithmetic phrase at
   // the top level, but its operands may.
   // A table slot is a table's name, or a parenthesised expression giving one
@@ -185,6 +190,10 @@ export function parseInline(
     if (q) return ["sum", p(q[1]), p(q[0])];
     const qm = splitTop(m[1], " for each month in ", true);
     if (qm) return ["sum_months", p(qm[1]), p(qm[0])];
+    // P55: "the sum of V for each receipt in L where (C)".
+    const qr = splitTop(m[1], " for each receipt in ", true);
+    const qw = qr && splitTop(qr[1], " where ");
+    if (qr && qw) return ["sum_receipts", p(qw[0]), p(qw[1]), p(qr[0])];
   }
   if ((m = s.match(/^the number of months in (.+) for which (.+)$/))) {
     return ["count_months", p(m[1]), p(m[2])];
@@ -302,6 +311,16 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
   if ((m = txt.match(/^the sum for each month in (.+) of$/))) {
     if (!rest.length) throw new Error("the sum: missing value");
     return ["sum_months", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the sum for each receipt in (.+) where$/))) {
+    // P55 as a block: the condition, then "of" one step in, then the value.
+    const ofAt = rest.findIndex((l) => l.text.trim() === "of" && l.indent === first.indent + 2);
+    if (ofAt <= 0 || ofAt === rest.length - 1) throw new Error("the sum for each receipt: needs a condition and, after \"of\", a value");
+    return [
+      "sum_receipts", p(m[1]),
+      parseBlockLines(ix, rest.slice(0, ofAt), options),
+      parseBlockLines(ix, rest.slice(ofAt + 1), options),
+    ];
   }
   if ((m = txt.match(/^in each of (.+):$/))) {
     return ["each", p(m[1]), parseBlockLines(ix, rest, options)];

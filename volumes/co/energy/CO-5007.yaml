@@ -1,0 +1,15 @@
+id: CO-5007
+name: "LEAP: a person's cash assistance receipts"
+identifier: leap_cash_assistance_receipts
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: The person's Colorado Works and Adult Financial cash assistance received in the month (9 CCR 2503-7 3.752.21.L), other than a retroactive lump sum, which 3.752.23.EE excludes.
+derived: [sum_receipts, receipts, [all, [not, ["=", [receipt, frequency], once]], [received_in, [month]], [in, [receipt, kind], [colorado_works_cash, adult_financial_cash]]], [receipt, amount]]
+sources: [S2714, S2208]
+implemented: engine
+tags: [income]
+rationale: "Receipt records, migration phase 1: the cash assistance term of leap_person_unearned_income (CO-3926), read from the receipts."
+tests:
+  - {id: CO-5007-T1, month: "2026-11", as_of: "2026-11-10", given: {leap_application_date: "2026-11-10", receipts: [{kind: colorado_works_cash, amount: 488}, {kind: adult_financial_cash, amount: 120}]}, title: "Colorado Works and Adult Financial grants of the month", expect: 608}

@@ -1,0 +1,19 @@
+id: CO-5017
+name: "Adult Financial: a person's counted unearned receipts other than SSI"
+identifier: af_counted_unearned_receipts
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: The person's receipts of the month that Adult Financial's counting table counts, other than SSI and the Adult Financial grant, a receipt paid once in the month received (9 CCR 2503-5 3.520.785.B.1.a), each less the part set aside under a PASS (3.520.786.I) and the part of VA Aid and Attendance used for uncovered medical care (F); a retroactive lump sum of SSI or of the grant is counted here, in the month received (OQ-887). The one figure the client's own income (af_unearned_income_other_than_ssi, CO-3831) and a deemed spouse's, parent's or sponsor's (af_relative_deemable_unearned_income, CO-4720) both read, before the exclusions that turn on the person (child support for an SSI-age child, life-threatening-condition gifts to a child, infrequent income).
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [in, [lookup, af_receipt_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes, counted_less_one_third_for_ssi_child, counted_less_child_gift_exclusion]], [all, [receipt, retroactive], [in, [lookup, af_receipt_treatment_table, [receipt, kind]], [counted_separately, not_income_to_client]]]]], ["-", [receipt, amount], ["+", [receipt, pass_set_aside], [receipt, used_for_uncovered_medical_care]]]]
+sources: [S1622, S2608, S2609, S3212]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: Adult Financial's unearned income read from the receipts through its counting table, replacing the sum of the unearned income facts less af_excluded_unearned_income (CO-2343)."
+tests:
+  - {id: CO-5017-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: social_security, amount: 600}, {kind: ssi, amount: 300}, {kind: interest_and_dividends, amount: 40}, {kind: loan, amount: 200}]}, title: "Social Security and a loan counted (the loan by silence); SSI counted separately; interest excluded ((c)(22))", expect: 800}
+  - {id: CO-5017-T2, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: other_nontaxable, amount: 5000, frequency: once, month: "2026-10"}, {kind: pension, amount: 600}]}, title: "An inheritance is counted in the month received (probe PR-LUMP, coverage F-12)", expect: 5600}
+  - {id: CO-5017-T3, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: social_security, amount: 900, pass_set_aside: 100}, {kind: va_aid_and_attendance, amount: 400, used_for_uncovered_medical_care: 150}]}, title: "PASS set-aside (I) and VA Aid and Attendance used for uncovered care (F) left out", expect: 1050}
+  - {id: CO-5017-T4, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: ssi, amount: 1500, frequency: once, retroactive: true, month: "2026-10"}]}, title: "A retroactive SSI award is counted as unearned income other than SSI in the month received (OQ-887)", expect: 1500}
+  - {id: CO-5017-T5, month: "2026-10", as_of: "2026-10-15", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}

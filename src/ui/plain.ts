@@ -262,6 +262,9 @@ class Renderer {
       case "each": return cat("in every one of ", p(e[1]), ", ", p(e[2]));
       case "some_month": return cat("in at least one of ", p(e[1]), ", ", p(e[2]));
       case "sum_months": return cat("the total over ", p(e[1]), " of ", p(e[2]));
+      case "sum_receipts": return cat("the total, over the receipts in ", p(e[1]), " for which ", p(e[2]), ", of ", p(e[3]));
+      case "receipt": return [`the receipt's ${String(e[1]).replace(/_/g, " ")}`];
+      case "received_in": return cat("the receipt came in ", p(e[1]));
       case "all": case "any": {
         const kids = e.slice(1);
         if (kids.length === 1) return p(kids[0]);
@@ -465,6 +468,11 @@ class Renderer {
         return [head("the total, over the people in ", this.phrase(e[1]), ", of:"), ...this.over(() => sub(e[2], ""))];
       case "sum_months":
         return [head("the total over ", this.phrase(e[1]), " of:"), ...sub(e[2], "")];
+      case "sum_receipts":
+        return [
+          head("the total, over the receipts in ", this.phrase(e[1]), " for which:"), ...sub(e[2], ""),
+          { depth, parts: ["of:"] }, ...sub(e[3], ""),
+        ];
       case "count_months":
         return [head("the number of months in ", this.phrase(e[1]), " in which:"), ...sub(e[2], "")];
       case "lookup":

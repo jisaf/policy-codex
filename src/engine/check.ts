@@ -1,7 +1,8 @@
 import type { LedgerIndex } from "./ledger-index";
 import { inline } from "./render";
 import { baseType, paramValue } from "./values";
-import { DATE_RE, MONTH_RE, type BaseType, type Expr, type Scope } from "./types";
+import { fieldBaseType, isRecordList } from "./records";
+import { DATE_RE, MONTH_RE, type BaseType, type Expr, type RecordFieldSpec, type Scope } from "./types";
 
 export interface CheckResult {
   type: BaseType;
@@ -17,6 +18,49 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
   const monthScoped = itemScope === "person-month" || itemScope === "month";
   /** Depth of "for each month in" sums around the expression being typed. */
   let monthSums = 0;
+  /** The record schemas of the "for each receipt in" sums around the
+   *  expression being typed, innermost last (P55-P57). */
+  const receiptSchemas: Array<{ list: string; fields: Record<string, RecordFieldSpec> }> = [];
+  /** The field a `["receipt", field]` expression reads, or null. */
+  const receiptFieldOf = (x: Expr): RecordFieldSpec | null => {
+    if (!Array.isArray(x) || x[0] !== "receipt" || !receiptSchemas.length) return null;
+    return receiptSchemas[receiptSchemas.length - 1].fields[x[1] as string] ?? null;
+  };
+  /** A "one of" receipt field compared with options: each must be one of
+   *  the field's options (a misspelt kind would never match a record). */
+  const fieldOptions = (x: Expr, opts: unknown[]): void => {
+    const f = receiptFieldOf(x);
+    if (!f?.options) return;
+    for (const o of opts) {
+      if (typeof o === "string" && !f.options.includes(o)) {
+        errors.push(`"${o}" is not an option of that receipt's ${String((x as unknown[])[1]).replace(/_/g, " ")}`);
+      }
+    }
+  };
+  /** A table looked up by a receipt's kind (a program's counting table) must
+   *  have a row for every kind, in every version, and no row for anything
+   *  else: a kind with no row would be unknown at run time, and a row for no
+   *  kind is a misspelling. (Other fields, such as the frequency a
+   *  conversion table is keyed by, are read only for the options a rule
+   *  selects first.) */
+  const coversOptions = (tbl: Expr, key: Expr): void => {
+    const f = Array.isArray(key) && key[1] === "kind" ? receiptFieldOf(key) : null;
+    if (!f?.options || typeof tbl !== "string") return;
+    const it = ix.byIdentifier.get(tbl);
+    if (!it || it.kind !== "parameter") return;
+    const values = Array.isArray(it.versions) && it.versions.length
+      ? it.versions.map((v) => ({ v: v.value, from: v.from }))
+      : [{ v: it.value, from: null as string | null }];
+    for (const { v, from } of values) {
+      if (!v || typeof v !== "object") continue;
+      const rows = Object.keys(v as object);
+      const at = from ? ` (version from ${from})` : "";
+      const missing = f.options.filter((o) => !rows.includes(o));
+      const extra = rows.filter((r) => !f.options!.includes(r));
+      if (missing.length) errors.push(`${it.name}${at} has no row for: ${missing.join(", ")}`);
+      if (extra.length) errors.push(`${it.name}${at} has a row for no option of that receipt's ${String((key as unknown[])[1]).replace(/_/g, " ")}: ${extra.join(", ")}`);
+    }
+  };
   /** A role the volume does not declare can never match an edge, so a
    *  misspelling would silently read as "no such relationship". */
   const declaredRoles = ix.roles ? new Set(ix.roles.map((r) => r.id)) : null;
@@ -51,6 +95,14 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       const it = ix.byIdentifier.get(e);
       if (it) {
         refs.add(e);
+        // A receipt sum's condition and value read that receipt's fields,
+        // the month, case facts and parameters only: never another fact of
+        // a person (docs/operators.md "Receipt records": what lets a fact
+        // graph run the sum as a filter with no outer-person binding).
+        if (receiptSchemas.length && it.kind !== "parameter" &&
+          (it.scope === "person" || it.scope === "person-month")) {
+          errors.push(`"${it.name}" is a fact of a person; a receipt sum reads only that receipt's fields, the month, case facts and parameters (read it outside the sum)`);
+        }
         if ((it.scope === "person-month" || it.scope === "month") && !mb) {
           errors.push(
             `"${it.name}" is a per-month fact; say which month (use "for [month]") ` +
@@ -105,6 +157,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       }
       case "=": {
         const a = t(e[1], mb); const b = t(e[2], mb);
+        if (typeof e[2] === "string") fieldOptions(e[1], [e[2]]);
         if (a !== "unknown" && b !== "unknown" && a !== b) {
           errors.push(`equality mixes ${a} and ${b}`);
         }
@@ -113,6 +166,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "in": {
         const a = t(e[1], mb);
         if (!Array.isArray(e[2]) || !e[2].length) errors.push("is one of: needs options");
+        else if (receiptFieldOf(e[1])) fieldOptions(e[1], e[2] as unknown[]);
         else if (typeof e[1] === "string" && ix.byIdentifier.get(e[1])?.options) {
           const target = ix.byIdentifier.get(e[1])!;
           for (const o of e[2] as string[]) {
@@ -190,6 +244,41 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "that_month":
         if (!monthSums) errors.push('"that month" used outside "the sum of ... for each month in"');
         return "month";
+      case "sum_receipts": {
+        if (e.length !== 4) errors.push("the sum for each receipt in: needs a list, a condition and a value");
+        const listId = typeof e[1] === "string" ? e[1]
+          : Array.isArray(e[1]) && e[1][0] === "of" && typeof e[1][2] === "string" ? e[1][2] : null;
+        const listItem = listId ? ix.byIdentifier.get(listId) : undefined;
+        if (!listId || !isRecordList(listItem)) {
+          errors.push("for each receipt in: expected a list of receipts (or that person's)");
+          t(e[1], mb);
+          return "number";
+        }
+        need(e[1], ["records"], "for each receipt in");
+        receiptSchemas.push({ list: listId, fields: listItem!.record_fields ?? {} });
+        try {
+          need(e[2], ["yes/no"], "where");
+          need(e[3], ["number"], "the sum of");
+        } finally { receiptSchemas.pop(); }
+        return "number";
+      }
+      case "receipt": {
+        if (!receiptSchemas.length) {
+          errors.push('"that receipt" used outside "the sum of ... for each receipt in"');
+          return "unknown";
+        }
+        const s = receiptSchemas[receiptSchemas.length - 1];
+        const f = typeof e[1] === "string" ? s.fields[e[1]] : undefined;
+        if (!f) {
+          errors.push(`that receipt's ${String(e[1]).replace(/_/g, " ")}: ${s.list} declares no such field`);
+          return "unknown";
+        }
+        return fieldBaseType(f);
+      }
+      case "received_in":
+        if (!receiptSchemas.length) errors.push('"that receipt" used outside "the sum of ... for each receipt in"');
+        need(e[1], ["month"], "received in");
+        return "yes/no";
       case "case": {
         let vt: BaseType | null = null;
         e.slice(1).forEach((arm: any, k: number) => {
@@ -241,6 +330,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       }
       case "lookup":
         need(e[1], ["table"], "table"); need(e[2], ["person", "number", "enum"], "for person, size or option");
+        coversOptions(e[1], e[2]);
         return rowType(e[1]);
       case "band":
         need(e[1], ["table"], "table"); need(e[2], ["number"], "for the band containing");
