@@ -163,9 +163,15 @@ These are ordinary items over `years_between`, `first_day`, `days_after` and
 `month`; no operator is involved. A per-person rule about the determination
 itself (presumptive eligibility, a person-scope category read by
 person-scope rules) states the determination month explicitly:
-`[at, ma_is_aged, [det_month]]`. The cash programs' per-person age items
-(`cw_is_dependent_child`, `af_is_oap_age`) are measured on the determination
-date in every month (OQ-951).
+`[at, ma_is_aged, [det_month]]`. The cash programs measure their ages in
+the month evaluated too (coverage pass 4, CA4-15): Adult Financial's OAP age
+(`af_is_oap_age`, per month) on the month's last day, its AND-SO and AND-CS
+upper limits and the SSI child on the first day, its first month prorated
+from the eligibility date (9 CCR 2503-5 3.542.B); Colorado Works' dependent
+child of a month is `cw_is_dependent_child_in_month` (the first day), and the
+per-person `cw_is_dependent_child`, read for the unit's composition, is true
+when the person is one in some month from the application month through the
+determination month. Which day of the month is OQ-951.
 
 ## Logic
 

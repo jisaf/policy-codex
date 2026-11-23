@@ -15,3 +15,5 @@ rationale: "OQ-140: cw_budgetary_member_deemed_income (CO-2353) treats the spous
 tests:
   - {id: CO-2383-T1, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: true}
   - {id: CO-2383-T2, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[has_primary_responsibility_for, p1, p2]], expect: false}
+  # Coverage pass 4 (docs/reviews/coverage4-cash.md): the review's repro households, by hand from the rule text.
+  - {id: "CO-2383-T3", as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false, cw_is_considered_living_in_home: false}}, relationships: [[parent, p1, p2]], title: "Coverage pass 4 CA4-24: a caretaker whose own minor child lives elsewhere (not considered living in the home) is not the parent of a dependent child living in the home (3.604.2.C.1.b)", expect: false}
