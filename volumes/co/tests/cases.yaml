@@ -15225,6 +15225,9 @@
   # while employed and transitions to Low-Income Child Care without an application (3.117). Her Colorado Works Child Care referral
   # counted only her verified earnings, $2,000 (3.116.C), and set her fee at $47. She also receives $600 of child support a month,
   # which Low-Income Child Care counts. p3 (Kai, 6) is the child. No B.1, B.3 or B.4 circumstance is recorded.
+  # Coverage pass 4 integration (docs/reviews/coverage4-integration.md): the support is paid for Kai, so it is stated on
+  # his list, whoever receives it (receipts, CO-5000: child_support on the list of the child it is paid for; N4-11, CA4-5).
+  # CCCAP sums the household's members: income and fee unchanged.
   as_of: '2026-11-01'
   case_facts:
     cccap_application_or_redetermination_date: "2026-11-01"
@@ -15277,8 +15280,7 @@
         cccap_activity_schedule_received: true
         cccap_immunization_record_received: true
         dwelling_id: d1
-        receipts:
-        - {kind: child_support, amount: 600}
+        receipts: []  # the $600 of support is Kai's (p3)
         # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
         # the pay schedule and the month's wages_gross): the thirty days before November 1 (October 2 to 31) hold four Thursday pays,
         # October 8, 15, 22 and 29, $2,000; the eight weeks (September 6 to October 31) hold eight.
@@ -15334,7 +15336,8 @@
         cccap_activity_schedule_received: true
         cccap_immunization_record_received: true
         dwelling_id: d1
-        receipts: []
+        receipts:
+        - {kind: child_support, amount: 600}  # paid for Kai, received by his mother p1
         earnings: []
       month_defaults:
         donated_work_hours_per_week: 0
@@ -57103,6 +57106,9 @@
   # Probe RV-S8 of docs/reviews/final2-cccap-leap-sebt.md (N-3, P1), kept by the probe-preservation round. Built by
   # rv-cccap/gen/mk.py. 3.103.UU (eligible child): the eligible-child test precedes the Colorado Works row. The only child
   # is 15. Rule: ineligible_child (before the fix: eligible_colorado_works). Fixed in 3447921.
+  # Coverage pass 4 integration (docs/reviews/coverage4-integration.md): the $600 of child support the mother receives is
+  # paid for her only child, p3, so it is stated on his list (receipts, CO-5000: child_support on the list of the child it
+  # is paid for; N4-11, CA4-5).
   as_of: "2026-11-01"
   case_facts:
     cccap_application_or_redetermination_date: "2026-11-01"
@@ -57153,8 +57159,7 @@
         cccap_immunization_record_received: true
         dwelling_id: d1
         is_work_eligible_individual_in_tanf_case: true
-        receipts:
-        - {kind: child_support, amount: 600}
+        receipts: []  # the $600 of support is p3's
         # Earned-income records, E1 (CCCAP and LEAP): $500 every Thursday, stated with the dates (replacing the thirty-day total 2,000,
         # the pay schedule and the month's wages_gross): four Thursday pays in the thirty days before November 1 (October 2 to 31).
         # Records E1 integration (request R-1, docs/reviews/records-earnings-care-energy.md): every program reads these records
@@ -57211,7 +57216,8 @@
         dwelling_id: d1
         is_work_eligible_individual_in_tanf_case: true
         is_referred_for_colorado_works_child_care: true
-        receipts: []
+        receipts:
+        - {kind: child_support, amount: 600}  # paid for p3, received by his mother p1
         earnings: []
       month_defaults:
         donated_work_hours_per_week: 0
@@ -60071,6 +60077,9 @@
   # Built on CO-358 (probe CWZ-14: a single mother p1, 24, and her daughter p2, applying 2026-10-12, determined 2026-10-15,
   # no earnings), its money stated in receipts alone. p1 receives $250 of current child support for p2 every month, a
   # $100 payment toward arrears in October and a $3,000 crime victim compensation payment on October 5.
+  # Coverage pass 4 integration (docs/reviews/coverage4-integration.md): the current support and the arrears are paid for
+  # p2, so both are stated on p2's list, whoever receives them (receipts, CO-5000: child_support and child_support_arrears
+  # on the list of the child they are paid for; N4-11, CA4-5).
   # 9 CCR 2503-6 3.605.5.A: current support is counted against the need standard at application; D: arrears are exempt;
   # 3.605.4.A.8: crime victim compensation is exempt. Hand derivation (October 2026): countable unearned income 250 for
   # eligibility, 250 < 331 (One Caretaker, one child): eligible. 3.605.5.B: child support is excluded from the grant, so
@@ -60148,8 +60157,6 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         receipts:
-        - {kind: child_support, amount: 250}
-        - {kind: child_support_arrears, amount: 100, frequency: once, month: "2026-10"}
         - {kind: crime_victim_compensation, amount: 3000, frequency: once, month: "2026-10", date: "2026-10-05"}
         earnings: []
         holdings:
@@ -60231,7 +60238,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        receipts: []
+        receipts:  # paid for p2, received by her mother p1
+        - {kind: child_support, amount: 250}
+        - {kind: child_support_arrears, amount: 100, frequency: once, month: "2026-10"}
         earnings: []
         holdings:
         - {kind: bank_account, value: 300}
@@ -60254,13 +60263,17 @@
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
   expect:
+    # Coverage pass 4 integration: the support is on p2's list, so the person figures of the unearned income are p2's: her
+    # current support 250 counted against the need standard (3.605.5.A), the arrears exempt (D): 250; p1's own list holds
+    # only the crime victim compensation, exempt (3.605.4.A.8): 0, none countable. The unit's income (250), eligibility and
+    # grant (320) are unchanged.
     p1:
       cw_countable_unearned_income:
-        2026-10: 250
+        2026-10: 0
       cw_payment_countable_unearned_income:
         2026-10: 0
       cw_counted_child_support:
-        2026-10: 250
+        2026-10: 0
       cw_countable_income:
         2026-10: 250
       cw_eligibility_status:
@@ -60268,12 +60281,20 @@
       cw_grant_amount:
         2026-10: 320
       cw_has_countable_unearned_income:
-        2026-10: true
+        2026-10: false
     p2:
+      cw_countable_unearned_income:
+        2026-10: 250
+      cw_payment_countable_unearned_income:
+        2026-10: 0
+      cw_counted_child_support:
+        2026-10: 250
       cw_eligibility_status:
         2026-10: eligible
       cw_grant_amount:
         2026-10: 320
+      cw_has_countable_unearned_income:
+        2026-10: true
 
 - id: "CO-581"
   title: "Receipt records, Colorado Works (receipts migration 2): a $500 workers' compensation award with $300 of claim expenses, and a child's $100 Social Security"
@@ -60872,6 +60893,8 @@
   title: "Receipts phase 2: a CHP+ child whose mother receives child support and a gift, written in receipts alone; MAGI counts neither"
   # Receipts migration phase 2. CO-386's household (the mother p1, the child p2 born 2025-11-01; determined 2026-11-10) with
   # the mother's receipts stated: 400 of child support for p2 and a 150 gift from her sister each month.
+  # Coverage pass 4 integration (docs/reviews/coverage4-integration.md): the support is paid for p2, so it is stated on
+  # p2's list, whoever receives it (receipts, CO-5000; N4-11); MAGI excludes it on either list.
   # Hand derivation, November 2026 (MAGI, ma_magi_receipt_treatment_table; CHP+ reads the MAGI household income by the
   # adopted-method link of 10 CCR 2505-3 150.1, S245):
   # - Child support received is excluded (8.100.4.C.1.d.iii); a gift is not taxable income and no paragraph of
@@ -60935,8 +60958,6 @@
         continuous_eligibility_period_start_month: 2020-01
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         receipts:
-          - kind: child_support
-            amount: 400
           - kind: gift
             amount: 150
         earnings:
@@ -61013,7 +61034,9 @@
         ma_continuous_eligibility_program: magi
         continuous_eligibility_period_start_month: 2020-01
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
-        receipts: []
+        receipts:
+          - kind: child_support  # paid for p2, received by her mother p1
+            amount: 400
         earnings: []
       month_defaults:
         donated_work_hours_per_week: 0
