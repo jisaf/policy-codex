@@ -1,0 +1,13 @@
+id: CO-6602
+name: "SNAP diversion lump sum: most days of expenses"
+identifier: snap_diversion_lump_sum_max_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The most days of expenses a Colorado Works State or county diversion payment may cover and still be excluded as a non-recurring lump sum: ninety (10 CCR 2506-1 4.405.E, S3476: \"if the payment does not cover more than ninety (90) days of expenses and is not expected to occur again in a twelve (12) month period\")."
+versions:
+  - {from: "2000-01-01", value: 90, source: S3476}
+sources: [S3476]
+tags: [snap, income]
+rationale: "Coverage pass 4 for SNAP (docs/reviews/coverage4-snap.md), S4-5: the condition of the pass-2 fix of C2-5 lived in the meaning of the retired lump-sum fact (CO-3367); the figure is in the rule and is not indexed, so one version covers every date the volume determines."
