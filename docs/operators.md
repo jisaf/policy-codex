@@ -167,6 +167,15 @@ person-scope rules) states the determination month explicitly:
 (`cw_is_dependent_child`, `af_is_oap_age`) are measured on the determination
 date in every month (OQ-951).
 
+SNAP reads its ages the same way (coverage pass 4 S4-11; 10 CCR 2506-1
+4.402.1.A, "circumstances during the issuance month"): its household
+(`snap_household_members`) is built for each month, a status an age grants is
+met on any day of the month and an age that withholds eligibility or imposes
+a requirement (the ineligible student, the work registrant, the foster child
+bar) only on every day; the day itself is OQ-1262's. Its rules write the age
+inline (`years_between` of `date_of_birth` and `first_day` of the month, or
+the day before `first_day` of `month_after`).
+
 ## Logic
 
 | Operator | Arguments | Result | Unknown | Notes |

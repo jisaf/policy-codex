@@ -3,16 +3,16 @@ name: "SNAP: household has a BCE/ECE-disqualifying member"
 identifier: snap_household_has_bce_ece_disqualifying_member
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
 meaning: At least one member of this person's SNAP household is, at the time of application, disqualified for an intentional program violation or has been convicted of a drug-related felony involving SNAP benefits, either of which bars the household from Basic or Expanded Categorical Eligibility.
-precision: "Vocabulary fix round (R-6): the drug-felony arm reads snap_has_drug_felony_involving_snap_benefits (CO-1731), 4.206's narrower bar, not the member disqualification fact."
+precision: "Vocabulary fix round (R-6): the drug-felony arm reads snap_has_drug_felony_involving_snap_benefits (CO-1731), 4.206's narrower bar, not the member disqualification fact. Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734): the household (CO-305) is the month's. Before, the item was per person and read on the determination date in every month."
 derived: [exists, snap_household_members, [any, [of, [P], snap_is_serving_ipv_disqualification], [of, [P], snap_has_drug_felony_involving_snap_benefits]]]
 sources: [S47, S48]
 implemented: engine
 tags: [income, state_election, legal]
 rationale: 10 CCR 2506-1 4.206,C,1,c and 4.206,C,2,c (S47, S48) state the identical IPV/drug-felony exclusion for both BCE and ECE; this item is the single fact snap_meets_bce_eligibility and snap_meets_ece_eligibility both read, instead of repeating the exists/any test in each.
 tests:
-  - {id: CO-337-T1, as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}, others: {p2: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: true, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}}, relationships: [[spouse, p1, p2]], expect: true}
-  - {id: CO-337-T2, as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}, others: {}, relationships: [], expect: false}
-  - {id: CO-337-T3, title: "Vocabulary fix round (R-6): a drug felony that did not involve SNAP benefits does not bar BCE (4.206.C.1.c.2)", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: true, snap_has_drug_felony_involving_snap_benefits: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-337-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}, others: {p2: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: true, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-337-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: false, snap_has_drug_felony_involving_snap_benefits: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-337-T3, month: "2026-10", title: "Vocabulary fix round (R-6): a drug felony that did not involve SNAP benefits does not bar BCE (4.206.C.1.c.2)", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_serving_ipv_disqualification: false, snap_is_disqualified_drug_felony: true, snap_has_drug_felony_involving_snap_benefits: false}, others: {}, relationships: [], expect: false}

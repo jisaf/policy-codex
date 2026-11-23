@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The Medicare Part B premium the person pays for the month, withheld from a Social Security or other benefit or billed to the person; 0 for a month in which the State or another payer pays it (the Medicare Buy-In, including through a Medicare Savings Program), even while SSA has not yet stopped a withholding it will refund. It is part of health_insurance_premiums_paid (CO-835), stated apart because some rules deduct it on its own. If not stated, Medicaid reads it as 0."
+meaning: "The Medicare Part B premium the person pays for the month, withheld from a Social Security or other benefit or billed to the person; 0 for a month in which the State or another payer pays it (the Medicare Buy-In, including through a Medicare Savings Program), even while SSA has not yet stopped a withholding it will refund. It is part of health_insurance_premiums_paid (CO-835), stated apart because some rules deduct it on its own. Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). A case states 0 where there is none."
 supplied_by: "SSA benefit statement or Medicare premium notice; the Medicare Buy-In record."
 sources: [S2400, S2401]
 tags: [ma, ltc, income]

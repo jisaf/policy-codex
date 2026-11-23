@@ -119,8 +119,8 @@ record_fields:
     meaning: "For a home, the person lives in it now as the person's principal place of residence: false when the person has left it to live in an institution, a facility or another dwelling."
   intends_to_return:
     type: yes/no
-    required: true
-    meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it."
+    default: false
+    meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   temporary_absence:
     type: one of
     required: true
@@ -128,8 +128,8 @@ record_fields:
     meaning: "For a home the person does not live in now (lives_in false), whether the person is away for a time and intends to return, and why: for employment, for training for future employment, because of illness, because the home is not habitable as a result of a casualty or natural disaster, or for another reason; not_returning when the person does not intend to return to it."
   intent_in_writing:
     type: yes/no
-    required: true
-    meaning: "For a home the person intends to return to, the intent is documented in writing (the person's, the spouse's, a legal fiduciary's, a doctor's or an authorized representative's signed statement)."
+    default: false
+    meaning: "For a home the person intends to return to, the intent is documented in writing (the person's, the spouse's, a legal fiduciary's, a doctor's or an authorized representative's signed statement). Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   outside_colorado:
     type: yes/no
     required: true
@@ -156,20 +156,20 @@ record_fields:
     meaning: "For real property owned with another person, that co-owner lives in it as the co-owner's principal place of residence."
   co_owner_would_lose_housing:
     type: yes/no
-    required: true
-    meaning: "For real property a co-owner lives in, the person alleges that selling it would cause the co-owner undue hardship through loss of housing (the co-owner would have to move and has no other readily available housing)."
+    default: false
+    meaning: "For real property a co-owner lives in, the person alleges that selling it would cause the co-owner undue hardship through loss of housing (the co-owner would have to move and has no other readily available housing). Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   lot_for_future_home:
     type: yes/no
     required: true
     meaning: "For real property, the person's household owns no home and the person intends to build, or is building, a permanent home on it."
   income_producing:
     type: yes/no
-    required: true
-    meaning: "The holding (real or personal property other than the home) is used to produce income, or goods or services for the person's own support: rental property, farm or ranch land, the property of a trade or business."
+    default: false
+    meaning: "The holding (real or personal property other than the home) is used to produce income, or goods or services for the person's own support: rental property, farm or ranch land, the property of a trade or business. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   used_in_trade_or_business:
     type: yes/no
-    required: true
-    meaning: "For income-producing property, it is used in a trade or business the person runs, rather than held to produce rents or goods for the person's own use."
+    default: false
+    meaning: "For income-producing property, it is used in a trade or business the person runs, rather than held to produce rents or goods for the person's own use. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   net_annual_return:
     type: money
     required: true
@@ -180,8 +180,8 @@ record_fields:
     meaning: "SNAP's finding (decision D9): for income-producing property not used in the person's trade or business, or for an installment contract, the county has found that it is producing an annual income consistent with its fair market value in the community (10 CCR 2506-1 4.410.E.1-2; 7 CFR 273.8(e)(4), (e)(6))."
   produces_for_household_use:
     type: yes/no
-    required: true
-    meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure."
+    default: false
+    meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   farm_ended_date:
     type: calendar date
     required: true
@@ -249,8 +249,8 @@ record_fields:
     meaning: "Medicaid's finding (decision D9): the value the Department or the eligibility site has found available to the person from a trust, an annuity, or a life estate or remainder interest on countable property (10 CCR 2505-10 8.100.7.E, H.2, I)."
   ma_sale_efforts_unsuccessful:
     type: yes/no
-    required: true
-    meaning: "Medicaid's finding (decision D9): for real property beyond the home, reasonable efforts to sell it, as 10 CCR 2505-10 8.100.5.M.2.b defines them, have been unsuccessful."
+    default: false
+    meaning: "Medicaid's finding (decision D9): for real property beyond the home, reasonable efforts to sell it, as 10 CCR 2505-10 8.100.5.M.2.b defines them, have been unsuccessful. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so."
   af_found_unsaleable:
     type: yes/no
     required: true
@@ -284,7 +284,7 @@ record_fields:
     type: yes/no
     required: true
     meaning: "Medicaid's finding (decision D9): the eligibility site has determined that the transfer falls under one of the exceptions of 10 CCR 2505-10 8.100.7 (to or for the sole benefit of a spouse or a disabled child, a satisfactory showing of intent, an approved undue-hardship waiver), so no transfer penalty applies."
-sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502]
+sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670]
 tags: [resources]
 open: [OQ-1200, OQ-1201]
 rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D3, D5, D8 and D9 (docs/design-earned-and-resource-records.md 7): one list of records of the same record type as receipts and earnings, read by the same operators (P55-P57) and by P58 largest for the one vehicle the rules exclude, so a holding is stated once whatever program reads it, a joint holding is stated with its share on each owner's list, money a rule treats by its source is traced in its own record, and one transfer is one record every program's look-back reads. Replaces, from step H1, the scalar resource facts the design's inventory (1.2) lists."

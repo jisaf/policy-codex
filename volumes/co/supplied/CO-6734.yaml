@@ -1,0 +1,13 @@
+id: CO-6734
+name: "Medicaid: long-term care application or request date"
+identifier: ma_ltc_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date the person applied for long-term care services (nursing facility or other long-term care institution care, Home and Community Based Services or PACE), or, already Medicaid eligible, requested them: \"A client who is already Medicaid eligible does not need to submit a new application. The client must request the need for Long-Term Care services\" (10 CCR 2505-10 § 8.100.7.B.2, S3408). The transfer look-back runs back from its month: \"the number of months prior to the month of application for long-term care services\" (§ 8.100.7.F.1.d, S1757); 42 U.S.C. 1396p(c)(1)(B)(ii)(I) (S4759) counts the look-back date for an institutionalized individual from \"the first date as of which the individual both is an institutionalized individual and has applied for medical assistance\". If not stated, Medicaid reads the long-term care services as applied for with the Medical Assistance application (ma_application_date, CO-088): § 8.100.7.B.2 makes a separate request only for a client who is already eligible, so for an applicant the application is the application for long-term care."
+precision: "Coverage pass 4, non-MAGI N4-10 (docs/reviews/coverage4-medicaid-nonmagi.md): the look-back had been counted from the Medical Assistance application date (CO-088), the date the three-month retroactive period is measured from (§ 8.100.3.E), which for a member who applied years ago and now needs long-term care is years before the request. A member who requests long-term care states this date; ma_application_date stays the application's, so the retroactive months and the Medicare Savings Program effective month do not move."
+supplied_by: "The long-term care application, or the member's request for long-term care services recorded by the eligibility site (CBMS), with the Single Entry Point or Case Management Agency's level-of-care referral."
+sources: [S3408, S1757, S4759]
+tags: [ma, ltc]
+rationale: "Coverage pass 4, non-MAGI N4-10: no fact stated the long-term care application or request, so the look-back (CO-5325) read the Medical Assistance application date, an undefined element for a member who requests long-term care later."
