@@ -11,6 +11,6 @@ sources: [S2608]
 implemented: engine
 tags: [cash, income]
 rationale: "Receipt records, migration phase 1, coverage review 3 of Adult Financial H-5: the Home Care Allowance was stated only inside adult_financial_cash_income (CO-1713), so its exemption (3.520.786.E) could not be read apart from the grants; it is its own kind now, and the rules that ask whether the person receives it read this item."
-nearest: [CO-5019]
+nearest: [CO-5019, CO-5018]
 tests:
   - {id: CO-5023-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: home_care_allowance, amount: 300}, {kind: adult_financial_cash, amount: 452}]}, title: "A $300 Home Care Allowance beside a $452 OAP grant", expect: 300}

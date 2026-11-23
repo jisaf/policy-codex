@@ -2,7 +2,7 @@
 
 The product owner adopted receipt records on 2026-11-23 (docs/plan-colorado.md, "Decision, 2026-11-23: adopt receipt records"; the evidence is docs/reviews/receipt-spike.md). Phase 1 moves the unearned income of LEAP, SNAP and Adult Financial (deeming included) onto one neutral `receipts` fact per person, read through one counting table per program. Colorado Works, CCCAP, Medicaid, CHP+ and SUN Bucks still read the scalar unearned-income facts; the transition rule below keeps both statements consistent until the last reader moves. Earned income and resources are decided after unearned income is done (condition 3).
 
-The merge gate (condition 4) is `npm run receipts:harness`: every stored household and 361 generated households on the ledger before the migration (41ec04b) and on the ledger after it, every difference matched to a class below or failing, every stored household's receipts checked to be the translation of its old facts, and the metamorphic relations and families of the spike. Each migration commit ran it clean.
+The merge gate (condition 4) is `npm run receipts:harness`: every stored household and 361 generated households on the ledger without the migration (41ec04b, then 82a29d0 once origin's non-MAGI fix round was merged in) and on the ledger after it, every difference matched to a class below or failing, every stored household's receipts checked to be the translation of its old facts, and the metamorphic relations and families of the spike. Each migration commit ran it clean.
 
 ## 1. Commits
 
@@ -10,7 +10,7 @@ The merge gate (condition 4) is `npm run receipts:harness`: every stored househo
 |---|---|
 | engine | The recorded guardrail exception: `list of receipts` with its record schema (`record_fields`: per field type, meaning, options, and exactly one of `required`, `default`, `when_absent`), P55 `sum_receipts`, P56 `receipt`, P57 `received_in`; type check, constraints, render and parse, plain English, YAML, fingerprint (covers the schema), case validation (`npm run check` blocks a stated record that does not fit its schema), ledger.json and suite export, the cannot-determine generator (removes one record's amount first); docs/operators.md "Receipt records" for engine teams; unit tests (test/engine/receipts.test.ts, test/export/receipts-export.test.ts). A follow-up engine commit reads a dated record's month from its date (P56). |
 | kinds and facts | CO-5000 `receipts` and its kinds (49 with the Home Care Allowance, H-5); scripts/receipts (harness, translator, generated households, metamorphic tests), moved from prototypes/receipt-spike and typechecked. |
-| translation | Every stored household and rule test that states the old facts also states the same money as receipts (288 households, 392 rule tests). |
+| translation | Every stored household and rule test that states the old facts also states the same money as receipts (288 households and 392 rule tests at the time; 307 households after origin's fix round was merged). |
 | LEAP, SNAP, Adult Financial | One commit each: counting table, the program's items rebuilt on the receipts, inference and fallback items removed, facts left without a reader retired, change-impact dispositions, UI counts re-pinned. |
 | cases | The spike's families F1 to F3 as stored households CO-458 to CO-460, written in receipts alone. |
 | docs | This review; the transition rule in plan-colorado.md; conventions.md "Receipt records". |
@@ -65,16 +65,16 @@ A stored household or rule test that states unearned money states it once as rec
 
 ## 6. Harness result
 
-`npm run receipts:harness` at the Adult Financial commit (the last program), programs LEAP, SNAP, Adult Financial and SUN Bucks; `--all-programs` (every program's outcomes) gives the same differences:
+`npm run receipts:harness` after the merge of origin's non-MAGI fix round (82a29d0, which added CO-480 to CO-492 and CO-530 to CO-535): the baseline is 82a29d0, the ledger without the migration, so the harness measures the migration and nothing the other track changed (before the merge it was 41ec04b, and each migration commit ran clean against it with the same differences). Programs LEAP, SNAP, Adult Financial and SUN Bucks, and with `--all-programs` every program's outcomes:
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 297 | 74,176 | 6 | 2 | 6 | 0 |
+| stored households | 316 | 77,605 | 6 | 2 | 6 | 0 |
 | generated households | 361 | 80,352 | 169 | 61 | 169 | 0 |
-| stored, every program's outcomes | 297 | 134,993 | 6 | 2 | 6 | 0 |
+| stored, every program's outcomes | 316 | 141,418 | 6 | 2 | 6 | 0 |
 | generated, every program's outcomes | 361 | 151,200 | 169 | 61 | 169 | 0 |
 
-Stored households whose receipts are not the translation of their old facts: none. Metamorphic relations over 474 translated households (MA-1 split, MA-2 order, MA-3 month, MA-4 residual): 0 violations each. Families, each giving the rule's answer: F1 (LEAP household income 2,900; SNAP and Adult Financial unearned 900, in all three statements), F2 (LEAP 4,000), F3 (SNAP 529.9999), F4 (a PASS set-aside of Social Security and of a pension give the same LEAP, SNAP and Adult Financial answers).
+CO-458 to CO-460, written in receipts alone, are checked by their expectations, not compared. Stored households whose receipts are not the translation of their old facts: none. Metamorphic relations over 487 translated households (MA-1 split, MA-2 order, MA-3 month, MA-4 residual): 0 violations each. Families, each giving the rule's answer: F1 (LEAP household income 2,900; SNAP and Adult Financial unearned 900, in all three statements), F2 (LEAP 4,000), F3 (SNAP 529.9999), F4 (a PASS set-aside of Social Security and of a pension give the same LEAP, SNAP and Adult Financial answers).
 
 ## 7. Every allowed difference
 
