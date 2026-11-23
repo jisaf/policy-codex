@@ -3,15 +3,15 @@ name: "SNAP: has a parent in the household"
 identifier: snap_has_parent_in_household
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
 meaning: "A natural, adoptive or stepparent of this person is a member of this person's SNAP household (the condition 7 CFR 273.5(b)(10)(i)-(ii) and 10 CCR 2506-1 4.306.1.D test for a child in the single-parent student exemption)."
-precision: "Read through this person's parent and stepparent edges; unknown when this person's relationships are unstated."
+precision: "Read through this person's parent and stepparent edges; unknown when this person's relationships are unstated. Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734): the household (CO-305) is the month's. Before, the item was per person and read on the determination date in every month."
 derived: [exists_related, [child, stepchild], [in_group, [P], snap_household_members]]
 sources: [S2507, S135]
 implemented: engine
 tags: [snap, household]
 rationale: "Final verification F-5: the non-parent arm of the full-time student exemption (snap_is_single_parent_full_time_student_exemption, CO-409) applies only where no parent of the child is in the household; the test is read on the child, so it is an item of its own."
 tests:
-  - {id: CO-3719-T1, title: "A boy living with his grandmother only", as_of: "2026-10-01", given: {snap_household_members: [p1, p2]}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p2, p1]], expect: false}
-  - {id: CO-3719-T2, title: "A boy living with his mother and grandmother", as_of: "2026-10-01", given: {snap_household_members: [p1, p2, p3]}, others: {p2: {}, p3: {}}, relationships: [[has_primary_responsibility_for, p2, p1], [parent, p3, p1]], expect: true}
+  - {id: CO-3719-T1, month: "2026-10", title: "A boy living with his grandmother only", as_of: "2026-10-01", given: {snap_household_members: [p1, p2]}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p2, p1]], expect: false}
+  - {id: CO-3719-T2, month: "2026-10", title: "A boy living with his mother and grandmother", as_of: "2026-10-01", given: {snap_household_members: [p1, p2, p3]}, others: {p2: {}, p3: {}}, relationships: [[has_primary_responsibility_for, p2, p1], [parent, p3, p1]], expect: true}

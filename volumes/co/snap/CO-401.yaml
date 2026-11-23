@@ -3,16 +3,21 @@ name: "SNAP: has a care responsibility that exempts from work registration"
 identifier: snap_has_care_responsibility_for_work_registration_exemption
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
 meaning: The person is a parent or caretaker of a household member under snap_work_registration_child_age (6), or is responsible for the care of an incapacitated person.
-precision: Evaluated as of the determination date, matching the other work-registration items' scope; a household member's age is tested as of the same date via age.
-derived: [any, [exists, snap_household_members, [all, ["<", [of, [P], age], snap_work_registration_child_age], [in_group, [P], snap_persons_cared_for]]], snap_has_responsibility_for_incapacitated_person]
-sources: [S121, S124, S126]
+precision: "Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): evaluated for the month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734); a household member is under 6 when under it on the first day of the month (the age on the first day of the month; OQ-1262), so a parent whose child turns 6 during a month is exempt for that month. Before, the item was evaluated as of the determination date, with the child's age on that date."
+derived: [any, [exists, snap_household_members, [all, ["<", [years_between, [of, [P], date_of_birth], [first_day, [month]]], snap_work_registration_child_age], [in_group, [P], snap_persons_cared_for]]], snap_has_responsibility_for_incapacitated_person]
+sources: [S121, S124, S126, S4734]
 implemented: engine
 tags: [work_registration, age]
+open: [OQ-1262]
 rationale: 7 U.S.C. 2015(d)(2)(B) and 7 CFR 273.7(b)(1)(iv) (S121, S124) state one exemption covering both a dependent child under 6 and an incapacitated person; this item combines both branches as the single fact snap_is_exempt_from_work_registration reads, following the same P36/P37 exists-over-household-members shape as the mwr volume's WR-303.
 tests:
-  - {id: CO-401-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {p2: {date_of_birth: "2023-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
-  - {id: CO-401-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {}, relationships: [], expect: false}
-  - {id: CO-401-T3, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: true}, others: {}, relationships: [], expect: true}
+  - {id: CO-401-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {p2: {date_of_birth: "2023-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-401-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-401-T3, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: true}, others: {}, relationships: [], expect: true}
+  # Coverage pass 4 S4-11 (OQ-1263 resolved): a son born 2020-11-15 is 5 on November 1 and 6 on December 1 (4.310.3.B, S126: a dependent child
+  # under six). Determined 2026-11-20. November true, December false; before, false in both.
+  - {id: CO-401-T4, month: "2026-11", as_of: "2026-11-20", title: "S4-11: a son who turns 6 on November 15 is under 6 on November 1: exempt in November", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {p2: {date_of_birth: "2020-11-15", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-401-T5, month: "2026-12", as_of: "2026-11-20", title: "S4-11: December - 6 on December 1: not exempt", given: {date_of_birth: "1985-01-22", snap_resides_in_institution_providing_meals: false, snap_has_responsibility_for_incapacitated_person: false}, others: {p2: {date_of_birth: "2020-11-15", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: false}
