@@ -2970,7 +2970,7 @@ Assumption: The three kinds are earnings in every program, each program counting
 
 Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, CO-5001, CO-5010, CO-5016, CO-5650, CO-5720, CO-5730, CO-5500, CO-5510, CO-5101, CO-5102, CO-5103, CO-5104, CO-5105, CO-5106, CO-5107.
 
-### OQ-1021. SNAP: wages an employer pays to a third party for the household
+### OQ-1021. Resolved: SNAP counts wages an employer pays to a third party for the household
 
 Body: The earnings kind employer_vendor_payment (earnings, CO-5100) states money an employer pays to a third party for an expense of the person's household, as part of the person's compensation, from funds the employer would otherwise pay the person (employer_vendor_payments_received, CO-4455, today). 7 CFR 273.9(c)(1)(vii)(B) (S4101) counts such a payment: "the wages are garnished or diverted by the employer and paid to a third party for a household expense, such as rent. This vendor payment is counted as income", while a payment "in addition to paying the household its regular wages" is excluded. No SNAP item reads CO-4455, so SNAP counts none of it. The earnings table (snap_earnings_treatment_table, CO-5101) keeps that reading (not_counted_text_counts) so step E0 changes no answer; the SNAP E1 track decides, as a cited difference, whether the row is counted. If the text applies as written, today's reading is a wrong answer (a P1 candidate): a household whose employer pays part of its wages to the landlord has that part left out of SNAP income.
 
@@ -2979,6 +2979,8 @@ Owner: SNAP policy owner
 Assumption: Not counted (today's reading) until the SNAP E1 track rewires SNAP's earned income.
 
 Checked 2026-11-23: 7 CFR 273.9(c)(1) (D-13); 10 CCR 2506-1 4.405 (D-82), which lists no vendor-payment exclusion of its own. Items: CO-5101, CO-4455.
+
+Resolution (earned-income records, step E1 SNAP, 2026-11-23; docs/reviews/records-earnings-snap.md): settled by the text. 10 CCR 2506-1 4.405.H.4 (D-82, S4300): "Wages earned by a household member that are garnished or diverted by an employer and paid to a third party for a household's expenses, such as rent, shall be considered as income. However, if the employer pays a household's rent directly to the landlord in addition to paying the household its regular wages, this rent payment shall be excluded as a vendor payment"; 4.405.H.2 and 7 CFR 273.9(c)(1)(vii)(B) (S4101) say the same. The kind employer_vendor_payment states money the employer would otherwise pay the person (CO-5100), which is the counted case, so snap_earnings_treatment_table (CO-5101) counts the row and SNAP's pay (snap_person_wages, CO-4324; snap_person_counted_wages, CO-5113) includes it (rule tests CO-4324-T18, CO-5113-T14). A payment an employer makes in addition to the regular wages is not this kind. No stored household states it; the generated SNAP households that do count it (harness class E1-2). Items: CO-5101, CO-4324, CO-5113.
 
 ### OQ-1022. Colorado Works: wages from WIOA on-the-job training
 

@@ -11,6 +11,7 @@ derived: ["sum_receipts","earnings",["all",["=",["lookup","snap_earnings_treatme
 sources: [S2963]
 implemented: engine
 tags: [snap, income]
+nearest: [CO-5117]
 rationale: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): SNAP reads earned income from the earnings records (CO-5100) through its counting table (snap_earnings_treatment_table, CO-5101) instead of the scalar earned-income facts and their parts. Replaces room_and_board_payers_count (CO-4162)."
 tests:
   - {id: CO-5118-T1, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: boarder_payments, amount: 900, provides: room_and_board, boarders: 2}, {kind: boarder_payments, amount: 450, provides: room_and_board, boarders: 1}]}, title: "Two records, two boarders and one: 3", expect: 3}

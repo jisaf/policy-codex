@@ -22997,3 +22997,36 @@ Document: D-47
 > (B)
 >
 > the amount of monthly income otherwise available to the community spouse (determined without regard to such an allowance).
+
+### S4300. Colorado SNAP: money owed to the household that its payer diverts to a third party is counted; wages an employer diverts for a household expense are income
+
+Document: D-82
+
+10 CCR 2506-1 4.405.H (introduction), H.2, H.4 (version effective 2026-10-01, rule version 12718; quoted from the file on record, D-82). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> H. Vendor Payments
+>
+> A payment made on behalf of a household shall be considered a vendor payment
+> whenever a person or organization outside of the household uses its own funds
+> to make a direct payment to either the household's creditors or a person or
+> organization providing a service to the household. Vendor payments are
+> excludable as follows:
+>
+> ...
+>
+> 2. Monies that are legally obligated and otherwise payable to the household,
+> but which are diverted by the provider of the payment to a third party for
+> household expense, shall be counted as income and not excluded as a
+> vendor payment. The distinction is whether the person or organization
+> making the payment on behalf of a household is using funds that
+> otherwise would need to be paid to the household.
+>
+> ...
+>
+> 4. Wages earned by a household member that are garnished or diverted by
+> an employer and paid to a third party for a household's expenses, such as
+> rent, shall be considered as income. However, if the employer pays a
+> household's rent directly to the landlord in addition to paying the
+> household its regular wages, this rent payment shall be excluded as a
+> vendor payment. In addition, if the employer provides housing to an
+> employee, the value of the housing shall not be counted as income.

@@ -28,3 +28,5 @@ tests:
   - {id: CO-5113-T11, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: wages, amount: 1000}, {kind: in_kind_pay, amount: 300}]}, title: "Wages of $1,000 and housing worth $300 an employer provides as pay: 1,000 (in-kind benefits, 273.9(c)(1))", expect: 1000}
   - {id: CO-5113-T12, month: "2026-11", as_of: "2026-11-15", given: {}, title: "Earnings not stated: cannot determine", expect: unknown}
   - {id: CO-5113-T13, month: "2026-11", as_of: "2026-11-15", given: {earnings: []}, title: "Earnings stated empty: 0", expect: 0}
+  # OQ-1021 resolved by 10 CCR 2506-1 4.405.H.4 (S4300): wages an employer diverts to a third party for a household expense are income.
+  - {id: CO-5113-T14, month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: wages, amount: 1000}, {kind: employer_vendor_payment, amount: 300}]}, title: "Wages of $1,000 paid to the member and $300 of the wages the employer pays to the landlord: 1,000 + 300 = 1,300", expect: 1300}

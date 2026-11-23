@@ -66,3 +66,14 @@
   identifier: snap_self_employment_costs
   new: 0
   class: "E1-R1 a farm's costs are snap_farm_costs; snap_self_employment_costs is the other business's"
+
+# ---------------------------------------------------------------------------------------------------
+# E1-2 (cited fix, OQ-1021 resolved): wages an employer diverts to a third party for a household expense are
+# income: 10 CCR 2506-1 4.405.H.4 (S4300), "Wages earned by a household member that are garnished or diverted by
+# an employer and paid to a third party for a household's expenses, such as rent, shall be considered as income";
+# H.2 and 7 CFR 273.9(c)(1)(vii)(B) (S4101). No SNAP item read employer_vendor_payments_received (CO-4455), so
+# none of it was counted (finding E0-F2). Generated: the vendor-payment variant of each SNAP base: the $300 is
+# pay and earned income, and what follows (gross and net income, allotment; on the farm base the earned income
+# now counted asks for its verification, which the household does not state).
+- case: /^GE-SNAP(farm)?-employer_vendor_payments_received_300$/
+  class: "E1-2 wages an employer diverts to a third party for a household expense are counted (4.405.H.4; OQ-1021)"

@@ -33,3 +33,4 @@ tests:
   - {id: CO-4324-T15, title: "A weekly stream with no per-pay amount: cannot determine", month: "2027-01", as_of: "2027-01-15", given: {earnings: [{kind: wages, amount: 1000, frequency: weekly}]}, expect: unknown}
   - {id: CO-4324-T16, title: "Earnings not stated: cannot determine", month: "2027-01", as_of: "2027-01-15", given: {}, expect: unknown}
   - {id: CO-4324-T17, title: "Earnings stated empty: no pay, 0", month: "2027-01", as_of: "2027-01-15", given: {earnings: []}, expect: 0}
+  - {id: CO-4324-T18, title: "OQ-1021: $300 of wages diverted by the employer to the landlord is pay (4.405.H.4): 1,000 + 300", month: "2026-11", as_of: "2026-11-15", given: {earnings: [{kind: wages, amount: 1000}, {kind: employer_vendor_payment, amount: 300}]}, expect: 1300}
