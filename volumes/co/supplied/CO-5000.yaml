@@ -13,7 +13,7 @@ record_fields:
     type: one of
     required: true
     meaning: "What the payment is: its source, one kind per source."
-    options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, gambling_winnings, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance_federal, energy_assistance_other, income_tax_refund, property_or_food_tax_refund, federally_excluded_payment, dvsa_title_i_volunteer_payment, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, vocational_training_allowance, general_assistance, emergency_assistance, in_home_care_allowance, va_aid_and_attendance, uniformed_services_special_pay, state_veteran_annuity, charitable_need_based_cash, charitable_gift_life_threatening_condition, gift, sponsor_payment, migrant_farmworker_emergency_assistance, other_taxable, other_nontaxable]
+    options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, gambling_winnings, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance_federal, energy_assistance_other, income_tax_refund, property_or_food_tax_refund, federally_excluded_payment, dvsa_title_i_volunteer_payment, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, vocational_training_allowance, general_assistance, emergency_assistance, in_home_care_allowance, home_care_allowance, va_aid_and_attendance, uniformed_services_special_pay, state_veteran_annuity, charitable_need_based_cash, charitable_gift_life_threatening_condition, gift, sponsor_payment, migrant_farmworker_emergency_assistance, other_taxable, other_nontaxable]
     option_meanings:
       social_security: "Social Security (title II) benefits: retirement, survivors' or disability insurance, on the person's own record or another's."
       ssi: Supplemental Security Income paid by the Social Security Administration (title XVI).
@@ -22,7 +22,7 @@ record_fields:
       child_support: Current child support paid to the person for a child, other than arrears.
       child_support_arrears: Child support paid to the person toward support owed for months before the month received.
       colorado_works_cash: Colorado Works (TANF) basic cash assistance.
-      adult_financial_cash: "An Adult Financial grant payment: Old Age Pension, Aid to the Needy Disabled or Aid to the Blind."
+      adult_financial_cash: "An Adult Financial grant payment: Old Age Pension, Aid to the Needy Disabled or Aid to the Blind, other than the Home Care Allowance (home_care_allowance)."
       tax_exempt_interest: Interest that is exempt from federal income tax, such as interest on municipal bonds.
       interest_and_dividends: "Taxable interest and dividends: the return paid on money or securities the person holds."
       rental_income: Rent or royalties from property the person owns and does not actively manage as a business.
@@ -52,7 +52,8 @@ record_fields:
       vocational_training_allowance: A training allowance from a vocational or rehabilitation program other than WIOA and the youth projects (a JOBS or vocational rehabilitation allowance, for example), to the extent it is not a reimbursement.
       general_assistance: General Assistance granted by a county department, before or as a supplement to other assistance.
       emergency_assistance: Emergency assistance received on a one-time basis from a county department or another agency or organization, other than home energy assistance and major disaster or emergency assistance.
-      in_home_care_allowance: A personal care or home care allowance paid to the person (the Adult Financial Home Care Allowance, for example).
+      in_home_care_allowance: A personal care or home care allowance from a federal, State or local government program to purchase in-home supportive services for the person, other than the Adult Financial Home Care Allowance (home_care_allowance).
+      home_care_allowance: The Adult Financial Home Care Allowance paid to the client (9 CCR 2503-5 3.500), its own kind so a rule can read it apart from the Old Age Pension and Aid to the Needy Disabled grants (coverage review 3 of Adult Financial, H-5).
       va_aid_and_attendance: VA Aid and Attendance or housebound allowance (see used_for_uncovered_medical_care).
       uniformed_services_special_pay: Special pay from a uniformed service under 37 U.S.C. 310 (hostile fire or imminent danger pay).
       state_veteran_annuity: A State's annuity for a blind, disabled or aged veteran.

@@ -110,6 +110,10 @@ export interface Choices {
   retroactiveSsiOrPa?: Record<string, string>;
   /** general_or_emergency_assistance_received: general_assistance (default) or emergency_assistance. */
   generalOrEmergency?: Record<string, string>;
+  /** in_home_care_allowance_received: in_home_care_allowance (default) or
+   *  home_care_allowance (the Adult Financial Home Care Allowance, which
+   *  adult_financial_cash_income could also hold; coverage review 3 H-5). */
+  homeCareAllowance?: Record<string, string>;
 }
 
 interface Carve { receipts: Receipt[]; notes: string[] }
@@ -117,7 +121,7 @@ interface Carve { receipts: Receipt[]; notes: string[] }
 /** Carves one month's statement (fact -> value) into receipts. */
 function carve(
   v: Record<string, unknown>, person: { per_payment?: number; frequency?: string },
-  kinds: { rssi: string; gea: string }, overlapCap?: number,
+  kinds: { rssi: string; gea: string; hca: string }, overlapCap?: number,
 ): Carve {
   const notes: string[] = [];
   const R: Receipt[] = [];
@@ -141,7 +145,8 @@ function carve(
   for (const [f, kind0, taxable, ota] of PARTS) {
     let amt = get(f);
     if (amt <= 0) continue;
-    const kind = f === "general_or_emergency_assistance_received" ? kinds.gea : kind0;
+    const kind = f === "general_or_emergency_assistance_received" ? kinds.gea
+      : f === "in_home_care_allowance_received" ? kinds.hca : kind0;
     for (const [sf, skind, parent] of SUBPARTS) {
       if (parent !== f) continue;
       const s = Math.min(amt, get(sf));
@@ -305,7 +310,7 @@ export interface PersonInput {
  *  facts the receipts restate (then the list stays unstated: unknown, as
  *  each old fact was). */
 export function translatePerson(
-  id: string, input: PersonInput, window: string[], applicationDate: string | undefined, choices: { rssi: string; gea: string },
+  id: string, input: PersonInput, window: string[], applicationDate: string | undefined, choices: { rssi: string; gea: string; hca: string },
 ): { receipts: Receipt[] | undefined; notes: string[] } {
   const notes: string[] = [];
   const pf = input.facts;
@@ -461,6 +466,7 @@ function choiceFor(choices: Choices | undefined, caseId: string, pid: string) {
   return {
     rssi: choices?.retroactiveSsiOrPa?.[key] ?? choices?.retroactiveSsiOrPa?.[caseId] ?? "ssi",
     gea: choices?.generalOrEmergency?.[key] ?? choices?.generalOrEmergency?.[caseId] ?? "general_assistance",
+    hca: choices?.homeCareAllowance?.[key] ?? choices?.homeCareAllowance?.[caseId] ?? "in_home_care_allowance",
   };
 }
 

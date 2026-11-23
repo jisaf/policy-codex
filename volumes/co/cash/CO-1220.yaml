@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: The person has died and, at the time of death, was receiving Old Age Pension, Aid to the Needy Disabled (AND-SO or AND-CS), Home Care Allowance, or Colorado Medicaid assistance, per 9 CCR 2503-5 3.570.43.A.1. False for a living person.
-precision: "Receipt at death is read from the month of death: a Medicaid enrollment (is_enrolled_in_medical_assistance, the enrollment record, which for a decedent is the record at death) or an Adult Financial payment (adult_financial_cash_income, which includes the Home Care Allowance). A receipt not stated for that month is read as none. Receipt records, migration phase 1: the grant received in the month of death is af_grant_receipts is read from the receipts (CO-5000)."
-derived: [all, [not, [unknown, date_of_death]], [any, [at, [">", [otherwise, af_grant_receipts, 0], 0], [month_of, date_of_death]], [otherwise, is_enrolled_in_medical_assistance, false]]]
+precision: "Receipt at death is read from the month of death: a Medicaid enrollment (is_enrolled_in_medical_assistance, the enrollment record, which for a decedent is the record at death) or an Adult Financial payment (adult_financial_cash_income, which includes the Home Care Allowance). A receipt not stated for that month is read as none. Receipt records, migration phase 1: the grant received in the month of death is af_grant_receipts is read from the receipts (CO-5000). The Home Care Allowance is its own receipt kind (af_home_care_allowance_receipts; coverage review 3 H-5)."
+derived: [all, [not, [unknown, date_of_death]], [any, [at, [any, [">", [otherwise, af_grant_receipts, 0], 0], [">", [otherwise, af_home_care_allowance_receipts, 0], 0]], [month_of, date_of_death]], [otherwise, is_enrolled_in_medical_assistance, false]]]
 sources: [S719]
 implemented: engine
 tags: [cash]
@@ -15,3 +15,4 @@ rationale: "No existing fact records death or the programs a decedent was receiv
 tests:
   - {id: CO-1220-T5, as_of: "2026-12-01", given: {date_of_death: "2026-11-20", is_enrolled_in_medical_assistance: false, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash, amount: 800}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "On OAP in the month of death", expect: true}
   - {id: CO-1220-T6, as_of: "2026-12-01", given: {}, title: Living, expect: false}
+  - {id: CO-1220-T7, as_of: "2026-12-01", given: {date_of_death: "2026-11-20", is_enrolled_in_medical_assistance: false, receipts: [{kind: home_care_allowance, amount: 300}]}, title: "Died while receiving the Home Care Allowance (3.570.43.A.1)", expect: true}
