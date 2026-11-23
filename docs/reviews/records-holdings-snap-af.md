@@ -9,8 +9,12 @@ Tracks H1 SNAP and H1 Adult Financial of docs/design-earned-and-resource-records
 | ed46546 | H1 SNAP: SNAP reads resources from the holdings records (section 2); CO-5310 to CO-5315; H0-F3; held refunds dated in CO-343-T6, CO-4176-T1, T3, CO-1740-T3; row held_loan_proceeds counted; S4690, S4691; OQ-1250 to OQ-1252; classes H1S-D4-1 to H1S-D4-3 |
 | e7f5dd1 | H1 Adult Financial: Adult Financial reads resources from the holdings records (section 3); CO-5340 to CO-5350; H0-F2; the vehicle by P58; CO-300 restated in holdings alone with its refund dated; the CO-4412 tests dated; row education_savings_account counted; S4692, S4693; OQ-1203 resolved in part, OQ-1253, OQ-1254; the receipts harness states its generated households' holdings; classes H1A-D4-1 to H1A-3, H1A-R, H1S-R |
 | 56b0cd0 | Change record volumes/co/changes/2026-11-23-holdings-snap-af.yaml; UI count pins; OQ-1254's owner |
-| 3be854b | Merge origin ccr-9d19bf4c-wmnwcl (coverage pass 4, care and energy) before the gate |
-| (last) | This review; docs/plan-colorado.md "H1 SNAP and Adult Financial"; households CO-740 to CO-743 (and the UI reach pin they move); Adult Financial's burial spaces at equity (MH-4); the not-this-track entry for CO-345 |
+| 3be854b | Merge origin ccr-9d19bf4c-wmnwcl (coverage pass 4, care and energy) |
+| 535c161 | This review; docs/plan-colorado.md "H1 SNAP and Adult Financial"; households CO-740 to CO-743 (and the UI reach pin they move); Adult Financial's burial spaces at equity (MH-4); the not-this-track entry for CO-345 |
+| 63ce12e | CO-5347 and CO-5349 name each other as nearest; the change record re-keyed after the merge |
+| 6dee302 | Merge origin ccr-9d19bf4c-wmnwcl (H1 Medicaid; coverage pass 4 SNAP review) before the gate: both tracks had made the receipts harness state its generated households' holdings (H1 Medicaid's line kept) |
+| ff41678 | CO-06's transfer read in its own month (H1A-3), after the H1 Medicaid restatement of CO-06 |
+| (last) | Gate results in this review |
 
 ## 2. What SNAP reads now
 
@@ -76,7 +80,7 @@ Every new read is without a reader default (decision 4 of 2026-11-23): a person 
 | H1A-D4-3 | a held refund or retroactive payment with no date, or investment property or a burial space with no amount owed: cannot determine (outcomes of the generated variants included) | generated | 3.520.77.J, K, B, 72.B.9, 742; decision 4 |
 | H1A-1 (fix) | a retroactive SSI payment stated for the SSI method (CO-4639) is the record Adult Financial exempts for nine months: 2,500 -> 1,700 | generated variant | 3.520.77.J |
 | H1A-2 | the loan exempt is the loan money still held, not the month's loan receipt: CO-485's 1,200 account counts (was 600); no outcome changes | CO-485 | 3.520.77.L |
-| H1A-3 | a transfer is read in the month of its disposed_date (CO-434's transfer facts, stated with no month, were read in every month): October 4 -> 0 months; the penalty period and the expectation are unchanged | CO-434 | 3.520.76.D.5 |
+| H1A-3 | a transfer is read in the month of its disposed_date (transfer facts stated with no month were read in every month): CO-434's October 4 -> 0 months, the penalty period and the expectation unchanged; CO-06 (restated by H1 Medicaid), November and December cannot determine -> no | CO-434, CO-06 | 3.520.76.D.5 |
 | not this track's | coverage pass 4 X4-1 (CCCAP, a diversion's length), merged after HOLDINGS_BASELINE; no holdings figure | CO-345 | |
 
 Fixes with no difference in a stored or generated household, each shown by its rule tests: H0-F3 (CO-5313-T1, T4; CO-074-T11; household CO-743); H0-F2 (CO-5345-T1, T2; CO-4000-T21; household CO-740); the vehicle by P58 (CO-5343-T1 to T4, CO-4000-T22; households CO-741, CO-742 (OQ-1205's worked example: reading A, oap at the $2,000 limit; B would count 7,000)); one funeral agreement excluded (CO-5312-T2, T3); each burial trust its own exemption (CO-5344-T2); D.4.a per property (CO-4422-T6, T7); excluded personal property transferred (CO-5314-T3); land producing food for the household counted by SNAP (CO-074-T13).
@@ -93,8 +97,8 @@ Added: OQ-1250 (SNAP: a burial space for the immediate family read as a member's
 
 ## 9. Requests to the integration owner, and things seen elsewhere
 
-1. **CO-300 in the receipts and earnings harnesses.** Dating CO-300's refund (the instruction, and H0's handover) needs the household stated in holdings alone: the translator cannot write a date the old facts do not state, and a household that states the old facts must state their translation. Both older harnesses then compare the household on ledgers that read the facts it no longer states: 4 values each (af_category, af_oap_grant, af_and_grant, af_client_and_spouse_countable_resources: old unknown, new the review's oap, 452, 0, 1,700). They are not answer changes of the rules; they need a disposition in scripts/receipts/allowed-differences.yaml and scripts/records/allowed/e1-*.yaml, which this track may not edit, or the holdings analogue of "written in receipts alone" (a household that states no old resource fact is checked by its expectations). Proposed entry: `{case: CO-300, person: p1, old: unknown, class: "H1A-R CO-300 restated in holdings alone (its refund dated); the ledger before H1 does not read it"}`.
-2. **The receipts harness's generated households** state no holdings (generated from the baseline's households, before H0), so once Adult Financial read the records its outcomes for them were cannot determine (649 values of each outcome). This track added the holdings translation to their new side in scripts/receipts/harness.ts (one line, beside the earnings translation step E1 added; no acceptance logic changed): please confirm, and the Medicaid H1 track will need it too.
+1. **CO-300 in the receipts and earnings harnesses (the one gate not met).** Dating CO-300's refund (the instruction, and H0's handover) needs the household stated in holdings alone: the translator cannot write a date the old facts do not state, and a household that states the old facts must state their translation. Both older harnesses then compare the household on ledgers that read the facts it no longer states: 6 values each (af_category, af_oap_grant, af_and_grant, af_client_and_spouse_countable_resources, and since the H1 Medicaid merge ma_ssi_related_category and ma_family_planning_status: old unknown, new the review's oap, 452, 0, 1,700, and aged, full_coverage). They are not answer changes of the rules. A disposition belongs in scripts/receipts/allowed-differences.yaml and an earnings-harness file beside eh1-medicaid.yaml (as the H1 Medicaid track did for its households), which this track is not permitted to edit; proposed entry for both: `{case: CO-300, person: p1, identifier: "/^(af_category|af_oap_grant|af_and_grant|af_client_and_spouse_countable_resources|ma_ssi_related_category|ma_family_planning_status)$/", old: unknown, class: "H1A-R CO-300 restated in holdings alone, its refund dated; the baseline does not read it"}`. The alternative, the holdings analogue of "written in receipts alone" (a household that states no old resource fact is checked by its expectations), is a harness change.
+2. **The receipts harness's generated households** stated no holdings (generated from the baseline's households, before H0), so once Adult Financial read the records its outcomes for them were cannot determine (649 values of each outcome). This track added the holdings translation to their new side in scripts/receipts/harness.ts (one line, beside the earnings translation; no acceptance logic changed); H1 Medicaid made the same change (b0d789e), and the merge keeps theirs.
 3. **Operators**: a sum over records cannot read a fact of the person, so Adult Financial cannot round each resource transferred in one month by the grant standard, nor tell which transfers of the first month of the thirty-six fall on or after the application's day (OQ-1254); a case-scope application date and grant standard, or a per-record penalty, would let it.
 4. **Field defaults the rules give** (design D3, declared once on the field): SNAP's and Adult Financial's transfer findings (no), Adult Financial's self-support fields (not established), af_found_unsaleable (no). They are declared required where read on CO-5300, shared by programs whose rules differ, so each reader states its program's default with the citation; if the schema can carry a per-program default, they belong there.
 5. **amount_owed on a liquid holding**: SNAP values liquid resources "less encumbrances" (4.408.1.A) and Adult Financial reads an account's balance; neither reads amount_owed on an account (the translator writes none, and making it required would make every account cannot determine). A default of 0 for liquid kinds, or the owners' decision, is needed.
@@ -106,15 +110,15 @@ Added: OQ-1250 (SNAP: a burial space for the immediate family read as a member's
 
 ## 10. Gates
 
-On the last commit (origin ccr-9d19bf4c-wmnwcl at 7c56f14 merged):
+On ff41678 (origin ccr-9d19bf4c-wmnwcl at 5d25652 merged: H1 Medicaid and coverage pass 4):
 
 | Gate | Result |
 |---|---|
-| `node scripts/sync-manifest.mjs co` | written (snap 234, cash 241) |
+| `node scripts/sync-manifest.mjs co` | written (snap 234, cash 241, medicaid 355) |
 | `npm run typecheck` | passes |
-| `npx vitest run` | GATE_VITEST |
-| `npm run records:harness -- --list holdings --track snap` | GATE_SNAP |
-| `npm run records:harness -- --list holdings --track af` | GATE_AF |
-| `npm run records:harness -- --list earnings --all-programs` | GATE_EARN |
-| `npm run receipts:harness -- --all-programs` | GATE_REC |
-| `CHECK_BASE=origin/main npm run check` | GATE_CHECK |
+| `npx vitest run` | 1,146 tests pass (102 files), after the UI pins were re-pinned with their reasons (questions 189 with H1 Medicaid's, the Cash programs owner's 43, long rule lines 64, CO-273's reach 84) |
+| `npm run records:harness -- --list holdings --track snap` | OK: translation 0 stale (168 households, 341 persons; 365 rule tests), 0 joint findings; 329 stored households, 35,312 values, 1,433 differ, all allowed; 90 generated, 8,550 values, 89 differ, all allowed; MH-1, MH-2, MH-4, MH-5 0 violations on 8 figures (252 households), MH-3 not run (section 6) |
+| `npm run records:harness -- --list holdings --track af` | OK: translation 0 stale; 329 stored households, 38,323 values, 2,577 differ, all allowed (H1 Medicaid's classes included); 90 generated, 7,560 values, 158 differ, all allowed; MH-1 to MH-5 0 violations (12 figures; MH-3 on the couple's figure, 64 households) |
+| `npm run records:harness -- --list earnings --all-programs` | NOT 0: translation 0 stale, boundary 0 findings; stored 327 households, 1,967 differ, 1,961 allowed, **6 unexplained: CO-300 p1 (section 9.1)**; generated 476 households, 3,839 differ, all allowed |
+| `npm run receipts:harness -- --all-programs` | NOT 0: stored 319 households, 1,482 differ, 1,476 allowed, **6 unexplained: CO-300 p1 (section 9.1)**; generated 1,626 households, 8,225 differ, all allowed |
+| `CHECK_BASE=origin/main npm run check` | OK, conformance self-check OK (5,489 cases, 9,043 checked); rule tests 4,986 of 4,986; households 3,896 of 3,897 (CO-387's CHP+ copayment band, a known failure before this step); 28 change-impact flags, all dispositioned (this track's in volumes/co/changes/2026-11-23-holdings-snap-af.yaml) |
