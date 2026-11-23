@@ -20,14 +20,26 @@
 //                 six months before a redetermination (3.605.5.C).
 //   MA-4 residual other_taxable relabelled other_nontaxable gives the same
 //                 LEAP, SNAP, Adult Financial, Colorado Works, CCCAP and SUN
-//                 Bucks outcomes (MAGI would differ; Medicaid still reads the old facts).
+//                 Bucks outcomes (MAGI differs by rule: 8.100.4.C.1 counts
+//                 taxable income; left out for Medicaid and CHP+).
 //                 Policy says NOT invariant for CCCAP where the household
 //                 states rental property expenses: they are taken against the
 //                 rents stated in other taxable unearned income
 //                 (rental_property_expenses_paid, CO-4458; CO-4463): left out.
+//   MA-5 frequency a receipt with no frequency and the same receipt stated
+//                 monthly give the same outcomes (the schema's default).
+//   MA-6 date     a receipt paid once in a stated month and the same receipt
+//                 also dated within that month give the same outcomes, where
+//                 no rule reads the day (LEAP's income verification period
+//                 reads it: left out for LEAP).
 // Phase 2 adds Colorado Works' (its unearned income for eligibility and the
 // grant, a deemed person's, its verification flag), CCCAP's and SUN Bucks'
 // outcomes and figures to every relation.
+// and Medicaid and CHP+ identifiers (MEDICAID_IDS) to MA-1 to MA-3, MA-5 and
+// MA-6. MA-3 does not pin Social Security: the Medicare Savings
+// Programs' cost-of-living disregard reads the December before the month
+// (CO-3627), so a benefit stated for one month only is not the same
+// statement there.
 // Families (each with the rule's answer, checked):
 //   F1 $900 child support and a $3,000 one-time crime victim compensation
 //      payment on 2026-11-03 (LEAP application 2026-11-10, wages $2,000):
@@ -59,6 +71,20 @@
 //      its Colorado Works payments taken out): $300 of Colorado Works cash in
 //      September 2026 makes the child categorically eligible in March 2027;
 //      a $300 diversion in September does not (OQ-993).
+//   M1 (MAGI, 8.100.4.C.1) Social Security 1,000, child support 300,
+//      tax-exempt interest 50, a gift 200 and SSI 400: MAGI unearned receipts
+//      1,050 (b.xi, c.i counted; d.iii, d.v excluded; a gift is not income),
+//      in every statement (recurring, for the month, split).
+//   M2 (SSI method, 8.100.5.F) Social Security 900 of which 300 under a PASS,
+//      VA Aid and Attendance 400, foster care 600, a retroactive Social
+//      Security payment 2,400 in the month (by month or dated): SSI-method
+//      unearned receipts 600 (F.6.q, K, F.6.l, F.6.c).
+//   M3 (long-term care gross, 8.100.7.A.1) Social Security 1,300, a pension
+//      300, VA Aid and Attendance 300, a loan 500, child support 100, Colorado
+//      Works cash 200: gross unearned receipts 1,900 (a loan and the VA portion
+//      are not income).
+//   M4 a VA pension stated as pension 300 and Aid and Attendance 300 gives the
+//      SSI method the same answer as pension 300 alone (8.100.5.K).
 import { caseToSpec, type HouseholdCase } from "../../src/engine/cases";
 import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { valuesEqual as ve } from "../../src/engine/values";
@@ -77,14 +103,18 @@ const IDS = ["leap_person_unearned_income", "leap_household_income", "leap_is_el
   "sebt_household_child_receives_snap_or_tanf", "sebt_eligibility_status"];
 /** CCCAP's identifiers, left out of MA-4 where the household states rental property expenses. */
 const CCCAP_IDS = IDS.filter((id) => id.startsWith("cccap_"));
+/** Phase 2: Medicaid and CHP+ figures and outcomes checked by MA-1 to MA-3, MA-5 and MA-6. */
+const MEDICAID_IDS = ["ma_person_magi_income", "ma_magi_household_income", "ma_ssi_countable_income", "ma_ltc_gross_income",
+  "ma_wawd_countable_income", "ma_cbwd_household_unearned_income", "ma_community_spouse_income", "ma_patient_payment",
+  "ma_magi_eligibility_status", "ma_ssi_related_category", "chp_eligibility_status"];
 
-function outcomes(m: Ledger, c: HouseholdCase, onlyMonth?: string): Map<string, unknown> {
+function outcomes(m: Ledger, c: HouseholdCase, onlyMonth?: string, ids: readonly string[] = [...IDS, ...MEDICAID_IDS]): Map<string, unknown> {
   const data = makeCase(m.ix, caseToSpec(c));
   const months = new Set<string>([c.as_of.slice(0, 7)]);
   const app = c.case_facts?.leap_application_date as string | undefined;
   if (app) months.add(app.slice(0, 7));
   const out = new Map<string, unknown>();
-  for (const pid of Object.keys(c.persons)) for (const id of IDS) for (const mo of months) {
+  for (const pid of Object.keys(c.persons)) for (const id of ids) for (const mo of months) {
     if (onlyMonth && mo !== onlyMonth) continue;
     if (!m.ix.byIdentifier.has(id)) continue;
     let v: unknown;
@@ -133,13 +163,18 @@ export function runMetamorphic(m: Ledger, households: HouseholdCase[]): { lines:
     rel("MA-2 order", base, outcomes(m, mapReceipts(c, (rs) => [...rs].reverse())), c.id);
     const mo = c.as_of.slice(0, 7);
     const pinned = mapReceipts(c, (rs) => rs.map((r) => (r.month === undefined && r.date === undefined && r.frequency !== "once" && !r.irregular &&
-      !["charitable_need_based_cash", "charitable_gift_life_threatening_condition", "child_support"].includes(r.kind) ? { ...r, month: mo } : r)));
+      !["charitable_need_based_cash", "charitable_gift_life_threatening_condition", "child_support", "social_security"].includes(r.kind) ? { ...r, month: mo } : r)));
     rel("MA-3 month", outcomes(m, c, mo), outcomes(m, pinned, mo), c.id);
-    const relabelled = outcomes(m, mapReceipts(c, (rs) => rs.map((r) => (r.kind === "other_taxable" ? { ...r, kind: "other_nontaxable" } : r))));
+    const baseNoMa = outcomes(m, c, undefined, IDS);
+    const relabelled = outcomes(m, mapReceipts(c, (rs) => rs.map((r) => (r.kind === "other_taxable" ? { ...r, kind: "other_nontaxable" } : r))), undefined, IDS);
     const rentExpenses = Object.values(c.persons).some((p) => [p.facts, p.month_defaults, ...Object.values(p.months ?? {})]
       .some((o) => typeof o?.rental_property_expenses_paid === "number" && (o.rental_property_expenses_paid as number) > 0));
     const notCccap = (x: Map<string, unknown>) => new Map([...x].filter(([k]) => !CCCAP_IDS.some((id) => k.includes(` ${id} `))));
-    rel("MA-4 residual", rentExpenses ? notCccap(base) : base, rentExpenses ? notCccap(relabelled) : relabelled, c.id);
+    rel("MA-4 residual", rentExpenses ? notCccap(baseNoMa) : baseNoMa, rentExpenses ? notCccap(relabelled) : relabelled, c.id);
+    rel("MA-5 frequency", base, outcomes(m, mapReceipts(c, (rs) => rs.map((r) => (r.frequency === undefined ? { ...r, frequency: "monthly" } : r)))), c.id);
+    const noLeap = [...IDS.filter((x) => !x.startsWith("leap_")), ...MEDICAID_IDS];
+    rel("MA-6 date", outcomes(m, c, undefined, noLeap), outcomes(m, mapReceipts(c, (rs) => rs.map((r) =>
+      (r.frequency === "once" && typeof r.month === "string" && r.date === undefined ? { ...r, date: `${r.month}-15` } : r))), undefined, noLeap), c.id);
   }
   const lines: string[] = ["| Relation | Households | Violations |", "|---|---|---|"];
   let violations = 0;
@@ -224,6 +259,27 @@ function families(m: Ledger, households: HouseholdCase[]) {
       got: ev(child([{ kind: "colorado_works_cash", amount: 300, month: "2026-09" }]), "sebt_eligibility_status", "2027-03", "p2"), want: "eligible_categorical" });
     out.push({ family: "F7", label: "a diversion in September (the same as no receipt)", id: "sebt_eligibility_status",
       got: ev(child([{ kind: "colorado_works_diversion", amount: 300, frequency: "once", month: "2026-09" }]), "sebt_eligibility_status", "2027-03", "p2"), want: none });
+  }
+  // Medicaid and CHP+ (phase 2): item-level answers on the same person
+  const M1 = { ma_magi_unearned_receipts: 1050 };
+  const m1: Receipt[] = [{ kind: "social_security", amount: 1000 }, { kind: "child_support", amount: 300 }, { kind: "tax_exempt_interest", amount: 50 },
+    { kind: "gift", amount: 200 }, { kind: "ssi", amount: 400 }];
+  check("M1", "recurring", withReceipts(leapBase, m1), M1, "2026-11");
+  check("M1", "stated for the month", withReceipts(leapBase, m1.map((r) => ({ ...r, month: "2026-11" }))), M1, "2026-11");
+  check("M1", "Social Security split in two records", withReceipts(leapBase, [{ kind: "social_security", amount: 600 }, { kind: "social_security", amount: 400 }, ...m1.slice(1)]), M1, "2026-11");
+  const m2 = (retro: Receipt): Receipt[] => [{ kind: "social_security", amount: 900, pass_set_aside: 300 },
+    { kind: "va_aid_and_attendance", amount: 400 }, { kind: "foster_care_payment", amount: 600 }, retro];
+  check("M2", "PASS, VA, foster care and a retroactive payment by month", withReceipts(leapBase,
+    m2({ kind: "social_security", amount: 2400, frequency: "once", retroactive: true, month: "2026-11" })), { ma_ssi_unearned_receipts: 600 }, "2026-11");
+  check("M2", "the retroactive payment dated", withReceipts(leapBase,
+    m2({ kind: "social_security", amount: 2400, frequency: "once", retroactive: true, date: "2026-11-20" })), { ma_ssi_unearned_receipts: 600 }, "2026-11");
+  check("M3", "long-term care gross", withReceipts(leapBase, [{ kind: "social_security", amount: 1300 }, { kind: "pension", amount: 300 },
+    { kind: "va_aid_and_attendance", amount: 300 }, { kind: "loan", amount: 500 }, { kind: "child_support", amount: 100 },
+    { kind: "colorado_works_cash", amount: 200 }]), { ma_ssi_gross_unearned_receipts: 1900 }, "2026-11");
+  if (readsReceipts.has("ma_ssi_unearned_receipts")) {
+    out.push({ family: "M4", label: "pension 300 + VA 300 (equals pension 300 alone)", id: "ma_ssi_unearned_receipts",
+      got: ev(withReceipts(leapBase, [{ kind: "pension", amount: 300 }, { kind: "va_aid_and_attendance", amount: 300 }]), "ma_ssi_unearned_receipts", "2026-11"),
+      want: ev(withReceipts(leapBase, [{ kind: "pension", amount: 300 }]), "ma_ssi_unearned_receipts", "2026-11") });
   }
   return out;
 }

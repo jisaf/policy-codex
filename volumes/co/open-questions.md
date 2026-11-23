@@ -2820,6 +2820,56 @@ Assumption: A period of N consecutive days is counted from the day after the abs
 
 Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.
 
+### OQ-970. Medicaid MAGI: whether AmeriCorps living allowances, workforce and vocational training allowances and uniformed services special pay are MAGI income
+
+Body: 42 CFR 435.603(e) (S165) counts "income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code", and 10 CCR 2505-10 8.100.4.C.1 (S166) lists what it counts and excludes without naming these payments. Before receipt records the ledger stated each of them as part of the non-taxable other unearned income (americorps_payments_received, workforce_program_payments_received with vocational_training_allowance_received, uniformed_services_special_pay_received, all part of other_unearned_income_nontaxable, CO-030), so ma_person_magi_income (CO-502) left them out. The federal tax treatment is not that simple: an AmeriCorps living allowance and most training allowances are taxable compensation, and hostile fire or imminent danger pay is excluded only for service in a combat zone. Medicaid's MAGI counting table (ma_magi_receipt_treatment_table, CO-5500) keeps the earlier reading, as not_taxable_income, until the owner decides.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The four kinds are not MAGI-based income (the reading before receipt records).
+
+Checked 2026-11-23: 42 CFR 435.603(e) (D-34) and 10 CCR 2505-10 8.100.4.C.1.a-d (D-40). Neither names these payments; the Code sections that would decide them (26 U.S.C. 61, 112, 3121) are not on file. Items: CO-5500.
+
+### OQ-971. Medicaid SSI method: kinds of receipt counted only because no Colorado rule on file excludes them, where 20 CFR 416 Subpart K would
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts unearned income "including, but not limited to" its list, and 8.100.5.F.6 (S3404, S3617) exempts named receipts; the ledger also reads 20 CFR 416 Subpart K where it cited it before (416.1103, 416.1124(b), (c)(3), (c)(5), (c)(23); S2209, S3618). For the following kinds no Colorado paragraph on file excludes the payment and the ledger counted it before receipt records (each was part of the other unearned income facts and not among ma_ssi_excluded_unearned_income's sources, CO-2470), although Subpart K excludes it or Colorado's own F.6.j might reach it: a property or food tax refund (416.1124(c)(1)), crime victim compensation ((c)(17)), uniformed services special pay ((c)(19)), a gift for a life-threatening condition ((c)(21)), a State's annuity for a veteran ((c)(24)), a reimbursement and the proceeds of converting a resource (416.1103(b), (c)), reverse mortgage payments (a loan, 416.1103(f)), Colorado Works diversion and supportive services payments and migrant farmworker emergency assistance (F.6.j, "Assistance from other agencies and organizations", which the ledger reads as General Assistance, emergency assistance and charity), kinship care, housing utility allowances, refugee resettlement money, in-home care allowances and vocational training allowances. Home energy assistance from a nonprofit or the supplier is exempt as the ledger read energy assistance before (416.1124(b), (c)(5)), though neither paragraph names non-federal assistance. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps the earlier readings until the owner decides, row by row.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each kind listed is counted (energy assistance from a nonprofit or supplier exempt), as before receipt records.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.4-6 (D-65) and the Subpart K paragraphs on file (D-53, D-207). Colorado's text neither adopts Subpart K's exclusions by reference nor lists these payments. Items: CO-5510.
+
+### OQ-972. Medicaid SSI method: money a non-citizen receives from a sponsor
+
+Body: 10 CCR 2505-10 8.100.5.F.5 (S3001) counts "Gifts and inheritances" and unearned income generally; cash a sponsor gives the non-citizen is not named in 8.100.5.F.6. Before receipt records the ledger never read it for Medicaid: money_received_from_sponsor (CO-3707) was stated outside the unearned income facts, so it was left out by silence; Medicaid's sponsor deeming (ma_sponsor_deemed_income, CO-4551) counts the sponsor's own income under 8.100.3.K.1. The SSI-method counting table (ma_ssi_receipt_treatment_table, CO-5510) keeps that reading, as not_counted_open_question; MAGI leaves it out as a gift (not taxable income).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Money a sponsor pays the non-citizen is not counted as the person's SSI-method unearned income (the reading before receipt records), pending this answer.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.F.5-6 and 8.100.3.K.1 (D-65). None names sponsor support paid to the person. Items: CO-5510.
+
+### OQ-973. Medicaid: whether 8.100.5.K reaches a VA housebound allowance
+
+Body: 10 CCR 2505-10 8.100.5.K (S2900) leaves out "The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA" when determining eligibility, and uses it as patient payment under K.2. The receipt kind va_aid_and_attendance (receipts, CO-5000) means "VA Aid and Attendance or housebound allowance", a kind the receipts share with the other programs; a household states the VA's Unusual Medical Expenses portion as a receipt of that kind too (the translation of va_aid_and_attendance_amount does). K does not name the housebound allowance, which the VA pays on the same pension for a veteran confined to the home. The SSI method's counting table (ma_ssi_receipt_treatment_table, CO-5510) treats the whole kind as not income.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The housebound allowance is treated as K treats Aid and Attendance (not income; patient payment under K.2), since the receipt kind does not separate them.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.K (D-65). It names Aid and Attendance and Unusual Medical Expenses only. Items: CO-5510, CO-5530.
+
+### OQ-974. Medicaid spousal impoverishment: whether a community spouse's or family member's child support and cash assistance are part of their income
+
+Body: The community spouse monthly income allowance and the family allowance subtract the community spouse's and each dependent family member's own income (10 CCR 2505-10 § 8.100.7.R.2, S1756; § 8.100.7.T.1.c, S1736; 42 U.S.C. 1396r-5(d)(1)(C), (d)(3)). Before receipt records ma_community_spouse_income (CO-2467) and ma_family_allowance (CO-657) summed Social Security, pensions, wages, self-employment, other unearned income and tax-exempt interest (and, for the community spouse, unemployment), and left out child support received and Colorado Works and Adult Financial cash, which had their own facts. The texts on file say "income" without listing it. ma_spousal_unearned_receipts (CO-5531) keeps the earlier reading; long-term care gross income (CO-641) counts both.
+
+Class: state policy choice
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: A community spouse's or family member's child support and Colorado Works or Adult Financial cash are not part of their income for the allowances.
+
+Checked 2026-11-23: 10 CCR 2505-10 § 8.100.7.R, T (D-65); the federal text the family allowance follows, 42 U.S.C. 1396r-5(d)(1)(C). Neither lists the income counted. Items: CO-5510, CO-5531.
+
 ### OQ-985. Colorado Works: a kinship care payment received for a related child
 
 Body: 9 CCR 2503-6 3.605.4.B.11 (S2606): "A child receiving foster care or kinship care funds under Title IV of the Social Security Act shall be excluded from the assistance unit and his or her income shall be exempt from consideration for Colorado Works eligibility and payment." The volume reads a foster care provider's payment as exempt under it (foster_care_payment: excluded, as cw_excluded_unearned_income did before receipt records), but a kinship care payment made to the caretaker for a related child in the caretaker's care was never among the exempt sources: before receipt records it sat in the caretaker's other unearned income (kinship_care_payments_received, CO-4503, was read only by CCCAP), so Colorado Works counted it by silence. The text does not say whether B.11's "his or her income" reaches a kinship payment the caretaker receives for the child, nor whether a payment not funded under Title IV (a State kinship payment) is exempt. The counting table keeps the reading before receipt records (kinship_care_payment: counted_no_rule_excludes) until the owner decides. Items: CO-5650.

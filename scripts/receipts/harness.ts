@@ -35,9 +35,9 @@ const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? p
 const has = (k: string) => process.argv.includes(k);
 
 /** The programs migrated (phase 1: LEAP, SNAP, Adult Financial; phase 2:
- *  Colorado Works, CCCAP, SUN Bucks), whose outcomes are always compared;
- *  with --all-programs, every program's. */
-const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "ColoradoWorks", "CCCAP"];
+ *  Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+), whose outcomes are
+ *  always compared; with --all-programs, every program's. */
+const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks", "ColoradoWorks", "CCCAP", "Medicaid", "CHP+"];
 /** Intermediate figures compared beside the outcomes. */
 const FIGURES = [
   "leap_person_unearned_income", "leap_household_income", "leap_person_countable_income",
@@ -49,8 +49,16 @@ const FIGURES = [
   "cw_countable_unearned_income", "cw_payment_countable_unearned_income", "cw_counted_child_support",
   "cw_countable_income", "cw_payment_countable_income", "cw_sponsor_contributions_counted", "cw_sponsor_deemed_income",
   "cw_budgetary_member_deemed_income", "cw_deemed_parent_income_of_minor_parent", "cw_has_countable_unearned_income",
+  // CCCAP and SUN Bucks (phase 2)
   "cccap_person_unearned_income", "cccap_person_countable_income", "cccap_household_income", "cccap_protective_services_income",
   "cccap_has_countable_unearned_income", "sebt_household_child_receives_snap_or_tanf",
+  // phase 2: Medicaid and CHP+
+  "ma_person_magi_income", "ma_magi_household_income", "ma_magi_household_income_pct_fpl",
+  "ma_ssi_countable_income", "ma_ssi_countable_unearned_income", "ma_meets_ssi_income_standard",
+  "ma_ltc_gross_income", "ma_meets_special_income_group", "ma_community_spouse_income", "ma_family_allowance",
+  "ma_wawd_countable_income", "ma_cbwd_household_unearned_income", "ma_ssi_parental_income_deemed",
+  "ma_dac_countable_income", "ma_pickle_countable_income", "ma_title_ii_cola_increase",
+  "ma_has_unearned_income_for_verification", "ma_requires_verification_of_unearned_income",
 ];
 
 interface Allowed {

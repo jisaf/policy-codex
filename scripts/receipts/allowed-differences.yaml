@@ -125,3 +125,85 @@
   identifier: /^leap_/
   old: unknown
   class: R1 LEAP excluded one-time receipt no longer needs the thirty-day facts
+# ---- Phase 2: Medicaid and CHP+ (docs/reviews/receipts-migration-2-medicaid.md, section 7) ----
+# Baseline c29d326 (phase 1 merged). Each class is stated there with its cases and the rule text.
+
+# M1 (fixed): MAGI counts a retroactive Social Security payment in the month it is paid. The old
+# retroactive_social_security_lump_sum_received was part of lump_sum_received and so of the non-taxable
+# other unearned income (CO-030), which ma_person_magi_income (CO-502) left out; the receipt is Social
+# Security (10 CCR 2505-10 8.100.4.C.1.b.xi, c.iii) paid once, "counted as income only in the month
+# received" (8.100.4.C.1.d.i; 42 CFR 435.603(e)(1)). CHP+ reads the same MAGI household income.
+- case: /^G-[A-Za-z]+-retroactive_SS_lump_300$/
+  identifier: /^(ma_|chp_)/
+  class: M1 MAGI counts a retroactive Social Security payment in the month received
+
+# M2 (fixed): VA Aid and Attendance stated inside a pension. A household that states the VA pension in
+# pension_income and its Aid and Attendance part in va_aid_and_attendance_amount states the part twice;
+# the receipts state it once, as va_aid_and_attendance, which MAGI excludes as a veterans' benefit
+# (8.100.4.C.1.d.vi "Veteran's Benefits"). The old MAGI income counted the whole pension.
+- case: /^CO-(139|214)$/
+  identifier: /^ma_(person_magi_income|magi_household_income|magi_household_income_pct_fpl)$/
+  class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
+# The same statement in the spousal impoverishment figures: the person's own income at home (CO-212,
+# CO-396, an aged veteran whose VA pension includes Aid and Attendance) no longer counts the portion
+# 8.100.5.K says "shall not be considered as income".
+- case: /^CO-(212|396)$/
+  identifier: ma_community_spouse_income
+  class: M2 VA Aid and Attendance stated inside a pension is a veterans' benefit
+
+# M3 (fixed): VA Aid and Attendance stated in the SNAP and Colorado Works earmark fact. A household that
+# states va_aid_and_attendance_used_for_uncovered_care as part of the non-taxable other income states
+# Aid and Attendance, which 10 CCR 2505-10 8.100.5.K says "shall not be considered as income when
+# determining eligibility"; the old SSI method counted it, because Medicaid read only its own VA facts
+# (receives_va_aid_and_attendance, va_aid_and_attendance_amount) and these households did not restate it
+# there. The receipts state it once, as va_aid_and_attendance, which the SSI method's table does not
+# count (not income) and MAGI excludes (8.100.4.C.1.d.vi).
+- case: /^G-[A-Za-z]+-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_$/
+  identifier: /^(ma_|chp_)/
+  class: M3 VA Aid and Attendance is not income for the SSI method (8.100.5.K)
+
+# M4 (fixed): a loan, an income tax refund or VA Aid and Attendance is not unearned income an aged, blind
+# or disabled applicant must verify. The old ma_has_unearned_income_for_verification (CO-2870) summed
+# the other non-taxable income, which held loan proceeds and tax refunds; 20 CFR 416.1103(d) ("Any
+# amount refunded on income taxes you have already paid is not income") and (f) ("Money you borrow ...
+# is not income"), S2209, and 8.100.5.K. The verification element of 8.100.5.B.1.d is unearned income.
+- case: /^G-[A-Za-z]+-(loan_proceeds_received|tax_refunds_and_credits_received)_300_part_of_nontaxable_$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
+# The same in a community spouse's income (8.100.7.R.2; CO-196, coverage pass 2 G-1: a husband's $500
+# income tax refund stated in his other non-taxable income): not income, so not part of the income the
+# monthly income allowance is measured against.
+- case: /^(CO-196|G-[A-Za-z]+-(loan_proceeds_received|tax_refunds_and_credits_received)_300_part_of_nontaxable_)$/
+  identifier: ma_community_spouse_income
+  class: M4 a loan or an income tax refund is not unearned income to verify (416.1103)
+
+# M5: a household written in receipts alone after phase 1 (CO-458 to CO-460, the spike's families F1
+# to F3) states no scalar unearned-income fact, so the baseline's Medicaid could not determine its
+# income; Medicaid now reads the receipts. Not a change of rule: the receipts are the household's only
+# statement.
+- case: /^CO-(458|459|460)$/
+  identifier: /^(ma_|chp_)/
+  old: unknown
+  class: M5 household in receipts alone now read by Medicaid
+
+# M6 (OQ-970): a training allowance stated in the taxable other income. CO-219 and CO-220 (coverage
+# pass 3 C3-1) state a $1,000 vocational training allowance in other_unearned_income_taxable with its
+# part facts; the translation states it once, as vocational_training_allowance, which MAGI's table does
+# not count (not_taxable_income, the reading of the part facts, pending OQ-970), so MAGI finds no
+# unearned income to verify. 42 CFR 435.603(e) (S165) follows the federal tax treatment, which OQ-970
+# asks the owner to settle.
+- case: /^CO-(219|220)$/
+  identifier: /^ma_(has_unearned_income_for_verification|requires_verification_of_unearned_income|unearned_income_verification_is_pending|verification_status|pending_verification_count|required_verification_count)$/
+  class: M6 a training allowance stated as taxable income is not MAGI income pending OQ-970
+
+# M7: long-term care gross income no longer needs the VA flag stated. The old ma_ltc_gross_income
+# (CO-641) subtracted va_aid_and_attendance_amount when receives_va_aid_and_attendance was true and read
+# the flag with no default, so a person who did not state it (anyone outside a long-term care case)
+# had no gross income, and ma_meets_special_income_group (CO-642) none either. The VA portion is now a
+# receipt of its own kind, stated once with the person's other receipts, which 8.100.5.K leaves out of
+# income; gross income is known whenever the receipts are (decision 4 of 2026-11-23: a fact that states
+# the same money twice is not asked for). Only a figure that was cannot-determine becomes known.
+- case: /.*/
+  identifier: /^ma_(ltc_gross_income|meets_special_income_group)$/
+  old: unknown
+  class: M7 long-term care gross income no longer needs the VA flag stated

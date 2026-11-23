@@ -1,0 +1,18 @@
+id: CO-5530
+name: "Medicaid: VA Aid and Attendance received in the month"
+identifier: ma_va_aid_and_attendance_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The portion of the person's VA pension for Aid and Attendance and Unusual Medical Expenses received in the month (receipts of kind va_aid_and_attendance), which 10 CCR 2505-10 § 8.100.5.K says "shall not be considered as income when determining eligibility" and which K.2 uses as patient payment for a veteran or surviving spouse of a veteran in a State Veterans Home with no dependents.
+precision: The kind's meaning names Aid and Attendance and the housebound allowance; K names Aid and Attendance and Unusual Medical Expenses. A household states the VA's Unusual Medical Expenses portion as a receipt of this kind (the translation of va_aid_and_attendance_amount does), and a housebound allowance as one too; OQ-973 asks whether K reaches the housebound allowance.
+derived: [sum_receipts, receipts, [all, [received_in, [month]], ["=", [receipt, kind], va_aid_and_attendance]], [receipt, amount]]
+sources: [S2900]
+implemented: engine
+tags: [ma, ltc, income]
+open: [OQ-973]
+rationale: "Receipt records, migration phase 2: replaces va_aid_and_attendance_amount and receives_va_aid_and_attendance (CO-837, CO-836), which stated a part of a pension a second time, in the patient payment (CO-658) and its State Veterans Home test (CO-4103)."
+tests:
+  - {id: CO-5530-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: pension, amount: 500}, {kind: va_aid_and_attendance, amount: 400}]}, title: "A VA pension of which 400 is Aid and Attendance, stated as two receipts", expect: 400}
+  - {id: CO-5530-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: pension, amount: 900}]}, title: "No Aid and Attendance", expect: 0}

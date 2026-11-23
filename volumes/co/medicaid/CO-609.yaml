@@ -5,14 +5,14 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: Whether this person's ma_ssi_countable_income for the month does not exceed the SSI Federal Benefit Rate for their ma_ssi_household_size - the income test 10 CCR 2505-10 8.100.6.C.1.a-b and 8.100.6.K.3-4 apply for SSI/OAP eligibility.
-derived: [<=, ma_ssi_countable_income, ma_ssi_income_standard]
-sources: [S303, S319]
+meaning: Whether this person's ma_ssi_countable_income for the month does not exceed the SSI Federal Benefit Rate for their ma_ssi_household_size (the SSI income test, ma_ssi_income_test_status, CO-5516, met) - the income test 10 CCR 2505-10 8.100.6.C.1.a-b and 8.100.6.K.3-4 apply for SSI/OAP eligibility.
+precision: "\"Not more than\" (42 U.S.C. 1382(a)(1)(A), (2)(A), S3950): income equal to the rate meets the test. The comparison is stated once, in ma_ssi_income_test_status (CO-5516), which the disabled widow(er) group reads too (T-9 hand check A-3, A-4)."
+derived: ["=", ma_ssi_income_test_status, met]
+sources: [S303, S319, S3950]
 implemented: engine
 tags: [ma, non_magi, income]
-rationale: "No existing item compares SSI-related countable income to the Federal Benefit Rate. ma_is_ssi_related_eligible (CO-611) needs it. CO-01's p1 (2030 > 994) is the worked example the batch report discusses: p1 fails this test and is not SSI-related eligible on income (batch 9's 300%-of-FBR long-term-care special income group takes over)."
+rationale: "No existing item compares SSI-related countable income to the Federal Benefit Rate. ma_is_ssi_related_eligible (CO-611) needs it. CO-01's p1 (2030 > 994) is the worked example the batch report discusses: p1 fails this test and is not SSI-related eligible on income (batch 9's 300%-of-FBR long-term-care special income group takes over). T-9 threshold hand check A-3 (receipts migration phase 2): reads the one SSI income test (CO-5516), settled by 42 U.S.C. 1382(a) (S3950)."
 tests:
-  - {id: CO-609-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 990, resides_in_medical_institution: true}, others: {}, relationships: [], expect: true}
-  - {id: CO-609-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 2030, resides_in_medical_institution: true}, others: {}, relationships: [], expect: false}
-  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
-  - {"id": "CO-609-T3", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: ma_ssi_countable_income equal to ma_ssi_income_standard (ma_ssi_countable_income at or under ma_ssi_income_standard)", "given": {"ma_ssi_countable_income": 994, "resides_in_medical_institution": true}, "others": {}, "relationships": [], "expect": true}
+  - {id: CO-609-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_countable_income: 990, resides_in_medical_institution: true}, others: {}, relationships: [], expect: true}
+  - {id: CO-609-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_countable_income: 2030, resides_in_medical_institution: true, ma_dac_countable_income: 2030}, others: {}, relationships: [], expect: false}
+  - {id: CO-609-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_countable_income: 994, resides_in_medical_institution: true}, title: "T-9: ma_ssi_countable_income equal to ma_ssi_income_standard (ma_ssi_countable_income at or under ma_ssi_income_standard)", others: {}, relationships: [], expect: true}
