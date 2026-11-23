@@ -118,17 +118,17 @@ Stored expectations: CO-580's Colorado Works person figures, as in section 5 (un
 
 ## 8. Gates
 
-On 97b7df4 (origin ccr-9d19bf4c-wmnwcl merged at 44a4dac, the latest; both merges docs only), the final gate:
+On 3824107 (origin ccr-9d19bf4c-wmnwcl merged at e647703, the latest; the harnesses run on df9e65b, whose ledger and allowed files are the same), the final gate:
 
 | Gate | Result |
 |---|---|
-| `node scripts/sync-manifest.mjs co` | written, no change (snap 240, medicaid 362, cash 246 items) |
+| `node scripts/sync-manifest.mjs co` | written, no change (snap 241, medicaid 362, cash 246 items) |
 | `npm run typecheck` | passes |
-| `npx vitest run` | 1,150 tests pass (102 files); no pin moved |
-| `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 175,208 values, 2,078 differ, all allowed; generated 476, 200,872 values, 5,264 differ, all allowed; **0 unexplained**; translation 0 stale (372 households, 895 rule tests); boundary lint 0; metamorphic **0 violations** |
-| `npm run records:harness -- --list holdings --all-programs` | OK: stored 329, 145,587 values, 2,835 differ, all allowed; generated 368, 129,536 values, 1,838 differ, all allowed; **0 unexplained**; translation 0 stale; joint lint 0; metamorphic **0 violations** |
-| `npm run receipts:harness -- --all-programs` | OK: stored 319, 168,450 values, 1,669 differ, all allowed; generated 1,626, 689,931 values, 18,647 differ, all allowed; **0 unexplained**; translation clean; MA-1 to MA-6 **0 violations** |
-| `CHECK_BASE=origin/main npm run check` | OK: co rule tests 5,283 of 5,283, household expectations 4,092 of 4,092; change impact 30 flags, 30 dispositioned, 0 open; conformance self-check OK (co 5,825 cases, 9,535 checked, 0 failed; mwr 150 cases, 197 checked). The stale-disposition notices (re-keyed fingerprints of CO-613, CO-616, CO-654, CO-659, CO-946, CO-953, CO-1203, CO-2308, CO-379, CO-407 in the three rounds' own change records) came with the merge wave and do not block |
+| `npx vitest run` | 1,150 tests pass (102 files); no pin moved by this round |
+| `npm run records:harness -- --list earnings --all-programs` | OK: stored 327, 175,200 values, 2,078 differ, all allowed; generated 476, 200,872 values, 5,264 differ, all allowed; **0 unexplained**; translation 0 stale (382 households, 895 rule tests); boundary lint 0; metamorphic **0 violations** |
+| `npm run records:harness -- --list holdings --all-programs` | OK: stored 329, 144,151 values, 2,452 differ, all allowed; generated 368, 128,064 values, 1,750 differ, all allowed; **0 unexplained**; translation 0 stale (209 households, 448 rule tests); joint lint 0; metamorphic **0 violations** |
+| `npm run receipts:harness -- --all-programs` | OK: stored 319, 168,442 values, 1,669 differ, all allowed; generated 1,626, 689,931 values, 18,647 differ, all allowed; **0 unexplained**; translation clean; MA-1 to MA-6 **0 violations** |
+| `CHECK_BASE=origin/main npm run check` | OK on the committed tree: co rule tests 5,338 of 5,338, household expectations 4,129 of 4,129; change impact 405 decisions changed, 30 flags, 30 dispositioned, 0 open; conformance self-check OK (co 5,890 cases, 9,627 checked, 0 failed; mwr 150 cases, 197 checked). The 102 stale-disposition notices (earlier rounds' records whose flags' fingerprints moved when the holdings record gained fields, as the SNAP resources review says) do not block and are not this round's: it changes no item |
 
 ## 9. Left open
 
