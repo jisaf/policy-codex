@@ -23332,3 +23332,32 @@ Document: D-82
 >
 > 1. All loans from private individuals as well as commercial institutions shall not be considered as income, including educational loans.
 
+
+### S4692. Adult Financial: personal property valued at its appraised value less liabilities, art, jewelry and valuable collections among it
+
+Document: D-80
+
+9 CCR 2503-5 3.520.742.A.3, 3.520.742.B (rule version 12428, effective 03/02/2026; resource records, step H1 Adult Financial, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3. To determine the equity value of personal property, first determine the actual value; then subtract encumbrances.
+>
+> B. The vehicle with the highest value is exempt as described in 3.520.77.A, and therefore may be verified with client statement. The actual value of any additional personal property which is not assessed for taxation is determined by obtaining the appraised value less liabilities, i.e., vehicles, farm equipment and livestock or inventories of merchandise and materials, such as art, jewelry or valuable collections, as appraised by a verifiable, industry recognized source.
+
+### S4693. Adult Financial: a joint account available in proportion to the persons on it; shared real property charged in proportion to the share owned
+
+Document: D-80
+
+9 CCR 2503-5 3.520.73.A.2, 3.520.741.C.1-2 (rule version 12428, effective 03/02/2026; resource records, step H1 Adult Financial, quoted from the document on file). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 2. The balance in a joint account shall be considered available to the client in proportion to the number of persons on the account.
+>
+> a. If the co-owner of the joint account is the client's legal fiduciary, such as a guardian, conservator, or power of attorney, the account shall be considered to be 100% owned by the client and all funds in the account shall be considered available to the client.
+>
+> ...
+>
+> C. The degree of the ownership interest is determined by the type of ownership. Generally, the types of ownership are:
+>
+> 1. Sole ownership, in which the client, the client’s spouse, or sponsor(s) is the only owner. if the client, spouse, or sponsor(s) has the right to dispose of the property, the actual value less encumbrances of the property is determined and counted as a resource;
+>
+> 2. Shared ownership, in which the property is owned by the client, spouse, or sponsor(s) and one or more individuals. The actual value less encumbrances is determined and charged in proportion to the client, client’s spouse, or sponsor(s)’s share of ownership. There are two kinds of shared ownership:
+

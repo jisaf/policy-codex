@@ -3248,6 +3248,8 @@ Assumption: Each row as today's items read it, until the owner signs it or the A
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.72-3.520.77 (D-80). Items: CO-5302, CO-4000, CO-4412.
 
+Resolution in part (resource records, step H1 Adult Financial, 2026-11-23; docs/reviews/records-holdings-snap-af.md): (1) the finding is fixed as the text reads: personal property held because of its value or as an investment is counted at its appraised value less liabilities (3.520.77.B, S4507; 3.520.742.A.3, B, S4692): row counted, af_countable_personal_property (CO-5345). (2) Settled by the text: an education savings account is an investment account 3.520.72.B.5 (S2213) counts ("other retirement or investment accounts and investment vehicles"): row counted. Stays open, with its assumption: a state or local earned income tax credit held apart from a refund, a government payment a federal statute excludes, prorated income still held and other resources (counted_no_rule_excludes); an annuity and a life estate (not_counted_no_rule_found); personal property other than household goods and investments (excluded_household_goods; 3.520.72.B.3-4 counts it when not exempt).
+
 ### OQ-1204. Medicaid SSI method holdings: the earned income tax credit, loans, disaster and relocation payments still held, and the kinds no rule on file settles
 
 Body: Resource records, step H0 sets the SSI method's holdings counting table (ma_ssi_holding_treatment_table, CO-5303) to today's reading. (1) Findings: 10 CCR 2505-10 8.100.5.F.6 (S4506) exempts "as either income or resources" for the ABD and long-term care categories a bona fide loan (a), relocation payments, toward a replacement dwelling for up to 6 months (f), major disaster and emergency assistance (k), Civil Liberties Act payments (r), the Earned Income Tax Credit as a resource "for the month it is received and for the following month" (u) and payments to victims of Nazi persecution (x). No SSI-method item subtracts the part of liquid_resources_value (CO-3390) that is such money still held: ssi_countable_resources_individual (CO-800) subtracts only the retroactive SSI or Social Security payment (F.6.c). So a federal refund carrying the credit, a state or local credit, loan proceeds, and disaster, relocation, Civil Liberties Act or Nazi persecution payments still held are counted (rows counted_text_excludes for held_income_tax_refund, held_eitc, held_loan_proceeds, held_excluded_payment, held_replacement_proceeds). One stored household states federal_tax_refunds_held_value above 0 and one states excluded_government_payments_held_value; neither is an SSI-method case (docs/reviews/holdings-h0.md). (2) Rows counted because 20 CFR 416.1201(a) (S4500) counts what the person owns and could convert to cash and no exclusion was found on file: an education savings account, business cash (8.100.5.J.3, S3402, excludes property used in a trade or business essential to self-support up to $6,000 with a 6% return; whether business cash is such property is open), prorated income still held, other resources; and personal property other than household goods and effects (8.100.5.M.3.i, S4505, counts a mobile home or trailer not the home and not income-producing), which no fact states today.
@@ -3267,6 +3269,8 @@ Owner: Cash programs policy owner
 Assumption: Reading A, the highest equity; the Adult Financial H1 track writes the vehicle exclusion with P58 over equity floored at 0, and adds a key argument to P58 only if the owner chooses B.
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.77.A (D-80); 20 CFR 416.1218(b)(1) (S2215). No definition of "value" for vehicles in 3.520.77. Items: CO-5302, CO-3395.
+
+Note (resource records, step H1 Adult Financial, 2026-11-23): the assumption is implemented: af_countable_vehicles (CO-5343) counts the vehicles' equity, each floored at 0, less the largest such equity of a vehicle used for transportation (P58 largest); rule test CO-5343-T2 is the worked example (1,000 counted under A; B would count 6,000). Items: CO-5343.
 
 ### OQ-1250. SNAP holdings: whether a burial space for the immediate family is a household member's one excluded plot
 
@@ -3297,3 +3301,23 @@ Owner: SNAP policy owner
 Assumption: The person's share of a holding owned with a spouse or another person of the case is counted; a field request to the integration owner (whether the co-owner is outside the person's SNAP household) if the owner reads 4.409.C as reaching a spouse of the case who is in another household.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.409.C (D-82); 7 CFR 273.8(d) (S3129). Items: CO-4176, CO-5310, CO-5300.
+
+### OQ-1253. Adult Financial holdings: the interest on the exempt $1,500 of a revocable burial trust or contract
+
+Body: 9 CCR 2503-5 3.520.77.G.3 (S2619): "A revocable burial trust is exempt if the value of the trust does not exceed one thousand five hundred dollars ($1,500). Any interest on the exempt $1,500 is also exempt. Any amount over $1,500 is a countable resource." H.2.b says the same of a revocable prepaid burial contract. The holdings record states a burial fund's or contract's value and the interest accrued in it (accrued_interest, CO-5300), but the rule does not say how the interest is split between the exempt $1,500 and the rest when the principal is over $1,500, and Adult Financial has never read the interest (af_countable_burial_holdings, CO-5344, counts the value over $1,500, as af_person_countable_resources_other_than_life_insurance did before step H1). Worked example: a revocable trust of $1,500 that has earned $120 of interest, value $1,620: if the interest on the exempt $1,500 is exempt, nothing counts; read as today, $120 counts. A trust of $3,000 principal with $200 of interest: interest in proportion to principal gives $100 on the exempt $1,500, so $1,600 counts; read as today, $1,700.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The value over $1,500 counts, interest included (today's reading), until the owner says how the interest on the exempt $1,500 is measured.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.77.G.3, H.2 (D-80). No paragraph on file allocates the interest. Items: CO-5344, CO-5302.
+
+### OQ-1254. Adult Financial transfers: several resources transferred in one month, and the first month of the thirty-six
+
+Body: 9 CCR 2503-5 3.520.76.D.1-3 and E (S2614, S2806) compute the months of ineligibility for each resource transferred: "Divide the uncompensated value by the TWFC monthly penalty value and round down to the nearest whole number"; "depending on the amount of the uncompensated value for each resource transferred". A.3 counts a transfer "within thirty-six (36) months prior to the application date". Since step H1 each transfer is a holdings record (CO-5300), but the divisor (af_twfc_monthly_penalty_value, the client's program's grant standard) and the application date (af_application_date) are facts of the person, which the receipt operators do not let a sum over the records read (docs/operators.md, P55: a condition or value inside the sum reads only the record's fields, the month, case facts and parameters). So (1) when two or more resources transferred in one month are not returned, the months are cannot determine (af_twfc_penalty_months, CO-3840): rounding their total overstates them by up to one month per extra resource; and (2) in the month thirty-six months before the application month, when transfers fall on both sides of the application's day of the month, the value within the thirty-six months cannot be read and the months are cannot determine. Worked example: an OAP client (standard $1,032) gives $3,000 and $2,200 away in December 2025: 2 + 2 = 4 months; the month's total, 5,200 / 1,032, would give 5.
+
+Class: ledger design (the rule is clear; the operators cannot yet compute it)
+Owner: Integration owner; Cash programs policy owner (to confirm the reading)
+Assumption: Cannot determine in those two cases; with one transfer in the month, or all on one side of the day, the answer is given (the reading before step H1, when one value was stated per month). Options for the integration owner: a case-scope Adult Financial application date and grant standard, or a per-record penalty the sum can read.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.76.A.3, D, E (D-80); docs/operators.md (P55, P58). Items: CO-3840, CO-4008, CO-3841.

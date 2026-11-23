@@ -1,0 +1,17 @@
+id: CO-5349
+name: "Adult Financial: premiums paid on life insurance within the look-back"
+identifier: af_life_insurance_premiums_in_lookback
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The premiums paid and other money contributed to this person's life insurance policies in the af_oap_life_insurance_lookback_months (48) months before the determination date (9 CCR 2503-5 3.520.75.E.2): the premiums_in_lookback of each life_insurance record."
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): the person's policies are life_insurance records (row counted_life_insurance_rules), each with its cash surrender value (value), face value, purchase date and the premiums paid in the forty-eight months, in place of the person's totals (CO-3396, CO-3397, CO-3850, CO-3851). A policy that does not state the field read is cannot determine (decision 4)."
+derived: ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted_life_insurance_rules"]], ["receipt", "premiums_in_lookback"]]
+sources: [S2618]
+implemented: engine
+tags: [cash, oap, resources]
+rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Read by af_life_insurance_countable_cash_value (CO-3854), in place of life_insurance_payments_in_lookback (CO-3851)."
+tests:
+  # Hand-computed: the sum of each policy's premiums in the look-back.
+  - {id: CO-5349-T1, title: "$1,200 and $300 paid on two policies: 1,500", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 5000, premiums_in_lookback: 1200}, {kind: life_insurance, value: 900, premiums_in_lookback: 300}]}, expect: 1500}

@@ -82,3 +82,15 @@
   identifier: /^snap_(countable_nonliquid_resources|household_countable_resources)$/
   new: unknown
   class: "H1S-D4-3 real property that does not state whether it is for sale, a lot for a home or producing income, or its costs of sale (decision 4, D3)"
+
+# ---------------------------------------------------------------------------------------------------
+# H1S-R (restated): CO-300 (probe PR-PTC, an Adult Financial probe) states its savings in the holdings records
+# alone, the federal refund dated 2026-08-14, inside 4.410.J.17's twelve months; liquid_resources_value and
+# federal_tax_refunds_held_value are no longer stated, so the ledger before step H1 cannot determine its SNAP
+# resources: 1,700 now (2,200 less the refund), as the review computed for Adult Financial.
+- case: CO-300
+  person: p1
+  identifier: /^snap_(countable_liquid_resources|household_countable_resources|household_liquid_resources)$/
+  old: unknown
+  new: 1700
+  class: "H1S-R restated in holdings alone (the refund dated): the ledger before H1 does not read it"

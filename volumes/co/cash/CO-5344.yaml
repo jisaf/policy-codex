@@ -1,0 +1,21 @@
+id: CO-5344
+name: "Adult Financial: countable burial holdings"
+identifier: af_countable_burial_holdings
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The person's burial funds, contracts and spaces that Adult Financial counts (9 CCR 2503-5 3.520.72.B.8-9, 3.520.77.G-I): each revocable burial trust or prepaid burial contract (rows counted_above_burial_exemption, not irrevocable) over af_revocable_burial_funds_exemption ($1,500), each on its own (G.3: \"A revocable burial trust is exempt if the value of the trust does not exceed $1,500 ... Any amount over $1,500 is a countable resource\"; H.2), and the value of burial spaces beyond the burial needs of the immediate family (row counted_beyond_family_needs, not for_immediate_family; 3.520.72.B.9, 3.520.77.I), times the person's share."
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): each trust and each contract has its own $1,500 exemption, as G.3 and H.2 state it of \"the trust\" and \"the prepaid burial contract\"; before step H1 the trusts were one total and the contracts another, each with one exemption, so two revocable trusts of $1,000 counted 2,000 - 1,500 = 500 and now count 0. An irrevocable contract is exempt (H.1); an irrevocable trust of which the client is both trustor and beneficiary is not irrevocable in the holdings record (its schema), so it is counted over $1,500 (G.2.d). The interest on the exempt $1,500 is exempt (G.3, H.2.b): the interest accrued is not read, as before (OQ-1253)."
+derived: ["+", ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted_above_burial_exemption"], ["not", ["receipt", "irrevocable"]]], ["max", 0, ["-", ["receipt", "value"], "af_revocable_burial_funds_exemption"]]], ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted_beyond_family_needs"], ["not", ["receipt", "for_immediate_family"]]], ["*", ["receipt", "value"], ["otherwise", ["receipt", "share"], 1]]]]
+sources: [S2619]
+implemented: engine
+tags: [cash, resources]
+open: [OQ-1253]
+rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. The burial part of af_person_countable_resources_other_than_life_insurance (CO-4000), which read revocable_burial_trust_value, revocable_prepaid_burial_contract_value and burial_spaces_value_beyond_family_needs."
+tests:
+  # Hand-computed from 9 CCR 2503-5 3.520.77.G.3, H, I (S2619).
+  - {id: CO-5344-T1, title: "A $2,300 revocable prepaid contract: 2,300 - 1,500 = 800 (H.2)", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 2300, irrevocable: false}]}, expect: 800}
+  - {id: CO-5344-T2, title: "Two revocable trusts of $1,000: each under $1,500, 0 (was 500 on the total)", as_of: "2026-10-01", given: {holdings: [{kind: burial_fund, value: 1000, irrevocable: false}, {kind: burial_fund, value: 1000, irrevocable: false}]}, expect: 0}
+  - {id: CO-5344-T3, title: "An irrevocable $8,000 contract (H.1) and a $1,200 plot for a friend beyond the family's needs (I): 0 + 1,200 = 1,200", as_of: "2026-10-01", given: {holdings: [{kind: prepaid_burial_contract, value: 8000, irrevocable: true}, {kind: burial_space, value: 1200, for_immediate_family: false}]}, expect: 1200}
+  - {id: CO-5344-T4, title: "A family plot (I: for the immediate family) worth $3,000: 0", as_of: "2026-10-01", given: {holdings: [{kind: burial_space, value: 3000, for_immediate_family: true}]}, expect: 0}

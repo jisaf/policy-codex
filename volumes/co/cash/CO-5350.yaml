@@ -1,0 +1,18 @@
+id: CO-5350
+name: "Adult Financial: resources known, a lower bound"
+identifier: af_resources_known_lower_bound
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The part of this person's countable resources other than life insurance that is known when some is not: each part af_person_countable_resources_other_than_life_insurance (CO-4000) adds (cash and convertible assets less what is exempt, retirement accounts, real property, self-support property, vehicles, burial holdings, personal property, the home, trusts, potential resources refused), each read as 0 when it cannot be determined. Every part is never below zero, so the person's countable resources are at least this much."
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): read by af_meets_resource_limit (CO-948): when the client's and the spouse's known parts already exceed the resource limit, the limit is not met whatever the parts that cannot be determined (each of which only adds), so the answer is given, not cannot determine. This is an inference from the rule, not a default for a fact: no part is taken as 0 in the countable resources themselves (decision 4)."
+derived: ["+", ["+", ["+", ["+", ["+", ["+", ["+", ["+", ["otherwise", ["-", "af_cash_and_convertible_holdings", "af_exempt_liquid_resources"], 0], ["otherwise", "af_countable_retirement_accounts", 0]], ["otherwise", "af_countable_real_property", 0]], ["otherwise", "af_self_support_property_countable_value", 0]], ["otherwise", "af_countable_vehicles", 0]], ["otherwise", "af_countable_burial_holdings", 0]], ["otherwise", "af_countable_personal_property", 0]], ["otherwise", "af_countable_home_equity", 0]], ["+", ["otherwise", ["sum_receipts", "holdings", ["all", ["all", ["received_in", ["det_month"]], ["unknown", ["receipt", "disposed_date"]]], ["=", ["lookup", "af_holding_treatment_table", ["receipt", "kind"]], "counted_corpus_available"]], ["receipt", "corpus_available_value"]], 0], ["otherwise", "af_refused_potential_resources_value", 0]]]
+sources: [S1636, S2213]
+implemented: engine
+tags: [cash, resources]
+rationale: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): Adult Financial reads the person's resources from the holdings records (holdings, CO-5300) through its counting table (af_holding_treatment_table, CO-5302), for the client, the spouse and each sponsor alike (3.520.72.A, E), never from the scalar resource facts. Decision 4 makes a part cannot determine where a holding does not state a field the rule reads (whether the home is lived in, whether a vehicle is used for transportation); a client whose bank accounts alone exceed the limit is still over it."
+tests:
+  # Hand-computed: each part read as 0 when it cannot be determined.
+  - {id: CO-5350-T1, title: "$172,500 in the bank and a home that does not say whether she lives in it: at least 172,500", as_of: "2026-10-01", given: {holdings: [{kind: bank_account, value: 172500}, {kind: home, value: 240000, amount_owed: 0}]}, expect: 172500}
+  - {id: CO-5350-T2, title: "$800 in the bank and a $2,000 coin collection, nothing owed: 2,800", as_of: "2026-10-01", given: {holdings: [{kind: bank_account, value: 800}, {kind: investment_personal_property, value: 2000, amount_owed: 0}]}, expect: 2800}

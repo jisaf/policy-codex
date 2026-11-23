@@ -31621,7 +31621,10 @@
   # month received. Any remaining balance shall be counted as a resource after twelve (12) months." p1, 70, single, $600 of
   # Social Security, holds $2,200 of savings of which $500 is a refund received in August (federal_tax_refunds_held_value
   # 500). Rule (review table): countable resources 2,200 - 500 = 1,700, under the $2,000 limit: oap. Before the fix: 2,200,
-  # none. Fixed in c06ff74 (af_exempt_liquid_resources, CO-4412).
+  # none. Fixed in c06ff74 (af_exempt_liquid_resources, CO-4412). Resource records, step H1 (SNAP and Adult Financial,
+  # docs/reviews/records-holdings-snap-af.md): the savings are stated in the holdings records alone, the refund dated
+  # (received 2026-08-14, inside the twelve months of K and of SNAP's 4.410.J.17); liquid_resources_value 2,200 and
+  # federal_tax_refunds_held_value 500 are no longer stated (no program that reads p1's resources reads them).
   as_of: "2026-10-01"
   case_facts:
     cw_meets_county_diversion_income_limit: false
@@ -31642,18 +31645,16 @@
         af_has_total_disability_six_months: false
         claims_disability: false
         is_enrolled_in_medical_assistance: true
-        liquid_resources_value: 2200
         receives_tanf_cash: false
         is_sponsored_non_citizen: false
         child_welfare_payment_type: none
         is_pregnant: false
-        federal_tax_refunds_held_value: 500
         receipts:
         - {kind: social_security, amount: 600}
         earnings: []
         holdings:
         - {kind: bank_account, value: 1700}
-        - {kind: held_income_tax_refund, paid_by: federal, value: 500}
+        - {kind: held_income_tax_refund, paid_by: federal, value: 500, source_date: "2026-08-14"}
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
