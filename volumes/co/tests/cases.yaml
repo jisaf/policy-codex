@@ -37077,17 +37077,22 @@
       cccap_is_in_homelessness_stabilization_period: false
     2026-10:
       cccap_is_in_homelessness_stabilization_period: false
+  # Coverage pass 4 X4-1 (docs/reviews/coverage4-care-energy.md): tanf_state_diversion_payment_months is no longer read as 0 when not
+  # stated. 3.103.S makes a state diversion of four or more consecutive months cash assistance (J.26 excludes it) and any other diversion
+  # not, and the case states neither whether this diversion is a state or a county one nor its length: with a diversion received, the
+  # household income cannot be determined (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says
+  # otherwise). The expectation was 2,000 + 1,500 / 12 = 2,125, eligible_low_income, under OQ-873's reading of a county diversion.
   expect:
     p1:
       cccap_eligibility_status:
-        2026-11: eligible_low_income
+        2026-11: unknown
       cccap_household_income:
-        2026-11: 2125
+        2026-11: unknown
     p3:
       cccap_eligibility_status:
-        2026-11: eligible_low_income
+        2026-11: unknown
       cccap_household_income:
-        2026-11: 2125
+        2026-11: unknown
 
 - id: CO-346
   title: 'Probe Y-7s (CCCAP coverage 3 C3-6): a state diversion paid over six months is excluded cash assistance'
