@@ -404,3 +404,301 @@ for the translation to current facts).
 - `top-level/rv2l1.yaml`: probe households: RV2-L1
 - `top-level/x-cases-nonmagi.yaml`: probe households: X-BURIAL, X-IRA, X-REFUSE, X-COURT, X-DWB, X-PASS, X-DEEM, X-WAWDHCBS, X-QI, X-FORSALE, X-LUMP
 - `top-level/zzA1.yaml`: probe households: ZZ-A1
+
+## Inventory (probe-preservation round, 2026-11-23)
+
+158 probe households added as CO-300 to CO-457; 101 already stored (named in a stored case as its probe); 20 lines of skipped probes below. Duplicates by facts (the same household copied into several files) are counted once.
+
+### Added
+
+| Probe | Case | Finding | Known failure |
+|---|---|---|---|
+| PR-PTC | CO-300 | PR-PTC (Adult Financial coverage F-6) |  |
+| PR-RENT2 | CO-301 | PR-RENT (Adult Financial coverage F-11) |  |
+| PR-LUMP2 | CO-302 | PR-LUMP (Adult Financial coverage F-12) |  |
+| PR-IMD | CO-303 | PR-IMD (Adult Financial coverage F-13) |  |
+| PZ-2B | CO-304 | PZ-2B (Adult Financial coverage 2, control for G-2) |  |
+| PZ-3H | CO-305 | PZ-3H (Adult Financial coverage 2, control for G-3) |  |
+| PZ-4 | CO-306 | PZ-4 (Adult Financial coverage 2 G-4) |  |
+| PZ-5 | CO-307 | PZ-5 (Adult Financial coverage 2 G-5) |  |
+| PZ-5C | CO-308 | PZ-5C (Adult Financial coverage 2, control for G-5) |  |
+| QZ-1 | CO-309 | QZ-1 (Adult Financial coverage 3 H-1) |  |
+| QZ-1C | CO-310 | QZ-1C (Adult Financial coverage 3, control for H-1) |  |
+| QZ-2 | CO-311 | QZ-2 (Adult Financial coverage 3 H-2) |  |
+| QZ-2C | CO-312 | QZ-2C (Adult Financial coverage 3, control for H-2) |  |
+| QZ-2K | CO-313 | QZ-2K (Adult Financial coverage 3, control for H-2) |  |
+| RV-A1 | CO-314 | RV-A1 (CCCAP coverage F-03) |  |
+| RV-A2 | CO-315 | RV-A2 (CCCAP coverage F-03) |  |
+| RV-B2 | CO-316 | RV-B (CCCAP coverage F-04) |  |
+| RV-C | CO-317 | RV-C (CCCAP coverage F-05) |  |
+| RV-D2 | CO-318 | RV-D (CCCAP coverage F-06) |  |
+| RV-E | CO-319 | RV-E (CCCAP coverage F-07) |  |
+| RV-F | CO-320 | RV-F (CCCAP coverage F-08) |  |
+| RV-G2 | CO-321 | RV-G (CCCAP coverage F-09) |  |
+| RV-H | CO-322 | RV-H (CCCAP coverage F-11) |  |
+| RV-I | CO-323 | RV-I (CCCAP coverage F-12) |  |
+| RV-J | CO-324 | RV-J (CCCAP coverage F-14) |  |
+| RV-K1 | CO-325 | RV-K1 (CCCAP coverage F-02) |  |
+| RV-K2 | CO-326 | RV-K2 (CCCAP coverage F-02) |  |
+| RV-K3 | CO-327 | RV-K3 (CCCAP coverage F-02) |  |
+| RV-M2 | CO-328 | RV-M (CCCAP coverage F-13) |  |
+| RV-N1 | CO-329 | RV-N1 (CCCAP coverage F-15) |  |
+| RV-O2 | CO-330 | RV-O2 (CCCAP coverage F-21, control) |  |
+| Z-1b | CO-331 | Z-1b (CCCAP coverage 2, control for C2-1) |  |
+| Z-2b | CO-332 | Z-2b (CCCAP coverage 2, control for C2-2) |  |
+| Z-3b | CO-333 | Z-3 (CCCAP coverage 2 C2-3) |  |
+| Z-5 | CO-334 | Z-5 (CCCAP coverage 2 C2-4) |  |
+| Z-5b | CO-335 | Z-5b (CCCAP coverage 2, control for C2-4) |  |
+| Y-1r | CO-336 | Y-1r (CCCAP coverage 3, control for C3-1) |  |
+| Y-1jr | CO-337 | Y-1jr (CCCAP coverage 3 fix, control for C3-1) |  |
+| Y-1c | CO-338 | Y-1c (CCCAP coverage 3 C3-1) |  |
+| Y-2 | CO-339 | Y-2 (CCCAP coverage 3 C3-3) |  |
+| Y-2b | CO-340 | Y-2b (CCCAP coverage 3, control for C3-3) |  |
+| Y-3 | CO-341 | Y-3 (CCCAP coverage 3 C3-4) |  |
+| Y-4 | CO-342 | Y-4 (CCCAP coverage 3 C3-5) |  |
+| Y-5 | CO-343 | Y-5 (CCCAP coverage 3 C3-7) |  |
+| Y-6 | CO-344 | Y-6 (CCCAP coverage 3, control for the C2-1 fix) |  |
+| Y-7 | CO-345 | Y-7 (CCCAP coverage 3 C3-6) |  |
+| Y-7s | CO-346 | Y-7s (CCCAP coverage 3 C3-6) |  |
+| Y-8 | CO-347 | Y-8 (CCCAP coverage 3 C3-2) |  |
+| Y-8b | CO-348 | Y-8b (CCCAP coverage 3 C3-2) |  |
+| Y-9 | CO-349 | Y-9 (CCCAP coverage 3, control for the C2-2 fix) |  |
+| Y-9a | CO-350 | Y-9a (CCCAP coverage 3, control for the C2-2 fix) |  |
+| ZZ-2 | CO-351 | ZZ-2 (Colorado Works coverage CW-1) |  |
+| CWZ-7 | CO-352 | CWZ-7 (Colorado Works coverage CW-6) |  |
+| CWZ-9 | CO-353 | CWZ-9 (Colorado Works coverage CW-9) |  |
+| CWZ-10 | CO-354 | CWZ-10 (Colorado Works coverage CW-10) |  |
+| CWZ-11 | CO-355 | CWZ-11 (Colorado Works coverage CW-8) |  |
+| CWZ-12 | CO-356 | CWZ-12 (Colorado Works coverage, spot-check of final cash FC-1) |  |
+| CWZ-13 | CO-357 | CWZ-13 (Colorado Works coverage, spot-check of final cash FC-1) |  |
+| CWZ-14 | CO-358 | CWZ-14 (Colorado Works coverage, spot-check of final cash FC-2) |  |
+| CWZ-15 | CO-359 | CWZ-15 (Colorado Works coverage, spot-check of final2 cash N-3) |  |
+| CWZ-16 | CO-360 | CWZ-16 (Colorado Works coverage, spot-check of final cash FC-1) |  |
+| ZQ-3 | CO-361 | ZQ-3 (Colorado Works coverage 2, control for CW2-2) |  |
+| ZT-2b | CO-362 | ZT-2 (Colorado Works coverage 3 CW3-1) |  |
+| ZT-3 | CO-363 | ZT-3 (Colorado Works coverage 3, control for CW3-1) |  |
+| ZT-6 | CO-364 | ZT-6 (Colorado Works coverage 3, control for CW3-1) |  |
+| ZT-5 | CO-365 | ZT-5 (Colorado Works coverage 3, control for CW3-2) |  |
+| ZT-8 | CO-366 | ZT-8 (Colorado Works coverage 3 fix, CW3-2) |  |
+| RV-L0 | CO-367 | RV-L0 (LEAP coverage, control for C-1) |  |
+| RV-L2 | CO-368 | RV-L2 (LEAP coverage C-2) |  |
+| RV2-L0 | CO-369 | RV2-L0 (LEAP coverage 2, control for N-4) |  |
+| RV2-L1 | CO-370 | RV2-L1 (LEAP coverage 2 N-4) |  |
+| RV2-S0 | CO-371 | RV2-S0 (SUN Bucks coverage 2, control for N-3) |  |
+| RV2-S2 | CO-372 | RV2-S2 (SUN Bucks coverage 2 N-3) |  |
+| PR3-L2 | CO-373 | PR3-L2 (LEAP coverage 3 F3-2) |  |
+| PR3-L4 | CO-374 | PR3-L4 (LEAP coverage 3 F3-2) |  |
+| RV-65 | CO-375 | RV-65 (MAGI coverage F-06) |  |
+| RV-INM | CO-376 | RV-INM (MAGI coverage F-07) |  |
+| RV-CHPB | CO-377 | RV-CHPB (MAGI coverage F-09) |  |
+| RV-C5 | CO-378 | RV-C5 (MAGI coverage fix, F-05) |  |
+| RV2-MECY | CO-379 | RV2-MECY (MAGI coverage 2, control for N-01) |  |
+| RV2-RCB | CO-380 | RV2-RCB (MAGI coverage 2, control for N-04) |  |
+| RV2-ELE | CO-381 | RV2-ELE (MAGI / CHP+ coverage 2 N-05) |  |
+| RV3-FPA | CO-382 | RV3-FPA (MAGI coverage 3 C3-02) |  |
+| RV3-FPM | CO-383 | RV3-FPM (MAGI coverage 3, control for C3-02) |  |
+| RV3-FPRCB | CO-384 | RV3-FPRCB (MAGI coverage 3, control for C3-03) |  |
+| RV3-STEPN | CO-385 | RV3-STEPN (MAGI coverage 3, control for C3-04) |  |
+| RV3-NB1 | CO-386 | RV3-NB1 (MAGI coverage 3 C3-07) |  |
+| RV3-CPB | CO-387 | RV3-CPB (MAGI / CHP+ coverage 3 C3-08) | MAGI/CHP+ coverage 3 C3-08 (OQ-810, open state policy choice) |
+| X-REFUSE | CO-388 | X-REFUSE (non-MAGI coverage NM-14) |  |
+| X-DWB | CO-389 | X-DWB (non-MAGI coverage NM-9) |  |
+| X-PASS | CO-390 | X-PASS (non-MAGI coverage NM-7) |  |
+| X-QI | CO-391 | X-QI (non-MAGI coverage NM-11) |  |
+| X-LUMP | CO-392 | X-LUMP (non-MAGI coverage NM-6) |  |
+| Y-CBWD19 | CO-393 | Y-CBWD19 (non-MAGI coverage 2 N2-3) |  |
+| Y-CBWD18 | CO-394 | Y-CBWD18 (non-MAGI coverage 2, control for N2-3) |  |
+| Z-ADM | CO-395 | Z-ADM (non-MAGI coverage 3 C3-1) | non-MAGI coverage 3 C3-1 |
+| Z-NONCOOP | CO-396 | Z-NONCOOP (non-MAGI coverage 3 C3-2) | non-MAGI coverage 3 C3-2 |
+| Z-ONSET | CO-397 | Z-ONSET (non-MAGI coverage 3 C3-2) | non-MAGI coverage 3 C3-2 |
+| Z-DACIRWE | CO-398 | Z-DACIRWE (non-MAGI coverage 3 C3-3) | non-MAGI coverage 3 C3-3 |
+| Z-DACSTU | CO-399 | Z-DACSTU (non-MAGI coverage 3 C3-3) | non-MAGI coverage 3 C3-3 |
+| Z-ADOPT2 | CO-400 | Z-ADOPT2 (non-MAGI coverage 3 C3-4) | non-MAGI coverage 3 C3-4 |
+| Z-ADOPT | CO-401 | Z-ADOPT (non-MAGI coverage 3 C3-4) | non-MAGI coverage 3 C3-4 |
+| Z-BDEED | CO-402 | Z-BDEED (non-MAGI coverage 3 C3-5) | non-MAGI coverage 3 C3-5 |
+| Z-BDEED40 | CO-403 | Z-BDEED40 (non-MAGI coverage 3 C3-5) | non-MAGI coverage 3 C3-5 |
+| Z-WAWDSTU | CO-404 | Z-WAWDSTU (non-MAGI coverage 3 C3-6) | non-MAGI coverage 3 C3-6 (P2) |
+| ZZ-F2 | CO-405 | ZZ-F2 (SNAP non-financial coverage 2 N2-1) |  |
+| ZZ-D4 | CO-406 | ZZ-D4 (SNAP non-financial coverage 3, control for N3-2) |  |
+| ZZ-D1 | CO-407 | ZZ-D1 (SNAP non-financial coverage 3 N3-2) |  |
+| CF1 WIOA 500 | CO-408 | CF-1 (SNAP financial coverage) |  |
+| CF1 reverse mortgage 400 | CO-409 | CF-1 (SNAP financial coverage) |  |
+| CF1 PASS 300 | CO-410 | CF-1 (SNAP financial coverage) |  |
+| CF1 irregular 20 in Feb only | CO-411 | CF-1 (SNAP financial coverage) |  |
+| CF1 irregular 20 in Feb and 20 in Jan (counted) | CO-412 | CF-1 (SNAP financial coverage) |  |
+| CF2 control net rent 400 stated | CO-413 | CF-2 control (SNAP financial coverage) |  |
+| CF3 control 1075 | CO-414 | CF-3 control (SNAP financial coverage) |  |
+| CF4 CO-83 earner p2 pays 300 | CO-415 | CF-4 (SNAP financial coverage) |  |
+| CF5 child born 2009-02-15 earns 400 | CO-416 | CF-5 (SNAP financial coverage) |  |
+| CF6 same, household feeds the attendant | CO-417 | CF-6 (SNAP financial coverage) |  |
+| CF7 land 1200 equity | CO-418 | CF-7 (SNAP financial coverage) |  |
+| CF8 joint account 3000 + 3000 other owner | CO-419 | CF-8 (SNAP financial coverage) |  |
+| CF10 child excluded wages 200 | CO-420 | CF-10 (SNAP financial coverage) |  |
+| CF11 recert child support 300 vs 280 | CO-421 | CF-11 (SNAP financial coverage) |  |
+| C22-able | CO-422 | C2-2 (SNAP financial coverage 2) |  |
+| C31-vista | CO-423 | C3-1 (SNAP financial coverage 3 fix) |  |
+| C32-recert-ctrl | CO-424 | C3-2 control (SNAP financial coverage 3) |  |
+| C37-boarder-q | CO-425 | C3-7 (SNAP financial coverage 3) |  |
+| C2-3 (GED child) | CO-426 | C2-3 (SNAP financial coverage 2) |  |
+| S4-nh60 | CO-427 | S4-nh60 (final cash 2, FC-1) |  |
+| S5-oos | CO-428 | S5-oos (final cash 2 P2-7) |  |
+| S6-nh60-child-away | CO-429 | S6 (final cash 2 P2-6) |  |
+| S7-nh60-no-reason | CO-430 | S7 (final cash 2 fix, P2-6 control) |  |
+| S8-nh60-child-away-no-reason | CO-431 | S8 (final cash 2 fix, P2-6) |  |
+| FC2-arrears | CO-432 | FC2-arrears (final cash 2, FC-2) |  |
+| FC3-revmort | CO-433 | FC3-revmort (final cash 2, FC-3) |  |
+| FC6-twfc | CO-434 | FC6-twfc (final cash 2, FC-6) |  |
+| FC9-otherstate | CO-435 | FC9-otherstate (final cash 2, FC-9) |  |
+| FC10-disaster | CO-436 | FC10-disaster (final cash 2, FC-10) |  |
+| PB | CO-437 | PB (final cash 2, control for N-1) |  |
+| IMM-refugee | CO-438 | IMM-refugee (final cash 2 N-3) |  |
+| IMM-iraqi_afghan_special_immigrant | CO-439 | IMM-iraqi_afghan_special_immigrant (final cash 2 N-3) |  |
+| IMM-afghan_humanitarian_parolee | CO-440 | IMM-afghan_humanitarian_parolee (final cash 2 N-3) |  |
+| IMM-ukrainian_humanitarian_parolee | CO-441 | IMM-ukrainian_humanitarian_parolee (final cash 2 N-3) |  |
+| IMM-trafficking_victim | CO-442 | IMM-trafficking_victim (final cash 2 N-3) |  |
+| ZZ-2 (final2-snap) | CO-443 | ZZ-2 (final SNAP 2, F-1) |  |
+| ZZ-3 (final2-snap) | CO-444 | ZZ-3 (final SNAP 2, F-4) |  |
+| ZZ-3b (final2-snap) | CO-445 | ZZ-3b (final SNAP 2, control for F-4) |  |
+| ZZ-4 (final2-snap) | CO-446 | ZZ-4 (final SNAP 2, F-6) |  |
+| ZZ-5 (final2-snap) | CO-447 | ZZ-5 (final SNAP 2, F-8) |  |
+| ZZ-6 (final2-snap) | CO-448 | ZZ-6 (final SNAP 2, F-3) |  |
+| ZZ-7 (final2-snap) | CO-449 | ZZ-7 (final SNAP 2, control for F-3) |  |
+| ZZ-8 (final2-snap) | CO-450 | ZZ-8 (final SNAP 2, F-7) |  |
+| ZZ-9 (final2-snap) | CO-451 | ZZ-9 (final SNAP 2, control for N-7) |  |
+| X-CHPDIS | CO-452 | X-CHPDIS (final Medicaid / CHP+ 3, F3-2) |  |
+| X-19B | CO-453 | X-19B (final Medicaid / CHP+ 3, control for F3-3) |  |
+| RV-S5 | CO-454 | RV-S5 (final CCCAP 2, F-04) |  |
+| RV-S7 | CO-455 | RV-S7 (final CCCAP 2, F-02) |  |
+| RV-S8 | CO-456 | RV-S8 (final CCCAP 2 N-3) |  |
+| N3P22-age60-quit | CO-457 | N3-P2-2 (SNAP non-financial coverage 3 fix) |  |
+
+### Already stored before this round
+
+| Probe | Case |
+|---|---|
+| PR-ABS | CO-165 |
+| PR-ISM | CO-166 |
+| PR-APART | CO-167 |
+| PR-PNA | CO-168 |
+| PR-SPON | CO-169 |
+| PZ-1 | CO-196 |
+| PZ-2 | CO-197 |
+| PZ-3 | CO-198 |
+| PROBE-OAPCOUPLE (final cash FC-4) | CO-120 |
+| PROBE-ANDSO (final cash FC-5) | CO-121 |
+| S0 (final verification V-2 / FC-12 base) | CO-122 |
+| PA (final cash 2 N-1) | CO-130 |
+| PV (final cash 2 N-2) | CO-130 |
+| PCS (final cash 2 N-4) | CO-131 |
+| RV-O | CO-170 |
+| RV-L (CCCAP) | CO-173 |
+| RV-N2 | CO-174 |
+| Z-1 | CO-199 |
+| Z-2 | CO-200 |
+| Z-4 | CO-201 |
+| Y-1 | CO-215 |
+| Y-1j (Y-1 with CO-4910) | CO-215 |
+| Y-8c | CO-216 |
+| RV-S1 (final CCCAP 2) | CO-134 |
+| RV-S2 | CO-136 |
+| RV-S4 | CO-135 |
+| RV-S6 | CO-133 |
+| ZZ-1 (Colorado Works) | CO-160 |
+| ZZ-3 (Colorado Works) | CO-161 |
+| ZZ-4 (Colorado Works) | CO-162 |
+| CWZ-8 | CO-163 |
+| CWZ-18 | CO-164 |
+| ZQ-1 | CO-190 |
+| ZQ-2 | CO-191 |
+| ZT-1 | CO-206 |
+| ZT-1b (ZT-1 with CO-4830) | CO-206 |
+| ZT-4 | CO-207 |
+| ZT-7 | CO-208 |
+| RV-L1 | CO-175 |
+| RV-L3 | CO-176 |
+| RV-L4 | CO-177 |
+| RV-S1 (SUN Bucks coverage) | CO-178 |
+| RV2-L2 | CO-209 |
+| RV2-L3 | CO-210 |
+| RV2-S1 | CO-211 |
+| PR3-L1 | CO-224 |
+| PR3-L3 | CO-225 |
+| RV-GM | CO-180 |
+| RV-SPA | CO-181 |
+| RV-SE | CO-182 |
+| RV-SE2 (RV-SE with the annual facts) | CO-182 |
+| RV-SP | CO-183 |
+| RV-PP | CO-184 |
+| RV2-MEC | CO-202 |
+| RV2-NB | CO-203 |
+| RV2-DSP | CO-204 |
+| RV2-RC | CO-205 |
+| RV3-FPH | CO-226 |
+| RV3-FPRC | CO-227 |
+| RV3-STEP | CO-228 |
+| X-BURIAL | CO-185 |
+| X-FORSALE | CO-185 |
+| X-DEEM | CO-186 |
+| X-WAWDHCBS | CO-187 |
+| X-COURT | CO-188 |
+| X-IRA | CO-189 |
+| Y-VAAA | CO-212 |
+| Y-FAMALLOW | CO-213 |
+| Y-DEPREL | CO-214 |
+| X-PP | CO-110 |
+| X-HPE | CO-111 |
+| X-RETRO | CO-137 |
+| X-NOSTART | CO-138 |
+| X-CBWD | CO-145 |
+| X-CHPSSI | CO-146 |
+| X-19 | CO-147 |
+| X-TMA | CO-148 |
+| ZZ-A1 | CO-150 |
+| ZZ-A5 | CO-151 |
+| ZZ-A2b | CO-152 |
+| ZZ-A3 | CO-153 |
+| ZZ-A4b | CO-154 |
+| ZZ-F1 | CO-192 |
+| ZZ-S1 | CO-193 |
+| ZZ-M1 | CO-217 |
+| ZZ-D3 | CO-218 |
+| CF-1/CF-2 (crime victim, AmeriCorps and rent; also CF1-cvc, CF2-rent re-runs) | CO-155 |
+| CF-3 weekly pay (also C21 re-run of C2-1 is CO-194) | CO-156 |
+| CF-4 (no-income stepparent pays) | CO-157 |
+| CF-9 striker (both scen variants) | CO-158 |
+| CF-5 born 2009-02-05 (Feb and Mar) | CO-159 |
+| C2-1 ($20 odd job; C21-weekly) | CO-194 |
+| C2-4 recertification | CO-195 |
+| C3-1 (C31-allowance, -zz) | CO-219 |
+| C3-2 (C32-recert-allow) | CO-220 |
+| C3-3 (C33-othercharges) | CO-221 |
+| C3-4 (C34-weekly-ui, -conv) | CO-222 |
+| C3-5 (C35-liquid, -held) | CO-223 |
+| ZZ-1 (final SNAP 2) | CO-141 |
+| ZZ-10 (final SNAP 2) | CO-142 |
+| CO-175 draft (top-level/probe.yaml) | CO-175 |
+
+### Skipped
+
+| Probe | Why |
+|---|---|
+| PR-RENT | superseded by the fix round's restatement PR-RENT2 (CO-301): no fact for the rental expenses existed when it was written |
+| PR-LUMP | reading rejected: the Adult Financial fix round (F-12) showed the inheritance was stated only in lump_sum_received, which is part of the unearned income facts; the restated PR-LUMP2 is CO-302 |
+| X-LUMP (reviewer original) | reading rejected: non-MAGI fix round NM-6 "Not P1 as stated", same reason; the restated form is CO-392 |
+| Z-3 | reading rejected: the CCCAP pass-2 fix round (C2-3) defined receives_tanf_cash (CO-013) as true only for a member of the assistance unit, so the probe's statement (true on the payee grandmother) is not a valid household; Z-3b, stated under that meaning, is CO-333 |
+| ZZ-M2 | states institution_entry_date for a student in a private dwelling, against CO-008's meaning (the reviewer says so); ZZ-M1 is CO-217 |
+| RV-B, RV-D, RV-G, RV-M | superseded by the CCCAP fix round's restatements RV-B2, RV-D2, RV-G2, RV-M2 (CO-316, CO-318, CO-321, CO-328), which state the facts the fix added |
+| ZT-2 | superseded by ZT-2b (CO-362), the same room-only payment stated in room_only_payments_received (CO-4830) |
+| Y-3b | translated (retired CO-4454 into CO-4506) it is Y-3 (CO-341) |
+| Q-A1 .. Q-N1 (16) | the CCCAP pass-2 reviewer's re-runs of the pass-1 households RV-* on its own generator (review section 5: "Holds"); one household per scenario is kept (CO-314 to CO-330) |
+| ZR-1, ZR-2, ZR-3 | re-runs of ZZ-2, CWZ-9, CWZ-10 on CO-160 (Colorado Works pass 2, "Fixed"); kept as CO-351, CO-353, CO-354 |
+| RV2-65, RV2-CHPB, RV3-R2NB, RV3-R265, RV3-R2CHPB, RV3-R2ELE | re-runs of RV-65, RV-CHPB, RV2-NB, RV2-ELE on the later generators ("the same"); kept as CO-375, CO-377, CO-203, CO-381 |
+| S1-strike, S2-jail, S3-cs, FC2-GA (final cash 2) | re-run by the Colorado Works coverage reviewer as CWZ-12, CWZ-16, CWZ-13, CWZ-14 (CO-356, CO-360, CO-357, CO-358) |
+| CWZ-5, CWZ-6, CWZ-17 | the Colorado Works reviewer's drafts, superseded by the cited ZZ-4, CWZ-8 and CWZ-18 (stored) and not cited by the review: no stated answer |
+| ZZ-A2, ZZ-A4 | the SNAP non-financial reviewer's drafts, superseded by the cited ZZ-A2b and ZZ-A4b (CO-152, CO-154) |
+| ZZ-D0, ZZ-D2 | N3-2 isolation variants with no stated answer in the review (the fix round says only "unchanged") |
+| X-19U | an undocumented variant of X-19 (CO-147) not cited in the review: no stated answer |
+| CF6 control ($100 medical, no meals), CF11 recert unchanged 300, N3P22-age40-quit, scen1 irregular $20 in every month | controls with no stated answer (N3P22-age40 also gives false on today's CO-115, so it isolates nothing); the scen1 irregular variants are the same household twice and give CO-412's answer |
+| DIR1, DIR2 | the non-MAGI pass-2 fixer's relationship-direction checks of CO-889, not reviewer households; no stated answer |
+| Fixer drafts of stored cases (gen/case122.yaml, gen/cases_new.yaml, p1med/cases/*, */newcases.yaml, cf3/cases-spec.json, snapfin-scripts/cases-spec.json, cccapfix/cases_new.json, CO-* entries in probe files) | drafts of cases already in cases.yaml, not probes |
+| Adult Financial coverage 3 H-3, H-4, H-5 | no probe household exists (the review shows them from the derivations); nothing to keep |
