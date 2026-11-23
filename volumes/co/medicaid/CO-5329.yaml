@@ -1,0 +1,17 @@
+id: CO-5329
+name: "Medicaid: the person holds an interest in a trust in the month"
+identifier: ma_holds_trust_interest_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person holds, in the month, an interest in a trust: a trust_interest holdings record (CO-5300) valued in the month and not transferred (10 CCR 2505-10 8.100.7.B.2.a, S1741: trust documents for a long-term care applicant who is a trust beneficiary)."
+precision: "Resource records, Medicaid track H1: replaces has_trust_interest (CO-1577) in ma_requires_verification_of_trust (CO-1634). A person whose holdings are not stated: unknown, as the fact was when not stated. A qualifying income trust is has_income_trust (CO-823), an income arrangement, read beside it."
+derived: [">", [sum_receipts, holdings, [all, ["=", [receipt, kind], trust_interest], [received_in, [month]], [unknown, [receipt, disposed_date]]], 1], 0]
+sources: [S1741, S3408]
+implemented: engine
+tags: [verification, ma, ltc, resources]
+rationale: "Resource records, step H1 (Medicaid): whether the person has a trust interest is read from the holdings records, so a trust is stated once, with what the Department finds available from it (ma_found_available_value)."
+tests:
+  - {id: CO-5329-T1, month: "2026-10", as_of: "2026-10-01", title: "a trust record: yes", given: {holdings: [{kind: bank_account, value: 300}, {kind: trust_interest, corpus_available_value: 3000}]}, expect: true}
+  - {id: CO-5329-T2, month: "2026-10", as_of: "2026-10-01", title: "no trust record: no", given: {holdings: [{kind: bank_account, value: 300}]}, expect: false}

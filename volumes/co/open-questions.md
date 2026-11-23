@@ -3265,3 +3265,33 @@ Owner: Cash programs policy owner
 Assumption: Reading A, the highest equity; the Adult Financial H1 track writes the vehicle exclusion with P58 over equity floored at 0, and adds a key argument to P58 only if the owner chooses B.
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.77.A (D-80); 20 CFR 416.1218(b)(1) (S2215). No definition of "value" for vehicles in 3.520.77. Items: CO-5302, CO-3395.
+
+### OQ-1241. Medicaid parental deeming: whether two deeming parents exclude one automobile between them
+
+Body: 20 CFR 416.1218(b) (S4660) excludes one automobile "In determining the resources of an individual (and spouse, if any)", and 10 CCR 2505-10 8.100.5.M.2.c (S4504) one automobile "used for transportation for the individual or a member of the individual's household". Resource records, Medicaid track H1, applies the couple's one automobile to the couple's own figures (ma_ssi_countable_resources, CO-608; ma_institutionalized_spouse_countable_resources, CO-647; ssi_countable_resources_couple, CO-801; ma_spousal_resources_at_snapshot, CO-888): each spouse's own figure excludes that spouse's automobile, and the couple adds back the smaller. The resources of a child's ineligible parents (416.1202(b)(1), S3414: "any resources, not otherwise excluded under this subpart, of his or her ineligible parent") are each parent's own figure (ma_ssi_parental_resources_deemed, CO-4627), so two parents who each own a car used for transportation have both excluded. Whether 416.1218(b)'s "individual (and spouse, if any)" reaches two parents whose resources are deemed to a child, so one automobile is excluded between them, is not settled by the text on file. Worked example: parents with 1,000 and 2,000 in the bank and cars of 6,000 and 4,000 equity: as stated today, 3,000 - 3,000 (the couple limit) = 0 deemed; with one automobile between them, 3,000 + 4,000 - 3,000 = 4,000 deemed.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Each parent excludes the parent's own automobile, as before the records.
+
+Checked 2026-11-23: 20 CFR 416.1202(b)(1), 416.1218(b) (D-54, D-4440); 10 CCR 2505-10 8.100.5.M.2.c (D-65). Items: CO-4627, CO-5321.
+
+### OQ-1243. Medicaid SSI method holdings: record fields read as "not so" when a record does not state them
+
+Body: The holdings schema (CO-5300) declares most fields "required where read" (decision D3: a field with no default the rule states is required). Resource records, Medicaid track H1 reads these fields as the scalar facts' readers read the facts they restate, so that no stored household's answer turns to "cannot determine" on a field the old facts never stated: a real property record's income_producing, produces_for_household_use, used_in_trade_or_business, ma_sale_efforts_unsuccessful and co_owner_would_lose_housing; a home record's intends_to_return, intent_in_writing, outside_colorado, held_in_trust_or_entity and beneficiary_deed (lives_in, when not stated, from residence_setting_type); a revocable burial record's accrued_interest (none); a trust, annuity or life estate record's ma_found_available_value (none found). Each is an exclusion or a finding the person or the Department has to establish (10 CCR 2505-10 8.100.5.E.3, S4670: resources are available when owned and convertible), so "not so" is the reading the rule's structure gives; but decision 4 asks for "cannot determine" unless the rule says otherwise, and the schema does not declare these defaults. Either the integration owner declares each default on the field (the rule gives it), or the owner accepts "cannot determine" for a record that does not state it and the stored households and rule tests state each field. The strict fields are read strictly: value, amount_owed (for property), used_for_transportation, face_value, irrevocable, source_date, compensation_received, ma_transfer_exempt, net_annual_return for business property.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The reading the scalar facts' readers gave (each field "not so" when not stated), until the owner or the integration owner decides.
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.5.E.3-4, J, M.2-3 (D-65); docs/design-earned-and-resource-records.md 7 (D3), docs/plan-colorado.md (decision 4). Items: CO-5320, CO-4620, CO-4621, CO-4622, CO-5204, CO-5322.
+
+### OQ-1244. Medicaid transfer look-back: counted from the month of application or from the day 60 months before the date of application
+
+Body: 10 CCR 2505-10 8.100.7.F.1.d (S365, S4671) defines the look-back period as "the number of months prior to the month of application for long-term care services", and F.2.a says "the look-back date is 60 months prior to the date of application"; 42 U.S.C. 1396p(c)(1)(B)(i) (S368) speaks of a look-back date. Resource records, Medicaid track H1 places a transfer in the look-back by its month (ma_uncompensated_transfers_in_lookback, CO-5325: a disposed_date in or after the month 60 months before the month of the application), as F.1.d defines the period. Read by the day, a transfer earlier in that first month than the application's day would fall outside it. Worked example: an application on 2026-10-20 and a transfer on 2021-10-05: in the look-back by the month (2021-10), outside it by the day (before 2021-10-20).
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The look-back counted in months from the month of application (F.1.d).
+
+Checked 2026-11-23: 10 CCR 2505-10 8.100.7.F.1.d, F.2.a (D-65); 42 U.S.C. 1396p(c)(1)(B) (S368). Items: CO-5325, CO-252.

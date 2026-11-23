@@ -55,9 +55,23 @@ export const track: Track = {
       "ma_home_equity_counted_only_by_beneficiary_deed", "ma_ssi_countable_resources_individual", "ma_ssi_countable_resources",
       "ma_ssi_parental_resources_deemed", "ma_msp_countable_resources", "ma_csra", "ma_institutionalized_spouse_countable_resources",
       "ma_home_equity_disqualifies", "ma_transfer_penalty_months", "ma_transfer_penalty_days", "ma_transfer_penalty_applies",
+      // H1 (Medicaid): the figures that read the holdings records
+      "ma_ssi_holdings_countable_in_month", "ma_ssi_excluded_automobile_equity_in_month", "ma_ssi_countable_resources_in_month",
+      "ma_real_property_for_sale_excluded_in_month", "ma_uncompensated_transfers_in_lookback", "ma_ssi_retirement_accounts_counted_in_month",
+      "ma_home_equity_interest_in_month", "ma_liquid_holdings_value_in_month", "ma_holds_trust_interest_in_month", "ma_holds_annuity_in_month",
+      "ma_spousal_resources_at_snapshot",
     ],
-    metamorphic: [],
-    coupleFigures: [],
+    // H1 (Medicaid): the figures that read the holdings records, which the
+    // metamorphic relations compare
+    metamorphic: [
+      "ssi_countable_resources_individual", "ma_ssi_countable_resources_individual", "ma_ssi_holdings_countable_in_month",
+      "ma_ssi_countable_resources_in_month", "ma_ssi_excluded_automobile_equity_in_month", "ma_excluded_real_property_value",
+      "ma_countable_income_producing_property_value", "ma_home_equity_interest_in_month", "ma_uncompensated_transfers_in_lookback",
+      "ma_ssi_retirement_accounts_counted_in_month",
+    ],
+    // MH-3 joint: the couple's figures (20 CFR 416.1202(a); 8.100.7.L "whether owned jointly or individually")
+    // (ma_institutionalized_spouse_countable_resources is the person's own figure for anyone not an LTC couple, CO-647)
+    coupleFigures: ["ssi_countable_resources_couple", "ma_spousal_resources_at_snapshot"],
     bases: [
       { id: "CO-185", person: "p1", label: "MA aged resources" },
       { id: "CO-189", person: "p2", label: "MA aged spouse resources" },

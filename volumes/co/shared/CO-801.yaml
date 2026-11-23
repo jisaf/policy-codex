@@ -6,15 +6,19 @@ type: money
 scope: person
 program: All
 meaning: "The combined countable resources by the SSI method of this person and a spouse living together: each one's ssi_countable_resources_individual (20 CFR 416.1202(a), 10 CCR 2505-10 8.100.5.M.1's couple limit and § 8.100.7.O.1's ongoing test)."
-precision: "Read for the spouse of the case wherever each lives: the readers that compare it with a limit (§ 8.100.5.M.1 for a couple, § 8.100.7.O.1 and the spousal impoverishment items for an institutionalized spouse) count both spouses' resources, as the couple figure the case stated did. For an unmarried person it is the person's own figure."
-derived: [+, ssi_countable_resources_individual, [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ssi_countable_resources_individual]]]
-sources: [S2215]
+precision: "Read for the spouse of the case wherever each lives: the readers that compare it with a limit (§ 8.100.5.M.1 for a couple, § 8.100.7.O.1 and the spousal impoverishment items for an institutionalized spouse) count both spouses' resources, as the couple figure the case stated did. For an unmarried person it is the person's own figure. Resource records, Medicaid track H1: the couple excludes one automobile (20 CFR 416.1218(b): \"In determining the resources of an individual (and spouse, if any)\", S4660), so the smaller of the two spouses' excluded automobiles (ma_ssi_excluded_automobile_equity_in_month, CO-5321, at the determination month) is added back to the two individual figures, each of which excluded its own. No rule reads this item; Medicaid's couple figures are ma_ssi_countable_resources (CO-608) and ma_institutionalized_spouse_countable_resources (CO-647)."
+derived: ["+", ssi_countable_resources_individual, [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ssi_countable_resources_individual]], [min, [at, ma_ssi_excluded_automobile_equity_in_month, [det_month]], [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [at, [of, [P], ma_ssi_excluded_automobile_equity_in_month], [det_month]]]]]
+sources: [S2215, S4660]
 implemented: engine
 tags: [non_magi, resources]
 link_class: adopted_method
 link_basis: "The SSI couple's resources (20 CFR 416.1202(a)) as 10 CCR 2505-10 8.100.5.M.1 adopts them for SSI-related Medicaid."
 adopted_by:
   - {program: Medicaid, source: S301}
-rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. Dual-entry 2.6 stated the couple's figure once on one spouse; it is now the sum of the spouses' own countable resources."
+accepts_from:
+  - {from: ma_ssi_excluded_automobile_equity_in_month, class: adopted_method, source: S4660}
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. Dual-entry 2.6 stated the couple's figure once on one spouse; it is now the sum of the spouses' own countable resources. Resource records, step H1 (Medicaid): one automobile for the couple, read from the holdings records by P58 (decision D5)."
 tests:
-  - {id: CO-801-T1, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 900}, others: {p2: {ssi_countable_resources_individual: 500}}, relationships: [[spouse, p2]], expect: 1400}
+  - {id: CO-801-T1, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 900, holdings: [{kind: bank_account, value: 900}]}, others: {p2: {ssi_countable_resources_individual: 500, holdings: [{kind: bank_account, value: 500}]}}, relationships: [[spouse, p2]], expect: 1400}
+  # Hand-computed from 20 CFR 416.1218(b) (S4660): one car each, used for transportation, equity 6,000 and 4,000; each individual figure excludes its own, the couple only the larger.
+  - {id: CO-801-T2, as_of: "2026-10-01", title: "one car each (6,000 and 4,000): (500 + 6,000 - 6,000) + (700 + 4,000 - 4,000) + 4,000 = 5,200", given: {holdings: [{kind: bank_account, value: 500}, {kind: vehicle, value: 6000, amount_owed: 0, used_for_transportation: true}]}, others: {p2: {holdings: [{kind: bank_account, value: 700}, {kind: vehicle, value: 4000, amount_owed: 0, used_for_transportation: true}]}}, relationships: [[spouse, p2]], expect: 5200}
