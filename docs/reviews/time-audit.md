@@ -255,3 +255,7 @@ The contract (docs/operators.md, "Ages in a month"): `age` (CO-300) is the age o
 - Colorado Works (cw_is_dependent_child, CO-901) and Adult Financial (af_is_oap_age, CO-940): no fetched text states the date for a prorated first month or a later month; both stay on the determination date, recorded as OQ-951. CO-05's p3 note is rewritten: she is 17 in April 2027 (the Children's group reads the month), and no expectation moves.
 
 Measured (every rule test and stored household, old ledger against new): CO-530 August and September (none to child, ineligible_income to eligible), CO-531 October (none to child, ineligible_income to eligible) and CO-533 August and September (aged to none), the fix; nothing else. CO-531 now also states the continuous eligibility exceptions and his expected annual income, which the child path reads in October. CO-533 asserts October as aged (8.100.5.C.1), which the audit had left open. Four household expectations of items now per month (CO-06 ma_is_aged, CO-147 CO-564, CO-149 CO-549, CO-203 CO-550) are keyed by their determination month with the same values. Rule tests of the re-scoped items carry the determination month; those that stated `age` also state the month ages. CO-530, CO-531 and CO-533 leave known-failures.json.
+
+### T-7: the BCCP age limit's name (fixed)
+
+`ma_bccp_max_age` (CO-1130) is renamed `ma_bccp_age_limit`: "has not yet attained the age of 65" (S608) is an exclusive limit, which conventions rule 8 names `_age_limit`, and CO-1152 already compared it with "under". A rename only: measured, no value moves.

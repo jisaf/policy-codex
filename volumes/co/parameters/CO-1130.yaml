@@ -1,6 +1,6 @@
 id: CO-1130
 name: "BCCP age limit"
-identifier: ma_bccp_max_age
+identifier: ma_bccp_age_limit
 kind: parameter
 type: whole number
 scope: global
@@ -10,4 +10,5 @@ value: 65
 sources: [S608, S612]
 tags: [ma, age]
 nearest: [CO-237]
+precision: "An exclusive limit (\"has not yet attained the age of 65\"), so it is named _age_limit (conventions rule 8) and compared with \"under\" (ma_bccp_eligibility_status, CO-1152). Time audit T-7: it was named ma_bccp_max_age, which by rule 8 reads as an inclusive maximum, though the comparison was already \"under\"."
 rationale: "No existing parameter states the BCCP age limit. ma_aged_age (CO-237) is also 65 but is the SSI-related aged-category floor from a different text, and the two could diverge. ma_bccp_eligibility_status (CO-1152) needs it."
