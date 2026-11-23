@@ -19,3 +19,5 @@ tests:
   # Size 15, the largest household 3.751.2.C allows: $11,541.
   - {id: CO-1003-T3, as_of: "2027-02-01", month: "2027-02", given: {leap_household_income: 11541, leap_household_size: 15}, expect: true}
   - {id: CO-1003-T4, as_of: "2027-02-01", month: "2027-02", given: {leap_household_income: 11600, leap_household_size: 15}, expect: false}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-1003-T5", "month": "2026-11", "as_of": "2026-11-01", "title": "T-9: leap_household_income equal to [\"lookup\",[\"as_of\",\"leap_income_limit_monthly\",[\"det_date\"]],\"leap_household_size\"] (leap_household_income at or under [\"lookup\",[\"as_of\",\"leap_income_limit_monthly\",[\"det_date\"]],\"leap_household_size\"])", "given": {"leap_household_income": 4936, "leap_household_size": 2}, "expect": true}

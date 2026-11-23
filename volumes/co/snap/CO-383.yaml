@@ -20,3 +20,5 @@ tests:
   - {id: CO-383-T5, title: "Final verification F-11: seventeen persons, 1,841 + 9 x 225 = 3,866", as_of: "2026-10-01", given: {snap_eligible_household_size: 17}, expect: 3866}
   - {id: CO-383-T6, title: "Final verification F-11: eighteen persons take the 18+ figure, 3,887 (not 4,091)", as_of: "2026-10-01", given: {snap_eligible_household_size: 18}, expect: 3887}
   - {id: CO-383-T7, title: "Final verification F-11: twenty persons, still 3,887", as_of: "2026-10-01", given: {snap_eligible_household_size: 20}, expect: 3887}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-383-T8", "as_of": "2026-10-01", "title": "T-9: snap_eligible_household_size equal to snap_maximum_allotment_large_household_size (snap_eligible_household_size at or over snap_maximum_allotment_large_household_size)", "given": {"snap_eligible_household_size": 18}, "expect": 3887}

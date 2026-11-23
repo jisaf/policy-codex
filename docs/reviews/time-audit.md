@@ -275,3 +275,24 @@ Decided from product-owner decision 4 (missing information is "cannot determine"
 Applied to every listed item, closed at 2027-01-01, with `review_by` added where it was missing: CO-289, CO-291, CO-1200, CO-1201, CO-1202, CO-4730, CO-807, CO-808, CO-827, CO-828, CO-830, CO-831, CO-832, CO-887, CO-3022 (CO-1513 is now derived, T-2). For the same rule, the other yearly figures with an open latest version: the SSA 2027 figures CO-235, CO-236, CO-1802, CO-1803, CO-3379, CO-3380 (closed at 2028-01-01, `review_by` 2027-11-01, SSA's notice); the SNAP federal fiscal year 2027 figures CO-110 to CO-114, CO-118, CO-119, CO-122, CO-123, CO-130 to CO-135, CO-1235 to CO-1238, CO-3043 and CCCAP's 85% SMI table CO-1804, CO-1805 (closed at 2027-10-01); the Buy-In premium tables CO-2457, CO-2458, re-based each State fiscal year (closed at 2027-07-01). The poverty guideline (CO-181, CO-182, CO-3625) stays open with `review_by`, being in force until the next is published.
 
 Measured: two values move, CO-114's January 2027 QMB eligibility and MSP category (true and qmb to cannot determine), because the 2026 MSP resource limit no longer answers 2027. CO-114 tests the cost-of-living disregard, so it now states the 2026 limit under `parameters:` with the reason (any 2027 limit above her $3,000 gives the same answer), and its expectations are unchanged. No other stored household or rule test reads a closed figure past its year.
+
+### T-9: rule tests at the limit (fixed for the eligibility gates and benefit amounts)
+
+129 rule tests in 77 items, each stating one side of a threshold comparison equal to the other, so that the comparison's strict/inclusive flip changes the item's answer. The items are the eligibility gates and benefit amounts first (identifiers naming eligibility, a category or status, an income or resource test, a grant, allotment, benefit, premium or fee): the income and resource limits of every program, the age gates of the Medicaid groups, the verification due dates, the presumptive eligibility standards. Each test starts from a passing rule test of the item that reaches the comparison and states the one value; its expectation is the item's answer with the two sides equal, the side the audit's wording check (section 4 of the generated report, "Checked and found consistent") confirmed for these limits ("does not exceed" as at or under; "less than" and "equals or exceeds" as under). Adult Financial unearned income (CO-946, CO-3831), which the receipt-records track is migrating, is left out.
+
+Mutation score (`npm run boundaries -- --only coverage,mutation`), comparison flips killed, before and after:
+
+| Program | Flips | Killed before | Killed after | Score before (killed / all) | Score after |
+|---|---|---|---|---|---|
+| AdultFinancial | 93 | 34 | 49 | 63% | 72% |
+| All (shared) | 25 | 5 | 5 | 35% | 35% |
+| CCCAP | 33 | 15 | 20 | 81% | 86% |
+| CHP+ | 44 | 8 | 19 | 49% | 65% |
+| ColoradoWorks | 63 | 30 | 33 | 70% | 73% |
+| LEAP | 26 | 11 | 12 | 71% | 73% |
+| Medicaid | 233 | 65 | 121 | 54% | 69% |
+| SNAP | 156 | 62 | 78 | 67% | 72% |
+| SunBucks | 13 | 5 | 6 | 58% | 63% |
+| **all** | 686 | 235 | 343 | 62% | 71% |
+
+(The score columns count the arm swaps too: 523 of 540 killed before, 524 after.) The 327 flips that still survive are listed in the regenerated report; most are in items that are not gates (verification counts, household composition, shared definitions) or are compared to an expression no rule test states directly.

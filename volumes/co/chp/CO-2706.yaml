@@ -24,3 +24,5 @@ tests:
   - {id: CO-2706-T7, as_of: "2026-10-01", title: "Undocumented", given: {immigration_status: undocumented}, expect: false}
   - {id: CO-2706-T8, as_of: "2026-10-01", title: "American Indian born in Canada (B.4.g)", given: {immigration_status: undocumented, is_american_indian_born_in_canada_or_tribal_member: true}, expect: true}
   - {id: CO-2706-T9, as_of: "2026-10-01", title: "Trafficking victim, spouse of an active-duty member (B.4.b)", given: {immigration_status: trafficking_victim, has_military_connection: true}, expect: true}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-2706-T10", "as_of": "2026-10-01", "title": "T-9: us_entry_date equal to iraqi_afghan_special_immigrant_entry_start_date (us_entry_date at or over iraqi_afghan_special_immigrant_entry_start_date)", "given": {"immigration_status": "iraqi_afghan_special_immigrant", "us_entry_date": "2007-12-26"}, "expect": true}
