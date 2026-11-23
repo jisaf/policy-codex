@@ -2741,3 +2741,13 @@ Owner: Medicaid policy owner
 Assumption: The holdings a case states are the determination date's and stand for every month the determination evaluates; the lump-sum exclusion is counted to the determination month.
 
 Checked 2026-11-23: 10 CCR 2505-10 § 8.100.3.E.1-2 and § 8.100.5.F.6.c (D-65); neither says on which date a retroactive month's resources are valued, and no fetched Colorado text adopts SSI's first-moment-of-the-month valuation for retroactive months. Items: CO-800.
+
+### OQ-953. Cash programs: whether the first day counts in "N consecutive days"
+
+Body: Time audit T-6. Colorado Works counts a client temporarily out of the State as in the home if the absence does "not exceed ninety (90) consecutive days", and a resident of an institution after "at least thirty (30) consecutive days" (9 CCR 2503-6 3.604.2.O, S2602); Adult Financial limits the personal needs allowance to a resident of "at least thirty (30) consecutive days" (3.532.D, 3.543.D, 3.548.D; S1008 to S1010) and presumes non-residence after "thirty (30) or more consecutive days" out of the country and "ninety (90) or more" out of the State (9 CCR 2503-5 3.520.64.E, S3201); the Home Care Allowance reads a thirty-day absence or stay. None says whether the day of departure or entry is one of the N days. The codex counts the days elapsed since it (days_between), so the day itself is not counted: a client who left on August 1 has been away ninety days on October 30 and is within the Colorado Works limit through that day. Counted the other way, October 30 would be the 91st day and the client would be out of the home a day earlier, and each "at least thirty days" would be met a day earlier. The readers are cw_meets_residency (CO-904), cw_is_institution_resident (CO-3804), cw_assistance_unit_members_for_size (CO-2351), af_resides_in_psychiatric_facility_thirty_consecutive_days (CO-2006), af_resides_in_care_facility_thirty_consecutive_days (CO-1510), af_hca_eligibility_status (CO-1217) and af_is_presumed_nonresident_by_absence (CO-4401); each states the reading in its precision.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A period of N consecutive days is counted from the day after the absence or stay began, so the day of departure or entry is not counted.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.604.2.O (D-81); 9 CCR 2503-5 3.520.64.E, 3.532.D, 3.543.D, 3.548.D (D-80). None defines how consecutive days are counted, and neither volume has a general rule on computing periods of days. Items: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401.

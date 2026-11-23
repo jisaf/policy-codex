@@ -263,3 +263,7 @@ Measured (every rule test and stored household, old ledger against new): CO-530 
 ### T-8: the retroactive lump-sum window in SSI-method resources (fixed in part; OQ-952)
 
 The nine months are a parameter, `ssi_retroactive_benefit_exclusion_months` (CO-5403, 9, § 8.100.5.F.6.c, S3404), "following receipt": the months after the month of receipt, through the ninth, as CO-800 already counted them. The window stays measured to the determination month, now stated in CO-800's precision: the item is the determination date's resources, read from holdings each case states once, and its readers are per person, so the window and the holdings it applies to are the same date. Valuing a retroactive month's resources separately would make the resource facts and their readers per month, which the non-MAGI fix round owns; the assumption and its effect are OQ-952. Measured: no value moves.
+
+### T-6: consecutive days (one convention, stated per item; OQ-953)
+
+None of the texts (3.604.2.O, S2602; 3.532.D, 3.543.D, 3.548.D, S1008 to S1010; 3.520.64.E, S3201) says whether the day of departure or entry is one of the N days. The volume keeps one convention, now written beside P47 in docs/conventions.md: "N consecutive days" is the days elapsed since the day the absence or stay began (`days_between`), the day itself not counted. Each reader states its reading and the example date in its precision and carries OQ-953: CO-904, CO-3804, CO-2351, CO-2006, CO-1510, CO-1217, CO-4401. Measured: no value moves.

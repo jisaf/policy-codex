@@ -239,7 +239,7 @@ Added for verification deadlines (phase 9)
 
 Added for SNAP initial-month proration (phase-10 open-question sweep)
 
-- P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown
+- P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown. A period of "N consecutive days" since an absence or a stay began is counted with P47 from the day it began, so the day of departure or entry is not itself counted: "at least 30 consecutive days" is `days_between(start, date) >= 30` and "not more than 90" is `<= 90`. One convention for the volume (time audit T-6); none of the texts says whether the first day counts, recorded as OQ-953, and each reader's precision states its reading
 
 Added for the HCPF stakeholder fix round (Buy-In premiums re-based each state fiscal year)
 

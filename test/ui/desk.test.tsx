@@ -89,7 +89,7 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 105, 48, 35, 20]); // + OQ-951 (time audit T-1); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 105, 48, 35, 21]); // + OQ-951 (time audit T-1), OQ-953 (T-6); coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
