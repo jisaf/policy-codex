@@ -60251,8 +60251,8 @@
         has_self_employment_seasonal_or_commission_earnings: false
         lives_full_time_with_care_recipient: true
         care_recipient_receives_hcbs_waiver_services: true
-        difficulty_of_care_foster_individuals_under_19: 0
-        difficulty_of_care_foster_individuals_19_or_older: 0
+        difficulty_of_care_younger_foster_individuals: 0
+        difficulty_of_care_older_foster_individuals: 0
       month_defaults:
         lottery_gambling_winnings_received: 0
         wages_gross: 2400
