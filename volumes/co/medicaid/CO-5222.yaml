@@ -1,0 +1,18 @@
+id: CO-5222
+name: "Medicaid: parental income deemed to a Pickle child"
+identifier: ma_pickle_parental_income_deemed
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The income of this child's ineligible parents deemed to the child for the Pickle test (10 CCR 2505-10 §§ 8.100.6.D-E): as ma_ssi_parental_income_deemed (CO-4626), from the parents' countable income with their OASDI cost-of-living increases since the child lost SSI disregarded (ma_pickle_deeming_parents_countable_income, § 8.100.6.E.3), less the Ineligible Parent(s) Allocation, divided equally among the blind or disabled children sharing it; zero when no parent's income is deemed."
+precision: "The same derivation as CO-4626, reading CO-5221 instead of CO-4634 (siblings)."
+derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, ["/", [max, 0, ["-", ma_pickle_deeming_parents_countable_income, [case, [[">=", [count, ma_ssi_deeming_parents], 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]], [max, 1, [count, ma_ssi_deeming_children]]]]]
+sources: [S3405, S3413, S3415, S666]
+implemented: engine
+tags: [ma, non_magi, income, household]
+rationale: "Coverage review NM-17 (parent half) and the Pickle child under 18 with ineligible parents, deferred P2s (fix round 2026-11-23): added to the Pickle countable income (CO-1158), which had counted no deemed parental income for a child."
+nearest: [CO-4626]
+siblings: [{id: CO-4626, reason: "the same deeming arithmetic over the Pickle parents' income (CO-5221); every other term must stay the same"}]
+tests:
+  - {id: CO-5222-T1, as_of: "2026-10-12", month: "2026-10", title: "One parent, 2,207.5 countable less the individual FBR 994: 1,213.5", given: {ma_ssi_deeming_parents: [p2], ma_pickle_deeming_parents_countable_income: 2207.5, ma_ssi_deeming_children: [p1]}, others: {}, relationships: [], expect: 1213.5}

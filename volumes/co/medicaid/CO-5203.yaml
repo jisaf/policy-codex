@@ -1,0 +1,20 @@
+id: CO-5203
+name: "Medicaid: home is subject to estate recovery"
+identifier: ma_home_is_subject_to_estate_recovery
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person's home is subject to estate recovery for the medical assistance the person would receive under a full-coverage aged, blind or disabled group, so that a recorded beneficiary deed makes it countable (10 CCR 2505-10 § 8.100.5.M.2.a.xiv, M.3.e): the person is ma_estate_recovery_min_age or older, or lives in a medical institution (42 U.S.C. 1396p(b)(1)(A)-(B))."
+precision: "1396p(b)(1) allows no recovery from anyone else. Its (A) is an inpatient of a nursing facility or other medical institution whom the State finds cannot reasonably be expected to be discharged and return home (1396p(a)(1)(B)); resides_in_medical_institution stands for it, since the volume states no such finding (if not stated, read as not in an institution, as ma_home_is_countable_resource reads it). Medicare cost-sharing and the Medicare Savings Program benefits are never recovered (1396p(b)(1)(B)(ii)); the Medicare Savings Program tests read ma_msp_countable_resources (CO-5206), which leaves the beneficiary-deed home out (OQ-900)."
+derived: [any, [">=", age, ma_estate_recovery_min_age], [otherwise, resides_in_medical_institution, false]]
+sources: [S3751, S3403]
+open: [OQ-900]
+implemented: engine
+tags: [ma, non_magi, resources, age, legal]
+rationale: "Coverage pass 3 C3-5: ma_home_is_countable_resource (CO-4622) read every home as subject to estate recovery, so a disabled applicant of 40 living at home lost the home exemption to a beneficiary deed although nothing paid on her behalf can be recovered."
+nearest: [CO-4622]
+tests:
+  - {id: CO-5203-T1, as_of: "2026-10-12", title: "40, at home: not subject to recovery", given: {date_of_birth: "1986-04-01", resides_in_medical_institution: false}, expect: false}
+  - {id: CO-5203-T2, as_of: "2026-10-12", title: "76, at home", given: {date_of_birth: "1950-03-01", resides_in_medical_institution: false}, expect: true}
+  - {id: CO-5203-T3, as_of: "2026-10-12", title: "40, in a nursing facility", given: {date_of_birth: "1986-04-01", resides_in_medical_institution: true}, expect: true}

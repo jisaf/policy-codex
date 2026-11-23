@@ -1,10 +1,10 @@
-# Receipt records harness: ledger at 41ec04b4d62c vs the ledger on disk
+# Receipt records harness: ledger at 82a29d0c2e86 vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 23 s.
+Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 22 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 297 | 74176 | 6 | 2 | 6 | 0 |
+| stored households | 316 | 77605 | 6 | 2 | 6 | 0 |
 | generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
 
 Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-458, CO-459, CO-460.
@@ -24,10 +24,10 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 474 | 0 |
-| MA-2 order | 474 | 0 |
-| MA-3 month | 474 | 0 |
-| MA-4 residual | 474 | 0 |
+| MA-1 split | 487 | 0 |
+| MA-2 order | 487 | 0 |
+| MA-3 month | 487 | 0 |
+| MA-4 residual | 487 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
@@ -246,4 +246,3 @@ allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time
 - CO-222 p1 2027-03: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
 - CO-222 p1 2027-04: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
 - CO-222 p1 2027-05: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
-- CO-412 p1 2027-01: parts exceed other_unearned_income by 20

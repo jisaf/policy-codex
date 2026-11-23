@@ -1,0 +1,19 @@
+id: CO-5219
+name: "Medicaid: in the Legal Immigrant Prenatal population"
+identifier: ma_is_legal_immigrant_prenatal_population
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is a lawfully residing non-citizen whom 10 CCR 2505-10 § 8.100.4.G.6 calls Legal Immigrant Prenatal when pregnant: lawfully present (ma_is_lawfully_present) and not a citizen or national, and not a qualified non-citizen who has held that status for five years (has_held_qualified_status_five_years)."
+precision: "G.6's \"has been in the United States for less than five years\" is read as the five-year measure of 8 U.S.C. 1613 the volume already applies (qualified status held five years); a lawfully residing non-citizen who is not a qualified non-citizen reaches Medical Assistance as a pregnant woman only through this population (ma_meets_citizenship_requirement's lawfully-present arm), whatever the time in the country. Read only for the pregnancy coverage period (ma_is_in_pregnancy_coverage_period, CO-566)."
+derived: [all, [not, is_us_citizen_or_national], ma_is_lawfully_present, [not, [all, is_qualified_non_citizen, has_held_qualified_status_five_years]]]
+sources: [S3755]
+implemented: engine
+tags: [ma, magi, immigration]
+rationale: "Coverage review (MAGI and CHP+) F-16, deferred P2 (fix round 2026-11-23): G.6.a's ending events apply to this population's guaranteed period, and no item named it."
+nearest: [CO-507, CO-509]
+tests:
+  - {id: CO-5219-T1, as_of: "2026-10-01", title: "LPR for two years", given: {immigration_status: lawful_permanent_resident, qualified_status_date: "2024-10-01"}, expect: true}
+  - {id: CO-5219-T2, as_of: "2026-10-01", title: "Citizen", given: {immigration_status: us_citizen}, expect: false}
+  - {id: CO-5219-T3, as_of: "2026-10-01", title: "LPR for six years", given: {immigration_status: lawful_permanent_resident, qualified_status_date: "2020-09-01"}, expect: false}

@@ -1,0 +1,209 @@
+# Time audit and generated boundary cases
+
+Step 6 of the plan of 2026-11-23 (docs/plan-colorado.md, "Product-owner decisions: plan for a trustworthy, approvable codex"). Reviewed at 41ec04b, 2026-11-23. Read-only on rules: no item was changed. Two parallel tracks are editing items (the receipt-records migration of LEAP, SNAP and Adult Financial unearned income, and a non-MAGI Medicaid and Adult Financial fix round). This review hands its findings to the fix round (step 7).
+
+What this pass added:
+
+- `scripts/boundaries.ts` (`npm run boundaries`). It is typechecked, read-only and uses the reference evaluator unchanged. It has four sections: an inventory of dates, ages, periods and parameter versions; branch coverage; a mutation score; and generated boundary variations. Its full output is in [time-audit-generated.md](time-audit-generated.md), regenerated with `npm run boundaries -- --today 2026-11-23 --out docs/reviews/time-audit-generated.md`.
+- Six stored cases, CO-530 to CO-535, in `volumes/co/tests/cases.yaml`. Each expectation is derived by hand from the text, with the arithmetic in the case comment. All six still fail, and their 14 failing expectations are in `conformance/known-failures.json`, keyed below to the finding each one shows.
+
+No parameter version was added. The documents already fetched hold no stated figure that a parameter lacks: the 2027 SSA amounts in D-166 (S1712, S3700) are already loaded. The ISM and Adult Financial figures that are due for 2027 are not stated in any fetched document (T-2, T-5).
+
+## Findings
+
+P1 means the finding changes an answer. P2 covers maintainability or approval risk.
+
+| # | P | Finding | Items | Case |
+|---|---|---|---|---|
+| T-1 | P1 | Ages are measured on the determination date or month in months that are determined separately: retroactive months, and an application month before the determination month | MAGI: CO-564, CO-4550, CO-4790, CO-4978, CO-549, CO-550, CO-539, CO-548, CO-552, CO-544, CO-500, CO-509. Non-MAGI: CO-600, CO-1161, CO-1162, CO-1179, CO-1152, CO-618, CO-620, CO-654, CO-2419, CO-800 | CO-530, CO-531, CO-533 |
+| T-2 | P1 | The Adult Financial maximum ISM keeps its 2026 figure in 2027, although the rule's own formula gives the 2027 figure from the 2027 SSI rate | CO-1513 (read by CO-1512, CO-946) | CO-534 |
+| T-3 | P1 | Parameter versions are chosen by the determination date in retroactive months that fall in an earlier version's year, so a 2026 retroactive month of a 2027 application uses the 2027 SSI rate | ssi_federal_benefit_rate_individual/couple (CO-235, CO-236) through ma_ssi_income_standard; every yearly figure a Medicaid retroactive month reads | CO-532 |
+| T-4 | P1 | Lottery winnings a few cents below $80,000 (and below $90,000, $100,000, ...) land in the next spread band | CO-1185 (floor CO-1183) | CO-535 |
+| T-5 | P2 | Yearly figures with an open-ended version answer later years silently with the old figure; others are closed at year end. The convention is not consistent | CO-1513, CO-289, CO-291, CO-1200, CO-1201, CO-1202, CO-4730 (no review_by); CO-807, CO-808, CO-827, CO-828, CO-830, CO-831, CO-832, CO-887, CO-3022 (review_by 2027-01-01) | none (no 2027 figure is published where it can be fetched) |
+| T-6 | P2 | "N consecutive days" is counted as the days elapsed (`days_between`) with no stated convention, so the two readings differ by one day at every such limit | CO-904, CO-3804, CO-2006, CO-1510, CO-1217, CO-2351, CO-4401 | none (the text does not settle it) |
+| T-7 | P2 | `ma_bccp_max_age` is named as an inclusive maximum but compared as an exclusive limit (conventions rule 8). The answer is right | CO-1130, CO-1152 | none |
+| T-8 | P2 | SSI-method resources exclude a retroactive benefit for a literal 9 months, measured to the determination month in a person-scope item | CO-800 | none |
+| T-9 | P2 | Comparisons are rarely tested at the limit: 393 of 686 comparisons are never evaluated with both sides equal, and 436 strict/inclusive flips on reached nodes go unnoticed by every test | all programs (lists in the generated report) | none |
+
+### T-1 (P1): ages taken on the determination date or month in other months
+
+42 CFR 435.915(a) (S218) makes Medicaid effective in a retroactive month for a person who "(2) Would have been eligible for Medicaid at the time he received the services if he had applied". 10 CCR 2505-10 § 8.100.4.G.1 (S3351) gives MAGI coverage month by month: "any person who is determined to be eligible for Medical Assistance based on MAGI at any time during a calendar month shall be eligible for benefits during the entire month." Each month's age conditions are therefore the person's age in that month.
+
+The codex measures them otherwise. `age` (CO-300) is "as of the determination date", and docs/operators.md states that "a past month's 'child under 22' uses today's age". The birthday-month items CO-564, CO-4550, CO-4790, CO-4978 and CO-549 anchor on `det_month`: CO-564 "the person was under ma_magi_child_age_limit on the last day of the month before the determination month". Every Medicaid month a determination covers therefore uses the age of the determination month. That includes the retroactive months (CO-4101, CO-557) and an application month earlier than the determination month, which is the usual case for an application received late in a month. The inventory (generated report, "Ages") lists 92 comparisons that take an age on the determination date or month inside a per-month determination. The Medicaid ones above are the ones whose months differ from the determination month in practice.
+
+Confirmed on stored cases:
+
+- **CO-530.** Born 2007-09-15, applies 2026-11-10 with retroactive coverage, earns $1,850 a month: 139.10% of the 2026 guideline (1,850 / 1,330). August (age 18) and September (the birthday month) are the Children's group at 142%, so the right answer is child and eligible. The codex gives none and ineligible_income: on 2026-10-31 she is 19, the Adults standard is 133%, and 139.10 - 5 = 134.10% is still over it. A control born 2008 gives child and eligible.
+- **CO-531.** Born 2007-10-20, applies 2026-10-28 and is determined 2026-11-05. October, the application month and the birthday month, should be child and eligible. The codex gives none and ineligible_income.
+- **CO-533.** Born 1961-10-20, not disabled, applies 2026-11-05 with retroactive coverage. August and September (age 64) should be none. The codex gives aged, because it uses the age on 2026-11-12.
+
+SNAP's ABAWD rules (CO-412, CO-416) and community engagement (CO-1969) already measure to `[first_day, [month]]`. Fix direction: the Medicaid month-by-month age conditions measure to the month being determined, so the birthday-month idiom becomes "under the limit on the last day before the month evaluated". The `age` primitive stays the determination-date age for rules that are about one date. OQ-510 (the October 2026 alien payment limit applied by determination date, not month of service) is the same pattern, already recorded as an open question.
+
+The same exposure exists in Colorado Works and Adult Financial wherever an application month is prorated in a later determination month (cw_is_dependent_child CO-901, af_is_oap_age CO-940). It also affects the later months that stored households evaluate: CO-05's comment records that p3 "is still evaluated as 16" in April 2027. Neither of these is confirmed by a case here.
+
+### T-2 (P1): the Adult Financial maximum ISM in 2027
+
+9 CCR 2503-5 3.520.79.E.2 (S1012): "The ISM is calculated by multiplying the current SSI benefit standard, as defined in Section 3.510, by 33.33%, then adding a $20.00 disregard and rounding to the nearest whole dollar." The rule's dated figures follow the formula: 994 × 0.3333 + 20 = 351.30, giving 351 for 2026 (S700); 967 × 0.3333 + 20 = 342.30, giving 342 for 2025 (S1020). SSA's 2027 rate is $1,029 (91 FR 67380, S1712), so from 2027-01-01 the formula gives 1,029 × 0.3333 + 20 = 362.97, which rounds to $363.
+
+`af_ism_maximum` (CO-1513) has an open version from 2026-01-01 at $351 and no review_by. Its precision says "the rule states each year's figure", but no fetched document states the 2027 figure, so no version could be added.
+
+**CO-534** is CO-166 determined on 2027-01-05. The rule gives ISM 363 and countable income 600 + 363 - 20 = 943; the codex gives 351 and 931. Fix direction: derive the maximum from `ssi_federal_benefit_rate_individual` by E.2, or close the 2026 version at 2027-01-01 so that 2027 is "cannot determine" until the rule's figure is loaded.
+
+### T-3 (P1): parameter versions in retroactive months of another year
+
+docs/operators.md, Resolution step 2: "The version is chosen by the determination date even when the expression is evaluating another month (an ABAWD look-back, a retroactive month, a future month of a case); a rule that applies a figure from another date says so with `as_of`." No Medicaid SSI-method or MAGI rule reads a figure `as_of` the month being determined. The only `[month]`-anchored `as_of` is the MSP COLA disregard's publication date. As a result, the 2025 versions added so that "a 2026 application's retroactive months in late 2025 have a figure" (open-questions.md, the HCPF F-2 entry) are chosen only when the determination date itself is in 2025, never for a 2025 retroactive month of a 2026 determination. A retroactive month is judged by its own month's standards (435.915(a)(2), above).
+
+**CO-532.** Aged, applies 2027-01-05 with retroactive coverage, so the retroactive months are November and December 2026 (two months after 2027-01-01, CO-2472). Social Security is $1,020 in 2026 and $1,048 in 2027. For November and December the rule gives none, because 1,020 - 20 = 1,000 is over the 2026 rate of 994 (S319). For January it gives aged: 1,028 is at or under 1,029. The codex compares November and December with 1,029 and gives aged. The same applies to the poverty guideline once a 2027 table is loaded (OQ-515 keeps it dated from January 1), and to SGA, the MSP and spousal figures.
+
+### T-4 (P1): lottery winnings just under a band edge
+
+42 U.S.C. 1396a(e)(14)(K)(i) (S1234) counts winnings "(I) in the month in which such winnings ... is received if the amount ... is less than $80,000; (II) over a period of 2 months if ... greater than or equal to $80,000 but less than $90,000". CO-1185 compares with `ma_lottery_winnings_spread_floor` = 79,999 and counts started $10,000 steps above it. Its precision says this "matches at every boundary ($79,999 is one month, $89,999 two ...)", which is true for whole dollars only. The generator found the gap by stepping one cent above T = 79,999.
+
+The Colorado text (S669) says "less than $79,999" and "over $79,999 but less than $89,999", so cents between the two figures fall to the federal rule.
+
+**CO-535.** $89,999.50 should spread over 2 months and $79,999.50 over 1. The codex gives 3 and 2. Fix direction: compare against $80,000 with `<` (or state the floor as 80,000 and use the federal "less than" form).
+
+### T-5 (P2): yearly figures with an open version
+
+Each of these is published once a year. The latest version is open-ended, so a 2027 date gets the 2026 figure with no warning:
+
+- `af_oap_grant_standard` (CO-289), `af_and_cs_grant_standard` (CO-291), and the payment floors CO-1200, CO-1201 and CO-1202. 3.510 updates the floors "annually with the cost-of-living adjustment" (CO-1200 precision).
+- `af_ism_maximum` (CO-1513): see T-2.
+- `colorado_minimum_wage` (CO-4730): the 2027 PAY CALC Order.
+
+These have no review_by. The CMS and HCPF figures CO-807, CO-808, CO-827, CO-828, CO-830, CO-831, CO-832, CO-887 and CO-3022 have review_by 2027-01-01, so governance warns from that date, but evaluation still answers with 2026 figures. Stored case CO-114 (2027-01-20) already reads CO-807's 2026 figure.
+
+The SSA-indexed figures (CO-235, CO-236, CO-1802, CO-1803, CO-3379, CO-3380) were closed at year end and then given 2027 versions, and the SUN Bucks table has no row for an unpublished summer. Both of those give "cannot determine" rather than a stale answer.
+
+Recommendation: one rule for a figure that by law lasts a calendar year (or a state fiscal year). Close each version at its end (`to:`) and add review_by, so that a later date is "cannot determine" with a `no-version` warning until the new figure is loaded. None of the 2027 figures above is in a fetched document, so none could be added here.
+
+The parameter inventory (generated report, section 1) also lists:
+
+- the closed versions: the CW standards to 2028-07-01 (SB 26-181, no COLA through SFY 2027-28) and the LEAP limit to 2027-11-01;
+- the empty-version figures awaiting the State (LEAP benefit range and rate, CCCAP county limits);
+- the open versions from before 2026. By their meanings these are figures the rule fixes rather than indexed figures; CO-118, CO-1514, CO-290, CO-1227, CO-1228 and CO-3876 were spot-checked against their excerpts.
+
+### T-6 (P2): consecutive days
+
+9 CCR 2503-6 3.604.2.O (S2602): "The client's temporarily out of the State status shall not exceed ninety (90) consecutive days" and "A client shall be considered a resident in an institution when the recipient's stay is at least thirty (30) consecutive days". CO-904 allows `days_between(start, determination date) <= 90`. For a client who left on August 1, that is October 30, the 91st calendar day counting the day of departure. CO-3804 needs `days_between >= 30`, which is the 31st calendar day of the stay.
+
+Whether the first day counts is a convention P47 does not state ("the number of days from [date] to [date]"). CO-2006, CO-1510, CO-1217, CO-2351 and CO-4401 have the same shape. Each item's precision should say whether the day of departure or entry counts, and the volume should use one convention.
+
+### T-7 to T-9 (P2)
+
+- **T-7.** CO-1130 `ma_bccp_max_age` = 65 is "the age before which" a woman must be ("has not yet attained the age of 65", S608), and CO-1152 compares `age < ma_bccp_max_age`. The behavior is right, but by conventions rule 8 the name says inclusive. It should be `ma_bccp_age_limit`. This is the only age-name and operator mismatch the script finds.
+- **T-8.** CO-800 excludes a retroactive SSI or Social Security payment while `det_month <= months_after(9, receipt month)`. The 9 is a literal (the hard-coded numbers audit missed it), and because the item is person-scope the window is measured to the determination month in every month (T-1).
+- **T-9.** See the coverage and mutation tables below. The surviving flips are listed in the generated report: a rule test at the limit would decide each one.
+
+### Checked and found consistent
+
+These are where the boundary or the date is right, so a reader does not repeat the work:
+
+- The MAGI, CHP+, SNAP, CCCAP, LEAP and SUN Bucks income limits ("does not exceed" with `<=`).
+- Colorado Works (`<` with 3.606.1.J.4, "equals or exceeds the need standard").
+- The Adult Financial grant standards (`<`, "equals or exceeds ... shall be denied").
+- QDWI ("less than 200%").
+- Needy persons under 21 ("less than", OQ-512).
+- SNAP expedited service ("less than $150", "do not exceed $100").
+- The SNAP standard medical deduction band (OQ-353).
+- The verification due dates (pending through the due date, past due the day after).
+- The postpartum and CHP+ prenatal end months ("the last day of the month 12 months after").
+- The children's continuous eligibility end month (start + 11).
+- The needy newborn (whole month, first birthday).
+- The CHP+ newborn guarantee (to the day before the first birthday, as recorded).
+- The SUN Bucks summer year (a 2027 summer is "cannot determine" with a lookup-miss, by design).
+- `af_is_oap_age`'s birthday-month transition.
+
+## Coverage of the stored households and rule tests
+
+Branches are:
+
+- each `case` arm, `else` included;
+- each side of an `otherwise`, meaning the fact was stated or the default was taken;
+- each outcome of a threshold comparison.
+
+"At boundary" counts comparisons that some test evaluates with both sides equal. Measured over 4,103 rule tests and 3,759 household expectations, with CO-530 to CO-535 included. Instrumentation changed no value (checked on every unit).
+
+| Program | `case` arms | rule tests | households | either | `otherwise` sides | either | comparison outcomes | either | comparisons at boundary |
+|---|---|---|---|---|---|---|---|---|---|
+| AdultFinancial | 198 | 169 (85%) | 115 (58%) | 175 (88%) | 364 | 291 (80%) | 186 | 130 (70%) | 39/93 (42%) |
+| All (shared) | 17 | 15 (88%) | 9 (53%) | 16 (94%) | 106 | 95 (90%) | 50 | 32 (64%) | 10/25 (40%) |
+| CCCAP | 168 | 136 (81%) | 119 (71%) | 150 (89%) | 214 | 187 (87%) | 66 | 49 (74%) | 20/33 (61%) |
+| CHP+ | 86 | 69 (80%) | 44 (51%) | 73 (85%) | 30 | 25 (83%) | 88 | 62 (70%) | 12/44 (27%) |
+| ColoradoWorks | 153 | 129 (84%) | 101 (66%) | 140 (92%) | 296 | 251 (85%) | 126 | 93 (74%) | 37/63 (59%) |
+| LEAP | 73 | 62 (85%) | 45 (62%) | 65 (89%) | 176 | 158 (90%) | 52 | 40 (77%) | 14/26 (54%) |
+| Medicaid | 473 | 400 (85%) | 282 (60%) | 415 (88%) | 524 | 428 (82%) | 466 | 363 (78%) | 81/233 (35%) |
+| SNAP | 320 | 266 (83%) | 200 (63%) | 288 (90%) | 448 | 390 (87%) | 312 | 225 (72%) | 75/156 (48%) |
+| SunBucks | 22 | 19 (86%) | 14 (64%) | 21 (95%) | 42 | 38 (90%) | 26 | 18 (69%) | 5/13 (38%) |
+| **all** | 1,510 | 1,265 (84%) | 929 (62%) | 1,343 (89%) | 2,200 | 1,863 (85%) | 1,372 | 1,012 (74%) | 293/686 (43%) |
+
+167 `case` arms are reached by no test, and 331 comparisons have an outcome no test reaches. Both lists, by item, are in the generated report.
+
+## Mutation score
+
+Two kinds of mutant were run:
+
+- each threshold comparison flipped between strict and inclusive (`<`/`<=`, `>`/`>=`);
+- each `case` of two or more arms with the results of its first two arms swapped.
+
+A mutant is killed when some test that reaches the mutated node, and passes on the ledger, fails. At most 150 reaching tests were run per mutant (own rule tests first). 33 survivors are reached by more than 150 tests and were judged on the first 150; they are marked "sampled" in the generated report.
+
+| Program | Comparison flips | killed | unreached | Arm swaps | killed | Score (killed / all) | Score (killed / reached) |
+|---|---|---|---|---|---|---|---|
+| AdultFinancial | 93 | 34 | 3 | 74 | 71 | 63% | 64% |
+| All (shared) | 25 | 5 | 1 | 6 | 6 | 35% | 37% |
+| CCCAP | 33 | 15 | 0 | 62 | 62 | 81% | 81% |
+| CHP+ | 44 | 8 | 2 | 28 | 27 | 49% | 50% |
+| ColoradoWorks | 63 | 30 | 2 | 50 | 49 | 70% | 71% |
+| LEAP | 26 | 11 | 0 | 26 | 26 | 71% | 71% |
+| Medicaid | 233 | 64 | 5 | 160 | 148 | 54% | 55% |
+| SNAP | 156 | 62 | 3 | 128 | 127 | 67% | 67% |
+| SunBucks | 13 | 5 | 0 | 6 | 6 | 58% | 58% |
+| **all** | 686 | 234 (34%) | 16 | 540 | 522 (97%) | 62% | 62% |
+
+The tests decide branches well: 522 of 540 arm swaps are killed. They rarely decide limits: 234 of 686 flips are killed. A flip survives when no test puts the two sides of the comparison equal, and those are the comparisons where a "less than" read as "at or below" would go unnoticed. The 436 surviving flips on reached nodes, and the 18 surviving swaps, are listed in the generated report.
+
+## Generated boundary cases
+
+`npm run boundaries` takes each of the 686 threshold comparisons in a simple context (not under a binder or a change of month). It finds a stored household that reaches it, falling back to a rule test, and the person and month the comparison is evaluated for. It then builds three variations of that household, with the variable side stated just below, at and just above the threshold:
+
+- money by a cent, a count or age by one, a date by a day, a month by a month;
+- an age that `years_between` takes from a date of birth also gets the birthday the day before, on, and after the date it is measured to.
+
+For each variation the script reports which neighbour the value at the limit agrees with, for the comparison, the item and the household's own expectation. It also reports the wording the cited excerpts put beside the threshold's figure.
+
+366 comparisons were generated. 320 were not:
+
+| Reason | Comparisons |
+|---|---|
+| variable side is an expression | 184 |
+| under a binder or a month change | 109 |
+| no test reaches it | 15 |
+| both sides are fixed figures | 12 |
+
+12 generated comparisons were flagged, with wording on the other side or mixed. Each flag was read against the excerpt:
+
+- **CO-1185.** Confirmed: T-4 (CO-535).
+- **CO-2419**, income below the highest MAGI standard. The excerpts' "does not exceed 133/142" are the groups' own standards. The needy-persons rule says "less than", and OQ-512 records the reading. Not a defect.
+- **CO-539, CO-548, CO-552, CO-2439**, age 19 or older. "19 through the end of the month" (S3350) is the Adults group's 65 limit. Within the determination month the child group's birthday month is handled by `not ma_is_child_category`. The defect in other months is T-1.
+- **CO-600, CO-1162, CO-1164, CO-1179**, aged 65. "more than 65" is 42 CFR 435.520's "must not impose an age requirement of more than 65 years". Not a defect. The retroactive-month exposure is T-1 (CO-533).
+- **CO-2257**, under 21. "after 21" in S1518 is another clause. Not a defect.
+
+The generator also produced the day-level variations that showed T-1. The birthday the day before, on, and after the measured date all agree with the item's rule, so the error is in which date the rule measures to, not in the comparison.
+
+## Stored cases added
+
+| Case | Finding | What it fixes in place | Failing expectations (known-failures.json) |
+|---|---|---|---|
+| CO-530 | T-1 | MAGI retroactive August and September before and in the 19th-birthday month: child, eligible | `ma_magi_category` and `ma_magi_eligibility_status` @2026-08 and @2026-09 |
+| CO-531 | T-1 | Application month = 19th-birthday month, determined the next month: child, eligible | `ma_magi_category`, `ma_magi_eligibility_status` @2026-10 |
+| CO-532 | T-3 | 2026 retroactive months on a January 2027 application judged by the 2026 SSI rate: none | `ma_ssi_related_category` @2026-11 and @2026-12 |
+| CO-533 | T-1 | Retroactive months before a 65th birthday: none | `ma_ssi_related_category` @2026-08 and @2026-09 |
+| CO-534 | T-2 | Adult Financial ISM in January 2027: 363; countable income 943 | `af_in_kind_support_and_maintenance`, `af_countable_income` @2027-01 |
+| CO-535 | T-4 | Winnings of $89,999.50 and $79,999.50: 2 months and 1 month | `ma_lottery_winnings_spread_months` @2026-09 and @2026-10 |
+
+The expectations in these cases that already pass are the controls: CO-530 October, CO-531 November, CO-532 January and CO-533 November. They show that only the boundary month is wrong. CO-530 to CO-533 and CO-535 touch Medicaid items the non-MAGI fix round may also be editing. Their expectations rest on the rule text, not on any item, so they stay valid through that round.
+
+## Validation
+
+`npm run typecheck`, `npm test`, and `CHECK_BASE=origin/main npm run check` all pass. The check reports co rule tests 4104/4104, household expectations 3729/3759 (the 30 failures are all listed in known-failures.json: 16 existing and 14 added here), and the conformance self-check passes 8,023/8,023.

@@ -12,9 +12,12 @@ import { buildIndex, type LedgerIndex } from "../../src/engine/ledger-index";
 
 export const root = path.resolve(import.meta.dirname, "../..");
 
-/** The ledger before migration phase 1: the commit the product owner's
- *  adoption of receipt records was recorded at (docs/plan-colorado.md). */
-export const BASELINE_REF = "41ec04b4d62c5f2f8210702ac300aff1fc7f503a";
+/** The ledger without the migration: the last commit of the branch the
+ *  migration merges into that reads the scalar facts everywhere. It was the
+ *  adoption commit (41ec04b) until the non-MAGI fix round (82a29d0) was
+ *  merged in; the baseline moves with each merge, so the harness measures
+ *  the migration and nothing the other track changed. */
+export const BASELINE_REF = "82a29d0c2e864825a991f08e23afdb04d6dc0077";
 
 export interface Ledger { ledger: LoadedLedger; ix: LedgerIndex }
 

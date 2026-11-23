@@ -13,7 +13,7 @@ derived: [case, [[all, [not, [unknown, date_of_death]], ["<", date_of_death, [fi
 sources: [S441, S442, S443, S449, S455, S457, S458, S461, S462, S465, S530, S700, S701, S711, S1011, S1017, S2614, S2615, S2621, S2622, S3213, S3214, S3215, S3502]
 implemented: engine
 tags: [cash, oap, and, ab]
-open: [OQ-138, OQ-845]
+open: [OQ-138, OQ-845, OQ-901]
 rationale: "No existing item reports which single Adult Financial category a person qualifies under. Needed as the batch's Adult Financial outcome per the phase-5 brief's interface (role outcome). Same case/outcome shape as ma_ssi_related_category (CO-612) and cw_eligibility_status, acknowledged as a shared pattern (P33) rather than a duplicate: each reads a different program's own category tests. Fix round: the and_cs branch now applies citizenship, af_meets_resource_limit and an income test (C-4), and the and_so branch now excludes an SSI or SSDI recipient (C-7), per the phase-5 review. C-10: split the shared citizenship test into meets_public_assistance_citizenship_requirement (CO-905) and af_meets_citizenship_requirement_oap (CO-929), the latter without the AND-only five-year bar. C-9: kept the ab branch's age-59 cap - the fetched text (3.520.61.A) states one for blind AND-SO/AB clients, contrary to the review's proposed removal. Phase 8: OQ-111 resolved - the version of 9 CCR 2503-5 effective 2026-03-02 (D-80, S701) defines only OAP and OAP-C (court-committed clients, not modeled), so the OAP branch returns the single oap category and af_oap_group (CO-941) and its age-split parameter (CO-286) are removed; the and_so branch's conjuncts moved unchanged to af_and_so_eligible (CO-1203), which Home Care Allowance also reads."
 nearest: [CO-612]
 tests:
