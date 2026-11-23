@@ -1,0 +1,19 @@
+id: CO-5201
+name: "Medicaid: aged, blind or disabled in the month"
+identifier: ma_is_aged_blind_or_disabled_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person meets one of the SSI-related non-financial categories for the month: aged, blind, or disabled in a month that is not before the disability onset date (10 CCR 2505-10 § 8.100.6.A; § 8.100.5.C.4.b: a retroactive month needs disability approved or onset \"on or prior to the date of a medical service\")."
+precision: "ma_is_aged_blind_or_disabled (CO-603) is the undated test, which the long-term care, Buy-In and protected-group rules read with their own retroactive rules; this item is the one the SSI-related eligibility (ma_is_ssi_related_eligible, CO-611) and OAP SISC B (ma_oap_sisc_b_eligible, CO-1177) read, so that a month before the onset is not covered through either. An unstated onset date is read as no such month (ma_month_is_before_disability_onset, CO-4888)."
+derived: [any, ma_is_aged, is_blind, [all, meets_ssa_disability_criteria, [not, ma_month_is_before_disability_onset]]]
+sources: [S3623, S303]
+implemented: engine
+tags: [ma, non_magi, age, disability]
+rationale: "Coverage pass 3 C3-2: the pass-2 onset gate (NM-30) was put in ma_ssi_related_category (CO-612) only, so ma_is_ssi_related_eligible (CO-611), which ma_has_full_coverage_category (CO-1176) and through it QI-1, QDWI, BCCP, family planning and CHP+ read, still covered a month before the onset. One dated test, read by both CO-611 and CO-1177, replaces the undated one there."
+nearest: [CO-603, CO-4888]
+tests:
+  - {id: CO-5201-T1, as_of: "2026-10-12", month: "2026-08", title: "Disabled, onset 2026-09-15: August is before the onset", given: {ma_is_aged: false, is_blind: false, meets_ssa_disability_criteria: true, ma_month_is_before_disability_onset: true}, expect: false}
+  - {id: CO-5201-T2, as_of: "2026-10-12", month: "2026-09", title: "The onset month", given: {ma_is_aged: false, is_blind: false, meets_ssa_disability_criteria: true, ma_month_is_before_disability_onset: false}, expect: true}
+  - {id: CO-5201-T3, as_of: "2026-10-12", month: "2026-08", title: "Aged: the onset date does not matter", given: {ma_is_aged: true, is_blind: false, meets_ssa_disability_criteria: true, ma_month_is_before_disability_onset: true}, expect: true}

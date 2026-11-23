@@ -1,0 +1,26 @@
+id: CO-5204
+name: "Medicaid: home is a countable resource other than by a beneficiary deed"
+identifier: ma_home_is_countable_resource_without_beneficiary_deed
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person's home (home_equity) is a countable resource for the aged, blind and disabled groups for a reason other than a beneficiary deed (10 CCR 2505-10 § 8.100.5.M.2.a): for a person in a long-term care institution, receiving HCBS or enrolled in PACE, when it has been transferred to a trust or other entity (xiii); or when the person no longer lives in it and neither a spouse nor a dependent relative lives there (ix), unless the person intends to return and, for a person living in an institution or facility, the intent is documented in writing (iv, v, vii, viii, xii)."
+precision: "The arms of ma_home_is_countable_resource (CO-4622) other than xiv, as that item states them; read alone by ma_home_equity_counted_only_by_beneficiary_deed (CO-5205), which the Medicare Savings Program resources and parental deeming subtract."
+derived: [all, [">", [otherwise, home_equity, 0], 0], [any, [all, [otherwise, home_is_held_in_trust_or_entity, false], [any, [otherwise, resides_in_medical_institution, false], [not, ["=", [otherwise, meets_hcbs_waiver_target_group, none], none]], [otherwise, is_enrolled_in_pace, false]]], [all, [not, [otherwise, lives_in_owned_home, ["=", residence_setting_type, private_dwelling]]], [not, ma_spouse_or_dependent_relative_lives_in_home], [not, [all, [otherwise, intends_to_return_home, false], [any, [otherwise, intent_to_return_home_is_documented_in_writing, false], [otherwise, home_is_outside_colorado, false], ["=", residence_setting_type, private_dwelling]]]]]]]
+sources: [S3403, S3616]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage pass 3 C3-5: the Medicare Savings Program tests and parental deeming need the home that only a beneficiary deed makes countable, so the other arms of CO-4622 are stated once here and CO-4622 reads them."
+nearest: [CO-4622]
+tests:
+  - {id: CO-5204-T1, as_of: "2026-11-01", title: "nursing facility, no intent to return, no one at home: counted", given: {home_equity: 240000, residence_setting_type: nursing_facility, resides_in_medical_institution: true, ma_spouse_or_dependent_relative_lives_in_home: false}, expect: true}
+  - {id: CO-5204-T2, as_of: "2026-11-01", title: "nursing facility, intent to return documented in writing: exempt (v)", given: {home_equity: 240000, residence_setting_type: nursing_facility, resides_in_medical_institution: true, ma_spouse_or_dependent_relative_lives_in_home: false, intends_to_return_home: true, intent_to_return_home_is_documented_in_writing: true}, expect: false}
+  - {id: CO-5204-T3, as_of: "2026-11-01", title: "intends to return but nothing in writing: counted", given: {home_equity: 240000, residence_setting_type: nursing_facility, resides_in_medical_institution: true, ma_spouse_or_dependent_relative_lives_in_home: false, intends_to_return_home: true}, expect: true}
+  - {id: CO-5204-T4, as_of: "2026-11-01", title: "spouse still lives in the home: exempt (ix)", given: {home_equity: 240000, residence_setting_type: nursing_facility, resides_in_medical_institution: true, ma_spouse_or_dependent_relative_lives_in_home: true}, expect: false}
+  - {id: CO-5204-T5, as_of: "2026-11-01", title: "lives at home: exempt", given: {home_equity: 240000, residence_setting_type: private_dwelling, ma_spouse_or_dependent_relative_lives_in_home: false}, expect: false}
+  - {id: CO-5204-T7, as_of: "2026-11-01", title: "HCBS designee whose home is in a trust: counted (xiii)", given: {home_equity: 240000, residence_setting_type: private_dwelling, resides_in_medical_institution: false, meets_hcbs_waiver_target_group: ebd, ma_spouse_or_dependent_relative_lives_in_home: false, home_is_held_in_trust_or_entity: true}, expect: true}
+  - {id: CO-5204-T8, as_of: "2026-11-01", title: "no home", given: {residence_setting_type: nursing_facility, ma_spouse_or_dependent_relative_lives_in_home: false}, expect: false}
+  - {id: CO-5204-T9, as_of: "2026-11-01", title: "N2-4: nursing facility, no intent to return; a dependent relative (a tax dependent) lives in the home: exempt (ix)", given: {home_equity: 240000, residence_setting_type: nursing_facility, resides_in_medical_institution: true, ma_spouse_or_dependent_relative_lives_in_home: true}, expect: false}
+  - {id: CO-5204-T10, as_of: "2026-11-01", title: "N2-6: lives away in a private dwelling and intends to return, nothing in writing: exempt (v asks the writing only of an institutionalized person)", given: {home_equity: 240000, residence_setting_type: private_dwelling, lives_in_owned_home: false, intends_to_return_home: true, ma_spouse_or_dependent_relative_lives_in_home: false}, expect: false}
+  - {id: CO-5204-T11, as_of: "2026-11-01", title: "lives at home with a recorded beneficiary deed: not counted here (CO-4622 reads the deed)", given: {date_of_birth: "1950-03-01", home_equity: 240000, residence_setting_type: private_dwelling, ma_spouse_or_dependent_relative_lives_in_home: false, home_has_recorded_beneficiary_deed: true}, expect: false}

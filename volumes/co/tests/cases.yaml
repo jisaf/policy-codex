@@ -46507,7 +46507,10 @@
 - id: CO-394
   title: 'Probe Y-CBWD18 (non-MAGI coverage 2, control for N2-3): the same child at 18 keeps the Children''s Buy-In'
   # Control probe Y-CBWD18 of docs/reviews/coverage2-medicaid-nonmagi.md (N2-3), kept by the probe-preservation round.
-  # Y-CBWD19 with the child still 18 through October. Rule (review): children_with_disabilities.
+  # Y-CBWD19 with the birthday moved to October 20: the child turns 19 on 2026-10-20 and is 18 until then. 10 CCR 2505-10
+  # 8.100.5.C.3: a child eligible "at any time during a calendar month shall be eligible ... during the entire month"
+  # (Q.1.a "age 18 or younger"). Rule (review): children_with_disabilities. (Comment corrected by the 2026-11-23 fix
+  # round: it had said the child was still 18 through October; docs/reviews/probe-handcheck-medicaid.md.)
   as_of: "2026-10-12"
   relationships:
   - [parent, p1, p3]
@@ -46642,19 +46645,22 @@
 
 - id: CO-395
   title: 'Probe Z-ADM (non-MAGI coverage 3 C3-1): a couple whose incomes are still mutually available in the admission month'
-  # Probe Z-ADM of docs/reviews/coverage3-medicaid-nonmagi.md (C3-1, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.7.C.2.b: "Beginning the first month following the month the couple
-  # ceases to live together, only the income of the individual spouse is counted"; 8.100.5.H.1.a: "Income of spouses living
-  # together is considered mutually available". CO-213's couple without the child: p1 admitted 2026-11-03, determined
-  # 2026-11-20; p1 Social Security 1,000, p2 700, resources 500 each. Rule: in the admission month the couple's income 1,000
-  # + 700 - 20 = 1,680 > the couple FBR 1,491: none for both (engine: household size 2, but p1 980 and p2 680 each against
-  # the couple standard, aged for both). The finding is open (no fix round has run on coverage pass 3 non-MAGI); the
-  # engine's answer differs and the expectation is registered in conformance/known-failures.json under C3-1.
-  # Independent hand-check (docs/reviews/probe-handcheck-medicaid.md): p1 is an institutionalized spouse (stay of 30 days
-  # expected), and 42 U.S.C. 1396r-5(b)(1) supersedes: "During any month in which an institutionalized spouse is in the
-  # institution ... no income of the community spouse shall be deemed available to the institutionalized spouse" (8.100.7.C.1,
-  # C.2.c). p1: 1,000 - 20 = 980 <= the individual FBR 994: aged (the engine's answer is right, though it reaches it against
-  # the couple rate). p2, the community spouse, stays none (mutual availability, 8.100.5.H.1.a); only p2 is a known failure.
+  # Probe Z-ADM of docs/reviews/coverage3-medicaid-nonmagi.md (C3-1, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/); fixed in the 2026-11-23 fix round. CO-213's couple without the child: p1 admitted to a
+  # nursing facility 2026-11-03 expecting a 30-day stay, determined 2026-11-20; p1 Social Security 1,000, p2 700,
+  # resources 500 each.
+  # p1 is an institutionalized spouse in the institution (42 U.S.C. 1396r-5(h)(1); 10 CCR 2505-10 8.100.7.K.2). 1396r-5(b)(1):
+  # "During any month in which an institutionalized spouse is in the institution ... no income of the community spouse
+  # shall be deemed available to the institutionalized spouse" (8.100.7.C.1, C.2.c), and (a)(1) makes the section supersede
+  # 8.100.5.H.1.a for him. p1 alone: 1,000 - 20 = 980 <= the individual FBR 994; resources (1396r-5(c)(2)): both spouses'
+  # 1,000 less the CSRA (at least the 162,660 maximum here, 8.100.7.M.1, S) = 0 <= 2,000: aged.
+  # p2, the community spouse, keeps the couple through the admission month (8.100.7.C.2.b: only from "the first month
+  # following the month the couple ceases to live together"; 8.100.5.H.1.a): 1,000 + 700 - 20 = 1,680 > the couple FBR
+  # 1,491: none.
+  # Before the fix the income sums filtered on residence in the institution, so p2 was tested on her own 680 against the
+  # couple standard (aged), and p1 reached aged by comparing 980 with the couple standard 1,491 (right answer, wrong
+  # standard). The CSRA facts (p1's spousal-support, annuity and transfer facts; p2's payroll, housing and utility
+  # expenses) were added in the fix round so that the 1396r-5(c)(2) figure can be computed.
   as_of: "2026-11-20"
   case_facts:
     home_heating_cost_arrangement: pays_vendor_directly
@@ -46708,6 +46714,12 @@
         ma_application_date: "2026-11-02"
         adult_financial_program_received: none
         retains_ssi_status_without_payment: false
+        ma_csra_transfer_is_overdue: false
+        ma_court_ordered_transfer_to_community_spouse: 0
+        ma_csra_annuity_lowest_estimate: 0
+        court_ordered_spousal_support: 0
+        is_surviving_spouse_of_va_pensioner: false
+        ma_lottery_winnings_hardship_exemption_granted: false
       month_defaults:
         lottery_gambling_winnings_received: 0
         social_security_income: 1000
@@ -46799,6 +46811,9 @@
         health_insurance_premiums_paid: 352.9
         medicare_part_b_premium_paid: 202.9
         medical_expenses_out_of_pocket: 75
+        ma_payroll_taxes_withheld: 0
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 0
   expect:
     p1:
       ma_ssi_related_category:
@@ -46809,14 +46824,18 @@
 
 - id: CO-396
   title: 'Probe Z-NONCOOP (non-MAGI coverage 3 C3-2): an OAP recipient denied Medicaid for non-cooperation gets State-only coverage'
-  # Probe Z-NONCOOP of docs/reviews/coverage3-medicaid-nonmagi.md (C3-2, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.E.6: "Medical Assistance shall be denied or terminated if the
-  # applicant or client refuses or fails to make a reasonable effort to secure potential resources or income"; 8.941.3.A:
-  # the OAP State program is for recipients "who ... do not otherwise qualify for the Colorado Medicaid Program". CO-212's
-  # aged OAP recipient with the E.5-7 finding true. Rule: no Medicaid category, not fully covered, ma_oap_health_care_status
-  # eligible_state_only (engine: category none, but ma_has_full_coverage_category true and medicaid_eligible, so no coverage
-  # at all). The finding is open (no fix round has run on coverage pass 3 non-MAGI); the engine's answer differs and the
-  # expectation is registered in conformance/known-failures.json under C3-2. Translation of facts now derived:
+  # Probe Z-NONCOOP of docs/reviews/coverage3-medicaid-nonmagi.md (C3-2, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/); fixed in the 2026-11-23 fix round. 10 CCR 2505-10. 8.100.5.E.6: "Medical Assistance shall be
+  # denied or terminated if the applicant or client refuses or fails to make a reasonable effort to secure potential
+  # resources or income"; 8.941.3.A: the OAP State program is for recipients "who ... do not otherwise qualify for the
+  # Colorado Medicaid Program". CO-212's aged OAP recipient (76, Medicare Part A) with the E.5-7 finding true. Rule: no
+  # SSI-related or SISC B category (E.6), no MAGI group (65 and on Medicare: not Adults; no child, not pregnant), no
+  # long-term care requested, no Buy-In or protected group: not fully covered, so ma_oap_health_care_status is
+  # eligible_state_only. Before the fix ma_is_ssi_related_eligible and ma_oap_sisc_b_eligible ignored the E.6 finding, so
+  # ma_has_full_coverage_category was true and the person got no coverage at all (medicaid_eligible).
+  # The probe-hand-check (docs/reviews/probe-handcheck-medicaid.md) found that the case did not state the MAGI and
+  # long-term-care facts, so a correct engine returned cannot-determine, not false; the fix round states them (single tax
+  # filer, not pregnant, no retroactive request, no long-term-care setting requested). Translation of facts now derived:
   # receives_oap_c (now derived from adult_financial_program_received, CO-2208) is not stated.
   as_of: "2026-10-12"
   persons:
@@ -46851,6 +46870,16 @@
         ma_refuses_to_release_patient_payment: false
         adult_financial_program_received: oap
         retains_ssi_status_without_payment: false
+        sex: male
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_claimed_by_filer_outside_case: false
+        is_sponsored_non_citizen: false
+        ma_retroactive_coverage_requested: false
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: none
       month_defaults:
         social_security_income: 400
         shelter_costs_paid_by_others: 0
@@ -46880,12 +46909,20 @@
 
 - id: CO-397
   title: 'Probe Z-ONSET (non-MAGI coverage 3 C3-2): a retroactive month before disability onset is not full coverage'
-  # Probe Z-ONSET of docs/reviews/coverage3-medicaid-nonmagi.md (C3-2, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.C.4.b: retroactive months need disability approved or onset "on or
-  # prior to the date of a medical service". Disabled with onset 2026-09-15, determined 2026-10-12; the retroactive month
-  # August 2026. Rule: no SSI-related category in August and ma_has_full_coverage_category false (engine: category none but
-  # full coverage true, which QI-1, QDWI, BCCP and CHP+ read). The finding is open (no fix round has run on coverage pass 3
-  # non-MAGI); the engine's answer differs and the expectation is registered in conformance/known-failures.json under C3-2.
+  # Probe Z-ONSET of docs/reviews/coverage3-medicaid-nonmagi.md (C3-2, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/); fixed in the 2026-11-23 fix round. 10 CCR 2505-10. 8.100.5.C.4.b: retroactive months need
+  # disability approved or onset "on or prior to the date of a medical service". Disabled with onset 2026-09-15, applied
+  # 2026-10-05 asking for retroactive coverage, determined 2026-10-12; the retroactive month is August 2026.
+  # The fix round restated the facts so the case tests C3-2 and nothing else (docs/reviews/probe-handcheck-medicaid.md:
+  # the probe as kept stated no retroactive request and no MAGI household, and on the Adults group the person would
+  # have been fully covered in August, so the stored false was not reachable). Now: 46, single tax filer,
+  # no earnings, entitled to Medicare Part A (end-stage renal disease, which does not wait on the SSA
+  # disability finding), a private disability pension of 400 a month and no Social Security benefit.
+  # MAGI: the Adults group is for persons "who do not receive or who are ineligible for Medicare" (8.100.4.G.4), so
+  # none. SSI method: 400 - 20 = 380 <= 994, resources 1,000 <= 2,000, so disabled from September, but August is
+  # before the onset: no SSI-related category (C.4.b). No earnings, so no Buy-In; no long-term care. Not fully covered
+  # in August. Before the fix ma_is_ssi_related_eligible ignored the onset, so ma_has_full_coverage_category was true
+  # for August (which QI-1, QDWI, BCCP and CHP+ read).
   as_of: "2026-10-12"
   persons:
     p1:
@@ -46898,7 +46935,6 @@
         is_blind: false
         meets_ssa_disability_criteria: true
         receives_ssi: false
-        medicare_part_a_entitled: false
         ma_application_date: "2026-10-05"
         liquid_resources_value: 1000
         revocable_burial_trust_value: 0
@@ -46919,16 +46955,33 @@
         retains_ssi_status_without_payment: false
         ma_failed_to_pursue_potential_resources_or_income: false
         ma_refuses_to_release_patient_payment: false
+        sex: female
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_claimed_by_filer_outside_case: false
+        is_sponsored_non_citizen: false
+        ma_retroactive_coverage_requested: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: none
+        ma_is_in_buy_in_program: false
+        earned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        medicare_part_a_entitled: true
+        medicare_part_b_enrolled: true
+        adult_financial_program_received: none
+        lost_ssi_due_to_social_security_benefits: false
+        title_ii_benefit_type: none
+        lost_oap_due_to_social_security_benefits: false
       month_defaults:
-        social_security_income: 400
         shelter_costs_paid_by_others: 0
         educational_assistance_received: 0
         loan_proceeds_received: 0
         energy_assistance_received: 0
         tax_refunds_and_credits_received: 0
         federally_excluded_payments_received: 0
-        wages_gross: 0
-        pension_income: 0
         unemployment_income: 0
         other_unearned_income_taxable: 0
         other_unearned_income_nontaxable: 0
@@ -46937,6 +46990,9 @@
         lottery_gambling_winnings_received: 0
         self_employment_gross_receipts: 0
         self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 400
   expect:
     p1:
       ma_ssi_related_category:
@@ -46946,13 +47002,13 @@
 
 - id: CO-398
   title: 'Probe Z-DACIRWE (non-MAGI coverage 3 C3-3): impairment-related work expenses in the Disabled Adult Child test'
-  # Probe Z-DACIRWE of docs/reviews/coverage3-medicaid-nonmagi.md (C3-3, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.6.J.1.c: eligible if SSI would continue with "the current OASDI income
-  # of the applicant ... disregarded" and "other countable income is below the current years SSI FBR"; 20 CFR
-  # 416.1112(c)(6). A Disabled Adult Child of 35: OASDI 1,200, wages 2,200, IRWE 600, October 2026. Rule: (2,200 - 85 - 600)
-  # / 2 = 757.5 < 994: DAC eligible, the only route (the SSI-method income, 1,947.5, fails). Engine: 1,057.5, not eligible.
-  # The finding is open (no fix round has run on coverage pass 3 non-MAGI); the engine's answer differs and the expectation
-  # is registered in conformance/known-failures.json under C3-3.
+  # Probe Z-DACIRWE of docs/reviews/coverage3-medicaid-nonmagi.md (C3-3, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.6.J.1.c: eligible if SSI would continue with "the current OASDI
+  # income of the applicant ... disregarded" and "other countable income is below the current years SSI FBR"; 20 CFR
+  # 416.1112(c)(6). A Disabled Adult Child of 35: OASDI 1,200, wages 2,200, IRWE 600, October 2026. Rule: (2,200 - 85 -
+  # 600) / 2 = 757.5 < 994: DAC eligible, the only route (the SSI-method income, 1,947.5, fails). Engine before the fix:
+  # 1,057.5, not eligible. Fixed in the 2026-11-23 fix round (C3-3); the stored expectation now passes and its key was
+  # removed from conformance/known-failures.json.
   as_of: "2026-10-12"
   persons:
     p1:
@@ -47014,12 +47070,12 @@
 
 - id: CO-399
   title: 'Probe Z-DACSTU (non-MAGI coverage 3 C3-3): a student''s earnings in the Disabled Adult Child test'
-  # Probe Z-DACSTU of docs/reviews/coverage3-medicaid-nonmagi.md (C3-3, P1, open), kept by the probe-preservation round
+  # Probe Z-DACSTU of docs/reviews/coverage3-medicaid-nonmagi.md (C3-3, P1), kept by the probe-preservation round
   # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 20 CFR 416.1112(c)(3): "If you are under age 22 and a student who is
-  # regularly attending school" (the student earned income exclusion, CO-2471). A college student of 20, a Disabled Adult
-  # Child, OASDI 1,200, wages 2,200, January 2026. Rule: the student exclusion takes the 2,200: DAC countable income 0.
-  # Engine: 1,057.5. The finding is open (no fix round has run on coverage pass 3 non-MAGI); the engine's answer differs and
-  # the expectation is registered in conformance/known-failures.json under C3-3.
+  # regularly attending school" (the student earned income exclusion, CO-2471). A college student of 20, a Disabled
+  # Adult Child, OASDI 1,200, wages 2,200, January 2026. Rule: the student exclusion takes the 2,200: DAC countable
+  # income 0. Engine before the fix: 1,057.5. Fixed in the 2026-11-23 fix round (C3-3); the stored expectation now
+  # passes and its key was removed from conformance/known-failures.json.
   as_of: "2026-10-12"
   persons:
     p1:
@@ -47080,14 +47136,15 @@
 
 - id: CO-400
   title: 'Probe Z-ADOPT2 (non-MAGI coverage 3 C3-4): an adoption subsidy is exempt in the Children''s Buy-In household'
-  # Probe Z-ADOPT2 of docs/reviews/coverage3-medicaid-nonmagi.md (C3-4, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.F.6.t: "A child receiving subsidized adoption funds shall be excluded
-  # from the Medical Assistance budget unit and his income shall be exempt"; Q.1.b.iii applies F.6 to the Buy-In household.
-  # CO-145 with the adoptive parent's wages 9,500 and an adoption subsidy of 900 (adoption_subsidy_received, CO-4451, part
-  # of the parent's other unearned income), October 2026. Rule: household income 4,707.5 (261%): children_with_disabilities
-  # for the child p3. Engine: 5,597.5 (310%), none, and 4,603.5 deemed to the child. The finding is open (no fix round has
-  # run on coverage pass 3 non-MAGI); the engine's answer differs and the expectation is registered in
-  # conformance/known-failures.json under C3-4.
+  # Probe Z-ADOPT2 of docs/reviews/coverage3-medicaid-nonmagi.md (C3-4, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.F.6.t: "A child receiving subsidized adoption funds shall be
+  # excluded from the Medical Assistance budget unit and his income shall be exempt"; Q.1.b.iii applies F.6 to the
+  # Buy-In household. CO-145 with the adoptive parent's wages 9,500 and an adoption subsidy of 900
+  # (adoption_subsidy_received, CO-4451, part of the parent's other unearned income), October 2026. Rule: household
+  # income 4,707.5 (261%): children_with_disabilities for the child p3. Engine before the fix: 5,597.5 (310%), none, and
+  # 4,603.5 deemed to the child. Fixed in the 2026-11-23 fix round (C3-4); the stored expectation now passes and its key
+  # was removed from conformance/known-failures.json. The parental deeming (CO-4634) no longer deems the subsidy: (9,500
+  # - 20 - 65) / 2 = 4,707.50 less the parent's allocation 994 = 3,713.50 deemed to p3.
   as_of: "2026-10-12"
   relationships:
   - [parent, p1, p3]
@@ -47218,6 +47275,8 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
   expect:
     p3:
+      ma_ssi_parental_income_deemed:
+        2026-10: 3713.5
       ma_cbwd_countable_household_income:
         2026-10: 4707.5
       ma_buy_in_category:
@@ -47225,11 +47284,10 @@
 
 - id: CO-401
   title: 'Probe Z-ADOPT (non-MAGI coverage 3 C3-4): an adoption subsidy raises the Children''s Buy-In premium'
-  # Probe Z-ADOPT of docs/reviews/coverage3-medicaid-nonmagi.md (C3-4, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. F.6.t (as Z-ADOPT2). The same household with the parent's wages 5,600. Rule:
-  # the premium for November 2026 is 70 (engine: 90, the subsidy counted). The finding is open (no fix round has run on
-  # coverage pass 3 non-MAGI); the engine's answer differs and the expectation is registered in
-  # conformance/known-failures.json under C3-4.
+  # Probe Z-ADOPT of docs/reviews/coverage3-medicaid-nonmagi.md (C3-4, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. F.6.t (as Z-ADOPT2). The same household with the parent's wages 5,600.
+  # Rule: the premium for November 2026 is 70 (engine before the fix: 90, the subsidy counted). Fixed in the 2026-11-23
+  # fix round (C3-4); the stored expectation now passes and its key was removed from conformance/known-failures.json.
   as_of: "2026-10-12"
   relationships:
   - [parent, p1, p3]
@@ -47367,14 +47425,15 @@
 
 - id: CO-402
   title: 'Probe Z-BDEED (non-MAGI coverage 3 C3-5): a beneficiary deed does not make the home countable for QMB'
-  # Probe Z-BDEED of docs/reviews/coverage3-medicaid-nonmagi.md (C3-5, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.M.2.a.xiv: the home "which is subject to estate recovery, becomes a
-  # countable resource upon the execution and recording of a beneficiary deed"; 42 U.S.C. 1396p(b)(1)(B)(ii) excludes
-  # Medicare cost-sharing from recovery. CO-212's aged person, Social Security 1,150, living in her home (equity 150,000)
-  # with a beneficiary deed recorded. Rule: QMB benefits are not subject to recovery, so the home stays exempt for the MSP
-  # test: resources 1,000 and QMB in November (engine: 151,000, none). The reviewer offered an open question (needs Legal)
-  # as the alternative; none has been recorded. The finding is open (no fix round has run on coverage pass 3 non-MAGI); the
-  # engine's answer differs and the expectation is registered in conformance/known-failures.json under C3-5.
+  # Probe Z-BDEED of docs/reviews/coverage3-medicaid-nonmagi.md (C3-5, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 8.100.5.M.2.a.xiv: the home "which is subject to estate recovery, becomes
+  # a countable resource upon the execution and recording of a beneficiary deed"; 42 U.S.C. 1396p(b)(1)(B)(ii) excludes
+  # Medicare cost-sharing from recovery. CO-212's aged person, Social Security 1,150, living in her home (equity
+  # 150,000) with a beneficiary deed recorded. Rule: QMB benefits are not subject to recovery, so the home stays exempt
+  # for the MSP test: resources 1,000 and QMB in November (engine before the fix: 151,000, none). Fixed in the
+  # 2026-11-23 fix round (C3-5); the stored expectation now passes and its key was removed from
+  # conformance/known-failures.json. The reading that the beneficiary-deed home stays exempt for a Medicare Savings
+  # Program determination (42 U.S.C. 1396p(b)(1)(B)(ii)) is OQ-900 (needs Legal), as the probe hand-check asked.
   as_of: "2026-10-12"
   persons:
     p1:
@@ -47431,12 +47490,12 @@
 
 - id: CO-403
   title: 'Probe Z-BDEED40 (non-MAGI coverage 3 C3-5): a beneficiary deed on the home of a disabled 40-year-old'
-  # Probe Z-BDEED40 of docs/reviews/coverage3-medicaid-nonmagi.md (C3-5, P1, open), kept by the probe-preservation round
-  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 42 U.S.C. 1396p(b)(1): no recovery except for an institutionalized individual
-  # or one "55 years of age or older", so xiv does not reach this home. Disabled, 40, SSDI 800, living in her home (equity
-  # 150,000) with a beneficiary deed recorded. Rule: resources 1,000, disabled (engine: 151,000, none). The finding is open
-  # (no fix round has run on coverage pass 3 non-MAGI); the engine's answer differs and the expectation is registered in
-  # conformance/known-failures.json under C3-5.
+  # Probe Z-BDEED40 of docs/reviews/coverage3-medicaid-nonmagi.md (C3-5, P1), kept by the probe-preservation round
+  # (test/probes/cov3nm/gen/). 10 CCR 2505-10. 42 U.S.C. 1396p(b)(1): no recovery except for an institutionalized
+  # individual or one "55 years of age or older", so xiv does not reach this home. Disabled, 40, SSDI 800, living in her
+  # home (equity 150,000) with a beneficiary deed recorded. Rule: resources 1,000, disabled (engine before the fix:
+  # 151,000, none). Fixed in the 2026-11-23 fix round (C3-5); the stored expectation now passes and its key was removed
+  # from conformance/known-failures.json.
   as_of: "2026-10-12"
   persons:
     p1:
@@ -58830,3 +58889,254 @@
   expect:
     p1:
       snap_is_disqualified_for_voluntary_quit: false
+
+- id: CO-480
+  title: 'C3-3 fix round: impairment-related work expenses in the Pickle income test'
+  # Fix round for docs/reviews/coverage3-medicaid-nonmagi.md C3-3 (the Pickle half; CO-398 and CO-399 carry the Disabled
+  # Adult Child half). 10 CCR 2505-10 8.100.6.D-E (Pickle): countable income after the disregard of the OASDI increases
+  # since SSI was lost; 8.100.5.H.4.e incorporates 20 CFR 416.1112, whose (c)(6) excludes earned income used for
+  # impairment-related work expenses "if you are disabled (but not blind) and under age 65".
+  # Disabled, 45, lost SSI in 2019 when his Social Security began; Social Security then 700, now 900; wages 1,000; IRWE 400.
+  # Pickle: unearned 900 - (900 - 700) = 700 - 20 = 680; earned (1,000 - 65 - 400) / 2 = 267.50; 947.50 < the FBR 994:
+  # pickle. Without the IRWE exclusion (the engine before the fix): (1,000 - 65) / 2 = 467.50, 1,147.50, not eligible.
+  # SSI method: 880 + 267.50 = 1,147.50 > 994, so Pickle is the only route.
+  as_of: "2026-10-12"
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: "1981-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: "2026-10-05"
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        title_ii_benefit_type: own_disability
+        lost_oap_due_to_social_security_benefits: false
+        social_security_income_when_ssi_or_oap_lost: 700
+        lost_ssi_due_to_social_security_benefits: true
+        education_program_type: none
+        retains_ssi_status_without_payment: false
+        adult_financial_program_received: none
+      month_defaults:
+        social_security_income: 900
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 1000
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        impairment_related_work_expenses_paid: 400
+  expect:
+    p1:
+      ma_pickle_countable_income:
+        2026-10: 947.5
+      ma_pickle_eligible:
+        2026-10: true
+      ma_protected_group_category:
+        2026-10: pickle
+
+- id: CO-481
+  title: 'C3-1 fix round: an institutionalized spouse is tested on the resources 42 U.S.C. 1396r-5(c)(2) attributes, not on his own'
+  # Fix round for docs/reviews/coverage3-medicaid-nonmagi.md C3-1 (the resource side of counting the institutionalized
+  # spouse alone). CO-395's couple, the month after admission (determined 2026-12-10), with p2 holding 200,000 in the bank
+  # (the couple's 200,500 at the snapshot). 42 U.S.C. 1396r-5(c)(2): "all the resources held by either the
+  # institutionalized spouse, community spouse, or both, shall be considered to be available to the institutionalized
+  # spouse", to the extent they exceed the community spouse resource allowance; (a)(1): the section supersedes any
+  # inconsistent provision "In determining the eligibility for medical assistance of an institutionalized spouse".
+  # p1: 200,500 - CSRA 162,660 (the maximum, 10 CCR 2505-10 8.100.7.M.1; p2's income 700 is below her MMMNA, but no
+  # annuity estimate is stated, so the 8.100.7.S increase adds 0) = 37,840 > 2,000: no SSI-related category. His income
+  # 980 <= 994 would pass. Before the fix his own 500 was compared with the individual limit, so he was aged and fully
+  # covered while the long-term care test (on the same 1396r-5 figure) refused him for resources.
+  # p2, from the month after admission alone (8.100.7.C.2.b): 700 - 20 = 680 <= 994, but resources 200,000: none.
+  as_of: "2026-12-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
+  relationships:
+  - [spouse, p1, p2]
+  - [files_jointly_with, p1, p2]
+  persons:
+    p1:
+      facts:
+        ma_institutionalized_spouse_refuses_income_allowance: false
+        dwelling_id: nursing_facility
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: "1952-04-18"
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: "2026-11-03"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 500
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        ma_csra_transfer_is_overdue: false
+        ma_court_ordered_transfer_to_community_spouse: 0
+        ma_csra_annuity_lowest_estimate: 0
+        court_ordered_spousal_support: 0
+        is_surviving_spouse_of_va_pensioner: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_spousal_resources_at_snapshot: 200500
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        social_security_income: 1000
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 242.9
+        medicare_part_b_premium_paid: 202.9
+        medicare_part_d_premium_paid: 40
+        mandatory_income_tax_withheld: 60
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 300
+        medical_expenses_out_of_pocket: 0
+    p2:
+      facts:
+        dwelling_id: h1
+        residence_setting_type: private_dwelling
+        has_qualifying_military_service: false
+        date_of_birth: "1957-01-09"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+        medical_expenses_verification_document_received: true
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        liquid_resources_value: 200000
+        ma_spousal_resources_at_snapshot: 200500
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        shelter_cost_monthly: 634
+        social_security_income: 700
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 352.9
+        medicare_part_b_premium_paid: 202.9
+        medical_expenses_out_of_pocket: 75
+        ma_payroll_taxes_withheld: 0
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 0
+  expect:
+    p1:
+      ma_ssi_countable_resources: 37840
+      ma_ssi_countable_income:
+        2026-12: 980
+      ma_ssi_related_category:
+        2026-12: none
+    p2:
+      ma_ssi_related_category:
+        2026-12: none

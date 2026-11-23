@@ -22274,3 +22274,49 @@ SSA, "Cost-of-Living Increase and Other Determinations for 2027," 91 FR 67380 (O
 > Therefore, the maximum amount of the income
 > exclusion applicable to a student in 2027 is $2,500 per month, but not
 > more than $10,080 in all of 2027.
+
+### S3750. Institutionalized spouse: no income of the community spouse is deemed to the institutionalized spouse in any month in the institution; the definition
+
+Document: D-47
+
+42 U.S.C. 1396r-5(b)(1), (h)(1) (D-47:45-47, 321-333). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1) Separate treatment of income
+>
+> During any month in which an institutionalized spouse is in the institution, except as provided in paragraph (2), no income of the community spouse shall be deemed available to the institutionalized spouse .
+>
+> ...
+>
+> (1) The term “ institutionalized spouse ” means an individual who—
+>
+> (A)
+>
+> is in a medical institution or nursing facility or who (at the option of the State) is described in section 1396a(a)(10)(A)(ii)(VI) of this title , and
+>
+> (B)
+>
+> is married to a spouse who is not in a medical institution or nursing facility ;
+>
+> but does not include any such individual who is not likely to meet the requirements of subparagraph (A) for at least 30 consecutive days.
+
+### S3751. Estate recovery only from an institutionalized individual or one 55 or older, and never for Medicare cost-sharing or the Medicare Savings Program benefits
+
+Document: D-46
+
+42 U.S.C. 1396p(b)(1)(A)-(B) (D-46:51-65). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> (1) No adjustment or recovery of any medical assistance correctly paid on behalf of an individual under the State plan may be made, except that the State shall seek adjustment or recovery of any medical assistance correctly paid on behalf of an individual under the State plan in the case of the following individuals:
+>
+> (A)
+>
+> In the case of an individual described in subsection (a)(1)(B), the State shall seek adjustment or recovery from the individual’s estate or upon sale of the property subject to a lien imposed on account of medical assistance paid on behalf of the individual.
+>
+> (B) In the case of an individual who was 55 years of age or older when the individual received such medical assistance , the State shall seek adjustment or recovery from the individual’s estate , but only for medical assistance consisting of—
+>
+> (i)
+>
+> nursing facility services , home and community-based services, and related hospital and prescription drug services, or
+>
+> (ii)
+>
+> at the option of the State, any items or services under the State plan (but not including medical assistance for medicare cost-sharing or for benefits described in section 1396a(a)(10)(E) of this title ).
