@@ -69,18 +69,28 @@ const BASES: Base[] = [
   { id: "CO-196", person: "p1", label: "AF client" },
   { id: "CO-196", person: "p2", label: "AF spouse (deemed)" },
   { id: "CO-94", person: "", label: "AF sponsor (deemed)" },
+  // migration phase 2: a CCCAP parent earning $2,000 (probe Y-7's household)
+  // and a SUN Bucks child tested on income (probe RV2-S2's household, its
+  // Colorado Works payments taken out by cleanBase)
+  { id: "CO-345", person: "p1", label: "CCCAP" },
+  { id: "CO-372", person: "p2", label: "SUN Bucks child" },
 ];
 
 /** Zeroes the money a base household states beyond its wages, so each variant starts clean. */
 function cleanBase(c: HouseholdCase): void {
+  const money = (k: string, v: unknown) => typeof v === "number" && /income|received|lump|set_aside|recoup|withheld|paid_to|_value$/.test(k) && !/paid_legally|toward_arrears|cost|expense|premium/.test(k);
   for (const p of Object.values(c.persons)) {
     if (p.facts) delete p.facts.receipts;
     const md = p.month_defaults ?? {};
     for (const k of Object.keys(md)) {
       if (k === "wages_gross" || k === "hours_worked") continue;
       if (AGG.includes(k)) md[k] = 0;
-      else if (typeof md[k] === "number" && /income|received|lump|set_aside|recoup|withheld|paid_to|_value$/.test(k) && !/paid_legally|toward_arrears|cost|expense|premium/.test(k)) delete md[k];
+      else if (money(k, md[k])) delete md[k];
     }
+    // a month's money facts (the phase-2 bases state none in the baselines
+    // the harness has used; a later baseline's CO-345 states its diversion
+    // in November)
+    for (const mf of Object.values(p.months ?? {})) for (const k of Object.keys(mf)) if (AGG.includes(k) || money(k, mf[k])) delete mf[k];
   }
 }
 

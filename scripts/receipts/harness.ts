@@ -34,9 +34,10 @@ const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null &&
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const has = (k: string) => process.argv.includes(k);
 
-/** The programs migrated in phase 1, whose outcomes are always compared;
- *  with --all-programs, every program's. */
-const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "SunBucks"];
+/** The programs migrated (phase 1: LEAP, SNAP, Adult Financial; phase 2:
+ *  CCCAP, SUN Bucks), whose outcomes are always compared; with
+ *  --all-programs, every program's. */
+const MIGRATED = ["LEAP", "SNAP", "AdultFinancial", "CCCAP", "SunBucks"];
 /** Intermediate figures compared beside the outcomes. */
 const FIGURES = [
   "leap_person_unearned_income", "leap_household_income", "leap_person_countable_income",
@@ -44,6 +45,8 @@ const FIGURES = [
   "snap_person_earned_income", "snap_sponsor_deemed_income",
   "af_countable_income", "af_unearned_income_other_than_ssi", "af_deemed_relative_income", "af_deemed_sponsor_income",
   "af_relative_deemable_unearned_income", "af_is_oap_age", "af_and_cs_eligible",
+  "cccap_person_unearned_income", "cccap_person_countable_income", "cccap_household_income", "cccap_protective_services_income",
+  "cccap_has_countable_unearned_income", "sebt_household_child_receives_snap_or_tanf",
 ];
 
 interface Allowed {
@@ -128,10 +131,14 @@ export function main(): number {
     return { old: withRetired(c, retired), new: c.persons && Object.values(c.persons).some((p) => p.facts && "receipts" in p.facts) ? c : tr.value };
   });
   sources.push({ label: "stored households", cases: stored });
+  // A generated household is stated in the old facts and translated, as a
+  // stored household is (the transition rule): both ledgers read the
+  // translated household, so a baseline on which some programs already read
+  // the receipts (phase 2's baseline is phase 1's end) reads them too.
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);
-    return { old: c, new: tr.value };
+    return { old: tr.value, new: tr.value };
   });
   sources.push({ label: "generated households", cases: gen });
 

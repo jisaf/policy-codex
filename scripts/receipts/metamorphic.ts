@@ -17,8 +17,13 @@
 //                 over the quarter, life-threatening-condition gifts over the
 //                 year: left out).
 //   MA-4 residual other_taxable relabelled other_nontaxable gives the same
-//                 LEAP, SNAP and Adult Financial outcomes (MAGI would differ;
-//                 Medicaid still reads the old facts in phase 1).
+//                 LEAP, SNAP, Adult Financial, CCCAP and SUN Bucks outcomes
+//                 (MAGI would differ; Medicaid still reads the old facts).
+//                 Policy says NOT invariant for CCCAP where the household
+//                 states rental property expenses: they are taken against the
+//                 rents stated in other taxable unearned income
+//                 (rental_property_expenses_paid, CO-4458; CO-4463): left out.
+// Phase 2 adds CCCAP's and SUN Bucks' outcomes and figures to every relation.
 // Families (each with the rule's answer, checked):
 //   F1 $900 child support and a $3,000 one-time crime victim compensation
 //      payment on 2026-11-03 (LEAP application 2026-11-10, wages $2,000):
@@ -32,6 +37,15 @@
 //      100 x 4.3 + 300 x 0.333333 = 529.9999 (4.402.A.2).
 //   F4 $100 of $300 set aside under a PASS: the same LEAP, SNAP and AF answer
 //      whether the $300 is Social Security or a pension.
+//   F5 (CCCAP, 8 CCR 1403-1 3.111.H.4.i) a $1,500 payment received once in
+//      November 2026 by a parent earning $2,000 (stored CO-345): household
+//      income 2,000 + 1,500 / 12 = 2,125 whatever its kind (a county
+//      diversion, a gift, a lump-sum child support payment, an inheritance);
+//      the same $1,500 diversion stated as recurring: 3,500.
+//   F6 (SUN Bucks, 7 CFR 292.2) a child tested on income (stored CO-372 with
+//      its Colorado Works payments taken out): $300 of Colorado Works cash in
+//      September 2026 makes the child categorically eligible in March 2027;
+//      a $300 diversion in September does not (OQ-993).
 import { caseToSpec, type HouseholdCase } from "../../src/engine/cases";
 import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { valuesEqual as ve } from "../../src/engine/values";
@@ -43,7 +57,11 @@ const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null &&
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 const IDS = ["leap_person_unearned_income", "leap_household_income", "leap_is_eligible", "snap_person_unearned_income",
   "snap_household_gross_income", "snap_allotment", "af_unearned_income_other_than_ssi", "af_relative_deemable_unearned_income",
-  "af_countable_income", "af_deemed_relative_income", "af_deemed_sponsor_income"];
+  "af_countable_income", "af_deemed_relative_income", "af_deemed_sponsor_income",
+  "cccap_person_unearned_income", "cccap_household_income", "cccap_eligibility_status", "cccap_parent_fee",
+  "sebt_household_child_receives_snap_or_tanf", "sebt_eligibility_status"];
+/** CCCAP's identifiers, left out of MA-4 where the household states rental property expenses. */
+const CCCAP_IDS = IDS.filter((id) => id.startsWith("cccap_"));
 
 function outcomes(m: Ledger, c: HouseholdCase, onlyMonth?: string): Map<string, unknown> {
   const data = makeCase(m.ix, caseToSpec(c));
@@ -102,7 +120,11 @@ export function runMetamorphic(m: Ledger, households: HouseholdCase[]): { lines:
     const pinned = mapReceipts(c, (rs) => rs.map((r) => (r.month === undefined && r.date === undefined && r.frequency !== "once" && !r.irregular &&
       !["charitable_need_based_cash", "charitable_gift_life_threatening_condition"].includes(r.kind) ? { ...r, month: mo } : r)));
     rel("MA-3 month", outcomes(m, c, mo), outcomes(m, pinned, mo), c.id);
-    rel("MA-4 residual", base, outcomes(m, mapReceipts(c, (rs) => rs.map((r) => (r.kind === "other_taxable" ? { ...r, kind: "other_nontaxable" } : r)))), c.id);
+    const relabelled = outcomes(m, mapReceipts(c, (rs) => rs.map((r) => (r.kind === "other_taxable" ? { ...r, kind: "other_nontaxable" } : r))));
+    const rentExpenses = Object.values(c.persons).some((p) => [p.facts, p.month_defaults, ...Object.values(p.months ?? {})]
+      .some((o) => typeof o?.rental_property_expenses_paid === "number" && (o.rental_property_expenses_paid as number) > 0));
+    const notCccap = (x: Map<string, unknown>) => new Map([...x].filter(([k]) => !CCCAP_IDS.some((id) => k.includes(` ${id} `))));
+    rel("MA-4 residual", rentExpenses ? notCccap(base) : base, rentExpenses ? notCccap(relabelled) : relabelled, c.id);
   }
   const lines: string[] = ["| Relation | Households | Violations |", "|---|---|---|"];
   let violations = 0;
@@ -126,8 +148,8 @@ function families(m: Ledger, households: HouseholdCase[]) {
   if (!leapSrc || !snapSrc) return out;
   const leapBase = clone(leapSrc);
   const withReceipts = (b: HouseholdCase, rs: Receipt[]) => { const c = clone(b); c.persons.p1.facts = { ...(c.persons.p1.facts ?? {}), receipts: rs }; return c; };
-  const ev = (c: HouseholdCase, id: string, month: string) => {
-    try { return evaluate(m.ix, makeCase(m.ix, caseToSpec(c)), id, "p1", month); } catch (ex) { return "error: " + (ex as Error).message; }
+  const ev = (c: HouseholdCase, id: string, month: string, pid = "p1") => {
+    try { return evaluate(m.ix, makeCase(m.ix, caseToSpec(c)), id, pid, month); } catch (ex) { return "error: " + (ex as Error).message; }
   };
   // A family's identifier is checked once its program reads the receipts.
   const readsReceipts = new Set(createEngine(m.ledger.items, m.ledger.meta).impact(["receipts"]));
@@ -148,6 +170,35 @@ function families(m: Ledger, households: HouseholdCase[]) {
     const ss = ev(withReceipts(leapBase, [{ kind: "social_security", amount: 300, pass_set_aside: 100 }]), id, "2026-11");
     out.push({ family: "F4", label: "pension 300, PASS 100 (equals Social Security 300, PASS 100)", id,
       got: ev(withReceipts(leapBase, [{ kind: "pension", amount: 300, pass_set_aside: 100 }]), id, "2026-11"), want: ss });
+  }
+  // F5: CCCAP averages any receipt paid once (3.111.H.4.i), whatever its kind
+  const cccapSrc = households.find((c) => c.id === "CO-345");
+  if (cccapSrc && readsReceipts.has("cccap_household_income")) {
+    for (const [label, r] of [
+      ["a county diversion paid once", { kind: "colorado_works_diversion", amount: 1500, frequency: "once", month: "2026-11" }],
+      ["a gift paid once", { kind: "gift", amount: 1500, frequency: "once", month: "2026-11" }],
+      ["a lump-sum child support payment", { kind: "child_support_arrears", amount: 1500, frequency: "once", month: "2026-11" }],
+      ["an inheritance", { kind: "other_nontaxable", amount: 1500, frequency: "once", month: "2026-11" }],
+    ] as Array<[string, Receipt]>) {
+      out.push({ family: "F5", label, id: "cccap_household_income", got: ev(withReceipts(cccapSrc, [r]), "cccap_household_income", "2026-11"), want: 2125 });
+    }
+    out.push({ family: "F5", label: "the diversion stated as recurring", id: "cccap_household_income",
+      got: ev(withReceipts(cccapSrc, [{ kind: "colorado_works_diversion", amount: 1500 }]), "cccap_household_income", "2026-11"), want: 3500 });
+  }
+  // F6: SUN Bucks reads a Colorado Works cash payment as TANF receipt, not a diversion
+  const sebtSrc = households.find((c) => c.id === "CO-372");
+  if (sebtSrc && readsReceipts.has("sebt_eligibility_status")) {
+    const child = (rs: Receipt[]) => {
+      const c = clone(sebtSrc);
+      for (const mf of Object.values(c.persons.p2.months ?? {})) delete mf.tanf_cash_income;
+      c.persons.p2.facts = { ...(c.persons.p2.facts ?? {}), receipts: rs };
+      return c;
+    };
+    const none = ev(child([]), "sebt_eligibility_status", "2027-03", "p2");
+    out.push({ family: "F6", label: "Colorado Works cash in September", id: "sebt_eligibility_status",
+      got: ev(child([{ kind: "colorado_works_cash", amount: 300, month: "2026-09" }]), "sebt_eligibility_status", "2027-03", "p2"), want: "eligible_categorical" });
+    out.push({ family: "F6", label: "a diversion in September (the same as no receipt)", id: "sebt_eligibility_status",
+      got: ev(child([{ kind: "colorado_works_diversion", amount: 300, frequency: "once", month: "2026-09" }]), "sebt_eligibility_status", "2027-03", "p2"), want: none });
   }
   return out;
 }

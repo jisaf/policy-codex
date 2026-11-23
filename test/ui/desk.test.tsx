@@ -110,8 +110,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     }
   });
 
-  it("figures: 450 in all; words in any order; the three flags", () => {
-    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(450); // + CO-4840 (Colorado Works coverage pass 3); + CO-5400, CO-5401, - CO-1513 (time audit T-2: the ISM maximum is derived); + CO-5403 (T-8); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016, the LEAP, SNAP and Adult Financial receipt counting tables (receipts migration 1)
+  it("figures: 451 in all; words in any order; the three flags", () => {
+    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(451); // + CO-5720, the CCCAP receipt counting table (receipts migration 2); + CO-4840 (Colorado Works coverage pass 3); + CO-5400, CO-5401, - CO-1513 (time audit T-2: the ISM maximum is derived); + CO-5403 (T-8); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016, the LEAP, SNAP and Adult Financial receipt counting tables (receipts migration 1)
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
     expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(8); // + CO-3379, CO-3380
@@ -243,11 +243,11 @@ describe("the Figures page", () => {
   it("lists every figure on a date, with a word filter and three flags", () => {
     const host = show("#/co/figures");
     expect(host.querySelectorAll("tr.figure").length).toBeGreaterThan(40);
-    expect(host.querySelector(".figcount")!.textContent).toContain("450 figures"); // + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016 (receipts migration 1)
+    expect(host.querySelector(".figcount")!.textContent).toContain("451 figures"); // + CO-5720 (receipts migration 2); + CO-5202, CO-5217, CO-5218 (fix round 2026-11-23); + CO-5001, CO-5010, CO-5016 (receipts migration 1)
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 450 figures");
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 451 figures"); // + CO-5720 (receipts migration 2)
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);

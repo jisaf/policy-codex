@@ -1,21 +1,18 @@
-# Receipt records harness: ledger at ccbb3a7fe315 vs the ledger on disk
+# Receipt records harness: ledger at c29d3262ed69 vs the ledger on disk
 
-Programs compared: LEAP, SNAP, AdultFinancial, SunBucks; 26 s.
+Programs compared: LEAP, SNAP, AdultFinancial, CCCAP, SunBucks; 40 s.
 
 | Source | Households | Values compared | Values that differ | Households that differ | Allowed | Unexplained |
 |---|---|---|---|---|---|---|
-| stored households | 316 | 77688 | 27 | 5 | 27 | 0 |
-| generated households | 361 | 80352 | 169 | 61 | 169 | 0 |
+| stored households | 319 | 97273 | 42 | 5 | 42 | 0 |
+| generated households | 503 | 134316 | 102 | 18 | 102 | 0 |
 
-Stored households written in receipts alone (no old statement to compare; checked by their expectations): CO-458, CO-459, CO-460.
+Stored households written in receipts alone (no old statement to compare; checked by their expectations): none.
 
 ## Allowed differences by class
 
-- R5 SNAP no winnings, no limit in force (T-5 closure): 3 household(s): CO-89, CO-93, CO-98
-- R2 decision 4, AmeriCorps hours not stated: 6 household(s): CO-155, G-LEAP-AmeriCorps_300_hours_not_stated, G-SNAP-AmeriCorps_300_hours_not_stated, G-AFclient-AmeriCorps_300_hours_not_stated, G-AFspousedeemed-AmeriCorps_300_hours_not_stated, G-AFsponsordeemed-AmeriCorps_300_hours_not_stated
-- R4 SNAP double subtraction of a one-time excluded payment (CO-2339): 1 household(s): CO-225
-- R1 LEAP excluded one-time receipt no longer needs the thirty-day facts: 55 household(s): G-LEAP-retroactive_SS_lump_300, G-LEAP-retroactive_SSI_PA_lump_300, G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-SNAP-retroactive_SS_lump_300, G-SNAP-retroactive_SSI_PA_lump_300, G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFclient-retroactive_SS_lump_300, G-AFclient-retroactive_SSI_PA_lump_300, G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-retroactive_SS_lump_300, G-AFspousedeemed-retroactive_SSI_PA_lump_300, G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-retroactive_SS_lump_300, G-AFsponsordeemed-retroactive_SSI_PA_lump_300, G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum, G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum
-- R3 LEAP CO-4962 placement limit: 1 household(s): G-LEAPwin-crime_victim_3000_one_time_in_October_in
+- C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part): 20 household(s): CO-219, CO-220, G-LEAP-in_home_care_allowance_received_300_part_of_nontaxable_, G-LEAP-energy_300_of_which_nonprofit_300, G-LEAP-workforce_300_of_which_vocational_allowance_200, G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_, G-SNAP-energy_300_of_which_nonprofit_300, G-SNAP-workforce_300_of_which_vocational_allowance_200, G-AFclient-in_home_care_allowance_received_300_part_of_nontaxable_, G-AFclient-energy_300_of_which_nonprofit_300, G-AFclient-workforce_300_of_which_vocational_allowance_200, G-AFspousedeemed-in_home_care_allowance_received_300_part_of_nontaxable_, G-AFspousedeemed-energy_300_of_which_nonprofit_300, G-AFspousedeemed-workforce_300_of_which_vocational_allowance_200, G-AFsponsordeemed-in_home_care_allowance_received_300_part_of_nontaxable_, G-AFsponsordeemed-energy_300_of_which_nonprofit_300, G-AFsponsordeemed-workforce_300_of_which_vocational_allowance_200, G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_, G-CCCAP-energy_300_of_which_nonprofit_300, G-CCCAP-workforce_300_of_which_vocational_allowance_200
+- C2 CCCAP reads a household stated in receipts alone: 3 household(s): CO-458, CO-459, CO-460
 
 ## Stored households whose receipts are not the translation of their old facts
 
@@ -25,10 +22,10 @@ none
 
 | Relation | Households | Violations |
 |---|---|---|
-| MA-1 split | 487 | 0 |
-| MA-2 order | 487 | 0 |
-| MA-3 month | 487 | 0 |
-| MA-4 residual | 487 | 0 |
+| MA-1 split | 637 | 0 |
+| MA-2 order | 637 | 0 |
+| MA-3 month | 637 | 0 |
+| MA-4 residual | 637 | 0 |
 
 | Family | Statement | Identifier | Value | Rule |
 |---|---|---|---|---|
@@ -46,205 +43,158 @@ none
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | leap_household_income | 2200 | 2200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
 | F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | af_relative_deemable_unearned_income | 200 | 200 |
+| F5 | a county diversion paid once | cccap_household_income | 2125 | 2125 |
+| F5 | a gift paid once | cccap_household_income | 2125 | 2125 |
+| F5 | a lump-sum child support payment | cccap_household_income | 2125 | 2125 |
+| F5 | an inheritance | cccap_household_income | 2125 | 2125 |
+| F5 | the diversion stated as recurring | cccap_household_income | 3500 | 3500 |
 
 ## Differences
 
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_person_unearned_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_person_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_household_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p1 snap_unearned_income_verification_is_pending @2028-08: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_person_unearned_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_person_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_household_gross_income @2028-08: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-89 p2 snap_unearned_income_verification_is_pending @2028-08: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_person_unearned_income @2028-06: old unknown new 600
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_person_gross_income @2028-06: old unknown new 600
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p1 snap_household_gross_income @2028-06: old unknown new 1800
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_person_unearned_income @2028-06: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_person_gross_income @2028-06: old unknown new 1500
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_household_gross_income @2028-06: old unknown new 1800
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-93 p2 snap_unearned_income_verification_is_pending @2028-06: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_person_unearned_income @2027-11: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_person_gross_income @2027-11: old unknown new 300
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p1 snap_unearned_income_verification_is_pending @2027-11: old unknown new false
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_person_unearned_income @2027-11: old unknown new 0
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_person_gross_income @2027-11: old unknown new 300
-allowed (R5 SNAP no winnings, no limit in force (T-5 closure)) S CO-98 p2 snap_unearned_income_verification_is_pending @2027-11: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_person_unearned_income @2027-02: old 1300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p1 leap_household_income @2027-02: old 2300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) S CO-155 p2 leap_household_income @2027-02: old 2300 new unknown
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_unearned_income @2026-11: old 0 new 900
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_person_gross_income @2026-11: old 2500 new 3400
-allowed (R4 SNAP double subtraction of a one-time excluded payment (CO-2339)) S CO-225 p1 snap_unearned_income_verification_is_pending @2026-11: old false new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-11: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2026-11: old unknown new 2000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_is_eligible @2026-11: old unknown new true
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_zero_income_verification_is_pending @2026-11: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-LEAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-11: old 300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_household_income @2026-11: old 2300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_is_eligible @2026-11: old true new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-LEAP-AmeriCorps_300_hours_not_stated p1 leap_zero_income_verification_is_pending @2026-11: old false new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SS_lump_300 p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-retroactive_SSI_PA_lump_300 p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2027-02: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_household_income @2027-02: old unknown new 1000
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-SNAP-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_household_income @2027-02: old unknown new 1000
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2027-02: old 300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p1 leap_household_income @2027-02: old 1300 new unknown
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-SNAP-AmeriCorps_300_hours_not_stated p2 leap_household_income @2027-02: old 1300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFclient-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFclient-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SS_lump_300 p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SS_lump_300 p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SSI_PA_lump_300 p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-retroactive_SSI_PA_lump_300 p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFspousedeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFspousedeemed-AmeriCorps_300_hours_not_stated p2 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SS_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SS_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SSI_PA_lump_300 p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-retroactive_SSI_PA_lump_300 p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-crime_victim_compensation_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-foster_care_provider_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-kinship_care_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_diversion_payment_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-housing_utility_allowance_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_person_unearned_income @2026-10: old unknown new 0
-allowed (R1 LEAP excluded one-time receipt no longer needs the thirty-day facts) G G-AFsponsordeemed-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p1 leap_unearned_income_verification_is_pending @2026-10: old unknown new false
-allowed (R2 decision 4, AmeriCorps hours not stated) G G-AFsponsordeemed-AmeriCorps_300_hours_not_stated p1 leap_person_unearned_income @2026-10: old 300 new unknown
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_person_unearned_income @2026-11: old 3000 new 0
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_household_income @2026-11: old 5000 new 2000
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_is_eligible @2026-11: old false new true
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_benefit_amount @2026-11: old 0 new unknown
-allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time_in_October_in p1 leap_unearned_income_verification_is_pending @2026-11: old unknown new false
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_person_unearned_income @2027-02: old 0 new 1000
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_person_countable_income @2027-02: old 0 new 1000
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_household_income @2027-02: old 0 new 1000
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_has_countable_unearned_income @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_pending_verification_count @2027-02: old 1 new 2
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_person_pending_verification_count @2027-02: old 1 new 2
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p1 cccap_unearned_income_verification_is_pending @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p2 cccap_household_income @2027-02: old 0 new 1000
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-219 p2 cccap_pending_verification_count @2027-02: old 1 new 2
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_person_unearned_income @2027-02: old 0 new 500
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_person_countable_income @2027-02: old 1250 new 1750
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_household_income @2027-02: old 1250 new 1750
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_has_countable_unearned_income @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_pending_verification_count @2027-02: old 2 new 3
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_person_pending_verification_count @2027-02: old 2 new 3
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p1 cccap_unearned_income_verification_is_pending @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p2 cccap_household_income @2027-02: old 1250 new 1750
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) S CO-220 p2 cccap_pending_verification_count @2027-02: old 2 new 3
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-458 p1 cccap_person_unearned_income @2026-11: old unknown new 1150
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-458 p1 cccap_person_countable_income @2026-11: old unknown new 3150
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-458 p1 cccap_household_income @2026-11: old unknown new 3150
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-458 p1 cccap_has_countable_unearned_income @2026-11: old unknown new true
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-459 p1 cccap_person_unearned_income @2026-11: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-459 p1 cccap_person_countable_income @2026-11: old unknown new 2000
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-459 p1 cccap_household_income @2026-11: old unknown new 2000
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-459 p1 cccap_has_countable_unearned_income @2026-11: old unknown new false
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_person_unearned_income @2027-02: old unknown new 800
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_person_countable_income @2027-02: old unknown new 1800
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_household_income @2027-02: old unknown new 1800
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_protective_services_income @2027-02: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_has_countable_unearned_income @2027-02: old unknown new true
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_verification_status @2027-02: old unknown new "past_due"
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p1 cccap_pending_verification_count @2027-02: old unknown new 2
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_person_unearned_income @2027-02: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_person_countable_income @2027-02: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_household_income @2027-02: old unknown new 1800
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_protective_services_income @2027-02: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_has_countable_unearned_income @2027-02: old unknown new false
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_verification_status @2027-02: old unknown new "past_due"
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_pending_verification_count @2027-02: old unknown new 2
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_person_pending_verification_count @2027-02: old unknown new 0
+allowed (C2 CCCAP reads a household stated in receipts alone) S CO-460 p2 cccap_unearned_income_verification_is_pending @2027-02: old unknown new false
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_unearned_income @2026-11: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_countable_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-energy_300_of_which_nonprofit_300 p1 cccap_person_unearned_income @2026-11: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-energy_300_of_which_nonprofit_300 p1 cccap_person_countable_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-energy_300_of_which_nonprofit_300 p1 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-energy_300_of_which_nonprofit_300 p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_unearned_income @2026-11: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_countable_income @2026-11: old 2000 new 2200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_household_income @2026-11: old 2000 new 2200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-LEAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_unearned_income @2027-02: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_countable_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_household_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_has_countable_unearned_income @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-in_home_care_allowance_received_300_part_of_nontaxable_ p2 cccap_household_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-energy_300_of_which_nonprofit_300 p1 cccap_person_unearned_income @2027-02: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-energy_300_of_which_nonprofit_300 p1 cccap_person_countable_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-energy_300_of_which_nonprofit_300 p1 cccap_household_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-energy_300_of_which_nonprofit_300 p1 cccap_has_countable_unearned_income @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-energy_300_of_which_nonprofit_300 p2 cccap_household_income @2027-02: old 1000 new 1300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_unearned_income @2027-02: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_countable_income @2027-02: old 1000 new 1200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_household_income @2027-02: old 1000 new 1200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_has_countable_unearned_income @2027-02: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-SNAP-workforce_300_of_which_vocational_allowance_200 p2 cccap_household_income @2027-02: old 1000 new 1200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_countable_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_household_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-energy_300_of_which_nonprofit_300 p1 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-energy_300_of_which_nonprofit_300 p1 cccap_person_countable_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-energy_300_of_which_nonprofit_300 p1 cccap_household_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-energy_300_of_which_nonprofit_300 p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_unearned_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_countable_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-workforce_300_of_which_vocational_allowance_200 p1 cccap_household_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFclient-workforce_300_of_which_vocational_allowance_200 p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p2 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p2 cccap_person_countable_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p2 cccap_household_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p2 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-energy_300_of_which_nonprofit_300 p2 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-energy_300_of_which_nonprofit_300 p2 cccap_person_countable_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-energy_300_of_which_nonprofit_300 p2 cccap_household_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-energy_300_of_which_nonprofit_300 p2 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-workforce_300_of_which_vocational_allowance_200 p2 cccap_person_unearned_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-workforce_300_of_which_vocational_allowance_200 p2 cccap_person_countable_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-workforce_300_of_which_vocational_allowance_200 p2 cccap_household_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFspousedeemed-workforce_300_of_which_vocational_allowance_200 p2 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_countable_income @2026-10: old 3200 new 3500
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_household_income @2026-10: old 3200 new 3500
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-energy_300_of_which_nonprofit_300 p1 cccap_person_unearned_income @2026-10: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-energy_300_of_which_nonprofit_300 p1 cccap_person_countable_income @2026-10: old 3200 new 3500
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-energy_300_of_which_nonprofit_300 p1 cccap_household_income @2026-10: old 3200 new 3500
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-energy_300_of_which_nonprofit_300 p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_unearned_income @2026-10: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_countable_income @2026-10: old 3200 new 3400
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-workforce_300_of_which_vocational_allowance_200 p1 cccap_household_income @2026-10: old 3200 new 3400
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-AFsponsordeemed-workforce_300_of_which_vocational_allowance_200 p1 cccap_has_countable_unearned_income @2026-10: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_unearned_income @2026-11: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_countable_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_parent_fee @2026-11: old 47 new 92
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_person_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p1 cccap_unearned_income_verification_is_pending @2026-11: old false new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p3 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p3 cccap_parent_fee @2026-11: old 47 new 92
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p3 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-in_home_care_allowance_received_300_part_of_nontaxable_ p3 cccap_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_person_unearned_income @2026-11: old 0 new 300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_person_countable_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_parent_fee @2026-11: old 47 new 92
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_person_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p1 cccap_unearned_income_verification_is_pending @2026-11: old false new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p3 cccap_household_income @2026-11: old 2000 new 2300
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p3 cccap_parent_fee @2026-11: old 47 new 92
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p3 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-energy_300_of_which_nonprofit_300 p3 cccap_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_unearned_income @2026-11: old 0 new 200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_countable_income @2026-11: old 2000 new 2200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_household_income @2026-11: old 2000 new 2200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_has_countable_unearned_income @2026-11: old false new true
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_parent_fee @2026-11: old 47 new 77
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_person_pending_verification_count @2026-11: old 0 new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p1 cccap_unearned_income_verification_is_pending @2026-11: old false new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p3 cccap_household_income @2026-11: old 2000 new 2200
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p3 cccap_parent_fee @2026-11: old 47 new 77
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p3 cccap_verification_status @2026-11: old "complete" new unknown
+allowed (C1 CCCAP counts by silence a kind an excluded scalar fact held (J.12, J.17, J.24 name only part)) G G-CCCAP-workforce_300_of_which_vocational_allowance_200 p3 cccap_pending_verification_count @2026-11: old 0 new unknown
 
 ## Translation notes
 
@@ -268,3 +218,351 @@ allowed (R3 LEAP CO-4962 placement limit) G G-LEAPwin-crime_victim_3000_one_time
 - CO-222 p1 2027-03: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
 - CO-222 p1 2027-04: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
 - CO-222 p1 2027-05: periodic per-payment stated in a month with no such receipt: kept as a stream of amount 0 (the old reading)
+- G-SUNBuckschild-educational_assistance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-loan_proceeds_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-expense_reimbursements_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-energy_assistance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tax_refunds_and_credits_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-property_or_food_tax_refund_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-federally_excluded_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workforce_program_payments_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-general_or_emergency_assistance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-in_home_care_allowance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-va_aid_and_attendance_used_for_uncovered_care_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-uniformed_services_special_pay_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-state_veteran_annuity_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-charitable_need_based_cash_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-migrant_farmworker_emergency_assistance_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gifts_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-charitable_gifts_for_life_threatening_condition_received_300_part_of_nontaxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-taxable_interest_and_dividend_income_300_part_of_taxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-rental_income_received_300_part_of_taxable_ p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-energy_300_of_which_nonprofit_300 p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-federally_excluded_300_of_which_VISTA_200 p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workforce_300_of_which_vocational_allowance_200 p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-lump_sum_300_inheritance_ p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SS_lump_300 p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-retroactive_SSI_PA_lump_300 p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-crime_victim_compensation_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-foster_care_provider_payments_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-kinship_care_payments_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_diversion_payment_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-reverse_mortgage_payments_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-housing_utility_allowance_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-gi_bill_housing_and_food_allowances_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-refugee_resettlement_payments_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-tanf_supportive_service_payments_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2025-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-07: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-08: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-09: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-10: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-11: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2026-12: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-01: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-02: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-03: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-04: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-05: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-workers_compensation_claim_expense_amounts_received_300_paid_as_a_lump_sum p2 2027-06: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-irregular_20 p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-AmeriCorps_300_for_40_hours p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-AmeriCorps_300_for_10_hours p2: parts stated with a residual not stated: the parts are added beside it
+- G-SUNBuckschild-AmeriCorps_300_hours_not_stated p2: parts stated with a residual not stated: the parts are added beside it
