@@ -4,5 +4,3 @@ summary: >-
   limit and the meaning of snap_is_elderly_or_disabled (written dispositions of the pre-check flags against main), and
   the Difficulty of Care exclusion in MAGI income (coverage review MAGI F-18).
 impact:
-  - {changed: CO-303, fingerprint: fp1-629936c59fe2297718c0, flagged: CO-301, not_applicable: "CO-303's meaning now names snap_is_elderly (CO-301) instead of the figure 60; CO-301 is the item named, and its meaning already reads snap_elderly_age."}
-  - {changed: CO-303, fingerprint: fp1-629936c59fe2297718c0, flagged: CO-314, not_applicable: "CO-314 states the household test over CO-303 and names no age figure in its meaning; the derivations are unchanged."}
