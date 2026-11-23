@@ -2959,3 +2959,13 @@ Owner: SNAP policy owner
 Assumption: A payment for meals only or for a room only is counted as unearned income (the reading before receipt records), pending this answer.
 
 Checked 2026-11-23: 10 CCR 2506-1 4.403.2 (D-82); 7 CFR 273.1(c)(3)(ii), (c)(5)-(6) (S1815, D-7), which say who boarders and roomers are, not how a meals-only or room-only payment is counted. Items: CO-5010.
+
+### OQ-1020. Earnings: whether special pay, and payments for a room only or meals only, are earnings in every program
+
+Body: Earned-income records, step E0 (docs/design-earned-and-resource-records.md 2.3, decision D2) draws the boundary between the two lists of records: earnings (CO-5100) are money or in-kind value paid to the person for work the person performed, as an employee or in self-employment; every other payment is a receipt (CO-5000). Three receipt kinds fall on the earnings side: uniformed_services_special_pay (pay for service; with combat_zone, also the combat-zone pay stated today as part of wages, CO-4310), board_only_payment and room_only_payment (boarder income; room and board is already a statement of its own, CO-4161). The texts on file treat them as earned in some programs and are silent in others: Colorado Works counts board, room, and room and board payments as earned income (9 CCR 2503-6 3.605.2.E.4.c-e, S3159), Medicaid counts a board payment as earned income (10 CCR 2505-10 8.100.3.K.10.c), SNAP treats a boarder's payments as self-employment income (10 CCR 2506-1 4.403.2, S2963; OQ-996 for meals only and room only), CCCAP counts "hazard duty pay" (8 CCR 1403-1 3.111.I.1) and boarders and lodgers (I.18, S3256) as income, and LEAP, Adult Financial and the SSI method name none of them as earned or unearned. Until each program's E1 track reads its earnings table, the three kinds stay in receipts, with each program's receipt row unchanged, and a household that states one states it in both lists, both written by the translator from the receipt (the transition rule); the earnings row of each program carries the receipt row's reading. E2 retires the three receipt kinds.
+
+Class: state policy choice
+Owner: each program's policy owner (SNAP, LEAP, Adult Financial, Colorado Works, CCCAP, Medicaid)
+Assumption: The three kinds are earnings in every program, each program counting them as its receipt row counts them today until its owner signs its earnings row.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.2.E.4 (D-81); 10 CCR 2505-10 8.100.3.K.10 (D-65); 10 CCR 2506-1 4.403.2 (D-82); 8 CCR 1403-1 3.111.I (D-87); 9 CCR 2503-7 3.752.21-23 (D-86); 9 CCR 2503-5 3.520.78 (D-80). Items: CO-5100, CO-5000, the earnings and receipt counting tables.
