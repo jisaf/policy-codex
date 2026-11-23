@@ -2,6 +2,7 @@ import type { LedgerIndex } from "./ledger-index";
 import { check } from "./check";
 import { buildGraph } from "./graph";
 import { runTest } from "./evaluate";
+import { schemaErrors } from "./records";
 import { baseType, fmt } from "./values";
 import { DATE_RE, type EngineRefs, type Item, type VolumeMeta } from "./types";
 
@@ -83,6 +84,26 @@ export function constraints(
     add(!!(it.options && it.options.length >= 2), "Enumeration lists its options");
   }
   if (it.kind === "supplied") add(!!it.supplied_by, "Supplied facts say where the value comes from");
+  // A list of records declares its record schema once (docs/operators.md,
+  // "Receipt records"); only a list of records may declare one. Reported
+  // only when something is wrong, so other items read as before.
+  for (const m of schemaErrors(it)) add(false, m);
+  // A table keyed by option whose rows are treatments (a counting table)
+  // lists the treatments it may give in `options`; every row gives one.
+  if (it.kind === "parameter" && it.type === "table keyed by option" && it.options && it.options.length) {
+    const values = Array.isArray(it.versions) && it.versions.length ? it.versions.map((v) => v.value) : [it.value];
+    const bad = new Set<string>();
+    for (const v of values) {
+      if (v && typeof v === "object") {
+        for (const [k, r] of Object.entries(v as Record<string, unknown>)) {
+          if (typeof r !== "string" || !it.options.includes(r)) bad.add(`${k}: ${JSON.stringify(r)}`);
+        }
+      }
+    }
+    add(!bad.size, bad.size
+      ? `Every row gives one of the table's options (${[...bad].join(", ")} does not)`
+      : "Every row gives one of the table's options");
+  }
   if (it.kind === "parameter") {
     // A parameter states its value once, or as dated versions (each with a
     // value); either satisfies the constraint, but not both, and not neither.

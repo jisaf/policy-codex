@@ -280,6 +280,141 @@ members' groups need not be equal.
 Date arithmetic is in the proleptic Gregorian calendar with no time of day
 and no time zone (computed in UTC).
 
+## Receipt records (P55-P57)
+
+**A recorded exception to the engine guardrail.** The product owner adopted
+receipt records on 2026-11-23 (docs/plan-colorado.md, "Decision, 2026-11-23:
+adopt receipt records"; the evidence is docs/reviews/receipt-spike.md). The
+rules count unearned money by the kind of receipt, by whether it is paid once
+or recurs, by the date it came in and by how often it is paid, and a scalar
+fact per source cannot say all four of one payment without stating the same
+money twice. The rule text that needs each operator is in the table below.
+No other list-of-records input exists; earned income and resources are
+decided separately (plan-colorado.md, condition 3).
+
+**The input.** A supplied fact of type `list of receipts`, scope `person`
+(Colorado: `receipts`, CO-5000): one record per payment, or per stream of
+like payments, each a mapping of field to value. The fact declares its record
+schema once, in `record_fields`: each field's type (a scalar codex type), a
+one-line meaning, the options of a `one of` field, and exactly one of
+
+- `required: true`: a rule that reads the field cannot determine when the
+  record does not state it (`kind`, `amount`, `date`, a payment's
+  `per_payment`, AmeriCorps `hours_served`);
+- `default: <value>`: the value the rule text gives an unstated field
+  (`frequency: monthly`, every earmark `0`, `retroactive: false`);
+- `when_absent: "<meaning>"`: what leaving the field out means, for a field an
+  operator gives that meaning to (`month`: the receipt recurs in every month).
+
+A list that is not stated is **unknown**: every sum over it is unknown, and
+the outcome is "cannot determine" (decision 4 of 2026-11-23). A **stated empty
+list** means the person received no such money: every sum over it is 0.
+`npm run check` blocks on a stated record that does not fit the schema (a
+field the schema does not declare, a value of the wrong type, a kind that is
+not one of the kinds, a `month` that is not its `date`'s month); a required
+field left out is not an error, since that is how a case states that a value
+is not known.
+
+| Operator | Arguments | Result | Unknown | Rule text that needs it |
+|---|---|---|---|---|
+| `sum_receipts` (P55) | list, condition, value | the sum of the value over the records whose condition is true, with **that receipt** bound to each record in list order. The list is a list-of-receipts identifier (this person's) or `["of", person, list]` (that person's). A record whose condition is false is skipped and its value is never read | unknown if the list is unknown, or the condition of any record is unknown, or the value of a record whose condition is true is unknown. **No records: 0** | 9 CCR 2503-7 3.752.22.A ("received in the income verification period"); 10 CCR 2506-1 4.402.A.2 (each income converted by how often it is paid); 4.405.E (nonrecurring lump sums, of any source); 9 CCR 2503-5 3.520.786 (exempt by source, for the client, spouse and sponsor alike) |
+| `receipt` (P56) | field name (not evaluated) | that receipt's field as the record states it, else the default the schema declares | unknown when the record does not state a field that has no default; the field is then reported as a missing supplied fact (below). An error outside `sum_receipts`, and for a field the schema does not declare | as P55 |
+| `received_in` (P57) | month | whether that receipt came in the month: its `month`, or the month of its `date`, is the month. A record that states neither recurs in every month, **unless it is paid once** (`frequency: once`): a one-time payment with no month and no date cannot be placed, so the result is unknown and its `month` is reported missing | unknown if the month is, or as just said | 9 CCR 2503-7 3.752.21.I and 9 CCR 2503-5 3.520.785.B.1.a ("counted as income in the month received"); 10 CCR 2506-1 4.405.A (income received in the quarter) |
+
+Inside the condition and the value of a receipt sum, an expression reads
+**only** that receipt's fields, the month in context (and month arithmetic on
+it, `that_month` included), case-scope facts and parameters. A fact of a
+person (person or person-month scope, supplied or derived) is a type error
+there: a rule that turns on the person (an SSI-age child, an
+application-month destitution test) reads it outside the sum and chooses
+between sums. A derived fact's own rule never sees "that receipt" (as for
+"that month", P54), so there are no per-receipt derived items: a condition
+several sums share is written in each.
+
+**Counting tables.** Each program that counts receipts has one table keyed by
+option (`table keyed by option`), keyed by kind, whose rows name a treatment
+the table lists in its `options` (`counted`, `excluded`, a named special rule).
+The type check refuses a lookup of a receipt's kind in a table that lacks a
+row for any kind, or has a row for no kind, in any version; the constraint
+check refuses a row whose treatment is not one of the table's options. A kind
+is therefore never counted by default, and a new kind cannot be added
+without a row in every program's table.
+
+**Missing record fields.** A record field a rule needs and the record does
+not state is reported on the trace as a missing supplied fact of the list's
+owner, named `<list>[<index> <kind>].<field>` with the index from 0 in the
+stated list: `receipts[0 other_one_time].date` for an undated one-time
+payment that must be placed in or out of the LEAP income verification
+period, `receipts[1 ?].kind` for a record that states no kind. The app's
+"cannot determine" list and the conformance suite's `expect[].missing` carry
+the same name (`src/engine/records.ts`, `recordFieldName`).
+
+**For engine teams.** ledger.json and the suite give the fact's
+`record_fields`; a case states the fact as a JSON list of objects
+(docs/conformance.md).
+
+- **Drools.** One `Receipt(owner, index, kind, amount, month, date,
+  frequency, ...)` fact per record, the schema's defaults applied when the
+  fact is inserted and every field without a default carried as the review's
+  `Tri` (known value, or unknown). Each sum is an
+  `accumulate(Receipt(owner == $p, <condition>) ; sum(<value>))`; a receipt
+  whose condition is unknown makes the accumulate unknown, so the condition
+  is evaluated to a `Tri` in the pattern's `eval`, not used as a filter that
+  drops unknowns. A `ReceiptsStated(owner)` marker fact distinguishes an
+  unstated list (unknown) from an empty one (0), exactly as the review's
+  `RelsStated` does for relationships. A counting table is a lookup fact
+  `Treatment(program, kind, treatment)` or a decision table with one row per
+  kind.
+- **Corticon.** A `Receipt` entity associated to `Person` (one to many),
+  `->sum` over the association with the condition as a filter, the schema's
+  defaults as attribute defaults on the vocabulary and the required fields
+  left nullable with a null guard that makes the sum null. A counting table
+  is a rulesheet whose condition column is the kind, one row per kind, which
+  is how a Corticon author would write it; Corticon's completeness check then
+  does what the codex's type check does (a kind with no row). The review's
+  open VERIFY items on `->sum` over an empty association and on null guards
+  apply unchanged; the suite has empty-list cases.
+- **Fact graph (Direct File, fact_graph).** The concern in
+  stakeholder-factgraph.md is that a `Filter`/`CollectionSum` predicate is
+  compiled in the filtered item's context and cannot see an outer item, so a
+  per-person sum over a top-level `/receipts/*` collection needs a binding
+  for the person being evaluated. The codex removes both outer reads the
+  predicate could need:
+  1. **The person.** Every receipt sum reads the receipts of one person, the
+     one the rule is evaluated for (or `that person`, inside a person
+     binder, which the adapter already maps to an entity id). Model the
+     receipts as a collection owned by the person entity, not a top-level
+     collection with an owner reference: in fact_graph, an entity fact
+     `receipts` per person; in Direct File, the collection
+     `/persons/*/receipts/*` written by the adapter from `facts.receipts`
+     when it loads the case (Direct File's own `/formW2s/*` with a `filer`
+     reference is the shape to avoid). The sum is then
+     `CollectionSum(Filter(../receipts/*, predicate))` relative to the
+     person, with no outer binding.
+  2. **Everything else the predicate reads.** The type check guarantees the
+     predicate reads only the receipt's own fields (paths inside the
+     filtered item), parameters and case-scope facts (absolute paths, which
+     a `Filter` predicate may read in both engines), and the month. The
+     month is the one value that varies with the evaluation: the adapter
+     already materialises person-month facts per month (the review's month
+     shift), so the receipt sums of month `m` live under that month and the
+     adapter writes, when it loads the case, each receipt's placement as data
+     the predicate reads from the receipt itself: `/persons/#p/receipts/#r/inMonth/#m`
+     (true, false, or incomplete for a one-time receipt with no month or
+     date), which is exactly `received_in` (P57) computed from the record's
+     own fields. Month arithmetic in the codex's predicates is on the month
+     of the sum (the calendar quarter, the LEAP period's months), each a
+     fixed offset the adapter can write the same way.
+  With both, no `Filter` needs an outer-item binding, and no grouping of
+  receipts outside the graph is needed. A `Filter` that treats an incomplete
+  predicate as false must not be used for these sums: an unknown condition
+  makes the sum unknown (the review's strict unknown mode for `Filter`).
+- **Conformance.** `SuiteCase.persons[].facts.receipts` is a list of
+  objects; `items[].record_fields` is the schema; `expect[].missing` names a
+  missing field `receipts[<i> <kind>].<field>`; the cannot-determine case for
+  an outcome that reads receipts removes one record's `amount` first, and the
+  whole list only when that decides nothing.
+
 ## Unknowns that no supplied fact explains
 
 Four unknowns have no unstated supplied fact behind them: a number that is

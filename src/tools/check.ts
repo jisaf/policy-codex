@@ -11,6 +11,7 @@ import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/case
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { buildIndex } from "../engine/ledger-index";
+import { recordValueErrors, statedRecordLists } from "../engine/records";
 import { staleApprovalMessage, type FingerprintBasis } from "../engine/fingerprint";
 import {
   changedDecisions, dispositionStub, impactFlags, parseChangeRecord, reconcileImpact,
@@ -414,6 +415,34 @@ export function unknownCaseIdentifiers(engine: Engine, ledger: LoadedLedger): st
   return [...new Set(out)].sort();
 }
 
+/** `record:<case or test>:<person>: <what is wrong>` for every stated list of
+ *  receipts (or other list of records) that does not fit its schema: a field
+ *  the schema does not declare, a value of the wrong type, a kind that is
+ *  not one of the kinds, a month that is not its date's month
+ *  (src/engine/records.ts). A misspelt field would be silently unread, so
+ *  each blocks. A required field left out does not: that is how a case
+ *  states a value is not known. */
+export function recordInputErrors(engine: Engine, ledger: LoadedLedger): string[] {
+  const out: string[] = [];
+  const by = engine.index.byIdentifier;
+  const person = (id: string, pid: string, facts: Record<string, unknown> | undefined) => {
+    for (const [it, v] of statedRecordLists(by, facts)) {
+      for (const m of recordValueErrors(it, v)) out.push(`record:${id}:${pid}: ${m}`);
+    }
+  };
+  for (const c of ledger.cases) {
+    for (const [pid, p] of Object.entries(c.persons || {})) person(c.id, pid, p.facts);
+  }
+  for (const it of ledger.items) {
+    for (const t of it.tests || []) {
+      person(t.id, "p1", t.given);
+      for (const [pid, f] of Object.entries(t.others || {})) person(t.id, pid, f);
+      for (const [pid, p] of Object.entries(t.persons || {})) person(t.id, pid, p.facts);
+    }
+  }
+  return out;
+}
+
 /** Case-consistency warnings for facts that survive beside an edge by design
  *  (dual-entry audit 5.14 and section 10 of its order of work): a spouse edge
  *  against a marital status of single or widowed; a Colorado county against a
@@ -714,6 +743,8 @@ export function buildCheckReport(
   // case, blocks (it reads as a fact the engine never sees). Keys are
   // `unknown:<case>:<person>:<identifier>`; known-failures.json may list one.
   const newUnknownCaseIdentifiers = unknownCaseIdentifiers(engine, ledger).filter((k) => !known.has(k));
+  // A stated list of receipts that does not fit its schema blocks.
+  const newRecordErrors = recordInputErrors(engine, ledger).filter((k) => !known.has(k));
 
   const changedIdentifiers = [...changedItems]
     .map((id) => ledger.items.find((it) => it.id === id)?.identifier)
@@ -775,6 +806,7 @@ export function buildCheckReport(
     && newCaseFailures.length === 0
     && newOverrides.length === 0
     && newUnknownCaseIdentifiers.length === 0
+    && newRecordErrors.length === 0
     && openQuestions.errors.length === 0
     && changeImpact.open.length === 0
     && changeImpact.errors.length === 0
@@ -805,7 +837,7 @@ export function buildCheckReport(
     knownFailures: [...known],
     newFailures: [
       ...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key), ...newOverrides,
-      ...newUnknownCaseIdentifiers,
+      ...newUnknownCaseIdentifiers, ...newRecordErrors,
     ],
     caseOverrides,
     blockingItemErrors,
@@ -1006,6 +1038,11 @@ export function formatSummary(r: CheckReport): string {
   const unknownIds = r.newFailures.filter((k) => k.startsWith("unknown:"));
   if (unknownIds.length) {
     lines.push(`case identifiers no item has (blocking): ${unknownIds.join(", ")}`);
+  }
+  const recordErrors = r.newFailures.filter((k) => k.startsWith("record:"));
+  if (recordErrors.length) {
+    lines.push(`stated receipts that do not fit their schema (blocking):`);
+    for (const k of recordErrors) lines.push(`  ${k.slice(7)}`);
   }
   lines.push(`impact: ${r.impact.length} identifier(s) downstream of the changed items`);
   if (r.outcomesAffected.length) {

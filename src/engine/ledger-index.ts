@@ -59,6 +59,9 @@ export function buildIndex(
     byName.set((it.name || "").toLowerCase(), it);
     byId.set(it.id, it);
     for (const o of it.options || []) enumOptions.add(o);
+    // A record schema's "one of" fields (a receipt's kind, its frequency)
+    // name options a rule compares a field with.
+    for (const f of Object.values(it.record_fields ?? {})) for (const o of f?.options ?? []) enumOptions.add(o);
   }
   const declared = roles && roles.length ? roles : null;
   return {

@@ -7,6 +7,7 @@ import {
   evaluate, makeCase, relationshipEdges, statedRelationships, type TraceEvent,
 } from "../engine/evaluate";
 import { inForce } from "../engine/versions";
+import { isRecordList, parseRecordFieldName, recordFieldName } from "../engine/records";
 import type { PersonSpec, HouseholdCase } from "../engine/cases";
 import type { LoadedVolume } from "../ledger/load";
 import type { LedgerSource } from "../ledger/source";
@@ -85,6 +86,11 @@ export interface SuiteItem {
   scope: Scope;
   /** `one of` items: the allowed values. */
   options?: string[];
+  /** A list of records (`list of receipts`): the record schema, as in
+   *  ledger.json. A case states the fact as a list of mappings of these
+   *  fields; a field a record leaves out takes its `default`, and one with
+   *  none is unknown (a missing entry names it `receipts[<i> <kind>].<field>`). */
+  record_fields?: Item["record_fields"];
   /** "outcome" on a program result. */
   role?: string;
   /** The item's own effective range (`to` inclusive). */
@@ -667,9 +673,33 @@ function cannotDetermineCases(engine: Engine, base: SuiteCase[]): {
       }
       const ordered = [...read.filter((r) => r.decisive), ...read.filter((r) => !r.decisive)]
         .slice(0, MAX_REMOVALS);
+      // A list of records is tried field by field first: one record's
+      // amount removed (named receipts[<i> <kind>].amount), then the list.
+      const removals: Array<{ person: string | null; identifier: string; field?: { index: number } }> = [];
       for (const r of ordered) {
+        if (r.person !== null && isRecordList(engine.item(r.identifier))) {
+          const list = sc.persons[r.person]?.facts?.[r.identifier];
+          if (Array.isArray(list)) {
+            list.slice(0, MAX_REMOVALS).forEach((rec, index) => {
+              if (rec && typeof rec === "object" && (rec as Record<string, unknown>).amount !== undefined) {
+                removals.push({
+                  person: r.person,
+                  identifier: recordFieldName(r.identifier, index, (rec as Record<string, unknown>).kind, "amount"),
+                  field: { index },
+                });
+              }
+            });
+          }
+        }
+        removals.push(r);
+      }
+      for (const r of removals.slice(0, 2 * MAX_REMOVALS)) {
         const persons = clonePersons(sc.persons);
-        if (r.person !== null) removeFact(persons[r.person], r.identifier);
+        if (r.person !== null && r.field) {
+          const name = parseRecordFieldName(r.identifier)!;
+          const rec = (persons[r.person].facts![name.list] as Array<Record<string, unknown>>)[r.field.index];
+          delete rec.amount;
+        } else if (r.person !== null) removeFact(persons[r.person], r.identifier);
         const candidate: SuiteCase = {
           id: `${sc.id}-U-${outcome}`,
           kind: "cannot-determine",
@@ -743,6 +773,7 @@ export function buildSuite(
       type: it.type, scope: it.scope,
     };
     if (it.options && it.options.length) item.options = [...it.options];
+    if (it.record_fields) item.record_fields = it.record_fields;
     if (it.role) item.role = it.role;
     if (it.effective) item.effective = it.effective;
     if (it.kind === "derived") item.uses = engine.usesOfItem(it.identifier);

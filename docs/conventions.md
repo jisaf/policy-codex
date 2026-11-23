@@ -58,7 +58,8 @@ Fields that do not apply are omitted, not left blank.
 | table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. A band the rule leaves open at the top ("175.01% and above") is the row keyed `"above"`, never an invented bound. |
 | table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
 | table keyed by number of days | A parameter table keyed by a count of days (`"1"` to `"30"`), such as the Adult Financial partial month payment figures (9 CCR 2503-5 3.581.D.4); read with P24/P42 as a lookup by a whole number. |
-| table keyed by option | A parameter table keyed by the options of a `one of` fact (a county, a region, a dwelling type, a service type), read with P24. A row is an amount, or an option of another `one of` item (a county's region), and the lookup then yields that option. Every option the rule reaches has a row (a 0 where the rule states no amount), so no lookup misses. |
+| table keyed by option | A parameter table keyed by the options of a `one of` fact (a county, a region, a dwelling type, a service type), read with P24. A row is an amount, or an option of another `one of` item (a county's region), and the lookup then yields that option. Every option the rule reaches has a row (a 0 where the rule states no amount), so no lookup misses. A program's counting table (docs/operators.md, "Receipt records") is keyed by a receipt's kind and lists the treatments its rows give in `options`. |
+| list of receipts | A person's receipt records (P55-P57): a list of mappings, one per payment or stream of like payments, whose fields the item declares once in `record_fields`. Unstated is unknown; an empty list is none. See docs/operators.md, "Receipt records". |
 
 Numbers are IEEE 754 binary64, computed in the order written; see `docs/operators.md`, Numbers.
 
@@ -262,6 +263,12 @@ Added for the same-word audit fix round (full and half siblings)
 Added for the heavier-definitions audit fix round 4 (several lottery receipts per person, OQ-216)
 
 - P54 `the sum of [number] for each month in [months]` (`sum_months`), with `that month` (`that_month`) naming each month in turn while `the month` stays the month being determined. A rule that adds amounts received in earlier months, each counted for a period that depends on its own amount (each month's lottery receipt divided over its own spread, the receipts of the 120 months before added where their spreads reach this month), reads each month's fact `for that month` and compares that month with the month. Unknown when the list or any month's value is unknown; no months is 0. A block form is `the sum for each month in [months] of` with the value indented
+
+Receipt records (the recorded exception to the engine guardrail, product-owner decision of 2026-11-23; docs/operators.md "Receipt records" is the specification)
+
+- P55 `the sum of [number] for each receipt in [receipts] where [condition]` (`sum_receipts`), with `that receipt` naming each record in turn. As a block: `the sum for each receipt in [receipts] where`, the condition indented two steps, `of` one step in, the value indented two steps. The condition and the value read only that receipt's fields, the month, case facts and parameters; a fact of the person is read outside the sum. Unknown when the list is not stated or when any record's condition, or a counted record's value, is unknown; a stated empty list is 0
+- P56 `that receipt's [field]` (`receipt`): the field as the record states it, or the default the schema declares; a field with no default the record does not state is unknown and is reported as `receipts[<i> <kind>].<field>`
+- P57 `that receipt is received in [month]` (`received_in`): its month, or its date's month, is the month; a record that states neither recurs in every month, unless it is paid once (then its month is needed)
 
 ## Tests
 

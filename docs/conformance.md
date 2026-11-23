@@ -58,6 +58,10 @@ interface SuiteItem {
   type: string;                        // "yes/no", "money", "one of", "group of persons", ...
   scope: "person" | "person-month" | "case" | "month" | "global";
   options?: string[];                  // "one of" items
+  record_fields?: Record<string, {     // a list of records ("list of receipts"): its schema
+    type: string; meaning?: string; options?: string[];
+    required?: true; default?: unknown; when_absent?: string;  // exactly one of the three
+  }>;
   role?: string;                       // "outcome" on a program result
   effective?: { from: string; to: string };  // both ends inclusive
   uses?: string[];                     // derived items: what the derivation reads directly
@@ -135,6 +139,12 @@ here to read a case the way the codex does:
 - **Groups are ordered lists**: a group's members are listed in the order the
   case declares its persons (the order of the `persons` keys), and are
   compared element by element.
+- **A list of records is a JSON list of objects** under `facts` (Colorado's
+  `receipts`, `suite.items[].record_fields` gives its schema). A field an
+  object leaves out takes the schema's `default`; one with no default is
+  unknown, and a rule that reads it cannot determine. A list that is not
+  stated is unknown; `[]` means none. `docs/operators.md`, "Receipt records",
+  defines the three operators that read it.
 
 ### Case kinds and annotations
 
@@ -149,7 +159,10 @@ here to read a case the way the codex does:
 - `cannot-determine`: for each program outcome, a household case (or, if no
   household case expects the outcome, one of its rule tests) with one
   supplied fact removed, so the outcome's expected value is `null`.
-  `derived_from` names the source case and the removed fact; `missing` lists
+  `derived_from` names the source case and the removed fact (for an outcome
+  that reads a list of records, one record's `amount` is removed first, named
+  `receipts[<i> <kind>].amount`, and the whole list only when that decides
+  nothing); `missing` lists
   the unstated supplied facts the reference evaluation asked for, in the
   order it asked (left to right, short-circuiting; see
   `docs/operators.md`). `missing` is information, not graded: an engine that
