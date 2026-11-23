@@ -29,6 +29,7 @@ import { MONTH_FACTS, PERSON_FACTS, translateCase, withRetired } from "./transla
 import { CHOICES } from "./choices";
 import { loadRetired } from "./retired";
 import { runMetamorphic } from "./metamorphic";
+import { translateCase as translateEarnings } from "../records/translate-earnings";
 
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && ve(a, b));
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
@@ -154,7 +155,11 @@ export function main(): number {
   const gen = generated(oldL.ledger.cases).map((c) => {
     const tr = translateCase(c, newL.ix, CHOICES);
     notes.push(...tr.notes);
-    return { old: translateCase(c, newL.ix, CHOICES, undefined, true).value, new: tr.value };
+    // Earned income (product owner, 2026-11-23): every program now reads it
+    // from the earnings records, so the new side also gets the earnings
+    // translation of the household's earned facts, as every stored household
+    // states it (step E0); the baseline reads the scalar facts it always read.
+    return { old: translateCase(c, newL.ix, CHOICES, undefined, true).value, new: translateEarnings(tr.value, newL.ix).value };
   });
   sources.push({ label: "generated households", cases: gen });
 
