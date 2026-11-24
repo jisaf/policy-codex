@@ -43579,6 +43579,7 @@
       facts:
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: correctional_facility
+        institution_entry_date: "2026-09-01"  # pattern sweep, MAGI (PS-05): the entry date is required where read; her story has her in the county jail through the application and the determination, a stay stated from September 1
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -83269,3 +83270,103 @@
         2026-11: "ineligible_income"
       chp_eligibility_status:
         2026-11: "eligible_child"
+
+- id: "CO-1004"
+  title: "An adult jailed after the retroactive months: only the months of the stay are limited (pattern sweep, MAGI, PS-05, JAILED)"
+  # Pattern sweep, MAGI (2026-11-24), probe JAILED, built from CO-932's single filer. p1 (born 1990-01-01, a man) has been in a
+  # government-run county jail since 2026-10-05 (institution_entry_date); he applied on 2026-11-02 with a retroactive request and has no
+  # income; determined 2026-11-10. Every month 0%: the Adults category.
+  # 8.100.3.G.1.b.ii (S3361): an inmate 'incarcerated in a correctional institution' is enrolled with benefits limited; 8.100.4.G.1 (S3351):
+  # eligible for a whole month on any day of it. August and September: before the stay: eligible. October: free on October 1 to 4: eligible.
+  # November: in jail on every day: incarceration_limited. Before the sweep the determination date's setting was read in every month:
+  # August to November incarceration_limited.
+  as_of: "2026-11-10"
+  persons:
+    p1:
+      facts:
+        expected_annual_income: 0
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: "correctional_facility"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: "CO"
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: "none"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: "male"
+        immigration_status: "us_citizen"
+        is_tax_filer: true
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+        ma_retroactive_coverage_requested: true
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: "none"
+        date_of_birth: "1990-01-01"
+        dwelling_id: "h1"
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: false
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: "none"
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: "magi"
+        continuous_eligibility_period_start_month: "2020-01"
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        receipts: []
+        earnings: []
+        residence_setting_operated_by_government: true
+        institution_entry_date: "2026-10-05"
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: "none"
+        electronic_data_source_monthly_gross_income: 0
+      relationships: []
+  relationships: []
+  expect:
+    p1:
+      ma_is_inmate_in_month:
+        2026-09: false
+        2026-10: false
+        2026-11: true
+      ma_magi_eligibility_status:
+        2026-08: "eligible"
+        2026-09: "eligible"
+        2026-10: "eligible"
+        2026-11: "incarceration_limited"
