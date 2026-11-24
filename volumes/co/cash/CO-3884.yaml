@@ -6,8 +6,8 @@ type: whole number
 scope: person-month
 program: AdultFinancial
 meaning: "The number of income verification elements still pending for the spouse in the home of this Adult Financial client: for each such spouse, one for unverified earned income and one for unverified unearned income (9 CCR 2503-5 3.520.5.A.3: \"Prior to approval of grant payments, the county department shall, at a minimum, verify potential income or unemployment benefits for the client, client's spouse, and sponsor(s)\")."
-precision: "A spouse is in the home as af_deemed_relative_income (CO-2384) reads it: a spouse edge, and living together where dwelling_id is stated. The spouse's income is verified whether or not 3.534.C, 3.544.F or 3.549.F then exempt it from deeming, since the exemption turns on that income. A sponsor's income is the sponsor element (CO-1672)."
-derived: [sum, [filter, [persons], [all, [otherwise, [rel, [spouse], [P]], false], [otherwise, [in_group, [P], lives_with], true]]], [+, [case, [[of, [P], af_earned_income_is_unverified], 1], [else, 0]], [case, [[of, [P], af_unearned_income_is_unverified], 1], [else, 0]]]]
+precision: "A spouse is in the home as af_deemed_relative_income (CO-2384) reads it: a spouse edge, and living together where dwelling_id is stated. The spouse's income is verified whether or not 3.534.C, 3.544.F or 3.549.F then exempt it from deeming, since the exemption turns on that income. A sponsor's income is the sponsor element (CO-1672). Pattern sweep (cash) PS-M1 and PS-D7 (docs/reviews/pattern-sweep-cash.md): the spouse of the month (af_spouses_in_month, CO-7603), wherever the spouse lives: the spouse's income is deemed wherever the spouse lives (3.534; af_deemed_relative_income, CO-2384), so it is verified wherever the spouse lives too (3.520.5); before, a spouse living elsewhere was left out by a lives_with test, read as living together when unstated."
+derived: [sum, af_spouses_in_month, [+, [case, [[of, [P], af_earned_income_is_unverified], 1], [else, 0]], [case, [[of, [P], af_unearned_income_is_unverified], 1], [else, 0]]]]
 sources: [S880, S1632]
 implemented: engine
 tags: [cash, verification]

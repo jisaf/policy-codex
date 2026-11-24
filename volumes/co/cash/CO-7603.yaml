@@ -1,0 +1,21 @@
+id: CO-7603
+name: "Adult Financial: the client's spouse in the month"
+identifier: af_spouses_in_month
+kind: derived
+type: group of persons
+scope: person-month
+program: AdultFinancial
+meaning: "The persons of the case who are this client's spouse in the month evaluated: a spouse (the spouse relationship) who had not died before the month's first day. A client whose spouse died before the month is widowed in it (9 CCR 2503-5 3.520.63.A.3), so the spouse's income is not deemed (3.534, 3.544.D-F, 3.549.C-F) and the spouse's resources are not counted with the client's (3.520.72.A) for that month."
+precision: "Pattern sweep (cash) PS-M1 (docs/reviews/pattern-sweep-cash.md): the Adult Financial couple readers took every person with a spouse edge as the client's spouse in every month, so a spouse who died during the months a determination covers still had income deemed and resources counted, and the client kept the couple's resource limit and the split $20, in the months after the death. A spouse who is not a person of the case is read through marital_status (af_is_married, CO-7308). Whether a person is a spouse is read from the client's relationships, stated (an empty list where there is none): a client whose relationships are not stated cannot be determined (decision 4 of 2026-11-23; pattern sweep PS-D4), except in a case of one person, who has no other person to be married to."
+derived: [case, [["=", [count, [persons]], 1], [filter, [persons], false]], [else, [filter, [persons], [all, [rel, [spouse], [P]], [any, [unknown, [of, [P], date_of_death]], [">=", [of, [P], date_of_death], [first_day, [month]]]]]]]]
+sources: [S2626, S3204, S1632, S1636]
+implemented: engine
+tags: [cash, oap, and, household]
+rationale: "Pattern sweep (cash), PS-M1 and PS-D4: eleven Adult Financial items filtered the persons of the case by the spouse edge, each with its own default for unstated relationships and none with the spouse's death; one group per month, read by each."
+tests:
+  # Pattern sweep (cash) PS-M1: 3.520.63.A (S2626) married or widowed; the husband dies on 2026-09-20, determined 2026-10-15.
+  - {id: "CO-7603-T1", title: "Pattern sweep PS-M1: September, the husband alive on its first day: her spouse", as_of: "2026-10-15", month: "2026-09", given: {}, others: {p2: {date_of_death: "2026-09-20"}}, relationships: [[spouse, p1, p2]], expect: [p2]}
+  - {id: "CO-7603-T2", title: "PS-M1: October, he died before its first day: widowed, no spouse", as_of: "2026-10-15", month: "2026-10", given: {}, others: {p2: {date_of_death: "2026-09-20"}}, relationships: [[spouse, p1, p2]], expect: []}
+  - {id: "CO-7603-T3", title: "A living husband: her spouse in every month", as_of: "2026-10-15", month: "2026-10", given: {}, others: {p2: {}}, relationships: [[spouse, p1, p2]], expect: [p2]}
+  - {id: "CO-7603-T4", title: "PS-D4: a case of one person: no spouse among its persons, whether or not relationships are stated", as_of: "2026-10-15", month: "2026-10", given: {}, expect: []}
+  - {id: "CO-7603-T5", title: "PS-D4: two persons, the client's relationships not stated: cannot determine (decision 4; was read as no spouse)", as_of: "2026-10-15", month: "2026-10", given: {}, others: {p2: {}}, expect: unknown}
