@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The expenses the person paid in the month for rental property the person does not actively manage, whose rents are the person's receipts of kind rental_income, or of kind other_taxable where a rent was stated in the other unearned income before receipt records (receipts, CO-5000): property taxes, insurance, interest on the property's mortgage, repairs and maintenance, utilities the owner pays and management fees. Not payments on the mortgage principal and not depreciation."
-precision: "If not stated, Colorado Works reads it as 0 (cw_unearned_income_deductions, CO-4369); Medicaid's SSI method reads it only for a month with rents and cannot determine without it (decision 4; coverage pass 4, non-MAGI N4-13)."
+precision: "Colorado Works and Adult Financial read it with no default (decision 4; cw_unearned_income_deductions, CO-4369, af_rental_expenses_deducted, CO-6801); Medicaid's SSI method reads it only for a month with rents and cannot determine without it (decision 4; coverage pass 4, non-MAGI N4-13)."
 supplied_by: "Applicant statement with receipts, as the county establishes them."
 sources: [S3256]
 tags: [income]

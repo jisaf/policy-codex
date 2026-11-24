@@ -6,7 +6,7 @@ type: group of persons
 scope: person
 program: ColoradoWorks
 meaning: "The persons who are this child's parent (natural or adoptive) and live in the home with the child, counting a temporary absence Colorado Works allows (cw_is_considered_living_in_home): the first rank of the caretaker hierarchy of 9 CCR 2503-6 3.604.2.H.1."
-precision: "Read for a dependent child; for anyone else it is the same set and nothing reads it. Where the case states no dwelling_id, a stated parent edge is read as living in the home (convention rule 17)."
+precision: "Read for a dependent child; for anyone else it is the same set and nothing reads it. Where the case states no dwelling_id, a stated parent edge is read as living in the home (convention rule 17). Pattern sweep (cash) PS-D2 (docs/reviews/pattern-sweep-cash.md): whether persons live together is read from lives_with as stated (dwelling_id), required where read (decision 4 of 2026-11-23; docs/conventions.md rule 17 as amended for Colorado Works and Adult Financial): no text on file says the persons of one application live together (9 CCR 2503-6 3.604.2.A, E, I build the unit from the persons living in the home; 9 CCR 2503-5 3.534.B.3 and 3.549.E name the household of the spouse and the parents in the home). Before, a person whose home was not stated was read as living with every related person of the case."
 derived: [filter, [persons], [all, [rel, [child], [P]], [in_group, [P], lives_with], [of, [P], cw_is_considered_living_in_home]]]
 sources: [S3753]
 implemented: engine
