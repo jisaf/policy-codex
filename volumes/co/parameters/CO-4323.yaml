@@ -5,7 +5,7 @@ kind: parameter
 type: table keyed by option
 scope: global
 program: SNAP
-meaning: "The multiplier 10 CCR 2506-1 4.402.A.2 applies to the average amount of income received at each frequency to convert it to a monthly amount, keyed by the options of wages_pay_frequency (CO-3921: weekly, biweekly, semimonthly) and periodic_unearned_income_frequency (CO-4330: every_other_month, quarterly, twice_a_year, annual)."
+meaning: "The multiplier 10 CCR 2506-1 4.402.A.2 applies to the average amount of income received at each frequency to convert it to a monthly amount, keyed by the pay schedules of an earnings record (frequency; earnings, CO-5100: weekly, biweekly, semimonthly) and periodic_unearned_income_frequency (CO-4330: every_other_month, quarterly, twice_a_year, annual)."
 precision: "Monthly income needs no conversion and has no row; the readers use the month's amount for it."
 versions:
   - {from: "2000-01-01", value: {weekly: 4.3, biweekly: 2.15, semimonthly: 2, every_other_month: 0.5, quarterly: 0.333333, twice_a_year: 0.166666, annual: 0.083}, source: S3112}

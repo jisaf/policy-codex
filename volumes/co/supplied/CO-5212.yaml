@@ -5,7 +5,7 @@ kind: supplied
 type: whole number
 scope: person
 program: All
-meaning: "The number of qualified foster individuals under the age of 19 for whose care the person's Difficulty of Care payments (difficulty_of_care_payments_received) are paid; 0 when the payments are for the care of someone who is not a foster individual."
+meaning: "The number of qualified foster individuals under the age of 19 for whose care the person's Difficulty of Care payments (earnings of kind difficulty_of_care_payment, CO-5100) are paid; 0 when the payments are for the care of someone who is not a foster individual."
 supplied_by: "The payer's records; applicant statement."
 sources: [S3754]
 tags: [income]

@@ -13,6 +13,6 @@ implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.j requires the annuity documents; no item asked for them."
 tests:
-  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: true, holdings: [{kind: bank_account}, {kind: annuity}]}, relationships: [], expect: true}
-  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: false, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
+  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, holdings: [{kind: bank_account}, {kind: annuity}]}, relationships: [], expect: true}
+  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
   - {id: CO-1635-T90, month: "2026-11", as_of: "2026-11-12", title: "Pattern sweep: no own annuity and no relationships stated: cannot determine (decision 4; was false)", given: {ma_owes_long_term_care_asset_disclosure: true, ma_holds_annuity_in_month: false}, expect: unknown}

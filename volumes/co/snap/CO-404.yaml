@@ -13,7 +13,7 @@ implemented: engine
 tags: [work_registration]
 rationale: 7 U.S.C. 2015(d)(1)(E), 7 CFR 273.7(b)(1)(vii), and 10 CCR 2506-1 4.310.3.E (S121, S123, S126) state this exemption as a single either/or test; combining the two arms here, reading snap_weekly_hours_worked and snap_weekly_earnings_worked, lets snap_is_exempt_from_work_registration read one fact instead of repeating both comparisons.
 tests:
-  - {id: CO-404-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, wages_gross: 0, self_employment_gross_receipts: 0, child_support_paid_legally_obligated: 0, earnings: []}, expect: true}
-  - {id: CO-404-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, wages_gross: 942.5, self_employment_gross_receipts: 0, child_support_paid_legally_obligated: 0, earnings: [{kind: wages, amount: 942.5}]}, expect: true}
-  - {id: CO-404-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, wages_gross: 900, self_employment_gross_receipts: 0, child_support_paid_legally_obligated: 0, earnings: [{kind: wages, amount: 900}]}, expect: false}
-  - {id: CO-404-T4, title: "Coverage pass 2 N2-P3-6: a seasonal farm worker with no hours this month, under contract to start in two weeks", as_of: "2026-10-01", month: "2026-10", given: {has_agreement_to_begin_farm_work_within_thirty_days: true, hours_worked: 0, wages_gross: 0, self_employment_gross_receipts: 0, earnings: []}, expect: true}
+  - {id: CO-404-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, child_support_paid_legally_obligated: 0, earnings: []}, expect: true}
+  - {id: CO-404-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, child_support_paid_legally_obligated: 0, earnings: [{kind: wages, amount: 942.5}]}, expect: true}
+  - {id: CO-404-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, child_support_paid_legally_obligated: 0, earnings: [{kind: wages, amount: 900}]}, expect: false}
+  - {id: CO-404-T4, title: "Coverage pass 2 N2-P3-6: a seasonal farm worker with no hours this month, under contract to start in two weeks", as_of: "2026-10-01", month: "2026-10", given: {has_agreement_to_begin_farm_work_within_thirty_days: true, hours_worked: 0, earnings: []}, expect: true}

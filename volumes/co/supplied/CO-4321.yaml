@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The person's costs in the month of producing the rent the person's receipts of kind rental_income (receipts, CO-5000) state: for the rented property, the costs of the kinds self_employment_operating_costs, self_employment_interest_costs and self_employment_capital_principal_payments (CO-3370 to CO-3372) describe."
+meaning: "The person's costs in the month of producing the rent the person's receipts of kind rental_income (receipts, CO-5000) state: for the rented property, the costs of the kinds business_cost_operating, business_cost_interest and business_cost_capital_principal of an earnings record (earnings, CO-5100) describe."
 precision: "If not stated, SNAP reads it as 0. Each program's allowable cost is its own derived item."
 supplied_by: "Receipts; Schedule E."
 sources: [S3111]

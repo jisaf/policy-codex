@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The person's monthly above-the-line deductions under 26 U.S.C. 62 (for example student loan interest, an IRA deduction, or the deductible part of self-employment tax) that 10 CCR 2505-10 § 8.100.4.C.1.e allows to be subtracted from taxable gross income to reach Adjusted Gross Income, including pre-tax contributions to a 401(k) or 403(b) retirement plan and other pre-tax contributions (§ 8.100.4.C.1.e.viii, xiii; wages_gross is stated as gross wages, so these are subtracted here), net operating losses (xiv) and capital losses (xv)."
+meaning: "The person's monthly above-the-line deductions under 26 U.S.C. 62 (for example student loan interest, an IRA deduction, or the deductible part of self-employment tax) that 10 CCR 2505-10 § 8.100.4.C.1.e allows to be subtracted from taxable gross income to reach Adjusted Gross Income, including pre-tax contributions to a 401(k) or 403(b) retirement plan and other pre-tax contributions (§ 8.100.4.C.1.e.viii, xiii; wages are stated as gross wages, so these are subtracted here), net operating losses (xiv) and capital losses (xv)."
 precision: Monthly amount for the month in context; the specific deduction categories are 26 U.S.C. 62, incorporated by reference in 8.100.4.C.1.e, which this volume treats as an external fact rather than a derived tax-law computation.
 supplied_by: Applicant statement (CBMS/PEAK), verified through documentation where questionable.
 sources: [S671]

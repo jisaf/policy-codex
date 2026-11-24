@@ -70,10 +70,7 @@ tests:
         snap_is_ineligible_non_citizen: true
         snap_is_elderly_or_disabled: false
         immigration_status: undocumented
-        wages_gross: 2380
         receipts: []
-        self_employment_net_earnings_for_tax: 0
-        self_employment_gross_receipts: 0
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
