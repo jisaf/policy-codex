@@ -6579,7 +6579,6 @@
   persons:
     p1:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         is_pregnant: false
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
@@ -6620,7 +6619,6 @@
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         is_pregnant: false
         af_burial_request_is_timely: true
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
@@ -6645,7 +6643,6 @@
         donated_work_hours_per_week: 0
     p3:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -6690,7 +6687,6 @@
         work_sanction_level_served: second
     p4:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9614,7 +9610,6 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9697,7 +9692,6 @@
     p2:
       # Her son, 5.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9779,7 +9773,6 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9863,7 +9856,6 @@
     p4:
       # Her daughter, 11.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9947,7 +9939,6 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -10028,7 +10019,6 @@
     p6:
       # Her son, 7.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -10144,7 +10134,6 @@
     p3:
       # Recipient mother at redetermination.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10191,7 +10180,6 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10235,7 +10223,6 @@
     p5:
       # Recipient mother at redetermination.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10282,7 +10269,6 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10349,7 +10335,6 @@
     p7:
       # Recipient mother at redetermination.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10396,7 +10381,6 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12994,7 +12978,6 @@
   persons:
     p1:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -13049,7 +13032,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -13104,7 +13086,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -13159,7 +13140,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         residence_setting_type: private_dwelling
@@ -13211,7 +13191,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p5:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         residence_setting_type: private_dwelling
@@ -13265,7 +13244,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p6:
       facts:
-        dwelling_id: h1  # pattern sweep, non-MAGI (P2, decision 4; convention rule 17): the home, required where read; the story has one home (every expectation unchanged)
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         residence_setting_type: private_dwelling
