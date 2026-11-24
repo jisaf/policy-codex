@@ -6,5 +6,4 @@
 # defaults over unstated receipts are removed (decision 4 of 2026-11-23); the T-9 hand-check's Adult Financial rows.
 date: 2026-11-23
 summary: "Adult Financial and Colorado Works read earned income from the earnings records; boarder pay, PASS and vendor-payment fixes; CW caretaker verification reads the caretaker definition; decision-4 defaults removed."
-impact:
-  - {changed: CO-616, fingerprint: fp1-f46b0433051460148da6, flagged: CO-617, not_applicable: "Re-keyed (earnings E1, cash: CO-616 reads Adult Financial's category through ma_has_full_coverage_category (OAP and AND receipt), and Adult Financial's earned income now reads the earnings records, so the fingerprint moved); the earlier reason stands: ma_msp_category only orders the QMB, SLMB, QI-1 and QDWI results; it reads CO-616 and has no test of its own that the change reaches."}
+impact: []

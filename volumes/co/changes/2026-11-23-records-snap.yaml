@@ -8,8 +8,4 @@
 # scripts/records/allowed/e1-snap.yaml.
 date: 2026-11-23
 summary: "SNAP reads earned income from the earnings records; employer-diverted wages counted; the prorated initial month capped; unpaid work hours verified; unstated receipts in the quarter sums and the winnings flag are cannot determine."
-impact:
-  - {changed: CO-4930, fingerprint: fp1-40870242602a347a1cb8, flagged: CO-330, applies: "CO-330 (snap_person_earned_income) adds CO-4930, CO-1702 and CO-4165, each of which now reads the earnings records; it reads no earned fact of its own and needs no change. Its rule tests were restated in earnings records with hand values (CO-330-T2, T3, T7)."}
-  - {changed: CO-2308, fingerprint: fp1-ae1d8f9b627829ae1b0e, flagged: CO-385, applies: "CO-385 (snap_allotment) reads CO-2308 for the initial month and CO-2307 for every other; both now read the shared pieces (CO-6000 to CO-6002), so the initial month is capped as the full month is (7 CFR 273.11(c)(1)(ii); D-S3). CO-385 itself needs no change; CO-385-T1 states the members' earnings and receipts (decision 4)."}
-  - {changed: CO-616, fingerprint: fp1-f46b0433051460148da6, flagged: CO-617, not_applicable: "Re-keyed (E1 SNAP: SNAP items CO-616 reads through others now read the earnings records, so its fingerprint moved; no Medicaid derivation changed); the earlier reason stands: as for CO-613, CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
-  - {changed: CO-654, fingerprint: fp1-10b66351b8beebe34365, flagged: CO-652, not_applicable: "Re-keyed (E1 SNAP: SNAP items CO-654 reads through others now read the earnings records, so its fingerprint moved; no Medicaid derivation changed); the earlier reason stands: CO-652 (ma_ltc_eligibility_status) shares the excerpt S661 with PACE but tests no age; the change to CO-654 is only the day its 55 is measured on (T-1, OQ-950)."}
+impact: []

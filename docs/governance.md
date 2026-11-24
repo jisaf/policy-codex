@@ -421,6 +421,17 @@ disposition over it, and the check names the entry as stale ("was
 dispositioned at fp1-..., but CO-n is now fp1-...; review it again"). An entry
 that settles no current flag is reported the same way.
 
+Stale entries are not blocking, but they pile up: while a branch's base
+predates its records, every record the branch added is read, so each re-key
+of a flag leaves the earlier entry stale. Clean them up as
+`volumes/co/changes/2026-11-24-stale-cleanup.yaml` did (273 stale entries, to
+none): an entry whose flag is no longer raised is removed from its record; an
+entry whose flag is still raised at a fingerprint that has moved is removed
+from its record, and the flag gets one entry in the cleanup record at the
+current fingerprint that restates the disposition already recorded there and
+keeps every earlier reason as written, with its record and fingerprint. No
+disposition's substance changes.
+
 **Starting point.** `volumes/co/changes/impact-baseline.yaml` records the
 commit the check started from (762a730). When a pull request's base predates
 it, as `origin/main` does until this branch merges, decisions are compared
