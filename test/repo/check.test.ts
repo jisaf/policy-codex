@@ -40,7 +40,7 @@ describe("npm run check", () => {
     expect(Object.keys(parsed).sort()).toEqual([
       "addedItems", "base", "blockingItemErrors", "caseOverrides", "cases", "changeImpact", "changedFiles",
       "changedItems", "crossProgram", "impact", "items", "knownFailures", "newFailures",
-      "ok", "openQuestions", "outcomesAffected", "ruleTests", "warnings",
+      "ok", "openQuestions", "outcomesAffected", "reportOnly", "ruleTests", "warnings",
     ]);
     expect(Object.keys(parsed.ruleTests).sort()).toEqual([
       "failing", "failingIds", "failures", "passing", "total",

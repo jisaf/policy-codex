@@ -5,5 +5,4 @@
 # change-impact flag the round leaves open.
 date: 2026-11-24
 summary: "Coverage pass 6, Adult Financial and Colorado Works: CA6-1 to CA6-7 fixed (CO-2603; CO-2375 required, CO-7300; CO-7301 to CO-7305, the month's pregnancy, members and dependent child; CO-7306, CO-7307, the diversion without assignment; the applicant-circumstance defaults removed, af_is_married CO-7308); CA6-10, CA6-12, CA6-13 to CA6-15 fixed; CA6-8 recorded as OQ-1375; CA6-9 and CA6-11 recorded; stored households CO-880 to CO-894 and CO-896."
-impact:
-  - {"changed": "CO-1260", "fingerprint": "fp1-3551cee91f4a449953dc", "flagged": "CO-914", "applies": "Coverage pass 6 CA6-3, CA6-4 (docs/reviews/coverage6-cash.md, section 8): CO-1260 (cw_grant_before_sanction) now adds the pregnancy allowance for the month's members who were pregnant in the month (3.606.1.G, through the month the pregnancy ends; cw_assistance_unit_members_in_month CO-7304, cw_is_pregnant_in_month CO-7301). CO-914 (cw_grant_amount) shares the excerpt S764 (cents dropped) and reads CO-1260's grant, the sanction reduction and the partial-month factor; it reads no pregnancy and no member of its own, so the change reaches it through CO-1260 and needs no copy (CO-884: September $265, October $498)."}
+impact: []

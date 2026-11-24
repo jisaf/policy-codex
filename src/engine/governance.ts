@@ -1,5 +1,5 @@
 import type { LedgerIndex } from "./ledger-index";
-import { buildGraph } from "./graph";
+import { buildGraph, type DependencyGraph } from "./graph";
 import { usesOf } from "./check";
 import { compact } from "./render";
 import { tagIds } from "./tags";
@@ -126,6 +126,7 @@ function derivationKeys(ix: LedgerIndex, it: Item): DerivationKeys {
  *  meaning terms. Returns the winning Jaccard, or null when not close. */
 function similarity(
   a: Item, aTokens: ReadonlySet<string>, aTerms: ReadonlySet<string>, b: Item,
+  bTokens: ReadonlySet<string>, bTerms: ReadonlySet<string>,
 ): number | null {
   if (a.type !== b.type || a.scope !== b.scope || a.program !== b.program) return null;
   const aSources = a.sources || [];
@@ -133,21 +134,58 @@ function similarity(
   if (aSources.length && bSources.length && !aSources.some((s) => bSources.includes(s))) {
     return null;
   }
-  const byName = jaccard(aTokens, identifierTokens(b.identifier));
-  const byMeaning = jaccard(aTerms, meaningTokens(b.meaning));
+  const byName = jaccard(aTokens, bTokens);
+  const byMeaning = jaccard(aTerms, bTerms);
   if (byName >= 0.5 || byMeaning >= 0.35) return Math.max(byName, byMeaning);
   return null;
 }
 
+/** What the duplicate scan compares, per item: its derivation keys and its
+ *  identifier and meaning terms. The scan compares every item with every
+ *  other, so these are computed once per item and index rather than once per
+ *  pair (the masked key depends on the index: which names are parameters).
+ *  An entry is reused only while the item's derivation, identifier and
+ *  meaning are the ones it was computed from. */
+interface ComparisonKeys {
+  derived: Expr | undefined; identifier: string; meaning: string | undefined;
+  keys: DerivationKeys; tokens: Set<string>; terms: Set<string>;
+}
+
+const comparisonCache = new WeakMap<LedgerIndex, WeakMap<Item, ComparisonKeys>>();
+
+function comparisonKeys(ix: LedgerIndex, it: Item): ComparisonKeys {
+  let byItem = comparisonCache.get(ix);
+  if (!byItem) { byItem = new WeakMap(); comparisonCache.set(ix, byItem); }
+  const hit = byItem.get(it);
+  if (hit && hit.derived === it.derived && hit.identifier === it.identifier && hit.meaning === it.meaning) return hit;
+  const entry: ComparisonKeys = {
+    derived: it.derived, identifier: it.identifier, meaning: it.meaning,
+    keys: derivationKeys(ix, it), tokens: identifierTokens(it.identifier), terms: meaningTokens(it.meaning),
+  };
+  byItem.set(it, entry);
+  return entry;
+}
+
+const graphCache = new WeakMap<LedgerIndex, { items: number; graph: DependencyGraph }>();
+
+/** The index's dependency graph, built once per index (as the approval
+ *  policy's upstream sets are, src/engine/constraints.ts) rather than once
+ *  per supplied fact governed. Rebuilt if items were added to the index. */
+function graphOf(ix: LedgerIndex): DependencyGraph {
+  const hit = graphCache.get(ix);
+  if (hit && hit.items === ix.items.length) return hit.graph;
+  const graph = buildGraph(ix);
+  graphCache.set(ix, { items: ix.items.length, graph });
+  return graph;
+}
+
 /** Every candidate, strongest reason per item, sorted. `nearest` caps this. */
 function candidates(ix: LedgerIndex, it: Item): Candidate[] {
-  const mine = derivationKeys(ix, it);
-  const tokens = identifierTokens(it.identifier);
-  const terms = meaningTokens(it.meaning);
+  const { keys: mine, tokens, terms } = comparisonKeys(ix, it);
   const out: Candidate[] = [];
   for (const other of ix.items) {
     if (other.id === it.id) continue;
-    const theirs = derivationKeys(ix, other);
+    const { keys: theirs, tokens: otherTokens, terms: otherTerms } = comparisonKeys(ix, other);
     if (mine.exact && theirs.exact && mine.exact === theirs.exact) {
       out.push({
         id: other.id, identifier: other.identifier,
@@ -161,7 +199,7 @@ function candidates(ix: LedgerIndex, it: Item): Candidate[] {
       });
       continue;
     }
-    const score = similarity(it, tokens, terms, other);
+    const score = similarity(it, tokens, terms, other, otherTokens, otherTerms);
     if (score !== null) {
       out.push({ id: other.id, identifier: other.identifier, reason: "similar", score });
     }
@@ -414,7 +452,7 @@ export function governance(
 
   // 8. Bespoke inputs stay visible: a supplied fact with a single consumer.
   if (it.kind === "supplied") {
-    const consumers = buildGraph(ix).usedBy.get(identifier) ?? [];
+    const consumers = graphOf(ix).usedBy.get(identifier) ?? [];
     if (consumers.length === 1) {
       const c = ix.byIdentifier.get(consumers[0]);
       warn(
@@ -444,7 +482,7 @@ export function governance(
   }
   if (it.status && it.status !== "Draft" && unverified.size) {
     // The item and everything it reads, directly or through other items.
-    const uses = buildGraph(ix).uses;
+    const uses = graphOf(ix).uses;
     const seen = new Set<string>();
     const stack = [identifier];
     const tainted = new Set<string>();

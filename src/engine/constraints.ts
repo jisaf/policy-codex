@@ -1,10 +1,10 @@
 import type { LedgerIndex } from "./ledger-index";
 import { check } from "./check";
 import { buildGraph } from "./graph";
-import { runTest } from "./evaluate";
+import { runTest, type TestResult } from "./evaluate";
 import { schemaErrors } from "./records";
 import { baseType, fmt } from "./values";
-import { DATE_RE, type EngineRefs, type Item, type VolumeMeta } from "./types";
+import { DATE_RE, type EngineRefs, type Item, type TestSpec, type VolumeMeta } from "./types";
 
 export interface Constraint { ok: boolean; msg: string; level: "error" | "warn" }
 
@@ -56,8 +56,17 @@ export function approvalsFor(ix: LedgerIndex, meta: VolumeMeta, it: Item): strin
   return [...new Set(roles)];
 }
 
+export interface ConstraintOptions {
+  /** The result of one of the item's rule tests, when the caller has already
+   *  run it (`npm run check` runs every rule test once and shares the
+   *  results); otherwise each test is run here. It must be what
+   *  `runTest(ix, it, t, meta.default_as_of)` returns. */
+  testResult?: (t: TestSpec) => TestResult | undefined;
+}
+
 export function constraints(
   ix: LedgerIndex, meta: VolumeMeta, refs: EngineRefs | null, it: Item,
+  opts: ConstraintOptions = {},
 ): Constraint[] {
   const R: Constraint[] = [];
   const add = (ok: boolean, msg: string, level: "error" | "warn" = "error") =>
@@ -168,7 +177,7 @@ export function constraints(
       add(Boolean(it.tests && it.tests.length > 0), "At least one example (rule-level test)");
       if (chk.errors.length === 0 && it.tests) {
         for (const t of it.tests) {
-          const r = runTest(ix, it, t, meta.default_as_of);
+          const r = opts.testResult?.(t) ?? runTest(ix, it, t, meta.default_as_of);
           add(
             r.ok,
             `Example ${t.id}: ${

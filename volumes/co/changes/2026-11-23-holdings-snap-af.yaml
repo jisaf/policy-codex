@@ -9,5 +9,4 @@
 # (OQ-1205, A). Harness classes in scripts/records/allowed/h1-snap.yaml and h1-af.yaml. One entry per flag.
 date: 2026-11-23
 summary: "SNAP and Adult Financial read resources from the holdings records: burial spaces beyond one plot per member counted by SNAP (H0-F3); investment personal property counted by Adult Financial (H0-F2); the vehicle exempt chosen by the rule (P58); held refunds and retroactive payments read by their date of receipt; reader defaults removed (decision 4)."
-impact:
-  - {changed: CO-2308, fingerprint: fp1-ae1d8f9b627829ae1b0e, flagged: CO-385, applies: "Re-keyed after the merge of coverage pass 4 (H1 SNAP: the transfer disqualification CO-2308 reaches through CO-2307 and CO-4160 now reads the members' holdings records, so its fingerprint moved; CO-2308's own derivation is unchanged). CO-385 (snap_allotment) needs no change; CO-385-T1 states the test's result for the transfer months (snap_resource_transfer_disqualification_months 0), as it states the resource test's (decision 4: its members state no holdings)."}
+impact: []
