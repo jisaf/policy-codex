@@ -6,7 +6,7 @@ type: money
 scope: person
 program: AdultFinancial
 meaning: "The disaster assistance payments already made to the client for the same disaster."
-precision: "If not stated, Adult Financial reads it as 0."
+precision: "Required where Adult Financial (af_disaster_assistance_payment, CO-3878) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
 supplied_by: "County department payment record."
 sources: [S2624]
 tags: [cash]

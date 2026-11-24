@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "For a deceased person, the money that the persons legally responsible for the decedent's support (a spouse; a parent of a minor child) voluntarily contributed toward the decedent's funeral, burial or cremation costs. Not contributions from anyone else. 0 if none."
-precision: "Stated on the decedent. If not stated, Colorado Works reads it as 0 (cw_death_reimbursement_amount, CO-1508)."
+precision: "Stated on the decedent. Required where Colorado Works (cw_death_reimbursement_amount, CO-1508) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Colorado Works read an unstated value as 0(cw_death_reimbursement_amount, CO-1508)."
 supplied_by: Funeral provider's statement of payments received and the county's burial application.
 sources: [S1007]
 tags: [cash]

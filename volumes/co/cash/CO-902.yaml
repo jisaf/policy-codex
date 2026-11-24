@@ -13,5 +13,5 @@ implemented: engine
 tags: [cash, tanf, household]
 rationale: No existing item states this; cw_assistance_unit_members (CO-900), cw_minor_parent_living_arrangement_met (CO-906), cw_deemed_parent_income_of_minor_parent (CO-909), and cw_child_only_unit (CO-921) all read it to find a minor parent.
 tests:
-  - {id: CO-902-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, others: {p2: {date_of_birth: "2026-02-03", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: "CO-902-T1", as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", temporary_absence_reason: none}, others: {p2: {date_of_birth: "2026-02-03", is_full_time_secondary_student_finishing_before_nineteen: false, temporary_absence_reason: none}}, relationships: [[parent, p1, p2]], expect: true}
   - {id: CO-902-T2, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03"}, others: {p2: {date_of_birth: "2009-04-08"}}, relationships: [[parent, p2, p1]], expect: false}

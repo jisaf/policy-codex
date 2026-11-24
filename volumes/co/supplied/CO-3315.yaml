@@ -6,7 +6,7 @@ type: money
 scope: person
 program: AdultFinancial
 meaning: "The countable resources of the decedent's legally responsible persons who are not persons of this case, excluding any Social Security lump-sum death benefit (9 CCR 2503-5 3.570.43.D.3.a). Stated on the decedent."
-precision: "If not stated, Adult Financial reads this as 0."
+precision: "Required where Adult Financial (af_burial_responsible_person_resources, CO-1225) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
 supplied_by: "Legally responsible person's statement and verification."
 sources: [S721, S722]
 implemented: engine

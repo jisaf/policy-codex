@@ -1,0 +1,21 @@
+id: CO-7300
+name: "Colorado Works: months the determination covers"
+identifier: cw_determination_months
+kind: derived
+type: list of months
+scope: case
+program: ColoradoWorks
+meaning: "The months a Colorado Works determination decides: at an application, the months from the month of the application (cw_application_date) through the determination month, since \"all countable gross income received in the month prior to, if available, and in the month of application shall be used to determine eligibility\" and the unit's income is what it has received or expects to receive \"in the application month and any month following\" (9 CCR 2503-6 3.605.1.A.1, B); at a redetermination (cw_determination_is_redetermination), and when the case states no application date or one after the determination month, the determination month alone."
+precision: "Coverage pass 6 CA6-2 (docs/reviews/coverage6-cash.md): the months were written inside cw_is_dependent_child (CO-901), which read an unstated cw_determination_is_redetermination as an application; the fact is now required where read (decision 4 of 2026-11-23), and read here only when the case states an application date on or before the determination date. One list for the case, read by the person-scope items that ask whether something holds in some month the determination covers (CO-901; cw_is_pregnant_in_determination, CO-7302)."
+derived: [case, [[any, [unknown, cw_application_date], [">", [month_of, cw_application_date], [det_month]], cw_determination_is_redetermination], [months_from_to, [det_month], [det_month]]], [else, [months_from_to, [month_of, cw_application_date], [det_month]]]]
+sources: [S412, S4911, S1805]
+implemented: engine
+tags: [cash, tanf]
+nearest: [CO-901]
+rationale: "Coverage pass 6 CA6-2 and CA6-3: the months a determination covers were stated only inside CO-901, with the unstated kind of determination read as an application; CW's per-person pregnancy (CO-7302) needs the same months, so they are one item, and the kind of determination is read with no default."
+tests:
+  # 3.605.1.A.1 (S412): the month of application's income decides eligibility; the determination month is decided too.
+  - {id: "CO-7300-T1", title: "An application on September 10 determined October 15: September and October", as_of: "2026-10-15", given: {cw_application_date: "2026-09-10", cw_determination_is_redetermination: false}, expect: ["2026-09", "2026-10"]}
+  - {id: "CO-7300-T2", title: "A redetermination: the determination month alone", as_of: "2026-10-15", given: {cw_application_date: "2026-09-10", cw_determination_is_redetermination: true}, expect: ["2026-10"]}
+  - {id: "CO-7300-T3", title: "No application date stated: the determination month alone; the kind of determination is not read", as_of: "2026-10-15", given: {}, expect: ["2026-10"]}
+  - {id: "CO-7300-T4", title: "Coverage pass 6 CA6-2: an application date stated, the kind of determination not: cannot determine (decision 4)", as_of: "2026-10-15", given: {cw_application_date: "2026-09-10"}, expect: unknown}

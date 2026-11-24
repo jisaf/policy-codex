@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person, while serving time a court imposed, is released to work in the community under a work release program or serves the sentence under a court monitoring system."
-precision: "If not stated, Colorado Works reads this as false."
+precision: "Required where Colorado Works (cw_is_institution_patient_or_inmate, CO-3802) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Colorado Works read an unstated value as false."
 supplied_by: "Applicant statement, or the correctional or court record, as the county establishes it."
 sources: [S2600]
 tags: [cash, tanf]
