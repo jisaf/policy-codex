@@ -3818,16 +3818,17 @@ Assumption: Whole value on the list of each person of the case on the account wh
 
 Checked 2026-11-23: 10 CCR 2505-10 8.100.5.M.3.d (D-65); 20 CFR 416.1208(c) (D-4400). Items: CO-5300, CO-5320.
 
-### OQ-1348. Medicaid SSI method: a veterans benefit's amount for a dependent as the dependent's own income
+### OQ-1348. Resolved: Medicaid SSI method: a veterans benefit's amount for a dependent as the dependent's own income
 
 Body: 20 CFR 416.1123(e)(2) (S4756): "If you are a dependent of an individual who receives a veterans benefit and a portion of the benefit is attributable to you as a dependent, we count the amount attributable to you as your unearned cash income if (i) You reside with the individual who receives the veterans benefit, or (ii) You receive your own separate payment". The veteran's side, (e)(1), is read (for_dependent, CO-5511); the dependent's is not. The field-effect sweep (FS-MA-3) asked for a field naming the dependent on the veteran's record, as for_person names the person a burial holding is for. The fix round found that the operators cannot read it: the dependent's figure would have to sum the records on another person's list (the veteran's, through `["of", ["P"], receipts]`) whose person field names the dependent, the person evaluated; inside a receipt sum a condition reads only the record's fields, the month, case facts, parameters and that person ["P"] (docs/operators.md, P55), and P is then the veteran. SNAP's burial reading (CO-5313) works because the reader is the holder and the member is P; here the reader is the person named. No field is added until a reader can read it. Text decides the reading; what is open is the operator. Worked example: p2, the veteran, receives 1,500 of which 300 is for p1, his wife, who lives with him: p1's SSI-method unearned income should be 300; the codex gives 0 (and 1,200 for p2).
 
-Class: state policy choice, held open by an operator limitation (field-effect sweep fix round, non-MAGI Medicaid: 416.1123(e)(2) decides the reading, so the owner only confirms it; what is open is an operator limitation the engine owner owns, below; the stopping rule's two classes keep it a recorded choice until then)
+Class: state policy choice
 Owner: Medicaid policy owner
-Due: the engine owner's next operator round after 2026-11-23: a way for a receipt sum over another person's list to compare a record's person field with the person evaluated (for example a binder that sets this person to the member and that person to the person evaluated, justified by 416.1123(e)(2), 9 CCR 2503-5 3.520.785.B.4 and 9 CCR 2503-6 3.605.3.B.5, the same sentence in Adult Financial and Colorado Works), with a neutral person field on the receipt (for_dependent_person) in the same change
-Assumption: The dependent's own income does not include the amount; a dependent paid separately by the VA states that payment on the dependent's own list (416.1123(e)(2)(ii)).
+Assumption: none (resolved).
 
 Checked 2026-11-23: 20 CFR 416.1123(e) (D-53); docs/operators.md "Receipt records" (P55, "A record that names a person"). Items: CO-5000, CO-5511, CO-5514, CO-6730.
+
+Resolution (cross-list records round, 2026-11-24; docs/reviews/cross-list-records.md): the operators already read it. Inside a sum over another person's list (`["of", ["P"], receipts]`) this person is unchanged, so the record's person field is compared with this person as the persons joined to this person by no edge (`[reachable, [spouse], false]`, the person alone), the pattern Adult Financial and Colorado Works use for the same sentence since the field sweep fix round (CO-5017, CO-5651; the receipt's `for_person` field, CO-5000). ma_ssi_unearned_receipts (CO-5511), ma_ssi_gross_unearned_receipts (CO-5514) and ma_ssi_irregular_unearned_receipts (CO-6730) add, for the dependent, the part of each counted receipt of a person of the case the dependent lives with (lives_with, CO-1925) whose for_person names the dependent, (e)(2)(i); a dependent the VA pays separately states that payment on the dependent's own list, (e)(2)(ii). The worked example gives p1 300 and p2 1,200 (CO-5511-T26, T27). No operator was added.
 
 ### OQ-1335. Colorado Works: which twelve months irregular self-employment income is averaged over, and when receipts "vary significantly"
 
