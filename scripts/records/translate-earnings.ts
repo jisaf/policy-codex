@@ -358,8 +358,25 @@ function withJobFacts(out: Earning[], stated: unknown): Earning[] {
     const v = pay[0][f];
     res = res.map((r) => (NOT_JOB_PAY.has(r.kind) ? r : { ...r, [f]: v }));
   }
+  // The same for a business: rental_property has no scalar fact (coverage
+  // pass 6 R6-4) and is required on every business receipts record CCCAP
+  // reads since coverage pass 7 R7-1, so the translation keeps it on the one
+  // translated business record where the person's stated business records
+  // all give it the same value.
+  const biz = (stated as Earning[]).filter((r) => r && BUSINESS_RECEIPTS.has(String(r.kind)));
+  for (const f of KEPT_BUSINESS_FIELDS) {
+    const vals = new Set(biz.map((r) => JSON.stringify(r[f])));
+    if (!biz.length || vals.size !== 1 || biz[0][f] === undefined) continue;
+    const v = biz[0][f];
+    res = res.map((r) => (BUSINESS_RECEIPTS.has(r.kind) ? { ...r, [f]: v } : r));
+  }
   return res;
 }
+
+/** Fields of a business's receipts no scalar earned fact states, kept as the
+ *  household's own records state them (coverage pass 7, R7-1). */
+export const KEPT_BUSINESS_FIELDS: ReadonlyArray<string> = ["rental_property"];
+const BUSINESS_RECEIPTS: ReadonlySet<string> = new Set(["self_employment_receipts"]);
 
 export interface Translated<T> { value: T; notes: string[]; changed: boolean }
 
