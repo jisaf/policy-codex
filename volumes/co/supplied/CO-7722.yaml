@@ -1,0 +1,13 @@
+id: CO-7722
+name: Discharge date of the hospital stay that began at birth
+identifier: birth_hospital_discharge_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person born in a hospital (born_in_hospital, CO-7721) who has left the hospital since, the date the hospital stay that began at birth ended."
+precision: "Required where read (decision 4 of 2026-11-23), and read only for an infant born in a hospital who is no longer in it: an infant still in the hospital stay that began at birth (residence_setting_type hospital with institution_entry_date the date of birth) states no discharge date (ma_ssi_infant_eligible_from_birth, CO-7723; 10 CCR 2505-10 § 8.100.6.C.10.a.i.2, S5245: the onset 'occurred during the infant's hospital stay')."
+supplied_by: "The hospital's discharge record, or the applicant's statement."
+sources: [S5245]
+tags: [disability]
+rationale: "Coverage pass 7, non-MAGI F7-7 (docs/reviews/coverage7-medicaid-nonmagi.md): § 8.100.6.C.10.a.i.2 (S5245) asks whether SSA's disability onset date (disability_onset_date, CO-4887) fell in the hospital stay at birth; the stay's start is the date of birth, its end this date."

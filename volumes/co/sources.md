@@ -25126,3 +25126,25 @@ Document: D-65
 > 2) the disability onset date, as reported by the Social Security Administration, occurred during the infant’s hospital stay; and
 >
 > 3) the infant’s date of birth is within three (3) months of the date on which the infant became eligible for SSI
+
+### S5246. Exempt as income or resources for the ABD and long-term care categories: payments federal statutes name (Indian judgment and tribal funds, ANCSA, LEAP, Civil Liberties Act, Agent Orange, Radiation Exposure, Nazi persecution) (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6 (lead-in, h, i, n, r, s, v, x) (rule version effective 11/14/2026; coverage pass 7, non-MAGI). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. For the purpose of determining eligibility for the Long Term Care and Aged, Blind, and Disabled Medical Assistance categories the following shall be exempt from consideration as either income or resources:
+>
+> h. Payments made from Indian judgment funds and tribal funds held in trust by the Secretary of the Interior and/or distributed per capita; and initial purchases made with such funds. (Public Law No 98-64 and Public Law No. 97-458).
+>
+> i. Distributions from a native corporation formed pursuant to the Alaska Native Claims Settlement Act (ANCSA) which are in the form of: cash payments up to an amount not to exceed $ 2000 per individual per calendar year; stock; a partnership interest; or an interest in a settlement trust. Cash payments, up to $2000, received by an applicant/member in one calendar year which is retained into subsequent years is excluded as income and resources; however, cash payments up to $2000 received in the subsequent year would be excluded from income in the month(s) received but counted as a resource if retained beyond that month(s).
+>
+> n. The benefits provided to eligible persons or households through the Low Income Energy Assistance (LEAP) Program.
+>
+> r. Monies received pursuant to the “Civil Liberties Act of 1988” P.L. No. 100-383, (by eligible persons of Japanese ancestry or certain specified survivors, and certain eligible Aleuts).
+>
+> s. Payments made from the Agent Orange Settlement Fund or any fund established pursuant to the settlement in the In Re Agent Orange product liability litigation, M.D.L. No. 381 (E.D.N.Y).
+>
+> v. Any money received from the Radiation Exposure Compensation Trust Fund, Including the Energy Employees Occupational Illness Compensation Program Act, pursuant to P.L. No. 101-426 as amended by P.L. No. 101-510.
+>
+> x. Payments to individuals because of their status as victims of Nazi persecution pursuant to Public Law No. 103-286.
