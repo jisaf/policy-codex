@@ -15,6 +15,6 @@ open: [OQ-680]
 rationale: "Earned-income records, E1 (CCCAP): has_earned_income (CO-1356, program All) read wages_gross and self_employment_gross_receipts; CCCAP reads its earnings records, and its two verification items read this item instead."
 tests:
   - {id: CO-5153-T1, title: "Wages in the month", as_of: "2026-11-01", month: "2026-11", given: {earnings: [{kind: wages, amount: 1200}]}, expect: true}
-  - {id: CO-5153-T2, title: "Self-employment receipts only", as_of: "2026-11-01", month: "2026-11", given: {earnings: [{kind: self_employment_receipts, amount: 600}]}, expect: true}
+  - {id: CO-5153-T2, title: "Self-employment receipts only", as_of: "2026-11-01", month: "2026-11", given: {earnings: [{kind: self_employment_receipts, amount: 600, rental_property: false}]}, expect: true}
   - {id: CO-5153-T3, title: "No earnings", as_of: "2026-11-01", month: "2026-11", given: {earnings: []}, expect: false}
   - {id: CO-5153-T4, title: "Earnings not stated: cannot determine", as_of: "2026-11-01", month: "2026-11", given: {}, expect: unknown}

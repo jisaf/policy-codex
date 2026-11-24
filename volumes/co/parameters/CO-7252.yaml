@@ -1,0 +1,12 @@
+id: CO-7252
+name: "CCCAP: hours a week of active management that make rental property self-employment"
+identifier: cccap_rental_property_self_employment_min_hours_per_week
+kind: parameter
+type: hours
+scope: global
+program: CCCAP
+meaning: "The average hours a week an adult caretaker or teen parent must actively manage rental property for its income to be self-employment income; under it, the income is unearned income (8 CCR 1403-1 3.111.H.4.e: \"at least an average of twenty (20) hours per week\")."
+value: 20
+sources: [S2704]
+tags: [income]
+rationale: "Coverage pass 6 for CCCAP, R6-4: the figure of 3.111.H.4.e, read by cccap_rental_property_receipts_as_unearned (CO-7251), cccap_self_employment_gross_receipts (CO-5156) and cccap_self_employment_hours (CO-6404)."

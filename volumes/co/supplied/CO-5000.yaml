@@ -195,11 +195,15 @@ record_fields:
   ownership_share:
     type: rate
     when_absent: "the payment is not income from property the person owns jointly with others: the person owns the property alone, or the payment is not income from property"
-    meaning: "For income from property the person owns jointly with others (rent, royalties, interest or dividends from a jointly held property, account or security), the person's part of the property, as a fraction (0.5 for half); stated with property_income (coverage pass 5, X5-1: 8 CCR 1403-1 3.111.H.4.e and 9 CCR 2503-7 3.752.21.F count such income \"as a percentage at least equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received\"). The record's amount is what the person received of it."
+    meaning: "For income from property the person owns jointly with others (rent, royalties, interest or dividends from a jointly held property, account or security), the person's part of the property, as a fraction (0.5 for half); stated with property_income (coverage pass 5, X5-1: 8 CCR 1403-1 3.111.H.4.e and 9 CCR 2503-7 3.752.21.F count such income \"as a percentage at least equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received\"). The record's amount is what the person received of it. Two owners who are both persons of the case each state the property's income on the own list, with what each received (0 when the other kept it all), and name each other (co_owner; coverage pass 6, R6-2)."
   property_income:
     type: money
     required: true
     meaning: "For a payment that states ownership_share, the whole income the jointly owned property produced for the same period as the record's amount (its month, its date's payment, or each month of a stream), before it was divided among the owners or kept by one of them (coverage pass 5, X5-1)."
+  co_owner:
+    type: person
+    when_absent: "no other person of the case owns part of the property: its other owners are outside the case"
+    meaning: "For a payment that states ownership_share, the other person of the case who owns part of the same property: the person's id in the case, as a holding names its co-owner (holdings, CO-5300, co_owner). Each co-owner of the case states the property's income on the own list, with the amount the co-owner received (0 when the other kept it all), the own share and the same property_income, and names the other. A rule that applies a share test once per property in a household reads it (coverage pass 6, R6-2: 8 CCR 1403-1 3.111.H.4.e, 9 CCR 2503-7 3.752.21.F; OQ-1316)."
 sources: [S2712, S2713, S2714, S1624, S3300, S42, S1620, S1622, S2608, S4631, S4633, S4634, S4635, S3002, S4755, S4756, S2803, S4637, S4638, S4639]
 tags: [income]
 rationale: "Product-owner decision of 2026-11-23 (receipt records): the rules count money by kind of receipt, by date and form, by frequency and by earmark; one record per receipt states each once, so no rule decides where a dollar stated twice sits. Replaced the scalar unearned income facts and their part-of facts for LEAP, SNAP and Adult Financial (migration phase 1) and for Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+ (phase 2); phase 3 retired the scalar facts, so the list is now the only statement of unearned money."

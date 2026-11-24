@@ -62,6 +62,8 @@ tests:
       receipts: [{kind: social_security, amount: 1180}]
     others:
       p2:
+        # Coverage pass 6 for SNAP, C6-1: p2 is the one prorated member of four, (4 - 1) / 4 (CO-7250).
+        snap_prorated_member_share_counted_rate: 0.75
         snap_expense_verification_period_has_ended: false
         shelter_cost_monthly: 0
         snap_household_members: [p1, p2, p3, p4]
