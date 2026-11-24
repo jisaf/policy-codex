@@ -11,7 +11,8 @@ derived: [all, ma_is_aged_blind_or_disabled, [any, [">", [sum_receipts, holdings
 sources: [S1515]
 implemented: engine
 tags: [ma, resources, verification]
-rationale: "OQ-379: verification of joint ownership was not modeled."
+rationale: "OQ-379: verification of joint ownership was not modeled. Records E2/H2 leftovers: the same shape as ma_requires_verification_of_sale_efforts (CO-2246), which reads the other finding of the same real property records; they stay two items because they are two verifications of two paragraphs (M.2.b.v, M.3.h.ii), each its own pending element with its own document (CO-2247, CO-2249) in the pending and required counts (CO-1411, CO-1412)."
+nearest: [CO-2246]
 tests:
   # Records E2/H2 leftovers: hand-derived from 10 CCR 2505-10 8.100.5.M.3.h (S1515), quoted in the precision.
   - {id: CO-2248-T1, as_of: "2026-10-01", month: "2026-10", title: "Half of a house the co-owner lives in, and the person alleges its sale would cost the co-owner her housing: M.3.h.ii requires verification of joint ownership: true", given: {ma_is_aged_blind_or_disabled: true, holdings: [{kind: bank_account}, {kind: real_property, value: 40000, amount_owed: 0, share: 0.5, co_owners: outside_case, co_owner_lives_in_it: true, co_owner_would_lose_housing: true}]}, expect: true}

@@ -11,7 +11,8 @@ derived: [all, ma_is_aged_blind_or_disabled, [any, [">", [sum_receipts, holdings
 sources: [S1514]
 implemented: engine
 tags: [ma, resources, verification]
-rationale: "OQ-379: the quarterly verification of efforts to sell real property was not modeled."
+rationale: "OQ-379: the quarterly verification of efforts to sell real property was not modeled. Records E2/H2 leftovers: the same shape as ma_requires_verification_of_joint_ownership (CO-2248), which reads the other finding of the same real property records; they stay two items because they are two verifications of two paragraphs (M.2.b.v, M.3.h.ii), each its own pending element with its own document (CO-2247, CO-2249) in the pending and required counts (CO-1411, CO-1412)."
+nearest: [CO-2248]
 tests:
   # Records E2/H2 leftovers: hand-derived from 10 CCR 2505-10 8.100.5.M.2.b and M.2.b.v (S1514), quoted in the precision.
   - {id: CO-2246-T1, as_of: "2026-10-01", month: "2026-10", title: "A lot whose sale efforts the eligibility site found unsuccessful: left out by M.2.b, so the efforts are verified each quarter (v): true", given: {ma_is_aged_blind_or_disabled: true, holdings: [{kind: bank_account}, {kind: real_property, value: 50000, amount_owed: 0, listed_for_sale: true, ma_sale_efforts_unsuccessful: true}]}, expect: true}
