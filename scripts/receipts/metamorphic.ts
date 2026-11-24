@@ -56,8 +56,9 @@
 //   F3 unemployment $100 a week (five payments in February) and a $300
 //      quarterly dividend paid in February: SNAP unearned
 //      100 x 4.3 + 300 x 0.333333 = 529.9999 (4.402.A.2).
-//   F4 $100 of $300 set aside under a PASS: the same LEAP, SNAP, AF and
-//      Colorado Works answer whether the $300 is Social Security or a pension.
+//   F4 $100 of $300 set aside under a PASS: the same LEAP, SNAP and AF
+//      answer whether the $300 is Social Security or a pension; Colorado
+//      Works exempts a PASS of Social Security only (3.605.4.B.15, FS-CW-3).
 // Colorado Works (phase 2) in the same families: F1 counts the $900 of
 //   current support for eligibility at application (3.605.5.A) and nothing
 //   in the grant (B), the crime victim payment exempt (3.605.4.A.8); F3
@@ -143,7 +144,9 @@ const mapReceipts = (c: HouseholdCase, f: (rs: Receipt[]) => Receipt[]) => {
 };
 const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "used_for_uncovered_medical_care",
   "transferred_to_child_support_agency", "paid_to_former_spouse", "recouped", "recouped_for_intentional_violation",
-  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served"];
+  "for_person_living_elsewhere", "for_dependent", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served"];
+// for_dependent (receipts, CO-5000): a veterans benefit's part for a dependent, an earmark of the amount, split with it
+// (field sweep FS-AF-2, FS-CW-2; coverage pass 5 L5-2; household CO-802).
 // designated_for_legal_fees (receipts, CO-5000): the legal-fee part of designated_for_lump_sum_costs, an earmark of the
 // amount, split with it (field-effect sweep, non-MAGI Medicaid, FS-MA-8; household CO-842).
 const split = (rs: Receipt[]) => rs.flatMap((r) => {
@@ -235,7 +238,12 @@ function families(m: Ledger, households: HouseholdCase[]) {
     { kind: "va_aid_and_attendance", amount: 150, used_for_uncovered_medical_care: 150 }, { kind: "va_aid_and_attendance", amount: 250 },
   ]), F5, "2026-11");
   for (const id of ["leap_household_income", "snap_person_unearned_income", "af_relative_deemable_unearned_income", "cw_countable_unearned_income"].filter((x) => readsReceipts.has(x))) {
-    const ss = ev(withReceipts(leapBase, [{ kind: "social_security", amount: 300, pass_set_aside: 100 }]), id, "2026-11");
+    // Colorado Works exempts a PASS set-aside of Social Security only (9 CCR 2503-6 3.605.4.B.15, "Social Security
+    // benefit payments ... when an individual plan for self-care and/or self-support has been developed"; field sweep
+    // FS-CW-3): its pension with a PASS is the pension without one.
+    const ss = id === "cw_countable_unearned_income"
+      ? ev(withReceipts(leapBase, [{ kind: "pension", amount: 300 }]), id, "2026-11")
+      : ev(withReceipts(leapBase, [{ kind: "social_security", amount: 300, pass_set_aside: 100 }]), id, "2026-11");
     out.push({ family: "F4", label: "pension 300, PASS 100 (equals Social Security 300, PASS 100)", id,
       got: ev(withReceipts(leapBase, [{ kind: "pension", amount: 300, pass_set_aside: 100 }]), id, "2026-11"), want: ss });
   }
