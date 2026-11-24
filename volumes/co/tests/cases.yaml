@@ -88841,6 +88841,7 @@
         date_of_birth: "1961-10-15"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # Coverage pass 7 (F7-5, residency): the Medicare Savings Programs read 8.100.3.G.1.a in the month (CO-7650), required for a month before the application (decision 4); the story has her living in Colorado in every month it covers: the first day of the earliest
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -88981,6 +88982,7 @@
         institution_entry_date: "2026-08-01"
         expects_institutional_stay_of_thirty_days: true
         meets_nursing_facility_level_of_care: true
+        is_patient_in_institution_for_mental_diseases: false  # Coverage pass 7 F7-5: the long-term care outcome reads 8.100.3.G.1.c (CO-1179); the story's nursing facility is not an institution for mental diseases
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional
         has_income_trust: false

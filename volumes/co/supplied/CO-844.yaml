@@ -3,11 +3,11 @@ name: Marital status
 identifier: marital_status
 kind: supplied
 type: one of
-options: [single, married, widowed, other]
+options: [single, married, widowed, legally_separated, other]
 scope: person
 program: All
-meaning: "The person's legal marital status: single (never married, or divorced), married, widowed, or other (for example legally separated). Where the spouse is a person of the case the marriage is the spouse edge; married here states a spouse who is not a person of the case, and is_married (CO-930) reads both. npm run check warns when a person with a spouse edge is stated single or widowed."
-precision: "A program whose rule needs the spouse's own facts cannot determine it from married alone: Medicaid's long-term care spousal rules (ma_ltc_couple, CO-643; coverage pass 6, non-MAGI F6-7) need the spouse stated as a person of the case."
+meaning: "The person's legal marital status: single (never married, or divorced), married, widowed, legally separated (married, living apart under a decree of legal separation), or other. Where the spouse is a person of the case the marriage is the spouse edge; married here states a spouse who is not a person of the case, and is_married (CO-930) reads both. npm run check warns when a person with a spouse edge is stated single or widowed."
+precision: "A program whose rule needs the spouse's own facts cannot determine it from married alone: Medicaid's long-term care spousal rules (ma_ltc_couple, CO-643; coverage pass 6, non-MAGI F6-7) need the spouse stated as a person of the case. Coverage pass 7, non-MAGI F7-4 (docs/reviews/coverage7-medicaid-nonmagi.md): legally_separated is its own option (it was an example of other). A legally separated person is still married: Medicaid's long-term care spousal rules read it as married (ma_ltc_couple, CO-643; 10 CCR 2505-10 § 8.100.7.L, S3419: \"There are no exceptions for legal separation\"), and the Children's Extensive Support waiver's \"unmarried\" (ma_hcbs_meets_age_criteria, CO-1164) does not include it. Every other reader compares with single, married or widowed and reads legally_separated as it read other before (is_married, CO-930, reads married only); no stored household or test stated other for a legal separation."
 supplied_by: "The applicant's statement on the application, or the case record; where a program's verification rule requires it (Adult Financial: verified when questionable), the county worker's verification (heavier-definitions audit H-15: the fact is the person's circumstance as stated; documents belong to the *_verification_document_received facts and the verification items, which ask for them only where a program's rule requires it)."
-sources: [S411]
+sources: [S411, S3419]
 rationale: "No existing fact in this volume's interface carries marital status; cw_minor_parent_living_arrangement_met (CO-906) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1): the meaning states the status only (it had described the Colorado Works minor-parent rule), and widowed is an option, replacing is_widow_or_widower (CO-1111, retired)."
