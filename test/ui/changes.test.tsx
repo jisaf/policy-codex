@@ -190,7 +190,7 @@ describe("What takes effect", () => {
     expect(row.textContent).not.toMatch(/would change/);
     (row.querySelector("button.compare") as HTMLButtonElement).click();
     await until(() => Boolean(row.querySelector("table.changed")));
-    expect(row.querySelector(".compared")!.textContent).toMatch(/10 stored results in 1 household would change/);
+    expect(row.querySelector(".compared")!.textContent).toMatch(/12 stored results in 2 households would change/); // + CO-1063 p1 (Medicaid status by month, REFUGEE-LPR: a refugee adult in August, judged under the restriction)
     const first = row.querySelector("table.changed tbody tr")!;
     expect(first.getAttribute("data-case")).toBe("CO-75");
     expect(first.querySelector('a[href^="#/co/households/CO-75/p1/"]')).toBeTruthy();

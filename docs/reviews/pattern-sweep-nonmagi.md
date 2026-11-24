@@ -78,6 +78,18 @@ Every candidate in the appendix carries one of these codes.
 
 **SHARED** (not changed here; reported): ma_meets_residency (CO-2250), ma_meets_citizenship_requirement (CO-509), ma_meets_status_for_cover_all_coloradans_categories (CO-1174) and is_colorado_resident (CO-505) are person-scope items of the determination date read by the non-MAGI and the MAGI groups alike. A retroactive month before a move to Colorado, or before a qualified non-citizen's five years end, reads the determination date's answer. The fix (a dated residency and status in the month) is one item for both families; it is left to the MAGI sweep and the coordinator, and recorded here so it is not lost.
 
+**SHARED, disposed of** (Medicaid status by month, 2026-11-24, docs/reviews/medicaid-status-by-month.md; each SHARED row of the appendix carries its disposition):
+
+| Disposition | Rows | What was done |
+|---|---|---|
+| MS-1, fixed (CO-7650) | 10: CO-611, CO-618, CO-620, CO-653, CO-654, CO-1159, CO-1161, CO-1162, CO-1177, CO-2448 read CO-2250 | Every month-scoped Medicaid reader reads ma_meets_residency_in_month (CO-7650): CO-2250 and, for a month before the application month, living in Colorado from the neutral state_of_residence_start_date (CO-7651), required there (decision 4; 42 CFR 435.915(a)(2), S218; § 8.100.3.B.2, S1518; OQ-1445). |
+| MS-2, fixed (CO-7551) | 6: CO-611, CO-654, CO-1159, CO-1161, CO-1162, CO-1177 read CO-509 | Every month-scoped Medicaid reader reads the MAGI sweep's ma_meets_citizenship_requirement_in_month (CO-7551, the five years by the month's last day, CO-7550), which now also tests, in a month that ends before qualified_status_date, the status held then (CO-7652; OQ-1446). |
+| MS-3, fixed (CO-7553) | 3: CO-618, CO-620, CO-653 read CO-1174 | The month's Cover All Coloradans status (CO-7553, the MAGI sweep's), as for the MAGI categories ix.1.a lists. |
+| MS-3, right | 2: CO-1173's determination-month age and its unstated pregnancy end | CO-1173 is now read only by person-scope items (CO-1174, CO-2439, tests of the determination); the month readers (CO-1151, CO-3310) read CO-7552. An unstated end of pregnancy is not postpartum, declared on pregnancy_end_date (CO-089) and CO-7400 (R-DECL). |
+| MS-1, right | 2: CO-505's default and its county read | is_colorado_resident (CO-505) is unchanged: Medicaid reads it only through CO-2250 (where neither the state nor the county is stated: cannot determine, C6-05(a)) and CO-7650; SNAP, CHP+, Colorado Works, Adult Financial, CCCAP and LEAP read it at the point in time their own rules fix, and no reader of theirs changes. |
+
+The same switch reached the month-scoped readers the sweep's walk did not list (they stop at items tagged magi or are outside the non-MAGI outcomes): CO-617, CO-652, CO-1151, CO-1152, CO-1163, CO-2456, CO-3310 and the MAGI readers of CO-2250.
+
 ## 4. Defects fixed
 
 Common or rare is the call on the population the defect reaches. Every changed rule has hand-computed rule tests (the test ids are in the item files, each commented with the computation); the stored households CO-970 to CO-973 are this sweep's probes.
@@ -128,18 +140,18 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 |---|---|---|---|---|
 | P1 | CO-603 | ma_is_aged_blind_or_disabled | `reads person supplied is_blind (CO-010)` | R-ONSET603 |
 | P1 | CO-603 | ma_is_aged_blind_or_disabled | `reads person supplied meets_ssa_disability_criteria (CO-011)` | R-ONSET603 |
-| P1 | CO-611 | ma_is_ssi_related_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-611 | ma_is_ssi_related_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-611 | ma_is_ssi_related_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-611 | ma_is_ssi_related_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-611 | ma_is_ssi_related_eligible | `reads person derived ma_abd_denied_for_noncooperation (CO-4886)` | R-DET |
 | P1 | CO-613 | ma_qmb_eligible | `reads person supplied medicare_part_a_entitled (CO-803)` | F-PARTA |
 | P1 | CO-614 | ma_slmb_eligible | `reads person supplied medicare_part_a_entitled (CO-803)` | F-PARTA |
 | P1 | CO-615 | ma_qi_eligible | `reads person supplied medicare_part_a_entitled (CO-803)` | F-PARTA |
 | P1 | CO-616 | ma_qdwi_eligible | `reads person derived ma_qdwi_meets_disability_work_history (CO-1157)` | R-QDWI |
-| P1 | CO-618 | ma_wawd_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-618 | ma_wawd_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED |
+| P1 | CO-618 | ma_wawd_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-618 | ma_wawd_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED; MS-3, fixed (CO-7553) |
 | P1 | CO-618 | ma_wawd_eligible | `reads person derived ma_wawd_is_disabled (CO-806)` | R-BUYIN |
-| P1 | CO-620 | ma_cbwd_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-620 | ma_cbwd_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED |
+| P1 | CO-620 | ma_cbwd_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-620 | ma_cbwd_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED; MS-3, fixed (CO-7553) |
 | P1 | CO-620 | ma_cbwd_eligible | `reads person supplied meets_ssa_disability_criteria (CO-011)` | F-ONSET |
 | P1 | CO-620 | ma_cbwd_eligible | `reads person supplied employer_family_coverage_employer_premium_share (CO-3630)` | R-BUYIN |
 | P1 | CO-620 | ma_cbwd_eligible | `reads person supplied is_enrolled_in_employer_family_coverage (CO-3631)` | R-BUYIN |
@@ -159,14 +171,14 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 | P1 | CO-648 | ma_meets_ltc_resource_standard | `reads person supplied ma_community_spouse_withheld_resources_are_excused (CO-4637)` | R-DET |
 | P1 | CO-650 | ma_home_equity_disqualifies | `at "ma_home_equity_interest_in_month" in ["det_month"]` | R-DET |
 | P1 | CO-651 | ma_ltc_financially_eligible | `reads person derived ma_home_equity_disqualifies (CO-650)` | R-DET |
-| P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED |
+| P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person derived ma_meets_status_for_cover_all_coloradans_categories (CO-1174)` | SHARED; MS-3, fixed (CO-7553) |
 | P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person supplied meets_hcbs_waiver_target_group (CO-821)` | OQ-1415 |
 | P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person derived ma_meets_hcbs_waiver_condition_criteria (CO-2270)` | OQ-1415 |
 | P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person supplied ma_meets_designated_waiver_level_of_care (CO-1178)` | OQ-1415 |
 | P1 | CO-653 | ma_hcbs_waiver_eligible | `reads person supplied retains_ssi_status_without_payment (CO-1112)` | F-1619 |
-| P1 | CO-654 | ma_pace_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-654 | ma_pace_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-654 | ma_pace_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-654 | ma_pace_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-654 | ma_pace_eligible | `reads person supplied meets_nursing_facility_level_of_care (CO-820)` | OQ-1415 |
 | P1 | CO-654 | ma_pace_eligible | `reads person derived ma_home_equity_disqualifies (CO-650)` | R-DET |
 | P1 | CO-654 | ma_pace_eligible | `reads person supplied ma_resides_in_pace_service_area (CO-2412)` | OQ-1415 |
@@ -177,27 +189,27 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 | P1 | CO-660 | ma_transfer_penalty_applies | `reads person supplied transfer_penalty_period_start_date (CO-886)` | R-DET |
 | P1 | CO-661 | ma_excluded_from_ssi_household | `reads person derived resides_in_medical_institution (CO-1742)` | R-DATED |
 | P1 | CO-661 | ma_excluded_from_ssi_household | `reads person supplied institution_entry_date (CO-008)` | R-DATED |
-| P1 | CO-1159 | ma_pickle_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-1159 | ma_pickle_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-1159 | ma_pickle_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-1159 | ma_pickle_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-1159 | ma_pickle_eligible | `reads person derived lost_ssi_or_oap_due_to_social_security_benefits (CO-1108)` | R-HIST |
 | P1 | CO-1159 | ma_pickle_eligible | `reads person supplied lost_ssi_or_oap_received_with_social_security (CO-7358)` | R-HIST |
 | P1 | CO-1159 | ma_pickle_eligible | `reads person supplied ma_continuous_eligibility_program (CO-2446)` | R-CE |
-| P1 | CO-1161 | ma_dac_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-1161 | ma_dac_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-1161 | ma_dac_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-1161 | ma_dac_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-1161 | ma_dac_eligible | `reads person derived receives_oasdi_as_disabled_adult_child (CO-1110)` | R-HIST |
 | P1 | CO-1161 | ma_dac_eligible | `reads person supplied lost_ssi_due_to_social_security_benefits (CO-1180)` | R-HIST |
 | P1 | CO-1161 | ma_dac_eligible | `reads person supplied ma_continuous_eligibility_program (CO-2446)` | R-CE |
-| P1 | CO-1162 | ma_disabled_widow_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-1162 | ma_disabled_widow_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-1162 | ma_disabled_widow_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-1162 | ma_disabled_widow_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-1162 | ma_disabled_widow_eligible | `reads person supplied marital_status (CO-844)` | R-HIST |
 | P1 | CO-1162 | ma_disabled_widow_eligible | `reads person supplied meets_ssa_disability_criteria (CO-011)` | F-ONSET |
 | P1 | CO-1162 | ma_disabled_widow_eligible | `reads person supplied lost_ssi_due_to_social_security_benefits (CO-1180)` | R-HIST |
 | P1 | CO-1162 | ma_disabled_widow_eligible | `reads person supplied medicare_part_a_entitled (CO-803)` | F-PARTA |
 | P1 | CO-1164 | ma_hcbs_waiver_age_criteria_met | `reads person derived is_married (CO-930)` | R-HIST |
-| P1 | CO-1173 | ma_is_cover_all_coloradans_person | `at "ma_is_under_child_age_or_turns_nineteen_this_month" in ["det_month"]` | SHARED |
+| P1 | CO-1173 | ma_is_cover_all_coloradans_person | `at "ma_is_under_child_age_or_turns_nineteen_this_month" in ["det_month"]` | SHARED; MS-3, right (person-scope readers only) |
 | P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person supplied adult_financial_program_received (CO-2710)` | F-OAP |
-| P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
-| P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED |
+| P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
+| P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person derived ma_meets_citizenship_requirement (CO-509)` | SHARED; MS-2, fixed (CO-7551) |
 | P1 | CO-1177 | ma_oap_sisc_b_eligible | `reads person derived ma_abd_denied_for_noncooperation (CO-4886)` | R-DET |
 | P1 | CO-1631 | ma_is_long_term_care_applicant | `reads person derived resides_in_medical_institution (CO-1742)` | F-INST |
 | P1 | CO-1631 | ma_is_long_term_care_applicant | `reads person supplied meets_hcbs_waiver_target_group (CO-821)` | OQ-1415 |
@@ -222,7 +234,7 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 | P1 | CO-2278 | ma_ssi_child_allocation_from_spouse_unearned | `reads person derived ma_is_applying_for_or_eligible_for_ssi (CO-2271)` | F-SSI |
 | P1 | CO-2279 | ma_ssi_child_allocation_from_spouse_earned | `reads person derived ma_is_applying_for_or_eligible_for_ssi (CO-2271)` | F-SSI |
 | P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person supplied ma_continuous_eligibility_program (CO-2446)` | R-CE |
-| P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person derived ma_meets_residency (CO-2250)` | SHARED |
+| P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person derived ma_meets_residency (CO-2250)` | SHARED; MS-1, fixed (CO-7650) |
 | P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person supplied continuous_eligibility_period_start_month (CO-094)` | R-CE |
 | P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person supplied ma_application_date (CO-088)` | R-CE |
 | P1 | CO-2448 | ma_child_is_in_non_magi_continuous_eligibility_period | `reads person derived ma_child_continuous_eligibility_end_month (CO-556)` | R-CE |
@@ -312,8 +324,8 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 | P1 | CO-7351 | ma_receives_ssi_in_month | `reads person supplied receives_ssi (CO-012)` | R-DATED |
 | P1 | CO-7351 | ma_receives_ssi_in_month | `reads person supplied ssi_eligibility_date (CO-7350)` | R-DATED |
 | P1 | CO-7353 | ma_ssi_ineligible_spouse_income_is_not_deemed | `reads person derived ma_is_applying_for_or_eligible_for_ssi (CO-2271)` | F-SSI |
-| P2 | CO-505 | is_colorado_resident | `otherwise ["=","state_of_residence","colorado_state_code"] -> ["not",["unknown","county_of_residence"]]` | SHARED |
-| P2 | CO-505 | is_colorado_resident | `unknown "county_of_residence"` | SHARED |
+| P2 | CO-505 | is_colorado_resident | `otherwise ["=","state_of_residence","colorado_state_code"] -> ["not",["unknown","county_of_residence"]]` | SHARED; MS-1, right (CO-505 unchanged) |
+| P2 | CO-505 | is_colorado_resident | `unknown "county_of_residence"` | SHARED; MS-1, right (CO-505 unchanged) |
 | P2 | CO-608 | ma_ssi_countable_resources | `otherwise ["rel",["spouse","holds_out_as_spouse_with"],["P"]] -> false` | R-UNREACH |
 | P2 | CO-647 | ma_institutionalized_spouse_countable_resources | `otherwise ["rel",["spouse"],["P"]] -> false` | R-UNREACH |
 | P2 | CO-648 | ma_meets_ltc_resource_standard | `otherwise "ma_community_spouse_withheld_resources_are_excused" -> false` | R-DECL-NEW |
@@ -328,7 +340,7 @@ The sweep script's list on `414d239` (P1 186, P2 310, P3 127), each row a candid
 | P2 | CO-889 | ma_spouse_or_qualifying_child_lives_in_home | `otherwise ["=",["of",["P"],"residence_setting_type"],"private_dwelling"] -> true` | F-REQ |
 | P2 | CO-930 | is_married | `otherwise ["exists_related",["spouse"],true] -> false` | R-643 |
 | P2 | CO-930 | is_married | `otherwise "marital_status" -> "single"` | R-643 |
-| P2 | CO-1173 | ma_is_cover_all_coloradans_person | `unknown "most_recent_pregnancy_end_date"` | SHARED |
+| P2 | CO-1173 | ma_is_cover_all_coloradans_person | `unknown "most_recent_pregnancy_end_date"` | SHARED; MS-3, right (R-DECL) |
 | P2 | CO-1634 | ma_requires_verification_of_trust | `otherwise ["rel",["spouse"],["P"]] -> false` | F-REQ |
 | P2 | CO-1635 | ma_requires_verification_of_annuity | `otherwise ["rel",["spouse"],["P"]] -> false` | F-REQ |
 | P2 | CO-1703 | ma_self_employment_business_costs | `record field earnings.month when_absent` | R-SCHEMA-REP |
