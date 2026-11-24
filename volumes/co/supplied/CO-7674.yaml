@@ -1,0 +1,15 @@
+id: CO-7674
+name: Nighttime residence before the temporary stay
+identifier: nighttime_residence_type_before_stay
+kind: supplied
+type: one of
+options: [fixed_regular_adequate, imminently_losing_residence, shared_housing_due_to_loss_or_hardship, shared_housing_other_temporary, motel_or_hotel_for_lack_of_alternative, trailer_park_for_lack_of_alternative, campground_for_lack_of_alternative, emergency_or_transitional_shelter, halfway_house, abandoned_in_hospital, place_not_designed_for_sleeping, substandard_housing, institution]
+scope: person
+program: All
+meaning: "For a person whose nighttime residence on the determination date is a temporary accommodation that began on temporary_residence_start_date (CO-2811), where the person slept before it began, in the words of nighttime_residence_type (CO-2810), as a statement of fact and not any program's finding."
+precision: "Required where read (decision 4): a program that reads the residence of a month that ended before the temporary stay began reads it for that month (SNAP's homeless individual, snap_is_homeless CO-037: a stay that has not begun is not the month's \"primary nighttime residence\", 7 CFR 271.2, S1950), and not stated it cannot be determined. A stay in another person's home before this one is stated as such; its own start is not stated, so a program that measures such a stay's days cannot determine the earlier month from it."
+supplied_by: The application's living situation question.
+sources: [S1950]
+tags: [household, snap]
+rationale: "Coverage pass 7 for SNAP, C7-3 (docs/reviews/coverage7-snap.md): nighttime_residence_type states the residence of the determination date only, so a family that moved in with friends between the application month and the determination was read as homeless in an application month it spent in its own home (probe STAY-LATE2: October $222 where the text gives $198)."
+nearest: [CO-2810, CO-2811]

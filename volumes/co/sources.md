@@ -25086,3 +25086,19 @@ Document: D-34
 42 CFR 435.603(h)(1) (D-34:196). https://www.ecfr.gov/current/title-42/section-435.603
 
 > (h) *Budget period*—(1) *Applicants and new enrollees.* Financial eligibility for Medicaid for applicants, and other individuals not receiving Medicaid benefits at the point at which eligibility for Medicaid is being determined, must be based on current monthly household income and family size.
+### S5210. Colorado Works: a participant may not be receiving financial assistance from another State financial assistance program
+
+Document: D-59
+
+C.R.S. 26-2-706(1.5)(c) (D-59:4440, 4459-4461; coverage pass 7, cash). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (1.5)  To participate in the Colorado works program an applicant or person shall:
+> (c)    Not  be  receiving  financial  assistance  from  other  financial  assistance  programs administered by the state of Colorado;
+
+### S5211. Colorado Works notice: benefits of another public assistance program that may not be received concurrently with a Colorado Works grant
+
+Document: D-81
+
+9 CCR 2503-6 3.609.1.D.6 (D-81:4520-4522; coverage pass 7, cash). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 6. The client begins receiving benefits under another public assistance program which may not be received concurrently with a Colorado Works grant, such as Supplemental Security Income or Adult Financial programs.

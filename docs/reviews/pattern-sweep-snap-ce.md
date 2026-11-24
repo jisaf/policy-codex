@@ -24,7 +24,7 @@ Branch `pattern-sweep-snap-ce` from `ccr-9d19bf4c-wmnwcl` at 414d239. Concurrent
 
 | Fix | Pattern | Common / rare | What was wrong | Items |
 |---|---|---|---|---|
-| T-1 | 1 | rare edge: a qualified non-citizen's fifth anniversary inside the certification | SNAP's five-year condition read on the determination date in every month | CO-7450 (new), CO-307, CO-3736, CO-3738 |
+| T-1 | 1 | rare edge: a qualified non-citizen's fifth anniversary inside the certification | SNAP's five-year condition read on the determination date in every month | CO-307, CO-3736, CO-3738 (the five years written inline in each; the item CO-7450 proposed here was removed at the merge with the MAGI sweep, coverage pass 7 C7-7) |
 | T-2 | 1 | rare edge | the battered non-citizen's twelve months compared with the determination month | CO-2335 |
 | T-3 | 1 | rare edge | a sponsor's death read as of the determination month | CO-2337 |
 | T-4 | 1 | rare edge, but routine for households staying with others: the 90 days run out during the certification | the 90-day temporary accommodation counted to the determination date | CO-037 |
@@ -47,7 +47,7 @@ Every changed rule has rule tests whose expected values were computed by hand fr
 
 | Fix | Rule text | Probe (by hand) | Before | After |
 |---|---|---|---|---|
-| T-1 | 8 U.S.C. 1612(a)(2)(L): a qualified alien "who has resided in the United States with a status within the meaning of the term 'qualified alien' for a period of 5 years or more" (S22); 1613(a) (S21); 10 CCR 2506-1 4.402.1.A, "anticipated income and circumstances during the issuance month" (S4734) | An LPR since 2021-12-10, no quarters, no exemption, determined 2026-10-15: five years on 2026-12-10 (CO-7450-T1 to T3, CO-307-T4, T5) | condition unmet in every month (CO-508 counts to the determination date) | November unmet, December met |
+| T-1 | 8 U.S.C. 1612(a)(2)(L): a qualified alien "who has resided in the United States with a status within the meaning of the term 'qualified alien' for a period of 5 years or more" (S22); 1613(a) (S21); 10 CCR 2506-1 4.402.1.A, "anticipated income and circumstances during the issuance month" (S4734) | An LPR since 2021-12-10, no quarters, no exemption, determined 2026-10-15: five years on 2026-12-10 (CO-307-T4, T5; the tests first written on CO-7450 moved with its derivation, coverage pass 7 C7-7) | condition unmet in every month (CO-508 counts to the determination date) | November unmet, December met |
 | T-2 | 4.305.2.E.5: the sponsor's income is not counted "during a twelve (12) month period after the local office determines that the battering is substantially connected" (S1619) | Finding 2025-11-20, lives apart, no court recognition (CO-2335-T5, T6) | exempt in every month of a certification determined in October 2026 | exempt in October 2026 (the twelfth month), deemed from November |
 | T-3 | 4.305.2.E.7: not deemed to "A person whose sponsor has died" (S1619) | Sponsor dies 2026-11-10 after a 2026-10-15 determination (CO-2337-T14, T15) | deemed in every month | deemed in October, not from November |
 | T-4 | 7 CFR 271.2 "Homeless individual" (2)(iii): "A temporary accommodation for not more than 90 days in the residence of another individual" (S1950); 4.402.1.A (S4734) | Staying with friends since 2026-09-20, determined 2026-10-20 (CO-037-T6, T7) | homeless (homeless shelter deduction) in every month | homeless in December (72 days on December 1), not in January (103 days) |
@@ -64,7 +64,7 @@ Every changed rule has rule tests whose expected values were computed by hand fr
 | D-4 | The voluntary quit disqualification and its level sanctions (S1611, S1612) apply to a work registrant; the work registration ages exempt | CO-2318-T20 | in the work registration ages | cannot determine |
 | D-5 | Each fact's own cited excerpt states the exception (the sentence added to its precision names it) | — | default read with no declaration | declared on the fact with its citation (rule 12) |
 
-The new items: CO-7450 `snap_has_held_qualified_status_five_years_in_month` (SNAP, per month) and CO-7451 `energy_assistance_last_payment_month` (neutral case fact, month; docs/conventions.md rule 18). New excerpts: S5090 (7 CFR 273.9(d)(6)(iii)(D)(3), D-13), S5091 (7 CFR 273.10(a)(1)(i), D-14), S5092 (10 CCR 2506-1 4.306.C, D-82), each copied from the fetched document. Stored households: CO-940, CO-941.
+The new items: CO-7451 `energy_assistance_last_payment_month` (neutral case fact, month; docs/conventions.md rule 18). New excerpts: S5090 (7 CFR 273.9(d)(6)(iii)(D)(3), D-13), S5091 (7 CFR 273.10(a)(1)(i), D-14), S5092 (10 CCR 2506-1 4.306.C, D-82), each copied from the fetched document. Stored households: CO-940, CO-941.
 
 ## 4. Open questions
 
