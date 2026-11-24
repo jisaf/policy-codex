@@ -1,0 +1,22 @@
+id: CO-7508
+name: "Medicaid: receives OAP in the month"
+identifier: ma_receives_oap_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person receives Old Age Pension assistance (OAP-A or OAP-B) in the month, as the OAP SISC B group needs (10 CCR 2505-10 § 8.100.6.K.2-4, \"persons receiving OAP-A or OAP-B\"): the person's Adult Financial program on the determination date is OAP (adult_financial_program_received, CO-2710) and, for a month before the determination month, the month is not before the month of the program's start date (adult_financial_program_start_date, CO-7507)."
+precision: "Pattern sweep, non-MAGI Medicaid (P1): a retroactive month (§ 8.100.3.E.1, S1503) is an OAP month only from the month the assistance began; a month before it is judged by the SSI-related tests of the month. The determination month and the months after read the program as stated. The start date is required for a month before the determination month (decision 4 of 2026-11-23). Read by Medicaid as another program's case status (convention rule 11), not as this volume's Adult Financial determination."
+derived: [all, ["=", adult_financial_program_received, oap], [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, adult_financial_program_start_date], [month]]]]]
+sources: [S621, S1503]
+implemented: engine
+tags: [ma, non_magi, oap]
+rationale: "Pattern sweep P1: ma_oap_sisc_b_eligible (CO-1177) read adult_financial_program_received, the program on the determination date, in every month. The same month rule as ma_receives_ssi_in_month (CO-7351)."
+nearest: [CO-7351, CO-2710]
+tests:
+  # OAP from 2026-10-01, determined 2026-11-12. August: 2026-10 > 2026-08: false. October: true. The determination month reads the program as stated.
+  - {id: CO-7508-T1, month: "2026-08", as_of: "2026-11-12", title: "A retroactive month before OAP began", given: {adult_financial_program_received: oap, adult_financial_program_start_date: "2026-10-01"}, expect: false}
+  - {id: CO-7508-T2, month: "2026-10", as_of: "2026-11-12", title: "The month OAP began", given: {adult_financial_program_received: oap, adult_financial_program_start_date: "2026-10-01"}, expect: true}
+  - {id: CO-7508-T3, month: "2026-11", as_of: "2026-11-12", title: "The determination month reads the program as stated", given: {adult_financial_program_received: oap}, expect: true}
+  - {id: CO-7508-T4, month: "2026-09", as_of: "2026-11-12", title: "Another Adult Financial program: not OAP", given: {adult_financial_program_received: and_so}, expect: false}
+  - {id: CO-7508-T5, month: "2026-09", as_of: "2026-11-12", title: "A retroactive month with no start date stated cannot be determined (decision 4)", given: {adult_financial_program_received: oap}, expect: unknown}

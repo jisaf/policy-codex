@@ -1,0 +1,13 @@
+id: CO-7501
+name: Income trust established date
+identifier: ma_income_trust_established_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "For a person for whom a qualifying income trust has been established (has_income_trust, CO-823), the date the trust was established (10 CCR 2505-10 § 8.100.7.A.2.e: a person whose gross income exceeds the 300% level \"who establishes an income trust\")."
+precision: "Required where read: a month before the determination month meets the special income group through the trust only from the month the trust was established (ma_meets_special_income_group, CO-642; § 8.100.3.E.1, S1503: a retroactive month needs \"all applicable eligibility requirements\" met in it; § 8.100.5.C.1.b, S3900: eligibility from \"the first day of the month the person becomes eligible\"), and not stated it cannot be determined (decision 4 of 2026-11-23). The determination month and the months after read has_income_trust as stated."
+supplied_by: "The trust document the person submits (8.100.7.A.2.i), as the eligibility site records it."
+sources: [S1753, S1503, S3900]
+tags: [ma, ltc, legal]
+rationale: "Pattern sweep, non-MAGI Medicaid (P1; docs/reviews/pattern-sweep-nonmagi.md): has_income_trust (CO-823) states that a trust exists on the determination date and was read in every month, so a nursing facility resident above 300% of the SSI benefit who established the trust in October met the special income group in a retroactive August and September before it existed. No fact dated the trust."

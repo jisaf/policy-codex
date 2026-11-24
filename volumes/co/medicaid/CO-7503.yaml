@@ -1,0 +1,22 @@
+id: CO-7503
+name: "Medicaid: entitled to Medicare Part A in the month"
+identifier: ma_is_entitled_to_medicare_part_a_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is entitled to Medicare Part A in the month, the condition of the Medicare Savings Programs (42 U.S.C. 1396d(p)(1)(A); 10 CCR 2505-10 § 8.100.6.L, M.2.a \"is entitled to Medicare Part A\", N.4.a \"be entitled to Part A of Medicare\"): entitled on the determination date (medicare_part_a_entitled, CO-803) and, for a month before the determination month, the month is not before the month of the entitlement date (medicare_part_a_entitlement_date, CO-7502)."
+precision: "Pattern sweep, non-MAGI Medicaid (P1): SLMB and QI-1 cover retroactive months (§ 8.100.6.M.5, S2407: \"up to three month prior to the application date\"; N.3), and each month needs the entitlement in it (§ 8.100.3.E.1, S1503). The determination month and the months after read the entitlement as stated on the determination date. The entitlement date is required for a month before the determination month (decision 4 of 2026-11-23)."
+derived: [all, medicare_part_a_entitled, [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, medicare_part_a_entitlement_date], [month]]]]]
+sources: [S316, S312, S1748, S1749, S2407, S1503]
+implemented: engine
+tags: [ma, non_magi, msp]
+rationale: "Pattern sweep P1: ma_qmb_eligible (CO-613), ma_slmb_eligible (CO-614) and ma_qi_eligible (CO-615) read medicare_part_a_entitled, the entitlement on the determination date, in every month. The same month rule as ma_receives_ssi_in_month (CO-7351) for a dated status."
+nearest: [CO-7351, CO-803]
+tests:
+  # Part A from 2026-10-01, determined 2026-11-12. August: 2026-10 > 2026-08: false. October: 2026-10 <= 2026-10: true. The determination month reads the entitlement as stated.
+  - {id: CO-7503-T1, month: "2026-08", as_of: "2026-11-12", title: "A retroactive month before Part A entitlement began", given: {medicare_part_a_entitled: true, medicare_part_a_entitlement_date: "2026-10-01"}, expect: false}
+  - {id: CO-7503-T2, month: "2026-10", as_of: "2026-11-12", title: "The month entitlement began", given: {medicare_part_a_entitled: true, medicare_part_a_entitlement_date: "2026-10-01"}, expect: true}
+  - {id: CO-7503-T3, month: "2026-11", as_of: "2026-11-12", title: "The determination month reads the entitlement as stated", given: {medicare_part_a_entitled: true}, expect: true}
+  - {id: CO-7503-T4, month: "2026-09", as_of: "2026-11-12", title: "Not entitled: false in any month", given: {medicare_part_a_entitled: false}, expect: false}
+  - {id: CO-7503-T5, month: "2026-09", as_of: "2026-11-12", title: "A retroactive month with no entitlement date stated cannot be determined (decision 4)", given: {medicare_part_a_entitled: true}, expect: unknown}

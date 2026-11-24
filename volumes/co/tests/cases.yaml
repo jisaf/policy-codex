@@ -59781,6 +59781,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (P2, decision 4; rule 17): the home, stated (required where read); the story has one home
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -59842,6 +59843,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (P2, decision 4; rule 17): the home, stated (required where read); the story has one home
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
