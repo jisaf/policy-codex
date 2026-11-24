@@ -1,0 +1,124 @@
+# Verdicts for the cash pattern sweep's candidates (scripts/audit/pattern-sweep-cash.ts --verdicts; the report is
+# docs/reviews/pattern-sweep-cash.md, the per-candidate table docs/reviews/pattern-sweep-cash-candidates.md).
+# Each rule: cls (the lister's class, or *), match (a regular expression on "ID identifier | detail"), verdict (a key of
+# `verdicts`). The first rule that matches a candidate gives its verdict; a candidate no rule matches fails the run.
+verdicts:
+  # ---- right, with the text that fixes the point in time or gives the reading
+  R-DATED: "Right: a dated fact (date_of_birth, date_of_death, institution_entry_date, the pregnancy dates, the application, eligibility and approval dates) read against the month evaluated, or a record read by its month, date or start and end (received_in, P57)."
+  R-AGE: "Right: the age is taken in the month evaluated (years_between to the month's first or last day; OQ-951 for the day)."
+  R-PROCESS: "Right: a fact of the determination itself (a verification document or request, an interview, a due date, an attestation), one value for the determination: 9 CCR 2503-5 3.520.4-3.520.5 and 9 CCR 2503-6 3.604.3 verify at the application or redetermination."
+  R-HCA: "Right: Home Care Allowance eligibility is decided at the approval and paid only from the month after it, with no retroactive payment (9 CCR 2503-5 3.570.13.F, S3503), so the determination's facts decide every month paid."
+  R-REDET: "Right: 9 CCR 2503-6 3.605.5.C tests child support at the redetermination, over the six months before it (S2607)."
+  R-UNIT: "Right: a bar the rule lays on the whole unit for one member of it (closures, diversion period, sanctions, child support cooperation, strike basis), read over the determination's members (coverage pass 6 CA6-4); the unit's size, income, standards and basis are the month's (CO-7304)."
+  R-COUNTY: "Right: a finding the rule has the county (or a hearing) establish, so none stated is none: IPV and EBT findings (9 CCR 2503-5 3.520.61.H; 9 CCR 2503-6 3.609.5), failures to apply or cooperate (3.520.71.D; 3.604.2.M.4, 3.604.4.C), refused potential income or resources (3.520.71.G-H; 3.605.1.A.3), rebuttals (3.520.64.E; 3.605.1.A.5.b), good cause and extensions (3.604.3.D), closures and sanctions (3.601 Sanction, 3.608.4), the diversion period (3.606.8), the AND-SO hardship and exception findings, the requested inclusion of an optional member (3.604.2.C.2: the member is in the unit only on request)."
+  R-DECLARED: "Right: the fact's absence has a meaning declared on the fact (date_of_death: not stated for a living person; temporarily_out_of_state_start_date: no absence; a record field's when_absent; cw_unit_eligible_from_date: eligible on the date of application, 3.609.2.A.1; af_hca_approval_date: not approved before this determination, PS-D1; the shared verification request date as the program's own, one statement of one date)."
+  R-RECORD-RULE: "Right: the record field's default is the rule's: income and resources count unless an exclusion or deduction is shown (9 CCR 2503-6 3.605.3: \"Unless otherwise specified, any unearned income is countable\"; 3.605.1.A; 9 CCR 2503-5 3.520.781.C and 3.520.786: \"Such exempt income is limited to the following\"; 3.520.72.A: \"Unless otherwise specified, a resource is countable\"), and a payment is the month's unless shown otherwise (3.520.781.G; 3.605.1.A.2): an earmark, set-aside, foster-care, farm, irregular, retroactive or temporary flag defaults to the reading that counts the payment in its month."
+  R-RECORD-TIME: "Right: the record is read in its month: its month or date (P57), and a stream only from its start or its job's start through its end (CA4-9, FS-AF-1, FS-CW-1); an absent month, start or end has the meaning the schema declares (when_absent)."
+  R-BOUND: "Right: a sound lower bound, not a default: af_meets_resource_limit answers false when the parts known already exceed the limit, every unknown part being 0 or more (CO-5350, H1)."
+  R-STRUCT: "Right: the composition is built per month from the month's members (CO-7303, CO-7304: born by the month's end, alive on its first day, a dependent child, parent, caretaker or expectant parent of the month, and since PS-T8 living in the home in the month); the person-scope groups answer who may join, as in coverage pass 6."
+  R-STATIC: "Right: a fact that does not change within the months a determination covers (a relationship's kind, a citizenship document, a table key, a stated policy choice of the case)."
+  R-DIVERSION: "Right: a diversion is assessed and agreed at the determination, for a one-time payment (9 CCR 2503-6 3.606.8.A), so its facts are the determination's."
+  R-DISASTER: "Right: disaster assistance is a payment determined on the client's request (9 CCR 2503-5 3.570.51-52), from the determination's facts."
+  R-CURRENT: "Right: the text names the current figure: the transfer penalty divides by \"the current Adult Financial Program grant standard\" (3.520.76.D.2, S2614)."
+  R-AVERAGE: "Right: irregular self-employment is averaged over a twelve-month period (3.520.783.F), the months read by sum_months; the undated sum only asks whether such a record exists."
+  # ---- fixed in this round (docs/reviews/pattern-sweep-cash.md, section 3)
+  F-T1: "Fixed PS-T1: the psychiatric facility's 65 taken on the month's last day."
+  F-T2: "Fixed PS-T2: the decedent's minority is the age at death."
+  F-T3: "Fixed PS-T3: the work-eligible adult and minor parent ages, and the minor parent's child, in the month."
+  F-T4: "Fixed PS-T4: the child under six in the month."
+  F-T5: "Fixed PS-T5: lawful presence: the age and the pregnancy of the month."
+  F-T6: "Fixed PS-T6: school attendance: the dependent child of the month, 18 on its first day."
+  F-T7: "Fixed PS-T7: the AND-SO verification ages on the month's last day."
+  F-T8: "Fixed PS-T8: Colorado Works absences and stays counted to the month (CO-7600, CO-7602; OQ-1435)."
+  F-T9: "Fixed PS-T9: the Adult Financial absence counted to the month (CO-7601; OQ-1435)."
+  F-T10: "Fixed PS-T10: the time limit's adult and members of the month."
+  F-T11: "Fixed PS-T11: the striking adult of the month."
+  F-T12: "Fixed PS-T12: SSI received in the month for AND-SO and AND-CS (CO-7605; 3.554.C.6)."
+  F-M1: "Fixed PS-M1: the Adult Financial spouse of the month (CO-7603): a spouse who died is no spouse; marriage per month."
+  F-M2: "Fixed PS-M2: the Adult Financial sponsors living on the month's first day (CO-7604; 3.520.69.B.5)."
+  F-M3: "Fixed PS-M3: a sponsor who is not a person of the case leaves the deemed income cannot determine (decision 4)."
+  F-M4: "Fixed PS-M4: Colorado Works budgetary members, deemed parents and the stepparent's children of the month (alive, born)."
+  F-D1: "Fixed PS-D1: Home Care Allowance: setting, institution, absence and expected stay required; leave read for an approved client; payment from the month after approval."
+  F-D2: "Fixed PS-D2: living together read from dwelling_id as stated, required where read (rule 17 amended for the cash readers)."
+  F-D3: "Fixed PS-D3: the residence setting of a person stated present is required (no reading as a private dwelling)."
+  F-D4: "Fixed PS-D4: the client's relationships required where read, a case of one person aside."
+  F-D5: "Fixed PS-D5: the disqualified member read with no default; the IPV finding keeps the county's reading (3.609.5); the fleeing-felon fact required."
+  F-D6: "Fixed PS-D6: OAP-C read with no default, where it decides the figure."
+  F-D7: "Fixed PS-D7: the spouse's income verified wherever the spouse lives."
+  F-D8: "Fixed PS-D8: the AND-SO interview date and subsequent application required."
+  F-D9: "Fixed PS-D9: the Adult Financial kind of determination required where read."
+  F-D10: "Fixed PS-D10: the disaster request and declaration required."
+  F-D11: "Fixed PS-D11: relationships read as stated in the sponsor's dependents and the burial's responsible persons."
+  F-D12: "Fixed PS-D12: the child support months and average read with no default."
+  # ---- not fixed, listed for the product owner (section 5)
+  RES-UNDATED: "Not fixed (rare; section 5): by the text the status is the month's, but the fact states the determination date's status and has no date, so a change within the months a determination covers cannot be stated; a status gained after the application is carried by the eligibility dates (af_eligibility_date, cw_unit_eligible_from_date), a status lost before the determination is not. Needs a neutral date on the fact (or a per-month statement); no state policy choice, so no open question."
+  SHARED: "Shared item (program All), outside the cash remit: listed for its owner (section 5)."
+rules:
+  # ---------------- pattern 1, time
+  - {cls: "*", match: "^CO-951 ", verdict: F-T1}
+  - {cls: "*", match: "^CO-3312 .*(age|date_of_birth)", verdict: F-T2}
+  - {cls: "*", match: "^CO-919 ", verdict: F-T3}
+  - {cls: "*", match: "^CO-920 ", verdict: F-T4}
+  - {cls: "*", match: "^CO-1420 ", verdict: F-T5}
+  - {cls: "*", match: "^CO-1422 ", verdict: F-T6}
+  - {cls: "*", match: "^(CO-1668|CO-2584) .*\\b(age|cw_is_dependent_child)\\b", verdict: F-T7}
+  - {cls: "*", match: "^(CO-904|CO-2351|CO-3354|CO-3804|CO-7303|CO-2353|CO-906|CO-4352) .*(det_date|det_month|temporarily_out_of_state_start_date|institution_entry_date|temporary_absence|cw_is_considered_living_in_home|cw_is_institution_resident|cw_meets_residency)", verdict: F-T8}
+  - {cls: "*", match: "^(CO-942|CO-4401) .*(det_date|temporarily_out_of_state_start_date|af_is_presumed_nonresident|temporary_absence_reason|temporary_absence_is_outside|is_out_of_state_caring)", verdict: F-T9}
+  - {cls: "*", match: "^(CO-918|CO-4835|CO-7307|CO-921) .*cw_time_limit_reached|^CO-918 ", verdict: F-T10}
+  - {cls: "*", match: "^CO-3808 |^(CO-4835|CO-921) .*cw_unit_has_striking_adult", verdict: F-T11}
+  - {cls: "*", match: "^(CO-1203|CO-950) .*receives_ssi", verdict: F-T12}
+  - {cls: "*", match: "^(CO-2384|CO-2389|CO-948|CO-6804|CO-3854|CO-4001|CO-4002|CO-4004|CO-7308|CO-3829|CO-4022|CO-2392) .*(spouse|af_is_married|af_client_general_income_disregard|exists_related)", verdict: F-M1}
+  - {cls: "*", match: "^(CO-2386|CO-947|CO-2390|CO-4400) .*(sponsor_has_died|af_sponsor_deeming_applies|sponsors)", verdict: F-M2}
+  - {cls: "*", match: "^(CO-2364|CO-2365) .*sponsors", verdict: F-M3}
+  - {cls: "*", match: "^(CO-910|CO-923) .*cw_budgetary_unit_members|^CO-909 .*cw_minor_parent_deemed_parents|^CO-2353 .*(count|filter|persons|cw_is_excluded)", verdict: F-M4}
+  - {cls: "*", match: "^CO-1219 .*af_hca_approval_date|^CO-1217 .*(resides_in_medical_institution|residence_setting_type|temporary_absence_reason|expects_institutional_stay|af_hca_combined_leave_days|\\[\"any\",\\[\"otherwise\",\"expects)", verdict: F-D1}
+  - {cls: "*", match: "lives_with|dwelling_id", verdict: F-D2}
+  - {cls: "*", match: "^CO-3354 .*cw_is_institution_resident", verdict: F-D3}
+  - {cls: "*", match: "\\[\"rel\",\\[\"spouse\"\\],\\[\"P\"\\]\\] => false", verdict: F-D4}
+  - {cls: "*", match: "^(CO-921|CO-4369) .*(cw_is_disqualified_member|cw_is_excluded_from_assistance_unit)", verdict: F-D5}
+  - {cls: "*", match: "^CO-5346 .*receives_oap_c", verdict: F-D6}
+  - {cls: "*", match: "^CO-3884 ", verdict: F-D7}
+  - {cls: "*", match: "^(CO-2592|CO-3870) .*(af_interview_date|af_is_subsequent)", verdict: F-D8}
+  - {cls: "*", match: "^CO-1433 .*(af_determination_is_redetermination|af_redetermination_is_twenty_four_month|af_has_newly_reported_resources)", verdict: F-D9}
+  - {cls: "*", match: "^CO-3877 .*(declared_disaster|af_has_requested_disaster)", verdict: F-D10}
+  - {cls: "*", match: "^(CO-2386|CO-3312) .*(tax_dependent|deceased_spouse_of|\\[\"child\"\\])", verdict: F-D11}
+  - {cls: "*", match: "^CO-2553 .*cw_child_support_(months|six)", verdict: F-D12}
+  - {cls: "*", match: "^(CO-3832|CO-3833) |^(CO-3854|CO-4001|CO-4002) ", verdict: F-M1}
+  - {cls: "*", match: "(af_has_failed_to_apply_for_other_benefits|af_is_serving_ipv_disqualification|af_is_in_ebt_misuse_ineligibility_period|cw_sponsor_income_availability_rebutted|cw_is_serving_ipv)", verdict: R-COUNTY}
+  - {cls: "*", match: "^CO-3849 |af_and_so_meets_substance_abuse_conditions", verdict: R-PROCESS}
+  - {cls: "*", match: "^CO-915 ", verdict: R-STATIC}
+  - {cls: "*", match: "^(CO-2351|CO-921|CO-910|CO-923|CO-4369|CO-2561|CO-925) .*(cw_is_disqualified_member|cw_is_institution_patient_or_inmate) \\(", verdict: RES-UNDATED}
+  - {cls: "*", match: "(county_approved_living_arrangement|cw_is_optional_member_not_requesting|cw_requests_inclusion)", verdict: R-COUNTY}
+  - {cls: "*", match: "af_im14_signed|af_has_met_and_so_benefit", verdict: R-PROCESS}
+  - {cls: "*", match: "af_self_employment_averaging_period|donated_work_community_hourly_rate|^CO-4443 ", verdict: R-STATIC}
+  # shared items
+  - {cls: shared-otherwise, match: ".", verdict: SHARED}
+  # HCA, disaster, diversion, verification and process facts
+  - {cls: "*", match: "^(CO-1206|CO-1215|CO-1216|CO-1217|CO-1219|CO-2010) ", verdict: R-HCA}
+  - {cls: "*", match: "^(CO-3877|CO-3878) ", verdict: R-DISASTER}
+  - {cls: "*", match: "^(CO-1270|CO-7307|CO-2560) .*(has_specific_crisis_need|needs_long_term|cw_has_refused|cw_meets_county_diversion|cw_diversion)", verdict: R-DIVERSION}
+  - {cls: "*", match: "(verification|verified|attestation|document|due_date|interview|request_date|ssn_|has_been_issued_ssn|benefit_application|referred_to_apply|af_is_subsequent|_acceptable|_is_primary|questionable|claims_lawful|claims_disability|af_and_so_medical_certification|sponsor_information_verified|age_is_verified)", verdict: R-PROCESS}
+  - {cls: "*", match: "^(CO-1421|CO-1424|CO-1425|CO-1426|CO-1427|CO-1432|CO-1433|CO-1435|CO-1436|CO-1437|CO-1438|CO-1644|CO-1645|CO-1646|CO-1647|CO-1648|CO-1651|CO-1652|CO-1653|CO-1654|CO-1656|CO-1658|CO-1659|CO-1660|CO-1661|CO-1662|CO-1663|CO-1667|CO-1668|CO-1669|CO-1670|CO-1671|CO-1672|CO-2583|CO-2584|CO-2592|CO-3869|CO-3870|CO-3879|CO-3880|CO-3881|CO-3882|CO-3883|CO-4003|CO-4372|CO-1367|CO-1368|CO-1673|CO-1674|CO-2561) ", verdict: R-PROCESS}
+  # child support at redetermination, the transfer penalty, irregular averaging
+  - {cls: "*", match: "^(CO-2550|CO-2551|CO-2552|CO-2553|CO-2842) ", verdict: R-REDET}
+  - {cls: "*", match: "^CO-3840 .*(det_month|af_twfc_monthly_penalty)", verdict: R-CURRENT}
+  - {cls: "record-sum-undated", match: "^CO-1708 ", verdict: R-AVERAGE}
+  # dated facts and records
+  - {cls: "*", match: "(date_of_death|date_of_birth|institution_entry_date|pregnancy_start_date|pregnancy_end_date|most_recent_pregnancy_end_date|af_application_date|af_eligibility_date|cw_application_date|cw_unit_eligible_from_date|cw_determination_months|af_hca_approval_date|af_hca_payment_effective_date|qualified_status_date|us_entry_date|parole_end_date|ssi_eligibility_date)", verdict: R-DATED}
+  - {cls: "*", match: "^(CO-6807|CO-7300|CO-7301|CO-7302|CO-7303|CO-7304|CO-7305|CO-940|CO-1203|CO-950|CO-924|CO-4352|CO-906|CO-909|CO-916|CO-2603|CO-4358|CO-4023|CO-1220|CO-1504) .*(det_month|det_date|\\bat\\b|date|month)", verdict: R-DATED}
+  - {cls: "record-field-default", match: "\\.(month|date|start_date|end_date|job_start_date|job_end_date|disposed_date|returned_date|regular_date|for_person|share|annual_contract_pay|taxable_amount|taxes_on_withdrawal) ", verdict: R-RECORD-TIME}
+  - {cls: "record-field-default", match: ".", verdict: R-RECORD-RULE}
+  - {cls: "unknown-guard", match: "\\[\"receipt\",\"(month|start_date|end_date|job_start_date|job_end_date|disposed_date|returned_date|regular_date|for_person|value|annual_contract_pay|taxes_on_withdrawal|ended_through_own_fault)\"\\]|\\[\"of\",\\[\"P\"\\],\"receipts\"\\]", verdict: R-RECORD-TIME}
+  - {cls: "unknown-guard", match: "temporarily_out_of_state_start_date|cw_verification_extended_due_date|ssn_verified_by_electronic|ssn_application_date", verdict: R-DECLARED}
+  - {cls: "otherwise", match: "\\[\"receipt\",\"(share|income_producing|produces_for_household_use|used_in_trade_or_business)\"\\]", verdict: R-RECORD-RULE}
+  - {cls: "otherwise", match: "af_countable_(burial_holdings|home_equity|personal_property|real_property|retirement_accounts|vehicles)|af_self_support_property_countable_value|af_cash_and_convertible_holdings|\\[\"sum_receipts\",\"holdings\"", verdict: R-BOUND}
+  - {cls: "otherwise", match: "(af_verification_request_date\" => \"verification_request_date|cw_verification_request_date\" => \"verification_request_date|cw_unit_eligible_from_date\" => \"cw_application_date)", verdict: R-DECLARED}
+  - {cls: "otherwise", match: "(af_has_failed_to_apply_for_other_benefits|af_has_open_colorado_works_closure_bar|af_income_property_return_shortfall_excused|af_is_in_ebt_misuse|af_is_serving_ipv|af_nonresidence_presumption_rebutted|af_oap_qualified_alien_hardship|af_potential_resource_pursuit_status|af_referred_to_apply|af_refused_potential|af_replacement_proceeds_extension|cw_has_failed_to_apply_for_ssn|cw_has_good_cause|cw_refused_potential|cw_requests_inclusion|cw_sponsor_income_availability_rebutted|cw_verification_good_cause|cw_county_closure_type|cw_has_failed_child_support_cooperation|cw_has_refused_child_support_assignment|in_diversion_period|work_sanction_level_served|af_hca_is_in_hcbs_transition_period|af_life_insurance_cash_value)", verdict: R-COUNTY}
+  - {cls: "otherwise", match: "cw_status_verification_due_date", verdict: R-PROCESS}
+  # undated statuses read in a month (residual)
+  - {cls: "*", match: "\\b(receives_ssi|receives_ssdi|marital_status|is_blind|meets_ssa_disability_criteria|af_and_so_disability_met|is_emancipated_minor|immigration_status|is_sponsored_non_citizen|is_us_citizen_or_national|meets_public_assistance_citizenship_requirement|af_meets_citizenship_requirement_oap|cw_meets_citizenship_and_immigration_requirement|claims_lawful_immigration_status|is_fleeing_felon|received_financial_assistance_from_another_state_this_month|is_colorado_resident|residence_setting_type|resides_in_medical_institution|residence_setting_is|medical_institution_stay|is_enrolled_in_medical_assistance|education_program_type|education_enrollment_intensity|is_full_time_secondary_student|ssi_is_student|lives_in_own_home|lives_in_subsidized_housing|home_shelter_costs|home_total_shelter_costs|af_is_homeless|cw_is_head_of_assistance_unit|receives_tanf_cash|receives_oap_c|sponsor_dependent_count|sponsor_household_size|cw_sponsor_deeming_household_size|sponsor_has_spouse_in_household|sponsor_spouse_is_cosponsor|sponsor_spouses_not_cosigning|status_before_lpr_adjustment|is_victim_of_battery|qualifying_quarters|cw_is_disqualified_for_status_or_ssn|af_and_so_meets_substance_abuse|af_has_total_disability|donated_work|is_participating_in_strike|cw_is_institution_patient_or_inmate|af_im14_signed|af_has_met_and_so_benefit|county_approved_living_arrangement|cw_is_optional_member|af_self_employment_averaging_period|has_resources_other_than_cash|af_hca_|receives_hcbs|cw_receives_title_iv|is_in_work_release|residence_setting_is|residence_setting_operated)", verdict: RES-UNDATED}
+  # composition and group items built per month (pattern 3)
+  - {cls: "*", match: "^(CO-900|CO-2349|CO-2350|CO-2352|CO-2558|CO-2608|CO-5207|CO-5208|CO-901|CO-902|CO-2383|CO-4660|CO-2000|CO-1260|CO-1264|CO-1265|CO-1423|CO-2351|CO-2360|CO-903|CO-911|CO-912|CO-914|CO-926|CO-927|CO-925|CO-916|CO-3811|CO-4835|CO-7307|CO-1270|CO-921|CO-1511|CO-3805|CO-910|CO-923|CO-1225|CO-1226|CO-1231|CO-1507|CO-1508|CO-5017|CO-5651|CO-1512|CO-946|CO-4363|CO-2365|CO-3354|CO-906|CO-909|CO-2384|CO-2392|CO-3881|CO-4352|CO-7304|CO-7305|CO-7303|CO-4400|CO-2386|CO-947|CO-2390|CO-1215|CO-4443|CO-3312|CO-924|CO-2553|CO-4358|CO-4369|CO-2353) ", verdict: R-STRUCT}
+  - {cls: "*", match: "^(CO-4412|CO-4722|CO-5340|CO-5341|CO-5342|CO-5343|CO-5344|CO-5345|CO-5346|CO-5347|CO-5348|CO-5349|CO-5350|CO-4000|CO-4008|CO-3841|CO-4422|CO-3840) ", verdict: R-RECORD-TIME}
+  - {cls: "*", match: "^(CO-1508|CO-1225|CO-1226) .*(burial|af_)", verdict: R-STATIC}
+  - {cls: "*", match: "(is_related_to|cw_caretaker_of|cw_is_parent_of_dependent_child|cw_minor_parent_deeming_needs_deduction|cw_minor_parent_deemed_parents|cw_has_dependent_child|cw_is_dependent_child|af_and_cs_eligible|af_is_oap_age|cw_budgetary_unit_members|cw_assistance_unit_members|cw_is_disqualified_member|cw_meets_child_support_requirements|cw_is_optional|af_burial|af_died|annual_contract_pay|af_relative|af_gross|cw_unit_consistent)", verdict: R-STRUCT}
