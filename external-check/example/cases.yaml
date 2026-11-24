@@ -1,0 +1,599 @@
+# External sample check cases (volume co), converted from example by npm run external:import.
+# Not stored households: these never join volumes/<volume>/tests/cases.yaml or the check's gate.
+# Each case keeps its expected answers, their sources and notes under `external`; `expect` is the same
+# answers in the stored-household shape ("unknown" is cannot determine). See docs/external-check.md.
+- id: "EX-1"
+  title: "Married couple of 68 and 70, both on Social Security, renting; one has Medicare and medical bills. SNAP recertification."
+  as_of: "2026-10-01"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1956-01-01"
+        sex: "female"
+        dwelling_id: "home 1"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "private_dwelling"
+        receives_ssi: false
+        receives_tanf_cash: false
+        adult_financial_program_received: "none"
+        is_enrolled_in_medical_assistance: false
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        medicare_part_b_enrolled: true
+        immigration_status: "us_citizen"
+        receipts:
+          - kind: "social_security"
+            amount: 1650
+        holdings:
+          - kind: "bank_account"
+            value: 4200
+        af_burial_responsible_persons_outside_case_resources: 0
+        days_out_of_state_in_calendar_year: 0
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        title_ii_benefit_type: "retirement_or_survivor"
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: "none"
+        nighttime_residence_type: "fixed_regular_adequate"
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_disability_based_general_assistance: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        af_has_total_disability_six_months: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        meets_nursing_facility_level_of_care: false
+        earnings: []
+      relationships: []
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 1100
+        medical_expenses_out_of_pocket: 180
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        donated_work_hours_per_week: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      facts:
+        date_of_birth: "1958-01-01"
+        sex: "male"
+        dwelling_id: "home 1"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "private_dwelling"
+        receives_ssi: false
+        receives_tanf_cash: false
+        adult_financial_program_received: "none"
+        is_enrolled_in_medical_assistance: false
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        immigration_status: "us_citizen"
+        receipts:
+          - kind: "social_security"
+            amount: 900
+        af_burial_responsible_persons_outside_case_resources: 0
+        days_out_of_state_in_calendar_year: 0
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        title_ii_benefit_type: "retirement_or_survivor"
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: "none"
+        nighttime_residence_type: "fixed_regular_adequate"
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_disability_based_general_assistance: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        af_has_total_disability_six_months: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        meets_nursing_facility_level_of_care: false
+        earnings: []
+        holdings: []
+      relationships: []
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        donated_work_hours_per_week: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      snap_allotment:
+        2026-10: 25
+      snap_eligibility_status:
+        2026-10: "eligible"
+      snap_abawd_time_limit_status:
+        2026-10: "not_subject"
+    p2:
+      snap_allotment:
+        2026-10: 25
+      snap_eligibility_status:
+        2026-10: "eligible"
+      snap_abawd_time_limit_status:
+        2026-10: "not_subject"
+  external:
+    description: "Married couple of 68 and 70, both on Social Security, renting; one has Medicare and medical bills. SNAP recertification."
+    notes: "Made up: derived from stored household CO-03, not a real person."
+    persons:
+      p1: "Person 1"
+      p2: "Person 2"
+    expected:
+      - person: "p1"
+        identifier: "snap_allotment"
+        program: "SNAP"
+        month: "2026-10"
+        expect: 25
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 2"
+      - person: "p1"
+        identifier: "snap_eligibility_status"
+        program: "SNAP"
+        month: "2026-10"
+        expect: "eligible"
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 3"
+      - person: "p1"
+        identifier: "snap_abawd_time_limit_status"
+        program: "SNAP"
+        month: "2026-10"
+        expect: "not_subject"
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 4"
+      - person: "p2"
+        identifier: "snap_allotment"
+        program: "SNAP"
+        month: "2026-10"
+        expect: 25
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 5"
+      - person: "p2"
+        identifier: "snap_eligibility_status"
+        program: "SNAP"
+        month: "2026-10"
+        expect: "eligible"
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 6"
+      - person: "p2"
+        identifier: "snap_abawd_time_limit_status"
+        program: "SNAP"
+        month: "2026-10"
+        expect: "not_subject"
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 7"
+  relationships:
+    - - "spouse"
+      - "p1"
+      - "p2"
+    - - "buys_prepares_with"
+      - "p1"
+      - "p2"
+  case_facts:
+    home_heating_cost_arrangement: "included_in_rent"
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-09-15"
+    snap_determination_is_recertification: true
+- id: "EX-2"
+  title: "Sixteen-year-old emancipated mother and her baby; she earns $400 a month. Colorado Works application."
+  as_of: "2026-10-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "2010-03-01"
+        sex: "female"
+        marital_status: "single"
+        dwelling_id: "home 1"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "private_dwelling"
+        temporary_absence_reason: "none"
+        receives_ssi: false
+        receives_tanf_cash: false
+        child_welfare_payment_type: "none"
+        immigration_status: "us_citizen"
+        earnings:
+          - kind: "wages"
+            amount: 400
+        af_burial_responsible_persons_outside_case_resources: 0
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: "none"
+        county_approved_living_arrangement: false
+        receipts: []
+      relationships: []
+      month_defaults:
+        child_support_paid_legally_obligated: 0
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        date_of_birth: "2026-06-01"
+        sex: "female"
+        marital_status: "single"
+        dwelling_id: "home 1"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "private_dwelling"
+        temporary_absence_reason: "none"
+        receives_ssi: false
+        receives_tanf_cash: false
+        child_welfare_payment_type: "none"
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        immigration_status: "us_citizen"
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: "none"
+        county_approved_living_arrangement: false
+        earnings: []
+        receipts: []
+      relationships: []
+      month_defaults:
+        child_support_paid_legally_obligated: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      cw_eligibility_status:
+        2026-10: "eligible"
+      cw_grant_amount:
+        2026-10: 320
+    p2:
+      cw_eligibility_status:
+        2026-10: "eligible"
+      cw_grant_amount:
+        2026-10: 320
+  external:
+    description: "Sixteen-year-old emancipated mother and her baby; she earns $400 a month. Colorado Works application."
+    notes: "Made up: derived from stored household CO-363, not a real person."
+    persons:
+      p1: "Person 1"
+      p2: "Person 2"
+    expected:
+      - person: "p1"
+        identifier: "cw_eligibility_status"
+        program: "ColoradoWorks"
+        month: "2026-10"
+        expect: "eligible"
+        source: "worker determination"
+        notes: ""
+        at: "9-expected.csv row 8"
+      - person: "p1"
+        identifier: "cw_grant_amount"
+        program: "ColoradoWorks"
+        month: "2026-10"
+        expect: 320
+        source: "worker determination"
+        notes: ""
+        at: "9-expected.csv row 9"
+      - person: "p2"
+        identifier: "cw_eligibility_status"
+        program: "ColoradoWorks"
+        month: "2026-10"
+        expect: "eligible"
+        source: "worker determination"
+        notes: ""
+        at: "9-expected.csv row 10"
+      - person: "p2"
+        identifier: "cw_grant_amount"
+        program: "ColoradoWorks"
+        month: "2026-10"
+        expect: 320
+        source: "worker determination"
+        notes: ""
+        at: "9-expected.csv row 11"
+  relationships:
+    - - "parent"
+      - "p1"
+      - "p2"
+  case_facts:
+    cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false
+- id: "EX-3"
+  title: "Old Age Pension applicant living alone on Social Security, with savings and two cars."
+  as_of: "2026-10-01"
+  persons:
+    p1:
+      facts:
+        marital_status: "single"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "private_dwelling"
+        receives_ssi: false
+        receives_tanf_cash: false
+        is_enrolled_in_medical_assistance: true
+        child_welfare_payment_type: "none"
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        immigration_status: "us_citizen"
+        date_of_birth: "1956-04-01"
+        receipts:
+          - kind: "social_security"
+            amount: 600
+        holdings:
+          - kind: "bank_account"
+            value: 1000
+          - kind: "vehicle"
+            value: 6000
+            amount_owed: 0
+            used_for_transportation: true
+          - kind: "vehicle"
+            value: 3000
+            amount_owed: 0
+            used_for_transportation: true
+        days_out_of_state_in_calendar_year: 0
+        is_fleeing_felon: false
+        title_ii_benefit_type: "retirement_or_survivor"
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_sponsored_non_citizen: false
+        earnings: []
+      relationships: []
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      af_category:
+        2026-10: "none"
+  external:
+    description: "Old Age Pension applicant living alone on Social Security, with savings and two cars."
+    notes: "Made up: derived from stored household CO-741, not a real person."
+    persons:
+      p1: "Person 1"
+    expected:
+      - person: "p1"
+        identifier: "af_category"
+        program: "AdultFinancial"
+        month: "2026-10"
+        expect: "none"
+        source: "CBMS result"
+        notes: ""
+        at: "9-expected.csv row 12"
+    dob_from_age:
+      - "p1"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+- id: "EX-4"
+  title: "Widower in a nursing facility since August on Social Security, with $200 of Federal Work-Study pay in November. Long-term care application with retroactive months."
+  as_of: "2026-11-12"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1946-03-12"
+        sex: "male"
+        marital_status: "widowed"
+        dwelling_id: "home 1"
+        is_pregnant: false
+        state_of_residence: "CO"
+        residence_setting_type: "nursing_facility"
+        receives_ssi: false
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        medicare_part_a_entitled: true
+        immigration_status: "us_citizen"
+        is_tax_filer: false
+        earnings:
+          - kind: "work_study"
+            amount: 200
+            month: "2026-11"
+            frequency: "once"
+        receipts:
+          - kind: "social_security"
+            amount: 2900
+        holdings:
+          - kind: "bank_account"
+            value: 8000
+            month: "2026-08"
+          - kind: "bank_account"
+            value: 8000
+            month: "2026-09"
+          - kind: "bank_account"
+            value: 1200
+            month: "2026-10"
+          - kind: "bank_account"
+            value: 1200
+            month: "2026-11"
+          - kind: "home"
+            value: 240000
+            amount_owed: 0
+            lives_in: false
+            intends_to_return: true
+            intent_in_writing: true
+            outside_colorado: false
+            held_in_trust_or_entity: false
+            beneficiary_deed: false
+        is_surviving_spouse_of_va_pensioner: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        state_of_residence_start_date: "2026-08-01"
+        af_has_total_disability_six_months: false
+        institution_entry_date: "2026-08-03"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: "none"
+        ma_ltc_setting_requested: "institutional"
+        has_income_trust: false
+        ma_physician_certified_return_home: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: "none"
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+        resides_in_state_veterans_home: false
+        ma_retroactive_coverage_requested: true
+      relationships: []
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        health_insurance_premiums_paid: 0
+        medicare_part_b_premium_paid: 0
+        medicare_part_d_premium_paid: 0
+        shelter_cost_monthly: 0
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 0
+        medical_expenses_out_of_pocket: 0
+        donated_work_hours_per_week: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        mandatory_income_tax_withheld: 0
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 0
+  expect:
+    p1:
+      ma_ltc_eligibility_status:
+        2026-10: "eligible_institutional"
+        2026-11: "eligible_institutional"
+      ma_patient_payment:
+        2026-10: 2789.64
+        2026-11: 2789.64
+  external:
+    description: "Widower in a nursing facility since August on Social Security, with $200 of Federal Work-Study pay in November. Long-term care application with retroactive months."
+    notes: "Made up: derived from stored household CO-1200, not a real person."
+    persons:
+      p1: "Person 1"
+    expected:
+      - person: "p1"
+        identifier: "ma_ltc_eligibility_status"
+        program: "Medicaid"
+        month: "2026-10"
+        expect: "eligible_institutional"
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 13"
+      - person: "p1"
+        identifier: "ma_ltc_eligibility_status"
+        program: "Medicaid"
+        month: "2026-11"
+        expect: "eligible_institutional"
+        source: "policy expert"
+        notes: "20 U.S.C. 1087uu: Federal Work-Study pay is not taken into account, so November's income is the $2,900 of Social Security."
+        at: "9-expected.csv row 14"
+      - person: "p1"
+        identifier: "ma_patient_payment"
+        program: "Medicaid"
+        month: "2026-10"
+        expect: 2789.64
+        source: "policy expert"
+        notes: ""
+        at: "9-expected.csv row 15"
+      - person: "p1"
+        identifier: "ma_patient_payment"
+        program: "Medicaid"
+        month: "2026-11"
+        expect: 2789.64
+        source: "policy expert"
+        notes: "20 U.S.C. 1087uu: Federal Work-Study pay is not taken into account, so November's income is the $2,900 of Social Security."
+        at: "9-expected.csv row 16"
+  case_facts:
+    home_heating_cost_arrangement: "pays_vendor_directly"
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"

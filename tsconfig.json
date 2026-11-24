@@ -20,7 +20,7 @@
     "scripts/conformance.ts", "scripts/conform.ts", "scripts/adapters/codex-self.ts",
     "scripts/adapters/codex-self-lib.ts", "scripts/check.ts", "scripts/export.ts",
     "scripts/git-sha.ts", "scripts/eval-case.ts", "scripts/vite-local-ledger.ts",
-    "scripts/build-bundle.ts", "scripts/boundaries.ts", "scripts/receipts", "scripts/records",
+    "scripts/build-bundle.ts", "scripts/boundaries.ts", "scripts/receipts", "scripts/records", "scripts/external",
     "worker", "e2e", "playwright.config.ts"
   ],
   "exclude": ["test/probes"]
