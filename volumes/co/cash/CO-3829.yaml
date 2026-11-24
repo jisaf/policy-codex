@@ -19,3 +19,6 @@ tests:
   - {id: CO-3829-T3, title: "Married client whose spouse is not a person of the case: $10", as_of: "2026-10-01", month: "2026-10", given: {marital_status: married}, relationships: [], expect: 10}
   # Coverage pass 6 CA6-7: af_is_married (CO-7308) asks for the marital status (3.520.63.A).
   - {id: "CO-3829-T5", title: "Coverage pass 6 CA6-7: marital status not stated, no spouse edge: cannot determine", as_of: "2026-10-01", month: "2026-10", given: {}, relationships: [], expect: unknown}
+  # KL-CASH-3: 3.510 (S5321): "Marriage" includes a civil union; 3.533.A.2.c.1 (S2610) splits the $20 for a married client.
+  - {id: "CO-3829-T6", title: "KL-CASH-3: a client in a civil union with a person of the case: $10, as T2 (was $20)", as_of: "2026-10-01", month: "2026-10", given: {marital_status: other}, others: {p2: {}}, relationships: [[civil_union_partner, p1, p2]], expect: 10}
+  - {id: "CO-3829-T7", title: "KL-CASH-3: a client in a civil union with a person outside the case (marital_status other): $10, as T3 (was $20)", as_of: "2026-10-01", month: "2026-10", given: {marital_status: other}, relationships: [], expect: 10}

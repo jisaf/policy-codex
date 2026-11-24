@@ -99396,3 +99396,204 @@
       snap_allotment:
         2026-10: 280
         2026-11: 808
+- id: CO-1170
+  title: 'KL-CASH-3: an OAP client whose partner in a civil union lives with her is married: the partner''s wages are deemed and the couple''s resources meet the $3,000 limit'
+  # KL-CASH-3 (docs/reviews/known-limits.md, closed 2026-11-24), on CO-896's household (probe A2): p1, born 1956-04-10 (70), $600 of Social Security,
+  # $2,100 in the bank, enrolled in Medicaid; p2, born 1958-01-01, her partner in a civil union (the civil_union_partner edge; marital_status other),
+  # a person of the case in the same home, $800 of wages and $500 in the bank, no Adult Financial grant payment, no SSI, not enrolled in Medicaid,
+  # no dependent children, medical payments or court-ordered support. Determination on October 1, 2026.
+  # 9 CCR 2503-5 3.510 (D-80:360-362, S5321): "Marriage" (for the purpose of these rules) means a marriage ..., a common law marriage ..., "and a
+  # civil union, as defined in Section 14-15-103(1), C.R.S.": p1 is married (3.520.63.A.2, S2626) to a person of the case (af_is_married CO-7308,
+  # af_spouses_in_month CO-7603 = [p2]; not outside the case, CO-7690).
+  # Deeming (3.534, S1632): p2 is not receiving Adult Financial grant payments, SSI or Medicaid (C), so A deems the earned income: 800 - 65 = 735,
+  # 735 / 2 = 367.50; B the unearned income: 0 - 1,032 (the OAP grant standard), not below 0: 0. Deemed: 367.50.
+  # p1's own unearned income (3.533.A.2, S2610): 600 gross, no SSI; c.1, the client is married: the $20 is split, 10 to her: 600 - 10 = 590.
+  # Countable income: 590 + 367.50 = 957.50, under the OAP grant standard of $1,032 (3.530.A, S700).
+  # Resources (3.520.72.A, S1636): the client's and the spouse's countable resources together, 2,100 + 500 = 2,600, against $3,000 for a married
+  # client (A.2.a): met.
+  # Grant: 1,032 - 957.50 = 74.50, under the payment floor of $189 (3.530.C, S700; 3.510: "the minimum Adult Financial grant payment that an
+  # eligible Old Age Pension (OAP) ... client may receive"): 189.
+  # Before the fix the civil union was not a marriage: nothing deemed, the whole $20 to her (600 - 20 = 580 countable), and her $2,100 alone against
+  # the $2,000 of an unmarried client (A.1.a): over the limit, af_category none and no grant.
+  as_of: '2026-10-01'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+  - - civil_union_partner
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: other
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 2100
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 2100
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1958-01-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: other
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 800
+        holdings:
+        - kind: bank_account
+          value: 500
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 800
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_is_married:
+        2026-10: true
+      af_spouses_in_month:
+        2026-10: [p2]
+      af_spouse_is_outside_case_in_month:
+        2026-10: false
+      af_deemed_relative_income:
+        2026-10: 367.5
+      af_client_general_income_disregard:
+        2026-10: 10
+      af_countable_income:
+        2026-10: 957.5
+      af_countable_resources:
+        2026-10: 2600
+      af_meets_resource_limit:
+        2026-10: true
+      af_category:
+        2026-10: oap
+      af_oap_grant:
+        2026-10: 189
+- id: CO-1171
+  title: 'KL-CASH-3: an OAP client in a civil union with a person who is not a person of the case is married; the partner''s income and resources are not stated'
+  # KL-CASH-3 (docs/reviews/known-limits.md, closed 2026-11-24), on CO-1170's client alone in the case: p1, born 1956-04-10 (70), $600 of Social
+  # Security, $500 in the bank, in a civil union with a person who is not a person of the case (marital_status other: coverage verification 7, V7-10).
+  # Determination on October 1, 2026.
+  # 9 CCR 2503-5 3.510 (D-80:360-362, S5321): "Marriage" includes "a civil union, as defined in Section 14-15-103(1), C.R.S.": she is married
+  # (3.520.63.A.2, S2626; af_is_married CO-7308), and her spouse is not a person of the case (af_spouse_is_outside_case_in_month CO-7690).
+  # The $20 (3.533.A.2.c.1, S2610) is split, 10 to her: af_client_general_income_disregard 10 (her own unearned income 600 - 10 = 590).
+  # 3.534.A-B (S1632) deem the spouse's income and 3.520.72.A (S1636) counts the spouse's resources with hers against $3,000; the case states
+  # neither (decision 4 of 2026-11-23, as coverage pass 7 F7-2 reads a client stated married whose husband is not a person of the case): the deemed
+  # income, the countable income, the resources and the grant cannot be determined.
+  # Before the fix she was read as unmarried: the whole $20 (600 - 20 = 580), nothing deemed, $500 within $2,000: oap, grant 1,032 - 580 = 452.
+  as_of: '2026-10-01'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: other
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_is_married:
+        2026-10: true
+      af_spouse_is_outside_case_in_month:
+        2026-10: true
+      af_client_general_income_disregard:
+        2026-10: 10
+      af_deemed_relative_income:
+        2026-10: unknown
+      af_meets_resource_limit:
+        2026-10: unknown
+      af_oap_grant:
+        2026-10: unknown
