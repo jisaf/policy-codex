@@ -10,7 +10,7 @@ precision: "The consecutive days are counted from the date the client left Color
 derived: ["all", ["not", ["otherwise", "af_nonresidence_presumption_rebutted", false]], ["any", ["all", ["not", ["unknown", "temporarily_out_of_state_start_date"]], ["any", ["all", "temporary_absence_is_outside_united_states", [">=", ["days_between", "temporarily_out_of_state_start_date", "af_month_reading_date"], "af_out_of_country_presumption_days"]], ["all", "is_out_of_state_caring_for_family_member_injured_in_military_duty", [">=", ["days_between", "temporarily_out_of_state_start_date", "af_month_reading_date"], "af_out_of_state_extended_presumption_days"]], ["all", ["not", "is_out_of_state_caring_for_family_member_injured_in_military_duty"], ["not", ["=", "temporary_absence_reason", "medical_treatment"]], [">=", ["days_between", "temporarily_out_of_state_start_date", "af_month_reading_date"], "af_out_of_state_presumption_days"]]]], [">", "days_out_of_state_in_calendar_year", "af_out_of_state_extended_presumption_days"]]]
 sources: [S3201]
 implemented: engine
-open: [OQ-780, OQ-953]
+open: [OQ-780, OQ-953, OQ-1435]
 tags: [cash, oap, and, household]
 rationale: "Coverage review (docs/reviews/coverage-adult-financial.md, F-1, confirmed with the engine on probe PR-ABS): af_meets_residency (CO-942) read only state_of_residence, so a client who left Colorado 122 days before the determination, not for medical treatment, stayed a resident and was paid; 3.520.64.E (S3201) presumes such a client is no longer a resident. Colorado Works' 90-day temporary absence (cw_meets_residency_requirement, CO-904) is its own rule (9 CCR 2503-6 3.604.2.O) with no presumption, out-of-country period or calendar-year count."
 nearest: [CO-904]

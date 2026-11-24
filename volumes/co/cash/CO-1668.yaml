@@ -9,6 +9,7 @@ meaning: "Whether the client must submit the State's medical disability certific
 precision: "Pattern sweep (cash) PS-T7 (docs/reviews/pattern-sweep-cash.md): the AND-SO minimum age is taken on the last day of the month evaluated, as af_and_so_eligible (CO-1203) takes it, not on the determination date."
 derived: [all, claims_disability, [not, af_is_oap_age], [">=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], af_and_so_min_age], [not, receives_ssi], [not, af_and_so_disability_met]]
 sources: [S1079, S1080]
+open: [OQ-951]
 implemented: engine
 tags: [verification, cash, and, disability]
 rationale: "Review K-6: af_requires_verification_of_disability (CO-1435) verifies disability only for SSI recipients, so an AND-SO applicant's certification was never pending."

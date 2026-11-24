@@ -10,7 +10,7 @@ precision: "The stay is counted from institution_entry_date (CO-008) to the dete
 derived: ["all", ["in", "residence_setting_type", ["hospital", "nursing_facility", "icf_iid", "psychiatric_hospital", "tuberculosis_hospital", "assisted_living_residence", "other_long_term_care_facility"]], [">=", ["days_between", "institution_entry_date", "cw_month_reading_date"], "cw_institution_resident_min_days"]]
 sources: [S2602]
 implemented: engine
-open: [OQ-660, OQ-953]
+open: [OQ-660, OQ-953, OQ-1435]
 tags: [cash, tanf, household]
 rationale: "Final cash review FC-1: the medical-treatment absence of 3.604.2.E.1 and I.2 kept a parent in the home indefinitely (cw_is_considered_living_in_home, CO-3354), but 3.604.2.O.2 (S2602) says a client who is a resident of an institution, a stay of at least thirty consecutive days, is not in the home. No item stated the thirty days."
 tests:

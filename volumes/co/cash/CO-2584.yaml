@@ -9,6 +9,7 @@ meaning: "Adult Financial verification applies to this person: the person is of 
 precision: "The test that af_verification_status (CO-1438) used for its not_applicable branch, made its own item so that every Adult Financial pending element and count reads it: an element is pending only where verification applies (county case worker review B2). Pattern sweep (cash) PS-T7 (docs/reviews/pattern-sweep-cash.md): the AND-SO minimum age is taken on the last day of the month evaluated, as af_and_so_eligible (CO-1203) takes it, not on the determination date."
 derived: [any, af_is_oap_age, [all, [">=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], af_and_so_min_age], [any, receives_ssi, is_blind, af_and_so_disability_met, claims_disability]]]
 sources: [S879, S1080]
+open: [OQ-951]
 implemented: engine
 tags: [cash, verification]
 rationale: "County case worker review B2: Adult Financial pending flags and counts were non-zero for people whose Adult Financial verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."

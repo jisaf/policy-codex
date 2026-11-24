@@ -9,6 +9,7 @@ meaning: "Whether the person's school attendance must be verified for Colorado W
 precision: "3.604.3.C.4 lists school attendance of all school-aged children as a secondary verification 'when applicable'; this item applies it where attendance decides eligibility. Pattern sweep (cash) PS-T6 (docs/reviews/pattern-sweep-cash.md): read for the month evaluated: a dependent child of the month (cw_is_dependent_child_in_month, CO-6807) who is 18 on its first day (OQ-951), not the person-scope child of some month with the determination date's age."
 derived: [all, cw_is_dependent_child_in_month, [">=", [years_between, date_of_birth, [first_day, [month]]], cw_dependent_child_age_limit]]
 sources: [S874]
+open: [OQ-951]
 implemented: engine
 tags: [verification, cash, tanf, age]
 rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.

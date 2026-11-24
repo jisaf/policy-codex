@@ -10,7 +10,7 @@ precision: "Final cash review FC-1: a member barred by 3.604.1.D-E while still i
 derived: ["filter", "cw_assistance_unit_members_in_month", ["not", ["any", ["of", ["P"], "cw_is_disqualified_member"], ["of", ["P"], "cw_is_institution_patient_or_inmate"], ["of", ["P"], "cw_is_excluded_for_unprovided_status_verification"], ["all", ["not", ["unknown", ["of", ["P"], "temporarily_out_of_state_start_date"]]], [">", ["days_between", ["of", ["P"], "temporarily_out_of_state_start_date"], "cw_month_reading_date"], "cw_temporary_out_of_state_max_days"]]]]]
 sources: [S1004, S2600, S2602, S1064]
 implemented: engine
-open: [OQ-660, OQ-953]
+open: [OQ-660, OQ-953, OQ-1435]
 tags: [cash, tanf, household]
 rationale: "OQ-143: the need and grant standards are read by the number of caretakers and children in the unit (S414); 3.604.2.M (S1004) leaves a disqualified or ineligible required member out of that count while the member's income still counts."
 tests:
