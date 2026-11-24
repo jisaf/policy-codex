@@ -3920,9 +3920,9 @@ Body: Cash pattern sweep PS-T8 and PS-T9 (docs/reviews/pattern-sweep-cash.md). A
 
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: The month's last day (cw_month_reading_date CO-7600, af_month_reading_date CO-7601): a member or client whose absence or stay passed its limit by the last day of an earlier month is away for that month.
+Assumption: The month's last day (cw_month_reading_date CO-7600; af_is_presumed_nonresident_by_absence CO-4401 reads the same day): a member or client whose absence or stay passed its limit by the last day of an earlier month is away for that month.
 
-Checked 2026-11-24: 9 CCR 2503-6 3.604.2.G, I, O, 3.605.1.A.1, 3.609.2.A.1 (D-81, rule version 12030); 9 CCR 2503-5 3.520.64.E, 3.532.B.2, 3.542.B (D-80, rule version 12428). None names a day of the month for an absence's length, and neither volume prorates a month for a member who leaves within it; OQ-953 (whether the first day of the absence counts) and OQ-951 (the day an age is read on) are the nearest choices. Items: CO-7600, CO-7601, CO-7602, CO-904, CO-2351, CO-3804, CO-4401.
+Checked 2026-11-24: 9 CCR 2503-6 3.604.2.G, I, O, 3.605.1.A.1, 3.609.2.A.1 (D-81, rule version 12030); 9 CCR 2503-5 3.520.64.E, 3.532.B.2, 3.542.B (D-80, rule version 12428). None names a day of the month for an absence's length, and neither volume prorates a month for a member who leaves within it; OQ-953 (whether the first day of the absence counts) and OQ-951 (the day an age is read on) are the nearest choices. Items: CO-7600, CO-7602, CO-904, CO-2351, CO-3804, CO-4401.
 
 ### OQ-1436. Cash programs: a status the case states for the determination date, read in an earlier month the determination covers
 
