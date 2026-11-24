@@ -35,6 +35,8 @@ h2 { font-size: 1rem; margin: 0 0 4px; }
 table { border-collapse: collapse; width: 100%; font-size: .9rem; }
 th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink3); font-weight: 600; padding: 6px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
 td { padding: 5px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th.grp { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+thead th[rowspan] { vertical-align: bottom; }
 td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .tablewrap { overflow-x: auto; }
 input[type=number] { width: 4.6em; font: 500 .9rem var(--mono); padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); text-align: right; }
@@ -88,7 +90,7 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
       </div>
       <p class="help">Hours a week per reviewer and the number of reviewers sharing the role. Sign-off &amp; meetings is work that does not grow with the item count: confirming the program's stored households and outcomes as a whole, and working sessions on the product decisions and known limits.</p>
       <div class="tablewrap">
-        <table id="roles"><thead><tr><th>Role</th><th class="num">Hours / wk</th><th class="num">Reviewers</th><th class="num">Sign-off &amp; meetings, hrs low</th><th class="num">hrs high</th><th class="num">Weeks</th></tr></thead><tbody></tbody></table>
+        <table id="roles"><thead><tr><th rowspan="2">Role</th><th class="num" rowspan="2">Hours / wk</th><th class="num" rowspan="2">Reviewers</th><th class="grp" colspan="2">Sign-off &amp; meetings</th><th class="num" rowspan="2">Weeks</th></tr><tr><th class="num">hrs low</th><th class="num">hrs high</th></tr></thead><tbody></tbody></table>
       </div>
       <p class="note">Not included: rework if items are signed before the product decisions, waiting for meetings or documents, engineering time, leave. A role split between reviewers is assumed to divide its load equally.</p>
     </section>
