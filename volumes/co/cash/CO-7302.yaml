@@ -7,7 +7,7 @@ scope: person
 program: ColoradoWorks
 meaning: "Whether the person is an expectant parent (9 CCR 2503-6 3.601 \"Parent\") in some month the Colorado Works determination covers (cw_determination_months, CO-7300): pregnant at some time in one of them (cw_is_pregnant_in_month, CO-7301). Read where the unit's composition, which is one per case, asks whether a member is pregnant: the spouse of a pregnant parent (3.604.2.C.1.e) and the persons a unit with no dependent child can reach."
 precision: "Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md): the composition read is_pregnant, the determination date's, as cw_is_dependent_child (CO-901) once read the determination date's age; it now reads the months the determination covers, as CO-901 does. A month's own tests (the unit's basis in the month, the allowance) read cw_is_pregnant_in_month for that month. Required where read (decision 4 of 2026-11-23): is_pregnant not stated is cannot determine."
-derived: [some_month, cw_determination_months, cw_is_pregnant_in_month]
+derived: [">", ["sum_months", "cw_determination_months", ["case", [["at", "cw_is_pregnant_in_month", ["that_month"]], 1], ["else", 0]]], 0]
 sources: [S1806, S3164, S1625]
 implemented: engine
 tags: [cash, tanf, household]
