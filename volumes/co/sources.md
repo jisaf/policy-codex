@@ -24819,3 +24819,19 @@ Document: D-80
 > month period. The twelve-month period can either be the previous tax year
 > (January to December) or the most recent twelve-months prior to the application
 > date.
+
+### S5030. SSI eligibles: Medical Assistance for persons receiving SSI, and from the original SSI eligibility date after an overturned denial (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.C.1.a-b, C.7 (rule version effective 11/14/2026; coverage pass 6, non-MAGI F6-5). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Benefits of the Colorado Medical Assistance Program must be provided to the following:
+>
+> a. persons receiving financial assistance under SSI;
+>
+> b. persons who are eligible for financial assistance under SSI, but are not receiving SSI;
+>
+> ...
+>
+> 7. Denied or terminated Medical Assistance based on a denial or termination of SSI which is later overturned, must be approved from the original SSI eligibility date.
