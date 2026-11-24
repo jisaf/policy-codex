@@ -86,20 +86,20 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 21 and reaches 120", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 22 and reaches 123", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
     // The five Adult Financial coverage-round households (CO-165 to CO-169) are reached through af_barred_by_colorado_works.
-    expect([r.read.length, r.reach.length]).toEqual([21, 120]); // coverage pass 7 (Adult Financial, Colorado Works): + CO-1090 to CO-1095 reached (the review's repro households V1, V2, A1, G1, G2, H1); pattern sweep (Adult Financial, Colorado Works): the stored households CO-1030 to CO-1032 reach it; coverage pass 6 (Adult Financial, Colorado Works): + CO-886 reads it (the minor mother's own mother's wages less the $90, deemed in September), CO-880 to CO-894 and CO-896 reached (the review's repro households, through the Adult Financial bar and the unit's countable income); cross-list records round: + CO-852 reached (the round's Adult Financial household); coverage pass 4 (Adult Financial, Colorado Works): + CO-770 to CO-779 reached (the review's repro households); resource records H1 Adult Financial: + CO-740 to CO-742 reached (copies of probe CO-300, reached as it is); earned-income records E1, cash: + CO-670 (Colorado Works earnings in records alone) reads it, CO-670 and CO-671 are reached; receipts migration 2: + CO-580 to CO-582 reached (Colorado Works households in receipts alone, no earnings); fix round 2026-11-23: + 2 new stored cases reached; Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
+    expect([r.read.length, r.reach.length]).toEqual([22, 123]); // known-limits close-out (SNAP and cash): + CO-1143 reads it (CASH-SW-1: the minor mother's mother's wages less the $90, June and July 2026), CO-1141 to CO-1143 reached (KL-CASH-2: the Colorado Works and AND-SO households); coverage pass 7 (Adult Financial, Colorado Works): + CO-1090 to CO-1095 reached (the review's repro households V1, V2, A1, G1, G2, H1); pattern sweep (Adult Financial, Colorado Works): the stored households CO-1030 to CO-1032 reach it; coverage pass 6 (Adult Financial, Colorado Works): + CO-886 reads it (the minor mother's own mother's wages less the $90, deemed in September), CO-880 to CO-894 and CO-896 reached (the review's repro households, through the Adult Financial bar and the unit's countable income); cross-list records round: + CO-852 reached (the round's Adult Financial household); coverage pass 4 (Adult Financial, Colorado Works): + CO-770 to CO-779 reached (the review's repro households); resource records H1 Adult Financial: + CO-740 to CO-742 reached (copies of probe CO-300, reached as it is); earned-income records E1, cash: + CO-670 (Colorado Works earnings in records alone) reads it, CO-670 and CO-671 are reached; receipts migration 2: + CO-580 to CO-582 reached (Colorado Works households in receipts alone, no earnings); fix round 2026-11-23: + 2 new stored cases reached; Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90; pass 3: CO-206 (lodger's earned income) reads it, CO-206 to CO-208 are reached; probe-preservation round (CO-300 and up): CO-354, CO-361 to CO-365, CO-427, CO-428, CO-430 and CO-432 read it, 39 more are reached
   });
 
-  it("$100 for the $90 disregard moves 25 steps on the way (countable income) and no outcome", () => {
+  it("$100 for the $90 disregard moves 29 steps on the way (countable income) and no outcome", () => {
     const it0 = item(DISREGARD);
     const rows = changedBy(engine, vol.cases, [{ id: it0.id, chapter: "parameters", before: it0, after: { ...it0, value: 100 } }]);
     const { outcomes, steps } = changedSplit(engine, rows);
-    expect([outcomes.length, steps.length]).toEqual([0, 25]); // coverage pass 6 (Adult Financial, Colorado Works): + CO-886 p1 (the deemed wages in September, 2,657 to 2,647, still over the need standard); earned-income records E1, cash: + CO-670 p1 and p2 (countable income 310 to 300, still eligible); Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90 (257 to 247, still not below 245); pass 3: CO-206's countable income (310 to 300, still eligible); probe-preservation round (CO-300 and up): CO-354 and CO-361 to CO-364 (earned income and deemed wages, no outcome crosses a line)
+    expect([outcomes.length, steps.length]).toEqual([0, 29]); // known-limits close-out (SNAP and cash): + CO-1143 p1 (CASH-SW-1: the deemed wages and countable income of June and July 2026, 257 to 247, still not below 245); coverage pass 6 (Adult Financial, Colorado Works): + CO-886 p1 (the deemed wages in September, 2,657 to 2,647, still over the need standard); earned-income records E1, cash: + CO-670 p1 and p2 (countable income 310 to 300, still eligible); Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90 (257 to 247, still not below 245); pass 3: CO-206's countable income (310 to 300, still eligible); probe-preservation round (CO-300 and up): CO-354 and CO-361 to CO-364 (earned income and deemed wages, no outcome crosses a line)
     expect(steps.map((s) => s.caseId)).toContain("CO-83");
   });
 
@@ -235,11 +235,11 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     // The draft reaches the effect panel after the editor's effect runs.
     await until(() => Boolean(effect.querySelector(".reach")));
-    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 21 of ${vol.cases.length} stored households; it reaches 120.`); // + CO-1090 to CO-1095 reached (coverage pass 7 (Adult Financial, Colorado Works)); + CO-1030 to CO-1032 reached (pattern sweep (Adult Financial, Colorado Works)); + CO-886 read, CO-880 to CO-896 reached (coverage pass 6 (Adult Financial, Colorado Works)); + CO-852 (cross-list records round, an Adult Financial household); + CO-770 to CO-779 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-740 to CO-742 (resource records H1 Adult Financial, copies of CO-300); + CO-670, CO-671 (earned-income records E1, cash); + CO-580 to CO-582 (receipts migration 2)
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 22 of ${vol.cases.length} stored households; it reaches 123.`); // + CO-1143 read, CO-1141 to CO-1143 reached (known-limits close-out, SNAP and cash); + CO-1090 to CO-1095 reached (coverage pass 7 (Adult Financial, Colorado Works)); + CO-1030 to CO-1032 reached (pattern sweep (Adult Financial, Colorado Works)); + CO-886 read, CO-880 to CO-896 reached (coverage pass 6 (Adult Financial, Colorado Works)); + CO-852 (cross-list records round, an Adult Financial household); + CO-770 to CO-779 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-740 to CO-742 (resource records H1 Adult Financial, copies of CO-300); + CO-670, CO-671 (earned-income records E1, cash); + CO-580 to CO-582 (receipts migration 2)
     await until(() => effect.getAttribute("aria-busy") === "false");
-    expect(effect.textContent).toMatch(/25 stored results in \d+ households would change/); // + CO-886 p1 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-670 p1, p2 (earned-income records E1, cash)
+    expect(effect.textContent).toMatch(/29 stored results in \d+ households would change/); // + CO-1143 p1 (known-limits close-out, CASH-SW-1); + CO-886 p1 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-670 p1, p2 (earned-income records E1, cash)
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);
-    expect(effect.textContent).toMatch(/Steps on the way that change \(25\)/); // + CO-886 p1 (coverage pass 6 (Adult Financial, Colorado Works): the deemed wages in September)
+    expect(effect.textContent).toMatch(/Steps on the way that change \(29\)/); // + CO-1143 p1 (known-limits close-out, CASH-SW-1: June and July 2026); + CO-886 p1 (coverage pass 6 (Adult Financial, Colorado Works): the deemed wages in September)
 
     const approvers = host.querySelector("section.approvers")!;
     const roles = [...approvers.querySelectorAll("li[data-role]")].map((li) => li.getAttribute("data-role"));
@@ -262,7 +262,7 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     await until(() => /Applied on the households' own dates/.test(effect.textContent ?? ""));
     expect(effect.querySelector(".nochange")!.textContent).toMatch(/No stored household result would change\. Their results are for dates before July 1, 2027/);
-    expect(effect.textContent).toMatch(/25 stored results in \d+ households would change/); // + CO-886 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-670 (earned-income records E1, cash)
+    expect(effect.textContent).toMatch(/29 stored results in \d+ households would change/); // + CO-1143 p1 (known-limits close-out, CASH-SW-1); + CO-886 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-670 (earned-income records E1, cash)
   });
 
   it("lists what the proposal holds by name, with the no-GitHub download path", () => {

@@ -96497,17 +96497,17 @@
       af_and_grant: {"2026-10": 48}           # 248 - 200
 
 - id: CO-1143
-  title: 'CASH-SW-1: a minor mother applies in June 2028 and is determined in July 2028; June deducts the June need standard from her mother''s deemed income'
-  # CASH-SW-1 (docs/reviews/known-limits.md, closed 2026-11-24), on CO-191's household (probe ZQ-2) moved to a June application determined after July 1:
-  # p1, 16, unmarried, and her baby p2 live in h1 with her mother p3 ($600 wages, does not join); her father p4 lives in h2 with no income. Applied
-  # 2028-06-20, determined 2028-07-08. The need standard of 3.606.1.F (S414) is versioned from July 1; the volume holds the chart from 2026-07-01 to
-  # 2028-07-01 (SB 26-181, S1800) and none from 2028-07-01 (OQ-530). June 2028 reads June's chart: the needs deducted (3.605.1.A.4.a, S1307) are her mother's
-  # alone, One Caretaker, zero children, 253; deemed 600 - 90 - 253 = 257; the unit p1 + p2 on the No Caretaker row, two children: need standard 245;
-  # countable 257 >= 245: ineligible_income, grant 0. July 2028 has no chart loaded: cannot determine. Before the fix the deduction read the chart of the
-  # determination date (none loaded) in June too, so June could not be determined either.
-  as_of: '2028-07-08'
+  title: 'CASH-SW-1: a minor mother applies in June 2026 and is determined in July 2026; each month deducts its own need standard from her mother''s deemed income'
+  # CASH-SW-1 (docs/reviews/known-limits.md, closed 2026-11-24), on CO-191's household (probe ZQ-2) at the dates the entry names (applied 2026-06-20,
+  # determined 2026-07-08): p1, 16, unmarried, and her baby p2 live in h1 with her mother p3 ($600 wages, does not join); her father p4 lives in h2 with
+  # no income. The need standard of 3.606.1.F (S414) is versioned from July 1: June 2026 reads the chart of 2025-07-01 to 2026-07-01 (S414), July 2026
+  # the chart of 2026-07-01 to 2028-07-01 (SB 26-181, S1800: no cost-of-living adjustment, the same figures). Each month: the needs deducted
+  # (3.605.1.A.4.a, S1307) are her mother's alone, One Caretaker, zero children, 253; deemed 600 - 90 - 253 = 257; the unit p1 + p2 on the No
+  # Caretaker row, two children: need standard 245; countable 257 >= 245: ineligible_income, grant 0. The answers are those of the determination
+  # date's chart too, since the two charts agree; the rule tests CO-2000-T6 to T8 show a July whose chart differs from June's or is not loaded.
+  as_of: '2026-07-08'
   case_facts:
-    cw_application_date: '2028-06-20'
+    cw_application_date: '2026-06-20'
     cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - - parent
@@ -96557,7 +96557,7 @@
         cw_is_optional_member_by_custody_or_support: false
         education_program_type: none
         county_approved_living_arrangement: false
-        date_of_birth: '2012-03-01'
+        date_of_birth: '2010-03-01'
         receipts: []
         earnings: []
       month_defaults:
@@ -96602,7 +96602,7 @@
         cw_is_optional_member_by_custody_or_support: false
         education_program_type: none
         county_approved_living_arrangement: false
-        date_of_birth: '2028-02-01'
+        date_of_birth: '2026-02-01'
         receipts: []
         earnings: []
       month_defaults:
@@ -96646,7 +96646,7 @@
         cw_is_optional_member_by_custody_or_support: false
         education_program_type: none
         county_approved_living_arrangement: false
-        date_of_birth: '1987-01-22'
+        date_of_birth: '1985-01-22'
         receipts: []
         earnings:
         - {kind: wages, amount: 600}
@@ -96690,7 +96690,7 @@
         cw_is_optional_member_by_custody_or_support: false
         education_program_type: none
         county_approved_living_arrangement: false
-        date_of_birth: '1986-05-05'
+        date_of_birth: '1984-05-05'
         receipts: []
         earnings: []
       month_defaults:
@@ -96701,20 +96701,22 @@
   expect:
     p1:
       cw_minor_parent_deeming_needs_deduction:
-        2028-06: 253   # One Caretaker, zero children, the chart of 2026-07-01 to 2028-07-01 (was cannot determine)
-        2028-07: unknown   # no chart in force on 2028-07-08 (OQ-530)
+        2026-06: 253   # One Caretaker, zero children, the chart of 2025-07-01 to 2026-07-01
+        2026-07: 253   # the chart of 2026-07-01 to 2028-07-01, the same figure
       cw_deemed_parent_income_of_minor_parent:
-        2028-06: 257   # 600 - 90 - 253
-        2028-07: unknown
-      cw_need_standard: {"2028-06": 245, "2028-07": unknown}   # No Caretaker, two children
+        2026-06: 257   # 600 - 90 - 253
+        2026-07: 257
+      cw_need_standard: {"2026-06": 245, "2026-07": 245}   # No Caretaker, two children
       cw_countable_income:
-        2028-06: 257
+        2026-06: 257
+        2026-07: 257
       cw_eligibility_status:
-        2028-06: ineligible_income   # 257 >= 245
-        2028-07: unknown
+        2026-06: ineligible_income   # 257 >= 245
+        2026-07: ineligible_income
       cw_grant_amount:
-        2028-06: 0
+        2026-06: 0
+        2026-07: 0
     p2:
       cw_eligibility_status:
-        2028-06: ineligible_income
-        2028-07: unknown
+        2026-06: ineligible_income
+        2026-07: ineligible_income
