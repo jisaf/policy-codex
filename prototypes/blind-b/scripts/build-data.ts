@@ -121,9 +121,21 @@ for (const c of cases) {
   touched[c.id] = [...seen].sort((a, b) => a - b);
 }
 
+// The cross-program review's class of each shared item (docs/reviews/cross-program-primitives.json):
+// primitive, clean derivation, grey, or a program's own item other programs read.
+const shareClass: Record<string, string> = {};
+{
+  const f = path.join(import.meta.dirname, "../../../docs/reviews/cross-program-primitives.json");
+  if (fs.existsSync(f)) {
+    for (const r of JSON.parse(fs.readFileSync(f, "utf8")).items as Array<{ identifier: string; class: string; shared?: boolean }>) {
+      if (r.shared) shareClass[r.identifier] = r.class;
+    }
+  }
+}
+
 const data = {
   generated: new Date().toISOString().slice(0, 10),
-  chapters, items, meta, sources, documents, questions, cases, aidCodes, touched,
+  chapters, items, meta, sources, documents, questions, cases, aidCodes, touched, shareClass,
 };
 // A host may hold each file to 16 MB (a claude.ai Artifact): the households and
 // what each reads go in data-cases.json, which src/store.ts loads from `parts`.

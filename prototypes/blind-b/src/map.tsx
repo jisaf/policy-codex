@@ -16,6 +16,15 @@ const COLOR: Record<string, string> = {
 /* One hue, light to dark, for how many programs read a node. */
 const SHARE = ["#ffffff", "#ffffff", "#e3f0f1", "#c3e0e1", "#9bcace", "#6eafb5", "#3e8f97", "#1c6f7a", "#0d5c6e"];
 const inkOn = (n: number) => (n >= 6 ? "#ffffff" : "#1c2330");
+/* The cross-program review's classes (docs/reviews/cross-program-primitives.md):
+ * fill and border, with the words in the legend and the panel. */
+const CLASS: Record<string, { fill: string; line: string; label: string; help: string }> = {
+  primitive: { fill: "#e3eefa", line: "#2a78d6", label: "Primitive", help: "observable without any program's rule, defined the same for every reader" },
+  "clean derivation": { fill: "#e2f1e5", line: "#1f6b3a", label: "Clean derivation", help: "date logic, arithmetic or relationships over primitives, no judgement" },
+  grey: { fill: "#fdefd8", line: "#9a4a00", label: "Grey", help: "observable, but a reader redefines it or reads it for another period: split it" },
+  "program-local": { fill: "#fbe9ee", line: "#8a1f3c", label: "A program's own item", help: "one program's interpretation that another program reads" },
+};
+const classOf = (ident: string) => D.shareClass?.[ident];
 
 type Band = "rule" | "figure" | "fact" | "primitive";
 const BANDS: Band[] = ["rule", "figure", "fact", "primitive"];
@@ -147,13 +156,19 @@ function Marks({ ps, x, y }: { ps: Set<string>; x: number; y: number }) {
   })}</>;
 }
 
-export function Legend({ family }: { family: boolean }) {
+export function Legend({ family, byClass }: { family: boolean; byClass?: boolean }) {
   return (
     <div class="map-legend small">
       <span class="muted">Programs, in mark order:</span>
       {PROGRAM_ORDER.map((p) => <span class="lg"><i style={`background:${COLOR[p]}`} />{short(p)}</span>)}
-      <span class="muted">· Read by:</span>
-      {[2, 3, 4, 5, 6, 7].map((n) => <span class="lg"><i style={`background:${SHARE[n]};border:1px solid #c9c3b2`} />{n}{n === 7 ? "+" : ""}</span>)}
+      {byClass ? <>
+        <span class="muted">· Sharing class (cross-program review):</span>
+        {Object.values(CLASS).map((c) => <span class="lg" title={c.help}><i style={`background:${c.fill};border:1.5px solid ${c.line}`} />{c.label}</span>)}
+        <span class="lg" title="the review counts it as read by one program (Medicaid's MAGI and SSI-method sides, for example)"><i style="background:#fff;border:1px solid #c9c3b2" />Not classified</span>
+      </> : <>
+        <span class="muted">· Read by:</span>
+        {[2, 3, 4, 5, 6, 7].map((n) => <span class="lg"><i style={`background:${SHARE[n]};border:1px solid #c9c3b2`} />{n}{n === 7 ? "+" : ""}</span>)}
+      </>}
       {family && <span class="muted">· Medicaid and CHP+ count as one family</span>}
     </div>
   );
@@ -166,6 +181,7 @@ export function MapPage() {
   const min = Math.max(1, Number(q.min ?? 3) || 3);
   const family = q.family !== "0";
   const showOwn = q.own === "1" || min === 1;
+  const byClass = q.color === "class";
   const kinds = new Set<Band>((q.show ?? BANDS.join(",")).split(",").filter((b): b is Band => (BANDS as string[]).includes(b)));
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [sel, setSel] = useState<Sel>(null);
@@ -225,6 +241,12 @@ export function MapPage() {
           </select>
         </label>
         <label class="chk"><input type="checkbox" checked={showOwn} onChange={(e) => setQ({ own: (e.target as HTMLInputElement).checked ? "1" : "0", min: min === 1 ? "2" : undefined })} /> Show items only one program reads</label>
+        <label>Colour shared items by{" "}
+          <select value={byClass ? "class" : "count"} onChange={(e) => setQ({ color: (e.target as HTMLSelectElement).value === "class" ? "class" : undefined })}>
+            <option value="count">how many programs read them</option>
+            <option value="class">primitive, clean or grey</option>
+          </select>
+        </label>
         <label class="chk"><input type="checkbox" checked={family} onChange={(e) => setQ({ family: (e.target as HTMLInputElement).checked ? "1" : "0" })} /> Count Medicaid and CHP+ as one</label>
         {BANDS.map((b) => <label class="chk"><input type="checkbox" checked={kinds.has(b)} onChange={(e) => {
           const s = new Set(kinds); (e.target as HTMLInputElement).checked ? s.add(b) : s.delete(b);
@@ -241,7 +263,7 @@ export function MapPage() {
         <button class="btn small" onClick={download}>Download SVG</button>
         <span class="small muted">{sharedTotal} shared{showOwn ? ` · ${ownTotal} single-program` : ""} on the map</span>
       </div>
-      <Legend family={family} />
+      <Legend family={family} byClass={byClass} />
       <div class="map-wrap">
         <svg id="mapsvg" xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${W} ${L.height}`} width={W} height={L.height} role="img"
           aria-label="Programs and the rules, figures, facts and primitives they read" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
@@ -267,8 +289,9 @@ export function MapPage() {
           })}
           {L.nodes.map((n) => {
             const own = !!n.own;
-            const fill = own ? "#ffffff" : SHARE[Math.min(n.n, 8)];
-            const ink = own ? "#1c2330" : inkOn(n.n);
+            const cl = byClass ? CLASS[classOf(n.it.identifier) ?? ""] : undefined;
+            const fill = own ? "#ffffff" : byClass ? cl?.fill ?? "#ffffff" : SHARE[Math.min(n.n, 8)];
+            const ink = own || byClass ? "#1c2330" : inkOn(n.n);
             const isSel = sel?.kind === "n" && sel.id === n.it.identifier;
             const select = () => setSel({ kind: "n", id: n.it.identifier });
             return <g class="mn" tabIndex={0} role="button" aria-label={`${n.it.name}, read by ${[...n.ps].map(short).join(", ")}`} opacity={dimN(n.it.identifier) ? 0.18 : 1} style="cursor:pointer"
@@ -278,7 +301,7 @@ export function MapPage() {
                 <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={4} fill={fill} stroke={isSel ? "#0d5c6e" : COLOR[n.own!]} stroke-opacity={isSel ? 1 : 0.45} stroke-width={isSel ? 2 : 1} />
                 <text x={n.x + 5} y={n.y + 12} font-size={10} fill={ink}>{trunc(n.it.name, 24)}</text>
               </> : <>
-                <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={6} fill={fill} stroke={isSel ? "#0d5c6e" : "#c9c3b2"} stroke-width={isSel ? 2.5 : 1} />
+                <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={6} fill={fill} stroke={isSel ? "#0d5c6e" : cl ? cl.line : "#c9c3b2"} stroke-width={isSel ? 2.5 : cl ? 1.5 : 1} />
                 <text x={n.x + 7} y={n.y + 14} font-size={11.5} fill={ink}>{trunc(n.it.name, 28)}</text>
                 <Marks ps={n.ps} x={n.x + 7} y={n.y + 21} />
                 <text x={n.x + n.w - 7} y={n.y + 27} font-size={11} font-weight={700} fill={ink} text-anchor="end">{`×${n.n}`}</text>
@@ -326,6 +349,7 @@ function SelPanel({ sel, onClose, at }: { sel: NonNullable<Sel>; onClose: () => 
     <p class="small">{firstSentence(it.meaning, 280)}</p>
     <h3>Read by {ps.size} program{ps.size === 1 ? "" : "s"}</h3>
     <p>{[...ps].map((p) => <span class="lg"><i style={`background:${COLOR[p]}`} />{short(p)} </span>)}</p>
+    {CLASS[classOf(sel.id) ?? ""] && <p class="small"><b>{CLASS[classOf(sel.id)!].label}</b> in the cross-program review: {CLASS[classOf(sel.id)!].help}.</p>}
     <h3>Reads {down.length}</h3><ul class="plain">{down.slice(0, 40).map(link)}</ul>
     <h3>Read by {up.length} item{up.length === 1 ? "" : "s"}</h3><ul class="plain">{up.slice(0, 40).map(link)}</ul>
   </aside>;

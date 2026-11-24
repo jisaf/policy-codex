@@ -22,6 +22,7 @@ interface Data {
   items: CItem[]; meta: VolumeMeta; sources: Source[]; documents: Doc[];
   questions: Question[]; cases: HouseholdCase[]; aidCodes: any;
   touched: Record<string, number[]>;
+  shareClass?: Record<string, string>;
 }
 
 export let D: Data;
