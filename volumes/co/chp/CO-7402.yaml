@@ -9,6 +9,7 @@ meaning: "Whether the person is a Colorado resident for the Children's Basic Hea
 precision: "Coverage pass 6, C6-05(a) (2026-11-24): is_colorado_resident (CO-505), shared with every program, reads an unstated state of residence with no county stated as not a resident; CHP+ reads it through this item so an unstated residence is cannot determine (decision 4 of 2026-11-23: no rule makes an unstated residence a non-resident), as Medicaid's ma_meets_residency (CO-2250) does. A county stated without the state is read by is_colorado_resident as a Colorado residence."
 derived: [case, [[any, is_colorado_resident, [not, [all, [unknown, state_of_residence], [unknown, county_of_residence]]]], is_colorado_resident], [else, ["=", state_of_residence, colorado_state_code]]]
 sources: [S243]
+open: [OQ-1425]
 implemented: engine
 tags: [chp]
 nearest: [CO-2250, CO-505]

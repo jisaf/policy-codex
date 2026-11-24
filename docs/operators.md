@@ -178,6 +178,20 @@ parent, caretaker or expectant parent in it), and the minor-parent rules, the
 adult member and Adult Financial's AND-CS child and spouse's children take the
 age on the month's first day. Which day of the month is OQ-951.
 
+MAGI Medicaid and CHP+ read the conditions of status in the month too
+(pattern sweep, MAGI, PS-01 and PS-02, 2026-11-24): the five years of 8 U.S.C.
+1613(a) end by the month's last day (`ma_has_held_qualified_status_five_years_in_month`),
+the lawfully residing child is under 19 on its first day and the lawfully
+residing woman pregnant in it (`ma_meets_citizenship_requirement_in_month`), and
+the Cover All Coloradans population is under 19 or has the 19th birthday in
+the month, is pregnant in it or is in the month a pregnancy ended or one of
+the 12 after it (`ma_is_cover_all_coloradans_person_in_month`). The household
+lives together in the month (`ma_lives_with_in_month`: a person who died
+before the month lives with no one), and an inmate is one on every day of the
+month (`ma_is_inmate_in_month`, from `institution_entry_date`). The person-scope
+items they replace (CO-509, CO-1173, CO-1174, lives_with) stay for readers
+that test the determination itself.
+
 SNAP reads its ages the same way (coverage pass 4 S4-11; 10 CCR 2506-1
 4.402.1.A, "circumstances during the issuance month"): its household
 (`snap_household_members`) is built for each month, a status an age grants is

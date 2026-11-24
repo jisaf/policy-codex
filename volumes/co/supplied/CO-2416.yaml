@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: Whether the person, covered as Psych <21, was still receiving active inpatient treatment in the facility on reaching age 21, which extends the group to age 22 (10 CCR 2505-10 § 8.100.4.H.1.a). If not stated, Medicaid reads it as false.
+meaning: "Whether the person, covered as Psych <21, was still receiving active inpatient treatment in the facility on reaching age 21, which extends the group to age 22 (10 CCR 2505-10 \u00a7 8.100.4.H.1.a). No default (pattern sweep, MAGI, PS-06, 2026-11-24): H.1.a (S1717) extends the group to 22 only for a client 'still receiving active inpatient treatment in the facility at age 21' and gives no reading for an unstated one, so Medicaid requires it where read (a Psych <21 client of 21)."
 supplied_by: The psychiatric facility's treatment record.
 sources: [S1717]
 tags: [ma, age, medical]
