@@ -19,4 +19,4 @@ tests:
   - {id: CO-3007-T4, title: "Size 10: 55,720 / 12 = 4,643.33, plus 2 x (5,680 / 12 = 473.33) = 5,589.99, as the rule's table adds its rounded step (OQ-580)", as_of: "2026-10-01", given: {cccap_household_size: 10}, expect: 5589.99}
   - {id: CO-3007-T6, title: "Size 9: 4,643.33 + 473.33 = 5,116.66 (OQ-580)", as_of: "2026-10-01", given: {cccap_household_size: 9}, expect: 5116.66}
   - {id: CO-3007-T7, title: "Size 8, the table's last row: 55,720 / 12 = 4,643.33", as_of: "2026-10-01", given: {cccap_household_size: 8}, expect: 4643.33}
-  - {id: CO-3007-T5, title: "Before the federal table's first version: unknown", as_of: "2024-11-01", given: {cccap_household_size: 2}, expect: unknown}
+  - {id: CO-3007-T5, title: "Before the federal table's first version (2024 since coverage pass 6, C6-09): unknown", as_of: "2023-11-01", given: {cccap_household_size: 2}, expect: unknown}

@@ -8,10 +8,11 @@ program: All
 meaning: The annual HHS federal poverty guideline for the 48 contiguous states and the District of Columbia, by household size 1 through 8. One federal table for every program that states a limit as a percentage of the poverty guideline (Medicaid, LEAP, SunBucks); each program's own rule says which year's guideline applies and how it is converted to a monthly figure.
 precision: Annual dollars; a monthly figure divides by 12. Sizes above 8 add federal_poverty_guideline_annual_each_additional per additional member.
 versions:
+  - {from: "2024-01-01", to: "2025-01-01", value: {"1": 15060, "2": 20440, "3": 25820, "4": 31200, "5": 36580, "6": 41960, "7": 47340, "8": 52720}, source: S5061}
   - {from: "2025-01-01", to: "2026-01-01", value: {"1": 15650, "2": 21150, "3": 26650, "4": 32150, "5": 37650, "6": 43150, "7": 48650, "8": 54150}, source: S1710}
   - {from: "2026-01-01", value: {"1": 15960, "2": 21640, "3": 27320, "4": 33000, "5": 38680, "6": 44360, "7": 50040, "8": 55720}, source: S55}
 review_by: "2027-01-31"
 open: [OQ-515]
-rationale: "One federal figure, stated once (vocabulary review D-1). It was authored as a Medicaid parameter beside an identical SNAP copy (snap_poverty_guideline_table, CO-116, retired in the vocabulary fix round, which nothing read); LEAP and SunBucks already read this table, so it is now program All without a program prefix."
-sources: [S55, S1710]
+rationale: "One federal figure, stated once (vocabulary review D-1). It was authored as a Medicaid parameter beside an identical SNAP copy (snap_poverty_guideline_table, CO-116, retired in the vocabulary fix round, which nothing read); LEAP and SunBucks already read this table, so it is now program All without a program prefix. Coverage pass 6, C6-09 (2026-11-24): the 2024 figures (89 FR 2961, D-5061, S5061, fetched) are added for the premium tax credit test of a retroactive month in 2025, which reads the guideline in force on November 1, 2024 (26 CFR 1.36B-1(h); ma_premium_tax_credit_previous_year_income_pct_fpl, CO-7408); the 2024 version is read on no other date the stored households reach."
+sources: [S55, S1710, S5061]
 tags: [income]

@@ -8822,6 +8822,7 @@
   persons:
     p1:
       facts:
+        previous_year_annual_income: 0  # C6-09: her 2026 income, none (October 2026 is a month of the previous year at this 2027 determination)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8881,6 +8882,7 @@
         "2026-12": {public_health_coverage_enrolled: chp}  # dual-entry 1.10: enrollment in the birth month
     p2:
       facts:
+        previous_year_annual_income: 88200  # C6-09: his 2026 wages as his records state them, 9 x 7,500 + 5,700 + 2 x 7,500 = 88,200 (88,200 / 32,150 = 274.3%, not below 100%: C.5 does not apply, the answers unchanged)
         expected_annual_income: 90000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 7500
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
