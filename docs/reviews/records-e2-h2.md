@@ -222,3 +222,13 @@ The registry files (scripts/records/programs/*.ts) lose `figures`, which only th
 ## 7. Change impact
 
 Retiring facts no rule reads flagged nothing (a deleted item raises no flag), as expected. The meaning rewording moved the fingerprints of the items downstream of CO-5000, CO-4323, CO-5101 and the Medicaid tables, which reopened nine earlier dispositions; each is re-keyed in volumes/co/changes/2026-11-24-e2-h2.yaml with its earlier reason kept. No flag points to a missed reader.
+
+## 8. Gate (final tree, merged with origin/ccr-9d19bf4c-wmnwcl including the external sample check kit)
+
+- `node scripts/sync-manifest.mjs co`: 2,314 items.
+- `npm run typecheck`: clean. `npx vitest run`: 1,161 of 1,161 (two UI pins re-pinned with a comment: the household what-if's amount is `earnings.wages`, was `wages_gross`; Colorado Works' supplied facts 35, was 36).
+- Record checks: `npm run receipts:harness` (MA-1 to MA-6 over 1,853 households, 40 family rows, 0 violations), `npm run records:harness -- --list earnings` (0 boundary findings, 3 copies; 0 violations), `-- --list holdings` (0 joint findings; 0 violations).
+- `CHECK_BASE=origin/main npm run check`: OK; 6,733 rule tests (6,736 less the three tests of CO-1356), 5,097 household expectations, 21 change-impact flags all dispositioned, 11,990 conformance checks (11,993 less the same three tests).
+- External sample check: `npm run external:template` regenerated (the reworded meanings only); src/external/dictionary.ts names every retired fact; `npm run external:check -- external-check/example`: 13 match, 2 differ, as before.
+
+Runtime: `npm run check` is unchanged (3 min 30 s before, 3 min 37 s after on a loaded machine): it never ran the harnesses. The record checks went from about 12 minutes (receipts 561 s, earnings 122 s, holdings 78 s, as their last reports state) to about 4 minutes (receipts 167 to 224 s, earnings 32 to 39 s, holdings 20 to 23 s), the old-against-new evaluation of two ledgers gone.
