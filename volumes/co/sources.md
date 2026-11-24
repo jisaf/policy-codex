@@ -25277,3 +25277,130 @@ Document: D-86
 >
 > 3. Credit card and bank statements are not allowable receipts for business related
 > expenses.
+### S5360. Medicaid income ownership: the community spouse's monthly income allowance is income to the community spouse (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.I.4 (D-65:2459; rule version effective 11/14/2026; NM-KL-1 fix round, 2026-11-24). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Income from the Community Spouse's Monthly Income Allowance, as defined in the spousal protection rules in this volume at 8.100.7.R, is income to the community spouse.
+
+### S5361. Federal law: Social Security old-age and survivors insurance benefits, child's, widow's and widower's benefits among them, are benefits under 42 U.S.C. 402
+
+Document: D-5360
+
+42 U.S.C. 402, heading and (a), (d)(1), (e)(1), (f)(1) (opening words) (retrieved 2026-11-24; NM-KL-2 fix round). https://www.law.cornell.edu/uscode/text/42/402
+
+> 42 U.S. Code § 402 - Old-age and survivors insurance benefit payments
+>
+> (a) Old-age insurance benefitsEvery individual who—
+>
+> ...
+>
+> (d) Child’s insurance benefits
+> (1) Every child (as defined in section 416(e) of this title) of an individual entitled to old-age or disability insurance benefits, or of an individual who dies a fully or currently insured individual, if such child—
+>
+> ...
+>
+> (e) Widow’s insurance benefits
+> (1) The widow (as defined in section 416(c) of this title) and every surviving divorced wife (as defined in section 416(d) of this title) of an individual who died a fully insured individual, if such widow or such surviving divorced wife—
+>
+> ...
+>
+> (ii) has attained age 50 but has not attained age 60 and is under a disability (as defined in section 423(d) of this title) which began before the end of the period specified in paragraph (4),
+>
+> ...
+>
+> (f) Widower’s insurance benefits
+> (1) The widower (as defined in section 416(g) of this title) and every surviving divorced husband (as defined in section 416(d) of this title) of an individual who died a fully insured individual, if such widower or such surviving divorced husband—
+
+### S5362. Federal law: a disability insurance benefit on the person's own record is a benefit under 42 U.S.C. 423, not 402
+
+Document: D-5361
+
+42 U.S.C. 423, heading and (a)(1) (opening and closing words) (retrieved 2026-11-24; NM-KL-2 fix round). https://www.law.cornell.edu/uscode/text/42/423
+
+> 42 U.S. Code § 423 - Disability insurance benefit payments
+>
+> (a) Disability insurance benefits
+> (1) Every individual who—
+> (A)
+> is insured for disability insurance benefits (as determined under subsection (c)(1)),
+>
+> ...
+>
+> (D)
+> has filed application for disability insurance benefits, and
+> (E)
+> is under a disability (as defined in subsection (d))
+> shall be entitled to a disability insurance benefit ...
+
+### S5363. Federal law: WIOA funds for adults and dislocated workers pay for career and training services, supportive services and needs-related payments (29 U.S.C. 3174)
+
+Document: D-5362
+
+29 U.S.C. 3174, heading, (b), (c)(1)(A)(ii)-(iii), (d)(2), (d)(3)(A) (retrieved 2026-11-24; NM-KL-3 fix round). https://www.law.cornell.edu/uscode/text/29/3174
+
+> 29 U.S. Code § 3174 - Use of funds for employment and training activities
+>
+> (b) Local employment and training activitiesFunds allocated to a local area for adults under paragraph (2)(A) or (3), as appropriate, of section 3173(b) of this title, and funds allocated to a local area for dislocated workers under section 3173(b)(2)(B) of this title—
+> (1)
+> shall be used to carry out employment and training activities described in subsection (c) for adults or dislocated workers, respectively; and
+> (2)
+> may be used to carry out employment and training activities described in subsection (d) for adults or dislocated workers, respectively.
+>
+> ...
+>
+> (ii)
+> to provide the career services described in paragraph (2) to adults and dislocated workers, respectively, through the one-stop delivery system in accordance with such paragraph;
+> (iii)
+> to provide training services described in paragraph (3) to adults and dislocated workers, respectively, described in such paragraph;
+>
+> ...
+>
+> (2) Supportive servicesFunds allocated to a local area for adults under paragraph (2)(A) or (3), as appropriate, of section 3173(b) of this title, and funds allocated to the local area for dislocated workers under section 3173(b)(2)(B) of this title, may be used to provide supportive services to adults and dislocated workers, respectively—
+>
+> ...
+>
+> (3) Needs-related payments
+> (A) In general
+> Funds allocated to a local area for adults under paragraph (2)(A) or (3), as appropriate, of section 3173(b) of this title, and funds allocated to the local area for dislocated workers under section 3173(b)(2)(B) of this title, may be used to provide needs-related payments to adults and dislocated workers, respectively, who are unemployed and do not qualify for (or have ceased to qualify for) unemployment compensation for the purpose of enabling such individuals to participate in programs of training services under subsection (c)(3).
+
+### S5364. Federal law: 20 U.S.C. 1087uu since 1993 reaches all Title IV student financial assistance, not attendance costs only, and since July 1, 2024 the 29 U.S.C. 3174 programs; "this subchapter" is Student Assistance, Federal Work-Study included
+
+Document: D-5363
+
+20 U.S.C. 1087uu, source credit and notes; 20 U.S.C. chapter 28, subchapter IV, table of parts (retrieved 2026-11-24; NM-KL-3 fix round). https://www.law.cornell.edu/uscode/text/20/1087uu
+
+> (Pub. L. 89–329, title IV, § 479B, as added Pub. L. 100–50, § 14(27), June 3, 1987, 101 Stat. 353; amended Pub. L. 102–325, title IV, § 471(a), July 23, 1992, 106 Stat. 606; Pub. L. 116–260, div. FF, title VII, § 702(j), Dec. 27, 2020, 134 Stat. 3160.)
+>
+> ...
+>
+> 2020—Pub. L. 116–260 amended section generally. Prior to amendment, text read as follows: “Notwithstanding any other provision of law, student financial assistance received under this subchapter, or under Bureau of Indian Affairs student assistance programs, shall not be taken into account in determining the need or eligibility of any person for benefits or assistance, or the amount of such benefits or assistance, under any Federal, State, or local program financed in whole or in part with Federal funds.”
+>
+> 1992—Pub. L. 102–325 amended section generally, revising and restating as a single paragraph provisions formerly contained in subsec. (a) which proscribed consideration of aid for attendance costs as income or resources, and in subsec. (b) which delineated elements of attendance costs.
+>
+> ...
+>
+> Amendment by Pub. L. 116–260 effective July 1, 2024, except as otherwise expressly provided, and applicable with respect to award year 2024–2025 and each subsequent award year, as determined under this chapter, see section 701(b) of Pub. L. 116–260, set out as a note under section 1001 of this title.
+>
+> ...
+>
+> 20 U.S. Code Chapter 28 Subchapter IV - STUDENT ASSISTANCE
+> Part A—Grants to Students in Attendance at Institutions of Higher Education (§§ 1070 – 1070h)
+> Part B—Federal Family Education Loan Program (§§ 1071 – 1087–4)
+> Part C—Federal Work-Study Programs (§§ 1087–51 – 1087–58)
+> Part D—William D. Ford Federal Direct Loan Program (§§ 1087a – 1087j)
+> Part E—Federal Perkins Loans (§§ 1087aa – 1087ii)
+
+### S5365. LEAP is federally and privately funded
+
+Document: D-86
+
+9 CCR 2503-7 3.750.15 (D-86:52-56; version effective 11/01/2025; NM-KL-3 fix round, 2026-11-24). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.750.15 Funding [Rev. eff. 9/1/11]
+>
+> This program is federally and privately funded and is subject to availability of funds. If funds are
+> increased, decreased or become unavailable, the services provided herein shall be increased, decreased
+> or terminated accordingly.
