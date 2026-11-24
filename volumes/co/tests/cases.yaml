@@ -86991,3 +86991,393 @@
       af_oap_grant:
         2026-10: 189
 
+
+- id: CO-1030
+  title: 'Pattern sweep (cash) PS-M1: an OAP client whose husband dies on September 20; October is a widow''s month'
+  # Built for the cash pattern sweep, PS-M1 (docs/reviews/pattern-sweep-cash.md). p1, 70, is an OAP client with Social Security of $600 and
+  # $500 in the bank (CO-896's client); p2, her husband, 68, receives Social Security of $700 (it ends with the month of his death) and
+  # dies on 2026-09-20. A continuing client (no application or eligibility date), determined 2026-10-15; her marital status on that
+  # date is widowed (9 CCR 2503-5 3.520.63.A.3).
+  # September (he is alive on its first day): married. His unearned income 700 is under the OAP grant standard, 1,032, so nothing is
+  # deemed (3.534.B.2). The couple's $20 is split (3.533.A.2, af_married_couple_disregard_share .5): 600 - 10 = 590; 1,032 - 590 = $442.
+  # October: widowed (CO-7603: no spouse alive on its first day). Her own $20: 600 - 20 = 580; 1,032 - 580 = $452. Before the sweep the
+  # spouse edge kept her married in October: 590 and $442.
+  as_of: '2026-10-15'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1958-01-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 700
+          end_date: '2026-09-30'
+        earnings: []
+        holdings: []
+        date_of_death: '2026-09-20'
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_deemed_relative_income:
+        2026-09: 0
+        2026-10: 0
+      af_is_married:
+        2026-09: true
+        2026-10: false
+      af_countable_income:
+        2026-09: 590
+        2026-10: 580
+      af_oap_grant:
+        2026-09: 442
+        2026-10: 452
+
+- id: CO-1031
+  title: 'Pattern sweep (cash) PS-T9: an OAP client away from Colorado since August 1 applies September 10, determined November 5'
+  # Built for the cash pattern sweep, PS-T9 (docs/reviews/pattern-sweep-cash.md). p1, 70, widowed, Social Security $600, $500 in the bank
+  # (CO-896's client alone), left Colorado on 2026-08-01, not for medical treatment, intending to return; she applied on 2026-09-10 and
+  # met every requirement that day; determined 2026-11-05.
+  # 3.520.64.E.2 presumes a client out of the State ninety or more consecutive days no longer a resident. September 30: 60 days (OQ-953:
+  # the day she left not counted): a resident; October 31: 91 days, presumed (OQ-1435: an earlier month read on its last day); November 5
+  # (the determination date): 96 days, presumed.
+  # September: countable 600 - 20 = 580, 1,032 - 580 = 452; eligible from September 10, 21 days, .69041 (3.581.D.4): 452 x .69041 =
+  # 312.07, cents dropped (3.581.E): $312. October and November: none. Before the sweep every month counted the days to the
+  # determination date (96): none in September too.
+  as_of: '2026-11-05'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: other_with_intent_to_return
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 96
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+        temporarily_out_of_state_start_date: '2026-08-01'
+        temporary_absence_is_outside_united_states: false
+        is_out_of_state_caring_for_family_member_injured_in_military_duty: false
+        af_application_date: '2026-09-10'
+        af_eligibility_date: '2026-09-10'
+        temporary_absence_start_date: '2026-08-01'
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_is_presumed_nonresident_by_absence:
+        2026-09: false
+        2026-10: true
+        2026-11: true
+      af_category:
+        2026-09: oap
+        2026-10: none
+        2026-11: none
+      af_oap_grant:
+        2026-09: 312
+        2026-10: 0
+        2026-11: 0
+
+- id: CO-1032
+  title: 'Pattern sweep (cash) PS-T8: a daughter visiting her father under a parenting plan since April 20; September is the sixth month'
+  # Built for the cash pattern sweep, PS-T8 (docs/reviews/pattern-sweep-cash.md), from CO-883's unit (a mother and her daughter, no
+  # income). The daughter has been visiting her father under a parenting plan since 2026-04-20; the mother applies on 2026-09-10;
+  # determined 2026-10-15.
+  # 3.604.2.G.2 keeps a child visiting a noncustodial parent under a parenting plan in the home "for no more than six months", counted
+  # from the month the visit began (April): September is the sixth month (in the home), October the seventh (out).
+  # September: one caretaker and one child, grant standard $488, no income; the initial payment from September 10, 21 days, .69041
+  # (3.609.2.A.1, E): 488 x .69041 = 336.92, $336. October: no dependent child in the home: ineligible_no_dependent_child, $0.
+  # Before the sweep the visit was counted to the determination month in every month, so the daughter was out of the unit in
+  # September too: ineligible, $0.
+  as_of: '2026-10-15'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_determination_is_recertification: false
+    cw_determination_is_redetermination: false
+    cw_application_date: '2026-09-10'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        temporary_absence_reason: none
+        cw_is_optional_member_by_custody_or_support: false
+        is_participating_in_strike: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: '2002-02-02'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        temporary_absence_reason: visiting_noncustodial_parent_under_parenting_plan
+        cw_is_optional_member_by_custody_or_support: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: true
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2020-06-01'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+        temporary_absence_start_date: '2026-04-20'
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      cw_eligibility_status:
+        2026-09: eligible
+        2026-10: ineligible_no_dependent_child
+      cw_grant_amount:
+        2026-09: 336
+        2026-10: 0
+    p2:
+      cw_is_considered_living_in_home_in_month:
+        2026-09: true
+        2026-10: false
