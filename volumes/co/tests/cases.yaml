@@ -25064,6 +25064,7 @@
   persons:
     p1:
       facts:
+        expected_annual_self_employment_seasonal_commission_income: 11998  # C6-07: all of her expected 2026 income is self-employment
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -44242,6 +44243,7 @@
   persons:
     p1:
       facts:
+        expected_annual_self_employment_seasonal_commission_income: 36000  # C6-07: all of the expected year is self-employment
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -44330,6 +44332,7 @@
   persons:
     p1:
       facts:
+        expected_annual_self_employment_seasonal_commission_income: 36000  # C6-07: all of the expected year is self-employment
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -44858,6 +44861,7 @@
   persons:
     p1:
       facts:
+        expected_annual_self_employment_seasonal_commission_income: 34624  # C6-07: all of the expected year is self-employment
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -63018,6 +63022,7 @@
   persons:
     p1:
       facts:
+        expected_annual_self_employment_seasonal_commission_income: 20000  # C6-07: all of the expected year is self-employment
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
