@@ -41,4 +41,14 @@ Readers switched (each `derived` reads the month's item; tests that stated the p
 
 ## 5. Gate
 
-(Filled in below after the merge of origin.)
+After merging origin at `b467f1c` (the cash pattern sweep for Adult Financial and Colorado Works; the residence start date re-stated on origin's households, OQ-1435, OQ-1436 and OQ-1445, OQ-1446 all kept, rule 17 names both rounds' dates):
+
+- `node scripts/sync-manifest.mjs co`: written. `npm run typecheck`: passes.
+- `npx vitest run`: 1,161 tests in 103 files pass, with the UI pins re-pinned, each commented (the Medicaid policy owner's and HCPF's open questions and the question queue, + OQ-1445, OQ-1446; CO-191 reaching 120, + CO-1060, CO-1063; the October 2026 immigrant restriction reaching 12 stored results in 2 households, + CO-1063).
+- `npm run receipts:harness -- --all-programs`: OK, 0 unexplained (stored 5,647 values differ, all allowed; generated 41,335, all allowed); metamorphic MA-1 to MA-6 0 violations.
+- `npm run records:harness -- --list earnings --all-programs`: OK, 0 unexplained (stored 5,281; generated 7,445); 0 not the translation; boundary lint 0 findings; metamorphic 0 violations.
+- `npm run records:harness -- --list holdings --all-programs`: OK, 0 unexplained (stored 4,560; generated 2,626); 0 not the translation; joint-holding lint clean; metamorphic 0 violations.
+- The entries this round adds: the seven values of section 4, one cited entry each (scripts/receipts/allowed-differences.yaml under the Medicaid status by month header; scripts/records/allowed/ms-medicaid-status.yaml and h7-ms-medicaid-status.yaml). No acceptance logic changed.
+- `CHECK_BASE=origin/main npm run check`: OK; co: 6,343 rule tests and 4,726 household expectations pass; change impact 21 flags, all dispositioned (volumes/co/changes/2026-11-24-medicaid-status-by-month.yaml re-keys CO-659 to CO-660); conformance self-check OK (6,997 cases, 11,229 checks). The stale dispositions the check lists in earlier change records do not block and are left to the integration's re-keying, as in the pattern sweeps.
+
+Commits: d79a6bf (MS-1 to MS-3: CO-7650 to CO-7652, the readers, OQ-1445, OQ-1446, the residence start date in 36 stored households), 2787cf8 (reader tests, CO-1060 to CO-1063), d56782c (change record), 5d04d8f (docs), de6ac34 (UI pins), a7ee975 (harness entries), 0a9de27 (merge of origin), beba755 (CO-659 re-keyed).
