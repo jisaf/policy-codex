@@ -156,7 +156,10 @@ const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "
 const split = (rs: Receipt[]) => rs.flatMap((r) => {
   if (typeof r.amount !== "number" || r.amount === 0 || r.kind === "gambling_winnings") return [r];
   const a = { ...r }, b = { ...r };
-  a.amount = r.amount * 0.5; b.amount = r.amount - a.amount;
+  // Social Security and SSI are split at a whole dollar: LEAP drops the cents of each benefit amount (9 CCR 2503-7
+  // 3.752.211.H, 3.752.21.I; coverage pass 6, R6-7), so a half carrying cents of its own would state a second
+  // benefit amount with cents the benefit does not have; a whole-dollar half keeps the benefit's cents on one record.
+  a.amount = r.kind === "social_security" || r.kind === "ssi" ? Math.floor(r.amount * 0.5) : r.amount * 0.5; b.amount = r.amount - a.amount;
   for (const k of EARMARKS) if (typeof r[k] === "number") { a[k] = (r[k] as number) * 0.5; b[k] = (r[k] as number) - (a[k] as number); }
   return [a, b];
 });
