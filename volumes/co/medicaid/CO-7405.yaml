@@ -1,0 +1,21 @@
+id: CO-7405
+name: "Medicaid: first month of a child's continuous eligibility period"
+identifier: ma_child_continuous_eligibility_start_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: "The first month of a child's 12-month continuous eligibility period under 10 CCR 2505-10 § 8.100.3.Q.2: the month CBMS records the period as beginning (continuous_eligibility_period_start_month, CO-094) where stated; otherwise the first month of the application being determined, from the month of application through the determination month, in which continuous eligibility applies to the child (ma_continuous_eligibility_applies, CO-555: the Children's category met, or a period opened in one of the programs Q.2-Q.3 name), which is the month of a transition from CHP+ to the MAGI Children's category where the child was CHP+ eligible before it; where no such month applies, the month of application, in which no period opens."
+precision: "Coverage pass 6, C6-08 (2026-11-24). Q.2 (S1724): the period 'will begin on the first day of the month the application is received, or from the date all criteria are met. For a child transitioning from CHP+ to the MAGI Medical Assistance program specified in section 8.100.4.G.2, a new 12-month continuous eligibility period will begin on the first day of the month of the transition'. Before, the period opened only if the child met the category in the application month, so a child who was CHP+ eligible in the application month and in the Children's category from the next (the family's income fell) had no Medicaid period from the month of the transition. The months are tested in order; a month whose test is unknown before any month qualifies leaves the start unknown. A month after the determination month opens nothing in this determination. Per person: read with no month in context, the months are scanned by the operators themselves."
+derived: [case, [[not, [unknown, continuous_eligibility_period_start_month]], continuous_eligibility_period_start_month], [[some_month, [months_from_to, [month_of, ma_application_date], [det_month]], ma_continuous_eligibility_applies], [months_after, [count_months, [months_from_to, [month_of, ma_application_date], [det_month]], [not, [some_month, [months_from_to, [month_of, ma_application_date], [month]], ma_continuous_eligibility_applies]]], [month_of, ma_application_date]]], [else, [month_of, ma_application_date]]]
+sources: [S1724, S216]
+implemented: engine
+tags: [ma, magi, age]
+nearest: [CO-556, CO-565]
+rationale: "Coverage pass 6, C6-08 (docs/reviews/coverage6-medicaid-magi-chp.md, P2): ma_child_is_in_continuous_eligibility_period (CO-561) and ma_child_continuous_eligibility_end_month (CO-556) anchored on the application month and tested the category only there; a child eligible only from a later month of the application (a transition from CHP+) got no period. They now read this item."
+tests:
+  - {id: CO-7405-T1, as_of: "2026-11-10", title: "C6-08: a period recorded from April 2026: April", given: {continuous_eligibility_period_start_month: "2026-04", ma_application_date: "2026-10-05"}, expect: "2026-04"}
+  - {id: CO-7405-T2, as_of: "2026-11-10", title: "Applied 2026-10-05, the Children's category met in October: October", given: {ma_application_date: "2026-10-05", ma_continuous_eligibility_applies: {"2026-10": true}}, expect: "2026-10"}
+  - {id: CO-7405-T3, as_of: "2026-11-10", title: "C6-08: applied 2026-10-05, CHP+ eligible in October (the family's income over the Children's 142% + 5), the Children's category met from November (income fell): November, the month of the transition (was no period)", given: {ma_application_date: "2026-10-05", ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": true}}, expect: "2026-11"}
+  - {id: CO-7405-T4, as_of: "2026-11-10", title: "Neither month applies: the application month (no period opens)", given: {ma_application_date: "2026-10-05", ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}}, expect: "2026-10"}
+  - {id: CO-7405-T5, as_of: "2026-11-10", title: "October's test unknown and November met: the start is unknown", given: {ma_application_date: "2026-10-05", ma_continuous_eligibility_applies: {"2026-11": true}}, expect: unknown}
