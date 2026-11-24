@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Another State made a payment of financial assistance (cash public assistance of any program) to the person for the month at issue."
-precision: "If not stated, Adult Financial reads this as false. A payment of TANF by another State is also received_tanf_from_another_state_this_month (CO-842), the narrower fact Colorado Works reads."
+precision: "Required where Adult Financial (af_meets_residency, CO-942) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as false. A payment of TANF by another State is also received_tanf_from_another_state_this_month (CO-842), the narrower fact Colorado Works reads."
 supplied_by: "Applicant statement, PARIS match (9 CCR 2503-5 3.520.5.C), as the county establishes it."
 sources: [S2620]
 tags: [cash]

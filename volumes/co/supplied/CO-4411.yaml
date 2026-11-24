@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person, staying in another person's home (nighttime_residence_type shared_housing_due_to_loss_or_hardship or shared_housing_other_temporary), moves among a succession of friends or relatives and has no permanent living arrangement, rather than living in one home as a member of that household."
-precision: "Stated for a person staying in another person's home. If not stated, Adult Financial reads this as false."
+precision: "Stated for a person staying in another person's home. Required where Adult Financial (af_is_homeless, CO-4410) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as false."
 supplied_by: "Applicant statement, as the county establishes it."
 sources: [S3205]
 tags: [cash, household]

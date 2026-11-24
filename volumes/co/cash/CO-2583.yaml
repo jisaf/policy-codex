@@ -16,3 +16,5 @@ nearest: [CO-1427]
 tests:
   - {id: "CO-2583-T1", title: "A grandmother alone, no child, not pregnant", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1], cw_is_dependent_child: false, is_pregnant: false, cw_assistance_unit_members_in_month: [p1], cw_is_dependent_child_in_month: false}, expect: false}
   - {id: "CO-2583-T2", title: "A unit with a dependent child", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_pregnant: false, cw_assistance_unit_members_in_month: [p1, p2], cw_is_dependent_child_in_month: false}, others: {p2: {cw_is_dependent_child: true, is_pregnant: false, cw_is_dependent_child_in_month: true}}, expect: true}
+  # Coverage pass 6 CA6-3, CA6-7: the month's unit; a pregnancy not stated.
+  - {id: "CO-2583-T3", title: "Coverage pass 6: a woman alone, no dependent child, pregnancy not stated: cannot determine", month: "2026-10", as_of: "2026-10-15", given: {cw_assistance_unit_members_in_month: [p1], cw_is_dependent_child_in_month: false}, expect: unknown}

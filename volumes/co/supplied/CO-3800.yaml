@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person is taking part in a strike: a concerted stoppage of work by employees (including one when a collective-bargaining agreement expires), or a concerted slowdown or other concerted interruption of operations by employees. A person kept from work by an employer's lockout is not taking part in a strike."
-precision: "If not stated, Colorado Works reads this as false. SNAP's striker has its own definition and exceptions (snap_is_striker, CO-3500, 7 CFR 273.1(e)); this fact states only the person's participation, which each reader's rule then classifies."
+precision: "Required where Colorado Works (cw_unit_has_striking_adult, CO-3808) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Colorado Works read an unstated value as false. SNAP's striker has its own definition and exceptions (snap_is_striker, CO-3500, 7 CFR 273.1(e)); this fact states only the person's participation, which each reader's rule then classifies."
 supplied_by: "Applicant statement on the household's employment, as the county establishes it."
 sources: [S2601]
 tags: [cash, tanf, household]
