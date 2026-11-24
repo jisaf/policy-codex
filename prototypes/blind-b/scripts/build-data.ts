@@ -11,6 +11,7 @@ import { parseItemFile, parseVolumeFile } from "../../../src/engine/yaml";
 import { createEngine } from "../../../src/engine/engine";
 import { makeCase, evaluate } from "../../../src/engine/evaluate";
 import { caseToSpec } from "../../../src/engine/cases";
+import { buildScreening } from "./screening-data";
 
 const here = import.meta.dirname;
 const root = path.resolve(here, "../../..");
@@ -138,11 +139,23 @@ const data = {
   chapters, items, meta, sources, documents, questions, cases, aidCodes, touched, shareClass,
 };
 // A host may hold each file to 16 MB (a claude.ai Artifact): the households and
-// what each reads go in data-cases.json, which src/store.ts loads from `parts`.
+// what each reads go in data-cases.json, and the screening-order review
+// (docs/reviews/screening-order.json, for the Screening view) in
+// data-screening.json; src/store.ts loads both from `parts`.
 {
   const { cases: c, touched: t, ...rest } = data as Record<string, unknown>;
+  const parts = ["data-cases.json"];
   fs.writeFileSync(path.join(out, "data-cases.json"), JSON.stringify({ cases: c, touched: t }));
-  fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts: ["data-cases.json"] }));
+  const screening = buildScreening(root, sources);
+  if (screening) {
+    fs.writeFileSync(path.join(out, "data-screening.json"), JSON.stringify({ screening }));
+    parts.push("data-screening.json");
+  }
+  fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts }));
+  for (const f of ["data.json", ...parts]) {
+    const size = fs.statSync(path.join(out, f)).size;
+    if (size > 16 * 1024 * 1024) throw new Error(`${f} is ${(size / 1e6).toFixed(1)} MB, over the 16 MB a host may allow per file`);
+  }
 }
 
 // The documents go out as a few JSON bundles, keyed by their volume path
