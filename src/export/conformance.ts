@@ -4,13 +4,14 @@ import {
 } from "../engine/types";
 import type { Engine } from "../engine/engine";
 import {
-  evaluate, makeCase, relationshipEdges, statedRelationships, type TraceEvent,
+  evaluate, makeCase, relationshipEdges, statedRelationships, type TestResult, type TraceEvent,
 } from "../engine/evaluate";
 import { inForce } from "../engine/versions";
 import { isRecordList, parseRecordFieldName, recordFieldName } from "../engine/records";
-import type { PersonSpec, HouseholdCase } from "../engine/cases";
+import type { CaseReport, PersonSpec, HouseholdCase } from "../engine/cases";
 import type { LoadedVolume } from "../ledger/load";
 import type { LedgerSource } from "../ledger/source";
+import { stopwatch } from "../tools/profile";
 
 /** One supplied fact a cannot-determine expectation was waiting on. */
 export interface SuiteMissing { person: string | null; identifier: string; month: string | null }
@@ -580,11 +581,13 @@ function replay(engine: Engine, sc: SuiteCase, notes: string[]): void {
   if (lo !== null && hi !== null) sc.months_read = { from: lo, to: hi };
 }
 
-function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: SuiteCase; notes: string[] } {
+function ruleTestCase(
+  engine: Engine, it: Item, t: TestSpec, ran?: TestResult,
+): { suiteCase: SuiteCase; notes: string[] } {
   const notes: string[] = [];
   const inputs = ruleTestInputs(engine, t);
   const evalMonth = t.month ?? null;
-  const { got, ok, err } = engine.runTest(it, t);
+  const { got, ok, err } = ran ?? engine.runTest(it, t);
   const person = ["global", "case", "month"].includes(it.scope) ? null : "p1";
   if (err) notes.push(`${t.id} ${person ?? ""}.${it.identifier}: evaluation error: ${err}`);
   else if (!ok) notes.push(staleNote(t.id, person, it.identifier, evalMonth, got));
@@ -607,10 +610,10 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
 }
 
 function householdSuiteCase(
-  engine: Engine, c: HouseholdCase, knownFailures: ReadonlySet<string> = new Set(),
+  engine: Engine, c: HouseholdCase, knownFailures: ReadonlySet<string> = new Set(), ran?: CaseReport,
 ): { suiteCase: SuiteCase; notes: string[] } {
   const notes: string[] = [];
-  const report = engine.runCase(c);
+  const report = ran ?? engine.runCase(c);
   const expect: SuiteExpectation[] = report.results.map((r) => {
     // A stored expectation listed in conformance/known-failures.json (the
     // `case:person:identifier[@month]` key npm run check uses) is a tracked
@@ -782,6 +785,14 @@ export interface BuildSuiteOptions {
   /** Re-evaluate every case from its exported form: records `months_read`
    *  and notes any expectation the export does not reproduce (default true). */
   replay?: boolean;
+  /** Evaluations already made with this engine (`npm run check` shares its
+   *  own), keyed by the engine's test and case objects: each rule test's
+   *  `engine.runTest` result and each household case's `engine.runCase`
+   *  report. A test or case not in them is evaluated here. */
+  evaluated?: {
+    testResults?: ReadonlyMap<TestSpec, TestResult>;
+    caseReports?: ReadonlyMap<HouseholdCase, CaseReport>;
+  };
 }
 
 /** Builds the engine-agnostic conformance suite: every rule test (normalised
@@ -790,7 +801,7 @@ export interface BuildSuiteOptions {
  *  each `expect` value the codex's own evaluation today (never the
  *  possibly-stale stored expectation — see `notes`). */
 export function buildSuite(
-  engine: Engine, volume: LoadedVolume, sha: string, opts: BuildSuiteOptions = {},
+  engine: Engine, volume: Pick<LoadedVolume, "volumeId" | "cases">, sha: string, opts: BuildSuiteOptions = {},
 ): Suite {
   const items: SuiteItem[] = engine.items().map((it) => {
     const item: SuiteItem = {
@@ -807,28 +818,33 @@ export function buildSuite(
     return item;
   });
 
+  const lap = stopwatch();
   const cases: SuiteCase[] = [];
   const notes: string[] = [];
   for (const it of engine.items()) {
     for (const t of it.tests || []) {
-      const { suiteCase, notes: n } = ruleTestCase(engine, it, t);
+      const { suiteCase, notes: n } = ruleTestCase(engine, it, t, opts.evaluated?.testResults?.get(t));
       cases.push(suiteCase);
       notes.push(...n);
     }
   }
+  lap("conformance: suite rule tests");
   const known = new Set(opts.knownFailures ?? []);
   for (const c of volume.cases) {
-    const { suiteCase, notes: n } = householdSuiteCase(engine, c, known);
+    const { suiteCase, notes: n } = householdSuiteCase(engine, c, known, opts.evaluated?.caseReports?.get(c));
     cases.push(suiteCase);
     notes.push(...n);
   }
+  lap("conformance: suite households");
   let gaps: string[] | undefined;
   if (opts.cannotDetermine !== false) {
     const cd = cannotDetermineCases(engine, cases);
     cases.push(...cd.cases);
     gaps = cd.gaps;
   }
+  lap("conformance: suite cannot-determine");
   if (opts.replay !== false) for (const sc of cases) replay(engine, sc, notes);
+  lap("conformance: suite replay");
 
   const meta = engine.meta;
   const suite: Suite = {

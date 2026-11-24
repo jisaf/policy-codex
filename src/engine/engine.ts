@@ -11,7 +11,7 @@ import {
   formatTest, itemBlock, parseItemBlock, parseTestLine,
   type ItemBlockExtra, type ParsedItemBlock,
 } from "./item-block";
-import { approvalsFor, constraints, type Constraint } from "./constraints";
+import { approvalsFor, constraints, type Constraint, type ConstraintOptions } from "./constraints";
 import {
   governance, nearest, type Candidate, type Finding,
 } from "./governance";
@@ -59,7 +59,7 @@ export interface Engine {
   formatTest(t: TestSpec): string;
   parseTestLine(line: string): TestSpec;
   approvals(it: Item): string[];
-  constraints(it: Item): Constraint[];
+  constraints(it: Item, opts?: ConstraintOptions): Constraint[];
   governance(
     it: Item, opts?: { isNew?: boolean; today?: string; baseline?: FingerprintBasis | null },
   ): Finding[];
@@ -121,7 +121,7 @@ export function createEngine(
     formatTest,
     parseTestLine: (line) => parseTestLine(ix, line),
     approvals: (it) => approvalsFor(ix, meta, it),
-    constraints: (it) => constraints(ix, meta, refs, it),
+    constraints: (it, opts) => constraints(ix, meta, refs, it, opts),
     governance: (it, opts) => governance(ix, meta, it, { ...opts, refs }),
     nearest: (it) => nearest(ix, it, meta),
     fingerprintBasis: () => (refs?.sourceTexts ? { ix, sourceTexts: refs.sourceTexts } : null),

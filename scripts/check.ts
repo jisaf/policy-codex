@@ -5,25 +5,39 @@
  * self-check: the suite is built and the reference adapter grades it out of
  * process, and it must answer every expectation exactly (0 failed, 0
  * unimplemented, no suite notes). `--no-conformance` skips the self-check.
- * Run with `npm run check`; add `--json` for the full report on stdout.
+ * Run with `npm run check`; add `--json` for the full report on stdout, and
+ * `--profile` (or CHECK_PROFILE=1) for each phase's wall time on stderr.
  * Exits non-zero when the check fails. */
 import path from "node:path";
 import { formatSummary, runCheck } from "../src/tools/check";
-import { formatResults, selfCheck, type SelfCheck } from "../src/tools/conform";
+import { formatResults, selfCheck, type PreparedVolume, type SelfCheck } from "../src/tools/conform";
 import { selectedVolumeIds } from "../src/tools/volumes";
+import { enableProfile, formatTimings, profileEnabled } from "../src/tools/profile";
 
 const root = path.resolve(import.meta.dirname, "..");
 const json = process.argv.includes("--json");
 const conformance = !process.argv.includes("--no-conformance");
+if (process.argv.includes("--profile")) enableProfile();
 
 const volumes = selectedVolumeIds(root);
 const runs = volumes.map((volume) => {
-  const report = runCheck({ root, volume });
+  // The self-check builds its suite from the engine and the evaluations the
+  // check has just made for the volume, rather than loading and evaluating
+  // it again; the suite is the same either way.
+  let prepared: PreparedVolume | undefined;
+  const report = runCheck({
+    root, volume,
+    ...(conformance ? {
+      share: (s) => {
+        prepared = { engine: s.engine, cases: s.ledger.cases, testResults: s.testResults, caseReports: s.caseReports };
+      },
+    } : {}),
+  });
   let self: SelfCheck | null = null;
   let selfError: string | null = null;
   if (conformance) {
     try {
-      self = selfCheck(root, volume);
+      self = selfCheck(root, volume, prepared);
     } catch (ex) {
       selfError = (ex as Error).message;
     }
@@ -63,5 +77,7 @@ if (json) {
     }
   }
 }
+
+if (profileEnabled()) process.stderr.write(formatTimings() + "\n");
 
 process.exitCode = runs.every(ok) ? 0 : 1;

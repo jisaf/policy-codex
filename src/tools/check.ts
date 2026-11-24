@@ -7,7 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { createEngine } from "../engine/engine";
-import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/cases";
+import { derivedOverrides, parseCases, type CaseReport, type HouseholdCase } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources, sourceTextMap, unverifiedSourceIds } from "../ledger/markdown";
 import { buildIndex } from "../engine/ledger-index";
@@ -23,7 +23,9 @@ import { householdInputs, ruleTestInputs, type Audit } from "../export/conforman
 import { versionInForce } from "../engine/versions";
 import { AID_CODES_FILE, aidCodeWarnings, parseAidCodes, type AidCodeMap } from "../ledger/aid-codes";
 import type { Engine } from "../engine/engine";
+import { stopwatch, timed } from "./profile";
 import type { Item, TestSpec, VolumeMeta } from "../engine/types";
+import type { TestResult } from "../engine/evaluate";
 
 export interface LoadedLedger {
   items: Item[];
@@ -566,6 +568,20 @@ export interface BuildCheckReportOptions {
    *  Defaults to reading it from git when the diff touches the file;
    *  `null` when the base has none (the allowlist is being introduced). */
   baseAllowlist?: CrossProgramAllowlist | null;
+  /** Receives the engine and the evaluations the check made, so the
+   *  conformance self-check can build its suite from them instead of
+   *  loading and evaluating the volume again (scripts/check.ts). */
+  share?: (shared: CheckShared) => void;
+}
+
+/** What one volume's check evaluated: the engine, every rule test's result
+ *  and every household case's report, keyed by the test and case objects of
+ *  the ledger it was given. */
+export interface CheckShared {
+  engine: Engine;
+  ledger: LoadedLedger;
+  testResults: ReadonlyMap<TestSpec, TestResult>;
+  caseReports: ReadonlyMap<HouseholdCase, CaseReport>;
 }
 
 /** The ledger as it stood at `base`: the current items with every item file
@@ -578,6 +594,10 @@ export function loadBaseline(
   const byId = new Map(ledger.items.map((it) => [it.id, it]));
   let sourceTexts = ledger.sourceTexts ?? {};
   const prefix = `${ledger.volumePath}/`;
+  const itemFile = (e: DiffEntry) => /\/([A-Za-z]+-\d+)\.yaml$/.exec(e.path);
+  const was = loadBaseItems(root, base, diff
+    .filter((e) => e.path.startsWith(prefix) && e.path !== `${prefix}sources.md` && itemFile(e) && !e.status.startsWith("A"))
+    .map((e) => e.path));
   for (const e of diff) {
     if (!e.path.startsWith(prefix)) continue;
     if (e.path === `${prefix}sources.md`) {
@@ -592,32 +612,68 @@ export function loadBaseline(
       }
       continue;
     }
-    const m = /\/([A-Za-z]+-\d+)\.yaml$/.exec(e.path);
+    const m = itemFile(e);
     if (!m) continue;
     if (e.status.startsWith("A")) { byId.delete(m[1]); continue; }
-    const was = loadBaseItem(root, base, e.path);
-    if (was) byId.set(was.id, was);
+    const it = was.get(e.path);
+    if (it) byId.set(it.id, it);
   }
   return { items: [...byId.values()], sourceTexts };
 }
 
-/** Reads a changed item's base version with `git show <base>:<path>` (the
- *  same path `diffAgainstBase` diffs against), the same way as
- *  `diffAgainstBase` does. Returns `null` when the base ref, the file at that
- *  ref, or the parse is unavailable — the caller then skips the ratchet for
- *  that item rather than failing the check. */
-function loadBaseItem(
-  root: string, base: string, filePath: string,
-): Item | null {
-  try {
-    const text = execFileSync(
-      "git", ["show", `${base}:${filePath}`],
-      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
-    );
-    return parseItemFile(text);
-  } catch {
-    return null;
+/** Reads changed items' base versions, `<base>:<path>` for each path (the
+ *  same paths `diffAgainstBase` diffs against), in one `git cat-file
+ *  --batch`. A path maps to `null` when the base ref, the file at that ref,
+ *  or the parse is unavailable — the caller then skips the ratchet for that
+ *  item rather than failing the check. */
+function loadBaseItems(
+  root: string, base: string, filePaths: readonly string[],
+): Map<string, Item | null> {
+  const out = new Map<string, Item | null>();
+  for (const [p, text] of gitShowMany(root, base, filePaths)) {
+    let it: Item | null = null;
+    if (text !== null) {
+      try { it = parseItemFile(text); } catch { it = null; }
+    }
+    out.set(p, it);
   }
+  return out;
+}
+
+/** The text of each `<ref>:<path>`, as `git show <ref>:<path>` prints it,
+ *  read in one `git cat-file --batch` rather than one process per file;
+ *  `null` for a path git cannot read at that ref (or when git cannot run). */
+export function gitShowMany(
+  root: string, ref: string, filePaths: readonly string[],
+): Map<string, string | null> {
+  const out = new Map<string, string | null>();
+  const paths = [...new Set(filePaths)];
+  for (const p of paths) out.set(p, null);
+  if (!paths.length) return out;
+  let buf: Buffer;
+  try {
+    buf = execFileSync("git", ["cat-file", "--batch"], {
+      cwd: root, input: paths.map((p) => `${ref}:${p}`).join("\n") + "\n",
+      stdio: ["pipe", "pipe", "ignore"], maxBuffer: 1024 * 1024 * 1024,
+    });
+  } catch {
+    return out;
+  }
+  // Each answer is "<sha> <type> <size>\n<content>\n", or "<name> missing\n"
+  // (or "ambiguous"), in the order asked.
+  let pos = 0;
+  for (const p of paths) {
+    const nl = buf.indexOf(0x0a, pos);
+    if (nl < 0) break;
+    const header = buf.toString("utf8", pos, nl);
+    pos = nl + 1;
+    const m = /^[0-9a-f]+ (\S+) (\d+)$/.exec(header);
+    if (!m) continue;
+    const size = Number(m[2]);
+    if (m[1] === "blob") out.set(p, buf.toString("utf8", pos, pos + size));
+    pos += size + 1;
+  }
+  return out;
 }
 
 /** Builds the full report from already-loaded ledger data and an already-
@@ -629,6 +685,7 @@ export function buildCheckReport(
   ledger: LoadedLedger, diff: DiffEntry[] | null, knownFailures: readonly string[],
   opts: BuildCheckReportOptions = {},
 ): CheckReport {
+  const lap = stopwatch();
   const engine = createEngine(ledger.items, ledger.meta, {
     sourceIds: ledger.sourceIds, questionIds: ledger.questionIds,
     unverifiedSourceIds: ledger.unverifiedSourceIds ?? [],
@@ -667,10 +724,26 @@ export function buildCheckReport(
     }
   }
 
+  lap("check: engine");
+  // Every rule test is run once, here; the constraints below (which report
+  // each example's result) and the rule-test summary share the results.
+  const testResults = new Map<TestSpec, TestResult>();
+  for (const it of ledger.items) {
+    for (const t of it.tests || []) testResults.set(t, engine.runTest(it, t));
+  }
+  lap("check: rule tests");
+  // The base version of every changed item, read from git in one batch for
+  // the ratchet below.
+  const baseItems = opts.root && opts.base
+    ? loadBaseItems(opts.root, opts.base, ledger.items
+      .filter((it) => changedItems.has(it.id) && !addedItems.has(it.id))
+      .map((it) => `${ledger.volumePath}/${ledger.chapterOf[it.id]}/${it.id}.yaml`))
+    : new Map<string, Item | null>();
+  lap("check: ratchet base items (git)");
   const items: ItemCheck[] = ledger.items.map((it) => {
     const isNew = addedItems.has(it.id);
     const isChanged = changedItems.has(it.id);
-    const constraintResults = engine.constraints(it);
+    const constraintResults = engine.constraints(it, { testResult: (t) => testResults.get(t) });
     let findings = engine.governance(it, { isNew });
     // A stale approval is never ratcheted: it is about the signatures, not
     // the item's content, and it blocks wherever it is (below). Nor are the
@@ -688,7 +761,7 @@ export function buildCheckReport(
     // file is unavailable, the item's findings stand as computed above.
     if (isChanged && !isNew && opts.root && opts.base) {
       const filePath = `${ledger.volumePath}/${ledger.chapterOf[it.id]}/${it.id}.yaml`;
-      const baseItem = loadBaseItem(opts.root, opts.base, filePath);
+      const baseItem = baseItems.get(filePath) ?? null;
       if (baseItem) findings = ratchetGovernance(findings, engine.governance(baseItem));
     }
     if (stale.length && ledger.sourceTexts) {
@@ -713,13 +786,14 @@ export function buildCheckReport(
     };
   });
 
+  lap("check: constraints and governance");
   const ruleFailures: RuleTestFailure[] = [];
   const warnings: string[] = [];
   let ruleTotal = 0;
   for (const it of ledger.items) {
     for (const t of it.tests || []) {
       ruleTotal++;
-      const result = engine.runTest(it, t);
+      const result = testResults.get(t) ?? engine.runTest(it, t);
       for (const w of result.warnings ?? []) warnings.push(`${t.id}: ${w}`);
       if (!result.ok) {
         ruleFailures.push({
@@ -729,11 +803,12 @@ export function buildCheckReport(
       }
     }
   }
-
   const caseFailures: CaseFailure[] = [];
+  const caseReports = new Map<HouseholdCase, CaseReport>();
   let caseTotal = 0;
   for (const c of ledger.cases) {
     const report = engine.runCase(c);
+    caseReports.set(c, report);
     for (const r of report.results) {
       caseTotal++;
       for (const w of r.warnings ?? []) {
@@ -749,6 +824,7 @@ export function buildCheckReport(
     }
   }
 
+  lap("check: households");
   const known = new Set(knownFailures);
   const newRuleFailures = ruleFailures.filter((f) => !known.has(f.testId));
   const newCaseFailures = caseFailures.filter((f) => !known.has(f.key));
@@ -764,6 +840,7 @@ export function buildCheckReport(
   // A stated list of receipts that does not fit its schema blocks.
   const newRecordErrors = recordInputErrors(engine, ledger).filter((k) => !known.has(k));
 
+  lap("check: overrides, unknown identifiers, records");
   const changedIdentifiers = [...changedItems]
     .map((id) => ledger.items.find((it) => it.id === id)?.identifier)
     .filter((x): x is string => !!x);
@@ -812,12 +889,17 @@ export function buildCheckReport(
     }
   }
 
+  lap("check: impact, cycles, test ids");
   const changeImpact = changeImpactOf(ledger, engine, diff, opts, baseline, addedItems);
+  lap("check: change impact");
   const crossProgram = crossProgramOf(ledger, items, diff, opts);
 
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
+  lap("check: cross-program, open questions");
   warnings.push(...inputWarnings(engine, ledger));
   if (ledger.aidCodes) warnings.push(...aidCodeWarnings(engine, ledger.aidCodes));
+  lap("check: input warnings");
+  opts.share?.({ engine, ledger, testResults, caseReports });
 
   const ok = blockingItemErrors.length === 0
     && newRuleFailures.length === 0
@@ -1002,6 +1084,8 @@ export interface RunCheckOptions {
   base?: string;
   /** defaults to `<root>/conformance/known-failures.json`. */
   knownFailuresPath?: string;
+  /** See BuildCheckReportOptions.share. */
+  share?: (shared: CheckShared) => void;
 }
 
 /** The keys in `conformance/known-failures.json` (or `file`), or none when
@@ -1016,10 +1100,11 @@ export function loadKnownFailures(root: string, file?: string): string[] {
  *  tests can supply their own ledger and diff without touching git. */
 export function runCheck(opts: RunCheckOptions): CheckReport {
   const base = opts.base ?? process.env.CHECK_BASE ?? "origin/main";
-  const ledger = loadLedgerFromDisk(opts.root, opts.volume);
-  const diff = diffAgainstBase(opts.root, base);
+  const ledger = timed("load ledger", () => loadLedgerFromDisk(opts.root, opts.volume));
+  const diff = timed("git diff", () => diffAgainstBase(opts.root, base));
   const knownFailures = loadKnownFailures(opts.root, opts.knownFailuresPath);
   let impactBaseline: BuildCheckReportOptions["impactBaseline"];
+  const lap = stopwatch();
   if (diff) {
     const ref = impactRef(opts.root, base, ledger.impactSince);
     if (ref !== base) {
@@ -1027,9 +1112,13 @@ export function runCheck(opts: RunCheckOptions): CheckReport {
       impactBaseline = since ? { ref, items: loadBaseline(opts.root, ref, ledger, since).items } : null;
     }
   }
+  lap("impact baseline (git)");
   const report = buildCheckReport(
     ledger, diff, knownFailures,
-    diff ? { root: opts.root, base, ...(impactBaseline !== undefined ? { impactBaseline } : {}) } : {},
+    {
+      ...(diff ? { root: opts.root, base, ...(impactBaseline !== undefined ? { impactBaseline } : {}) } : {}),
+      ...(opts.share ? { share: opts.share } : {}),
+    },
   );
   return { ...report, base: diff ? base : null };
 }

@@ -177,6 +177,30 @@ short summary locally; `npm run check -- --json` writes the full report
 (every item's findings, every test and case result, the impact set) to
 stdout.
 
+**Speed.** `npm run check -- --profile` (or `CHECK_PROFILE=1`) prints each
+phase's wall time on stderr; the output on stdout is unchanged. On the
+Colorado volume the check took about 3½ minutes until 2026-11-24 (209 s for
+`CHECK_BASE=origin/main npm run check`, both volumes and the conformance
+self-checks, on a 4-core machine) and now takes under a minute (44 s), with
+the same output. The largest phases before were the constraints and
+governance pass (137 s, nearly all of it the duplicate scan recomputing every
+other item's keys), the rule tests run three times (in the constraints, the
+check and the suite, 11 s each) and the per-file `git show` calls (10 s).
+What changed, none of it in what is decided or reported:
+
+- the duplicate-candidate scan (`candidates` in `src/engine/governance.ts`)
+  computes each item's derivation keys and terms once per index instead of
+  once per pair, and the dependency graph governance reads is built once per
+  index instead of once per supplied fact;
+- every rule test is run once, and the constraints (which report each
+  example's result) reuse the results;
+- the base versions of changed items are read from git in one `git cat-file
+  --batch` instead of one `git show` per file;
+- the conformance self-check builds its suite from the engine and the
+  evaluations the check has just made (the suite is the same; only the
+  cannot-determine cases, the replay and the out-of-process adapter evaluate
+  again).
+
 ## Branch protection
 
 This cannot be set from the repository's contents — it is a GitHub repo
@@ -424,8 +448,10 @@ Noted at the end of the phase-2 fix round, left as-is on purpose:
 
 - Governance's duplicate-candidate scan (`nearest`/`candidates` in
   `src/engine/governance.ts`) is quadratic in the number of items: every item
-  is compared against every other item. Fine at 138 items; would need an
-  index (by derivation shape, by identifier/meaning tokens) at real scale.
+  is compared against every other item. Since 2026-11-24 each item's keys are
+  computed once per index, so the pairwise comparison is cheap (about a
+  second for the 2,314 Colorado items); an index by derivation shape and by
+  identifier/meaning tokens would remove the quadratic loop itself.
 - `paramInForce` (parameter value resolution as of a date) is duplicated
   rather than shared between the evaluator and the explain/trace path. A
   single implementation would remove the risk of the two drifting apart.

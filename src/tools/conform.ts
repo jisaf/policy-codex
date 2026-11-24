@@ -11,6 +11,11 @@ import {
 import { conformanceDir, loadVolume } from "./volumes";
 import { loadKnownFailures } from "./check";
 import { gitShaWithDirtySuffix } from "../../scripts/git-sha";
+import { timed } from "./profile";
+import type { Engine } from "../engine/engine";
+import type { CaseReport, HouseholdCase } from "../engine/cases";
+import type { TestResult } from "../engine/evaluate";
+import type { TestSpec } from "../engine/types";
 
 /** The reference adapter, as `npm run conform:self` and the check run it. */
 export const SELF_ADAPTER = "npx vite-node scripts/adapters/codex-self.ts";
@@ -78,17 +83,33 @@ export function formatResults(r: ConformanceResults): string {
 }
 
 /** Builds a volume's suite from the ledger on disk and writes it to
- *  `conformance/<volume>/suite.json`. */
-export function writeSuite(root: string, volumeId: string): { suite: Suite; file: string } {
-  const { vol, engine } = loadVolume(root, volumeId);
+ *  `conformance/<volume>/suite.json`. With `prepared` (what `npm run check`
+ *  loaded and evaluated for the same volume), the suite is built from that
+ *  engine and those evaluations instead of loading the volume again. */
+export function writeSuite(
+  root: string, volumeId: string, prepared?: PreparedVolume,
+): { suite: Suite; file: string } {
+  const { vol, engine } = prepared
+    ? { vol: { volumeId, cases: prepared.cases }, engine: prepared.engine }
+    : loadVolume(root, volumeId);
   const suite = buildSuite(engine, vol, gitShaWithDirtySuffix(root), {
     knownFailures: loadKnownFailures(root),
+    ...(prepared ? { evaluated: { testResults: prepared.testResults, caseReports: prepared.caseReports } } : {}),
   });
   const dir = conformanceDir(root, volumeId);
   fs.mkdirSync(dir, { recursive: true });
   const file = path.join(dir, "suite.json");
   fs.writeFileSync(file, JSON.stringify(suite, null, 2));
   return { suite, file };
+}
+
+/** A volume already loaded and evaluated (by `npm run check`): its engine,
+ *  its household cases, and the evaluations made with that engine. */
+export interface PreparedVolume {
+  engine: Engine;
+  cases: HouseholdCase[];
+  testResults?: ReadonlyMap<TestSpec, TestResult>;
+  caseReports?: ReadonlyMap<HouseholdCase, CaseReport>;
 }
 
 export interface SelfCheck {
@@ -103,9 +124,9 @@ export interface SelfCheck {
 /** The conformance self-check `npm run check` runs for every volume: build
  *  the suite, then grade the reference adapter on it out of process (batch
  *  mode, through a pipe, as any adapter is run). */
-export function selfCheck(root: string, volumeId: string): SelfCheck {
-  const { suite } = writeSuite(root, volumeId);
-  const results = runConformance(suite, SELF_ADAPTER, true, root);
+export function selfCheck(root: string, volumeId: string, prepared?: PreparedVolume): SelfCheck {
+  const { suite } = timed("conformance: build suite", () => writeSuite(root, volumeId, prepared));
+  const results = timed("conformance: adapter", () => runConformance(suite, SELF_ADAPTER, true, root));
   fs.writeFileSync(
     path.join(conformanceDir(root, volumeId), "results.json"), JSON.stringify(results, null, 2),
   );
