@@ -25183,3 +25183,14 @@ Document: D-81
 9 CCR 2503-6 3.609.1.D.6 (D-81:4520-4522; coverage pass 7, cash). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
 
 > 6. The client begins receiving benefits under another public assistance program which may not be received concurrently with a Colorado Works grant, such as Supplemental Security Income or Adult Financial programs.
+
+### S5300. Colorado public assistance for qualified aliens: after the five years, a qualified alien entering on or after August 22, 1996 is eligible, with sponsor income and resources deemed
+
+Document: D-59
+
+C.R.S. 26-2-111.8(2)(c) (D-59:1354-1357; KL-CASH-2 fix round, 2026-11-24). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (c)    Deeming  of  sponsor  income  and  resources.  After  five  years,  a  qualified  alien
+> described in paragraph (b) of this subsection (2) shall be eligible for benefits under this article,
+> but  shall  have  sponsor  income  and  resources  deemed  to  the  individual  or  family  under  rules
+> established by the state department pursuant to section 26-2-137 (2).
