@@ -10,7 +10,7 @@ precision: "Receipt is read from receives_tanf_cash (CO-013); eligibility and th
 derived: [any, receives_tanf_cash, ["=", cw_eligibility_status, eligible], [all, [in, cw_eligibility_status, [sanction_closure, ineligible_disqualified, closed_demonstrable_evidence]], cw_unit_otherwise_eligible], [otherwise, af_has_open_colorado_works_closure_bar, false]]
 sources: [S711, S1011]
 implemented: engine
-open: [OQ-845]
+open: [OQ-845, OQ-1436]
 tags: [cash, oap, and, tanf]
 accepts_from:
   - {from: cw_eligibility_status, class: rule_required, source: S1011}

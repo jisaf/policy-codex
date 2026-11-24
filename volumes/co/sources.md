@@ -24992,6 +24992,19 @@ HHS, "Annual Update of the HHS Poverty Guidelines," 89 FR 2961 (Jan. 17, 2024) (
 >
 > For families/households with more than 8 persons, add $5,380 for each additional person.
 
+### S5180. Adult Financial: a client who begins receiving SSI or SSDI; AND-SO and Colorado Supplement payments issued in the month SSI or SSDI is received are recovered
+
+Document: D-80
+
+9 CCR 2503-5 3.554.C.6 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on file) (cash pattern sweep, PS-T12). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. Adequate notice, not timely notice, is required in the following situations:
+>
+> 6. The client begins receiving SSI or SSDI. A claim to recover the AND-SO or
+> Colorado Supplement grant payments that are issued in the same month that
+> the SSI or SSDI benefits are received shall be created and the client
+> shall be liable to repay the AND-SO or Colorado Supplement grant
+> payments that were issued.
 ### S5090. SNAP: the heating and cooling standard for energy assistance received in the current month or the immediately preceding 12 months
 
 Document: D-13

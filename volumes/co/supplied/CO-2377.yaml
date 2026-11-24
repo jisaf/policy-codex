@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: "This Adult Financial redetermination is a twenty-four-month redetermination, at which resources \"must be reverified by traditional verification methods\" (9 CCR 2503-5 3.520.72.D.4)."
-precision: "If not stated, Adult Financial reads this as false."
+precision: "Required where read, for a redetermination (decision 4; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D9)."
 supplied_by: "CBMS redetermination schedule."
 sources: [S888]
 tags: [cash, verification]

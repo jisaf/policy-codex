@@ -10,7 +10,7 @@ precision: "Read from the neutral setting facts (residence_setting_type, CO-3330
 derived: ["any", ["all", ["any", ["in", "residence_setting_type", ["psychiatric_hospital", "tuberculosis_hospital"]], ["all", ["in", "residence_setting_type", ["hospital", "nursing_facility", "assisted_living_residence", "group_home", "other_long_term_care_facility", "substance_use_treatment_facility", "child_care_institution", "other_institution"]], "residence_setting_is_primarily_for_mental_diseases"]], ["not", ["all", "cw_is_dependent_child", ["not", ["=", "residence_setting_type", "tuberculosis_hospital"]], "is_enrolled_in_medical_assistance"]]], ["all", ["=", "residence_setting_type", "correctional_facility"], ["not", "is_in_work_release_or_court_monitoring"]]]
 sources: [S2600]
 implemented: engine
-open: [OQ-660]
+open: [OQ-660, OQ-1436]
 tags: [cash, tanf, household]
 rationale: "Final cash review FC-1: 3.604.1.D-E (S2600) state that a Colorado Works client must not be an institution patient for tuberculosis or mental disease or an inmate, and no item read it. Medicaid's institution for mental diseases (is_patient_in_institution_for_mental_diseases, CO-1104) has a bed-count test D does not state, and ma_oap_is_patient_in_tb_or_mental_health_institution (CO-1748) is the OAP Health Care Program's own item, so Colorado Works has its own over the same neutral setting facts. The inmate test differs from 42 CFR 435.1010's (CO-1105) and from Adult Financial's government-operated correctional institution (CO-3343): E names custody in a county, state or federal correction facility and excepts work release and court monitoring."
 tests:

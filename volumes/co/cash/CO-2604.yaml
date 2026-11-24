@@ -1,19 +1,24 @@
 id: CO-2604
-name: "Adult Financial: grant reduced by SSI income"
-identifier: af_grant_is_reduced_by_ssi_income
+name: "Adult Financial: receives SSI in the month"
+identifier: af_receives_ssi_in_month
 kind: derived
 type: yes/no
 scope: person-month
 program: AdultFinancial
-meaning: "Whether SSI income reduces this month's Adult Financial grant: the client receives SSI and has SSI income this month, which af_countable_income counts. 9 CCR 2503-5 3.581.E drops the cents from every Adult Financial payment except in that case."
-precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read. Receipt records, migration phase 1: the SSI of the month is af_ssi_receipts is read from the receipts (CO-5000)."
+meaning: "Whether the person receives Supplemental Security Income in the month evaluated: an SSI recipient (receives_ssi, CO-012) with SSI received in the month (af_ssi_receipts, CO-5018, the month's SSI other than a retroactive lump sum). AND-SO and the Colorado Supplement are not paid for a month in which SSI is received: \"A claim to recover the AND-SO or Colorado Supplement grant payments that are issued in the same month that the SSI or SSDI benefits are received shall be created\" (9 CCR 2503-5 3.554.C.6), so AND-SO is barred, and AND-CS (a supplement to SSI received, 3.546, 3.549.A) is open, in a month with SSI received and not in one without. 9 CCR 2503-5 3.581.E drops the cents from every Adult Financial payment except where SSI income reduces the grant, the same test (af_oap_grant CO-951, af_and_grant CO-952)."
+precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read. Receipt records, migration phase 1: the SSI of the month is af_ssi_receipts is read from the receipts (CO-5000). Pattern sweep (cash) PS-T12 (docs/reviews/pattern-sweep-cash.md): af_and_so_eligible (CO-1203) and af_and_cs_eligible (CO-950) read receives_ssi, a fact about SSA's award as of the determination date, in every month, so an AND-SO applicant whose SSI began after the application month was barred in the application month too, and an AND-CS client whose SSI had not yet begun was paid the whole Colorado Supplement standard in a month with no SSI. A stream of SSI (a receipt with no month) is received in every month the case covers, as before; a dated award is read by its months. Before the sweep this item was af_receives_ssi_in_month, read only for the rounding of 3.581.E; its test is unchanged, its name says what it tests, and the AND-SO bar and the AND-CS condition read it too."
 derived: [all, receives_ssi, [">", af_ssi_receipts, 0]]
-sources: [S1825]
+sources: [S1825, S5180, S6, S1622]
 implemented: engine
 tags: [cash, income]
-rationale: "Engineering follow-up 4: 3.581.E (S1825) drops the cents from Adult Financial payments except where SSI income reduces the grant; af_oap_grant (CO-951) and af_and_grant (CO-952) need the exception. No existing item states it."
+rationale: "Engineering follow-up 4: 3.581.E (S1825) drops the cents from Adult Financial payments except where SSI income reduces the grant; af_oap_grant (CO-951) and af_and_grant (CO-952) need the exception. No existing item states it. Pattern sweep (cash), PS-T12: the AND-SO bar and the AND-CS condition are per month by 3.554.C.6 (S5180); the month's SSI is already read from the receipts (af_ssi_receipts), so the month an award begins is the month its first receipt is dated."
 tests:
   - {id: CO-2604-T1, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, receipts: [{kind: social_security}, {kind: ssi, amount: 700}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, expect: true}
   - {id: CO-2604-T2, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: false}, expect: false}
   - {id: CO-2604-T3, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, receipts: [{kind: social_security}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "SSI recipient with no SSI paid this month", expect: false}
   - {id: CO-2604-T4, month: "2026-10", as_of: "2026-10-01", given: {receives_ssi: true, receipts: [{kind: social_security}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "T-9: af_ssi_receipts equal to 0 (af_ssi_receipts over 0)", expect: false}
+  # Pattern sweep (cash) PS-T12: 3.554.C.6 (S5180). An AND-SO applicant (applied 2026-09-10) is awarded SSI of $500 paid from October; determined 2026-10-20, receives_ssi true.
+  - {id: "CO-2604-T10", title: "Pattern sweep PS-T12: September, no SSI received: not an SSI month", as_of: "2026-10-20", month: "2026-09", given: {receives_ssi: true, receipts: [{kind: ssi, amount: 500, month: "2026-10"}]}, expect: false}
+  - {id: "CO-2604-T11", title: "PS-T12: October, $500 of SSI received: an SSI month", as_of: "2026-10-20", month: "2026-10", given: {receives_ssi: true, receipts: [{kind: ssi, amount: 500, month: "2026-10"}]}, expect: true}
+  - {id: "CO-2604-T12", title: "A stream of SSI (no month): every month", as_of: "2026-10-20", month: "2026-09", given: {receives_ssi: true, receipts: [{kind: ssi, amount: 500}]}, expect: true}
+  - {id: "CO-2604-T13", title: "Not an SSI recipient", as_of: "2026-10-20", month: "2026-10", given: {receives_ssi: false, receipts: []}, expect: false}
