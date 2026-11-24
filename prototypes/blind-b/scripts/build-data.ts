@@ -12,6 +12,7 @@ import { createEngine } from "../../../src/engine/engine";
 import { makeCase, evaluate } from "../../../src/engine/evaluate";
 import { caseToSpec } from "../../../src/engine/cases";
 import { buildScreening } from "./screening-data";
+import { buildExternal } from "./external-data";
 
 const here = import.meta.dirname;
 const root = path.resolve(here, "../../..");
@@ -179,6 +180,11 @@ const data = {
   if (screening) {
     fs.writeFileSync(path.join(out, "data-screening.json"), JSON.stringify({ screening }));
     parts.push("data-screening.json");
+  }
+  const external = buildExternal(root);
+  if (external) {
+    fs.writeFileSync(path.join(out, "data-external.json"), JSON.stringify({ external }));
+    parts.push("data-external.json");
   }
   fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts }));
   for (const f of ["data.json", ...parts]) {

@@ -48,6 +48,7 @@ export function Desk() {
       <p class="eyebrow">My desk · {fmtDate(TODAY)}</p>
       <h1>{mine.length ? <>{mine.length.toLocaleString()} items wait for your signature{myQs.length ? <>, and {myQs.length} open questions are yours</> : null}.</> : "Nothing waits for your signature in this role."}</h1>
       <p class="lede">You are looking at the rulebook as <RoleSelect />. Nothing here is approved yet: every item is a draft until its owners sign.</p>
+      <p class="notice ext-invite">Do you determine eligibility in Colorado? <a href={href("external")}>Check our answers against yours</a>: send households shaped like real ones, with the answers you expect, and get back a report of where the engine agrees.</p>
       <div class="deskgrid">
         <section class="card">
           <div class="card-h"><h2>To sign</h2><a href={href("desk/sign")}>Open the whole queue</a></div>

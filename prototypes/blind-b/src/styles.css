@@ -327,3 +327,17 @@ table.scr-table.disq td:nth-child(3) { min-width: 16rem; } .scr-q { font-size: .
   table.scr-table.disq td[data-l=Condition]::before { content: none; }
   .scr-law { display: block; margin: .2rem 0 0; }
 }
+
+/* external check (src/external.tsx) */
+.extpage .lede { max-width: 52rem; }
+.ext-steps li { padding: .2rem 0; }
+.ext-privacy ul { padding-left: 1.1rem; margin: 0 0 .6rem; } .ext-privacy li { padding: .15rem 0; }
+.ext-sheet { border-top: 1px solid var(--line2); padding: .45rem 0; } .ext-sheet summary { cursor: pointer; }
+.ext-cols { margin: .4rem 0; color: var(--ink2); overflow-wrap: anywhere; }
+.ext-cases li { padding: .2rem 0; }
+.ext-tools { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin: .4rem 0 .6rem; }
+.ext-tools input[type=search] { flex: 1 1 16rem; }
+table.ext-dict td { vertical-align: top; padding: .4rem .6rem .4rem 0; border-bottom: 1px solid var(--line2); }
+tr.ext-differ td { background: var(--warn-bg); }
+.ext-why { margin-top: .8rem; }
+.ext-invite { margin: .2rem 0 .8rem; }
