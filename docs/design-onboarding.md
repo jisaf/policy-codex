@@ -1,5 +1,7 @@
 # Policy Codex, phase 3: onboarding and comprehension
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 Date: 2026-09-13. Status: implemented.
 
 ## Goal

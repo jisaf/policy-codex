@@ -1,5 +1,7 @@
 # Unified UI spec (proposal, awaiting product-owner approval)
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 Status: approved by the product owner on 2026-11-22 (all four decisions, with one change: the graph stays for policy staff, rebuilt as the Map; see below). Sources: docs/reviews/compare-eval-1.md (Dana, Priya) and compare-eval-2.md (Marcus, Rosa), the phase 13 retests, and the two blind prototypes (prototypes/blind-a, prototypes/blind-b).
 
 ## Why

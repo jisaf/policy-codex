@@ -1,5 +1,7 @@
 # Design system
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 The unified UI (docs/design-unified-ui.md) is seven places built by six tracks. This page is how they stay one product: the shared components and tokens, and the rules every page follows. A new page, or a change to one, reads this first.
 
 ## Rules every page follows

@@ -288,8 +288,8 @@ changed after it was signed.
 
 Where the fingerprint comes from:
 
-- The app writes it when a role signs (`signItem` and `signatureEntries` in
-  `src/ui/approvals.ts`, `src/ui/inbox.ts`; the item page's sign-off panel and
+- The original app (archived in archive/main-app/) wrote it when a role signed
+  (`signItem` and `signatureEntries` in `src/ui/approvals.ts`, `src/ui/inbox.ts`; the item page's sign-off panel and
   the Desk's sign-off list both stage through them). It is computed against
   the ledger with the tray's staged edits applied, so a signature on a staged
   edit covers the edit. Validating the tray (`src/changes/validate.ts`)

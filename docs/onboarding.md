@@ -1,5 +1,7 @@
 # Help
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 Short notes for the app's "?" panel, one section per view. Headings are keyed
 by the view they answer for; the panel shows only the section that matches
 where the reader currently is.
