@@ -116,6 +116,10 @@ record_fields:
     type: money
     default: 0
     meaning: The part of the pay set aside under a Plan to Achieve Self-Support the Social Security Administration approved, and used for the plan.
+  recouped:
+    type: money
+    default: 0
+    meaning: "The part of the record's amount (for a recurring pay, of the month's amount, not converted) that the same payer withheld to recover an advance on wages it paid earlier or an earlier overpayment of pay, so the person did not receive it; it is part of the amount, which stays the gross. An exception the person shows: absent, nothing was withheld for a repayment (coverage pass 6 for SNAP, C6-4: 10 CCR 2506-1 4.403.A.3, \"When an advance on wages is subsequently repaid from current wages, only the wages received is considered as income. The amount of repayment is disregarded\"; 4.405.D.1, monies withheld from earned income \"to repay a prior overpayment received from that income source\", \"Only the net income received from these sources shall be considered countable income\"). It has the receipts' meaning of the same field (CO-5000). SNAP reads it (snap_person_counted_wages CO-5113, snap_self_employment_gross_receipts CO-5114, snap_farm_gross_receipts CO-5115, snap_leave_pay_after_termination CO-6600); CCCAP and LEAP count gross earnings (8 CCR 1403-1 3.111.I.1; 9 CCR 2503-7 3.752.22.B) and name no such disregard in the text on file, so they do not read it. The cash programs' and Medicaid's readers count the gross amount, as before; whether their rules take the field is the integration owner's decision for those programs (design 4.3; docs/reviews/coverage6-snap.md, C6-4)."
   education_deduction:
     type: money
     default: 0

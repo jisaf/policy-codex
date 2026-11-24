@@ -24819,3 +24819,69 @@ Document: D-80
 > month period. The twelve-month period can either be the previous tax year
 > (January to December) or the most recent twelve-months prior to the application
 > date.
+
+### S4970. Federal: the income and expenses of members whose income is prorated: all but the ineligible members' share is counted
+
+Document: D-15
+
+7 CFR 273.11(c)(2)(ii)-(iii) (coverage pass 6 for SNAP, C6-1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (ii) *Income.* A pro rata share of the income of such ineligible members shall be counted as income to the remaining members. This pro rata share is calculated by first subtracting the allowable exclusions from the ineligible member's income and dividing the income evenly among the household members, including the ineligible members. All but the ineligible members' share is counted as income for the remaining household members.
+>
+> (iii) *Deductible expenses.* The 20 percent earned income deduction shall apply to the prorated income earned by such ineligible members which is attributed to their households. That portion of the households' allowable child support payment, shelter and dependent care expenses which are either paid by or billed to the ineligible members shall be divided evenly among the households' members including the ineligible members. All but the ineligible members' share is counted as a deductible child support payment, shelter or dependent care expense for the remaining household members.
+
+### S4971. Federal: an ineligible alien's income and deductible expenses counted in full or all but a pro rata share, under paragraph (c)(1) or (c)(2)
+
+Document: D-15
+
+7 CFR 273.11(c)(3)(i) (coverage pass 6 for SNAP, C6-1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (3) *Ineligible alien.* The State agency must determine the eligibility and benefit level of any remaining household members of a household containing an ineligible alien as follows:
+>
+> (i) The State agency must count all or, at the discretion of the State agency, all but a pro rata share, of the ineligible alien's income and deductible expenses and all of the ineligible alien's resources in accordance with paragraphs (c)(1) or (c)(2) of this section. In exercising its discretion under this paragraph (c)(3)(i), the State agency may count all of the alien's income for purposes of applying the gross income test for eligibility purposes while only counting all but a pro rata share to apply the net income test and determine level of benefits. This paragraph (c)(3)(i) does not apply to an alien:
+
+### S4972. Federal: households that are never categorically eligible: an IPV member, a work-sanctioned head of household, a drug felon, fleeing felon, probation or parole violator or 273.11(s) member
+
+Document: D-95
+
+7 CFR 273.2(j)(2)(vii)-(viii) (eCFR current as of 2026-11-19; coverage pass 6 for SNAP, C6-2). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (vii) Under no circumstances shall any household be considered categorically eligible if:
+>
+> (A) Any member of that household is disqualified for an intentional Program violation in accordance with § 273.16 or for failure to comply with monthly reporting requirements in accordance with § 273.21;
+>
+> (B) The entire household is disqualified because one or more of its members failed to comply with workfare in accordance with § 273.22; or
+>
+> (C) The head of the household is disqualified for failure to comply with the work requirements in accordance with § 273.7.
+>
+> (D) Any member of that household is ineligible under § 273.11(m) by virtue of a conviction for a drug-related felony, under § 273.11(n) for being a fleeing felon or a probation or parole violator, or under § 273.11(s) for having a conviction of certain crimes and not being in compliance with the sentence.
+>
+> (viii) These households are subject to all SNAP eligibility and benefits provisions (including the provisions of § 273.11(c)) and cannot be reinstated in the Program on the basis of categorical eligibility provisions.
+
+### S4973. Federal: not voluntarily quitting a job without good cause is one of the SNAP work requirements
+
+Document: D-11
+
+7 CFR 273.7(a)(1), (a)(1)(vii) (coverage pass 6 for SNAP, C6-2). https://www.ecfr.gov/current/title-7/section-273.7
+
+> (a) *Work requirements.* (1) As a condition of eligibility for SNAP benefits, each household member not exempt under paragraph (b)(1) of this section must comply with the following SNAP work requirements:
+>
+> (vii) Do not voluntarily and without good cause quit a job of 30 or more hours a week or reduce work effort to less than 30 hours a week, in accordance with paragraph (j) of this section.
+
+### S4974. Federal: persons not included as members of an otherwise categorically eligible household: ineligible aliens, ineligible students, institutionalized persons, work-requirement ineligibles
+
+Document: D-95
+
+7 CFR 273.2(j)(2)(ix) (eCFR current as of 2026-11-19; coverage pass 6 for SNAP, C6-5). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (ix) No person shall be included as a member in any household which is otherwise categorically eligible if that person is:
+>
+> (A) An ineligible alien as defined in § 273.4;
+>
+> (B) Ineligible under the student provisions in § 273.5;
+>
+> (C) An SSI recipient in a cash-out State as defined in § 273.20; or
+>
+> (D) Institutionalized in a nonexempt facility as defined in § 273.1(e).
+>
+> (E) Ineligible because of failure to comply with a work requirement of § 273.7.
