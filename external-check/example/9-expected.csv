@@ -1,0 +1,16 @@
+case,person,program,result,month,expected answer,source of the expected answer,notes
+EX-1,Person 1,SNAP,SNAP: allotment,2026-10,25,policy expert,
+EX-1,Person 1,SNAP,SNAP: eligibility status,2026-10,eligible,policy expert,
+EX-1,Person 1,SNAP,SNAP: ABAWD (able-bodied adult without dependents) time limit status,2026-10,not subject,policy expert,
+EX-1,Person 2,SNAP,SNAP: allotment,2026-10,25,policy expert,
+EX-1,Person 2,SNAP,SNAP: eligibility status,2026-10,eligible,policy expert,
+EX-1,Person 2,SNAP,SNAP: ABAWD (able-bodied adult without dependents) time limit status,2026-10,not subject,policy expert,
+EX-2,Person 1,Colorado Works,Colorado Works: eligibility status,2026-10,eligible,worker determination,
+EX-2,Person 1,Colorado Works,Colorado Works: basic cash assistance grant amount,2026-10,320,worker determination,
+EX-2,Person 2,Colorado Works,Colorado Works: eligibility status,2026-10,eligible,worker determination,
+EX-2,Person 2,Colorado Works,Colorado Works: basic cash assistance grant amount,2026-10,320,worker determination,
+EX-3,Person 1,Adult Financial,Adult Financial: category,2026-10,none,CBMS result,
+EX-4,Person 1,Health First Colorado (Medicaid),Medicaid: LTC eligibility status,2026-10,eligible institutional,policy expert,
+EX-4,Person 1,Health First Colorado (Medicaid),Medicaid: LTC eligibility status,2026-11,eligible institutional,policy expert,"20 U.S.C. 1087uu: Federal Work-Study pay is not taken into account, so November's income is the $2,900 of Social Security."
+EX-4,Person 1,Health First Colorado (Medicaid),Medicaid: patient payment,2026-10,2789.64,policy expert,
+EX-4,Person 1,Health First Colorado (Medicaid),Medicaid: patient payment,2026-11,2789.64,policy expert,"20 U.S.C. 1087uu: Federal Work-Study pay is not taken into account, so November's income is the $2,900 of Social Security."

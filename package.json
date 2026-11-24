@@ -29,7 +29,9 @@
     "records:harness": "vite-node scripts/records/harness.ts",
     "records:translate": "vite-node scripts/records/apply-earnings.ts",
     "records:translate-holdings": "vite-node scripts/records/apply-holdings.ts",
-    "external:template": "vite-node scripts/external/template.ts"
+    "external:template": "vite-node scripts/external/template.ts",
+    "external:import": "vite-node scripts/external/import.ts",
+    "external:check": "vite-node scripts/external/check.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "1.1.4",
