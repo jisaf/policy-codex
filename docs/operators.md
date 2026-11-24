@@ -171,7 +171,12 @@ from the eligibility date (9 CCR 2503-5 3.542.B); Colorado Works' dependent
 child of a month is `cw_is_dependent_child_in_month` (the first day), and the
 per-person `cw_is_dependent_child`, read for the unit's composition, is true
 when the person is one in some month from the application month through the
-determination month. Which day of the month is OQ-951.
+determination month. Each month's unit is built from the members of that
+month (`cw_assistance_unit_members_in_month`, coverage pass 6 CA6-4: born by
+the month's last day, alive on its first, a dependent child of the month or a
+parent, caretaker or expectant parent in it), and the minor-parent rules, the
+adult member and Adult Financial's AND-CS child and spouse's children take the
+age on the month's first day. Which day of the month is OQ-951.
 
 SNAP reads its ages the same way (coverage pass 4 S4-11; 10 CCR 2506-1
 4.402.1.A, "circumstances during the issuance month"): its household
