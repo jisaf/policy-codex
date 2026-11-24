@@ -11,7 +11,7 @@ derived: [all, is_inmate_of_public_institution, ["<=", institution_entry_date, [
 sources: [S3361, S3351, S217]
 open: [OQ-1425]
 implemented: engine
-tags: [ma, magi, institution]
+tags: [ma, magi]
 nearest: [CO-1105, CO-661, CO-5200]
 rationale: "Pattern sweep, MAGI (PS-05): ma_magi_eligibility_status read the person-month CO-1105, whose setting facts are the determination date's, so every month of a retroactive request by a person jailed after it was incarceration_limited. JAILED (stored household CO-1004): jailed on 2026-10-05, applied 2026-11-02 with a retroactive request: August, September and October were not inmate months (October's first four days outside), November is. The SSI method already reads institution status against institution_entry_date per month (ma_excluded_from_ssi_household, CO-661; OQ-952)."
 tests:
