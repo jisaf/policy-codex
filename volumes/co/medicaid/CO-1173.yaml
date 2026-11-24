@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: "Whether the person is in the population 10 CCR 2505-10 § 8.100.3.G.1.g.ix.1 (Cover All Coloradans) protects from exclusion on the basis of immigration status - under 19 or turning 19 this month, pregnant, or within 12 months of the beginning of the postpartum period. The rule's protection reaches the categories ix.1.a-b list (ma_meets_status_for_cover_all_coloradans_categories, CO-1174); for a child under 19 and a pregnant person, C.R.S. 25.5-2-104(2) and 25.5-5-201(6)(a) reach every category (ma_magi_is_fully_eligible, CO-562; ma_is_covered_under_cover_all_coloradans, CO-1175; OQ-214)."
 precision: "The postpartum extension is read as 12 months after the month the person's most recent pregnancy ended (ma_postpartum_coverage_end_month, CO-560), through the last day of that month; a person with no known pregnancy_end_date is treated as not postpartum (known false), not unknown, so this term does not turn the item unknown for a person for whom postpartum status is simply inapplicable or not yet stated. The age term is ma_is_under_child_age_or_turns_nineteen_this_month (CO-564), since ix.1 states the same month-of-19th-birthday extension as § 8.100.4.G.2.a."
-derived: [any, [at, ma_is_under_child_age_or_turns_nineteen_this_month, [det_month]], is_pregnant, [all, [not, [unknown, pregnancy_end_date]], [<, [det_date], [first_day, [month_after, ma_postpartum_coverage_end_month]]]]]
+derived: [any, [at, ma_is_under_child_age_or_turns_nineteen_this_month, [det_month]], is_pregnant, [all, [not, [unknown, most_recent_pregnancy_end_date]], [<, [det_date], [first_day, [month_after, ma_postpartum_coverage_end_month]]]]]
 sources: [S607, S606]
 open: [OQ-214]
 implemented: engine

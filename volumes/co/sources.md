@@ -24819,3 +24819,11 @@ Document: D-80
 > month period. The twelve-month period can either be the previous tax year
 > (January to December) or the most recent twelve-months prior to the application
 > date.
+
+### S5060. Continued eligibility after the pregnancy for a woman who, while pregnant, was eligible for, applied for and received medical assistance
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(5) (Legal Information Institute; coverage pass 6, C6-01). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (5) A woman who, while pregnant, is eligible for, has applied for, and has received medical assistance under the State plan, shall continue to be eligible under the plan, as though she were pregnant, for all pregnancy-related and postpartum medical assistance under the plan, through the end of the month in which the 60-day period (beginning on the last day of her pregnancy) ends.
