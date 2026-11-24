@@ -46,6 +46,16 @@ Branch from `ccr-9d19bf4c-wmnwcl` at `563a028`, 2026-11-24. Three known wrong an
 - Stored households: none of the 4,283 earlier expectations moves; CO-850 to CO-852 are new.
 - Harness baselines measured from `563a028` (`--base 563a028`): the earnings and holdings records harnesses find 0 values that differ on every stored and generated household (the generated households state no award naming a person of the case, no second holder of an agreement or plot for one member, and no two transfers in a month); the receipts harness: see Gate.
 
+**Harness statements.** CO-851's agreements state their paid-up value alone (no `amount_owed`, as CO-790's), since the holdings harness's MH-4 relation (value v owed d against v - d owed 0) holds for the rows that count equity and a funeral agreement counts its paid-up value (SR-12); CO-852 states its resources as holdings alone (two transfers in one month have no statement in the scalar transfer facts, one per month). The receipts harness's MA-1 split now halves `for_dependent` with the amount, as it halves the set-asides (scripts/receipts/metamorphic.ts, EARMARKS): copied whole onto both halves, the part was the dependent's twice, the violation the field sweep left on CO-802 and that CO-850 repeated. No allowed-difference logic or entry changed.
+
 ## Gate
 
-To be filled at the head of the round.
+At the head of the round (`82fe129` and the results commit after it):
+
+- `node scripts/sync-manifest.mjs co`: no change after the round's items (snap: 247).
+- `npm run typecheck`: clean.
+- `npx vitest run`: 1,161/1,161 in 103 files (test/engine/cross-list.test.ts new; UI pins re-pinned with a comment: OQ-1254 and OQ-1348 resolved, CO-273's reach + CO-852, the long-rule count 106 to 117).
+- `npm run receipts:harness -- --all-programs`: stored 1,862 values differ, all allowed, 0 unexplained; generated 20,742, all allowed, 0 unexplained. The per-value differences are identical, line for line, to the same harness run on `563a028` (the round changes no value it compares). Metamorphic: MA-1 0 violations (2 before the EARMARKS fix: CO-802 and CO-850); 1 violation left, F4 (Colorado Works and a pension's PASS set-aside), present since the field sweep round and recorded there: the family asserts an equivalence 9 CCR 2503-6 3.605.4.B.15 denies (FS-CW-3); the family's statement is the harness owner's to change.
+- `npm run records:harness -- --list earnings --all-programs`: OK, 0 unexplained (stored 2,177 differ, generated 5,469, all allowed); with `--base 563a028`, 0 values differ.
+- `npm run records:harness -- --list holdings --all-programs`: OK, 0 unexplained, 0 metamorphic violations (stored 2,550, generated 1,873, all allowed; 221 households state holdings, 0 not the translation); with `--base 563a028`, 0 values differ.
+- `CHECK_BASE=origin/main npm run check`: OK. Rule tests 5,680/5,680; household expectations 4,294/4,294; conformance self-check 10,134/10,134; change impact 432 decisions changed, 33 flags, 33 dispositioned, 0 open (18 re-keyed in volumes/co/changes/2026-11-24-cross-list.yaml with their standing reasons). The 206 "stale disposition" lines are warnings on the earlier change records' fingerprints, which this round's upstream changes moved; each is re-keyed in this round's record.
