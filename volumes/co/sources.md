@@ -24991,3 +24991,23 @@ HHS, "Annual Update of the HHS Poverty Guidelines," 89 FR 2961 (Jan. 17, 2024) (
 > 8.................................................... 52,720
 >
 > For families/households with more than 8 persons, add $5,380 for each additional person.
+
+### S5090. SNAP: the heating and cooling standard for energy assistance received in the current month or the immediately preceding 12 months
+
+Document: D-13
+
+7 CFR 273.9(d)(6)(iii)(D)(3), (D)(3)(iii)-(iv) (three-pattern sweep T-10). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (*3*) Households that receive a payment or on behalf of which a payment was made under the Low Income Home Energy Assistance Act of 1981 (LIHEAA) or other similar energy assistance program, if in the current month or in the immediately preceding 12 months and such payment was greater than $20 annually.
+>
+> (*iii*) The State agency shall document the date and receipt of a payment made under LIHEAA or other similar energy assistance program to ensure the payment was received in the current month or the immediately preceding 12 months and exceeds $20 annually.
+>
+> (*iv*) State agencies shall not consider anticipated receipt of a payment to be an actual payment received under the LIHEAA or other similar energy assistance program when determining a household's eligibility for the HCSUA. However, for purposes of this sub clause, a State agency may consider a payment under the LIHEAA or other similar energy assistance program to be received by the household, or on behalf of the household, if the household is scheduled to receive the payment in the current month.
+
+### S5091. SNAP: eligibility for the month of application on the household's circumstances for the entire month
+
+Document: D-14
+
+7 CFR 273.10(a)(1)(i) (three-pattern sweep). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (a) *Month of application*—(1) *Determination of eligibility and benefit levels.* (i) A household's eligibility shall be determined for the month of application by considering the household's circumstances for the entire month of application.

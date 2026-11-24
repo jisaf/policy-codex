@@ -1,0 +1,20 @@
+id: CO-7450
+name: "SNAP: has held qualified status for the five-year waiting period, in the month"
+identifier: snap_has_held_qualified_status_five_years_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether, in the month evaluated, the person has resided in the United States in a qualified non-citizen status for at least qualified_non_citizen_waiting_period_years (five) years beginning on the date of entry into that status (qualified_status_date): 8 U.S.C. 1612(a)(2)(L), the SNAP exception after five years, and 1613(a), the five-year bar, read for the issuance month, since SNAP determines each month on the circumstances anticipated during it (10 CCR 2506-1 4.402.1.A)."
+precision: "The five years are reached on the anniversary of qualified_status_date; a month counts when they are reached on or before its last day, since a status that makes the person eligible is met for the month if it is met on any day of it (the day SNAP reads its ages on, OQ-1262, and its dated changes on, OQ-1405; three-pattern sweep, docs/reviews/pattern-sweep-snap-ce.md, T-1). The shared has_held_qualified_status_five_years (CO-508) counts to the determination date, one value for every month, which other programs read."
+derived: ["<=", qualified_non_citizen_waiting_period_years, [years_between, qualified_status_date, [days_after, -1, [first_day, [month_after, [month]]]]]]
+sources: [S21, S22, S4734]
+open: [OQ-1262, OQ-1405]
+implemented: engine
+tags: [immigration, snap]
+rationale: "Three-pattern sweep T-1: SNAP's additional condition (CO-307) and the two verification items that turn on it (CO-3736, CO-3738) are per month, but read the five years on the determination date (CO-508), so a qualified non-citizen whose fifth anniversary falls in a later month of the certification stayed barred in that month. The probe household is CO-940."
+tests:
+  - {id: CO-7450-T1, title: "Status from 2021-12-10: five years reached on 2026-12-10, so not in November", month: "2026-11", as_of: "2026-10-15", given: {qualified_status_date: "2021-12-10"}, expect: false}
+  - {id: CO-7450-T2, title: "The same person in December, the month of the fifth anniversary", month: "2026-12", as_of: "2026-10-15", given: {qualified_status_date: "2021-12-10"}, expect: true}
+  - {id: CO-7450-T3, title: "Anniversary on the last day of the month counts for the month", month: "2026-12", as_of: "2026-10-15", given: {qualified_status_date: "2021-12-31"}, expect: true}
+  - {id: CO-7450-T4, title: "Status date not stated: unknown", month: "2026-12", as_of: "2026-10-15", given: {}, expect: unknown}

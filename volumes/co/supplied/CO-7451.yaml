@@ -1,0 +1,14 @@
+id: CO-7451
+name: Month of the most recent energy assistance payment
+identifier: energy_assistance_last_payment_month
+kind: supplied
+type: month
+scope: case
+program: All
+meaning: "The month in which the household most recently received, or had made on its behalf, a Low-Income Energy Assistance Program (LEAP), Energy Electronic Benefit Transfer (E-EBT) or other energy assistance payment, on or before the determination date: a fact of the payment's record, read by a rule that counts such a payment for a period after it."
+precision: "One value for the case (convention rule 18). Stated when the household received such a payment within the twelve months before the determination (received_energy_assistance_within_twelve_months, CO-1240, true); required where read. A payment only scheduled is not received."
+supplied_by: LEAP and E-EBT payment records in the statewide system.
+sources: [S5090, S743]
+implemented: engine
+tags: [income, snap]
+rationale: "Three-pattern sweep T-10 (docs/reviews/pattern-sweep-snap-ce.md): SNAP gives the heating and cooling allowance for energy assistance received \"in the current month or in the immediately preceding 12 months\" (7 CFR 273.9(d)(6)(iii)(D)(3), S5090), a test of each month, but the case stated only whether a payment came within the twelve months before the determination (CO-1240), so a payment that fell out of the twelve months during the certification still gave the allowance."
