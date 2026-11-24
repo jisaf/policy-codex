@@ -30740,6 +30740,7 @@
         days_out_of_state_in_calendar_year: 0
         ma_institutionalized_spouse_refuses_income_allowance: false
         dwelling_id: nursing_facility
+        ma_lives_apart_due_to_separation_or_pending_divorce: false  # pattern sweep, MAGI (PS-06): required for a parent living elsewhere (E.4); p1 lives in a nursing facility, not apart on separation (the story)
         residence_setting_type: nursing_facility
         residence_setting_provides_majority_of_meals: true
         has_qualifying_military_service: false
@@ -85042,9 +85043,6 @@
         ma_is_requesting_coverage: false
       month_defaults:
         donated_work_hours_per_week: 0
-        wages_gross: 0
-        self_employment_net_earnings_for_tax: 0
-        self_employment_gross_receipts: 0
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         foreign_earned_income_excluded: 0
