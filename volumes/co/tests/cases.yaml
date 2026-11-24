@@ -4760,6 +4760,7 @@
       # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
       # p3 as a tax dependent and is her caretaker relative.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 22200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1850
         days_out_of_state_in_calendar_year: 0
@@ -4798,6 +4799,7 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 50400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4200
         days_out_of_state_in_calendar_year: 0
@@ -4849,6 +4851,7 @@
       # zeroed out of her own household total. Stating her as required to file sidesteps that defect
       # here (its top-level condition is "not required to file"); the case comment below documents it.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
@@ -6124,6 +6127,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 62400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 5200
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -6183,6 +6187,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -6243,6 +6248,7 @@
         has_emergency_medical_condition: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was is_enrolled_in_pace false)
@@ -6313,6 +6319,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         ma_needy_young_person_basis: none  # C6-05(b): none of the H.1 situations (the story's)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -6740,6 +6747,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -6888,6 +6896,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -7153,6 +7162,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -7313,6 +7323,7 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -7720,6 +7731,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 5400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 450
         days_out_of_state_in_calendar_year: 0
@@ -7775,6 +7787,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 3600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 300
         days_out_of_state_in_calendar_year: 0
@@ -7829,6 +7842,7 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 16800  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1400
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -7884,6 +7898,7 @@
         hours_worked: 160
     p4:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false)
@@ -8278,6 +8293,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8336,6 +8352,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8392,6 +8409,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -8445,6 +8463,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         days_out_of_state_in_calendar_year: 0
@@ -8544,6 +8563,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8602,6 +8622,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8658,6 +8679,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -8711,6 +8733,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         days_out_of_state_in_calendar_year: 0
@@ -8822,6 +8845,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         previous_year_annual_income: 0  # C6-09: her 2026 income, none (October 2026 is a month of the previous year at this 2027 determination)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
@@ -8882,6 +8906,7 @@
         "2026-12": {public_health_coverage_enrolled: chp}  # dual-entry 1.10: enrollment in the birth month
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         previous_year_annual_income: 88200  # C6-09: his 2026 wages as his records state them, 9 x 7,500 + 5,700 + 2 x 7,500 = 88,200 (88,200 / 32,150 = 274.3%, not below 100%: C.5 does not apply, the answers unchanged)
         expected_annual_income: 90000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 7500
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8961,6 +8986,7 @@
         "2026-10": {"wages_gross": 5700}
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         ma_needy_young_person_basis: none  # C6-05(b): none of the H.1 situations (the story's)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9011,6 +9037,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         ma_needy_young_person_basis: none  # C6-05(b): none of the H.1 situations (the story's)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9098,6 +9125,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 31200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9161,6 +9189,7 @@
         "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9212,6 +9241,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
@@ -12028,6 +12058,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 1092000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 91000
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12088,6 +12119,7 @@
       months:
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false)
@@ -12131,6 +12163,7 @@
         pretax_deductions: 0
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 18000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1500
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12742,6 +12775,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 32400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2700
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12810,6 +12844,7 @@
           public_health_coverage_enrolled: none
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
@@ -14198,6 +14233,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 55200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14294,6 +14330,7 @@
           wages_gross: 4600
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         ma_needy_young_person_basis: none  # C6-05(b): none of the H.1 situations (the story's)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14395,6 +14432,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 55200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14489,6 +14527,7 @@
           wages_gross: 4600
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         ma_needy_young_person_basis: none  # C6-05(b): none of the H.1 situations (the story's)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14716,6 +14755,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         expected_annual_income: 60600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 5050
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14777,6 +14817,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -16268,6 +16309,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         expected_annual_income: 67200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 5600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -16330,6 +16372,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -16422,6 +16465,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -16481,6 +16525,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -16657,6 +16702,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 36000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 3000
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -16726,6 +16772,7 @@
           ma_prior_enrollment_category: parent_caretaker
     p2:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -16777,6 +16824,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -45471,6 +45519,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -45528,6 +45577,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -45597,6 +45647,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -45654,6 +45705,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -46198,6 +46250,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -46258,6 +46311,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -46332,6 +46386,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -46392,6 +46447,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -56819,6 +56875,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -56878,6 +56935,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -58523,6 +58581,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -58605,6 +58664,7 @@
         "2026-11": {infrequent_or_irregular_earned_income_received: 30}
     p3:
       facts:
+        dwelling_id: h1  # C6-10: the story's one home (dwelling_id required where MAGI reads living together)
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
