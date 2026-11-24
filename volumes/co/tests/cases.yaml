@@ -7968,6 +7968,7 @@
         date_of_birth: "1991-05-10"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2027-02-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_tax_filer: true
         is_required_to_file_tax_return: true
         is_pregnant: false
@@ -8026,6 +8027,7 @@
         date_of_birth: "1986-09-20"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2027-02-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_tax_filer: true
         is_required_to_file_tax_return: true
         is_pregnant: false
@@ -8088,6 +8090,7 @@
         date_of_birth: "1996-11-02"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2027-02-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_tax_filer: true
         is_required_to_file_tax_return: true
         is_pregnant: false
@@ -8138,6 +8141,7 @@
         date_of_birth: "2021-08-14"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2027-02-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_tax_filer: false
         is_required_to_file_tax_return: false
         is_pregnant: false
@@ -9272,6 +9276,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-12-03"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -13231,6 +13236,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-06-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 1  # coverage pass 5, C5-02: the number expected in the pregnancy that ended with p3's birth (CO-083); June and July count her as herself plus p3 to come, size 2 as the comment above reads it
         qualifying_quarters: 0
@@ -13299,6 +13305,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-10"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -14760,6 +14767,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-05-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: true
         expected_number_of_children: 1
         qualifying_quarters: 0
@@ -14858,6 +14866,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-05-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -14967,6 +14976,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-06-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: true
         expected_number_of_children: 1
         qualifying_quarters: 0
@@ -15063,6 +15073,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-06-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -16784,6 +16795,7 @@
         date_of_birth: "1954-04-10"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_fleeing_felon: false
         marital_status: widowed
         receives_ssi: false
@@ -16831,6 +16843,7 @@
         date_of_birth: "2017-05-01"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_fleeing_felon: false
         marital_status: single
         receives_ssi: true
@@ -17752,6 +17765,7 @@
         immigration_status: us_citizen
         ssn_furnished_or_application_shown: true
         state_of_residence: CO
+        state_of_residence_start_date: "2027-04-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         nighttime_residence_type: fixed_regular_adequate
         leap_is_in_another_approved_household: false
@@ -25989,6 +26003,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-10-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -30633,6 +30648,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         marital_status: single
         is_pregnant: false
         receives_ssi: false
@@ -30679,6 +30695,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         marital_status: single
         is_pregnant: false
         receives_ssi: false
@@ -45061,6 +45078,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -45129,6 +45147,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -47587,6 +47606,7 @@
         date_of_birth: "1980-03-01"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: true
@@ -47736,6 +47756,7 @@
         date_of_birth: "2006-05-01"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-01-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: true
@@ -59841,6 +59862,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         education_program_type: none
         is_tax_filer: true
@@ -59990,6 +60012,7 @@
         date_of_birth: '1950-03-01'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-11-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -60094,6 +60117,7 @@
         date_of_birth: '1961-10-20'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -60249,6 +60273,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         education_program_type: none
         is_tax_filer: true
@@ -64611,6 +64636,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -64685,6 +64711,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -70000,6 +70027,7 @@
         date_of_birth: '1950-03-01'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -70085,6 +70113,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -70163,6 +70192,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -70447,6 +70477,7 @@
         date_of_birth: '2004-03-15'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-01-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: true
@@ -70487,6 +70518,7 @@
         date_of_birth: '1996-05-01'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-01-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: true
@@ -70650,6 +70682,7 @@
         date_of_birth: '1950-03-01'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -70722,6 +70755,7 @@
         date_of_birth: '1950-03-01'
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -76816,6 +76850,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 1
         qualifying_quarters: 0
@@ -76879,6 +76914,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-10-15"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -76969,6 +77005,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 1
         qualifying_quarters: 0
@@ -77052,6 +77089,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: true
         expected_number_of_children: 1
         qualifying_quarters: 0
@@ -78941,6 +78979,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -79056,6 +79095,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -79173,6 +79213,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -79271,6 +79312,7 @@
         date_of_birth: "1950-03-01"
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         residence_setting_type: private_dwelling
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -84895,6 +84937,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 8
@@ -85003,6 +85046,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -85108,6 +85152,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -85216,6 +85261,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -85293,6 +85339,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -85370,6 +85417,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -85480,6 +85528,7 @@
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: "CO"
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         expected_number_of_children: 0
         qualifying_quarters: 0
@@ -88595,6 +88644,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -88658,6 +88708,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-09-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -88870,6 +88921,7 @@
         sex: male
         immigration_status: us_citizen
         state_of_residence: CO
+        state_of_residence_start_date: "2026-08-01"  # MS-1 (Medicaid status by month): stated (decision 4); the story has this person living in Colorado in every month it covers: the first day of the earliest, or the birth
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: true
