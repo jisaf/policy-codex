@@ -25,7 +25,10 @@
     "boundaries": "vite-node scripts/boundaries.ts",
     "e2e": "playwright test",
     "receipts:harness": "vite-node scripts/receipts/harness.ts",
-    "records:harness": "vite-node scripts/records/harness.ts"
+    "records:harness": "vite-node scripts/records/harness.ts",
+    "external:template": "vite-node scripts/external/template.ts",
+    "external:import": "vite-node scripts/external/import.ts",
+    "external:check": "vite-node scripts/external/check.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "1.1.4",

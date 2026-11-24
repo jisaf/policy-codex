@@ -25,3 +25,10 @@ vite.config.ts.timestamp-*
 
 # blind-b generated data (scripts/build-data.ts)
 prototypes/blind-b/public/
+
+# external sample check (docs/external-check.md): case files received from
+# county or State staff stay on the machine that runs the check. Only the
+# blank template and the made-up example are committed.
+external-check/*
+!external-check/template/
+!external-check/example/

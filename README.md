@@ -55,6 +55,8 @@ docs/               conventions, operators, governance, conformance, the design
 handoff/            the engineer handoff, one file per volume (npm run handoff)
 conformance/        per-volume suite, results and JSON export in conformance/<volume>/
                     (gitignored, regenerate on demand; known-failures.json is tracked)
+external-check/     the external sample check's intake template and worked example
+                    (cases received from staff go under it and are gitignored)
 ```
 
 Every item is one file. Add an item by adding a file and listing it in `codex.json`; the app does the same when you propose from the browser.
@@ -79,6 +81,9 @@ npm run export     # writes conformance/<volume>/ledger.json, the items as JSON
 npm run governance # governance findings, item by item
 npm run fingerprint -- --item CO-n
     # the approval fingerprint a signature records; --signed checks every signed item
+npm run external:check -- <folder>
+    # runs county or State sample cases (a filled external-check/template) through the
+    # engine and writes a comparison report; see docs/external-check.md
 npm run e2e        # Playwright tests against a local build (vite preview)
 npm run receipts:harness
 npm run records:harness -- --list earnings|holdings
