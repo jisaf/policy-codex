@@ -4832,6 +4832,7 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: true
+        ma_foster_care_was_in_another_state: false  # pattern sweep, MAGI (PS-06): required where read; Marcus was in Colorado's extended foster care (above)
         mother_coverage_at_birth: none
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
