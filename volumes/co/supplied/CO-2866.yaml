@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person's own service: on active duty (other than active duty for training) in the U.S. Armed Forces, or a veteran honorably discharged not on account of alienage who fulfills the minimum active-duty service requirements (8 U.S.C. 1612(b)(2)(C), 1613(b)(2))."
+precision: "If not stated, SNAP reads a spouse's or parent's qualifying military service as false (snap_has_military_connection, CO-4260): the veteran exception (S1150) applies to a person whose own, spouse's or parent's service is shown (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: DD-214 or military record; the application.
 sources: [S1150, S16]
 tags: [immigration]

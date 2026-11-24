@@ -1,0 +1,184 @@
+# Verdicts of the three-pattern sweep for SNAP, CCCAP, LEAP and SUN Bucks (docs/reviews/pattern-sweep-snap-ce.md),
+# over the candidates scripts/audit/pattern-sweep.ts lists at 414d239:
+#   npx vite-node scripts/audit/pattern-sweep.ts -- --root <414d239 export> --verdicts scripts/audit/pattern-sweep-snap-ce-verdicts.yaml
+# Each candidate takes the first rule it matches; the run lists any candidate no rule matches (none).
+# T-n and D-n are the fixes of the review's section 3; "right" verdicts cite the text that fixes the reading.
+
+# ---------------- P1: timing ----------------
+- id: T-1
+  pattern: P1
+  items: [CO-307, CO-3736, CO-3738]
+  read_re: "^has_held_qualified_status_five_years$"
+  verdict: "Fixed (T-1): the five years in qualified status read in the month (CO-7450; 8 U.S.C. 1612(a)(2)(L), S22; 4.402.1.A, S4734)."
+- id: T-2
+  pattern: P1
+  items: [CO-2335, CO-2337]
+  read_re: "det_month|snap_battered_non_citizen_sponsor_exemption_applies"
+  verdict: "Fixed (T-2): the battered non-citizen's twelve months counted to the month evaluated (4.305.2.E.5, S1619)."
+- id: T-3
+  pattern: P1
+  items: [CO-2337]
+  read_re: "sponsor_has_died"
+  verdict: "Fixed (T-3): a sponsor's death read in the month (4.305.2.E.7, S1619; is_deceased per month)."
+- id: T-4
+  pattern: P1
+  items: [CO-037, CO-380, CO-1375, CO-385]
+  read_re: "det_date|snap_is_homeless"
+  verdict: "Fixed (T-4): a stay in another's home counted to the first day of the month (7 CFR 271.2 (2)(iii), S1950; OQ-1405)."
+- id: T-5
+  pattern: P1
+  items: [CO-3701]
+  verdict: "Fixed (T-5): a sponsor's payment stream counted from its start_date through its end_date."
+- id: T-6
+  pattern: P1
+  read_re: "^snap_is_household_member$"
+  verdict: "Fixed (T-6): snap_is_household_member (CO-304) is per month, the entry into an institution read against the month (OQ-1405); every reader is per month."
+- id: T-6b
+  pattern: P1
+  items: [CO-304]
+  read_re: "det_date"
+  verdict: "Fixed (T-6): institution_entry_date compared with the first day of the month evaluated, not the determination date."
+- id: T-11
+  pattern: P1
+  items: [CO-405, CO-411]
+  read_re: "is_enrolled_higher_education_half_time|snap_is_enrolled_half_time_in_school_or_training"
+  verdict: "Fixed (T-11): enrollment ends with the expected completion of the program in the month (4.306.C, S5092; 7 CFR 273.7(b)(1)(viii), S125)."
+- id: R-SNAP-ver
+  pattern: P1
+  program: SNAP
+  item_re: "verification|requires_verification|_is_pending|pending_.*count|verification_status|_is_verified|expense_verification|noncitizen_documentation|is_ineligible_pending|snap_allowed_medical_expenses|snap_child_support_exclusion|snap_counted_shelter_cost_of_member|snap_counted_dependent_care_expense_of_member|snap_is_ineligible_member_prorated|snap_person_participation_status|snap_is_ineligible_member$|snap_meets_citizenship_requirement"
+  read_re: "verif|questionable|outdated|is_verified|document|det_date|det_month|due_date|postponement|pending|is_head_of_household|is_us_citizen_or_national|claims_lawful|declines_to_provide|ssa_quarters|snap_is_homeless|snap_is_disabled_member|electronic|acceptable|immigration_status|has_held|creditable|snap_identity|snap_meets_residency|residency_|is_ineligible_pending|snap_household_refused|household_composition|period_has_ended|receives_snap_in_another"
+  verdict: "Right: verification is requested, received or outstanding for the determination, a point in time (10 CCR 2506-1 verification at application and recertification, S800-S808); the status a document gives is the case's on the determination date, and a citizenship or non-citizen verification still pending is read for the determination month (CO-4251, CO-4154)."
+- id: R-SNAP-app
+  pattern: P1
+  program: SNAP
+  read_re: "^snap_application_date$|snap_benefits_begin_date|snap_voluntary_quit_date|snap_household_was_eligible_day_before_strike|snap_disqualifying_transfer|snap_resource_transfer_is_disqualifying|^det_month$|^det_date$"
+  verdict: "Right: the rule fixes the date: proration and the initial month from the application date (4.207.2.C), the voluntary quit's look-back before the application (4.310.8), the striker's day before the strike (273.1(e)), the resource transfer's three months before the application (4.408.2), and the ages and statuses of the determination month only where the item is about the determination itself (CO-314, CO-4251; docs/operators.md, Ages in a month)."
+- id: R-SNAP-age
+  pattern: P1
+  program: SNAP
+  read_re: "^date_of_birth$|^age$"
+  verdict: "Right: the age is taken in the month evaluated, on the day OQ-1262 records (years_between date_of_birth and the month's first or last day; coverage pass 4 S4-11)."
+- id: R-SNAP-status
+  pattern: P1
+  program: SNAP
+  read_re: "^receives_|immigration_status|declines_to_provide|is_fleeing_felon|probation_or_parole|is_disabled_member|is_unfit|persons_cared_for|under_parental_control|is_elementary_or_secondary|is_enrolled|is_head_of_household|sponsors|sponsor_spouses|is_sponsored|is_indigent|sponsor_is_org|non_citizens_sponsored|qualified_status_date|status_before_lpr|is_american_indian|hmong|is_pregnant|is_indian|is_married|is_surviving_spouse|was_disabled|snap_is_homeless|snap_self_employment_|snap_anticipated_capital_gains|snap_foster_care_payments_are_counted|snap_meets_residency|is_us_citizen|has_held|creditable|snap_incurs_heating|snap_non_heating|snap_requests_elderly|is_elderly_disabled_unable|snap_sponsor_deeming_household_size|lives_with|snap_battered|is_deceased|snap_household_refused|snap_is_indigent"
+  verdict: "Right as stated: an undated status (a benefit received, an immigration status, a disqualification found, a disability shown, a relationship, a self-employment's averaging over the year before the application) is the circumstance the household anticipates for every month of the certification (4.402.1.A, S4734); a status with a date the case states is read in the month (T-1 to T-11), and the receipt of another program's benefit is a supplied fact about that case (docs/conventions.md rule 11)."
+- id: R-SNAP-at
+  pattern: P1
+  program: SNAP
+  read_re: "^\\["
+  verdict: "Right: an `at` reads a month-scoped item for a named month: each month of a quarter, a year or a period (snap_abawd_countable_month for the ABAWD period, the child support history months, the capital gains months, the irregular-income quarter), or the determination month in an item about the determination (CO-314, CO-4154, CO-4251)."
+- id: R-SNAP-sum
+  pattern: P1
+  program: SNAP
+  read_re: "^sum_receipts|^largest"
+  verdict: "Right: a record sum that reads no source dates is over dated or once-paid records only (placed by date, regular date or covers_from/covers_through; a stream is read by the sibling sum that reads its dates), or over a business's records only to test whether a business exists (CO-3722, CO-4329: the year before the application, 4.403.11)."
+- id: R-CCCAP
+  pattern: P1
+  program: CCCAP
+  verdict: "Right: CCCAP determines eligibility at application or redetermination on the household and the thirty days before it (8 CCR 1403-1 3.111.H.4-5) and the household then remains eligible for twelve months unless one of 3.125.Q's listed changes occurs (S3252); a month-scoped CCCAP item restates that determination in each month, so the persons, ages, statuses and verifications it reads are those of the determination (the dated readers read the thirty days, coverage pass 5 C5-1)."
+- id: R-LEAP
+  pattern: P1
+  program: LEAP
+  verdict: "Right: LEAP determines eligibility on the circumstances of the household on the date of application, regardless of any changes thereafter (9 CCR 2503-7 3.751.1 \"Point in Time\", S776; 3.752.2; the time contract, CO-7000), and the income of the income verification period before it (3.751.1, 3.752.22); verification status is reported on a separate evaluation as of the day the county looks (CO-1462, R6-5)."
+- id: R-SEBT-age
+  pattern: P1
+  program: SunBucks
+  items: [CO-1699]
+  verdict: "Fixed (T-9): another member's age read on the first day of the month, as CO-2708 reads it (S5-2)."
+- id: R-SEBT
+  pattern: P1
+  program: SunBucks
+  verdict: "Right: Summer EBT eligibility is shown at a single point in time during the period of eligibility (7 CFR 292.6 and 292.2, S3317): the income test on the application's income and the reduced-price guideline in effect on the date of application (292.5, CO-1297), the categorical test in any month of the instructional year (CO-2708), the school age by the compulsory attendance date of the summer's school year (CO-1292), and the household's verification at the determination (292.14)."
+- id: R-All
+  pattern: P1
+  program: All
+  verdict: "Right: a shared item read by these programs; its own timing is judged at its reader (above)."
+
+# ---------------- P2: defaults ----------------
+- id: D-1
+  pattern: P2
+  read_re: "^lives_with$|^true$|snap_household_members"
+  note_re: "lives_with|co-residence"
+  verdict: "Fixed (D-1): lives_with read as stated, required where read (decision 4; no text gives the fallback: 7 CFR 273.1(a), S1; 3.103.LLL, S3636; 3.751.1, S489)."
+- id: D-1b
+  pattern: P2
+  items: [CO-7253]
+  read_re: "dwelling_id|false"
+  verdict: "Fixed (D-1): a related person's dwelling_id is read as stated; an unstated relationship list names no relative (the item reads only the persons the case relates)."
+- id: D-2
+  pattern: P2
+  items: [CO-007]
+  note_re: "nighttime_residence_type"
+  verdict: "Fixed (D-2): nighttime_residence_type required where read for a student with a meal plan (decision 4)."
+- id: D-3
+  pattern: P2
+  items: [CO-311]
+  note_re: "snap_household_has_foster_child_outside_foster_household"
+  verdict: "Fixed (D-3): read as derived, no default (decision 4)."
+- id: D-4
+  pattern: P2
+  items: [CO-2318]
+  note_re: "years_between"
+  verdict: "Fixed (D-4): date_of_birth required where read (decision 4)."
+- id: D-3b
+  pattern: P2
+  items: [CO-2337]
+  note_re: "sponsor_has_died"
+  verdict: "Fixed with T-3: the sponsors' deaths read in the month; an unstated relationship list names no sponsor of the case (a sponsor outside the case), as before."
+- id: D-T10
+  pattern: P2
+  items: [CO-1500]
+  note_re: "snap_entitled_to_heating_cooling_allowance"
+  verdict: "Right: the entitlement is known whenever its facts are (the home's costs carry declared defaults; the energy assistance and its month are required, T-10); the default reads only an entitlement whose facts are not stated as no Heating and Cooling Utility Allowance, since the allowance needs a cost or an energy assistance payment shown (4.407.31.A.1, S743)."
+- id: D-REC
+  pattern: P2
+  program: All
+  verdict: "Right: the field's default or when_absent is declared in the record schema (CO-5000, CO-5100, CO-5300 record_fields) with the rule it comes from (decision 4 of 2026-11-23; docs/conventions.md, Receipt, Earnings and Holdings records); a reader's `otherwise` over a holding's share applies the schema's when_absent (\"all of it\")."
+- id: D-REC2
+  pattern: P2
+  read_re: "^1$"
+  note_re: "receipt.*share"
+  verdict: "Right: the schema's when_absent for a holding's share (\"none: all of it\", CO-5300) applied by the reader (request R-2 of the H1 integration)."
+- id: D-VREQ
+  pattern: P2
+  read_re: "verification_request_date|leap_application_date|snap_application_date|cccap_person_earned_income"
+  verdict: "Right: the program's own date or figure is read where stated and otherwise the shared or computed one the rule names (the shared verification_request_date, CO-1343; LEAP's postmark falling back to the date received, 3.752.1; SNAP's delayed start falling back to the application date when the office caused the delay, 4.207; the county's thirty-day figure falling back to the computed one, 3.111.H.4.f); each is declared on the fact."
+- id: D-EXC
+  pattern: P2
+  verdict: "Right: an exception, a finding, a disqualification, a waiver, an approval, a document received, an outdated-information flag, a request or a cost the household shows: the program's rule applies its general provision unless the fact is shown or found (the fact's cited excerpt states the exception), so an unstated fact is the general rule, declared on the fact (convention rule 12; the facts that lacked the declaration gained it with its citation, D-5). Hours and amounts that meet a requirement or give a deduction count only as shown (SNAP 273.24 hours, S129; CCCAP verified expenses, S1157)."
+
+# ---------------- P3: membership ----------------
+- id: M-SNAP-hh
+  pattern: P3
+  items: [CO-304, CO-305]
+  verdict: "Fixed (T-6, T-7, D-1): the household is built in each month from the persons who live together (lives_with required), leaving out a member who entered an institution or died before the month and a person not yet born (OQ-1405); roomers, live-in attendants and boarders are outside it (273.1(b)(7)(i)-(ii), S2, S1815; CO-2566, CO-2567 declared), the elderly and disabled separate household by its election (CO-2304)."
+- id: M-SNAP-lw
+  pattern: P3
+  items: [CO-2569, CO-4250, CO-4690, CO-5112, CO-6601]
+  verdict: "Fixed (D-1): who lives with whom read from lives_with as stated, required where read."
+- id: M-SNAP-spons
+  pattern: P3
+  items: [CO-2335, CO-2337, CO-2332, CO-3702, CO-3710, CO-3711, CO-3708, CO-2714]
+  verdict: "Right, and fixed for time (T-2, T-3): the sponsor's household and the co-signing spouse are read from the sponsor's relationships; the divisor counts the sponsor's non-citizens of the case (273.4(c)(2)(v)); the sponsor living in the household is read from the month's household (CO-2332)."
+- id: M-SNAP-counts
+  pattern: P3
+  program: SNAP
+  verdict: "Right: each count and sum reads the membership its rule names in the month: all members for the categorical tests and the disqualifying members (snap_household_members; 273.2(j)(2)), the members other than ineligible students for income, resources and the prorated shares (CO-3714; 4.411.2.A, C6-1 and C6-5 of coverage pass 6), the eligible members for the size, the maximum allotment and the earned income deduction (CO-312, CO-313; 273.11(c)(1)), the size with disqualified members for the cap (CO-4169, CO-4182); a joint holding is counted once (pass 6 R1-R3)."
+- id: M-CCCAP
+  pattern: P3
+  program: CCCAP
+  verdict: "Right, and fixed (T-8, D-1): the household is the children in the home and their adult caretakers (3.103.LLL, S3636) as at the determination, which holds for twelve months (3.125.Q, S3252): a caretaker involuntarily absent or joined during the period by their facts (S1409), a person who died before the determination left out (T-8); income is summed over the income members (CO-4064) and a jointly owned property once per household (pass 6 R6-2)."
+- id: M-LEAP
+  pattern: P3
+  program: LEAP
+  verdict: "Right, and fixed (T-8, D-1): the household is drawn on the date of application (3.751.1, S489, S776; 3.751.2, S490): spouses, civil union partners and children under eighteen together, others by heat bought in common, an ex-spouse listed separately apart (CO-4520), a member who died before the application left out (T-8); income over the income members (CO-1009), a VA dependent's part to the dependent (pass 6 R6-6)."
+- id: M-SEBT
+  pattern: P3
+  program: SunBucks
+  verdict: "Right: the household is the persons living as one economic unit at the application (7 CFR 292.2, S3317 point in time), its size from their edges or the application's reported size (CO-4523); a child's categorical basis read from each household child in any month of the instructional year (CO-2708), another member's age in the month (T-9)."
+- id: M-All
+  pattern: P3
+  program: All
+  verdict: "Right: a shared composition primitive (lives_with from dwelling_id; is_deceased per month; is_married from the spouse edge or marital_status, declared), each read by these programs as judged above."

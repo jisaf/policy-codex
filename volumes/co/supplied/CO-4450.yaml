@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The college, university or post-secondary career and technical program the person is enrolled in leads to a graduate or professional degree (a master's, doctoral or professional degree), or to a bachelor's degree when the person already holds one. False for a program that leads to a certificate, an associate degree or the person's first bachelor's degree."
-precision: "Stated for a person whose education_program_type (CO-2880) is higher_education or postsecondary_career_and_technical; not read otherwise. If not stated, every program reads it as false (a program for a first bachelor's degree or less, the ordinary case)."
+precision: "Stated for a person whose education_program_type (CO-2880) is higher_education or postsecondary_career_and_technical; not read otherwise. If not stated, every program reads it as false (a program for a first bachelor's degree or less, the ordinary case). If not stated, CCCAP reads this as false: training and post-secondary education are programs for a Bachelor's degree or less (S3258), and a program beyond the first Bachelor's degree is the exception a case states (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: "Applicant statement or the school's enrollment verification."
 sources: [S1412, S3258]
 tags: [income]

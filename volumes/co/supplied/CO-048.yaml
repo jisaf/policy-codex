@@ -6,6 +6,7 @@ type: hours
 scope: person-month
 program: SNAP
 meaning: The hours the person participated in a qualifying employment and training activity for the month.
+precision: "If not stated, SNAP reads this as 0 (snap_meets_abawd_work_requirement, CO-415): the work requirement is met by the hours shown (S129, S132) (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: SNAP E&T case record.
 sources: []
 tags: [work_registration]

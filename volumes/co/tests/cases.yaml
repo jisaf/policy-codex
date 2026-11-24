@@ -4199,6 +4199,7 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -4278,6 +4279,7 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -5455,6 +5457,7 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5525,6 +5528,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5592,6 +5596,7 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5653,6 +5658,7 @@
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5713,6 +5719,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5896,6 +5903,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5953,6 +5961,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6011,6 +6020,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6070,6 +6080,7 @@
       # unconditional under-18 join (she is 18), so the case's shares_heat_with edge to p1 states that she
       # shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit test).
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6130,6 +6141,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6718,6 +6730,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6761,6 +6774,7 @@
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_count: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6788,6 +6802,7 @@
         donated_work_hours_per_week: 0
     p3:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6836,6 +6851,7 @@
         work_sanction_level_served: second
     p4:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -8202,6 +8218,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -8289,6 +8306,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -8378,6 +8396,7 @@
     p3:
       # Daughter, 8.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -9596,6 +9615,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -9652,6 +9672,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -9708,6 +9729,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -9764,6 +9786,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -9849,6 +9872,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -9935,6 +9959,7 @@
     p2:
       # Her son, 5.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10020,6 +10045,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10107,6 +10133,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10194,6 +10221,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10278,6 +10306,7 @@
     p6:
       # Her son, 7.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10397,6 +10426,7 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10447,6 +10477,7 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10493,6 +10524,7 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10543,6 +10575,7 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10612,6 +10645,7 @@
     p7:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10662,6 +10696,7 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10738,6 +10773,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10786,6 +10822,7 @@
     p2:
       # Her son; $200 a month of current support.
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11059,6 +11096,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -11162,6 +11200,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -11283,6 +11322,7 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11369,6 +11409,7 @@
     p2:
       # Her son, 10.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11454,6 +11495,7 @@
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -11579,6 +11621,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        dwelling_id: h1
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11662,6 +11705,7 @@
     p2:
       # Her daughter.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11771,6 +11815,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -11880,6 +11925,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -12011,6 +12057,7 @@
     p1:
       # Sponsor, 46, U.S. citizen, wages $3,200 a month, countable resources $2,600; household of three.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         is_blind: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12040,6 +12087,7 @@
       # coverage round, C-14: since OQ-730 was resolved on 8 U.S.C. 1631(a)(2), SNAP reads his income with p1's; the
       # children are under 18, so nothing is deemed to them either way and no expectation changes).
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         is_blind: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -12063,6 +12111,7 @@
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         status_before_lpr_adjustment: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -12100,6 +12149,7 @@
     p4:
       # Nephew, 12, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         status_before_lpr_adjustment: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -12191,6 +12241,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -12203,6 +12254,7 @@
         donated_work_hours_per_week: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         date_of_birth: "2018-06-20"
@@ -12629,6 +12681,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -12780,6 +12833,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -13324,6 +13378,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -13380,6 +13435,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -13436,6 +13492,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -13492,6 +13549,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -13544,6 +13602,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p5:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -13598,6 +13657,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p6:
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -14115,6 +14175,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14149,6 +14210,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14271,6 +14333,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14326,6 +14389,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14374,6 +14438,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14447,6 +14512,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_pregnant: false
@@ -14499,6 +14565,7 @@
         is_in_sud_treatment_iop_or_higher: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_pregnant: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -14535,6 +14602,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_pregnant: false
@@ -14565,6 +14633,7 @@
         self_employment_net_earnings_for_tax: 0
     p4:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -15554,6 +15623,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -15639,6 +15709,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -15726,6 +15797,7 @@
     p3:
       # Daughter, 8.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -16566,6 +16638,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -16619,6 +16692,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -18145,6 +18219,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         status_before_lpr_adjustment: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -18184,6 +18259,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -19963,6 +20039,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20119,6 +20196,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20305,6 +20383,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20478,6 +20557,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20661,6 +20741,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20747,6 +20828,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -20834,6 +20916,7 @@
     p3:
       # Daughter, 8.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -20963,6 +21046,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21118,6 +21202,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21299,6 +21384,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21449,6 +21535,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21643,6 +21730,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -21745,6 +21833,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21829,6 +21918,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -21945,6 +22035,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -22047,6 +22138,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -27721,6 +27813,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         receives_fdpir: true
@@ -27825,6 +27918,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         receives_fdpir: true
@@ -27935,6 +28029,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -28038,6 +28133,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -28158,6 +28254,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -28316,6 +28413,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -28496,6 +28594,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -28671,6 +28770,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -31666,6 +31766,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -31768,6 +31869,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -31861,7 +31963,7 @@
       snap_person_participation_status: {"2026-10": ineligible_member_abawd_time_limit}
     p2:
       snap_resides_in_institution_providing_meals: true
-      snap_is_household_member: false
+      snap_is_household_member: {"2026-10": false}
       snap_person_participation_status: {"2026-10": not_in_household}
 - id: CO-218
   title: 'Coverage pass 3 N3-2 (ZZ-D3): a sponsored permanent resident whose household declines to document her status - no sponsor deeming for her citizen son''s household'
@@ -32131,6 +32233,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -32279,6 +32382,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -32463,6 +32567,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -32636,6 +32741,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -32816,6 +32922,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -32965,6 +33072,7 @@
         shelter_other_continuing_charges: 400
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -33147,6 +33255,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -33314,6 +33423,7 @@
       months:
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -33496,6 +33606,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -33645,6 +33756,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41341,6 +41453,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41427,6 +41540,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41838,6 +41952,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41941,6 +42056,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42064,6 +42180,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42153,6 +42270,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42274,6 +42392,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42359,6 +42478,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42475,6 +42595,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42560,6 +42681,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42676,6 +42798,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42762,6 +42885,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42879,6 +43003,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42966,6 +43091,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43088,6 +43214,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43175,6 +43302,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43292,6 +43420,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_in_work_release_or_court_monitoring: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43378,6 +43507,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -44252,6 +44382,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_pregnant: false
@@ -44275,6 +44406,7 @@
         donated_work_hours_per_week: 0
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_pregnant: false
         date_of_birth: "1950-01-01"
@@ -44312,6 +44444,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         is_pregnant: false
@@ -44335,6 +44468,7 @@
         donated_work_hours_per_week: 0
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_pregnant: false
         date_of_birth: "1950-01-01"
@@ -48156,6 +48290,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -48258,6 +48393,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -48803,6 +48939,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -48952,6 +49089,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49131,6 +49269,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49280,6 +49419,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49459,6 +49599,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49608,6 +49749,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49788,6 +49930,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -49938,6 +50081,7 @@
       months:
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50120,6 +50264,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50271,6 +50416,7 @@
       months:
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50447,6 +50593,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50596,6 +50743,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50774,6 +50922,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -50922,6 +51071,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51099,6 +51249,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51183,6 +51334,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -51269,6 +51421,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51385,6 +51538,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51533,6 +51687,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51718,6 +51873,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -51867,6 +52023,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52044,6 +52201,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52194,6 +52352,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52372,6 +52531,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52522,6 +52682,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52698,6 +52859,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -52846,6 +53008,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53030,6 +53193,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53180,6 +53344,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53356,6 +53521,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53505,6 +53671,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53681,6 +53848,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -53830,6 +53998,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54008,6 +54177,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54160,6 +54330,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54342,6 +54513,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54496,6 +54668,7 @@
         room_and_board_provision_costs: 200
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54672,6 +54845,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54820,6 +54994,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54992,6 +55167,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55049,6 +55225,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55097,6 +55274,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55154,6 +55332,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_is_outside_united_states: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_out_of_state_caring_for_family_member_injured_in_military_duty: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55213,6 +55392,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55261,6 +55441,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55320,6 +55501,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -55375,6 +55557,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55424,6 +55607,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55475,6 +55659,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55532,6 +55717,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55580,6 +55766,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55638,6 +55825,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55693,6 +55881,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55742,6 +55931,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55791,6 +55981,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55846,6 +56037,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55895,6 +56087,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55948,6 +56141,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55983,6 +56177,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56040,6 +56235,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -56077,6 +56273,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56128,6 +56325,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -56162,6 +56360,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56215,6 +56414,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_disaster_assistance_paid_for_disaster: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56253,6 +56453,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56306,6 +56507,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56345,6 +56547,7 @@
         shelter_costs_paid_by_others: 0
     p2:
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -56567,6 +56770,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56651,6 +56855,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -56737,6 +56942,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56848,6 +57054,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -56932,6 +57139,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -57018,6 +57226,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57130,6 +57339,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57214,6 +57424,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -57300,6 +57511,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57414,6 +57626,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57501,6 +57714,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -57587,6 +57801,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57702,6 +57917,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -57792,6 +58008,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -57878,6 +58095,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -58366,6 +58584,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -58450,6 +58669,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -58536,6 +58756,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -59273,6 +59494,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -59424,6 +59646,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -61035,6 +61258,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -61186,6 +61410,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -61565,6 +61790,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -61632,6 +61858,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -61856,6 +62083,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62015,6 +62243,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62196,6 +62425,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62282,6 +62512,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62423,6 +62654,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62509,6 +62741,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62633,6 +62866,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62721,6 +62955,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -63518,6 +63753,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -63601,6 +63837,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -66323,6 +66560,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -66463,6 +66701,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -66632,6 +66871,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -66777,6 +67017,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -66947,6 +67188,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67092,6 +67334,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67261,6 +67504,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67416,6 +67660,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67587,6 +67832,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67739,6 +67985,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -67909,6 +68156,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68055,6 +68303,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68225,6 +68474,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68373,6 +68623,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68544,6 +68795,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68692,6 +68944,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -68863,6 +69116,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69014,6 +69268,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69193,6 +69448,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69272,6 +69528,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69357,6 +69614,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69479,6 +69737,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69558,6 +69817,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -69642,6 +69902,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
@@ -70777,6 +71038,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -70856,6 +71118,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -70934,6 +71197,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         residence_setting_type: "private_dwelling"
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -71196,6 +71460,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71263,6 +71528,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -71427,6 +71693,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71494,6 +71761,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -71673,6 +71941,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71739,6 +72008,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71943,6 +72213,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72092,6 +72363,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72261,6 +72533,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72398,6 +72671,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72571,6 +72845,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72720,6 +72995,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -72889,6 +73165,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -73037,6 +73314,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -74655,6 +74933,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -74798,6 +75077,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -75437,6 +75717,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -75582,6 +75863,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
@@ -80048,6 +80330,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -80189,6 +80472,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -80327,6 +80611,7 @@
         shelter_cost_monthly: 0
     p3:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -80466,6 +80751,7 @@
         shelter_cost_monthly: 0
     p4:
       facts:
+        dwelling_id: h1
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -80654,6 +80940,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -80735,6 +81022,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -80821,6 +81109,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -80948,6 +81237,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81031,6 +81321,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81117,6 +81408,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81223,11 +81515,14 @@
   # December (p2 is 60): the $616 allowance; shelter 1,200 + 616 = 1,816 - 491.50 = 1,324.50, not capped (an elderly
   # member); net 983 - 1,324.50, floored at 0; allotment 808 - 0 = 808. Before coverage pass 6 December read October's
   # household (no elderly member): no allowance, $725.
+  # Three-pattern sweep T-10: the LEAP payment came in February 2026 (energy_assistance_last_payment_month), so it counts
+  # through February 2027; November and December are unchanged.
   as_of: "2026-10-15"
   case_facts:
     home_heating_cost_arrangement: included_in_rent
     home_incurs_telephone_cost: false
     received_energy_assistance_within_twelve_months: true
+    energy_assistance_last_payment_month: "2026-02"
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
@@ -81250,6 +81545,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81332,6 +81628,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81419,6 +81716,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81557,6 +81855,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81639,6 +81938,7 @@
         complies_with_refugee_program_work_requirements: false
     p2:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -81724,6 +82024,7 @@
         complies_with_refugee_program_work_requirements: false
     p3:
       facts:
+        dwelling_id: h1
         retains_ssi_status_without_payment: false
         has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
@@ -85378,6 +85679,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85460,6 +85762,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85564,6 +85867,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85646,6 +85950,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85761,6 +86066,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85843,6 +86149,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85954,6 +86261,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -86034,6 +86342,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -86113,6 +86422,7 @@
     p3:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -86506,6 +86816,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -86586,6 +86897,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -86696,6 +87008,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -86780,6 +87093,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -87539,4 +87853,704 @@
         2026-10: 367.5
       af_oap_grant:
         2026-10: 189
-
+- id: CO-940
+  title: 'Three-pattern sweep T-10: energy assistance gives the heating and cooling allowance only through the twelfth month after the payment'
+  # Three-pattern sweep T-10 (docs/reviews/pattern-sweep-snap-ce.md): CO-863's household (three members, $1,500 of wages,
+  # rent $1,200 with heat included, the stepfather 60 in December 2026), determined 2026-10-15, whose last LEAP payment came in
+  # December 2025. 7 CFR 273.9(d)(6)(iii)(D)(3) (S5090) counts energy assistance received "in the current month or in the
+  # immediately preceding 12 months": December 2026 is the twelfth month after December 2025, January 2027 is not.
+  # Both months: earned income deduction 300; standard deduction for 3 (FY 2027) 217; income before shelter 983; half 491.50.
+  # December: the $616 allowance (an elderly member, energy assistance within twelve months); shelter 1,200 + 616 - 491.50 =
+  # 1,324.50, not capped (elderly member); net 0; allotment 808.
+  # January: no allowance; shelter 1,200 - 491.50 = 708.50; net 983 - 708.50 = 274.50, rounded 275; 30% = 82.50, rounded up 83;
+  # 808 - 83 = 725. Before the sweep the payment, within twelve months of the determination, gave the allowance in every month:
+  # January $808.
+  as_of: '2026-10-15'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: true
+    energy_assistance_last_payment_month: 2025-12
+    snap_application_date: '2026-10-12'
+    snap_determination_is_recertification: false
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  - - parent
+    - p1
+    - p3
+  - - stepparent
+    - p2
+    - p3
+  - - buys_prepares_with
+    - p1
+    - p2
+  - - buys_prepares_with
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: '1995-04-02'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '1966-12-10'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        cw_requests_inclusion_in_assistance_unit: false
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 1500
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 1200
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 130
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 1500
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p3:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2018-05-09'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      snap_entitled_to_heating_cooling_allowance:
+        2026-12: true
+        2027-01: false
+      snap_utility_allowance_amount:
+        2026-12: 616
+        2027-01: 0
+      snap_household_net_income:
+        2026-12: 0
+        2027-01: 275
+      snap_allotment:
+        2026-12: 808
+        2027-01: 725
+- id: CO-941
+  title: 'Three-pattern sweep T-7: a household member who dies during a month is counted in that month and in no later one'
+  # Three-pattern sweep T-7 (docs/reviews/pattern-sweep-snap-ce.md): CO-863's household with a fourth member, p1's son p4
+  # (born 2016-06-01), who died on 2026-11-20; determined 2026-10-15; last LEAP payment February 2026. A household is
+  # individuals who live together (7 CFR 273.1(a), S1), in the issuance month (4.402.1.A, S4734); a member who dies during a
+  # month is counted for that month and out from the next (OQ-1405).
+  # November (four members; the stepfather not yet 60, so no heating and cooling allowance): earned income deduction 300;
+  # standard deduction for 4 (FY 2027) 229; 1,500 - 300 - 229 = 971; half 485.50; shelter 1,200 - 485.50 = 714.50, under the
+  # $769 cap; net 971 - 714.50 = 256.50, rounded 257; 30% = 77.10, rounded up 78; maximum for 4 1,023 - 78 = 945.
+  # December (three members): as CO-863, $808. Before the sweep p4 was a member in December as well: 971 before shelter,
+  # shelter 1,200 + 616 - 485.50 = 1,330.50, net 0, $1,023.
+  as_of: '2026-10-15'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: true
+    energy_assistance_last_payment_month: 2026-02
+    snap_application_date: '2026-10-12'
+    snap_determination_is_recertification: false
+    cw_application_date: '2026-10-12'
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  - - parent
+    - p1
+    - p3
+  - - stepparent
+    - p2
+    - p3
+  - - buys_prepares_with
+    - p1
+    - p2
+  - - buys_prepares_with
+    - p1
+    - p3
+  - - parent
+    - p1
+    - p4
+  - - stepparent
+    - p2
+    - p4
+  - - buys_prepares_with
+    - p1
+    - p4
+  persons:
+    p1:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: '1995-04-02'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '1966-12-10'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        cw_requests_inclusion_in_assistance_unit: false
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 1500
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 1200
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 130
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 1500
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p3:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2018-05-09'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p4:
+      facts:
+        dwelling_id: h1
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2016-06-01'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+        date_of_death: '2026-11-20'
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      snap_eligible_household_size:
+        2026-11: 4
+        2026-12: 3
+      snap_household_net_income:
+        2026-11: 257
+        2026-12: 0
+      snap_allotment:
+        2026-11: 945
+        2026-12: 808
