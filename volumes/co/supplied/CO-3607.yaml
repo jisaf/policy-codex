@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether a physician has certified that the person, a Long-Term Care institution resident, is likely to return to their home within the temporary period 10 CCR 2505-10 § 8.100.7.V.3.g.ii allows for a Home Maintenance Allowance (ma_home_maintenance_allowance_max_months). If not stated, Medicaid reads it as false."
+meaning: "Whether a physician has certified that the person, a Long-Term Care institution resident, is likely to return to their home within the temporary period 10 CCR 2505-10 § 8.100.7.V.3.g.ii allows for a Home Maintenance Allowance (ma_home_maintenance_allowance_max_months). If not stated, Medicaid reads it as false: a rule-given default, since the allowance is reserved only 'if a physician has certified that the person is likely to return to his/her home within that period' (§ 8.100.7.V.3.g.ii, S2404), a certification whose absence is no certification."
 supplied_by: "The physician's certification in the case record."
 sources: [S2404]
 tags: [ma, ltc, medical]

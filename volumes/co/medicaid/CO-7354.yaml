@@ -1,0 +1,20 @@
+id: CO-7354
+name: "Medicaid SSI method: the person's own countable income"
+identifier: ma_ssi_own_countable_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's own countable income for the month by the SSI method, as for a person with no spouse: the person's own unearned income (ma_ssi_own_unearned_income) less the $20 general income disregard, plus the person's own earned income less what the SSI method does not count, the $65 and the unused part of the $20, impairment-related work expenses, then one half, less blind work expenses and a plan for achieving self-support (10 CCR 2505-10 § 8.100.5.H.4.a-b, S1746; 20 CFR 416.1112(c)). What 20 CFR 416.1163(d)(1) (S5031) compares with the individual Federal Benefit Rate when an ineligible spouse's income is not deemed ('we subtract only your own countable income from the Federal benefit rate for an individual')."
+precision: "The same arithmetic as ma_ssi_countable_income (CO-607) over the person alone: CO-605 and CO-606 with the person's own terms of CO-663, CO-6051, CO-4628 and CO-4629, and no Ineligible Child Allocation (an allocation reduces only the income deemed from an ineligible spouse, H.3.a). Read by ma_ssi_income_test_status (CO-5516) where ma_ssi_ineligible_spouse_income_is_not_deemed (CO-7353) holds."
+derived: ["+", [max, 0, ["-", ma_ssi_own_unearned_income, ssi_general_income_exclusion]], [max, 0, ["-", ["*", [max, 0, ["-", [max, 0, ["-", [max, 0, ["-", ma_ssi_gross_earned_income, [otherwise, ma_ssi_excluded_earned_income, 0]]], ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, ma_ssi_own_unearned_income]]]]], [case, [[all, meets_ssa_disability_criteria, [not, is_blind], ["<", ma_age_on_first_day_of_month, ma_aged_age]], [otherwise, impairment_related_work_expenses_paid, 0]], [else, 0]]]], ssi_earned_income_disregard_rate], [case, [["<", ma_age_on_first_day_of_month, ma_aged_age], ["+", [case, [is_blind, [otherwise, blind_work_expenses_paid, 0]], [else, 0]], [case, [[any, is_blind, meets_ssa_disability_criteria], ma_ssi_pass_set_aside_earned_income], [else, 0]]]], [else, 0]]]]]
+sources: [S5031, S1746, S308, S309, S310]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md): see ma_ssi_ineligible_spouse_income_is_not_deemed (CO-7353)."
+nearest: [CO-607, CO-1715]
+tests:
+  # INELIG-SPOUSE (CO-906): Social Security 1,100, no earnings, aged: (1,100 - 20) + 0 = 1,080.
+  - {id: CO-7354-T1, month: "2026-11", as_of: "2026-11-20", title: "F6-6 (INELIG-SPOUSE): own countable income 1,100 - 20 = 1,080", given: {ma_ssi_own_unearned_income: 1100, ma_ssi_gross_earned_income: 0, ma_ssi_excluded_earned_income: 0, date_of_birth: "1950-03-01", meets_ssa_disability_criteria: false, is_blind: false}, expect: 1080}
+  # Unearned 10 and wages 500, aged: unearned max(0, 10 - 20) = 0; earned max(0, 500 - (65 + (20 - 10))) = 425, x 0.5 = 212.5; total 212.5.
+  - {id: CO-7354-T2, month: "2026-11", as_of: "2026-11-20", title: "own countable income with earnings and the unused part of the $20", given: {ma_ssi_own_unearned_income: 10, ma_ssi_gross_earned_income: 500, ma_ssi_excluded_earned_income: 0, date_of_birth: "1950-03-01", meets_ssa_disability_criteria: false, is_blind: false}, expect: 212.5}

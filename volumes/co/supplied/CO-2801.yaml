@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The person's actual monthly utility expenses for the dwelling (heating or cooling fuel, electricity, water, sewer, trash, cooking fuel and telephone) that this person pays separately from the rent or maintenance charge, as verified; zero when every utility is included in the rent or maintenance charge. If not stated, Medicaid reads this as 0, so the standard utility allowance is used."
+meaning: "The person's actual monthly utility expenses for the dwelling (heating or cooling fuel, electricity, water, sewer, trash, cooking fuel and telephone) that this person pays separately from the rent or maintenance charge, as verified; zero when every utility is included in the rent or maintenance charge. If not stated, Medicaid reads this as 0, so the standard utility allowance is used: a rule-given default, since § 8.100.7.Q.1.b.ii (S1756) allows the larger of the standard utility allowance and the community spouse's 'actual, verified, utility expenses', and expenses not shown are not verified ones."
 supplied_by: The application's utility expense section; utility bills.
 sources: [S1756]
 tags: [ma, ltc, income]
