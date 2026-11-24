@@ -28966,6 +28966,17 @@
   # Payment: 100% of earned income is disregarded in the first certification period, so the payment counts 0 and the
   # grant is 488; October 12 application, 20 days, .65754 x 488 = 320.88, cents dropped = 320.
   # Before the fix the payment could only be stated as rent: unearned 400 >= 331, ineligible_income, 0.
+  # Records E2/H2 leftovers (docs/reviews/records-e2-h2.md, section 5): the receipt copy of the payment
+  # ({kind: room_only_payment, amount: 400}, written by the E0 translator beside the earnings record) is removed; the
+  # payment is stated once, as the earnings record. Moved, with the Adult Financial test of unearned income fixed
+  # (CO-2872 leaves out the kinds af_receipt_treatment_table reads as earnings), p1, July to November 2026:
+  # - af_has_countable_unearned_income: true -> false. 9 CCR 2503-5 3.520.783.C.2.c (S4380): "Room (to provide a person
+  #   with lodging only) payments to the client, client's spouse, or sponsor(s) shall be considered earned income in
+  #   the month received"; p1 has no other receipt, so she has no unearned income: the 400 was read as unearned
+  #   only through the copy. 3.520.5.A (S880) matches records "to identify potential earned and unearned income".
+  # - af_unearned_income_is_unverified (CO-3883): unknown -> false: all(has unearned income = false, ...) = false
+  #   (before, true and unearned_income_is_verified not stated: unknown).
+  # No expectation of the case moves (Colorado Works reads the earnings record only).
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
@@ -29011,8 +29022,7 @@
         education_program_type: none
         county_approved_living_arrangement: false
         date_of_birth: "2010-03-01"
-        receipts:
-        - {kind: room_only_payment, amount: 400}
+        receipts: []
         earnings:
         - {kind: boarder_payments, provides: room_only, amount: 400}
       month_defaults:
@@ -41668,6 +41678,17 @@
   # room_and_board_payments_received (CO-4161), which now excludes a room-only payment; as the fix round restated it (ZT-2b)
   # it is room_only_payments_received (CO-4830), part of other_unearned_income_taxable. Rule: earned 600, countable 600 - 90
   # = 510 >= 331, ineligible_income (before the fix: $204 countable, eligible, $320).
+  # Records E2/H2 leftovers (docs/reviews/records-e2-h2.md, section 5): the receipt copy of the payment
+  # ({kind: room_only_payment, amount: 600}, written by the E0 translator beside the earnings record) is removed; the
+  # payment is stated once, as the earnings record. Moved, with the Adult Financial test of unearned income fixed
+  # (CO-2872 leaves out the kinds af_receipt_treatment_table reads as earnings), p1, July to November 2026:
+  # - af_has_countable_unearned_income: true -> false. 9 CCR 2503-5 3.520.783.C.2.c (S4380): "Room (to provide a person
+  #   with lodging only) payments to the client, client's spouse, or sponsor(s) shall be considered earned income in
+  #   the month received"; p1 has no other receipt, so she has no unearned income: the 600 was read as unearned
+  #   only through the copy. 3.520.5.A (S880) matches records "to identify potential earned and unearned income".
+  # - af_unearned_income_is_unverified (CO-3883): unknown -> false: all(has unearned income = false, ...) = false
+  #   (before, true and unearned_income_is_verified not stated: unknown).
+  # No expectation of the case moves (Colorado Works reads the earnings record only).
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
@@ -41712,8 +41733,7 @@
         education_program_type: none
         county_approved_living_arrangement: false
         date_of_birth: "2010-03-01"
-        receipts:
-        - {kind: room_only_payment, amount: 600}
+        receipts: []
         earnings:
         - {kind: boarder_payments, provides: room_only, amount: 600}
       month_defaults:

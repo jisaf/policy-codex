@@ -10,13 +10,11 @@
 // for meals or a room only; design 2.3, OQ-1020) were stated in both lists
 // from step E0, the earnings record written by the translator from the
 // receipt. The translator is retired (step E2, docs/reviews/records-e2-h2.md),
-// but a reader still counts the receipt kind (Adult Financial's test of
-// countable unearned income, af_has_countable_unearned_income, CO-2872, sums
-// every receipt but gambling winnings and sponsor payments), so the
-// households and rule tests that state such a copy keep it (CO-206, CO-362;
-// CO-5110-T4): removing it moves that figure. Such a pair, the earnings
-// record of the receipt's amount and month, is a copy, not a finding; any
-// other pair is a finding.
+// and the last copies (CO-206, CO-362, CO-5110-T4) are removed with the fix of
+// the one reader that still counted them (Adult Financial's test of countable
+// unearned income, CO-2872; records E2/H2 leftovers). Such a pair, the
+// earnings record of the receipt's amount and month, is a copy, not a
+// finding; any other pair is a finding.
 
 type Rec = Record<string, unknown>;
 
