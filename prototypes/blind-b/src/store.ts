@@ -23,6 +23,7 @@ interface Data {
   questions: Question[]; cases: HouseholdCase[]; aidCodes: any;
   touched: Record<string, number[]>;
   shareClass?: Record<string, string>;
+  sourceIndex?: Record<string, string>;
   knownLimits?: KnownLimit[];
 }
 /** A known limit from docs/reviews/known-limits.md (scripts/build-data.ts). */
@@ -492,4 +493,14 @@ export function signBlockers(it: Item): string[] {
   const out: string[] = [];
   if (unverifiedRest.has(it.identifier)) out.push(unverifiedDirect.has(it.identifier) ? "It takes a figure from a source that could not be verified." : "It rests on a figure from a source that could not be verified.");
   return out;
+}
+
+/* ---------- item source files (Definition as code) ---------- */
+const sourceChunks = new Map<string, Promise<Record<string, { file: string; text: string }>>>();
+/** The item's file exactly as stored in the volume, fetched on demand. */
+export async function itemSource(id: string): Promise<{ file: string; text: string } | null> {
+  const chunk = D.sourceIndex?.[id];
+  if (!chunk) return null;
+  if (!sourceChunks.has(chunk)) sourceChunks.set(chunk, fetch("./" + chunk).then((r) => r.json()));
+  return (await sourceChunks.get(chunk)!)[id] ?? null;
 }

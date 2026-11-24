@@ -24,12 +24,17 @@ const codex = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"))
 const co = codex.volumes.find((v: any) => v.path === "volumes/co");
 const items: any[] = [];
 const chapters: any[] = [];
+// Each item's file exactly as stored, for the item page's "Definition as code"
+// (loaded on demand from data-source-<n>.json; index in data.json).
+const itemSources: Array<{ id: string; file: string; text: string }> = [];
 for (const ch of co.chapters) {
   chapters.push({ dir: ch.dir, title: ch.title });
   for (const f of ch.files) {
-    const it: any = parseItemFile(fs.readFileSync(path.join(vol, ch.dir, f), "utf8"));
+    const text = fs.readFileSync(path.join(vol, ch.dir, f), "utf8");
+    const it: any = parseItemFile(text);
     it.chapter = ch.dir;
     items.push(it);
+    itemSources.push({ id: it.id, file: `volumes/co/${ch.dir}/${f}`, text });
   }
 }
 const meta = parseVolumeFile(fs.readFileSync(path.join(vol, "volume.yaml"), "utf8"));
@@ -186,7 +191,20 @@ const data = {
     fs.writeFileSync(path.join(out, "data-external.json"), JSON.stringify({ external }));
     parts.push("data-external.json");
   }
-  fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts }));
+  // Item source files, in chunks fetched only when a page opens "Definition as code".
+  const sourceIndex: Record<string, string> = {};
+  {
+    let chunk: Record<string, { file: string; text: string }> = {}, bytes = 0, n = 0;
+    const flush = () => { if (!bytes) return; fs.writeFileSync(path.join(out, `data-source-${n}.json`), JSON.stringify(chunk)); n++; chunk = {}; bytes = 0; };
+    for (const src of itemSources) {
+      if (bytes > 6 * 1024 * 1024) flush();
+      chunk[src.id] = { file: src.file, text: src.text };
+      bytes += src.text.length;
+      sourceIndex[src.id] = `data-source-${n}.json`;
+    }
+    flush();
+  }
+  fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts, sourceIndex }));
   for (const f of ["data.json", ...parts]) {
     const size = fs.statSync(path.join(out, f)).size;
     if (size > 16 * 1024 * 1024) throw new Error(`${f} is ${(size / 1e6).toFixed(1)} MB, over the 16 MB a host may allow per file`);

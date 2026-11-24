@@ -1,10 +1,11 @@
 /* The item page: one layout for a fact, a figure or a rule. */
-import { useMemo, useState } from "preact/hooks";
+import { useEffect, useMemo, useState } from "preact/hooks";
 import type { ComponentChildren } from "preact";
 import {
   D, E, TODAY, byId, byIdent, srcById, PROGRAMS, KIND, SCOPE, fmtVal, fmtDate, ruleLines, firstSentence, upstream, downstream,
   outcomesReached, outcomeProgram, touchedBy, caseById, requiredRoles, openQuestions, qByItem, itemSources, versionInForce,
   role, isPendingSign, toggleSign, signBlockers, edits, saveEdit, dropEdit, addNote, notes, dropNote, PROGRAM_ORDER, tagLabel, type CItem, type Item,
+  itemSource,
 } from "./store";
 import {
   href, route, setQ, ProgramTag, Pill, Fold, More, ItemLink, StatusPill, Flags, Rich, RuleText, ValueView, keyLabel,
@@ -52,6 +53,7 @@ export function ItemPage({ id }: { id: string }) {
           {it.kind === "parameter" && <FigureSection it={it} />}
           {it.kind === "supplied" && <FactSection it={it} />}
           {it.kind === "derived" && <RuleSection it={it} steps={q.steps} />}
+          <CodeSection it={it} />
           {it.precision && <Fold title="Fine print: edge cases and how they are measured"><p><Rich text={it.precision} /></p></Fold>}
           {it.kind === "derived" && <ReadsSection it={it} />}
           <SharedSection it={it} />
@@ -344,6 +346,7 @@ function SignSection({ it }: { it: CItem }) {
     <section class="card" id="signoff">
       <h2>Sign-off</h2>
       <p class="small muted">This item is a Draft until each of these roles has signed it. A signature is recorded through a reviewed change, like any other edit.</p>
+      <p class="small">You sign the item as it is defined in <a href="#code" onClick={(e) => { e.preventDefault(); document.getElementById("code")?.scrollIntoView({ behavior: "smooth" }); }}>Definition as code</a>: its meaning, its answer type{it.kind === "derived" ? ", its formula" : it.kind === "parameter" ? ", its dated values" : ""} and its tests. A later change to that definition needs signing again.</p>
       <table class="signs">
         <tbody>
           {need.map((r) => {
@@ -493,4 +496,45 @@ export function describeEdit(before: Item, after: Item): ComponentChildren[] {
     }
   }
   return out;
+}
+
+/** The item as engineers implement it: the key fields in plain words, then the
+ *  item's file exactly as stored in the volume (fetched on demand). */
+function CodeSection({ it }: { it: CItem }) {
+  const [src, setSrc] = useState<{ file: string; text: string } | null | undefined>(undefined);
+  const [msg, setMsg] = useState("");
+  useEffect(() => { let live = true; itemSource(it.id).then((x) => live && setSrc(x), () => live && setSrc(null)); return () => { live = false; }; }, [it.id]);
+  const any = it as unknown as { options?: string[]; tests?: unknown[]; versions?: unknown[] };
+  const defaultText = /(not stated|unstated|if no .* is stated|read(s)? (it|this) as|default)/i.test(`${it.meaning ?? ""} ${it.precision ?? ""}`);
+  const missing = it.kind === "supplied"
+    ? (defaultText ? "the default its meaning or fine print states" : "cannot determine: a missing answer is never guessed (decision 4)")
+    : it.kind === "derived" ? "cannot determine when an answer it needs is missing, unless its formula settles without it" : "cannot determine on a date no version covers";
+  const copy = () => {
+    if (!src) return;
+    try { navigator.clipboard.writeText(src.text).then(() => setMsg("Copied."), () => setMsg("Copy did not work here; select the text instead.")); } catch { setMsg("Copy did not work here; select the text instead."); }
+  };
+  return (
+    <section class="card" id="code">
+      <h2>Definition as code</h2>
+      <p class="small muted">What engineers implement, and what your signature approves.</p>
+      <dl class="code-facts">
+        <dt>Name in code</dt><dd><code>{it.identifier}</code></dd>
+        <dt>Answer type</dt><dd>{it.type}{any.options?.length ? <> · one of <code>{any.options.join(", ")}</code></> : null}</dd>
+        <dt>One answer per</dt><dd>{SCOPE[it.scope] ?? it.scope}</dd>
+        <dt>If it is missing</dt><dd>{missing}</dd>
+        {it.kind === "derived" && <><dt>Formula</dt><dd>the <code>derived</code> line in the file below; the same rule in words is under Rule above</dd></>}
+        {it.kind === "parameter" && <><dt>Values</dt><dd>{any.versions?.length ?? 0} dated version{any.versions?.length === 1 ? "" : "s"}, the <code>versions</code> in the file below</dd></>}
+        <dt>Tests</dt><dd>{any.tests?.length ? `${any.tests.length} rule test${any.tests.length === 1 ? "" : "s"} in the file below, plus the stored households that read it` : "none of its own; the stored households that read it test it"}</dd>
+      </dl>
+      {src === undefined && <p class="small muted">Loading the file…</p>}
+      {src === null && <p class="small muted">The file is not in this build.</p>}
+      {src && <>
+        <p class="small code-path"><code>{src.file}</code> <button class="btn small" onClick={copy}>Copy</button> {msg && <span class="small muted" role="status">{msg}</span>}</p>
+        <pre class="code-src" tabIndex={0} aria-label={`The file ${src.file}`}>{src.text.split("\n").map((line) => {
+          const m = /^(\s*-?\s*)([A-Za-z_][\w-]*)(:)(.*)$/.exec(line);
+          return m ? <span class="cl"><span>{m[1]}</span><b class="ck">{m[2]}</b>{m[3]}<span>{m[4]}</span>{"\n"}</span> : <span class="cl">{line}{"\n"}</span>;
+        })}</pre>
+      </>}
+    </section>
+  );
 }

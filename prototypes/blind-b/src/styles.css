@@ -341,3 +341,11 @@ table.ext-dict td { vertical-align: top; padding: .4rem .6rem .4rem 0; border-bo
 tr.ext-differ td { background: var(--warn-bg); }
 .ext-why { margin-top: .8rem; }
 .ext-invite { margin: .2rem 0 .8rem; }
+
+/* definition as code (item page) */
+.code-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .25rem .9rem; margin: .4rem 0 .8rem; font-size: .9rem; }
+.code-facts dt { color: var(--ink3); } .code-facts dd { margin: 0; overflow-wrap: anywhere; }
+.code-path { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+pre.code-src { font: .8rem/1.5 var(--mono); background: #f8f6ef; border: 1px solid var(--line2); border-radius: 8px; padding: .7rem .9rem; overflow: auto; max-height: 32rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre.code-src .ck { color: var(--accent-ink); font-weight: 600; }
+@media (max-width: 720px) { .code-facts { grid-template-columns: minmax(0, 1fr); } .code-facts dt { margin-top: .3rem; } }
