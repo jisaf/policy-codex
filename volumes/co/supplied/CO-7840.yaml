@@ -1,0 +1,13 @@
+id: CO-7840
+name: Previous pregnancy start date
+identifier: previous_pregnancy_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person who is pregnant now (is_pregnant) and had an earlier pregnancy that has ended, the date that earlier pregnancy began: the pregnancy whose end is the most recent the case records (most_recent_pregnancy_end_date, CO-7400: the stated pregnancy_end_date, or the date of birth of the child of the case she gave birth to last), as the person's medical provider dates it or, without a provider's dating, as the person states it. For a person pregnant now, pregnancy_start_date (CO-3600) states the start of the current pregnancy; for a person not pregnant now, it states the start of the pregnancy that has ended, and this fact is not stated."
+precision: "MAGI close-out, KL-MAGI-2 (2026-11-24). Required where read (decision 4 of 2026-11-23): Medical Assistance (ma_is_pregnant_in_month, CO-3601) and CHP+ (chp_is_pregnant_in_month, CO-7051) read it only for a month before the month the earlier pregnancy ended and after the month of any recorded end before that one, of a person pregnant now whose pregnancy_start_date is not on or before that end: a month of an application that reaches back into the earlier pregnancy (a renewal, whose application date is the original application's, CO-088). Not stated there, whether she was pregnant in such a month cannot be determined."
+supplied_by: "Applicant statement on the application, the renewal or the retroactive coverage request, or the medical provider's dating of the earlier pregnancy."
+sources: [S1503, S2411, S640, S224, S5060]
+tags: [ma, magi]
+rationale: "MAGI close-out, KL-MAGI-2 (docs/reviews/known-limits.md): pregnancy_start_date (CO-3600) states one start, the current pregnancy's for a person pregnant now, so a month of an earlier pregnancy before its end could not be read: ma_is_pregnant_in_month (CO-3601) read it as not pregnant where the current start was stated (CO-1123 with March to August 2025 recorded as other Medical Assistance: not pregnant, though she gave birth on 2025-09-10), and no fact could make it pregnant. 10 CCR 2505-10 § 8.100.4.G.5 (S640) and 42 U.S.C. 1396a(e)(5) (S5060) turn on whether she was pregnant in the month, so the earlier pregnancy's start is a neutral fact of the person, the same for every program."

@@ -186,6 +186,7 @@ outcomes:
       reproductive_health_care_program: {code: PH-RHCP, label: "Reproductive Health Care Program (state only)", funding: state_only}
     no_code:
       full_coverage: "Family planning comes with a full-coverage category, which carries the code."
+      ineligible_before_coverage_period: "Not eligible: a month before the person's birth, or before the application and outside a requested retroactive period."
       ineligible_deceased: "Not eligible: a month after the month of the person's death."
       ineligible_residency: "Not eligible: residency."
       ineligible_institution: "Not eligible: a patient aged 21 to 64 in an institution for mental diseases."
