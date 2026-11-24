@@ -34,6 +34,9 @@ const NAV: Array<[string, string, RegExp]> = [
 ];
 
 function shell(): void {
+  // A host that wraps the page in its own document (a claude.ai Artifact) puts
+  // the page's inline <style> in <body>; keep it by moving it to <head> first.
+  for (const s of Array.from(document.body.querySelectorAll("style, link[rel=stylesheet]"))) document.head.appendChild(s);
   document.body.innerHTML = `
   <header class="top">
     <a class="brand" href="#/">Rulebook <span>Colorado benefits codex</span></a>

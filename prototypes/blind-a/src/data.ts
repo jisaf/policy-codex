@@ -55,6 +55,9 @@ export const caseReadSets = new Map<string, Set<string>>();
 export async function load(): Promise<void> {
   const res = await fetch("public/data/codex.json");
   D = await res.json();
+  // A host with a per-file size limit gets the bundle in parts (scripts/artifact.mjs).
+  const parts = (D as unknown as { parts?: string[] }).parts ?? [];
+  for (const p of parts) Object.assign(D, await (await fetch(`public/data/${p}`)).json());
   E = createEngine(D.items, D.meta);
   for (const it of D.items) { byId.set(it.id, it); byIdent.set(it.identifier, it); }
   for (const q of D.questions) qById.set(q.id, q);
