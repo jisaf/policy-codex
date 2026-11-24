@@ -6,7 +6,7 @@ import {
   D, E, TODAY, byId, byIdent, srcById, docById, qById, citedBy, PROGRAMS, PROGRAM_ORDER, fmtVal, fmtDate, openQuestions, downstream,
   outcomesReached, householdsReading, outcomeProgram, isVerificationOutcome, touchedBy, caseById, personLabel, requiredRoles, tookEffect,
   withoutVersion, compareEngines, draftEngine, checkCase, edits, signs, notes, sent, dropEdit, dropNote, toggleSign, questionOwners,
-  unverifiedDirect, itemSources, role, type CItem, type Diff, type Took,
+  unverifiedDirect, itemSources, role, limitOwners, type CItem, type Diff, type Took, type KnownLimit,
 } from "./store";
 import { href, route, setQ, ProgramTag, Pill, Fold, More, ItemLink, ItemRow, Rich, ValueView, SourceCard, Quote, Crumbs, Empty, AidNotice } from "./ui";
 import { describeEdit } from "./item";
@@ -14,9 +14,10 @@ import { describeEdit } from "./item";
 /* ---------- Law ---------- */
 function LawTabs({ cur }: { cur: string }) {
   const n = D.items.filter((i) => i.statute_override).length, u = D.sources.filter((s) => s.unverified).length;
+  const kl = (D.knownLimits ?? []).filter((k) => !k.closed).length;
   return (
     <div class="tabs">
-      {[["", `Federal law over Colorado’s rule (${n})`], ["unverified", `Unverified figures (${u} sources)`], ["sources", `Sources (${D.sources.length} excerpts)`]].map(([k, l]) => <a class={cur === k ? "on" : ""} href={href("law" + (k ? "/" + k : ""))}>{l}</a>)}
+      {[["", `Federal law over Colorado’s rule (${n})`], ["unverified", `Unverified figures (${u} sources)`], ["limits", `Known limits (${kl} open)`], ["sources", `Sources (${D.sources.length} excerpts)`]].map(([k, l]) => <a class={cur === k ? "on" : ""} href={href("law" + (k ? "/" + k : ""))}>{l}</a>)}
     </div>
   );
 }
@@ -26,10 +27,11 @@ export function Law({ sub, id }: { sub?: string; id?: string }) {
   return (
     <div>
       <h1>Law</h1>
-      <p class="lede">Where the rulebook stands on the text of the law: where it departs from Colorado’s rule, where it could not check a figure, and every excerpt it quotes.</p>
+      <p class="lede">Where the rulebook stands on the text of the law: where it departs from Colorado’s rule, where it could not check a figure, what it knowingly does not get right yet, and every excerpt it quotes.</p>
       <LawTabs cur={sub ?? ""} />
       {!sub && <Overrides />}
       {sub === "unverified" && <Unverified />}
+      {sub === "limits" && <Limits />}
       {sub === "sources" && <Sources />}
     </div>
   );
@@ -50,9 +52,10 @@ function Overrides() {
   const all = D.items.filter((i) => i.statute_override);
   const prog = q.program ?? "";
   const list = all.filter((i) => !prog || i.program === prog);
+  const legal = all.filter((i) => requiredRoles(i).some((r) => r.role === "Legal")).length;
   return (
     <div>
-      <p>The rulebook normally follows Colorado’s rule text. In these {all.length} places a federal or state statute says something the Colorado rule has not caught up with, and the rulebook follows the statute. Each one needs Legal’s signature.</p>
+      <p>The rulebook normally follows Colorado’s rule text. In these {all.length} places a federal or state statute says something the Colorado rule has not caught up with, and the rulebook follows the statute. Under the approval policy {legal === all.length ? "each one needs Legal’s signature" : <>{legal} of them need Legal’s signature (they carry a tag Legal signs); the other {all.length - legal} do not</>}.</p>
       <div class="chips">
         <a class={"chip" + (!prog ? " on" : "")} href={href("law")}>All <b>{all.length}</b></a>
         {PROGRAM_ORDER.filter((p) => all.some((i) => i.program === p)).map((p) => <a class={"chip" + (prog === p ? " on" : "")} href={href("law", { program: p })}>{PROGRAMS[p].short} <b>{all.filter((i) => i.program === p).length}</b></a>)}
@@ -74,6 +77,7 @@ function Overrides() {
               <More items={ss} n={4} noun="excerpts" render={(s) => <SourceCard s={s} />} />
             </Fold>
             <Affected ids={[it.identifier]} />
+            <p class="small muted">{requiredRoles(it).some((r) => r.role === "Legal") ? "Legal signs this item." : "Legal is not among this item’s signers."}</p>
           </section>
         );
       })}
@@ -108,6 +112,45 @@ function Unverified() {
     </div>
   );
 }
+/** Known limits (docs/reviews/known-limits.md): what the rulebook knowingly does not get right, by program, with each owner. */
+function Limits() {
+  const q = route.value.q;
+  const owner = q.owner ?? "", show = q.show ?? "open";
+  const all = D.knownLimits ?? [];
+  const mine = all.filter((k) => !owner || limitOwners(k).includes(owner));
+  const list = mine.filter((k) => (show === "open" ? !k.closed : show === "closed" ? !!k.closed : true));
+  const roles = D.meta.approval_policy.roles.filter((r) => all.some((k) => limitOwners(k).includes(r)));
+  return (
+    <div>
+      <p>Findings of the final reviews that were recorded instead of fixed, because the fix is a larger change than a fix round should make, or because it is a choice for the State. The product owner reviews each one with the program’s owner. Kept in docs/reviews/known-limits.md.</p>
+      {!all.length && <Empty>The known limits are not in this build.</Empty>}
+      <div class="filters">
+        <select aria-label="Owner" value={owner} onChange={(e) => setQ({ owner: (e.target as HTMLSelectElement).value || undefined })}><option value="">Any owner</option>{roles.map((r) => <option value={r}>{r}{r === role.value ? " (you)" : ""}</option>)}</select>
+        <div class="segs">{[["open", "Open"], ["closed", "Closed"], ["all", "All"]].map(([k, l]) => <button class={"seg" + (show === k ? " on" : "")} aria-pressed={show === k} onClick={() => setQ({ show: k === "open" ? undefined : k })}>{l} {mine.filter((x) => (k === "open" ? !x.closed : k === "closed" ? !!x.closed : true)).length}</button>)}</div>
+      </div>
+      {list.map((k) => <LimitCard k={k} />)}
+      {all.length > 0 && !list.length && <Empty>No known limit matches.</Empty>}
+    </div>
+  );
+}
+function LimitCard({ k }: { k: KnownLimit }) {
+  const field = (p: string) => /^- \*\*([^*]+?)\.?\*\*\s*/.exec(p);
+  return (
+    <section class="card" id={k.id}>
+      <p class="eyebrow"><b>{k.id}</b> <Pill tone={k.closed ? "ok" : "warn"}>{k.closed ? "Closed" : "Open"}</Pill> {k.programs.map((p) => <ProgramTag id={p} />)} <span class="muted">Owner: {limitOwners(k).join(", ") || "the product owner"}</span></p>
+      <h2>{k.title}</h2>
+      {k.closed && <p class="notice ok small"><b>Closed.</b> <Rich text={k.closed} /></p>}
+      <Fold title={k.closed ? "The entry as recorded" : "Description, households, the rule and the proposed fix"} open={!k.closed}>
+        {k.paras.map((p) => {
+          const f = field(p);
+          if (/^\|/.test(p)) return <pre class="small kl-table">{p}</pre>;
+          return f ? <p><b>{f[1]}.</b> <Rich text={p.slice(f[0].length).replace(/\*\*/g, "")} /></p> : <p><Rich text={p.replace(/\*\*/g, "")} /></p>;
+        })}
+      </Fold>
+    </section>
+  );
+}
+
 function Sources() {
   const q = route.value.q;
   const text = (q.q ?? "").toLowerCase(), kind = q.kind ?? "";
@@ -118,8 +161,8 @@ function Sources() {
   return (
     <div>
       <div class="filters">
-        <input type="search" placeholder="Find a citation or words in the law, e.g. “273.9” or “over 65”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
-        <select value={kind} onChange={(e) => setQ({ kind: (e.target as HTMLSelectElement).value })}><option value="">Any kind of document</option>{kinds.map((k) => <option value={k}>{k}</option>)}</select>
+        <input type="search" aria-label="Find a citation or words in the law" placeholder="Find a citation or words in the law, e.g. “273.9” or “over 65”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+        <select aria-label="Kind of document" value={kind} onChange={(e) => setQ({ kind: (e.target as HTMLSelectElement).value })}><option value="">Any kind of document</option>{kinds.map((k) => <option value={k}>{k}</option>)}</select>
       </div>
       {hits.length > 0 && <section class="card"><h2>Excerpts matching “{q.q}” ({hits.length})</h2><More items={hits} n={8} noun="excerpts" render={(s) => <SourceCard s={s} />} /></section>}
       <h2>Documents ({docs.length})</h2>
@@ -296,7 +339,7 @@ function TookEffect() {
       <p class="lede">Figures that got a new dated version and rules that came into force, month by month, with the stored households that read them. Wording edits to the rulebook itself travel as proposals and are not listed here.</p>
       <div class="filters">
         <label class="inline">Month <select value={month} onChange={(e) => setQ({ month: (e.target as HTMLSelectElement).value })}>{[...new Set([...months, month])].sort().map((m) => <option value={m}>{fmtDate(m)} ({tookEffect(m).length}){m === TODAY.slice(0, 7) ? " · this month" : ""}</option>)}</select></label>
-        <select value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })}><option value="">Any program</option>{[...PROGRAM_ORDER, "All"].map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}</select>
+        <select aria-label="Program" value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })}><option value="">Any program</option>{[...PROGRAM_ORDER, "All"].map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}</select>
       </div>
       <p><b>{list.length}</b> change{list.length === 1 ? "" : "s"} took effect in {fmtDate(month)}; <b>{hh.length}</b> stored household{hh.length === 1 ? "" : "s"} read{hh.length === 1 ? "s" : ""} at least one of them.</p>
       <ul class="plain tooklist">{list.map((t) => <TookRow key={t.item.id + t.date} t={t} />)}</ul>
@@ -400,7 +443,7 @@ function Proposal() {
       {eds.length > 0 && (
         <section class="card">
           <h2>Before and after, on the stored households</h2>
-          <p class="small">The edits reach <b>{impacted.length}</b> items, <b>{outs.filter((o) => !isVerificationOutcome(o)).length}</b> program outcomes and <b>{householdsReading(impacted).length}</b> stored households.</p>
+          <p class="small">The edits reach <b>{impacted.length}</b> item{impacted.length === 1 ? "" : "s"}, <b>{outs.filter((o) => !isVerificationOutcome(o)).length}</b> program outcome{outs.filter((o) => !isVerificationOutcome(o)).length === 1 ? "" : "s"} and <b>{householdsReading(impacted).length}</b> stored households.</p>
           {!fresh && <button class="btn primary" disabled={busy} onClick={run}>{busy ? "Re-deciding the households…" : "Compare before and after"}</button>}
           {fresh && <>
             <DiffList diffs={diffs!.diffs} eng={draftEngine()} />
@@ -435,7 +478,9 @@ export function Search() {
   const text = route.value.q.q ?? "";
   const r = useMemo(() => (text.trim().length > 1 ? searchAll(text) : null), [text]);
   if (!r) return <div><h1>Search</h1><Empty>Type a name, a number, a citation or a few words.</Empty></div>;
-  const kinds: Array<[string, string]> = [["derived", "Rules"], ["parameter", "Figures"], ["supplied", "Facts we are told"]];
+  // Sections in the order of their best match, so an exact name is never buried under weaker hits of another kind.
+  const kinds: Array<[string, string]> = ([["derived", "Rules"], ["parameter", "Figures"], ["supplied", "Facts we are told"]] as Array<[string, string]>)
+    .map((k) => [k, r.items.findIndex((i) => i.kind === k[0])] as const).sort((a, b) => (a[1] < 0 ? 1e9 : a[1]) - (b[1] < 0 ? 1e9 : b[1])).map(([k]) => k);
   const total = r.items.length + r.questions.length + r.sources.length + r.cases.length;
   return (
     <div>

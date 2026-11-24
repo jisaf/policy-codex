@@ -4,8 +4,8 @@
  * items one program reads sit in that program's column, and every one of them
  * can be shown. Selecting a program or a node draws its lines and opens its
  * details. One outcome's whole dependency set can be traced in steps. */
-import { useMemo, useState } from "preact/hooks";
-import { D, E, byIdent, KIND, PROGRAMS, PROGRAM_ORDER, firstSentence, type CItem } from "./store";
+import { useEffect, useMemo, useState } from "preact/hooks";
+import { D, E, byId, byIdent, KIND, PROGRAMS, PROGRAM_ORDER, firstSentence, type CItem } from "./store";
 import { href, go, route, setQ } from "./ui";
 
 /* Categorical slots in fixed order (a validated palette, light surface). */
@@ -184,8 +184,14 @@ export function MapPage() {
   const byClass = q.color === "class";
   const kinds = new Set<Band>((q.show ?? BANDS.join(",")).split(",").filter((b): b is Band => (BANDS as string[]).includes(b)));
   const [open, setOpen] = useState<Set<string>>(new Set());
-  const [sel, setSel] = useState<Sel>(null);
-  const [find, setFind] = useState("");
+  // "Show it on the Map" from an item page arrives with ?find=CO-n: find it and open its details.
+  const [sel, setSel] = useState<Sel>(() => { const it = q.find ? byId.get(q.find) : undefined; return it ? { kind: "n", id: it.identifier } : null; });
+  const [find, setFind] = useState(q.find ?? "");
+  useEffect(() => {
+    const k = (e: KeyboardEvent) => { if (e.key === "Escape") setSel(null); };
+    addEventListener("keydown", k);
+    return () => removeEventListener("keydown", k);
+  }, []);
   const g = graph();
   const L = useMemo(() => layout(min, family, kinds, showOwn, open), [min, family, q.show, showOwn, open]);
   const at = useMemo(() => new Map(L.nodes.map((n) => [n.it.identifier, n])), [L]);
@@ -361,6 +367,11 @@ export function OutcomeMap({ ident }: { ident: string }) {
   const root = byIdent.get(ident);
   const family = route.value.q.family !== "0";
   const [sel, setSel] = useState<string | null>(null);
+  useEffect(() => {
+    const k = (e: KeyboardEvent) => { if (e.key === "Escape") setSel(null); };
+    addEventListener("keydown", k);
+    return () => removeEventListener("keydown", k);
+  }, []);
   if (!root) return <p class="empty">No such outcome. <a href={href("map")}>Back to the map</a></p>;
   const step = new Map<string, number>([[ident, 0]]);
   const queue = [ident];
