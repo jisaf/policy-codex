@@ -1,0 +1,21 @@
+id: CO-7942
+name: "Medicaid SSI method: the person's own countable income with the disabled widow(er)'s Social Security disregarded"
+identifier: ma_ssi_own_countable_income_with_widow_benefit_disregarded
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's own countable income for the month as ma_ssi_own_countable_income (CO-7354) figures it, with the Social Security benefits 42 U.S.C. 1383c(d) disregards (ma_disabled_widow_disregarded_social_security_receipts, CO-7940) left out of the unearned income: the own-income form of ma_disabled_widow_countable_income (CO-7941), which the disabled widow(er) test compares (10 CCR 2505-10 § 8.100.6.I, S625; S3416) for a person whose ineligible spouse's income is not deemed (20 CFR 416.1163(d)(1), S5031)."
+precision: "NM-KL-2 (2026-11-24; docs/reviews/known-limits.md). A registered sibling of ma_ssi_own_countable_income_with_oasdi_disregarded (CO-7355), the Disabled Adult Child test's own-income form, which takes out every current Social Security benefit: every other term must stay the same. Read by ma_disabled_widow_meets_ssi_income_test (CO-7943) where ma_ssi_ineligible_spouse_income_is_not_deemed (CO-7353) holds."
+derived: ["+", [max, 0, ["-", [max, 0, ["-", ma_ssi_own_unearned_income, ma_disabled_widow_disregarded_social_security_receipts]], ssi_general_income_exclusion]], [max, 0, ["-", ["*", [max, 0, ["-", [max, 0, ["-", [max, 0, ["-", ma_ssi_gross_earned_income, ma_ssi_excluded_earned_income]], ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, [max, 0, ["-", ma_ssi_own_unearned_income, ma_disabled_widow_disregarded_social_security_receipts]]]]]]], [case, [[all, meets_ssa_disability_criteria, [not, is_blind], ["<", ma_age_on_first_day_of_month, ma_aged_age]], [otherwise, impairment_related_work_expenses_paid, 0]], [else, 0]]]], ssi_earned_income_disregard_rate], [case, [["<", ma_age_on_first_day_of_month, ma_aged_age], ["+", [case, [is_blind, [otherwise, blind_work_expenses_paid, 0]], [else, 0]], [case, [[any, is_blind, meets_ssa_disability_criteria], ma_ssi_pass_set_aside_earned_income], [else, 0]]]], [else, 0]]]]]
+sources: [S5031, S1746, S308, S309, S310, S3416, S5361, S5362]
+implemented: engine
+tags: [ma, non_magi, income]
+nearest: [CO-7355, CO-7354]
+siblings:
+  - {id: CO-7355, reason: "the own-income form of the disabled widow(er) test repeats the Disabled Adult Child own-income computation with only the 402 benefits left out (1383c(d)(2)); every other term must stay the same"}
+rationale: "NM-KL-2 (F7-10): the disabled widow(er) test read CO-7355, which leaves out the person's own disability insurance benefit with the widow(er)'s benefit."
+tests:
+  # NM-KL-2, hand-computed: own unearned 1,400 less the widow's benefit 300, less the $20 (S1746).
+  - {id: CO-7942-T1, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: own unearned 1,400 (own disability benefit 1,100, widow's benefit 300), no earnings, 58 and disabled: (1,400 - 300) - 20 = 1,080", given: {ma_ssi_own_unearned_income: 1400, ma_disabled_widow_disregarded_social_security_receipts: 300, ma_ssi_gross_earned_income: 0, ma_ssi_excluded_earned_income: 0, date_of_birth: "1968-05-01", meets_ssa_disability_criteria: true, is_blind: false, ma_ssi_pass_set_aside_earned_income: 0}, expect: 1080}
+  - {id: CO-7942-T2, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: own unearned 900, all of it the widow's benefit, wages 400, no impairment-related work expenses: 0 unearned; (400 - 65 - 20) / 2 = 157.5", given: {ma_ssi_own_unearned_income: 900, ma_disabled_widow_disregarded_social_security_receipts: 900, ma_ssi_gross_earned_income: 400, ma_ssi_excluded_earned_income: 0, date_of_birth: "1968-05-01", meets_ssa_disability_criteria: true, is_blind: false, impairment_related_work_expenses_paid: 0, ma_ssi_pass_set_aside_earned_income: 0}, expect: 157.5}
