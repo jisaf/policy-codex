@@ -65,6 +65,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 24360  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2030
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -292,6 +293,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 14160  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1180
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -502,6 +504,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 28560  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2380
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -2131,6 +2134,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 24360  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2030
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -2358,6 +2362,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 14160  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1180
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -2568,6 +2573,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 28560  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2380
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -4350,6 +4356,7 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 22600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): her 2026 wages as the case states them, 10 x 1,600 + 5,000 (November) + 1,600; with p2's 7,200 the family of three is at 29,800 / 26,650 = 111.8%, not below 100%
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -4427,6 +4434,7 @@
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 7200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -4564,6 +4572,7 @@
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 60000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 5000
         days_out_of_state_in_calendar_year: 0
         dwelling_id: h2  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
@@ -4751,6 +4760,7 @@
       # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
       # p3 as a tax dependent and is her caretaker relative.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 22200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1850
         days_out_of_state_in_calendar_year: 0
         has_qualifying_military_service: false
@@ -4788,6 +4798,7 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 50400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4200
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # coverage pass 5, C5-04: stated (decision 4); ma_magi_eligibility_status reads the 8.100.3.G.1.c exclusion; he lives in the community
@@ -6113,6 +6124,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 62400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 5200
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -6171,6 +6183,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
@@ -6726,6 +6739,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -6873,6 +6887,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -7137,6 +7152,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -7703,6 +7719,7 @@
     p1:
       relationships: []
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 5400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 450
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
@@ -7757,6 +7774,7 @@
     p2:
       relationships: []
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 3600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 300
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
@@ -7810,6 +7828,7 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 16800  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1400
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -8258,6 +8277,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8315,6 +8335,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8423,6 +8444,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -8521,6 +8543,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 21600  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1800
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8578,6 +8601,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -8686,6 +8710,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
@@ -8796,6 +8821,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 0  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 0
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9067,6 +9093,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 31200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -9180,6 +9207,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
@@ -11835,6 +11863,7 @@
     p1:
       relationships: []
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
@@ -11889,6 +11918,7 @@
     p2:
       relationships: []
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
@@ -11993,6 +12023,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 1092000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 91000
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -12095,6 +12126,7 @@
         pretax_deductions: 0
     p3:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 18000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1500
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -12705,6 +12737,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 32400  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2700
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14160,6 +14193,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 55200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14355,6 +14389,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 55200  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 4600
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -16615,6 +16650,7 @@
   persons:
     p1:
       facts:
+        is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         expected_annual_income: 36000  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 3000
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
