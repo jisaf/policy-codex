@@ -66,6 +66,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 24360  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2030
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -293,6 +294,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 14160  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1180
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -503,6 +505,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 28560  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2380
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -700,6 +703,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -1752,8 +1756,8 @@
       sebt_benefit_amount: {"2026-10": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
-      cw_unit_size: 2
-      cw_minor_parent_living_arrangement_met: true
+      cw_unit_size: {"2026-10": 2}
+      cw_minor_parent_living_arrangement_met: {"2026-10": true}
       cw_deemed_parent_income_of_minor_parent: {"2026-10": 2037}
       cw_countable_income: {"2026-10": 2037}
       cw_need_standard: {"2026-10": 245}
@@ -2133,6 +2137,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 24360  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2030
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -2360,6 +2365,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 14160  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 1180
         home_is_outside_colorado: false  # coverage pass 4 N4-13: stated (decision 4)
         home_is_held_in_trust_or_entity: false  # coverage pass 4 N4-13: stated (decision 4)
@@ -2570,6 +2576,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         expected_annual_income: 28560  # coverage pass 5, C5-07: stated (decision 4; was read as not below 100% under 8.100.4.C.5): a full year at the month's MAGI income, 12 x 2380
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -2767,6 +2774,7 @@
         hours_worked: 138
     p4:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         court_ordered_spousal_support: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -3789,8 +3797,8 @@
       sebt_benefit_amount: {"2026-11": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
-      cw_unit_size: 0   # coverage review CW-12: p4 and p5 excluded for citizenship verification past the thirty days (was 2)
-      cw_minor_parent_living_arrangement_met: true
+      cw_unit_size: {"2026-11": 0}   # coverage review CW-12: p4 and p5 excluded for citizenship verification past the thirty days (was 2)
+      cw_minor_parent_living_arrangement_met: {"2026-11": true}
       cw_deemed_parent_income_of_minor_parent: {"2026-11": 2037}
       cw_countable_income: {"2026-11": 2037}
       cw_need_standard: {"2026-11": 0}   # CW-12: No Caretaker row, 0 children (was 245)
@@ -5335,6 +5343,7 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -5401,6 +5410,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -5578,6 +5588,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         is_member_of_federally_recognized_tribe: false
@@ -5637,7 +5648,7 @@
   expect:
     p1:
       cw_assistance_unit_members: [p1, p2, p4]
-      cw_unit_size: 3
+      cw_unit_size: {"2026-10": 3}
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_need_standard: {"2026-10": 439}          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
       cw_grant_standard: {"2026-10": 649}         # C-5 fixed: Two Caretakers/1 child row
@@ -5662,7 +5673,7 @@
       cw_unit_sanction_level: {"2026-10": second}
     p2:
       cw_assistance_unit_members: [p1, p2, p4]
-      cw_unit_size: 3
+      cw_unit_size: {"2026-10": 3}
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
@@ -5676,7 +5687,7 @@
       cw_unit_sanction_level: {"2026-10": second}
     p3:
       cw_assistance_unit_members: []
-      cw_unit_size: 0
+      cw_unit_size: {"2026-10": 0}
       cw_countable_income: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_time_limit_reached: false
@@ -5686,7 +5697,7 @@
       af_countable_income: {"2026-10": 700}    # B-2: SSI 700 subtracted, no $20 disregard (SSI only), SSI added back (3.549.A.2.b-d)
     p4:
       cw_assistance_unit_members: [p1, p2, p4]
-      cw_unit_size: 3
+      cw_unit_size: {"2026-10": 3}
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
@@ -5699,7 +5710,7 @@
       cw_unit_sanction_level: {"2026-10": second}
     p5:
       cw_assistance_unit_members: [p5]
-      cw_unit_size: 1
+      cw_unit_size: {"2026-10": 1}
       cw_countable_income: {"2026-10": 900}
       cw_grant_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
@@ -5756,6 +5767,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -5808,6 +5820,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -5918,6 +5931,7 @@
       # unconditional under-18 join (she is 18), so the case's shares_heat_with edge to p1 states that she
       # shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit test).
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         is_blind: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -5973,6 +5987,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         is_sponsored_non_citizen: false  # coverage pass 4, C4-10: no affidavit of support (no default since the pass)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -6530,6 +6545,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         is_pregnant: false
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
@@ -6570,6 +6586,7 @@
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         is_pregnant: false
         af_burial_request_is_timely: true
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
@@ -6594,6 +6611,7 @@
         donated_work_hours_per_week: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -7961,6 +7979,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -8043,6 +8062,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9520,6 +9540,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9683,6 +9704,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -9849,6 +9871,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
@@ -10044,6 +10067,7 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10133,6 +10157,7 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10245,6 +10270,7 @@
     p7:
       # Recipient mother at redetermination.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10364,6 +10390,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -10480,6 +10507,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
@@ -10560,6 +10588,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
@@ -13789,6 +13818,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -13886,6 +13916,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -17678,16 +17709,16 @@
         child_support_paid_legally_obligated: 0
   expect:
     p1:
-      cw_minor_parent_is_assisted_as_adult: true
-      cw_unit_caretaker_count: 1
-      cw_unit_child_count: 1
+      cw_minor_parent_is_assisted_as_adult: {"2026-10": true}
+      cw_unit_caretaker_count: {"2026-10": 1}
+      cw_unit_child_count: {"2026-10": 1}
       cw_need_standard: {"2026-10": 331}
       cw_grant_standard: {"2026-10": 488}
       cw_eligibility_status: {2026-10: eligible}
       cw_grant_amount: {2026-10: 320}
       cw_person_participation_status: eligible_member
     p2:
-      cw_minor_parent_is_assisted_as_adult: false
+      cw_minor_parent_is_assisted_as_adult: {"2026-10": false}
       cw_eligibility_status: {2026-10: eligible}
       cw_grant_amount: {2026-10: 320}
 
@@ -18341,8 +18372,8 @@
         child_support_paid_legally_obligated: 0
   expect:
     p1:
-      cw_minor_parent_living_arrangement_met: true
-      cw_minor_parent_is_assisted_as_adult: false
+      cw_minor_parent_living_arrangement_met: {"2026-10": true}
+      cw_minor_parent_is_assisted_as_adult: {"2026-10": false}
       cw_need_standard: {"2026-10": 245}
       cw_grant_standard: {"2026-10": 362}
       cw_eligibility_status: {2026-10: eligible}
@@ -26312,7 +26343,7 @@
         child_support_paid_legally_obligated: 0
   expect:
     p1:
-      cw_minor_parent_living_arrangement_met: false
+      cw_minor_parent_living_arrangement_met: {"2026-10": false}
       cw_eligibility_status:
         2026-10: ineligible_living_arrangement
       cw_grant_amount:
@@ -40116,6 +40147,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -40313,6 +40345,8 @@
     p1:
       relationships: []
       facts:
+        is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the 16-year-old mother is not emancipated in the story, the value Colorado Works read when unstated
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -40396,6 +40430,7 @@
     p3:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -40594,6 +40629,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -40812,6 +40848,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -41014,6 +41051,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -41401,6 +41439,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -41596,6 +41635,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -41797,6 +41837,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -41993,6 +42034,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -53323,6 +53365,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: nursing_facility
         child_welfare_payment_type: none
@@ -53422,6 +53465,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -53476,6 +53520,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         residence_setting_type: private_dwelling
@@ -53573,6 +53618,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -53779,6 +53825,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: nursing_facility
         child_welfare_payment_type: none
@@ -53877,6 +53924,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -54079,6 +54127,7 @@
   persons:
     p1:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -54177,6 +54226,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -60266,6 +60316,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -60485,6 +60536,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -60687,6 +60739,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         days_out_of_state_in_calendar_year: 0
@@ -61550,6 +61603,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -69206,6 +69260,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -69432,6 +69487,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -69671,6 +69727,7 @@
     p1:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -69734,6 +69791,7 @@
     p2:
       relationships: []
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false

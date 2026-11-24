@@ -5,9 +5,9 @@ kind: derived
 type: money
 scope: person-month
 program: ColoradoWorks
-meaning: The assistance unit's basic cash assistance grant before any sanction - the grant standard plus the pregnancy allowance for each pregnant unit member, less the payment countable income, with the cents dropped and floored at zero - per 9 CCR 2503-6 3.606.1.F-G, K and 3.606.2.A.
-precision: The sanction reduction of 3.608.4.C applies to this figure; cw_grant_amount (CO-914) subtracts it.
-derived: [max, 0, ["*", -1, [ceil, ["*", -1, ["-", ["+", cw_grant_standard, ["*", cw_pregnancy_allowance, [count, [filter, cw_assistance_unit_members, [of, [P], is_pregnant]]]]], cw_payment_countable_income]]]]]
+meaning: The assistance unit's basic cash assistance grant before any sanction - the grant standard plus the pregnancy allowance for each member of the unit in the month who was pregnant in it, through the month in which the pregnancy ends (cw_is_pregnant_in_month, CO-7301), less the payment countable income, with the cents dropped and floored at zero - per 9 CCR 2503-6 3.606.1.F-G, K and 3.606.2.A.
+precision: "The sanction reduction of 3.608.4.C applies to this figure; cw_grant_amount (CO-914) subtracts it. Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md, probe W4): the allowance is the month's (3.606.1.G: \"through the month in which the pregnancy ends\"), for the month's members (CO-7304); before, it read is_pregnant, the determination date's, so a mother who gave birth on October 3 had no allowance in September or October ($488 in October where 488 + 10 = $498). CA6-15: the pregnancy is read for every member of the month, so a case states is_pregnant for each (false for an infant or a man), or the grant is cannot determine (decision 4 of 2026-11-23)."
+derived: ["max", 0, ["*", -1, ["ceil", ["*", -1, ["-", ["+", "cw_grant_standard", ["*", "cw_pregnancy_allowance", ["count", ["filter", "cw_assistance_unit_members_in_month", ["of", ["P"], "cw_is_pregnant_in_month"]]]]], "cw_payment_countable_income"]]]]]
 sources: [S415, S1000, S3164, S764]
 implemented: engine
 tags: [cash, tanf, income]

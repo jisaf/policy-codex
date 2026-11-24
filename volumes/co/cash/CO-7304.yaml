@@ -1,0 +1,19 @@
+id: CO-7304
+name: "Colorado Works: assistance unit members in the month"
+identifier: cw_assistance_unit_members_in_month
+kind: derived
+type: group of persons
+scope: person-month
+program: ColoradoWorks
+meaning: "The members of this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900) who are members in the month evaluated (cw_is_assistance_unit_member_in_month, CO-7303): born by the month's last day, not dead before its first day (9 CCR 2503-6 3.609.2.C.2), and, for one who joins as a dependent child, a dependent child, a parent or caretaker of one, or an expectant parent in the month (3.601). The unit whose need and grant standards (3.606.1.F, \"based upon those included in the assistance unit\"), income (3.605.1.A) and basis (a dependent child or a pregnant member) the month is decided by."
+precision: "Coverage pass 6 CA6-4, CA6-5 (docs/reviews/coverage6-cash.md): read by the unit's size (cw_assistance_unit_members_for_size, CO-2351), the eligibility test's dependent child and pregnant member (cw_eligibility_status, CO-921), the income figures (cw_countable_income, CO-910; cw_payment_countable_income, CO-923), the pregnancy allowance (cw_grant_before_sanction, CO-1260) and the verification tests of the month (CO-2583, CO-1423). The tests that bar the whole unit for one member (a minor parent's living arrangement, a diversion period, a county closure, a strike) read the persons who may join (CO-900), as before."
+derived: [filter, cw_assistance_unit_members, [of, [P], cw_is_assistance_unit_member_in_month]]
+sources: [S401, S1625, S3165, S414]
+implemented: engine
+tags: [cash, tanf, household]
+nearest: [CO-900, CO-2351]
+rationale: "Coverage pass 6 CA6-4, CA6-5: the month's members, one item so that every month-scoped figure of the unit reads the same set."
+tests:
+  # Probe W4 (application 2026-09-10, baby born 2026-10-03): September is the mother alone; October the mother and the baby.
+  - {id: "CO-7304-T1", title: "Probe W4: September, before the birth: the mother alone", month: "2026-09", as_of: "2026-10-15", given: {cw_assistance_unit_members: [p1, p2], cw_is_assistance_unit_member_in_month: true}, others: {p2: {cw_is_assistance_unit_member_in_month: false}}, expect: [p1]}
+  - {id: "CO-7304-T2", title: "Probe W4: October: the mother and the baby", month: "2026-10", as_of: "2026-10-15", given: {cw_assistance_unit_members: [p1, p2], cw_is_assistance_unit_member_in_month: true}, others: {p2: {cw_is_assistance_unit_member_in_month: true}}, expect: [p1, p2]}

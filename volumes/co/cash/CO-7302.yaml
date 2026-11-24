@@ -1,0 +1,20 @@
+id: CO-7302
+name: "Colorado Works: pregnant in a month the determination covers"
+identifier: cw_is_pregnant_in_determination
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "Whether the person is an expectant parent (9 CCR 2503-6 3.601 \"Parent\") in some month the Colorado Works determination covers (cw_determination_months, CO-7300): pregnant at some time in one of them (cw_is_pregnant_in_month, CO-7301). Read where the unit's composition, which is one per case, asks whether a member is pregnant: the spouse of a pregnant parent (3.604.2.C.1.e) and the persons a unit with no dependent child can reach."
+precision: "Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md): the composition read is_pregnant, the determination date's, as cw_is_dependent_child (CO-901) once read the determination date's age; it now reads the months the determination covers, as CO-901 does. A month's own tests (the unit's basis in the month, the allowance) read cw_is_pregnant_in_month for that month. Required where read (decision 4 of 2026-11-23): is_pregnant not stated is cannot determine."
+derived: [some_month, cw_determination_months, cw_is_pregnant_in_month]
+sources: [S1806, S3164, S1625]
+implemented: engine
+tags: [cash, tanf, household]
+nearest: [CO-901]
+rationale: "Coverage pass 6 CA6-3: the per-case readers of a pregnancy (cw_assistance_unit_members CO-900, cw_is_optional_assistance_unit_member CO-2349, cw_person_participation_status CO-2561) need a pregnancy in some month of the determination, as the dependent child of CO-901 is a dependent child in some month."
+tests:
+  # Probe W4: application 2026-09-10, birth 2026-10-03, determined 2026-10-15: pregnant in September and October (CO-7301).
+  - {id: "CO-7302-T1", title: "Probe W4: pregnant in September and October though not on the determination date", as_of: "2026-10-15", given: {is_pregnant: false, pregnancy_start_date: "2026-01-05", pregnancy_end_date: "2026-10-03", cw_application_date: "2026-09-10", cw_determination_is_redetermination: false}, expect: true}
+  - {id: "CO-7302-T2", title: "Not pregnant, no pregnancy that ended, no application date: not pregnant", as_of: "2026-10-15", given: {is_pregnant: false}, expect: false}
+  - {id: "CO-7302-T3", title: "Currently pregnant at a redetermination: pregnant", as_of: "2026-10-15", given: {is_pregnant: true}, expect: true}

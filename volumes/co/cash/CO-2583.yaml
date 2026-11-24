@@ -6,13 +6,13 @@ type: yes/no
 scope: person-month
 program: ColoradoWorks
 meaning: "Colorado Works verification applies to this person: the person's assistance unit has a dependent child or a pregnant member, so Colorado Works can reach it. For anyone else Colorado Works' verification status is not_applicable and no Colorado Works element is pending."
-precision: "The test that cw_verification_status (CO-1427) used for its not_applicable branch, made its own item so that every Colorado Works pending element and count reads it: an element is pending only where verification applies (county case worker review B2)."
-derived: [exists, cw_assistance_unit_members, [any, [of, [P], cw_is_dependent_child], [of, [P], is_pregnant]]]
+precision: "The test that cw_verification_status (CO-1427) used for its not_applicable branch, made its own item so that every Colorado Works pending element and count reads it: an element is pending only where verification applies (county case worker review B2). Coverage pass 6 CA6-3, CA6-4: the month's members, dependent children and pregnancies (CO-7304, CO-6807, CO-7301), as the eligibility test reads them."
+derived: ["exists", "cw_assistance_unit_members_in_month", ["any", ["of", ["P"], "cw_is_dependent_child_in_month"], ["of", ["P"], "cw_is_pregnant_in_month"]]]
 sources: [S871, S872, S1064]
 implemented: engine
 tags: [cash, tanf, verification]
 rationale: "County case worker review B2: Colorado Works pending flags and counts were non-zero for people whose Colorado Works verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."
 nearest: [CO-1427]
 tests:
-  - {id: CO-2583-T1, title: "A grandmother alone, no child, not pregnant", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1], cw_is_dependent_child: false, is_pregnant: false}, expect: false}
-  - {id: CO-2583-T2, title: "A unit with a dependent child", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_pregnant: false}, others: {p2: {cw_is_dependent_child: true, is_pregnant: false}}, expect: true}
+  - {id: "CO-2583-T1", title: "A grandmother alone, no child, not pregnant", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1], cw_is_dependent_child: false, is_pregnant: false, cw_assistance_unit_members_in_month: [p1], cw_is_dependent_child_in_month: false}, expect: false}
+  - {id: "CO-2583-T2", title: "A unit with a dependent child", as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], cw_is_dependent_child: false, is_pregnant: false, cw_assistance_unit_members_in_month: [p1, p2], cw_is_dependent_child_in_month: false}, others: {p2: {cw_is_dependent_child: true, is_pregnant: false, cw_is_dependent_child_in_month: true}}, expect: true}

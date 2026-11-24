@@ -1,0 +1,25 @@
+id: CO-7301
+name: "Colorado Works: pregnant in the month"
+identifier: cw_is_pregnant_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person was pregnant at some time in the month evaluated, for Colorado Works' expectant parent (9 CCR 2503-6 3.601: \"'Parent' means an adoptive or natural/biological parent, including an expectant parent\") and its pregnancy allowance, for which \"the client is eligible ... through the month in which the pregnancy ends\" (3.606.1.G): for a person currently pregnant (is_pregnant), the determination month and later months and the months from the month of the application (cw_application_date) on; for a pregnancy that has ended (pregnancy_end_date), the months from the month it began (pregnancy_start_date) through the month it ended."
+precision: "Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md, probe W4), following Medicaid's month-by-month pregnancy (ma_is_pregnant_in_month, CO-3601; ma_expected_children_in_month, CO-7050): is_pregnant (CO-009) is the pregnancy on the determination date, so a pregnancy that ended between the application and the determination was read as none in every month, and one that is current was read in a month the case does not say she was pregnant in. The month the pregnancy ends is a pregnant month (3.606.1.G), and a child born in it is a dependent child of the month from the month of birth (cw_is_dependent_child_in_month, CO-6807). A pregnancy that has ended is read from its dates: the start date is required for a month on or before the month it ended (an unstated start date leaves such a month unknown, not pregnant or not); a person who is not pregnant and states no pregnancy_end_date has no ended pregnancy in the months the case covers (the fact's own meaning). is_pregnant is required where read (decision 4 of 2026-11-23): Colorado Works reads it for every member of a unit whose allowance or basis it decides, so a case states it for every member, an infant or a man included (false)."
+derived: [any, [all, is_pregnant, [any, [">=", [month], [det_month]], [">=", [month], [month_of, cw_application_date]], ["<=", [month_of, pregnancy_start_date], [month]]]], [all, [not, [unknown, pregnancy_end_date]], ["<=", [month], [month_of, pregnancy_end_date]], ["<=", [month_of, pregnancy_start_date], [month]]]]
+sources: [S1806, S3164, S1807]
+implemented: engine
+tags: [cash, tanf, household]
+nearest: [CO-3601]
+rationale: "Coverage pass 6 CA6-3: Colorado Works had no pregnancy in a month. Its unit's basis (3.601 'expectant parent'), the pregnancy allowance (3.606.1.G) and the pregnancy verification (3.604.3.C.7) read is_pregnant, the determination date's, in every month, so an applicant who was pregnant in the application month and gave birth before the determination had no allowance in either month and no basis in the application month. ma_is_pregnant_in_month (CO-3601) is Medicaid's own item (retroactive months, its own application date), so Colorado Works states its own."
+tests:
+  # Probe W4: application 2026-09-10, the pregnancy began 2026-01-05 and ended with the birth on 2026-10-03, determined 2026-10-15
+  # (is_pregnant false on that date). 3.606.1.G (S3164): the allowance runs "through the month in which the pregnancy ends".
+  - {id: "CO-7301-T1", title: "Probe W4: September, before the birth: pregnant", month: "2026-09", as_of: "2026-10-15", given: {is_pregnant: false, pregnancy_start_date: "2026-01-05", pregnancy_end_date: "2026-10-03", cw_application_date: "2026-09-10"}, expect: true}
+  - {id: "CO-7301-T2", title: "Probe W4: October, the month the pregnancy ended: pregnant in the month (3.606.1.G)", month: "2026-10", as_of: "2026-10-15", given: {is_pregnant: false, pregnancy_start_date: "2026-01-05", pregnancy_end_date: "2026-10-03", cw_application_date: "2026-09-10"}, expect: true}
+  - {id: "CO-7301-T3", title: "November, after the month the pregnancy ended: not pregnant", month: "2026-11", as_of: "2026-10-15", given: {is_pregnant: false, pregnancy_start_date: "2026-01-05", pregnancy_end_date: "2026-10-03", cw_application_date: "2026-09-10"}, expect: false}
+  - {id: "CO-7301-T4", title: "Currently pregnant, applied September 10: pregnant from the application month on", month: "2026-09", as_of: "2026-10-15", given: {is_pregnant: true, cw_application_date: "2026-09-10"}, expect: true}
+  - {id: "CO-7301-T5", title: "Decision 4: whether the person is pregnant not stated: cannot determine", month: "2026-10", as_of: "2026-10-15", given: {}, expect: unknown}
+  - {id: "CO-7301-T6", title: "Not pregnant and no pregnancy that ended: not pregnant", month: "2026-10", as_of: "2026-10-15", given: {is_pregnant: false}, expect: false}
+  - {id: "CO-7301-T7", title: "A pregnancy that ended in October with its start not stated: September cannot be determined", month: "2026-09", as_of: "2026-10-15", given: {is_pregnant: false, pregnancy_end_date: "2026-10-03", cw_application_date: "2026-09-10"}, expect: unknown}
