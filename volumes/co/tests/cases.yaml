@@ -11494,6 +11494,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
