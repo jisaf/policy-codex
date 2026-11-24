@@ -95879,6 +95879,7 @@
   # May 2026: before coverage. June to August: 1,000 / 1,330 = 75.2%: Adults, eligible (August, the month of death: eligible at a time in the month, G.1, S3351).
   # September to December: after the month of death: ineligible_deceased (G.6.a.i, Q.1.b.i, 430.2.B.i end even the guaranteed periods at death; no category covers a person after it);
   # family planning and CHP+ the same. Before the fix September to December were eligible, family planning full_coverage.
+  # MAGI close-out, KL-MAGI-3: family planning reads the months the application cannot cover too: May 2026 < 2026-06, the window's first month: ineligible_before_coverage_period (was full_coverage, by the Adults category of a month the application cannot cover).
   as_of: 2026-11-10
   persons:
     p1:
@@ -95976,6 +95977,7 @@
         2026-11: ineligible_deceased
         2026-12: ineligible_deceased
       ma_family_planning_status:
+        2026-05: ineligible_before_coverage_period
         2026-08: full_coverage
         2026-09: ineligible_deceased
         2026-10: ineligible_deceased
