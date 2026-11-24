@@ -6,7 +6,8 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the person is a parent or caretaker relative (ma_caretaker_relative_of, CO-2606) of a person who is a dependent child (ma_is_dependent_child)."
-derived: [exists, ma_caretaker_relative_of, [at, [of, [P], ma_is_dependent_child_in_month], [det_month]]]
+precision: "Pattern sweep, MAGI (2026-11-24, PS-04): ma_caretaker_relative_of (CO-2606) is per month since the sweep; this item reads it, and the child's age, for the determination month."
+derived: [at, [exists, ma_caretaker_relative_of, [of, [P], ma_is_dependent_child_in_month]], [det_month]]
 sources: [S1500, S1719]
 implemented: engine
 tags: [ma, magi, household]
