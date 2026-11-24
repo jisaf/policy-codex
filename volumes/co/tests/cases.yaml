@@ -5752,7 +5752,7 @@
         sex: female
         immigration_status: us_citizen
         state_of_residence: CO
-        marital_status: other
+        marital_status: single  # coverage verification 7, V7-10: other is now a civil union, which the story does not state (was other)
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_emancipated_minor: false
@@ -6482,7 +6482,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         snap_receives_permanent_disability_retirement_benefit: false
-        marital_status: other
+        marital_status: single  # coverage verification 7, V7-10: other is now a civil union, which the story does not state (was other)
         liquid_resources_value: 500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 500)
         expects_institutional_stay_of_thirty_days: false
         meets_hcbs_waiver_target_group: none
@@ -6668,7 +6668,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         snap_receives_permanent_disability_retirement_benefit: false
-        marital_status: other
+        marital_status: single  # coverage verification 7, V7-10: other is now a civil union, which the story does not state (was other)
         liquid_resources_value: 1200  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1200)
         institution_entry_date: "2026-09-15"
         expects_institutional_stay_of_thirty_days: true

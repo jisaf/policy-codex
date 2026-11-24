@@ -25183,3 +25183,22 @@ Document: D-81
 9 CCR 2503-6 3.609.1.D.6 (D-81:4520-4522; coverage pass 7, cash). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
 
 > 6. The client begins receiving benefits under another public assistance program which may not be received concurrently with a Colorado Works grant, such as Supplemental Security Income or Adult Financial programs.
+
+### S5320. Colorado SNAP definitions: a civil union is a legally binding partnership without the legal recognition of the partners as spouses
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 (D-82:134-135; rule version 12718, effective 10/01/2026; coverage verification 7, V7-10). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Civil union” means a legally binding partnership between two individuals without the
+> legal recognition of these individuals as spouses.
+
+### S5321. Adult Financial definitions: "Marriage" includes a common law marriage and a civil union
+
+Document: D-80
+
+9 CCR 2503-5 3.510 (D-80:360-362; rule version 12428, effective 03/02/2026; coverage verification 7, V7-10). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Marriage” (for the purpose of these rules) means a marriage as defined in Section 14-
+> 2-104(1), C.R.S., a common law marriage as defined in Section 14-2-104(2), C.R.S.,
+> and a civil union, as defined in Section 14-15-103(1), C.R.S.

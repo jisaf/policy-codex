@@ -92,6 +92,15 @@ The other cash findings were fixed; their recorded readings are open questions t
 
 Candidate of the extended pattern sweep (`npx vite-node scripts/audit/pattern-sweep-cash.ts -- --anchors`), new because the cash sweep's own P1 test did not look for it. Listed for the cash owner; not judged against the text here.
 
+### KL-CASH-3 (coverage verification 7, V7-10; a follow-up for the cash programs' owner): Adult Financial's "Marriage" includes a civil union
+
+- **Description.** 9 CCR 2503-5 3.510 (D-80:360-362, S5321): "“Marriage” (for the purpose of these rules) means a marriage as defined in Section 14-2-104(1), C.R.S., a common law marriage as defined in Section 14-2-104(2), C.R.S., and a civil union, as defined in Section 14-15-103(1), C.R.S." Adult Financial's married test (af_is_married CO-7308) reads the spouse edge and marital_status married only; it reads neither the civil_union_partner edge (volume.yaml, read by LEAP alone) nor marital_status other, which coverage verification 7 (V7-10) defined as a civil union with a person outside the case. A client in a civil union is read as unmarried: the partner's income is not deemed (3.534), the couple's resources are not counted together (3.520.72.A), and the couple's standards are not applied.
+- **Households affected.** An Adult Financial client in a civil union.
+- **Common / rare.** Rare.
+- **Rule paragraph.** 9 CCR 2503-5 3.510 "Marriage" (S5321); 3.534, 3.520.72.A.
+- **Household that shows it.** None stored: no stored household states a civil union for an Adult Financial client (the three that stated other, CO-07, CO-71 and CO-72, now state single; V7-10).
+- **Proposed fix.** af_is_married and af_spouses_in_month (CO-7308, CO-7603) read the civil_union_partner edge and marital_status other as a marriage, as 3.510 defines it, with the stored households and rule tests that show it; the other programs' owners confirm whether their rules read a civil union as a marriage (SNAP's 4.000.1, S5320, does not: a civil union is "without the legal recognition of these individuals as spouses").
+
 ### CASH-SW-1. The minor parent deeming needs deduction reads the need standard of the determination date
 
 - **Description.** cw_minor_parent_deeming_needs_deduction (CO-2000, person scope) reads cw_need_standard_table (CO-274), cw_need_standard_table_two_caretakers (CO-353) and cw_need_standard_each_additional (CO-275), each versioned from July 1, on the determination date; cw_deemed_parent_income_of_minor_parent (CO-909) reads it in each month.
