@@ -370,12 +370,29 @@ function withJobFacts(out: Earning[], stated: unknown): Earning[] {
     const v = biz[0][f];
     res = res.map((r) => (BUSINESS_RECEIPTS.has(r.kind) ? { ...r, [f]: v } : r));
   }
+  // The same for the business's costs (KL-CE-1): a cost record names its
+  // business (job) and says whether it is a rental property's maintenance
+  // (property_maintenance), and no scalar fact states either, so the
+  // translation keeps each on every translated cost record where the
+  // person's stated cost records all give it the same value.
+  const costs = (stated as Earning[]).filter((r) => r && COST_KINDS.has(String(r.kind)));
+  for (const f of KEPT_COST_FIELDS) {
+    const vals = new Set(costs.map((r) => JSON.stringify(r[f])));
+    if (!costs.length || vals.size !== 1 || costs[0][f] === undefined) continue;
+    const v = costs[0][f];
+    res = res.map((r) => (COST_KINDS.has(r.kind) ? { ...r, [f]: v } : r));
+  }
   return res;
 }
 
 /** Fields of a business's receipts no scalar earned fact states, kept as the
- *  household's own records state them (coverage pass 7, R7-1). */
-export const KEPT_BUSINESS_FIELDS: ReadonlyArray<string> = ["rental_property"];
+ *  household's own records state them (coverage pass 7, R7-1; KL-CE-1: the
+ *  business's job, which its cost records name). */
+export const KEPT_BUSINESS_FIELDS: ReadonlyArray<string> = ["rental_property", "job"];
+/** Fields of a business's cost records no scalar earned fact states, kept as
+ *  the household's own records state them (KL-CE-1). */
+export const KEPT_COST_FIELDS: ReadonlyArray<string> = ["job", "property_maintenance"];
+const COST_KINDS: ReadonlySet<string> = new Set([...COSTS.map((c) => c[1]), "business_cost_depreciation", "business_cost_boarder_provision"]);
 const BUSINESS_RECEIPTS: ReadonlySet<string> = new Set(["self_employment_receipts"]);
 
 export interface Translated<T> { value: T; notes: string[]; changed: boolean }
