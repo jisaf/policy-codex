@@ -1,0 +1,3387 @@
+{
+ "review": "docs/reviews/screening-order.md",
+ "volume": "colorado",
+ "branch": "ccr-9d19bf4c-wmnwcl",
+ "head": "7e6a31e",
+ "date": "2026-11-24",
+ "schema": {
+  "fact_or_item": "a supplied fact, a record list (earnings, receipts, holdings), the relationships, or a derived item",
+  "kind": "fact | record | relationship | agency record | application data | rule | figure",
+  "settles": "deny: an answer can settle not eligible; approve: an answer can settle eligible early; both",
+  "conditions": "the necessary condition(s) of the outcome the question decides, with the paragraph",
+  "programs_served": "program families whose outcomes read it (docs/reviews/cross-program-primitives.json read_by_programs)",
+  "denial_share": "share of stored deny answers of this program whose minimal denial set holds it: with the current engine, and with a three-valued (possible-values) case",
+  "cost": "applicant burden: 0.5 application data or agency record, 1 yes/no or plain choice, 2 a date or the relationship grid, 3 an amount to look up or a status in statute vocabulary, 4 dated income records, 5 resource records",
+  "needs_verification": "the verification element the answer falls under, or null",
+  "skips": "fields that become irrelevant once the answer is known"
+ },
+ "programs": {
+  "SNAP": {
+   "outcomes": [
+    "snap_eligibility_status",
+    "snap_allotment"
+   ],
+   "order": [
+    {
+     "fact_or_item": "relationships",
+     "kind": "relationship",
+     "settles": "both",
+     "conditions": [
+      "Household composition: who lives together and buys and prepares food together; spouses and a person under 22 living with a parent are one household (7 CFR 273.1(a), (b)(1); 10 CCR 2506-1 4.304.1)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 0.897
+     },
+     "cost": 2,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": [
+      "the relationship grid for a person living alone"
+     ]
+    },
+    {
+     "fact_or_item": "dwelling_id",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Household composition: lives together (7 CFR 273.1(a))"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.949,
+      "three_valued_case": 0.846
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": [],
+     "item_id": "CO-3350"
+    },
+    {
+     "fact_or_item": "residence_setting_type",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "A resident of an institution that provides the majority of meals is not eligible as a member of any household (7 CFR 273.1(b)(7)(vi))"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 0.897
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [
+      "every other SNAP question for that person when the setting is an institution providing most meals"
+     ],
+     "item_id": "CO-3330"
+    },
+    {
+     "fact_or_item": "snap_household_refused_to_cooperate",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "No household is eligible if it refuses to cooperate (7 U.S.C. 2015(c); 10 CCR 2506-1 4.500.E)"
+     ],
+     "programs_served": [
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.103,
+      "three_valued_case": 0.103
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-4267",
+     "note": "An agency finding, not an applicant question (FB-04)."
+    },
+    {
+     "fact_or_item": "snap_is_serving_ipv_disqualification",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "A member serving an IPV, drug-felony or work-rule disqualification is an ineligible member; the household cannot use ECE (10 CCR 2506-1 4.206.C.2.c)"
+     ],
+     "programs_served": [
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.846,
+      "three_valued_case": 0.59
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-039",
+     "note": "Agency record (eDRS, CBMS). Settles the member, rarely the household: in the stored households the disqualified member's income still counts, so the household answer turns on income either way (gap G2)."
+    },
+    {
+     "fact_or_item": "receives_ssi",
+     "kind": "fact",
+     "settles": "approve",
+     "conditions": [
+      "Basic categorical eligibility: every member receives or is authorized to receive SSI, Colorado Works, OAP, AND or AB (10 CCR 2506-1 4.206.C.1.a); BCE and ECE households are exempt from the resource criteria (4.408.A)"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.897,
+      "three_valued_case": 0.692
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [
+      "holdings (resource records) when every member is on SSI, Colorado Works or Adult Financial (BCE)"
+     ],
+     "item_id": "CO-012"
+    },
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Elderly member (60 or older): the gross income test does not apply and the higher resource limit does (7 CFR 273.10(e)(2)(i); 10 CCR 2506-1 4.206.C.3.b, 4.408.D-E)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.949,
+      "three_valued_case": 0.692
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "the six SNAP disability-benefit prongs when a member is 60 or older (the household is already elderly or disabled)"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "immigration_status",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Citizenship or eligible non-citizen status of each member (7 CFR 273.4): rules out the member, not the household"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.897,
+      "three_valued_case": 0.641
+     },
+     "cost": 3,
+     "answer_source": "applicant",
+     "needs_verification": "immigration status",
+     "skips": [],
+     "item_id": "CO-002"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Gross income at or below 130% FPL (standard eligibility) or 200% FPL (ECE) (10 CCR 2506-1 4.206.C.2.a, C.3.b); net income at or below 100% FPL"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.846,
+      "three_valued_case": 0.308
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    },
+    {
+     "fact_or_item": "receipts",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Gross income, as above (unearned)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.641,
+      "three_valued_case": 0.256
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-5000"
+    },
+    {
+     "fact_or_item": "holdings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Resources below the limit for standard-eligibility households only (10 CCR 2506-1 4.408.A, D-E)"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.641,
+      "three_valued_case": 0.333
+     },
+     "cost": 5,
+     "answer_source": "applicant",
+     "needs_verification": "resources",
+     "skips": [],
+     "item_id": "CO-5300",
+     "note": "Ask only when the household is neither BCE nor ECE."
+    }
+   ]
+  },
+  "Medicaid MAGI": {
+   "outcomes": [
+    "ma_magi_eligibility_status",
+    "ma_magi_category"
+   ],
+   "order": [
+    {
+     "fact_or_item": "ma_application_date",
+     "kind": "application data",
+     "settles": "deny",
+     "conditions": [
+      "Months: a month before the application month is covered only on a retroactive request, three months back (10 CCR 2505-10 8.100.3.E.1-2)"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI"
+     ],
+     "denial_share": {
+      "current_engine": 0.468,
+      "three_valued_case": 0.411
+     },
+     "cost": 0.5,
+     "answer_source": "system",
+     "needs_verification": null,
+     "skips": [
+      "every question for a month before the retroactive window"
+     ],
+     "item_id": "CO-088",
+     "note": "Settles a month, never the application: \"An applicant does not have to be eligible in the month of application to be eligible for retroactive Medical Assistance\" (8.100.3.E.2)."
+    },
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Category: child under 19 (8.100.4.G.2, 142% FPL), adult (8.100.4.G.4, 133% FPL), needy newborn; 65 or older or Medicare moves the person to the non-MAGI groups"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.871,
+      "three_valued_case": 0.823
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "is_pregnant",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Pregnant women category, 195% FPL, through the 12th month after the pregnancy ends (8.100.4.G.5)"
+     ],
+     "programs_served": [
+      "CW",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.774,
+      "three_valued_case": 0.774
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "pregnancy",
+     "skips": [],
+     "item_id": "CO-009"
+    },
+    {
+     "fact_or_item": "state_of_residence",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Residency: living within Colorado and considering it the place of residence (8.100.3.B.2)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.516,
+      "three_valued_case": 0.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "residency",
+     "skips": [],
+     "item_id": "CO-006"
+    },
+    {
+     "fact_or_item": "relationships",
+     "kind": "relationship",
+     "settles": "both",
+     "conditions": [
+      "MAGI household (42 CFR 435.603(f)): tax filers, their dependents, and the persons living with them"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.806,
+      "three_valued_case": 0.806
+     },
+     "cost": 2,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": []
+    },
+    {
+     "fact_or_item": "is_claimed_by_filer_outside_case",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "MAGI household: a tax dependent claimed by someone outside the case"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI"
+     ],
+     "denial_share": {
+      "current_engine": 0.669,
+      "three_valued_case": 0.661
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-2716"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Household income at or below the category standard (8.100.4.G.2, G.4, G.5)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.726,
+      "three_valued_case": 0.726
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    },
+    {
+     "fact_or_item": "receipts",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Household income, as above"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.726,
+      "three_valued_case": 0.726
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-5000"
+    },
+    {
+     "fact_or_item": "magi_other_taxable_income",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Household income: the four MAGI adjustments (other taxable income, pre-tax deductions, discharged student loan, excluded foreign income)"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI"
+     ],
+     "denial_share": {
+      "current_engine": 0.726,
+      "three_valued_case": 0.726
+     },
+     "cost": 3,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-079",
+     "note": "Ask as one attestation, amounts only on yes (FB-02): non-zero in none of the stored households."
+    }
+   ],
+   "not_a_disqualifier": "immigration_status: a person without a qualifying status is not ruled out of Medicaid; the answer moves to emergency Medicaid or the Cover All Coloradans groups (children, pregnancy). It sets the kind of coverage, so it is never asked as a screener for MAGI."
+  },
+  "CHP+": {
+   "outcomes": [
+    "chp_eligibility_status"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Be less than 19 years of age, or be a pregnant woman (10 CCR 2505-3 110.1.A)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.932,
+      "three_valued_case": 0.932
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "every CHP+ question for a person 19 or older who is not pregnant"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "is_pregnant",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "As above (110.1.A.2)"
+     ],
+     "programs_served": [
+      "CW",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.847,
+      "three_valued_case": 0.831
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "pregnancy",
+     "skips": [],
+     "item_id": "CO-009"
+    },
+    {
+     "fact_or_item": "ma_application_date",
+     "kind": "application data",
+     "settles": "deny",
+     "conditions": [
+      "Effective the first day of the month of application, or of the month the person becomes eligible (10 CCR 2505-3 430.1)"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI"
+     ],
+     "denial_share": {
+      "current_engine": 0.458,
+      "three_valued_case": 0.271
+     },
+     "cost": 0.5,
+     "answer_source": "system",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-088"
+    },
+    {
+     "fact_or_item": "state_of_residence",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Be a resident of Colorado (110.1.D)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.576,
+      "three_valued_case": 0.475
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "residency",
+     "skips": [],
+     "item_id": "CO-006"
+    },
+    {
+     "fact_or_item": "chp_has_other_health_coverage",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Not covered under a group health plan (120.1.A)"
+     ],
+     "programs_served": [
+      "MAGI_CHP"
+     ],
+     "denial_share": {
+      "current_engine": 0.085,
+      "three_valued_case": 0.017
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-090"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Household income over 142% (children) or 195% (pregnant) and not over 260% FPL (110.1.E-F); not eligible for Title XIX (120.1.B)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.525,
+      "three_valued_case": 0.525
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100",
+     "note": "At or below the Medicaid standard the CHP+ answer is \"Medicaid eligible\": a referral, not a denial of coverage."
+    }
+   ]
+  },
+  "Medicaid non-MAGI": {
+   "outcomes": [
+    "ma_ssi_related_category",
+    "ma_msp_category",
+    "ma_buy_in_category",
+    "ma_ltc_eligibility_status",
+    "ma_protected_group_category",
+    "ma_oap_health_care_status"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Aged: 65 and over (10 CCR 2505-10 8.100.6.K.1); the Buy-In and SSI-related groups by age"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.65,
+      "three_valued_case": 0.485
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "meets_ssa_disability_criteria",
+     "kind": "agency record",
+     "settles": "both",
+     "conditions": [
+      "Disabled: the SSA disability finding"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.282,
+      "three_valued_case": 0.252
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": "disability",
+     "skips": [],
+     "item_id": "CO-011",
+     "note": "Agency record (SSA)."
+    },
+    {
+     "fact_or_item": "is_blind",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Blind"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI"
+     ],
+     "denial_share": {
+      "current_engine": 0.214,
+      "three_valued_case": 0.155
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "disability",
+     "skips": [],
+     "item_id": "CO-010"
+    },
+    {
+     "fact_or_item": "receives_ssi",
+     "kind": "fact",
+     "settles": "approve",
+     "conditions": [
+      "SSI recipient: the ssi_recipient category of ma_ssi_related_category (CO-612), code B of 10 CCR 2505-10 8.100.3.M.2.b"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.359,
+      "three_valued_case": 0.359
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-012"
+    },
+    {
+     "fact_or_item": "adult_financial_program_received",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "OAP recipients who meet SSI criteria receive Medicaid (8.100.6.K.2-4)"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.34,
+      "three_valued_case": 0.34
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-2710"
+    },
+    {
+     "fact_or_item": "medicare_part_a_entitled",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "Medicare Savings Programs need Medicare Part A"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.039,
+      "three_valued_case": 0.039
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-803"
+    },
+    {
+     "fact_or_item": "residence_setting_type",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Long-term care: institutionalized, HCBS waiver or PACE setting"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.466,
+      "three_valued_case": 0.408
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-3330"
+    },
+    {
+     "fact_or_item": "holdings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "SSI resource standard"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.214,
+      "three_valued_case": 0.214
+     },
+     "cost": 5,
+     "answer_source": "applicant",
+     "needs_verification": "resources",
+     "skips": [],
+     "item_id": "CO-5300"
+    }
+   ]
+  },
+  "Colorado Works": {
+   "outcomes": [
+    "cw_eligibility_status",
+    "cw_grant_amount"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Dependent child: under 18, or 18 and a full-time secondary student finishing before 19 (9 CCR 2503-6 3.601), or a pregnant member"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.992,
+      "three_valued_case": 0.934
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "every Colorado Works question when no child under 19 and no one pregnant lives in the home"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "relationships",
+     "kind": "relationship",
+     "settles": "deny",
+     "conditions": [
+      "The child resides with a parent or non-parent caretaker (3.601)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.992,
+      "three_valued_case": 0.983
+     },
+     "cost": 2,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": []
+    },
+    {
+     "fact_or_item": "is_pregnant",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Pregnant member in place of a dependent child"
+     ],
+     "programs_served": [
+      "CW",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.182,
+      "three_valued_case": 0.174
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "pregnancy",
+     "skips": [],
+     "item_id": "CO-009"
+    },
+    {
+     "fact_or_item": "temporary_absence_reason",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Unit composition: who is in the home in the month"
+     ],
+     "programs_served": [
+      "AF",
+      "CW"
+     ],
+     "denial_share": {
+      "current_engine": 0.992,
+      "three_valued_case": 0.983
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": [],
+     "item_id": "CO-3351"
+    },
+    {
+     "fact_or_item": "receives_ssi",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Unit composition: an SSI recipient is excluded from the assistance unit"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.959,
+      "three_valued_case": 0.901
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-012"
+    },
+    {
+     "fact_or_item": "child_welfare_payment_type",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Unit composition: a child with a Title IV-E foster, adoption or kinship payment is excluded"
+     ],
+     "programs_served": [
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.95,
+      "three_valued_case": 0.893
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-2847"
+    },
+    {
+     "fact_or_item": "months_of_assistance_received",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "60-month time limit (9 CCR 2503-6 3.606.6.A)"
+     ],
+     "programs_served": [
+      "CW"
+     ],
+     "denial_share": {
+      "current_engine": 0.405,
+      "three_valued_case": 0.066
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-840",
+     "note": "Agency record."
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Countable gross earned and unearned income not over the need standard (3.606.1.H)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.537,
+      "three_valued_case": 0.537
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    },
+    {
+     "fact_or_item": "receipts",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "As above"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.926,
+      "three_valued_case": 0.76
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-5000"
+    }
+   ],
+   "skip_always": [
+    "holdings: \"An asset test shall not be applied as a condition of eligibility\" (C.R.S. 26-2-706(2)(a))"
+   ]
+  },
+  "Adult Financial": {
+   "outcomes": [
+    "af_category",
+    "af_oap_grant",
+    "af_and_grant"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "OAP 60 or older; AND-SO 18 through 59 (0 through 59 if blind); AND-CS 0 through 59 (9 CCR 2503-5 3.520.61.A)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.607,
+      "three_valued_case": 0.337
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "OAP questions under 60; AND questions at 60 or older"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "state_of_residence",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Resident of Colorado; inmates and fleeing felons not eligible (3.520.61.B)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.18,
+      "three_valued_case": 0.045
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "residency",
+     "skips": [],
+     "item_id": "CO-006"
+    },
+    {
+     "fact_or_item": "residence_setting_type",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Inmate of a correctional institution (3.520.61.B); AND patient of an institution"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.202,
+      "three_valued_case": 0.112
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-3330"
+    },
+    {
+     "fact_or_item": "receives_ssi",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "AND-CS: receiving SSI due to disability or blindness, less than the full SSI standard (3.546); AND-SO: not approved for SSI or SSDI (3.540)"
+     ],
+     "programs_served": [
+      "AF",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.382,
+      "three_valued_case": 0.326
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-012"
+    },
+    {
+     "fact_or_item": "meets_ssa_disability_criteria",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "AND: have a disability (3.520.61.E)"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.022,
+      "three_valued_case": 0.0
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": "disability",
+     "skips": [],
+     "item_id": "CO-011"
+    },
+    {
+     "fact_or_item": "immigration_status",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "AND: citizen, qualified non-citizen or legal immigrant (3.520.61.C)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.258,
+      "three_valued_case": 0.236
+     },
+     "cost": 3,
+     "answer_source": "applicant",
+     "needs_verification": "immigration status",
+     "skips": [],
+     "item_id": "CO-002"
+    },
+    {
+     "fact_or_item": "holdings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Countable resources below the limit (3.520.71.A.1); the known parts already over it settle it (af_resources_known_lower_bound, CO-5350)"
+     ],
+     "programs_served": [
+      "AF",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.292,
+      "three_valued_case": 0.258
+     },
+     "cost": 5,
+     "answer_source": "applicant",
+     "needs_verification": "resources",
+     "skips": [],
+     "item_id": "CO-5300"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Income below the income limit (3.520.71.A.2)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.202,
+      "three_valued_case": 0.18
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    }
+   ]
+  },
+  "CCCAP": {
+   "outcomes": [
+    "cccap_eligibility_status"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Eligible child: birth to 13, or under 19 with verified additional care needs (8 CCR 1403-1 3.111.F)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 1.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "every CCCAP question when no child under 13 (or under 19 with additional care needs) lives in the home"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "relationships",
+     "kind": "relationship",
+     "settles": "deny",
+     "conditions": [
+      "The child physically resides with the eligible adult caretaker or teen parent (3.111.F)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 1.0
+     },
+     "cost": 2,
+     "answer_source": "applicant",
+     "needs_verification": "household composition",
+     "skips": []
+    },
+    {
+     "fact_or_item": "cccap_child_needs_care_for_part_of_day",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Needs child care during a portion of the day, less than 24 hours (3.111.F)"
+     ],
+     "programs_served": [
+      "CCCAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.827,
+      "three_valued_case": 0.365
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-2108"
+    },
+    {
+     "fact_or_item": "is_protective_services_child_care_case",
+     "kind": "agency record",
+     "settles": "approve",
+     "conditions": [
+      "Protective services child care, without the low-income test"
+     ],
+     "programs_served": [
+      "CCCAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.827,
+      "three_valued_case": 0.827
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [
+      "caretaker activity and income questions"
+     ],
+     "item_id": "CO-873",
+     "note": "Agency referral (FB-06)."
+    },
+    {
+     "fact_or_item": "receives_tanf_cash",
+     "kind": "fact",
+     "settles": "both",
+     "conditions": [
+      "Colorado Works child care path"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.827,
+      "three_valued_case": 0.827
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [
+      "the low-income guidelines"
+     ],
+     "item_id": "CO-013"
+    },
+    {
+     "fact_or_item": "hours_worked",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Each caretaker in an eligible activity: job search, employment, training, education (3.103.OO; 3.111.D.1)"
+     ],
+     "programs_served": [
+      "CCCAP",
+      "CW",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.788,
+      "three_valued_case": 0.442
+     },
+     "cost": 2,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-022"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Gross income within the county entry limit (not below 185% FPL) or the 85% SMI exit limit (3.111.H.1)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.365,
+      "three_valued_case": 0.269
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    }
+   ]
+  },
+  "LEAP": {
+   "outcomes": [
+    "leap_is_eligible",
+    "leap_benefit_amount"
+   ],
+   "order": [
+    {
+     "fact_or_item": "leap_application_date",
+     "kind": "application data",
+     "settles": "deny",
+     "conditions": [
+      "Eligibility period November 1 through April 30 (9 CCR 2503-7 3.751.1)"
+     ],
+     "programs_served": [
+      "LEAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.429,
+      "three_valued_case": 0.429
+     },
+     "cost": 0.5,
+     "answer_source": "system",
+     "needs_verification": null,
+     "skips": [
+      "every LEAP question outside the period"
+     ],
+     "item_id": "CO-2122",
+     "note": "Tells the applicant when LEAP opens; settles a month with no applicant fact."
+    },
+    {
+     "fact_or_item": "state_of_residence",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Colorado state residency as of the date of application (3.752.2)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.0,
+      "three_valued_case": 0.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "residency",
+     "skips": [],
+     "item_id": "CO-006"
+    },
+    {
+     "fact_or_item": "leap_is_in_another_approved_household",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "One benefit per household"
+     ],
+     "programs_served": [
+      "LEAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.286,
+      "three_valued_case": 0.286
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-2100",
+     "note": "Agency record."
+    },
+    {
+     "fact_or_item": "home_heating_cost_arrangement",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Vulnerable: responsible for home heating costs; homeless, institutional and other listed arrangements are not (3.752.25.A-B)"
+     ],
+     "programs_served": [
+      "LEAP",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.0,
+      "three_valued_case": 0.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-3300"
+    },
+    {
+     "fact_or_item": "immigration_status",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "U.S. citizenship of a countable member (3.752.2)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.333,
+      "three_valued_case": 0.333
+     },
+     "cost": 3,
+     "answer_source": "applicant",
+     "needs_verification": "immigration status",
+     "skips": [],
+     "item_id": "CO-002"
+    },
+    {
+     "fact_or_item": "earnings",
+     "kind": "record",
+     "settles": "deny",
+     "conditions": [
+      "Countable income up to 60% of state median income (3.752.22.D)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP"
+     ],
+     "denial_share": {
+      "current_engine": 0.286,
+      "three_valued_case": 0.286
+     },
+     "cost": 4,
+     "answer_source": "applicant",
+     "needs_verification": "earned income",
+     "skips": [],
+     "item_id": "CO-5100"
+    }
+   ]
+  },
+  "SUN Bucks": {
+   "outcomes": [
+    "sebt_eligibility_status",
+    "sebt_benefit_amount"
+   ],
+   "order": [
+    {
+     "fact_or_item": "date_of_birth",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "School-aged and categorically eligible, or enrolled in an NSLP/SBP school (7 CFR 292.6)"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 1.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "age",
+     "skips": [
+      "every SUN Bucks question for a person not of school age and not enrolled"
+     ],
+     "item_id": "CO-001"
+    },
+    {
+     "fact_or_item": "is_enrolled_in_nslp_school",
+     "kind": "agency record",
+     "settles": "deny",
+     "conditions": [
+      "Enrolled in an NSLP/SBP-participating school (292.6(b)-(c))"
+     ],
+     "programs_served": [
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 1.0,
+      "three_valued_case": 1.0
+     },
+     "cost": 0.5,
+     "answer_source": "agency record",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-1293",
+     "note": "School records."
+    },
+    {
+     "fact_or_item": "receives_snap",
+     "kind": "fact",
+     "settles": "approve",
+     "conditions": [
+      "Categorically eligible: a child in the household receives SNAP, TANF or FDPIR (292.2)"
+     ],
+     "programs_served": [
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.0,
+      "three_valued_case": 0.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [
+      "school-meal household income and size"
+     ],
+     "item_id": "CO-1936"
+    },
+    {
+     "fact_or_item": "receives_tanf_cash",
+     "kind": "fact",
+     "settles": "approve",
+     "conditions": [
+      "As above"
+     ],
+     "programs_served": [
+      "AF",
+      "CCCAP",
+      "CW",
+      "LEAP",
+      "MAGI_CHP",
+      "Medicaid",
+      "NonMAGI",
+      "SNAP",
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.0,
+      "three_valued_case": 0.0
+     },
+     "cost": 1,
+     "answer_source": "applicant",
+     "needs_verification": "unearned income",
+     "skips": [],
+     "item_id": "CO-013"
+    },
+    {
+     "fact_or_item": "school_meal_household_income",
+     "kind": "fact",
+     "settles": "deny",
+     "conditions": [
+      "Income eligibility guidelines for free or reduced-price meals (292.5)"
+     ],
+     "programs_served": [
+      "SUNBUCKS"
+     ],
+     "denial_share": {
+      "current_engine": 0.0,
+      "three_valued_case": 0.0
+     },
+     "cost": 3,
+     "answer_source": "applicant",
+     "needs_verification": null,
+     "skips": [],
+     "item_id": "CO-1295"
+    }
+   ]
+  }
+ },
+ "cross_program_order": [
+  {
+   "step": 0,
+   "question": "Application data, no question: programs requested, application date, the months asked for (a Medicaid retroactive request; the LEAP season)",
+   "facts": [
+    "ma_application_date",
+    "snap_application_date",
+    "leap_application_date",
+    "ma_retroactive_coverage_requested",
+    "ma_determination_type",
+    "cccap_determination_type"
+   ],
+   "branches": [
+    "Outside November 1 - April 30: LEAP is not open; say when it opens and skip every LEAP question (3.751.1)",
+    "No Medicaid retroactive request: months before the application month are not asked about (8.100.3.E)"
+   ]
+  },
+  {
+   "step": 1,
+   "question": "Who lives with you? For each person: name, date of birth, how they are related, whether they live in this home, who buys and prepares food together",
+   "facts": [
+    "relationships",
+    "dwelling_id",
+    "date_of_birth"
+   ],
+   "branches": [
+    "No child under 13 (or under 19 with additional care needs): skip every CCCAP question",
+    "No child under 19: skip SUN Bucks unless a younger child is enrolled in school; CHP+ only for a pregnant person (step 2)",
+    "No child under 18 (or 18 in secondary school) and no one pregnant (step 2): skip every Colorado Works question",
+    "No one 60 or older: skip OAP; no one 65 or older: skip the aged Medicaid group",
+    "One person living alone: skip the relationship grid"
+   ]
+  },
+  {
+   "step": 2,
+   "question": "Is anyone pregnant? (one household question; details only on yes)",
+   "facts": [
+    "is_pregnant"
+   ],
+   "branches": [
+    "No: set every member to not pregnant (FB-03); skip pregnancy dates, expected number of children, and the pregnancy paths of MAGI, CHP+ and Colorado Works"
+   ]
+  },
+  {
+   "step": 3,
+   "question": "Does each person live in Colorado, and where: a private home, a facility (nursing facility, hospital, jail, institution), or temporarily away?",
+   "facts": [
+    "state_of_residence",
+    "county_of_residence",
+    "residence_setting_type",
+    "temporary_absence_reason"
+   ],
+   "branches": [
+    "Everyone in a private home in Colorado (FB-08 attestation): skip per-person settings",
+    "A person in an institution that provides most meals: that person is out of SNAP (7 CFR 273.1(b)(7)(vi)); ask the long-term care questions for Medicaid",
+    "Not in Colorado: likely not eligible for every program; still offer the application (never infer this from an unanswered question: gap G0)"
+   ]
+  },
+  {
+   "step": 4,
+   "question": "Does anyone already get SSI, Colorado Works, Old Age Pension or AND, SNAP, Medicaid, or a foster care, adoption or kinship payment?",
+   "facts": [
+    "receives_ssi",
+    "receives_tanf_cash",
+    "adult_financial_program_received",
+    "receives_snap",
+    "is_enrolled_in_medical_assistance",
+    "child_welfare_payment_type"
+   ],
+   "branches": [
+    "Every member on SSI, Colorado Works or Adult Financial: SNAP basic categorical eligibility; skip SNAP resources (4.408.A)",
+    "A child on SNAP or TANF: SUN Bucks categorical; skip school-meal income (7 CFR 292.2)",
+    "Colorado Works cash: CCCAP Colorado Works child care path; skip the low-income guidelines",
+    "SSI: SSI-related Medicaid category; excluded from the Colorado Works unit"
+   ]
+  },
+  {
+   "step": 5,
+   "question": "Does anyone have a disability or blindness found by Social Security, or Medicare?",
+   "facts": [
+    "meets_ssa_disability_criteria",
+    "is_blind",
+    "medicare_part_a_entitled",
+    "medicare_part_b_enrolled"
+   ],
+   "branches": [
+    "No one disabled, blind or 60 or older: skip the six SNAP disability-benefit prongs (FB-01), AND, the disability Medicaid groups, the Buy-Ins",
+    "No Medicare: skip the Medicare Savings Programs"
+   ]
+  },
+  {
+   "step": 6,
+   "question": "Agency record check, no applicant question: SNAP and Colorado Works disqualifications, TANF months used, assistance from another state this month, FDPIR, prior Medicaid, protective services referral, LEAP benefit in another household, school enrollment",
+   "facts": [
+    "snap_is_serving_ipv_disqualification",
+    "snap_is_disqualified_drug_felony",
+    "snap_is_disqualified_for_work_requirement_noncompliance",
+    "cw_is_serving_ipv_disqualification",
+    "months_of_assistance_received",
+    "received_tanf_from_another_state_this_month",
+    "receives_fdpir",
+    "is_protective_services_child_care_case",
+    "leap_is_in_another_approved_household",
+    "is_enrolled_in_nslp_school"
+   ],
+   "branches": [
+    "No finding on record: the rule's own presumption is \"no finding\" (FB-04); ask nothing"
+   ]
+  },
+  {
+   "step": 7,
+   "question": "Citizenship or immigration status of each person applying",
+   "facts": [
+    "immigration_status",
+    "qualified_status_date",
+    "us_entry_date"
+   ],
+   "branches": [
+    "A person without a qualifying status is out of SNAP, Colorado Works, Adult Financial and LEAP as a person, never the household; Medicaid continues as emergency Medicaid or Cover All Coloradans: never stop the Medicaid application on this answer"
+   ]
+  },
+  {
+   "step": 8,
+   "question": "Child care (only with a child under 13): does the child need care part of the day; what each caretaker does (work hours, school, job search, treatment)",
+   "facts": [
+    "cccap_child_needs_care_for_part_of_day",
+    "hours_worked",
+    "education_program_type",
+    "cccap_is_in_job_search_activity"
+   ],
+   "branches": [
+    "No caretaker in an eligible activity: CCCAP likely not eligible (3.111.D.1); skip CCCAP income"
+   ]
+  },
+  {
+   "step": 9,
+   "question": "Does anyone have income? Then each job's pay and each other payment, with dates; the tax household (who files, who is claimed); the MAGI adjustments as one yes/no",
+   "facts": [
+    "earnings",
+    "receipts",
+    "is_tax_filer",
+    "is_claimed_by_filer_outside_case",
+    "is_required_to_file_tax_return",
+    "magi_other_taxable_income",
+    "pretax_deductions",
+    "discharged_student_loan_debt",
+    "foreign_earned_income_excluded",
+    "expected_annual_income"
+   ],
+   "branches": [
+    "No income: a stated empty list (decision 4: an empty list means none); skip every income detail",
+    "Monthly MAGI income within the standard: skip expected annual income"
+   ]
+  },
+  {
+   "step": 10,
+   "question": "Resources (only Adult Financial, non-MAGI Medicaid, SNAP standard eligibility): accounts, vehicles, property",
+   "facts": [
+    "holdings"
+   ],
+   "branches": [
+    "Skip for MAGI Medicaid, CHP+, Colorado Works (no asset test), LEAP, SUN Bucks; skip for SNAP when BCE or ECE"
+   ]
+  },
+  {
+   "step": 11,
+   "question": "Expenses (only SNAP net income and allotment, CCCAP fee, Adult Financial, long-term care patient payment): rent and utilities, dependent care, child support paid, medical costs of a member 60+ or disabled",
+   "facts": [
+    "shelter_cost_monthly",
+    "dependent_care_expense",
+    "child_support_paid_legally_obligated",
+    "medical_expenses_out_of_pocket"
+   ],
+   "branches": [
+    "Never a disqualifier: a deduction not claimed is not taken (FB-09); ask after the household is not already ruled out"
+   ]
+  },
+  {
+   "step": 12,
+   "question": "Heating (LEAP, in season): who pays for heat, the primary heat source, the kind of dwelling",
+   "facts": [
+    "home_heating_cost_arrangement",
+    "has_primary_heating_source"
+   ],
+   "branches": [
+    "Heat included in subsidized rent without a meter, or homeless: LEAP likely not eligible (3.752.25.B)"
+   ]
+  }
+ ],
+ "skip_sets": [
+  {
+   "when": "No child under 13 (or under 19 with additional care needs) in the home",
+   "skip": [
+    "every CCCAP fact: cccap_child_needs_care_for_part_of_day, caretaker activity, hours_worked, cccap_is_financially_contributing_to_child, cccap_declares_assets_within_limit, CCCAP county and determination type"
+   ]
+  },
+  {
+   "when": "No child under 18 (or 18 in secondary school) and no one pregnant",
+   "skip": [
+    "every Colorado Works fact: unit membership (cw_is_optional_member_by_custody_or_support, child_welfare_payment_type for the unit), months_of_assistance_received, diversion, child support assignment"
+   ]
+  },
+  {
+   "when": "No one under 19 and no one pregnant",
+   "skip": [
+    "every CHP+ fact (chp_has_other_health_coverage and the CHP+ income path)"
+   ]
+  },
+  {
+   "when": "No school-aged child and no child enrolled in an NSLP school",
+   "skip": [
+    "every SUN Bucks fact (school_meal_household_income, school_meal_household_size)"
+   ]
+  },
+  {
+   "when": "No one 60 or older, disabled or blind",
+   "skip": [
+    "SNAP disability-benefit prongs (title_ii_benefit_type, va_disability_rating_type and four more, FB-01)",
+    "OAP and AND",
+    "aged, blind and disabled Medicaid, Buy-Ins",
+    "medical expense deductions"
+   ]
+  },
+  {
+   "when": "No Medicare entitlement",
+   "skip": [
+    "Medicare Savings Program facts (Part A and B dates, premiums)"
+   ]
+  },
+  {
+   "when": "Every SNAP member on SSI, Colorado Works, OAP, AND or AB (BCE)",
+   "skip": [
+    "SNAP holdings and the resource test; the gross and net income tests (the allotment still reads income)"
+   ]
+  },
+  {
+   "when": "A child on SNAP or TANF (SUN Bucks categorical)",
+   "skip": [
+    "school-meal household income and size"
+   ]
+  },
+  {
+   "when": "Protective services or child welfare child care referral",
+   "skip": [
+    "CCCAP caretaker activity and income"
+   ]
+  },
+  {
+   "when": "Application month outside November 1 - April 30",
+   "skip": [
+    "every LEAP fact"
+   ]
+  },
+  {
+   "when": "No Medicaid retroactive request",
+   "skip": [
+    "facts dated before the application month (state_of_residence_start_date, prior-month income) for Medicaid"
+   ]
+  },
+  {
+   "when": "Programs requested include none of Adult Financial, non-MAGI Medicaid, SNAP standard eligibility",
+   "skip": [
+    "holdings (resource records)"
+   ]
+  },
+  {
+   "when": "A person is in an institution that provides most meals",
+   "skip": [
+    "every SNAP fact for that person"
+   ]
+  },
+  {
+   "when": "Everyone in a private home in Colorado (one attestation)",
+   "skip": [
+    "per-person dwelling labels, states and settings (FB-08)"
+   ]
+  },
+  {
+   "when": "Nobody has income (stated empty lists)",
+   "skip": [
+    "every income detail, the MAGI adjustments, expected annual income"
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "id": "G0",
+   "title": "A person who states neither a state nor a county is read as not a Colorado resident",
+   "kind": "decision 4 (premature denial)",
+   "item": "is_colorado_resident (CO-505)",
+   "evidence": "With nothing stated, every stored af_category answer is none (71 of 71, 33 of them stored approvals), every af_oap_grant is 0 (48) and every af_and_grant is 0 (11). Under a three-valued case the same reading denies SNAP (no eligible members) and Colorado Works (residency) with no facts. Reading it as cannot determine changes none of the 3,340 stored outcome answers.",
+   "fix": "derived: [\"otherwise\", [\"=\", \"state_of_residence\", \"colorado_state_code\"], [\"case\", [[\"not\", [\"unknown\", \"county_of_residence\"]], true]]] (a county stated still means Colorado; neither stated is cannot determine). Until fixed, a screener must ask state or county before showing any result."
+  },
+  {
+   "id": "G1",
+   "title": "A first-hit case stops at the first unknown condition",
+   "kind": "engine",
+   "item": "case (docs/operators.md, Logic)",
+   "evidence": "Minimal denial sets hold 10312 facts with today's case and 8234 with a possible-values case (-20%). Medians, current to three-valued: SNAP 48 to 15, Colorado Works 29 to 24, CCCAP 16 to 13, MAGI 19 to 15, CHP+ 16 to 12. Of 1270 settled-but-asked facts in 307 stored denials (every value the fact can take gives a denial, yet withholding it gives cannot determine), the possible-values case settles 609. Run over the stored households it changes no settled answer; of the stored cannot-determine outcome answers, 1 becomes settled (CO-1121) and 26 become a set of possible values, one of which is a set of denials only (CO-928: residency or income).",
+   "fix": "Evaluate a case to the set of values it can still produce: an unknown condition adds its arm and continues; the result is the value when every open arm agrees, else unknown (or, for = and in against a literal, settled when every possible value gives the same answer). The front end asks for the class (deny or not), not the reason, so a screener can settle \"not eligible\" when every open arm is a denial. A new operator semantics needs a contract version (volume.resolution.contract) and conformance cases."
+  },
+  {
+   "id": "G2",
+   "title": "Correlated paths: every answer leads to a denial by a different route",
+   "kind": "engine (needs case analysis)",
+   "item": "all, any, filter over unit membership",
+   "evidence": "661 settled-but-asked facts in stored denials stay unsettled under a possible-values case ({'logic': 646, 'group': 14, 'amount': 1}). Most are Colorado Works unit membership and SNAP member disqualifications: an SSI recipient or a foster child is out of the unit, and in it the unit is over income; a disqualified SNAP member is out, but the member's income still counts. Top facts: [('child_welfare_payment_type', 151), ('receives_ssi', 148), ('is_fleeing_felon', 112), ('cw_is_optional_member_by_custody_or_support', 82), ('snap_is_serving_ipv_disqualification', 23), ('snap_is_disqualified_drug_felony', 23)].",
+   "fix": "What-if enumeration: for the few unanswered yes/no or one-of facts on the missing list, evaluate each value; if every value gives the same class, show \"likely not eligible whatever the answer\" and skip the question. Cost is 2^k evaluations; cap k at 3. An engine hook (evaluate under each value of a named fact) keeps it inside the graph."
+  },
+  {
+   "id": "G3",
+   "title": "Sums and groups are strict: one unknown member makes the total unknown",
+   "kind": "engine and rule pattern",
+   "item": "sum, filter, +, comparisons",
+   "evidence": "14 group-membership and 1 amount cases in stored denials (more in approvals). Adult Financial already settles the resource test when the known parts exceed the limit (af_resources_known_lower_bound, CO-5350, read by af_meets_resource_limit, CO-948).",
+   "fix": "Apply the CO-5350 pattern to household income tests that only add (SNAP gross, Colorado Works need standard, CCCAP and LEAP gross): a known-parts lower bound over the limit settles not eligible. Not for net income or MAGI, where deductions subtract."
+  },
+  {
+   "id": "G4",
+   "title": "Agency findings, referrals and claims are read bare",
+   "kind": "decision 4 (rule-given default not applied)",
+   "item": "FB-04, FB-06, FB-14 facts",
+   "evidence": "Every favourable path of a first-hit case must be closed before a denial settles, so the facts that open them sit in the denial sets: is_protective_services_child_care_case in 83% of stored CCCAP denials; SNAP IPV, drug-felony and work-rule findings in 85-90% of SNAP denials today (26-59% with a three-valued case); received_tanf_from_another_state_this_month in 78% of Colorado Works denials (0% three-valued).",
+   "fix": "Give each finding and referral the default its own text and its rule state (no finding, not referred), as FB-04 and FB-06 propose; the agency record supplies the exceptions. They then leave the applicant interview entirely."
+  },
+  {
+   "id": "G5",
+   "title": "The missing-facts list depends on evaluation order",
+   "kind": "engine (explain)",
+   "item": "docs/operators.md, \"Cannot determine\" and its missing facts",
+   "evidence": "The trace lists the unstated facts the left-to-right, short-circuit evaluation asked for. After an unknown condition stops a case, the facts that the later arms need are never listed, so a front end that asks \"what is missing\" learns one question at a time.",
+   "fix": "With G1, list every unstated fact an open arm reads, and mark the ones whose answer can change the class. That list is the next-question set a screener needs."
+  },
+  {
+   "id": "G6",
+   "title": "Outcomes are per month; one answer does not settle the other months",
+   "kind": "scope",
+   "item": "person-month outcomes",
+   "evidence": "55 of 94 stored MAGI denials are for a month other than the determination month. Withholding the retroactive request turns 8 stored retroactive-month income denials into before-coverage-period denials (ma_month_is_before_coverage_period, CO-4101, reads an unstated request as none).",
+   "fix": "Ask the months first (application date, retroactive request) and screen each month; never carry a determination-month denial to a retroactive or application month."
+  }
+ ],
+ "measured": {
+  "per_denial_cross_program_order": {
+   "households_with_a_denial": 216,
+   "median_facts_read": 24.0,
+   "median_asked_current": 23.0,
+   "median_asked_three_valued": 22.5,
+   "total_read": 5517,
+   "total_asked_current": 5269,
+   "total_asked_three_valued": 5144,
+   "median_saving_current": 0.0,
+   "median_saving_three_valued": 0.0,
+   "global_base": {
+    "median_questions": 13,
+    "mean": 14.0,
+    "le5": 191,
+    "le10": 265
+   },
+   "global_k": {
+    "median_questions": 13,
+    "mean": 13.2,
+    "le5": 201,
+    "le10": 276
+   },
+   "denials": 647,
+   "median_read_questions": 16
+  },
+  "by_family_and_class": {
+   "ALL|approve": {
+    "n": 915,
+    "read_questions": 23,
+    "read_units": 32,
+    "file_base": {
+     "q_med": 23,
+     "u_med": 31,
+     "never": 13,
+     "q_mean": 24.7,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 21,
+     "u_med": 30,
+     "never": 5,
+     "q_mean": 22.4,
+     "saved_med": 0.056
+    },
+    "prog_k": {
+     "q_med": 21,
+     "u_med": 29,
+     "never": 5,
+     "q_mean": 21.9,
+     "saved_med": 0.083
+    },
+    "global_base": {
+     "q_med": 21,
+     "u_med": 30,
+     "never": 5,
+     "q_mean": 22.6
+    },
+    "global_k": {
+     "q_med": 21,
+     "u_med": 29,
+     "never": 5,
+     "q_mean": 22.3,
+     "saved_med": 0.069
+    }
+   },
+   "ALL|deny": {
+    "n": 647,
+    "read_questions": 16,
+    "read_units": 22,
+    "file_base": {
+     "q_med": 16,
+     "u_med": 21,
+     "never": 2,
+     "q_mean": 15.2,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 14,
+     "u_med": 18,
+     "never": 0,
+     "q_mean": 13.6,
+     "saved_med": 0.136
+    },
+    "prog_k": {
+     "q_med": 13,
+     "u_med": 18,
+     "never": 0,
+     "q_mean": 12.4,
+     "saved_med": 0.214
+    },
+    "global_base": {
+     "q_med": 13,
+     "u_med": 19,
+     "never": 0,
+     "q_mean": 14.0
+    },
+    "global_k": {
+     "q_med": 13,
+     "u_med": 19,
+     "never": 0,
+     "q_mean": 13.2,
+     "saved_med": 0.087
+    }
+   },
+   "Adult Financial|approve": {
+    "n": 67,
+    "read_questions": 21,
+    "read_units": 28,
+    "file_base": {
+     "q_med": 21,
+     "u_med": 28,
+     "never": 4,
+     "q_mean": 21.7,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 21,
+     "u_med": 27,
+     "never": 4,
+     "q_mean": 21.7,
+     "saved_med": 0.0
+    },
+    "prog_k": {
+     "q_med": 21,
+     "u_med": 27,
+     "never": 4,
+     "q_mean": 21.7,
+     "saved_med": 0.0
+    },
+    "global_base": {
+     "q_med": 21,
+     "u_med": 27,
+     "never": 4,
+     "q_mean": 21.7
+    },
+    "global_k": {
+     "q_med": 21,
+     "u_med": 27,
+     "never": 4,
+     "q_mean": 21.7,
+     "saved_med": 0.0
+    }
+   },
+   "Adult Financial|deny": {
+    "n": 89,
+    "read_questions": 8,
+    "read_units": 9,
+    "file_base": {
+     "q_med": 7,
+     "u_med": 7,
+     "never": 0,
+     "q_mean": 8.2,
+     "saved_med": 0.143
+    },
+    "prog_base": {
+     "q_med": 7,
+     "u_med": 7,
+     "never": 0,
+     "q_mean": 8.0,
+     "saved_med": 0.0
+    },
+    "prog_k": {
+     "q_med": 7,
+     "u_med": 7,
+     "never": 0,
+     "q_mean": 7.3,
+     "saved_med": 0.188
+    },
+    "global_base": {
+     "q_med": 7,
+     "u_med": 8,
+     "never": 0,
+     "q_mean": 8.5
+    },
+    "global_k": {
+     "q_med": 7,
+     "u_med": 8,
+     "never": 0,
+     "q_mean": 7.9,
+     "saved_med": 0.062
+    }
+   },
+   "CCCAP|approve": {
+    "n": 91,
+    "read_questions": 23,
+    "read_units": 30,
+    "file_base": {
+     "q_med": 23,
+     "u_med": 30,
+     "never": 0,
+     "q_mean": 20.9,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 21,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 18.3,
+     "saved_med": 0.087
+    },
+    "prog_k": {
+     "q_med": 21,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 18.3,
+     "saved_med": 0.087
+    },
+    "global_base": {
+     "q_med": 21,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 18.9
+    },
+    "global_k": {
+     "q_med": 21,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 18.9,
+     "saved_med": 0.087
+    }
+   },
+   "CCCAP|deny": {
+    "n": 52,
+    "read_questions": 17.0,
+    "read_units": 25.0,
+    "file_base": {
+     "q_med": 17.0,
+     "u_med": 25.0,
+     "never": 0,
+     "q_mean": 15.6,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 14.0,
+     "u_med": 18.0,
+     "never": 0,
+     "q_mean": 12.5,
+     "saved_med": 0.182
+    },
+    "prog_k": {
+     "q_med": 14.0,
+     "u_med": 18.0,
+     "never": 0,
+     "q_mean": 12.5,
+     "saved_med": 0.182
+    },
+    "global_base": {
+     "q_med": 14.5,
+     "u_med": 19.0,
+     "never": 0,
+     "q_mean": 13.1
+    },
+    "global_k": {
+     "q_med": 14.5,
+     "u_med": 19.0,
+     "never": 0,
+     "q_mean": 13.1,
+     "saved_med": 0.172
+    }
+   },
+   "CHP+|approve": {
+    "n": 35,
+    "read_questions": 34,
+    "read_units": 40,
+    "file_base": {
+     "q_med": 34,
+     "u_med": 40,
+     "never": 0,
+     "q_mean": 33.5,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 30,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 29.8,
+     "saved_med": 0.036
+    },
+    "prog_k": {
+     "q_med": 30,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 29.8,
+     "saved_med": 0.036
+    },
+    "global_base": {
+     "q_med": 30,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 29.8
+    },
+    "global_k": {
+     "q_med": 30,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 29.8,
+     "saved_med": 0.036
+    }
+   },
+   "CHP+|deny": {
+    "n": 59,
+    "read_questions": 19,
+    "read_units": 23,
+    "file_base": {
+     "q_med": 17,
+     "u_med": 20,
+     "never": 0,
+     "q_mean": 14.7,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 16,
+     "u_med": 22,
+     "never": 0,
+     "q_mean": 13.6,
+     "saved_med": 0.25
+    },
+    "prog_k": {
+     "q_med": 14,
+     "u_med": 18,
+     "never": 0,
+     "q_mean": 11.3,
+     "saved_med": 0.364
+    },
+    "global_base": {
+     "q_med": 18,
+     "u_med": 23,
+     "never": 0,
+     "q_mean": 15.1
+    },
+    "global_k": {
+     "q_med": 15,
+     "u_med": 20,
+     "never": 0,
+     "q_mean": 14.4,
+     "saved_med": 0.043
+    }
+   },
+   "Colorado Works|approve": {
+    "n": 123,
+    "read_questions": 23,
+    "read_units": 39,
+    "file_base": {
+     "q_med": 23,
+     "u_med": 39,
+     "never": 8,
+     "q_mean": 24.6,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 22,
+     "u_med": 35,
+     "never": 0,
+     "q_mean": 22.2,
+     "saved_med": 0.087
+    },
+    "prog_k": {
+     "q_med": 22,
+     "u_med": 35,
+     "never": 0,
+     "q_mean": 22.2,
+     "saved_med": 0.087
+    },
+    "global_base": {
+     "q_med": 22,
+     "u_med": 35,
+     "never": 0,
+     "q_mean": 22.2
+    },
+    "global_k": {
+     "q_med": 22,
+     "u_med": 35,
+     "never": 0,
+     "q_mean": 22.2,
+     "saved_med": 0.087
+    }
+   },
+   "Colorado Works|deny": {
+    "n": 121,
+    "read_questions": 23,
+    "read_units": 42,
+    "file_base": {
+     "q_med": 23,
+     "u_med": 42,
+     "never": 2,
+     "q_mean": 21.7,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 20,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 20.0,
+     "saved_med": 0.056
+    },
+    "prog_k": {
+     "q_med": 19,
+     "u_med": 32,
+     "never": 0,
+     "q_mean": 19.4,
+     "saved_med": 0.059
+    },
+    "global_base": {
+     "q_med": 20,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 20.0
+    },
+    "global_k": {
+     "q_med": 20,
+     "u_med": 33,
+     "never": 0,
+     "q_mean": 19.7,
+     "saved_med": 0.056
+    }
+   },
+   "LEAP|approve": {
+    "n": 40,
+    "read_questions": 14.0,
+    "read_units": 14.0,
+    "file_base": {
+     "q_med": 14.0,
+     "u_med": 14.0,
+     "never": 1,
+     "q_mean": 14.6,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 14.0,
+     "u_med": 14.0,
+     "never": 1,
+     "q_mean": 14.1,
+     "saved_med": 0.0
+    },
+    "prog_k": {
+     "q_med": 14.0,
+     "u_med": 14.0,
+     "never": 1,
+     "q_mean": 14.1,
+     "saved_med": 0.0
+    },
+    "global_base": {
+     "q_med": 14.0,
+     "u_med": 14.0,
+     "never": 1,
+     "q_mean": 14.1
+    },
+    "global_k": {
+     "q_med": 14.0,
+     "u_med": 14.0,
+     "never": 1,
+     "q_mean": 14.1,
+     "saved_med": 0.0
+    }
+   },
+   "LEAP|deny": {
+    "n": 21,
+    "read_questions": 1,
+    "read_units": 1,
+    "file_base": {
+     "q_med": 0,
+     "u_med": 0,
+     "never": 0,
+     "q_mean": 4.3,
+     "saved_med": 1.0
+    },
+    "prog_base": {
+     "q_med": 0,
+     "u_med": 0,
+     "never": 0,
+     "q_mean": 3.0,
+     "saved_med": 1.0
+    },
+    "prog_k": {
+     "q_med": 0,
+     "u_med": 0,
+     "never": 0,
+     "q_mean": 3.0,
+     "saved_med": 1.0
+    },
+    "global_base": {
+     "q_med": 0,
+     "u_med": 0,
+     "never": 0,
+     "q_mean": 3.5
+    },
+    "global_k": {
+     "q_med": 0,
+     "u_med": 0,
+     "never": 0,
+     "q_mean": 3.5,
+     "saved_med": 1.0
+    }
+   },
+   "Medicaid MAGI|approve": {
+    "n": 269,
+    "read_questions": 22,
+    "read_units": 28,
+    "file_base": {
+     "q_med": 22,
+     "u_med": 28,
+     "never": 0,
+     "q_mean": 23.1,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 20,
+     "u_med": 27,
+     "never": 0,
+     "q_mean": 21.0,
+     "saved_med": 0.05
+    },
+    "prog_k": {
+     "q_med": 19,
+     "u_med": 24,
+     "never": 0,
+     "q_mean": 19.8,
+     "saved_med": 0.1
+    },
+    "global_base": {
+     "q_med": 20,
+     "u_med": 27,
+     "never": 0,
+     "q_mean": 21.3
+    },
+    "global_k": {
+     "q_med": 20,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 20.8,
+     "saved_med": 0.061
+    }
+   },
+   "Medicaid MAGI|deny": {
+    "n": 124,
+    "read_questions": 22.0,
+    "read_units": 27.0,
+    "file_base": {
+     "q_med": 21.5,
+     "u_med": 26.0,
+     "never": 0,
+     "q_mean": 18.3,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 19.0,
+     "u_med": 23.0,
+     "never": 0,
+     "q_mean": 15.0,
+     "saved_med": 0.214
+    },
+    "prog_k": {
+     "q_med": 19.0,
+     "u_med": 23.0,
+     "never": 0,
+     "q_mean": 14.9,
+     "saved_med": 0.214
+    },
+    "global_base": {
+     "q_med": 20.0,
+     "u_med": 23.0,
+     "never": 0,
+     "q_mean": 15.0
+    },
+    "global_k": {
+     "q_med": 20.0,
+     "u_med": 23.0,
+     "never": 0,
+     "q_mean": 15.0,
+     "saved_med": 0.185
+    }
+   },
+   "Medicaid limited|approve": {
+    "n": 31,
+    "read_questions": 28,
+    "read_units": 34,
+    "file_base": {
+     "q_med": 28,
+     "u_med": 34,
+     "never": 0,
+     "q_mean": 24.3,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 26,
+     "u_med": 27,
+     "never": 0,
+     "q_mean": 22.4,
+     "saved_med": 0.0
+    },
+    "prog_k": {
+     "q_med": 25,
+     "u_med": 26,
+     "never": 0,
+     "q_mean": 20.9,
+     "saved_med": 0.08
+    },
+    "global_base": {
+     "q_med": 27,
+     "u_med": 34,
+     "never": 0,
+     "q_mean": 24.4
+    },
+    "global_k": {
+     "q_med": 23,
+     "u_med": 24,
+     "never": 0,
+     "q_mean": 20.1,
+     "saved_med": 0.1
+    }
+   },
+   "Medicaid limited|deny": {
+    "n": 23,
+    "read_questions": 4,
+    "read_units": 4,
+    "file_base": {
+     "q_med": 3,
+     "u_med": 3,
+     "never": 0,
+     "q_mean": 4.4,
+     "saved_med": 0.25
+    },
+    "prog_base": {
+     "q_med": 3,
+     "u_med": 3,
+     "never": 0,
+     "q_mean": 4.7,
+     "saved_med": 0.25
+    },
+    "prog_k": {
+     "q_med": 2,
+     "u_med": 2,
+     "never": 0,
+     "q_mean": 4.4,
+     "saved_med": 0.333
+    },
+    "global_base": {
+     "q_med": 4,
+     "u_med": 4,
+     "never": 0,
+     "q_mean": 5.3
+    },
+    "global_k": {
+     "q_med": 3,
+     "u_med": 3,
+     "never": 0,
+     "q_mean": 5.0,
+     "saved_med": 0.0
+    }
+   },
+   "Medicaid non-MAGI|approve": {
+    "n": 120,
+    "read_questions": 17.0,
+    "read_units": 18.0,
+    "file_base": {
+     "q_med": 17.0,
+     "u_med": 18.0,
+     "never": 0,
+     "q_mean": 17.9,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 14.0,
+     "u_med": 15.0,
+     "never": 0,
+     "q_mean": 15.7,
+     "saved_med": 0.105
+    },
+    "prog_k": {
+     "q_med": 14.0,
+     "u_med": 15.0,
+     "never": 0,
+     "q_mean": 15.5,
+     "saved_med": 0.111
+    },
+    "global_base": {
+     "q_med": 14.0,
+     "u_med": 15.0,
+     "never": 0,
+     "q_mean": 15.7
+    },
+    "global_k": {
+     "q_med": 14.0,
+     "u_med": 15.0,
+     "never": 0,
+     "q_mean": 15.6,
+     "saved_med": 0.111
+    }
+   },
+   "Medicaid non-MAGI|deny": {
+    "n": 103,
+    "read_questions": 11,
+    "read_units": 11,
+    "file_base": {
+     "q_med": 9,
+     "u_med": 9,
+     "never": 0,
+     "q_mean": 10.0,
+     "saved_med": 0.143
+    },
+    "prog_base": {
+     "q_med": 10,
+     "u_med": 10,
+     "never": 0,
+     "q_mean": 9.0,
+     "saved_med": 0.2
+    },
+    "prog_k": {
+     "q_med": 8,
+     "u_med": 8,
+     "never": 0,
+     "q_mean": 8.7,
+     "saved_med": 0.25
+    },
+    "global_base": {
+     "q_med": 11,
+     "u_med": 11,
+     "never": 0,
+     "q_mean": 9.6
+    },
+    "global_k": {
+     "q_med": 10,
+     "u_med": 10,
+     "never": 0,
+     "q_mean": 9.5,
+     "saved_med": 0.0
+    }
+   },
+   "SNAP|approve": {
+    "n": 131,
+    "read_questions": 39,
+    "read_units": 86,
+    "file_base": {
+     "q_med": 39,
+     "u_med": 86,
+     "never": 0,
+     "q_mean": 40.6,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 38,
+     "u_med": 75,
+     "never": 0,
+     "q_mean": 36.5,
+     "saved_med": 0.079
+    },
+    "prog_k": {
+     "q_med": 38,
+     "u_med": 75,
+     "never": 0,
+     "q_mean": 36.3,
+     "saved_med": 0.08
+    },
+    "global_base": {
+     "q_med": 38,
+     "u_med": 75,
+     "never": 0,
+     "q_mean": 36.5
+    },
+    "global_k": {
+     "q_med": 38,
+     "u_med": 75,
+     "never": 0,
+     "q_mean": 36.3,
+     "saved_med": 0.08
+    }
+   },
+   "SNAP|deny": {
+    "n": 39,
+    "read_questions": 35,
+    "read_units": 64,
+    "file_base": {
+     "q_med": 35,
+     "u_med": 64,
+     "never": 0,
+     "q_mean": 32.7,
+     "saved_med": 0.0
+    },
+    "prog_base": {
+     "q_med": 34,
+     "u_med": 57,
+     "never": 0,
+     "q_mean": 31.4,
+     "saved_med": 0.029
+    },
+    "prog_k": {
+     "q_med": 21,
+     "u_med": 37,
+     "never": 0,
+     "q_mean": 19.1,
+     "saved_med": 0.4
+    },
+    "global_base": {
+     "q_med": 34,
+     "u_med": 57,
+     "never": 0,
+     "q_mean": 31.4
+    },
+    "global_k": {
+     "q_med": 24,
+     "u_med": 43,
+     "never": 0,
+     "q_mean": 22.3,
+     "saved_med": 0.314
+    }
+   },
+   "SUN Bucks|approve": {
+    "n": 8,
+    "read_questions": 5.0,
+    "read_units": 6.5,
+    "file_base": {
+     "q_med": 3.5,
+     "u_med": 4.5,
+     "never": 0,
+     "q_mean": 4.2,
+     "saved_med": 0.333
+    },
+    "prog_base": {
+     "q_med": 4.5,
+     "u_med": 5.5,
+     "never": 0,
+     "q_mean": 4.9,
+     "saved_med": 0.125
+    },
+    "prog_k": {
+     "q_med": 4.5,
+     "u_med": 5.5,
+     "never": 0,
+     "q_mean": 4.5,
+     "saved_med": 0.275
+    },
+    "global_base": {
+     "q_med": 5.0,
+     "u_med": 6.0,
+     "never": 0,
+     "q_mean": 5.5
+    },
+    "global_k": {
+     "q_med": 5.0,
+     "u_med": 6.0,
+     "never": 0,
+     "q_mean": 5.5,
+     "saved_med": 0.0
+    }
+   },
+   "SUN Bucks|deny": {
+    "n": 16,
+    "read_questions": 3.0,
+    "read_units": 3.0,
+    "file_base": {
+     "q_med": 2.0,
+     "u_med": 2.0,
+     "never": 0,
+     "q_mean": 2.0,
+     "saved_med": 0.333
+    },
+    "prog_base": {
+     "q_med": 2.0,
+     "u_med": 2.0,
+     "never": 0,
+     "q_mean": 2.0,
+     "saved_med": 0.333
+    },
+    "prog_k": {
+     "q_med": 2.0,
+     "u_med": 2.0,
+     "never": 0,
+     "q_mean": 2.0,
+     "saved_med": 0.333
+    },
+    "global_base": {
+     "q_med": 3.0,
+     "u_med": 3.0,
+     "never": 0,
+     "q_mean": 3.0
+    },
+    "global_k": {
+     "q_med": 3.0,
+     "u_med": 3.0,
+     "never": 0,
+     "q_mean": 3.0,
+     "saved_med": 0.0
+    }
+   }
+  },
+  "minimal_sets": {
+   "Adult Financial|approve": {
+    "n": 67,
+    "households": 35,
+    "S_median": 24,
+    "S_p90": 27,
+    "Sk_median": 22,
+    "read_median": 28,
+    "stated_median": 62,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "Adult Financial|deny": {
+    "n": 89,
+    "households": 33,
+    "S_median": 3,
+    "S_p90": 16,
+    "Sk_median": 2,
+    "read_median": 9,
+    "stated_median": 290,
+    "S_le_3": 48,
+    "Sk_le_3": 63
+   },
+   "CCCAP|approve": {
+    "n": 91,
+    "households": 46,
+    "S_median": 19,
+    "S_p90": 27,
+    "Sk_median": 17,
+    "read_median": 30,
+    "stated_median": 107,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "CCCAP|deny": {
+    "n": 52,
+    "households": 27,
+    "S_median": 16.0,
+    "S_p90": 21,
+    "Sk_median": 13.0,
+    "read_median": 25.0,
+    "stated_median": 108.0,
+    "S_le_3": 3,
+    "Sk_le_3": 3
+   },
+   "CHP+|approve": {
+    "n": 35,
+    "households": 20,
+    "S_median": 25,
+    "S_p90": 44,
+    "Sk_median": 25,
+    "read_median": 40,
+    "stated_median": 138,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "CHP+|deny": {
+    "n": 59,
+    "households": 27,
+    "S_median": 16,
+    "S_p90": 32,
+    "Sk_median": 12,
+    "read_median": 23,
+    "stated_median": 147,
+    "S_le_3": 25,
+    "Sk_le_3": 25
+   },
+   "Colorado Works|approve": {
+    "n": 123,
+    "households": 41,
+    "S_median": 31,
+    "S_p90": 41,
+    "Sk_median": 31,
+    "read_median": 39,
+    "stated_median": 159,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "Colorado Works|deny": {
+    "n": 121,
+    "households": 34,
+    "S_median": 29,
+    "S_p90": 39,
+    "Sk_median": 24,
+    "read_median": 42,
+    "stated_median": 170,
+    "S_le_3": 1,
+    "Sk_le_3": 2
+   },
+   "LEAP|approve": {
+    "n": 40,
+    "households": 33,
+    "S_median": 12.0,
+    "S_p90": 34,
+    "Sk_median": 12.0,
+    "read_median": 14.0,
+    "stated_median": 30.5,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "LEAP|deny": {
+    "n": 21,
+    "households": 11,
+    "S_median": 0,
+    "S_p90": 7,
+    "Sk_median": 0,
+    "read_median": 1,
+    "stated_median": 1038,
+    "S_le_3": 15,
+    "Sk_le_3": 15
+   },
+   "Medicaid MAGI|approve": {
+    "n": 269,
+    "households": 67,
+    "S_median": 20,
+    "S_p90": 32,
+    "Sk_median": 19,
+    "read_median": 28,
+    "stated_median": 136,
+    "S_le_3": 3,
+    "Sk_le_3": 3
+   },
+   "Medicaid MAGI|deny": {
+    "n": 124,
+    "households": 56,
+    "S_median": 19.0,
+    "S_p90": 28,
+    "Sk_median": 15.0,
+    "read_median": 27.0,
+    "stated_median": 134.0,
+    "S_le_3": 23,
+    "Sk_le_3": 24
+   },
+   "Medicaid limited|approve": {
+    "n": 31,
+    "households": 15,
+    "S_median": 21,
+    "S_p90": 29,
+    "Sk_median": 15,
+    "read_median": 34,
+    "stated_median": 239,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "Medicaid limited|deny": {
+    "n": 23,
+    "households": 8,
+    "S_median": 3,
+    "S_p90": 8,
+    "Sk_median": 1,
+    "read_median": 4,
+    "stated_median": 315,
+    "S_le_3": 17,
+    "Sk_le_3": 19
+   },
+   "Medicaid non-MAGI|approve": {
+    "n": 120,
+    "households": 73,
+    "S_median": 14.0,
+    "S_p90": 28,
+    "Sk_median": 12.5,
+    "read_median": 18.0,
+    "stated_median": 69.0,
+    "S_le_3": 0,
+    "Sk_le_3": 2
+   },
+   "Medicaid non-MAGI|deny": {
+    "n": 103,
+    "households": 43,
+    "S_median": 5,
+    "S_p90": 16,
+    "Sk_median": 4,
+    "read_median": 11,
+    "stated_median": 180,
+    "S_le_3": 40,
+    "Sk_le_3": 46
+   },
+   "SNAP|approve": {
+    "n": 131,
+    "households": 68,
+    "S_median": 53,
+    "S_p90": 81,
+    "Sk_median": 50,
+    "read_median": 86,
+    "stated_median": 279,
+    "S_le_3": 0,
+    "Sk_le_3": 0
+   },
+   "SNAP|deny": {
+    "n": 39,
+    "households": 19,
+    "S_median": 48,
+    "S_p90": 72,
+    "Sk_median": 15,
+    "read_median": 64,
+    "stated_median": 252,
+    "S_le_3": 0,
+    "Sk_le_3": 4
+   },
+   "SUN Bucks|approve": {
+    "n": 8,
+    "households": 8,
+    "S_median": 2.0,
+    "S_p90": 9,
+    "Sk_median": 2.0,
+    "read_median": 6.5,
+    "stated_median": 40.5,
+    "S_le_3": 6,
+    "Sk_le_3": 7
+   },
+   "SUN Bucks|deny": {
+    "n": 16,
+    "households": 2,
+    "S_median": 2.0,
+    "S_p90": 2,
+    "Sk_median": 2.0,
+    "read_median": 3.0,
+    "stated_median": 1038.5,
+    "S_le_3": 16,
+    "Sk_le_3": 16
+   }
+  },
+  "note": "questions = distinct facts asked (a household question counts once for every person); S = minimal set, current engine; Sk = minimal set, three-valued (possible-values) case; read = facts the full evaluation reads; stated = facts the stored household states. Measured with gap G0 corrected in scratch (is_colorado_resident unknown when neither state nor county is stated)."
+ },
+ "guardrails": [
+  {
+   "rule": "Right to apply, SNAP",
+   "source": "7 CFR 273.2(c)(1)(iii) (D-8)",
+   "quote": "Each household has the right to file an application form on the same day it contacts the SNAP office during office hours. The household shall be advised that it does not have to be interviewed before filing the application and may file an incomplete application form as long as the form contains the applicant's name and address, and is signed by a responsible member of the household or the household's authorized representative."
+  },
+  {
+   "rule": "Right to apply, SNAP, Colorado",
+   "source": "10 CCR 2506-1 4.202.A (D-133)",
+   "quote": "Regardless of what type of application system is used, the local office must provide a means for applicants to immediately begin the application process. The household shall be advised it may file an incomplete application form if the form contains a name, address, and is signed by a responsible household member or the household's authorized representative."
+  },
+  {
+   "rule": "Encourage applicants to continue",
+   "source": "7 CFR 273.2(c)(2)(i) (D-8)",
+   "quote": "If the State agency attempts to discourage households from applying for cash assistance, it shall make clear that the disadvantages and requirements of applying for cash assistance do not apply to SNAP benefits. In addition, it shall encourage applicants to continue with their application for SNAP benefits."
+  },
+  {
+   "rule": "Right to apply, Medical Assistance",
+   "source": "10 CCR 2505-10 8.100.3.A.10 (D-65)",
+   "quote": "The eligibility site must afford any individual wishing to do so the opportunity to apply for Medical Assistance without delay."
+  },
+  {
+   "rule": "Accept an application by every mode",
+   "source": "42 CFR 435.907(a) (D-196)",
+   "quote": "the agency must accept an application from the applicant, an adult who is in the applicant's household, as defined in § 435.603(f), or family, as defined in section 36B(d)(1) of the Code, an authorized representative, or if the applicant is a minor or incapacitated, someone acting responsibly for the applicant, and any documentation required to establish eligibility"
+  },
+  {
+   "rule": "Right to apply, Colorado Works",
+   "source": "9 CCR 2503-6 3.602.1.A (D-104)",
+   "quote": "An individual shall have the opportunity to apply for Colorado Works assistance without delay."
+  },
+  {
+   "rule": "Right to apply, LEAP",
+   "source": "9 CCR 2503-7 3.751.32 (D-63)",
+   "quote": "All persons shall be provided an opportunity to file an application form on the date of initial contact with the county department during the application period."
+  },
+  {
+   "rule": "One program does not decide another, Medicaid",
+   "source": "10 CCR 2505-10 8.100.3.A.2 and A.4 (D-65)",
+   "quote": "If the applicant applied for Medical Assistance on the Single Streamlined Application and was found ineligible, this application shall be reviewed for all other Medical Assistance eligibility programs, the Child Health Plan Plus (CHP+) program and premium and cost-sharing assistance ... If an applicant is found to be ineligible for a particular program, the Application for Public Assistance shall be reviewed and processed for other financial programs the household has requested on the Application for Public Assistance and all other Medical Assistance Programs."
+  },
+  {
+   "rule": "One program does not decide another, SNAP",
+   "source": "10 CCR 2506-1 4.202.1.A (D-133)",
+   "quote": "Households applying for PA shall be notified of their right to apply for SNAP at the same time and shall be allowed to apply for SNAP at the same time they apply for PA benefits."
+  },
+  {
+   "rule": "Other programs considered, Adult Financial",
+   "source": "9 CCR 2503-5 3.520.4.B (D-62)",
+   "quote": "Review the application for completeness for all programs applied for and/or any programs not applied for but that the client is potentially eligible for."
+  },
+  {
+   "rule": "All bases before ineligibility, Medicaid",
+   "source": "42 CFR 435.916(f)(1) (D-115)",
+   "quote": "Prior to making a determination of ineligibility, the agency must consider all bases of eligibility, consistent with § 435.911."
+  },
+  {
+   "rule": "Retroactive months differ from the application month",
+   "source": "10 CCR 2505-10 8.100.3.E.2 (D-65)",
+   "quote": "An applicant does not have to be eligible in the month of application to be eligible for retroactive Medical Assistance."
+  },
+  {
+   "rule": "SNAP benefits from the date of application",
+   "source": "7 CFR 273.10(a)(1)(ii) (D-14)",
+   "quote": "A household's benefit level for the initial months of certification shall be based on the day of the month it applies for benefits and the household shall receive benefits from the date of application to the end of the month"
+  },
+  {
+   "rule": "Missing information",
+   "source": "docs/plan-colorado.md, decision 4 of 2026-11-23",
+   "quote": "Missing information means \"cannot determine\" unless the rule says otherwise. Each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults."
+  }
+ ]
+}
