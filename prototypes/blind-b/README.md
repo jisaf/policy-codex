@@ -36,6 +36,9 @@ Screenshots (with the preview running): `node prototypes/blind-b/scripts/screens
 | `src/households.tsx` | results and aid codes, the determination, documents, what-if |
 | `src/views.tsx` | My desk, sign-off queue, Programs, Figures, Questions |
 | `src/views2.tsx` | Law, Changes and the proposal, Search |
+| `src/map.tsx` | Map: programs and the shared items they read |
+| `src/screening.tsx`, `src/screening-sim.ts` | Screening (`#/screening`): the screening-order review's interview order, disqualifiers and guardrails, and a stored household interviewed in that order with the unrevealed facts withheld |
+| `scripts/screening-data.ts` | bundles `docs/reviews/screening-order.json` (and the review's disqualifier tables and "may / may not" lists) as `public/data-screening.json` |
 
 ## Screenshots
 
@@ -62,6 +65,11 @@ Each at 1280 and 390 wide (`-1280.png`, `-390.png`), device scale 2.
 | 17 | A proposal: the edit, who must approve, before and after |
 | 18 | Figures with a new version in 2026 |
 | 19 | Programs |
+| 20 | Screening: the cross-program interview order |
+| 21 | Screening: SNAP disqualifiers with their paragraphs |
+| 22 | Screening: CO-158 (denied SNAP) interviewed to question 12 |
+| 23 | Screening: CO-720 (eligible for Medicaid) at the end of its interview |
+| 24 | Screening: guardrails |
 
 ## Self-assessment
 

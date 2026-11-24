@@ -29,6 +29,11 @@ const SHOTS = [
   ["17-proposal", "#/changes/proposal", null, true],
   ["18-figures", "#/figures?show=year&on=2026-11-22"],
   ["19-programs", "#/programs"],
+  ["20-screening-order", "#/screening", async (page) => { await page.locator(".scr-step").nth(1).evaluate((e) => e.scrollIntoView({ block: "start" })); await page.evaluate(() => scrollBy(0, -80)); }],
+  ["21-screening-disqualifiers", "#/screening/disqualifiers?program=SNAP", async (page) => { await page.locator(".scr-disq h2").first().evaluate((e) => e.scrollIntoView({ block: "start" })); await page.evaluate(() => scrollBy(0, -80)); }],
+  ["22-screening-try", "#/screening/try?hh=CO-158&at=12", async (page) => { await page.waitForSelector(".scr-grid", { timeout: 120000 }); await page.locator(".scr-bar").evaluate((e) => e.scrollIntoView({ block: "start" })); await page.evaluate(() => scrollBy(0, -80)); }],
+  ["23-screening-try-result", "#/screening/try?hh=CO-720&at=34&cell=ma_magi_eligibility_status%7Cp1&p=p1", async (page) => { await page.waitForSelector(".scr-detail", { timeout: 120000 }); await page.locator(".scr-grid").evaluate((e) => e.scrollIntoView({ block: "start" })); await page.evaluate(() => scrollBy(0, -120)); }],
+  ["24-screening-guardrails", "#/screening/guardrails"],
 ];
 
 (async () => {
