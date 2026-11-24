@@ -1,0 +1,14 @@
+id: CO-7673
+name: Months of earlier energy assistance payments
+identifier: energy_assistance_earlier_payment_months
+kind: supplied
+type: list of months
+scope: case
+program: All
+meaning: "The months, before the month of the most recent payment (energy_assistance_last_payment_month, CO-7451), in which the household received, or had made on its behalf, a Low-Income Energy Assistance Program (LEAP), Energy Electronic Benefit Transfer (E-EBT) or other energy assistance payment, from the twelfth month before the first month the case is evaluated for: a fact of the payments' records. A stated empty list means no earlier payment in that time."
+precision: "One value for the case (convention rule 18). Stated where the most recent payment came after a month a rule evaluates (an application month before a payment made between the application and the determination); required where read (decision 4). A rule that counts a payment for the months after it reads it for such a month, since one most recent month cannot also say whether an earlier payment covers the earlier month. A payment only scheduled is not received."
+supplied_by: LEAP and E-EBT payment records in the statewide system.
+sources: [S5090, S743]
+tags: [income, snap]
+rationale: "Coverage pass 7 for SNAP, C7-2 (docs/reviews/coverage7-snap.md): 7 CFR 273.9(d)(6)(iii)(D)(3) counts energy assistance received \"in the current month or in the immediately preceding 12 months\", so a payment made after the month evaluated does not count for it; where the most recent payment is after the application month, only an earlier payment can give that month the allowance, and the case stated only the most recent month."
+nearest: [CO-7451]

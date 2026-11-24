@@ -151,7 +151,7 @@ record_fields:
   for_person_living_elsewhere:
     type: money
     default: 0
-    meaning: The part received for a person who does not live with the person (a beneficiary living elsewhere).
+    meaning: "The part received for a person who does not live with the person (a beneficiary living elsewhere). The part of a veterans benefit the Department of Veterans Affairs pays because of a dependent is stated in for_dependent alone, wherever the dependent lives, and not here as well, so no part is stated twice (coverage pass 7, R7-4: LEAP subtracts both fields, leap_counted_recurring_receipts CO-5003; 9 CCR 2503-7 3.752.211.E)."
   for_dependent:
     type: money
     default: 0

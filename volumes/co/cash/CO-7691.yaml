@@ -1,0 +1,25 @@
+id: CO-7691
+name: "Colorado Works: receives an Adult Financial grant in the month"
+identifier: cw_receives_adult_financial_grant_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person receives, in the month evaluated, an Adult Financial grant (Old Age Pension, Aid to the Needy Disabled or Aid to the Blind: a receipt of kind adult_financial_cash, receipts CO-5000), financial assistance from another financial assistance program administered by the State of Colorado, so that the person may not participate in Colorado Works in that month: C.R.S. 26-2-706(1.5)(c) (S5210), \"To participate in the Colorado works program an applicant or person shall: ... (c) Not be receiving financial assistance from other financial assistance programs administered by the state of Colorado\"; 9 CCR 2503-6 3.609.1.D.6 (S5211) names \"Adult Financial programs\" among the benefits that \"may not be received concurrently with a Colorado Works grant\"."
+precision: "Coverage pass 7 for the cash programs, F7-3 (docs/reviews/coverage7-cash.md). The receipt is placed in the month as Colorado Works places a receipt (cw_counted_unearned_receipts, CO-5651): a record stated with its month or date in that month, a stream (no month and no date) in the months from its start_date through its end_date. A retroactive payment received in the month is a receipt of the month. The grant is read from the receipts, which a member's income already requires (decision 4: an unstated receipts list cannot be determined), not from adult_financial_program_received (CO-2710), whose unstated value SNAP alone reads as none. Which other State programs are \"other financial assistance programs\" (the Home Care Allowance, LEAP, a county's general assistance) and how the bar meets 9 CCR 2503-5 3.520.71.F (an Adult Financial client with a dependent child must apply for Colorado Works) are OQ-1451; this item reads the Adult Financial grants 3.609.1.D.6 names."
+derived: [">", ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "adult_financial_cash"], ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]], ["receipt", "amount"]], 0]
+sources: [S5210, S5211]
+implemented: engine
+tags: [cash, tanf, household]
+open: [OQ-1451]
+rationale: "Coverage pass 7, F7-3: no item read 26-2-706(1.5)(c), so an Old Age Pension recipient who asked to join her grandchild's Colorado Works unit became a member, her pension counted as the unit's income, and the grandchild lost the child-only grant (probe G2: ineligible_income, $0, where the statute gives $113)."
+nearest: [CO-2350, CO-5651]
+tests:
+  # G2 (docs/reviews/coverage7-cash.md): a grandmother with a $452 OAP grant (adult_financial_cash) in October: receives one.
+  - {id: CO-7691-T1, month: "2026-10", as_of: "2026-10-15", title: "F7-3 (G2): an OAP grant of $452 in October: receives an Adult Financial grant", given: {receipts: [{kind: social_security, amount: 600}, {kind: adult_financial_cash, amount: 452}]}, expect: true}
+  # Social Security alone: no Adult Financial grant.
+  - {id: CO-7691-T2, month: "2026-10", as_of: "2026-10-15", title: "F7-3: Social Security alone is not an Adult Financial grant", given: {receipts: [{kind: social_security, amount: 600}]}, expect: false}
+  # An OAP grant that ended in September (end_date 2026-09-30): none in October.
+  - {id: CO-7691-T3, month: "2026-10", as_of: "2026-10-15", title: "F7-3: a grant stream that ended in September is not received in October", given: {receipts: [{kind: adult_financial_cash, amount: 452, end_date: "2026-09-30"}]}, expect: false}
+  # Receipts not stated: cannot determine (decision 4).
+  - {id: CO-7691-T4, month: "2026-10", as_of: "2026-10-15", title: "F7-3: receipts not stated: cannot determine", given: {}, expect: unknown}

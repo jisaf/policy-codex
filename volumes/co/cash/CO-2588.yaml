@@ -17,3 +17,5 @@ nearest: [CO-1650]
 tests:
   - {id: CO-2588-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_has_countable_unearned_income: true, unearned_income_is_verified: false}, expect: true}
   - {id: CO-2588-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: false, cw_has_countable_unearned_income: true, unearned_income_is_verified: false}, expect: false}
+  # Coverage pass 7 fix round: the same as T1 with the verification stated as its two supplied facts (no electronic data source match, no document received), so the conformance suite can build this outcome's cannot-determine case from a supplied fact: verified = false or false = false; unverified = true and not false = true; pending = true and true = true.
+  - {id: CO-2588-T3, month: "2026-10", as_of: "2026-10-01", title: "Countable unearned income with neither an electronic match nor a document: pending", given: {cw_verification_is_applicable: true, cw_has_countable_unearned_income: true, unearned_income_verified_by_electronic_data_source: false, unearned_income_verification_document_received: false}, expect: true}
