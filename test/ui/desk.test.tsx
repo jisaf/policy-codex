@@ -98,8 +98,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
-  it("explains the grant amount in 5 main steps, 22 at two levels, 53 at three, 111 in all; the result last", () => {
-    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 22, 53, 111]); // coverage pass 6 (Adult Financial, Colorado Works): + CO-7300, CO-7301, CO-7302, CO-7303, CO-7304, CO-7305 (the month's members, pregnancy and dependent child, read by the counts, income and allowance); coverage pass 4 (Adult Financial, Colorado Works): + CO-6807 (the dependent child of the month, read by cw_eligibility_status); earned-income records E1, cash: + CO-5140 (cw_earned_pay), CO-5141 (cw_new_source_earnings); receipts migration 2: + CO-5651, CO-5652, CO-5654, - CO-2341; coverage pass 2: CO-1265 reads the partial-month factor; + CO-4660; + CO-5207, CO-5208 (fix round 2026-11-23)
+  it("explains the grant amount in 5 main steps, 22 at two levels, 54 at three, 112 in all; the result last", () => {
+    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 22, 54, 112]); // coverage pass 6 (Adult Financial, Colorado Works): + CO-7400 (the shared end of a pregnancy, read by CO-7301 since the merge with C6-03), + CO-7300, CO-7301, CO-7302, CO-7303, CO-7304, CO-7305 (the month's members, pregnancy and dependent child, read by the counts, income and allowance); coverage pass 4 (Adult Financial, Colorado Works): + CO-6807 (the dependent child of the month, read by cw_eligibility_status); earned-income records E1, cash: + CO-5140 (cw_earned_pay), CO-5141 (cw_new_source_earnings); receipts migration 2: + CO-5651, CO-5652, CO-5654, - CO-2341; coverage pass 2: CO-1265 reads the partial-month factor; + CO-4660; + CO-5207, CO-5208 (fix round 2026-11-23)
     const steps = explainSteps(engine, "cw_grant_amount", 1);
     expect(steps[steps.length - 1]).toMatchObject({ level: 0, item: { identifier: "cw_grant_amount" } });
     // Each rule comes after the rules it reads.
@@ -223,11 +223,11 @@ describe("the Programs pages", () => {
     expect(host.querySelector("ol.steplist > li.step:last-child .step-n")!.textContent).toBe("Result");
     expect(host.querySelector("button.print")!.textContent).toBe("Print for a training");
     const chips = [...host.querySelectorAll("nav.depthchips a")].map((a) => a.textContent);
-    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (111)"]); // + CO-7300 to CO-7305 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-6807 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2); + CO-5207, CO-5208 (fix round 2026-11-23)
+    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (112)"]); // + CO-7300 to CO-7305 and CO-7400 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-6807 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2); + CO-5207, CO-5208 (fix round 2026-11-23)
     // The rule reads in plain words, never "-1 times".
     expect(host.querySelector("li.step.result")!.textContent).not.toMatch(/-1 times/);
     expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2").querySelectorAll("li.step")).toHaveLength(22); // coverage pass 6 (Adult Financial, Colorado Works): + CO-7304 (the month's members) and CO-7301 (the month's pregnancy), read by the allowance
-    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(111); // + CO-7300 to CO-7305 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-6807 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2)
+    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(112); // + CO-7300 to CO-7305 and CO-7400 (coverage pass 6 (Adult Financial, Colorado Works)); + CO-6807 (coverage pass 4 (Adult Financial, Colorado Works)); + CO-5140, CO-5141 (earned-income records E1, cash); + CO-5651, CO-5652, CO-5654, - CO-2341 (receipts migration 2)
   });
 
   it("shows a stored household's values beside each step", () => {
