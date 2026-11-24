@@ -281,6 +281,7 @@ table.fields-t td { padding: .35rem .6rem .35rem 0; } table.fields-t th { paddin
 @media (max-width: 720px) {
   .dkids .dstep { margin-left: 0; padding-left: .45rem; } .dstep-name { overflow-wrap: anywhere; min-width: 0; }
   .dstep-body .rule { overflow-x: auto; } .dstep-body, .dkids { min-width: 0; max-width: 100%; }
+}
 /* screening (src/screening.tsx) */
 .scr-guard { background: var(--ok-bg); border-left: 4px solid var(--ok); border-radius: 6px; padding: .6rem .85rem; margin: .4rem 0 .2rem; font-size: .92rem; }
 .scr-guard p { margin: 0 0 .3rem; } .scr-guard summary { cursor: pointer; color: var(--ok); font-weight: 600; font-size: .88rem; } .scr-guard details[open] { margin-top: .4rem; }
