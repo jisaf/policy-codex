@@ -47,7 +47,7 @@ verdicts:
   F-D7: "Fixed PS-D7: the spouse's income verified wherever the spouse lives."
   F-D8: "Fixed PS-D8: the AND-SO interview date and subsequent application required."
   F-D9: "Fixed PS-D9: the Adult Financial kind of determination required where read."
-  F-D10: "Fixed PS-D10: the disaster request and declaration required."
+  F-D10: "Fixed PS-D10: the declared disaster required once the client has requested disaster assistance; the request itself keeps its reading (none stated, none made: 3.570.52.C)."
   F-D11: "Fixed PS-D11: relationships read as stated in the sponsor's dependents and the burial's responsible persons."
   F-D12: "Fixed PS-D12: the child support months and average read with no default."
   # ---- not fixed, listed for the product owner (section 5)
@@ -80,11 +80,11 @@ rules:
   - {cls: "*", match: "^CO-3884 ", verdict: F-D7}
   - {cls: "*", match: "^(CO-2592|CO-3870) .*(af_interview_date|af_is_subsequent)", verdict: F-D8}
   - {cls: "*", match: "^CO-1433 .*(af_determination_is_redetermination|af_redetermination_is_twenty_four_month|af_has_newly_reported_resources)", verdict: F-D9}
-  - {cls: "*", match: "^CO-3877 .*(declared_disaster|af_has_requested_disaster)", verdict: F-D10}
+  - {cls: "*", match: "^CO-3877 .*declared_disaster", verdict: F-D10}
   - {cls: "*", match: "^(CO-2386|CO-3312) .*(tax_dependent|deceased_spouse_of|\\[\"child\"\\])", verdict: F-D11}
   - {cls: "*", match: "^CO-2553 .*cw_child_support_(months|six)", verdict: F-D12}
   - {cls: "*", match: "^(CO-3832|CO-3833) |^(CO-3854|CO-4001|CO-4002) ", verdict: F-M1}
-  - {cls: "*", match: "(af_has_failed_to_apply_for_other_benefits|af_is_serving_ipv_disqualification|af_is_in_ebt_misuse_ineligibility_period|cw_sponsor_income_availability_rebutted|cw_is_serving_ipv)", verdict: R-COUNTY}
+  - {cls: "*", match: "(af_has_failed_to_apply_for_other_benefits|af_is_serving_ipv_disqualification|af_is_in_ebt_misuse_ineligibility_period|cw_sponsor_income_availability_rebutted|cw_is_serving_ipv|af_has_requested_disaster_assistance)", verdict: R-COUNTY}
   - {cls: "*", match: "^CO-3849 |af_and_so_meets_substance_abuse_conditions", verdict: R-PROCESS}
   - {cls: "*", match: "^CO-915 ", verdict: R-STATIC}
   - {cls: "*", match: "^(CO-2351|CO-921|CO-910|CO-923|CO-4369|CO-2561|CO-925) .*(cw_is_disqualified_member|cw_is_institution_patient_or_inmate) \\(", verdict: RES-UNDATED}

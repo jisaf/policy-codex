@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: "The client has requested disaster assistance from the county department, verbally or in writing (9 CCR 2503-5 3.570.52.C)."
-precision: "Required where read (decision 4; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D10)."
+precision: "If not stated, Adult Financial reads this as false: disaster assistance is determined on the client's request (9 CCR 2503-5 3.570.52.C, S2624), so a case that states no request has made none (pattern sweep (cash), PS-D10, docs/reviews/pattern-sweep-cash.md)."
 supplied_by: "County department case record (the request, or the state form)."
 sources: [S2624]
 tags: [cash]
