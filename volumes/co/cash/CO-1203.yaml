@@ -11,7 +11,7 @@ derived: [all, ["<=", [years_between, date_of_birth, [first_day, [month]]], af_a
 sources: [S705, S709, S710, S711, S2611, S4382, S714, S1011, S1315, S2614, S2616, S2617, S2621, S3213, S3214, S3215, S3216, S3502, S4794]
 implemented: engine
 tags: [cash, and, disability]
-open: [OQ-138, OQ-783]
+open: [OQ-138, OQ-783, OQ-1436]
 rationale: "Phase-8 fix round (K-3): adds the Colorado Works bar of 3.520.61.F (af_barred_by_colorado_works, CO-1511), so the Home Care Allowance AND-SO route reads it too. No existing item states AND-SO eligibility on its own; af_category (CO-953) tested it inline. The Home Care Allowance's financial test (af_hca_financially_eligible, CO-1215) needs the same test, so it is lifted here and af_category now reads it, rather than restating the conjuncts twice."
 nearest: [CO-953]
 tests:

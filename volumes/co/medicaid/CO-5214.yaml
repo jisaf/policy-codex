@@ -9,6 +9,7 @@ meaning: "The person's Difficulty of Care payments for the month (the earnings r
 precision: "With no payment in the month nothing else is read; earnings not stated cannot be determined (earned-income records, step E1: the old reading of an unstated payment as none, otherwise 0, is gone with the scalar fact, decision 4). K.7.c's \"over the age of 19\" is read as 19 or older, the complement of its \"under the age of 19\"."
 derived: [case, [["<=", ma_magi_difficulty_of_care_earnings, 0], 0], [[all, lives_full_time_with_care_recipient, care_recipient_receives_hcbs_waiver_services, ["<=", difficulty_of_care_younger_foster_individuals, ma_difficulty_of_care_younger_foster_max], ["<=", difficulty_of_care_older_foster_individuals, ma_difficulty_of_care_older_foster_max]], ma_magi_difficulty_of_care_earnings], [else, 0]]
 sources: [S3754]
+open: [OQ-1425]
 implemented: engine
 tags: [ma, magi, income]
 rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): ma_person_magi_income (CO-502) subtracts this amount from the wages it counts. Earned-income records, step E1 (Medicaid and CHP+): the payments are the earnings records the MAGI counting table treats as Difficulty of Care (ma_magi_difficulty_of_care_earnings, CO-5162)."

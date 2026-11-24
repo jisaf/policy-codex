@@ -13,7 +13,7 @@ derived: ["case", ["cw_is_optional_member_not_requesting", "not_in_unit_did_not_
 sources: [S1004, S403, S406, S407, S415, S3154, S760, S1806, S1807, S1625, S2600, S2601, S2603, S3152, S3153, S3161, S3162, S3165]
 implemented: engine
 tags: [cash, tanf, household, income, immigration]
-open: [OQ-772]
+open: [OQ-772, OQ-1436]
 rationale: No existing item combines the Colorado Works eligibility checks into one outcome; this is the program's central eligibility outcome (declared under ColoradoWorks' outcomes in the report back), parallel in shape to snap_eligibility_status (CO-3xx) and ma_magi_eligibility_status (CO-5xx).
 tests:
   - {id: "CO-921-T14", month: "2026-10", as_of: "2026-10-15", given: {is_fleeing_felon: false, cw_is_optional_member_not_requesting: false, cw_assistance_unit_members: [p1, p2], cw_meets_residency: true, cw_is_institution_patient_or_inmate: false, cw_meets_citizenship_and_immigration_requirement: true, cw_minor_parent_living_arrangement_met: true, cw_unit_has_striking_adult: false, cw_meets_child_support_requirements: true, cw_time_limit_reached: false, cw_unit_sanction_level: none, cw_meets_income_test: true, cw_is_dependent_child: false, in_diversion_period_of_ineligibility: true, is_pregnant: false, cw_is_dependent_child_in_month: false, cw_assistance_unit_members_in_month: [p1, p2]}, title: "CW-1 (probe ZZ-2): the mother is within a diversion period of ineligibility (3.606.8.A.4): no basic cash assistance", others: {p2: {cw_is_dependent_child: true, cw_minor_parent_living_arrangement_met: true, is_pregnant: false, cw_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: ineligible_diversion_period}

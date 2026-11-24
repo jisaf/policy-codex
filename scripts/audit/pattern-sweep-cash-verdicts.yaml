@@ -51,7 +51,7 @@ verdicts:
   F-D11: "Fixed PS-D11: relationships read as stated in the sponsor's dependents and the burial's responsible persons."
   F-D12: "Fixed PS-D12: the child support months and average read with no default."
   # ---- not fixed, listed for the product owner (section 5)
-  RES-UNDATED: "Not fixed (rare; section 5): by the text the status is the month's, but the fact states the determination date's status and has no date, so a change within the months a determination covers cannot be stated; a status gained after the application is carried by the eligibility dates (af_eligibility_date, cw_unit_eligible_from_date), a status lost before the determination is not. Needs a neutral date on the fact (or a per-month statement); no state policy choice, so no open question."
+  RES-UNDATED: "Recorded OQ-1436 (state policy choice; MAGI records the same question as OQ-1425): by the text each month is judged on its own facts, but the case states this status once, for the determination date, with no date of a change; the assumption in force holds it in each month the determination covers. A status gained after the application is carried by the eligibility dates (af_eligibility_date, cw_unit_eligible_from_date)."
   SHARED: "Shared item (program All), outside the cash remit: listed for its owner (section 5)."
 rules:
   # ---------------- pattern 1, time

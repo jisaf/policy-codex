@@ -9,7 +9,7 @@ meaning: Whether the person has a total disability that has lasted or can be exp
 precision: "Vocabulary fix round (R-5): reads af_has_total_disability_six_months (CO-1728), the county's finding on the state medical certification, which carries the six-month duration, and receives_ssdi (CO-1727) for 26-2-111(4)(a)'s SSDI-determined route. It had read the SSA disability fact (see OQ-113, now resolved) and SNAP's disability-payment fact."
 derived: [any, af_has_total_disability_six_months, receives_ssdi]
 sources: [S442, S445, S459]
-open: []
+open: [, OQ-1436]
 implemented: engine
 tags: [cash, and, disability]
 rationale: No existing item states the AND-SO total-disability test. af_category (CO-953) needs it.

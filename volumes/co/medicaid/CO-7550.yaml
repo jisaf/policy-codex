@@ -1,0 +1,20 @@
+id: CO-7550
+name: "Medicaid: has held qualified non-citizen status for five years by the end of the month"
+identifier: ma_has_held_qualified_status_five_years_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, on some day of the month evaluated, the person has held qualified non-citizen status for the waiting period of 8 U.S.C. 1613(a) (qualified_non_citizen_waiting_period_years, five), counted from qualified_status_date: the period has ended by the last day of the month."
+precision: "Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-01). 8 U.S.C. 1613(a) (S176) bars a qualified alien from a federal means-tested benefit 'for a period of 5 years beginning on the date of the alien's entry into the United States with a status', so whether the bar applies is a fact of each month: a retroactive month before the fifth anniversary is inside it, a later month is not. 10 CCR 2505-10 § 8.100.4.G.1 (S3351) makes a person eligible for a whole month who is eligible 'at any time during' it, so the month in which the five years end is outside the bar (the last day of the month). has_held_qualified_status_five_years (CO-508), a neutral fact of the person on the determination date, is unchanged; Medicaid's month-scoped status test reads this item (ma_meets_citizenship_requirement_in_month, CO-7551)."
+derived: ["<=", qualified_non_citizen_waiting_period_years, [years_between, qualified_status_date, [days_after, -1, [first_day, [month_after, [month]]]]]]
+sources: [S176, S3351, S217]
+implemented: engine
+tags: [ma, magi, immigration]
+nearest: [CO-508]
+rationale: "Pattern sweep, MAGI (PS-01): has_held_qualified_status_five_years (CO-508) is counted to the determination date and read through the person-scope status test (CO-509) in every month a determination evaluates, so a retroactive month before the fifth anniversary of a lawful permanent resident's status was judged as if the five years had passed. CO-508 is shared and read once per person; this item is Medicaid's reading for the month (G.1's any day)."
+tests:
+  - {id: CO-7550-T1, as_of: "2026-11-10", month: "2026-08", title: "PS-01: status from 2021-09-15, August 2026: four years, inside the bar", given: {qualified_status_date: "2021-09-15"}, expect: false}
+  - {id: CO-7550-T2, as_of: "2026-11-10", month: "2026-09", title: "PS-01: the same, September 2026: five years on September 15, a day of the month", given: {qualified_status_date: "2021-09-15"}, expect: true}
+  - {id: CO-7550-T3, as_of: "2026-11-10", month: "2026-11", title: "PS-01: the same, the determination month", given: {qualified_status_date: "2021-09-15"}, expect: true}
+  - {id: CO-7550-T4, as_of: "2026-11-10", month: "2026-10", title: "PS-01: status date not stated: cannot determine", given: {}, expect: unknown}

@@ -11,7 +11,7 @@ derived: ["case", [["all", ["<", ["years_between", "date_of_birth", ["first_day"
 sources: [S413, S1307, S3155]
 implemented: engine
 tags: [cash, tanf, income, household]
-open: [OQ-102]
+open: [OQ-102, OQ-1436]
 rationale: "No existing item models Colorado Works' minor-parent income deeming; cw_countable_income (CO-910) needs it to correctly attribute a non-participant parent's income to the minor parent's assistance unit as 3.605.1.A.4.b requires. Uses [rel, [child], [P]] over every person in the case (not a reachable closure) because the deeming rule reads only this person's direct parent(s), not a wider household closure. Fix round (C-11): adds the marital_status = single guard (a) and reads cw_countable_unearned_income (CO-908) instead of four of its own six components (b), so the two items cannot drift apart on what 'unearned income' means for the same program."
 tests:
   # Coverage pass 6 CA6-2: the kind of determination stated (decision 4): these tests are applications, the value the readers gave it when unstated.

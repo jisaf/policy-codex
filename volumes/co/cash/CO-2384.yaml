@@ -11,7 +11,7 @@ derived: ["sum", ["filter", ["persons"], ["any", ["in_group", ["P"], "af_spouses
 sources: [S1632, S1633, S1634, S2611, S2612, S2613, S3204]
 implemented: engine
 tags: [cash, income]
-open: [OQ-661, OQ-1375]
+open: [OQ-661, OQ-1375, OQ-1436]
 rationale: "OQ-114: af_countable_income (CO-946) read only the client's own income; 3.534, 3.544.D-F and 3.549.C-F (S1632-S1634) deem a spouse's income, and an AND-CS child's parents' income, to the client. Dual-entry audit 3.16 (audit fix round): Medicaid receipt reads is_enrolled_in_medical_assistance (CO-2435), the one enrollment record, which replaced receives_medicaid (CO-2393). Same-word SW-7: the relative in the home is read from lives_with."
 tests:
   - {id: "CO-2384-T1", month: "2026-10", as_of: "2026-10-01", given: {af_is_oap_age: true}, title: "OAP client, wife earns $1,065 and has $1,200 Social Security: (1,065 - 65) / 2 = 500 earned, plus 1,200 less the 1,032 OAP grant standard in force = 168 unearned: 668", others: {p2: {receives_ssi: false, is_enrolled_in_medical_assistance: false, wages_gross: 1065, af_self_employment_net_profit: 0, af_spouse_dependent_children_needs: 0, child_support_paid_legally_obligated: 0, receipts: [{kind: social_security, amount: 1200}], earnings: [{kind: wages, amount: 1065}, {kind: self_employment_receipts}], donated_work_hours_per_week: 0, af_medical_payments_for_dependents: 0}}, relationships: [[spouse, p1, p2]], expect: 668}

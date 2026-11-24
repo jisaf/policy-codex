@@ -9,6 +9,7 @@ meaning: "This person is a required assistance-unit member disqualified because 
 precision: The failure to apply for an SSN is read as false when not stated (cw_has_failed_to_apply_for_ssn, CO-2348). Members disqualified for an intentional program violation or as fleeing felons (3.604.2.M.1-3) are not in this group; their income counts without disregards (3.604.2.M).
 derived: [any, [not, cw_meets_citizenship_and_immigration_requirement], [otherwise, cw_has_failed_to_apply_for_ssn, false]]
 sources: [S1628, S1004]
+open: [OQ-1436]
 implemented: engine
 tags: [cash, tanf, household, immigration]
 rationale: "CDHS review S-5 (OQ-490 resolved): 3.605.1.A.6 is the specific rule for members disqualified for citizenship, status, lawful presence or SSN reasons and deems their net income; 3.604.2.M's 'without applying income disregards' then governs the other disqualifications. cw_is_disqualified_member (CO-928) joins both groups, so the income items test this narrower group inside it."
