@@ -1,6 +1,6 @@
 # Pattern sweep: the cash programs (Adult Financial and Colorado Works)
 
-A systematic sweep of the three patterns in which six rounds of review kept finding wrong answers, over every Adult Financial item (OAP, AND-SO, AND-CS, the Home Care Allowance, burial, disaster assistance and the deeming of a spouse's, a parent's and a sponsor's income; 9 CCR 2503-5, D-80) and every Colorado Works item (9 CCR 2503-6, D-81) in volumes/co/cash, and the parameters, record fields and shared items they read. Started from branch ccr-9d19bf4c-wmnwcl at 14558ff; merged with origin at 950e322 (the MAGI pattern sweep) before the gate. Date: 2026-11-24.
+A systematic sweep of the three patterns in which six rounds of review kept finding wrong answers, over every Adult Financial item (OAP, AND-SO, AND-CS, the Home Care Allowance, burial, disaster assistance and the deeming of a spouse's, a parent's and a sponsor's income; 9 CCR 2503-5, D-80) and every Colorado Works item (9 CCR 2503-6, D-81) in volumes/co/cash, and the parameters, record fields and shared items they read. Started from branch ccr-9d19bf4c-wmnwcl at 14558ff; merged with origin at 950e322 (the MAGI pattern sweep) and again at 5f9c38c (the SNAP, CCCAP, LEAP and SUN Bucks pattern sweep) before the gate. Date: 2026-11-24.
 
 The three patterns (the product owner's brief, after docs/reviews/coverage6-cash.md sections 1 and 8, coverage4-cash.md and the cash parts of field-sweep-snap-cash-nonmagi.md):
 
@@ -122,8 +122,40 @@ The Colorado Works unit of the month (coverage pass 6 CA6-4, CA6-5: born by the 
 
 ## 6. Answer changes
 
-(Section completed at the gate; see below.)
+**Stored household expectations.** One answer moves: CO-305 (probe PZ-3H, a Home Care Allowance client at home with no earlier approval stated): October $977 to **$0**, the approval month (3.570.13.F; PS-D1), with November $977 added. Five expectations of items now evaluated per month are keyed by the determination month with their values unchanged (CO-07 p1 to p5 cw_time_limit_reached, CO-161 cw_time_limit_reached, CO-94 p3 and CO-169 af_sponsor_deeming_applies, CO-165 af_is_presumed_nonresident_by_absence). New households: CO-1030 (PS-M1: September $442, October **$452**), CO-1031 (PS-T9: September **$312**, October and November none), CO-1032 (PS-T8: September eligible **$336**, October ineligible_no_dependent_child) — each the hand answer, each different from the engine's before the sweep.
+
+**Statements added (decision 4).** Where a stored household or a rule test read a fact the sweep made required, the value its story assumes was stated, each marked in volumes/co/tests/cases.yaml with its class: 135 statements in stored households (dwelling_id h1 for every person of 42 households that state no home apart, the convention's own reading, PS-D2; temporary_absence_reason none and the residence setting of a person stated present, PS-T8/PS-D3; the AND-SO interview date as the verification request date the stories give, PS-D8; an application for the AF kind of determination, PS-D9; CO-13's grandfathered HCA approval by 2013-12-31 with no leave, PS-D1), and some 500 in the rule tests of the changed readers (the same facts; immigration status us_citizen in tests whose sponsor deeming the old 125% default hid, PS-M3; relationships stated as triples where a spouse's own relationships were read).
+
+**Other figures of the stored households that move** (not expectations), each an enumerated harness entry: CO-02 p1, a grandmother in a nursing facility since before November: no member of her own Colorado Works unit in November (3.604.2.O.2): countable income 2,030 to 0, need and grant standards to 0 (PS-T8); CO-429 p2 and CO-431 p2, a son away from the home past forty-five days whose mother is in a nursing home: eligible, $173 to ineligible_no_dependent_child, $0 (3.604.2.I.3; PS-T8); CO-305 above.
+
+**Harness cells.** Every cell the sweep moves in the three harnesses is an enumerated entry (case, person, figure, month, both values) with its class, traced by `scripts/audit/pattern-sweep-cash-classify.ts` on the branch before the sweep (950e322) and on disk and classed by `scripts/audit/pattern-sweep-cash-allow.ts`; the 23 cells no rule classed were traced by hand and are named in that script (CO-02 p1, CO-429 p2, CO-431 p2, the lawful presence verification of CO-76, CO-110, CO-138 and CO-491, CO-487 p1). No cell was the sweep's by accident (the branch before the sweep gives the old value for every cell). Entries: scripts/receipts/allowed-differences.yaml (section "Receipts harness: Cash pattern sweep", 538 entries, 6,726 cells), scripts/records/allowed/pattern-sweep-cash.yaml (452 entries, 2,985 cells), scripts/records/allowed/h7-pattern-sweep-cash.yaml (357 entries, 3,377 cells). By class (receipts / earnings / holdings cells):
+
+| class | what moves | cells |
+|---|---|---|
+| PS-T8 (with PS-D3) | the month's CW unit reads each member's living in the home; households that state no absence reason or setting cannot be determined | 4,532 / 729 / 710 |
+| PS-D2 | living together from dwelling_id, required | 861 / 1,540 / 2,110 |
+| PS-D8 | the AND-SO interview date and subsequent application, required | 824 / 498 / 522 |
+| PS-T12 with PS-D4 | AND-SO, AND-CS and couple figures now determined where the old readings left them unknown (no SSI received in the month; a case of one person has no spouse) | 384 / 80 / 6 |
+| PS-D5i | the IPV finding read inside CO-928 as the county's: CW income determined where it was unknown | 67 / 114 / 1 |
+| PS-D5 | is_fleeing_felon required | 33 / 0 / 0 |
+| PS-T8v | the person not living in the home in the month is no member of the month's unit (CO-02, CO-429, CO-431) | 14 / 13 / 13 |
+| PS-T5 | the lawful presence verification with the month's age and pregnancy | 7 / 7 / 7 |
+| PS-D6 | OAP-C required where a home not lived in counts | 3 / 3 / 3 |
+| PS-D1v | the HCA approval month not paid (CO-305) | 1 / 1 / 1 |
+| PS-D4, PS-D11 | relationships required (a multi-person case stating none) | 0 / 0 / 4 |
+
+The entries were written from the runs before the second merge; origin's SNAP/CE sweep states one home in most of the households this round would have, so some entries now match no difference. They are kept as the record of what the sweep alone moves; after the merge every difference in the three harnesses is matched (0 unexplained).
 
 ## 7. Gates
 
-(Completed at the gate.)
+At the final commit, with origin ccr-9d19bf4c-wmnwcl fetched and merged twice (950e322, the MAGI pattern sweep; 5f9c38c, the SNAP, CCCAP, LEAP and SUN Bucks pattern sweep, whose households already stated one home for most of the cases this round would have; the cash statements were re-applied on its households):
+
+- `node scripts/sync-manifest.mjs co`: written (cash 258 items).
+- `npm run typecheck`: passes.
+- `npx vitest run`: 1,161 tests pass (103 files). Pins moved with their reasons: the cash owner's open questions 53 (+ OQ-1435, OQ-1436) and the queue 219; Colorado Works rules 122 and open questions 32 (+ CO-7600, CO-7602); the grant's steps 56 at three levels and 113 in all; CO-276 read by 32 and reaching 56 and CO-273 reaching 114 (+ CO-1030 to CO-1032); rule lines over the plain-language limit 126 (CO-7602, CO-4401).
+- `npm run receipts:harness -- --all-programs`: OK. Stored 319 households, 4,904 values differ, all allowed; generated 1,626, 41,092 differ, all allowed; 0 unexplained; translation clean; metamorphic relations 0 violations.
+- `npm run records:harness -- --list earnings --all-programs`: OK. Stored 4,842 and generated 7,173 differ, all allowed; 0 unexplained; translation and boundary lint clean; 0 metamorphic violations.
+- `npm run records:harness -- --list holdings --all-programs`: OK. Stored 4,535 and generated 2,626 differ, all allowed; 0 unexplained; translation and joint lint clean; 0 metamorphic violations. One relation precondition was made explicit: MH-3 (an account stated joint between spouses gives the couple's figures unchanged) pairs only spouses alive on the determination date (scripts/records/metamorphic-holdings.ts, `spousePairs`): a spouse who has died is no spouse of the months read (3.520.63.A, widowed; PS-M1), so an account stated joint with that person is not the couple's. Before the precondition the relation found 2 "violations" (CO-306, whose client died in September, and CO-1030), both the rule's answer, not a defect. The acceptance logic (what a difference must match to pass) is unchanged.
+- `CHECK_BASE=origin/main npm run check`: OK (rule tests 6,185 of 6,185; household expectations 4,672 of 4,672; 25 change-impact flags, all dispositioned; conformance self-check 11,017 of 11,017). The round re-keyed the dispositions of earlier rounds whose fingerprints it moved, twice (before and after the second merge; reasons unchanged), and removed those no longer flagged; its own record, volumes/co/changes/2026-11-24-pattern-sweep-cash.yaml, dispositions the flags it leaves open. One warning: CO-1030 states a spouse edge with marital_status widowed (the husband died before the determination date, as the story has it).
+
+**Commits.** 7aedb89 (ages, PS-T1 to PS-T7), fd86f58 (absences, stays, time limit, strike), f6999ab (spouse and sponsor of the month), 0211ce2 (CW budgetary members), 2d7f844 and 43430e4 (decision 4 on the defaults; the households' statements), 2de6004 (SSI in the month), 3494366 (OQ-1435, OQ-951), 40966e1 (the verdicts), cd8a570 (CO-1030 to CO-1032), 01da01f (the disaster request), b6a3569 (merge of origin), 5af2807 and b7cf191 (tracing scripts, MH-3, harness entries), f883e0a (UI pins), 1e11270 (merge of origin at 5f9c38c), d587a12 (re-keyed dispositions), and the gate commit.
