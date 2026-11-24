@@ -6,8 +6,8 @@ type: calendar date
 scope: person
 program: All
 meaning: The date the person obtained the qualified non-citizen status they currently hold (for a lawful permanent resident, the date of admission for permanent residence).
-precision: Where a person has held more than one qualifying status in sequence, this is the date of the status held now, per 10 CCR 2506-1 4.305,B,3,a.
+precision: "Where a person has held more than one qualified status in sequence, this is the date of the status held now: the date of the change a program reads to know which status the person held in a month (Medicaid, ma_meets_citizenship_requirement_before_qualified_status, CO-7652). It is not the start of the five-year waiting period of 8 U.S.C. 1613(a) for such a person: 1613(a) (S176) runs it 'beginning on the date of the alien's entry into the United States with a status within the meaning of the term \"qualified alien\"', and 10 CCR 2506-1 4.305.B.3.a (S12), 'on the date the non-citizen obtains status as a qualified non-citizen or enters the U.S. in a qualifying status'; that date is first_qualified_status_date (CO-7770). Coverage pass 7, C7-04 and C7-11 (2026-11-24): this sentence cited 4.305.B.3.a for the date of the status held now, the opposite of what it says. Medicaid counts the five years from the first status (CO-7550); SNAP's and the cash programs' readers of the five years (has_held_qualified_status_five_years, CO-508) still count from this date, a follow-up listed in docs/reviews/known-limits.md."
 supplied_by: SAVE, immigration documents (Form I-551 or equivalent).
-sources: [S12]
+sources: [S12, S176]
 tags: [immigration]
 rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is exempt from the non-citizen waiting period, SNAP: meets the non-citizen additional condition."
