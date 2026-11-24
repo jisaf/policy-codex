@@ -270,3 +270,24 @@ ol.tray li { margin: 6px 0; }
   details { display: block; }
 }
 .version header .pill, .version header .chip { white-space: normal; }
+
+/* ---------- map ---------- */
+.map-cols { grid-template-columns: minmax(0, 1fr) 280px; }
+.map-wrap { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.map-wrap svg { display: block; }
+.map-wrap .mn:focus, .map-wrap .mp:focus { outline: none; }
+.map-wrap .mn:focus rect:first-of-type, .map-wrap .mp:focus rect:first-of-type { stroke: var(--accent); stroke-width: 2.5; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; font-size: .82rem; margin: 6px 0 10px; color: var(--ink2); }
+.lg { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.lg i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchip { font: inherit; font-size: .82rem; text-align: left; border: 1px solid #c9c6bb; background: #fff; color: var(--ink); border-radius: 6px; padding: 4px 8px; cursor: pointer; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; max-width: 100%; }
+.tchip .kind { font-size: .62rem; }
+.tchip.shared .kind { color: inherit; }
+.tchip.sel { outline: 3px solid var(--accent); }
+.tchip.down { outline: 2px solid var(--ink); }
+.tchip.up { text-decoration: underline; text-decoration-thickness: 2px; }
+.tmarks { display: inline-flex; gap: 2px; }
+.tmarks i { display: inline-block; width: 6px; height: 6px; border-radius: 1px; border: 1px solid; }
+@media (max-width: 900px) { .map-cols { grid-template-columns: minmax(0, 1fr); } }
+#drawer:has(.map-sel) { width: min(380px, 100vw); }

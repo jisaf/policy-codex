@@ -9,6 +9,7 @@ import { walkView } from "./views/walk";
 import { questionView, questionsView } from "./views/questions";
 import { changesView, editView } from "./views/changes";
 import { docView } from "./views/doc";
+import { mapView, outcomeMapView } from "./views/map";
 
 export interface View { title: string; body: Raw; after?: () => void }
 type Route = (args: string[], query: URLSearchParams) => View | Promise<View>;
@@ -24,12 +25,15 @@ const routes: Array<[RegExp, Route]> = [
   [/^\/changes$/, changesView],
   [/^\/edit\/([^/]+)$/, editView],
   [/^\/doc\/([^/]+)$/, docView],
+  [/^\/map$/, mapView],
+  [/^\/map\/outcome\/([^/]+)$/, outcomeMapView],
 ];
 
 const NAV: Array<[string, string, RegExp]> = [
   ["#/", "Desk", /^\/?$|^\/item/],
   ["#/cases", "Households", /^\/case|^\/walk/],
   ["#/questions", "Questions", /^\/q/],
+  ["#/map", "Map", /^\/map/],
   ["#/changes", "Changes", /^\/changes|^\/edit/],
 ];
 
