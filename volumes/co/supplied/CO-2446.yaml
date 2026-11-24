@@ -7,6 +7,7 @@ options: [magi, ssi_mandatory, long_term_care, cbwd_buy_in, pickle, dac, limited
 scope: person
 program: Medicaid
 meaning: "The Medical Assistance program the child was enrolled in when the current continuous eligibility period began (10 CCR 2505-10 § 8.100.3.Q.2): MAGI Medical Assistance (magi), SSI Mandatory, long-term care services, the Children with Disabilities Buy-In, Pickle, Disabled Adult Child, Limited Family Planning, or the MAGI period that begins when a child leaves Foster Care Medicaid to live with relatives, reunite with parents or under guardianship (foster_care_exit, Q.3). If not stated, Medicaid reads it as magi."
+precision: "Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): if not stated, Medicaid reads it as magi: a rule-given default, since a period that began in a non-MAGI program is one CBMS records with the determination that opened it (10 CCR 2505-10 § 8.100.3.Q.2, S1724: the period begins with a determination, redetermination or renewal); with no such program stated, no non-MAGI period is recorded, which is what magi reads as for the non-MAGI readers (ma_child_is_in_non_magi_continuous_eligibility_period, CO-2448)."
 supplied_by: CBMS eligibility history (the program on the determination that opened the period).
 sources: [S1724]
 tags: [ma, age]

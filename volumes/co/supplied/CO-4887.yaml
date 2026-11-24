@@ -6,7 +6,7 @@ type: calendar date
 scope: person
 program: All
 meaning: "The date on which the person's disability began, as the Social Security Administration (or, for Medical Assistance, the state's disability determination contractor) determined it with the finding that the person meets the SSA definition of disability (meets_ssa_disability_criteria)."
-precision: "Stated only for a person found disabled whose onset date is in the record. If not stated, no program reads a month as before the onset."
+precision: "Stated only for a person found disabled whose onset date is in the record. Required where read for a month before the determination month (Medicaid, ma_month_is_before_disability_onset, CO-4888; pattern sweep, decision 4): before, no program read a month as before an onset not stated."
 supplied_by: "The SSA award letter or the disability determination."
 sources: [S3623]
 tags: [ma, non_magi, disability]

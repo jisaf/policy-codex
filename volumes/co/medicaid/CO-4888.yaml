@@ -6,13 +6,17 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the month ends before the person's disability onset date (disability_onset_date), so that no medical service in it was on or after the onset and the person does not meet the SSA definition of disability for that month (10 CCR 2505-10 § 8.100.5.C.4.b.ii)."
-precision: "A month is before the onset when it is earlier than the month containing the onset date; the onset month itself is not, because a service on or after the onset day in it qualifies (C.4.b reads the date of the medical service, and the volume determines whole months). An unstated onset date is read as no such month. C.4.b.i (SSI or SSDI approved on or before the service) is not separated: an approval follows the onset."
-derived: [otherwise, ["<", [month], [month_of, disability_onset_date]], false]
-sources: [S3623]
+precision: "A month is before the onset when it is earlier than the month containing the onset date; the onset month itself is not, because a service on or after the onset day in it qualifies (C.4.b reads the date of the medical service, and the volume determines whole months). (Until the pattern sweep an unstated onset date was read as no such month.) C.4.b.i (SSI or SSDI approved on or before the service) is not separated: an approval follows the onset. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P1, P2): the determination month and the months after are not before the onset (the SSA finding stated on the determination date is of a disability that has begun); for a month before the determination month the onset date is required where read (decision 4 of 2026-11-23): no rule on file reads an undated disability as begun before every retroactive month, and C.4.b (S3623) asks for the onset or the approval 'on or prior to the date of a medical service'. The long-term care, HCBS, PACE and protected groups read the gate too (through CO-5201): a person is disabled only from the onset of the disability (disability_onset_date, CO-4887, 'the date on which the person's disability began'; § 8.100.7.A.2.b, S1753, 'Have met the requirements according to the definition of disability'; A.2.c.iii, benefits start 'if all other eligibility requirements were met as of that date')."
+derived: [case, [[">=", [month], [det_month]], false], [else, ["<", [month], [month_of, disability_onset_date]]]]
+sources: [S3623, S1753, S1503]
 implemented: engine
 tags: [ma, non_magi, disability]
 rationale: "Coverage pass 2 (first pass NM-30, deferred): the disabled arm of ma_ssi_related_category (CO-612) read the undated SSA finding, so a retroactive month before the onset read disabled. CO-612 reads this item in that arm. The Buy-In (§ 8.100.6.P-Q) and long-term care (§ 8.100.7) groups have their own retroactive rules and are not read here."
 tests:
   - {id: CO-4888-T1, as_of: "2026-11-01", month: "2026-08", title: "Onset 2026-09-15; August is before it", given: {disability_onset_date: "2026-09-15"}, expect: true}
   - {id: CO-4888-T2, as_of: "2026-11-01", month: "2026-09", title: "The onset month is not before it", given: {disability_onset_date: "2026-09-15"}, expect: false}
-  - {id: CO-4888-T3, as_of: "2026-11-01", month: "2026-08", title: "No onset date stated", given: {}, expect: false}
+  - {id: CO-4888-T3, as_of: "2026-11-01", month: "2026-08", title: "No onset date stated: a retroactive month cannot be determined (pattern sweep, decision 4; was false)", given: {}, expect: unknown}
+  # Pattern sweep P2: determined 2026-11-12, no onset date stated. November (the determination month): not before the onset: false. August: cannot determine (decision 4; was false).
+  - {id: CO-4888-T90, month: "2026-11", as_of: "2026-11-12", title: "Pattern sweep: the determination month is not before the onset", given: {}, expect: false}
+  - {id: CO-4888-T91, month: "2026-08", as_of: "2026-11-12", title: "Pattern sweep: a retroactive month with no onset date stated cannot be determined", given: {}, expect: unknown}
+  - {id: CO-4888-T92, month: "2026-08", as_of: "2026-11-12", title: "Pattern sweep: onset 2026-09-01: August is before it", given: {disability_onset_date: "2026-09-01"}, expect: true}

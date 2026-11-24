@@ -30194,7 +30194,7 @@
       month_defaults: {donated_work_hours_per_week: 0, }
   expect:
     p1:
-      ma_spouse_or_dependent_relative_lives_in_home: true
+      ma_spouse_or_dependent_relative_lives_in_home: {"2026-11": true}  # per month since the pattern sweep (P1, CO-4880): the determination month
       ma_home_is_countable_resource: {"2026-11": false}  # per month since coverage pass 4 (non-MAGI N4-7, N4-9): the determination month
       ma_ltc_eligibility_status:
         2026-11: eligible_institutional
