@@ -1,0 +1,13 @@
+id: CO-7507
+name: Adult Financial program start date
+identifier: adult_financial_program_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person who receives, or is authorized to receive, cash assistance under a Colorado Adult Financial program (adult_financial_program_received, CO-2710), the date from which the person's Adult Financial case pays or authorizes that program's assistance. A fact about the person's Adult Financial case, not this volume's own Adult Financial determination."
+precision: "Required where read: a program that needs the person to receive the assistance in each month it covers reads it for a month before the determination month (Medicaid's OAP SISC B group, ma_receives_oap_in_month, CO-7508), and not stated it cannot be determined (decision 4 of 2026-11-23). The determination month and the months after read adult_financial_program_received as stated."
+supplied_by: "The person's Adult Financial case record (CBMS)."
+sources: [S621, S1503]
+tags: [cash, oap]
+rationale: "Pattern sweep, non-MAGI Medicaid (P1; docs/reviews/pattern-sweep-nonmagi.md): adult_financial_program_received (CO-2710) is the program on the determination date and was read in every month by ma_oap_sisc_b_eligible (CO-1177), so a person awarded OAP from October met the OAP SISC B group (10 CCR 2505-10 § 8.100.6.K.2-4, \"persons receiving OAP-A or OAP-B\") in a retroactive August before receiving it."

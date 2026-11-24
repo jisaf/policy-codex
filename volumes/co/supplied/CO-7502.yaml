@@ -1,0 +1,13 @@
+id: CO-7502
+name: Medicare Part A entitlement date
+identifier: medicare_part_a_entitlement_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person entitled to Medicare Part A (medicare_part_a_entitled, CO-803), the first day of the person's entitlement to Part A, as Medicare's records show it. A fact about the person's Medicare entitlement, not any program's determination."
+precision: "Required where read: a program that needs Part A entitlement in each month it covers reads it for a month before the determination month (Medicaid's Medicare Savings Programs, ma_is_entitled_to_medicare_part_a_in_month, CO-7503), and not stated it cannot be determined (decision 4 of 2026-11-23). The determination month and the months after read medicare_part_a_entitled as stated."
+supplied_by: "The Medicare entitlement record (the person's Medicare card or the SSA and CMS data match)."
+sources: [S316, S2407]
+tags: [msp]
+rationale: "Pattern sweep, non-MAGI Medicaid (P1; docs/reviews/pattern-sweep-nonmagi.md): medicare_part_a_entitled (CO-803) is the entitlement on the determination date and was read in every month, so a person whose Part A began in October was a Specified Low-Income Medicare Beneficiary or a Qualifying Individual in a retroactive August, before the entitlement 10 CCR 2505-10 § 8.100.6.M.2.a and N.4.a require."

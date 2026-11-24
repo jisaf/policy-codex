@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the resident of a Long-Term Care institution, or the resident's family, conservator, administrator or responsible party, still refuses to release the patient payment due after the Eligibility Site, notified by the institution, has contacted the refusing party: a failure to cooperate for which Medicaid benefits are discontinued (10 CCR 2505-10 § 8.100.7.V.2.b-c)."
-precision: "If not stated, Medicaid reads it as false."
+precision: "If not stated, Medicaid reads it as false. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): if not stated, Medicaid reads it as false: a rule-given default, since the discontinuance follows the institution's notice and the eligibility site's contact with the refusing party (10 CCR 2505-10 § 8.100.7.V.2.b-c, S3622), events whose absence is no refusal."
 supplied_by: "The institution's notice to the Eligibility Site and the Eligibility Site's record of its contact."
 sources: [S3622]
 tags: [ma, ltc, income]

@@ -6,12 +6,13 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether documents verifying that an annuity conforms to 8.100.7.I must be submitted: for a long-term care applicant who (or whose spouse) owns an annuity (ma_holds_annuity_in_month, CO-5330: an annuity holdings record)."
-precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631). Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): an annuity is an annuity holdings record (CO-5300), in place of owns_annuity (CO-1579); a person whose holdings are stated with no such record has none."
-derived: [all, ma_owes_long_term_care_asset_disclosure, [any, ma_holds_annuity_in_month, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ma_holds_annuity_in_month]]]]
+precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631). Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): an annuity is an annuity holdings record (CO-5300), in place of owns_annuity (CO-1579); a person whose holdings are stated with no such record has none. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): the person's spouse is read from the person's relationships as stated, required where read (decision 4 of 2026-11-23): before, a person with no relationships stated was read as having no spouse, so a spouse's transfers, trust or annuity were not asked for."
+derived: [all, ma_owes_long_term_care_asset_disclosure, [any, ma_holds_annuity_in_month, [exists, [filter, [persons], [rel, [spouse], [P]]], [of, [P], ma_holds_annuity_in_month]]]]
 sources: [S1741, S3408]
 implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.j requires the annuity documents; no item asked for them."
 tests:
-  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: true, holdings: [{kind: bank_account}, {kind: annuity}]}, expect: true}
-  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: false, holdings: [{kind: bank_account}]}, expect: false}
+  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: true, holdings: [{kind: bank_account}, {kind: annuity}]}, relationships: [], expect: true}
+  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, owns_annuity: false, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
+  - {id: CO-1635-T90, month: "2026-11", as_of: "2026-11-12", title: "Pattern sweep: no own annuity and no relationships stated: cannot determine (decision 4; was false)", given: {ma_owes_long_term_care_asset_disclosure: true, ma_holds_annuity_in_month: false}, expect: unknown}

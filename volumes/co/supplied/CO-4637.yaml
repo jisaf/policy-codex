@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the community spouse controls resources attributed to the institutionalized spouse and does not make them available for the cost of care, and either the institutionalized spouse has assigned to the Department any rights to support from the community spouse, or cannot assign them because of a physical or mental impairment and the Department may bring a support proceeding without the assignment, or the eligibility site has determined that denial would work an undue hardship (no alternative living arrangement other than the institution) (10 CCR 2505-10 § 8.100.7.M.4.a-c)."
-precision: "Stated for the institutionalized spouse. If not stated, Medicaid reads it as false."
+precision: "Stated for the institutionalized spouse. If not stated, Medicaid reads it as false. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): if not stated, Medicaid reads it as false: a rule-given default, since the exception applies only where the institutionalized spouse has assigned the support rights, cannot assign them and the Department may proceed without the assignment, or the eligibility site has determined an undue hardship (10 CCR 2505-10 § 8.100.7.M.4.a-c, S3418: 'this fact shall not make the institutionalized spouse ineligible ... where'), each an act or a finding whose absence is none."
 supplied_by: "The assignment of support rights, or the eligibility site's hardship finding."
 sources: [S3418]
 tags: [ma, ltc, resources]

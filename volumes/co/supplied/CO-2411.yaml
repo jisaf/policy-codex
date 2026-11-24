@@ -7,7 +7,8 @@ options: [institutional, hcbs, pace, none]
 scope: person
 program: Medicaid
 meaning: "The long-term care setting the person (or their representative) asks for or is enrolled in: care in a nursing facility or other long-term care institution (institutional), a Home and Community-Based Services waiver (hcbs), the Program of All-Inclusive Care for the Elderly (pace), or none. Long-term care eligibility is reported for the requested setting (HCPF review B-3). Where a person neither is institutionalized nor is designated for a waiver, a missing value is read as none."
+precision: "Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): if not stated, Medicaid reads it as none: a rule-given default, since long-term care is reported for a setting the person requests (10 CCR 2505-10 § 8.100.7.B.2, S3408: 'The client must request the need for Long-Term Care services'); with no request stated, none is requested."
 supplied_by: Application and the long-term care referral (the setting named on the application or the Case Management Agency's referral; for PACE, the PACE organization's enrollment agreement).
-sources: [S351, S660, S1726]
+sources: [S351, S660, S1726, S3408]
 tags: [ma, ltc, hcbs]
 rationale: "B-3 of the HCPF review overruled OQ-100: PACE and HCBS are services a person chooses and enrolls in, so ma_ltc_eligibility_status (CO-652) must report the setting asked for, not the first one the person could qualify for. No existing fact states the request; meets_hcbs_waiver_target_group names a waiver designation, not a choice among settings."
