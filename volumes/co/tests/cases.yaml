@@ -27523,7 +27523,8 @@
     p1:
       cw_minor_parent_deemed_parents:
       - p3
-      cw_minor_parent_deeming_needs_deduction: 253
+      cw_minor_parent_deeming_needs_deduction:  # CASH-SW-1 (2026-11-24): per month; October 2026 reads the 2026-07-01 version, 253
+        2026-10: 253
       cw_deemed_parent_income_of_minor_parent:
         2026-10: 257
       cw_need_standard: {"2026-10": 245}
@@ -96082,3 +96083,638 @@
         2026-11: unknown
       ma_magi_eligibility_status:
         2026-11: unknown
+
+- id: CO-1140
+  title: 'KL-SNAP-2: a permanent resident who was paroled into the United States in 2019 is an eligible non-citizen in October 2026; the five years run from the parole'
+  # KL-SNAP-2 (docs/reviews/known-limits.md, closed 2026-11-24), the LPR-EX-PAROLEE story (CO-1127) on CO-449's household (probe ZZ-7). p2 was paroled into
+  # the United States on 2019-05-01 for a year or more (a qualified alien from that day, 8 U.S.C. 1641(b)(4), S1900) and became a lawful permanent resident
+  # on 2023-03-01 (qualified_status_date; status_before_lpr_adjustment other; first_qualified_status_date 2019-05-01). No exemption (an adult, not disabled,
+  # born 1990, parole is not a 1612(a)(2)(A) status, no Indian, Hmong or military connection), 20 qualifying quarters (fewer than 40).
+  # 8 U.S.C. 1612(a)(2)(L) (S22): residence 'with a status within the meaning of the term "qualified alien" for a period of 5 years or more beginning on
+  # the date of the alien's entry into the United States'; 10 CCR 2506-1 4.305.B.3.a (S12): from 'the date the non-citizen obtains status as a qualified
+  # non-citizen'. October 2026, last day 2026-10-31: 2019-05-01 to 2026-10-31 is 7 whole years >= 5: the additional condition is met (CO-307), and an LPR
+  # who meets it is an eligible non-citizen (7 U.S.C. 2015(f); CO-308). The quarters are not what eligibility rests on (20 < 40 in any case): not verified
+  # (CO-3736). Before the fix the five years ran from 2023-03-01: 3 years, ineligible_member_non_citizen, as CO-449.
+  as_of: "2026-10-01"
+  case_facts:
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
+    home_heating_cost_arrangement: pays_vendor_directly
+    received_energy_assistance_within_twelve_months: false
+    home_incurs_separate_cooling_cost: false
+    home_incurs_electricity_cost: true
+    home_incurs_water_cost: false
+    home_incurs_sewer_cost: false
+    home_incurs_trash_cost: false
+    home_incurs_cooking_fuel_cost: false
+    home_incurs_telephone_cost: false
+  relationships:
+  - [sponsor, p1, p2]
+  - [spouse, p1, p3]
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1986-03-12"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        tax_dependents_claimed_or_claimable_count: 2
+        liquid_resources_value: 3000
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 5000}
+        holdings:
+        - {kind: bank_account, value: 3000}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 5000
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        qualifying_quarters_with_federal_means_tested_benefit: 0  # coverage pass 4 SNAP S4-14 (decision 4): stated, the scenario's reading, now that SNAP reads it with no default (a permanent resident with no earlier status)
+        status_before_lpr_adjustment: other  # paroled before the permanent residence (KL-SNAP-2)
+        days_out_of_state_in_calendar_year: 0
+        date_of_birth: "1990-02-20"
+        immigration_status: lawful_permanent_resident
+        qualified_status_date: "2023-03-01"
+        us_entry_date: "2019-05-01"
+        first_qualified_status_date: "2019-05-01"
+        is_sponsored_non_citizen: false
+        qualifying_quarters: 20
+        has_qualifying_military_service: false
+        state_of_residence: CO
+        dwelling_id: d2
+        liquid_resources_value: 200
+        residence_setting_type: private_dwelling
+        receives_ssi: false
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        va_disability_rating_type: none
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        complies_with_refugee_program_work_requirements: false
+        complies_with_tanf_work_requirements: false
+        education_program_type: none
+        is_approved_for_work_study: false
+        is_assigned_to_higher_education_through_et_program: false
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        is_pregnant: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_surviving_spouse_of_veteran: false
+        marital_status: single
+        participates_in_drug_alcohol_treatment: false
+        receives_tanf_cash: false
+        receives_unemployment_compensation_or_applied: false
+        snap_is_disqualified_drug_felony: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_serving_ipv_disqualification: false
+        shelter_costs_attestation_is_questionable: false
+        claims_shelter_costs_for_unoccupied_home: false
+        nighttime_residence_type: fixed_regular_adequate
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_victim_of_battery_or_extreme_cruelty: false
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 900}
+        holdings:
+        - {kind: bank_account, value: 200}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 900
+        hours_worked: 80
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        shelter_cost_monthly: 500
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+    p3:
+      facts:
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1987-07-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        dwelling_id: d1
+      month_defaults:
+        donated_work_hours_per_week: 0
+  expect:
+    p2:
+      snap_meets_immigrant_additional_condition: {"2026-10": true}
+      snap_is_eligible_non_citizen: {"2026-10": true}
+      snap_requires_verification_of_qualifying_quarters: {"2026-10": false}
+
+- id: CO-1141
+  title: 'KL-CASH-2: a mother paroled into the United States in 2019 who became a permanent resident in 2023 meets the Colorado Works citizenship requirement'
+  # KL-CASH-2 (docs/reviews/known-limits.md, closed 2026-11-24), the LPR-EX-PAROLEE story (CO-1127) on CO-359's household (probe CWZ-15): p1, the mother,
+  # was paroled into the United States on 2019-05-01 for a year or more (a qualified alien from that day, 8 U.S.C. 1641(b)(4), S1900) and became a lawful
+  # permanent resident on 2023-03-01 (status_before_lpr_adjustment other; first_qualified_status_date 2019-05-01), not sponsored; her daughter p2 is a citizen.
+  # Applied 2026-10-12, determined 2026-10-15. C.R.S. 26-2-706(1.5)(b) (S402): 'a qualified alien who entered the United States on or after August 22, 1996,
+  # who has been in a qualified alien status for a period of five years'; 8 U.S.C. 1613(a) (S176) from 'entry into the United States with a status'.
+  # 2019-05-01 to 2026-10-15: 7 whole years >= 5 (has_held_qualified_status_five_years, CO-508): she meets the requirement (CO-905, CO-4005).
+  # The rest is CO-359's: One Caretaker, one child, no income: grant standard 488 (3.606.1.F, S414); October prorated from the application date,
+  # 20 days x .65754 = 320.83, cents dropped: $320. Before the fix the five years ran from 2023-03-01 (3 years): she failed the requirement and was
+  # left out of the unit (cw_is_disqualified_member, CO-928).
+  as_of: "2026-10-15"
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
+  relationships:
+  - [parent, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "2002-02-02"
+        sex: female
+        immigration_status: lawful_permanent_resident
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        us_entry_date: "2019-05-01"
+        qualified_status_date: "2023-03-01"
+        status_before_lpr_adjustment: other
+        first_qualified_status_date: "2019-05-01"
+        receipts: []
+        earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2020-06-01"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - {kind: bank_account, value: 300}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      cw_meets_citizenship_and_immigration_requirement: true
+      cw_eligibility_status:
+        2026-10: eligible
+      cw_grant_amount:
+        2026-10: 320
+    p2:
+      cw_meets_citizenship_and_immigration_requirement: true
+      cw_eligibility_status:
+        2026-10: eligible
+      cw_grant_amount:
+        2026-10: 320
+
+- id: CO-1142
+  title: 'KL-CASH-2: an AND-SO client paroled into the United States in 2019 who became a permanent resident in 2023 meets the citizenship requirement (OQ-1485)'
+  # KL-CASH-2 (docs/reviews/known-limits.md, closed 2026-11-24), the LPR-EX-PAROLEE story (CO-1127) on CO-121's household (final cash review FC-5): p1 Dana,
+  # 40, totally disabled for six months by the county's certification, not on SSI or SSDI, has applied for SSI, $465 of wages, $200 in the bank. She was
+  # paroled into the United States on 2019-05-01 for a year or more (a qualified alien from that day, 8 U.S.C. 1641(b)(4), S1900) and became a lawful permanent
+  # resident on 2023-03-01 (status_before_lpr_adjustment other; first_qualified_status_date 2019-05-01), not sponsored. Determined 2026-10-01.
+  # C.R.S. 26-2-111.8(2)(b) (S1151): barred 'for a period of five years after the date of entry into the United States'; (2)(c) (S5300): 'After five years
+  # ... shall be eligible'. 2019-05-01 to 2026-10-01: 7 whole years >= 5 (has_held_qualified_status_five_years, CO-508): she meets the requirement (CO-905).
+  # 9 CCR 2503-5 3.520.68.A (S452) dates the AND bar from the date of admission for permanent residence (2023-03-01, barred to 2028-03-01): OQ-1485 records
+  # the reading taken, the statute's. The rest is CO-121's: countable income (465 - 65) / 2 = 200 (3.544) < 248, the AND-SO standard: and_so;
+  # grant 248 - 200 = $48. Before the fix the five years ran from 2023-03-01 (3 years): she failed the requirement, af_category none.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        af_im14_signed: true
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1986-05-01"
+        immigration_status: lawful_permanent_resident
+        qualified_status_date: "2023-03-01"
+        us_entry_date: "2019-05-01"
+        status_before_lpr_adjustment: other
+        first_qualified_status_date: "2019-05-01"
+        has_qualifying_military_service: false
+        is_surviving_spouse_of_veteran: false
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 465}
+        holdings:
+        - {kind: bank_account, value: 200}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 465
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      meets_public_assistance_citizenship_requirement: true
+      af_countable_income: {"2026-10": 200}   # (465 - 65) / 2
+      af_category: {"2026-10": and_so}
+      af_and_grant: {"2026-10": 48}           # 248 - 200
+
+- id: CO-1143
+  title: 'CASH-SW-1: a minor mother applies in June 2028 and is determined in July 2028; June deducts the June need standard from her mother''s deemed income'
+  # CASH-SW-1 (docs/reviews/known-limits.md, closed 2026-11-24), on CO-191's household (probe ZQ-2) moved to a June application determined after July 1:
+  # p1, 16, unmarried, and her baby p2 live in h1 with her mother p3 ($600 wages, does not join); her father p4 lives in h2 with no income. Applied
+  # 2028-06-20, determined 2028-07-08. The need standard of 3.606.1.F (S414) is versioned from July 1; the volume holds the chart from 2026-07-01 to
+  # 2028-07-01 (SB 26-181, S1800) and none from 2028-07-01 (OQ-530). June 2028 reads June's chart: the needs deducted (3.605.1.A.4.a, S1307) are her mother's
+  # alone, One Caretaker, zero children, 253; deemed 600 - 90 - 253 = 257; the unit p1 + p2 on the No Caretaker row, two children: need standard 245;
+  # countable 257 >= 245: ineligible_income, grant 0. July 2028 has no chart loaded: cannot determine. Before the fix the deduction read the chart of the
+  # determination date (none loaded) in June too, so June could not be determined either.
+  as_of: '2028-07-08'
+  case_facts:
+    cw_application_date: '2028-06-20'
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - parent
+    - p3
+    - p1
+  - - parent
+    - p4
+    - p1
+  persons:
+    p1:
+      facts:
+        temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        is_blind: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2012-03-01'
+        receipts: []
+        earnings: []
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      facts:
+        temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        meets_ssa_disability_criteria: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        is_blind: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '2028-02-01'
+        receipts: []
+        earnings: []
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1987-01-22'
+        receipts: []
+        earnings:
+        - {kind: wages, amount: 600}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        cw_support_paid_to_tax_dependents_outside_home: 0
+        spousal_maintenance_paid: 0
+        wages_gross: 600
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+    p4:
+      facts:
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        days_out_of_state_in_calendar_year: 0
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h2
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: '1986-05-05'
+        receipts: []
+        earnings: []
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        child_support_paid_legally_obligated: 0
+  expect:
+    p1:
+      cw_minor_parent_deeming_needs_deduction:
+        2028-06: 253   # One Caretaker, zero children, the chart of 2026-07-01 to 2028-07-01 (was cannot determine)
+        2028-07: unknown   # no chart in force on 2028-07-08 (OQ-530)
+      cw_deemed_parent_income_of_minor_parent:
+        2028-06: 257   # 600 - 90 - 253
+        2028-07: unknown
+      cw_need_standard: {"2028-06": 245, "2028-07": unknown}   # No Caretaker, two children
+      cw_countable_income:
+        2028-06: 257
+      cw_eligibility_status:
+        2028-06: ineligible_income   # 257 >= 245
+        2028-07: unknown
+      cw_grant_amount:
+        2028-06: 0
+    p2:
+      cw_eligibility_status:
+        2028-06: ineligible_income
+        2028-07: unknown
