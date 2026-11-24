@@ -20,6 +20,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
 import { loadVolume } from "../../src/tools/volumes";
+import { anchorRows, printAnchors } from "./pattern-sweep-anchors";
 
 const argv = process.argv.slice(2).filter((a) => a !== "--");
 const opt = (k: string) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : undefined; };
@@ -45,6 +46,11 @@ while (queue.length) {
   const id = queue.pop()!;
   const it = byId.get(id)!;
   for (const r of refs(it.derived)) if (!inScope.has(r)) { inScope.add(r); queue.push(r); }
+}
+// --anchors: the two timing tests of scripts/audit/pattern-sweep-anchors.ts (coverage pass 7, F7-12) on the items in scope.
+if (args.includes("--anchors")) {
+  printAnchors(anchorRows(vol.items.filter((it) => inScope.has(it.identifier) && it.kind === "derived") as never, byId as never), json);
+  process.exit(0);
 }
 const monthScoped = (s: string) => s === "person-month" || s === "month";
 const DATE_FIELDS = new Set(["date", "month", "start_date", "end_date", "job_start_date", "job_end_date", "regular_date", "covers_from", "covers_through", "acquired_date", "disposed_date", "received_date", "value_date"]);

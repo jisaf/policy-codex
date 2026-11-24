@@ -18,6 +18,7 @@
 import path from "node:path";
 import { loadVolume } from "../../src/tools/volumes";
 import type { Item } from "../../src/engine/types";
+import { anchorRows, printAnchors } from "./pattern-sweep-anchors";
 
 const root = path.resolve(import.meta.dirname, "../..");
 const { vol } = loadVolume(root, "co");
@@ -77,6 +78,12 @@ while (queue.length) {
   const r = new Set<string>();
   if (CUT[id]) CUT[id].forEach((x) => r.add(x)); else reads(it.derived, r);
   for (const x of r) if (!reached.has(x)) queue.push(x);
+}
+// --anchors: the two timing tests of scripts/audit/pattern-sweep-anchors.ts (coverage pass 7, F7-12) on the reached items.
+if (process.argv.includes("--anchors")) {
+  const swept = [...reached].map((id) => byIdent.get(id)!).filter((it) => it.derived != null && !BOUNDARY.has(it.identifier) && OWN_PROGRAMS.has(it.program));
+  printAnchors(anchorRows(swept, byIdent), process.argv.includes("--tsv"));
+  process.exit(0);
 }
 
 const isParam = (it: Item) => it.kind === "parameter";

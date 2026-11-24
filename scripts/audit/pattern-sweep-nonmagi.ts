@@ -1,6 +1,6 @@
 /* Lists, mechanically, the candidates of the three-pattern sweep for non-MAGI
  * Medicaid (docs/reviews/pattern-sweep-nonmagi.md):
- *   npx vite-node scripts/audit/pattern-sweep-nonmagi.ts -- [--tsv]
+ *   npx vite-node scripts/audit/pattern-sweep-nonmagi.ts -- [--tsv] [--anchors]
  * The items swept: every Medicaid derived item the non-MAGI outcomes read
  * (the SSI-related, protected, OAP health care, Medicare Savings, buy-in,
  * long-term care and patient payment outcomes and the long-term care
@@ -19,6 +19,7 @@ import path from "node:path";
 import { loadVolume } from "../../src/tools/volumes";
 import { buildGraph } from "../../src/engine/graph";
 import type { Item } from "../../src/engine/types";
+import { anchorRows, printAnchors } from "./pattern-sweep-anchors";
 
 const root = path.resolve(import.meta.dirname, "../..");
 const tsv = process.argv.includes("--tsv");
@@ -57,6 +58,11 @@ const closure = (roots: string[], stop: (id: string) => boolean = () => false) =
 const nm = new Set([...closure(NONMAGI_OUTCOMES, isMagi)].filter((id) => !isMagi(id)));
 const swept = [...nm].map(byId).filter((it): it is Item => !!it && it.kind === "derived" && (it.program === "Medicaid" || it.program === "All"))
   .sort((a, b) => Number(a.id.slice(3)) - Number(b.id.slice(3)));
+// --anchors: the two timing tests of scripts/audit/pattern-sweep-anchors.ts (coverage pass 7, F7-12) on the swept items.
+if (process.argv.includes("--anchors")) {
+  printAnchors(anchorRows(swept, new Map(vol.items.map((it) => [it.identifier, it as Item]))), tsv);
+  process.exit(0);
+}
 
 const isMonthScope = (it: Item) => it.scope === "person-month" || it.scope === "month";
 const isParam = (it: Item) => it.kind === "parameter";

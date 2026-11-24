@@ -28,6 +28,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { loadVolume } from "../../src/tools/volumes";
 import type { Item } from "../../src/engine/types";
+import { anchorRows, printAnchors } from "./pattern-sweep-anchors";
 
 const root = path.resolve(import.meta.dirname, "../..");
 const args = process.argv.slice(2).filter((a) => a !== "--");
@@ -74,6 +75,21 @@ function listOf(e: unknown): string | null {
 }
 
 const cashItems = items.filter((it) => isCash(it) && it.kind === "derived" && it.derived != null);
+// --anchors: the two timing tests of scripts/audit/pattern-sweep-anchors.ts (coverage pass 7, F7-12) on the cash
+// items and the shared (All) derived items they reach.
+if (args.includes("--anchors")) {
+  const swept = new Map(cashItems.map((it) => [it.identifier, it]));
+  const queue = [...cashItems];
+  while (queue.length) {
+    const it = queue.pop()!;
+    for (const x of idents(it.derived)) {
+      const xi = byIdent.get(x)!;
+      if (!swept.has(x) && xi.kind === "derived" && xi.derived != null && (isCash(xi) || xi.program === "All")) { swept.set(x, xi); queue.push(xi); }
+    }
+  }
+  printAnchors(anchorRows([...swept.values()], byIdent), args.includes("--tsv"));
+  process.exit(0);
+}
 const monthScoped = (it: Item | undefined) => !!it && (it.scope === "person-month" || it.scope === "month");
 
 // ---- reachability: person/case-scope derived items read (transitively through non-month items) by a month-scoped cash item
