@@ -11,7 +11,7 @@ derived: [case, [[all, [otherwise, ma_is_incapable_of_indicating_intent, false],
 sources: [S1518]
 implemented: engine
 tags: [ma]
-open: [OQ-472]
+open: [OQ-472, OQ-1425]
 rationale: "OQ-393: is_colorado_resident states residence in the state only; Medicaid's own rules for institutionalized persons who cannot indicate intent were not modeled. Medicaid's eligibility items now read this item."
 tests:
   - {id: CO-2250-T1, as_of: "2026-10-01", title: "Lives in Colorado", given: {state_of_residence: CO}, expect: true}

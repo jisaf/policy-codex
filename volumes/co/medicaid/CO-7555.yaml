@@ -9,6 +9,7 @@ meaning: "Whether the person is an inmate of a public institution (is_inmate_of_
 precision: "Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-05). 10 CCR 2505-10 § 8.100.3.G.1.b.ii (S3361) limits the benefits of 'Inmates who are incarcerated', a condition of the month evaluated (8.100.4.G.1, S3351: eligible for the whole month on any day of it; a retroactive month on its own facts, 8.100.3.E.1, S217). is_inmate_of_public_institution reads the setting 'on the determination date' (residence_setting_type, CO-3330) in every month, so a retroactive month before the person entered the jail was limited too. A stay that began after the first day of a month leaves days of the month outside it, so that month is not an inmate month (G.1's any day; docs/operators.md, Ages in a month: a disqualifying condition holds on every day); a month before the stay began is not one either. The entry date is required where read (decision 4): for an inmate with no institution_entry_date, whether a month was spent in the institution cannot be determined. Not an inmate on the determination date: not an inmate in any month (the case states no earlier stay; recorded in the review, PS-05). Read by ma_magi_eligibility_status (CO-554). CHP+ and community engagement keep CO-1105 (see the review)."
 derived: [all, is_inmate_of_public_institution, ["<=", institution_entry_date, [first_day, [month]]]]
 sources: [S3361, S3351, S217]
+open: [OQ-1425]
 implemented: engine
 tags: [ma, magi, institution]
 nearest: [CO-1105, CO-661, CO-5200]
