@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "This non-citizen has been battered or subjected to extreme cruelty by a spouse or parent, or by a member of the spouse's or parent's family (or is the parent of a child so battered), the condition 9 CCR 2503-6 3.605.1.A.5.c.4 names, as the county has found it: the one statement of the finding every program's battery rule reads."
-precision: "If not stated, a program reads this as false. The 8 U.S.C. 1641(c) status of a battered non-citizen who is not otherwise a qualified non-citizen is immigration_status battered_non_citizen (CO-002); a lawful permanent resident who was battered keeps that status and this finding. SNAP's narrower exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from this finding, its date (CO-2717), the living arrangement (CO-2718) and court or immigration service recognition (CO-2719)."
+precision: "Required where Colorado Works' sponsor deeming (cw_sponsor_deeming_applies, CO-2364) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, a program read an unstated value as false. The 8 U.S.C. 1641(c) status of a battered non-citizen who is not otherwise a qualified non-citizen is immigration_status battered_non_citizen (CO-002); a lawful permanent resident who was battered keeps that status and this finding. SNAP's narrower exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from this finding, its date (CO-2717), the living arrangement (CO-2718) and court or immigration service recognition (CO-2719)."
 supplied_by: "Applicant statement, protective orders, USCIS records."
 sources: [S1627, S1619, S1901]
 tags: [immigration]

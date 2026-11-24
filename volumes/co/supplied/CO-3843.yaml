@@ -6,7 +6,7 @@ type: whole number
 scope: person
 program: AdultFinancial
 meaning: "The number of months, in the client's lifetime, for which the client received AND-SO on a medical certification that identified substance abuse, before the month being determined: the initial partial month of the first approval is not counted; a partial month after a re-approval counts as a full month (9 CCR 2503-5 3.541.3.A, G)."
-precision: "If not stated, Adult Financial reads this as 0."
+precision: "Required where Adult Financial (af_and_so_meets_substance_abuse_conditions, CO-3849) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
 supplied_by: "County department case history (the statewide automated system)."
 sources: [S2616, S2617]
 tags: [cash, and, disability]

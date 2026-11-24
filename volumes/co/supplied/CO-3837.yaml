@@ -6,7 +6,7 @@ type: calendar date
 scope: person
 program: AdultFinancial
 meaning: "The date the client's Adult Financial application was filed with the county department, from which 9 CCR 2503-5 3.520.76.A.3 counts the thirty-six months before the application."
-precision: "One value per client: 3.520.63.B gives each spouse a separate case."
+precision: "One value per client: 3.520.63.B gives each spouse a separate case. Required where Adult Financial's transfer look-back (af_is_in_twfc_penalty_period CO-3841, af_twfc_transfer_is_counted CO-4008, af_twfc_penalty_months CO-3840) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine."
 supplied_by: "County department case record."
 sources: [S2614]
 tags: [cash]

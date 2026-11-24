@@ -1,0 +1,13 @@
+id: CO-7306
+name: "Colorado Works: the diversion payment is a one-time cash payment"
+identifier: cw_diversion_is_one_time_cash_payment
+kind: supplied
+type: yes/no
+scope: month
+program: ColoradoWorks
+meaning: "The diversion payment the county department agreed with the client for the month (cw_county_approved_diversion_amount, CO-2559) is a one-time cash or cash-equivalent payment (9 CCR 2503-6 3.606.8.A.6: \"All diversion clients who receive a one-time cash payment are not required to assign child support rights\"), not a recurring payment, a vendor payment or in-kind services."
+precision: "Coverage pass 6 CA6-6 (docs/reviews/coverage6-cash.md, probe W5r): read only for a unit whose one failing is a member's refusal to sign the application form to avoid assigning support rights (cw_has_refused_child_support_assignment; cw_unit_eligible_but_for_support_assignment, CO-7307), where it decides whether the diversion may be paid without the assignment; required there (decision 4 of 2026-11-23). One value for the case and month, as the agreed amount is (convention rule 18)."
+supplied_by: "The county's diversion agreement recorded in CBMS (3.606.8.A.3.c: the need for and the specific type of the non-recurring cash payment)."
+sources: [S762]
+tags: [cash, tanf]
+rationale: "Coverage pass 6 CA6-6: 3.606.8.A.6 exempts a client who receives a one-time cash diversion payment from the assignment of support rights, which 3.604.4.A otherwise makes a condition of the unit's eligibility; the agreement says what kind of payment it is (A.2-3: cash, vendor payments or in-kind services), and no fact stated it."
