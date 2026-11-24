@@ -13,7 +13,7 @@ import {
   COUNT_DEFINITIONS, documentsNeededBy, documentsStillNeeded, isPastDue, pastDueCount, whatIfPhrase,
 } from "../counts";
 import {
-  amountKey, filterHouseholds, householdPeople, householdSummaries, personFacts, resultsGrid, statedAmounts,
+  amountKey, amountName, filterHouseholds, formatAmount, householdPeople, householdSummaries, personFacts, recordAmount, resultsGrid, statedAmounts,
   tippingPoint, watchedResults, whatIfChanges, type PersonInfo, type StatedAmount, type TippingPoint, type Watched,
 } from "../households";
 import { caseEdges, relationshipSentence } from "../people";
@@ -389,8 +389,8 @@ function WhatIfTab({ ctx, hc, people }: { ctx: ViewContext; hc: HouseholdCase; p
   const changes = useMemo(() => (pick && add ? whatIfChanges(engine, hc, pick, add, watched) : []), [engine, hc, pick, add, watched]);
   if (!pick) return <p class="status">This household states no dollar amounts to move.</p>;
   const who = (pid: string) => people.find((p) => p.id === pid)!;
-  const money = (v: number) => formatFor(engine, pick.identifier, v);
-  const it = engine.item(pick.identifier);
+  const money = (v: number) => formatAmount(engine, pick.identifier, v);
+  const it = engine.item(recordAmount(pick.identifier)?.list ?? pick.identifier);
   return (
     <div class="whatif">
       <p class="small">
@@ -403,13 +403,13 @@ function WhatIfTab({ ctx, hc, people }: { ctx: ViewContext; hc: HouseholdCase; p
           <select class="wi-fact" value={amountKey(pick)} onChange={(e) => set({ fact: (e.currentTarget as HTMLSelectElement).value, add: null })}>
             {amounts.map((a) => (
               <option key={amountKey(a)} value={amountKey(a)}>
-                {a.person} {who(a.person).short}: {engine.item(a.identifier)?.name ?? a.identifier} ({money(a.value)})
+                {a.person} {who(a.person).short}: {amountName(engine, a.identifier)} ({money(a.value)})
               </option>
             ))}
           </select>
         </label>
         <div class="wi-row" role="group" aria-label="Add to the amount">
-          <span>The case states <b>{money(pick.value)}</b>{it ? <> of <a href={itemHref(r, it)}>{it.name.replace(/^[^:]+:\s*/, "")}</a></> : null} for {personLabel(pick.person)}. Add</span>
+          <span>The case states <b>{money(pick.value)}</b>{it ? <> of <a href={itemHref(r, it)}>{amountName(engine, pick.identifier).replace(/^[^:]+:\s*/, "")}</a></> : null} for {personLabel(pick.person)}. Add</span>
           {CHIPS.map((d) => (
             <button
               key={d} type="button" class={`chip wi-chip${add === d ? " on" : ""}`} aria-pressed={add === d}
@@ -476,7 +476,7 @@ function Tipping(
   const chosen = choices.find((w) => key(w) === target.value) ?? initial;
   if (!chosen) return null;
   const who = (pid: string) => people.find((p) => p.id === pid)!;
-  const money = (v: number) => formatFor(engine, pick.identifier, v);
+  const money = (v: number) => formatAmount(engine, pick.identifier, v);
   const it = engine.item(chosen.identifier);
   const run = () => {
     busy.value = true;
