@@ -13,10 +13,52 @@ const copy = (rel) => {
   fs.mkdirSync(path.dirname(path.join(out, rel)), { recursive: true });
   fs.copyFileSync(path.join(proto, rel), path.join(out, rel));
 };
-copy("index.html");
+// A claude.ai Artifact page may load a stylesheet only inline (or from Google
+// Fonts), so the published index.html carries style.css in a <style> element;
+// src/style.css is still copied for other static hosts.
+const css = fs.readFileSync(path.join(proto, "src/style.css"), "utf8");
+const html = fs
+  .readFileSync(path.join(proto, "index.html"), "utf8")
+  .replace(/\s*<link rel="stylesheet" href="src\/style\.css">/, `\n  <style>\n${css}\n  </style>`);
+if (!html.includes("<style>")) throw new Error("index.html: the stylesheet link was not found to inline");
+fs.mkdirSync(out, { recursive: true });
+fs.writeFileSync(path.join(out, "index.html"), html);
 copy("src/style.css");
 copy("dist/app.js");
+// An Artifact holds each text file to 16 MB: past PART_BYTES, codex.json's
+// largest sections move to codex-<n>.json, which src/data.ts loads from `parts`.
+const PART_BYTES = 12 * 1024 * 1024;
 for (const f of fs.readdirSync(path.join(proto, "public/data"))) {
-  if (f.endsWith(".json")) copy(`public/data/${f}`);
+  if (!f.endsWith(".json")) continue;
+  if (f !== "codex.json" || fs.statSync(path.join(proto, "public/data", f)).size <= PART_BYTES) {
+    copy(`public/data/${f}`);
+    continue;
+  }
+  const codex = JSON.parse(fs.readFileSync(path.join(proto, "public/data/codex.json"), "utf8"));
+  const sized = Object.keys(codex)
+    .map((k) => [k, JSON.stringify(codex[k]).length])
+    .sort((a, b) => b[1] - a[1]);
+  const parts = [];
+  fs.mkdirSync(path.join(out, "public/data"), { recursive: true });
+  let cur = {}, curBytes = 0;
+  const flush = () => {
+    if (!curBytes) return;
+    const name = `codex-${parts.length + 1}.json`;
+    fs.writeFileSync(path.join(out, "public/data", name), JSON.stringify(cur));
+    parts.push(name);
+    cur = {}; curBytes = 0;
+  };
+  // Keep the items (the engine's input) in codex.json; move the rest by size.
+  let mainBytes = JSON.stringify(codex.items).length;
+  for (const [k, n] of sized) {
+    if (k === "items" || mainBytes + n <= PART_BYTES) { if (k !== "items") mainBytes += n; continue; }
+    if (curBytes + n > PART_BYTES) flush();
+    cur[k] = codex[k]; curBytes += n;
+    delete codex[k];
+  }
+  flush();
+  codex.parts = parts;
+  fs.mkdirSync(path.join(out, "public/data"), { recursive: true });
+  fs.writeFileSync(path.join(out, "public/data/codex.json"), JSON.stringify(codex));
 }
 console.log(`${path.relative(process.cwd(), out)}: ${fs.readdirSync(path.join(out, "public/data")).length + 3} files`);
