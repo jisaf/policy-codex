@@ -1273,7 +1273,7 @@
       ma_csra: 259660
       ma_institutionalized_spouse_countable_resources: {"2026-10": 0}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
       ma_meets_ltc_resource_standard: {"2026-10": true}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
-      ma_home_equity_disqualifies: false
+      ma_home_equity_disqualifies: {"2026-10": false}
       # HCPF fix round (B-3, S-3), recomputed by hand. Setting: she is in a nursing facility and asks for
       # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA standard: CO-662
       # gives 2705.00 from 2026-07-01 (S1219, S644).
@@ -3350,7 +3350,7 @@
       ma_csra: 259660
       ma_institutionalized_spouse_countable_resources: {"2026-11": 0}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
       ma_meets_ltc_resource_standard: {"2026-11": true}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
-      ma_home_equity_disqualifies: false
+      ma_home_equity_disqualifies: {"2026-11": false}
       # HCPF fix round (B-3, S-3), recomputed by hand. Setting: she is in a nursing facility and asks for
       # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA standard: CO-662
       # gives 2705.00 from 2026-07-01 (S1219, S644).
@@ -5390,7 +5390,7 @@
       ma_csra: 162660
       ma_institutionalized_spouse_countable_resources: {"2026-11": 17340}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
       ma_meets_ltc_resource_standard: {"2026-11": false}  # coverage pass 6 F6-2, F6-3: per month now; re-keyed to the determination month (same value)
-      ma_home_equity_disqualifies: false
+      ma_home_equity_disqualifies: {"2026-11": false}
       # OQ-212 sweep: the 2026 divisor 10814.64 (HCPF OM 25-073, unverified) replaced the illustrative
       # 9000: 54000 / 10814.64 = 4.993, so 4 whole months and ceil(30 x 0.993) = 30 days (was 6 months).
       ma_transfer_penalty_months: 4
@@ -14053,7 +14053,7 @@
       ma_ltc_eligibility_status: {"2026-11": eligible_institutional}
       ma_ssi_gross_earned_income: {"2026-11": 200}
       ma_patient_payment_available_income: {"2026-11": 1357.14}
-      ma_home_maintenance_allowance_max: 1672
+      ma_home_maintenance_allowance_max: {"2026-11": 1672}
       ma_home_maintenance_allowance: {"2026-11": 890, "2027-04": 0}
       ma_patient_payment: {"2026-11": 264.24, "2026-12": 467.14}
 - id: CO-114
@@ -15272,7 +15272,7 @@
         2026-11: 1600
       ma_ltc_eligibility_status:
         2026-11: eligible_institutional
-      ma_personal_needs_allowance: 90
+      ma_personal_needs_allowance: {"2026-11": 90}
       ma_patient_payment_available_income:
         2026-11: 1510
       ma_va_aid_and_attendance_is_patient_payment:
@@ -63306,7 +63306,7 @@
         2026-11: 1600
       ma_ltc_eligibility_status:
         2026-11: eligible_institutional
-      ma_personal_needs_allowance: 90
+      ma_personal_needs_allowance: {"2026-11": 90}
       ma_patient_payment_available_income:
         2026-11: 1510
       ma_va_aid_and_attendance_is_patient_payment:

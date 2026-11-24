@@ -25066,3 +25066,63 @@ Document: D-53
 > (3) *Ineligible parent dies.* If your ineligible parent dies, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the month following the month of death. In determining your benefit amount beginning with the month following the month of death, we use only your own countable income in a prior month, excluding any income deemed to you in that month from your deceased ineligible parent (see § 416.1160(b)(2)(iii)). If you live with two ineligible parents and one dies, we continue to deem income from the surviving ineligible parent who is also your natural or adoptive parent. If you live with a stepparent following the death of your natural or adoptive parent, we do not deem income from the stepparent.
 >
 > (4) *Ineligible parent and you no longer live in the same household.* If your ineligible parent and you no longer live in the same household, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the first month following the month in which one of you leaves the household. We also will not deem income to you from your parent's spouse (*i.e.*, your stepparent) who remains in the household with you if your natural or adoptive parent has permanently left the household. To determine your benefit amount if you continue to be eligible, we follow the rule in § 416.420 of counting your income including deemed income from your parent and your parent's spouse (*i.e.*, your stepparent) (if the stepparent and parent lived in the household with you) in the second month prior to the current month.
+
+### S5240. MMMNA and MIA: adjusted on a monthly basis for a continuing change of more than $50 (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.R.4 (rule version effective 11/14/2026; coverage pass 7, non-MAGI). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. The eligibility site shall make adjustments to the MMMNA and/or the MIA on a monthly basis for any continuing change in circumstances that exceeds $50 a month. Continuing changes of less than $50 in a month, and any infrequent or irregular changes, shall be considered at redetermination.
+
+### S5241. Federal law: home energy assistance under LIHEAP is not income or resources for any purpose under any Federal or State law
+
+Document: D-5240
+
+42 U.S.C. 8624(f)(1) (retrieved 2026-11-24). https://www.law.cornell.edu/uscode/text/42/8624
+
+> (1)
+> Notwithstanding any other provision of law unless enacted in express limitation of this paragraph, the amount of any home energy assistance payments or allowances provided directly to, or indirectly for the benefit of, an eligible household under this subchapter shall not be considered income or resources of such household (or any member thereof) for any purpose under any Federal or State law, including any law relating to taxation, supplemental nutrition assistance program benefits, public assistance, or welfare programs.
+
+### S5242. Federal law: payments to Domestic Volunteer Service Act volunteers below the minimum wage do not reduce eligibility for assistance under any governmental program
+
+Document: D-5241
+
+42 U.S.C. 5044(f)(1) (retrieved 2026-11-24). https://www.law.cornell.edu/uscode/text/42/5044
+
+> (1)
+> Notwithstanding any other provision of law except as may be provided expressly in limitation of this subsection, payments to volunteers under this chapter shall not in any way reduce or eliminate the level of or eligibility for assistance or services any such volunteers may be receiving under any governmental program, except that this paragraph shall not apply in the case of such payments when the Director determines that the value of all such payments, adjusted to reflect the number of hours such volunteers are serving, is equivalent to or greater than the minimum wage then in effect under the Fair Labor Standards Act of 1938 ( 29 U.S.C. 201 et seq.) or the minimum wage, under the laws of the State where such volunteers are serving, whichever is the greater.
+
+### S5243. Federal law: Title IV student financial assistance is not taken into account in any federally financed program
+
+Document: D-5242
+
+20 U.S.C. 1087uu (retrieved 2026-11-24). https://www.law.cornell.edu/uscode/text/20/1087uu
+
+> Notwithstanding any other provision of law, student financial assistance received under this subchapter, Bureau of Indian Education student assistance programs, and employment and training programs under section 3174 of title 29 shall not be taken into account in determining the need or eligibility of any person for benefits or assistance, or the amount of such benefits or assistance, under any Federal, State, or local program financed in whole or in part with Federal funds.
+
+### S5244. Federal law: national service allowances are not income for federally assisted programs based on need, other than as provided under the Social Security Act
+
+Document: D-5243
+
+42 U.S.C. 12637(d) (retrieved 2026-11-24). https://www.law.cornell.edu/uscode/text/42/12637
+
+> Allowances, earnings, and payments to individuals participating in programs that receive assistance under this subchapter shall not be considered to be income for the purposes of determining eligibility for and the amount of income transfer and in-kind aid furnished under any Federal or federally assisted program based on need, other than as provided under the Social Security Act ( 42 U.S.C. 301 et seq.).
+
+### S5245. SSI recipients under 21: the effective date; an infant born in a hospital with the onset in the stay, from the date of birth (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.C.10 (rule version effective 11/14/2026; coverage pass 7, non-MAGI). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 10. For individuals under 21 years of age who are eligible for or who are receiving SSI, the effective date of Medicaid eligibility shall be the date on which the individual applied for SSI or the date on which the individual became eligible for SSI, whichever is later.
+>
+> a. Special Provisions for Infants
+>
+> i) For an infant who is eligible for or who is receiving SSI, the effective date of Medicaid eligibility shall be the infant’s date of birth if:
+>
+> 1) the infant was born in a hospital;
+>
+> 2) the disability onset date, as reported by the Social Security Administration, occurred during the infant’s hospital stay; and
+>
+> 3) the infant’s date of birth is within three (3) months of the date on which the infant became eligible for SSI

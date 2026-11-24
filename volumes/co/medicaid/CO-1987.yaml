@@ -3,16 +3,19 @@ name: "Medicaid: personal needs allowance"
 identifier: ma_personal_needs_allowance
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: Medicaid
-meaning: "The personal needs allowance deducted first from a Long-Term Care institution resident's income: ma_veteran_personal_needs_allowance for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
-precision: "The rule and statute state ma_veteran_personal_needs_allowance for these residents even though the 2026 base allowance (ma_personal_needs_allowance_institutional) is higher. Blocked (OQ-1060): the base allowance it falls back to (CO-887) rests on S1228, which is not a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
+meaning: "The personal needs allowance in force in the month, deducted first from a Long-Term Care institution resident's income: ma_veteran_personal_needs_allowance for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
+precision: "The rule and statute state ma_veteran_personal_needs_allowance for these residents even though the 2026 base allowance (ma_personal_needs_allowance_institutional) is higher. Blocked (OQ-1060): the base allowance it falls back to (CO-887) rests on S1228, which is not a quotation. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation. Coverage pass 7, non-MAGI F7-2 (docs/reviews/coverage7-medicaid-nonmagi.md): per month. § 8.100.7.V.3.d.i.2 (S361) adjusts the base 'annually', and a retroactive month is judged on what held in it (§ 8.100.3.E.1, S1503), so the allowance of a month is the one in force in that month (docs/operators.md, Resolution step 2: the version on the first day of a month other than the determination month). Before, it was a per-person figure of the determination date, so a retroactive December 2025 month of a January 2026 determination deducted 110.36 in place of 108.73 (JAN-DET, stored household CO-1101). The CSRA increase (CO-1977), set at intake, reads it in the determination month."
 open: [OQ-1060]
 derived: [case, [ma_qualifies_for_veterans_personal_needs_allowance, ma_veteran_personal_needs_allowance], [else, ma_personal_needs_allowance_institutional]]
-sources: [S361, S1231, S1232, S1228]
+sources: [S361, S1231, S1232, S1228, S1503]
 implemented: engine
 tags: [ma, ltc, income]
 rationale: "OQ-98: ma_patient_payment (CO-658) and ma_csra_increased (CO-1977) always used the base allowance."
 tests:
-  - {id: CO-1987-T1, as_of: "2026-10-01", given: {ma_qualifies_for_veterans_personal_needs_allowance: true}, expect: 90}
-  - {id: CO-1987-T2, as_of: "2026-10-01", given: {ma_qualifies_for_veterans_personal_needs_allowance: false}, expect: 110.36}
+  - {id: CO-1987-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_qualifies_for_veterans_personal_needs_allowance: true}, expect: 90}
+  - {id: CO-1987-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_qualifies_for_veterans_personal_needs_allowance: false}, expect: 110.36}
+  # Coverage pass 7 F7-2: the base allowance of the month (CO-887: 108.73 from 2025-01-01, 110.36 from 2026-01-01).
+  - {id: CO-1987-T3, as_of: "2026-01-12", month: "2025-12", title: "F7-2: a retroactive December 2025 of a January 2026 determination: the 2025 base, 108.73 (was 110.36)", given: {ma_qualifies_for_veterans_personal_needs_allowance: false}, expect: 108.73}
+  - {id: CO-1987-T4, as_of: "2026-01-12", month: "2026-01", title: "F7-2: the determination month: the 2026 base, 110.36", given: {ma_qualifies_for_veterans_personal_needs_allowance: false}, expect: 110.36}
