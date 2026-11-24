@@ -11630,6 +11630,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -11713,6 +11714,7 @@
     p2:
       # Her daughter.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
