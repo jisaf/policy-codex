@@ -1,0 +1,20 @@
+id: CO-7554
+name: "Medicaid: the persons living with the person in the month"
+identifier: ma_lives_with_in_month
+kind: derived
+type: group of persons
+scope: person-month
+program: Medicaid
+meaning: "The persons who live in the home with the person in the month evaluated, for the MAGI household and caretaker rules: the persons of lives_with (CO-1925, from dwelling_id) other than a person who died before the first day of the month (date_of_death, CO-2868, read through is_deceased, CO-2200, for the month before)."
+precision: "Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-04). 10 CCR 2505-10 § 8.100.4.E.1.a.ii ('The Tax-Filer's spouse if living in the home'), E.1.b.ii and iv, E.1.d ('who live in the household'), E.3 ('Married couples living together', S170) and 42 CFR 435.603(f)(3)-(4) (S163) make membership turn on living in the home in the month (8.100.4.G.1, S3351; a retroactive month on its own facts, 8.100.3.E.1, S217); lives_with is one value per case, from the home the case states, so a spouse or parent who died in a month before the month evaluated was still counted as living in the home. A person who died during the month lived in the home on a day of it and is kept for that month (G.1's any day); a person who died before the month lives with no one in it (the group is empty), so the spouse of a claimer who has died is not 'their spouse if living in the home' (E.1.b.ii). date_of_death is not stated for a living person (its declaration, CO-2868), so a person with none stated is living. This item changes only the living-in-the-home condition: a person the tax filer expects to claim as a dependent (E.1.a.iii, 435.603(f)(1), 'for the taxable year') is a member by that claim, which the item does not read. Unknown where lives_with is (dwelling_id not stated: required where read, C6-10)."
+derived: [case, [[at, is_deceased, [month_before, [month]]], [filter, [persons], false]], [else, [filter, lives_with, [not, [at, [of, [P], is_deceased], [month_before, [month]]]]]]]
+sources: [S169, S170, S163, S3351, S217, S1502]
+implemented: engine
+tags: [ma, magi, household]
+nearest: [CO-1925, CO-2200]
+rationale: "Pattern sweep, MAGI (PS-04): the MAGI household (CO-500), its non-filer routing (CO-1976) and the caretaker relative (CO-2606) read lives_with, one value per case, so a member who died before a month was still in the home that month. WIDOW (stored household CO-1003): a woman whose husband died on 2026-09-10, applying on 2026-11-02 for herself and her son with a retroactive request, was a household of three in every month, so October's 2,800 / 2,276.67 = 123.0% made her an adult and her son a child; her household is three in August and September and two from October (155.3%, over both standards; her son CHP+ in November)."
+tests:
+  - {id: CO-7554-T1, as_of: "2026-11-10", month: "2026-10", title: "PS-04: p2 died on 2026-09-10; October: p1 and p3 live in the home", given: {dwelling_id: h1}, others: {p2: {dwelling_id: h1, date_of_death: "2026-09-10"}, p3: {dwelling_id: h1}}, expect: [p1, p3]}
+  - {id: CO-7554-T2, as_of: "2026-11-10", month: "2026-09", title: "PS-04: the same, September (he lived in the home until the 10th)", given: {dwelling_id: h1}, others: {p2: {dwelling_id: h1, date_of_death: "2026-09-10"}, p3: {dwelling_id: h1}}, expect: [p1, p2, p3]}
+  - {id: CO-7554-T4, as_of: "2026-11-10", month: "2026-10", title: "PS-04: the person who died on 2026-09-10, October: lives with no one", given: {dwelling_id: h1, date_of_death: "2026-09-10"}, others: {p2: {dwelling_id: h1}}, expect: []}
+  - {id: CO-7554-T3, as_of: "2026-11-10", month: "2026-10", title: "PS-04: no home stated: cannot determine (C6-10)", given: {}, others: {p2: {dwelling_id: h1}}, expect: unknown}

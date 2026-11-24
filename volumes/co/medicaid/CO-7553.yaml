@@ -1,0 +1,19 @@
+id: CO-7553
+name: "Medicaid: meets the status requirement of the Cover All Coloradans categories in the month"
+identifier: ma_meets_status_for_cover_all_coloradans_categories_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, in the month evaluated, the person meets the citizenship and immigration status requirement of a category 10 CCR 2505-10 § 8.100.3.G.1.g.ix.1.a-b lists: the status test for the month (ma_meets_citizenship_requirement_in_month, CO-7551), or the Cover All Coloradans population in the month (ma_is_cover_all_coloradans_person_in_month, CO-7552) regardless of status."
+precision: "Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-01, PS-02): the month's reading of ma_meets_status_for_cover_all_coloradans_categories (CO-1174), which reads both halves on the determination date. Read by the MAGI categories ix.1.a lists that are evaluated for a month: ma_needy_young_person_category (CO-2419, Psych <21), ma_is_eligible_for_transitional_medical_assistance (CO-2430) and ma_is_eligible_for_four_month_extension (CO-2431). CO-1174 is unchanged for the Buy-In, waiver and Breast and Cervical Cancer readers (non-MAGI)."
+derived: [any, ma_meets_citizenship_requirement_in_month, ma_is_cover_all_coloradans_person_in_month]
+sources: [S607, S3351, S217]
+implemented: engine
+tags: [ma, magi, immigration]
+nearest: [CO-1174]
+rationale: "Pattern sweep, MAGI (PS-01, PS-02): CO-1174 is person-scope and its MAGI readers are month-scoped; see CO-7551 and CO-7552."
+tests:
+  - {id: CO-7553-T1, as_of: "2026-11-10", month: "2026-09", title: "PS-02: undocumented, the 19th birthday in September: in the population", given: {immigration_status: undocumented, date_of_birth: "2007-09-20", is_pregnant: false, sex: female}, expect: true}
+  - {id: CO-7553-T2, as_of: "2026-11-10", month: "2026-10", title: "PS-02: the same, October: neither", given: {immigration_status: undocumented, date_of_birth: "2007-09-20", is_pregnant: false, sex: female}, expect: false}
+  - {id: CO-7553-T3, as_of: "2026-11-10", month: "2026-10", title: "Citizen adult", given: {immigration_status: us_citizen, date_of_birth: "1980-01-01", is_pregnant: false}, expect: true}
