@@ -32,11 +32,14 @@ export const RECORD_SHEETS: Readonly<Record<"earnings" | "other-income" | "resou
  *  with three facts the records had already left without a reader
  *  (has_self_employment_seasonal_or_commission_earnings,
  *  retirement_early_withdrawal_penalty, unearned_income_offsetting_expenses).
- *  Two are not retired: Medicaid's findings ma_excess_real_property_is_for_sale
- *  and ma_claims_co_owner_hardship_for_real_property stay in the ledger,
- *  because its verifications of sale efforts and joint ownership read them,
- *  but the template states those findings on the real property's resource
- *  record (ma_sale_efforts_unsuccessful, co_owner_would_lose_housing). The
+ *  Medicaid's findings ma_excess_real_property_is_for_sale and
+ *  ma_claims_co_owner_hardship_for_real_property, kept by E2 and H2 for its
+ *  verifications of sale efforts and joint ownership, are retired too (the
+ *  verifications read the real property's record, ma_sale_efforts_unsuccessful
+ *  and co_owner_would_lose_housing; docs/reviews/records-e2-h2.md, section 5),
+ *  so they are not in this list: they were findings, not income or
+ *  resource figures, and a row naming one is refused as any fact the
+ *  template does not have ("not a fact of the template"). The
  *  facts the holdings translation stated but did not restate (an income
  *  trust, the CSRA figures) are not in it: no record replaces them. */
 export const RETIRING_SCALAR_FACTS: ReadonlySet<string> = new Set([
@@ -56,7 +59,6 @@ export const RETIRING_SCALAR_FACTS: ReadonlySet<string> = new Set([
   "joint_liquid_resources_other_owners_share_value", "joint_real_property_other_owners_share_value", "land_for_permanent_home_value",
   "life_insurance_cash_surrender_value", "life_insurance_face_value", "life_insurance_newest_policy_purchase_date",
   "life_insurance_payments_in_lookback", "liquid_resources_inaccessible_value", "liquid_resources_value", "lives_in_owned_home",
-  "ma_claims_co_owner_hardship_for_real_property", "ma_excess_real_property_is_for_sale",
   "ma_trust_annuity_life_estate_value_available", "military_pay_education_deductions",
   "nonbusiness_income_producing_property_equity_value", "nonbusiness_income_producing_property_net_annual_income",
   "owns_and_lives_in_home", "owns_annuity", "pass_set_aside_earned_income", "prorated_income_held_value",

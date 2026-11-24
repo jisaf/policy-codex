@@ -266,8 +266,6 @@
         medicare_part_d_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         medicare_part_b_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -477,8 +475,6 @@
         ma_payroll_taxes_withheld: 0  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2335,8 +2331,6 @@
         medicare_part_d_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         medicare_part_b_premium_paid: 0  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2545,8 +2539,6 @@
         ma_payroll_taxes_withheld: 0  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -21664,8 +21656,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -21861,8 +21851,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -22733,8 +22721,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -22930,8 +22916,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -23797,8 +23781,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -23994,8 +23976,6 @@
       month_defaults:
         af_medical_payments_for_dependents: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         donated_work_hours_per_week: 0
-        ma_claims_co_owner_hardship_for_real_property: false
-        ma_excess_real_property_is_for_sale: false
         electronic_data_source_monthly_earned_income: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -25455,8 +25435,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: true
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_countable_resources: {"2026-10": 1500}  # per month since coverage pass 4 (non-MAGI N4-7, N4-9): the determination month
@@ -25516,8 +25494,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
     p2:
       facts:
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -25556,8 +25532,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_parental_income_deemed:
@@ -25632,8 +25606,6 @@
         hours_worked: 160
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_wawd_countable_income:
@@ -25738,8 +25710,6 @@
         medical_expenses_out_of_pocket: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
     p2:
       facts:
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -25796,8 +25766,6 @@
         medical_expenses_out_of_pocket: 75
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_community_spouse_income_allowance:
@@ -25860,8 +25828,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
     p2:
       facts:
         has_applied_for_ssi: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -25898,8 +25864,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_countable_resources: {"2026-10": 1000}  # per month since coverage pass 4 (non-MAGI N4-7, N4-9): the determination month
@@ -57184,8 +57148,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: true
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_related_category: {'2026-11': none, '2026-12': none, '2027-01': aged}
@@ -57246,8 +57208,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: true
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_related_category: {'2026-08': none, '2026-09': none, '2026-10': aged, '2026-11': aged}
@@ -60449,8 +60409,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
     p2:
       facts:
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -60487,8 +60445,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
     p3:
       facts:
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -60525,8 +60481,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: false
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_deeming_benefit_zero_amount:
@@ -76716,8 +76670,6 @@
         shelter_costs_paid_by_others: 0
         impairment_related_work_expenses_paid: 0
         blind_work_expenses_paid: 0
-        ma_excess_real_property_is_for_sale: true
-        ma_claims_co_owner_hardship_for_real_property: false
   expect:
     p1:
       ma_ssi_countable_income:
