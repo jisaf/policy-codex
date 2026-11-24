@@ -6,7 +6,7 @@ type: whole number
 scope: person
 program: All
 meaning: "The largest number of the person's random tests for alcohol or a non-prescribed controlled substance, given by the licensed treatment agency, that were positive within any three-month period of the current treatment."
-precision: "If not stated, Adult Financial reads this as 0."
+precision: "Required where Adult Financial (af_and_so_meets_substance_abuse_conditions, CO-3849) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
 supplied_by: "The treatment agency's test record."
 sources: [S2616, S2617]
 tags: [cash, and]

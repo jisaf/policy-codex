@@ -1,0 +1,20 @@
+id: CO-7307
+name: "Colorado Works: eligible but for the assignment of support rights"
+identifier: cw_unit_eligible_but_for_support_assignment
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "For a unit that cw_eligibility_status (CO-921) finds ineligible_child_support, whether its one failing is a member's refusal to sign and date the application form to avoid assigning support rights (9 CCR 2503-6 3.604.4.A), which 3.606.8.A.6 does not require of a client who receives a one-time cash diversion payment: no member has failed to cooperate with Child Support Services (cw_has_failed_child_support_cooperation, not exempted by A.6), and every check CO-921 makes after the child support conditions passes: no member in a diversion period of ineligibility (3.606.8.A.4-5), no county closure in effect for a member (3.607.5, 3.609.2.J.3-4, 3.604.2.N.1.b), the sixty-month time limit not reached (3.606.6), no fourth-level sanction (3.608.4.C.2), and the income test met or, at county option, the county's higher diversion income limit (3.606.8.A.6)."
+precision: "Coverage pass 6 CA6-6 (docs/reviews/coverage6-cash.md, probe W5r): CO-921 stops at the child support conditions, so the later checks are repeated here on the same items, as cw_unit_otherwise_eligible (CO-4835) repeats them for the Adult Financial bar. The county's findings on cooperation, the diversion period and closures are read as CO-921 and CO-3811 read them (each a county finding, not stated when the county made none)."
+derived: [all, [not, [exists, cw_assistance_unit_members, [otherwise, [of, [P], cw_has_failed_child_support_cooperation], false]]], [not, [exists, cw_assistance_unit_members, [otherwise, [of, [P], in_diversion_period_of_ineligibility], false]]], [not, [exists, cw_assistance_unit_members, [in, [otherwise, [of, [P], cw_county_closure_type], none], [demonstrable_evidence, continued_ebt_misuse, minor_parent_education_nonparticipation]]]], [not, cw_time_limit_reached], [not, ["=", cw_unit_sanction_level, fourth]], [any, cw_meets_income_test, cw_meets_county_diversion_income_limit]]
+sources: [S762, S2603, S3152, S3161, S3162, S3153]
+implemented: engine
+tags: [cash, tanf]
+nearest: [CO-4835]
+rationale: "Coverage pass 6 CA6-6: cw_diversion_eligible (CO-1270) accepted only an eligible unit or one over the need standard within the county limit, so a client who declined to assign support was refused a one-time cash diversion that 3.606.8.A.6 does not condition on the assignment."
+tests:
+  # Probe W5r: a mother and daughter of 6, no income, no cooperation failure, no POI, no closure, no time limit, no sanction.
+  - {id: "CO-7307-T1", title: "Probe W5r: the only failing is the refused assignment", month: "2026-10", as_of: "2026-10-15", given: {cw_assistance_unit_members: [p1, p2], cw_time_limit_reached: false, cw_unit_sanction_level: none, cw_meets_income_test: true}, others: {p2: {}}, expect: true}
+  - {id: "CO-7307-T2", title: "A member also failed to cooperate with Child Support Services: A.6 exempts the assignment only", month: "2026-10", as_of: "2026-10-15", given: {cw_assistance_unit_members: [p1, p2], cw_has_failed_child_support_cooperation: true, cw_time_limit_reached: false, cw_unit_sanction_level: none, cw_meets_income_test: true}, others: {p2: {}}, expect: false}
+  - {id: "CO-7307-T3", title: "Over the need standard and over the county's diversion limit", month: "2026-10", as_of: "2026-10-15", given: {cw_assistance_unit_members: [p1, p2], cw_time_limit_reached: false, cw_unit_sanction_level: none, cw_meets_income_test: false, cw_meets_county_diversion_income_limit: false}, others: {p2: {}}, expect: false}

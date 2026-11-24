@@ -6,7 +6,7 @@ type: yes/no
 scope: case
 program: ColoradoWorks
 meaning: "The Colorado Works determination for this person's assistance unit is a redetermination (recertification) for a new certification period rather than an application (9 CCR 2503-6 3.604.3.K, 3.604.3.B.2.c)."
-precision: "One value for the case. If not stated, Colorado Works reads the determination as an application."
+precision: "One value for the case. Required where read (coverage pass 6 CA6-2, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): nothing in 9 CCR 2503-6 makes a determination an application when the case does not say which it is, and the two are counted differently (3.605.5.A and C: child support at application against support consistent for six months and averaging over $500 at a redetermination), so a case that does not state it is cannot determine where it is read: cw_counted_child_support (CO-2553), cw_partial_month_payment_factor (CO-4358) and cw_determination_months (CO-7300) when the case states an application date, and cw_ssn_verification_is_pending (CO-1647). Before, Colorado Works read an unstated value as an application, so a recipient at redetermination whose consistent support averaged $400 had it counted and was found ineligible (probe W8)."
 supplied_by: "CBMS case action type (redetermination)."
 sources: [S1630, S1064]
 tags: [cash, tanf, verification]

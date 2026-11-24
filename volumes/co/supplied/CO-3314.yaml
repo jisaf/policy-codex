@@ -6,7 +6,7 @@ type: whole number
 scope: person
 program: AdultFinancial
 meaning: "The number of the decedent's legally responsible persons (3.570.42: a spouse, or the parents of an unemancipated minor under 18) who are not persons of this case. Stated on the decedent; 0 when every responsible person is a person of the case."
-precision: "If not stated, Adult Financial reads this as 0."
+precision: "Required where Adult Financial (af_burial_responsible_persons_are_couple, CO-1226) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
 supplied_by: "County department determination."
 sources: [S722]
 implemented: engine

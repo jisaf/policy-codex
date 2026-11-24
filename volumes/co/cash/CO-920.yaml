@@ -16,4 +16,4 @@ rationale: No existing item states the Colorado Works work-participation hours t
 tests:
   - {id: CO-920-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_work_activity_hours: 138}, relationships: [], expect: true}
   - {id: CO-920-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_work_activity_hours: 60}, relationships: [], expect: false}
-  - {id: CO-920-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_work_activity_hours: 90}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: "CO-920-T3", as_of: "2026-10-01", month: "2026-10", given: {cw_countable_work_activity_hours: 90, temporary_absence_reason: none}, others: {p2: {date_of_birth: "2026-02-03", temporary_absence_reason: none}}, relationships: [[parent, p1, p2]], expect: true}

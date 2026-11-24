@@ -1,0 +1,20 @@
+id: CO-7308
+name: "Adult Financial: married"
+identifier: af_is_married
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "Whether the Adult Financial client is married, as the county determines the client's marital status (9 CCR 2503-5 3.520.63.A: \"Single, never married; Married; Widowed; or, Divorced or legally separated\"; D: a client not legally separated is married): a spouse edge to a person of the case, or marital_status married for a spouse who is not a person of the case, as the shared is_married (CO-930) reads a marriage, with neither the relationships nor the marital status read as none when not stated: a client with no spouse edge whose marital status is not stated is not known to be unmarried."
+precision: "Coverage pass 6 CA6-7 (docs/reviews/coverage6-cash.md): is_married (CO-930), a shared item, reads a person who states neither a spouse edge nor a marital status as not married, a default no Adult Financial rule gives (decision 4 of 2026-11-23); Adult Financial's readers (the couple's $20, af_client_general_income_disregard CO-3829; the couple's resource limit, af_meets_resource_limit CO-948; the SSI child, af_is_ssi_child CO-4022) read this item, which asks for the marital status 3.520.63.A makes the county determine. is_married itself is unchanged; its other readers (CO-005, CO-1164, CO-1986, CO-4103, CO-4260) are other programs' and are listed in the review, not changed here."
+derived: ["any", ["exists_related", ["spouse"], true], ["=", "marital_status", "married"]]
+sources: [S2626, S3204]
+implemented: engine
+tags: [cash, household]
+nearest: [CO-930]
+rationale: "Coverage pass 6 CA6-7: the default inside the shared is_married decided Adult Financial's $20 split and couple resource limit for a case that stated no marital status; this item keeps the shared reading and adds the requirement, so no other program's answer moves."
+tests:
+  # 3.520.63.A (S2626): the county determines the client's marital status; D (S3204): not legally separated is married.
+  - {id: "CO-7308-T1", title: "Marital status not stated: cannot determine (decision 4)", as_of: "2026-10-01", given: {}, relationships: [], expect: unknown}
+  - {id: "CO-7308-T2", title: "Widowed, no spouse edge: not married", as_of: "2026-10-01", given: {marital_status: widowed}, relationships: [], expect: false}
+  - {id: "CO-7308-T3", title: "Married to a person of the case (a spouse edge): married", as_of: "2026-10-01", given: {marital_status: married}, others: {p2: {marital_status: married}}, relationships: [[spouse, p1, p2]], expect: true}

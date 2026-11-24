@@ -6,12 +6,14 @@ type: yes/no
 scope: person-month
 program: ColoradoWorks
 meaning: "Whether the person's pregnancy must be verified for Colorado Works: when no child is in the assistance unit, so the pregnancy is the basis of the unit."
-derived: [all, is_pregnant, [not, cw_has_dependent_child]]
+derived: ["all", "cw_is_pregnant_in_month", ["not", ["exists", "cw_assistance_unit_members_in_month", ["of", ["P"], "cw_is_dependent_child_in_month"]]]]
+precision: "Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md): the month's pregnancy (cw_is_pregnant_in_month, CO-7301) and the month's unit with no dependent child in it, as 3.604.3.C.7 says (\"when no children are in the assistance unit\"); before, the determination date's pregnancy and whether the person had a dependent child in some month."
 sources: [S874]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
 tests:
-  - {id: CO-1423-T1, month: "2026-10", as_of: "2026-10-01", given: {is_pregnant: true, cw_has_dependent_child: false}, expect: true}
-  - {id: CO-1423-T2, month: "2026-10", as_of: "2026-10-01", given: {is_pregnant: true, cw_has_dependent_child: true}, expect: false}
+  # Coverage pass 6 CA6-3: the month's pregnancy and the month's unit (3.604.3.C.7, "when no children are in the assistance unit").
+  - {id: "CO-1423-T1", month: "2026-10", as_of: "2026-10-01", given: {cw_is_pregnant_in_month: true, cw_assistance_unit_members_in_month: [p1], cw_is_dependent_child_in_month: false}, expect: true}
+  - {id: "CO-1423-T2", month: "2026-10", as_of: "2026-10-01", given: {cw_is_pregnant_in_month: true, cw_assistance_unit_members_in_month: [p1, p2], cw_is_dependent_child_in_month: false}, expect: false, others: {p2: {cw_is_dependent_child_in_month: true}}}
   - {id: CO-1423-T3, month: "2026-10", as_of: "2026-10-01", given: {is_pregnant: false}, expect: false}

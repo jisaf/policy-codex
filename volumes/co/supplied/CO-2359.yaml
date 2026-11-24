@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The support this person paid in the month to dependents not living in the person's home (stated on a sponsor and a sponsor's spouse, for 9 CCR 2503-6 3.605.1.A.5.b)."
-precision: "If not stated, a program reads this as 0."
+precision: "Required where Colorado Works (cw_sponsor_deemed_income, CO-2365) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, a program read an unstated value as 0."
 supplied_by: "The sponsor's statement or income documents."
 sources: [S1627]
 tags: [income, immigration]

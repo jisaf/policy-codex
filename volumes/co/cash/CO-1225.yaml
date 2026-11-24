@@ -6,13 +6,15 @@ type: money
 scope: person
 program: AdultFinancial
 meaning: "The countable resources of the decedent's legally responsible person(s) - the spouse, or the parents of an unemancipated minor under 18 - excluding any Social Security lump-sum death benefit, per 9 CCR 2503-5 3.570.42 and 3.570.43.D.3.a and, for a deceased Colorado Works client, 9 CCR 2503-6 3.606.7.F.2.c and e: each responsible person's own countable resources by the SSI method, which 3.570.43.D.3.b names, plus those of responsible persons outside the case. Zero when there is no legally responsible person."
-precision: "Evaluated for the decedent. A Social Security lump-sum death benefit is not among the responsible person's stated resources in the month it is received (it is not a holding before receipt), so nothing is subtracted for it."
-derived: [+, [sum, af_burial_legally_responsible_persons, [of, [P], ssi_countable_resources_individual]], [otherwise, af_burial_responsible_persons_outside_case_resources, 0]]
+precision: "Evaluated for the decedent. A Social Security lump-sum death benefit is not among the responsible person's stated resources in the month it is received (it is not a holding before receipt), so nothing is subtracted for it. Coverage pass 6 CA6-7: the resources of responsible persons outside the case are required (0 when there are none; decision 4 of 2026-11-23); before, read as 0 when not stated."
+derived: ["+", ["sum", "af_burial_legally_responsible_persons", ["of", ["P"], "ssi_countable_resources_individual"]], "af_burial_responsible_persons_outside_case_resources"]
 sources: [S721, S722, S1005, S1007]
 implemented: engine
 tags: [cash, resources]
 rationale: "No existing fact stated a third party's resources for this purpose; af_burial_responsible_person_excess_resources (CO-1229) needs it. Dual-entry audit 1.9: the resources of the decedent's spouse or parents, and whether they are a couple, were entered on the decedent, restating the decedent's spouse and parent relationships. The legally responsible persons are now read from the relationships (3.570.42, S722) and their own countable resources; only responsible persons outside the case are stated. The ID is kept; the identifier takes the af_ prefix."
 tests:
-  - {id: CO-1225-T1, as_of: "2026-11-01", given: {af_burial_legally_responsible_persons: [p2]}, others: {p2: {ssi_countable_resources_individual: 1000}}, expect: 1000}
+  - {id: "CO-1225-T1", as_of: "2026-11-01", given: {af_burial_legally_responsible_persons: [p2], af_burial_responsible_persons_outside_case_resources: 0}, others: {p2: {ssi_countable_resources_individual: 1000}}, expect: 1000}
   - {id: CO-1225-T2, as_of: "2026-11-01", given: {af_burial_legally_responsible_persons: [], af_burial_responsible_persons_outside_case_resources: 2600}, expect: 2600}
-  - {id: CO-1225-T3, as_of: "2026-11-01", given: {af_burial_legally_responsible_persons: []}, expect: 0}
+  - {id: "CO-1225-T3", as_of: "2026-11-01", given: {af_burial_legally_responsible_persons: [], af_burial_responsible_persons_outside_case_resources: 0}, expect: 0}
+  # Coverage pass 6 CA6-7: the resources of responsible persons outside the case are required (0 when none).
+  - {id: "CO-1225-T4", title: "Coverage pass 6 CA6-7: outside resources not stated: cannot determine", as_of: "2026-10-01", given: {af_burial_legally_responsible_persons: []}, expect: unknown}

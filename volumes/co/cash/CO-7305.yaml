@@ -1,0 +1,20 @@
+id: CO-7305
+name: "Colorado Works: has a dependent child in the month"
+identifier: cw_has_dependent_child_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "The person is the parent or caretaker (cw_caretaker_of, CO-2608; 9 CCR 2503-6 3.601 \"Caretaker\", 3.604.2.C.1.a-b) of at least one person who is a dependent child in the month evaluated (cw_is_dependent_child_in_month, CO-6807: born by the month's last day and of a dependent child's age on its first day) and was not dead before the month's first day (3.609.2.C.2)."
+precision: "Coverage pass 6 CA6-4 (docs/reviews/coverage6-cash.md, probe W9): the month's version of cw_has_dependent_child (CO-902), which asks whether the person has a dependent child in some month the determination covers. A minor parent's own rules (her living arrangement, 3.604.2.N; her parents' income deemed, 3.605.1.A.4; assistance as an adult, N.2.c) and the unit's month membership read it for the month."
+derived: [exists, cw_caretaker_of, [all, [of, [P], cw_is_dependent_child_in_month], [any, [unknown, [of, [P], date_of_death]], [">=", [of, [P], date_of_death], [first_day, [month]]]]]]
+sources: [S406, S408, S3165]
+implemented: engine
+tags: [cash, tanf, household, age]
+nearest: [CO-902]
+rationale: "Coverage pass 6 CA6-4: the minor-parent items read cw_has_dependent_child (CO-902, some month) beside the determination date's age, so a month was decided by another month's facts."
+tests:
+  # 3.601 (S406): a dependent child is under 18; the baby is born March 1, 2026; a child of 6 dies September 20 (3.609.2.C.2, S3165).
+  - {id: "CO-7305-T1", title: "A mother of a baby born March 1, 2026: a dependent child in October", month: "2026-10", as_of: "2026-10-15", given: {cw_caretaker_of: [p2]}, others: {p2: {date_of_birth: "2026-03-01"}}, expect: true}
+  - {id: "CO-7305-T2", title: "Probe W4: a baby born October 3 is no dependent child of September", month: "2026-09", as_of: "2026-10-15", given: {cw_caretaker_of: [p2]}, others: {p2: {date_of_birth: "2026-10-03"}}, expect: false}
+  - {id: "CO-7305-T3", title: "Probe W7: her only child died September 20: no dependent child in October", month: "2026-10", as_of: "2026-10-15", given: {cw_caretaker_of: [p2]}, others: {p2: {date_of_birth: "2020-04-01", date_of_death: "2026-09-20"}}, expect: false}
