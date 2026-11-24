@@ -66,6 +66,9 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        af_determination_is_redetermination: false  # pattern sweep (cash) PS-D9: stated (decision 4); the story is an application, the value the reader read when it was unstated
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         is_surviving_spouse_of_va_pensioner: false  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -301,6 +304,8 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        af_determination_is_redetermination: false  # pattern sweep (cash) PS-D9: stated (decision 4); the story is an application, the value the reader read when it was unstated
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -522,6 +527,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -726,6 +732,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -934,6 +941,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2169,6 +2177,8 @@
   persons:
     p1:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         is_surviving_spouse_of_va_pensioner: false  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2404,6 +2414,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2625,6 +2636,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2829,6 +2841,7 @@
         hours_worked: 138
     p4:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -3036,6 +3049,7 @@
         "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5454,6 +5468,7 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5524,6 +5539,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5591,6 +5607,7 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5652,6 +5669,7 @@
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5712,6 +5730,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5791,7 +5810,7 @@
       # time_limit_reached, it is extended. The review's derivation predates the C-3(a) fix that made the
       # extension read over cw_assistance_unit_members rather than the person asked.
       cw_eligibility_status: {"2026-10": eligible}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}
       cw_meets_work_participation: {"2026-10": false}
       af_category: {"2026-10": none}
@@ -5805,7 +5824,7 @@
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}
       cw_meets_work_participation: {"2026-10": false}   # C-3: his sanction enters through work_sanction_level_served (second), which reduces the unit's grant (CO-1264, CO-1265)
       af_category: {"2026-10": none}
@@ -5818,7 +5837,7 @@
       cw_unit_size: {"2026-10": 0}
       cw_countable_income: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       af_category: {"2026-10": and_cs}    # C-4/K-6 fixed (and B-2: countable income 700 < 994): eligible - ssi_income $700 < the $994 federal benefit rate (ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 294}    # B-2: 994 - 700 (3.548.B, 3.549.A.2); phase 8 had 994 with the SSI add-back unmodeled
@@ -5829,7 +5848,7 @@
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": false}
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
@@ -5842,7 +5861,7 @@
       cw_countable_income: {"2026-10": 900}
       cw_grant_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}   # C-6: she receives no TANF and lives with no TANF child of her own
       af_countable_income: {"2026-10": 880}
       af_meets_resource_limit:
@@ -5895,6 +5914,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5952,6 +5972,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6010,6 +6031,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6069,6 +6091,7 @@
       # unconditional under-18 join (she is 18), so the case's shares_heat_with edge to p1 states that she
       # shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit test).
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6129,6 +6152,8 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6717,6 +6742,10 @@
   persons:
     p1:
       facts:
+        af_hca_combined_leave_days_in_approval_year: 0  # pattern sweep (cash) PS-D1: stated (decision 4); she lives at home with no leave in the story, the value the reader read when it was unstated
+        af_hca_approval_date: "2013-12-31"  # pattern sweep (cash) PS-D1: stated (decision 4); the story has Ruth on OAP and HCA as of 2013-12-31 (3.570.13.B.3), so approved by that day; the day itself is not in the story and no answer turns on it
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6760,6 +6789,7 @@
         shelter_costs_paid_by_others: 0  # SW-30: the neutral shelter arrangement; Adult Financial's ISM is derived (was af_in_kind_support_and_maintenance 0)
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_count: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -6787,6 +6817,7 @@
         donated_work_hours_per_week: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6835,6 +6866,7 @@
         work_sanction_level_served: second
     p4:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -8201,6 +8233,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -8288,6 +8321,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -8377,6 +8411,7 @@
     p3:
       # Daughter, 8.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -9848,6 +9883,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -9934,6 +9970,7 @@
     p2:
       # Her son, 5.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10019,6 +10056,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10106,6 +10144,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10193,6 +10232,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10277,6 +10317,7 @@
     p6:
       # Her son, 7.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10396,6 +10437,7 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10446,6 +10488,7 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10492,6 +10535,7 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10542,6 +10586,7 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10611,6 +10656,7 @@
     p7:
       # Recipient mother at redetermination.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10661,6 +10707,7 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10737,6 +10784,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10785,6 +10833,7 @@
     p2:
       # Her son; $200 a month of current support.
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10860,6 +10909,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
@@ -10942,6 +10992,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
@@ -12138,7 +12189,7 @@
       sponsor_spouse_is_cosponsor: false
       sponsor_has_spouse_in_household: true
       sponsor_has_died: false
-      af_sponsor_deeming_applies: true
+      af_sponsor_deeming_applies: {"2026-10": true}
       af_deemed_sponsor_income: {"2026-10": 1212}
       af_sponsor_countable_resources: {"2026-10": 2900}
       snap_sponsor_deeming_applies: {"2026-10": false}
@@ -14207,6 +14258,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14270,6 +14323,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -14325,6 +14379,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -14373,6 +14428,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -16701,6 +16757,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -16747,6 +16805,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -17898,7 +17957,7 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_is_presumed_nonresident_by_absence: true
+      af_is_presumed_nonresident_by_absence: {"2026-10": true}
       af_meets_residency: {"2026-10": false}
       af_countable_income: {"2026-10": 580}
       af_category: {"2026-10": none}
@@ -17924,6 +17983,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         stays_with_succession_of_others_without_permanent_arrangement: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -18144,6 +18205,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         status_before_lpr_adjustment: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -18183,6 +18246,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -18217,7 +18281,7 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_sponsor_deeming_applies: false
+      af_sponsor_deeming_applies: {"2026-10": false}
       af_deemed_sponsor_income: {"2026-10": 0}
       af_countable_income: {"2026-10": 580}
       af_category: {"2026-10": oap}
@@ -18497,7 +18561,7 @@
   expect:
     p1:
       cw_months_of_assistance_used: 10
-      cw_time_limit_reached: true
+      cw_time_limit_reached: {"2026-10": true}
       cw_eligibility_status: {2026-10: time_limit_reached}
       cw_grant_amount: {2026-10: 0}
     p2:
@@ -34220,6 +34284,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -34278,6 +34344,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -34601,7 +34669,12 @@
       af_hca_eligibility_status:
         2026-10: eligible
       af_hca_grant:
-        2026-10: 977
+        # Pattern sweep (cash) PS-D1: 3.570.13.F (S3503) "the HCA grant payment shall begin on the first day of the month
+        # following the month in which the HCA is approved ... There shall be no retroactive HCA payments." The probe states
+        # no earlier approval, so she is approved at this determination (October): nothing for October, $977 from November.
+        # Before, an unstated approval date was read as no limit and October was paid.
+        2026-10: 0
+        2026-11: 977
 
 - id: CO-306
   title: 'Probe PZ-4 (Adult Financial coverage 2 G-4): an OAP client who died in September has no October eligibility'
@@ -41339,6 +41412,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41425,6 +41499,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41836,6 +41911,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -41939,6 +42015,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42062,6 +42139,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42151,6 +42229,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42272,6 +42351,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42357,6 +42437,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42473,6 +42554,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42558,6 +42640,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42674,6 +42757,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42760,6 +42844,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42877,6 +42962,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -42964,6 +43050,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43086,6 +43173,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43173,6 +43261,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43290,6 +43379,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_in_work_release_or_court_monitoring: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -43376,6 +43466,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -54989,6 +55080,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55046,6 +55138,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55094,6 +55187,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55151,6 +55245,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_is_outside_united_states: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_out_of_state_caring_for_family_member_injured_in_military_duty: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55210,6 +55305,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55258,6 +55354,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55472,6 +55569,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55529,6 +55627,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55577,6 +55676,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -55788,6 +55888,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -55843,6 +55944,7 @@
         child_support_paid_legally_obligated: 0
     p2:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -55892,6 +55994,7 @@
         child_support_paid_legally_obligated: 0
     p3:
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -60737,6 +60840,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -60797,6 +60902,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -62193,6 +62300,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62279,6 +62387,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62420,6 +62529,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62506,6 +62616,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62630,6 +62741,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -62718,6 +62830,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -63515,6 +63628,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -63598,6 +63712,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -66257,6 +66372,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -71051,6 +71168,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71143,6 +71261,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71193,6 +71312,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71260,6 +71380,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -71424,6 +71545,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71491,6 +71613,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -71571,6 +71694,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71620,6 +71744,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71670,6 +71795,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -71736,6 +71862,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
@@ -84581,6 +84708,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -84630,6 +84758,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -84875,6 +85004,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -84957,6 +85087,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85072,6 +85203,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85154,6 +85286,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85265,6 +85398,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85345,6 +85479,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85424,6 +85559,7 @@
     p3:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -85817,6 +85953,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -85897,6 +86034,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0
@@ -86007,6 +86145,7 @@
     p1:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         is_participating_in_strike: false
@@ -86091,6 +86230,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         temporary_absence_reason: none
         cw_is_optional_member_by_custody_or_support: false
         days_out_of_state_in_calendar_year: 0

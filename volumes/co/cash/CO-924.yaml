@@ -16,7 +16,7 @@ nearest: [CO-919]
 tests:
   - {id: CO-924-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", cw_is_head_of_assistance_unit: true}, relationships: [], expect: true}
   - {id: CO-924-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-06-01", cw_is_head_of_assistance_unit: false}, relationships: [], expect: false}
-  - {id: "CO-924-T3", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", cw_is_head_of_assistance_unit: true, temporary_absence_reason: none, is_emancipated_minor: false}, others: {p2: {date_of_birth: "2026-02-03", temporary_absence_reason: none}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: "CO-924-T3", month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: private_dwelling, dwelling_id: h1, date_of_birth: "2009-04-08", cw_is_head_of_assistance_unit: true, temporary_absence_reason: none, is_emancipated_minor: false}, others: {p2: {residence_setting_type: private_dwelling, dwelling_id: h1, date_of_birth: "2026-02-03", temporary_absence_reason: none}}, relationships: [[parent, p1, p2]], expect: true}
   # Coverage pass 6 CA6-4: eighteen or older on the month's first day.
   - {id: "CO-924-T4", title: "Coverage pass 6 CA6-4: born 2008-09-20, September: 17, not an adult", month: "2026-09", as_of: "2026-10-15", given: {date_of_birth: "2008-09-20", cw_is_head_of_assistance_unit: false, cw_minor_parent_is_assisted_as_adult: false}, expect: false}
   - {id: "CO-924-T5", title: "October: 18, an adult", month: "2026-10", as_of: "2026-10-15", given: {date_of_birth: "2008-09-20", cw_is_head_of_assistance_unit: false, cw_minor_parent_is_assisted_as_adult: false}, expect: true}

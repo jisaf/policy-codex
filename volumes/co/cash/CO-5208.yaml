@@ -7,11 +7,11 @@ scope: person
 program: ColoradoWorks
 meaning: "The persons in the home with this child who rank second in the caretaker hierarchy of 9 CCR 2503-6 3.604.2.H.2: the child's court-appointed legal guardian, or a relative by blood, marriage or adoption (is_related_to) who has primary responsibility for the child."
 precision: "A relative must also exercise responsibility for the child (the has_primary_responsibility_for role) to be a caretaker at all (3.601). \"Within the fifth degree of kinship\" is read from is_related_to (CO-2845), whose roles (grandparent, sibling, stepparent, aunt, uncle, first cousin, niece, nephew, great-grandparent, in-law) are all within the fifth degree; the relationship roles state no degree, so a more distant relative stated as other_relative would be read as within it. A legal custodian appointed by a court is stated as legal_guardian."
-derived: [filter, [persons], [all, [any, [rel, [ward], [P]], [all, [rel, [in_primary_care_of], [P]], [in_group, [P], is_related_to]]], [otherwise, [in_group, [P], lives_with], true], [of, [P], cw_is_considered_living_in_home]]]
+derived: [filter, [persons], [all, [any, [rel, [ward], [P]], [all, [rel, [in_primary_care_of], [P]], [in_group, [P], is_related_to]]], [in_group, [P], lives_with], [of, [P], cw_is_considered_living_in_home]]]
 sources: [S3753]
 implemented: engine
 tags: [cash, tanf, household]
 rationale: "Coverage review CW-18 (fix round 2026-11-23): the second rank of 3.604.2.H, read by cw_caretaker_of (CO-2608) and cw_assistance_unit_members (CO-900) to test whether it outranks a non-relative caretaker."
 nearest: [CO-2608, CO-5207]
 tests:
-  - {id: CO-5208-T1, as_of: "2026-10-01", title: "A child cared for by her aunt and by a family friend", given: {}, others: {p2: {cw_is_considered_living_in_home: true}, p3: {cw_is_considered_living_in_home: true}}, relationships: [[other_relative, p2], [in_primary_care_of, p2], [in_primary_care_of, p3]], expect: [p2]}
+  - {id: CO-5208-T1, as_of: "2026-10-01", title: "A child cared for by her aunt and by a family friend", given: {dwelling_id: h1}, others: {p2: {dwelling_id: h1, cw_is_considered_living_in_home: true}, p3: {dwelling_id: h1, cw_is_considered_living_in_home: true}}, relationships: [[other_relative, p2], [in_primary_care_of, p2], [in_primary_care_of, p3]], expect: [p2]}
