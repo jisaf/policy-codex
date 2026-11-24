@@ -1,0 +1,22 @@
+id: CO-7404
+name: "Medicaid: self-employment, seasonal and commission income of the month, as MAGI counts it"
+identifier: ma_annualizable_earnings_in_month
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the person's MAGI income for the month that 10 CCR 2505-10 § 8.100.4.C.4.a annualizes: the month's self-employment income as MAGI counts it (ma_magi_self_employment_earnings, CO-5161: each business and farm record's net earnings for tax), plus the month's pay the MAGI earnings table counts (wages and the other counted rows, in kind pay not furnished for the employer's convenience) that the earnings record states as seasonal or commission-based (seasonal_or_commission), each at its gross amount, as ma_magi_wage_earnings (CO-5160) counts it."
+precision: "Coverage pass 6, C6-07 (2026-11-24). The month's pay is placed as CO-5160 places it: a dated pay in its month, a stream of pay only from the month its job began through the month it ended, combat zone compensation left out. seasonal_or_commission is read only on the counted pay rows, as ma_has_annualizable_earnings (CO-6451) reads it, and is required there (C5-08). Boarders' payments are not employment income and stay monthly. Read only by ma_annualized_household_income (CO-4559), which replaces this amount by a twelfth of the year's expected income from the same work."
+derived: [+, ma_magi_self_employment_earnings, [sum_receipts, earnings, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, job_start_date]], ["<=", [month_of, [receipt, job_start_date]], [month]]], [any, [unknown, [receipt, job_end_date]], [">=", [month_of, [receipt, job_end_date]], [month]]]]], [not, [receipt, combat_zone_compensation]], [any, [in, [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], [counted, counted_no_rule_excludes]], [all, ["=", [lookup, ma_magi_earnings_treatment_table, [receipt, kind]], counted_unless_employer_convenience], [not, [receipt, employer_convenience_meals_or_lodging]]]], [receipt, seasonal_or_commission]], [receipt, amount]]]
+sources: [S3356, S166]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-810]
+nearest: [CO-5160, CO-5161, CO-6451]
+rationale: "Coverage pass 6, C6-07 (docs/reviews/coverage6-medicaid-magi-chp.md): CO-4559 replaced the member's whole month income by a twelfth of the year's expected income, against C.4.a's named incomes (S3356) and C.1.d.i (a lump sum counts only in the month received). SE-LUMP: a business netting $1,000 a month and a taxable lump sum of $6,000 in November; the whole income annualized gave 18,000 / 12 = 1,500 (112.8%), eligible; the self-employment income alone annualized gives 7,000 - 1,000 + 12,000 / 12 = 7,000 (526.3%)."
+tests:
+  - {id: CO-7404-T1, month: "2026-11", as_of: "2026-11-10", title: "C6-07 (SE-LUMP): a business netting $1,000 in the month (receipts 2,500): the self-employment part is 1,000", given: {earnings: [{kind: self_employment_receipts, amount: 2500, net_for_tax: 1000}]}, expect: 1000}
+  - {id: CO-7404-T2, month: "2026-11", as_of: "2026-11-10", title: "C6-07: steady wages of 2,000 (not seasonal) and commission pay of 1,500: only the commission pay, 1,500", given: {earnings: [{kind: wages, amount: 2000, seasonal_or_commission: false}, {kind: wages, amount: 1500, seasonal_or_commission: true}]}, expect: 1500}
+  - {id: CO-7404-T3, month: "2026-11", as_of: "2026-11-10", title: "C6-07: seasonal pay dated in July, read in November: none in the month, 0", given: {earnings: [{kind: wages, amount: 3000, month: "2026-07", seasonal_or_commission: true}]}, expect: 0}
+  - {id: CO-7404-T4, month: "2026-11", as_of: "2026-11-10", title: "C6-07: a pay record that does not say whether it is seasonal or commission-based: cannot determine (required where read, C5-08)", given: {earnings: [{kind: wages, amount: 2000}]}, expect: unknown}
+  - {id: CO-7404-T5, month: "2026-11", as_of: "2026-11-10", title: "C6-07: a business netting 800 and seasonal wages of 1,200 in the month: 800 + 1,200 = 2,000", given: {earnings: [{kind: self_employment_receipts, amount: 1500, net_for_tax: 800}, {kind: wages, amount: 1200, month: "2026-11", seasonal_or_commission: true}]}, expect: 2000}

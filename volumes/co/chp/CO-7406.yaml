@@ -1,0 +1,21 @@
+id: CO-7406
+name: "CHP+: first month of a child's continuous eligibility period"
+identifier: chp_child_continuous_eligibility_start_month
+kind: derived
+type: month
+scope: person-month
+program: CHP+
+meaning: "The first month of a CHP+ child's 12-month continuous eligibility period under 10 CCR 2505-3 § 430.2: the month CBMS records the CHP+ span as beginning (chp_eligibility_period_start_month, CO-2402) where stated; otherwise the first month of the application being determined, from the month of application through the determination month, in which the child is CHP+ eligible (chp_child_is_eligible, CO-705); where no such month, the month of application, in which no period opens."
+precision: "Coverage pass 6, C6-08 (2026-11-24). § 430.2 (S1714): the period 'will begin on the month of application or from the authorization date', and § 430.1 makes eligibility effective on the later of the first day of the month of application and 'the first day of the month the person becomes eligible'. Before, the period opened only if the child was CHP+ eligible in the application month. The months are tested in order; a month whose test is unknown before any month qualifies leaves the start unknown; a month after the determination month opens nothing in this determination. Stated per person per month because the rule reads the months' facts; the value is the same in every month evaluated."
+derived: [case, [[not, [unknown, chp_eligibility_period_start_month]], chp_eligibility_period_start_month], [[some_month, [months_from_to, [month_of, ma_application_date], [det_month]], chp_child_is_eligible], [months_after, [count_months, [months_from_to, [month_of, ma_application_date], [det_month]], [not, [some_month, [months_from_to, [month_of, ma_application_date], [month]], chp_child_is_eligible]]], [month_of, ma_application_date]]], [else, [month_of, ma_application_date]]]
+sources: [S1714]
+implemented: engine
+tags: [chp, age]
+nearest: [CO-7405, CO-2404]
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1714}
+rationale: "Coverage pass 6, C6-08 (docs/reviews/coverage6-medicaid-magi-chp.md, P2): chp_child_is_in_continuous_eligibility_period (CO-2404) tested CHP+ eligibility only in the application month. It now reads this item."
+tests:
+  - {id: CO-7406-T1, month: "2026-11", as_of: "2026-11-10", title: "A recorded span from March 2026: March", given: {chp_eligibility_period_start_month: "2026-03", ma_application_date: "2026-10-05"}, expect: "2026-03"}
+  - {id: CO-7406-T2, month: "2026-11", as_of: "2026-11-10", title: "C6-08: applied 2026-10-05, not CHP+ eligible in October (Medicaid eligible), CHP+ eligible in November (income rose): November", given: {ma_application_date: "2026-10-05", chp_child_is_eligible: {"2026-10": false, "2026-11": true}}, expect: "2026-11"}
+  - {id: CO-7406-T3, month: "2026-11", as_of: "2026-11-10", title: "Eligible in the application month: October", given: {ma_application_date: "2026-10-05", chp_child_is_eligible: {"2026-10": true}}, expect: "2026-10"}

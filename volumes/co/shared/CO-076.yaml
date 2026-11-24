@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the person expects to be claimed as a tax dependent by another taxpayer for the taxable year in which the Medicaid eligibility determination or renewal is being made: a tax_dependent relationship to a person of the case (the claiming filer), or a claim by a taxpayer outside the case (is_claimed_by_filer_outside_case, CO-2716)."
-precision: "42 CFR 435.603(f)(2) and 10 CCR 2505-10 8.100.4.E.1.b key household composition off this expectation. The tax_filer / tax_dependent relationship is the one statement of a claim between persons of the case, so the expectation is derived from it and cannot contradict it; unknown when the person's relationships are unstated."
-derived: [any, [exists_related, [tax_dependent], true], [otherwise, is_claimed_by_filer_outside_case, false]]
+precision: "42 CFR 435.603(f)(2) and 10 CCR 2505-10 8.100.4.E.1.b key household composition off this expectation. The tax_filer / tax_dependent relationship is the one statement of a claim between persons of the case, so the expectation is derived from it and cannot contradict it; unknown when the person's relationships are unstated. Coverage pass 6, C6-04 (2026-11-24): a person with no tax_dependent relationship in the case reads is_claimed_by_filer_outside_case (CO-2716) as stated, required there (decision 4 of 2026-11-23); before, an unstated claim from outside the case was read as none, so a young adult whose parents outside the case claim her was given a household of her own (CO-816 without the claim facts: household {p1}, 900 / 1,330 = 67.7%, adult, eligible; by hand cannot determine)."
+derived: [any, [exists_related, [tax_dependent], true], is_claimed_by_filer_outside_case]
 sources: [S161, S162, S163]
 implemented: engine
 tags: [ma, magi, household]
@@ -16,5 +16,8 @@ link_basis: "A tax-dependent claim as the person's tax facts state it; a fact of
 rationale: "No existing item carries this fact. The interface note in the phase-3 brief asks that 'is claimed as a tax dependent' prefer the case's tax_filer/tax_dependent relationship edges where they are stated; this supplied fact is the fallback the household rule also reads so the rule still works when the relationship is not (yet) recorded, and is what 8.100.4.E.1.b's 'expects to be claimed' actually tests. Dual-entry audit 3.3 and 5.7 (audit fix round): derived from the tax_dependent relationship, with a supplied fact only for a claimer outside the case (CO-2716); the five contradicting statements in CO-74, CO-75, CO-76 and CO-77 are gone with the fact."
 tests:
   - {id: CO-076-T1, as_of: "2026-10-01", title: "Claimed by a parent in the case", given: {}, others: {p2: {}}, relationships: [[tax_dependent, p1, p2]], expect: true}
-  - {id: CO-076-T2, as_of: "2026-10-01", title: "No claim", given: {}, others: {p2: {}}, relationships: [[spouse, p1, p2]], expect: false}
+  - {id: CO-076-T2, as_of: "2026-10-01", title: "No claim (C6-04: no claimer outside the case, stated)", given: {is_claimed_by_filer_outside_case: false, }, others: {p2: {}}, relationships: [[spouse, p1, p2]], expect: false}
   - {id: CO-076-T3, as_of: "2026-10-01", title: "Claimed by a grandparent who lives elsewhere", given: {is_claimed_by_filer_outside_case: true}, relationships: [], expect: true}
+  - {id: CO-076-T4, as_of: "2026-11-10", title: "C6-04: no tax_dependent relationship in the case and the outside claim not stated: unknown (was false)", given: {}, relationships: [], expect: unknown}
+  - {id: CO-076-T5, as_of: "2026-11-10", title: "C6-04: no tax_dependent relationship in the case, no claimer outside the case stated: false", given: {is_claimed_by_filer_outside_case: false}, relationships: [], expect: false}
+  - {id: CO-076-T6, as_of: "2026-11-10", title: "C6-04: claimed by a parent in the case: true without reading the outside claim", given: {}, others: {p2: {}}, relationships: [[tax_dependent, p1, p2]], expect: true}

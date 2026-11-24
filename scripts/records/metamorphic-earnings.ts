@@ -13,10 +13,12 @@
 //                an odd number of boarders is left whole: half a boarder is
 //                not a statement). Records E1 integration: requests R-3 of
 //                docs/reviews/records-earnings-care-energy.md and R-2 of
-//                docs/reviews/records-earnings-medicaid.md.
+//                docs/reviews/records-earnings-medicaid.md. The repayment withheld from a pay
+//                (recouped, coverage pass 6 C6-4) is halved with the amount.
 //   ME-2 order   the records in reverse order.
 //   ME-3 month   a recurring record (no month, no date) stated for the month
-//                evaluated, compared in that month.
+//                evaluated, compared in that month; a stream whose job dates do not cover
+//                that month is left a stream (coverage pass 6, R6-1).
 //   ME-4 cost    a cost record relabelled to another cost kind the track's
 //                table also deducts.
 //   ME-5 dated   four dated weekly pays of x in a month against a weekly
@@ -34,7 +36,7 @@ import type { Track } from "./programs/types";
 type Rec = Record<string, unknown>;
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && valuesEqual(a, b));
-const HALVED = ["amount", "per_payment", "pass_set_aside", "education_deduction", "net_for_tax", "annual_contract_pay", "hours"];
+const HALVED = ["amount", "per_payment", "pass_set_aside", "education_deduction", "net_for_tax", "annual_contract_pay", "hours", "recouped"];
 
 function mapEarnings(c: HouseholdCase, f: (rs: Rec[]) => Rec[]): HouseholdCase {
   const out = clone(c);
@@ -57,7 +59,12 @@ export const RELATIONS: Relation[] = [
     return [a, b];
   })) },
   { id: "ME-2", name: "order", apply: (c) => mapEarnings(c, (rs) => [...rs].reverse()) },
-  { id: "ME-3", name: "month", apply: (c, month) => mapEarnings(c, (rs) => rs.map((r) => (r.month === undefined && r.date === undefined && r.frequency !== "once" ? { ...r, month } : r))) },
+  // A stream bounded by its job's dates is the pay of the months its job ran (docs/conventions.md, "A record's
+  // time"): it is stated for the month evaluated only when that month is among them (coverage pass 6, R6-1: a
+  // stream of a job that ended before, or begins after, the month is not that month's pay).
+  { id: "ME-3", name: "month", apply: (c, month) => mapEarnings(c, (rs) => rs.map((r) => (r.month === undefined && r.date === undefined && r.frequency !== "once"
+    && (typeof r.job_start_date !== "string" || r.job_start_date.slice(0, 7) <= month)
+    && (typeof r.job_end_date !== "string" || r.job_end_date.slice(0, 7) >= month) ? { ...r, month } : r))) },
   { id: "ME-4", name: "cost", apply: (c, _m, deducted) => (deducted.length < 2 ? null
     : mapEarnings(c, (rs) => rs.map((r) => (r.kind === deducted[0] ? { ...r, kind: deducted[1] } : r)))) },
 ];

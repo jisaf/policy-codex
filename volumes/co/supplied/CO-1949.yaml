@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the institutionalized spouse refuses, or fails, to make the monthly income allowance available to the community spouse: it bars an increased CSRA (10 CCR 2505-10 § 8.100.7.S.1.e), and the allowance is then not deducted in the patient payment, the income going to the cost of care (§ 8.100.7.T.1.b, T.1.e)."
+meaning: "Whether the institutionalized spouse refuses, or fails, to make the monthly income allowance available to the community spouse: it bars an increased CSRA (10 CCR 2505-10 § 8.100.7.S.1.e), and the allowance is then not deducted in the patient payment, the income going to the cost of care (§ 8.100.7.T.1.b, T.1.e). If not stated, Medicaid reads this as false: a rule-given default, since a refusal or failure is an event the case record shows, and § 8.100.7.T.1.b (S360) deducts the allowance for the income 'actually made available to, or for the benefit of, the community spouse' unless the record shows it was not."
 supplied_by: The applicant's statement.
-sources: [S1221, S3410]
+sources: [S1221, S3410, S360]
 tags: [ma, ltc, resources]
 rationale: "OQ-126: § 8.100.7.S.1.e conditions the increased CSRA on the income allowance being made available."

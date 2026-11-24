@@ -11,6 +11,7 @@ derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [not, [unk
 sources: [S669, S165]
 implemented: engine
 tags: [ma, magi, income]
+open: [OQ-592]
 rationale: "Receipt records, migration phase 2: replaces lottery_gambling_winnings_received in the MAGI items (CO-502, CO-503, CO-1185, CO-1187). Nearest: the gambling and child support sums of the other method's table (ma_magi_gambling_receipts, CO-5502; ma_ssi_gambling_receipts, CO-5512; ma_ssi_child_support_receipts, CO-5513) have the same shape over a different table or treatment: MAGI and the SSI method count different money, so each method keeps its own sum rather than one sum with the table as a constant."
 nearest: [CO-5512, CO-5513]
 tests:

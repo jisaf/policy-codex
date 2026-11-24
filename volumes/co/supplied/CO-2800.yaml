@@ -5,7 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The required monthly maintenance fee of a condominium or cooperative for the dwelling, billed to or paid by this person; zero for a person whose dwelling has none or who pays none of it. It is not part of shelter_cost_monthly (rent or mortgage, property tax and home insurance). If not stated, Medicaid reads this as 0."
+meaning: "The required monthly maintenance fee of a condominium or cooperative for the dwelling, billed to or paid by this person; zero for a person whose dwelling has none or who pays none of it. It is not part of shelter_cost_monthly (rent or mortgage, property tax and home insurance)."
+precision: "Coverage pass 6, non-MAGI F6-10 (decision 4 of 2026-11-23: each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults): required where Medicaid reads it (the community spouse's excess shelter allowance, § 8.100.7.Q.1.b.i, and the home maintenance allowance): no rule gives a default; a person whose dwelling has no such fee states 0."
 supplied_by: The application's shelter expense section; the association's fee statement.
 sources: [S1756]
 tags: [ma, ltc, income]

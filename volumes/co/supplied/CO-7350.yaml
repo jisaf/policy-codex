@@ -1,0 +1,13 @@
+id: CO-7350
+name: SSI eligibility date
+identifier: ssi_eligibility_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person SSA has awarded Supplemental Security Income (receives_ssi, CO-012), the date from which the award makes the person eligible for SSI: the original SSI eligibility date of 10 CCR 2505-10 § 8.100.6.C.7. A fact about SSA's award, not this volume's own determination."
+precision: "Required where read: a month before the determination month is an SSI month only from the month of this date (ma_receives_ssi_in_month, CO-7351), and not stated it cannot be determined (decision 4 of 2026-11-23). The determination month and the months after read receives_ssi as stated."
+supplied_by: "SSA's award of SSI as the eligibility site reads it (the SSA benefit record, CBMS interface)."
+sources: [S5030, S6]
+tags: [disability]
+rationale: "Coverage pass 6, non-MAGI F6-5 (docs/reviews/coverage6-medicaid-nonmagi.md): receives_ssi is SSA's award as of the determination date, and the SSI-related outcomes read it in every month, so an award from October made August and September SSI months of a Medicaid application with retroactive months. 10 CCR 2505-10 § 8.100.6.C.1.a (S5030) covers 'persons receiving financial assistance under SSI', a fact of the month, and C.7 dates SSI Medicaid from 'the original SSI eligibility date'; no fact stated that date."

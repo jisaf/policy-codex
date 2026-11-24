@@ -24819,3 +24819,175 @@ Document: D-80
 > month period. The twelve-month period can either be the previous tax year
 > (January to December) or the most recent twelve-months prior to the application
 > date.
+
+### S5030. SSI eligibles: Medical Assistance for persons receiving SSI, and from the original SSI eligibility date after an overturned denial (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.C.1.a-b, C.7 (rule version effective 11/14/2026; coverage pass 6, non-MAGI F6-5). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Benefits of the Colorado Medical Assistance Program must be provided to the following:
+>
+> a. persons receiving financial assistance under SSI;
+>
+> b. persons who are eligible for financial assistance under SSI, but are not receiving SSI;
+>
+> ...
+>
+> 7. Denied or terminated Medical Assistance based on a denial or termination of SSI which is later overturned, must be approved from the original SSI eligibility date.
+
+### S5031. SSI: deeming from an ineligible spouse; no income deemed when the spouse's income after allocations is not more than the couple and individual rates' difference
+
+Document: D-53
+
+20 CFR 416.1163 (introduction), (a), (d)(1)-(2) (D-53:866-890; coverage pass 6, non-MAGI F6-6). https://www.ecfr.gov/current/title-20/part-416
+
+> If you have an ineligible spouse who lives in the same household, we apply the deeming rules to your ineligible spouse's income in the following order.
+>
+> (a) *Determining your ineligible spouse's income.* We first determine how much earned and unearned income your ineligible spouse has, using the appropriate exclusions in § 416.1161(a).
+>
+> ...
+>
+> (d) *Determining your eligibility for SSI.* (1) If the amount of your ineligible spouse's income that remains after appropriate allocations is not more than the difference between the Federal benefit rate for an eligible couple and the Federal benefit rate for an eligible individual, there is no income to deem to you from your spouse. In this situation, we subtract only your own countable income from the Federal benefit rate for an individual to determine whether you are eligible for SSI benefits.
+>
+> (2) If the amount of your ineligible spouse's income that remains after appropriate allocations is more than the difference between the Federal benefit rate for an eligible couple and the Federal benefit rate for an eligible individual, we treat you and your ineligible spouse as an eligible couple. We do this by:
+>
+> (i) Combining the remainder of your spouse's unearned income with your own unearned income and the remainder of your spouse's earned income with your earned income;
+>
+> (ii) Applying all appropriate income exclusions in §§ 416.1112 and 416.1124; and
+>
+> (iii) Subtracting the couple's countable income from the Federal benefit rate for an eligible couple. (See § 416.2025(b) for determination of the State supplementary payment amount.)
+
+### S5032. SSI: an ineligible spouse's income excludes in-kind support and maintenance
+
+Document: D-53
+
+20 CFR 416.1161(a) (introduction), (a)(11) (D-53:772, 794; coverage pass 6, non-MAGI F6-6). https://www.ecfr.gov/current/title-20/part-416
+
+> (a) *For an ineligible spouse or parent.* We do not include any of the following types of income (see § 416.1102) of an ineligible spouse or parent:
+>
+> ...
+>
+> (11) The value of in-kind support and maintenance;
+
+### S5033. Spousal impoverishment: the deductions from an institutionalized spouse's income, in order, include a family allowance for each family member
+
+Document: D-47
+
+42 U.S.C. 1396r-5(d)(1)(A)-(D) and the paragraph after (D) (D-47:151-167; coverage pass 6, non-MAGI F6-11). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1) Allowances to be offset from income of institutionalized spouse After an institutionalized spouse is determined or redetermined to be eligible for medical assistance, in determining the amount of the spouse’s income that is to be applied monthly to payment for the costs of care in the institution, there shall be deducted from the spouse’s monthly income the following amounts in the following order:
+>
+> (A)
+>
+> A personal needs allowance (described in section 1396a(q)(1) of this title ), in an amount not less than the amount specified in section 1396a(q)(2) of this title .
+>
+> (B)
+>
+> A community spouse monthly income allowance (as defined in paragraph (2)), but only to the extent income of the institutionalized spouse is made available to (or for the benefit of) the community spouse.
+>
+> (C)
+>
+> A family allowance, for each family member , equal to at least ⅓ of the amount by which the amount described in paragraph (3)(A)(i) exceeds the amount of the monthly income of that family member .
+>
+> (D)
+>
+> Amounts for incurred expenses for medical or remedial care for the institutionalized spouse (as provided under section 1396a(r) of this title ).
+>
+> In subparagraph (C), the term “ family member ” only includes minor or dependent children, dependent parents, or dependent siblings of the institutionalized or community spouse who are residing with the community spouse .
+### S4970. Federal: the income and expenses of members whose income is prorated: all but the ineligible members' share is counted
+
+Document: D-15
+
+7 CFR 273.11(c)(2)(ii)-(iii) (coverage pass 6 for SNAP, C6-1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (ii) *Income.* A pro rata share of the income of such ineligible members shall be counted as income to the remaining members. This pro rata share is calculated by first subtracting the allowable exclusions from the ineligible member's income and dividing the income evenly among the household members, including the ineligible members. All but the ineligible members' share is counted as income for the remaining household members.
+>
+> (iii) *Deductible expenses.* The 20 percent earned income deduction shall apply to the prorated income earned by such ineligible members which is attributed to their households. That portion of the households' allowable child support payment, shelter and dependent care expenses which are either paid by or billed to the ineligible members shall be divided evenly among the households' members including the ineligible members. All but the ineligible members' share is counted as a deductible child support payment, shelter or dependent care expense for the remaining household members.
+
+### S4971. Federal: an ineligible alien's income and deductible expenses counted in full or all but a pro rata share, under paragraph (c)(1) or (c)(2)
+
+Document: D-15
+
+7 CFR 273.11(c)(3)(i) (coverage pass 6 for SNAP, C6-1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (3) *Ineligible alien.* The State agency must determine the eligibility and benefit level of any remaining household members of a household containing an ineligible alien as follows:
+>
+> (i) The State agency must count all or, at the discretion of the State agency, all but a pro rata share, of the ineligible alien's income and deductible expenses and all of the ineligible alien's resources in accordance with paragraphs (c)(1) or (c)(2) of this section. In exercising its discretion under this paragraph (c)(3)(i), the State agency may count all of the alien's income for purposes of applying the gross income test for eligibility purposes while only counting all but a pro rata share to apply the net income test and determine level of benefits. This paragraph (c)(3)(i) does not apply to an alien:
+
+### S4972. Federal: households that are never categorically eligible: an IPV member, a work-sanctioned head of household, a drug felon, fleeing felon, probation or parole violator or 273.11(s) member
+
+Document: D-95
+
+7 CFR 273.2(j)(2)(vii)-(viii) (eCFR current as of 2026-11-19; coverage pass 6 for SNAP, C6-2). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (vii) Under no circumstances shall any household be considered categorically eligible if:
+>
+> (A) Any member of that household is disqualified for an intentional Program violation in accordance with § 273.16 or for failure to comply with monthly reporting requirements in accordance with § 273.21;
+>
+> (B) The entire household is disqualified because one or more of its members failed to comply with workfare in accordance with § 273.22; or
+>
+> (C) The head of the household is disqualified for failure to comply with the work requirements in accordance with § 273.7.
+>
+> (D) Any member of that household is ineligible under § 273.11(m) by virtue of a conviction for a drug-related felony, under § 273.11(n) for being a fleeing felon or a probation or parole violator, or under § 273.11(s) for having a conviction of certain crimes and not being in compliance with the sentence.
+>
+> (viii) These households are subject to all SNAP eligibility and benefits provisions (including the provisions of § 273.11(c)) and cannot be reinstated in the Program on the basis of categorical eligibility provisions.
+
+### S4973. Federal: not voluntarily quitting a job without good cause is one of the SNAP work requirements
+
+Document: D-11
+
+7 CFR 273.7(a)(1), (a)(1)(vii) (coverage pass 6 for SNAP, C6-2). https://www.ecfr.gov/current/title-7/section-273.7
+
+> (a) *Work requirements.* (1) As a condition of eligibility for SNAP benefits, each household member not exempt under paragraph (b)(1) of this section must comply with the following SNAP work requirements:
+>
+> (vii) Do not voluntarily and without good cause quit a job of 30 or more hours a week or reduce work effort to less than 30 hours a week, in accordance with paragraph (j) of this section.
+
+### S4974. Federal: persons not included as members of an otherwise categorically eligible household: ineligible aliens, ineligible students, institutionalized persons, work-requirement ineligibles
+
+Document: D-95
+
+7 CFR 273.2(j)(2)(ix) (eCFR current as of 2026-11-19; coverage pass 6 for SNAP, C6-5). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (ix) No person shall be included as a member in any household which is otherwise categorically eligible if that person is:
+>
+> (A) An ineligible alien as defined in § 273.4;
+>
+> (B) Ineligible under the student provisions in § 273.5;
+>
+> (C) An SSI recipient in a cash-out State as defined in § 273.20; or
+>
+> (D) Institutionalized in a nonexempt facility as defined in § 273.1(e).
+>
+> (E) Ineligible because of failure to comply with a work requirement of § 273.7.
+### S5060. Continued eligibility after the pregnancy for a woman who, while pregnant, was eligible for, applied for and received medical assistance
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(5) (Legal Information Institute; coverage pass 6, C6-01). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (5) A woman who, while pregnant, is eligible for, has applied for, and has received medical assistance under the State plan, shall continue to be eligible under the plan, as though she were pregnant, for all pregnancy-related and postpartum medical assistance under the plan, through the end of the month in which the 60-day period (beginning on the last day of her pregnancy) ends.
+
+### S5061. HHS poverty guidelines for 2024, 48 contiguous states and the District of Columbia
+
+Document: D-5061
+
+HHS, "Annual Update of the HHS Poverty Guidelines," 89 FR 2961 (Jan. 17, 2024) (coverage pass 6, C6-09). https://www.govinfo.gov/content/pkg/FR-2024-01-17/html/2024-00796.htm
+
+> 1.................................................... $15,060
+>
+> 2.................................................... 20,440
+>
+> 3.................................................... 25,820
+>
+> 4.................................................... 31,200
+>
+> 5.................................................... 36,580
+>
+> 6.................................................... 41,960
+>
+> 7.................................................... 47,340
+>
+> 8.................................................... 52,720
+>
+> For families/households with more than 8 persons, add $5,380 for each additional person.

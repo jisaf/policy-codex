@@ -13,7 +13,7 @@ implemented: engine
 tags: [verification]
 rationale: "Duplicate-paths audit D-K2 (step 5): the activity-schedule condition was written in both count items; it is one requirement now, with its pending flag."
 tests:
-  - {id: CO-5154-T1, title: "A self-employed adult caretaker", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, cccap_is_teen_parent: false, cccap_non_traditional_hours_are_requested: false, earnings: [{kind: self_employment_receipts, amount: 900}]}, expect: true}
+  - {id: CO-5154-T1, title: "A self-employed adult caretaker", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, cccap_is_teen_parent: false, cccap_non_traditional_hours_are_requested: false, earnings: [{kind: self_employment_receipts, amount: 900, rental_property: false}]}, expect: true}
   - {id: CO-5154-T2, title: "Non-traditional hours requested by a wage earner", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, cccap_non_traditional_hours_are_requested: true, earnings: [{kind: wages, amount: 1500}]}, expect: true}
   - {id: CO-5154-T3, title: "A wage earner, traditional hours", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, cccap_is_teen_parent: false, cccap_non_traditional_hours_are_requested: false, earnings: [{kind: wages, amount: 1500}]}, expect: false}
   - {id: CO-5154-T4, title: "A child with no requested hours", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: false}, expect: false}

@@ -5,8 +5,9 @@ kind: supplied
 type: money
 scope: person
 program: Medicaid
-meaning: The monthly OASDI amount that caused the person to lose SSI and/or OAP - "the previous amount of the OASDI that caused them to lose SSI and/or OAP" of 10 CCR 2505-10 § 8.100.6.E.1.b - the base the Pickle disregard measures the cumulative cost-of-living adjustments from.
+meaning: "The monthly OASDI amount the Pickle disregard measures the cost-of-living increases from: the person's OASDI in the last month after April 1977 in which the person was both eligible for and receiving SSI, a State supplement or OAP and entitled to OASDI (42 CFR 435.135(a)(3), S1233). For a loss caused by an OASDI increase this is the amount before the increase, \"the previous amount of the OASDI that caused them to lose SSI and/or OAP\" of 10 CCR 2505-10 § 8.100.6.E.1.b; for a loss caused by the first receipt of OASDI, with no month of concurrent receipt, the amount that caused the loss (§ 8.100.6.D.2.c)."
+precision: "Coverage pass 6, non-MAGI F6-8 (docs/reviews/coverage6-medicaid-nonmagi.md): restated by 42 CFR 435.135(a)(3) so that it serves a loss of SSI or OAP for any reason (lost_ssi_or_oap_received_with_social_security, CO-7358); for a loss caused by an OASDI increase the two statements name the same amount."
 supplied_by: SSA benefit history (SVES/BENDEX) for the month SSI or OAP ended, as read by the eligibility site.
-sources: [S624]
+sources: [S624, S1233]
 tags: [ma, non_magi, income]
 rationale: "No existing item carries the historical OASDI amount. ma_pickle_countable_income (CO-1158) needs it to compute § 8.100.6.E.1.d's Pickle disregard."

@@ -14,11 +14,11 @@ tags: [income]
 open: [OQ-680]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
 tests:
-  - {id: CO-1710-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_self_employment_business_expenses: 400, earnings: [{kind: self_employment_receipts, amount: 1500}]}, expect: 1100}
+  - {id: CO-1710-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_self_employment_business_expenses: 400, earnings: [{kind: self_employment_receipts, amount: 1500, rental_property: false}]}, expect: 1100}
   - {id: CO-1710-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {earnings: [{kind: wages, amount: 1000}]}, expect: 0}
-  - {id: CO-1710-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {cccap_self_employment_business_expenses: 450, earnings: [{kind: self_employment_receipts, amount: 300}]}, expect: 0}
+  - {id: CO-1710-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {cccap_self_employment_business_expenses: 450, earnings: [{kind: self_employment_receipts, amount: 300, rental_property: false}]}, expect: 0}
   # Coverage round F-11 (probe RV-H): a business under twelve months old in its launch period, $300 of receipts, 120 declared hours: $7.25 x 120 = $870 (G.2.e).
   - {id: CO-1710-T4, title: "F-11: launch period income is the federal minimum wage times the declared hours", as_of: "2026-11-01", month: "2026-11", given: {cccap_self_employment_in_launch_period: true, earnings: [{kind: self_employment_receipts, amount: 300, hours: 120}]}, expect: 870}
   # A caretaker with a wage job and a new business states the self-employment hours: $7.25 x 40 = $290.
-  - {id: CO-1710-T5, title: "F-11: with a wage job, only the self-employment hours are projected", as_of: "2026-11-01", month: "2026-11", given: {hours_worked: 160, cccap_self_employment_in_launch_period: true, earnings: [{kind: wages, amount: 1600}, {kind: self_employment_receipts, amount: 0, hours: 40}]}, expect: 290}
+  - {id: CO-1710-T5, title: "F-11: with a wage job, only the self-employment hours are projected", as_of: "2026-11-01", month: "2026-11", given: {hours_worked: 160, cccap_self_employment_in_launch_period: true, earnings: [{kind: wages, amount: 1600}, {kind: self_employment_receipts, amount: 0, hours: 40, rental_property: false}]}, expect: 290}
   - {id: CO-1710-T6, title: "Decision 4: in the launch period with the business's hours not stated: cannot determine (hours_worked is not read)", as_of: "2026-11-01", month: "2026-11", given: {hours_worked: 160, cccap_self_employment_in_launch_period: true, earnings: [{kind: wages, amount: 1600}, {kind: self_employment_receipts, amount: 300}]}, expect: unknown}

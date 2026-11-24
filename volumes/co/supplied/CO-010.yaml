@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: The person meets the disability criteria for blindness used under Title XVI of the Social Security Act.
+precision: "Coverage pass 6, non-MAGI F6-10 (decision 4 of 2026-11-23: each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults): Medicaid reads the person's own blindness as stated wherever it reads it (the Working Adults Buy-In's blind work expenses, ma_wawd_countable_income, CO-1715, no longer reads it as false when unstated)."
 supplied_by: SSA determination, medical verification.
 sources: []
 tags: [disability]

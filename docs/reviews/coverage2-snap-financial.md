@@ -309,7 +309,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.411.1.B.1.a, IPV, work sanction, fleeing felon: income, resources and deductions in full | C: CO-2302, CO-333, CO-371, CO-2300, CO-2301, CO-4333, CO-343 |
 | 4.411.1.B.1.b, not in the size for benefit or standards | C: CO-312, CO-313; allotment cap CO-4182 (273.11(c)(1)(ii) override) |
 | 4.411.1.B.2.a, non-citizen, SSN, ABAWD: resources in full | C: CO-343 (all non-student members) |
-| 4.411.1.B.2.b, pro rata income, (n−1)/n | C: CO-2565, CO-333 (formula right for several ineligible members) |
+| 4.411.1.B.2.b, pro rata income, (n−1)/n | C: CO-2565, CO-333. **Corrected in coverage pass 6 (C6-1, C6-7):** the (n−1)/n formula is right for one prorated member only; with several, 7 CFR 273.11(c)(2)(ii) counts "All but the ineligible members' share", (n−k)/n (snap_prorated_member_share_counted_rate, CO-7250). The earlier note here, "formula right for several ineligible members", was wrong. |
 | 4.411.1.B.2.c, 20% on prorated earnings; shelter and care pro rata; support before proration; full SUA | C: CO-371, CO-372, CO-2300, CO-2301, CO-4333, CO-377 (SUA added whole) |
 | 4.411.1.B.2.c, medical expenses of a prorated member | OQ-641 |
 | 4.411.1.B.2.d, not in the size | C: CO-313 |
