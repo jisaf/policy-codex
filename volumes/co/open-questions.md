@@ -1025,11 +1025,13 @@ Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.6.I.1.f and §§ 
 
 Coverage round (2026-11-22, docs/reviews/coverage-medicaid-nonmagi.md NM-9): the first half is resolved by text; it was not a state policy choice. § 8.100.6.A.1 (S3411) sends every ABD category to § 8.100.5 "for income and resource criteria", and 42 U.S.C. 1383c(d)(2) (D-320, S3416) deems the group SSI recipients only "for so long as such person (i) would be eligible for such supplemental security income benefits ... in the absence of benefits described in paragraph (1)(A)"; 42 CFR 435.138(a) (S3417) deems them "title XVI payment beneficiaries under section 1634(d)". ma_disabled_widow_eligible (CO-1162) now requires the SSI resource standard (ma_meets_ssi_resource_standard) and countable income with the Social Security benefit disregarded (ma_dac_countable_income, CO-1160) below the Federal Benefit Rate. What stays open is the closed cohorts alone.
 
-Class: state policy choice
+Class: scope decision of the product owner (reclassified from "state policy choice" in coverage pass 6, non-MAGI F6-12, 2026-11-24)
 Owner: Medicaid policy owner
 Assumption: The closed historical groups of §§ 8.100.6.F-H are not offered.
 
 Checked 2026-11-22: 10 CCR 2505-10 §§ 8.100.6.F-H (D-65), which describe cohorts closed to new applicants (H requires reapplying before July 1, 1987), and 42 U.S.C. 1383c(b) (D-320), whose protection needed a written application by July 1, 1988. Whether Colorado still serves anyone in those cohorts is not in any published rule.
+
+Coverage pass 6, non-MAGI F6-12 (2026-11-24; docs/reviews/coverage6-medicaid-nonmagi.md): the class was wrong. §§ 8.100.6.F.1 and G.1-3 (D-65) say "Medical Assistance must be provided" to the 1972 and 1973 cohorts, so their coverage is not the State's choice; whether the codex models them is a scope decision. Recorded as one, for the product owner, rather than modelled now: modelling F needs each person's August 1972 assistance and the amount of the October 1972 20% Social Security increase (F.2.c's "1972 disregard amount"), and G.1-3 the December 1973 minimum income level and eligibility criteria, none of which any document on file states, so each group would be a supplied finding of the whole determination; and the cohorts, now in their seventies or older (F: assistance in August 1972; G: eligibility in December 1973), nearly all fall within the aged group the codex determines (§ 8.100.6.C, K). H's group closed with the July 1, 1987 deadline. A person found in one of these cohorts is determined outside the codex. Owner: product owner, with the Medicaid policy owner. Items: CO-1162, CO-1163.
 
 ### OQ-210. Resolved: HCBS waiver target groups: only age (and CES marital status) is derived
 
@@ -1737,15 +1739,17 @@ Assumption: Income at exactly 150 or 200 percent of poverty falls in the lower c
 
 Checked 2026-11-22: 10 CCR 2505-3 § 320.1 and § 330 (D-66, S1504) state the bands in whole percentages ("between 101% and 150%", "between 151% and 200%", "between 201% and 260%"). No published rule settles the ratios between them.
 
-### OQ-471. Income trust deductions omit the family allowance
+### OQ-471. Resolved: an income trust user's patient payment keeps the family allowance (42 U.S.C. 1396r-5(d)(1))
 
 Body: The income trust rules of 10 CCR 2505-10 § 8.100.7 (trusts, 6.a.i.c, S1508) say "The only deductions from the monthly trust distribution to the Long Term Care institution are the allowable deductions which are permitted for Medical Assistance-eligible persons who do not have income trusts. Allowable deductions include only the following: i) Personal need allowance ii) Spousal income payments iii) Approved PETI payments". The first sentence allows every deduction a person without a trust receives, which § 8.100.7.T.1 and 42 U.S.C. 1396r-5(d)(1) make include the family allowance for dependent family members; the list that follows omits it. ma_patient_payment (CO-658) keeps the family allowance for a trust user, reading the first sentence and the federal requirement over the list. Checked 2026-11-21: § 8.100.7 (D-65) states both sentences; no published rule settles which governs. Items: CO-658, CO-2238.
 
-Class: needs Legal
+Class: resolved by text on file (was "needs Legal"; coverage pass 6, non-MAGI F6-11)
 Owner: Legal, LTSS policy owner
 Assumption: A person with an income trust still gets the family allowance for dependent family members in the patient payment.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7 (D-65, S1508) first allows every deduction a person without a trust receives and then lists only the personal needs allowance, spousal income and PETI payments; § 8.100.7.T.1 and 42 U.S.C. 1396r-5(d)(1) include the family allowance. The readings: (a) the first sentence and the statute govern, the reading in force; (b) the list is exhaustive. No published rule reconciles them.
+
+Resolution (coverage pass 6, non-MAGI F6-11, 2026-11-24; docs/reviews/coverage6-medicaid-nonmagi.md): the text on file decides it. 42 U.S.C. 1396r-5(d)(1) (D-47, S5033): after an institutionalized spouse is determined eligible, "there shall be deducted from the spouse's monthly income the following amounts in the following order", and (C) is "A family allowance, for each family member"; the statute names no exception for income placed in a trust, and the State rule's first sentence allows every deduction a person without a trust receives (S1508). A State rule cannot narrow a deduction the Act requires (the section supersedes any inconsistent provision in determining an institutionalized spouse's eligibility, 1396r-5(a)(1), S3615, and a State plan must follow the Act), so the list's omission is not a reading open to the State: the family allowance is deducted for a trust user, the reading in force (ma_patient_payment, CO-658; ma_family_allowance, CO-657, already takes the federal floor). No item changes. The question is closed; Legal may still advise HCPF to correct the list in the rule.
 
 ### OQ-472. Residency of an institutionalized person who became incapable of indicating intent at or after 21
 
@@ -2573,11 +2577,13 @@ Checked 2026-11-22: 10 CCR 2505-3 §§ 130.1 and 430.3.A.i (D-66, rule version e
 
 Body: 10 CCR 2505-10 § 8.100.5.M.2.a.ii (S3403) requires the home's equity to be below the indexed limit for the home to be exempt, M.2.a.vi counts a home over the limit that the person intends to return to, and M.3.f counts "an individual's home if the individual's equity interest in the home exceeds the equity value limit". All three sit in the general aged, blind and disabled resource rules, so read literally they apply to every ABD category, not only long-term care. 42 U.S.C. 1396p(f) (S369) is a long-term care rule ("with respect to nursing facility services or other long-term care services"), and 42 CFR 435.601(b)(2) (D-34) has the agency apply the SSI methodology, under which the home is excluded at any value (20 CFR 416.1212). The volume applies the limit to long-term care only: ma_home_equity_disqualifies (CO-650) is read only by the long-term care items, and ma_home_is_countable_resource (CO-4622) does not test it. Coverage review NM-16. Items: CO-650, CO-4622.
 
-Class: needs Legal
+Class: state policy choice, with Legal advising (reclassified from "needs Legal" in coverage pass 6, non-MAGI F6-11, 2026-11-24: the texts that bear on it are all on file, the State's rule (§ 8.100.5.M.2.a.ii, vi, M.3.f), 42 U.S.C. 1396p(f) and 42 CFR 435.601(b)(2), (d); no document not on file would decide it. the reading in force follows 435.601(b)(2) and 1396p(f), the State's text reads wider, and which the State means is its own to settle by amending M.2.a or confirming the reading in force, with Legal advising on the federal limit (435.601(d)(2)-(3): no more restrictive than the SSI methodologies))
 Owner: Medicaid policy owner, LTSS policy owner
 Assumption: The home equity limit applies to long-term care (institutional, HCBS and PACE) only; for the other aged, blind and disabled categories the home is exempt at any equity value unless another rule of § 8.100.5.M.2.a makes it countable.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.M.2.a.ii, vi and M.3.f (D-65, version effective 11/14/2026), 42 U.S.C. 1396p(f)(1)(A) (D-46) and 42 CFR 435.601(b)(2) (D-34). The state text states the limit without restricting it to long-term care; whether Colorado's SSI-related methodology may be more restrictive than SSI's for the home is a legal question.
+
+Checked 2026-11-24 (coverage pass 6, non-MAGI F6-11): the same texts; 42 CFR 435.601(b)(2), (d)(1)-(3) (D-51, S4754). Reclassified, the assumption unchanged.
 
 ### OQ-821. Transfer penalty: how the partial month of a penalty period shows in the monthly outcome
 
@@ -2785,11 +2791,13 @@ Checked 2026-11-23: 9 CCR 2503-5 3.520.785, 3.520.786, 3.534.D, 3.544.G and 3.54
 
 Body: 10 CCR 2505-10 § 8.100.5.M.2.a.xiv (S3403): "The principal place of residence, which is subject to estate recovery, becomes a countable resource upon the execution and recording of a beneficiary deed"; M.3.e counts "Any real property that is subject to a recorded beneficiary deed and on which an estate recovery claim can be made." 42 U.S.C. 1396p(b)(1) (S3751) allows recovery only from the estate of an institutionalized individual ((A)) or one who was 55 or older when the assistance was received ((B)), and (B)(ii) never reaches "medical assistance for medicare cost-sharing or for benefits described in section 1396a(a)(10)(E)" (QMB, SLMB, QI-1, QDWI). The rule does not say whether "subject to estate recovery" is judged against the assistance being determined or against the person (whose estate is reachable for other Medicaid once 55). Coverage pass 3 C3-5 and the probe hand-check of CO-402: a 76-year-old QMB applicant with a beneficiary deed on her home. Judged against the assistance being determined, nothing a Medicare Savings Program pays can be recovered, so the home stays exempt and she is QMB; judged against the person, the home counts and she is refused QMB on its equity while her full-Medicaid test (where recovery is possible) refuses her too. A person under 55 who is not institutionalized has no recoverable estate on either reading (ma_home_is_subject_to_estate_recovery, CO-5203), and the text settles that half. Items: CO-4622, CO-5203, CO-5205, CO-5206, CO-613, CO-614, CO-615, CO-616.
 
-Class: needs Legal
+Class: state policy choice, with Legal advising (reclassified from "needs Legal" in coverage pass 6, non-MAGI F6-11, 2026-11-24: both readings rest on text on file, § 8.100.5.M.2.a.xiv and M.3.e against 42 U.S.C. 1396p(b)(1) and 42 CFR 435.601(b)(2); no unfetched document would decide which assistance 'subject to estate recovery' is judged against. It is the State's reading of its own rule, which HCPF settles by amending M.2.a.xiv or confirming the reading in force)
 Owner: Legal, Medicaid policy owner
 Assumption: "Subject to estate recovery" is judged against the assistance being determined: a home that counts only because of a recorded beneficiary deed is left out of the Medicare Savings Program resources (and out of a deeming parent's resources), and counts for the full-coverage aged, blind and disabled groups when the person is 55 or older or lives in a medical institution.
 
 Checked 2026-11-23: 10 CCR 2505-10 § 8.100.5.M.2.a.xiv and M.3.e (D-65, version effective 11/14/2026); 42 U.S.C. 1396p(a)(1)(B), (b)(1) (D-46). Neither the rule nor the statute says against which assistance the beneficiary-deed paragraph is judged; no HCPF memo on an allowed host addresses it.
+
+Checked 2026-11-24 (coverage pass 6, non-MAGI F6-11): the same texts; no HCPF memo on an allowed host. Reclassified, the assumption unchanged.
 
 ### OQ-901. Adult Financial: an Old Age Pension client who is a patient in a private psychiatric hospital - barred by C.R.S. 26-2-111(1)(d) or paid under the rule
 
@@ -3850,3 +3858,13 @@ Owner: Cash programs policy owner
 Assumption: The county department states the period it used; no default.
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.783.E-F (D-80). Items: CO-1708, CO-7101, CO-7102.
+
+### OQ-1385. Medicaid SSI method: whether an aged, blind or disabled spouse who has not applied for SSI is an "ineligible spouse" for 20 CFR 416.1163(d)
+
+Body: Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md). 20 CFR 416.1163(d)(1) (S5031) deems nothing from an ineligible spouse whose income after allocations is not more than the couple Federal Benefit Rate less the individual one, and tests the person's own income against the individual rate; 42 CFR 435.601(b)(2) (S4754) applies it where 10 CCR 2505-10 § 8.100.5.H.1.a (S1746) names no standard. Colorado's H.2.c (S1506) defines the ineligible spouse as "a parent or spouse who is not applying or eligible for SSI". A spouse who is not aged, blind or disabled can never be eligible for SSI, and the codex applies (d) to such a spouse (ma_ssi_ineligible_spouse_income_is_not_deemed, CO-7353). A spouse who is aged, blind or disabled but has not applied for SSI and does not receive it is, on H.2.c's words, also an ineligible spouse; read so, an aged couple applying for Medical Assistance together, neither on SSI, would each be tested alone whenever the other's income is 497 or less, where SSI would treat two such spouses who both meet its tests as an eligible couple (tested together against the couple rate, 1,491). Worked example: p1 aged, Social Security 1,100; p2 aged, no income, neither applying for SSI: as an eligible couple 1,100 - 20 = 1,080 <= 1,491, aged for both; with p2 an ineligible spouse, p1 1,080 > 994, none. The codex reads such a spouse as a possible eligible spouse and keeps the couple's combined test, the reading that does not deny where SSI would grant.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: A spouse who is aged, blind or disabled in the month is not an ineligible spouse for 20 CFR 416.1163(d): the couple's income is combined and compared with the couple rate, as before coverage pass 6. Only a spouse who is not aged, blind or disabled, and is not applying for or eligible for SSI, has income that (d)(1) may leave undeemed.
+
+Checked 2026-11-24: 10 CCR 2505-10 § 8.100.5.H.1.a, H.2.c (D-65); 20 CFR 416.1163 (D-53); 42 CFR 435.601(b)(2) (D-51). Colorado's definition of an ineligible spouse turns on applying for or receiving SSI, and no text on file says whether a spouse who would qualify but has not applied is treated as an eligible spouse for a Medical Assistance determination. Items: CO-7353.

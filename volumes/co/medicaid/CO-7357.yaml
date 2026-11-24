@@ -1,0 +1,20 @@
+id: CO-7357
+name: "Medicaid SSI method: the person's own unearned income"
+identifier: ma_ssi_own_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's own unearned income for the month that the SSI method counts, before the $20 general income disregard, with no income of a spouse: the counted unearned receipts (ma_ssi_unearned_receipts), in-kind support and maintenance (not for an unemancipated child) and gambling winnings (not where a hardship exemption is granted). The person's term of the couple's sum (ma_ssi_household_unearned_income_sum, CO-663), for the income test 20 CFR 416.1163(d)(1) makes on the person's own countable income (S5031)."
+precision: "Coverage pass 6, non-MAGI F6-6: the unearned income ma_ssi_own_countable_income (CO-7354), its OASDI-disregarded form (CO-7355) and the Pickle form (CO-7356) start from. Read exactly as CO-663 reads each member's."
+derived: [max, 0, ["+", ma_ssi_unearned_receipts, [case, [[otherwise, ma_is_ssi_unemancipated_child, false], 0], [else, ssi_in_kind_support_and_maintenance]], [case, [[otherwise, ma_lottery_winnings_hardship_exemption_granted, false], 0], [else, ma_ssi_gambling_receipts]]]]
+sources: [S5031, S1746, S4754]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md): 20 CFR 416.1163(d)(1) tests a person whose ineligible spouse's income is not deemed on the person's own countable income; every SSI-method income item summed the couple."
+nearest: [CO-663]
+tests:
+  # 20 CFR 416.1163(d)(1) (S5031): the person's own income. Social Security 1,100, no in-kind support, no winnings: 1,100.
+  - {id: CO-7357-T1, month: "2026-11", as_of: "2026-11-20", title: "F6-6: own unearned income (Social Security 1,100)", given: {ma_ssi_unearned_receipts: 1100, ma_is_ssi_unemancipated_child: false, ssi_in_kind_support_and_maintenance: 0, ma_lottery_winnings_hardship_exemption_granted: false, ma_ssi_gambling_receipts: 0}, expect: 1100}
+  # With in-kind support of 331.33 (one third of 994, 8.100.5.H.1.b) and 50 of winnings: 1,100 + 331.33 + 50 = 1,481.33.
+  - {id: CO-7357-T2, month: "2026-11", as_of: "2026-11-20", title: "own unearned income with in-kind support and winnings", given: {ma_ssi_unearned_receipts: 1100, ma_is_ssi_unemancipated_child: false, ssi_in_kind_support_and_maintenance: 331.33, ma_lottery_winnings_hardship_exemption_granted: false, ma_ssi_gambling_receipts: 50}, expect: 1481.33}

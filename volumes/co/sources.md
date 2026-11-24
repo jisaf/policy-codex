@@ -24819,3 +24819,79 @@ Document: D-80
 > month period. The twelve-month period can either be the previous tax year
 > (January to December) or the most recent twelve-months prior to the application
 > date.
+
+### S5030. SSI eligibles: Medical Assistance for persons receiving SSI, and from the original SSI eligibility date after an overturned denial (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.C.1.a-b, C.7 (rule version effective 11/14/2026; coverage pass 6, non-MAGI F6-5). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Benefits of the Colorado Medical Assistance Program must be provided to the following:
+>
+> a. persons receiving financial assistance under SSI;
+>
+> b. persons who are eligible for financial assistance under SSI, but are not receiving SSI;
+>
+> ...
+>
+> 7. Denied or terminated Medical Assistance based on a denial or termination of SSI which is later overturned, must be approved from the original SSI eligibility date.
+
+### S5031. SSI: deeming from an ineligible spouse; no income deemed when the spouse's income after allocations is not more than the couple and individual rates' difference
+
+Document: D-53
+
+20 CFR 416.1163 (introduction), (a), (d)(1)-(2) (D-53:866-890; coverage pass 6, non-MAGI F6-6). https://www.ecfr.gov/current/title-20/part-416
+
+> If you have an ineligible spouse who lives in the same household, we apply the deeming rules to your ineligible spouse's income in the following order.
+>
+> (a) *Determining your ineligible spouse's income.* We first determine how much earned and unearned income your ineligible spouse has, using the appropriate exclusions in § 416.1161(a).
+>
+> ...
+>
+> (d) *Determining your eligibility for SSI.* (1) If the amount of your ineligible spouse's income that remains after appropriate allocations is not more than the difference between the Federal benefit rate for an eligible couple and the Federal benefit rate for an eligible individual, there is no income to deem to you from your spouse. In this situation, we subtract only your own countable income from the Federal benefit rate for an individual to determine whether you are eligible for SSI benefits.
+>
+> (2) If the amount of your ineligible spouse's income that remains after appropriate allocations is more than the difference between the Federal benefit rate for an eligible couple and the Federal benefit rate for an eligible individual, we treat you and your ineligible spouse as an eligible couple. We do this by:
+>
+> (i) Combining the remainder of your spouse's unearned income with your own unearned income and the remainder of your spouse's earned income with your earned income;
+>
+> (ii) Applying all appropriate income exclusions in §§ 416.1112 and 416.1124; and
+>
+> (iii) Subtracting the couple's countable income from the Federal benefit rate for an eligible couple. (See § 416.2025(b) for determination of the State supplementary payment amount.)
+
+### S5032. SSI: an ineligible spouse's income excludes in-kind support and maintenance
+
+Document: D-53
+
+20 CFR 416.1161(a) (introduction), (a)(11) (D-53:772, 794; coverage pass 6, non-MAGI F6-6). https://www.ecfr.gov/current/title-20/part-416
+
+> (a) *For an ineligible spouse or parent.* We do not include any of the following types of income (see § 416.1102) of an ineligible spouse or parent:
+>
+> ...
+>
+> (11) The value of in-kind support and maintenance;
+
+### S5033. Spousal impoverishment: the deductions from an institutionalized spouse's income, in order, include a family allowance for each family member
+
+Document: D-47
+
+42 U.S.C. 1396r-5(d)(1)(A)-(D) and the paragraph after (D) (D-47:151-167; coverage pass 6, non-MAGI F6-11). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1) Allowances to be offset from income of institutionalized spouse After an institutionalized spouse is determined or redetermined to be eligible for medical assistance, in determining the amount of the spouse’s income that is to be applied monthly to payment for the costs of care in the institution, there shall be deducted from the spouse’s monthly income the following amounts in the following order:
+>
+> (A)
+>
+> A personal needs allowance (described in section 1396a(q)(1) of this title ), in an amount not less than the amount specified in section 1396a(q)(2) of this title .
+>
+> (B)
+>
+> A community spouse monthly income allowance (as defined in paragraph (2)), but only to the extent income of the institutionalized spouse is made available to (or for the benefit of) the community spouse.
+>
+> (C)
+>
+> A family allowance, for each family member , equal to at least ⅓ of the amount by which the amount described in paragraph (3)(A)(i) exceeds the amount of the monthly income of that family member .
+>
+> (D)
+>
+> Amounts for incurred expenses for medical or remedial care for the institutionalized spouse (as provided under section 1396a(r) of this title ).
+>
+> In subparagraph (C), the term “ family member ” only includes minor or dependent children, dependent parents, or dependent siblings of the institutionalized or community spouse who are residing with the community spouse .

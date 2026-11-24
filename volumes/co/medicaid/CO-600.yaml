@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person meets the SSI-related \"aged\" category's age requirement in the month - ma_aged_age years or older on some day of it, per 42 U.S.C. 1382c(a)(1)(A) and the federal ceiling of 42 CFR 435.520, with 10 CCR 2505-10 § 8.100.5.C.1's effective date for the Aged, Blind and Disabled categories (\"the first day of the month the person becomes eligible\", S3900)."
-precision: "Reads ma_age_on_last_day_of_month (CO-5402): a person whose 65th birthday falls in the month is aged for the whole month, and one who turns 65 in a later month is not aged in a retroactive month before it. Time audit T-1 (2026-11-23, CO-533): this read age (CO-300) on the determination date in every month, so the retroactive months before a 65th birthday were aged. A rule about the determination itself reads it [at] the determination month (ma_is_aged_blind_or_disabled, CO-603)."
+precision: "Reads ma_age_on_last_day_of_month (CO-5402): a person whose 65th birthday falls in the month is aged for the whole month, and one who turns 65 in a later month is not aged in a retroactive month before it. Time audit T-1 (2026-11-23, CO-533): this read age (CO-300) on the determination date in every month, so the retroactive months before a 65th birthday were aged. A rule about the determination itself reads it [at] the determination month; ma_is_aged_blind_or_disabled (CO-603) reads it in the month since coverage pass 6 (F6-4)."
 derived: [">=", ma_age_on_last_day_of_month, ma_aged_age]
 sources: [S3900, S304, S305]
 implemented: engine

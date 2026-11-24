@@ -1,0 +1,13 @@
+id: CO-7352
+name: Ceased living with spouse date
+identifier: ceased_living_with_spouse_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person who, on the determination date, lives in a different home (dwelling_id) from the person's spouse or a person held out as the person's spouse, the date the two ceased to live together: the day one of them moved out of the home they shared. Where they live apart because one of them entered a facility (residence_setting_type other than private_dwelling), that one's institution_entry_date is the date and this fact need not be stated. It may be stated on either of the two."
+precision: "Required where read: a program that counts spouses together only while they live together reads it for a month after they stopped (the SSI method from the month after the month they ceased to live together, 10 CCR 2505-10 § 8.100.7.C.2.b, S1759), and not stated, with no facility entry to date the separation, it cannot be determined (decision 4 of 2026-11-23). Spouses who live together state no date. A neutral fact of the household's history: which months each program counts them apart is the program's own rule."
+supplied_by: "The applicant's statement on the application (who lives at the address, and since when), or the case record."
+sources: [S1759, S1746]
+tags: [household]
+rationale: "Coverage pass 6, non-MAGI F6-1 (docs/reviews/coverage6-medicaid-nonmagi.md): the SSI-method couple (ma_ssi_couple_members, CO-3626) counted married spouses together whatever their homes, except for entry to a medical institution, so spouses who separated, or one in an assisted living residence on a waiver, stayed one SSI household forever. § 8.100.5.H.1.a (S1746) makes mutually available only the 'Income of spouses living together', and § 8.100.7.C.2.b (S1759) counts each alone 'Beginning the first month following the month the couple ceases to live together'. dwelling_id (CO-3350) says who lives together on the determination date; no fact said since when they had lived apart, which C.2.b's month needs."

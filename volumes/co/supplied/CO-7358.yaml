@@ -1,0 +1,13 @@
+id: CO-7358
+name: Lost SSI or OAP received with Social Security
+identifier: lost_ssi_or_oap_received_with_social_security
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person, in some month after April 1977, was both eligible for and receiving Supplemental Security Income, a State supplement or the Old Age Pension and entitled to Social Security (OASDI), and has since become ineligible for that payment, for any reason (an OASDI increase, other income, a change of household or resources). The loss event of 42 CFR 435.135(a)(2)-(3) (S1233). A fact of past assistance, as SSA's and the State's records show it."
+precision: "Required where read (decision 4 of 2026-11-23): not stated, a reader that needs it cannot determine. A loss caused by Social Security (lost_ssi_or_oap_due_to_social_security_benefits, CO-1108) is one such loss when the person was receiving OASDI with the payment; the OASDI of the last such month is social_security_income_when_ssi_or_oap_lost (CO-1109)."
+supplied_by: "SSA's SSI and OASDI benefit history (SDX, BENDEX) and the State's Old Age Pension case history, as read by the eligibility site."
+sources: [S1233, S623]
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 6, non-MAGI F6-8 (docs/reviews/coverage6-medicaid-nonmagi.md): the Pickle group (ma_pickle_eligible, CO-1159) required a loss caused by OASDI (10 CCR 2505-10 § 8.100.6.D.2, S623), while 42 CFR 435.135(a) (S1233) makes Medicaid mandatory for anyone receiving OASDI who 'Were eligible for and receiving SSI or State supplements but became ineligible for those payments after April 1977' and would still be eligible with the cost-of-living increases since the last month of concurrent receipt deducted; no fact stated a loss for another reason (PICKLE-PENSION, CO-910: SSI lost when a pension began)."

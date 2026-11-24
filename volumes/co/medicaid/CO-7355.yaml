@@ -1,0 +1,18 @@
+id: CO-7355
+name: "Medicaid SSI method: the person's own countable income with Social Security disregarded"
+identifier: ma_ssi_own_countable_income_with_oasdi_disregarded
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's own countable income for the month as ma_ssi_own_countable_income (CO-7354) figures it, with the person's counted Social Security (ma_ssi_counted_social_security_receipts) left out of the unearned income: the own-income form of ma_dac_countable_income (CO-1160), which the Disabled Adult Children and disabled widow(er)s tests compare (10 CCR 2505-10 § 8.100.6.I, J), for a person whose ineligible spouse's income is not deemed (20 CFR 416.1163(d)(1), S5031)."
+precision: "Read by ma_ssi_income_test_status (CO-5516, met_with_oasdi_disregarded) and ma_dac_eligible (CO-1161) where ma_ssi_ineligible_spouse_income_is_not_deemed (CO-7353) holds."
+derived: ["+", [max, 0, ["-", [max, 0, ["-", ma_ssi_own_unearned_income, ma_ssi_counted_social_security_receipts]], ssi_general_income_exclusion]], [max, 0, ["-", ["*", [max, 0, ["-", [max, 0, ["-", [max, 0, ["-", ma_ssi_gross_earned_income, [otherwise, ma_ssi_excluded_earned_income, 0]]], ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, [max, 0, ["-", ma_ssi_own_unearned_income, ma_ssi_counted_social_security_receipts]]]]]]], [case, [[all, meets_ssa_disability_criteria, [not, is_blind], ["<", ma_age_on_first_day_of_month, ma_aged_age]], [otherwise, impairment_related_work_expenses_paid, 0]], [else, 0]]]], ssi_earned_income_disregard_rate], [case, [["<", ma_age_on_first_day_of_month, ma_aged_age], ["+", [case, [is_blind, [otherwise, blind_work_expenses_paid, 0]], [else, 0]], [case, [[any, is_blind, meets_ssa_disability_criteria], ma_ssi_pass_set_aside_earned_income], [else, 0]]]], [else, 0]]]]]
+sources: [S5031, S1746, S308, S309, S310]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md): the DAC and disabled widow(er)s tests read the couple's figure against the couple rate in the same way."
+nearest: [CO-1160, CO-7354]
+tests:
+  # Social Security 800 and a pension 100, aged: unearned 900 - 800 = 100; 100 - 20 = 80.
+  - {id: CO-7355-T1, month: "2026-11", as_of: "2026-11-20", title: "F6-6: own income with the Social Security left out: (900 - 800) - 20 = 80", given: {ma_ssi_own_unearned_income: 900, ma_ssi_counted_social_security_receipts: 800, ma_ssi_gross_earned_income: 0, ma_ssi_excluded_earned_income: 0, date_of_birth: "1950-03-01", meets_ssa_disability_criteria: false, is_blind: false}, expect: 80}
