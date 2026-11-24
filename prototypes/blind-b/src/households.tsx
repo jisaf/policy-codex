@@ -31,21 +31,46 @@ function casePrograms(c: HouseholdCase): string[] {
   return PROGRAM_ORDER.filter((p) => s.has(p));
 }
 
+/** The values a case's stored expectations give an outcome, for any person and month. */
+function storedValues(c: HouseholdCase, identifier: string): string[] {
+  const out: string[] = [];
+  for (const ex of Object.values(c.expect ?? {})) {
+    const v = (ex as Record<string, unknown>)[identifier];
+    if (v === undefined) continue;
+    for (const x of v !== null && typeof v === "object" && !Array.isArray(v) ? Object.values(v) : [v]) out.push(String(x));
+  }
+  return out;
+}
 export function HouseholdList() {
   const q = route.value.q;
-  const text = (q.q ?? "").toLowerCase(), prog = q.program ?? "";
-  const list = D.cases.filter((c) => (!text || (c.id + " " + c.title).toLowerCase().includes(text)) && (!prog || casePrograms(c).includes(prog)));
+  const text = (q.q ?? "").toLowerCase(), prog = q.program ?? "", result = q.result ?? "";
+  const statusId = prog ? MAIN[prog]?.status[0] : undefined;
+  const results = useMemo(() => {
+    if (!statusId) return [];
+    const n = new Map<string, number>();
+    for (const c of D.cases) for (const v of new Set(storedValues(c, statusId))) n.set(v, (n.get(v) ?? 0) + 1);
+    return [...n.entries()].sort((a, b) => b[1] - a[1]);
+  }, [statusId]);
+  const list = D.cases.filter((c) => (!text || (c.id + " " + c.title).toLowerCase().includes(text)) && (!prog || casePrograms(c).includes(prog))
+    && (!result || !statusId || storedValues(c, statusId).includes(result)));
   return (
     <div>
       <h1>Stored households</h1>
       <p class="lede">{D.cases.length} worked families kept with the rulebook. Each one states its facts and the results the rules must give, so a change to a rule can be judged by what it does to them. They are examples, not the caseload.</p>
       <div class="filters">
-        <input type="search" placeholder="Find a household by words in its description" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
-        <select value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })}>
+        <input type="search" aria-label="Find a household by words in its description" placeholder="Find a household by words in its description" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+        <select aria-label="Program" value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value, result: undefined })}>
           <option value="">Any program</option>
           {PROGRAM_ORDER.map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}
         </select>
+        {statusId && results.length > 0 && (
+          <select aria-label="Stored result" value={result} onChange={(e) => setQ({ result: (e.target as HTMLSelectElement).value || undefined })}>
+            <option value="">Any stored result</option>
+            {results.map(([v, n]) => <option value={v}>{fmtVal(v, byIdent.get(statusId), undefined, true)} ({n})</option>)}
+          </select>
+        )}
       </div>
+      {statusId && <p class="small muted">{list.length} household{list.length === 1 ? "" : "s"}{result ? <> where some person’s stored {shortName(byIdent.get(statusId)!)} is “{fmtVal(result, byIdent.get(statusId), undefined, true)}”</> : null}. The stored result is the one the household was written to expect.</p>}
       <ul class="plain hhlist">
         {list.map((c) => {
           const ck = checkOf(c);
@@ -114,11 +139,17 @@ function Results({ c, who, sel, prog }: { c: HouseholdCase; who: (p: string) => 
     const codes = aidCodesFor(c, pid, p);
     const st = MAIN[p].status.map((s) => ({ it: byIdent.get(s)!, v: evalOne(c, s, pid) }));
     const am = MAIN[p].amounts.map((s) => ({ it: byIdent.get(s)!, v: evalOne(c, s, pid) })).filter((a) => typeof a.v === "number" && a.v > 0);
+    // A person outside the program's household (an ineligible member, say) gets no code even where the
+    // household is eligible: say so, rather than showing the household's status as if it were theirs.
+    const part = D.aidCodes.participation?.[p];
+    const pv = !codes.length && part ? evalOne(c, part.outcome, pid) : null;
+    const outside = pv !== null && pv !== undefined && part && !part.member.includes(pv);
     return (
       <a class={"cell" + (codes.length ? " has" : "")} href={href("households/" + c.id, { ...route.value.q, p: pid, prog: p, keep: "1" })}>
         {codes.map((k) => <span class="code" title={k.label}><b>{k.code}</b><span>{k.label.replace(/^[^:]+: /, "")}</span></span>)}
-        {!codes.length && <span class="nocode">{st.map((s) => (s.v === null ? "Cannot determine" : fmtVal(s.v, s.it, who, true))).join("; ")}</span>}
-        {am.map((a) => <span class="amt">{shortName(a.it)} <b>{fmtVal(a.v, a.it)}</b></span>)}
+        {!codes.length && outside && <span class="nocode"><b>{fmtVal(pv, byIdent.get(part!.outcome), who, true)}</b></span>}
+        {!codes.length && <span class="nocode">{outside ? "Household: " : ""}{st.map((s) => (s.v === null ? "Cannot determine" : fmtVal(s.v, s.it, who, true))).join("; ")}</span>}
+        {am.map((a) => <span class="amt">{outside ? "Household’s " + shortName(a.it).toLowerCase() : shortName(a.it)} <b>{fmtVal(a.v, a.it)}</b></span>)}
       </a>
     );
   };
@@ -201,7 +232,7 @@ function Step({ n, c, who, depth, parentPerson, lead }: { n: TraceNode; c: House
   const marked = n.children.filter((k) => k.decisive);
   const deciding = marked.length ? marked : n.children;
   const others = marked.length ? n.children.filter((k) => !k.decisive) : [];
-  const [open, setOpen] = useState(depth < 7);
+  const [open, setOpen] = useState(depth < 3);
   const [showOthers, setShowOthers] = useState(false);
   const mark = new Set(deciding.map((k) => k.identifier));
   const src = it ? (it.sources ?? []).map((s) => srcById.get(s)).filter(Boolean)[0] : null;
@@ -246,6 +277,52 @@ function Step({ n, c, who, depth, parentPerson, lead }: { n: TraceNode; c: House
   );
 }
 function countNodes(n: TraceNode): number { return 1 + n.children.reduce((a, k) => a + countNodes(k), 0); }
+/** The chain of deciding steps from the result down, while each step has exactly the
+ *  steps marked as deciding to follow; ends at the step whose inputs decided it. */
+function shortChain(root: TraceNode): { chain: TraceNode[]; inputs: TraceNode[] } {
+  const chain: TraceNode[] = [root];
+  let n = root;
+  // One deciding step may appear more than once (read in the condition and in the result); the
+  // later reads are "worked out earlier" and carry no children, so keep the one that has them.
+  const decidingOnce = (x: TraceNode) => {
+    const by = new Map<string, TraceNode>();
+    for (const k of x.children.filter((k) => k.decisive)) { const had = by.get(k.key); if (!had || (!had.children.length && k.children.length)) by.set(k.key, k); }
+    return [...by.values()];
+  };
+  for (let i = 0; i < 12; i++) {
+    const marked = decidingOnce(n);
+    const next = marked.length === 1 && marked[0].kind === "derived" && marked[0].children.length ? marked[0] : null;
+    if (!next) break;
+    chain.push(next);
+    n = next;
+  }
+  const marked = decidingOnce(n);
+  const seen = new Set<string>();
+  const inputs = (marked.length ? marked : n.children).filter((k) => (seen.has(k.key) ? false : (seen.add(k.key), true)));
+  return { chain, inputs };
+}
+function InShort({ root, c, who }: { root: TraceNode; c: HouseholdCase; who: (p: string) => string }) {
+  const { chain, inputs } = useMemo(() => shortChain(root), [root]);
+  const name = (n: TraceNode) => { const it = byIdent.get(n.identifier); return it ? <ItemLink it={it} cls="plainlink strong" /> : n.name; };
+  const val = (n: TraceNode) => <span class="dstep-val">{fmtVal(n.value, byIdent.get(n.identifier), who, true)}</span>;
+  const last = chain[chain.length - 1];
+  return (
+    <section class="card inshort">
+      <h3>Why, in short</h3>
+      <ol class="plain">
+        {chain.map((n, i) => <li>{i > 0 && <span class="muted">because </span>}{n.person && n.person !== root.person ? <span class="who">{who(n.person)}: </span> : null}{name(n)} is {val(n)}</li>)}
+      </ol>
+      {inputs.length > 0 && last.kind === "derived" && (
+        <>
+          <p class="small muted">{shortName(byIdent.get(last.identifier) ?? ({ name: last.name } as CItem))} {inputs.some((k) => k.decisive) ? "was decided by" : "read"}:</p>
+          <ul class="plain inshort-in">{inputs.slice(0, 8).map((k) => <li>{k.person && k.person !== last.person ? <span class="who">{who(k.person)}: </span> : null}{name(k)} {val(k)} <span class="small muted">({originWord(k, c)})</span></li>)}</ul>
+          {inputs.length > 8 && <p class="small muted">and {inputs.length - 8} more, in the full record below.</p>}
+        </>
+      )}
+      <p class="small muted">The full record follows. The rule lines that decided each step are highlighted.</p>
+    </section>
+  );
+}
 function missing(n: TraceNode, out = new Map<string, TraceNode>()): Map<string, TraceNode> {
   if (n.kind === "supplied" && n.origin === "missing") out.set(n.identifier + "|" + n.person, n);
   n.children.forEach((k) => missing(k, out));
@@ -268,8 +345,9 @@ function Determination({ c, identifier, pid }: { c: HouseholdCase; identifier: s
         <h2>{who(pid)}: {it.name}</h2>
         <p class="det-answer">{fmtVal(root.value, it, who, true)}</p>
         {root.value === null && <p class="warnbox"><b>Cannot determine.</b> {miss.length ? <>The rules asked for {miss.length} fact{miss.length > 1 ? "s" : ""} the case does not state: {miss.slice(0, 8).map((m, i) => <>{i > 0 && "; "}{m.person ? who(m.person) + ": " : ""}{m.name}</>)}{miss.length > 8 && ` and ${miss.length - 8} more`}.</> : "A figure or rule it needs has nothing in force on this date."}</p>}
-        <p class="small muted">Read from the top: each step is followed by the step that decided it, down to what the case states. {countNodes(root)} things were looked at in all; those that did not decide are folded away.</p>
+        <p class="small muted">Read from the top: each step is followed by the step that decided it, down to what the case states. {countNodes(root)} things were looked at in all; those that did not decide are folded away, and steps more than three levels down open when you ask.</p>
       </div>
+      <InShort root={root} c={c} who={who} />
       <Step n={root} c={c} who={who} depth={0} parentPerson={pid} lead />
       <p class="small muted det-foot">Rules and figures as in force on {fmtDate(c.as_of)}. Rulebook draft of {fmtDate(D.generated)}; no item in it has been approved.{exp !== undefined && route.value.q.asof === undefined ? <> The stored expected result is “{typeof exp === "object" && exp && !Array.isArray(exp) ? fmtVal((exp as any)[monthOf(c)], it, who) : fmtVal(exp, it, who)}”.</> : null}</p>
     </section>
@@ -346,7 +424,9 @@ function Documents({ c, who }: { c: HouseholdCase; who: (p: string) => string })
 }
 
 /* ---------- what if ---------- */
-interface Stated { pid: string; it: CItem; value: number; where: "facts" | "month_defaults" | "months" }
+/** An amount the case states: a money or hours fact, or a money or hours field of one record in a
+ *  list of records (earnings, receipts, holdings), which is what the programs read for income and resources. */
+interface Stated { pid: string; it: CItem; value: number; where: "facts" | "month_defaults" | "months"; rec?: { index: number; field: string }; unit: CItem; label: string; key: string }
 function statedAmounts(c: HouseholdCase): Stated[] {
   const out: Stated[] = [];
   const m = monthOf(c);
@@ -355,10 +435,24 @@ function statedAmounts(c: HouseholdCase): Stated[] {
     const look = (rec: Record<string, unknown> | undefined, where: Stated["where"]) => {
       for (const [k, v] of Object.entries(rec ?? {})) {
         const it = byIdent.get(k);
-        if (!it || it.kind !== "supplied" || typeof v !== "number" || seen.has(k)) continue;
-        if (it.type !== "money" && it.type !== "hours") continue;
+        if (!it || it.kind !== "supplied" || seen.has(k)) continue;
+        if (Array.isArray(v) && it.record_fields) {
+          seen.add(k);
+          v.forEach((r, index) => {
+            if (!r || typeof r !== "object") return;
+            for (const [field, x] of Object.entries(r as Record<string, unknown>)) {
+              const ft = (it.record_fields as Record<string, { type: string }>)[field]?.type;
+              if (typeof x !== "number" || (ft !== "money" && ft !== "hours")) continue;
+              const kind = (r as Record<string, unknown>).kind;
+              out.push({ pid, it, value: x, where, rec: { index, field }, unit: { ...it, type: ft }, key: `${pid}:${k}#${index}.${field}`,
+                label: `${it.name}${typeof kind === "string" ? ", " + kind.replace(/_/g, " ") : ""} (record ${index + 1}): ${field.replace(/_/g, " ")}` });
+            }
+          });
+          continue;
+        }
+        if (typeof v !== "number" || (it.type !== "money" && it.type !== "hours")) continue;
         seen.add(k);
-        out.push({ pid, it, value: v, where });
+        out.push({ pid, it, value: v, where, unit: it, label: it.name, key: `${pid}:${k}` });
       }
     };
     look(p.months?.[m], "months"); look(p.month_defaults, "month_defaults"); look(p.facts as any, "facts");
@@ -367,8 +461,14 @@ function statedAmounts(c: HouseholdCase): Stated[] {
 }
 function withAmount(c: HouseholdCase, s: Stated, v: number): HouseholdCase {
   const p: any = { ...c.persons[s.pid] };
-  if (s.where === "months") p.months = { ...p.months, [monthOf(c)]: { ...p.months[monthOf(c)], [s.it.identifier]: v } };
-  else p[s.where] = { ...p[s.where], [s.it.identifier]: v };
+  const put = (rec: any) => {
+    if (!s.rec) return { ...rec, [s.it.identifier]: v };
+    const list = (rec[s.it.identifier] as any[]).slice();
+    list[s.rec.index] = { ...list[s.rec.index], [s.rec.field]: v };
+    return { ...rec, [s.it.identifier]: list };
+  };
+  if (s.where === "months") p.months = { ...p.months, [monthOf(c)]: put(p.months[monthOf(c)]) };
+  else p[s.where] = put(p[s.where]);
   return { ...c, persons: { ...c.persons, [s.pid]: p } };
 }
 function flat(n: TraceNode, depth = 0, out = new Map<string, { n: TraceNode; depth: number }>()) {
@@ -377,9 +477,10 @@ function flat(n: TraceNode, depth = 0, out = new Map<string, { n: TraceNode; dep
   return out;
 }
 function WhatIf({ c, who }: { c: HouseholdCase; who: (p: string) => string }) {
-  const amounts = useMemo(() => statedAmounts(c).sort((a, b) => (b.value > 0 ? 1 : 0) - (a.value > 0 ? 1 : 0) || a.pid.localeCompare(b.pid)), [c]);
+  // Records first (the programs read income and resources from them), then amounts above zero.
+  const amounts = useMemo(() => statedAmounts(c).sort((a, b) => (b.value > 0 ? 1 : 0) - (a.value > 0 ? 1 : 0) || (b.rec ? 1 : 0) - (a.rec ? 1 : 0) || a.pid.localeCompare(b.pid)), [c]);
   const q = route.value.q;
-  const pick = amounts.find((a) => a.pid + ":" + a.it.identifier === q.fact) ?? amounts.find((a) => /wages|earn|income/.test(a.it.identifier) && a.value > 0) ?? amounts[0];
+  const pick = amounts.find((a) => a.key === q.fact) ?? amounts.find((a) => a.rec && a.it.identifier === "earnings" && a.value > 0) ?? amounts.find((a) => /wages|earn|income/.test(a.it.identifier) && a.value > 0) ?? amounts[0];
   const [val, setVal] = useState<number | null>(null);
   const [sweep, setSweep] = useState<Array<{ at: number; changes: Array<{ pid: string; it: CItem; before: unknown; after: unknown }> }> | null>(null);
   if (!pick) return <Empty>This case states no dollar amounts or hours to move.</Empty>;
@@ -393,12 +494,13 @@ function WhatIf({ c, who }: { c: HouseholdCase; who: (p: string) => string }) {
   const before = useMemo(() => evalAll(c), [c, pick]);
   const after = useMemo(() => (v === pick.value ? before : evalAll(withAmount(c, pick, v))), [c, pick, v]);
   const diffs = [...before.keys()].filter((k) => JSON.stringify(before.get(k)) !== JSON.stringify(after.get(k))).map((k) => { const [pid, id] = k.split("|"); return { pid, it: byIdent.get(id)!, before: before.get(k), after: after.get(k) }; });
-  const runSweep = () => {
-    const step = pick.it.type === "hours" ? 5 : 50, n = 60;
+  const runSweep = (dir: 1 | -1) => {
+    const step = pick.unit.type === "hours" ? 5 : 50;
+    const n = dir > 0 ? 60 : Math.min(60, Math.floor(pick.value / step));
     const out: NonNullable<typeof sweep> = [];
     let prev = before;
     for (let i = 1; i <= n; i++) {
-      const at = pick.value + i * step;
+      const at = pick.value + dir * i * step;
       const cur = evalAll(withAmount(c, pick, at));
       const ch = [...cur.keys()].filter((k) => { const it = byIdent.get(k.split("|")[1])!; return it.type !== "money" && JSON.stringify(prev.get(k)) !== JSON.stringify(cur.get(k)); })
         .map((k) => { const [pid, id] = k.split("|"); return { pid, it: byIdent.get(id)!, before: prev.get(k), after: cur.get(k) }; });
@@ -407,23 +509,25 @@ function WhatIf({ c, who }: { c: HouseholdCase; who: (p: string) => string }) {
     }
     setSweep(out);
   };
-  const unit = (n: number) => fmtVal(n, pick.it);
+  const unit = (n: number) => fmtVal(n, pick.unit);
+  const hasRecords = amounts.some((a) => a.rec);
   return (
     <div class="whatif">
       <p class="lede">Move one amount this case already states and see which results change, and which step changed them. This re-decides the stored household; it is not an application.</p>
       <div class="card">
         <label>Amount to move
-          <select value={pick.pid + ":" + pick.it.identifier} onChange={(e) => { setVal(null); setSweep(null); setQ({ fact: (e.target as HTMLSelectElement).value }); }}>
-            {amounts.map((a) => <option value={a.pid + ":" + a.it.identifier}>{who(a.pid)}: {a.it.name} ({fmtVal(a.value, a.it)})</option>)}
+          <select value={pick.key} onChange={(e) => { setVal(null); setSweep(null); setQ({ fact: (e.target as HTMLSelectElement).value }); }}>
+            {amounts.map((a) => <option value={a.key}>{who(a.pid)}: {a.label} ({fmtVal(a.value, a.unit)})</option>)}
           </select>
         </label>
         <div class="wi-row">
           <span>The case states <b>{unit(pick.value)}</b>. Try </span>
-          <input type="number" value={v} step={pick.it.type === "hours" ? 1 : 25} onInput={(e) => setVal(Number((e.target as HTMLInputElement).value))} aria-label="New amount" />
-          {(pick.it.type === "hours" ? [10, 20, 40] : [100, 250, 500, 1000]).map((d) => <button class="seg" onClick={() => setVal(v + d)}>+{pick.it.type === "hours" ? d : "$" + d}</button>)}
+          <input type="number" value={v} step={pick.unit.type === "hours" ? 1 : 25} onInput={(e) => setVal(Number((e.target as HTMLInputElement).value))} aria-label="New amount" />
+          {(pick.unit.type === "hours" ? [-20, 10, 20, 40] : [-500, -100, 100, 250, 500, 1000]).map((d) => <button class="seg" disabled={v + d < 0} onClick={() => setVal(v + d)}>{d > 0 ? "+" : "−"}{pick.unit.type === "hours" ? Math.abs(d) : "$" + Math.abs(d)}</button>)}
           {v !== pick.value && <button class="linkish" onClick={() => setVal(null)}>reset</button>}
         </div>
         <p class="small muted">{watch.length} program results can depend on this amount{watch.length ? "" : ": none of the headline results reads it"}.</p>
+        {!pick.rec && hasRecords && <p class="small warnbox">This is a single-amount fact. The case also states records of earnings, receipts or holdings, and that is where the programs read income and resources, so moving this amount may change nothing. Pick a record above to move what the programs read.</p>}
       </div>
       {v !== pick.value && (
         <section class="card">
@@ -434,8 +538,9 @@ function WhatIf({ c, who }: { c: HouseholdCase; who: (p: string) => string }) {
       )}
       <section class="card">
         <h3>Where are the tipping points?</h3>
-        <p class="small muted">Raises the amount in steps of {pick.it.type === "hours" ? "5 hours" : "$50"} up to {unit(pick.value + (pick.it.type === "hours" ? 300 : 3000))} and lists each point where a status or category changes (dollar results that simply slide are left out).</p>
-        {!sweep && <button class="btn" onClick={runSweep}>Find them</button>}
+        <p class="small muted">Moves the amount in steps of {pick.unit.type === "hours" ? "5 hours" : "$50"}, up to {unit(pick.value + (pick.unit.type === "hours" ? 300 : 3000))} or down to {unit(Math.max(0, pick.value - (pick.unit.type === "hours" ? 300 : 3000)))}, and lists each point where a status or category changes (dollar results that simply slide are left out).</p>
+        {!sweep && <div class="btnrow"><button class="btn" onClick={() => runSweep(1)}>Find them above {unit(pick.value)}</button>{pick.value > 0 && <button class="btn" onClick={() => runSweep(-1)}>Find them below {unit(pick.value)}</button>}</div>}
+        {sweep && <button class="linkish" onClick={() => setSweep(null)}>search again</button>}
         {sweep && !sweep.length && <p class="ok-t">No status changes anywhere in that range.</p>}
         {sweep && sweep.map((s) => (
           <div class="tip">
