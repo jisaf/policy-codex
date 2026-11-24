@@ -4073,7 +4073,7 @@ Body: KL-CE-1 (coverage pass 7, R7-3; docs/reviews/known-limits.md, 2026-11-24).
 
 Class: state policy choice
 Owner: Child care policy owner (CDEC)
-Assumption: Net rental income is the rents less the rental's operating costs and mortgage interest (the expenses rental_property_expenses_paid lists), not less principal, depreciation, vehicle, home space or boarder costs.
+Assumption: Net rental income is the rents less the rental's operating costs (taxes, insurance, repairs and maintenance, utilities, fees) and its mortgage interest, the expenses a landlord's net rent has always been read against; not less payments on the principal, depreciation, mileage, the cost of space in the home or the cost of providing for boarders.
 
 Checked 2026-11-24: 8 CCR 1403-1 3.103 (no definition of net rental income), 3.111.G.2.a, H.4.e, I.2, I.3, I.12, I.17 (D-87, S2704, S3256, S5350). None lists the costs of net rental income. Items: CO-7910, CO-4463.
 
