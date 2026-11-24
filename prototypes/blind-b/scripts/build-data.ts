@@ -125,7 +125,13 @@ const data = {
   generated: new Date().toISOString().slice(0, 10),
   chapters, items, meta, sources, documents, questions, cases, aidCodes, touched,
 };
-fs.writeFileSync(path.join(out, "data.json"), JSON.stringify(data));
+// A host may hold each file to 16 MB (a claude.ai Artifact): the households and
+// what each reads go in data-cases.json, which src/store.ts loads from `parts`.
+{
+  const { cases: c, touched: t, ...rest } = data as Record<string, unknown>;
+  fs.writeFileSync(path.join(out, "data-cases.json"), JSON.stringify({ cases: c, touched: t }));
+  fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts: ["data-cases.json"] }));
+}
 
 // The documents go out as a few JSON bundles, keyed by their volume path
 // (`documents/D-1.md`), not as one file each.

@@ -155,7 +155,7 @@ function RuleSection({ it, steps }: { it: CItem; steps?: string }) {
       <RuleText it={it} />
       {it.options && <p class="small muted">Possible answers: {it.options.map((o) => o.replace(/_/g, " ")).join(" · ")}</p>}
       {it.effective && <p class="small">In force from {fmtDate(it.effective.from)}{it.effective.to !== "present" ? ` to ${fmtDate(it.effective.to)}` : ""}. On an earlier date this rule says nothing.</p>}
-      {it.accepts_from && <p class="small muted">Reads another program’s result on purpose: {it.accepts_from.map((a) => byIdent.get(a)).filter(Boolean).map((a, i) => <>{i > 0 && ", "}<ItemLink it={a!} /></>)}</p>}
+      {it.accepts_from && <p class="small muted">Reads another program’s result on purpose: {it.accepts_from.map((a) => byIdent.get(typeof a === "string" ? a : a.from)).filter(Boolean).map((a, i) => <>{i > 0 && ", "}<ItemLink it={a!} /></>)}</p>}
       <div class="btnrow">
         {!steps && <button class="btn" onClick={() => setQ({ steps: "1" })}>Explain step by step</button>}
         {steps && <button class="btn ghost" onClick={() => setQ({ steps: undefined })}>Hide the steps</button>}

@@ -66,6 +66,8 @@ export const SCOPE: Record<string, string> = {
 
 export async function load(): Promise<void> {
   D = await (await fetch("./data.json")).json();
+  // The bundle may come in parts (scripts/build-data.ts): merge them in.
+  for (const part of (D as unknown as { parts?: string[] }).parts ?? []) Object.assign(D, await (await fetch("./" + part)).json());
   E = createEngine(D.items, D.meta);
   TODAY = D.generated;
   byId = new Map(D.items.map((i) => [i.id, i]));

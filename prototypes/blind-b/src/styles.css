@@ -247,3 +247,29 @@ table.grid td { padding: 0; vertical-align: top; min-width: 9.5rem; } table.grid
   .shell { display: block; } body { background: #fff; font-size: 11pt; } #content { padding: 0; max-width: none; }
   .card, .fold, .took { border: 0; padding: 0; break-inside: auto; } .step, .dstep { break-inside: avoid; } details > *:not(summary) { display: block; }
 }
+
+/* map */
+.mappage .lede { max-width: 52rem; }
+.map-tools { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin: .5rem 0; }
+.map-tools label { font-size: .9rem; color: var(--ink2); }
+.map-tools .chk { display: inline-flex; gap: .35rem; align-items: center; }
+.map-legend { display: flex; flex-wrap: wrap; gap: .3rem .8rem; align-items: center; margin: .4rem 0 .8rem; color: var(--ink2); }
+.lg { display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap; }
+.lg i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; }
+.map-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); }
+.map-wrap svg { display: block; }
+.map-wrap g[role=button]:focus { outline: none; }
+.map-wrap g[role=button]:focus-visible rect:first-of-type { stroke: #f0a000; stroke-width: 3; }
+.map-panel { position: fixed; right: 0; top: 0; bottom: 0; width: min(380px, 100vw); background: var(--card); border-left: 1px solid var(--line); box-shadow: -8px 0 30px rgba(0,0,0,.15); padding: 1.2rem 1.2rem 3rem; overflow: auto; z-index: 30; }
+.map-panel .close { position: absolute; right: .6rem; top: .4rem; font-size: 1.6rem; background: none; border: 0; cursor: pointer; color: var(--ink2); }
+.map-panel h2 { padding-right: 1.5rem; }
+.map-panel li { padding: .15rem 0; }
+.tchips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tchip { font-size: .84rem; text-align: left; border: 1px solid #c9c3b2; background: #fff; border-radius: 6px; padding: .3rem .55rem; cursor: pointer; display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem; max-width: 100%; }
+.tkind { font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .8; }
+.tchip.sel { outline: 3px solid var(--accent); }
+.tchip.down { outline: 2px solid var(--ink); }
+.tchip.up { text-decoration: underline; text-decoration-thickness: 2px; }
+.tmarks { display: inline-flex; gap: 2px; }
+.tmarks i { display: inline-block; width: 6px; height: 6px; border-radius: 1px; border: 1px solid; }
+.tablewrap { overflow-x: auto; }
