@@ -13,7 +13,16 @@ const copy = (rel) => {
   fs.mkdirSync(path.dirname(path.join(out, rel)), { recursive: true });
   fs.copyFileSync(path.join(proto, rel), path.join(out, rel));
 };
-copy("index.html");
+// A claude.ai Artifact page may load a stylesheet only inline (or from Google
+// Fonts), so the published index.html carries style.css in a <style> element;
+// src/style.css is still copied for other static hosts.
+const css = fs.readFileSync(path.join(proto, "src/style.css"), "utf8");
+const html = fs
+  .readFileSync(path.join(proto, "index.html"), "utf8")
+  .replace(/\s*<link rel="stylesheet" href="src\/style\.css">/, `\n  <style>\n${css}\n  </style>`);
+if (!html.includes("<style>")) throw new Error("index.html: the stylesheet link was not found to inline");
+fs.mkdirSync(out, { recursive: true });
+fs.writeFileSync(path.join(out, "index.html"), html);
 copy("src/style.css");
 copy("dist/app.js");
 for (const f of fs.readdirSync(path.join(proto, "public/data"))) {
