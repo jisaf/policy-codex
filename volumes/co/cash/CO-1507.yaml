@@ -17,6 +17,6 @@ nearest: [CO-1231]
 tests:
   - {id: CO-1507-T1, as_of: "2026-10-01", given: {cw_death_reimbursement_amount: 1500}, expect: true}
   - {id: CO-1507-T2, as_of: "2026-10-01", given: {cw_death_reimbursement_amount: 0}, expect: false}
-  - {id: CO-1507-T3, title: "Computed through the amount - a Colorado Works decedent with $2,200 of charges and a $200 estate", as_of: "2026-10-01", given: {cw_is_deceased_client: true, burial_services_total_cost: 2200, burial_plot_cost_excluded_from_limit: 0, decedent_estate_value: 200, burial_insurance_proceeds: 0, af_burial_responsible_person_excess_resources: 0}, expect: true}
+  - {id: "CO-1507-T3", title: "Computed through the amount - a Colorado Works decedent with $2,200 of charges and a $200 estate", as_of: "2026-10-01", given: {cw_is_deceased_client: true, burial_services_total_cost: 2200, burial_plot_cost_excluded_from_limit: 0, decedent_estate_value: 200, burial_insurance_proceeds: 0, af_burial_responsible_person_excess_resources: 0, burial_contributions_from_responsible_persons: 0}, expect: true}
   # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
   - {"id": "CO-1507-T4", "as_of": "2026-10-01", "title": "T-9: cw_death_reimbursement_amount equal to 0 (cw_death_reimbursement_amount over 0)", "given": {"cw_death_reimbursement_amount": 0}, "expect": false}

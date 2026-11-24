@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The institution the person lives in is, by its overall character, established and maintained primarily for the diagnosis, treatment or care of persons with mental diseases or behavioral health disorders, whether or not it is licensed as such (42 CFR 435.1010)."
-precision: "Stated for a setting other than a private dwelling where a reader asks. A facility for individuals with intellectual disabilities is not one (icf_iid)."
+precision: "Stated for a setting other than a private dwelling where a reader asks. A facility for individuals with intellectual disabilities is not one (icf_iid). Required where Adult Financial or Colorado Works (CO-4446, CO-3802) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine."
 supplied_by: "Application (living arrangement), the facility's admission record."
 sources: [S2201]
 implemented: engine

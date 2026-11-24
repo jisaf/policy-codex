@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: "This person is an optional assistance-unit member for a reason the relationships do not show: a sibling not in the legal custody of the requesting caretaker by court order, child welfare involvement or adoption (3.604.2.C.2.e), or a parent who lives in the home of another caretaker and no longer has legal custody of the dependent children (C.2.f). A half sibling who receives child support (C.2.d) is derived (cw_is_half_sibling_receiving_child_support, CO-2842)."
-precision: "If not stated, Colorado Works reads this as false: a sibling, half sibling or parent in the home is a mandatory member (C.1.b-d)."
+precision: "Required where Colorado Works (for a dependent child or a parent of one, cw_is_optional_assistance_unit_member CO-2349) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Colorado Works read an unstated value as false: a sibling, half sibling or parent in the home is a mandatory member (C.1.b-d)."
 supplied_by: "Custody documents, child support records, applicant statement."
 sources: [S1625]
 tags: [cash, tanf, household]

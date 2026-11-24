@@ -3,17 +3,20 @@ name: "Colorado Works: is an adult member for the time limit"
 identifier: cw_is_adult_member
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: ColoradoWorks
 meaning: Whether this person is an "adult" (or a minor child head-of-household) for the sixty-month time limit - eighteen or older, or a minor who is the assistance unit's head of household and has a dependent child of their own, or a minor parent who does not live in the home of a caretaker and receives assistance as an adult (9 CCR 2503-6 3.604.2.N.2.c, cw_minor_parent_is_assisted_as_adult, CO-4352; coverage review CW-2) - per 45 CFR 264.1(a)(1)-(2) and 9 CCR 2503-6 3.606.6.A, C.
-precision: "The minor-head-of-household branch reads cw_has_dependent_child (the minor parent has a dependent child of her own), per 264.1(a)(2)'s \"minor parent head-of-household.\" Vocabulary fix round (R-7): reads cw_is_head_of_assistance_unit (CO-1733), not the SNAP head of household."
-derived: [any, [">=", age, cw_dependent_child_age_limit], [all, cw_is_head_of_assistance_unit, cw_has_dependent_child], cw_minor_parent_is_assisted_as_adult]
+precision: "The minor-head-of-household branch reads cw_has_dependent_child (the minor parent has a dependent child of her own), per 264.1(a)(2)'s \"minor parent head-of-household.\" Vocabulary fix round (R-7): reads cw_is_head_of_assistance_unit (CO-1733), not the SNAP head of household. Coverage pass 6 CA6-4 (docs/reviews/coverage6-cash.md): per month, eighteen or older on the month's first day (the complement of the dependent child's age, CO-6807) and a dependent child of the month; the time limit (cw_time_limit_reached, CO-918), a per-person figure, reads the determination month."
+derived: ["any", [">=", ["years_between", "date_of_birth", ["first_day", ["month"]]], "cw_dependent_child_age_limit"], ["all", "cw_is_head_of_assistance_unit", "cw_has_dependent_child_in_month"], "cw_minor_parent_is_assisted_as_adult"]
 sources: [S3154, S421, S3153]
 implemented: engine
 tags: [cash, tanf]
 rationale: "No existing item states who counts as an 'adult' for the Colorado Works time limit; cw_months_of_assistance_used (CO-915) and cw_time_limit_reached (CO-918) both need it under the fix-round C-2 finding that the sixty-month test is a unit-level test over the unit's adult members, not a person-level test read off whoever is asked. Reuses cw_dependent_child_age_limit (CO-270) rather than a bare 18, the same convention cw_is_work_eligible_individual (CO-919, fixed under C-6) follows."
 nearest: [CO-919]
 tests:
-  - {id: CO-924-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", cw_is_head_of_assistance_unit: true}, relationships: [], expect: true}
-  - {id: CO-924-T2, as_of: "2026-10-01", given: {date_of_birth: "2015-06-01", cw_is_head_of_assistance_unit: false}, relationships: [], expect: false}
-  - {id: CO-924-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", cw_is_head_of_assistance_unit: true}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-924-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", cw_is_head_of_assistance_unit: true}, relationships: [], expect: true}
+  - {id: CO-924-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-06-01", cw_is_head_of_assistance_unit: false}, relationships: [], expect: false}
+  - {id: "CO-924-T3", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", cw_is_head_of_assistance_unit: true, temporary_absence_reason: none, is_emancipated_minor: false}, others: {p2: {date_of_birth: "2026-02-03", temporary_absence_reason: none}}, relationships: [[parent, p1, p2]], expect: true}
+  # Coverage pass 6 CA6-4: eighteen or older on the month's first day.
+  - {id: "CO-924-T4", title: "Coverage pass 6 CA6-4: born 2008-09-20, September: 17, not an adult", month: "2026-09", as_of: "2026-10-15", given: {date_of_birth: "2008-09-20", cw_is_head_of_assistance_unit: false, cw_minor_parent_is_assisted_as_adult: false}, expect: false}
+  - {id: "CO-924-T5", title: "October: 18, an adult", month: "2026-10", as_of: "2026-10-15", given: {date_of_birth: "2008-09-20", cw_is_head_of_assistance_unit: false, cw_minor_parent_is_assisted_as_adult: false}, expect: true}
