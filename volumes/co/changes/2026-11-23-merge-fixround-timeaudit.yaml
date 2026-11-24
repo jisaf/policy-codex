@@ -1,5 +1,4 @@
 date: 2026-11-23
 summary: "Merge of the fix round (non-MAGI C3-1..C3-10 and others) with the time-audit fix round: flags raised only by the combination of the two."
 impact:
-  - {changed: CO-613, fingerprint: fp1-57a2ee08c60263326633, flagged: CO-617, not_applicable: "CO-617 chooses among the tier tests by name; QMB's resource figure (now CO-5206, C3-5) changes inside CO-613 only."}
-  - {changed: CO-616, fingerprint: fp1-8cdea4c49f26a6ab37d0, flagged: CO-617, not_applicable: "As for CO-613: QDWI's resource figure changes inside CO-616; CO-617 reads its result."}
+  - {changed: CO-616, fingerprint: fp1-270a7fb27ab19df1d3bd, flagged: CO-617, not_applicable: "As for CO-613: QDWI's resource figure changes inside CO-616; CO-617 reads its result."}

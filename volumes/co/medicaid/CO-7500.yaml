@@ -1,0 +1,22 @@
+id: CO-7500
+name: "Medicaid: resides in a medical institution in the month"
+identifier: ma_resides_in_medical_institution_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person lives in a medical institution (resides_in_medical_institution, CO-1742) in the month: in the determination month and after, the setting stated on the determination date; in a month before the determination month, the person is in the institution from the month of institution_entry_date (CO-008) and was not in it before (10 CCR 2505-10 § 8.100.7.A.2.c.iii, \"benefits start as of the first day when institutionalization began\"; § 8.100.3.E.1, a retroactive month needs \"all applicable eligibility requirements\" met in it)."
+precision: "Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P1): the month-scoped readers that ask whether the person is in a medical institution (the home's estate recovery and trust tests, the long-term care applicant, the long-term care asset disclosure) read the setting of the determination date in every month, so a retroactive month before the admission was read as a month in the institution. The same month rule as ma_is_institutionalized (CO-640), without the 30-day expectation those readers do not ask. The entry date is needed for a month before the determination month (decision 4 of 2026-11-23). A stay that ended before the determination date is not stated by any fact; the case states the setting on the determination date."
+derived: [all, resides_in_medical_institution, [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, institution_entry_date], [month]]]]]
+sources: [S1753, S1503]
+implemented: engine
+tags: [ma, non_magi, ltc]
+rationale: "Pattern sweep P1: resides_in_medical_institution (CO-1742) is a person-scope fact of the determination date, read by month-scoped Medicaid items. ma_is_institutionalized (CO-640) adds the 30-day expectation, which the estate recovery, home trust and disclosure rules do not ask; ma_excluded_from_ssi_household (CO-661) starts from the month after the entry month, the SSI household rule, not the month the person is in the institution."
+nearest: [CO-640, CO-661]
+tests:
+  # Admitted 2026-09-14, determined 2026-11-12 (8.100.7.A.2.c.iii, S1753). August: month_of(2026-09-14) = 2026-09 > 2026-08: false. September: 2026-09 <= 2026-09: true.
+  - {id: CO-7500-T1, month: "2026-08", as_of: "2026-11-12", title: "A retroactive month before the admission: not in the institution", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-14"}, expect: false}
+  - {id: CO-7500-T2, month: "2026-09", as_of: "2026-11-12", title: "The month of the admission: in the institution", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-14"}, expect: true}
+  - {id: CO-7500-T3, month: "2026-11", as_of: "2026-11-12", title: "The determination month reads the setting as stated", given: {resides_in_medical_institution: true}, expect: true}
+  - {id: CO-7500-T4, month: "2026-08", as_of: "2026-11-12", title: "Not in a medical institution on the determination date: false in any month", given: {resides_in_medical_institution: false}, expect: false}
+  - {id: CO-7500-T5, month: "2026-09", as_of: "2026-11-12", title: "A retroactive month with no entry date stated cannot be determined (decision 4)", given: {resides_in_medical_institution: true}, expect: unknown}

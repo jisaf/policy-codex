@@ -25039,3 +25039,30 @@ Document: D-82
 > normal school term (excluding summer session). It is possible for a student to
 > enroll prior to the beginning of the school term. However, for eligibility purposes,
 > enrollment starts when the student starts classes.
+### S5120. SSI: a temporary absence keeps the person a member of the household; one who leaves and does not return by the month after is not
+
+Document: D-53
+
+20 CFR 416.1167(a)(1) (D-53:1080-1082; pattern sweep, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> (a) *General.* During a temporary absence, we continue to consider the absent person a member of the household. A temporary absence occurs when—
+>
+> (1) You, your ineligible spouse, parent, or an ineligible child leaves the household but intends to and does return in the same month or the month immediately following; or
+
+### S5121. SSI: an ineligible spouse's income is not deemed from the month after the month of the spouse's death
+
+Document: D-53
+
+20 CFR 416.1163(f)(4) (D-53:910; pattern sweep, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> (4) *Ineligible spouse dies.* If your ineligible spouse dies, we do not deem your spouse's income to you to determine your eligibility for SSI benefits beginning with the month following the month of death. In determining your benefit amount beginning with the month following the month of death, we use only your own countable income in a prior month, excluding any income deemed to you in that month from your ineligible spouse.
+
+### S5122. SSI: an ineligible parent's income is not deemed from the month after the parent's death, or after the month the parent or the child leaves the household
+
+Document: D-53
+
+20 CFR 416.1165(g)(3)-(4) (D-53:971-973; pattern sweep, non-MAGI Medicaid). https://www.ecfr.gov/current/title-20/part-416
+
+> (3) *Ineligible parent dies.* If your ineligible parent dies, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the month following the month of death. In determining your benefit amount beginning with the month following the month of death, we use only your own countable income in a prior month, excluding any income deemed to you in that month from your deceased ineligible parent (see § 416.1160(b)(2)(iii)). If you live with two ineligible parents and one dies, we continue to deem income from the surviving ineligible parent who is also your natural or adoptive parent. If you live with a stepparent following the death of your natural or adoptive parent, we do not deem income from the stepparent.
+>
+> (4) *Ineligible parent and you no longer live in the same household.* If your ineligible parent and you no longer live in the same household, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the first month following the month in which one of you leaves the household. We also will not deem income to you from your parent's spouse (*i.e.*, your stepparent) who remains in the household with you if your natural or adoptive parent has permanently left the household. To determine your benefit amount if you continue to be eligible, we follow the rule in § 416.420 of counting your income including deemed income from your parent and your parent's spouse (*i.e.*, your stepparent) (if the stepparent and parent lived in the household with you) in the second month prior to the current month.

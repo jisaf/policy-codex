@@ -3,18 +3,21 @@ name: Is applying for or eligible for SSI
 identifier: ma_is_applying_for_or_eligible_for_ssi
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
 meaning: "Whether the person is applying for or eligible for Supplemental Security Income. 10 CCR 2505-10 § 8.100.5.H.2.b-c defines an ineligible child, parent or spouse as one 'who is not applying or eligible for SSI', and the income allocations of § 8.100.5.H.3 are made for those persons."
-precision: "Eligible for SSI is read as SSA's award (receives_ssi) or continued SSI status without payment (1619(b)); the volume does not determine SSI. If no application is stated, Medicaid reads the person as not applying. Coverage pass 4, non-MAGI N4-13 (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; readers do not invent defaults): whether the person has applied for SSI and whether the person keeps SSI status without payment are read as stated; neither was read as no when unstated any more, since who is an ineligible parent, spouse or child (10 CCR 2505-10 8.100.5.H.2.b) turns on them and no rule gives a default."
-derived: [any, has_applied_for_ssi, receives_ssi, retains_ssi_status_without_payment]
-sources: [S1506]
+precision: "Eligible for SSI is read as SSA's award (receives_ssi) or continued SSI status without payment (1619(b)); the volume does not determine SSI. If no application is stated, Medicaid reads the person as not applying. Coverage pass 4, non-MAGI N4-13 (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; readers do not invent defaults): whether the person has applied for SSI and whether the person keeps SSI status without payment are read as stated; neither was read as no when unstated any more, since who is an ineligible parent, spouse or child (10 CCR 2505-10 8.100.5.H.2.b) turns on them and no rule gives a default. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P1): per month. Eligible for SSI is read in the month: SSA's award (ma_receives_ssi_in_month, CO-7351) or SSI status without payment (ma_retains_ssi_status_in_month, CO-7504), each from the month of the award's eligibility date in a month before the determination month (8.100.6.C.7, S5030), so a parent or spouse awarded SSI from October is an ineligible parent or spouse in a retroactive August. Applying is the application as stated on the determination date (H.2.b-c, 'who is not applying'); no fact dates an application."
+derived: [any, has_applied_for_ssi, ma_receives_ssi_in_month, ma_retains_ssi_status_in_month]
+sources: [S1506, S5030, S1503]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "OQ-83: the allocations for ineligible children and spouses turn on SSI application or eligibility; receives_ssi states receipt only, and the Adult Financial has_applied_for_ssi states an Aid to the Blind condition, so Medicaid needs its own fact. Dual-entry audit 3.12: derived from the SSI application record (CO-848) and SSA's award (receives_ssi, CO-012; 1619(b) status, CO-1112), so the facts are not stated twice."
 tests:
-  - {id: CO-2271-T1, title: "SSI application pending", as_of: "2026-11-01", given: {has_applied_for_ssi: true, receives_ssi: false}, expect: true}
-  - {id: CO-2271-T2, title: "SSI recipient", as_of: "2026-11-01", given: {receives_ssi: true}, expect: true}
-  - {id: CO-2271-T3, title: "Neither", as_of: "2026-11-01", given: {has_applied_for_ssi: false, receives_ssi: false, retains_ssi_status_without_payment: false}, expect: false}
-  - {id: CO-2271-T4, as_of: "2026-11-12", given: {receives_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13 (decision 4): whether the person has applied for SSI not stated: cannot determine (was read as no)", expect: unknown}
-  - {id: CO-2271-T5, as_of: "2026-11-12", given: {receives_ssi: false, has_applied_for_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13: stated no, no, no: false", expect: false}
+  - {id: CO-2271-T1, month: "2026-11", title: "SSI application pending", as_of: "2026-11-01", given: {has_applied_for_ssi: true, receives_ssi: false}, expect: true}
+  - {id: CO-2271-T2, month: "2026-11", title: "SSI recipient", as_of: "2026-11-01", given: {receives_ssi: true}, expect: true}
+  - {id: CO-2271-T3, month: "2026-11", title: "Neither", as_of: "2026-11-01", given: {has_applied_for_ssi: false, receives_ssi: false, retains_ssi_status_without_payment: false}, expect: false}
+  - {id: CO-2271-T4, month: "2026-11", as_of: "2026-11-12", given: {receives_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13 (decision 4): whether the person has applied for SSI not stated: cannot determine (was read as no)", expect: unknown}
+  - {id: CO-2271-T5, month: "2026-11", as_of: "2026-11-12", given: {receives_ssi: false, has_applied_for_ssi: false, retains_ssi_status_without_payment: false}, title: "N4-13: stated no, no, no: false", expect: false}
+  # Pattern sweep P1: SSI awarded from 2026-10-01, no application pending; determined 2026-11-12. August: not yet eligible: false. October: true.
+  - {id: CO-2271-T90, month: "2026-08", as_of: "2026-11-12", title: "Pattern sweep: a retroactive month before the SSI award", given: {has_applied_for_ssi: false, receives_ssi: true, retains_ssi_status_without_payment: false, ssi_eligibility_date: "2026-10-01"}, expect: false}
+  - {id: CO-2271-T91, month: "2026-10", as_of: "2026-11-12", title: "Pattern sweep: the month of the award's eligibility date", given: {has_applied_for_ssi: false, receives_ssi: true, retains_ssi_status_without_payment: false, ssi_eligibility_date: "2026-10-01"}, expect: true}
