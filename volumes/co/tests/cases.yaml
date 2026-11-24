@@ -89165,7 +89165,7 @@
 - id: "CO-1062"
   title: "An aged lawful permanent resident whose five years end after a retroactive month: not SSI-related eligible in it (Medicaid status by month, MS-2, LPR-5Y-AGED)"
   # Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-2), probe LPR-5Y-AGED, built from CO-766. p1, 76, single, a
-  # lawful permanent resident admitted directly on 2021-09-15 (8 work quarters, no military connection: no exemption) and living in Colorado since,
+  # lawful permanent resident admitted directly on 2021-09-15 (8 work quarters, no military service, not a veteran's survivor: no exemption) and living in Colorado since,
   # Social Security $800 a month, a bank account of $1,000; applied 2026-11-05 with a retroactive request (August to October); determined 2026-11-12.
   # Every month: 780 <= 994 and 1,000 <= 2,000, as CO-1061.
   # August: 8 U.S.C. 1613(a) (S176): five years from 2021-09-15, through 2026-09-14: inside the bar on every day; status not met (8.100.3.G.1.g.iii, S655): none.
@@ -89183,7 +89183,8 @@
         us_entry_date: "2021-09-15"
         status_before_lpr_adjustment: none
         qualifying_quarters: 8
-        has_military_connection: false
+        has_qualifying_military_service: false
+        is_surviving_spouse_of_veteran: false
         state_of_residence: CO
         state_of_residence_start_date: "2021-09-15"
         residence_setting_type: private_dwelling

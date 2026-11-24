@@ -1,0 +1,8 @@
+# Medicaid status by month (docs/reviews/medicaid-status-by-month.md): residency and citizenship and immigration status,
+# shared by the MAGI and non-MAGI Medicaid categories, read for the month evaluated (MS-1 to MS-3): a retroactive month
+# before a move to Colorado, before the five years end or before the qualified status held now is judged on that month.
+# One entry per change-impact flag the round leaves open.
+date: 2026-11-24
+summary: "Medicaid status by month: ma_meets_residency_in_month (CO-7650) over the neutral state_of_residence_start_date (CO-7651); the status held before the qualified status date (CO-7652, read by CO-7551); every month-scoped Medicaid reader of CO-2250, CO-509, CO-1174 and CO-1173 reads the month's item; OQ-1445, OQ-1446; stored households CO-1060 to CO-1063."
+impact:
+  - {changed: CO-659, fingerprint: fp1-4a670857b489cd3f1473, flagged: CO-660, not_applicable: "Re-keyed (Medicaid status by month): CO-659's fingerprint moved only through ma_meets_citizenship_requirement (CO-509), read by the spouse test ma_transfer_penalty_is_apportioned_with_spouse (CO-2232), which ma_transfer_penalty_share_rate (CO-2235) reads for CO-659, whose precision now names its readers (MS-2); CO-509's derivation is unchanged and CO-2232 still reads the spouse's status at the determination (10 CCR 2505-10 8.100.7.F, a test at the determination). ma_transfer_penalty_applies (CO-660) shares excerpt S1758 and reads the penalty months and start date, which do not change; nothing carries over."}
