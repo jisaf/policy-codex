@@ -4,7 +4,7 @@ import {
   D, E, TODAY, byId, byIdent, PROGRAMS, PROGRAM_ORDER, KIND, fmtVal, fmtDate, firstSentence, requiredRoles, openQuestions, qById,
   questionOwners, questionPrograms, outcomesReached, householdsReading, outcomeProgram, programOutcomes, isVerificationOutcome,
   role, signs, notes, isPendingSign, toggleSign, signBlockers, tookEffect, versionInForce, unverifiedDirect, unverifiedRest, tagLabel,
-  addNote, dropNote, caseById, type CItem, type Question,
+  addNote, dropNote, caseById, effortOf, EFFORT, questionClass, statedOwners, limitOwners, type Effort, type CItem, type Question,
 } from "./store";
 import { href, route, setQ, ProgramTag, Pill, Fold, More, ItemLink, ItemRow, Flags, Rich, RuleText, ValueView, Crumbs, Empty, stripIds } from "./ui";
 
@@ -18,6 +18,10 @@ export function weightOf(q: Question) {
     qWeight.set(q.id, w);
   }
   return w;
+}
+/** "owns SNAP" → "you own SNAP"; "shared by every program" → "it is shared by every program". */
+function becauseWords(why: string): string {
+  return why.startsWith("owns ") ? "you own " + why.slice(5) : why.startsWith("shared") || why.startsWith("tagged") ? "it is " + why : why;
 }
 function needsMe(it: CItem, r: string) { return requiredRoles(it).some((x) => x.role === r) && !it.approval?.some((a) => a.role === r); }
 const chapterTitle = (dir: string) => ({ supplied: "Facts we are told", parameters: "Published figures", shared: "Rules shared by every program" } as Record<string, string>)[dir] ?? D.chapters.find((c) => c.dir === dir)?.title ?? dir;
@@ -38,6 +42,7 @@ export function Desk() {
   const due = D.items.filter((it) => it.review_by && it.review_by <= TODAY.slice(0, 4) + "-12-31" && myArea(it) || (it.review_by && it.review_by < "2027-02-01" && myArea(it)));
   const nofig = D.items.filter((it) => it.kind === "parameter" && Array.isArray(it.versions) && !versionInForce(it, TODAY) && myArea(it));
   const overrides = D.items.filter((it) => it.statute_override && myArea(it));
+  const limits = (D.knownLimits ?? []).filter((k) => !k.closed && limitOwners(k).includes(me));
   return (
     <div class="desk">
       <p class="eyebrow">My desk · {fmtDate(TODAY)}</p>
@@ -85,7 +90,8 @@ export function Desk() {
           <h2>Needs attention in your area</h2>
           <ul class="plain attention">
             <li><a href={href("law/unverified")}><b>{unv.length}</b> figure{unv.length === 1 ? "" : "s"} taken from a source that could not be verified</a></li>
-            <li><a href={href("law")}><b>{overrides.length}</b> rule{overrides.length === 1 ? "" : "s"} follow a federal statute over Colorado’s own text</a></li>
+            <li><a href={href("law")}><b>{overrides.length}</b> item{overrides.length === 1 ? " follows" : "s follow"} a federal statute over Colorado’s own text</a></li>
+            <li><a href={href("law/limits", { owner: me })}><b>{limits.length}</b> open known limit{limits.length === 1 ? "" : "s"} in your programs</a>{limits.length > 0 && <span class="small muted"> ({limits.map((k) => k.id).join(", ")})</span>}</li>
             <li><a href={href("figures", { show: "due" })}><b>{due.length}</b> figure{due.length === 1 ? "" : "s"} due a new version soon</a></li>
             <li><a href={href("figures", { show: "none" })}><b>{nofig.length}</b> figure{nofig.length === 1 ? " has" : "s have"} no published value today</a></li>
           </ul>
@@ -109,13 +115,17 @@ export function SignQueue() {
   const all = useMemo(() => D.items.filter((it) => needsMe(it, me)), [me]);
   const chapters = D.chapters.filter((ch) => all.some((it) => it.chapter === ch.dir));
   const chapter = q.chapter ?? chapters[0]?.dir;
-  const inCh = all.filter((it) => it.chapter === chapter);
+  const inCh = chapter === "all" ? all : all.filter((it) => it.chapter === chapter);
   const tags = [...new Set(inCh.flatMap((it) => it.tags ?? []))].sort();
-  const tag = q.topic ?? "";
+  const tag = q.topic ?? "", effort = q.effort ?? "", flag = q.flag ?? "";
   const text = (q.q ?? "").toLowerCase();
-  const list = inCh.filter((it) => (!tag || it.tags?.includes(tag)) && (!text || (it.name + " " + it.id + " " + (it.meaning ?? "")).toLowerCase().includes(text)))
+  const flagged = (it: CItem) => flag === "fed" ? !!it.statute_override : flag === "oq" ? openQuestions(it).length > 0 : flag === "nooq" ? !openQuestions(it).length : true;
+  const list = inCh.filter((it) => (!tag || it.tags?.includes(tag)) && (!effort || effortOf(it) === effort) && flagged(it) && (!text || (it.name + " " + it.id + " " + (it.meaning ?? "")).toLowerCase().includes(text)))
     .sort((a, b) => +a.id.slice(3) - +b.id.slice(3));
+  const [showAll, setShowAll] = useState(false);
+  const shown = showAll ? list : list.slice(0, 20);
   const can = list.filter((it) => !signBlockers(it).length);
+  const canShown = shown.filter((it) => !signBlockers(it).length);
   const ticked = can.filter((it) => isPendingSign(it.id, me));
   return (
     <div>
@@ -123,23 +133,34 @@ export function SignQueue() {
       <h1>To sign as {me}</h1>
       <p class="lede">Read, tick, and add your signatures to your proposal. A signature covers the item exactly as shown; if it later changes, it comes back to you.</p>
       <div class="chips">
-        {chapters.map((ch) => <a class={"chip" + (ch.dir === chapter ? " on" : "")} href={href("desk/sign", { chapter: ch.dir })}>{chapterTitle(ch.dir)} <b>{all.filter((it) => it.chapter === ch.dir).length}</b></a>)}
+        {chapters.map((ch) => <a class={"chip" + (ch.dir === chapter ? " on" : "")} href={href("desk/sign", { chapter: ch.dir, effort: effort || undefined, flag: flag || undefined })}>{chapterTitle(ch.dir)} <b>{all.filter((it) => it.chapter === ch.dir).length}</b></a>)}
+        {chapters.length > 1 && <a class={"chip" + (chapter === "all" ? " on" : "")} href={href("desk/sign", { chapter: "all", effort: effort || undefined, flag: flag || undefined })}>Every chapter <b>{all.length}</b></a>}
       </div>
       <div class="filters">
-        <input type="search" placeholder="Filter by words" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
-        <select value={tag} onChange={(e) => setQ({ topic: (e.target as HTMLSelectElement).value })}>
+        <input type="search" aria-label="Filter by words" placeholder="Filter by words" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+        <select aria-label="Topic" value={tag} onChange={(e) => setQ({ topic: (e.target as HTMLSelectElement).value })}>
           <option value="">Any topic</option>
-          {tags.map((t) => <option value={t}>{tagLabel(t)} ({inCh.filter((it) => it.tags?.includes(t)).length})</option>)}
+          {tags.map((t) => <option value={t}>{firstSentence(tagLabel(t), 40)} ({inCh.filter((it) => it.tags?.includes(t)).length})</option>)}
+        </select>
+        <select aria-label="Effort" value={effort} onChange={(e) => setQ({ effort: (e.target as HTMLSelectElement).value || undefined })} title="A rule of thumb, not a judgement on each item">
+          <option value="">Any effort</option>
+          {(Object.keys(EFFORT) as Effort[]).map((k) => <option value={k}>{EFFORT[k].label}: {EFFORT[k].help} ({inCh.filter((it) => effortOf(it) === k).length})</option>)}
+        </select>
+        <select aria-label="Show" value={flag} onChange={(e) => setQ({ flag: (e.target as HTMLSelectElement).value || undefined })}>
+          <option value="">Every item</option>
+          <option value="fed">Federal law over Colorado’s rule ({inCh.filter((it) => it.statute_override).length})</option>
+          <option value="oq">With an open question ({inCh.filter((it) => openQuestions(it).length).length})</option>
+          <option value="nooq">With no open question ({inCh.filter((it) => !openQuestions(it).length).length})</option>
         </select>
       </div>
       <div class="signbar">
         <span><b>{ticked.length}</b> of {list.length} ticked{list.length - can.length > 0 && <span class="warn-t"> · {list.length - can.length} cannot be signed yet</span>}</span>
-        <button class="btn" onClick={() => toggleSign(can.map((i) => i.id), me, true)}>Tick all {can.length} shown</button>
-        {ticked.length > 0 && <button class="btn ghost" onClick={() => toggleSign(can.map((i) => i.id), me, false)}>Untick</button>}
+        <button class="btn" disabled={!canShown.length} onClick={() => toggleSign(canShown.map((i) => i.id), me, true)}>Tick the {canShown.length} shown</button>
+        {ticked.length > 0 && <button class="btn ghost" onClick={() => toggleSign(can.map((i) => i.id), me, false)}>Untick all</button>}
         <a class={"btn primary" + (signs.value.length ? "" : " disabled")} href={href("changes/proposal")}>Review and send ({signs.value.filter((s) => s.role === me).length})</a>
       </div>
       <ul class="plain signlist">
-        <More items={list} n={20} noun="items" render={(it) => {
+        {shown.map((it) => {
           const blocked = signBlockers(it);
           const on = isPendingSign(it.id, me);
           const why = requiredRoles(it).find((r) => r.role === me)?.why;
@@ -151,13 +172,14 @@ export function SignQueue() {
                 <p class="si-m"><Rich text={firstSentence(it.meaning, 420)} /></p>
                 {it.kind === "derived" && <details class="si-rule"><summary>The rule</summary><RuleText it={it} /></details>}
                 {it.kind === "parameter" && <p class="small">Today: <b>{fmtVal(versionInForce(it, TODAY)?.value ?? it.value, it)}</b></p>}
-                <p class="small muted">You sign because {why}.{requiredRoles(it).length > 1 && <> Also signing: {requiredRoles(it).filter((r) => r.role !== me).map((r) => r.role).join(", ")}.</>}</p>
+                <p class="small muted">You sign because {becauseWords(why ?? "")}. <span title={EFFORT[effortOf(it)].help}>Effort: {EFFORT[effortOf(it)].label.toLowerCase()}.</span>{requiredRoles(it).length > 1 && <> Also signing: {requiredRoles(it).filter((r) => r.role !== me).map((r) => r.role).join(", ")}.</>}</p>
                 {blocked.map((b) => <p class="warnbox small"><b>Cannot be signed yet.</b> {b}</p>)}
               </div>
             </li>
           );
-        }} />
+        })}
       </ul>
+      {list.length > shown.length && <p><button class="btn" onClick={() => setShowAll(true)}>Show all {list.length} items</button> <span class="small muted">“Tick the shown” ticks only what is on screen, so nothing is signed unread.</span></p>}
       {!list.length && <Empty>Nothing in this group for your role.</Empty>}
     </div>
   );
@@ -217,9 +239,9 @@ export function Program({ id }: { id: string }) {
       <section class="card">
         <h2>Everything in it</h2>
         <div class="filters">
-          <input type="search" placeholder="Filter by words, e.g. “earned income”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+          <input type="search" aria-label="Filter by words" placeholder="Filter by words, e.g. “earned income”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
           <div class="segs">{[["", "All"], ["derived", "Rules"], ["parameter", "Figures"], ["supplied", "Facts"]].map(([k, l]) => <button class={"seg" + (kind === k ? " on" : "")} onClick={() => setQ({ kind: k || undefined })}>{l} {items.filter((i) => !k || i.kind === k).length}</button>)}</div>
-          <select value={topic} onChange={(e) => setQ({ topic: (e.target as HTMLSelectElement).value })}><option value="">Any topic</option>{tags.map((t) => <option value={t}>{tagLabel(t)}</option>)}</select>
+          <select aria-label="Topic" value={topic} onChange={(e) => setQ({ topic: (e.target as HTMLSelectElement).value })}><option value="">Any topic</option>{tags.map((t) => <option value={t}>{firstSentence(tagLabel(t), 40)}</option>)}</select>
         </div>
         <ul class="plain"><More items={list} n={25} noun="items" render={(it) => <li><ItemRow it={it} extra={<Flags it={it} />} value={it.kind === "parameter" ? fmtVal(versionInForce(it, TODAY)?.value ?? it.value, it) : undefined} /></li>} /></ul>
         {!list.length && <Empty>Nothing matches.</Empty>}
@@ -250,9 +272,9 @@ export function Figures() {
       <h1>Figures</h1>
       <p class="lede">Every number the rules read: limits, standards, rates, ages. Each keeps its dated versions and the text it was taken from.</p>
       <div class="filters">
-        <input type="search" placeholder="Find a figure, e.g. “need standard” or “poverty”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
-        <select value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })}><option value="">Any program</option>{[...PROGRAM_ORDER, "All"].map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}</select>
-        <select value={show} onChange={(e) => setQ({ show: (e.target as HTMLSelectElement).value })}>
+        <input type="search" aria-label="Find a figure" placeholder="Find a figure, e.g. “need standard” or “poverty”" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+        <select aria-label="Program" value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })}><option value="">Any program</option>{[...PROGRAM_ORDER, "All"].map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}</select>
+        <select aria-label="Which figures" value={show} onChange={(e) => setQ({ show: (e.target as HTMLSelectElement).value })}>
           <option value="">All figures</option>
           <option value="year">With a new version in {year}</option>
           <option value="dated">With more than one dated version</option>
@@ -287,21 +309,30 @@ export function Figures() {
 
 /* ---------- Questions ---------- */
 const STATE: Record<string, { label: string; tone: string }> = { open: { label: "Open", tone: "q" }, partly: { label: "Partly settled", tone: "q" }, resolved: { label: "Settled", tone: "ok" } };
-export function QRow({ q, compact }: { q: Question; compact?: boolean }) {
+/** A question's owners for a row: the role filtered on first, so the label never contradicts the filter. */
+function ownersLabel(q: Question, first?: string): string {
+  const all = questionOwners(q);
+  const o = first && all.includes(first) ? [first, ...all.filter((r) => r !== first)] : all;
+  return o.length ? o.slice(0, 2).join(", ") + (o.length > 2 ? ` and ${o.length - 2} more` : "") : "nobody yet";
+}
+export function QRow({ q, compact, owner }: { q: Question; compact?: boolean; owner?: string }) {
   const w = weightOf(q);
+  const cls = questionClass(q);
   const pend = notes.value.filter((n) => n.target === q.id).length;
   return (
     <a class="qcard" href={href("questions/" + q.id)}>
-      <span class="qc-h"><span class="idtag">{q.id}</span> <Pill tone={STATE[q.state].tone}>{STATE[q.state].label}</Pill> {questionPrograms(q).map((p) => <ProgramTag id={p} />)}{pend > 0 && <Pill tone="ok">your note pending</Pill>}</span>
+      <span class="qc-h"><span class="idtag">{q.id}</span> <Pill tone={STATE[q.state].tone}>{STATE[q.state].label}</Pill> {questionPrograms(q).map((p) => <ProgramTag id={p} />)}{cls && <Pill title="The kind of decision the question needs">{cls}</Pill>}{pend > 0 && <Pill tone="ok">your note pending</Pill>}</span>
       <span class="qc-t">{q.title}</span>
-      <span class="qc-w">{w.outs} outcome{w.outs === 1 ? "" : "s"} · {w.hh.length} stored household{w.hh.length === 1 ? "" : "s"} · {q.items.length} item{q.items.length === 1 ? "" : "s"}{!compact && <> · owned by {questionOwners(q).slice(0, 2).join(", ") || "nobody yet"}</>}</span>
+      <span class="qc-w">{w.outs} outcome{w.outs === 1 ? "" : "s"} · {w.hh.length} stored household{w.hh.length === 1 ? "" : "s"} · {q.items.length} item{q.items.length === 1 ? "" : "s"}{!compact && <> · owned by {ownersLabel(q, owner)}</>}</span>
     </a>
   );
 }
 export function Questions() {
   const q = route.value.q;
-  const state = q.state ?? "unsettled", owner = q.owner ?? "", prog = q.program ?? "", sort = q.sort ?? "weight", text = (q.q ?? "").toLowerCase();
+  const state = q.state ?? "unsettled", owner = q.owner ?? "", prog = q.program ?? "", sort = q.sort ?? "weight", text = (q.q ?? "").toLowerCase(), klass = q.class ?? "";
+  const classes = useMemo(() => [...new Set(D.questions.map((x) => questionClass(x)).filter(Boolean) as string[])].sort(), []);
   const list = D.questions.filter((x) => {
+    if (klass && questionClass(x) !== klass) return false;
     if (state === "unsettled" ? x.state === "resolved" : state !== "all" && x.state !== state) return false;
     if (owner && !questionOwners(x).includes(owner)) return false;
     if (prog && !questionPrograms(x).includes(prog)) return false;
@@ -317,11 +348,12 @@ export function Questions() {
         <div class="segs">{[["unsettled", "Open"], ["partly", "Partly settled"], ["resolved", "Settled"], ["all", "All"]].map(([k, l]) => <button class={"seg" + (state === k ? " on" : "")} onClick={() => setQ({ state: k === "unsettled" ? undefined : k })}>{l} {k === "all" ? D.questions.length : n(k)}</button>)}</div>
         <select value={owner} onChange={(e) => setQ({ owner: (e.target as HTMLSelectElement).value })} aria-label="Owner"><option value="">Any owner</option>{D.meta.approval_policy.roles.map((r) => <option value={r}>{r}{r === role.value ? " (you)" : ""}</option>)}</select>
         <select value={prog} onChange={(e) => setQ({ program: (e.target as HTMLSelectElement).value })} aria-label="Program"><option value="">Any program</option>{PROGRAM_ORDER.map((p) => <option value={p}>{PROGRAMS[p].short}</option>)}</select>
+        <select value={klass} onChange={(e) => setQ({ class: (e.target as HTMLSelectElement).value || undefined })} aria-label="Kind of decision"><option value="">Any kind of decision</option>{classes.map((c) => <option value={c}>{c} ({D.questions.filter((x) => questionClass(x) === c && x.state !== "resolved").length} not settled)</option>)}</select>
         <select value={sort} onChange={(e) => setQ({ sort: (e.target as HTMLSelectElement).value })} aria-label="Sort"><option value="weight">Sort: most households affected</option><option value="items">Sort: most items affected</option><option value="number">Sort: by number</option></select>
-        <input type="search" placeholder="Filter by words" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
+        <input type="search" aria-label="Filter questions by words" placeholder="Filter by words" value={q.q ?? ""} onInput={(e) => setQ({ q: (e.target as HTMLInputElement).value })} />
       </div>
-      <p class="small muted">{list.length} question{list.length === 1 ? "" : "s"}{owner ? ` owned by ${owner}` : ""}. Ownership follows the roles that must approve the items a question touches.</p>
-      <ul class="plain qlist"><More items={list} n={30} noun="questions" render={(x) => <li><QRow q={x} /></li>} /></ul>
+      <p class="small muted">{list.length} question{list.length === 1 ? "" : "s"}{owner ? ` owned by ${owner}` : ""}. The owner is the role the question names on its “Owner:” line; where it names none, the roles that must approve the items it touches.</p>
+      <ul class="plain qlist"><More items={list} n={30} noun="questions" render={(x) => <li><QRow q={x} owner={owner || undefined} /></li>} /></ul>
       {!list.length && <Empty>No question matches.</Empty>}
     </div>
   );
@@ -341,12 +373,14 @@ export function QuestionPage({ id }: { id: string }) {
   const assume = items.filter((i) => i.assumption);
   const mine = notes.value.filter((n) => n.target === q.id);
   const owners = questionOwners(q);
+  const stated = statedOwners(q).length > 0;
+  const cls = questionClass(q);
   return (
     <article class="question">
       <Crumbs items={[["Questions", href("questions")], q.id]} />
       <p class="eyebrow">{q.id} · <Pill tone={STATE[q.state].tone}>{STATE[q.state].label}</Pill> {questionPrograms(q).map((p) => <ProgramTag id={p} />)}</p>
       <h1>{q.title}</h1>
-      <p class="small muted">Owned by {owners.length ? owners.join(", ") : "no role yet"} · holds {q.items.length} item{q.items.length === 1 ? "" : "s"}, {w.outs} outcome{w.outs === 1 ? "" : "s"}, {w.hh.length} stored household{w.hh.length === 1 ? "" : "s"}</p>
+      <p class="small muted">{cls && <><Pill>{cls}</Pill> · </>}Owned by {owners.length ? owners.join(", ") : "no role yet"}{stated ? " (as the question names them)" : owners.length ? " (the roles that sign the items it touches; the question names no owner)" : ""} · holds {q.items.length} item{q.items.length === 1 ? "" : "s"}, {w.outs} outcome{w.outs === 1 ? "" : "s"}, {w.hh.length} stored household{w.hh.length === 1 ? "" : "s"}</p>
       <div class="item-grid">
         <div class="item-main">
           <section class="card">
@@ -394,7 +428,8 @@ export function QuestionPage({ id }: { id: string }) {
               <button class={"btn" + (role.value !== "Legal" ? " primary" : "")} onClick={() => setMode(mode === "answer" ? "" : "answer")}>Answer it</button>
               <button class={"btn" + (role.value === "Legal" ? " primary" : "")} onClick={() => setMode(mode === "opinion" ? "" : "opinion")}>Record a legal opinion</button>
             </div>
-            {mode && <NoteForm q={q} kind={mode} done={() => setMode("")} />}
+            {mode === "opinion" && role.value !== "Legal" ? <p class="warnbox small">A legal opinion is recorded by Legal. You are viewing as {role.value}: switch “Viewing as” to Legal to record one, or answer the question in your own role. <button class="linkish" onClick={() => (role.value = "Legal")}>View as Legal</button></p>
+              : mode && <NoteForm q={q} kind={mode} done={() => setMode("")} />}
           </div>
         </aside>
       </div>
