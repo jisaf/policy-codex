@@ -76582,7 +76582,7 @@
         pregnancy_end_date: '2026-10-15'
       month_defaults: {donated_work_hours_per_week: 0, wages_gross: 2800, self_employment_net_earnings_for_tax: 0, self_employment_gross_receipts: 0, magi_other_taxable_income: 0, discharged_student_loan_debt: 0,
         foreign_earned_income_excluded: 0, pretax_deductions: 0, shelter_costs_paid_by_others: 0, has_emergency_medical_condition: false, ma_has_left_required_household: false, ma_is_unable_to_be_located: false,
-        ma_has_requested_withdrawal_from_continuous_eligibility: false, ma_needy_young_person_basis: none, electronic_data_source_monthly_gross_income: 2800}
+        ma_has_requested_withdrawal_from_continuous_eligibility: false, ma_needy_young_person_basis: none, electronic_data_source_monthly_gross_income: 2800, public_health_coverage_enrolled: none}  # pattern sweep, MAGI (PS-06): the mother's enrollment at the birth is required where read; a first-time applicant (the story)
       relationships: []
     p2:
       facts:
