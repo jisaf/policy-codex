@@ -183,3 +183,21 @@ From the coverage pass 7 fix round (docs/reviews/coverage7-medicaid-nonmagi.md, 
 - **Rule paragraph.** §§ 8.100.6.F.1, G.1-3 ("Medical Assistance must be provided"), H.
 - **Test household.** None can be built: modelling F needs each person's August 1972 assistance and the amount of the October 1972 Social Security increase, and G the December 1973 minimum income level, which no document on file states. A person found in a cohort is determined outside the codex.
 - **Proposed fix.** None in the codex: the product owner signs this entry, or amends the stopping rule to name a scope decision as a third accepted class.
+
+### NM-KL-5. The Children's Buy-In premium is shared equally among children born the same day: the volume's own choice (coverage pass 7 F7-8; coverage verification 7, section 3; OQ-1495: state policy choice for the Medicaid owner)
+
+- **Description.** § 8.100.6.Q.1.g.iii (D-65:3087, S1728) reads in full: "For households with two or more children eligible for the Medicaid Buy-In Program for Children with Disabilities, the total premium shall be the amount due for one eligible child." It fixes the household's total and names no child who bears it. The volume reports the one premium on the oldest child whose own premium is due in the month (ma_cbwd_premium CO-621, ma_cbwd_premium_is_due_in_month CO-7861) and shares it equally among such children born the same day (F7-8). Both the order and the equal sharing are the volume's presentation, not the rule's; OQ-1495 records them as a state policy choice for the Medicaid owner to confirm.
+- **Household shape.** Two or more children eligible for the Children's Buy-In in one MAGI household.
+- **Common / rare.** Rare (twins or siblings both on the Buy-In).
+- **Rule paragraph.** § 8.100.6.Q.1.g.ii-iii (S1728).
+- **Test household.** Stored household CO-1108 (twins determined together: 35 and 35, 70 for the household); CO-1163 and CO-1164 (children determined in different months: 70 in all every month, coverage verification 7, V7-4).
+- **Proposed fix.** None until the owner answers OQ-1495; the household total, the figure Q.1.g.iii fixes, is right whichever presentation the owner chooses.
+
+### NM-KL-6. Three or more same-day children's shares of the Children's Buy-In premium are not whole cents (coverage verification 7, V7-9, P3)
+
+- **Description.** Shared equally (NM-KL-5), a 70 premium on triplets is 70 / 3 = 23.333... on each child, which is not an amount of money; rounded to cents, three shares of 23.33 total 69.99. The fix the verification proposes (round each share to cents and put the remainder on one child) needs one child chosen among children born the same day, and the case states no order among them: the operators order persons only by a stated fact (docs/operators.md: no operator compares or ranks persons), and a date of birth is the only order the case states. Adding a supplied fact for the order of a multiple birth would make every triplet household cannot determine for the premium until it is stated (decision 4), a heavier cost than the cent.
+- **Household shape.** Three or more eligible children born the same day whose premiums are due in the same month.
+- **Common / rare.** Rare.
+- **Rule paragraph.** § 8.100.6.Q.1.g.iii (S1728).
+- **Test household.** Rule test CO-621-T96 (triplets: 23.333333333333332 each; the three figures add up to 70 exactly).
+- **Proposed fix.** If the owner keeps equal sharing (OQ-1495), a supplied order of birth among children born the same day, read only where a share is not whole cents; or the owner chooses a presentation with no per-child share (the household's premium reported once).
