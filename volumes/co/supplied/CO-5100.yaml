@@ -132,6 +132,10 @@ record_fields:
     type: hours
     required: true
     meaning: For self-employment, the hours the person worked in the business in the month.
+  rental_property:
+    type: yes/no
+    required: true
+    meaning: "For a business's receipts (self_employment_receipts), the business is renting out property the person owns (a house, an apartment, a store, land or other real property) to others, rather than another trade or business; the record's hours are the hours the person spent managing it in the month. A property of the business, not a kind: a rule that treats rental property apart by how actively it is managed reads it (coverage pass 6, R6-4: CCCAP, 8 CCR 1403-1 3.111.H.4.e, rental income is self-employment only when the caretaker actively manages the property an average of at least twenty hours a week, and unearned otherwise). Required where read (decision 4): CCCAP reads it only on a record whose hours average under twenty a week."
   farm:
     type: yes/no
     default: false

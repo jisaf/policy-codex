@@ -15898,7 +15898,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 0, frequency: weekly, per_payment: 500}
-        - {kind: self_employment_receipts, amount: 5000, net_for_tax: 0}
+        - {kind: self_employment_receipts, amount: 5000, net_for_tax: 0, rental_property: false}  # coverage pass 6 R6-4: a cleaning business, not rental property (CCCAP reads it, decision 4)
         - {kind: business_cost_operating, amount: 3000}
       month_defaults:
         donated_work_hours_per_week: 0
@@ -63651,7 +63651,7 @@
         receipts: []
         earnings:
         - {kind: wages, amount: 1000}
-        - {kind: self_employment_receipts, amount: 300, hours: 60}
+        - {kind: self_employment_receipts, amount: 300, hours: 60, rental_property: false}  # coverage pass 6 R6-4: a business, not rental property; under twenty hours a week, so CCCAP reads it (decision 4)
         - {kind: business_cost_operating, amount: 300}
         temporary_activity_break_reason: none
       month_defaults:
@@ -78388,3 +78388,634 @@
         "2026-11": 454
       snap_allotment:
         "2026-11": 671
+- id: CO-865
+  title: "Coverage pass 6 for LEAP, R6-1 (LW1): a job stated as a stream that ended before the income verification period gives no income in it"
+  # The reviewer's probe LW1: CO-712's adult (application 2026-11-10; income verification period 2026-10-10 to 2026-11-10;
+  # limit $3,774 for one), with no receipts, a current job stated as a stream of $3,000 a month and an old job stated as a
+  # stream of $1,500 a month whose job ended 2026-09-30.
+  # 9 CCR 2503-7 3.752.22.C.3.a (S2713): "If a household member's income is terminated as of the application date, use
+  # actual income received in the income verification period": the old job paid nothing in the period, so its income is 0.
+  # Household income $3,000 <= $3,774: eligible. Before coverage pass 6 the old job's stream was selected as a job that
+  # ended and its pay date was asked for (cannot determine).
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - - other_relative
+      - p1
+      - p2
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+          - kind: wages
+            amount: 3000
+          - kind: wages
+            amount: 1500
+            job_end_date: "2026-09-30"
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_wages_in_income_verification_period:
+        "2026-11": 0
+      leap_person_wages:
+        "2026-11": 3000
+      leap_household_income:
+        "2026-11": 3000
+      leap_is_eligible:
+        "2026-11": true
+- id: CO-866
+  title: "Coverage pass 6 for LEAP, R6-1 (LW2): a job stated as a stream that begins after the application date gives no income"
+  # The reviewer's probe LW2: CO-712's adult with a current job stated as a stream of $3,000 a month and a new job of $1,500 a
+  # month stated as a stream beginning 2026-12-01, after the application date 2026-11-10.
+  # 3.752.22.C.3.c (S2713): "If a household member has not received his/her first check from this source of income as of the
+  # income verification period, do not count any income from this source": 0 from the new job. Household income $3,000 <=
+  # $3,774: eligible. Before coverage pass 6: cannot determine (the stream's pay date was asked for).
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - - other_relative
+      - p1
+      - p2
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+          - kind: wages
+            amount: 3000
+          - kind: wages
+            amount: 1500
+            job_start_date: "2026-12-01"
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_wages_in_income_verification_period:
+        "2026-11": 0
+      leap_person_wages:
+        "2026-11": 3000
+      leap_household_income:
+        "2026-11": 3000
+      leap_is_eligible:
+        "2026-11": true
+- id: CO-867
+  title: "Coverage pass 6 for LEAP, R6-1 (LW4): an SCSEP placement stated as a stream that ended before the period gives no income"
+  # The reviewer's probe LW4: CO-712's adult born 1956-01-01 (70 on the application date), with $1,500 a month of Social
+  # Security and an SCSEP placement of $900 a month stated as a stream that ended 2026-08-31.
+  # The SCSEP job paid nothing in the income verification period (3.752.22.C.3.a), and SCSEP pay is in any case excluded at
+  # 55 or older (3.752.23.CC): wages 0. Social Security $1,500 is counted (3.752.211): household income $1,500 <= $3,774:
+  # eligible. Before coverage pass 6: cannot determine (leap_scsep_wages asked for the stream's pay date before the age test).
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - - other_relative
+      - p1
+      - p2
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1956-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+          - kind: social_security
+            amount: 1500
+        earnings:
+          - kind: scsep_employment
+            amount: 900
+            job_end_date: "2026-08-31"
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_scsep_wages:
+        "2026-11": 0
+      leap_person_wages:
+        "2026-11": 0
+      leap_household_income:
+        "2026-11": 1500
+      leap_is_eligible:
+        "2026-11": true
+- id: CO-868
+  title: "Coverage pass 6 for CCCAP, R6-2 (CJ1): two co-owners of a rental in one household; the property's income is counted once"
+  # The reviewer's probe CJ1: CO-806 (a mother and her son of 6 in Denver; application 2026-11-15) with the father added as a
+  # second caretaker in the household. The mother earns $2,000 a month and the father $1,500. They own a rental half each;
+  # its $600 a month of rent is paid to the mother. Each states the rent on the own list (receipts: rental_income, ownership
+  # share 0.5, property income 600), the mother with the $600 she received, the father with $0, and each names the other
+  # (co_owner). 8 CCR 1403-1 3.111.H.4.e: "Income from jointly owned property shall be considered as a percentage at least
+  # equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received."
+  # The father's half is inside the $600 the mother received, so the household's income from the property is $600, counted
+  # once (OQ-1316): 2,000 + 1,500 + 600 = 4,100 <= 4,211.84, the entry level for three (185% of the poverty guideline):
+  # eligible_low_income. Before coverage pass 6 the father's list added his $300 share again: $4,400, ineligible_income.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: "2026-11-15"
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  relationships:
+    - - parent
+      - p1
+      - p3
+    - - parent
+      - p2
+      - p3
+    - - spouse
+      - p1
+      - p2
+  persons:
+    p1:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts:
+          - kind: rental_income
+            amount: 600
+            ownership_share: 0.5
+            property_income: 600
+            co_owner: p2
+        earnings:
+          - kind: wages
+            amount: 2000
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 120
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p2:
+      facts:
+        age_attestation_is_questionable: false
+        cccap_activity_schedule_received: true
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_child_has_additional_care_needs: false
+        cccap_custody_schedule_is_outstanding: false
+        cccap_declares_assets_within_limit: true
+        cccap_eligible_activity_verification_document_received: true
+        cccap_immunization_record_received: true
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_non_traditional_hours_are_requested: false
+        child_support_paid_order_type: court_order
+        citizenship_attestation_is_questionable: false
+        county_of_residence: denver
+        date_of_birth: "1986-06-01"
+        days_out_of_state_in_calendar_year: 0
+        dwelling_id: d1
+        earned_income_verification_document_received: true
+        earnings:
+          - kind: wages
+            amount: 1500
+        education_program_type: none
+        has_applied_for_ssi: false
+        identity_attestation_is_questionable: false
+        immigration_status: us_citizen
+        is_blind: false
+        is_emancipated_minor: false
+        is_pregnant: false
+        is_referred_for_colorado_works_child_care: false
+        meets_ssa_disability_criteria: false
+        nighttime_residence_type: fixed_regular_adequate
+        receipts:
+          - kind: rental_income
+            amount: 0
+            ownership_share: 0.5
+            property_income: 600
+            co_owner: p1
+        receives_tanf_cash: false
+        residence_setting_type: private_dwelling
+        residency_verification_document_received: true
+        retains_ssi_status_without_payment: false
+        self_employment_cost_receipts_received: false
+        sex: male
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        verification_request_date: "2026-10-01"
+        work_hours_verification_document_received: true
+      month_defaults:
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 120
+        is_in_sud_treatment_iop_or_higher: false
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      cccap_person_unearned_income:
+        "2026-11": 600
+      cccap_household_income:
+        "2026-11": 4100
+    p2:
+      cccap_person_unearned_income:
+        "2026-11": 0
+    p3:
+      cccap_eligibility_status:
+        "2026-11": eligible_low_income
+- id: CO-870
+  title: "Coverage pass 6 for CCCAP, R6-4 (CR1): rental property managed about ten hours a week is unearned income, not an eligible activity"
+  # The reviewer's probe CR1: CO-806's mother, whose only work is managing two rental units she owns, 43 hours in November
+  # 2026, stated as a business (self_employment_receipts $1,800, hours 43, rental_property true), with $300 of the property's
+  # expenses (rental_property_expenses_paid). 8 CCR 1403-1 3.111.H.4.e: "Income from rental property will be considered as
+  # unearned income if the adult caretaker(s) or teen parent(s) are not actively managing the property an average of at
+  # least twenty (20) hours per week." 43 hours over November's 30 / 7 = 4.29 weeks is 10.03 hours a week, under twenty
+  # (OQ-1366): the rent is unearned, net of the expenses (I.12, I.17): 1,800 - 300 = 1,500; it is not self-employment, so
+  # she has no eligible activity (3.111.B.1, G): ineligible_activity. Before coverage pass 6 the business was read as
+  # self-employment: activity true, eligible_low_income.
+  as_of: "2026-11-15"
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: "2026-11-15"
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  relationships:
+    - - parent
+      - p1
+      - p3
+  persons:
+    p1:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        receipts: []
+        earnings:
+          - kind: self_employment_receipts
+            amount: 1800
+            hours: 43
+            rental_property: true
+      month_defaults:
+        rental_property_expenses_paid: 300
+        donated_work_hours_per_week: 0
+        hours_worked: 43
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: "2026-10-01"
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  expect:
+    p1:
+      cccap_self_employment_hours:
+        "2026-11": 0
+      cccap_rental_property_receipts_as_unearned:
+        "2026-11": 1800
+      cccap_person_unearned_income:
+        "2026-11": 1500
+      cccap_caretaker_in_eligible_activity:
+        "2026-11": false
+    p3:
+      cccap_eligibility_status:
+        "2026-11": ineligible_activity
+- id: CO-869
+  title: "Coverage pass 6 for LEAP, R6-2 (LJ1): a married couple co-own a rental; its rent is counted once for the household"
+  # The reviewer's probe LJ1: CO-712's adult (application 2026-11-10; limit $4,936 for two) and her husband in one LEAP
+  # household. She earns $2,500 a month. They own a rental half each; its $2,000 a month of rent is paid to her. Each states it
+  # on the own list (rental_income, ownership share 0.5, property income 2,000), she with the $2,000 she received and he with
+  # $0, and each names the other (co_owner). 9 CCR 2503-7 3.752.21.F counts "a percentage at least equal to the percentage of
+  # ownership or, if receiving more than percentage of ownership, the actual amount received"; his half is inside the $2,000
+  # she received, so the household counts the property's rent once (OQ-1316): 2,500 + 2,000 = 4,500 <= 4,936: eligible.
+  # Before coverage pass 6 his list added his $1,000 share again: $5,500, ineligible.
+  as_of: "2026-11-10"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-10"
+    has_primary_heating_source: true
+  relationships:
+    - - other_relative
+      - p1
+      - p2
+    - - spouse
+      - p1
+      - p3
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1980-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+          - kind: rental_income
+            amount: 2000
+            ownership_share: 0.5
+            property_income: 2000
+            co_owner: p3
+        earnings:
+          - kind: wages
+            amount: 2500
+      month_defaults:
+        donated_work_hours_per_week: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: "1950-01-01"
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+    p3:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: "1981-01-01"
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts:
+          - kind: rental_income
+            amount: 0
+            ownership_share: 0.5
+            property_income: 2000
+            co_owner: p1
+        earnings: []
+      month_defaults:
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_person_unearned_income:
+        "2026-11": 2000
+      leap_household_income:
+        "2026-11": 4500
+      leap_is_eligible:
+        "2026-11": true
+    p3:
+      leap_person_unearned_income:
+        "2026-11": 0
