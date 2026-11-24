@@ -1,0 +1,19 @@
+id: CO-2362
+name: "Sponsor's spouse is a co-sponsor"
+identifier: sponsor_spouse_is_cosponsor
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The spouse of this non-citizen's sponsor also signed the affidavit of support as a sponsor: two of the non-citizen's sponsors (sponsors, CO-2713) are spouses of each other."
+precision: "False for a non-citizen with one sponsor; unknown when this person's relationships are unstated."
+derived: [exists, sponsors, [has_relative_in, [spouse], sponsors]]
+sources: [S1627]
+implemented: engine
+tags: [immigration]
+link_class: primitive
+link_basis: "Two of the non-citizen's sponsors are spouses of each other; a relationship primitive."
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts."
+tests:
+  - {id: CO-2362-T1, as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[sponsored_by, p1, p2], [sponsored_by, p1, p3], [spouse, p2, p3]], expect: true}
+  - {id: CO-2362-T2, as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[sponsored_by, p1, p2], [spouse, p2, p3]], expect: false}

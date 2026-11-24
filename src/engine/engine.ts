@@ -11,13 +11,14 @@ import {
   formatTest, itemBlock, parseItemBlock, parseTestLine,
   type ItemBlockExtra, type ParsedItemBlock,
 } from "./item-block";
-import { approvals, constraints, type Constraint } from "./constraints";
+import { approvalsFor, constraints, type Constraint, type ConstraintOptions } from "./constraints";
 import {
   governance, nearest, type Candidate, type Finding,
 } from "./governance";
 import {
   aCodes, buildGraph, impactOf, projectionA, type AProjection, type DependencyGraph,
 } from "./graph";
+import { fingerprintItem, type FingerprintBasis } from "./fingerprint";
 import { renameIdentifier, type RenameResult } from "./rename";
 import { baseType, fmt, lit, paramValue, slug } from "./values";
 import type {
@@ -58,8 +59,16 @@ export interface Engine {
   formatTest(t: TestSpec): string;
   parseTestLine(line: string): TestSpec;
   approvals(it: Item): string[];
-  constraints(it: Item): Constraint[];
-  governance(it: Item, opts?: { isNew?: boolean }): Finding[];
+  constraints(it: Item, opts?: ConstraintOptions): Constraint[];
+  governance(
+    it: Item, opts?: { isNew?: boolean; today?: string; baseline?: FingerprintBasis | null },
+  ): Finding[];
+  /** The ledger and excerpt texts approval fingerprints read, or null when
+   *  the engine was built without sources.md texts. */
+  fingerprintBasis(): FingerprintBasis | null;
+  /** The approval fingerprint of `it` as it stands (it may be a staged edit),
+   *  or null without sources.md texts. */
+  fingerprint(it: Item): string | null;
   nearest(it: Item): Candidate[];
   rename(from: string, to: string): RenameResult;
   readonly graph: DependencyGraph;
@@ -73,7 +82,7 @@ export interface Engine {
 export function createEngine(
   items: Item[], meta: VolumeMeta, refs: EngineRefs | null = null,
 ): Engine {
-  const ix = buildIndex(items);
+  const ix = buildIndex(items, meta.relationship_roles ?? null);
   const graph = buildGraph(ix);
   const codes = aCodes(ix);
   return {
@@ -111,10 +120,12 @@ export function createEngine(
     parseItemBlock: (text) => parseItemBlock(ix, meta, text),
     formatTest,
     parseTestLine: (line) => parseTestLine(ix, line),
-    approvals: (it) => approvals(meta, it),
-    constraints: (it) => constraints(ix, meta, refs, it),
-    governance: (it, opts) => governance(ix, meta, it, opts),
+    approvals: (it) => approvalsFor(ix, meta, it),
+    constraints: (it, opts) => constraints(ix, meta, refs, it, opts),
+    governance: (it, opts) => governance(ix, meta, it, { ...opts, refs }),
     nearest: (it) => nearest(ix, it, meta),
+    fingerprintBasis: () => (refs?.sourceTexts ? { ix, sourceTexts: refs.sourceTexts } : null),
+    fingerprint: (it) => (refs?.sourceTexts ? fingerprintItem({ ix, sourceTexts: refs.sourceTexts }, it) : null),
     rename: (from, to) => renameIdentifier(ix, from, to),
     graph,
     usedBy: (identifier) => graph.usedBy.get(identifier) ?? [],

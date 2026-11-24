@@ -1,0 +1,23 @@
+id: CO-1455
+name: "LEAP: requires verification of earned income"
+identifier: leap_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+meaning: "Whether the person's wages must be verified for LEAP by pay stubs or employer statements (9 CCR 2503-7 3.755.11, 3.755.21.D): the person has wages that LEAP counts, which are the wages of every member except a child under eighteen residing with a parent or guardian, whose earned income 3.752.23.Q excludes. Self-employment income is verified by the member's written or verbal declaration, which needs no document."
+precision: "Coverage review C-5: reads the wages leap_household_income (CO-1002) counts, leap_person_wages (CO-3925: the converted pay, or the wages received in the income verification period for a job that began or ended in it), not the calendar month's wages_gross, and excludes a member only on CO-1002's condition, read from the one item both read (leap_earnings_are_excluded_as_child, CO-5123; duplicate-paths audit D-L2): under leap_household_child_age_limit with a parent or legal guardian among leap_household_members_for_income (CO-1009). A child under eighteen living with neither (with a grandparent, say) has the wages counted and verified. Earned-income records, step E1 (LEAP): leap_person_wages reads the earnings records (earnings, CO-5100), so a job that began or ended is recognized by its dates."
+derived: [all, [">", leap_person_wages, 0], [not, leap_earnings_are_excluded_as_child]]
+sources: [S897, S898, S1084, S2860]
+implemented: engine
+tags: [verification, income]
+rationale: "No existing item states this LEAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications. Coverage review C-5 (P1): the item asked for verification only of the calendar month's wages of a member eighteen or older, so the counted wages of a 15- to 17-year-old not living with a parent or guardian, and wages received in the thirty days of a job that had ended, were never verified, and the verification status could read complete while counted income was unverified (3.755.11: \"Income ... shall be verified in determining initial eligibility\")."
+tests:
+  - {id: CO-1455-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", date_of_birth: "1985-01-22", earnings: [{kind: wages, amount: 1500}]}, expect: true}
+  - {id: CO-1455-T2, title: "An 11-year-old living with her mother: her wages are excluded (3.752.23.Q), so not verified", month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", date_of_birth: "2015-01-22", leap_household_members_for_income: [p1, p2], earnings: [{kind: wages, amount: 1500}]}, others: {p2: {date_of_birth: "1985-01-22"}}, relationships: [[parent, p2, p1]], expect: false}
+  - {id: CO-1455-T3, month: "2026-10", as_of: "2026-10-01", given: {earnings: []}, expect: false}
+  - {id: CO-1455-T4, title: "Coverage review C-5: a 16-year-old living with his grandmother has his $500 of wages counted (CO-1002-T6), so they are verified", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2010-03-01", leap_household_members_for_income: [p1, p2], earnings: [{kind: wages, amount: 500}, {kind: self_employment_receipts}]}, others: {p2: {date_of_birth: "1955-01-22"}}, relationships: [[grandparent, p2, p1], [shares_heat_with, p1, p2]], expect: true}
+  # Restated with dated pays (docs/reviews/earnings-e0.md, section 5). Application October 1, 2026: the income verification period is
+  # September 1 to October 1. A job that ended September 20 paid $400 on September 4 and $400 on September 18: $800 received in the
+  # period (leap_wages_in_income_verification_period), none in October; LEAP counts it, so it is verified.
+  - {id: CO-1455-T5, title: "Coverage review C-5: a job that ended in the thirty days before the application: $800 received in the period, none in the month", month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", date_of_birth: "1985-01-22", earnings: [{kind: wages, amount: 400, frequency: biweekly, date: "2026-09-04", job_end_date: "2026-09-20"}, {kind: wages, amount: 400, frequency: biweekly, date: "2026-09-18", job_end_date: "2026-09-20"}]}, expect: true}

@@ -1,5 +1,7 @@
 # Codex App MVP — Design
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 Date: 2026-09-10
 Status: implemented; see the README for the current layout and commands
 

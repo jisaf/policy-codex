@@ -1,0 +1,19 @@
+id: CO-3503
+name: "SNAP: a striker's pre-strike income above current income"
+identifier: snap_striker_income_above_current
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: For a striking member (snap_is_striker, CO-3500), the amount by which the member's income before the strike (snap_striker_pre_strike_income, CO-3502) exceeds the member's current income for the month (earned income after any stated exclusion, plus unearned income); zero when current income is the higher, or for anyone who is not a striker. Added to the member's earned income, it makes the counted income the higher of the two, as 7 CFR 273.1(e)(2) requires for eligibility and for the benefit.
+precision: "The excess is counted as earned income (snap_person_earned_income, CO-330), since it stands for the wages the strike stopped, so the earned income deduction is taken on it as it would have been on the wages. Current earned income is read as CO-330 reads it before this amount: gross wages plus SNAP self-employment income, less any stated excluded earnings. Coverage pass 2 C2-4 (P3 note): current wages are SNAP's converted or averaged wages (snap_person_wages, CO-4324), not the month's receipts, so a fifth weekly payday does not lower the excess."
+derived: [case, [[otherwise, snap_is_striker, false], [max, 0, ["-", snap_striker_pre_strike_income, ["+", [max, 0, ["-", ["+", snap_person_wages, snap_self_employment_income], [otherwise, snap_excluded_earned_income, 0]]], snap_person_unearned_income]]]], [else, 0]]
+sources: [S1816]
+implemented: engine
+tags: [income]
+rationale: "OQ-534: 7 CFR 273.1(e)(2) (S1816) adds the higher of a striker's pre-strike and current income to the other members' income; no existing item compares the two."
+nearest: [CO-330]
+tests:
+  - {id: CO-3503-T1, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 2400, snap_self_employment_costs: 0, receipts: [{kind: other_taxable, amount: 400}], earnings: []}, title: "A striker earning nothing now, $2,400 before the strike, with $400 strike pay: $2,000 more is counted", expect: 2000}
+  - {id: CO-3503-T2, month: "2026-10", given: {snap_is_striker: true, snap_striker_pre_strike_income: 1000, snap_self_employment_costs: 0, receipts: [], earnings: [{kind: wages, amount: 1200}]}, title: "Current income above the pre-strike income: nothing is added", expect: 0}
+  - {id: CO-3503-T3, month: "2026-10", given: {earnings: [{kind: self_employment_receipts}]}, title: "Not stated to be a striker: zero", expect: 0}

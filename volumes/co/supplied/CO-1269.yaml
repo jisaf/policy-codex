@@ -1,0 +1,13 @@
+id: CO-1269
+name: In a diversion period of ineligibility
+identifier: in_diversion_period_of_ineligibility
+kind: supplied
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: The month falls within a period of ineligibility (POI) the client agreed to when receiving an earlier diversion payment, which the issuing county set and has not ended early for good cause, per 9 CCR 2503-6 3.606.8.A.4-5.
+precision: "A county that grants basic cash assistance before the POI ends, because the client cannot sustain the agreement (3.606.8.A.5), has ended the POI: the fact is false from that month. If not stated, Colorado Works reads it as false (cw_eligibility_status, CO-921, and cw_diversion_eligible, CO-1270). Coverage review CW-1 (S3152): a member within the POI bars the unit from basic cash assistance."
+supplied_by: Statewide automated system diversion payment record.
+sources: [S762, S3152]
+tags: [cash, tanf]
+rationale: "No existing fact states it; cw_diversion_eligible (CO-1270) needs it, and cw_eligibility_status (CO-921) reads it for the unit (coverage review CW-1)."

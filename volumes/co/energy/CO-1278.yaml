@@ -1,0 +1,18 @@
+id: CO-1278
+name: "LEAP: household income as a share of the poverty level"
+identifier: leap_household_income_pct_fpl
+kind: derived
+type: rate
+scope: person-month
+program: LEAP
+meaning: The LEAP household's monthly countable income times twelve, divided by the HHS poverty guideline for the household's size, for the income-contribution bands of 9 CCR 2503-7 3.758.47 Step D.
+precision: Uses the HHS poverty guideline in force on the determination date, read as of that date whatever month is evaluated (time audit T-3; federal_poverty_guideline_annual_table, CO-181, and its each-additional figure), which the rule's "Federal Poverty Level" bands do not further specify (OQ-253).
+derived: ["/", ["*", leap_household_income, 12], [lookup_extended, [as_of, federal_poverty_guideline_annual_table, [det_date]], leap_household_size, [as_of, federal_poverty_guideline_annual_each_additional, [det_date]]]]
+sources: [S771]
+open: [OQ-253]
+implemented: engine
+tags: [income, household]
+rationale: No existing item states LEAP income against the poverty level; leap_income_contribution_rate (CO-1279) needs it. Reuses the HHS guideline table the Medicaid chapter carries rather than adding a LEAP copy.
+tests:
+  - {id: CO-1278-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 1330, leap_household_size: 1}, expect: 1}
+  - {id: CO-1278-T2, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 0, leap_household_size: 3}, expect: 0}

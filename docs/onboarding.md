@@ -1,15 +1,53 @@
 # Help
 
+> **Archived:** this describes the original app, archived on 2026-11-24 in archive/main-app/ (see archive/README.md). The Colorado Rulebook (prototypes/blind-b) is the only UI.
+
 Short notes for the app's "?" panel, one section per view. Headings are keyed
 by the view they answer for; the panel shows only the section that matches
 where the reader currently is.
 
 ## start
 
-Pick the door that fits what brought you here today; you can change it any
-time from "change how you use this" in the header. The doors: check how a
-household is decided, read the rules for a program, change a rule or fact,
-or implement the rules.
+The app has seven places in the sidebar: Desk, Programs, Figures,
+Households, Questions, Law and Changes. Choose your role once under "Working
+as" at the foot of the sidebar; the Desk then shows your role's work. The
+volume and the copy of the rules you read (the working tree on this
+computer, main, or another branch) are chosen there too. The tools an
+implementer needs are under "For implementers".
+
+## desk
+
+Your role's work: how many items wait for your signature (each counted once,
+however many of your roles must sign it), the open questions you own (a role
+owns a question when its Owner line names the role; partly settled ones are
+counted apart), the statute-over-rule departures in your programs, and what
+takes effect soon. Each number links to its list.
+
+## figures
+
+Every dated figure, as it stands on the date you choose. The filter matches
+every word you type, in any order. The flags narrow the list to figures with
+a new version in the next 90 days, figures whose source is not verified, and
+figures with no value on the date.
+
+## households
+
+The stored test households. Each has one page with tabs: each person's aid
+codes and results, the documents still needed (with each program's due date,
+flagged when it is past), what if, and what the case states. Open a result to
+read how it was reached, step by step.
+
+## law
+
+Where an item follows a statute over the Colorado rule text, the items that
+cite an unverified source and what reads them, the figures with no value
+today, and the sources and documents themselves.
+
+## changes
+
+What takes effect in a month: new figure versions, rules that start or end,
+and rule documents whose text takes effect. My proposal is everything you
+staged in this browser, ready to propose or to download and send.
 
 ## programs
 
@@ -76,3 +114,31 @@ may already be here under another name), then asks what kind it is — a fact
 we are told, a rule, or a number set by policy — before showing only that
 kind's fields. Saving to the tray never fails; Propose checks governance
 before it opens a pull request.
+
+## inbox
+
+Approvals: what is waiting on whom, grouped by change, with each change's
+effect in plain words and the sign-offs it still needs.
+
+## questions
+
+Open questions: each one with the text it turns on, the assumption the codex
+uses now, the programs and items it touches, and whether it is open, partly
+resolved or resolved. Open a question to see it on its own page.
+
+## walkthrough
+
+Case walkthrough: step through one of the stored test households rule by
+rule, in plain words, with the value the codex recorded at each step, the
+rule text it rests on, and where an unknown stopped it.
+
+## roles
+
+By role: what HCPF, CDHS, CDEC and Legal each own, need to approve, and have
+open.
+
+## outcomes
+
+By outcome: each result a household can end in for a program, the rules that
+lead to it, and the figures it depends on. Aid codes are placeholders until
+the CBMS list is supplied.

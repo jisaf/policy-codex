@@ -1,20 +1,28 @@
 id: CO-418
-name: "SNAP: ABAWD time limit status"
+name: "SNAP: ABAWD (able-bodied adult without dependents) time limit status"
 identifier: snap_abawd_time_limit_status
 kind: derived
 type: one of
-options: [not_subject, within_limit, limit_reached]
+options: [not_subject, within_limit, regained, additional_months, limit_reached]
 scope: person-month
 program: SNAP
 role: outcome
-meaning: Not subject when the person is outside the ABAWD age range or otherwise exempt from the time limit for the month; within limit when countable months in the preceding 36-month period are below the 3-month limit; otherwise limit reached.
-derived: [case, [[not, snap_is_in_abawd_age_range], "not_subject"], [snap_is_exempt_from_abawd_time_limit, "not_subject"], [["<", snap_abawd_countable_months_in_period, snap_abawd_countable_month_limit], "within_limit"], [else, "limit_reached"]]
-sources: [S127, S130, S132]
+meaning: Not subject when the person is outside the ABAWD (able-bodied adult without dependents) age range or otherwise exempt from the time limit for the month; within limit when countable months in the current 36-month clock period are below the 3-month limit; regained when the person has reached the limit but regained eligibility (4.311.3.D.1) and meets the work requirement in the month (D.2); additional months when the person, having regained eligibility, is in the single three-month period after notifying the office of no longer meeting it (D.3); otherwise limit reached.
+precision: "Regained eligibility and the additional months come from snap_abawd_eligibility_regained (CO-2309) and snap_abawd_is_in_additional_months (CO-2312), both read as false when not stated; a person who becomes exempt is not subject (D.1.d)."
+derived: [case, [[not, snap_is_in_abawd_age_range], "not_subject"], [snap_is_exempt_from_abawd_time_limit, "not_subject"], [["<", snap_abawd_countable_months_in_period, snap_abawd_countable_month_limit], "within_limit"], [[all, [otherwise, snap_abawd_eligibility_regained, false], snap_meets_abawd_work_requirement], "regained"], [snap_abawd_is_in_additional_months, "additional_months"], [else, "limit_reached"]]
+sources: [S127, S130, S132, S1613]
 implemented: engine
 tags: [abawd, legal]
-rationale: "No existing item states the ABAWD time-limit outcome; this is the SNAP program's ABAWD status result, proposed as a program outcome, combining snap_is_in_abawd_age_range, snap_is_exempt_from_abawd_time_limit, and snap_abawd_countable_months_in_period the way the mwr volume's WR-318 combines its equivalent facts (that item's additional \"prior law applies\" and \"regained\" branches are out of scope here, since this volume's default_as_of postdates sec. 10102's enactment, and this batch does not model ABAWD's 30-day regain-eligibility rule, which the design brief's item list does not include)."
+rationale: "No existing item states the ABAWD time-limit outcome; this is the SNAP program's ABAWD status result, proposed as a program outcome, combining snap_is_in_abawd_age_range, snap_is_exempt_from_abawd_time_limit, and snap_abawd_countable_months_in_period the way the mwr volume's WR-318 combines its equivalent facts (that item's \"prior law applies\" branch is out of scope here, since this volume's default_as_of postdates sec. 10102's enactment). Phase-10 open-question sweep (OQ-38, P-7): the regained and additional_months branches carry 4.311.3.D (S1613)."
 tests:
   - {id: CO-418-T1, month: "2026-10", given: {snap_is_in_abawd_age_range: false, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 0}, expect: not_subject}
   - {id: CO-418-T2, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: true, snap_abawd_countable_months_in_period: 0}, expect: not_subject}
   - {id: CO-418-T3, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 2}, expect: within_limit}
   - {id: CO-418-T4, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3}, expect: limit_reached}
+  # Phase-10 sweep (OQ-38, P-7): 4.311.3.D.
+  - {id: CO-418-T5, title: "Limit reached, regained by 80 hours in 30 days, and still meeting the work requirement", month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3, snap_abawd_eligibility_regained: {"2026-10": true}, snap_meets_abawd_work_requirement: {"2026-10": true}}, expect: regained}
+  - {id: CO-418-T6, title: "Regained, then stopped meeting it - inside the three additional months", month: "2026-11", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3, snap_abawd_eligibility_regained: {"2026-11": true}, snap_meets_abawd_work_requirement: {"2026-11": false}, snap_abawd_additional_months_start_month: "2026-11"}, expect: additional_months}
+  - {id: CO-418-T7, title: "The additional months used up", month: "2027-02", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3, snap_abawd_eligibility_regained: {"2027-02": true}, snap_meets_abawd_work_requirement: {"2027-02": false}, snap_abawd_additional_months_start_month: "2026-11"}, expect: limit_reached}
+  - {id: CO-418-T8, title: "Nothing regained stated", month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3}, expect: limit_reached}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-418-T9", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: snap_abawd_countable_months_in_period equal to snap_abawd_countable_month_limit (snap_abawd_countable_months_in_period under snap_abawd_countable_month_limit)", "given": {"snap_is_in_abawd_age_range": true, "snap_is_exempt_from_abawd_time_limit": false, "snap_abawd_countable_months_in_period": 3}, "expect": "limit_reached"}

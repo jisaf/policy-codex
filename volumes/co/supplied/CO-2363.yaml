@@ -1,0 +1,13 @@
+id: CO-2363
+name: "Is a victim of battery or extreme cruelty"
+identifier: is_victim_of_battery_or_extreme_cruelty
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "This non-citizen has been battered or subjected to extreme cruelty by a spouse or parent, or by a member of the spouse's or parent's family (or is the parent of a child so battered), the condition 9 CCR 2503-6 3.605.1.A.5.c.4 names, as the county has found it: the one statement of the finding every program's battery rule reads."
+precision: "Required where Colorado Works' sponsor deeming (cw_sponsor_deeming_applies, CO-2364) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, a program read an unstated value as false. The 8 U.S.C. 1641(c) status of a battered non-citizen who is not otherwise a qualified non-citizen is immigration_status battered_non_citizen (CO-002); a lawful permanent resident who was battered keeps that status and this finding. SNAP's narrower exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from this finding, its date (CO-2717), the living arrangement (CO-2718) and court or immigration service recognition (CO-2719)."
+supplied_by: "Applicant statement, protective orders, USCIS records."
+sources: [S1627, S1619, S1901]
+tags: [immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it. A.5.c.4 exempts a victim of battery or extreme cruelty.  Same-word audit SW-18 and dual-entry audit 3.1 (audit fix round): the battery finding is stated once, neutrally (is_victim_of_battery_or_extreme_cruelty, CO-2363, with the finding's date and the living arrangement), and SNAP's exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from it."

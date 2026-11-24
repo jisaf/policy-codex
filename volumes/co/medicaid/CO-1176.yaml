@@ -1,0 +1,20 @@
+id: CO-1176
+name: "Medicaid: has a full-coverage Medicaid category"
+identifier: ma_has_full_coverage_category
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible this month for a Medical Assistance category that provides full coverage - full MAGI eligibility, SSI-related eligibility, OAP SISC B, a protected group (continued SSI status, Disabled Adult Child, disabled widow(er), Pickle), a Buy-In program, or institutional, HCBS or PACE long-term care - the 'eligibility category that provides full coverage' of 10 CCR 2505-10 § 8.100.4.G.8 and the 'otherwise eligible under another Medical Assistance category' of §§ 8.100.6.O.4 (QDWI) and 8.715.2.C.6 (BCCP). A needy person under 21 (§ 8.100.4.H.1, ma_needy_young_person_category, CO-2419) also has full coverage.
+precision: "Long-term care is read only for an aged, blind or disabled person, the population §§ 8.100.3.F.1.f-g serve, so a person who is not is settled without the long-term care facts. The Breast and Cervical Cancer Program is itself full coverage (§ 8.715.7.A) but is not in this union, because BCCP's own 'not eligible under another program' test reads the union; ma_family_planning_status (CO-1154) adds BCCP to it. Medicare Savings Programs and limited family planning are not full coverage. Read by CO-616 (QDWI), CO-1152 (BCCP) and CO-1154 (family planning)."
+derived: [any, ma_magi_is_fully_eligible, ma_is_ssi_related_eligible, ma_oap_sisc_b_eligible, [not, ["=", ma_protected_group_category, none]], [not, ["=", ma_buy_in_category, none]], [all, ma_is_aged_blind_or_disabled, [in, ma_ltc_eligibility_status, [eligible_institutional, eligible_hcbs, eligible_pace]]], [not, ["=", ma_needy_young_person_category, none]]]
+sources: [S613, S673, S622, S608, S621, S623, S625, S626, S627, S1717]
+implemented: engine
+tags: [ma, non_magi, magi]
+rationale: "S-1 of the phase 7 review: CO-1154, CO-616 and CO-1152 each restated a narrower 'otherwise eligible' set (MAGI, SSI-related, LTC, Buy-In) that left out the protected groups, OAP SISC B and, for family planning, BCCP, so a woman eligible for full BCCP Medicaid was reported as limited family planning. No existing item states the union; the three readers now share it."
+tests:
+  - {id: CO-1176-T1, as_of: "2026-10-01", month: "2026-10", title: "Full MAGI", given: {ma_magi_is_fully_eligible: true}, expect: true}
+  - {id: CO-1176-T2, as_of: "2026-10-01", month: "2026-10", title: "Pickle group only", given: {ma_magi_is_fully_eligible: false, ma_is_ssi_related_eligible: false, ma_oap_sisc_b_eligible: false, ma_protected_group_category: pickle}, expect: true}
+  - {id: CO-1176-T3, as_of: "2026-10-01", month: "2026-10", title: "OAP SISC B only", given: {ma_magi_is_fully_eligible: false, ma_is_ssi_related_eligible: false, ma_oap_sisc_b_eligible: true}, expect: true}
+  - {id: CO-1176-T4, as_of: "2026-10-01", month: "2026-10", title: "No full-coverage category (C6-05(b): the needy-person category stated none)", given: {ma_magi_is_fully_eligible: false, ma_is_ssi_related_eligible: false, ma_oap_sisc_b_eligible: false, ma_protected_group_category: "none", ma_buy_in_category: "none", ma_is_aged_blind_or_disabled: false, ma_needy_young_person_category: none}, expect: false}
+  - {id: CO-1176-T5, as_of: "2026-10-01", month: "2026-10", title: "Nursing facility resident eligible for long-term care", given: {ma_magi_is_fully_eligible: false, ma_is_ssi_related_eligible: false, ma_oap_sisc_b_eligible: false, ma_protected_group_category: "none", ma_buy_in_category: "none", ma_is_aged_blind_or_disabled: true, ma_ltc_eligibility_status: eligible_institutional}, expect: true}

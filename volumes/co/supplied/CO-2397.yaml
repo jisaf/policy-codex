@@ -1,0 +1,13 @@
+id: CO-2397
+name: "CCCAP: non-traditional care hours requested"
+identifier: cccap_non_traditional_hours_are_requested
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "This caretaker requests non-traditional care hours at application or redetermination, in a county whose rate plan the Department has approved to reimburse providers for non-traditional hours at a higher rate, so the work or low-income activity schedule must be verified (8 CCR 1403-1 3.111.C.2.e)."
+precision: "If not stated, CCCAP reads this as false."
+supplied_by: "CCCAP application; county rate plan."
+sources: [S1637]
+tags: [verification]
+rationale: "OQ-378: 3.111.C.2 and the paragraphs it points to (S1637) require this verification; no fact stated it, so the worker carried it outside the volume."

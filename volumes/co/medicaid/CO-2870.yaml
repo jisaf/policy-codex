@@ -1,0 +1,18 @@
+id: CO-2870
+name: ma has unearned income for verification
+identifier: ma_has_unearned_income_for_verification
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person has unearned income in the month that Medical Assistance counts, and so an unearned-income element to verify: for an aged, blind or disabled person (the SSI method), any unearned income (ma_ssi_gross_unearned_receipts: every receipt that is income, before exemptions; not a loan, an income tax refund or VA Aid and Attendance, which are not income); otherwise MAGI-based unearned income (ma_magi_unearned_receipts), which counts Social Security, pensions, unemployment, other taxable income and tax-exempt interest, and not child support received, Colorado Works or Adult Financial cash assistance, or other non-taxable income (42 CFR 435.603(e), S164-S167)."
+derived: [case, [ma_is_aged_blind_or_disabled, [">", ma_ssi_gross_unearned_receipts, 0]], [else, [">", ma_magi_unearned_receipts, 0]]]
+sources: [S164, S165, S166, S167]
+implemented: engine
+tags: [ma, income, verification]
+rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources. Receipt records, migration phase 2: reads the receipts through the two counting tables (CO-5514 for the SSI method, CO-5501 for MAGI) instead of the scalar facts."
+nearest: [CO-2871, CO-2872, CO-2873, CO-2874]
+tests:
+  - {id: CO-2870-T1, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: false}
+  - {id: CO-2870-T3, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: true, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received by an aged person (the SSI method)", expect: true}
+  - {id: CO-2870-T2, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received", expect: false}

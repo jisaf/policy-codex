@@ -1,0 +1,13 @@
+id: CO-4436
+name: "Adult Financial: burial assistance requested in time"
+identifier: af_burial_request_is_timely
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "For a deceased client, the request for burial assistance was made within thirty days of the date of death, or later with the county department's finding of good cause and not more than one year after the date of death (9 CCR 2503-5 3.570.43.C); good cause exists for any application filed within one year of a death that preceded the rule's effective date."
+precision: "Stated on the decedent. Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise); before, it was read as true when not stated."
+supplied_by: "The application's date and the county department's good-cause finding."
+sources: [S3219]
+tags: [cash]
+rationale: "Coverage review P2-8: 3.570.43.C (S3219) bars a request more than one year after the death and makes a request after thirty days depend on good cause; af_burial_eligible (CO-1231) called the window procedural."

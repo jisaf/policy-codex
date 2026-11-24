@@ -1,0 +1,14 @@
+id: CO-4911
+name: "Months over which a state diversion is paid"
+identifier: tanf_state_diversion_payment_months
+kind: supplied
+type: whole number
+scope: person-month
+program: All
+meaning: "The number of consecutive months over which the Colorado Works diversion the person receives this month (a receipt of kind colorado_works_diversion, receipts CO-5000) is paid, as the diversion agreement sets it, when it is a state diversion; 0 when it is a county diversion or no diversion is received."
+precision: "A fact of the Colorado Works case record. CCCAP, its only reader, reads it only for a person who receives a diversion and gives it no default: 3.103.S makes a state diversion of four or more consecutive months cash assistance and gives no reading for one whose length or kind is not stated, so such a diversion is cannot determine (decision 4 of 2026-11-23; coverage pass 4 X4-1; before it, it was read as 0, a diversion that is not cash assistance)."
+supplied_by: "The Colorado Works diversion agreement in the case record."
+sources: [S3638]
+open: [OQ-873]
+tags: [income]
+rationale: "Coverage pass 3 C3-6 (docs/reviews/coverage3-cccap.md): 8 CCR 1403-1 3.103.S (S3638) makes \"state diversion payments of less than four (4) consecutive months\" and county diversion payments not cash assistance, so a state diversion paid over four or more consecutive months is cash assistance, which 3.111.J.26 (S2706) excludes as a \"Public cash assistance grant\". tanf_diversion_payment_received (CO-4850) states the month's amount but not whether it is a state or county diversion or how long it runs. The fact states the receipt's terms, program-neutrally; cccap_excluded_unearned_receipts (CO-4463) reads it."

@@ -1,0 +1,12 @@
+id: CO-2266
+name: Requires continuous 24-hour supervision
+identifier: ma_requires_continuous_twenty_four_hour_supervision
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person requires 24-hour supervision on a continuous basis reimbursed as an HCBS-SLS service, which excludes the person from the HCBS-SLS target group (10 CCR 2505-10 § 8.7101.I.2.d)."
+supplied_by: The Case Management Agency's assessment.
+sources: [S1513]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the HCBS-SLS supervision criterion had no fact."

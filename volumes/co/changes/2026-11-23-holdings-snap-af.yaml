@@ -1,0 +1,12 @@
+# Resource records, step H1, SNAP and Adult Financial (2026-11-23; docs/reviews/records-holdings-snap-af.md). SNAP
+# reads resources from the holdings records (CO-5300) through snap_holding_treatment_table (CO-5301):
+# snap_countable_liquid_resources (CO-4176), snap_countable_nonliquid_resources (CO-074, the sum of CO-5311 to CO-5313),
+# the transfer look-back (CO-4158 to CO-4160 through CO-5314, CO-5315); burial spaces beyond one plot per member counted
+# (H0-F3). Adult Financial reads them through af_holding_treatment_table (CO-5302): CO-4000 (the sum of CO-5340 to
+# CO-5346, CO-4412, CO-4422), the life insurance items (CO-4722, CO-3854, CO-4001, CO-4002 through CO-5347 to CO-5349),
+# the TWFC rules (CO-4008, CO-3840), the ISM home test (CO-1512) and the limit test with its lower bound (CO-948,
+# CO-5350); investment personal property counted (H0-F2); the vehicle exempt chosen by P58 over equity floored at 0
+# (OQ-1205, A). Harness classes in scripts/records/allowed/h1-snap.yaml and h1-af.yaml. One entry per flag.
+date: 2026-11-23
+summary: "SNAP and Adult Financial read resources from the holdings records: burial spaces beyond one plot per member counted by SNAP (H0-F3); investment personal property counted by Adult Financial (H0-F2); the vehicle exempt chosen by the rule (P58); held refunds and retroactive payments read by their date of receipt; reader defaults removed (decision 4)."
+impact: []

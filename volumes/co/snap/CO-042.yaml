@@ -1,0 +1,18 @@
+id: CO-042
+name: "SNAP: persons this person is responsible for caring for"
+identifier: snap_persons_cared_for
+kind: derived
+type: group of persons
+scope: person
+program: SNAP
+meaning: "The persons for whose care this person is responsible, as SNAP reads it for the work registration, student and ABAWD exemptions (7 CFR 273.7(b)(1)(iv), 273.5(b)(5), 273.24(c)): the person's legal children, the persons for whom the person has assumed primary responsibility or is the court-appointed guardian, and the persons to whom the person regularly provides care that is not solely incidental."
+precision: "A stepparent is responsible for a stepchild's care only where has_primary_responsibility_for is also stated. The reader tests the age or incapacity of the person cared for."
+derived: [filter, [persons], [rel, [parent, has_primary_responsibility_for, legal_guardian, provides_regular_care_to], [P]]]
+sources: [S121, S124, S126]
+implemented: engine
+tags: [work_registration]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1): the meaning no longer names the SNAP rules that read it. Same-word audit SW-25 and dual-entry 3.2: who cares for whom is stated once, by the parent, primary-responsibility, guardianship and regular-care roles; this group is SNAP's reading of them, not a second statement. The identifier was snap_persons_cared_for."
+nearest: [CO-2606, CO-2607, CO-2608]
+tests:
+  - {id: CO-042-T1, title: "A mother and the grandmother who has taken on her granddaughter's care", as_of: "2026-11-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[has_primary_responsibility_for, p1, p3], [provides_regular_care_to, p1, p2]], expect: [p2, p3]}
+  - {id: CO-042-T2, title: "A relative who does not care for anyone", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[other_relative, p1, p2]], expect: []}

@@ -1,0 +1,13 @@
+id: CO-1274
+name: Households sharing the living arrangement
+identifier: leap_households_sharing_living_arrangement
+kind: supplied
+type: whole number
+scope: case
+program: LEAP
+meaning: "The number of separate households, eligible or not, that share the living arrangement and its heating costs with this household (1 when it shares with none), per 9 CCR 2503-7 3.758.47 Step E. Parties on a shared primary fuel (a shared gas or electric meter or propane tank) are counted the same way (3.752.25.A.6, S1402)."
+precision: "One value for the case: a fact about the home. Coverage review 2 N-8: 9 CCR 2503-7 3.751.2.C (S1407) sets \"The maximum number of separate households shall be nine (9)\", so a case states 1 to 9: more than nine households sharing one arrangement is outside the rule, and a case stating it is in error."
+supplied_by: LEAP application and county determination of separate households.
+sources: [S772, S1402, S1407]
+tags: [household]
+rationale: "No existing fact counts households sharing a dwelling (OQ-163's K-7); leap_adjusted_heating_costs (CO-1280) needs it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

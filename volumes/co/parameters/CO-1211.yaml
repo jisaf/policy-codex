@@ -1,0 +1,12 @@
+id: CO-1211
+name: Home Care Allowance tier 1 minimum need-for-paid-care score
+identifier: af_hca_tier_one_min_need_score
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The lowest need-for-paid-care score in HCA tier 1 ("1 to 23"), per 9 CCR 2503-5 3.570.13.C.3. A score of zero (no unmet need for paid care) places the client in no tier.
+value: 1
+sources: [S714]
+tags: [cash, disability]
+rationale: No existing parameter states the tier bounds of the 3.570.13.C.3 table; af_hca_tier (CO-1216) needs them.

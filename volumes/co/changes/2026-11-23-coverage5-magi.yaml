@@ -1,0 +1,7 @@
+# Coverage pass 5 fix round for MAGI Medicaid and CHP+ (docs/reviews/coverage5-medicaid-magi-chp.md, section 7). One entry per
+# change-impact flag the round raises: three are the round's own MAGI and CHP+ changes (CO-565, CO-706, CO-707), each with its
+# reason; the rest are flags an earlier record dispositioned, re-keyed because the receipts and earnings record schemas changed
+# upstream (CO-5000 taxable_amount, CO-5100 seasonal_or_commission), with the earlier disposition carried.
+date: 2026-11-23
+summary: "Coverage pass 5 (MAGI Medicaid, CHP+): C5-01 to C5-10 fixed (the pregnancy coverage period for a first-time applicant; the family size and CHP+ prenatal by the month's pregnancy; the IMD exclusion in the outcomes; an outside claimer's relationship; a sponsor outside the case; no default for the year's income or seasonal pay; pensions and refunds at their taxable part; numbers compared with a 1e-9 tolerance), C5-11 to C5-19 fixed or recorded, the field sweep's fixes (streams bounded by their dates; Social Security net of repayments), CO-810 to CO-819."
+impact: []

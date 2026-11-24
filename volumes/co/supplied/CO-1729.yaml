@@ -1,0 +1,12 @@
+id: CO-1729
+name: "SNAP: receives a government disability retirement benefit for a permanent disability"
+identifier: snap_receives_permanent_disability_retirement_benefit
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person receives disability retirement benefits from a governmental agency because of a disability considered permanent under section 221(i) of the Social Security Act (7 CFR 271.2, 'elderly or disabled member' (5))."
+supplied_by: "Benefit award letter from the paying agency."
+sources: [S6]
+tags: [snap, disability]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-5): snap_is_disabled_member (CO-302) read the bare SSA disability fact and blindness as making a member disabled; 271.2 makes a member disabled only through the benefits it lists, and prong (5) is this one."

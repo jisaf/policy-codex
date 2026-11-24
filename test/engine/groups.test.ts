@@ -89,15 +89,17 @@ describe("group patterns", () => {
     expect(evaluate(ix, c5, "mandatory_unit", "p2", null)).toEqual(["p1", "p2"]);
     expect(evaluate(ix, c5, "mandatory_unit", "p3", null)).toEqual(["p3", "p4"]);
     const text = [
-      "the persons joined to this person by buys_prepares_with or parent such that",
+      "the persons joined to this person by buys_prepares_with or parent, crossing an edge only where",
       "  any of the following is true:",
       "    - this person is a buys_prepares_with of that person",
       "    - that person's Age is less than 22",
     ].join("\n");
     const e = parseDerivation(ix, text);
     expect(block(ix, e).join("\n")).toBe(text);
-    expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse such that that person's Age is at least 18")))
-      .toBe("the persons joined to this person by spouse such that that person's Age is at least 18");
+    expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse, crossing an edge only where that person's Age is at least 18")))
+      .toBe("the persons joined to this person by spouse, crossing an edge only where that person's Age is at least 18");
+    // The wording written before the engineering review still parses.
+    expect(parseDerivation(ix, text.replace(", crossing an edge only where", " such that"))).toEqual(e);
   });
   it("finds the persons who share a parent", () => {
     const c6 = makeCase(ix, {
@@ -110,6 +112,28 @@ describe("group patterns", () => {
     expect(evaluate(sib, c6, "siblings", "p3", null)).toEqual(["p2"]);
     expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
     expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
+  });
+  it("finds the persons who share every parent (P53: full siblings)", () => {
+    const c7 = makeCase(ix, {
+      id: "F", as_of: "2026-10-01",
+      relationships: [
+        ["parent", "p1", "p2"], ["parent", "p4", "p2"],
+        ["parent", "p1", "p3"], ["parent", "p4", "p3"],
+        ["parent", "p1", "p5"],
+      ] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} }, p4: { facts: {} }, p5: { facts: {} } },
+    });
+    const fx = buildIndex([...items,
+      { id: "G-13", name: "Full siblings", identifier: "full_sibs", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent", "every"], implemented: "engine" },
+      { id: "G-14", name: "Siblings", identifier: "sibs", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent"], implemented: "engine" }]);
+    // p2 and p3 share both parents; p5 shares only p1 with them.
+    expect(evaluate(fx, c7, "sibs", "p2", null)).toEqual(["p3", "p5"]);
+    expect(evaluate(fx, c7, "full_sibs", "p2", null)).toEqual(["p3"]);
+    expect(evaluate(fx, c7, "full_sibs", "p5", null)).toEqual([]);
+    expect(evaluate(fx, c7, "full_sibs", "p1", null)).toEqual([]);
+    const text = "the persons who share every parent with this person";
+    expect(parseInline(fx, text)).toEqual(["shared_relative", "parent", "every"]);
+    expect(inline(fx, parseInline(fx, text))).toBe(text);
   });
   it("joins the bound person to a group by relationship", () => {
     const c8 = makeCase(ix, {
@@ -128,6 +152,20 @@ describe("group patterns", () => {
     expect(evaluate(mx, c7, "later", "p1", null)).toBe("2027-10");
     expect(evaluate(mx, c7, "earlier", "p1", null)).toBe("2026-07");
     expect(inline(mx, parseInline(mx, "3 months before the month containing the Determination Date"))).toBe("3 months before the month containing the Determination Date");
+  });
+  it("adds days to a date", () => {
+    const c8 = makeCase(ix, { id: "D", as_of: "2026-12-25", persons: { p1: { facts: {} } } });
+    const dx = buildIndex([...items, { id: "G-15", name: "Due", identifier: "due", kind: "derived", type: "calendar date", scope: "person", program: "All", derived: ["days_after", 10, ["det_date"]], implemented: "engine" }, { id: "G-16", name: "Before", identifier: "before", kind: "derived", type: "calendar date", scope: "person", program: "All", derived: ["days_after", -60, "2028-03-01"], implemented: "engine" }]);
+    expect(evaluate(dx, c8, "due", "p1", null)).toBe("2027-01-04");
+    expect(evaluate(dx, c8, "before", "p1", null)).toBe("2028-01-01");
+    expect(inline(dx, parseInline(dx, "10 days after the Determination Date"))).toBe("10 days after the Determination Date");
+  });
+  it("counts the days between two dates", () => {
+    const c9 = makeCase(ix, { id: "D", as_of: "2026-10-15", persons: { p1: { facts: {} } } });
+    const dx = buildIndex([...items, { id: "G-17", name: "Left", identifier: "left_in_month", kind: "derived", type: "whole number", scope: "person", program: "All", derived: ["days_between", ["det_date"], ["first_day", ["month_after", ["det_month"]]]], implemented: "engine" }, { id: "G-18", name: "Back", identifier: "back", kind: "derived", type: "whole number", scope: "person", program: "All", derived: ["days_between", "2028-03-01", "2028-02-01"], implemented: "engine" }]);
+    expect(evaluate(dx, c9, "left_in_month", "p1", null)).toBe(17);
+    expect(evaluate(dx, c9, "back", "p1", null)).toBe(-29);
+    expect(inline(dx, parseInline(dx, "the number of days from the Determination Date to the first day of the month after the month containing the Determination Date"))).toBe("the number of days from the Determination Date to the first day of the month after the month containing the Determination Date");
   });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);

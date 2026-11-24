@@ -1,17 +1,18 @@
 id: CO-182
-name: HHS poverty guideline, each additional household member, annual, for MAGI Medical Assistance (48 states and D.C.)
-identifier: ma_poverty_guideline_each_additional
+name: HHS federal poverty guideline, each additional household member, annual (48 states and D.C.)
+identifier: federal_poverty_guideline_annual_each_additional
 kind: parameter
 type: money
 scope: global
-program: Medicaid
+program: All
 meaning: The annual amount added to the 8-person HHS poverty guideline for each household member above 8, for the 48 contiguous states and the District of Columbia.
 precision: Annual dollars.
 versions:
-  - from: "2026-01-01"
-    value: 5680
-    source: S55
-rationale: "Companion figure to ma_poverty_guideline_table (CO-181), from the same HHS notice (S55); needed to extend the guideline to household sizes above 8 the same way snap_poverty_guideline_each_additional (CO-117) does for SNAP. nearest: [CO-117]."
-nearest: [CO-117]
-sources: [S55]
-tags: [ma, magi, income]
+  - {from: "2024-01-01", to: "2025-01-01", value: 5380, source: S5061}
+  - {from: "2025-01-01", to: "2026-01-01", value: 5500, source: S1710}
+  - {from: "2026-01-01", value: 5680, source: S55}
+review_by: "2027-01-31"
+open: [OQ-515]
+rationale: "Companion figure to federal_poverty_guideline_annual_table (CO-181), from the same HHS notice (S55), for household sizes above 8. Program All since the vocabulary fix round (D-1); the identical SNAP copy (CO-117) was retired. Coverage pass 6, C6-09 (2026-11-24): the 2024 figures (89 FR 2961, D-5061, S5061, fetched) are added for the premium tax credit test of a retroactive month in 2025, which reads the guideline in force on November 1, 2024 (26 CFR 1.36B-1(h); ma_premium_tax_credit_previous_year_income_pct_fpl, CO-7408); the 2024 version is read on no other date the stored households reach."
+sources: [S55, S1710, S5061]
+tags: [income]

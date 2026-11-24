@@ -1,0 +1,13 @@
+id: CO-3730
+name: "SNAP: authorized representative's identity verified"
+identifier: snap_authorized_representative_identity_verified
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "The identity of the authorized representative who applied on the household's behalf has been verified, through an interface, a collateral contact or any document that reasonably establishes it (10 CCR 2506-1 4.301, 4.505.1; 7 CFR 273.2(f)(1)(vii))."
+precision: "One value for the case. Read only when snap_application_filed_by_authorized_representative (CO-3729) is true."
+supplied_by: "The representative's identity document or the interface or collateral contact recorded in CBMS."
+sources: [S2512, S2513]
+tags: [snap, verification, application_wide]
+rationale: "Final verification F-9: the representative is not a person of the case, so the identity facts of the case's persons cannot state the representative's verification."

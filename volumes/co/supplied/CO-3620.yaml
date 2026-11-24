@@ -1,0 +1,13 @@
+id: CO-3620
+name: "Medicaid: Medicare Savings Program enrolled in for a past month"
+identifier: ma_prior_msp_category
+kind: supplied
+type: one of
+options: [qmb, slmb, qi, qdwi, none]
+scope: person-month
+program: Medicaid
+meaning: "For a month before the determination month, the Medicare Savings Program the person was eligible for and enrolled in, as the eligibility history records it: Qualified Medicare Beneficiary (qmb), Specified Low-Income Medicare Beneficiary (slmb), Qualifying Individual 1 (qi), Qualified Disabled and Working Individual (qdwi), or none. It says who is already a member: a member continues without the effective-date rules of a new determination (10 CCR 2505-10 § 8.100.6.L.10, O.5) and keeps the annual COLA disregard (L.12, M.7, N.6). If not stated, Medicaid reads it as none."
+supplied_by: "CBMS eligibility history."
+sources: [S2406, S2407, S2409, S2410]
+tags: [ma, msp]
+rationale: "Final verification F-5 (docs/reviews/final-medicaid-chp.md): no item gated QMB on the month of determination, so ma_msp_category (CO-617) reported qmb in the determination month and in every retroactive month, while 10 CCR 2505-10 § 8.100.6.L.10-11 (S2406) makes QMB effective the month after the month of determination and not retroactive, and § 8.100.6.O.5 (S2410) makes QDWI effective the month of determination. Final verification F-6 (docs/reviews/final-medicaid-chp.md): no item carried the annual COLA disregard of 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (S2406, S2407, S2409), so a QMB, SLMB or QI-1 member whose January Social Security cost-of-living increase pushed countable income over the limit was reported ineligible while the rule keeps the member eligible. Both rules turn on whether the person is already a member; ma_prior_enrollment_category (CO-2424) records the MAGI categories only."

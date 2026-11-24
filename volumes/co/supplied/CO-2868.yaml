@@ -1,0 +1,12 @@
+id: CO-2868
+name: Date of death
+identifier: date_of_death
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person died. Not stated for a living person."
+supplied_by: Death certificate; SSA or vital records match.
+sources: [S1502, S719]
+tags: [age]
+rationale: "Dual-entry audit 3.14: four facts carried \"has died\" (is_deceased, af_died_while_receiving_af_or_medicaid, cw_is_deceased_client, sponsor_has_died), two of them bundled with a receipt record. The death is stated once, by its date."

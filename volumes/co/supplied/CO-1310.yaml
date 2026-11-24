@@ -1,0 +1,12 @@
+id: CO-1310
+name: SSN verified by electronic data source
+identifier: ssn_verified_by_electronic_data_source
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether an electronic data source has verified the person's Social Security number for this application: an interface match the agency treats as verification (an SSA match through IEVS, SOLQ or SVES confirming the number was issued to the person), so no document is needed for that element."
+supplied_by: CBMS interface results (IEVS, SSA/SOLQ/SVES, SAVE/VLP, DMV, FDSH, The Work Number, Asset Verification Program) as recorded in the case.
+sources: [S804, S843, S884]
+tags: [verification]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

@@ -1,0 +1,11 @@
+# Shared program calculations held until they are split (docs/governance.md
+# "Cross-program links"; product-owner decision 2026-11-23: a program
+# calculation is never shared). Each entry is a shared (All) rule classified
+# program_calculation and the program rules that read it. npm run check
+# reports what this list holds as warnings and blocks when a shared
+# calculation or reader is missing from it, when an entry is no longer needed,
+# or when a pull request adds one: the list only shrinks. The proposed split
+# for each is in docs/reviews/cross-program-audit.md.
+date: 2026-11-23
+held:
+  - {item: CO-087, identifier: mother_was_enrolled_in_medicaid_at_birth, readers: [CO-1395, CO-550]}

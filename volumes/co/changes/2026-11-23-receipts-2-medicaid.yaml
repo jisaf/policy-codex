@@ -1,0 +1,9 @@
+# Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-medicaid.md): Medicaid (MAGI and
+# the SSI method, deeming, long-term care, the buy-ins, the Medicare Savings Programs) and CHP+ read the
+# receipts (CO-5000) through two counting tables, MAGI (CO-5500) and the SSI method. One entry per
+# change-impact flag the migration raises, appended as each area moves. An entry that re-keys an
+# earlier disposition (the flagged item reads, through others, an item this migration changed, so the
+# changed item's fingerprint moved) keeps the earlier reason.
+date: 2026-11-23
+summary: Medicaid and CHP+ read unearned income from receipt records through a MAGI and an SSI-method counting table.
+impact: []

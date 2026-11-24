@@ -1,0 +1,13 @@
+id: CO-2892
+name: Descendant of a tribal member
+identifier: tribal_descendant_degree
+kind: supplied
+type: one of
+scope: person
+program: All
+options: [none, first, second]
+meaning: "Whether the person, not a member, is a descendant of a member of a federally recognized Indian tribe, and in which degree: first (a child of a member) or second (a grandchild); none otherwise or for a more remote descendant."
+supplied_by: Tribal enrollment records of the parent or grandparent.
+sources: [S1236, S1214]
+tags: [immigration]
+rationale: "Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."

@@ -1,0 +1,18 @@
+id: CO-3152
+name: "Medicaid: declared household income for limited family planning presumptive eligibility, the applicant counted as two"
+identifier: ma_declared_household_income_pct_fpl_limited_family_planning
+kind: derived
+type: rate
+scope: person
+program: Medicaid
+meaning: "For limited family planning presumptive eligibility, the declared household income (CO-092) as a decimal fraction of the monthly poverty guideline for the declared household size with the applicant counted as two (10 CCR 2505-10 § 8.100.3.R.2.c and § 8.100.4.F.2.c: \"An applicant applying for limited family planning presumptive eligibility will be counted individually as a household member of two\")."
+precision: "Read as § 8.100.4.E.3 reads the full limited family planning determination (\"counted as a household of two in addition to any other household members\"): the declared size, which counts the applicant once, plus ma_family_planning_applicant_household_count (CO-3029) less one, with the household's declared income, as ma_family_planning_household_income_pct_fpl (CO-1153) reads the MAGI household (OQ-590). Not rounded."
+derived: ["/", declared_household_income_monthly, ["/", [lookup_extended, federal_poverty_guideline_annual_table, ["-", [+, declared_household_size, ma_family_planning_applicant_household_count], 1], federal_poverty_guideline_annual_each_additional], 12]]
+sources: [S1501, S1722, S614, S55]
+implemented: engine
+tags: [ma, magi, income]
+nearest: [CO-3153, CO-3151]
+open: [OQ-590]
+rationale: "Heavier-definitions audit H-9 (audit fix round 4): the limited family planning arm of ma_hospital_presumptive_eligibility_category (CO-2439) compared the household's declared ratio for its own size, so the applicant was counted once, not as two. No existing item states the presumptive figure with the applicant counted as two; CO-1153 states it for the MAGI household of the full determination."
+tests:
+  - {id: CO-3152-T1, as_of: "2026-11-01", title: "An applicant alone declaring $2,500: size 1 counted as 2, 2,500 / (21,640 / 12) = 1.386", given: {declared_household_income_monthly: 2500, declared_household_size: 1}, expect: 1.3863216266173752}

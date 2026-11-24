@@ -1,0 +1,13 @@
+id: CO-4439
+name: "Average weekly unpaid work hours donated"
+identifier: donated_work_hours_per_week
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: "The average number of hours a week, over the month, of the donated work donated_work_hours_in_month (CO-4438) states."
+precision: "Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise): a person with no donated work states 0; before, it was read as 0 when not stated."
+supplied_by: "Applicant statement, as the county establishes it."
+sources: [S3211]
+tags: [income]
+rationale: "Coverage review F-10: 3.520.784.A.4 (S3211) counts donated work only when it \"Is greater than five (5) hours per week\"."

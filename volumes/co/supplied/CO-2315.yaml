@@ -1,0 +1,12 @@
+id: CO-2315
+name: "SNAP: voluntary quit disqualification start month"
+identifier: snap_voluntary_quit_disqualification_start_month
+kind: supplied
+type: month
+scope: person
+program: SNAP
+meaning: "The month in which this person's disqualification for the voluntary quit stated in snap_voluntary_quit_date (CO-2313) begins: the month following the expiration of the Notice of Adverse Action, or, where a fair hearing upholds the county, the first of the month after the hearing decision (10 CCR 2506-1 4.310.8.B, 4.308.G)."
+supplied_by: "County notice of adverse action and hearing record."
+sources: [S1612]
+tags: [snap, work_registration]
+rationale: "OQ-38 (P-8): 4.310.8.B (S1612) fixes when the disqualification period begins by the notice and any hearing, events no other fact records."

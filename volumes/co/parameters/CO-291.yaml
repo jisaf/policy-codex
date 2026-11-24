@@ -6,11 +6,16 @@ type: money
 scope: global
 program: AdultFinancial
 meaning: The total AND-CS grant standard, per 9 CCR 2503-5 3.546.A, before deducting a client's countable income.
-precision: See OQ-118 - adjustable within available appropriations per 3.546.B's general adjustment language; this parameter carries only the stated dollar figure as of its effective date.
+precision: Adjustable within available appropriations with no appeal right (3.546.B); each adjustment the rule states is a new dated version (OQ-118, resolved). The 2026 figure is from D-80.
 versions:
   - from: "2025-01-01"
+    to: "2026-01-01"
     value: 967
     source: S462
-open: [OQ-118]
-sources: [S462]
+  - from: "2026-01-01"
+    to: "2027-01-01"
+    value: 994
+    source: S706
+review_by: "2027-01-01"
+sources: [S462, S706]
 rationale: No existing item states the AND-CS grant standard. af_grant_standard (CO-949) and af_and_grant (CO-952) need it.

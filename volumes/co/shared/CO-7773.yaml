@@ -1,0 +1,21 @@
+id: CO-7773
+name: A pregnancy ended on or after the month began, as the case records it
+identifier: pregnancy_ended_on_or_after_month
+kind: derived
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether the case records a pregnancy of the person that ended on or after the first day of the month: the stated pregnancy_end_date (CO-089) is on or after it, or a child of the case she gave birth to (the gave_birth_to relationship) was born on or after it. For a person pregnant in the month, whether the pregnancy she was pregnant with then has a recorded end."
+precision: "Coverage pass 7, C7-02 (2026-11-24). Relationships not stated are read as none, as most_recent_pregnancy_end_date (CO-7400) reads them; a child she gave birth to whose date of birth is not stated leaves it unknown unless the stated end already settles it."
+derived: [any, [all, [not, [unknown, pregnancy_end_date]], [">=", pregnancy_end_date, [first_day, [month]]]], [">", [count, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], [">=", [of, [P], date_of_birth], [first_day, [month]]]]]], 0]]
+sources: [S640, S1715, S224]
+implemented: engine
+tags: [ma, chp, household]
+link_class: primitive
+link_basis: "Whether a recorded pregnancy end (the stated end, or a recorded birth) falls on or after a month's first day; a date primitive no program defines differently."
+nearest: [CO-7400, CO-7771]
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): a coverage period ends with the postpartum year of the pregnancy current in its first month (10 CCR 2505-10 § 8.100.4.G.5, 'through the last day of the 12th month following the date the pregnancy ends'; 10 CCR 2505-3 § 430.3); whether that pregnancy has a recorded end, or continues, is this item. pregnancy_ended_before_month (CO-7771) is its complement in time."
+tests:
+  - {id: CO-7773-T1, month: "2025-03", as_of: "2026-11-10", title: "C7-02 (PG-SECOND): she gave birth to p2 on 2025-09-10, on or after 2025-03-01: true (the pregnancy of March 2025 has a recorded end)", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
+  - {id: CO-7773-T2, month: "2026-10", as_of: "2026-11-10", title: "C7-02 (PG-SECOND): no end on or after 2026-10-01 (the birth is 2025-09-10, no end stated): false (the pregnancy of October 2026 continues)", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: false}
+  - {id: CO-7773-T3, month: "2026-09", as_of: "2026-11-10", title: "A miscarriage stated on 2026-09-30: on or after 2026-09-01: true", given: {pregnancy_end_date: "2026-09-30"}, relationships: [], expect: true}

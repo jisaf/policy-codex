@@ -8,9 +8,18 @@ program: SNAP
 meaning: The amount added to the 8-person 200% FPL BBCE gross income limit for each household member above 8.
 versions:
   - from: "2024-10-01"
+    to: "2025-10-01"
     value: 898
     source: S59
-rationale: Companion figure to snap_bbce_gross_income_limit_table (CO-122), from the same codified 4.401.1 table (S59); see OQ-15 for the same dating caveat.
-open: [OQ-15]
-sources: [S59]
+  - from: "2025-10-01"
+    to: "2026-10-01"
+    value: 918
+    source: S1304
+  - from: "2026-10-01"
+    to: "2027-10-01"
+    value: 948
+    source: S739
+rationale: "Companion figure to snap_bbce_gross_income_limit_table (CO-122), from the same codified 4.401.1 table (S59); see OQ-15 for the same dating caveat. Phase 8 adds the FY2027 200% each-additional figure (S739); the open-question sweep adds the FY2026 figure (S1304, OQ-15)."
+review_by: "2027-10-01"
+sources: [S59, S739, S1304]
 tags: [income, snap, state_election]

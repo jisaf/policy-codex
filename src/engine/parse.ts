@@ -93,6 +93,7 @@ export function parseInline(
   if (s === "the Determination Date") return ["det_date"];
   if (s === "the month containing the Determination Date") return ["det_month"];
   if (s === "the month") return ["month"];
+  if (s === "that month") return ["that_month"];
   if (s === "every person in the case") return ["persons"];
   if (s === "yes") return true;
   if (s === "no") return false;
@@ -115,10 +116,54 @@ export function parseInline(
     return ["in", p(sp[0]), sp[1].split(",").map((x) => x.trim()).filter(Boolean)];
   }
   if (s.endsWith(" is unknown")) return ["unknown", p(s.slice(0, -11))];
+  // P56, P57: a field of the receipt a "for each receipt in" sum is at
+  // (after the comparisons, which may hold one on either side).
+  let rm: RegExpMatchArray | null;
+  // "that holding" is the same record read under the list's own noun
+  // (record_noun; resource records, step H0).
+  // P60: the record's owner, and a fact of the owner ("that holding's
+  // owner's F", or "... F for M" for a per-month fact read in another month).
+  if (/^that (?:receipt|holding)'s owner$/.test(s)) return ["owner"];
+  if ((rm = s.match(/^that (?:receipt|holding)'s owner's (.+)$/))) {
+    const n = resolveName(ix, rm[1]);
+    if (n) return ["of", ["owner"], n];
+    const at = parseAt(ix, rm[1], options);
+    if (at) return ["at", ["of", ["owner"], (at as Expr[])[1]], (at as Expr[])[2]];
+  }
+  if ((rm = s.match(/^that (?:receipt|holding)'s ([a-z][a-z0-9 ]*)$/))) return ["receipt", rm[1].trim().replace(/ /g, "_")];
+  if ((rm = s.match(/^that (?:receipt is received|holding is valued) in (.+)$/))) return ["received_in", p(rm[1])];
+  // P51, read before arithmetic: its own words hold no arithmetic phrase at
+  // the top level, but its operands may.
+  // A table slot is a table's name, or a parenthesised expression giving one
+  // (a table as of a date).
+  const table = (x: string): Expr | null =>
+    resolveName(ix, x) ?? (x.trim().startsWith("(") ? p(stripParens(x)) : null);
+  if (s.endsWith(" for each beyond its last row")) {
+    const q = splitTop(s.slice(0, -29), ", adding ", true);
+    const r = q && splitTop(q[0], ", for ", true);
+    const tbl = r && table(r[0]);
+    if (q && r && tbl) return ["lookup_extended", tbl, p(r[1]), p(q[1])];
+  }
+  if (s.endsWith(", or its last row beyond it")) {
+    const r = splitTop(s.slice(0, -27), ", for ", true);
+    const tbl = r && table(r[0]);
+    if (r && tbl) return ["lookup_extended", tbl, p(r[1])];
+  }
+  if ((sp = splitTop(s, " as of ", true))) {
+    const prm = resolveName(ix, sp[0]);
+    if (prm && ix.byIdentifier.get(prm)?.kind === "parameter") return ["as_of", prm, p(sp[1])];
+  }
   let m: RegExpMatchArray | null;
+  if ((m = s.match(/^the most recent month number (.+?) on or before (.+)$/))) {
+    return ["latest_month_of_year", p(m[1]), p(m[2])];
+  }
   if ((m = s.match(/^the number of whole years between (.+)$/))) {
     const q = splitTop(m[1], " and ");
     if (q) return ["years_between", p(q[0]), p(q[1])];
+  }
+  if ((m = s.match(/^the number of days from (.+)$/))) {
+    const q = splitTop(m[1], " to ");
+    if (q) return ["days_between", p(q[0]), p(q[1])];
   }
   if ((m = s.match(/^the lesser of (.+)$/))) {
     const q = splitTop(m[1], " and ");
@@ -129,16 +174,22 @@ export function parseInline(
     if (q) return ["max", p(q[0]), p(q[1])];
   }
   if (s.endsWith(" rounded up to the next whole dollar")) return ["ceil", p(s.slice(0, -36))];
+  if (s.endsWith(" rounded up to a whole number")) return ["ceil", p(s.slice(0, -29))];
   if (s.endsWith(" rounded to the nearest whole dollar")) return ["round", p(s.slice(0, -36))];
   if ((m = s.match(/^the number of persons in (.+)$/))) return ["count", p(m[1])];
   if ((m = s.match(/^that person is a (.+?) of a person in (.+)$/))) {
     return ["has_relative_in", m[1].split(" or ").map((x) => x.trim()), p(m[2])];
   }
+  if ((m = s.match(/^the persons who share every (.+) with this person$/))) {
+    return ["shared_relative", m[1].trim(), "every"];
+  }
   if ((m = s.match(/^the persons who share a (.+) with this person$/))) {
     return ["shared_relative", m[1].trim()];
   }
   if ((m = s.match(/^the persons joined to this person by (.+)$/))) {
-    const q = splitTop(m[1], " such that ");
+    // ", crossing an edge only where" is the rendered form; " such that" is
+    // the form written before the engineering review and is still read.
+    const q = splitTop(m[1], ", crossing an edge only where ") ?? splitTop(m[1], " such that ");
     const roles = (q ? q[0] : m[1]).split(" or ").map((x) => x.trim());
     return q ? ["reachable", roles, p(q[1])] : ["reachable", roles];
   }
@@ -149,6 +200,23 @@ export function parseInline(
   if ((m = s.match(/^the sum of (.+)$/))) {
     const q = splitTop(m[1], " for each person in ", true);
     if (q) return ["sum", p(q[1]), p(q[0])];
+    const qm = splitTop(m[1], " for each month in ", true);
+    if (qm) return ["sum_months", p(qm[1]), p(qm[0])];
+    // P55: "the sum of V for each receipt in L where (C)".
+    const qr = splitTop(m[1], " for each receipt in ", true) ?? splitTop(m[1], " for each holding in ", true);
+    const qw = qr && splitTop(qr[1], " where ");
+    if (qr && qw) return ["sum_receipts", p(qw[0]), p(qw[1]), p(qr[0])];
+  }
+  if ((m = s.match(/^the greatest of (.+)$/))) {
+    // P59: "the greatest of V for each person in G".
+    const q = splitTop(m[1], " for each person in ", true);
+    if (q) return ["greatest", p(q[1]), p(q[0])];
+  }
+  if ((m = s.match(/^the largest of (.+)$/))) {
+    // P58: "the largest of V for each holding in L where (C)".
+    const qr = splitTop(m[1], " for each holding in ", true) ?? splitTop(m[1], " for each receipt in ", true);
+    const qw = qr && splitTop(qr[1], " where ");
+    if (qr && qw) return ["largest", p(qw[0]), p(qw[1]), p(qr[0])];
   }
   if ((m = s.match(/^the number of months in (.+) for which (.+)$/))) {
     return ["count_months", p(m[1]), p(m[2])];
@@ -165,10 +233,13 @@ export function parseInline(
     }
     if (best) return flattenArith([best[2], p(best[0]), p(best[1])]);
   }
+  if ((m = s.match(/^the calendar month number of (.+)$/))) return ["month_of_year", p(m[1])];
+  if ((m = s.match(/^the calendar year of (.+)$/))) return ["year_of", p(m[1])];
   if ((m = s.match(/^the month containing (.+)$/))) return ["month_of", p(m[1])];
   if ((m = s.match(/^the month before (.+)$/))) return ["month_before", p(m[1])];
   if ((m = s.match(/^(.+?) months after (.+)$/))) return ["months_after", p(m[1]), p(m[2])];
   if ((m = s.match(/^(.+?) months before (.+)$/))) return ["months_before", p(m[1]), p(m[2])];
+  if ((m = s.match(/^(.+?) days after (.+)$/))) return ["days_after", p(m[1]), p(m[2])];
   if ((m = s.match(/^the month after (.+)$/))) return ["month_after", p(m[1])];
   if ((m = s.match(/^the first day of (.+)$/))) return ["first_day", p(m[1])];
   if ((m = s.match(/^the (.+?) consecutive months ending with (.+)$/))) {
@@ -187,10 +258,15 @@ export function parseInline(
     return ["of", ["P"], n];
   }
   if ((sp = splitTop(s, " is in "))) return ["in_group", p(sp[0]), p(sp[1])];
+  if ((sp = splitTop(s, ", for the band containing ", true))) {
+    const tbl = resolveName(ix, sp[0]);
+    if (tbl) return ["band", tbl, p(sp[1])];
+  }
   if ((sp = splitTop(s, ", for ", true))) {
     const at = parseAt(ix, sp[0], options);
     if (at) return ["lookup", at, p(sp[1])];
-    const tbl = resolveName(ix, sp[0]);
+    const tbl = resolveName(ix, sp[0]) ??
+      (sp[0].trim().startsWith("(") && sp[0].includes(" as of ") ? p(stripParens(sp[0])) : null);
     if (tbl) return ["lookup", tbl, p(sp[1])];
   }
   const at = parseAt(ix, s, options);
@@ -242,8 +318,8 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
       .split(",").map((x) => x.trim()).filter(Boolean);
     return ["exists_related", rels, parseBlockLines(ix, rest, options)];
   }
-  if ((m = txt.match(/^the persons joined to this person by (.+) such that$/))) {
-    if (!rest.length) throw new Error("such that: missing condition");
+  if ((m = txt.match(/^the persons joined to this person by (.+?)(?:, crossing an edge only where| such that)$/))) {
+    if (!rest.length) throw new Error("crossing an edge only where: missing condition");
     const roles = m[1].split(" or ").map((x) => x.trim());
     return ["reachable", roles, parseBlockLines(ix, rest, options)];
   }
@@ -254,6 +330,24 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
   if ((m = txt.match(/^the sum for each person in (.+) of$/))) {
     if (!rest.length) throw new Error("the sum: missing value");
     return ["sum", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the greatest for each person in (.+) of$/))) {
+    if (!rest.length) throw new Error("the greatest: missing value");
+    return ["greatest", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the sum for each month in (.+) of$/))) {
+    if (!rest.length) throw new Error("the sum: missing value");
+    return ["sum_months", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the (sum|largest) for each (?:receipt|holding) in (.+) where$/))) {
+    // P55 (and P58) as a block: the condition, then "of" one step in, then the value.
+    const ofAt = rest.findIndex((l) => l.text.trim() === "of" && l.indent === first.indent + 2);
+    if (ofAt <= 0 || ofAt === rest.length - 1) throw new Error(`the ${m[1]} for each receipt: needs a condition and, after "of", a value`);
+    return [
+      m[1] === "sum" ? "sum_receipts" : "largest", p(m[2]),
+      parseBlockLines(ix, rest.slice(0, ofAt), options),
+      parseBlockLines(ix, rest.slice(ofAt + 1), options),
+    ];
   }
   if ((m = txt.match(/^in each of (.+):$/))) {
     return ["each", p(m[1]), parseBlockLines(ix, rest, options)];

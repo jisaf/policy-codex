@@ -1,0 +1,14 @@
+id: CO-4447
+name: "Adult Financial: serving an intentional program violation disqualification"
+identifier: af_is_serving_ipv_disqualification
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The person is within an Adult Financial disqualification period for an intentional program violation found through an administrative disqualification hearing or a signed waiver of the hearing (9 CCR 2503-5 3.583.N): twelve months for the first offense, twenty-four months for the second, permanently for the third, served consecutively and by a break in grant payments totaling the period, unless the finding is reversed."
+precision: "Only the individual found to have committed the violation is disqualified (3.583.N.3); a disqualified spouse's or sponsor's income and resources are still counted. A disqualification imposed in one county applies in all (N.4). A SNAP or Colorado Works violation is not an Adult Financial one (snap_is_serving_ipv_disqualification, CO-039; cw_is_serving_ipv_disqualification, CO-1730). If not stated, Adult Financial reads this as false."
+supplied_by: "The county's IPV record (the hearing decision or the signed waiver and the notice of the disqualification period)."
+sources: [S3214]
+tags: [cash, oap, and]
+rationale: "Coverage review F-14: 9 CCR 2503-5 3.583.N (S3214) disqualifies the individual found to have committed an IPV for 12 months, 24 months or permanently; no Adult Financial item read a disqualification. Each program finds its own violations, as SNAP and Colorado Works do."
+nearest: [CO-1730, CO-039]

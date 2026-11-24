@@ -1,0 +1,43 @@
+- id: PCS
+  title: 'Final cash review FC-5: an AND-SO client with $465 of wages and no unearned
+    income - no rollover of the $20'
+  as_of: '2026-10-01'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: '2017-05-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: true
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 500
+        child_support_received: 300
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0

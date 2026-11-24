@@ -1,0 +1,14 @@
+id: CO-7403
+name: Expected annual income from self-employment, seasonal and commission employment
+identifier: expected_annual_self_employment_seasonal_commission_income
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of the person's expected income for the calendar year of the determination that comes from self-employment (the year's net earnings as the person's federal return reports them), seasonal employment and commission-based employment: the year's expected earnings from that work, without the person's other income (steady wages, unearned income, a lump sum)."
+precision: "A projection for the whole calendar year, stated where the person has such work; it is the self-employment, seasonal and commission part of expected_annual_income (CO-4556), which states the year's whole expected income. Required where read (decision 4 of 2026-11-23): Medical Assistance reads it for a member with such earnings (ma_has_annualizable_earnings, CO-6451) where the month's income fails a standard (ma_annualized_household_income, CO-4559, § 8.100.4.C.4.a); no rule gives an unstated figure a value. Which calendar year is OQ-810's."
+supplied_by: "The application's income questions for self-employment, seasonal and commission work (the expected yearly amount), or the account transferred from the marketplace."
+sources: [S3356, S166]
+tags: [income]
+open: [OQ-810]
+rationale: "Coverage pass 6, C6-07 (docs/reviews/coverage6-medicaid-magi-chp.md): § 8.100.4.C.4.a (S3356) determines eligibility 'using annualized self-employment, seasonal employment, and commission-based employment income', and § 8.100.4.C.1.d.i counts a lump sum 'only in the month received'. The volume annualized the member's whole expected income (expected_annual_income), which spread the member's other income, a lump sum included, over the year. Annualizing only the named income needs that part of the year's expected income, which no fact stated."

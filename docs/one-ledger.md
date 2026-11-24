@@ -4,7 +4,7 @@ Every fact, derived fact, and parameter in one ledger with one canonical form. V
 
 - `volumes/mwr/volume.yaml`: title, approval policy, types, scopes.
 - `volumes/mwr/{supplied,parameters,medicaid,snap}/WR-nnn.yaml`: the ledger, one item per file, listed by chapter in `codex.json`. Each item's derivation is a nested list over the pattern catalog; each derived item carries its rule-level tests.
-- The app renders the approver's view (pattern English) and the engineer's view (`handoff.md`, also written by `npm run handoff`).
+- The app renders the approver's view (pattern English) and the engineer's view (`handoff/<volume>.md`, also written by `npm run handoff`).
 - `volumes/mwr/tests/rule-tests.yaml`: every rule-level test, exported by the spike. `volumes/mwr/tests/cases.yaml`: 13 household-level cases. Data; the app does not run them yet.
 - `scripts/codex_tool.py`: the original Python reference checker. Spike tooling, kept as a second opinion; it reads the retired chapter-file layout, so run it against a checkout of commit 4682996.
 

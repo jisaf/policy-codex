@@ -1,0 +1,479 @@
+- id: PR-ABS
+  title: "probe: OAP client out of state 122 days, not for medical treatment (3.520.64.E.2)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts: &oapbase
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        temporarily_out_of_state_start_date: "2026-06-01"
+      month_defaults: &oapmonth
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+- id: PR-ISM
+  title: "probe: OAP client living rent-free in her daughter's home after losing her apartment (ISM, 3.520.79; 3.510 homeless)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        nighttime_residence_type: shared_housing_due_to_loss_or_hardship
+        owns_and_lives_in_home: false
+        lives_in_subsidized_housing: false
+        shelter_cost_monthly: 0
+        home_total_shelter_costs: 1200
+        home_shelter_costs_are_market_value: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 1200
+- id: PR-PNA
+  title: "probe: AND-CS client entered a nursing facility on 2026-09-15 (3.548.F)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: nursing_facility
+        date_of_birth: "1996-03-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: true
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: false
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        institution_entry_date: "2026-09-15"
+        residence_setting_is_licensed_or_certified: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 500
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-APART
+  title: "probe: OAP client whose husband (not legally separated) lives in another home (3.534)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d2
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 3000
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-PTC
+  title: "probe: OAP client holding a $500 PTC rebate received in August among $2,200 of savings (3.520.77.K, 3.520.786.A)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 2200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        federal_tax_refunds_held_value: 500
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-RENT
+  title: "probe: OAP client with $800 gross rent from a house she does not manage, $500 of allowable expenses (3.520.785.B.20)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 800
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-IMD
+  title: "probe: AND-SO client in a State psychiatric hospital since August (C.R.S. 26-2-111(1)(d))"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: psychiatric_hospital
+        date_of_birth: "1986-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        af_has_met_and_so_benefit_application_duty: true
+        institution_entry_date: "2026-08-01"
+        residence_setting_is_licensed_or_certified: true
+        residence_setting_operated_by_government: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-SPON
+  title: "probe: OAP LPR since 2010 with 40 qualifying quarters, sponsor earns $4,000 (3.520.69.B.2)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [sponsor, p2, p1]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: lawful_permanent_resident
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: true
+        child_welfare_payment_type: none
+        is_pregnant: false
+        qualified_status_date: "2010-03-01"
+        us_entry_date: "2010-03-01"
+        qualifying_quarters: 40
+        has_qualifying_military_service: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1975-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 100
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        sponsor_household_size: 1
+        sponsor_dependent_count: 0
+      month_defaults:
+        wages_gross: 4000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+
+- id: PR-LUMP
+  title: "probe: OAP client inherits $5,000 in October (3.520.785.B.12)"
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        lump_sum_received: 5000
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0

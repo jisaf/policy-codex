@@ -1,0 +1,14 @@
+id: CO-3375
+name: "Children in care of a licensed child care provider"
+identifier: licensed_child_care_children_in_care_count
+kind: supplied
+type: whole number
+scope: person-month
+program: All
+meaning: "For a person who is a licensed, certified or approved day care provider, the number of children for whom the person provided day care in the month; 0 otherwise."
+precision: "If not stated, the programs that do not say otherwise read it as 0; Adult Financial and Colorado Works require it where they read a business's costs (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise). Each program's allowable cost is its own derived item."
+supplied_by: "Application (income and expenses), verified as each program requires."
+sources: [S1155]
+implemented: engine
+tags: [income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13)."

@@ -49,3 +49,19 @@ programs:
     outcomes: [snap_time_limit_status, snap_is_subject_to_work_requirement]
 
 tags: [legal, medical, state_election]
+
+relationship_roles:
+  - {id: parent, inverse: child}
+  - {id: child, inverse: parent}
+  - {id: spouse, inverse: spouse}
+  - {id: grandparent, inverse: grandchild}
+  - {id: grandchild, inverse: grandparent}
+  - {id: caretaker, inverse: dependent}
+  - {id: dependent, inverse: caretaker}
+  - {id: tax_filer, inverse: tax_dependent}
+  - {id: tax_dependent, inverse: tax_filer}
+  - {id: buys_prepares_with, inverse: buys_prepares_with}
+  - {id: shares_heat_with, inverse: shares_heat_with}
+  - {id: guardian}
+  - {id: "caretaker relative"}
+  - {id: relative}

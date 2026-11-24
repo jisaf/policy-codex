@@ -1,0 +1,311 @@
+id: CO-5300
+name: Holdings
+identifier: holdings
+kind: supplied
+type: list of receipts
+scope: person
+program: All
+meaning: "Everything of value the person owns, in whole or in part, or gave away, one record per holding per owner, each stated once: what it is (its kind: the kind of property, or the source of money still held that a rule treats by where it came from and when, in words no program's rule is needed to apply), its fair market value as of a month, what is owed against it, the person's share and who else owns it, whether the person can get at it, and the properties of the holding a rule reads (used for transportation, the home the person lives in, listed for sale, producing income, the face value of a policy, set aside for burial, disposed of and to whom). It is the third list of records beside receipts (CO-5000) and earnings (CO-5100): money received in a month is a receipt or an earnings record in that month and, what is left of it at the first moment of a later month, a holding (docs/design-earned-and-resource-records.md 3.1). What a record counts for is decided by each program's own counting table (snap_, af_ and ma_ssi_holding_treatment_table; the Medicare Savings Program, Adult Financial burial assistance and the Colorado Works death reimbursement read the SSI method by their cited links; Colorado Works, LEAP, CCCAP and SUN Bucks have no resource test that reads holdings), never by a second statement of the holding. A stated empty list means the person owns nothing of value and gave nothing away; a list not stated means the person's resources are not known, and an outcome that depends on them cannot be determined (product-owner decision 4 of 2026-11-23)."
+precision: "Resource records, step H0 (2026-11-23; docs/design-earned-and-resource-records.md 3.1-3.4, decisions D3, D5, D8 and D9; docs/reviews/holdings-h0.md). Records are disjoint: money a rule treats by its source and date (a tax refund, a retroactive benefit, insurance proceeds held for replacement) is its own held_ record dated by source_date, and the account it sits in states the rest, so no rule has to decide where a dollar stated twice sits; a part of real property a rule treats apart (for sale, a lot for a future home, former farm property) is its own record. Joint ownership (3.2): a holding owned with others is stated on the list of each owner who is a person of the case, with the same holding_id, kind and value and that owner's share; an owner outside the case is named by co_owners; npm run check refuses a holding_id whose records disagree on kind or value or whose shares add to more than 1. value is the fair market value of the whole holding and amount_owed what is owed against the whole; a program that counts equity reads value less amount_owed, times share. A record with no month is the same in every month the case covers; a record valued in a month states it. A transfer is the holding's record with disposed_date, what was received for it and to whom it went: one transfer, one record, read by every program's look-back (ends the two statements of one transfer in the SNAP and Adult Financial facts and in Medicaid's). An agency's finding about one holding or one transfer is a field named for its program (snap_, af_, ma_; decision D9), because a finding is not a neutral fact. The exception fields (accessible) take the default the rules state: each rule presumes a resource available until it is shown otherwise (D3). Transition (steps H0 to H2, ended 2026-11-24): every program reads resources from this list alone. The scalar resource facts it replaced and their translator are retired (step H2, docs/reviews/records-e2-h2.md); every stored household and rule test states its resources here alone. Never restated, and kept as the person facts they are: the penalty start (CO-886), the couple's resources at the snapshot (CO-888, derived from dated holdings in H1 where stated: decision D8), the CSRA figures and findings (CO-1948, CO-1950, CO-4636, CO-4637) and the qualifying income trust (CO-823, an income arrangement); each stays the person fact it is. Coverage pass 4 for SNAP resources (docs/reviews/coverage4-snap-resources.md, SR-1, SR-4, SR-5, SR-6, SR-7, SR-10; 2026-11-23): neutral fields added for what the rules read and no field said: whom a burial fund, funeral agreement or burial space is for (burial_for, and for_person, a field naming a person of the case: the first record field of type person, which npm run check holds to a person of the case or test), why a home is unoccupied and whether the person will return (temporary_absence), whether a loan receivable is a negotiable instrument (negotiable_instrument), and the part of a refund that is an earned income tax credit (eitc_share, a fraction of the value); the costs of sale are of the whole holding, as its value is (only SNAP reads them); and SNAP's finding that property or an installment contract returns income consistent with its value (snap_return_consistent_with_value, decision D9). No kind's meaning changed."
+supplied_by: "The applicant's statement and the holder's records (bank and brokerage statements, a deed and the county assessor's value, a vehicle's title and its market value, a policy's statement of cash value, a burial contract or trust, the trust instrument, the record of a sale or gift), one record per holding per owner."
+record_noun: holding
+record_fields:
+  kind:
+    type: one of
+    required: true
+    meaning: "What the holding is: the kind of property, or, for money still held that a rule treats by its source and date, the source (one kind per source)."
+    options: [cash, bank_account, securities, retirement_account, education_savings_account, able_account, business_cash_and_assets, home, real_property, installment_contract, vehicle, personal_property, investment_personal_property, life_insurance, burial_fund, prepaid_burial_contract, burial_space, trust_interest, annuity, life_estate, loan_receivable, held_income_tax_refund, held_eitc, held_retroactive_ssa_benefit, held_excluded_payment, held_loan_proceeds, held_replacement_proceeds, held_prorated_income, other_resource]
+    option_meanings:
+      cash: "Currency and coins the person holds, and electronic currency or cryptocurrency the person can spend or convert."
+      bank_account: "A checking, savings or money market account, or a certificate of deposit, at a financial institution: the balance not stated as a held_ record of its own."
+      securities: "Stocks, bonds, mutual fund shares and other investments that can be sold for cash, other than a retirement account or an education savings account."
+      retirement_account: "A retirement or pension plan or account: a 401(k), 403(b) or 457 plan, an IRA, PERA, a Keogh plan, a pension fund, a thrift savings plan."
+      education_savings_account: "A tax-deferred education savings account: a Section 529 qualified tuition program or a Coverdell education savings account."
+      able_account: "An Achieving a Better Life Experience (ABLE) account under 26 U.S.C. 529A."
+      business_cash_and_assets: "Cash and convertible assets held for use in the person's own ongoing trade or business (self-employment intended to make a profit): operating accounts, inventory funds and the like."
+      home: "The dwelling the person owns, or is buying, and has lived in as a principal place of residence, with the land it stands on and its outbuildings (lives_in says whether the person lives there now)."
+      real_property: "Land or a building other than the home: a lot, a second house, rental property, farm or ranch land, the person's share of real property owned with others."
+      installment_contract: "An installment contract or agreement the person holds for the sale of land or buildings, with the property sold under it or held as security."
+      vehicle: "An automobile, motorcycle, truck, recreational or seasonal vehicle, boat or trailer, licensed or not."
+      personal_property: "Household goods, personal effects and other personal property not another kind names (equipment, livestock, tools)."
+      investment_personal_property: "Personal property acquired or held for its value or as an investment: gems, jewelry not worn or held for family significance, collectibles and the like."
+      life_insurance: "A life insurance policy the person owns, valued at its cash surrender value (face_value states the face)."
+      burial_fund: "Money set aside for burial expenses in a burial trust, account or other arrangement (irrevocable says whether it can be withdrawn)."
+      prepaid_burial_contract: "A prepaid funeral or burial contract, valued at its paid-up amount, not its face value."
+      burial_space: "A burial plot, gravesite, crypt, mausoleum, casket, urn, niche or other repository for remains."
+      trust_interest: "The person's interest in a trust the person established or of which the person is a beneficiary (revocable says whether the person can revoke it; corpus_available_value what can be paid to or for the person)."
+      annuity: "An annuity the person owns or of which the person is the annuitant."
+      life_estate: "A life estate or remainder interest the person owns in property."
+      loan_receivable: "A mortgage, promissory note or other loan the person made and is owed, which can be converted to cash."
+      held_income_tax_refund: "The part of an account or of cash that is an income tax refund, rebate or credit the person received and still holds (paid_by: federal, state or local), the earned income tax credit paid with a federal refund included."
+      held_eitc: "The part of an account or of cash that is a state or local earned income tax credit the person received apart from a refund and still holds."
+      held_retroactive_ssa_benefit: "The part of an account or of cash that is a retroactive payment of SSI or of Social Security retirement, survivors or disability benefits the person received and still holds."
+      held_excluded_payment: "The part of an account or of cash that is a government payment a federal statute excludes from resources (disaster and home-restoration assistance, relocation reimbursements, Civil Liberties Act, Agent Orange, radiation exposure and similar payments) the person received and still holds."
+      held_loan_proceeds: "The part of an account or of cash that is the proceeds of a bona fide loan the person received and still holds."
+      held_replacement_proceeds: "The part of an account or of cash that is proceeds the person holds and has stated in writing will be used to restore or replace property the person owned (fire or casualty insurance, the sale of the home, a relocation payment, a condemnation award), less what has been paid or contracted for the replacement."
+      held_prorated_income: "The part of an account or of cash that is income received for a period it is meant to cover (a year's self-employment receipts, a contract's pay, a term's educational assistance) and still held during that period."
+      other_resource: "Any other property the person owns that can be converted to cash, which no other kind names."
+  value:
+    type: money
+    required: true
+    meaning: "The fair market value of the whole holding as of the first moment of its month (for an account or cash, its balance; for life insurance, its cash surrender value; for a prepaid burial contract, its paid-up amount; for a held_ record, the part of the account it states; for a transfer, the value when it was transferred), before what is owed against it and before the person's share."
+  month:
+    type: month
+    when_absent: "the holding has the same value in every month the case covers"
+    meaning: "The month the value is as of (its first moment, 20 CFR 416.1207(a)). A holding whose value changes is one record per month."
+  date:
+    type: calendar date
+    required: true
+    meaning: "The day the value is as of, where a rule values a holding on a day rather than in a month (the date of application); in the month the record states, when it states one."
+  amount_owed:
+    type: money
+    required: true
+    meaning: "What is owed against the whole holding (a mortgage, a lien, a loan the holding secures), which a rule that counts equity subtracts from the value (20 CFR 416.1201(c); 10 CCR 2506-1 4.410.F.2; 9 CCR 2503-5 3.520.72.B.1)."
+  share:
+    type: rate
+    when_absent: "the person owns the whole holding (share 1)"
+    meaning: "The part of the holding the person owns, as a fraction of 1 (0.5 for half), for a holding owned with others."
+  holding_id:
+    type: text
+    required: true
+    meaning: "A name for a holding owned with others, the same on each owner's record, so a rule and the case check can tell one joint holding stated on two lists from two holdings."
+  co_owners:
+    type: one of
+    when_absent: "no one else owns any of the holding"
+    meaning: "Who else owns part of the holding: the person's spouse, another person of the case, or someone outside the case (whose own list is not stated)."
+    options: [spouse, other_in_case, outside_case]
+  co_owner:
+    type: person
+    required: true
+    meaning: "For a holding owned with another person of the case (co_owners other_in_case), that person: the person's id in the case."
+  accessible:
+    type: yes/no
+    default: true
+    meaning: "The person can get at the holding's value: false when a joint owner who must agree refuses and the holding cannot practically be divided, when the money is in probate or under a creditor's lien or court order, or when it is held in a trust the person can neither revoke nor direct. Presumed true: each rule counts a resource as available until it is shown otherwise (10 CCR 2506-1 4.409.C, 7 CFR 273.8(d); 20 CFR 416.1201(a))."
+  inaccessible_reason:
+    type: one of
+    required: true
+    meaning: "For a holding the person cannot get at (accessible false), why: a joint owner whose agreement is needed refuses and the holding cannot practically be divided (co_owner_refuses); it is held in an estate in probate (probate); a creditor's lien or levy, or a court order, freezes it (lien_or_court_order); it is held in a trust whose terms the person can neither revoke nor direct (trust_terms). A rule that treats a legal restriction on using the holding apart from a co-owner's refusal reads it: Medical Assistance counts a resource the person 'is not legally restricted from using' and does not hold it unavailable 'merely because' the person 'may need to initiate legal proceedings to access' it (10 CCR 2505-10 8.100.5.E.3.c, E.4, S4670; field-effect sweep, FS-MA-4). Stated only with accessible false."
+    options: [co_owner_refuses, probate, lien_or_court_order, trust_terms]
+  source_date:
+    type: calendar date
+    required: true
+    meaning: "For a held_ record, the day the person received the money the record traces (the refund, the retroactive payment, the proceeds)."
+  paid_by:
+    type: one of
+    required: true
+    meaning: "For a held income tax refund or earned income tax credit, the government that paid it."
+    options: [federal, state, local]
+  received_while_on_snap:
+    type: yes/no
+    required: true
+    meaning: "For a held earned income tax credit, or a held income tax refund with an earned income tax credit in it (eitc_share), the person was participating in SNAP when it was received and has participated since (temporary non-participation for administrative reasons does not interrupt it)."
+  eitc_share:
+    type: rate
+    default: 0
+    meaning: "For a held income tax refund, the part of it that is an earned income tax credit claimed on the same return and paid with the refund, as a fraction of its value (0.8 for $1,200 of a $1,500 refund; 1 for a refund that is all credit); none when the refund includes no such credit. A rule that treats the credit apart from the rest of the refund reads it (10 CCR 2506-1 4.410.J.12)."
+  replacement_property:
+    type: one of
+    required: true
+    meaning: "For held replacement proceeds, the kind of property they are to restore or replace: personal property (a vehicle, household goods), or real property (the home or other real property; home-sale, relocation and condemnation proceeds are always real property)."
+    options: [personal_property, real_property]
+  proceeds_source:
+    type: one of
+    required: true
+    meaning: "For held replacement proceeds, where the money came from: an insurance settlement for property lost, damaged or stolen (insurance); a relocation payment to a displaced person (relocation); the sale of the home (home_sale); an award for property taken by condemnation (condemnation); anything else (other). The SSI method reads it (field-effect sweep, FS-MA-9; OQ-1240 narrowed): the proceeds of the sale of an exempt home three months (10 CCR 2505-10 8.100.5.P.4, S4669); relocation payments toward a replacement dwelling six months (F.6.f, S4506); cash from insurance or any other source to repair or replace a lost, damaged or stolen excluded resource nine months (20 CFR 416.1232(a), S4662, by 42 CFR 435.601(b)(2), S4754; ma_replaces_lost_excluded_resource); a condemnation award as before (OQ-1240)."
+    options: [insurance, relocation, home_sale, condemnation, other]
+  used_for_transportation:
+    type: yes/no
+    required: true
+    meaning: "For a vehicle, it is used for the transportation of the person or a member of the person's household."
+  lives_in:
+    type: yes/no
+    required: true
+    meaning: "For a home, the person lives in it now as the person's principal place of residence: false when the person has left it to live in an institution, a facility or another dwelling."
+  intends_to_return:
+    type: yes/no
+    default: false
+    meaning: "For a home the person has left (to live in a hospital, nursing facility or other long-term care setting, or for long-term medical care), the person intends to return to it. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A), and the home stays exempt only \"so long as there is intent for the client ... to return\" (3.520.77.C.2-3, S3218)."
+  temporary_absence:
+    type: one of
+    required: true
+    options: [employment, training_for_employment, illness, uninhabitable_after_casualty_or_disaster, other_reason, not_returning]
+    meaning: "For a home the person does not live in now (lives_in false), whether the person is away for a time and intends to return, and why: for employment, for training for future employment, because of illness, because the home is not habitable as a result of a casualty or natural disaster, or for another reason; not_returning when the person does not intend to return to it."
+  intent_in_writing:
+    type: yes/no
+    default: false
+    meaning: "For a home the person intends to return to, the intent is documented in writing (the person's, the spouse's, a legal fiduciary's, a doctor's or an authorized representative's signed statement). Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: in a long-term care facility the intent \"is documented by\" a written statement (9 CCR 2503-5 3.520.77.C.3.a, S3218; field sweep fix round, FS-AF-4), so an intent not shown in writing is not documented."
+  outside_colorado:
+    type: yes/no
+    required: true
+    meaning: "For a home, it is located outside Colorado."
+  held_in_trust_or_entity:
+    type: yes/no
+    required: true
+    meaning: "For a home, it has been transferred to a trust or to an entity such as a partnership or corporation and not transferred back into the person's name."
+  beneficiary_deed:
+    type: yes/no
+    required: true
+    meaning: "For a home, a beneficiary deed on it has been executed and recorded and not revoked by a recorded revocation."
+  listed_for_sale:
+    type: yes/no
+    required: true
+    meaning: "For real property, the person is making a good faith effort to sell it at a reasonable price, has not sold it, and will accept a reasonable offer."
+  costs_of_sale:
+    type: money
+    required: true
+    meaning: "For real property, or other property a rule tests for what its sale would return, the estimated costs of selling or otherwise disposing of the whole holding (commissions, closing costs and the like): for a holding owned with others, the same figure on each owner's record, as its value is."
+  co_owner_lives_in_it:
+    type: yes/no
+    required: true
+    meaning: "For real property owned with another person, that co-owner lives in it as the co-owner's principal place of residence."
+  co_owner_would_lose_housing:
+    type: yes/no
+    when_absent: "the exclusion of 10 CCR 2505-10 8.100.5.M.3.h is not shown, so it is not applied; whether the person alleges the hardship, and so must verify joint ownership, is not known"
+    meaning: "For real property a co-owner lives in, the person alleges that selling it would cause the co-owner undue hardship through loss of housing (the co-owner would have to move and has no other readily available housing). Left out, the exclusion this field establishes is not applied (coverage pass 4, non-MAGI N4-13, OQ-1243): it applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; the resource readers give the absence that meaning (`otherwise` false: ma_excluded_real_property_value CO-4620, ma_real_property_for_sale_excluded_in_month CO-5323). The verification of joint ownership (ma_requires_verification_of_joint_ownership, CO-2248) reads it as stated: M.3.h requires verification \"When the applicant alleges\" the hardship, and no rule says what an unstated allegation is, so a real property record that leaves it out is cannot determine there (decision 4 of 2026-11-23; docs/reviews/records-e2-h2.md, section 5). Before, the field had the default false, and the verification read a person fact (CO-2244, retired)."
+  lot_for_future_home:
+    type: yes/no
+    required: true
+    meaning: "For real property, the person's household owns no home and the person intends to build, or is building, a permanent home on it."
+  income_producing:
+    type: yes/no
+    default: false
+    meaning: "The holding (real or personal property other than the home) is used to produce income, or goods or services for the person's own support: rental property, farm or ranch land, the property of a trade or business. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
+  used_in_trade_or_business:
+    type: yes/no
+    default: false
+    meaning: "For income-producing property, it is used in a trade or business the person runs, rather than held to produce rents or goods for the person's own use. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
+  net_annual_return:
+    type: money
+    required: true
+    meaning: "For income-producing property, or an installment contract, the net income it produced over the last twelve months (or is expected to produce in the next twelve, for property newly acquired): its gross receipts less the expenses of producing them."
+  snap_return_consistent_with_value:
+    type: yes/no
+    required: true
+    meaning: "SNAP's finding (decision D9): for income-producing property not used in the person's trade or business, or for an installment contract, the county has found that it is producing an annual income consistent with its fair market value in the community (10 CCR 2506-1 4.410.E.1-2; 7 CFR 273.8(e)(4), (e)(6))."
+  snap_trust_inaccessible:
+    type: yes/no
+    required: true
+    meaning: "SNAP's finding (decision D9): for a trust interest, the county has established that the funds in the trust, and the income it produces, are inaccessible to the household under 10 CCR 2506-1 4.410.F.3 (the trust arrangement will not likely cease during the certification period and no household member can revoke it or change the beneficiary; the trustee is a court, an institution or organization no member directs, or a court-appointed individual under court-imposed limits; the trust's investments do not involve a business a member controls; an irrevocable trust's funds are restricted to investments or to members' educational or medical expenses, or come from someone outside the household). Which of those conditions must hold, any one (4.410.F.3's \"or\") or all (7 CFR 273.8(e)(8)'s \"and\"), is OQ-1307."
+  produces_for_household_use:
+    type: yes/no
+    default: false
+    meaning: "For property not used in a business, it is used to produce goods only for the household's own consumption (land for vegetables or livestock, a garden tractor, a boat for subsistence fishing), not a vehicle or boat used for leisure. Default false, the rule's (coverage pass 4, non-MAGI N4-13, OQ-1243): the exclusion or exemption this field establishes applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; a record that does not state it is read as not so. Adult Financial's rule gives the same default: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and its exemption of income-producing property (3.520.77.D) applies when shown; SNAP's: 7 CFR 273.8(c)(2) counts \"any other property, provided that these resources are not specifically excluded under paragraph (e)\" and (e) excludes \"only the following\" (S4820), so property is counted unless shown to be income-producing (field sweep defaults list)."
+  household_goods_or_personal_effects:
+    type: yes/no
+    required: true
+    meaning: "For personal property (kind personal_property), it is household goods or personal effects in or on the person's home that the person uses (furniture, appliances, clothing, the person's own jewelry and the like), not other personal property: equipment, livestock, tools, or a mobile home or recreational vehicle the person does not live in."
+  farm_ended_date:
+    type: calendar date
+    required: true
+    meaning: "For property that was essential to the person's self-employment in farming (land, machinery, equipment and supplies), the day the person stopped farming."
+  taxes_on_withdrawal:
+    type: money
+    when_absent: "20% of the value: the person did not provide the taxes due (10 CCR 2505-10 8.100.5.N.5.b, S4667; 9 CCR 2503-5 3.520.73.B.1.b)"
+    meaning: "For a retirement account, the income taxes the person would owe on withdrawing its value, as the person documents them. Left out, the person has not provided them: each rule that reads it then deducts 20% from the gross value of the account (Medical Assistance 8.100.5.N.5.b, S4667, ma_retirement_account_default_tax_rate; Adult Financial 3.520.73.B.1.b, af_retirement_account_default_tax_rate), so the rule gives its absence that meaning and it is not reported missing (field-effect sweep, defaults list)."
+  self_funded:
+    type: yes/no
+    required: true
+    meaning: "For a retirement account, it is self-funded (an IRA, a Keogh plan, a 401(k) or 403(b) account), rather than an employer's defined benefit pension."
+  face_value:
+    type: money
+    required: true
+    meaning: "For life insurance, the face value of the policy."
+  purchase_date:
+    type: calendar date
+    required: true
+    meaning: "For life insurance, the date the policy was bought."
+  premiums_in_lookback:
+    type: money
+    required: true
+    meaning: "For life insurance, the premiums paid and other money contributed to the policy in the forty-eight months before the determination date."
+  irrevocable:
+    type: yes/no
+    required: true
+    meaning: "For a burial fund or prepaid burial contract, the money cannot be withdrawn or the contract cancelled (an irrevocable trust of which the person is both the trustor and the beneficiary is not irrevocable here)."
+  accrued_interest:
+    type: money
+    required: true
+    meaning: "For a burial fund or prepaid burial contract, the part of its value that is interest earned on it and left to accumulate in it."
+  for_immediate_family:
+    type: yes/no
+    required: true
+    meaning: "For a burial space, it is intended for the person, the person's spouse or another member of the immediate family, or a brother or sister of one of them, or that person's spouse."
+  burial_for:
+    type: one of
+    required: true
+    options: [person_of_case, outside_case]
+    meaning: "For a burial fund, a prepaid burial contract or a burial space, whom it is for: a person of the case (named in for_person; the owner when it is the owner's own), or someone who is not a person of the case."
+  for_person:
+    type: person
+    required: true
+    meaning: "For a burial fund, a prepaid burial contract or a burial space that is for a person of the case (burial_for person_of_case), that person: the person's id in the case (the owner's own id for the owner's own)."
+  negotiable_instrument:
+    type: yes/no
+    required: true
+    meaning: "For a loan receivable, the note or other instrument is a negotiable instrument (as C.R.S. 4-3-104 defines it)."
+  revocable:
+    type: yes/no
+    required: true
+    meaning: "For a trust interest or an annuity, the person can revoke it, or the annuity can be assigned or surrendered."
+  annuitized:
+    type: yes/no
+    required: true
+    meaning: "For an annuity, it has been annuitized (it pays out in regular payments)."
+  corpus_available_value:
+    type: money
+    required: true
+    meaning: "For a trust interest, the part of the corpus that can be paid to the person or used for the person's benefit under the trust's terms (the whole corpus of a trust the person can revoke), whether or not the trustee pays it."
+  ma_found_available_value:
+    type: money
+    required: true
+    meaning: "Medicaid's finding (decision D9): the value the Department or the eligibility site has found available to the person from a trust, an annuity, or a life estate or remainder interest on countable property (10 CCR 2505-10 8.100.7.E, H.2, I)."
+  ma_sale_efforts_unsuccessful:
+    type: yes/no
+    when_absent: "the exclusion of 10 CCR 2505-10 8.100.5.M.2.b is not shown, so it is not applied; whether the person relies on it, and so must verify the efforts to sell, is not known"
+    meaning: "Medicaid's finding (decision D9): for real property beyond the home, reasonable efforts to sell it, as 10 CCR 2505-10 8.100.5.M.2.b defines them, have been unsuccessful. Left out, the exclusion this field establishes is not applied (coverage pass 4, non-MAGI N4-13, OQ-1243): it applies only when it is shown, since 10 CCR 2505-10 8.100.5.E.3 (S4670) holds resources available when the person owns them and can convert them to cash and they are not legally restricted; the resource readers give the absence that meaning (`otherwise` false: ma_excluded_real_property_value CO-4620, ma_real_property_for_sale_excluded_in_month CO-5323). The verification of the efforts to sell (ma_requires_verification_of_sale_efforts, CO-2246) reads it as stated: M.2.b.v requires the client relying on the exclusion to verify the efforts quarterly, and no rule says what an unstated finding is, so a real property record that leaves it out is cannot determine there (decision 4 of 2026-11-23; docs/reviews/records-e2-h2.md, section 5). Before, the field had the default false, and the verification read a person fact (CO-2242, retired)."
+  ma_joint_account_presumption_rebutted:
+    type: yes/no
+    default: false
+    meaning: "Medicaid's finding (decision D9): for a financial institution account the person holds jointly (co_owners stated), the evidence 10 CCR 2505-10 8.100.5.M.3.d requires has been furnished (the account holders' statements, the account records for the months at issue, and the account title corrected or the funds separated within 45 days) and proves that some or all of the funds do not belong to the person, whose part is then the share the record states. Default false, the rule's: M.3.d (S4941) presumes 'All funds in a joint account' the applicant's (in equal shares among applicant or client account holders) until that evidence rebuts it (20 CFR 416.1208(c), S4502, S4942; field-effect sweep, FS-MA-7)."
+  ma_replaces_lost_excluded_resource:
+    type: yes/no
+    required: true
+    meaning: "Medicaid's finding (decision D9): for held replacement proceeds from insurance or another source (proceeds_source insurance or other), the money is cash received to repair or replace a resource the SSI method excludes (20 CFR 416.1210: the home, the one automobile, household goods and personal effects, property essential to self-support, burial spaces and the like) that was lost, damaged or stolen, and the person intends to use it so (20 CFR 416.1232(a), S4662; field-effect sweep, FS-MA-9)."
+  af_found_unsaleable:
+    type: yes/no
+    default: false
+    meaning: "Adult Financial's finding (decision D9): the county department exempts the property because it cannot be sold for two-thirds of its actual value despite continuing reasonable efforts to sell it, its sale would cause a co-owner other than a spouse or sponsor undue hardship, or legal reasons prevent its sale (9 CCR 2503-5 3.520.741.D.2-4, 3.520.742.C). Default false, the rule's: \"Unless otherwise specified, a resource is countable\" (9 CCR 2503-5 3.520.72.A, S1636), and the exemptions of 3.520.741.D and 742.C hold only while the county department finds and verifies them (S3209), so property with no finding stated is not exempted under them (field sweep defaults list)."
+  disposed_date:
+    type: calendar date
+    when_absent: "the person still holds it"
+    meaning: "The day the person (or the person's spouse) gave away, sold, traded or otherwise transferred the holding, or added another person's name as an owner of it."
+  compensation_received:
+    type: money
+    required: true
+    meaning: "For a holding transferred, what the person received for it."
+  transferee:
+    type: one of
+    required: true
+    meaning: "For a holding transferred, to whom: the spouse, a child who is blind or disabled, another relative, someone unrelated, or a trust."
+    options: [spouse, child_blind_or_disabled, other_relative, unrelated, trust]
+  returned_date:
+    type: calendar date
+    when_absent: "the holding transferred has not been returned in whole"
+    meaning: "For a holding transferred, the day the whole of it was returned to the person."
+  snap_transfer_to_qualify:
+    type: yes/no
+    default: false
+    meaning: "SNAP's finding (decision D9): the county has established that the transfer was made knowingly to qualify, or attempt to qualify, for SNAP, and is not a transfer 10 CCR 2506-1 4.408.2.A exempts. Default false, the rule's: the disqualification applies \"In the event the local office establishes that an applicant household knowingly transferred resources\" (10 CCR 2506-1 4.408.2.B, S2962), so a transfer with no finding stated is one the county has not established (field sweep defaults list)."
+  af_found_not_twfc:
+    type: yes/no
+    default: false
+    meaning: "Adult Financial's finding (decision D9): the county department has found that the transfer is not a transfer without fair consideration under 9 CCR 2503-5 3.520.76 (the presumption disproved, a hardship sale, or an involuntary transfer). Default false, the rule's: \"The county department shall make a rebuttable presumption that the transaction was made for the purpose of becoming or remaining eligible for Adult Financial program benefits\" within the thirty-six months before the application or while receiving assistance, and the presumption is nullified only when the client demonstrates another purpose (9 CCR 2503-5 3.520.76.A.4.a-b, S2614): a transfer with no finding stated is one the county has not found not to be a TWFC (field sweep defaults list)."
+  ma_transfer_exempt:
+    type: yes/no
+    required: true
+    meaning: "Medicaid's finding (decision D9): the eligibility site has determined that the transfer falls under one of the exceptions of 10 CCR 2505-10 8.100.7 (to or for the sole benefit of a spouse or a disabled child, a satisfactory showing of intent, an approved undue-hardship waiver), so no transfer penalty applies."
+sources: [S1958, S2968, S3129, S2213, S2215, S2214, S3400, S3423, S4500, S4501, S4502, S4670, S4941, S4942, S4662, S4667, S4669, S4506, S4754, S3218]
+tags: [resources]
+open: [OQ-1200, OQ-1201]
+rationale: "Product-owner decision of 2026-11-23 (earned income and resources move to records) and design decisions D3, D5, D8 and D9 (docs/design-earned-and-resource-records.md 7): one list of records of the same record type as receipts and earnings, read by the same operators (P55-P57) and by P58 largest for the one vehicle the rules exclude, so a holding is stated once whatever program reads it, a joint holding is stated with its share on each owner's list, money a rule treats by its source is traced in its own record, and one transfer is one record every program's look-back reads. Replaces, from step H1, the scalar resource facts the design's inventory (1.2) lists."

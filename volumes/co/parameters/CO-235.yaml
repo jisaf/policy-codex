@@ -1,16 +1,17 @@
 id: CO-235
 name: SSI federal benefit rate, individual
-identifier: ma_ssi_federal_benefit_rate_individual
+identifier: ssi_federal_benefit_rate_individual
 kind: parameter
 type: money
 scope: global
-program: Medicaid
+program: All
 meaning: The maximum monthly SSI federal benefit rate for an eligible individual with no eligible spouse - the income standard 8.100.6.C and the SSI-related income test compare countable income against.
 precision: Set annually by SSA's cost-of-living notice; versioned by effective date.
 versions:
-  - from: "2026-01-01"
-    value: 994
-    source: S319
-sources: [S319]
-tags: [ma, non_magi, income]
-rationale: "No existing item states the SSI federal benefit rate. ma_meets_ssi_income_standard (CO-609) and the 300%-of-FBR special income group (batch 9) both need it. Versioned because SSA republishes it annually by COLA, matching the phase-4 brief's direction to version it from 2026-01-01."
+  - {from: "2025-01-01", to: "2026-01-01", value: 967, source: S1711}
+  - {from: "2026-01-01", to: "2027-01-01", value: 994, source: S319}
+  - {from: "2027-01-01", to: "2028-01-01", value: 1029, source: S1712}
+review_by: "2027-11-01"
+sources: [S319, S1711, S1712]
+tags: [income]
+rationale: "No existing item states the SSI federal benefit rate. ma_meets_ssi_income_standard (CO-609) and the 300%-of-FBR special income group (batch 9) both need it. Versioned because SSA republishes it annually by COLA, matching the phase-4 brief's direction to version it from 2026-01-01. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-2): renamed from ma_ssi_federal_benefit_rate_individual; a federal SSI figure several programs read; it loses the Medicaid prefix and becomes program All."

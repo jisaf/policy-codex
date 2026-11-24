@@ -1,0 +1,12 @@
+id: CO-1204
+name: Home Care Allowance functional capacity score
+identifier: hca_functional_capacity_score
+kind: supplied
+type: whole number
+scope: person
+program: AdultFinancial
+meaning: The person's Home Care Allowance functional capacity score - the sum, over the eight activities of daily living, of the functional impairment scale scores (0 independent, 1 low, 2 moderate, 3 severe) a Case Management Agency assigns on the State-prescribed functional assessment, per 9 CCR 2503-5 3.570.13.C.1 and 3.570.14.B. Not scored for a child under five.
+supplied_by: Case Management Agency functional assessment (State Department prescribed form).
+sources: [S714, S715, S716]
+tags: [cash, disability, medical]
+rationale: No existing fact states the HCA functional capacity score; the clinical assessment is out of scope (docs/design-colorado.md) and enters as a supplied fact. af_hca_tier (CO-1216) needs it.

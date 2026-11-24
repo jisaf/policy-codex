@@ -1,0 +1,12 @@
+id: CO-5211
+name: "Care recipient receives HCBS waiver services"
+identifier: care_recipient_receives_hcbs_waiver_services
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person to whom the person provides paid live-in care is enrolled in long-term services and supports with additional services through a Home and Community Based Services (HCBS) waiver, or in the Buy-In Program for Working Adults with Disabilities with additional services through an HCBS waiver."
+supplied_by: "The care recipient's enrollment record (interface or the provider agency)."
+sources: [S3754]
+tags: [income, ltc]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): § 8.100.3.K.7.b.i-ii, the second condition. Stated on the provider because the care recipient need not be a person in the case."

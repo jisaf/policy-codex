@@ -1,0 +1,14 @@
+id: CO-3900
+name: Child support paid toward arrears
+identifier: child_support_paid_toward_arrears
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Of the legally obligated child support the person pays in the month (child_support_paid_legally_obligated, CO-033), the part paid toward arrears: support that was due for earlier months under the order and was not paid then, rather than the current month's support."
+precision: "Part of child_support_paid_legally_obligated, not added to it. If not stated, CCCAP reads it as 0 (every payment is toward the current order)."
+supplied_by: "The support order and the payment record (the child support system's payment history, or the withholding statement), which show the current monthly amount and the payments applied to arrears."
+sources: [S892]
+tags: [income]
+rationale: "Final pass F-01 and V-7: 8 CCR 1403-1 3.111.K.1.b deducts only support paid \"For a current monthly support order (not including arrears)\" (S892). child_support_paid_legally_obligated (CO-033) is the whole payment, arrears included, as SNAP reads it; no fact states the arrears part, so CCCAP could not tell a current payment from an arrears payment."
+nearest: [CO-033]

@@ -1,0 +1,12 @@
+id: CO-3607
+name: "Medicaid: physician certified a return home"
+identifier: ma_physician_certified_return_home
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether a physician has certified that the person, a Long-Term Care institution resident, is likely to return to their home within the temporary period 10 CCR 2505-10 § 8.100.7.V.3.g.ii allows for a Home Maintenance Allowance (ma_home_maintenance_allowance_max_months). If not stated, Medicaid reads it as false: a rule-given default, since the allowance is reserved only 'if a physician has certified that the person is likely to return to his/her home within that period' (§ 8.100.7.V.3.g.ii, S2404), a certification whose absence is no certification."
+supplied_by: "The physician's certification in the case record."
+sources: [S2404]
+tags: [ma, ltc, medical]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. The Home Maintenance Allowance turns on a physician's certification, a finding made outside the volume (convention rule 13(i))."

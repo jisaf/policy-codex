@@ -1,0 +1,12 @@
+id: CO-2402
+name: "CHP+: first month of the current eligibility period"
+identifier: chp_eligibility_period_start_month
+kind: supplied
+type: month
+scope: person
+program: CHP+
+meaning: "The first month of the person's current Child Health Plan Plus eligibility period: for a child, the month of application or the authorization month that opened the 12-month continuous eligibility period (10 CCR 2505-3 § 430.2); for a pregnant woman, the month her enrollment span began, the month of application or the month she became eligible (§ 430.3). Stated when CBMS records a span; a recorded child's span stands as recorded, and its first month's eligibility is not re-derived (heavier-definitions audit H-5, chp_child_is_in_continuous_eligibility_period, CO-2404). If not stated, CHP+ reads it as the month of ma_application_date, and the first month's eligibility is computed."
+supplied_by: CBMS CHP+ eligibility span (the begin date of the current span).
+sources: [S1714, S1715]
+tags: [chp]
+rationale: B-2 of the HCPF review. No CHP+ fact states when a CHP+ period began; continuous_eligibility_period_start_month (CO-088 family) is the Medicaid period under § 8.100.3.Q, a different program's span, so CHP+ has its own fact (vocabulary review rule 1).

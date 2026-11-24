@@ -1,0 +1,15 @@
+id: CO-2453
+name: "Medicaid: renewal interval for expansion adults from 2027"
+identifier: ma_expansion_adult_renewal_interval_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The months between redeterminations for an expansion adult: the interval 42 U.S.C. 1396a(e)(14)(L)(i) sets for redeterminations scheduled on or after January 1, 2027, and before then the standard interval of 42 CFR 435.916(a) (ma_standard_renewal_interval_months, CO-2454). The figures are the versions."
+precision: "The statute dates the change by when the redetermination is scheduled; the determination date stands for it. The first version runs from the enactment of Pub. L. 119-21 (July 4, 2025) at the standard interval."
+versions:
+  - {from: "2025-07-04", to: "2027-01-01", value: 12, source: S1707}
+  - {from: "2027-01-01", value: 6, source: S1707}
+sources: [S1707]
+tags: [ma, magi]
+rationale: "C-11 of the HCPF review. Hard-coded numbers audit E-1: ma_renewal_interval_months (CO-2455) compared the determination date with ma_six_month_renewal_start_date (CO-2452, now retired) to switch the interval; the change is now in this parameter's versions."

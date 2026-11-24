@@ -1,0 +1,12 @@
+id: CO-2212
+name: Citizenship documentation is retained
+identifier: ma_citizenship_documentation_is_retained
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the eligibility site has retained the citizenship and identity documentation the person provided in an earlier period of eligibility (10 CCR 2505-10 § 8.100.3.H.4.h.ii)."
+supplied_by: The eligibility site's document records (CBMS and the case file).
+sources: [S1053]
+tags: [ma, verification]
+rationale: "OQ-372: the five-year gap requires documentation again only when the site has not retained it; no fact stated the retention."

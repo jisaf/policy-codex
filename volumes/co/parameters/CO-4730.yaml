@@ -1,0 +1,22 @@
+id: CO-4730
+name: Colorado minimum wage
+identifier: colorado_minimum_wage
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: "The full Colorado minimum wage per hour for the calendar year (Colo. Const. art. XVIII, sec. 15; COMPS Order 7 CCR 1103-1 Rule 3.1), as the Department of Labor and Employment's PAY CALC Order (7 CCR 1103-14) publishes it for the year."
+precision: "The statewide figure: not a local minimum wage a city or county may set (COMPS Rule 3.2), and not the reduced minimums for tipped employees or unemancipated minors (PAY CALC 1.2.1(B), (C)). The 2026 figure is the same in the temporary order effective January 1, 2026 (S3506) and the permanent order effective February 1, 2026 (S3507). The 2025 figure is the 2025 PAY CALC Order's, effective January 1, 2025 (D-346, S3752), so a 2025 month the Adult Financial standards reach (they carry 2025 versions) has a figure."
+versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 14.81
+    source: S3752
+  - from: "2026-01-01"
+    to: "2027-01-01"
+    value: 15.16
+    source: S3506
+review_by: "2027-01-01"
+sources: [S3752, S3506, S3507, S3508]
+tags: [income]
+rationale: "Coverage review 2, G-8 (3): OQ-781 assumed the Colorado figure was published only on cdle.colorado.gov; the PAY CALC Order is filed with the Secretary of State as 7 CCR 1103-14 (D-330, D-331), so the figure the Adult Financial donated work rule reads (3.520.784.B, \"The current minimum wage standard\") is now a dated parameter. Adult Financial coverage pass 3 H-3: the parameter had only a 2026 version, so a 2025 month with countable donated work hours read no figure; the 2025 order is on sos.state.co.us as rule version 11747 (D-346), not only on cdle.colorado.gov."

@@ -1,0 +1,14 @@
+id: CO-1302
+name: Identity verification document type
+identifier: identity_verification_document_type
+kind: supplied
+type: one of
+options: [colorado_drivers_license_or_id, colorado_road_and_community_safety_act_license_or_id, other_state_drivers_license_or_id, school_id_card, us_military_card, draft_record, military_dependent_id_card, government_issued_id_card, merchant_mariner_card, tribal_document, corroborating_documents, child_medical_or_school_record, parent_affidavit_for_child, facility_director_affidavit, agency_identity_finding, third_party_identity_affidavit, us_passport, insurance_record_with_birth_data, income_tax_return_with_w2_or_1099, other_document]
+scope: person
+program: All
+meaning: The category of the identity document the person provided, in the categories the Colorado and federal identity lists use (42 CFR 435.407(c), 10 CCR 2505-10 8.100.3.H.3, 9 CCR 2503-5 3.520.66, 9 CCR 2503-6 3.604.3.I.4.a, 7 CFR 273.2(f)(1)(vii)).
+precision: corroborating_documents means the set of corroborating documents 435.407(c)(1)(x) and 8.100.3.H.3.h describe (OQ-304 on two versus three); other_document is any document a program accepts without a list (SNAP accepts any document that reasonably establishes identity). colorado_drivers_license_or_id is a license or identification card valid for public benefit purposes; a document issued under the Colorado Road and Community Safety Act (part 5 of article 2 of title 42), marked "not valid for federal identification, voting, or public benefit purposes", is colorado_road_and_community_safety_act_license_or_id (1 CCR 204-30 Rule 5 § 1.8, Rule 6 § 2.3.1). us_passport, insurance_record_with_birth_data and income_tax_return_with_w2_or_1099 are Rule 16 exceptions-processing documents.
+supplied_by: Document type recorded with the document receipt in the CBMS case file.
+sources: [S848, S857, S885, S877, S1067, S1073, S1074]
+tags: [verification]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

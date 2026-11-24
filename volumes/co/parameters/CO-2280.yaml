@@ -1,0 +1,12 @@
+id: CO-2280
+name: SSI-related child support reduction divisor
+identifier: ma_ssi_child_support_reduction_divisor
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "Child support received by an applicant or recipient child is reduced by one divided by this number - 10 CCR 2505-10 § 8.100.5.H.4.c (\"reduced by one third of the total child support payment\")."
+value: 3
+sources: [S1506]
+tags: [ma, non_magi, income]
+rationale: "OQ-83: ma_ssi_household_unearned_income_counted (CO-2281) needs the fraction as a parameter."

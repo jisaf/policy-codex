@@ -1,0 +1,18 @@
+id: CO-1459
+name: "LEAP: person's pending verification count"
+identifier: leap_person_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: LEAP
+role: outcome
+meaning: "The number of LEAP verification elements for this person not yet verified: wages, unearned income, questionable citizenship and zero income (heating costs are counted once for the household)."
+precision: Zero where LEAP verification does not apply to the person (leap_verification_is_applicable, CO-2586; case worker review B2).
+derived: [case, [leap_verification_is_applicable, ["+", [case, [leap_earned_income_verification_is_pending, 1], [else, 0]], [case, [leap_unearned_income_verification_is_pending, 1], [else, 0]], [case, [leap_citizenship_verification_is_pending, 1], [else, 0]], [case, [leap_zero_income_verification_is_pending, 1], [else, 0]]]], [else, 0]]
+sources: [S893, S897, S898, S1083]
+implemented: engine
+tags: [verification]
+rationale: "Fix round (review C-1, C-13, C-14, U-1): the missing SSN and SAVE response no longer count here (3.751.1 B excludes the member instead), heating costs are a household element, zero income is verified, and the count sums the named per-element items. Same-word audit SW-27: counts the program's own unearned-income element (leap_unearned_income_verification_is_pending)."
+tests:
+  - {id: CO-1459-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, leap_earned_income_verification_is_pending: true, leap_unearned_income_verification_is_pending: false, leap_citizenship_verification_is_pending: false, leap_zero_income_verification_is_pending: false}, expect: 1}
+  - {id: CO-1459-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, leap_earned_income_verification_is_pending: false, leap_unearned_income_verification_is_pending: false, leap_citizenship_verification_is_pending: false, leap_zero_income_verification_is_pending: false}, expect: 0}

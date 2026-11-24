@@ -1,0 +1,9 @@
+# Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md): statuses and households read month by month
+# (institution, disability onset, income trust, Part A, 1619(b), OAP, a family member's SSI, the SSI household with deaths,
+# leaving home, stepparents and unborn children, the community spouse and the home-exemption relatives), defaults no rule
+# gives made required where read, rule-given defaults declared with their citations. One entry per change-impact flag the
+# sweep leaves open.
+date: 2026-11-24
+summary: "Pattern sweep, non-MAGI Medicaid: PS-1 to PS-19 fixed (CO-7500 to CO-7508; S5120 to S5122); OQ-1415 added; stored households CO-970 to CO-973; one-home stories state their home."
+impact:
+  - {changed: CO-2606, fingerprint: fp1-007f50cfe48732e302d4, flagged: CO-544, not_applicable: "Re-keyed (pattern sweep, non-MAGI Medicaid) to the MAGI pattern sweep's disposition (2026-11-24-pattern-sweep-magi.yaml, reason unchanged): ma_caretaker_relative_of (CO-2606) is the MAGI sweep's; ma_is_dependent_child (CO-544) reads only the age and the secondary-student fact, not where anyone lives, so nothing carries over."}

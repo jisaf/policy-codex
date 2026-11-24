@@ -1,0 +1,12 @@
+id: CO-3853
+name: "Adult Financial: OAP life insurance cash value exemption cap"
+identifier: af_oap_life_insurance_cash_value_cap
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: "For OAP, when the combined cash surrender value of the client's and spouse's policies is more than this, the cash surrender value over it is countable (9 CCR 2503-5 3.520.75.E-F: \"$250,000\")."
+value: 250000
+sources: [S2618]
+tags: [cash, oap, resources]
+rationale: "Final cash review FC-8: af_person_countable_resources (CO-3400) counted the whole cash surrender value of life insurance over $1,500 face value, though 9 CCR 2503-5 3.520.75.E-F (S2618) exempt it for an OAP client whose policies are more than forty-eight months old, and it never counted revocable burial funds or excess burial spaces, which 3.520.72.B.8-9 (S2619) count. The figure is a parameter."

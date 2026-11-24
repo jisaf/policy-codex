@@ -1,0 +1,20 @@
+id: CO-4790
+name: "Medicaid: age on the last day of the month before the month"
+identifier: ma_age_before_month
+kind: derived
+type: whole number
+scope: person-month
+program: Medicaid
+meaning: "The person's whole number of completed years of age on the last day of the month before the month evaluated: the age a test with an upper age limit reads where the rule grants the whole month through the month of a birthday (the MAGI groups, 10 CCR 2505-10 § 8.100.4.G.1; the Children with Disabilities Buy-In, § 8.100.6.Q.1.a and § 8.100.5.C.3), so that a person who was under the limit at any time in the month stays within it for the whole month."
+precision: "Coverage review 3, C3-07: exact for limits that run through the end of the birthday month (19, 26, 65); the \"under N\" limits of the needy newborn and the dependent child read ma_age_on_first_day_of_month (CO-4978) instead, and an \"N or older\" limit reads ma_age_on_last_day_of_month (CO-5402). The day-before idiom of ma_is_under_child_age_or_turns_nineteen_this_month (CO-564) and ma_is_under_adult_upper_age_through_birthday_month (CO-4550): a person whose birthday falls in the month has the age before that birthday for the whole month. Time audit T-1 (2026-11-23): measured in the month evaluated, not the determination month, so a retroactive month (42 CFR 435.915(a)(2), S218: \"would have been eligible ... at the time\") and an application month before the determination month read the person's age in that month; a rule about the determination itself reads it [at] the determination month."
+derived: [years_between, date_of_birth, [days_after, -1, [first_day, [month]]]]
+sources: [S3351, S211]
+implemented: engine
+tags: [ma, magi, age]
+nearest: [CO-564, CO-4550]
+rationale: "Coverage review 2, N-02 (2026-11-22): the Eligible Needy Newborn (CO-550) tested age on the determination date, so a baby whose first birthday fell earlier in the determination month lost the whole month G.1 grants, the defect F3-3 fixed at 19 and F-06 at 65. The sweep the fix brief asked for found the same pattern at the dependent child's 18th birthday (CO-4791) and at the 21st and 22nd birthdays of the needy persons under 21 groups (CO-2419); the non-MAGI coverage review 2 (N2-3) found it at the Children with Disabilities Buy-In's 19th birthday (CO-620). CO-564 and CO-4550 inline the expression against one limit each; no existing item states the age itself for the other limits."
+tests:
+  - {id: CO-4790-T1, month: "2026-11", as_of: "2026-11-10", title: "First birthday on November 5, determined November 10: still 0 for November", given: {date_of_birth: "2025-11-05"}, expect: 0}
+  - {id: CO-4790-T2, month: "2026-12", as_of: "2026-12-01", title: "The month after the first birthday", given: {date_of_birth: "2025-11-05"}, expect: 1}
+  - {id: CO-4790-T3, month: "2026-11", as_of: "2026-11-01", title: "Birthday on the first of the month", given: {date_of_birth: "2008-11-01"}, expect: 17}
+  - {id: CO-4790-T4, as_of: "2026-11-10", month: "2026-09", title: "T-1: September of a November determination, the month of a 19th birthday on September 15 - 18 on August 31", given: {date_of_birth: "2007-09-15"}, expect: 18}

@@ -1,0 +1,13 @@
+id: CO-2313
+name: "SNAP: date of a voluntary quit without good cause"
+identifier: snap_voluntary_quit_date
+kind: supplied
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The date on which this person, while not exempt from the SNAP work requirements, quit a job of thirty or more hours a week, or reduced work effort below thirty hours a week (or wages below the federal minimum wage times thirty hours), and the local office found the quit or reduction to be without good cause under 10 CCR 2506-1 4.308.1: a voluntary quit (4.000.1; 4.308.A, E). A government employee dismissed for taking part in a strike against that government has voluntarily quit (4.308.B); a quit followed by comparable new employment lost through no fault of the person's own is not stated (4.308.B)."
+precision: "The most recent such quit. If not stated, SNAP reads that the person has no voluntary quit without good cause, and snap_is_disqualified_for_voluntary_quit (CO-2318) is false."
+supplied_by: "County determination of voluntary quit and good cause, made at application, recertification or a reported loss of income (4.308.B-D; 4.310.5.A)."
+sources: [S1611]
+tags: [snap, work_registration]
+rationale: "OQ-38 (P-8): voluntary quit is an independent ground of ineligibility (4.308.A, S1611) and no fact stated it; snap_is_disqualified_for_work_requirement_noncompliance (CO-040) records a sanction already being served, not the quit that starts one."

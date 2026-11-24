@@ -1,0 +1,14 @@
+id: CO-3301
+name: Home incurs separate cooling cost
+identifier: home_incurs_separate_cooling_cost
+kind: supplied
+type: yes/no
+scope: case
+program: All
+meaning: "The household pays, or expects to pay, for cooling its home (air conditioning, room air conditioners, swamp or evaporative coolers; not fans) separately from its rent or mortgage, alone or as its share of a shared bill."
+precision: "One value for the case: a fact about the home of the application. If not stated, SNAP reads this as false."
+supplied_by: "Application (housing and utility expenses)."
+sources: [S743]
+implemented: engine
+tags: [household]
+rationale: "Dual-entry audit 1.13, 1.14 and 2.8, same-word SW-9 and SW-33: the home's utility and heating arrangements were stated per member as each program's classification (SNAP's 'incurs heating or cooling cost', a count of utilities with the telephone stated again, LEAP's 'responsible for heating costs'). The neutral fact states what the household pays for, once for the case (convention rules 13 and 18); SNAP and LEAP derive their own tests from it."

@@ -1,0 +1,5 @@
+date: 2026-11-23
+summary: "Time audit fix round (docs/reviews/time-audit.md, step 7): parameters and ages read in the month evaluated (T-3, T-1), the Adult Financial maximum ISM by its formula (T-2), the lottery bands to the cent (T-4), and the P2 findings T-5 to T-9."
+impact:
+  - {changed: CO-133, fingerprint: fp1-264b9ebc8aca454ddd79, flagged: CO-138, not_applicable: "CO-138 (snap_shelter_share_rate) is the statutory 50% of income above which shelter costs are deducted, not a figure re-published each fiscal year, so it keeps an open version with no review_by (time audit T-5's rule for a fixed figure); CO-133's change only closes the FY2027 cap at September 30, 2027."}
+  - {changed: CO-4791, fingerprint: fp1-24384fbcd812a14c9d5b, flagged: CO-544, not_applicable: "CO-544 (ma_is_dependent_child) is the per-person test that the non-MAGI items CO-1986 and CO-4103 read on the determination date, as its precision states; 8.100.4.G.1's whole month, which CO-4791 now reads in each month (T-1), is a MAGI rule."}

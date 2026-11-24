@@ -1,0 +1,10 @@
+# Steps E2 and H2 of docs/design-earned-and-resource-records.md (docs/reviews/records-e2-h2.md): the scalar income
+# and resource facts and their translators are retired; every stored household and rule test states its income and
+# resources in the records alone. Retiring a fact no rule reads flags nothing (a deleted item raises no flag). The
+# entries below are re-keys: the meanings of items that named a retired fact were reworded to name the record list and
+# kind, which moves the fingerprint of every item downstream; no decision changed.
+# The nine re-keys were moved to 2026-11-24-e2-h2-leftovers.yaml, re-keyed again at the fingerprints the leftovers round
+# left (its receipt tables moved them), every earlier reason kept there.
+date: 2026-11-24
+summary: "Steps E2 and H2: 116 supplied facts retired (48 earned, 65 resource, and three left without a reader by the records: CO-4444, CO-4459, CO-4557) with has_earned_income (CO-1356, no reader); 4,266 statements removed from 481 stored households and 1,022 from 401 rule tests, every one evaluating identically; the translators, the retired statements and the harnesses' old-against-new comparison retired, the metamorphic relations and the record lints kept on the records alone; the meanings of CO-080, CO-3924, CO-3927, CO-4062, CO-4321, CO-4323, CO-4420, CO-4622, CO-5000, CO-5101, CO-5106, CO-5107, CO-5204, CO-5205, CO-5212 and CO-5213 name the records in place of retired facts (wording only)."
+impact: []

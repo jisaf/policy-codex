@@ -1,0 +1,12 @@
+id: CO-2239
+name: Electronic data source monthly earned income
+identifier: electronic_data_source_monthly_earned_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The part of the person's monthly gross income reported by an electronic data source (electronic_data_source_monthly_gross_income) that is earned income - wages and net earnings from self-employment.
+supplied_by: The same electronic data source match (IEVS, the Federal Data Services Hub, The Work Number, SSA), by income type.
+sources: [S864]
+tags: [verification, income]
+rationale: "OQ-374: comparing countable income needs the data figure split into earned and unearned income, because the SSI-related exclusions differ for each."

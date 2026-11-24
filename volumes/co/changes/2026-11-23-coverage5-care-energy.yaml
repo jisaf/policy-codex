@@ -1,0 +1,9 @@
+# Coverage pass 5 fix round for CCCAP, LEAP and SUN Bucks (docs/reviews/coverage5-care-energy.md, section 7; the field sweep,
+# docs/reviews/field-sweep-care-energy.md): every reader of a stream in the three programs reads its source's dates; the receipt states
+# an early payout's penalty and a jointly owned property's share and income; LEAP is determined as of its application date; LEAP's EE,
+# GG and the parts for persons living elsewhere follow the text; CCCAP's AmeriCorps income is earned; the verification readers read the
+# Colorado Works Child Care household as CO-988 does. One entry per change-impact flag the round raises: each is a flag an earlier record
+# dispositioned, re-keyed because the receipts list changed upstream.
+date: 2026-11-23
+summary: "Coverage pass 5 (CCCAP, LEAP, SUN Bucks): C5-1, L5-1, S5-1 streams by their source's dates; C5-2 early_withdrawal_penalty on the receipt; X5-1 ownership_share and property_income on the receipt (OQ-1316); L5-2 for_person_living_elsewhere; L5-3 EE's kinds (OQ-1320); L5-4 insurance cash value excluded (GG, BB); L5-5 a LEAP determination's determination date is its application date (CO-7000; CO-1003 reads the season's table); L5-6, C5-3, S5-2, X5-3, C5-5, C5-6 fixed; X5-2 rows cited, OQ-1317 to OQ-1319; C5-4 OQ-1315; field sweep fixes (spent_on_covered_costs on a recurring receipt in both programs, LEAP's PASS on one-time and boarder payments; OQ-1321). Repro households CO-800 to CO-809. Answer changes are enumerated, case by case, in scripts/receipts/allowed-differences.yaml and scripts/records/allowed/coverage5-care-energy.yaml."
+impact: []

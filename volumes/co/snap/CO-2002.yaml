@@ -1,0 +1,17 @@
+id: CO-2002
+name: "SNAP: months of child support payment history"
+identifier: snap_child_support_payment_history_months
+kind: derived
+type: whole number
+scope: person-month
+program: SNAP
+meaning: "The number of the three months before the budget month for which the case states the person's legally obligated child support payment (child_support_paid_legally_obligated) - the history 10 CCR 2506-1 4.407.5.D-E reads to decide whether the support exclusion is an average of past payments (three months) or an estimate (fewer)."
+precision: "A month whose payment is not stated is not a month of record."
+derived: [count_months, [months_ending, snap_child_support_averaging_months, [month_before, [month]]], [not, [unknown, [at, child_support_paid_legally_obligated, [month]]]]]
+sources: [S1314]
+implemented: engine
+tags: [income, snap]
+rationale: "No existing fact states the length of a payment history; snap_child_support_exclusion (CO-2003) needs it to choose between 4.407.5.D's average and 4.407.5.E's estimate (OQ-22). Dual-entry audit 2.3: derived as the number of the three months before the budget month whose payment the case states (CO-033), so the count cannot disagree with the months stated."
+tests:
+  - {id: CO-2002-T1, title: "Three months of payments stated", month: "2026-11", as_of: "2026-11-01", given: {}, persons: {p1: {months: {"2026-08": {child_support_paid_legally_obligated: 150}, "2026-09": {child_support_paid_legally_obligated: 150}, "2026-10": {child_support_paid_legally_obligated: 150}}}}, expect: 3}
+  - {id: CO-2002-T2, title: "Only last month stated", month: "2026-11", as_of: "2026-11-01", given: {}, persons: {p1: {months: {"2026-10": {child_support_paid_legally_obligated: 150}}}}, expect: 1}

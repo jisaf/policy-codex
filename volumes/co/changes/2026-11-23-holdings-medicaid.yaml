@@ -1,0 +1,10 @@
+# Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): the SSI method's resources (the aged,
+# blind and disabled groups, long-term care and the CSRA, the transfer penalty, parental deeming, the Medicare Savings
+# Program, and Adult Financial burial by its link) read the holdings records (CO-5300) through the SSI method's holdings
+# counting table (CO-5303); the CSRA snapshot derived from the couple's holdings at the application month (D8); dated
+# transfers with their own exemption (D9); one automobile for a couple; finding H0-F1 fixed and OQ-1204 part (1) settled
+# by the text; a retirement account net of the taxes due (N.5). One entry per change-impact flag
+# (CHECK_BASE=origin/main npm run check).
+date: 2026-11-23
+summary: Resource records H1 for Medicaid - the SSI method's resource readers read the holdings records, the CSRA snapshot derived, dated transfers, one automobile per couple, H0-F1 fixed (loans, the F.6 payments, refunds and credits, replacement proceeds), retirement accounts net of taxes.
+impact: []

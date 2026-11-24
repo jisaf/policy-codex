@@ -1,0 +1,22 @@
+id: CO-7772
+name: Latest pregnancy end before the month, as the case records it
+identifier: latest_pregnancy_end_date_before_month
+kind: derived
+type: calendar date
+scope: person-month
+program: All
+meaning: "The latest date before the first day of the month on which the case records a pregnancy of the person ended: the stated pregnancy_end_date (CO-089), or the date of birth of a child of the case she gave birth to (the gave_birth_to relationship), whichever is later. Unknown where the case records no such end (pregnancy_ended_before_month, CO-7771, says whether it does)."
+precision: "Coverage pass 7, C7-02 (2026-11-24). The latest birth is taken as most_recent_pregnancy_end_date (CO-7400) takes it, as the greatest number of days from the determination date to each such child's date of birth (P59 greatest; days_after back from the determination date). Relationships not stated are read as none."
+derived: [case, [[all, [all, [not, [unknown, pregnancy_end_date]], ["<", pregnancy_end_date, [first_day, [month]]]], [">", [count, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]]], 0]], [case, [[">", pregnancy_end_date, [days_after, [greatest, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]], [days_between, [det_date], [of, [P], date_of_birth]]], [det_date]]], pregnancy_end_date], [else, [days_after, [greatest, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]], [days_between, [det_date], [of, [P], date_of_birth]]], [det_date]]]]], [[all, [not, [unknown, pregnancy_end_date]], ["<", pregnancy_end_date, [first_day, [month]]]], pregnancy_end_date], [[">", [count, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]]], 0], [days_after, [greatest, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]], [days_between, [det_date], [of, [P], date_of_birth]]], [det_date]]]]
+sources: [S640, S1715, S224]
+implemented: engine
+tags: [ma, chp, household]
+link_class: primitive
+link_basis: "The latest recorded pregnancy end (the stated end, or a recorded birth) before a month; a date primitive no program defines differently."
+nearest: [CO-7400, CO-7771]
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): a period of 10 CCR 2505-10 § 8.100.4.G.5 or 10 CCR 2505-3 § 430.3 runs 'through the last day of the 12th month following the date the pregnancy ends' of its own pregnancy; whether a month falls in the postpartum year of an earlier pregnancy, and from which month a later pregnancy's period can be searched, reads the latest end before a month. most_recent_pregnancy_end_date (CO-7400) gives only the last end on the determination date."
+tests:
+  - {id: CO-7772-T1, month: "2025-10", as_of: "2026-11-10", title: "C7-02 (PG-SECOND): she gave birth to p2 on 2025-09-10: the latest end before 2025-10-01 (days from 2026-11-10 to 2025-09-10: -426; 2026-11-10 less 426 days = 2025-09-10)", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: "2025-09-10"}
+  - {id: CO-7772-T2, month: "2026-11", as_of: "2026-11-10", title: "Two children born to her, 2019-03-04 and 2025-09-10, and a miscarriage stated on 2026-08-02: the latest before 2026-11-01 is the stated 2026-08-02", given: {pregnancy_end_date: "2026-08-02"}, others: {p2: {date_of_birth: "2019-03-04"}, p3: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2], [gave_birth_to, p1, p3]], expect: "2026-08-02"}
+  - {id: CO-7772-T3, month: "2025-01", as_of: "2026-11-10", title: "The same two children, before 2025-01-01: only the 2019-03-04 birth is before it (the stated end 2026-08-02 and the 2025-09-10 birth are not): 2019-03-04", given: {pregnancy_end_date: "2026-08-02"}, others: {p2: {date_of_birth: "2019-03-04"}, p3: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2], [gave_birth_to, p1, p3]], expect: "2019-03-04"}
+  - {id: CO-7772-T4, month: "2025-09", as_of: "2026-11-10", title: "No end before 2025-09-01 (the birth is 2025-09-10): unknown, as pregnancy_ended_before_month (CO-7771) is false", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: unknown}

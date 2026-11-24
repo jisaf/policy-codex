@@ -1,0 +1,23 @@
+id: CO-828
+name: CSRA maximum standard
+identifier: ma_csra_maximum
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The community spouse resource allowance maximum standard - "the current maximum allowance which, changes each year beginning January 1st" of 10 CCR 2505-10 § 8.100.7.M.1.a, the cap 42 U.S.C. 1396r-5(f)(2)(A)(ii)(II) sets at $60,000 subject to CPI indexing under subsection (g), published by CMS.
+precision: 
+versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 157920
+    source: S3007
+  - from: "2026-01-01"
+    to: "2027-01-01"
+    value: 162660
+    source: S644
+review_by: "2027-01-01"
+sources: [S644, S652, S371, S3007]
+tags: [ma, ltc, resources, legal]
+nearest: [CO-827]
+rationale: "Final verification pass 3, P2-1 (OQ-516 resolved): the 2025 figure is from CMS's CMCS Informational Bulletin of November 15, 2024 (D-280). OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the maximum resource standard, $162,660.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_maximum_standard; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-91); identifier and id unchanged so ma_csra (CO-646) reads it as before."

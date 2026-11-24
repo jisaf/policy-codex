@@ -1,0 +1,16 @@
+id: CO-1456
+name: "LEAP: requires verification of heating costs"
+identifier: leap_requires_verification_of_heating_costs
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+meaning: "Whether the household's estimated home heating costs and vulnerability must be verified for LEAP: when the household is responsible for heating costs from a primary heating source (both read once for the case)."
+derived: [all, leap_is_responsible_for_heating_costs, has_primary_heating_source]
+sources: [S897]
+implemented: engine
+tags: [verification]
+rationale: No existing item states this LEAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1456-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_is_responsible_for_heating_costs: true, has_primary_heating_source: true}, expect: true}
+  - {id: CO-1456-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_is_responsible_for_heating_costs: false}, expect: false}

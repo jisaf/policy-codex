@@ -1,0 +1,19 @@
+id: CO-2425
+name: "Medicaid: a parent or caretaker relative in the household is employed"
+identifier: ma_household_has_employed_parent_caretaker
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether at least one Parent/Caretaker Relative in the person's Medical Assistance household is employed this month, or left employment with good cause (10 CCR 2505-10 § 8.100.4.I.1.b.i; it need not be the same person every month).
+precision: "Pattern sweep, MAGI (2026-11-24, PS-06): left_employment_with_good_cause is read as stated, required where read (a parent or caretaker relative with no earnings in the month; I.1.b.i, S1719, gives no reading for an unstated reason; decision 4)."
+derived: [exists, ma_magi_household_members, [all, [of, [P], ma_is_parent_or_caretaker_relative_of_dependent_child], [any, [of, [P], ma_has_earned_income], [of, [P], left_employment_with_good_cause]]]]
+sources: [S1719]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "C-4 of the HCPF review. Dual-entry audit 2.1: derived from the MAGI household, each member's parent or caretaker relation (ma_caretaker_relative_of) and earned income (ma_has_earned_income, CO-6200; has_earned_income, CO-1356, before the records E1 integration), with good cause for leaving employment (CO-2860)."
+tests:
+  - {id: CO-2425-T1, title: "The mother works (C6-10: one home stated)", month: "2026-11", as_of: "2026-11-01", given: {dwelling_id: h1, ma_magi_household_members: [p1, p2], earnings: [{kind: wages, amount: 900}]}, others: {p2: {dwelling_id: h1, ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-2425-T2, title: "No one works", month: "2026-11", as_of: "2026-11-01", given: {ma_magi_household_members: [p1, p2], left_employment_with_good_cause: false, earnings: []}, others: {p2: {ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-2425-T3, title: "Pattern sweep PS-06: no one works this month, and whether the mother left her job with good cause is not stated: cannot determine (I.1.b.i; was read as not)", month: "2026-11", as_of: "2026-11-01", given: {dwelling_id: h1, ma_magi_household_members: [p1, p2], earnings: []}, others: {p2: {dwelling_id: h1, ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: unknown}
+  - {id: CO-2425-T4, title: "Pattern sweep PS-06: the same, she left with good cause: true (I.1.b.i)", month: "2026-11", as_of: "2026-11-01", given: {dwelling_id: h1, ma_magi_household_members: [p1, p2], left_employment_with_good_cause: true, earnings: []}, others: {p2: {dwelling_id: h1, ma_is_dependent_child_in_month: true}}, relationships: [[parent, p1, p2]], expect: true}

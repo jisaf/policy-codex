@@ -1,0 +1,12 @@
+id: CO-2252
+name: Became incapable of indicating intent before age 21
+identifier: ma_became_incapable_of_indicating_intent_before_age_twenty_one
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, incapable of indicating intent, became so before the person's 21st birthday (10 CCR 2505-10 § 8.100.3.B.2.a; 42 CFR 435.403(h)(3))."
+supplied_by: The medical history in the case file.
+sources: [S1518]
+tags: [ma, age]
+rationale: "OQ-393: the parents' or guardian's state governs for a person who became incapable before 21; no fact stated when."

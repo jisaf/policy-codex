@@ -1,0 +1,12 @@
+id: CO-3160
+name: "SNAP: work program is operated or supervised by the State agency"
+identifier: snap_work_program_is_operated_or_supervised_by_state_agency
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether the work or workfare program the person participated in for the month (work_program_hours, CO-048) is operated or supervised by the SNAP State agency, such as Colorado's SNAP Employment and Training program, as opposed to a program another agency or organization runs (7 CFR 273.2(f)(1)(xiv)(A): \"a work or workfare program that is not operated or supervised by the State agency\")."
+supplied_by: "The county's SNAP Employment and Training case record, or the person's statement naming the program."
+sources: [S810]
+tags: [snap, abawd, verification]
+rationale: "Heavier-definitions audit L-6 (audit fix round 4): snap_requires_verification_of_work_hours (CO-1386) verified paid hours only, so an individual subject to the time limit who met it in another agency's work or workfare program was never asked to verify the hours, as 273.2(f)(1)(xiv)(A) requires. The State agency already holds the hours of its own programs; no existing fact says who runs the program."

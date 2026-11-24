@@ -1,0 +1,14 @@
+id: CO-4420
+name: "Adult Financial: months replacement proceeds are exempt"
+identifier: af_replacement_proceeds_exemption_months_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: AdultFinancial
+meaning: "The months, counted from the month the proceeds were received, for which 9 CCR 2503-5 3.520.77.E-F exempt proceeds held to restore or replace property, keyed by the kind of property the proceeds replace (replacement_property of a held_replacement_proceeds record; holdings, CO-5300): three for personal property (E) and six for real property, the home included (E, F)."
+precision: "The proceeds count from the month following the month the period expires (E.3, F.3), so they are exempt through the month this many months after the month received."
+versions:
+  - {from: "2016-01-01", value: {personal_property: 3, real_property: 6}, source: S3206}
+sources: [S3206]
+tags: [cash, resources]
+rationale: "Coverage review F-6: the figures of 3.520.77.E-F (S3206); the from date is a floor before any determination this volume makes, since the rule text gives no adoption date for these paragraphs."

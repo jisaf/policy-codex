@@ -5,14 +5,14 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The amount subtracted from this person's SNAP household's maximum allotment to compute the allotment - 30 percent of household net income, rounded up to the next whole dollar.
-assumption: 7 CFR 273.10(e)(2)(ii)(A) (S102) gives two rounding options for this figure; no fetched Colorado document states which Colorado elected, so the draft takes option (1), rounding 30% of net income up to the next dollar before subtracting it from the maximum allotment (OQ-23).
-derived: [ceil, ["*", snap_benefit_reduction_rate, snap_household_net_income]]
-sources: [S102, S104]
-open: [OQ-23]
+meaning: "The amount subtracted from this person's SNAP household's maximum allotment to compute the allotment - snap_benefit_reduction_rate of household net income, unrounded; Colorado rounds the result of the subtraction down to the nearest dollar instead (10 CCR 2506-1 4.207.3.A, S737; snap_allotment, CO-385)."
+precision: "OQ-23 resolved: 10 CCR 2506-1 4.207.3.A (S737) states Colorado's formula - multiply net income by snap_benefit_reduction_rate, subtract from the maximum allotment, round the result down to the nearest dollar - which is 7 CFR 273.10(e)(2)(ii)(A)'s option (2), so this figure is not rounded."
+derived: ["*", snap_benefit_reduction_rate, snap_household_net_income]
+sources: [S102, S104, S737]
 implemented: engine
 tags: [income]
-rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) computes the allotment as the maximum allotment "reduced by 30 percent of the household's net monthly income"; no existing item states this intermediate figure, kept separate from snap_allotment so the rounding choice (OQ-23) and its two tests are isolated from the subtraction and floor snap_allotment performs.
+rationale: "7 CFR 273.10(e)(2)(ii)(A) (S104) computes the allotment as the maximum allotment reduced by 30 percent of the household's net monthly income; no existing item states this intermediate figure, kept separate from snap_allotment so the rounding step (OQ-23, resolved - option (2), S737) and its tests are isolated from the subtraction and floor snap_allotment performs."
 tests:
-  - {id: CO-384-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2199}, expect: 660}
+  - {id: CO-384-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2199}, expect: 659.7}
   - {id: CO-384-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2000}, expect: 600}
+  - {id: CO-384-T3, title: "Cents are kept (option (2)); the allotment rounds down instead", as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 1001}, expect: 300.3}

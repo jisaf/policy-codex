@@ -1,0 +1,18 @@
+id: CO-1390
+name: "SNAP: person's pending expense verification count"
+identifier: snap_person_pending_expense_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: SNAP
+role: outcome
+meaning: "The number of deductible expenses (shelter, medical, dependent care, child support) SNAP requires this person to verify that are not yet verified: the sum of the person's pending expense items."
+precision: Zero where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2).
+derived: [case, [snap_is_household_member, ["+", [case, [snap_shelter_costs_verification_is_pending, 1], [else, 0]], [case, [snap_medical_expenses_verification_is_pending, 1], [else, 0]], [case, [snap_dependent_care_verification_is_pending, 1], [else, 0]], [case, [snap_child_support_paid_verification_is_pending, 1], [else, 0]]]], [else, 0]]
+sources: [S812, S818]
+implemented: engine
+tags: [verification, snap, income]
+rationale: An unverified expense is left out of the deduction rather than denying the household (273.2(f)(3)(ii), 4.502.A.3); the status needs the count separately.
+tests:
+  - {id: CO-1390-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_shelter_costs_verification_is_pending: false, snap_medical_expenses_verification_is_pending: false, snap_dependent_care_verification_is_pending: true, snap_child_support_paid_verification_is_pending: false}, expect: 1}
+  - {id: CO-1390-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_shelter_costs_verification_is_pending: false, snap_medical_expenses_verification_is_pending: false, snap_dependent_care_verification_is_pending: false, snap_child_support_paid_verification_is_pending: false}, expect: 0}

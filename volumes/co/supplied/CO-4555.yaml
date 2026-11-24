@@ -1,0 +1,13 @@
+id: CO-4555
+name: Support received from sponsor
+identifier: support_received_from_sponsor
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The value of the cash, food, housing or other assistance this non-citizen's sponsors and their spouses actually provide to the person in the month (8 U.S.C. 1631(e)(1): \"the amount actually provided\"). 0 when they provide none."
+precision: "A statement of what the sponsors give, not of any program's countable income: gifts from a sponsor are not MAGI income (§ 8.100.4.C.1), and the amount matters only where an indigence determination caps the sponsor income attributed (ma_sponsor_deemed_income, CO-4551). Required where read (decision 4 of 2026-11-23; coverage pass 6, C6-05(d), 2026-11-24): Medicaid reads it only in a month of an indigence period (ma_sponsor_deemed_income, CO-4551), where the amount caps the income attributed and no rule gives an unstated amount a value; no other program reads it. Before, it was read as 0 where not stated."
+supplied_by: The applicant's statement and the sponsor's, as recorded in CBMS.
+sources: [S3354]
+tags: [immigration, income]
+rationale: "Coverage review F-03 (2026-11-22): no fact stated the support a sponsor actually provides, which 8 U.S.C. 1631(e)(1) makes the cap on attributed income after an indigence determination. Program-neutral: any program applying 1631(e) reads the same amount."

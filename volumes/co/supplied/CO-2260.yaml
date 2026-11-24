@@ -1,0 +1,12 @@
+id: CO-2260
+name: Has a serious emotional disturbance
+identifier: ma_has_serious_emotional_disturbance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has a Serious Emotional Disturbance as § 8.7100.A defines it, documented in a format the Department prescribes - the HCBS-CHRP route other than developmental disability (10 CCR 2505-10 § 8.7101.C.2.b.ii)."
+supplied_by: The documentation in the Department's prescribed format.
+sources: [S1511]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: CHRP's serious emotional disturbance route had no fact."

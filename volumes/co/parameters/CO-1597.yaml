@@ -1,0 +1,12 @@
+id: CO-1597
+name: SNAP recertification expense change threshold
+identifier: snap_recertification_expense_change_threshold
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The change in a dependent care or medical expense, from the amount last verified, above which the expense is verified at recertification (10 CCR 2506-1 4.502.B.3). Child support is verified at recertification on any change (snap_requires_verification_of_child_support_paid, CO-1382; coverage review snap-financial CF-11: 7 CFR 273.2(f)(8)(i)(A) overrides the $25 for child support)."
+value: 25
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "Review K-1: 273.2(f)(8)(i)(A) and 4.502.B.3 state $25."

@@ -1,0 +1,13 @@
+id: CO-4339
+name: "SNAP low-return resource maximum"
+identifier: snap_low_return_resource_maximum
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The net return at or below which a non-exempt non-liquid resource is inaccessible to the household: $1,500 (10 CCR 2506-1 4.410.F.2; a significant return is more than $1,500, 4.410.G)."
+versions:
+  - {from: "2000-01-01", value: 1500, source: S3119}
+sources: [S3119]
+tags: [snap, resources]
+rationale: "Coverage review snap-financial CF-7: the $1,500 test had no item. The figure is in the rule and is not indexed."

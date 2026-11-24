@@ -1,0 +1,20 @@
+id: CO-5653
+name: "Colorado Works: basic cash assistance received in the month"
+identifier: cw_basic_cash_assistance_receipts
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The Colorado Works basic cash assistance paid to this person in the month, other than a retroactive payment for earlier months (the receipts of kind colorado_works_cash that are not retroactive): what the rules that ask whether the person receives basic cash assistance in a month read (no diversion grant in a month of basic cash assistance, 9 CCR 2503-6 3.606.8.A.7; a deceased client who received Colorado Works, 3.606.7.B.1)."
+precision: "Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-cw.md): replaces tanf_cash_income for these two readers, each of which reads a payment not stated as none (cw_diversion_eligible, CO-1270; cw_is_deceased_client, CO-1504), as before receipt records and as Adult Financial's grant tests do (af_grant_receipts, CO-5019; docs/reviews/receipts-migration-1.md section 4). It is not income to the unit (cw_receipt_treatment_table: not_income_to_unit). Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-CW-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since income is \"the receipt by a client of a gain or benefit in cash or in-kind during a calendar month\" and the unit's income is what it has \"received, or ... expects to receive in the application month and any month following\" (9 CCR 2503-6 3.605.1.A.2, B, S4911): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "colorado_works_cash"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]], ["not", ["receipt", "retroactive"]]], ["receipt", "amount"]]
+sources: [S762, S1005, S4911]
+implemented: engine
+tags: [cash, tanf]
+rationale: "Receipt records, migration phase 2: the month's basic cash assistance read from the receipts, once, for the two Colorado Works rules that test receipt of the grant. Adult Financial's grant, SSI and Home Care Allowance sums (af_grant_receipts, af_ssi_receipts, af_home_care_allowance_receipts; CO-5019, CO-5018, CO-5023) are the same pattern for that program's own payments; programs do not share a receipt sum (product-owner decision of 2026-11-23)."
+nearest: [CO-5018, CO-5019, CO-5023]
+tests:
+  - {id: CO-5653-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: colorado_works_cash, amount: 488}, {kind: colorado_works_cash, amount: 244, frequency: once, retroactive: true, month: "2026-10"}]}, title: "The month's grant; a retroactive underpayment correction is not the month's assistance", expect: 488}
+  - {id: CO-5653-T2, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: social_security, amount: 900}]}, title: "No Colorado Works payment", expect: 0}
+  # Field sweep fix round (FS-CW-1): hand-computed from 9 CCR 2503-6 3.605.1.A.2, B (S4911): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-5653-T3", "month": "2026-10", "as_of": "2026-10-15", "title": "A $488 grant beginning 2026-11-01, read for October: 0", "given": {"receipts": [{"kind": "colorado_works_cash", "amount": 488, "start_date": "2026-11-01"}]}, "expect": 0}

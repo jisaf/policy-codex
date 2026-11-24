@@ -1,7 +1,8 @@
-import { indexWith, type LedgerIndex } from "./ledger-index";
+import { DEFAULT_INVERSE_ROLE, indexWith, type LedgerIndex } from "./ledger-index";
 import { valuesEqual } from "./values";
-import { inForce, paramInForce } from "./versions";
-import { DATE_RE, MONTH_RE, type Expr, type Item, type TestSpec } from "./types";
+import { inForce, paramInForce, versionInForce } from "./versions";
+import { isRecordList, recordFieldName, recordMonth } from "./records";
+import { DATE_RE, MONTH_RE, type Expr, type Item, type RecordFieldSpec, type TestSpec } from "./types";
 
 export interface CaseData {
   det: string;
@@ -11,10 +12,61 @@ export interface CaseData {
   rels: Record<string, Array<[string, string]> | null>;
   monthFacts: Record<string, Record<string, unknown>>;
   monthFactsDefault: Record<string, unknown>;
+  /** Case-scope supplied facts: one value for the application as a whole
+   *  (an application date, the home's utility costs), stated once. */
+  caseFacts: Record<string, unknown>;
   params: Record<string, unknown>;
 }
 
-export interface TestResult { ok: boolean; got: unknown; err: string | null }
+export interface TestResult {
+  ok: boolean; got: unknown; err: string | null;
+  /** Unknowns the evaluation produced with no unstated supplied fact behind
+   *  them (see EvalWarning), one line each. Absent when there were none. */
+  warnings?: string[];
+}
+
+/** An unknown the evaluator produced although no supplied fact was missing:
+ *  a table lookup whose key has no row, a versioned parameter with no version
+ *  in force on the date it is read on, a division by zero, or a number that
+ *  is not finite (NaN or Infinity, stated in a case or produced by
+ *  arithmetic), which is never an answer. Each is
+ *  reported (to the `warn` hook, and on the derived fact's trace event) so it
+ *  is never a silent "cannot determine". */
+export interface EvalWarning {
+  kind: "lookup-miss" | "no-version" | "division-by-zero" | "non-finite";
+  /** The derived fact whose rule hit it, or the parameter with no version. */
+  identifier: string;
+  person: string | null;
+  month: string | null;
+  detail: string;
+}
+
+export type WarnHook = (w: EvalWarning) => void;
+
+/** One warning as a single line, for check output and test results. */
+export function formatWarning(w: EvalWarning): string {
+  const at = (w.person ? " " + w.person : "") + (w.month ? " @" + w.month : "");
+  return `${w.kind}: ${w.identifier}${at}: ${w.detail}`;
+}
+
+/** The tolerance within which two numbers are the same number: the one ceil,
+ *  round and band already use (docs/operators.md, Numbers and Comparison). */
+export const NUMBER_TOLERANCE = 1e-9;
+
+/** A comparison of two numbers with NUMBER_TOLERANCE: numbers within it of
+ *  each other are equal, so a figure exactly at a limit in decimal arithmetic
+ *  is at the limit whatever binary noise binary64 adds (coverage pass 5,
+ *  C5-10: 2,650.90 / (21,640 / 12) is 1.4700000000000002 in binary64). */
+export function compareNumbers(op: string, a: number, b: number): boolean {
+  switch (op) {
+    case "<": return a < b - NUMBER_TOLERANCE;
+    case "<=": return a <= b + NUMBER_TOLERANCE;
+    case ">": return a > b + NUMBER_TOLERANCE;
+    case ">=": return a >= b - NUMBER_TOLERANCE;
+    case "=": return Math.abs(a - b) <= NUMBER_TOLERANCE;
+    default: throw new Error(`not a comparison: ${op}`);
+  }
+}
 
 export function addMonths(m: string, n: number): string {
   const y = +m.slice(0, 4);
@@ -36,6 +88,21 @@ export function monthsFromTo(a: string, b: string): string[] {
   return out;
 }
 
+/** The calendar date N days after a date (N may be negative), in the
+ *  proleptic Gregorian calendar, computed in UTC so no time zone shifts it. */
+export function addDays(d: string, n: number): string {
+  const t = Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) + n * 86400000;
+  return new Date(t).toISOString().slice(0, 10);
+}
+
+/** The number of calendar days from the first date to the second (negative
+ *  when the second is earlier), computed in UTC like addDays. */
+export function daysBetween(d1: string, d2: string): number {
+  const t1 = Date.UTC(+d1.slice(0, 4), +d1.slice(5, 7) - 1, +d1.slice(8, 10));
+  const t2 = Date.UTC(+d2.slice(0, 4), +d2.slice(5, 7) - 1, +d2.slice(8, 10));
+  return Math.round((t2 - t1) / 86400000);
+}
+
 function leap(y: number): boolean {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 }
@@ -50,23 +117,11 @@ export function yearsBetween(d1: string, d2: string): number {
   return years;
 }
 
-/** The inverse of each relationship role the household model names. A
- *  case-level edge states one direction and both persons carry it, so
- *  `[parent, p2, p3]` records "p2 is the parent of p3" on p2 and "p3 is the
- *  child of p2" on p3. A role with no inverse here is recorded on the person
- *  named first alone. */
-export const INVERSE_ROLE: Readonly<Record<string, string>> = {
-  parent: "child",
-  child: "parent",
-  spouse: "spouse",
-  grandparent: "grandchild",
-  grandchild: "grandparent",
-  caretaker: "dependent",
-  dependent: "caretaker",
-  tax_filer: "tax_dependent",
-  tax_dependent: "tax_filer",
-  buys_prepares_with: "buys_prepares_with",
-};
+/** The default relationship-role inverses (see ledger-index.ts). A volume
+ *  that declares `relationship_roles` in volume.yaml uses its own table, which
+ *  the index carries as `ix.inverseRole`; this name is kept for callers that
+ *  have no index. */
+export const INVERSE_ROLE: Readonly<Record<string, string>> = DEFAULT_INVERSE_ROLE;
 
 /** One relationship as the person it is recorded on states it. */
 export interface RelationshipEdge { person: string; role: string; other: string }
@@ -83,13 +138,16 @@ export function statedRelationships(
 
 /** Every case-level `[role, from, to]` edge of a spec, each with its inverse,
  *  as the entries the two persons carry. */
-export function relationshipEdges(rels: TestSpec["relationships"]): RelationshipEdge[] {
+export function relationshipEdges(
+  rels: TestSpec["relationships"],
+  inverseRole: Readonly<Record<string, string>> = DEFAULT_INVERSE_ROLE,
+): RelationshipEdge[] {
   const out: RelationshipEdge[] = [];
   for (const r of rels ?? []) {
     if (r.length !== 3) continue;
     const [role, from, to] = r;
     out.push({ person: from, role, other: to });
-    const inverse = INVERSE_ROLE[role];
+    const inverse = inverseRole[role];
     if (inverse) out.push({ person: to, role: inverse, other: from });
   }
   return out;
@@ -100,7 +158,7 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   const c: CaseData = {
     det: (given.determination_date as string) || spec.as_of || "2027-03-15",
     persons: {}, months: {}, monthDefaults: {}, rels: {},
-    monthFacts: {}, monthFactsDefault: {}, params: spec.parameters || {},
+    monthFacts: {}, monthFactsDefault: {}, caseFacts: {}, params: spec.parameters || {},
   };
   function setFact(pid: string, k: string, v: unknown, testMonth: string | null) {
     const it = ix.byIdentifier.get(k);
@@ -122,6 +180,10 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
         }
       } else if (testMonth == null) c.monthFactsDefault[k] = v;
       else (c.monthFacts[testMonth] = c.monthFacts[testMonth] || {})[k] = v;
+    } else if (it.scope === "case") {
+      // A case-scope fact is the case's, whichever person a rule test
+      // gives it on: one value for the application as a whole.
+      if (k !== "determination_date") c.caseFacts[k] = v;
     } else c.persons[pid][k] = v;
   }
   function addPerson(
@@ -134,7 +196,14 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
     c.rels[pid] = rels === undefined ? null : rels;
     for (const [k, v] of Object.entries(facts || {})) setFact(pid, k, v, spec.month ?? null);
   }
-  addPerson("p1", spec.given, statedRelationships(spec.relationships), spec.month_defaults);
+  // A rule test's own person is p1. A household case that names its persons
+  // and gives no p1 has no p1: an empty phantom person would join every
+  // `persons` group with unknown facts.
+  const phantomOnly = spec.persons !== undefined && !("p1" in spec.persons) &&
+    spec.given === undefined && spec.others === undefined && spec.month_defaults === undefined;
+  if (!phantomOnly) {
+    addPerson("p1", spec.given, statedRelationships(spec.relationships), spec.month_defaults);
+  }
   for (const [pid, facts] of Object.entries(spec.others || {})) {
     addPerson(pid, facts, undefined, {});
   }
@@ -149,9 +218,17 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   for (const [m, mf] of Object.entries(spec.month_facts || {})) {
     c.monthFacts[m] = Object.assign({}, c.monthFacts[m] || {}, mf);
   }
+  for (const [k, v] of Object.entries(spec.case_facts || {})) {
+    const it = ix.byIdentifier.get(k);
+    if (it && it.scope === "case" && k !== "determination_date") c.caseFacts[k] = v;
+  }
   // The case-level graph is expanded last, so an edge reaches a person whose
-  // own pairs are already in place and adds only what they do not say.
-  for (const e of relationshipEdges(spec.relationships)) {
+  // own pairs are already in place and adds only what they do not say. An
+  // edge is recorded only on a person the case declares: a person named in
+  // a triple alone is not a person of the case and carries no relationships
+  // (the declared person's half of the edge still names them).
+  for (const e of relationshipEdges(spec.relationships, ix.inverseRole)) {
+    if (!(e.person in c.persons)) continue;
     const list = c.rels[e.person] ?? (c.rels[e.person] = []);
     if (!list.some(([r, other]) => r === e.role && other === e.other)) {
       list.push([e.role, e.other]);
@@ -170,14 +247,19 @@ export interface TraceEvent {
   value: unknown;              // the resolved value (null = unknown)
   origin:
     | "case" | "default" | "parameter" | "evaluated" | "memo" | "missing"
-    | "not-in-force" | "decision";
+    | "not-in-force" | "no-version" | "decision";
     // case: read from case data; default: month_defaults/monthFactsDefault; parameter: paramOf;
     // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
     // missing: supplied fact absent (unknown); not-in-force: the item's effective range does not
     // cover the determination date (unknown, and its rule never runs);
+    // no-version: a versioned parameter with no version in force on its
+    // version date (Resolution step 2; unknown, and reported as a warning);
     // decision: an operator's choice, not a fact
   parentKey: string | null;    // the derived fact whose evaluation asked for this one
   error?: string;              // when evaluation of this node threw
+  /** Unknowns this derived fact's own rule produced with no supplied fact
+   *  behind them (lookup miss, division by zero), one line each. */
+  warnings?: string[];
   /** The resolution settled the value of every operator it happened inside:
    *  it was the input each of them chose. Only set when a hook is present. */
   decisive?: boolean;
@@ -206,10 +288,50 @@ export type TraceHook = (e: TraceEvent) => void;
 
 export function evaluate(
   ix: LedgerIndex, c: CaseData, identifier: string,
-  person: string | null, month: string | null, trace?: TraceHook,
+  person: string | null, month: string | null, trace?: TraceHook, warn?: WarnHook,
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
+  /** P54: the month "that month" names while a "for each month in" sum
+   *  evaluates its value; null outside one. A derived fact's own rule never
+   *  sees it (value() clears it), so memoised values do not depend on it. */
+  let thatMonth: string | null = null;
+  /** P55-P57: the receipt record "that receipt" names while a "for each
+   *  receipt in" sum evaluates its condition and value, with what the
+   *  record's fields need: the schema (`record_fields` of the list's fact),
+   *  the list's identifier and the record's index (to name a field a rule
+   *  needs and the record does not state), and the person whose list it is.
+   *  Like thatMonth, a derived fact's own rule never sees it. */
+  interface ReceiptFrame {
+    rec: Record<string, unknown>; index: number; list: string; owner: string | null;
+    fields: Readonly<Record<string, RecordFieldSpec>>;
+  }
+  let thatReceipt: ReceiptFrame | null = null;
+  /** Warnings raised while each derived fact's rule ran, by memo key, so the
+   *  fact's trace event can carry them. Only filled when a hook is present. */
+  const warningsByKey = new Map<string, string[]>();
+
+  /** Reports one silent unknown against the derived fact under evaluation
+   *  (`at`, when given, names the fact instead: a parameter). */
+  function raise(
+    kind: EvalWarning["kind"], detail: string,
+    at?: { identifier: string; person: string | null; month: string | null },
+  ): void {
+    if (!warn && !trace) return;
+    const key = stack.length ? stack[stack.length - 1] : null;
+    let w: EvalWarning;
+    if (at) w = { kind, detail, ...at };
+    else if (key) {
+      const [id, p, m] = key.split("|");
+      w = { kind, detail, identifier: id, person: p || null, month: m || null };
+    } else w = { kind, detail, identifier, person, month };
+    if (warn) warn(w);
+    if (trace && key && !at) {
+      const list = warningsByKey.get(key) ?? [];
+      list.push(`${kind}: ${detail}`);
+      warningsByKey.set(key, list);
+    }
+  }
 
   /** One event held until the operator that asked for it knows which of its
    *  inputs decided. `live` stays true while every operator the event
@@ -267,9 +389,21 @@ export function evaluate(
     emit(d);
   }
 
-  function paramOf(it: Item): unknown {
+  const detMonth = c.det.slice(0, 7);
+  /** The date a versioned parameter is read on in a context (docs/operators.md,
+   *  Resolution step 2): with no month in context, the determination date; in
+   *  a month-scoped evaluation, a day of that month: the determination date in
+   *  the determination month, otherwise the first day of the month. Each month
+   *  is judged by the figures in force in it (a retroactive month, a look-back
+   *  month, a future month of a case); a rule that applies another date's
+   *  figure says so with `as_of`. */
+  function versionDate(m: string | null): string {
+    return m == null || m === detMonth ? c.det : m + "-01";
+  }
+
+  function paramOf(it: Item, m: string | null): unknown {
     if (it.identifier in c.params) return c.params[it.identifier];
-    return paramInForce(it, c.det);
+    return paramInForce(it, versionDate(m));
   }
 
   function value(id: string, p: string | null, m: string | null, P: string | null): unknown {
@@ -283,7 +417,19 @@ export function evaluate(
      *  Each resolution is reported in its own scope's context, so key, person
      *  and month agree: a person fact carries no month, a month fact no
      *  person, a parameter or case fact neither. */
-    const seen = (v: unknown, origin: TraceEvent["origin"], error?: string): unknown => {
+    const seen = (
+      v: unknown, origin: TraceEvent["origin"], error?: string, warnings?: string[],
+    ): unknown => {
+      // A number that is not finite (NaN, Infinity) is never a value: it is
+      // unknown, and reported, so no comparison or sum decides on it.
+      if (typeof v === "number" && !Number.isFinite(v)) {
+        raise("non-finite", `${id} is ${v}`, it.kind === "derived" ? undefined : {
+          identifier: id,
+          person: sc === "person" || sc === "person-month" ? p : null,
+          month: sc === "month" || sc === "person-month" ? m : null,
+        });
+        v = null;
+      }
       if (!trace) return v;
       const e: TraceEvent = {
         key: sc === "case" || sc === "month" ? id
@@ -300,15 +446,53 @@ export function evaluate(
         parentKey,
       };
       if (error !== undefined) e.error = error;
+      if (warnings && warnings.length) e.warnings = warnings;
       emit(e);
       return v;
     };
     // An item whose effective range does not cover the determination date
     // states nothing on that date, so it is unknown and its rule never runs.
     if (!inForce(it, c.det)) return seen(null, "not-in-force");
-    if (it.kind === "parameter") return seen(paramOf(it), "parameter");
+    if (it.kind === "parameter") {
+      // A versioned parameter is read on the version date of the month in
+      // context (the determination date outside one). One with no version on
+      // that date has no value; that unknown is reported, never silent.
+      const on = versionDate(m);
+      if (
+        !(it.identifier in c.params) && Array.isArray(it.versions) &&
+        !versionInForce(it, on)
+      ) {
+        raise("no-version", `no version in force on ${on}`, {
+          identifier: id, person: null, month: on === c.det ? null : m,
+        });
+        return seen(null, "no-version");
+      }
+      return seen(paramOf(it, m), "parameter");
+    }
     if (sc === "case") {
-      return id === "determination_date" ? seen(c.det, "case") : seen(null, "missing");
+      if (id === "determination_date") return seen(c.det, "case");
+      if (id in c.caseFacts) return seen(c.caseFacts[id], "case");
+      if (it.kind === "supplied") return seen(null, "missing");
+      // A case-scope derived item is computed once per case, with no person
+      // and no month in context.
+      const ckey = id + "||case";
+      if (ckey in memo) return seen(memo[ckey], "memo");
+      if (stack.includes(ckey)) throw new Error("cycle at " + id);
+      stack.push(ckey);
+      let cv: unknown;
+      const outer = thatMonth;
+      const outerReceipt = thatReceipt;
+      thatMonth = null;
+      thatReceipt = null;
+      try {
+        cv = ev(it.derived ?? null, null, null, null);
+      } finally {
+        stack.pop();
+        thatMonth = outer;
+        thatReceipt = outerReceipt;
+      }
+      memo[ckey] = cv;
+      return seen(cv, "evaluated");
     }
     if (sc === "month") {
       if (m == null) throw new Error(id + " needs a month");
@@ -341,19 +525,152 @@ export function evaluate(
     if (stack.includes(key)) throw new Error("cycle at " + id);
     stack.push(key);
     let v: unknown;
+    const outerThatMonth = thatMonth;
+    const outerThatReceipt = thatReceipt;
+    thatMonth = null;
+    thatReceipt = null;
     try {
-      v = ev(it.derived ?? null, p, m, P);
+      // A person or global fact is one value per case, memoised without a
+      // month, so its rule runs with no month in context (its parameters are
+      // read on the determination date) whichever month asked for it first.
+      v = ev(it.derived ?? null, p, sc === "person-month" ? m : null, P);
+      if (typeof v === "number" && !Number.isFinite(v)) {
+        raise("non-finite", `the rule produced ${v}`);
+        v = null;
+      }
     } catch (ex) {
       seen(null, "evaluated", (ex as Error).message);
       throw ex;
     } finally {
       stack.pop();
+      thatMonth = outerThatMonth;
+      thatReceipt = outerThatReceipt;
     }
     memo[key] = v;
-    return seen(v, "evaluated");
+    return seen(v, "evaluated", undefined, warningsByKey.get(key));
   }
 
+  /** P25: a parameter's value in force on a date other than the
+   *  determination date. The item's own effective range is still read on the
+   *  determination date, and a case's `parameters` override still wins (it
+   *  states one value for every date). A date no version covers is unknown
+   *  and reported, as on the determination date. */
+  function paramOn(id: string, date: string | null): unknown {
+    const it = ix.byIdentifier.get(id);
+    if (!it || it.kind !== "parameter") throw new Error(`"as of" needs a parameter, not ${id}`);
+    const parentKey = trace && stack.length ? stack[stack.length - 1] : null;
+    const seen = (v: unknown, origin: TraceEvent["origin"]): unknown => {
+      if (trace) {
+        emit({
+          key: id + "||", identifier: id, person: null, month: null,
+          kind: "parameter", value: v, origin, parentKey,
+        });
+      }
+      return v;
+    };
+    if (date === null) return null;
+    if (!inForce(it, c.det)) return seen(null, "not-in-force");
+    if (it.identifier in c.params) return seen(c.params[it.identifier], "parameter");
+    if (Array.isArray(it.versions)) {
+      const v = versionInForce(it, date);
+      if (!v) {
+        raise("no-version", `no version in force on ${date}`, {
+          identifier: id, person: null, month: null,
+        });
+        return seen(null, "no-version");
+      }
+      return seen(v.value, "parameter");
+    }
+    return seen(it.value === undefined ? null : it.value, "parameter");
+  }
+
+  /** The records a "for each receipt in" sum reads: a list-of-receipts fact
+   *  named bare (this person's) or as that person's (["of", person, list]).
+   *  Null when it is not stated. */
+  function receiptList(
+    x: Expr, p: string | null, m: string | null, P: string | null,
+  ): { list: unknown[]; identifier: string; owner: string | null; fields: Record<string, RecordFieldSpec> } | null {
+    let identifier: string;
+    let owner: string | null;
+    if (typeof x === "string") {
+      identifier = x;
+      owner = p;
+    } else if (Array.isArray(x) && x[0] === "of" && typeof x[2] === "string") {
+      identifier = x[2];
+      owner = ev(x[1], p, m, P);
+      if (owner === null) return null;
+    } else {
+      throw new Error("for each receipt in: expected a list of receipts");
+    }
+    const it = ix.byIdentifier.get(identifier);
+    if (!isRecordList(it)) throw new Error(`for each receipt in: ${identifier} is not a list of receipts`);
+    const list = ev(x, p, m, P);
+    if (list === null || list === undefined) return null;
+    if (!Array.isArray(list)) throw new Error(`for each receipt in: ${identifier} is not a list`);
+    return { list, identifier, owner, fields: it!.record_fields ?? {} };
+  }
+
+  /** Reports a record field a rule needs and the record does not state, as a
+   *  missing supplied fact of the list's owner. */
+  function missingField(f: ReceiptFrame, field: string): void {
+    if (!trace) return;
+    const name = recordFieldName(f.list, f.index, f.rec.kind, field);
+    emit({
+      key: name + "|" + (f.owner ?? "") + "|", identifier: name, person: f.owner, month: null,
+      kind: "supplied", value: null, origin: "missing",
+      parentKey: stack.length ? stack[stack.length - 1] : null,
+    });
+  }
+
+  /** A field of a record: as stated, else its declared default, else
+   *  unknown (and reported as missing, unless `report` is false). */
+  function receiptField(f: ReceiptFrame, field: string, report = true): unknown {
+    const spec = f.fields[field];
+    if (!spec) throw new Error(`that receipt's ${field}: the ${f.list} schema declares no such field`);
+    const v = f.rec[field];
+    if (v !== undefined && v !== null) return v;
+    // A record that states a date and no month came in the date's month.
+    if (field === "month") {
+      const rm = recordMonth(f.rec);
+      if (rm !== undefined) return rm;
+    }
+    // A default qualified required_if_dated is the value of a record with no
+    // date only: a dated record that leaves the field out does not state it
+    // (an earnings record's frequency; docs/operators.md, "Receipt records").
+    if ("default" in spec && !(spec.required_if_dated === true && f.rec.date !== undefined && f.rec.date !== null)) {
+      return spec.default ?? null;
+    }
+    if (report) missingField(f, field);
+    return null;
+  }
+
+  /** ["receipt", field] read where the reader gives the field's absence its
+   *  meaning (["otherwise", that, x] or ["unknown", that]), for a field whose
+   *  schema declares what leaving it out means (`when_absent`: a holding's
+   *  share, co_owners, disposed_date, returned_date). A record that leaves
+   *  such a field out has stated it, so it is not reported as a missing
+   *  supplied fact (resource records H1 integration, request R-2). A field
+   *  that is required, or one read without an absence meaning, is reported
+   *  as before. */
+  function declaredAbsence(x: Expr): boolean {
+    if (!Array.isArray(x) || x[0] !== "receipt" || thatReceipt === null) return false;
+    const spec = thatReceipt.fields[x[1] as string];
+    return !!spec && typeof spec.when_absent === "string";
+  }
+
+  /** Every operator's result passes here: a number that is not finite is
+   *  unknown from the operator that produced it on (never NaN or Infinity
+   *  compared, summed or rounded), and reported. */
   function ev(e: Expr, p: string | null, m: string | null, P: string | null): any {
+    const v = ev0(e, p, m, P);
+    if (typeof v === "number" && !Number.isFinite(v)) {
+      raise("non-finite", `${Array.isArray(e) ? e[0] : "a literal"} produced ${v}`);
+      return null;
+    }
+    return v;
+  }
+
+  function ev0(e: Expr, p: string | null, m: string | null, P: string | null): any {
     if (e === true || e === false || typeof e === "number") return e;
     if (e == null) return null;
     if (typeof e === "string") {
@@ -420,7 +737,7 @@ export function evaluate(
         let chosen: number | null = null;
         try {
           if (f) f.role = "left";
-          const v = g(e[1]);
+          const v = declaredAbsence(e[1]) ? receiptField(thatReceipt!, (e[1] as Expr[])[1] as string, false) : g(e[1]);
           if (v !== null) { chosen = 0; return v; }
           if (f) { f.branch = 1; f.role = "right"; }
           chosen = 1;
@@ -429,7 +746,9 @@ export function evaluate(
           if (f) closeFrame(f, chosen, (b) => b === chosen, p, m);
         }
       }
-      case "unknown": return g(e[1]) === null;
+      case "unknown":
+        if (declaredAbsence(e[1])) return receiptField(thatReceipt!, (e[1] as Expr[])[1] as string, false) === null;
+        return g(e[1]) === null;
       case "<": case "<=": case ">": case ">=": case "=": {
         // Neither side decides a comparison on its own; both operands matter.
         const f = trace ? openFrame(op) : null;
@@ -439,6 +758,11 @@ export function evaluate(
           if (f) { f.branch = 1; f.role = "right"; }
           const b = g(e[2]);
           if (a === null || b === null) return null;
+          // Two numbers within NUMBER_TOLERANCE of each other are equal, the
+          // tolerance ceil and round use (docs/operators.md, Comparison), so a
+          // figure that lands exactly on a limit in decimal (1.47 * 21640 / 12)
+          // is at the limit although binary64 carries noise past it.
+          if (typeof a === "number" && typeof b === "number") return compareNumbers(op, a, b);
           return op === "<" ? a < b : op === "<=" ? a <= b
             : op === ">" ? a > b : op === ">=" ? a >= b : a === b;
         } finally {
@@ -452,7 +776,13 @@ export function evaluate(
         return vs.reduce((s: number, v: number) => (op === "+" ? s + v : s * v), op === "+" ? 0 : 1);
       }
       case "-": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : a - b; }
-      case "/": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : a / b; }
+      case "/": {
+        const a = g(e[1]); const b = g(e[2]);
+        if (a === null || b === null) return null;
+        // Division by zero has no value: unknown, and reported.
+        if (b === 0) { raise("division-by-zero", `${a} divided by 0`); return null; }
+        return a / b;
+      }
       case "min": {
         const a = g(e[1]); const b = g(e[2]);
         return a === null || b === null ? null : Math.min(a, b);
@@ -490,6 +820,27 @@ export function evaluate(
         }
         return total;
       }
+      case "greatest": {
+        // P59: ["greatest", group, value]: the greatest value over the
+        // members of the group, each bound in turn as that person (as in
+        // "sum"), in the group's order. Unknown when the group is unknown or
+        // any member's value is (the greatest of values one of which is
+        // unknown is not known). An empty group: 0, as P58 gives for no
+        // record. The rule text that needs it: 7 CFR 273.8(e)(2) and
+        // 10 CCR 2506-1 4.410.D.4, "one funeral agreement per household
+        // member": the household excludes, for each member, the largest
+        // agreement any member holds for that member (cross-list records
+        // round; docs/operators.md "P59").
+        const grp = g(e[1]);
+        if (grp === null) return null;
+        let best: number | null = null;
+        for (const pid of grp) {
+          const v = ev(e[2], p, m, pid);
+          if (v === null) return null;
+          if (best === null || v > best) best = v;
+        }
+        return best ?? 0;
+      }
       case "has_relative_in": {
         // That person (the bound member) stands in one of the named roles to
         // some person in the group: a join between the bound person and the
@@ -507,41 +858,59 @@ export function evaluate(
         // siblings. Unknown when this person's relationships are unstated.
         if (!p || c.rels[p] == null) return null;
         const role = e[1] as string;
-        const inverse = INVERSE_ROLE[role];
+        const inverse = ix.inverseRole[role];
         const out = new Set<string>();
         for (const [r, y] of c.rels[p] ?? []) {
           if (r !== inverse) continue;
           for (const [r2, x] of c.rels[y] ?? []) if (r2 === role && x !== p) out.add(x);
         }
-        return Object.keys(c.persons).filter((pid) => out.has(pid));
+        const shared = Object.keys(c.persons).filter((pid) => out.has(pid));
+        if (e[2] !== "every") return shared;
+        // P53, "every": only the persons whose holders of the role are exactly
+        // this person's (with "parent": full siblings, who share both legal
+        // parents). Another person's unstated relationships are read as none.
+        const holders = (q: string) => new Set((c.rels[q] ?? []).filter(([r]) => r === inverse).map(([, y]) => y));
+        const mine = holders(p);
+        return shared.filter((x) => {
+          const h = holders(x);
+          return h.size === mine.size && [...mine].every((y) => h.has(y));
+        });
       }
       case "reachable": {
         // The persons joined to this person by a chain of the named
         // relationships, this person included. Unknown when this person's
-        // relationships are unstated.
+        // relationships are unstated; another person's unstated
+        // relationships are read as none.
         if (!p || c.rels[p] == null) return null;
-        // With a condition, an edge is crossed only when the condition holds
-        // with "this person" the person the chain has reached and "that
-        // person" the one at the other end; an unknown condition on any edge
-        // makes the group unknown.
+        // With a condition, an edge from `cur` to `other` is crossed only
+        // when the condition holds with "this person" = cur (the person the
+        // chain has reached) and "that person" = other. The result is a
+        // fixed point and does not depend on the order relationships are
+        // listed in: the group is every person reachable over edges whose
+        // condition is true; it is unknown when an edge whose condition is
+        // unknown leaves that group (some person's membership then turns on
+        // the unknown); an unknown edge between two members changes nothing.
+        // See docs/operators.md, `reachable`.
         const roles = e[1] as string[];
         const cond = e.length > 2 ? e[2] : undefined;
-        const seenSet = new Set<string>([p]);
+        const inGroup = new Set<string>([p]);
         const queue = [p];
+        const unknownEdges: string[] = [];
         while (queue.length) {
           const cur = queue.shift()!;
           for (const [r, other] of c.rels[cur] ?? []) {
-            if (!roles.includes(r) || seenSet.has(other)) continue;
+            if (!roles.includes(r) || inGroup.has(other)) continue;
             if (cond !== undefined) {
               const v = ev(cond, cur, m, other);
-              if (v === null) return null;
+              if (v === null) { unknownEdges.push(other); continue; }
               if (v !== true) continue;
             }
-            seenSet.add(other);
+            inGroup.add(other);
             queue.push(other);
           }
         }
-        return Object.keys(c.persons).filter((pid) => seenSet.has(pid));
+        if (unknownEdges.some((other) => !inGroup.has(other))) return null;
+        return Object.keys(c.persons).filter((pid) => inGroup.has(pid));
       }
       case "years_between": {
         const a = g(e[1]); const b = g(e[2]);
@@ -549,10 +918,24 @@ export function evaluate(
       }
       case "first_day": { const mm = g(e[1]); return mm === null ? null : mm + "-01"; }
       case "month_of": { const d = g(e[1]); return d === null ? null : d.slice(0, 7); }
+      case "month_of_year": { const mm = g(e[1]); return mm === null ? null : Number(String(mm).slice(5, 7)); }
+      case "year_of": { const x = g(e[1]); return x === null ? null : Number(String(x).slice(0, 4)); }
+      case "latest_month_of_year": {
+        // P50: the most recent month, on or before the given month (or the
+        // month of the given date), whose calendar month number is n.
+        const n = g(e[1]); const x = g(e[2]);
+        if (n === null || x === null) return null;
+        const mm = String(x).slice(0, 7);
+        const back = ((Number(mm.slice(5, 7)) - Number(n)) % 12 + 12) % 12;
+        return addMonths(mm, -back);
+      }
+      case "as_of": return paramOn(e[1] as string, g(e[2]));
       case "month_before": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, -1); }
       case "month_after": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, 1); }
       case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }
       case "months_before": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, -n); }
+      case "days_after": { const n = g(e[1]); const d = g(e[2]); return n === null || d === null ? null : addDays(d, n); }
+      case "days_between": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : daysBetween(a, b); }
       case "months_ending": {
         const n = g(e[1]); const mm = g(e[2]);
         return n === null || mm === null ? null : monthsEnding(n, mm);
@@ -575,6 +958,152 @@ export function evaluate(
           return vs.some((v: any) => v === null) ? null : false;
         }
         return vs.some((v: any) => v === null) ? null : vs.filter(Boolean).length;
+      }
+      case "sum_months": {
+        // P54: the sum of a number for each month in a list, with "that
+        // month" naming each month in turn and "the month" unchanged.
+        const ms = g(e[1]);
+        if (ms === null) return null;
+        const outer = thatMonth;
+        let total = 0;
+        try {
+          for (const mm of ms as string[]) {
+            thatMonth = mm;
+            const v = ev(e[2], p, m, P);
+            if (v === null) return null;
+            total += v;
+          }
+        } finally {
+          thatMonth = outer;
+        }
+        return total;
+      }
+      case "that_month":
+        if (thatMonth === null) throw new Error('"that month" outside "for each month in"');
+        return thatMonth;
+      case "sum_receipts": {
+        // P55: ["sum_receipts", list, condition, value]: the sum of the value
+        // for each record of the list whose condition is true, with "that
+        // receipt" naming each record in turn, in list order. The list is a
+        // list-of-receipts fact of this person, or of that person
+        // (["of", person, list]). Unknown when the list is not stated, or
+        // when the condition of any record, or the value of a record whose
+        // condition is true, is unknown; a record whose condition is false
+        // is skipped and its value never read. A stated empty list: 0.
+        const src = receiptList(e[1], p, m, P);
+        if (src === null) return null;
+        const outer = thatReceipt;
+        let total = 0;
+        try {
+          for (let i = 0; i < src.list.length; i++) {
+            const rec = src.list[i];
+            if (rec === null || typeof rec !== "object" || Array.isArray(rec)) {
+              throw new Error(`${src.identifier}[${i}] is not a record`);
+            }
+            thatReceipt = {
+              rec: rec as Record<string, unknown>, index: i, list: src.identifier,
+              owner: src.owner, fields: src.fields,
+            };
+            const cond = ev(e[2], p, m, P);
+            if (cond === null) return null;
+            if (cond !== true) continue;
+            const v = ev(e[3], p, m, P);
+            if (v === null) return null;
+            total += v;
+          }
+        } finally {
+          thatReceipt = outer;
+        }
+        return total;
+      }
+      case "largest": {
+        // P58: ["largest", list, condition, value]: the largest value over
+        // the records of the list whose condition is true, with "that
+        // receipt" (or "that holding") naming each record in turn, in list
+        // order (negative when every such value is); 0 only when no record's
+        // condition is true. Unknown exactly as
+        // P55: when the list is not stated, or when the condition of any
+        // record, or the value of a record whose condition is true, is
+        // unknown (the largest of values one of which is unknown is not
+        // known). The rule text that needs it excludes one vehicle of a
+        // kind: 20 CFR 416.1218(b)(1), "One automobile is totally excluded
+        // regardless of value if it is used for transportation"; 9 CCR
+        // 2503-5 3.520.77.A, "The vehicle with the highest value is exempt
+        // if it is used for the transportation of the client" (resource
+        // records, step H0; docs/operators.md "P58").
+        const src = receiptList(e[1], p, m, P);
+        if (src === null) return null;
+        const outer = thatReceipt;
+        let best: number | null = null;
+        try {
+          for (let i = 0; i < src.list.length; i++) {
+            const rec = src.list[i];
+            if (rec === null || typeof rec !== "object" || Array.isArray(rec)) {
+              throw new Error(`${src.identifier}[${i}] is not a record`);
+            }
+            thatReceipt = {
+              rec: rec as Record<string, unknown>, index: i, list: src.identifier,
+              owner: src.owner, fields: src.fields,
+            };
+            const cond = ev(e[2], p, m, P);
+            if (cond === null) return null;
+            if (cond !== true) continue;
+            const v = ev(e[3], p, m, P);
+            if (v === null) return null;
+            if (best === null || v > best) best = v;
+          }
+        } finally {
+          thatReceipt = outer;
+        }
+        return best ?? 0;
+      }
+      case "owner": {
+        // P60: ["owner"]: the person whose list that receipt (that holding)
+        // is on: this person for a sum over this person's own list, the
+        // person named by ["of", person, list] otherwise. A fact of the owner
+        // is read inside the sum as ["of", ["owner"], fact]: the rule text
+        // that needs it divides each resource transferred by the client's
+        // own grant standard and counts it by the client's own application
+        // date (9 CCR 2503-5 3.520.76.A.3, D.3, E; docs/operators.md "P60").
+        if (thatReceipt === null) throw new Error('"that receipt\'s owner" outside "for each receipt in"');
+        return thatReceipt.owner;
+      }
+      case "receipt": {
+        // P56: ["receipt", field]: that receipt's field as the record states
+        // it, else the default its schema declares; a field with no default
+        // the record does not state is unknown, and is reported as a missing
+        // supplied fact named for the record and the field
+        // (receipts[2 other_one_time].date).
+        if (thatReceipt === null) throw new Error('"that receipt" outside "for each receipt in"');
+        return receiptField(thatReceipt, e[1] as string);
+      }
+      case "received_in": {
+        // P57: ["received_in", month]: that receipt is received in the
+        // month: its month (or its date's month) is the month. A record that
+        // states neither recurs in every month, unless it is paid once: the
+        // month it came in is then needed, and unknown (reported as missing).
+        if (thatReceipt === null) throw new Error('"that receipt" outside "for each receipt in"');
+        const mm = g(e[1]);
+        if (mm === null) return null;
+        // The month a receipt is summed for is the month in context (the
+        // determination month outside one), so the parameters its sum reads
+        // are that month's versions (Resolution step 2): a sum for another
+        // month (a quarter's or a year's months) is written in that month,
+        // ["at", sum, ["that_month"]], never as received in "that month"
+        // under the context's month.
+        if (mm !== (m ?? detMonth)) {
+          throw new Error(
+            `that receipt is received in ${mm} while the sum is evaluated in ${m ?? detMonth}: ` +
+            'evaluate the sum in that month ("in that month") so its parameters are that month\'s',
+          );
+        }
+        const rm = recordMonth(thatReceipt.rec);
+        if (rm !== undefined) return rm === mm;
+        if (thatReceipt.fields.frequency && receiptField(thatReceipt, "frequency", false) === "once") {
+          missingField(thatReceipt, "month");
+          return null;
+        }
+        return true;
       }
       case "avg": {
         const ms = g(e[2]);
@@ -653,7 +1182,60 @@ export function evaluate(
       case "lookup": {
         const tbl = g(e[1]); const k = g(e[2]);
         if (tbl === null || k === null) return null;
-        return k in tbl ? tbl[k] : null;
+        if (k in tbl) return tbl[k];
+        // A key with no row has no value: unknown, and reported.
+        raise("lookup-miss", `no row for key ${JSON.stringify(k)}` +
+          (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+        return null;
+      }
+      case "band": {
+        // A table keyed by income band: each key is a band's inclusive upper
+        // bound; the value is the first band (in ascending bound order) whose
+        // bound is at least the number. A row keyed "above" is the open top
+        // band, for every number above the last bound; without one there is
+        // no band past the last bound.
+        const tbl = g(e[1]); const k = g(e[2]);
+        if (tbl === null || k === null) return null;
+        const bounds = Object.keys(tbl).filter((x) => x !== "above").map(Number)
+          .filter((x) => !Number.isNaN(x)).sort((a, b) => a - b);
+        for (const b of bounds) {
+          if (Number(k) <= b + 1e-9) {
+            const key = Object.keys(tbl).find((x) => x !== "above" && Number(x) === b)!;
+            return tbl[key];
+          }
+        }
+        if ("above" in tbl) return tbl.above;
+        // Past the last bound with no open top band there is no band:
+        // unknown, and reported like a lookup with no row (docs/operators.md,
+        // Tables).
+        raise("lookup-miss", `no band contains ${JSON.stringify(k)}` +
+          (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+        return null;
+      }
+      case "lookup_extended": {
+        // P51: a table keyed by a whole number read beyond its last row. Up
+        // to the last row it is a lookup; past it, the last row plus the
+        // third argument for each number beyond it, or the last row itself
+        // when there is no third argument ("or more").
+        const tbl = g(e[1]); const k = g(e[2]);
+        if (tbl === null || k === null) return null;
+        const keys = Object.keys(tbl).map(Number).filter((x) => Number.isInteger(x));
+        if (!keys.length) {
+          raise("lookup-miss", "the table has no whole-number rows" +
+            (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+          return null;
+        }
+        const last = Math.max(...keys);
+        if (Number(k) <= last) {
+          if (String(k) in tbl) return tbl[String(k)];
+          raise("lookup-miss", `no row for key ${JSON.stringify(k)}` +
+            (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+          return null;
+        }
+        if (e.length < 4) return tbl[String(last)];
+        const each = g(e[3]);
+        if (each === null) return null;
+        return tbl[String(last)] + each * (Number(k) - last);
       }
     }
     throw new Error("unknown operator " + op);
@@ -674,8 +1256,12 @@ export function runTest(
   let got: unknown = null;
   let ok = false;
   let err: string | null = null;
+  const warnings: string[] = [];
   try {
-    got = evaluate(evalIx, c, it.identifier, person, t.month == null ? null : t.month);
+    got = evaluate(
+      evalIx, c, it.identifier, person, t.month == null ? null : t.month, undefined,
+      (w) => warnings.push(formatWarning(w)),
+    );
     ok = valuesEqual(got, t.expect);
     if ("expect_length" in t) {
       ok =
@@ -688,5 +1274,7 @@ export function runTest(
     err = (ex as Error).message;
     got = null;
   }
-  return { ok, got, err };
+  const out: TestResult = { ok, got, err };
+  if (warnings.length) out.warnings = [...new Set(warnings)];
+  return out;
 }

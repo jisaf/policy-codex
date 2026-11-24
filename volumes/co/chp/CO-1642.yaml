@@ -1,0 +1,27 @@
+id: CO-1642
+name: "CHP+: requires verification of earned income"
+identifier: chp_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether the person must document earned income for CHP+: wages an electronic data source could not verify or that are questionable; earnings the data reports when the household's figures are not reasonably compatible against the CHP+ standard, the person's own or that of a member of the person's MAGI household who is requesting coverage (for an adult, or a person attesting earnings); and self-employment income only when the ledger is questionable; unless documentation is not reasonably available."
+derived: [all, [not, documentation_not_reasonably_available], [any, [all, [">", ma_employer_pay_for_verification, 0], [any, [not, earned_income_verified_by_electronic_data_source], earned_income_attestation_is_questionable]], [all, [">", ma_electronic_data_source_household_income_pct_fpl, 0], [not, [all, chp_income_is_reasonably_compatible, [not, [exists, ma_magi_household_members, [all, [otherwise, [of, [P], ma_is_requesting_coverage], false], [not, [of, [P], chp_income_is_reasonably_compatible]]]]]]], [any, [">", ma_employer_pay_for_verification, 0], [">=", age, ma_magi_child_age_limit]]], [all, [">", ma_self_employment_receipts_for_verification, 0], earned_income_attestation_is_questionable]]]
+sources: [S869, S861, S864, S865, S839, S838]
+implemented: engine
+tags: [verification, chp, income]
+precision: "Coverage review 3, C3-06: as ma_requires_verification_of_earned_income (CO-1403) does since coverage review 2, N-04, the earner is also asked when a member of the earner's MAGI household who is requesting coverage (ma_is_requesting_coverage, CO-2215, read as false where not stated) has income that is not reasonably compatible at that member's CHP+ standard: the answers differ only where the earner's household differs from the child's (a child under non-filer rules whose claiming grandparent has wages). Earned-income records, Medicaid and CHP+ track E1: the wages and the self-employment receipts are read from the earnings records through Medicaid's verification figures (ma_employer_pay_for_verification, CO-5163; ma_self_employment_receipts_for_verification, CO-5164), by the adopted-method link of 10 CCR 2505-3 130.1 (S869), so CHP+ asks for the same pay Medicaid does."
+accepts_from:
+  - {from: documentation_not_reasonably_available, class: primitive, source: S869}
+  - {from: ma_electronic_data_source_household_income_pct_fpl, class: adopted_method, source: S869}
+  - {from: ma_is_requesting_coverage, class: primitive, source: S869}
+  - {from: ma_magi_household_members, class: adopted_method, source: S248}
+  - {from: ma_employer_pay_for_verification, class: adopted_method, source: S869}
+  - {from: ma_self_employment_receipts_for_verification, class: adopted_method, source: S869}
+rationale: "Review C-6: CHP+ read the Medicaid earned-income item, which tests compatibility against the Medicaid standard. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid. Earned-income records, step E1 (Medicaid and CHP+): the wages and the self-employment receipts are Medicaid's verification figures over the earnings records (CO-5163, CO-5164), by the adopted-method link of S869."
+nearest: [CO-1403]
+tests:
+  - {id: CO-1642-T1, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: false, earned_income_verified_by_electronic_data_source: false, earned_income_attestation_is_questionable: false, earnings: [{kind: wages, amount: 1500}]}, expect: true}
+  - {id: CO-1642-T2, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: false, earned_income_verified_by_electronic_data_source: true, earned_income_attestation_is_questionable: false, ma_electronic_data_source_household_income_pct_fpl: 1.8, chp_income_is_reasonably_compatible: true, ma_magi_household_members: [p1], earnings: [{kind: wages, amount: 1500}]}, expect: false}
+  - {id: CO-1642-T4, month: "2026-10", as_of: "2026-10-01", title: "Coverage review 3, C3-06: the earner's own figures are compatible, but a child in the earner's household who is requesting coverage is not compatible at the child's CHP+ standard - the earner documents", given: {documentation_not_reasonably_available: false, earned_income_verified_by_electronic_data_source: true, earned_income_attestation_is_questionable: false, ma_electronic_data_source_household_income_pct_fpl: 1.8, chp_income_is_reasonably_compatible: true, ma_magi_household_members: [p1, p2], earnings: [{kind: wages, amount: 1500}]}, others: {p2: {ma_is_requesting_coverage: true, chp_income_is_reasonably_compatible: false}}, expect: true}
+  - {id: CO-1642-T3, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: true}, expect: false}

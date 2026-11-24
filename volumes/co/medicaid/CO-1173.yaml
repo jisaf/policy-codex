@@ -1,0 +1,22 @@
+id: CO-1173
+name: "Medicaid: is a Cover All Coloradans person"
+identifier: ma_is_cover_all_coloradans_person
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is in the population 10 CCR 2505-10 § 8.100.3.G.1.g.ix.1 (Cover All Coloradans) protects from exclusion on the basis of immigration status - under 19 or turning 19 this month, pregnant, or within 12 months of the beginning of the postpartum period. The rule's protection reaches the categories ix.1.a-b list (ma_meets_status_for_cover_all_coloradans_categories, CO-1174); for a child under 19 and a pregnant person, C.R.S. 25.5-2-104(2) and 25.5-5-201(6)(a) reach every category (ma_magi_is_fully_eligible, CO-562; ma_is_covered_under_cover_all_coloradans, CO-1175; OQ-214)."
+precision: "Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-3): the determination date's population, read by person-scope items only (ma_meets_status_for_cover_all_coloradans_categories CO-1174, the hospital presumptive category CO-2439); every month-scoped reader reads ma_is_cover_all_coloradans_person_in_month (CO-7552). The postpartum extension is read as 12 months after the month the person's most recent pregnancy ended (ma_postpartum_coverage_end_month, CO-560), through the last day of that month; a person with no known pregnancy_end_date is treated as not postpartum (known false), not unknown, so this term does not turn the item unknown for a person for whom postpartum status is simply inapplicable or not yet stated. The age term is ma_is_under_child_age_or_turns_nineteen_this_month (CO-564), since ix.1 states the same month-of-19th-birthday extension as § 8.100.4.G.2.a."
+derived: [any, [at, ma_is_under_child_age_or_turns_nineteen_this_month, [det_month]], is_pregnant, [all, [not, [unknown, most_recent_pregnancy_end_date]], [<, [det_date], [first_day, [month_after, ma_postpartum_coverage_end_month]]]]]
+sources: [S607, S606]
+open: [OQ-214]
+implemented: engine
+tags: [ma, immigration, age]
+rationale: "S-2 of the phase 7 review: ma_meets_citizenship_requirement (CO-509) carried the Cover All Coloradans population as disjuncts, so it satisfied status for every Medical Assistance category, although § 8.100.3.G.1.g.ix.1 lists the categories it reaches. The population is split out here (the disjuncts are moved unchanged from CO-509) so CO-509 can be the status test proper and the listed categories can read both."
+tests:
+  - {id: CO-1173-T1, as_of: "2026-10-01", title: "Undocumented, turned 19 this month", given: {date_of_birth: "2007-10-20", is_pregnant: false}, expect: true}
+  - {id: CO-1173-T2, as_of: "2026-11-01", title: "Same person the next month", given: {date_of_birth: "2007-10-20", is_pregnant: false}, expect: false}
+  - {id: CO-1173-T3, as_of: "2026-10-01", title: "Pregnant adult", given: {date_of_birth: "1995-05-01", is_pregnant: true}, expect: true}
+  - {id: CO-1173-T4, as_of: "2026-10-01", title: "Postpartum: pregnancy ended March 2026", given: {date_of_birth: "2000-01-01", is_pregnant: false, pregnancy_end_date: "2026-03-01"}, expect: true}
+  - {id: CO-1173-T5, as_of: "2026-10-01", title: "Pregnancy ended January 2024", given: {date_of_birth: "2000-01-01", is_pregnant: false, pregnancy_end_date: "2024-01-01"}, expect: false}
+  - {id: CO-1173-T6, as_of: "2026-10-01", title: "Adult, not pregnant, no pregnancy stated", given: {date_of_birth: "1985-01-22", is_pregnant: false}, expect: false}

@@ -1,0 +1,12 @@
+# The decision-4 round for the reader defaults (2026-11-23). Nine readers of the receipts (CO-5000) kept the
+# `otherwise 0` the scalar facts they replaced had: CO-3701, CO-3827, CO-4023, CO-4361, CO-4363, CO-4369, CO-4412,
+# CO-4518 and CO-4930. None of the rules they cite gives a reading for money not reported, so each default is
+# removed: an unstated receipts list is cannot determine, a stated empty list is 0 (product-owner decision 4 of
+# 2026-11-23, docs/plan-colorado.md). Harness classes D4-1 and D4-2 (scripts/receipts/allowed-differences.yaml).
+# Two more findings of the same review: Colorado Works' VA Aid and Attendance exemption (CO-5651) now applies only in
+# the person's own home (9 CCR 2503-6 3.605.4.A.6; new fact lives_in_own_home, CO-5940; harness class D4-3; OQ-1051);
+# Medicaid's spousal receipts (CO-5531) keep VA Aid and Attendance out, now as a recorded assumption (OQ-1050), with
+# the post-eligibility texts cited (S4200, S4201).
+date: 2026-11-23
+summary: "Receipts readers lose their otherwise 0: an unstated receipts list is cannot determine, an empty list is no unearned money (decision 4)."
+impact: []

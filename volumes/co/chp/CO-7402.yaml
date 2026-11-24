@@ -1,0 +1,21 @@
+id: CO-7402
+name: "CHP+: meets the residency requirement"
+identifier: chp_meets_residency
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: "Whether the person is a Colorado resident for the Children's Basic Health Plan (10 CCR 2505-3 § 110.1.D): the person's state of residence is Colorado (is_colorado_resident); cannot be determined where neither the state nor the county of residence is stated."
+precision: "Coverage pass 6, C6-05(a) (2026-11-24): is_colorado_resident (CO-505), shared with every program, reads an unstated state of residence with no county stated as not a resident; CHP+ reads it through this item so an unstated residence is cannot determine (decision 4 of 2026-11-23: no rule makes an unstated residence a non-resident), as Medicaid's ma_meets_residency (CO-2250) does. A county stated without the state is read by is_colorado_resident as a Colorado residence."
+derived: [case, [[any, is_colorado_resident, [not, [all, [unknown, state_of_residence], [unknown, county_of_residence]]]], is_colorado_resident], [else, ["=", state_of_residence, colorado_state_code]]]
+sources: [S243]
+open: [OQ-1425]
+implemented: engine
+tags: [chp]
+nearest: [CO-2250, CO-505]
+rationale: "Coverage pass 6, C6-05(a) (docs/reviews/coverage6-medicaid-magi-chp.md): CO-226 without state_of_residence (no county stated) was not a resident, ma_magi_eligibility_status and ma_family_planning_status ineligible_residency and CHP+ the same; by hand cannot determine. chp_child_is_eligible (CO-705), chp_prenatal_is_eligible (CO-706), chp_eligibility_status (CO-707), chp_child_is_in_continuous_eligibility_period (CO-2404) and chp_express_lane_child_meets_requirements (CO-4792) read this item in place of is_colorado_resident."
+tests:
+  - {id: CO-7402-T1, as_of: "2026-11-10", title: "Lives in Colorado", given: {state_of_residence: CO}, expect: true}
+  - {id: CO-7402-T2, as_of: "2026-11-10", title: "Lives in Wyoming", given: {state_of_residence: WY}, expect: false}
+  - {id: CO-7402-T3, as_of: "2026-11-10", title: "C6-05(a): neither the state nor the county stated: cannot determine (was false)", given: {}, expect: unknown}
+  - {id: CO-7402-T4, as_of: "2026-11-10", title: "The state not stated, a Colorado county stated: resident", given: {county_of_residence: denver}, expect: true}

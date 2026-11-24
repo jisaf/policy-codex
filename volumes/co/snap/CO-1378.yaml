@@ -1,0 +1,20 @@
+id: CO-1378
+name: "SNAP: requires verification of resources"
+identifier: snap_requires_verification_of_resources
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether the person's resources must be verified for SNAP: only when questionable, and only for a household subject to the resource test (not categorically eligible). A household whose declared resources are more than the resource limit that applies needs no verification of them: its written declaration is acceptable verification (10 CCR 2506-1 4.502.A.5)."
+derived: [all, snap_is_household_member, resources_attestation_is_questionable, ["=", snap_eligibility_category, standard], [not, [">", snap_household_countable_resources, [case, [snap_household_has_elderly_or_disabled_member_in_month, snap_resource_limit_elderly_disabled], [else, snap_resource_limit]]]]]
+sources: [S811, S819]
+implemented: engine
+tags: [verification, snap, resources]
+rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
+tests:
+  - {id: CO-1378-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, resources_attestation_is_questionable: true, snap_eligibility_category: standard, snap_household_countable_resources: 1000, snap_household_has_elderly_or_disabled_member_in_month: false}, expect: true}
+  - {id: CO-1378-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, resources_attestation_is_questionable: true, snap_eligibility_category: expanded_categorical}, expect: false}
+  - {id: CO-1378-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, resources_attestation_is_questionable: false}, expect: false}
+  # Coverage pass 4 SNAP resources SR-15: 10 CCR 2506-1 4.502.A.5 (S4827), a written declaration over the limit is acceptable verification.
+  - {"id": "CO-1378-T5", "month": "2026-10", "title": "SR-15 (VER): questionable resources declared at $5,000, over the $3,000 limit (FY 2027): the declaration is acceptable verification, none required", "as_of": "2026-10-01", "given": {"snap_resides_in_institution_providing_meals": false, "resources_attestation_is_questionable": true, "snap_eligibility_category": "standard", "snap_household_countable_resources": 5000, "snap_household_has_elderly_or_disabled_member_in_month": false}, "expect": false}
+  - {"id": "CO-1378-T6", "month": "2026-10", "title": "SR-15: declared at $3,000, at the limit (not more than it): verification required", "as_of": "2026-10-01", "given": {"snap_resides_in_institution_providing_meals": false, "resources_attestation_is_questionable": true, "snap_eligibility_category": "standard", "snap_household_countable_resources": 3000, "snap_household_has_elderly_or_disabled_member_in_month": false}, "expect": true}

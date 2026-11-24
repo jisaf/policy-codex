@@ -1,0 +1,15 @@
+id: CO-2843
+name: "Colorado Works: months of child support history at redetermination"
+identifier: cw_child_support_history_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "The number of months before a redetermination whose child support 9 CCR 2503-6 3.605.5.C (S1805) reads: \"the six previous months\"."
+versions:
+  - from: "2025-07-01"
+    value: 6
+    source: S1805
+sources: [S1805]
+tags: [cash, tanf, income]
+rationale: "Dual-entry audit 2.2: the six-month window is a figure set by rule, so the derived history (CO-2550, CO-2551) reads it as a parameter. cw_child_support_consistency_months states how many of the months must have support; this states how many months are looked at."

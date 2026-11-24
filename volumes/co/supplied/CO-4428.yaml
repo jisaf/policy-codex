@@ -1,0 +1,13 @@
+id: CO-4428
+name: "Adult Financial: income-producing property's low return excused"
+identifier: af_income_property_return_shortfall_excused
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department finds that the person's non-business income-producing property earns less than the 6% return because of circumstances beyond the client's control (crop failure, illness and the like) and there is a reasonable expectation that within twenty-four months it will again produce a 6% return (9 CCR 2503-5 3.520.77.D.4.c)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "County department finding."
+sources: [S3207]
+tags: [cash, resources]
+rationale: "Coverage review F-7: 3.520.77.D.4.c (S3207) lets the $6,000 exemption continue in that case."

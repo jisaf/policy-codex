@@ -1,0 +1,23 @@
+id: CO-7771
+name: A pregnancy ended before the month, as the case records it
+identifier: pregnancy_ended_before_month
+kind: derived
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether the case records a pregnancy of the person that ended before the first day of the month: the stated pregnancy_end_date (CO-089) is before it, or a child of the case she gave birth to (the gave_birth_to relationship) was born before it, a birth ending the pregnancy on the child's date of birth (most_recent_pregnancy_end_date, CO-7400, reads the same records)."
+precision: "Coverage pass 7, C7-02 (2026-11-24). Relationships not stated are read as none, as most_recent_pregnancy_end_date (CO-7400) and birth_mother_coverage_at_birth (CO-3322) read them; a child she gave birth to whose date of birth is not stated leaves it unknown unless the stated end already settles it."
+derived: [any, [all, [not, [unknown, pregnancy_end_date]], ["<", pregnancy_end_date, [first_day, [month]]]], [">", [count, [filter, [persons], [all, [otherwise, [rel, [gave_birth_to], [P]], false], ["<", [of, [P], date_of_birth], [first_day, [month]]]]]], 0]]
+sources: [S640, S1715, S224]
+implemented: engine
+tags: [ma, chp, household]
+link_class: primitive
+link_basis: "Whether a recorded pregnancy end (the stated end, or a recorded birth) falls before a month; a date primitive no program defines differently."
+nearest: [CO-7400]
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): a pregnancy coverage period ran from its start month for as long as the person was pregnant on the determination date, so a member pregnant again after her first postpartum year was read as still inside the first period (PG-SECOND). Telling one pregnancy's period from the next needs the recorded ends against a month: whether one fell before the month (this item), the latest such end (latest_pregnancy_end_date_before_month, CO-7772), and whether one fell on or after it (pregnancy_ended_on_or_after_month, CO-7773). most_recent_pregnancy_end_date (CO-7400) gives only the last end, on the determination date."
+tests:
+  - {id: CO-7771-T1, month: "2026-10", as_of: "2026-11-10", title: "C7-02 (PG-SECOND): she gave birth to p2 on 2025-09-10, before 2026-10-01: true", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
+  - {id: CO-7771-T2, month: "2025-09", as_of: "2026-11-10", title: "C7-02: the same in September 2025: the birth (2025-09-10) is not before 2025-09-01: false", given: {}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: false}
+  - {id: CO-7771-T3, month: "2026-11", as_of: "2026-11-10", title: "No end stated and no child of the case born to her: false", given: {}, relationships: [], expect: false}
+  - {id: CO-7771-T4, month: "2026-11", as_of: "2026-11-10", title: "A miscarriage stated on 2026-08-02: before 2026-11-01: true", given: {pregnancy_end_date: "2026-08-02"}, relationships: [], expect: true}
+  - {id: CO-7771-T5, month: "2026-11", as_of: "2026-11-10", title: "A child of the case born to her whose date of birth is not stated, no end stated: unknown", given: {}, others: {p2: {}}, relationships: [[gave_birth_to, p1, p2]], expect: unknown}

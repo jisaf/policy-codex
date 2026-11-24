@@ -1,0 +1,19 @@
+id: CO-5002
+name: "LEAP: the first day of the income verification period"
+identifier: leap_income_verification_period_start
+kind: derived
+type: calendar date
+scope: case
+program: LEAP
+meaning: "The first day of the income verification period (9 CCR 2503-7 3.751.1: \"from the date of application to the same date of the prior month\"): the application date less the number of days in the month before the application month."
+precision: For an application on the 29th to the 31st of a month whose preceding month is shorter, the same date of the prior month does not exist; the result is then a day or two into the application month (the application date less the days of the shorter month), OQ-886.
+derived: [days_after, ["-", 0, [days_between, [first_day, [month_before, [month_of, leap_application_date]]], [first_day, [month_of, leap_application_date]]]], leap_application_date]
+sources: [S2712]
+implemented: engine
+tags: [income]
+open: [OQ-886, OQ-681]
+rationale: "Receipt records, migration phase 1: LEAP places a one-time receipt in or out of the period by its date (3.752.22.A), so the period's first day is stated once, here, instead of the thirty-day facts the case used to restate the period's receipts in."
+tests:
+  - {id: CO-5002-T1, as_of: "2026-11-10", given: {leap_application_date: "2026-11-10"}, title: "Application November 10: the period starts October 10", expect: "2026-10-10"}
+  - {id: CO-5002-T2, as_of: "2026-11-10", given: {leap_application_date: "2027-03-01"}, title: "Application March 1: the period starts February 1", expect: "2027-02-01"}
+  - {id: CO-5002-T3, as_of: "2026-11-10", given: {leap_application_date: "2027-03-30"}, title: "Application March 30, February has 28 days: the period starts March 2 (OQ-886)", expect: "2027-03-02"}

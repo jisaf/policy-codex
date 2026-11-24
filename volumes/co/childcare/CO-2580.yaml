@@ -1,0 +1,22 @@
+id: CO-2580
+name: "CCCAP: this person's participation"
+identifier: cccap_person_participation_status
+kind: derived
+type: one of
+options: [eligible_child, caretaker, ineligible_child_status, ineligible_child_age_or_care_need, other_household_member]
+scope: person-month
+program: CCCAP
+role: outcome
+meaning: "This person's place in the CCCAP household: an eligible child for whom care can be authorized (8 CCR 1403-1 3.111.F); an adult caretaker or teen parent whose activity and income the household is assessed on; a household child who is not an eligible child, either for lack of verified citizen or legal-resident status (3.111.F.1) or because of age or no need for care; or another household member. Whether the household is eligible and its fee are cccap_eligibility_status (CO-989) and cccap_parent_fee (CO-1290), household results reported on every member."
+precision: A teen parent who is also a household child is reported as a caretaker.
+derived: [case, [cccap_is_eligible_child, eligible_child], [[any, cccap_is_adult_caretaker, cccap_is_teen_parent], caretaker], [[all, cccap_is_household_child, [not, cccap_child_meets_citizenship_requirement]], ineligible_child_status], [cccap_is_household_child, ineligible_child_age_or_care_need], [else, other_household_member]]
+sources: [S482, S514, S1408]
+implemented: engine
+tags: [household]
+rationale: "County case worker review B1: CCCAP's status and fee are household results reported on every member; no item stated each person's own part in the household."
+nearest: [CO-980, CO-992]
+tests:
+  - {id: CO-2580-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true}, expect: eligible_child}
+  - {id: CO-2580-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: false, cccap_is_adult_caretaker: true}, expect: caretaker}
+  - {id: CO-2580-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: false, cccap_is_adult_caretaker: false, cccap_is_teen_parent: false, cccap_is_household_child: true, cccap_child_meets_citizenship_requirement: false}, expect: ineligible_child_status}
+  - {id: CO-2580-T4, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: false, cccap_is_adult_caretaker: false, cccap_is_teen_parent: false, cccap_is_household_child: false}, expect: other_household_member}

@@ -1,0 +1,12 @@
+id: CO-1595
+name: SNAP expense verification days
+identifier: snap_expense_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of calendar days after the date of application within which an expense must be verified for the household to keep the deduction.
+value: 30
+sources: [S812, S818]
+tags: [verification, snap, income]
+rationale: "Review C-5: 273.2(f)(3)(ii) and 4.502.A.3 disallow an unverified expense only after thirty days from application."

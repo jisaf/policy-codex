@@ -1,0 +1,20 @@
+id: CO-4722
+name: "Adult Financial: cash surrender value of life insurance, stated or estimated"
+identifier: af_life_insurance_cash_value
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The cash surrender value of this person's life insurance policies as Adult Financial counts it: for each life_insurance record, its stated cash surrender value (value); when that is not available, the face value times the share 9 CCR 2503-5 3.520.75.H charts for the whole years the policy has been in effect, from its purchase date to the determination date (af_life_insurance_estimated_csv_rate_table)."
+precision: "Resource records, step H1 Adult Financial (docs/reviews/records-holdings-snap-af.md): each policy is estimated from its own purchase date, where before the person stated only the newest policy's date and its row was used for all of them. A policy with no cash value available and no face value or purchase date is cannot determine (decision 4 of 2026-11-23); before, it was 0. Read by af_life_insurance_countable_value_other_than_oap (CO-4002) and af_life_insurance_countable_cash_value (CO-3854), for the client, the spouse and the sponsor alike (\"if not available from the client, client's spouse, or sponsor(s)\"). Coverage pass 4 CA4-13 (docs/reviews/coverage4-cash.md): a figure of the month evaluated, from the holdings valued in that month (3.510 \"Resources\", S4791: \"held as of the first day of a calendar month or as of the date of application\"), so an application month before the determination month is judged by its own holdings; before, every month read the determination month's. A date the rule measures from is the determination date in the determination month and the first day of any other month."
+derived: [sum_receipts, holdings, [all, [all, [received_in, [month]], [unknown, [receipt, disposed_date]]], ["=", [lookup, af_holding_treatment_table, [receipt, kind]], counted_life_insurance_rules]], [case, [[not, [unknown, [receipt, value]]], [receipt, value]], [else, ["*", [receipt, face_value], [band, af_life_insurance_estimated_csv_rate_table, [years_between, [receipt, purchase_date], [case, [["=", [month], [det_month]], [det_date]], [else, [first_day, [month]]]]]]]]]]
+sources: [S3504, S2618, S4791]
+implemented: engine
+tags: [cash, resources]
+rationale: "Coverage review 2, G-7: the 3.520.75.H estimate (S3504) had no item; an unstated cash value counted as 0, so an AND client whose face total is over $1,500 counted nothing."
+tests:
+  - {id: "CO-4722-T1", month: "2026-10", title: "Stated cash value", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, value: 900, face_value: 5000, purchase_date: "2010-01-01"}]}, expect: 900}
+  - {id: "CO-4722-T2", month: "2026-10", title: "G-7: not available; a $5,000 policy bought 2014-06-01, 12 years in effect - 45%", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, face_value: 5000, purchase_date: "2014-06-01"}]}, expect: 2250}
+  - {id: "CO-4722-T3", month: "2026-10", title: "G-7: in effect 20 years or more - 60%", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, face_value: 5000, purchase_date: "2000-03-01"}]}, expect: 3000}
+  - {id: "CO-4722-T4", month: "2026-10", title: "G-7: in effect less than a year - 0%", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, face_value: 5000, purchase_date: "2026-03-01"}]}, expect: 0}
+  - {id: "CO-4722-T5", month: "2026-10", title: "Decision 4: no cash value available and no purchase date - the chart cannot be read, cannot determine (before: 0)", as_of: "2026-10-01", given: {holdings: [{kind: life_insurance, face_value: 5000}]}, expect: unknown}

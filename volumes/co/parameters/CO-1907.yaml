@@ -1,0 +1,12 @@
+id: CO-1907
+name: "Medicaid community engagement: weeks per month"
+identifier: ma_community_engagement_weeks_per_month
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The weeks in a month by which weekly education hours are multiplied for a less than half-time credit-hour program (42 CFR 435.552(d)(1)(ii)): 4.33."
+value: 4.33
+sources: [S1204]
+tags: [ma, magi]
+rationale: "OQ-65: ma_community_engagement_education_hours (CO-1966) needs the monthly conversion factor the rule states."

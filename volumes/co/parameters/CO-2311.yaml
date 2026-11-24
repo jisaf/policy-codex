@@ -1,0 +1,12 @@
+id: CO-2311
+name: "SNAP ABAWD additional consecutive months"
+identifier: snap_abawd_additional_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: An ABAWD (able-bodied adult without dependents) who regains eligibility and then stops meeting the requirements "shall remain eligible for a consecutive three-month period after the individual notifies the local office" (10 CCR 2506-1 4.311.3.D.3).
+value: 3
+sources: [S1613]
+tags: [snap, abawd]
+rationale: "OQ-38 (P-7): snap_abawd_is_in_additional_months (CO-2312) needs the period's length."

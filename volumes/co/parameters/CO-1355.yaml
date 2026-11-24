@@ -1,0 +1,12 @@
+id: CO-1355
+name: LEAP verification response days
+identifier: leap_verification_response_days
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: The number of calendar days (two calendar weeks) from the postmark of the county's notice within which a LEAP applicant must provide requested information or verification.
+value: 14
+sources: [S899]
+tags: [verification]
+rationale: 9 CCR 2503-7 3.756.12.D (S899) allows two calendar weeks from the postmarked notice; no item carried it.

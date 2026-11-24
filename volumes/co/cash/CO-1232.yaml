@@ -1,0 +1,18 @@
+id: CO-1232
+name: "Burial assistance: benefit amount"
+identifier: af_burial_benefit
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+role: outcome
+meaning: The burial grant payment - the burial costs left after other monies, up to the burial benefit maximum - for an eligible decedent; zero otherwise, per 9 CCR 2503-5 3.570.43.B and D.4.
+derived: [case, [af_burial_eligible, [min, af_burial_unmet_cost, af_burial_benefit_max]], [else, 0]]
+sources: [S720, S721]
+implemented: engine
+tags: [cash]
+rationale: No existing item computes the burial benefit; it is the program's benefit outcome.
+tests:
+  - {id: CO-1232-T1, as_of: "2026-10-01", given: {af_burial_eligible: true, af_burial_unmet_cost: 900}, expect: 900}
+  - {id: CO-1232-T2, as_of: "2026-10-01", given: {af_burial_eligible: true, af_burial_unmet_cost: 2100}, expect: 1500}
+  - {id: CO-1232-T3, as_of: "2026-10-01", given: {af_burial_eligible: false, af_burial_unmet_cost: 2100}, expect: 0}

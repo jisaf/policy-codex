@@ -1,0 +1,14 @@
+id: CO-1306
+name: Citizenship verification document type
+identifier: citizenship_verification_document_type
+kind: supplied
+type: one of
+options: [us_passport, certificate_of_naturalization, certificate_of_citizenship, tribal_membership_document, drivers_license_requiring_proof_of_citizenship, vital_statistics_record_match, us_public_birth_certificate, certification_of_birth_abroad, consular_report_of_birth_abroad, us_citizen_id_card, northern_mariana_id_card, american_indian_card, adoption_decree_showing_us_birth, civil_service_employment_before_june_1976, military_record_showing_us_birth, child_citizenship_act_documentation, hospital_record_of_birth, insurance_record_showing_us_birth, religious_record_of_birth, early_school_record, census_record, other_us_birth_record, institutional_admission_papers, medical_record_showing_us_birth, citizenship_affidavit, third_party_citizenship_statement, other_document]
+scope: person
+program: All
+meaning: The category of the document the person provided as evidence of U.S. citizenship or nationality, in the categories 42 CFR 435.407(a)-(b), 10 CCR 2505-10 8.100.3.H.2, 10 CCR 2506-1 4.505.5, 9 CCR 2503-6 3.604.3.I.1 and 9 CCR 2503-5 3.520.67.C name.
+precision: "other_us_birth_record covers the five-years-old records of 8.100.3.H.2.b.xviii (tribal census records, notification of birth registration, a delayed birth record, a physician's or midwife's statement, the Roll of Alaska Natives); vital_statistics_record_match is a verification with a state vital statistics agency (435.407(a)(7)) or Colorado's COVIS (4.505.5.A.7); third_party_citizenship_statement is SNAP's signed third-party statement (4.505.5.B); citizenship_affidavit is Medicaid's affidavit (435.407(b)(16), 8.100.3.H.2.b.xxi). Coverage review F-24: several document types are acceptable only under conditions of 10 CCR 2505-10 § 8.100.3.H.2.b the supplier applies when stating the type: a record recorded before the person was 5 (b.i.3), a document created at least 5 years before the initial application date (xiii-xx), and records made near the time of birth for a child under 16; a document that fails its condition is not stated as that type."
+supplied_by: Document type recorded with the document receipt in the CBMS case file.
+sources: [S845, S846, S855, S826, S876, S886, S1069, S1077]
+tags: [verification, immigration]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

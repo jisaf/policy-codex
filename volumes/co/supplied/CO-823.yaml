@@ -6,9 +6,8 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether a qualifying income trust (a "Miller trust") meeting 10 CCR 2505-10 § 8.100.7.G's requirements has been established for this person, allowing Long-Term Care eligibility despite gross income above 300% of the SSI benefit level.
-precision: Does not model the trust's own income-ceiling, allowable-deduction, or termination rules (see OQ-96, OQ-99); states only whether a qualifying trust exists.
+precision: "States only whether a qualifying trust exists. The trust's income ceiling is in ma_meets_special_income_group (CO-642, OQ-99) and its monthly distribution in ma_income_trust_distribution (CO-2238, OQ-96), which ma_patient_payment (CO-658) reads; the termination and accounting rules govern the trustee, not eligibility."
 supplied_by: Eligibility Site's review of the trust document and joinder agreement.
-sources: [S351]
-open: [OQ-96]
+sources: [S1753]
 tags: [ma, ltc, legal]
 rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_meets_special_income_group (CO-642) needs it for the 8.100.7.A.2.e alternative to the 300% gross income test."

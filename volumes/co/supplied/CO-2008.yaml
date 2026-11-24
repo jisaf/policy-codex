@@ -1,0 +1,12 @@
+id: CO-2008
+name: "Adult Financial: Colorado Works case closed for demonstrable evidence, disqualification or withdrawal"
+identifier: af_has_open_colorado_works_closure_bar
+kind: supplied
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether, in the month, the person's Colorado Works case stands denied or discontinued because of demonstrable evidence or a disqualification, or because the person withdrew before exhausting all benefits, and the cause has not been removed and the person has not since been found otherwise ineligible for Colorado Works - the closures 9 CCR 2503-5 3.520.71.F.2.a-c makes a bar to Adult Financial grant payments. A sanction closure is not stated here; af_barred_by_colorado_works (CO-1511) reads it from cw_eligibility_status. If not stated, Adult Financial reads this as false (no such closure)."
+supplied_by: CBMS Colorado Works case history (closure reason and date).
+sources: [S1011]
+tags: [cash, oap, and]
+rationale: "No existing fact states a Colorado Works closure reason other than the fourth-level sanction the volume derives; af_barred_by_colorado_works (CO-1511) needs it for 3.520.71.F.2 (OQ-357)."

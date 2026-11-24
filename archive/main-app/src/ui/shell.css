@@ -1,0 +1,90 @@
+/* The shell: a persistent left sidebar with the seven places, the top bar
+ * (search, proposal pill, edit mode, help) and the breadcrumb trail. At
+ * phone width the sidebar becomes a drawer the Menu button opens. Uses the
+ * tokens of styles.css. */
+:root { --side-w: 228px; --side-bg: #12384a; --side-ink: #dbe7ea; --side-muted: #9fb8be; --focus: #e9a23b; }
+
+.app.shell { display: grid; grid-template-columns: var(--side-w) minmax(0, 1fr); min-height: 100vh; }
+.mainwrap { min-width: 0; display: flex; flex-direction: column; }
+.mainwrap > main { flex: 1; padding: 16px 20px 48px; max-width: 1240px; width: 100%; }
+main:focus { outline: none; }
+
+:where(a, button, input, select, summary, textarea):focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.skiplink { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--panel); padding: 6px 10px; }
+.skiplink:focus { left: 8px; top: 8px; }
+
+/* sidebar */
+.sidebar { background: var(--side-bg); color: var(--side-ink); position: sticky; top: 0; height: 100vh;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 14px 10px; }
+.sidebar .brand { display: block; color: #fff; text-decoration: none; padding: 2px 8px 6px; }
+.sidebar .brand b { display: block; font-size: 16px; }
+.sidebar .brand small { color: var(--side-muted); font-size: 12px; }
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar nav a { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 6px;
+  color: var(--side-ink); text-decoration: none; font-weight: 500; }
+.sidebar nav a:hover { background: rgba(255, 255, 255, .08); }
+.sidebar nav a.on { background: var(--bg); color: var(--ink); }
+.sidebar nav.places a { font-size: 15px; }
+.sidebar .badge { margin-left: auto; background: #e9b44c; color: #15303a; border-radius: 99px; font-size: 12px; padding: 0 7px; }
+.sidebar details.implementers { border-top: 1px solid rgba(255, 255, 255, .15); padding-top: 8px; }
+.sidebar details.implementers summary { cursor: pointer; color: var(--side-muted); font-size: 13px; padding: 4px 10px; }
+.sidebar details.implementers nav a { font-size: 13px; font-weight: 400; padding: 5px 10px 5px 18px; }
+.sidefoot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding: 0 6px; font-size: 12px; }
+.sidefoot label { display: flex; flex-direction: column; gap: 2px; color: var(--side-muted); }
+.sidefoot select, .sidefoot input { width: 100%; font: inherit; font-size: 13px; padding: 3px; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 4px; }
+.sidefoot .volume { color: var(--side-ink); }
+.sidefoot .refselect { display: block; }
+.navscrim { display: none; }
+
+/* top bar */
+.app.shell .topbar { position: sticky; top: 0; z-index: 15; flex-wrap: nowrap; }
+.topbar .navtoggle { display: none; }
+.topbar .searchbox { flex: 1; min-width: 0; max-width: 640px; }
+.results .allresults { border-top: 1px solid var(--line); font-weight: 600; color: var(--accent); }
+.proposal-pill { margin-left: auto; white-space: nowrap; text-decoration: none; font-size: 13px; color: var(--muted);
+  padding: 4px 10px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); }
+
+/* breadcrumbs */
+nav.crumbs { padding: 6px 20px 0; font-size: 13px; color: var(--muted); }
+nav.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 6px; }
+nav.crumbs li + li::before { content: "›"; margin-right: 6px; color: var(--muted); }
+nav.crumbs a { padding: 0; }
+nav.crumbs [aria-current] { color: var(--ink); }
+
+/* a place's heading */
+.placehead h1 { font-size: 22px; margin: 4px 0 2px; }
+.placehead .purpose { color: var(--muted); margin: 0 0 8px; max-width: 70ch; }
+.placehead .interim { font-size: 12px; }
+.view.place { background: none; border: 0; padding: 0; }
+.hhtab { min-width: 0; }
+.rolechoice { margin-top: 12px; }
+.searchpage .controls input[type="search"] { flex: 1; min-width: 12rem; padding: 5px 8px; font: inherit; }
+.searchpage .group h2 { font-size: 17px; margin: 18px 0 6px; }
+.searchpage ul.hits { list-style: none; padding: 0; margin: 0; }
+.searchpage ul.hits li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.searchpage .snippet { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.figures .figuregroup h2 { font-size: 17px; margin: 16px 0 4px; }
+.controls label.check { color: var(--ink); }
+.own-change { font-size: 13px; }
+
+/* phone */
+@media (max-width: 760px) {
+  .app.shell { display: block; }
+  .sidebar { position: fixed; left: 0; top: 0; bottom: 0; width: min(84vw, 300px); z-index: 40; transform: translateX(-105%);
+    transition: transform .15s ease-out; visibility: hidden; }
+  .sidebar.open { transform: none; visibility: visible; box-shadow: 0 0 24px rgba(0, 0, 0, .3); }
+  .navscrim { display: block; position: fixed; inset: 0; z-index: 35; background: rgba(0, 0, 0, .35); }
+  .topbar .navtoggle { display: inline-block; }
+  .app.shell .topbar { gap: 6px; padding: 6px 10px; flex-wrap: wrap; }
+  .topbar .searchbox { order: 9; flex-basis: 100%; max-width: none; }
+  .topbar .mode-toggle { font-size: 12px; padding: 4px 6px; }
+  .proposal-pill { font-size: 12px; padding: 3px 8px; }
+  .mainwrap > main { padding: 12px 16px 40px; }
+  nav.crumbs { padding: 6px 16px 0; }
+}
+@media print {
+  .sidebar, .topbar, nav.crumbs, .navscrim, .skiplink { display: none !important; }
+  .app.shell { display: block; }
+}

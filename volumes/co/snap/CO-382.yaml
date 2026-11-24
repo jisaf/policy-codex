@@ -12,6 +12,8 @@ implemented: engine
 tags: [income]
 rationale: 7 CFR 273.10(e)(2)(i)(A) (S103) and 10 CCR 2506-1 4.401,A,3,a-b (S49, S50) require every Standard Eligibility household to meet the net income standard (unlike the gross income test, which does not apply to a household with an elderly or disabled member); no existing item combines the categorical exemption with the numeric comparison against snap_net_income_limit (CO-346, batch 2) into this single pass/fail fact, which snap_allotment and snap_eligibility_status both read.
 tests:
-  - {id: CO-382-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2000, snap_net_income_limit: 2221}, expect: true}
-  - {id: CO-382-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2300, snap_net_income_limit: 2221}, expect: false}
-  - {id: CO-382-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: true, snap_household_net_income: 5000, snap_net_income_limit: 2221}, expect: true}
+  - {id: CO-382-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2000, snap_net_income_limit: 2277}, expect: true}
+  - {id: CO-382-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2300, snap_net_income_limit: 2277}, expect: false}
+  - {id: CO-382-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: true, snap_household_net_income: 5000, snap_net_income_limit: 2277}, expect: true}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-382-T4", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: snap_household_net_income equal to snap_net_income_limit (snap_household_net_income at or under snap_net_income_limit)", "given": {"snap_is_categorically_eligible": false, "snap_household_net_income": 2277, "snap_net_income_limit": 2277}, "expect": true}

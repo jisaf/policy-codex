@@ -1,0 +1,13 @@
+id: CO-2579
+name: "CCCAP: care is requested for this child"
+identifier: cccap_care_is_requested_for_child
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The household requests CCCAP child care for this eligible child for the period: the child is one of the children in care whom the parent-fee formula counts (8 CCR 1403-1 3.124.P, \"$15 for each child in care after the first\")."
+precision: If not stated, CCCAP reads this as true for an eligible child, the reading before this round (an eligible child needs care for part of the day, 3.111.F).
+supplied_by: "Application: the children for whom care is requested."
+sources: [S785]
+tags: [household]
+rationale: "CDHS review C-8 (OQ-254 part 1): the $15 per additional child counted every eligible child; a household can have an eligible child for whom it does not request care."

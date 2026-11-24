@@ -1,0 +1,12 @@
+id: CO-1943
+name: Requested a short-term hardship exception
+identifier: ma_requested_short_term_hardship_exception
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person, or an individual acting on the person's behalf, requested a short-term hardship exception for the month, which 42 CFR 435.555(d) requires for the inpatient care and travel events of (d)(1) and (d)(4) and forbids requiring for the emergency and unemployment events (435.555(e)).
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1210]
+tags: [ma, magi]
+rationale: "OQ-65: a short-term hardship event of the optional exception; no fact states it."

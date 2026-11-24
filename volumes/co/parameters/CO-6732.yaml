@@ -1,0 +1,14 @@
+id: CO-6732
+name: "SSI method: infrequent or irregular unearned income excluded per calendar quarter"
+identifier: ssi_infrequent_unearned_income_quarterly_exclusion
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The unearned income received infrequently or irregularly in a calendar quarter that the SSI method does not count: the first $60 (20 CFR 416.1124(c)(6), S2609), which the SSI methodology brings to the aged, blind and disabled groups where Colorado's text names nothing (42 CFR 435.601(b)(2), S4754)."
+versions:
+  - {from: "2000-01-01", value: 60, source: S2609}
+sources: [S2609, S4754]
+tags: [non_magi, income]
+rationale: "Coverage pass 4, non-MAGI N4-3 (docs/reviews/coverage4-medicaid-nonmagi.md): 416.1124(c)(6) had no item; the receipts state whether a payment is irregular (CO-5000, irregular) and no SSI-method reader read it. The figure is in the regulation and is not indexed; one version covers every date the volume determines. Nearest: ssi_infrequent_earned_income_quarterly_exclusion (CO-4882), the earned income's $30 under 416.1112(c)(2), a different figure of a different paragraph."
+nearest: [CO-4882]

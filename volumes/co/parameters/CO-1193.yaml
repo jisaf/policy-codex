@@ -1,0 +1,12 @@
+id: CO-1193
+name: "Medicaid: age from which the institution for mental diseases exclusion applies"
+identifier: ma_imd_exclusion_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age at and after which a patient in an institution for tuberculosis or mental disease is excluded from Medical Assistance until age 65 - 10 CCR 2505-10 § 8.100.3.G.1.c (\"unless the person is under 21 years of age or has attained 65 years of age\"). The upper bound is ma_aged_age (CO-237)."
+value: 21
+sources: [S659]
+tags: [ma, age]
+rationale: "S-5 of the phase 7 review: ma_meets_imd_requirement (CO-1179) needs the figure; kept as a parameter so the rule carries no digit. Not ma_hcbs_chrp_age_limit (CO-1138), which is the same number for a different rule."

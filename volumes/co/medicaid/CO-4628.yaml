@@ -1,0 +1,19 @@
+id: CO-4628
+name: "Medicaid: impairment-related work expenses excluded"
+identifier: ma_ssi_impairment_related_work_expenses
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The impairment-related work expenses excluded from the earned income of this person's SSI-related household for the month (20 CFR 416.1112(c)(6), incorporated by 10 CCR 2505-10 § 8.100.5.H.4.e): impairment_related_work_expenses_paid of each member living together (the spouse group of ma_ssi_countable_earned_income) who meets the SSA disability criteria, is not blind and is under ma_aged_age."
+precision: "Subtracted after the $65 and any unused $20 and before the one half (416.1112(c)(5)-(7)). A person who received SSI as disabled for the month before turning 65 keeps the exclusion under (c)(6); that history is not stated, so the exclusion stops at 65. The pre-1990 rule of (c)(6)(i) is historical. Coverage pass 4, non-MAGI N4-9 (docs/operators.md, \"Ages in a month\"): the age is taken in the month evaluated, not on the determination date: an \"under N\" test on the first day of the month (ma_age_on_first_day_of_month, CO-4978), an \"N or older\" test on the last day (ma_age_on_last_day_of_month, CO-5402), and a test that excludes the person from what is favorable on the other day. Coverage pass 4, non-MAGI N4-13 (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; readers do not invent defaults): a member's blindness and disability (the SSA's or the Department's finding, 8.100.6.B) are read as stated for every member, no longer as no for a member whose finding is unstated."
+derived: [sum, ma_ssi_couple_members, [case, [[all, [of, [P], meets_ssa_disability_criteria], [not, [of, [P], is_blind]], ["<", [of, [P], ma_age_on_first_day_of_month], ma_aged_age]], [otherwise, [of, [P], impairment_related_work_expenses_paid], 0]], [else, 0]]]
+sources: [S3412]
+implemented: engine
+tags: [ma, non_magi, income, disability]
+rationale: "Coverage review NM-8: § 8.100.5.H.4.e incorporates 20 CFR 416.1112, but impairment-related work expenses had no fact and no exclusion, so a disabled worker's countable earned income was too high. Coverage pass 3 C3-1: sums over ma_ssi_couple_members (CO-3626), which keeps a newly admitted spouse in the couple through the admission month (§ 8.100.7.C.2.b) except for the institutionalized spouse's own test (42 U.S.C. 1396r-5(b)(1)); it had filtered on resides_in_medical_institution, which split the couple's incomes from the admission day while the size and resources still read them together."
+tests:
+  - {id: CO-4628-T1, as_of: "2026-10-12", month: "2026-10", given: {resides_in_medical_institution: false, meets_ssa_disability_criteria: true, is_blind: false, date_of_birth: "1986-01-01", impairment_related_work_expenses_paid: 200}, relationships: [], expect: 200}
+  - {id: CO-4628-T2, as_of: "2026-10-12", month: "2026-10", title: "blind: blind work expenses instead", given: {resides_in_medical_institution: false, meets_ssa_disability_criteria: true, is_blind: true, date_of_birth: "1986-01-01", impairment_related_work_expenses_paid: 200}, relationships: [], expect: 0}
+  - {id: CO-4628-T3, month: "2026-11", as_of: "2026-11-20", title: "N4-9: disabled, 64 on 2026-11-01 and 65 on the determination date: under 65 in November, IRWE 100 applies (416.1112(c)(6))", given: {date_of_birth: "1961-11-15", meets_ssa_disability_criteria: true, is_blind: false, impairment_related_work_expenses_paid: 100, ma_ssi_couple_members: [p1]}, expect: 100}
+  - {id: CO-4628-T4, month: "2026-12", as_of: "2026-11-20", title: "N4-9: 65 on 2026-12-01: none in December", given: {date_of_birth: "1961-11-15", meets_ssa_disability_criteria: true, is_blind: false, impairment_related_work_expenses_paid: 100, ma_ssi_couple_members: [p1]}, expect: 0}

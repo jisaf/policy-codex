@@ -1,0 +1,14 @@
+id: CO-1189
+name: Student loan discharge reason
+identifier: student_loan_discharge_reason
+kind: supplied
+type: one of
+options: [death_or_disability, public_service_loan_forgiveness, teacher_loan_forgiveness, healthcare_loan_forgiveness, closed_school_discharge, other]
+scope: person-month
+program: All
+meaning: "Why the student loan debt stated by discharged_student_loan_debt (CO-1188) for the month was discharged, forgiven or cancelled: the death or permanent and total disability of the student (who may or may not be the borrower); Public Service Loan Forgiveness; Teacher Loan Forgiveness; a healthcare loan forgiveness program; a Closed School discharge; or any other reason."
+precision: Not read when discharged_student_loan_debt is 0, so it may be left unstated for a month with no discharge.
+supplied_by: Lender or servicer discharge notice.
+sources: [S670]
+tags: [income]
+rationale: "S-9 of the phase 7 review: § 8.100.4.C.1.b.xv excludes discharged student loan debt for the death or disability of the student and, at the Department's discretion, for named forgiveness programs; no existing fact carries the reason."

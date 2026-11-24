@@ -1,0 +1,20 @@
+id: CO-1727
+name: "Receives Social Security Disability Insurance"
+identifier: receives_ssdi
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The person is entitled to and receives Social Security Disability Insurance: title II benefits paid on the basis of the person's own disability (including disabled adult child and disabled widow(er) benefits), not SSI or a state supplement."
+precision: "Read from title_ii_benefit_type (CO-2821); unknown when it is not stated."
+derived: [in, title_ii_benefit_type, [own_disability, disabled_adult_child, disabled_widow]]
+sources: [S442, S705, S849]
+implemented: engine
+tags: [disability]
+link_class: primitive
+link_basis: "Receipt of Social Security disability benefits, from the stated title II benefit type; no program defines it differently."
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-5): Adult Financial (26-2-111(4)(a) and 3.540: 'determined to be disabled and eligible for social security disability insurance benefits'; 'not been approved for ... SSDI') and Medicaid citizenship verification (the SSDI exemption) read receives_social_security_disability, whose meaning is SNAP's 271.2 list of disability and blindness payments under titles I, II, X, XIV and XVI. Dual-entry audit 3.10: derived from title_ii_benefit_type (CO-2821), the one statement of SSA's record."
+tests:
+  - {id: CO-1727-T1, title: "Own disability", as_of: "2026-11-01", given: {title_ii_benefit_type: own_disability}, expect: true}
+  - {id: CO-1727-T2, title: "Disabled adult child", as_of: "2026-11-01", given: {title_ii_benefit_type: disabled_adult_child}, expect: true}
+  - {id: CO-1727-T3, title: "Retirement", as_of: "2026-11-01", given: {title_ii_benefit_type: retirement_or_survivor}, expect: false}

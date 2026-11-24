@@ -1,0 +1,12 @@
+id: CO-3602
+name: "Medicare Part B premium paid"
+identifier: medicare_part_b_premium_paid
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The Medicare Part B premium the person pays for the month, withheld from a Social Security or other benefit or billed to the person; 0 for a month in which the State or another payer pays it (the Medicare Buy-In, including through a Medicare Savings Program), even while SSA has not yet stopped a withholding it will refund. It is part of health_insurance_premiums_paid (CO-835), stated apart because some rules deduct it on its own. Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). A case states 0 where there is none."
+supplied_by: "SSA benefit statement or Medicare premium notice; the Medicare Buy-In record."
+sources: [S2400, S2401]
+tags: [ma, ltc, income]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. No fact stated the Part B premium apart from the other premiums."

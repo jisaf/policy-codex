@@ -1,7 +1,8 @@
 import type { Engine } from "../engine/engine";
 import type { Finding } from "../engine/governance";
+import { staleApprovalMessage } from "../engine/fingerprint";
 import type { Item } from "../engine/types";
-import { applyChangeSet, changedIdentifiers } from "./apply";
+import { applyChangeSet, changedIdentifiers, isSignatureOnly } from "./apply";
 import type { ChangeEntry, ChangeSet } from "./types";
 
 export interface ItemReport {
@@ -35,8 +36,11 @@ export function findingKey(f: Finding): string {
  *  (not present in `base`) is never downgraded. */
 export function ratchetGovernance(current: Finding[], base: Finding[]): Finding[] {
   const known = new Set(base.map(findingKey));
+  // A stale approval is about the signatures, not the item's content, so it
+  // is never inherited: it blocks until the item is re-signed or returned to
+  // Draft (docs/governance.md "Stale approvals").
   return current.map((f) =>
-    f.level === "error" && known.has(findingKey(f))
+    f.level === "error" && f.rule !== "approval.stale" && known.has(findingKey(f))
       ? { ...f, level: "warn" as const }
       : f);
 }
@@ -53,17 +57,32 @@ function governanceOf(
   return ratchetGovernance(found, base.governance(baseItem));
 }
 
+/** Reports on signature-only entries (approvals staged from the inbox), per
+ *  base ledger. A signature changes no value, so its report holds while the
+ *  entry and the content entries beside it are unchanged: a chapter signed at
+ *  once is validated once, not again on every route change. */
+const signatureReports = new WeakMap<Engine, Map<string, ItemReport>>();
+
 /** Runs the full constraint set over the whole ledger with the change-set
  *  applied, so an edit that breaks a downstream item is caught here. */
 export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport {
-  const applied = base.withItems(applyChangeSet(base.items(), cs));
+  // An empty change set validates against the base itself: building a
+  // second engine for it cost a few hundred milliseconds on every page
+  // change (seconds on a loaded machine).
+  const applied = cs.entries.length ? base.withItems(applyChangeSet(base.items(), cs)) : base;
   const reports: ItemReport[] = [];
+  let cache = signatureReports.get(base);
+  if (!cache || cache.size > 5000) { cache = new Map(); signatureReports.set(base, cache); }
+  const contentKey = JSON.stringify(cs.entries.filter((e) => !isSignatureOnly(e)));
   for (const e of cs.entries) {
     if (!e.after) continue;
+    const key = isSignatureOnly(e) ? `${contentKey}\n${JSON.stringify(e)}` : null;
+    const hit = key ? cache.get(key) : undefined;
+    if (hit) { reports.push(hit); continue; }
     const item = applied.itemById(e.id) ?? e.after;
     const report = applied.constraints(item);
     const findings = governanceOf(base, applied, e, item);
-    reports.push({
+    const out: ItemReport = {
       id: e.id,
       identifier: item.identifier,
       errors: [
@@ -75,7 +94,9 @@ export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport 
         ...findings.filter((f) => f.level === "warn").map((f) => f.msg),
       ],
       governance: findings,
-    });
+    };
+    if (key) cache.set(key, out);
+    reports.push(out);
   }
   // Impact is measured on the base graph. A delete or an identifier rename
   // removes its own downstream edges from the applied graph, which would
@@ -90,6 +111,11 @@ export function validateChangeSet(base: Engine, cs: ChangeSet): ChangeSetReport 
     const baseItem = base.itemById(item.id);
     const known = new Set(baseItem ? errorsOf(base, baseItem) : []);
     const fresh = errorsOf(applied, item).filter((m) => !known.has(m));
+    // An upstream edit makes a downstream signature stale: the item goes
+    // back for review unless the change set re-signs it.
+    const basis = applied.fingerprintBasis();
+    const stale = basis ? staleApprovalMessage(basis, item) : null;
+    if (stale) fresh.push(stale);
     if (fresh.length) {
       reports.push({ id: item.id, identifier, errors: fresh, warnings: [], governance: [] });
     }

@@ -1,0 +1,16 @@
+id: CO-1457
+name: "LEAP: requires verification of citizenship"
+identifier: leap_requires_verification_of_citizenship
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+meaning: "Whether the person's declared citizenship must be verified for LEAP: only when the claim is questionable."
+derived: [all, is_us_citizen_or_national, citizenship_attestation_is_questionable]
+sources: [S894, S895]
+implemented: engine
+tags: [verification, immigration]
+rationale: No existing item states this LEAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1457-T1, month: "2026-10", as_of: "2026-10-01", given: {immigration_status: us_citizen, citizenship_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1457-T2, month: "2026-10", as_of: "2026-10-01", given: {immigration_status: us_citizen, citizenship_attestation_is_questionable: false}, expect: false}

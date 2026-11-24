@@ -1,0 +1,9 @@
+# Coverage pass 4 fix round for CCCAP, LEAP and SUN Bucks (docs/reviews/coverage4-care-energy.md, section 7): a dated pay names
+# its job and states its frequency (CO-5100), LEAP averages each job apart, reads dated receipts in the income verification
+# period and ages on the application date; CCCAP tests J.28 by each record's quarter, reads dated receipts in the thirty days,
+# tests each activity's minimum wage, prorates annual contract pay and reads VISTA pay by I.32; decision 4 on the reader
+# defaults the review listed; SUN Bucks' school age for the month's summer. One entry per change-impact flag the round raises:
+# each is a flag an earlier record dispositioned, re-keyed because the receipts and earnings lists changed upstream.
+date: 2026-11-23
+summary: "Coverage pass 4 (CCCAP, LEAP, SUN Bucks): L4-1 to L4-4, C4-1 to C4-6 fixed with rule tests and the review's repro households (CO-710 to CO-719); C4-7, X4-3 and S4-1 recorded in OQ-680, OQ-681, OQ-713 and OQ-993; X4-1 decision 4 on LEAP's public assistance receipts, the heating source and CCCAP's diversion length; X4-2 the difficulty of care rows by payer; X4-4 dispositions; S4-2 SUN Bucks school age by the summer of the month; S4-3 OQ-1220. Answer changes, each an enumerated class of the harnesses: LEAP figures that turn on an age cannot be determined without a LEAP application date (L4-4); a diversion of unstated kind and length is cannot determine for CCCAP (X4-1; CO-345); a caretaker with no business is not asked about a launch period (C4-6)."
+impact: []

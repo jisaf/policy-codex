@@ -1,0 +1,19 @@
+id: CO-1280
+name: "LEAP: estimated home heating costs after the electric and shared-living adjustments"
+identifier: leap_adjusted_heating_costs
+kind: derived
+type: money
+scope: person
+program: LEAP
+meaning: The household's estimated home heating costs with an electric-heat household's usage cost reduced to the heat portion for its dwelling type (leap_electric_heat_portion_table, CO-3001), divided by the number of separate households sharing the living arrangement, per 9 CCR 2503-7 3.758.47 Steps A, C and E.
+derived: ["/", ["*", estimated_home_heating_costs_for_season, [case, [["=", leap_electric_heat_dwelling_type, not_electric], 1], [else, [lookup, leap_electric_heat_portion_table, leap_electric_heat_dwelling_type]]]], leap_households_sharing_living_arrangement]
+sources: [S770, S771, S772]
+implemented: engine
+tags: [household, income]
+rationale: "No existing item computes the heating-cost base of the LEAP benefit (OQ-123); leap_benefit_amount (CO-1281) needs it. Hard-coded numbers audit H-3: the Step C percentages were literals in a case; they are now leap_electric_heat_portion_table (CO-3001), and a household without electric heat keeps its whole costs (a multiplier of 1)."
+tests:
+  - {id: CO-1280-T1, as_of: "2026-10-01", given: {estimated_home_heating_costs_for_season: 1000, leap_electric_heat_dwelling_type: not_electric, leap_households_sharing_living_arrangement: 1}, expect: 1000}
+  - {id: CO-1280-T2, as_of: "2026-10-01", given: {estimated_home_heating_costs_for_season: 1000, leap_electric_heat_dwelling_type: house, leap_households_sharing_living_arrangement: 1}, expect: 620}
+  - {id: CO-1280-T3, as_of: "2026-10-01", given: {estimated_home_heating_costs_for_season: 1000, leap_electric_heat_dwelling_type: apartment, leap_households_sharing_living_arrangement: 2}, expect: 215}
+  - {id: CO-1280-T4, title: "Townhouse to fourplex: 48% of 1000", as_of: "2026-10-01", given: {estimated_home_heating_costs_for_season: 1000, leap_electric_heat_dwelling_type: attached, leap_households_sharing_living_arrangement: 1}, expect: 480}
+  - {id: CO-1280-T5, title: "RV, fifth wheel or camper: 50% of 1000", as_of: "2026-10-01", given: {estimated_home_heating_costs_for_season: 1000, leap_electric_heat_dwelling_type: rv, leap_households_sharing_living_arrangement: 1}, expect: 500}

@@ -1,0 +1,13 @@
+id: CO-1723
+name: "Colorado Works: months of assistance received while living in exempt Indian Country"
+identifier: cw_months_received_in_exempt_indian_country
+kind: supplied
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: "Of the months counted in months_of_assistance_received, the number in which this person received assistance as an adult while living in Indian Country (18 U.S.C. 1151) or a Native Alaskan village where at least fifty percent of the adults were not employed, which 9 CCR 2503-6 3.606.6.F says shall not be counted toward the sixty-month limit."
+precision: "Zero for a person who never received assistance in such a place. It is a count of months by place and local employment, not a statement about tribal membership."
+supplied_by: "Statewide automated system time-limit record, with the county's determination of the place and the employment rate for each month."
+sources: [S3154]
+tags: [cash, tanf]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-3): cw_months_of_assistance_used (CO-915) zeroed every month for anyone with the SNAP ABAWD fact is_indian_or_urban_indian, so every tribal member anywhere had no countable months. 3.606.6.F excludes months by where the person lived and the local employment rate, so the excluded months are their own fact."

@@ -1,0 +1,12 @@
+id: CO-1948
+name: Lowest annuity estimate for an increased CSRA
+identifier: ma_csra_annuity_lowest_estimate
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: "For an institutionalized spouse whose community spouse's income, with the monthly income allowance available from the institutionalized spouse, is below the MMMNA, the lowest of the three estimates the applicant obtained of the cost of a single-premium lifetime annuity paying the difference monthly: the amount 10 CCR 2505-10 § 8.100.7.S.1.d adds to the CSRA. The applicant need not buy the annuity."
+supplied_by: Three annuity cost estimates the applicant submits (§ 8.100.7.S.1.d.i).
+sources: [S1221]
+tags: [ma, ltc, resources]
+rationale: "OQ-126: branch (b) of § 8.100.7.M.1, the increased CSRA, is measured by this estimate."

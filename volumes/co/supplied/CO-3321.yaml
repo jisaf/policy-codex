@@ -1,0 +1,14 @@
+id: CO-3321
+name: Birth mother's coverage at the person's birth (mother not in the case)
+identifier: mother_coverage_at_birth
+kind: supplied
+type: one of
+options: [none, medical_assistance, chp]
+scope: person
+program: All
+meaning: "The public health coverage program in which the person's birth mother was enrolled when the person was born (Medical Assistance, retroactive coverage of the birth included; CHP+; or none). Stated on the person only where the birth mother is not a person of the case linked by a gave_birth_to edge; otherwise it is read from her."
+supplied_by: "CBMS / MMIS enrollment record of the mother; the hospital's or the county's birth report."
+sources: [S211, S1716]
+implemented: engine
+tags: [ma, chp]
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case."

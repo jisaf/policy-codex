@@ -1,0 +1,12 @@
+id: CO-2112
+name: "CCCAP substance use disorder treatment activity, months per instance"
+identifier: cccap_sud_treatment_activity_max_months
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The months of CCCAP eligibility allowed for each instance of a substance use disorder treatment activity: \"up to one (1) year per instance\" (8 CCR 1403-1 3.111.G.4.a.3)."
+value: 12
+sources: [S1412]
+tags: [household]
+rationale: "Review K-5 and OQ-162: the one-year limit on the SUD treatment activity was not modeled; cccap_caretaker_in_eligible_activity (CO-984) reads it."

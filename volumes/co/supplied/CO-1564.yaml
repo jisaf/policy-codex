@@ -1,0 +1,12 @@
+id: CO-1564
+name: Has been issued an SSN
+identifier: has_been_issued_ssn
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether a Social Security number has been issued to the person, whether or not the person has furnished it.
+supplied_by: Applicant's answer on the application and the SSA enumeration response recorded in CBMS.
+sources: [S884]
+tags: [verification]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-10: Adult Financial exempts an OAP non-citizen only from applying for a number, not from providing one already issued) needs it as a supplied fact."

@@ -1,0 +1,12 @@
+id: CO-1923
+name: Has a disability under the ADA definition
+identifier: has_disability_under_ada
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person meets the Americans with Disabilities Act definition of disability at 28 CFR 35.108, whether or not the person is eligible for any program on the basis of disability.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1207]
+tags: [ma, disability]
+rationale: "OQ-65: 42 CFR 435.554(a) defines a disabled individual by the ADA definition, which no existing disability fact states (meets_ssa_disability_criteria, CO-011, is SSA's test)."

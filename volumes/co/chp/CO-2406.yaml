@@ -1,0 +1,18 @@
+id: CO-2406
+name: "CHP+: last month of prenatal coverage"
+identifier: chp_prenatal_coverage_end_month
+kind: derived
+type: month
+scope: person
+program: CHP+
+meaning: "The last month of a CHP+ prenatal enrollment span: the month chp_postpartum_coverage_months months after the month the pregnancy ended (10 CCR 2505-3 § 430.3), read from most_recent_pregnancy_end_date (CO-7400: the stated end, or the date of birth of the child of the case she gave birth to)."
+precision: "Coverage pass 6, C6-03 (2026-11-24): § 430.3 ends the span 'on the last day of the month 12 months after the birth of the child or termination of the pregnancy'; a birth recorded by the child's date of birth and the gave_birth_to relationship gives the month without a separate pregnancy_end_date."
+derived: [months_after, chp_postpartum_coverage_months, [month_of, most_recent_pregnancy_end_date]]
+sources: [S1715]
+implemented: engine
+tags: [chp]
+rationale: B-2 of the HCPF review. ma_postpartum_coverage_end_month (CO-560) is the Medicaid figure under § 8.100.4.G.5; CHP+ states its own span in § 430.3.
+nearest: [CO-560]
+tests:
+  - {id: CO-2406-T1, as_of: "2026-10-01", given: {pregnancy_end_date: "2026-08-14"}, title: "Birth on 2026-08-14: coverage through August 2027", expect: "2027-08"}
+  - {id: CO-2406-T2, as_of: "2026-11-10", given: {}, others: {p2: {date_of_birth: "2026-10-20"}}, relationships: [[gave_birth_to, p1, p2]], title: "C6-03 (CO-814 without pregnancy_end_date): p2, a person of the case she gave birth to, born 2026-10-20: the span ends in October 2027", expect: "2027-10"}

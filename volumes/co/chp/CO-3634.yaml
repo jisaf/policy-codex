@@ -1,0 +1,20 @@
+id: CO-3634
+name: "CHP+: requires verification of unearned income"
+identifier: chp_requires_verification_of_unearned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether the person's unearned income must be verified for CHP+: when the person has unearned income and the attestation is questionable, unless documentation is not reasonably available - the minimal verification of 10 CCR 2505-10 § 8.100.4.B.1.d and B.2 that 10 CCR 2505-3 § 130.1 applies."
+precision: "§ 8.100.4.B.1.d lets unearned income be self-attested, and B.2 verifies nothing further 'unless information is found to be questionable'; this is the non-aged, blind or disabled arm of ma_requires_verification_of_unearned_income (CO-1404), which CHP+ reads the same way, without the aged, blind and disabled arm (CHP+ has no such group)."
+derived: [all, [not, documentation_not_reasonably_available], ma_has_unearned_income_for_verification, unearned_income_attestation_is_questionable]
+sources: [S869, S862, S866]
+implemented: engine
+tags: [chp, verification, income]
+accepts_from:
+  - {from: documentation_not_reasonably_available, class: primitive, source: S869}
+  - {from: ma_has_unearned_income_for_verification, class: adopted_method, source: S869}
+rationale: "Final verification V-8 (docs/reviews/final-verification.md): CHP+ counted questionable pregnancy, residency, age and household composition under 10 CCR 2505-3 § 130.1's 'minimal verification as required in' § 8.100.4.B, but not questionable unearned income, which § 8.100.4.B.1.d and B.2 verify on the same footing and Medical Assistance counts (CO-1404's second arm), so the two programs disagreed on one household."
+tests:
+  - {id: CO-3634-T1, as_of: "2026-11-01", month: "2026-11", given: {documentation_not_reasonably_available: false, ma_has_unearned_income_for_verification: true, unearned_income_attestation_is_questionable: true}, expect: true}
+  - {id: CO-3634-T2, as_of: "2026-11-01", month: "2026-11", given: {documentation_not_reasonably_available: false, ma_has_unearned_income_for_verification: true, unearned_income_attestation_is_questionable: false}, expect: false}

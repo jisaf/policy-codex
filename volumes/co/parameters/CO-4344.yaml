@@ -1,0 +1,13 @@
+id: CO-4344
+name: "SNAP annual averaging months"
+identifier: snap_annual_averaging_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The number of months over which SNAP averages self-employment income that is a household's annual support and annual contract income: 12 (10 CCR 2506-1 4.402.2.A.1-2, 4.403.12.A, 4.403.3.D)."
+versions:
+  - {from: "2000-01-01", value: 12, source: S3113}
+sources: [S3113, S3114, S3115]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-3: the twelve-month averaging had no item."

@@ -1,0 +1,13 @@
+id: CO-1134
+name: "Disabled Adult Child minimum age"
+identifier: ma_dac_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The minimum age for the Disabled Adult Child group - 10 CCR 2505-10 § 8.100.6.J.1 (\"an individual aged 18 or older\")."
+value: 18
+sources: [S626]
+tags: [ma, non_magi, age]
+nearest: [CO-1136, CO-1137]
+rationale: "No existing parameter states the DAC age. ma_dac_eligible (CO-1161) needs it."

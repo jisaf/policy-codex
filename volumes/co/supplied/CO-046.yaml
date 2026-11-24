@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person receives unemployment compensation, or has registered for work as part of applying for or receiving unemployment compensation.
+meaning: "The person receives unemployment compensation, or has registered for work as part of applying for or receiving unemployment compensation, or has been denied unemployment compensation and is appealing the denial (10 CCR 2506-1 4.310.3.F: \"A person who has been denied UIB and who is appealing the decision is exempt\"; coverage review P3-8). The first half (receiving) is a fact about the person's unemployment insurance claim; the amount paid for the month is a receipt of kind unemployment_compensation (receipts, CO-5000)."
 supplied_by: State unemployment insurance record.
-sources: []
+sources: [S126]
 tags: [work_registration]
 rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

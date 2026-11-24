@@ -1,0 +1,29 @@
+id: CO-1417
+name: "CHP+: pending verification count"
+identifier: chp_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: CHP+
+role: outcome
+meaning: "The number of CHP+ verification elements for this person not yet verified: the pending status elements plus SSN, earned income (against the CHP+ standard) and questionable unearned income of each member of the person's MAGI household, pregnancy, residency, age and household composition; 0 when CHP+ verification does not apply to the person (coverage not requested, or neither a child under nineteen nor pregnant), as chp_verification_status (CO-1418) reports not_applicable."
+precision: "Coverage pass 5, C5-03 (2026-11-23): a pregnant applicant is one pregnant in the month evaluated (chp_is_pregnant_in_month, CO-7051), as CHP+ eligibility reads her (CO-706, CO-707), not on the determination date."
+derived: [case, [[not, [all, chp_is_requesting_coverage, [any, ma_is_under_child_age_or_turns_nineteen_this_month, chp_is_pregnant_in_month]]], 0], [else, ["+", ma_pending_status_verification_count, [case, [ma_ssn_verification_is_pending, 1], [else, 0]], [sum, ma_magi_household_members, ["+", [case, [[of, [P], chp_earned_income_verification_is_pending], 1], [else, 0]], [case, [[of, [P], chp_unearned_income_verification_is_pending], 1], [else, 0]]]], [case, [ma_pregnancy_verification_is_pending, 1], [else, 0]], [case, [ma_residency_verification_is_pending, 1], [else, 0]], [case, [ma_age_verification_is_pending, 1], [else, 0]], [case, [ma_household_composition_verification_is_pending, 1], [else, 0]]]]]
+sources: [S869, S868]
+implemented: engine
+tags: [verification, chp]
+accepts_from:
+  - {from: ma_age_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_household_composition_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_is_under_child_age_or_turns_nineteen_this_month, class: adopted_method, source: S606}
+  - {from: ma_magi_household_members, class: adopted_method, source: S248}
+  - {from: ma_pending_status_verification_count, class: adopted_method, source: S869}
+  - {from: ma_pregnancy_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_residency_verification_is_pending, class: adopted_method, source: S869}
+  - {from: ma_ssn_verification_is_pending, class: adopted_method, source: S869}
+rationale: "No existing item counts a person's outstanding CHP+ verifications. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid. Final verification V-3, V-8 and V-14 (2026-11-22): the household members' income elements and questionable unearned income are counted, and the count is 0 where the status is not_applicable, as every other program's count is."
+tests:
+  - {id: CO-1417-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_is_requesting_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true, ma_magi_household_members: [p1], chp_unearned_income_verification_is_pending: false, ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: true, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 1}, expect: 2}
+  - {id: CO-1417-T2, month: "2026-10", as_of: "2026-10-01", given: {chp_is_requesting_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true, ma_magi_household_members: [p1], chp_unearned_income_verification_is_pending: false, ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: false, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 0}, expect: 0}
+  - {id: CO-1417-T3, month: "2026-10", as_of: "2026-10-01", title: "V-14: an adult man on the application: not applicable, count 0", given: {chp_is_requesting_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: false, is_pregnant: false}, expect: 0}
+  - {id: CO-1417-T4, month: "2026-10", as_of: "2026-10-01", title: "V-3: a child whose own elements are verified; the mother, who does not request coverage, has not sent her pay stubs", given: {chp_is_requesting_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true, ma_magi_household_members: [p1, p2], ma_pending_status_verification_count: 0, ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: false, chp_unearned_income_verification_is_pending: false, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false}, others: {p2: {chp_earned_income_verification_is_pending: true, chp_unearned_income_verification_is_pending: false}}, expect: 1}

@@ -1,0 +1,6 @@
+# Coverage pass 7 fix round for MAGI Medicaid and CHP+ (docs/reviews/coverage7-medicaid-magi-chp.md, section 9; docs/reviews/known-limits.md
+# for the follow-ups recorded rather than fixed). C7-01 to C7-07, C7-09 to C7-11 fixed; C7-08 settled with C7-01 (the supplied
+# eligibility start date retired); C7-07 recorded as OQ-1475. One entry per change-impact flag the round leaves open.
+date: 2026-11-24
+summary: "Coverage pass 7 fix round, MAGI Medicaid and CHP+: the retroactive window from each month's own facts (CO-4101, CO-557; CO-2206 retired), a pregnancy coverage period and a CHP+ prenatal span per pregnancy (CO-7771 to CO-7777; CO-565, CO-566, CO-7401, CO-3601, CO-2407, CO-7051), the application date and the date of birth required where read (CO-566, CO-2407, CO-2404, CO-4101), the living-expense part of educational assistance (CO-5000 for_living_expenses, CO-5500, CO-5501), the five years from the first qualified status (CO-7770, CO-7550, CO-509, CO-5219) and the earlier status required where read (CO-1172, CO-7652), ineligible_deceased (CO-554, CO-707, CO-1154), OQ-1475."
+impact: []

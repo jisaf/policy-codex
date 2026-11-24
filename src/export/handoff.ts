@@ -23,6 +23,15 @@ export function handoffMarkdown(engine: Engine, vol: LoadedVolume): string {
       "of unknown supplied facts.",
   );
   L.push("");
+  L.push(
+    "Each derivation is given twice: in pattern English, and as the expression tree the " +
+      "ledger stores, which is the form to generate code from. Every operator in the tree " +
+      "is defined in `docs/operators.md` (arguments, unknown propagation, empty groups, " +
+      "numeric and date rules). The same items, trees and parameter versions are " +
+      "available as JSON (`npm run export` writes `conformance/<volume>/ledger.json`), and " +
+      "the conformance suite is `npm run conformance` (`docs/conformance.md`).",
+  );
+  L.push("");
 
   L.push("## Supplied facts (the interface the fact-assembly layer must deliver)");
   L.push("");
@@ -63,6 +72,12 @@ export function handoffMarkdown(engine: Engine, vol: LoadedVolume): string {
     L.push(derivedEnglish(engine, it));
     L.push("```");
     L.push("");
+    if (it.derived !== undefined && it.derived !== null) {
+      L.push("```json");
+      L.push(JSON.stringify(it.derived));
+      L.push("```");
+      L.push("");
+    }
     const tests = it.tests ?? [];
     if (tests.length) {
       const failing = tests.filter((t) => !engine.runTest(it, t).ok).length;

@@ -1,0 +1,20 @@
+id: CO-1964
+name: "Medicaid community engagement: is medically frail"
+identifier: ma_is_medically_frail
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is medically frail or otherwise has special medical needs under 42 CFR 435.554(c)(5)(i): a condition that significantly impairs the ability to comply with the community engagement requirement, and the person is blind or disabled under section 1614 of the Social Security Act, has a substance use disorder and is not in stable recovery (five years or more), has a disabling mental disorder, has a disability that significantly impairs activities of daily living, or has a serious or complex medical condition."
+precision: Blind or disabled under section 1614 is read from is_blind (CO-010) and meets_ssa_disability_criteria (CO-011). A person with a substance use disorder whose recovery start date is not stated is read as not in stable recovery. Colorado's list of qualifying conditions (435.554(c)(5)(ii)) is not published (OQ-412); the condition facts are supplied.
+derived: [all, ma_condition_significantly_impairs_community_engagement, [any, is_blind, meets_ssa_disability_criteria, [all, ma_has_substance_use_disorder, [not, [otherwise, [">=", [years_between, ma_substance_use_recovery_start_date, [det_date]], ma_community_engagement_stable_recovery_years], false]]], ma_has_disabling_mental_disorder, ma_has_disability_impairing_activities_of_daily_living, ma_has_serious_or_complex_medical_condition]]
+sources: [S1209]
+implemented: engine
+tags: [ma, magi, medical, disability]
+open: [OQ-412]
+rationale: "OQ-65: the medically frail exclusion is a conjunction of an impairment and one of five conditions."
+tests:
+  - {id: CO-1964-T1, as_of: "2027-03-01", given: {ma_condition_significantly_impairs_community_engagement: true, is_blind: false, meets_ssa_disability_criteria: false, ma_has_substance_use_disorder: true, ma_substance_use_recovery_start_date: "2025-01-01"}, title: "Substance use disorder, recovery began 2 years ago", expect: true}
+  - {id: CO-1964-T2, as_of: "2027-03-01", given: {ma_condition_significantly_impairs_community_engagement: true, is_blind: false, meets_ssa_disability_criteria: false, ma_has_substance_use_disorder: true, ma_substance_use_recovery_start_date: "2021-01-01", ma_has_disabling_mental_disorder: false, ma_has_disability_impairing_activities_of_daily_living: false, ma_has_serious_or_complex_medical_condition: false}, title: "Stable recovery for six years, no other condition", expect: false}
+  - {id: CO-1964-T3, as_of: "2027-03-01", given: {ma_condition_significantly_impairs_community_engagement: false, meets_ssa_disability_criteria: true}, title: "SSA disability but no impairment of compliance", expect: false}
+  - {id: CO-1964-T4, as_of: "2027-03-01", given: {ma_condition_significantly_impairs_community_engagement: true, is_blind: false, meets_ssa_disability_criteria: true}, expect: true}

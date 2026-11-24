@@ -1,0 +1,12 @@
+id: CO-2444
+name: "Medicaid: Express Lane enrollment date"
+identifier: ma_express_lane_enrollment_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The date the child was automatically enrolled through Express Lane.
+supplied_by: CBMS Express Lane enrollment record.
+sources: [S1723]
+tags: [ma]
+rationale: C-6 of the HCPF review.

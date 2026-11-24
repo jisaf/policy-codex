@@ -1,0 +1,13 @@
+id: CO-1318
+name: Unearned income verified by electronic data source
+identifier: unearned_income_verified_by_electronic_data_source
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether an electronic data source has verified the person's unearned income for this application: an interface match the agency treats as verification (SSA benefit data through SDX or BENDEX, unemployment insurance data, public assistance or child support system records), so no document is needed for that element."
+precision: "Colorado SNAP treats as verified upon receipt only SSA and SSI benefit amounts, death data from the Burial Assistance program, unemployment insurance data reported through IEVS, the public assistance benefit amounts (Colorado Works, AND, the Home Care Allowance and the Old Age Pension) obtained from the State Department, and child support income and expense amounts obtained through ACSES (4.504.6.D.1-6; S820, S3125); DOLE wage data and IRS data are not (4.504.61). A SNAP case states this fact true only for an SSA, SSI, unemployment insurance, State public assistance or ACSES match (coverage review snap-financial CF-14: before, the precision left out the public assistance and ACSES matches, so a case that followed it asked for documents 4.504.6.D.4 and D.6 do not require). Public assistance and child support records verify unearned income for the other programs as well."
+supplied_by: CBMS interface results (IEVS, SSA/SOLQ/SVES, SAVE/VLP, DMV, FDSH, The Work Number, Asset Verification Program) as recorded in the case.
+sources: [S820, S836, S875, S880, S3125]
+tags: [verification, income]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

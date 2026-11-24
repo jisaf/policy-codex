@@ -1,0 +1,14 @@
+id: CO-3402
+name: "Total shelter costs of the home"
+identifier: home_total_shelter_costs
+kind: supplied
+type: money
+scope: case
+program: All
+meaning: "The total monthly shelter costs of the home of the application, whoever pays them: rent or mortgage payments, real property taxes, homeowner's insurance, heating fuel, gas, electricity, water, sewage and garbage collection."
+precision: "One value for the case (convention rule 18). Each person's own payment is shelter_cost_monthly; what others pay for the person is shelter_costs_paid_by_others."
+supplied_by: "Application (housing and shelter costs); client statement is acceptable verification (3.520.79.A)."
+sources: [S1012, S668]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."

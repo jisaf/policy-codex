@@ -3,15 +3,17 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
-  "meaning", "precision", "assumption", "supplied_by", "value", "versions", "derived",
-  "sources", "effective", "implemented", "implemented_by", "tags", "open", "rationale",
-  "nearest", "tests",
+  "meaning", "precision", "assumption", "statute_override", "supplied_by", "record_noun", "record_fields",
+  "value", "versions", "review_by", "derived",
+  "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open",
+  "link_class", "link_basis", "adopted_by", "accepts_from", "siblings",
+  "rationale", "nearest", "tests",
 ];
 
 const FLOW_KEYS = new Set([
   "options", "derived", "sources", "effective", "tags", "open", "nearest",
 ]);
-const SEQ_OF_FLOW_KEYS = new Set(["versions", "tests"]);
+const SEQ_OF_FLOW_KEYS = new Set(["versions", "approval", "adopted_by", "accepts_from", "siblings", "tests"]);
 /** Key order of a test row as the ledger files write it; a parsed example
  *  line arrives in a different order and must serialise identically. */
 const TEST_KEY_ORDER = ["id", "month", "as_of", "parameters", "given"];
@@ -68,8 +70,32 @@ export function stringifyItem(it: Item): string {
   for (const key of ITEM_KEY_ORDER) {
     const v = rec[key];
     if (v === undefined || v === null) continue;
-    if (Array.isArray(v) && v.length === 0 && key !== "sources") continue;
-    if (SEQ_OF_FLOW_KEYS.has(key)) {
+    // An empty list of versions is a parameter awaiting its figure, so it is
+    // written (and read back) rather than dropped like other empty lists.
+    if (Array.isArray(v) && v.length === 0 && key !== "sources" && key !== "versions") continue;
+    if (key === "versions" && Array.isArray(v) && v.length === 0) {
+      lines.push("versions: []");
+      continue;
+    }
+    if (key === "record_fields" && typeof v === "object" && !Array.isArray(v)) {
+      // A record schema: one block per field, one line per key of its
+      // declaration, and one line per option meaning, so an approver reads
+      // (and a diff shows) each kind on its own line.
+      lines.push(`${key}:`);
+      for (const [name, spec] of Object.entries(v as Record<string, Record<string, unknown>>)) {
+        lines.push(`  ${name}:`);
+        for (const [k, x] of Object.entries(spec ?? {})) {
+          if (k === "option_meanings" && x && typeof x === "object" && !Array.isArray(x)) {
+            lines.push(`    ${k}:`);
+            for (const [o, m] of Object.entries(x as Record<string, unknown>)) lines.push(`      ${o}: ${yamlScalar(m)}`);
+          } else if (x !== null && typeof x === "object") {
+            lines.push(`    ${k}: ${flowValue(x)}`);
+          } else {
+            lines.push(`    ${k}: ${yamlScalar(x)}`);
+          }
+        }
+      }
+    } else if (SEQ_OF_FLOW_KEYS.has(key)) {
       lines.push(`${key}:`);
       for (const entry of v as unknown[]) {
         lines.push("  - " + flowValue(key === "tests" ? orderTestRow(entry) : entry));
@@ -87,7 +113,7 @@ function stripEmpty(o: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(o)) {
     if (v === null || v === undefined) continue;
-    if (Array.isArray(v) && v.length === 0 && k !== "sources") continue;
+    if (Array.isArray(v) && v.length === 0 && k !== "sources" && k !== "versions") continue;
     out[k] = v;
   }
   return out;
@@ -127,6 +153,7 @@ export function stringifyVolume(meta: VolumeMeta): string {
       L.push(`    ${flowScalar(k)}: ${flowValue(v)}`);
     }
   }
+  if (meta.approval_policy.upstream_of_outcomes) L.push("  upstream_of_outcomes: true");
   L.push("");
   L.push("types:");
   for (const t of meta.types) L.push(`  - ${yamlScalar(t)}`);
@@ -139,11 +166,21 @@ export function stringifyVolume(meta: VolumeMeta): string {
       L.push(`  - id: ${yamlScalar(p.id)}`);
       L.push(`    prefix: ${yamlScalar(p.prefix)}`);
       if (p.outcomes) L.push(`    outcomes: ${flowValue(p.outcomes)}`);
+      if (p.names) L.push(`    names: ${flowValue(p.names)}`);
     }
+  }
+  if (meta.link_classes) {
+    L.push("");
+    L.push("link_classes: true");
   }
   if (meta.tags) {
     L.push("");
     L.push(`tags: ${flowValue(meta.tags)}`);
+  }
+  if (meta.relationship_roles) {
+    L.push("");
+    L.push("relationship_roles:");
+    for (const r of meta.relationship_roles) L.push(`  - ${flowValue(r)}`);
   }
   return L.join("\n") + "\n";
 }

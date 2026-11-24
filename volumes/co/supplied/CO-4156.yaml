@@ -1,0 +1,13 @@
+id: CO-4156
+name: "SNAP: month a transfer disqualification takes effect for a participating household"
+identifier: snap_resource_transfer_disqualification_effective_month
+kind: supplied
+type: month
+scope: case
+program: SNAP
+meaning: "For a household participating in SNAP when a knowing transfer of resources to qualify was discovered: the month of the first allotment to be issued after the notice of adverse action expired, with which the disqualification period takes effect (10 CCR 2506-1 4.408.2.B)."
+precision: "Stated only for a transfer made after the household was determined eligible; a transfer in the three months before application disqualifies from the month of application, and this fact is not read. Not stated while the household has requested a fair hearing with continued benefits. One value for the case."
+supplied_by: "The notice of adverse action and the CBMS issuance record."
+sources: [S2962]
+tags: [snap, resources, application_wide]
+rationale: "Final verification pass 2 N-4: 4.408.2.B makes the disqualification of a participating household \"effective with the first allotment to be issued after the notice of adverse action has expired\"; the notice date and the issuance cycle are processing facts no item of this volume states."

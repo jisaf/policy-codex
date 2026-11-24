@@ -1,0 +1,9 @@
+# Earned-income records, step E1 for the cash programs (2026-11-23; docs/reviews/records-earnings-cash.md): Adult
+# Financial (tracks E1 AF) and Colorado Works (E1 CW) read earned income from the earnings records (CO-5100) through their
+# own counting tables (af_earnings_treatment_table CO-5103, cw_earnings_treatment_table CO-5104), with the fixes the
+# fetched rule text settles (each a class of scripts/records/allowed/e1-af.yaml or e1-cw.yaml); the Colorado Works
+# caretaker verification reads the program's caretaker definition (duplicate-paths audit D-W1); the remaining reader
+# defaults over unstated receipts are removed (decision 4 of 2026-11-23); the T-9 hand-check's Adult Financial rows.
+date: 2026-11-23
+summary: "Adult Financial and Colorado Works read earned income from the earnings records; boarder pay, PASS and vendor-payment fixes; CW caretaker verification reads the caretaker definition; decision-4 defaults removed."
+impact: []

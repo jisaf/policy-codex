@@ -1,0 +1,17 @@
+id: CO-3880
+name: "Colorado Works: unearned income is unverified"
+identifier: cw_unearned_income_is_unverified
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether this person has unearned income for the month that Colorado Works counts and that is not verified, by an electronic data source verified on receipt or by documents (9 CCR 2503-6 3.604.3.B.2.e, D)."
+precision: "Whoever's income it is: a member of the assistance unit or another household member whose income is used (cw_income_verification_members, CO-3881)."
+derived: [all, cw_has_countable_unearned_income, [not, unearned_income_is_verified]]
+sources: [S872, S875]
+implemented: engine
+tags: [cash, verification]
+rationale: "Final cash review FC-12 and final verification review V-2 (and V-9): as cw_earned_income_is_unverified (CO-3879), for the unearned-income element (CO-2588)."
+tests:
+  - {id: CO-3880-T1, title: "Unverified unemployment benefits", as_of: "2026-10-01", month: "2026-10", given: {cw_has_countable_unearned_income: true, unearned_income_is_verified: false}, expect: true}
+  - {id: CO-3880-T2, title: "No unearned income", as_of: "2026-10-01", month: "2026-10", given: {cw_has_countable_unearned_income: false}, expect: false}

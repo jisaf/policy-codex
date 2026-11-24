@@ -1,0 +1,13 @@
+id: CO-2221
+name: Reasonable opportunity period extended end date
+identifier: ma_reasonable_opportunity_extended_end_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date to which the eligibility site extended a person's reasonable opportunity period because the person is making a good faith effort to obtain the required documentation (10 CCR 2505-10 § 8.100.3.H.10.a), or because the agency needs more time to verify status or to help the person obtain documents (42 CFR 435.956(b)(2)(ii)(B))."
+precision: "If not stated, Medical Assistance reads it as no extension granted."
+supplied_by: The good faith effort documented in the case file and the extended period recorded in CBMS.
+sources: [S1517, S841]
+tags: [verification, ma, immigration]
+rationale: "OQ-316: no fact stated an extended reasonable opportunity period; ma_reasonable_opportunity_period_end_date (CO-1413) reads it."

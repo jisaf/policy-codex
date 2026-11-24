@@ -3,15 +3,17 @@ name: "SNAP: standard deduction"
 identifier: snap_standard_deduction
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: SNAP
 meaning: The flat monthly deduction every SNAP household receives before any other income-based deduction, looked up by household size (a household of 6 or more eligible members uses the 6-person figure).
-precision: Reads snap_household_size (eligible members only) and looks up snap_standard_deduction_table at `[min, snap_household_size, 6]`, matching 10 CCR 2506-1 4.407.1's "six (6) or more eligible members" language.
-derived: [lookup, snap_standard_deduction_table, [min, snap_household_size, 6]]
+precision: "Reads snap_eligible_household_size (eligible members only) and reads snap_standard_deduction_table for it, its last row for every larger household (P51), matching 10 CCR 2506-1 4.407.1's \"six (6) or more eligible members\" language (hard-coded numbers audit S-1: before, a literal 6). Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month."
+derived: [lookup_extended, snap_standard_deduction_table, snap_eligible_household_size]
 sources: [S81, S89, S94]
 implemented: engine
 tags: [income]
 rationale: 7 U.S.C. 2014(e)(1) and 7 CFR 273.9(d)(1)(i) (S89) require a standard deduction for every household, and 10 CCR 2506-1 4.407.1 (S94) states Colorado applies it up to a six-person cap; no existing item composes snap_standard_deduction_table with the household size lookup snap_household_net_income needs.
 tests:
-  - {id: CO-370-T1, as_of: "2026-10-01", given: {snap_household_size: 3}, expect: 209}
-  - {id: CO-370-T2, as_of: "2026-10-01", given: {snap_household_size: 8}, expect: 299}
+  - {id: CO-370-T1, month: "2026-09", title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 3}, expect: 209}
+  - {id: CO-370-T2, month: "2026-09", title: "FY2026 figures", as_of: "2026-09-30", given: {snap_eligible_household_size: 8}, expect: 299}
+  - {id: CO-370-T3, month: "2026-10", title: "FY2027 figures (S731, S741)", as_of: "2026-10-01", given: {snap_eligible_household_size: 3}, expect: 217}
+  - {id: CO-370-T4, month: "2026-10", title: "FY2027 figures", as_of: "2026-10-01", given: {snap_eligible_household_size: 8}, expect: 308}

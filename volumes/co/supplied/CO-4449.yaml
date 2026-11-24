@@ -1,0 +1,13 @@
+id: CO-4449
+name: "Adult Financial: IM-14 signed"
+identifier: af_im14_signed
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The AND-SO client has signed the IM-14 (Authorization for Reimbursement of Interim Assistance) at application, at every redetermination, within the last year and on any transfer to another county, with a payment designation selected (9 CCR 2503-5 3.545.A.2: \"As a condition of eligibility for AND-SO the client shall be required to sign the IM-14\"); false when the client refuses to sign it (3.520.4.C.5.a: \"If the client refuses to sign any required forms, the case shall be denied or discontinued\")."
+precision: "Read only for AND-SO (af_and_so_eligible, CO-1203). Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise): a case states true for a client who has signed and false for one who refuses or has not; before, it was read as signed when not stated. Other required forms are the application's own signature, which af_application_date (CO-3837) presupposes."
+supplied_by: "The signed IM-14 in the case file or the statewide automated system."
+sources: [S3216]
+tags: [cash, and]
+rationale: "Coverage review F-14: 3.545.A.2 (S3216) makes the signed IM-14 a condition of AND-SO eligibility; no fact stated it."

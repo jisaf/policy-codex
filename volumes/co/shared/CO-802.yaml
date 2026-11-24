@@ -1,0 +1,22 @@
+id: CO-802
+name: "SSI method: in-kind support and maintenance"
+identifier: ssi_in_kind_support_and_maintenance
+kind: derived
+type: money
+scope: person-month
+program: All
+meaning: "The value of shelter this person receives from someone else, outside of a business arrangement requiring monthly rent at or above the presumed maximum value, counted for a month as unearned income under 10 CCR 2505-10 § 8.100.5.F.5.k and 20 CFR 416.1130-416.1140: the shelter costs others pay for the person, up to the presumed maximum value of one-third of the Federal Benefit Rate. Shelter includes room, rent, mortgage payments, real property taxes, heating fuel, gas, electricity, water, sewage and garbage collection; food is not included (§ 8.100.5.F.5.k.i)."
+precision: "Zero for a person who pays a full share of the home's shelter costs (shelter_costs_paid_by_others 0). The one-third reduction for a person living in another's household throughout the month (416.1131) is not separately modeled; the presumed value rule applies."
+derived: [min, shelter_costs_paid_by_others, ["/", ssi_federal_benefit_rate_individual, ssi_presumed_maximum_value_fbr_divisor]]
+sources: [S306, S307, S668]
+open: [OQ-823]
+implemented: engine
+tags: [non_magi, income]
+link_class: adopted_method
+link_basis: "SSI in-kind support and maintenance (20 CFR 416.1130-416.1140) as 10 CCR 2505-10 8.100.5.F.5.k adopts it for SSI-related Medicaid."
+adopted_by:
+  - {program: Medicaid, source: S306}
+rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."
+tests:
+  - {id: CO-802-T1, month: "2026-10", as_of: "2026-10-01", given: {shelter_costs_paid_by_others: 0}, expect: 0}
+  - {id: CO-802-T2, title: "Others pay 500 of her shelter: capped at one-third of the 2026 FBR (994 / 3)", month: "2026-10", as_of: "2026-10-01", given: {shelter_costs_paid_by_others: 500}, expect: 331.3333333333333}

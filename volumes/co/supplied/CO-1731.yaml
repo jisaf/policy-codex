@@ -1,0 +1,13 @@
+id: CO-1731
+name: "SNAP: has a drug-related felony conviction where SNAP benefits were used to buy drugs"
+identifier: snap_has_drug_felony_involving_snap_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person has been convicted of a drug-related felony (as 7 CFR 273.11(m) defines it) where SNAP benefits were used to purchase drugs, the bar to basic and expanded categorical eligibility of 10 CCR 2506-1 4.206.C.1.c.2."
+precision: "Narrower than snap_is_disqualified_drug_felony (CO-041): every conviction this fact states is a drug felony, but not every drug felony involved SNAP benefits."
+supplied_by: "Court record; SNAP case record."
+sources: [S47]
+tags: [snap]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-6): snap_household_has_bce_ece_disqualifying_member (CO-337) read the general drug-felony disqualification fact for 4.206's narrower bar."

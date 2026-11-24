@@ -1,0 +1,13 @@
+id: CO-2121
+name: LEAP verification request date
+identifier: leap_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: LEAP
+meaning: "The date of this program's own written request for verification, from which 9 CCR 2503-7 3.756.12.D runs the period to provide it, when it differs from the date of the shared checklist (verification_request_date)."
+precision: "If not stated, LEAP reads the shared verification_request_date (a single CBMS checklist serving every program, OQ-300)."
+supplied_by: The LEAP request-for-information notice in the case file.
+sources: [S899]
+tags: [verification]
+rationale: "OQ-300: each program runs its verification period from its own request; one shared date could not show a LEAP request sent on another day. CO-1461 reads it."

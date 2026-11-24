@@ -1,0 +1,14 @@
+id: CO-4963
+name: Foster care exit date, placement by another State
+identifier: other_state_foster_care_exit_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's foster care placement ended, when the placement was made by a court or by the agency that administers the title IV-B or IV-E plan of a State other than Colorado. A placement under the responsibility of Colorado or a Tribe is foster_care_exit_date (CO-2853). Not stated for a person never placed in foster care by another State."
+precision: "If not stated, SUN Bucks reads no placement by another State that ended in the period of eligibility."
+supplied_by: "The other State's child welfare record or the court order ending the placement."
+sources: [S1952]
+tags: [sebt]
+rationale: "Coverage review 3 F3-6: 7 CFR 245.2 (S1952), read through 292.2, defines a foster child as one \"formally placed by a court or an agency that administers a State plan under parts B or E of title IV of the Social Security Act\", any State's plan. foster_care_exit_date (CO-2853) is limited to placements under the responsibility of Colorado or a Tribe, because the Former Foster Care Children category (CO-095) reads it with that meaning, so a child whose placement by another State ended in the period of eligibility had no fact to state it."
+nearest: [CO-2853]

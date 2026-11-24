@@ -1,0 +1,13 @@
+id: CO-3863
+name: "Proof of benefit application received"
+identifier: benefit_application_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person has provided verification that the person applied for, or is pursuing, the benefit or other income the person was referred to apply for."
+precision: "Read only for a person referred to apply (af_referred_to_apply_for_other_income, CO-3862)."
+supplied_by: "The SSA application receipt or other proof of application or pursuit."
+sources: [S2622, S2623]
+tags: [cash, verification]
+rationale: "Final cash review FC-9: No fact stated whether proof of application was received."

@@ -1,0 +1,13 @@
+id: CO-4884
+name: Failed to pursue potential resources or income
+identifier: ma_failed_to_pursue_potential_resources_or_income
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the Eligibility Site has found that the applicant or client refuses or fails to make a reasonable effort to secure potential resources or income, after timely and adequate notice of the proposed denial or termination, and the person has not acted on the notice to secure them nor shown with clear and convincing evidence that appropriate steps are being taken (10 CCR 2505-10 § 8.100.5.E.5-7)."
+precision: "The finding as it stands at the determination: a person who acts to secure the resource on receiving the notice, or who is taking appropriate steps, is false (E.5, E.7). If not stated, Medicaid reads it as false. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): if not stated, Medicaid reads it as false: a rule-given default, since denial for failure to pursue a potential resource follows the eligibility site's finding after timely and adequate notice (10 CCR 2505-10 § 8.100.5.E.6-7, S3621), so with no finding stated there is none."
+supplied_by: "The Eligibility Site's finding and the notice of proposed action."
+sources: [S3621]
+tags: [ma, non_magi, resources, income]
+rationale: "Coverage pass 2 (first pass NM-28, deferred): § 8.100.5.E.6 denies or terminates the aged, blind, disabled, long-term care and Medicare Savings Program groups for this failure, and no fact stated it. The aged, blind and disabled outcomes read it through ma_abd_denied_for_noncooperation (CO-4886)."

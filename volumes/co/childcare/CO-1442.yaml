@@ -1,0 +1,22 @@
+id: CO-1442
+name: "CCCAP: requires verification of citizenship"
+identifier: cccap_requires_verification_of_citizenship
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the citizenship of a child for whom care is requested must be verified for CCCAP: the signed application's attestation suffices unless the county finds it inconsistent - not during a homeless family's stabilization period, when it is self-declared (3.121.B.5, final pass F-02)."
+precision: "Coverage pass 3 C3-8: not for a household referred for Colorado Works Child Care (is_referred_for_colorado_works_child_care, CO-896, read over the household and as false when not stated), whose referral \"serves as verification of citizenship, age, and identity\" (3.116.F, S3637). A protective services household is still asked when the Child Welfare worker could not attest, with the six months of 3.119.F (cccap_protective_services_verification_due_date, CO-4061). Coverage pass 5, X5-3 (docs/reviews/coverage5-care-energy.md; OQ-134): a Colorado Works Child Care household is read as the eligibility reader reads it, cccap_colorado_works_child_care_eligible (CO-988), which reads the county Colorado Works worker's referral (is_referred_for_colorado_works_child_care, CO-896) with no default, for a caretaker who receives Colorado Works and is work-eligible or a diversion household (8 CCR 1403-1 3.116.A, H; 3.116.C-F, S3637: the county Colorado Works program verifies county residency and the children's citizenship, age and identity, and reports the earned income). Before, these readers read the referral of any member as not referred when not stated, so an unstated referral asked a Colorado Works Child Care household for the verifications Colorado Works supplies."
+derived: ["all", "cccap_is_eligible_child", "citizenship_attestation_is_questionable", ["not", "cccap_is_in_homelessness_stabilization"], ["not", "cccap_colorado_works_child_care_eligible"]]
+sources: [S890, S2710, S3637]
+open: [OQ-134]
+implemented: engine
+tags: [verification, immigration, age]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  # Coverage pass 5, X5-3: the tests state the Colorado Works Child Care household (cccap_colorado_works_child_care_eligible, CO-988) in place of a member's referral, which these items no longer read; no expectation changed.
+  - {id: CO-1442-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_colorado_works_child_care_eligible: false, cccap_household_members: [p1], cccap_is_eligible_child: true, citizenship_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1442-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_colorado_works_child_care_eligible: false, cccap_is_eligible_child: true, citizenship_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1442-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_colorado_works_child_care_eligible: false, cccap_is_eligible_child: false}, expect: false}
+  - {id: CO-1442-T4, title: "F-02: questionable, but the family is in its homelessness stabilization period (3.121.B.5)", month: "2026-10", as_of: "2026-10-01", given: {cccap_colorado_works_child_care_eligible: false, cccap_is_eligible_child: true, citizenship_attestation_is_questionable: true, cccap_is_in_homelessness_stabilization: true}, expect: false}
+  - {"id": "CO-1442-T5", "title": "X5-3: CO-1442-T1's household, a Colorado Works Child Care household (cccap_colorado_works_child_care_eligible): Colorado Works supplies it (3.116.C-F), false", "month": "2026-10", "as_of": "2026-10-01", "given": {"cccap_colorado_works_child_care_eligible": true, "cccap_household_members": ["p1"], "cccap_is_eligible_child": true, "citizenship_attestation_is_questionable": true}, "expect": false}

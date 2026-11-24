@@ -1,0 +1,13 @@
+id: CO-1205
+name: Home Care Allowance need for paid care score
+identifier: hca_need_for_paid_care_score
+kind: supplied
+type: whole number
+scope: person
+program: AdultFinancial
+meaning: The person's Home Care Allowance need-for-paid-care score - the sum, over the activities of daily living, of the need for paid care scale (0 none, 1 weekly, 2 daily, 3 twice daily), with care already provided through another program, agency or individual scored zero and skilled personal care excluded, per 9 CCR 2503-5 3.570.13.C.2 and 3.570.14.A, C, E.
+supplied_by: Case Management Agency functional assessment (State Department prescribed form).
+sources: [S714, S715]
+tags: [cash, disability, medical]
+rationale: No existing fact states the HCA need-for-paid-care score; af_hca_tier (CO-1216) needs it alongside hca_functional_capacity_score (CO-1204).
+nearest: [CO-1204]

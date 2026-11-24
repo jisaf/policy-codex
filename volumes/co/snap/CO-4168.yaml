@@ -1,0 +1,18 @@
+id: CO-4168
+name: "SNAP: is a destitute household's month of application"
+identifier: snap_is_destitute_application_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "The month is the month of this household's SNAP application and the household is a migrant or seasonal farmworker household destitute of income, so its eligibility and benefit for the month count only the income received between the first of the month and the date of application (10 CCR 2506-1 4.406.1.A; 7 CFR 273.10(e)(3))."
+precision: "The destitute finding is the case fact is_destitute_migrant_or_seasonal_farmworker (CO-055), which is considered only for the first month of a certification period (4.406), the month of application here; it is read as false when not stated, as the expedited service test reads it (CO-348). Income from a new source over $25 not received or anticipated within ten days (4.406.1.B) is income received after the date of application, so the after-the-date facts (CO-4166, CO-4167) already leave it out. Coverage review snap-financial CF-22: 4.406 also applies the destitute rule to the first month of a certification period at recertification; the volume states no certification period start, so a recertification reads the month of its own application date (snap_application_date), which is the month this item tests."
+derived: [all, [otherwise, is_destitute_migrant_or_seasonal_farmworker, false], ["=", [month], [month_of, snap_application_date]]]
+sources: [S2964, S1018]
+implemented: engine
+tags: [snap, income]
+rationale: "Final verification pass 2 N-6: is_destitute_migrant_or_seasonal_farmworker (CO-055) was read only by expedited service; the month-of-application income rule of 4.406.1.A had no item. snap_person_earned_income (CO-330) and snap_person_unearned_income (CO-331) read this one."
+tests:
+  - {id: CO-4168-T1, title: "A destitute farmworker household, the month it applied", as_of: "2026-10-12", month: "2026-10", given: {is_destitute_migrant_or_seasonal_farmworker: true, snap_application_date: "2026-10-12"}, expect: true}
+  - {id: CO-4168-T2, title: "The same household, the next month - full income", as_of: "2026-10-12", month: "2026-11", given: {is_destitute_migrant_or_seasonal_farmworker: true, snap_application_date: "2026-10-12"}, expect: false}
+  - {id: CO-4168-T3, title: "Not destitute", as_of: "2026-10-12", month: "2026-10", given: {is_destitute_migrant_or_seasonal_farmworker: false, snap_application_date: "2026-10-12"}, expect: false}

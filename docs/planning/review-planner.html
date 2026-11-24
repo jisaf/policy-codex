@@ -1,0 +1,258 @@
+<title>Codex Review Planner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a results band (end date + chart) over two working panels (time per item, roles). */
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --ink: #18212f; --ink2: #4b5566; --ink3: #7a8494; --line: #dde1e7;
+  --accent: #1f5f8b; --accent-soft: #e3edf5; --bar: #aeb5bf; --ref: #8a93a0; --warn: #9a5b00; --warn-soft: #fbf0dc;
+  --sans: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12161c; --panel: #1a2028; --ink: #e8ecf1; --ink2: #b6bfcb; --ink3: #8a94a2; --line: #2d3540;
+  --accent: #6fb0e0; --accent-soft: #1c2e3d; --bar: #5d6774; --ref: #7d8794; --warn: #e3a95a; --warn-soft: #2e2416; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12161c; --panel: #1a2028; --ink: #e8ecf1; --ink2: #b6bfcb; --ink3: #8a94a2; --line: #2d3540;
+  --accent: #6fb0e0; --accent-soft: #1c2e3d; --bar: #5d6774; --ref: #7d8794; --warn: #e3a95a; --warn-soft: #2e2416; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 20px; }
+h1 { font-size: 1.6rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-size: 1rem; margin: 0 0 4px; }
+.lede { color: var(--ink2); margin: 6px 0 0; max-width: 70ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; min-width: 0; }
+.result { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.headline .big { font: 600 2.4rem/1.05 var(--mono); color: var(--accent); font-variant-numeric: tabular-nums; }
+.headline .unit { font-size: .95rem; color: var(--ink2); }
+.headline p { margin: 8px 0 0; color: var(--ink2); font-size: .92rem; }
+.headline .crit { color: var(--ink); font-weight: 600; }
+.chartbox { overflow-x: auto; }
+.chartbox svg { display: block; width: 100%; height: auto; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.help { color: var(--ink3); font-size: .85rem; margin: 2px 0 12px; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink3); font-weight: 600; padding: 6px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 5px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th.grp { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+thead th[rowspan] { vertical-align: bottom; }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+input[type=number] { width: 4.6em; font: 500 .9rem var(--mono); padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); text-align: right; }
+input[type=number]:focus-visible, button:focus-visible, input[type=checkbox]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input.changed { border-color: var(--warn); background: var(--warn-soft); }
+.rowname { font-weight: 600; }
+.sub { color: var(--ink3); font-size: .8rem; font-weight: 400; display: block; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+button { font: 600 .85rem var(--sans); padding: 6px 12px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--ink2); }
+.weeks { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.weeks.max { color: var(--accent); font-weight: 600; }
+.note { font-size: .8rem; color: var(--ink3); margin: 10px 0 0; }
+.tip { position: relative; cursor: help; display: inline-flex; align-items: center; gap: 5px; border-radius: 4px; }
+.tip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tipmark { display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; border: 1px solid var(--ink3); color: var(--ink3); font: 600 .66rem/1 var(--sans); flex: none; }
+.bubble { display: none; position: absolute; left: 0; top: calc(100% + 6px); z-index: 20; width: min(300px, 75vw); background: var(--ink); color: var(--panel); padding: 9px 11px; border-radius: 7px; font-size: .8rem; line-height: 1.45; font-weight: 400; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+.tip:hover .bubble, .tip:focus .bubble, .tip:focus-within .bubble { display: block; }
+@media (max-width: 860px) { .result, .grid2 { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: no-preference) { .bar-g { transition: opacity .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>How long will the Colorado codex review take?</h1>
+    <p class="lede">Change the time each kind of item takes, or a role's hours, reviewers and sign-off time. Roles work in parallel, so the slowest role sets the end date. Starting values are the estimates in the review workload doc, from the codex as of 24 Nov 2026.</p>
+  </header>
+
+  <section class="panel result" aria-live="polite">
+    <div class="headline">
+      <h2>End date</h2>
+      <div><span class="big" id="endWeeks">25–65</span> <span class="unit">weeks</span></div>
+      <p id="endMonths">about 6 to 15 months</p>
+      <p>Slowest role: <span class="crit" id="critRole">Medicaid policy owner</span></p>
+      <p id="totalHours">2,200 to 5,900 person-hours in all</p>
+    </div>
+    <div class="chartbox" id="chart" role="img" aria-label="Weeks of work per role, low to high"></div>
+  </section>
+
+  <div class="grid2">
+    <section class="panel">
+      <h2>Time per item</h2>
+      <p class="help">Minutes for one reviewer to sign or settle one, low and high. Hover or tap a kind for examples.</p>
+      <table id="tiers"><thead><tr><th>Kind</th><th class="num">Low</th><th class="num">High</th><th class="num">Count</th></tr></thead><tbody></tbody></table>
+      <div class="toolbar" style="margin-top:12px">
+        <label class="chk"><input type="checkbox" id="decisionsFirst" checked> Product decisions come first</label>
+      </div>
+      <p class="note">Counts are sign-offs: an item that needs three roles counts three times. Easy: a plain fact, short rule or single figure. Hard: a program outcome, household or unit composition, or a shared fact carrying an interpretation.</p>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar" style="justify-content:space-between">
+        <h2>Roles</h2>
+        <div class="toolbar"><button id="splitBusiest">Split the four busiest</button><button id="reset">Reset all</button></div>
+      </div>
+      <p class="help">Hours a week per reviewer and the number of reviewers sharing the role. Sign-off &amp; meetings is work that does not grow with the item count: confirming the program's stored households and outcomes as a whole, and working sessions on the product decisions and known limits.</p>
+      <div class="tablewrap">
+        <table id="roles"><thead><tr><th rowspan="2">Role</th><th class="num" rowspan="2">Hours / wk</th><th class="num" rowspan="2">Reviewers</th><th class="grp" colspan="2">Sign-off &amp; meetings</th><th class="num" rowspan="2">Weeks</th></tr><tr><th class="num">hrs low</th><th class="num">hrs high</th></tr></thead><tbody></tbody></table>
+      </div>
+      <p class="note">Not included: rework if items are signed before the product decisions, waiting for meetings or documents, engineering time, leave. A role split between reviewers is assumed to divide its load equally.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+(() => {
+  const TIERS = [
+    { key: "E", label: "Easy item", lo: 3, hi: 10, tip: "A plain fact, a short rule or a single dated figure; can be signed in batches. Facts: date of birth; self-employment start date; how the home is heated. Rules: is entitled to Medicare; a person's SNAP gross income. Figures: SNAP elderly age (60); a CCCAP parent-fee band limit." },
+    { key: "M", label: "Medium item", lo: 20, hi: 45, tip: "A read of the rule and its source. Facts: SNAP medical expenses at last certification; serving a SNAP fraud disqualification. Rules: SNAP averaging of self-employment income; Adult Financial countable vehicles. Figures: SNAP gross income limit by household size; Colorado Works grant standard by number of children." },
+    { key: "H", label: "Hard item", lo: 60, hi: 180, tip: "Discussion, worked cases or cross-program impact. Facts: state of residence (it carries a Colorado Works intent test); support from a sponsor; the income and resource record lists. Rules: SNAP allotment (an outcome); lives with; SNAP household countable resources; CCCAP eligible activity." },
+    { key: "qE", label: "Easy question", lo: 15, hi: 30, tip: "One program, one or two rules. Example: what \"a part-time student who is not a full-time employee\" means in Colorado Works." },
+    { key: "qM", label: "Medium question", lo: 60, hi: 120, tip: "One program, three to five rules. Example: whether a pregnant applicant under 19 is a CHP+ prenatal care client." },
+    { key: "qH", label: "Hard question", lo: 180, hi: 360, tip: "Several programs, six or more rules, or needs Legal. Examples: the five-year rule exemptions for refugees and asylees; the day of the month a SNAP age is taken." },
+  ];
+  // Sign-offs per role and tier, from the codex's approval policy and open questions (24 Nov 2026).
+  const ROLES = [
+    { id: "medicaid", name: "Medicaid policy owner", c: { E: 760, M: 403, H: 184, qE: 35, qM: 28, qH: 9 }, fx: [40, 100] },
+    { id: "cash", name: "Cash programs policy owner", c: { E: 611, M: 204, H: 170, qE: 32, qM: 17, qH: 11 }, fx: [50, 120] },
+    { id: "snap", name: "SNAP policy owner", c: { E: 594, M: 198, H: 166, qE: 12, qM: 6, qH: 6 }, fx: [41, 95] },
+    { id: "ops", name: "Eligibility operations owner", c: { E: 155, M: 127, H: 169, qE: 1, qM: 2, qH: 1 }, fx: [5, 10] },
+    { id: "data", name: "Data steward", c: { E: 374, M: 333, H: 54, qE: 0, qM: 0, qH: 0 }, fx: [10, 20] },
+    { id: "cccap", name: "Child care policy owner (CDEC)", c: { E: 99, M: 77, H: 67, qE: 16, qM: 7, qH: 7 }, fx: [25, 60] },
+    { id: "chp", name: "CHP+ policy owner", c: { E: 437, M: 50, H: 76, qE: 2, qM: 2, qH: 0 }, fx: [10, 25] },
+    { id: "legal", name: "Legal", c: { E: 157, M: 83, H: 39, qE: 4, qM: 6, qH: 7 }, fx: [10, 30] },
+    { id: "leap", name: "Energy assistance (LEAP) policy owner", c: { E: 56, M: 33, H: 52, qE: 14, qM: 4, qH: 5 }, fx: [17, 40] },
+    { id: "ltss", name: "LTSS policy owner", c: { E: 83, M: 72, H: 11, qE: 6, qM: 3, qH: 0 }, fx: [10, 25] },
+    { id: "cde", name: "School meals (CDE) co-approver", c: { E: 29, M: 22, H: 9, qE: 3, qM: 0, qH: 0 }, fx: [3, 8] },
+    { id: "spc", name: "State plan coordinator", c: { E: 32, M: 11, H: 7, qE: 0, qM: 3, qH: 0 }, fx: [0, 0] },
+    { id: "finance", name: "Premium and finance owner", c: { E: 15, M: 10, H: 6, qE: 2, qM: 1, qH: 0 }, fx: [0, 0] },
+    { id: "po", name: "Product owner (decisions)", c: { E: 0, M: 0, H: 0, qE: 0, qM: 0, qH: 0 }, fx: [38, 96], decisions: true },
+  ];
+  const BUSIEST = ["medicaid", "cash", "snap", "ops"];
+  const KEY = "codex-review-planner-v1";
+
+  const defaults = () => ({
+    tiers: Object.fromEntries(TIERS.map(t => [t.key, { lo: t.lo, hi: t.hi }])),
+    roles: Object.fromEntries(ROLES.map(r => [r.id, { hpw: 20, n: 1, fxLo: r.fx[0], fxHi: r.fx[1] }])),
+    decisionsFirst: true,
+  });
+  let S = defaults();
+  try { const saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved && saved.tiers && saved.roles) S = Object.assign(defaults(), saved); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+  const D = defaults();
+
+  const fmt = n => Math.round(n).toLocaleString("en-US");
+  const wk = n => (n < 10 ? Math.round(n * 10) / 10 : Math.round(n));
+
+  function compute() {
+    const out = ROLES.map(r => {
+      const st = S.roles[r.id];
+      let lo = st.fxLo, hi = st.fxHi;
+      for (const t of TIERS) { lo += r.c[t.key] * S.tiers[t.key].lo / 60; hi += r.c[t.key] * S.tiers[t.key].hi / 60; }
+      const cap = Math.max(0.5, st.hpw) * Math.max(1, st.n);
+      return { r, hLo: lo, hHi: hi, wLo: lo / cap, wHi: hi / cap };
+    });
+    const others = out.filter(o => !o.r.decisions);
+    const po = out.find(o => o.r.decisions);
+    const slowLo = Math.max(...others.map(o => o.wLo)), slowHi = Math.max(...others.map(o => o.wHi));
+    const crit = others.slice().sort((a, b) => b.wHi - a.wHi)[0];
+    const endLo = S.decisionsFirst ? po.wLo + slowLo : Math.max(slowLo, po.wLo);
+    const endHi = S.decisionsFirst ? po.wHi + slowHi : Math.max(slowHi, po.wHi);
+    const totLo = out.reduce((s, o) => s + o.hLo, 0), totHi = out.reduce((s, o) => s + o.hHi, 0);
+    return { out, endLo, endHi, crit, totLo, totHi };
+  }
+
+  // ---------- inputs ----------
+  function numInput(value, def, onChange, label, min = 0, step = 1) {
+    const i = document.createElement("input");
+    i.type = "number"; i.min = min; i.step = step; i.value = value; i.setAttribute("aria-label", label);
+    i.classList.toggle("changed", Number(value) !== Number(def));
+    i.addEventListener("input", () => { const v = Number(i.value); if (!Number.isFinite(v) || v < min) return; onChange(v); i.classList.toggle("changed", v !== Number(def)); save(); render(); });
+    return i;
+  }
+  function buildTiers() {
+    const tb = document.querySelector("#tiers tbody"); tb.textContent = "";
+    for (const t of TIERS) {
+      const tr = document.createElement("tr");
+      const count = ROLES.reduce((s, r) => s + r.c[t.key], 0);
+      tr.innerHTML = `<td><span class="tip" tabindex="0" aria-describedby="tip-${t.key}">${t.label}<span class="tipmark" aria-hidden="true">i</span><span class="bubble" role="tooltip" id="tip-${t.key}">${t.tip}</span></span></td><td class="num"></td><td class="num"></td><td class="num">${fmt(count)}</td>`;
+      tr.children[1].append(numInput(S.tiers[t.key].lo, D.tiers[t.key].lo, v => S.tiers[t.key].lo = v, `${t.label}, low minutes`));
+      tr.children[2].append(numInput(S.tiers[t.key].hi, D.tiers[t.key].hi, v => S.tiers[t.key].hi = v, `${t.label}, high minutes`));
+      tb.append(tr);
+    }
+  }
+  function buildRoles() {
+    const tb = document.querySelector("#roles tbody"); tb.textContent = "";
+    for (const r of ROLES) {
+      const st = S.roles[r.id], d = D.roles[r.id];
+      const items = r.c.E + r.c.M + r.c.H, qs = r.c.qE + r.c.qM + r.c.qH;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td><span class="rowname">${r.name}</span><span class="sub">${r.decisions ? "5 decisions, 9 known limits" : `${fmt(items)} items · ${qs} questions`}</span></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num weeks" id="w-${r.id}"></td>`;
+      tr.children[1].append(numInput(st.hpw, d.hpw, v => st.hpw = v, `${r.name}, hours per week`, 1));
+      tr.children[2].append(numInput(st.n, d.n, v => st.n = Math.max(1, Math.round(v)), `${r.name}, reviewers`, 1));
+      tr.children[3].append(numInput(st.fxLo, d.fxLo, v => st.fxLo = v, `${r.name}, sign-off and meeting hours, low`));
+      tr.children[4].append(numInput(st.fxHi, d.fxHi, v => st.fxHi = v, `${r.name}, sign-off and meeting hours, high`));
+      tb.append(tr);
+    }
+  }
+
+  // ---------- chart ----------
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; }
+  function drawChart(res) {
+    const rows = [{ name: "End to end", lo: res.endLo, hi: res.endHi, total: true }]
+      .concat(res.out.slice().sort((a, b) => b.wHi - a.wHi).map(o => ({ name: o.r.name + (S.roles[o.r.id].n > 1 ? ` (×${S.roles[o.r.id].n} reviewers)` : ""), lo: o.wLo, hi: o.wHi, crit: o === res.crit, hpw: S.roles[o.r.id].hpw })));
+    const box = document.getElementById("chart");
+    const narrow = (box.clientWidth || 760) < 560;
+    const W = narrow ? Math.max(320, box.clientWidth) : 760, left = narrow ? 150 : 290, right = narrow ? 58 : 70, y0 = 34, h = narrow ? 30 : 24;
+    const short = s => !narrow ? s : s.replace(" policy owner", "").replace("Eligibility operations owner", "Eligibility ops").replace(" (CDEC)", "").replace("Energy assistance (LEAP)", "LEAP").replace("School meals (CDE) co-approver", "School meals (CDE)").replace("State plan coordinator", "State plan").replace("Premium and finance owner", "Premium, finance").replace("Product owner (decisions)", "Product owner").replace(" reviewers)", ")");
+    const maxW = Math.max(30, Math.ceil(Math.max(...rows.map(r => r.hi)) / 10) * 10);
+    const x = v => left + v / maxW * (W - left - right);
+    const H = y0 + rows.length * h + 10;
+    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, "font-family": "Public Sans, Segoe UI, system-ui, sans-serif", "font-size": "12" });
+    // reference lines at 13-week (quarter) steps up to the scale
+    for (let v = 13; v <= maxW; v += 13) {
+      svg.append(el("line", { x1: x(v), x2: x(v), y1: y0 - 8, y2: H - 6, stroke: "var(--line)" }));
+      if (!narrow || v % 26 === 0) svg.append(el("text", { x: x(v), y: y0 - 14, "text-anchor": "middle", fill: "var(--ink3)" }, v % 52 === 0 ? `${v / 52} yr` : `${v} wk`));
+    }
+    rows.forEach((r, i) => {
+      const cy = y0 + i * h + 12;
+      const col = r.total || r.crit ? "var(--accent)" : "var(--bar)";
+      const g = el("g", { class: "bar-g" });
+      g.append(el("text", { x: left - 8, y: cy + 4, "text-anchor": "end", fill: "var(--ink)", "font-weight": r.total ? 700 : 400 }, short(r.name)));
+      const line = el("line", { x1: x(r.lo), x2: x(r.hi), y1: cy, y2: cy, stroke: col, "stroke-width": 2 });
+      const tip = el("title", {}, `${r.name}: ${wk(r.lo)} to ${wk(r.hi)} weeks`);
+      line.append(tip);
+      g.append(line);
+      g.append(el("line", { x1: x(r.lo), x2: x(r.lo), y1: cy - 4, y2: cy + 4, stroke: col, "stroke-width": 2 }));
+      g.append(el("line", { x1: x(r.hi), x2: x(r.hi), y1: cy - 4, y2: cy + 4, stroke: col, "stroke-width": 2 }));
+      const dot = el("circle", { cx: x((r.lo + r.hi) / 2), cy, r: 4.5, fill: col }); dot.append(el("title", {}, `${r.name}: ${wk(r.lo)} to ${wk(r.hi)} weeks`)); g.append(dot);
+      g.append(el("text", { x: W - 4, y: cy + 4, "text-anchor": "end", fill: r.total || r.crit ? "var(--ink)" : "var(--ink2)", "font-family": "IBM Plex Mono, ui-monospace, monospace" }, `${wk(r.lo)}–${wk(r.hi)}`));
+      svg.append(g);
+    });
+    box.textContent = ""; box.append(svg);
+  }
+
+  function render() {
+    const res = compute();
+    document.getElementById("endWeeks").textContent = `${wk(res.endLo)}–${wk(res.endHi)}`;
+    const m = w => Math.max(1, Math.round(w / 4.33));
+    document.getElementById("endMonths").textContent = `about ${m(res.endLo)} to ${m(res.endHi)} months`;
+    document.getElementById("critRole").textContent = res.crit.r.name + (S.roles[res.crit.r.id].n > 1 ? ` (×${S.roles[res.crit.r.id].n})` : "");
+    document.getElementById("totalHours").textContent = `${fmt(Math.round(res.totLo / 100) * 100)} to ${fmt(Math.round(res.totHi / 100) * 100)} person-hours in all`;
+    for (const o of res.out) {
+      const c = document.getElementById("w-" + o.r.id);
+      if (c) { c.textContent = `${wk(o.wLo)}–${wk(o.wHi)}`; c.classList.toggle("max", o === res.crit); }
+    }
+    drawChart(res);
+  }
+
+  document.getElementById("decisionsFirst").checked = S.decisionsFirst;
+  document.getElementById("decisionsFirst").addEventListener("change", e => { S.decisionsFirst = e.target.checked; save(); render(); });
+  document.getElementById("reset").addEventListener("click", () => { S = defaults(); save(); document.getElementById("decisionsFirst").checked = true; buildTiers(); buildRoles(); render(); });
+  document.getElementById("splitBusiest").addEventListener("click", () => { for (const id of BUSIEST) S.roles[id].n = 2; save(); buildRoles(); render(); });
+  buildTiers(); buildRoles(); render();
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+})();
+</script>

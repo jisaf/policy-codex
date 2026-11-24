@@ -1,0 +1,20 @@
+id: CO-4181
+name: "SNAP: majority-of-meals verification for a child is pending"
+identifier: snap_child_majority_meals_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+role: outcome
+meaning: "Whether this household must verify that it provides this child, who already receives SNAP in another household, with the majority of the child's meals, and has not done so; until it does, the child stays in the household in which the child first began receiving SNAP and is not a member of this one (10 CCR 2506-1 4.505.4.C, 4.304.2.B.4)."
+precision: "Not gated by membership of this household, unlike the other pending items: the child is not a member while this is pending (snap_is_household_member, CO-304), and becomes one when the verification is received. Where the verification is required and child_majority_of_meals_verified (CO-4179) is not stated, this outcome cannot be determined and asks for it (membership, CO-304, reads it as not verified). Due by: snap_verification_due_date (CO-1392)."
+derived: [all, snap_requires_verification_of_child_majority_meals, [not, child_majority_of_meals_verified]]
+sources: [S2969]
+implemented: engine
+tags: [verification, snap, household]
+rationale: "Final verification pass 2 V-13: no outcome told a worker that a duplicate child's meals verification was outstanding."
+nearest: [CO-1607]
+tests:
+  - {id: CO-4181-T1, title: "Requested, not yet verified", month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_child_majority_meals: true, child_majority_of_meals_verified: false}, expect: true}
+  - {id: CO-4181-T2, title: "Verified", month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_child_majority_meals: true, child_majority_of_meals_verified: true}, expect: false}
+  - {id: CO-4181-T3, title: "Not required", month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_child_majority_meals: false}, expect: false}

@@ -1,0 +1,12 @@
+id: CO-2243
+name: Sale efforts verification document received
+identifier: sale_efforts_verification_document_received
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether verification of the person's continuing efforts to sell real property has been received for the calendar quarter that contains this month.
+supplied_by: Documents received and logged in the case file.
+sources: [S1514]
+tags: [verification, resources]
+rationale: "OQ-379: § 8.100.5.M.2.b.v requires the verification quarterly; no fact stated its receipt."

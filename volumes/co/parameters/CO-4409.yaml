@@ -1,0 +1,13 @@
+id: CO-4409
+name: "Home Care Allowance: the thirty days of an absence from the State or a facility stay"
+identifier: af_hca_absence_max_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The thirty calendar days of 9 CCR 2503-5 3.570.17.C.8.b (a client who leaves the State with the intent to return within thirty days is not discontinued, and one who fails to return is discontinued on day thirty-one) and C.4.b (a hospital or other long-term care facility stay that continues for thirty calendar days or more)."
+precision: "C.8.b is compared with > (day thirty-one, counting the days from the date the client left), C.4.b with >= (thirty days or more, from the entry date); read by af_hca_eligibility_status (CO-1217)."
+value: 30
+sources: [S3202]
+tags: [cash, oap, and]
+rationale: "Coverage review F-1 and P2-4: the figure of 3.570.17.C.4.b and C.8.b (S3202)."

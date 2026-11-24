@@ -5,7 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: The county department has granted this person a good-cause hardship extension of the sixty-month time limit under 26-2-706.5(4)(a)(III), C.R.S. and 9 CCR 2503-6 3.606.6.C.
+meaning: The county department has granted this person a good-cause hardship extension of the sixty-month time limit under 26-2-706.5(4)(a)(III), C.R.S. and 9 CCR 2503-6 3.606.6.C - good cause as defined in 3.601 and outlined in 3.608.3, decided with the state prescribed extension determination form, for a hardship of 3.606.6.D (disability, involvement in the judicial system, family instability, inadequate or unavailable child care, housing, transportation or employment, or another hardship reason listed on that form).
+precision: "The statewide twenty percent limit of 3.606.6.G (S1313) is a condition on the grant, not a separate test: \"The State Department has the sole responsibility of monitoring this federal limit. County departments are not restricted to a certain number of extensions unless the Statewide limit is reached.\" A county grant recorded here is one made within that limit (OQ-142)."
 supplied_by: County department hardship determination (case record).
-sources: [S417]
+sources: [S3154, S1021, S1313]
 rationale: No existing fact captures this determination; cw_time_limit_exempt (CO-918) needs it, distinct from the domestic violence waiver (CO-846) because 3.606.6.C lists hardship and domestic violence as separate grounds.

@@ -1,0 +1,15 @@
+id: CO-3339
+name: Long-term care services received
+identifier: ltc_services_received
+kind: supplied
+type: one of
+options: [none, hcbs_waiver, pace]
+scope: person
+program: All
+meaning: "The long-term services and supports the person is enrolled in and receiving through Health First Colorado on the determination date, as the enrollment record shows: Home and Community Based Services under a waiver (hcbs_waiver), the Program of All-Inclusive Care for the Elderly (pace), or none. A nursing facility or other institutional stay is the setting (residence_setting_type), not this record."
+precision: "A record, not this volume's determination: ma_ltc_setting_requested (CO-2411) is the setting the person asks for, and meets_hcbs_waiver_target_group (CO-821) the waiver a person meets or applies under."
+supplied_by: "CBMS / MMIS enrollment record."
+sources: [S354, S712]
+implemented: engine
+tags: [ma, ltc, hcbs]
+rationale: "Dual-entry audit 3.20 and same-word SW-24 (HCBS and PACE receipt): receiving HCBS and enrollment in PACE were two separate supplied facts beside the request; one enrollment record states which, and receives_hcbs_services (CO-1207) and is_enrolled_in_pace (CO-885) are derived from it."

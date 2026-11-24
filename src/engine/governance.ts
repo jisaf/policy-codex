@@ -1,8 +1,12 @@
 import type { LedgerIndex } from "./ledger-index";
-import { buildGraph } from "./graph";
+import { buildGraph, type DependencyGraph } from "./graph";
+import { usesOf } from "./check";
 import { compact } from "./render";
 import { tagIds } from "./tags";
-import type { Expr, Item, VolumeMeta } from "./types";
+import { approvalsFor } from "./constraints";
+import { staleApprovalMessage, type FingerprintBasis } from "./fingerprint";
+import { linkFindings } from "./links";
+import type { EngineRefs, Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
  *  is always false; the field exists so a finding reads like a constraint. */
@@ -25,10 +29,12 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "all", "any", "not", "unknown", "otherwise", "case", "else",
   "<", "<=", ">", ">=", "=", "in",
   "+", "-", "*", "/", "min",
-  "years_between", "first_day", "month_of", "month_before", "month_after",
-  "months_ending", "months_from_to", "months_after", "months_before",
-  "at", "each", "some_month", "count_months", "avg",
-  "exists", "exists_related", "rel", "in_group", "of", "lookup",
+  "years_between", "first_day", "month_of", "month_of_year", "year_of", "month_before", "month_after",
+  "months_ending", "months_from_to", "months_after", "months_before", "days_after", "days_between",
+  "at", "each", "some_month", "count_months", "avg", "sum_months", "that_month",
+  "sum_receipts", "largest", "receipt", "received_in", "owner", "greatest",
+  "exists", "exists_related", "rel", "in_group", "of", "lookup", "band", "lookup_extended",
+  "latest_month_of_year", "as_of",
   "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative", "has_relative_in",
 ]);
 
@@ -86,7 +92,7 @@ function mask(ix: LedgerIndex, e: Expr): Expr {
   if (op === "rel" || op === "exists_related") {
     return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   }
-  if (op === "shared_relative") return [op, MASK];
+  if (op === "shared_relative") return e.length > 2 ? [op, MASK, e[2]] : [op, MASK];
   if (op === "has_relative_in") return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   if (op === "reachable") {
     const out: unknown[] = [op, (e[1] as unknown[] || []).map(() => MASK)];
@@ -120,6 +126,7 @@ function derivationKeys(ix: LedgerIndex, it: Item): DerivationKeys {
  *  meaning terms. Returns the winning Jaccard, or null when not close. */
 function similarity(
   a: Item, aTokens: ReadonlySet<string>, aTerms: ReadonlySet<string>, b: Item,
+  bTokens: ReadonlySet<string>, bTerms: ReadonlySet<string>,
 ): number | null {
   if (a.type !== b.type || a.scope !== b.scope || a.program !== b.program) return null;
   const aSources = a.sources || [];
@@ -127,21 +134,58 @@ function similarity(
   if (aSources.length && bSources.length && !aSources.some((s) => bSources.includes(s))) {
     return null;
   }
-  const byName = jaccard(aTokens, identifierTokens(b.identifier));
-  const byMeaning = jaccard(aTerms, meaningTokens(b.meaning));
+  const byName = jaccard(aTokens, bTokens);
+  const byMeaning = jaccard(aTerms, bTerms);
   if (byName >= 0.5 || byMeaning >= 0.35) return Math.max(byName, byMeaning);
   return null;
 }
 
+/** What the duplicate scan compares, per item: its derivation keys and its
+ *  identifier and meaning terms. The scan compares every item with every
+ *  other, so these are computed once per item and index rather than once per
+ *  pair (the masked key depends on the index: which names are parameters).
+ *  An entry is reused only while the item's derivation, identifier and
+ *  meaning are the ones it was computed from. */
+interface ComparisonKeys {
+  derived: Expr | undefined; identifier: string; meaning: string | undefined;
+  keys: DerivationKeys; tokens: Set<string>; terms: Set<string>;
+}
+
+const comparisonCache = new WeakMap<LedgerIndex, WeakMap<Item, ComparisonKeys>>();
+
+function comparisonKeys(ix: LedgerIndex, it: Item): ComparisonKeys {
+  let byItem = comparisonCache.get(ix);
+  if (!byItem) { byItem = new WeakMap(); comparisonCache.set(ix, byItem); }
+  const hit = byItem.get(it);
+  if (hit && hit.derived === it.derived && hit.identifier === it.identifier && hit.meaning === it.meaning) return hit;
+  const entry: ComparisonKeys = {
+    derived: it.derived, identifier: it.identifier, meaning: it.meaning,
+    keys: derivationKeys(ix, it), tokens: identifierTokens(it.identifier), terms: meaningTokens(it.meaning),
+  };
+  byItem.set(it, entry);
+  return entry;
+}
+
+const graphCache = new WeakMap<LedgerIndex, { items: number; graph: DependencyGraph }>();
+
+/** The index's dependency graph, built once per index (as the approval
+ *  policy's upstream sets are, src/engine/constraints.ts) rather than once
+ *  per supplied fact governed. Rebuilt if items were added to the index. */
+function graphOf(ix: LedgerIndex): DependencyGraph {
+  const hit = graphCache.get(ix);
+  if (hit && hit.items === ix.items.length) return hit.graph;
+  const graph = buildGraph(ix);
+  graphCache.set(ix, { items: ix.items.length, graph });
+  return graph;
+}
+
 /** Every candidate, strongest reason per item, sorted. `nearest` caps this. */
 function candidates(ix: LedgerIndex, it: Item): Candidate[] {
-  const mine = derivationKeys(ix, it);
-  const tokens = identifierTokens(it.identifier);
-  const terms = meaningTokens(it.meaning);
+  const { keys: mine, tokens, terms } = comparisonKeys(ix, it);
   const out: Candidate[] = [];
   for (const other of ix.items) {
     if (other.id === it.id) continue;
-    const theirs = derivationKeys(ix, other);
+    const { keys: theirs, tokens: otherTokens, terms: otherTerms } = comparisonKeys(ix, other);
     if (mine.exact && theirs.exact && mine.exact === theirs.exact) {
       out.push({
         id: other.id, identifier: other.identifier,
@@ -155,7 +199,7 @@ function candidates(ix: LedgerIndex, it: Item): Candidate[] {
       });
       continue;
     }
-    const score = similarity(it, tokens, terms, other);
+    const score = similarity(it, tokens, terms, other, otherTokens, otherTerms);
     if (score !== null) {
       out.push({ id: other.id, identifier: other.identifier, reason: "similar", score });
     }
@@ -177,7 +221,12 @@ export function nearest(ix: LedgerIndex, it: Item, _meta: VolumeMeta): Candidate
 /** The phase-2 governance rules. These run beside `constraints()` and never
  *  repeat what it already checks. */
 export function governance(
-  ix: LedgerIndex, meta: VolumeMeta, it: Item, opts: { isNew?: boolean } = {},
+  ix: LedgerIndex, meta: VolumeMeta, it: Item,
+  opts: {
+    isNew?: boolean; refs?: EngineRefs | null; today?: string;
+    /** The ledger at the base ref, so a stale approval names what changed. */
+    baseline?: FingerprintBasis | null;
+  } = {},
 ): Finding[] {
   const F: Finding[] = [];
   const err = (rule: string, msg: string) => F.push({ ok: false, level: "error", rule, msg });
@@ -202,7 +251,16 @@ export function governance(
     err("vocab.scope", `Scope "${it.scope}" is not declared in volume.yaml`);
   }
 
-  // 2. Naming grammar.
+  // 2. Naming grammar. An id names one item for good; a second item with the
+  //    same id makes every citation of it ambiguous.
+  //    An edit or rename of an existing item is checked under that item's id
+  //    while the old version is still in the index, so one other holder is
+  //    expected then; a new item and an item already in the ledger expect none.
+  const sameId = ix.items.filter((o) => o.id === it.id && o !== it);
+  const expected = ix.items.includes(it) || opts.isNew ? 0 : 1;
+  if (sameId.length > expected) {
+    err("id.duplicate", `Id ${it.id} is also used by ${sameId.map((o) => o.identifier).join(", ")}`);
+  }
   if (!NAME_RE.test(identifier)) {
     err("name.grammar", `Identifier "${identifier}" is not lower_snake_case`);
   }
@@ -240,6 +298,22 @@ export function governance(
             `"${other.prefix}", which ${other.id} owns`,
         );
       }
+    }
+  }
+
+  // 2b. A supplied fact whose program is one program's states that program's
+  //     meaning, so it carries the program's prefix (docs/conventions.md
+  //     rule 13: a finding made outside this volume, recorded as an event,
+  //     keeps the finding program's prefix; anything else is made neutral).
+  //     A warning: the remedy is a rename or a neutral rewrite.
+  if (meta.programs && it.kind === "supplied") {
+    const own = meta.programs.find((p) => p.id === it.program);
+    if (own && own.prefix && !identifier.startsWith(own.prefix)) {
+      warn(
+        "name.prefix",
+        `${own.id} supplied facts carry "${own.prefix}" (a finding recorded as an event) ` +
+          `or are made program-neutral; "${identifier}" does neither`,
+      );
     }
   }
 
@@ -321,9 +395,64 @@ export function governance(
     }
   }
 
+  // 8a. Cross-program links (src/engine/links.ts; docs/conventions.md
+  //     "Cross-program links"): a shared rule declares its class, and a rule
+  //     reads another program's item only through a declared, cited link.
+  F.push(...linkFindings(ix, meta, it, opts.refs));
+
+  // 8a'. Siblings (docs/governance.md "Change impact"): a deliberate
+  //      per-program copy names its siblings, each with a reason, and each
+  //      sibling names it back, so a change to one flags the others.
+  for (const s of it.siblings ?? []) {
+    const other = ix.byId.get(s.id);
+    if (!other) {
+      err("siblings.symmetric", `siblings names ${s.id}, which is not in the ledger`);
+      continue;
+    }
+    if (other.id === it.id) {
+      err("siblings.symmetric", "an item is not its own sibling");
+      continue;
+    }
+    if (!(s.reason || "").trim()) {
+      err("siblings.symmetric", `siblings ${s.id}: give a one-line reason`);
+    }
+    if (!(other.siblings ?? []).some((o) => o.id === it.id)) {
+      err("siblings.symmetric", `siblings names ${s.id} ${other.identifier}, which does not name ${it.id} back`);
+    }
+  }
+
+  // 8b. An unprefixed derived item has one meaning (docs/conventions.md rule
+  //     15). One whose meaning names programs (a definition several programs
+  //     adopt) is read only by those programs; a reader of another program
+  //     reads its own prefixed item. A meaning that names no program is a
+  //     neutral combination of neutral facts and is not checked.
+  if (it.kind === "derived" && it.derived !== undefined && it.derived !== null && meta.programs &&
+      it.program !== "All") {
+    const namesOf = (p: { id: string; names?: string[] }) => [p.id, ...(p.names ?? [])];
+    const mentions = (text: string, p: { id: string; names?: string[] }) =>
+      namesOf(p).some((n) => new RegExp(`(^|[^A-Za-z])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`).test(text));
+    const reader = meta.programs.find((p) => p.id === it.program);
+    let refs: string[] = [];
+    try { refs = usesOf(ix, it.derived); } catch { refs = []; }
+    for (const r of [...new Set(refs)].sort()) {
+      const dep = ix.byIdentifier.get(r);
+      if (!dep || dep.kind !== "derived" || dep.program !== "All" || !reader) continue;
+      const text = dep.meaning || "";
+      const named = meta.programs.filter((p) => p.id !== "All" && mentions(text, p));
+      if (named.length && !mentions(text, reader)) {
+        warn(
+          "read.shared_definition",
+          `${it.program} rule reads ${r} (${dep.id}), a shared definition whose meaning names ` +
+            `${named.map((p) => p.id).join(", ")} but not ${it.program}; read ${it.program}'s own item, ` +
+            "or name the program in the shared meaning if its definition is the same",
+        );
+      }
+    }
+  }
+
   // 8. Bespoke inputs stay visible: a supplied fact with a single consumer.
   if (it.kind === "supplied") {
-    const consumers = buildGraph(ix).usedBy.get(identifier) ?? [];
+    const consumers = graphOf(ix).usedBy.get(identifier) ?? [];
     if (consumers.length === 1) {
       const c = ix.byIdentifier.get(consumers[0]);
       warn(
@@ -331,6 +460,90 @@ export function governance(
         `Only ${c ? c.name : consumers[0]} (${consumers[0]}) consumes this supplied fact`,
       );
     }
+  }
+
+  // 9. Provenance: an excerpt that could not be fetched is marked
+  //    `Verification: unverified` in sources.md (docs/design-colorado.md,
+  //    "Sources and provenance"). Every item citing one is warned on until
+  //    the excerpt is replaced by a quotation, and such an item cannot be
+  //    Reviewed or Approved.
+  const unverified = new Set(opts.refs?.unverifiedSourceIds ?? []);
+  const cited = [
+    ...(it.sources ?? []),
+    ...(it.versions ?? []).map((v) => v.source).filter((s): s is string => !!s),
+  ];
+  const unverifiedCited = [...new Set(cited.filter((s) => unverified.has(s)))].sort();
+  for (const s of unverifiedCited) {
+    warn(
+      "source.unverified",
+      `Cites ${s}, an excerpt marked "Verification: unverified"; replace it with a ` +
+        "quotation of the fetched text before this item moves past Draft",
+    );
+  }
+  if (it.status && it.status !== "Draft" && unverified.size) {
+    // The item and everything it reads, directly or through other items.
+    const uses = graphOf(ix).uses;
+    const seen = new Set<string>();
+    const stack = [identifier];
+    const tainted = new Set<string>();
+    while (stack.length) {
+      const id = stack.pop()!;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const dep = ix.byIdentifier.get(id);
+      if (dep) {
+        const srcs = [...(dep.sources ?? []), ...(dep.versions ?? []).map((v) => v.source ?? "")];
+        for (const s of srcs) if (unverified.has(s)) tainted.add(s);
+      }
+      for (const d of uses.get(id) ?? []) stack.push(d);
+    }
+    if (tainted.size) {
+      err(
+        "status.unverified",
+        `Status is ${it.status}, but the item rests on unverified ${[...tainted].sort().join(", ")}`,
+      );
+    }
+  }
+
+  // 10. Status and the approval record (docs/conventions.md, "Status",
+  //     "Approval"): an Approved item carries a signature for every role the
+  //     approval policy requires of it.
+  if (it.status && !["Draft", "Reviewed", "Approved"].includes(it.status)) {
+    err("status.value", `Status "${it.status}" is not Draft, Reviewed or Approved`);
+  }
+  for (const a of it.approval ?? []) {
+    if (!meta.approval_policy?.roles?.includes(a.role)) {
+      err("approval.role", `Approval names role "${a.role}", which volume.yaml does not declare`);
+    }
+  }
+  if (it.status === "Approved") {
+    const signed = new Set((it.approval ?? []).map((a) => a.role));
+    const missing = approvalsFor(ix, meta, it).filter((r) => !signed.has(r));
+    if (missing.length) {
+      err("approval.missing", `Approved without a signature from ${missing.join(", ")}`);
+    }
+  }
+
+  // 10b. A signature covers what was signed (docs/governance.md "Stale
+  //      approvals"): a Reviewed or Approved item whose fingerprint no longer
+  //      matches a signature's, or whose signature records none, goes back
+  //      for review. Needs the excerpt texts; without them it stands down.
+  if (opts.refs?.sourceTexts) {
+    const msg = staleApprovalMessage(
+      { ix, sourceTexts: opts.refs.sourceTexts }, it,
+      { baseline: opts.baseline },
+    );
+    if (msg) err("approval.stale", msg);
+  }
+
+  // 11. An indexed parameter names the date its next version is due; once
+  //     that date has passed the figure may be stale.
+  const today = opts.today ?? new Date().toISOString().slice(0, 10);
+  if (it.review_by && it.review_by <= today) {
+    warn(
+      "versions.review_due",
+      `The next version was due by ${it.review_by}; load the published figure and move review_by`,
+    );
   }
 
   return F;

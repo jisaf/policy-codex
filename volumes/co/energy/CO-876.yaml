@@ -1,0 +1,21 @@
+id: CO-876
+name: "LEAP: responsible for home heating costs"
+identifier: leap_is_responsible_for_heating_costs
+kind: derived
+type: yes/no
+scope: case
+program: LEAP
+meaning: "Whether the household is responsible for the costs of home heating under 9 CCR 2503-7 3.752.25.A: it pays home heating costs directly to a vendor (A.1); in non-subsidized housing, it pays them in its rent or as a separate charge in addition to rent (A.2); in subsidized housing, its unit has an individual meter for heating usage or it is subject to a heating surcharge assessed by other means (A.3); or, in a residence where more than one household resides, it contributes toward the residence's total expenses, utilities included (A.4)."
+precision: "Reads the neutral home facts once for the case (CO-3300, CO-1275, CO-1274). A landlord's bill on individual usage is A.3's individual meter, and a separate landlord charge its surcharge; heat included in the rent of subsidized housing is not responsibility (3.752.25.B.5). A.4 is read from leap_households_sharing_living_arrangement above 1 with any payment toward heat."
+derived: [any, [in, home_heating_cost_arrangement, [pays_vendor_directly, billed_by_landlord_on_usage, separate_charge_from_landlord]], [all, ["=", home_heating_cost_arrangement, included_in_rent], [not, lives_in_subsidized_housing]], [all, [">", leap_households_sharing_living_arrangement, 1], [not, ["=", home_heating_cost_arrangement, none]]]]
+sources: [S492, S513, S1402]
+implemented: engine
+tags: [household]
+rationale: "Dual-entry audit 1.14 and same-word SW-33: LEAP's responsibility for heating costs was a supplied per-member statement of LEAP's own test (CO-1004 asked whether any member stated it). It is now LEAP's derived reading of the neutral heating arrangement (CO-3300) and subsidized-housing fact (CO-1275), once for the case. The ID is kept; the identifier takes the LEAP prefix."
+tests:
+  - {id: CO-876-T1, as_of: "2026-10-01", given: {home_heating_cost_arrangement: pays_vendor_directly, lives_in_subsidized_housing: false, leap_households_sharing_living_arrangement: 1}, expect: true}
+  - {id: CO-876-T2, title: "A.2: heat in the rent of non-subsidized housing", as_of: "2026-10-01", given: {home_heating_cost_arrangement: included_in_rent, lives_in_subsidized_housing: false, leap_households_sharing_living_arrangement: 1}, expect: true}
+  - {id: CO-876-T3, title: "B.5: heat in the rent of subsidized housing, no meter or surcharge", as_of: "2026-10-01", given: {home_heating_cost_arrangement: included_in_rent, lives_in_subsidized_housing: true, leap_households_sharing_living_arrangement: 1}, expect: false}
+  - {id: CO-876-T4, title: "A.3: subsidized housing with a heating surcharge", as_of: "2026-10-01", given: {home_heating_cost_arrangement: separate_charge_from_landlord, lives_in_subsidized_housing: true, leap_households_sharing_living_arrangement: 1}, expect: true}
+  - {id: CO-876-T5, title: "Pays nothing toward heat", as_of: "2026-10-01", given: {home_heating_cost_arrangement: none, lives_in_subsidized_housing: false, leap_households_sharing_living_arrangement: 1}, expect: false}
+  - {id: CO-876-T6, title: "A.4: a shared residence, contributing toward expenses through rent", as_of: "2026-10-01", given: {home_heating_cost_arrangement: included_in_rent, lives_in_subsidized_housing: true, leap_households_sharing_living_arrangement: 2}, expect: true}

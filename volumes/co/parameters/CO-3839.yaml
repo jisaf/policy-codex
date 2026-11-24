@@ -1,0 +1,12 @@
+id: CO-3839
+name: "Adult Financial: most months of ineligibility for a transfer"
+identifier: af_twfc_max_penalty_months
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A period of ineligibility for a transfer without fair consideration \"cannot exceed 36 months regardless of the uncompensated value of the transfer\" (9 CCR 2503-5 3.520.76.E)."
+value: 36
+sources: [S2614]
+tags: [cash, resources]
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. The figure is a parameter."

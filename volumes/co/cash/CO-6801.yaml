@@ -1,0 +1,23 @@
+id: CO-6801
+name: "Adult Financial: allowable expenses of rental property"
+identifier: af_rental_expenses_deducted
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The allowable expenses of rental property this person does not actively manage that Adult Financial takes off the person's rental income for the month: \"Rental income is countable to the extent it exceeds allowable expenses. Allowable expenses are maintenance, taxes, management fees, interest on mortgage, and utilities paid, and do not include the purchase of the rental property and payments on the principal of loans for the rental property\" (9 CCR 2503-5 3.520.785.B.20): rental_property_expenses_paid (CO-4458), up to the month's receipts of kind rental_income."
+precision: "Coverage pass 4 CA4-1 (docs/reviews/coverage4-cash.md): before, the expenses were one part of unearned_income_offsetting_expenses (CO-4444), read as 0 when not stated, beside the claim and insurance expenses that are now fields of the receipt. The expenses are a fact of the person, read only when the person has rental income in the month and required then (decision 4 of 2026-11-23); they reduce only the rent, so a property whose expenses exceed its rent reduces no other income. Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since \"All income shall be countable in the month it is actually received or legally becomes available\" (9 CCR 2503-5 3.520.781.G, S4910): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["case", [["<=", ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "rental_income"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]], 0], 0], ["else", ["min", "rental_property_expenses_paid", ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "rental_income"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]]]]]
+sources: [S3212, S4910]
+implemented: engine
+tags: [cash, oap, and, income]
+nearest: [CO-4369]
+rationale: "Coverage pass 4 CA4-1: B.20's expenses stated once, in the neutral fact Colorado Works reads for 3.605.3.A.2, never as a second statement beside the receipt's own fields."
+tests:
+  # Hand computations from 3.520.785.B.20 (S3212).
+  - {id: CO-6801-T1, month: "2026-10", as_of: "2026-10-01", given: {rental_property_expenses_paid: 500, receipts: [{kind: rental_income, amount: 800}]}, title: "Probe PR-RENT: $800 of rent, $500 of taxes, maintenance and mortgage interest: 500", expect: 500}
+  - {id: CO-6801-T2, month: "2026-10", as_of: "2026-10-01", given: {rental_property_expenses_paid: 500, receipts: [{kind: rental_income, amount: 300}, {kind: social_security, amount: 600}]}, title: "Expenses above the rent are taken only up to the rent, never from other income: 300", expect: 300}
+  - {id: CO-6801-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 600}]}, title: "No rental income: the expenses are not asked", expect: 0}
+  - {id: CO-6801-T4, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: rental_income, amount: 800}]}, title: "Rent, its expenses not stated: cannot determine (decision 4)", expect: unknown}
+  # Field sweep fix round (FS-AF-1): hand-computed from 9 CCR 2503-5 3.520.781.G (S4910): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-6801-T5", "month": "2026-10", "as_of": "2026-10-01", "title": "Rent of $800 that ended 2026-09-30 (the property sold), $500 of expenses: no rent in October, nothing deducted, 0", "given": {"rental_property_expenses_paid": 500, "receipts": [{"kind": "rental_income", "amount": 800, "end_date": "2026-09-30"}]}, "expect": 0}

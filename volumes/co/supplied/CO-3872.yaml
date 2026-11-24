@@ -1,0 +1,13 @@
+id: CO-3872
+name: "Has an emergent need related to a disaster"
+identifier: has_emergent_need_from_disaster
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person has an emergent need related to the declared disaster: for example a threat to health or safety, a lack of food, clothing, shelter, transportation, personal care or medical care, or other unmet expenses (9 CCR 2503-5 3.570.52.B)."
+precision: "Read only for a person who requested disaster assistance."
+supplied_by: "Applicant statement; the county verifies it only if questionable (3.570.53.B)."
+sources: [S2624, S2625]
+tags: [cash]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. "

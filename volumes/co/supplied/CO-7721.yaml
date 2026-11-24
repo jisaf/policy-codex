@@ -1,0 +1,13 @@
+id: CO-7721
+name: Born in a hospital
+identifier: born_in_hospital
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person was born in a hospital."
+precision: "Required where read (decision 4 of 2026-11-23): Medicaid reads it only for an infant awarded SSI whose date of birth is within three months of the SSI eligibility date (ma_ssi_infant_eligible_from_birth, CO-7723; 10 CCR 2505-10 § 8.100.6.C.10.a.i.1, S5245)."
+supplied_by: "The applicant's statement on the application, or the birth record."
+sources: [S5245]
+tags: [disability]
+rationale: "Coverage pass 7, non-MAGI F7-7 (docs/reviews/coverage7-medicaid-nonmagi.md): § 8.100.6.C.10.a (S5245) dates an SSI infant's Medicaid from the date of birth when the infant was born in a hospital, the onset SSA reports fell in that hospital stay, and the birth is within three months of the SSI eligibility date; no fact stated the place of birth or the stay."

@@ -1,0 +1,13 @@
+id: CO-2120
+name: CCCAP verification request date
+identifier: cccap_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: CCCAP
+meaning: "The date of this program's own written request for verification, from which 8 CCR 1403-1 3.111.H.5.e runs the period to provide it, when it differs from the date of the shared checklist (verification_request_date)."
+precision: "If not stated, CCCAP reads the shared verification_request_date (a single CBMS checklist serving every program, OQ-300)."
+supplied_by: The CCCAP request-for-information notice in the case file.
+sources: [S891]
+tags: [verification]
+rationale: "OQ-300: each program runs its verification period from its own request; one shared date could not show a CCCAP request sent on another day. CO-1450 reads it."

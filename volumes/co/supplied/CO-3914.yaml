@@ -1,0 +1,14 @@
+id: CO-3914
+name: "CCCAP: monthly income the county determined from another period"
+identifier: cccap_county_determined_monthly_income
+kind: supplied
+type: money
+scope: person
+program: CCCAP
+meaning: "When the county finds, case by case, that the prior thirty days do not give an accurate indication of the person's anticipated income and uses another period instead (8 CCR 1403-1 3.111.H.4.a-f, h; H.5.a.1, H.5.a.3, H.5.b: a projection of new or changed income, a contract prorated over its term, self-employment prorated, an average of up to twelve of the most recent months, rental income averaged over twelve months, an anticipated benefit increase, irregular child support averaged), or the caretaker provides up to twelve months of income that more accurately reflects it: the person's monthly countable income so determined, counted under 3.111.I and J."
+precision: "A finding the county records in the case (CHATS) under 3.111.H.4-5. Not stated when the prior thirty days are used, which is the rule's default (\"Generally\", H.4; \"shall be used ... unless\", H.5.a.1). If not stated, CCCAP reads the person's income from the prior thirty days (cccap_person_countable_income, CO-3917). The court-ordered child support deduction (3.111.K) is not part of this figure; cccap_household_income (CO-985) applies it."
+supplied_by: "The county's income calculation in the CCCAP case file (CHATS), with the income records it rests on."
+sources: [S2704, S891]
+tags: [income]
+open: [OQ-680]
+rationale: "Final pass F-09: the rule's default period is the prior thirty days, but it lets the county choose another period case by case when those days misstate anticipated income (H.4.a-i, H.5.a.1, H.5.b). That choice and the figure it produces are the county's finding, recorded in the case (convention rule 13(i)); no neutral fact can state which period the county chose."

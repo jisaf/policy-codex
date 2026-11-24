@@ -1,0 +1,19 @@
+id: CO-6053
+name: "Medicaid Pickle: a spouse's OASDI increases disregarded"
+identifier: ma_pickle_oasdi_increase_as_spouse
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For this person as the spouse living with a Pickle applicant, the OASDI cost-of-living increases since the applicant lost SSI or OAP: the person's current OASDI (ma_social_security_receipts) less the person's OASDI then (social_security_income_when_spouse_lost_ssi_or_oap), not below zero; none when that figure is not stated. 10 CCR 2505-10 § 8.100.6.E.3: the disregard 'must also be applied to any OASDI cost of living increases paid to any financially responsible individual such as a parent or spouse whose income is considered in determining the person's continued eligibility'."
+precision: "Duplicate-paths audit D-M1: the spouse term CO-1158 wrote twice inline, stated once per spouse so the Ineligible Child Allocation can be taken from what is left of an ineligible spouse's unearned income (CO-6054). An unstated base is read as the current benefit (no increase), as CO-1158 read it. Coverage pass 4, non-MAGI N4-13 (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise; readers do not invent defaults): the spouse's Social Security when the person lost SSI is read as stated, no longer as the current benefit (no increase to disregard) when unstated."
+derived: [max, 0, ["-", ma_social_security_receipts, social_security_income_when_spouse_lost_ssi_or_oap]]
+sources: [S666]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Duplicate-paths audit D-M1 (P1)."
+nearest: [CO-6052]
+tests:
+  - {id: CO-6053-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 800}], social_security_income_when_spouse_lost_ssi_or_oap: 720}, title: "800 now, 720 then: 80", expect: 80}
+  - {id: CO-6053-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 800}]}, title: "N4-13 (decision 4): the base not stated: cannot determine (was read as no increase)", expect: unknown}
+  - {id: CO-6053-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 800}], social_security_income_when_spouse_lost_ssi_or_oap: 800}, title: "N4-13: the base stated equal to the current benefit: no increase, 800 - 800 = 0", expect: 0}

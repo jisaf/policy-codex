@@ -1,0 +1,18 @@
+id: CO-1652
+name: "Colorado Works: school enrollment verification is pending"
+identifier: cw_school_enrollment_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: Whether Colorado Works requires verification of the person's school enrollment of a dependent child at or over the age limit and it has not been provided.
+precision: "False where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2). Due by: cw_verification_due_date (CO-1426: eleven days), or cw_verification_extended_due_date when the county extended it."
+derived: [all, cw_verification_is_applicable, [all, cw_requires_verification_of_school_enrollment, [not, school_enrollment_verification_document_received]]]
+sources: [S874]
+implemented: engine
+tags: [verification, cash, tanf]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1652-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_requires_verification_of_school_enrollment: true, school_enrollment_verification_document_received: false}, expect: true}
+  - {id: CO-1652-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_requires_verification_of_school_enrollment: false}, expect: false}

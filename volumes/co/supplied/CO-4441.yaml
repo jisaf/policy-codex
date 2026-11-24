@@ -1,0 +1,13 @@
+id: CO-4441
+name: "Going hourly rate for the donated work"
+identifier: donated_work_community_hourly_rate
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The going hourly rate in the community for work similar to the person's donated work (CO-4438)."
+precision: "Adult Financial requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise), for donated work that counts; before, it was read as 0, so the minimum wage applied."
+supplied_by: "County department's determination from local wage information."
+sources: [S3211]
+tags: [income]
+rationale: "Coverage review F-10: 3.520.784.B.1 (S3211) values donated work at \"The going rate in the community for similar work\" or the minimum wage, whichever is greater."

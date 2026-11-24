@@ -1,0 +1,12 @@
+id: CO-2436
+name: "Received presumptive eligibility in the last 12 months"
+identifier: received_presumptive_eligibility_in_last_twelve_months
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person has received presumptive eligibility (Medical Assistance or CHP+) in the 12 months before this application: the presumptive eligibility history the once-every-12-months bars read (10 CCR 2505-10 § 8.100.4.F.9 and § 8.100.3.R.9; 10 CCR 2505-3 § 170.6: \"only once every 12 months\")."
+supplied_by: CBMS presumptive eligibility history.
+sources: [S1722, S2100, S1745]
+tags: [ma]
+rationale: "C-5 of the HCPF review. Heavier-definitions audit L-1 and L-2 (audit fix round 4): renamed from ma_received_presumptive_eligibility_in_last_twelve_months through a change set that keeps the ID and made program All, since CHP+ presumptive eligibility (CO-708) and the presumptive eligibility site route (CO-559, CO-3155) now read it besides the hospital route."

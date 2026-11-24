@@ -10,4 +10,4 @@ precision: Colorado also treats a person as meeting this requirement retroactive
 supplied_by: Case Management Agency's Long-Term Services and Supports Level of Care Eligibility Determination and supporting physician/case manager documentation.
 sources: [S351]
 tags: [ma, ltc]
-rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_is_institutionalized (CO-640) and ma_ltc_couple (CO-643) need the 30-consecutive-day expectation distinctly from in_medical_institution (which states only that the person is currently in a facility)."
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_is_institutionalized (CO-640) and ma_ltc_couple (CO-643) need the 30-consecutive-day expectation distinctly from snap_resides_in_institution_providing_meals (which states only that the person is currently in a facility)."

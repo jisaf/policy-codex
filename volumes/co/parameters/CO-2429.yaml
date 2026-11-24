@@ -1,0 +1,12 @@
+id: CO-2429
+name: "Medicaid: prior months required for the TMA and four-month extension tests"
+identifier: ma_extension_prior_months_required
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of the look-back months in which the person must have been enrolled ("at least three of the six months", 10 CCR 2505-10 § 8.100.4.I.1.a, I.5).
+value: 3
+sources: [S1719, S1720]
+tags: [ma, magi]
+rationale: C-4 of the HCPF review.

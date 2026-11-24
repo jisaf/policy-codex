@@ -1,0 +1,13 @@
+id: CO-2863
+name: "Surviving spouse of a VA pensioner"
+identifier: is_surviving_spouse_of_va_pensioner
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is the surviving spouse of a person who received a non-service-connected disability pension from the U.S. Department of Veterans Affairs."
+precision: "Coverage pass 6, non-MAGI F6-10 (decision 4 of 2026-11-23: each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults): required where Medicaid reads it (the veterans personal needs allowance, ma_qualifies_for_veterans_personal_needs_allowance, CO-1986; C.R.S. 25.5-6-206(2)(b)): no rule gives a default."
+supplied_by: VA award letter.
+sources: [S1737, S1231]
+tags: [ma, ltc]
+rationale: "Dual-entry audit 2.11: ma_qualifies_for_veterans_personal_needs_allowance (CO-1986) restated whether the person has a spouse or dependent child, which the relationship edges state, beside the VA pension; the pension is the fact of its own."

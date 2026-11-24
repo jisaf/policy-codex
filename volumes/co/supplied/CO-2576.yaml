@@ -1,0 +1,14 @@
+id: CO-2576
+name: "CCCAP: is a Child Welfare Child Care household"
+identifier: cccap_is_child_welfare_child_care_household
+kind: supplied
+type: yes/no
+scope: case
+program: CCCAP
+meaning: "This household receives Child Welfare Child Care as the Social Services rule manual defines it (12 CCR 2509-4 7.302, incorporated in 8 CCR 1403-1 3.103), and so has no parent fee (3.124.I.4)."
+precision: "One value for the case. If not stated, CCCAP reads this as false."
+supplied_by: County child welfare referral recorded in CHATS.
+sources: [S784]
+tags: [household]
+rationale: "CDHS review C-7: the Child Welfare Child Care exception (3.124.I.4) was not modeled. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."
+nearest: [CO-2575]

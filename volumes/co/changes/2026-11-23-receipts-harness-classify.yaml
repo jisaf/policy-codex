@@ -1,0 +1,15 @@
+# The receipts harness after the generated households state their earned income as earnings records (2026-11-23;
+# docs/reviews/records-earnings-e1-integration.md, section "Receipts harness after the generated households state
+# earnings"). The product owner approved, on 2026-11-23, that the receipts harness's generated households also carry the
+# earnings translation of their earned facts on the new side, and the two blanket allowances EM-R1 and E1-G were removed
+# (a3ffd86). Every difference that then remained is classified in scripts/receipts/allowed-differences.yaml by base, person
+# and figure; one was a defect: the Disabled Adult Child countable income (CO-1160) took the gross OASDI out of an unearned
+# income from which the OASDI's PASS set-aside had already been left out, so the set-aside came off twice. It now takes out
+# the OASDI the SSI method counts (ma_ssi_counted_social_security_receipts, CO-6250; 10 CCR 2505-10 8.100.6.J.1.c.i, S626;
+# 8.100.5.F.6.q, S3404).
+# Dispositions moved by this change: CO-616 and CO-654 (their fingerprints moved because they read, through others,
+# ma_dac_countable_income) are re-keyed in place in the earlier change records, their reasons unchanged, as the E1
+# integration did (f854715).
+date: 2026-11-23
+summary: "Receipts harness with earnings on the generated households: every remaining difference classified by base, person and figure; the Disabled Adult Child income takes out the OASDI net of its PASS set-aside (CO-1160, CO-6250)."
+impact: []

@@ -1,0 +1,14 @@
+id: CO-4556
+name: Expected annual income
+identifier: expected_annual_income
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The person's expected modified adjusted gross income for the calendar year of the determination, as the person's federal return for that year would compute it (26 CFR 1.36B-1(e)(2)): adjusted gross income plus income excluded under 26 U.S.C. 911, tax-exempt interest, and Social Security benefits not included in gross income - the expected yearly income a marketplace application asks for. Net earnings from self-employment are the year's net profit."
+precision: "A projection for the whole calendar year, stated where the person reports one (an application's annual income question, or a household whose earnings vary by season or commission); not stated otherwise. It is not the monthly income facts added up: those state the months as received, and the months still to come are a projection. Each program's annual measure is its own derived item: Medical Assistance's premium tax credit household income (ma_premium_tax_credit_household_income_pct_fpl, CO-4561, § 8.100.4.C.5). Coverage pass 6, C6-07 (2026-11-24): the annualized income of § 8.100.4.C.4.a (ma_annualized_household_income, CO-4559) no longer reads this fact; it annualizes only the self-employment, seasonal and commission part of the year, stated in expected_annual_self_employment_seasonal_commission_income (CO-7403)."
+supplied_by: The application's expected annual income question, or the account transferred from the marketplace.
+sources: [S3356, S3359]
+tags: [income]
+open: [OQ-810]
+rationale: "Coverage review F-04 and F-05 (2026-11-22): § 8.100.4.C.4.a annualizes self-employment, seasonal and commission income, and § 8.100.4.C.5 tests income under the premium tax credit methodology, which is annual (26 CFR 1.36B-1(e)); every income fact in the volume is monthly, so no fact stated a year's income. Program-neutral: what the person expects to receive in the year, as the tax return defines it."

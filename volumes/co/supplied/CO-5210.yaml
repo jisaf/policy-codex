@@ -1,0 +1,12 @@
+id: CO-5210
+name: "Lives full-time with the care recipient"
+identifier: lives_full_time_with_care_recipient
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person, who is paid to provide personal care or supportive services to someone, lives full-time in the same home as that care recipient."
+supplied_by: "Applicant statement; the provider agency's records."
+sources: [S3754]
+tags: [income, household]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): § 8.100.3.K.7.a's first condition for excluding Difficulty of Care payments from MAGI income. The care recipient need not be a person in the case."

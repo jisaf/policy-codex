@@ -1,0 +1,19 @@
+id: CO-1372
+name: "SNAP: citizenship document is acceptable"
+identifier: snap_citizenship_document_is_acceptable
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "Whether the document provided is one SNAP accepts to verify questionable citizenship: a U.S. birth certificate, passport, certificate of citizenship or naturalization, certification of birth abroad, U.S. citizen identification card, Colorado vital records information, or - when none of those can be obtained and the household gives a reasonable explanation - a signed third-party statement."
+precision: "The third-party statement is accepted only on the county's finding of the two conditions of 4.505.5.B (snap_third_party_citizenship_statement_is_permitted, CO-2001; OQ-313 resolved)."
+derived: [any, [in, citizenship_verification_document_type, [us_public_birth_certificate, us_passport, certificate_of_citizenship, certificate_of_naturalization, certification_of_birth_abroad, us_citizen_id_card, vital_statistics_record_match]], [all, ["=", citizenship_verification_document_type, third_party_citizenship_statement], snap_third_party_citizenship_statement_is_permitted]]
+sources: [S826, S811]
+implemented: engine
+tags: [verification, snap, immigration]
+rationale: 10 CCR 2506-1 4.505.5 (S826) lists the documents; no existing item reads the document type.
+tests:
+  - {id: CO-1372-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: us_passport}, expect: true}
+  - {id: CO-1372-T2, as_of: "2026-10-01", given: {citizenship_verification_document_type: third_party_citizenship_statement, snap_third_party_citizenship_statement_is_permitted: true}, expect: true}
+  - {id: CO-1372-T4, title: "OQ-313: a third-party statement without the county's finding that other documents cannot be obtained is not accepted", as_of: "2026-10-01", given: {citizenship_verification_document_type: third_party_citizenship_statement, snap_third_party_citizenship_statement_is_permitted: false}, expect: false}
+  - {id: CO-1372-T3, as_of: "2026-10-01", given: {citizenship_verification_document_type: school_id_card}, expect: false}

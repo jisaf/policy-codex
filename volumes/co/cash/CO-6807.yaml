@@ -1,0 +1,22 @@
+id: CO-6807
+name: "Colorado Works: dependent child in the month"
+identifier: cw_is_dependent_child_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "The person is a \"dependent child\" (26-2-703(9), C.R.S.; 9 CCR 2503-6 3.601) in the month evaluated: born on or before the month's last day, and under cw_dependent_child_age_limit (18) on the first day of the month, or of that age and under cw_dependent_child_student_age_limit (19) on the first day and a full-time secondary (or vocational or technical equivalent) student reasonably expected to complete before turning 19 (is_full_time_secondary_student_finishing_before_nineteen)."
+precision: "Coverage pass 4 CA4-15 (docs/reviews/coverage4-cash.md): the month-scoped rules (the eligibility test's dependent child, cw_eligibility_status CO-921; work participation, CO-920; the student disregard, CO-3385) read the child's age in the month they evaluate: 3.605.1.A.1, income \"in the month of application shall be used to determine eligibility\", makes the application month's facts its own. A child under the limit on the first day of the month is a dependent child for the month (\"under N\" read on the first day, as docs/operators.md \"Ages in a month\" reads it; the day is the codex's reading, OQ-951). Probe W5: a child born 2008-10-05, application 2026-09-25, determined 2026-10-15: 17 on September 1 and on October 1, a dependent child in both months. Coverage pass 6 CA6-3 (docs/reviews/coverage6-cash.md, probe W4): a person is a dependent child of a month only from the month of birth; before, a child born after the month evaluated had a negative age on its first day, under 18, so a baby born October 3 was a dependent child of September and the unit of a pregnant applicant was paid as a parent and child for the application month ($336 where 3.606.1.F-G give one caretaker with no child and the allowance: 374 + 10 = 384, .69041 x 384 = 265.1, $265)."
+derived: ["all", ["<", "date_of_birth", ["first_day", ["month_after", ["month"]]]], ["any", ["<", ["years_between", "date_of_birth", ["first_day", ["month"]]], "cw_dependent_child_age_limit"], ["all", [">=", ["years_between", "date_of_birth", ["first_day", ["month"]]], "cw_dependent_child_age_limit"], ["<", ["years_between", "date_of_birth", ["first_day", ["month"]]], "cw_dependent_child_student_age_limit"], "is_full_time_secondary_student_finishing_before_nineteen"]]]
+sources: [S401, S406]
+implemented: engine
+open: [OQ-951]
+tags: [cash, tanf, age]
+nearest: [CO-901]
+rationale: "Coverage pass 4 CA4-15: the age condition of a dependent child taken in the month evaluated."
+tests:
+  - {id: CO-6807-T1, month: "2026-09", as_of: "2026-10-15", given: {date_of_birth: "2008-10-05"}, title: "Probe W5: born October 5, 2008; 17 on September 1, 2026", expect: true}
+  - {id: CO-6807-T2, month: "2026-11", as_of: "2026-10-15", given: {date_of_birth: "2008-10-05", is_full_time_secondary_student_finishing_before_nineteen: false}, title: "18 on November 1, not a student finishing before 19", expect: false}
+  - {id: CO-6807-T3, month: "2026-11", as_of: "2026-10-15", given: {date_of_birth: "2008-10-05", is_full_time_secondary_student_finishing_before_nineteen: true}, title: "18 on November 1, a full-time high school student finishing before 19", expect: true}
+  - {id: "CO-6807-T4", title: "Coverage pass 6 CA6-3 (probe W4): a baby born October 3, 2026 is no dependent child of September", month: "2026-09", as_of: "2026-10-15", given: {date_of_birth: "2026-10-03"}, expect: false}
+  - {id: "CO-6807-T5", title: "Probe W4: a dependent child of October, the month of birth", month: "2026-10", as_of: "2026-10-15", given: {date_of_birth: "2026-10-03"}, expect: true}

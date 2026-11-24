@@ -1,0 +1,18 @@
+id: CO-3624
+name: "Medicaid: QDWI coverage is in effect for the month"
+identifier: ma_qdwi_is_in_effect
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether Qualified Disabled and Working Individual coverage can be in effect for the month (10 CCR 2505-10 § 8.100.6.O.5): the month of determination and later months, or a past month the eligibility history records as QDWI."
+assumption: "O.5 makes QDWI 'effective the month of determination of entitlement' and O.6 allows it 'retroactive only to the date as of which SSA approves an individual's application for coverage as a Qualified Disabled and Working Individual'. The volume reads O.5 as the rule for a new determination and treats no month before the determination month as a QDWI month (OQ-621)."
+derived: [any, [">=", [month], [det_month]], [otherwise, ["=", ma_prior_msp_category, qdwi], false]]
+sources: [S2410]
+implemented: engine
+tags: [ma, msp]
+open: [OQ-621]
+rationale: "Final verification F-5 (docs/reviews/final-medicaid-chp.md): no item gated QMB on the month of determination, so ma_msp_category (CO-617) reported qmb in the determination month and in every retroactive month, while 10 CCR 2505-10 § 8.100.6.L.10-11 (S2406) makes QMB effective the month after the month of determination and not retroactive, and § 8.100.6.O.5 (S2410) makes QDWI effective the month of determination."
+tests:
+  - {id: CO-3624-T1, as_of: "2026-11-20", month: "2026-11", title: "The month of determination", expect: true}
+  - {id: CO-3624-T2, as_of: "2026-11-20", month: "2026-10", title: "The month before, no history", expect: false}

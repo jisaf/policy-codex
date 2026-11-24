@@ -1,0 +1,14 @@
+id: CO-4252
+name: State where the person is living now
+identifier: state_where_living_now
+kind: supplied
+type: text
+scope: person
+program: All
+meaning: "The U.S. state, as a two-letter code, in which the person is living now for a purpose other than a vacation, however long the person has lived there and whether or not the person intends to stay (a seasonal or migrant farm worker in a camp, a person in a shelter or with no fixed address, a person in the state for work or study). It states where the person is, not where the person intends to remain (state_of_residence, CO-006)."
+precision: "Stated where it differs from state_of_residence, or where a reader needs it. If not stated, SNAP reads the person's state of residence (is_colorado_resident, CO-505) in its place."
+supplied_by: "Application (physical address); the person's statement."
+sources: [S2300, S3057]
+tags: [snap]
+nearest: [CO-006]
+rationale: "Coverage review C-6 (docs/reviews/coverage-snap-nonfinancial.md): SNAP read residency from state_of_residence, whose meaning includes the intent to remain, which 10 CCR 2506-1 4.303.E forbids as a condition of SNAP eligibility (\"Intent to permanently remain in the state shall not be a condition of eligibility\", S3057; 4.303.C, S2300: \"for any purpose other than a vacation, regardless of the length of time\"). Seasonal farm workers living in a Colorado camp who intend to return to Texas were found to be non-citizens and denied. No existing fact states where a person is living without the intent; this neutral fact does, and each program's residency rule decides whether it reads it."

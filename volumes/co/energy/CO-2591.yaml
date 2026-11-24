@@ -1,0 +1,20 @@
+id: CO-2591
+name: "LEAP: unearned income verification is pending"
+identifier: leap_unearned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+role: outcome
+meaning: "Whether LEAP still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where LEAP verification applies to the person."
+precision: "Due by: leap_verification_due_date (CO-1461). Coverage review C-9: reads leap_requires_verification_of_unearned_income (CO-4526), which leaves out the income the applicant's declaration verifies (gifts, 3.755.21.K; child support with court or Address Confidentiality Program evidence of domestic violence, 3.755.21.B.4)."
+derived: [all, leap_verification_is_applicable, [all, leap_requires_verification_of_unearned_income, [not, unearned_income_is_verified]]]
+sources: [S872, S875, S880, S891, S898, S3313]
+implemented: engine
+tags: [verification, income]
+rationale: "County case worker review B2: the shared unearned-income pending flag is one of LEAP's outcomes but cannot read LEAP's applicability; this item is the program's own flag, gated like its other elements. Same-word audit SW-27: reads the program's own countable unearned income (leap_has_countable_unearned_income), not the shared sum that counted the program's own grant."
+nearest: [CO-1650]
+tests:
+  - {id: CO-2591-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, leap_requires_verification_of_unearned_income: true, unearned_income_is_verified: false}, expect: true}
+  - {id: CO-2591-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: false, leap_requires_verification_of_unearned_income: true, unearned_income_is_verified: false}, expect: false}
+  - {id: CO-2591-T3, month: "2026-11", as_of: "2026-11-10", given: {leap_verification_is_applicable: true, leap_person_unearned_income: 150, unearned_income_is_verified: false, receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: gift, amount: 150}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "Coverage review C-9: only a declared $150 gift: not pending (3.755.21.K)", expect: false}

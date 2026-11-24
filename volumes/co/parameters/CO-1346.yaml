@@ -1,0 +1,13 @@
+id: CO-1346
+name: SNAP expedited postponed verification days
+identifier: snap_expedited_postponed_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of calendar days from the date of application within which a household certified under expedited service must complete postponed verification before its participation ends.
+value: 30
+sources: [S835]
+tags: [verification, snap]
+open: [OQ-323]
+rationale: 10 CCR 2506-1 4.205.11.B.2.b (S835) terminates participation on the thirtieth calendar day when postponed verification is not completed; no item carried the period.

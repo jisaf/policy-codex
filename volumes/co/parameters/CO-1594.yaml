@@ -1,0 +1,12 @@
+id: CO-1594
+name: SNAP non-citizen documentation days
+identifier: snap_noncitizen_documentation_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of calendar days after the date of application up to which an applicant non-citizen may submit acceptable documentation of status.
+value: 30
+sources: [S1097, S1057]
+tags: [verification, snap, immigration]
+rationale: "Review C-2: 4.505.6.E and 273.2(f)(1)(ii)(C) run the non-citizen's period to the thirtieth day after application; no item carried it."

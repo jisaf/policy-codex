@@ -1,0 +1,20 @@
+id: CO-5020
+name: "Adult Financial: one-third of current child support for an SSI-age child"
+identifier: af_child_support_exclusion
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "For a person under the SSI child definition (af_is_ssi_child, 20 CFR 416.1856), the part of the current child support received in the month that 9 CCR 2503-5 3.520.786.K excludes through 20 CFR 416.1124(c)(11): the support divided by af_child_support_exclusion_divisor (one-third); otherwise 0."
+precision: "Current support is the receipts of kind child_support; arrears are their own kind, which the counting table excludes (P). The child test is read only when there is current support, as before receipt records. Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since \"All income shall be countable in the month it is actually received or legally becomes available\" (9 CCR 2503-5 3.520.781.G, S4910): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["case", [["all", [">", ["sum_receipts", "receipts", ["all", ["=", ["lookup", "af_receipt_treatment_table", ["receipt", "kind"]], "counted_less_one_third_for_ssi_child"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]], 0], "af_is_ssi_child"], ["/", ["sum_receipts", "receipts", ["all", ["=", ["lookup", "af_receipt_treatment_table", ["receipt", "kind"]], "counted_less_one_third_for_ssi_child"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]], "af_child_support_exclusion_divisor"]], ["else", 0]]
+sources: [S2608, S2609, S4910]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: the child-support term of af_excluded_unearned_income (CO-2343), read outside the receipt sum because it turns on the person."
+tests:
+  - {id: CO-5020-T1, month: "2026-10", as_of: "2026-10-15", given: {af_is_ssi_child: true, receipts: [{kind: child_support, amount: 300}, {kind: child_support_arrears, amount: 60}]}, title: "A child: one-third of $300 current support", expect: 100}
+  - {id: CO-5020-T2, month: "2026-10", as_of: "2026-10-15", given: {af_is_ssi_child: false, receipts: [{kind: child_support, amount: 300}]}, title: "An adult: none", expect: 0}
+  # Field sweep fix round (FS-AF-1): hand-computed from 9 CCR 2503-5 3.520.781.G (S4910): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-5020-T3", "month": "2026-12", "as_of": "2026-12-15", "title": "A child: $300 of current support that ended 2026-11-30, read for December: none received, 0", "given": {"af_is_ssi_child": true, "receipts": [{"kind": "child_support", "amount": 300, "end_date": "2026-11-30"}]}, "expect": 0}
+  - {"id": "CO-5020-T4", "month": "2026-11", "as_of": "2026-11-15", "title": "The same support in November, its last month: 300 / 3 = 100", "given": {"af_is_ssi_child": true, "receipts": [{"kind": "child_support", "amount": 300, "end_date": "2026-11-30"}]}, "expect": 100}

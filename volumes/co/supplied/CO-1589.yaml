@@ -1,0 +1,12 @@
+id: CO-1589
+name: Electronic data source monthly gross income
+identifier: electronic_data_source_monthly_gross_income
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's monthly gross income that an electronic data source (IEVS, the Federal Data Services Hub, The Work Number, SSA) reports, for comparison with the attested figure (42 CFR 435.952): in an aged, blind or disabled determination, and summed over the MAGI household for the MAGI comparison (ma_electronic_data_source_household_income_pct_fpl, CO-1344)."
+supplied_by: CBMS interface results as recorded in the case.
+sources: [S867, S838]
+tags: [verification, ma, income, non_magi]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-6, OQ-302: the aged, blind and disabled standard is in dollars, not a share of the poverty guideline) needs it as a supplied fact."

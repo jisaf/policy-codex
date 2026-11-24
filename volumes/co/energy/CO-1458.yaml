@@ -1,0 +1,17 @@
+id: CO-1458
+name: "LEAP: person's required verification count"
+identifier: leap_person_required_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: LEAP
+meaning: "The number of LEAP verification elements required for this person: wages LEAP counts, unearned income beyond what a declaration verifies (coverage review C-5, C-9), heating costs for the responsible member, questionable citizenship, and zero income for an adult of a household reporting none. An SSN and a declared immigration status decide whether the person is a household member (leap_member_is_excluded_for_verification), not whether the household's verification is complete."
+precision: "Coverage pass 4 L4-4: a child's age is read on the application date (leap_age_on_application_date, CO-6400; 3.752.2, \"household composition\" considered \"as of the date of application\"), so a child who turns eighteen between the application and the determination is still a child of the household."
+derived: ["+", ["case", ["leap_requires_verification_of_earned_income", 1], ["else", 0]], ["case", ["leap_requires_verification_of_unearned_income", 1], ["else", 0]], ["case", ["leap_requires_verification_of_heating_costs", 1], ["else", 0]], ["case", ["leap_requires_verification_of_citizenship", 1], ["else", 0]], ["case", [["all", [">=", "leap_age_on_application_date", "leap_household_child_age_limit"], ["=", "leap_household_income", 0]], 1], ["else", 0]]]
+sources: [S893, S896, S897, S1083]
+implemented: engine
+tags: [verification]
+rationale: leap_verification_status needs to know whether the household has any verification requirement.
+tests:
+  - {id: CO-1458-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_earned_income: false, leap_requires_verification_of_unearned_income: true, leap_requires_verification_of_heating_costs: true, leap_requires_verification_of_citizenship: false, date_of_birth: "1980-01-01", leap_household_income: 900}, expect: 2}
+  - {id: CO-1458-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_application_date: "2026-10-01", leap_requires_verification_of_earned_income: false, leap_requires_verification_of_unearned_income: false, leap_requires_verification_of_heating_costs: false, leap_requires_verification_of_citizenship: false, date_of_birth: "1980-01-01", leap_household_income: 0}, expect: 1}

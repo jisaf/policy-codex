@@ -1,0 +1,20 @@
+id: CO-6050
+name: "Medicaid SSI method: the Ineligible Child Allocation a child generates"
+identifier: ma_ssi_ineligible_child_allocation_generated
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For this person as an ineligible child, the allocation the child generates from the income of the ineligible parents or spouse it is allocated from (10 CCR 2505-10 § 8.100.5.H.3.a.i): one half of the SSI individual Federal Benefit Rate (ma_ssi_ineligible_child_allocation_rate), 'reduced by any of the ineligible child's own income', not below zero. The child's own income is its gross earned income as the SSI method counts it (ma_ssi_gross_earned_income) and the unearned income the SSI method counts, child support in full and gambling winnings included (H.4.c: the one-third reduction 'does not apply to ineligible children when calculating the ineligible child allocation disregard')."
+precision: "Duplicate-paths audit D-M4 (docs/reviews/duplicate-paths-audit.md): the one statement of the amount, read by the allocation for an applicant's ineligible spouse (ma_ssi_ineligible_child_allocation, CO-2277) and the allocation in parental deeming (ma_ssi_deeming_ineligible_child_allocation, CO-4633), which each say which children are allocated for. Whether 20 CFR 416.1161(c) leaves out of the child's income what 416.1161(a) excludes and a student's earnings is not settled by Colorado's 'any of the ineligible child's own income' (OQ-1122)."
+derived: [max, 0, ["-", ["*", ma_ssi_ineligible_child_allocation_rate, ssi_federal_benefit_rate_individual], ["+", ma_ssi_gross_earned_income, ma_ssi_unearned_receipts, ma_ssi_child_support_receipts, ma_ssi_gambling_receipts]]]
+sources: [S3405, S1506, S3002]
+implemented: engine
+tags: [ma, non_magi, income, household]
+open: [OQ-1122]
+rationale: "Duplicate-paths audit D-M4 (P1): CO-2277 and CO-4633 each wrote the allocation; one item states the amount so the two sums cannot drift apart."
+nearest: [CO-2277, CO-4633]
+tests:
+  - {id: CO-6050-T1, month: "2026-10", as_of: "2026-10-01", given: {earnings: [], receipts: []}, title: "A child with no income: one half of the 2026 FBR (994 / 2) = 497", expect: 497}
+  - {id: CO-6050-T2, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 200}], receipts: [{kind: child_support, amount: 150}]}, title: "A child earning 200 with 150 of child support in full: 497 - 350 = 147", expect: 147}
+  - {id: CO-6050-T3, month: "2026-10", as_of: "2026-10-01", given: {earnings: [{kind: wages, amount: 600}], receipts: []}, title: "Own income above the half FBR: 0", expect: 0}

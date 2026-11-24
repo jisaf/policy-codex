@@ -1,0 +1,14 @@
+id: CO-4727
+name: Home Care Allowance payment effective date
+identifier: af_hca_payment_effective_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The payment effective date the Case Management Agency enters on the State-approved form for the person's Home Care Allowance (9 CCR 2503-5 3.570.13.F: \"the payment effective date from the State approved form completed by the CMA\")."
+precision: "Not stated: no later start than the month after approval. A payment effective date within a month is read as paying that month."
+supplied_by: "Case Management Agency, State-approved HCA form."
+sources: [S3503]
+implemented: engine
+tags: [cash, and]
+rationale: "Coverage review 2 (first-pass P2-4): 3.570.13.F starts payment on the later of the first of the month after approval and the CMA's payment effective date; no fact stated the second date."

@@ -1,0 +1,55 @@
+- id: IMM-trafficking_victim
+  as_of: '2026-10-01'
+  relationships: []
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-01-01'
+        immigration_status: trafficking_victim
+        us_entry_date: '2024-03-01'
+        qualified_status_date: '2024-03-01'
+        has_military_connection: false
+- id: IMM-ukrainian_humanitarian_parolee
+  as_of: '2026-10-01'
+  relationships: []
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-01-01'
+        immigration_status: ukrainian_humanitarian_parolee
+        us_entry_date: '2024-03-01'
+        qualified_status_date: '2024-03-01'
+        has_military_connection: false
+- id: IMM-afghan_humanitarian_parolee
+  as_of: '2026-10-01'
+  relationships: []
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-01-01'
+        immigration_status: afghan_humanitarian_parolee
+        us_entry_date: '2024-03-01'
+        qualified_status_date: '2024-03-01'
+        has_military_connection: false
+- id: IMM-refugee
+  as_of: '2026-10-01'
+  relationships: []
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-01-01'
+        immigration_status: refugee
+        us_entry_date: '2024-03-01'
+        qualified_status_date: '2024-03-01'
+        has_military_connection: false
+- id: IMM-iraqi_afghan_special_immigrant
+  as_of: '2026-10-01'
+  relationships: []
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-01-01'
+        immigration_status: iraqi_afghan_special_immigrant
+        us_entry_date: '2024-03-01'
+        qualified_status_date: '2024-03-01'
+        has_military_connection: false

@@ -29,3 +29,42 @@ src/engine/                 @jisaf
 
 # The manifest: which item files are in the ledger at all.
 codex.json                  @jisaf
+
+# ---------------------------------------------------------------------------
+# Colorado volume (volumes/co). Every team below is a placeholder (@org/...)
+# until the agencies name their reviewers; each maps to a role in
+# volumes/co/volume.yaml's approval_policy. GitHub requires one approval from
+# any owner listed on a line; the approval policy (by program, tag, kind and
+# upstream_of_outcomes) says which roles must sign each item, and the item's
+# own `approval` record holds those signatures (docs/conventions.md).
+#   @org/hcpf-medicaid          Medicaid policy owner (HCPF Eligibility Policy)
+#   @org/hcpf-ltss              LTSS policy owner (HCPF Office of Community Living)
+#   @org/hcpf-chp               CHP+ policy owner
+#   @org/hcpf-finance           Premium and finance owner
+#   @org/hcpf-eligibility-ops   Eligibility operations owner
+#   @org/hcpf-state-plan        State plan coordinator
+#   @org/cdhs-snap              SNAP policy owner (and SUN Bucks)
+#   @org/cdhs-cash              Cash programs policy owner (Colorado Works, Adult Financial)
+#   @org/cdhs-energy-leap       Energy assistance (LEAP) policy owner
+#   @org/cde-school-meals       School meals (CDE) co-approver for SUN Bucks
+#   @org/cdec-child-care        Child care policy owner (CCCAP)
+#   @org/legal                  Legal
+#   @org/data-stewards          Data steward
+# Later lines win in CODEOWNERS, so the volume-wide line comes first.
+volumes/co/                    @org/codex-stewards
+volumes/co/volume.yaml         @org/codex-stewards @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash @org/cdhs-energy-leap @org/cdec-child-care
+volumes/co/medicaid/           @org/hcpf-medicaid @org/hcpf-ltss @org/hcpf-finance @org/hcpf-eligibility-ops
+volumes/co/chp/                @org/hcpf-chp
+volumes/co/shared/             @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash
+volumes/co/snap/               @org/cdhs-snap
+volumes/co/sunbucks/           @org/cdhs-snap @org/cde-school-meals
+volumes/co/cash/               @org/cdhs-cash
+volumes/co/energy/             @org/cdhs-energy-leap
+volumes/co/childcare/          @org/cdec-child-care
+volumes/co/supplied/           @org/data-stewards
+volumes/co/parameters/         @org/data-stewards @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash
+volumes/co/sources.md          @org/codex-stewards @org/legal
+volumes/co/documents/          @org/codex-stewards @org/legal
+volumes/co/documents.yaml      @org/codex-stewards @org/legal
+volumes/co/open-questions.md   @org/codex-stewards @org/hcpf-medicaid @org/cdhs-snap
+volumes/co/tests/              @org/hcpf-eligibility-ops @org/cdhs-snap @org/cdhs-cash

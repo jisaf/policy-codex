@@ -1,0 +1,8 @@
+# Coverage pass 6 fix round, non-MAGI Medicaid (docs/reviews/coverage6-medicaid-nonmagi.md, section 7): the SSI-method couple only while
+# the spouses live together (F6-1); long-term care resources, institution status, aged/blind/disabled and the SSI month by month
+# (F6-2 to F6-5); 20 CFR 416.1163(d) (F6-6); a married person with no spouse in the case (F6-7); Pickle under 42 CFR 435.135 (F6-8);
+# PACE through SSI status (F6-9); decision-4 defaults (F6-10); open questions (F6-11, F6-12); CO-641's precision (F6-13).
+# One entry per change-impact flag the round leaves open.
+date: 2026-11-24
+summary: "Coverage pass 6, non-MAGI Medicaid: F6-1 to F6-10 and F6-13 fixed (CO-7350 to CO-7358; S5030 to S5033; statute_override on CO-1159 for 42 CFR 435.135); OQ-471 resolved, OQ-820 and OQ-900 reclassified, OQ-209 recorded as a scope decision, OQ-1385 added; stored households CO-900 to CO-910."
+impact: []

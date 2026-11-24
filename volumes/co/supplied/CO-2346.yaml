@@ -1,0 +1,13 @@
+id: CO-2346
+name: "Colorado Works: requests inclusion in the assistance unit"
+identifier: cw_requests_inclusion_in_assistance_unit
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "This person, living in the home as one of the optional members of 9 CCR 2503-6 3.604.2.C.2 (a stepparent, a non-parent caretaker or that caretaker's spouse, a half sibling receiving child support, a sibling not in the requesting caretaker's legal custody, a parent without legal custody living in another caretaker's home, or the parent of a minor parent requesting assistance for her own child), requests assistance and so is included in the assistance unit. For a half sibling receiving child support it records the decision of the half sibling's parent or non-parent caretaker (C.2.d)."
+precision: "If not stated, Colorado Works reads this as false: an optional member who has not asked is not in the assistance unit. Read only for an optional member; a mandatory member (3.604.2.C.1) is in the unit whatever this says."
+supplied_by: "Colorado Works application (persons for whom assistance is requested)."
+sources: [S1625]
+tags: [cash, tanf, household]
+rationale: "OQ-152: the optional members of 3.604.2.C.2 (S1625) \"are included in the assistance unit when living in the home and requesting assistance\"; no fact recorded the request, so cw_assistance_unit_members (CO-900) could not include them."

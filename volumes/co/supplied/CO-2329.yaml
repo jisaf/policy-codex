@@ -1,0 +1,12 @@
+id: CO-2329
+name: "SNAP dependent care expenses source changed since last certification"
+identifier: snap_dependent_care_source_changed_since_last_certification
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "Whether the source of this person's dependent care expenses (the provider, payee or obligation it is paid to) has started, stopped or changed since the expense was last verified for SNAP (10 CCR 2506-1 4.502.B.3)."
+supplied_by: "Expenses reported on the recertification form compared with the CBMS SNAP case."
+sources: [S1618]
+tags: [verification, snap]
+rationale: "OQ-371: 4.502.B.3 (S1618) verifies the expense at recertification \"if the source has changed, or the amount has changed by more than twenty-five dollars\"; only the amount was a fact. snap_requires_verification_of_dependent_care (CO-1381) reads it, as snap_income_changed_since_last_certification reads snap_income_source_changed_since_last_certification (CO-1569) for income."

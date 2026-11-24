@@ -1,0 +1,12 @@
+id: CO-2851
+name: "Receives FDPIR"
+identifier: receives_fdpir
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a member of a household receiving assistance under the Food Distribution Program on Indian Reservations (7 CFR part 253), a case fact about the household's enrollment (7 CFR 245.2, S1952). If not stated, SUN Bucks and SNAP read this as false. SNAP reads it as of the determination date for the period the determination covers (snap_household_participates_in_fdpir, CO-4266; 10 CCR 2506-1 4.303.B)."
+supplied_by: "The FDPIR agency's record."
+sources: [S790, S792, S1952, S3057]
+tags: [sebt]
+rationale: "Dual-entry audit 3.27: sebt_other_categorical_basis (CO-1296) bundled this ground with homelessness and foster care, which other facts state; it is now derived, and this is the one ground no other fact states."

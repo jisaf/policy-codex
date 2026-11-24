@@ -1,0 +1,21 @@
+id: CO-1179
+name: "Medicaid: meets the institution for mental diseases requirement"
+identifier: ma_meets_imd_requirement
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person meets the general Medical Assistance requirement of 10 CCR 2505-10 § 8.100.3.G.1.c: not a patient in an institution for tuberculosis or mental disease this month, unless under ma_imd_exclusion_min_age or ma_aged_age or older (the ages at which inpatient psychiatric treatment is a covered service)."
+precision: "The ages are tested first, so a person under ma_imd_exclusion_min_age or ma_aged_age or older meets the requirement without the institution fact. § 8.100.3.G.1.c conditions the under-21 and 65-or-older exception on the person 'receiving active treatment as an inpatient in a psychiatric facility eligible for Medical Assistance reimbursement'; is_patient_in_institution_for_mental_diseases (CO-1104) does not distinguish active treatment, so a patient of those ages is read as within the exception. The § 8.100.4.H extension for a patient who turns ma_imd_exclusion_min_age during inpatient psychiatric treatment is not modeled. Read by the MAGI full-coverage test (CO-562), the SSI-related test (CO-611), the emergency-only route (CO-1150) and, from coverage pass 7 (non-MAGI F7-5), the long-term care requirements (CO-3310), the Medicare Savings Programs (CO-617) and the Buy-Ins (CO-622). Coverage review 2, N-12: the ages are taken on the determination date, and this item is read by non-MAGI groups too (CO-611, CO-1150). A person who reaches 65 during the month is within the exception on the determination date. A MAGI person who turns 21 during the month and is a patient of an institution for mental diseases loses the exception from that date, though § 8.100.4.G.1's whole month would keep the month; the case is narrow (an inpatient under 21 is ordinarily within the § 8.100.4.H.1.a psychiatric group, CO-2419, which keeps the month). Time audit T-1 (2026-11-23): the exclusion's ages flip the day, since the person is excluded for the whole month only when both hold on every day of it: 21 or older on the first day (ma_age_on_first_day_of_month, CO-4978) and under 65 on the last day (ma_age_on_last_day_of_month, CO-5402); § 8.100.5.C.1 (S3900) read for an institutional resident, OQ-950; it read age (CO-300), the age on the determination date, in every month."
+derived: [not, [all, [">=", ma_age_on_first_day_of_month, ma_imd_exclusion_min_age], [<, ma_age_on_last_day_of_month, ma_aged_age], is_patient_in_institution_for_mental_diseases]]
+sources: [S3900, S659]
+open: [OQ-950]
+implemented: engine
+tags: [ma, medical, age]
+rationale: "S-5 of the phase 7 review: the general IMD exclusion was read only by CHP+ (CO-705/706) and OAP health care (CO-1156), although § 8.100.3.G.1.c applies to every Medical Assistance program. No existing item states the Medicaid exclusion with its age exceptions."
+tests:
+  - {id: CO-1179-T1, as_of: "2026-10-01", month: "2026-10", title: "Adult of 40 in an IMD", given: {date_of_birth: "1986-01-01", is_patient_in_institution_for_mental_diseases: true}, expect: false}
+  - {id: CO-1179-T2, as_of: "2026-10-01", month: "2026-10", title: "Adult of 40 not in an IMD", given: {date_of_birth: "1986-01-01", is_patient_in_institution_for_mental_diseases: false}, expect: true}
+  - {id: CO-1179-T3, as_of: "2026-10-01", month: "2026-10", title: "Patient of 17: Psych under 21", given: {date_of_birth: "2009-01-01", is_patient_in_institution_for_mental_diseases: true}, expect: true}
+  - {id: CO-1179-T4, as_of: "2026-10-01", month: "2026-10", title: "Patient of 70", given: {date_of_birth: "1956-01-01", is_patient_in_institution_for_mental_diseases: true}, expect: true}
+  - {id: CO-1179-T5, as_of: "2026-10-01", month: "2026-10", title: "Child, institution fact not stated", given: {date_of_birth: "2015-01-01"}, expect: true}

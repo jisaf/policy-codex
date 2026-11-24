@@ -1,0 +1,18 @@
+id: CO-2103
+name: "CCCAP: already receiving Low-Income Child Care"
+identifier: cccap_is_receiving_assistance
+kind: derived
+type: yes/no
+scope: case
+program: CCCAP
+meaning: "Whether the household already receives Low-Income Child Care assistance - a redetermination, or a change reported during the eligibility period - rather than applying to enter the program, so that 8 CCR 1403-1 3.111.H.1.b's exit income eligibility (85% of state median income) applies instead of H.1.a's entry eligibility."
+precision: "Read from the case's determination type (CO-3307), stated once for the case."
+derived: [not, ["=", cccap_determination_type, application]]
+sources: [S1413]
+implemented: engine
+tags: [income]
+rationale: "OQ-133 and review C-5: no existing fact said whether a household is entering CCCAP or continuing in it, so the exit limit (CO-993) was never read. cccap_meets_income_guidelines (CO-2104) reads it. Dual-entry audit 3.22 (CCCAP half): derived from cccap_determination_type (CO-3307), the one case record of which determination this is, instead of a supplied fact stated on every member beside a redetermination date."
+tests:
+  - {id: CO-2103-T1, as_of: "2026-10-01", given: {cccap_determination_type: application}, expect: false}
+  - {id: CO-2103-T2, as_of: "2026-10-01", given: {cccap_determination_type: redetermination}, expect: true}
+  - {id: CO-2103-T3, as_of: "2026-10-01", given: {cccap_determination_type: change_during_eligibility_period}, expect: true}

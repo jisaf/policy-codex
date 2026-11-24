@@ -1,0 +1,13 @@
+id: CO-1275
+name: Lives in subsidized housing
+identifier: lives_in_subsidized_housing
+kind: supplied
+type: yes/no
+scope: case
+program: All
+meaning: "The household's home is housing where the tenant receives an ongoing governmental or other subsidy and the rent is based on the tenant's income (9 CCR 2503-7 3.751.1, \"Subsidized Housing\")."
+precision: "One value for the case: a fact about the home. Neutral: LEAP reads it for its benefit reduction and its responsibility for heating costs (3.752.25.A.2-3); no program's classification is in it."
+supplied_by: Rent documentation (3.755.42).
+sources: [S772, S775]
+tags: [household]
+rationale: "No existing fact states subsidized housing; leap_benefit_amount (CO-1281) needs it for the Step F allowance. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member. Same-word SW-33: made neutral (program All), since it states a fact about the home and not LEAP's view of it."

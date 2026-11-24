@@ -1,0 +1,17 @@
+id: CO-6051
+name: "Medicaid SSI method: the couple's earned income after the exclusions of earnings"
+identifier: ma_ssi_couple_earned_income_after_exclusions
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The combined earned income for the month of this person and a spouse living with the person (ma_ssi_couple_members; 10 CCR 2505-10 § 8.100.5.H.1.a), each member's gross earned income as the SSI method counts it (ma_ssi_gross_earned_income) less the earned income the SSI method does not count for that member (ma_ssi_excluded_earned_income: exempt pay, a dependent child's WIOA wages, infrequent pay and the student exclusion), not below zero for either: the earned income the Ineligible Child Allocation and the $65 and one-half disregard then apply to (H.3-4)."
+precision: "Duplicate-paths audit D-M1, D-M2: the subterm the SSI-related countable earned income (CO-605, CO-5901), the Pickle countable income (CO-1158) and the Disabled Adult Child countable income (CO-1160) each wrote out; they read it. An unstated exclusion is 0 (as each reader read it). Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): the SSI method's excluded earned income (ma_ssi_excluded_earned_income, CO-2471; the infrequent part, CO-4883) and in-kind support and maintenance (ssi_in_kind_support_and_maintenance, CO-802) are read as computed, required where read (decision 4 of 2026-11-23): they are unknown only where a fact they rest on is not stated (a student's school attendance, the shelter costs others pay), and no rule reads that as none; before, an unknown figure was read as 0."
+derived: [sum, ma_ssi_couple_members, [max, 0, ["-", [of, [P], ma_ssi_gross_earned_income], [of, [P], ma_ssi_excluded_earned_income]]]]
+sources: [S308, S1955, S3412]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Duplicate-paths audit D-M1, D-M2 (P1): the copies of the SSI-method formula read one statement of the couple's earned income."
+nearest: [CO-605, CO-5901]
+tests:
+  - {id: CO-6051-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_couple_members: [p1, p2], earnings: [{kind: wages, amount: 400}, {kind: decennial_census_employment, amount: 100}], date_of_birth: "1955-01-01", ssi_is_student_regularly_attending_school: false}, others: {p2: {earnings: [{kind: wages, amount: 3300}], date_of_birth: "1960-01-01", ssi_is_student_regularly_attending_school: false}}, title: "p1: 500 less 100 of Census wages = 400; p2: 3,300: 3,700", expect: 3700}

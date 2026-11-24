@@ -26,13 +26,14 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      # The Colorado Rulebook (prototypes/blind-b), built into .artifacts/blind-b.
       - run: npm run build
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: .artifacts/blind-b
 
   deploy:
     needs: build

@@ -1,0 +1,6 @@
+# KL-CASH-3 (docs/reviews/known-limits.md, closed): Adult Financial reads a civil union as a marriage (9 CCR 2503-5 3.510, S5321);
+# close-out verification F1 (docs/reviews/verify-closeout-fixes.md): the start of the five-year waiting period reads non_qualified_status as none.
+# One entry per change-impact flag the round leaves open; each is a re-key of an earlier disposition whose changed item moved only through CO-7820.
+date: 2026-11-24
+summary: "KL-CASH-3: af_spouses_in_month (CO-7603) reads the civil_union_partner edge and af_is_married (CO-7308) marital_status other, so Adult Financial deems a partner in a civil union, counts the couple's resources against $3,000, splits the $20 and leaves the partner out of a sponsor's dependents (CO-2384, CO-2389, CO-948, CO-3829, CO-7690, CO-2386); stored households CO-1170, CO-1171; OQ-1500, OQ-1501. Close-out verification F1: qualified_non_citizen_waiting_period_start_date (CO-7820) reads non_qualified_status as none, as Medicaid's CO-7550 does, so SNAP, Colorado Works and Adult Financial count the five years from the permanent residence without asking first_qualified_status_date again; CO-1168 extended. Known limits KL-SNAP-3 to KL-SNAP-5 recorded."
+impact: []

@@ -1,0 +1,17 @@
+id: CO-3628
+name: "Medicaid: Medicare Savings Program category in the December before the month"
+identifier: ma_msp_december_category
+kind: derived
+type: one of
+options: [qmb, slmb, qi, qdwi, none]
+scope: person-month
+program: Medicaid
+meaning: "The Medicare Savings Program the person was enrolled in in the December before the month (ma_prior_msp_category), or none: whether the person was a member when the annual cost-of-living adjustment took effect (10 CCR 2505-10 § 8.100.6.L.12, M.7, N.6)."
+derived: [otherwise, [at, ma_prior_msp_category, [latest_month_of_year, 12, [month_before, [month]]]], none]
+sources: [S2406, S2407, S2409]
+implemented: engine
+tags: [ma, msp]
+rationale: "Final verification F-6 (docs/reviews/final-medicaid-chp.md): no item carried the annual COLA disregard of 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (S2406, S2407, S2409), so a QMB, SLMB or QI-1 member whose January Social Security cost-of-living increase pushed countable income over the limit was reported ineligible while the rule keeps the member eligible."
+tests:
+  - {id: CO-3628-T1, as_of: "2027-02-01", month: "2027-01", given: {ma_prior_msp_category: {"2026-12": slmb}}, expect: slmb}
+  - {id: CO-3628-T2, as_of: "2027-02-01", month: "2027-01", expect: none}

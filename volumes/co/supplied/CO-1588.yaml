@@ -1,0 +1,12 @@
+id: CO-1588
+name: Medical Assistance application is for MSP only
+identifier: ma_application_is_msp_only
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person applies only for a Medicare Savings Program (QMB, SLMB or QI), not for full Medical Assistance.
+supplied_by: Program requested on the application as recorded in CBMS.
+sources: [S1089]
+tags: [verification, ma, msp]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-307: 435.952(e) requires attestation of interest income and non-liquid resources to be accepted for MSP applicants) needs it as a supplied fact."

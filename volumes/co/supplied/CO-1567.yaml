@@ -1,0 +1,13 @@
+id: CO-1567
+name: SNAP determination is a recertification
+identifier: snap_determination_is_recertification
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "Whether the SNAP determination for the household is a recertification for a new certification period rather than an initial application."
+precision: "One value for the case."
+supplied_by: CBMS case action type (recertification).
+sources: [S1054, S1055, S1056]
+tags: [verification, snap]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: 273.2(f)(8)(i) and 4.502.B verify at recertification only changed, questionable or outdated information) needs it as a supplied fact. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

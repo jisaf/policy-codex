@@ -1,0 +1,12 @@
+id: CO-2894
+name: "Considered an Indian by the Secretary of the Interior or of HHS"
+identifier: is_considered_indian_by_federal_agency
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The Secretary of the Interior considers the person an Indian for any purpose, or the Secretary of Health and Human Services considers the person an Indian for Indian health care services (42 CFR 447.51). If not stated, Medicaid reads this as false."
+supplied_by: Tribal enrollment card or certificate; the Indian Health Service or Bureau of Indian Affairs record.
+sources: [S1214]
+tags: [immigration]
+rationale: "Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."

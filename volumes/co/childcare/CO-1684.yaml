@@ -1,0 +1,17 @@
+id: CO-1684
+name: "CCCAP: requires verification of work hours"
+identifier: cccap_requires_verification_of_work_hours
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether an adult caretaker or teen parent in a low-income eligible activity must verify the hours worked, so that gross income divided by hours worked can be shown to be at least the federal minimum wage: whenever the activity is employment or self-employment."
+precision: "Earned-income records, step E1 (CCCAP): whether the person has earned income is CCCAP's own figure from its earnings records (cccap_has_earned_income, CO-5153), replacing has_earned_income (CO-1356, program All)."
+derived: [all, cccap_requires_verification_of_eligible_activity, cccap_has_earned_income]
+sources: [S1081]
+implemented: engine
+tags: [verification, income]
+rationale: "Review K-4: 3.111.G.1.b and G.2.d make hours worked a verified element of the employment activity; no item asked for them."
+tests:
+  - {id: CO-1684-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_eligible_activity: true, earnings: [{kind: wages, amount: 1200}]}, expect: true}
+  - {id: CO-1684-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_eligible_activity: false}, expect: false}

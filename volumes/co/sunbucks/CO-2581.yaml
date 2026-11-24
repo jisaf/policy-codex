@@ -1,0 +1,20 @@
+id: CO-2581
+name: "Summer EBT (SUN Bucks): summer the determination is for"
+identifier: sebt_summer_year
+kind: derived
+type: whole number
+scope: person-month
+program: SunBucks
+meaning: "The calendar year of the summer whose period of eligibility contains the month: the period of eligibility runs from the first day of the instructional year - July 1 of the prior year - through the last day of the summer operational period (7 CFR 292.2, 292.7(a)), so a month from July of one year through June of the next belongs to the next year's summer."
+precision: "A month in July or August can also fall in the summer operational period still under way (292.2: the instructional year ends the day before the summer operational period, which runs until classes start); an application in such a month for the current summer, by the last day of that summer's operational period (292.13(g)), is read as for the next summer here, because Colorado's summer operational period is in its Plan for Operations and Management, which was not fetched (OQ-535)."
+derived: ["+", [year_of, [latest_month_of_year, sebt_instructional_year_start_month, [month]]], 1]
+sources: [S1820, S1821, S1822]
+implemented: engine
+tags: [sebt]
+open: [OQ-535]
+rationale: "CDHS review C-10: the benefit was computed per month at the calendar year's level, so a determination in October or November 2026, which can only be for summer 2027, was paid at the 2026 level; no item stated the summer. Hard-coded numbers audit H-16: the year is the calendar year (P52) of the most recent July on or before the month (P50, sebt_instructional_year_start_month, CO-3014), plus the one year from the instructional year's start to its summer; before, a fixed 2000-07-01 anchor plus 2001."
+tests:
+  - {id: CO-2581-T1, month: "2026-11", as_of: "2026-11-01", given: {}, title: "November 2026 is in summer 2027's instructional year", expect: 2027}
+  - {id: CO-2581-T2, month: "2026-06", as_of: "2026-06-01", given: {}, title: "June 2026 is summer 2026", expect: 2026}
+  - {id: CO-2581-T3, month: "2026-07", as_of: "2026-07-01", given: {}, title: "July 2026 starts summer 2027's instructional year", expect: 2027}
+  - {id: CO-2581-T4, month: "2027-01", as_of: "2027-01-15", given: {}, title: "January 2027 is in the instructional year that began July 2026", expect: 2027}

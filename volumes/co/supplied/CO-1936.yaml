@@ -1,0 +1,12 @@
+id: CO-1936
+name: Receives SNAP
+identifier: receives_snap
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether, this month, the person is a member of a household that receives SNAP benefits under 7 U.S.C. 2015. A fact about the person's SNAP case, not this volume's SNAP determination.
+supplied_by: The SNAP case record (CBMS).
+sources: [S1209]
+tags: [ma, snap, sebt]
+rationale: "OQ-65: no fact states SNAP receipt as a fact about the case; 42 CFR 435.554(c)(7) reads it. Audit fix round (H-1): also read by SUN Bucks (sebt_household_child_receives_snap_or_tanf, CO-2708)."

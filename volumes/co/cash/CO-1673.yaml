@@ -1,0 +1,17 @@
+id: CO-1673
+name: "Adult Financial: citizenship document is acceptable"
+identifier: af_citizenship_document_is_acceptable
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "Whether the citizenship document provided is acceptable for Aid to the Needy Disabled: the six documents 3.520.67.C names, or a document 45 CFR 1626.6 accepts (a baptismal certificate showing a U.S. place of birth and baptism within two months of birth, another authoritative document from DHS, a court or another government agency, or a notarized third-party statement)."
+precision: religious_record_of_birth stands for 1626.6(b)(1)(v)'s baptismal certificate; its two-month condition is the worker's check. The third party's own citizenship proof (1626.6(b)(3)) is likewise not a separate fact.
+derived: [any, af_citizenship_document_is_primary, [in, citizenship_verification_document_type, [religious_record_of_birth, consular_report_of_birth_abroad, northern_mariana_id_card, adoption_decree_showing_us_birth, third_party_citizenship_statement]]]
+sources: [S1076, S1077]
+implemented: engine
+tags: [verification, cash, and, immigration]
+rationale: "OQ-315: 3.520.67.C incorporates 45 CFR 1626.6, now fetched (D-118); af_citizenship_document_is_primary (CO-1368) holds only the six documents the rule names."
+tests:
+  - {id: CO-1673-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: religious_record_of_birth}, expect: true}
+  - {id: CO-1673-T2, as_of: "2026-10-01", given: {citizenship_verification_document_type: census_record}, expect: false}

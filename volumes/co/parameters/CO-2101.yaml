@@ -1,0 +1,12 @@
+id: CO-2101
+name: Compulsory school attendance minimum age
+identifier: compulsory_school_attendance_min_age
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The age (inclusive) a child must have attained on or before August 1 of a year to be required to attend school in Colorado that school year."
+value: 6
+sources: [S1403]
+tags: [age]
+rationale: "C.R.S. 22-33-104(1)(a) (S1403) sets the lower bound of Colorado's compulsory attendance ages; sebt_is_school_aged (CO-1292) reads it because 7 CFR 292.2 defines Summer EBT's \"school aged\" as the State's compulsory-education years (OQ-255)."

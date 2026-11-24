@@ -1,0 +1,12 @@
+id: CO-2236
+name: Income trust amount retained for trust expenses
+identifier: ma_income_trust_amount_retained_for_expenses
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The amount the trustee of the person's income trust retains this month for trust expenses such as bank charges, which 10 CCR 2505-10 § 8.100.7 (income trusts, 6.a.i.b and f) allows only up to $20 and only if such charges are expected to be incurred by the trust."
+supplied_by: The trustee's monthly accounting of the income trust.
+sources: [S1508]
+tags: [ma, ltc, income]
+rationale: "OQ-96: the trust's distribution, and so the income applied to the cost of care, depends on the retention; no fact stated it."

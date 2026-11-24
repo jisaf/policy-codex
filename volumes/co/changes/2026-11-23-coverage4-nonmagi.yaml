@@ -1,0 +1,9 @@
+# Coverage pass 4 fix round for non-MAGI Medicaid (docs/reviews/coverage4-medicaid-nonmagi.md, section 7): the SSI method's
+# counting rows the text on file settles (N4-1 to N4-5), the couple's one automobile (N4-6), resources, couples and ages by month
+# (N4-7 to N4-9), the long-term care request date (N4-10), child support on the child's list (N4-11), decision 4 on the reader
+# defaults the review listed (N4-13), the min/max rendering (N4-16). One entry per change-impact flag the round raises: those whose
+# item this round changed carry their own reason; the others are flags an earlier record dispositioned, re-keyed because the
+# receipts and holdings lists changed upstream.
+date: 2026-11-23
+summary: "Coverage pass 4 (non-MAGI Medicaid): N4-1 to N4-11 (the P1s) fixed with rule tests and the review's repro households (CO-760 to CO-769); N4-12 recorded (OQ-1280); N4-13 fixed (decision 4; OQ-1243 resolved); N4-14 OQ-971, OQ-995 narrowed, OQ-952 resolved, OQ-972 Checked line rewritten; N4-15 rows cited for the owner; N4-16 fixed. Answer changes, each a cited entry of the harnesses (scripts/receipts/allowed-differences.yaml, scripts/records/allowed/c4-nonmagi.yaml, h4-c4-nonmagi.yaml)."
+impact: []

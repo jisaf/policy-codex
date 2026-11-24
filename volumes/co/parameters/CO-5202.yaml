@@ -1,0 +1,12 @@
+id: CO-5202
+name: "Medicaid: estate recovery age"
+identifier: ma_estate_recovery_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age at or above which medical assistance paid on a person's behalf is recovered from the person's estate (42 U.S.C. 1396p(b)(1)(B): \"an individual who was 55 years of age or older when the individual received such medical assistance\")."
+value: 55
+sources: [S3751]
+tags: [ma, non_magi, resources, age]
+rationale: "Coverage pass 3 C3-5: 10 CCR 2505-10 § 8.100.5.M.2.a.xiv makes a home with a recorded beneficiary deed countable only when it \"is subject to estate recovery\"; ma_home_is_subject_to_estate_recovery (CO-5203) needs the statutory age as a dated figure, not a literal."

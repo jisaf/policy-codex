@@ -1,0 +1,13 @@
+id: CO-3381
+name: "SSI: student earned income exclusion age limit"
+identifier: ssi_student_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The student earned income exclusion applies to a student under this age (20 CFR 416.1112(c)(3))."
+value: 22
+sources: [S2210]
+implemented: engine
+tags: [non_magi, student]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). A figure the rule states is a parameter, not a literal (OQ-82)."

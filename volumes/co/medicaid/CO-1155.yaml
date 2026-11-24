@@ -1,0 +1,22 @@
+id: CO-1155
+name: "Medicaid: income is within the Limited Family Planning band"
+identifier: ma_family_planning_income_in_band
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person's Limited Family Planning household income does not exceed ma_family_planning_income_upper_pct of the federal poverty level (10 CCR 2505-10 § 8.100.4.G.8; Colorado State Plan page S59, \"household income at or below a standard established by the state\"), with the ma_magi_income_disregard_pct MAGI disregard applied at the ceiling."
+precision: "Coverage review 3, C3-01: G.8's floor (ma_family_planning_income_lower_pct, CO-1131) is not tested; see the override. Tested on the enlarged household it left a single adult between 138% and 180% of the one-person guideline (a family of three between 138% and 161%) over the Adult limit and under the floor, with no coverage, while S59 sets no floor and G.8 states the group's purpose as covering \"those not eligible for\" full coverage, which ma_family_planning_status (CO-1154) tests before this band. Ceiling compared after subtracting ma_magi_income_disregard_pct (CO-183), the 42 CFR 435.603(d)(4)/§ 8.100.4.D disregard applied at the highest standard the person is tested against (OQ-204). Coverage pass 4, C4-05: the month's figure (ma_family_planning_monthly_household_income_pct_fpl, CO-6453) is tested first, and the budget figure only where it fails."
+statute_override: "Federal law overrides 10 CCR 2505-10 § 8.100.4.G.8's floor (\"greater than 133%\"), which § 8.100.4.E.3's household of two moves to 180% of the one-person guideline: 42 CFR 435.214(c) sets the group's income standard as the one \"established in the State plan\", and Colorado State Plan page S59 (approved 12/18/2013, effective 01/01/2014) covers under 42 CFR 435.214 individuals who are not pregnant with household income \"at or below a standard established by the state\", with no floor, so only the 260% ceiling is tested and G.8's \"not eligible for a Medicaid eligibility category that provides full coverage\" is applied by ma_family_planning_status's order (OQ-204)."
+derived: [any, ["<=", ["-", ma_family_planning_monthly_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_family_planning_income_upper_pct], ["<=", ["-", ma_family_planning_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_family_planning_income_upper_pct]]
+sources: [S613, S3681, S3680]
+open: [OQ-204]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item tests the family planning income band; chp_income_within_limit (CO-704) is the CHP+ band from a different rule and reads the unadjusted household. ma_family_planning_status (CO-1154) reads it twice (the limited category and the reproductive health-care program), so it is its own item."
+tests:
+  - {id: CO-1155-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_family_planning_household_income_pct_fpl: 2.0, ma_family_planning_monthly_household_income_pct_fpl: 2.0}, expect: true}
+  - {id: CO-1155-T2, as_of: "2026-10-01", month: "2026-10", title: "At 133%: within the ceiling; coverage review 3, C3-01, no floor (S59); was false", given: {ma_family_planning_household_income_pct_fpl: 1.33, ma_family_planning_monthly_household_income_pct_fpl: 1.33}, expect: true}
+  - {id: CO-1155-T5, as_of: "2026-11-10", month: "2026-11", title: "Coverage review 3, C3-01 (RV3-FPH): a single adult at 150% of the one-person guideline is 1,995 / 1,803.33 = 110.6% counted as two: in the band (was under the floor)", given: {ma_family_planning_household_income_pct_fpl: 1.1062846580406656, ma_family_planning_monthly_household_income_pct_fpl: 1.1062846580406656}, expect: true}
+  - {id: CO-1155-T3, as_of: "2026-10-01", month: "2026-10", title: "264% less the 5% disregard is within 260%", given: {ma_family_planning_household_income_pct_fpl: 2.64, ma_family_planning_monthly_household_income_pct_fpl: 2.64}, expect: true}
+  - {id: CO-1155-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_family_planning_household_income_pct_fpl: 2.70, ma_family_planning_monthly_household_income_pct_fpl: 2.70}, expect: false}

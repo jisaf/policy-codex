@@ -1,0 +1,22 @@
+id: CO-4022
+name: "Adult Financial: is a child under the SSI rules"
+identifier: af_is_ssi_child
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the person is a child as 20 CFR 416.1856 defines one for the SSI exclusions 9 CCR 2503-5 3.520.786.K incorporates: not married, and under af_ssi_child_age_limit, or under af_ssi_child_student_age_limit and a student regularly attending school, college or job training (ssi_is_student_regularly_attending_school)."
+precision: "A person with no spouse edge and no stated marital status is read as not married. The student test is read only for a person of af_ssi_child_age_limit or more. Coverage pass 4 CA4-15: a condition of the month, the age on its first day (\"under\" the limits); before, the determination date's age in every month (OQ-951). Coverage pass 6 CA6-7: reads af_is_married (CO-7308) with no default, so an unstated marital status is cannot determine (decision 4 of 2026-11-23); before, an unknown marriage was read as none."
+assumption: "416.1856(c), \"You are not the head of a household\", is not tested: no fact states it apart from SNAP's own household head, and a person under twenty-two who heads a household is read as not receiving child support from an absent parent."
+derived: ["all", ["not", "af_is_married"], ["any", ["<", ["years_between", "date_of_birth", ["first_day", ["month"]]], "af_ssi_child_age_limit"], ["all", ["<", ["years_between", "date_of_birth", ["first_day", ["month"]]], "af_ssi_child_student_age_limit"], "ssi_is_student_regularly_attending_school"]]]
+sources: [S2803, S2805]
+implemented: engine
+tags: [cash, income]
+rationale: "Final cash review 2, N-4: 20 CFR 416.1124(c)(11) excludes one-third of child support \"if you are a child\", which 416.1856 defines; Adult Financial had no item for it (AND-CS's own unemancipated-child test, 3.549.E, is about deeming a parent's income and has no student arm)."
+tests:
+  - {id: "CO-4022-T1", month: "2026-10", title: "Age 9", as_of: "2026-10-01", given: {date_of_birth: "2017-05-09", marital_status: single}, relationships: [], expect: true}
+  - {id: "CO-4022-T2", month: "2026-10", title: "Age 20, a full-time college student", as_of: "2026-10-01", given: {date_of_birth: "2006-02-01", ssi_is_student_regularly_attending_school: true, marital_status: single}, relationships: [], expect: true}
+  - {id: "CO-4022-T3", month: "2026-10", title: "Age 20, not a student", as_of: "2026-10-01", given: {date_of_birth: "2006-02-01", ssi_is_student_regularly_attending_school: false}, relationships: [], expect: false}
+  - {id: "CO-4022-T4", month: "2026-10", title: "Age 17, married", as_of: "2026-10-01", given: {date_of_birth: "2009-02-01", marital_status: married}, relationships: [], expect: false}
+  # Coverage pass 6 CA6-7: af_is_married (CO-7308) with no default.
+  - {id: "CO-4022-T5", title: "Coverage pass 6 CA6-7: a child of 9 whose marital status is not stated: cannot determine", month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2017-05-09"}, relationships: [], expect: unknown}

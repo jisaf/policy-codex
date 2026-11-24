@@ -1,0 +1,12 @@
+id: CO-1575
+name: Institutional stay verification document received
+identifier: institutional_stay_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether supporting documentation verifying 30 consecutive full days in a hospital, long-term care institution, HCBS or PACE (the Level of Care Eligibility Determination, or medical records verified by a physician or case manager) has been received.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1740]
+tags: [verification, ltc]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.c) needs it as a supplied fact."

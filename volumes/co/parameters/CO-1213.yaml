@@ -1,0 +1,13 @@
+id: CO-1213
+name: Home Care Allowance tier 3 minimum need-for-paid-care score
+identifier: af_hca_tier_three_min_need_score
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The lowest need-for-paid-care score in HCA tier 3 ("38 to 51"), per 9 CCR 2503-5 3.570.13.C.3.
+value: 38
+sources: [S714]
+tags: [cash, disability]
+rationale: No existing parameter states this tier bound; af_hca_tier (CO-1216) needs it. Same table as CO-1211, a different row.
+nearest: [CO-1211]

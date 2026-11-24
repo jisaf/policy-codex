@@ -1,0 +1,12 @@
+id: CO-2367
+name: "Colorado Works sponsor earned income deduction rate"
+identifier: cw_sponsor_earned_income_deduction_rate
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: "The share of a sponsor's (or sponsor's spouse's) gross earned income deducted before deeming, unless $175 is less: \"twenty percent (20%) or $175, whichever is less\" (9 CCR 2503-6 3.605.1.A.5.b)."
+value: 0.2
+sources: [S1627]
+tags: [cash, tanf, income]
+rationale: "OQ-103: cw_sponsor_deemed_income (CO-2365) needs the rate."

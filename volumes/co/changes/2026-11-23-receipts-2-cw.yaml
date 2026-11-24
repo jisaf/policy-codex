@@ -1,0 +1,6 @@
+# Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-cw.md): Colorado Works reads
+# the receipts (CO-5000) through one counting table (cw_receipt_treatment_table, CO-5650). One entry
+# per change-impact flag the move raises.
+date: 2026-11-23
+summary: Colorado Works reads unearned income from receipt records through one counting table.
+impact: []

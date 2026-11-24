@@ -1,0 +1,18 @@
+id: CO-073
+name: Receives state cash assistance
+identifier: receives_state_cash_assistance
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The person receives, or is authorized to receive, a Colorado Adult Financial cash payment - Old Age Pension (OAP, including OAP-C), Aid to the Needy Disabled (AND-SO/AND-CS), or Aid to the Blind (AB): any adult_financial_program_received (CO-2710) other than none. Distinct from Colorado Works (TANF) cash assistance, which receives_tanf_cash (CO-013) states. A fact about the person's Adult Financial case, not this volume's own determination (af_category, CO-953)."
+derived: [not, ["=", adult_financial_program_received, none]]
+sources: [S47]
+implemented: engine
+tags: [income, state_election]
+link_class: primitive
+link_basis: "Receipt of an Adult Financial cash payment as the person's case records it (a fact about another case, not this volume's determination); no program defines it differently."
+rationale: "C-6: CO-336 (snap_household_all_members_receive_categorical_assistance) read receives_disability_based_general_assistance as standing in for OAP/AND/AB receipt for Basic Categorical Eligibility, but CO-014's own stated meaning is 'general assistance benefits based on disability or blindness criteria' (the 271.2 elderly-or-disabled prong CO-302 needs), which is not OAP (an age-based program, 65 and over or 60 with AND). A household of pure OAP recipients -- the commonest BCE household in Colorado -- was therefore not BCE under the model as written. This new fact is the OAP/AND/AB/TANF prong 10 CCR 2506-1 4.206,C,1,a (S47) actually names for BCE, kept separate from CO-014's disability-criteria meaning so the two prongs (disability status vs. BCE cash-program receipt) are not conflated. Dual-entry audit 3.8 and heavier-definitions audit H-3 (audit fix round): derived from the one Adult Financial case record, adult_financial_program_received (CO-2710)."
+tests:
+  - {id: CO-073-T1, as_of: "2026-10-01", given: {adult_financial_program_received: and_cs}, expect: true}
+  - {id: CO-073-T2, as_of: "2026-10-01", given: {adult_financial_program_received: none}, expect: false}

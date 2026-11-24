@@ -1,0 +1,12 @@
+id: CO-1732
+name: "Is violating a condition of probation or parole"
+identifier: is_probation_or_parole_violator
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is violating a condition of probation or parole imposed under federal or state law, as the supervising probation or parole authority reports it. What a program requires beyond the violation itself (a finding by an impartial party, law enforcement actively seeking the person) is that program's own item (snap_is_probation_or_parole_violator, CO-5216)."
+supplied_by: "Law enforcement or court data match; applicant statement."
+sources: [S19, S3066]
+tags: [legal]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-6): split from is_fleeing_felon_or_probation_violator (CO-038), which joined two conditions because SNAP's 7 CFR 273.11(n) joins them; Adult Financial names fleeing felons only, so a probation violator was denied OAP or AND. Coverage review P2-3: the meaning states 4.304.4.C's impartial-party finding and actively-seeking conditions; only SNAP reads this fact (CO-311, CO-2302). SNAP non-financial coverage P2-3, second half (fix round 2026-11-23): the meaning had stated SNAP's conditions (4.304.4.C), a program classification inside a neutral fact (convention rule 13); they moved to snap_is_probation_or_parole_violator (CO-5216), with the impartial party's finding a SNAP finding (CO-5215) and the actively-seeking condition the existing neutral fact CO-4685."

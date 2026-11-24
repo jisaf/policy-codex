@@ -1,0 +1,13 @@
+id: CO-4316
+name: "SNAP irregular income quarterly limit"
+identifier: snap_irregular_income_quarterly_limit
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The most infrequent or irregular income a person may receive in three months for SNAP to exclude it: $30 (10 CCR 2506-1 4.405.A)."
+versions:
+  - {from: "2000-01-01", value: 30, source: S3100}
+sources: [S3100, S3128]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: the irregular income exclusion (4.405.A, S3100; 7 CFR 273.9(c)(2), S3128) had no item. The figure is in the rule and the regulation and is not indexed; one version covers every date the volume determines."

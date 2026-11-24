@@ -1,0 +1,12 @@
+id: CO-1581
+name: Additional care needs verification document received
+identifier: additional_care_needs_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether verification of the child's additional care needs (a physical or mental incapacity to care for themselves, or court supervision) has been received.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1082]
+tags: [verification, disability]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-4: 3.111.F makes the additional care needs a verified condition) needs it as a supplied fact."

@@ -1,0 +1,23 @@
+id: CO-1231
+name: "Burial assistance: eligible"
+identifier: af_burial_eligible
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+role: outcome
+meaning: Whether a burial benefit is available for the deceased person - the person died while receiving OAP, AND, HCA or Medicaid, the total cost of burial services (less an exempt plot) is at most $2,500, and the decedent's estate and the legally responsible persons' resources leave some cost unmet - per 9 CCR 2503-5 3.570.43.A and F.1.
+precision: "Coverage review P2-8: the request must be made within thirty days of the death, or within one year with the county's good cause (3.570.43.C, S3219): af_burial_request_is_timely (CO-4436), read as true when not stated. The one-year outer limit is a time bar on eligibility, not only procedure. Coverage pass 4 CA4-16: whether the burial request was timely is required, never read as timely when not stated (decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise)."
+derived: [all, af_died_while_receiving_af_or_medicaid, af_burial_request_is_timely, ["<=", ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
+sources: [S719, S721, S723, S3219]
+open: [OQ-355]
+implemented: engine
+tags: [cash]
+rationale: No existing item determines burial assistance eligibility; it is new to the volume with the current 9 CCR 2503-5 (D-80) and declared as an outcome.
+tests:
+  - {id: CO-1231-T1, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: false}, expect: false}
+  - {id: CO-1231-T2, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 3000}, expect: false}
+  - {id: "CO-1231-T3", as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 3000, burial_plot_cost_excluded_from_limit: 900, af_burial_unmet_cost: 3000, af_burial_request_is_timely: true}, expect: true}
+  - {id: CO-1231-T4, as_of: "2026-10-01", given: {af_died_while_receiving_af_or_medicaid: true, burial_services_total_cost: 2000, burial_plot_cost_excluded_from_limit: 0, af_burial_unmet_cost: 0}, expect: false}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-1231-T5", "as_of": "2026-10-01", "title": "T-9: af_burial_unmet_cost equal to 0 (af_burial_unmet_cost over 0)", "given": {"af_died_while_receiving_af_or_medicaid": true, "burial_services_total_cost": 3000, "burial_plot_cost_excluded_from_limit": 900, "af_burial_unmet_cost": 0}, "expect": false}

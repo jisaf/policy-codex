@@ -1,0 +1,20 @@
+id: CO-6060
+name: "Medicaid Pickle: the parents' income to be deemed to the children"
+identifier: ma_pickle_parental_income_to_be_deemed
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "For the Pickle test, the income of this child's ineligible parents that remains to be deemed to the eligible children for the month, figured as ma_ssi_parental_income_to_be_deemed (CO-5903) figures it but from the parents' countable income with their OASDI cost-of-living increases since the child lost SSI disregarded (ma_pickle_deeming_parents_countable_income, CO-5221; 10 CCR 2505-10 § 8.100.6.E.3): less the Ineligible Parent(s) Allocation, the SSI Federal Benefit Rate for a couple when two deemed parents live with the child, for an individual when one does, not below zero; zero when no parent's income is deemed."
+precision: "Sibling of CO-5903 (duplicate-paths audit D-M3); it was the part of CO-5222 before its division."
+derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, [max, 0, ["-", ma_pickle_deeming_parents_countable_income, [case, [[">=", [count, ma_ssi_deeming_parents], 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]]]]
+sources: [S3405, S3413, S666]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-5903, reason: "the Pickle copy reads the parents' income with their OASDI increases disregarded (CO-5221); every other term must stay the same"}
+rationale: "Duplicate-paths audit D-M3 (P1): split out of CO-5222, as CO-5903 was split out of CO-4626, so the division can read it."
+nearest: [CO-5903]
+tests:
+  - {id: CO-6060-T1, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_deeming_parents: [p2], ma_pickle_deeming_parents_countable_income: 2994}, others: {p2: {}}, title: "One deemed parent: 2,994 - the individual FBR 994 = 2,000", expect: 2000}
+  - {id: CO-6060-T2, month: "2026-10", as_of: "2026-10-12", given: {ma_ssi_deeming_parents: []}, title: "No deemed parent: 0", expect: 0}

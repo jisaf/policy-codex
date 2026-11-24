@@ -3,15 +3,20 @@ name: "Medicaid: is institutionalized"
 identifier: ma_is_institutionalized
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
-meaning: Whether this person is institutionalized for Long-Term Care purposes - currently in a medical institution or Long-Term Care institution and expected to remain, or to receive HCBS/PACE, for at least 30 consecutive full days - per 42 CFR 435.1005/435.1009 and 10 CCR 2505-10 §§ 8.100.7.A.2.c and 8.100.7.K.2.
-precision: Does not model the retroactive 30-day finding for a person who dies before the 30th day (8.100.7.A.2.c.i-iii); uses the worker's or case manager's current expectation.
-derived: [all, in_medical_institution, expects_institutional_stay_of_thirty_days]
-sources: [S351]
+meaning: "Whether this person is institutionalized for Long-Term Care purposes in the month - in a medical institution or Long-Term Care institution in the month and expected to remain, or to receive HCBS/PACE, for at least 30 consecutive full days - per 42 CFR 435.1005/435.1009 and 10 CCR 2505-10 §§ 8.100.7.A.2.c and 8.100.7.K.2. A month before the month the person entered the institution is not one (§ 8.100.7.A.2.c.iii: benefits \"start as of the first day when institutionalization began\")."
+precision: "A person who dies before the 30th day (8.100.7.A.2.c.i-iii) meets the requirement on a physician's or case manager's statement that the stay would have lasted 30 days: expects_institutional_stay_of_thirty_days is read as that statement, and its documentation is ma_requires_verification_of_institutional_stay (CO-1632) (coverage review NM-34). A hospital or Long-Term Care institution is read as eligible for Medical Assistance reimbursement (A.2.d); a facility that is not is outside this item (NM-35). Reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact. Coverage pass 6, non-MAGI F6-3 (docs/reviews/coverage6-medicaid-nonmagi.md): per month, as ma_is_institutionalized_spouse_in_institution (CO-5200) is. For a month before the determination month the person is institutionalized from the month of institution_entry_date (A.2.c.iii, S1753; 8.100.3.E.1, S1503: a retroactive month needs \"all applicable eligibility requirements\" met in it), so a retroactive month before the admission is not one; the entry date is needed for such a month (decision 4 of 2026-11-23). The determination month and the months after read the setting on the determination date. Before, every month read the determination date's setting, so a retroactive month before the admission was long-term care eligible with a patient payment."
+derived: [all, resides_in_medical_institution, expects_institutional_stay_of_thirty_days, [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, institution_entry_date], [month]]]]]
+sources: [S1753, S3422, S1503]
 implemented: engine
 tags: [ma, ltc]
-rationale: "No existing item states the institutionalized-for-LTC-purposes test (in_medical_institution alone, used by SNAP and the MAGI chapter for institution exclusion, does not test the 30-day expectation). ma_meets_special_income_group's institutional gate, ma_ltc_couple (CO-643) and ma_ltc_eligibility_status (CO-652) need it."
+rationale: "No existing item states the institutionalized-for-LTC-purposes test (snap_resides_in_institution_providing_meals alone, used by SNAP and the MAGI chapter for institution exclusion, does not test the 30-day expectation). ma_meets_special_income_group's institutional gate, ma_ltc_couple (CO-643) and ma_ltc_eligibility_status (CO-652) need it. History moved from the precision note (HCPF review S-14): Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-8): reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact."
 tests:
-  - {id: CO-640-T1, as_of: "2026-10-01", given: {in_medical_institution: true, expects_institutional_stay_of_thirty_days: true}, expect: true}
-  - {id: CO-640-T2, as_of: "2026-10-01", given: {in_medical_institution: true, expects_institutional_stay_of_thirty_days: false}, expect: false}
+  - {id: CO-640-T1, month: "2026-10", as_of: "2026-10-01", given: {resides_in_medical_institution: true, expects_institutional_stay_of_thirty_days: true}, expect: true}
+  - {id: CO-640-T2, month: "2026-10", as_of: "2026-10-01", given: {resides_in_medical_institution: true, expects_institutional_stay_of_thirty_days: false}, expect: false}
+  # Coverage pass 6 F6-3 (PREADMIT-RETRO, CO-901): admitted 2026-09-14, determined 2026-11-12. A.2.c.iii (S1753): benefits start "as of the first day when institutionalization began".
+  # August: month_of(2026-09-14) = 2026-09 > 2026-08: not in the institution: false. September: 2026-09 <= 2026-09: true. A month before the determination month with no entry date: unknown.
+  - {id: CO-640-T3, month: "2026-08", as_of: "2026-11-12", title: "F6-3: a retroactive month before the admission is not institutionalized", given: {resides_in_medical_institution: true, expects_institutional_stay_of_thirty_days: true, institution_entry_date: "2026-09-14"}, expect: false}
+  - {id: CO-640-T4, month: "2026-09", as_of: "2026-11-12", title: "F6-3: the admission month is institutionalized", given: {resides_in_medical_institution: true, expects_institutional_stay_of_thirty_days: true, institution_entry_date: "2026-09-14"}, expect: true}
+  - {id: CO-640-T5, month: "2026-09", as_of: "2026-11-12", title: "F6-3: a retroactive month with no entry date stated cannot be determined (decision 4)", given: {resides_in_medical_institution: true, expects_institutional_stay_of_thirty_days: true}, expect: unknown}

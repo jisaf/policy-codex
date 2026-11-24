@@ -1,0 +1,17 @@
+id: CO-1674
+name: "Adult Financial: identity document is acceptable"
+identifier: af_identity_document_is_acceptable
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "Whether the identity document provided is acceptable for Adult Financial: a document 3.520.66.A-D names, or one 1 CCR 204-30 Rule 16 accepts in exceptions processing (a U.S. passport, another state's license or identification card, a government identification card such as a Veterans Administration or corrections card, an insurance record with the full name, date and place of birth, an income tax return with a W-2 or 1099, or an affidavit of identity)."
+precision: Rule 16 limits the affidavit of identity to U.S. citizens and some documents to those expired within ten or issued within twenty years; those conditions are the worker's check.
+derived: [any, [in, identity_verification_document_type, [colorado_drivers_license_or_id, us_military_card, military_dependent_id_card, merchant_mariner_card, tribal_document, us_passport, other_state_drivers_license_or_id, government_issued_id_card, insurance_record_with_birth_data, income_tax_return_with_w2_or_1099, third_party_identity_affidavit]]]
+sources: [S1075, S1074, S885]
+implemented: engine
+tags: [verification, cash]
+rationale: "Same-word audit SW-36: Adult Financial's 3.520.66.A-D list (S885) is stated here, not shared with Colorado Works's lawful-presence list. OQ-315: 3.520.66.E incorporates 1 CCR 204-30 Rule 16, now fetched (D-120); cw_lawful_presence_identity_document_is_acceptable (CO-1367) holds only the documents A-D name."
+tests:
+  - {id: CO-1674-T1, as_of: "2026-10-01", given: {identity_verification_document_type: us_passport}, expect: true}
+  - {id: CO-1674-T2, as_of: "2026-10-01", given: {identity_verification_document_type: school_id_card}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-1626
+name: "Medical Assistance: resources verification is pending"
+identifier: ma_resources_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether Medical Assistance (and CHP+, which reads this item) requires verification of the person's resources and it has not been provided.
+derived: [all, ma_requires_verification_of_resources, [not, resources_are_verified]]
+sources: [S866]
+implemented: engine
+tags: [verification, ma]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1626-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_resources: true, resources_verified_by_electronic_data_source: false, resources_verification_document_received: false}, expect: true}
+  - {id: CO-1626-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_resources: true, resources_verified_by_electronic_data_source: true}, expect: false}

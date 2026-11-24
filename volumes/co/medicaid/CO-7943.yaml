@@ -1,0 +1,21 @@
+id: CO-7943
+name: "Medicaid: the disabled widow(er) meets the SSI income test in the absence of the widow(er)'s benefits"
+identifier: ma_disabled_widow_meets_ssi_income_test
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person meets the SSI income test as the disabled widow(er) group applies it (10 CCR 2505-10 § 8.100.6.I.1.f, S625; § 8.100.6.A.1, S3411; 42 U.S.C. 1383c(d)(2) (S3416) deems the group SSI recipients 'for so long as such person (i) would be eligible for such supplemental security income benefits ... in the absence of benefits described in paragraph (1)(A)', and (1)(A) describes benefits 'under subsection (e) or (f) of section 402 of this title (or under any other subsection of section 402 of this title if such person is also eligible for benefits under such subsection (e) or (f))'): the SSI income test is met (ma_ssi_income_test_status, CO-5516), or the person's countable income with the Social Security benefits under 42 U.S.C. 402 left out (ma_disabled_widow_countable_income, CO-7941; or, where an ineligible spouse's income is not deemed, the own-income form, CO-7942) is at a rate of not more than the SSI Federal Benefit Rate for the person (ma_ssi_income_standard; 42 U.S.C. 1382(a), S3950)."
+precision: "NM-KL-2 (2026-11-24; docs/reviews/known-limits.md; coverage pass 7, non-MAGI F7-10). Before, the second arm was ma_ssi_income_test_status's met_with_oasdi_disregarded, which compared the Disabled Adult Child figure (CO-1160), the whole current Social Security taken out; CO-5516 now states the SSI income test alone, so ma_meets_ssi_income_standard (CO-609) never waits on a field only this group reads. 'At a rate of not more than' (S3950), as CO-5516 reads it, so income equal to the rate meets the test. The figures with the benefits taken out are read only when the test is not met without them, so the receipt's benefit type (CO-5000) is asked only of a person in the group whose income is over the rate with them."
+derived: [any, ["=", ma_ssi_income_test_status, met], [case, [ma_ssi_ineligible_spouse_income_is_not_deemed, ["<=", ma_ssi_own_countable_income_with_widow_benefit_disregarded, ma_ssi_income_standard]], [else, ["<=", ma_disabled_widow_countable_income, ma_ssi_income_standard]]]]
+sources: [S625, S3411, S3416, S3950, S5031, S5361, S5362]
+implemented: engine
+tags: [ma, non_magi, income]
+nearest: [CO-5516]
+rationale: "NM-KL-2 (F7-10): the disabled widow(er) test read the Disabled Adult Child disregard of every Social Security benefit through CO-5516; the group's own test is stated here."
+tests:
+  # NM-KL-2, hand-computed against the 2026 Federal Benefit Rate of 994 (S3950: 'at a rate of not more than').
+  - {id: CO-7943-T1, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: the SSI income test is met: true, nothing more read", given: {ma_ssi_income_test_status: met}, expect: true}
+  - {id: CO-7943-T2, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: own disability benefit 1,100 and widow's benefit 300: 1,080 > 994, false (the whole Social Security taken out gave 0, true)", given: {ma_ssi_income_test_status: not_met, ma_ssi_ineligible_spouse_income_is_not_deemed: false, ma_disabled_widow_countable_income: 1080, ma_ssi_income_standard: 994}, expect: false}
+  - {id: CO-7943-T3, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: countable income with the 402 benefits out equal to the rate, 994: true ('not more than')", given: {ma_ssi_income_test_status: not_met, ma_ssi_ineligible_spouse_income_is_not_deemed: false, ma_disabled_widow_countable_income: 994, ma_ssi_income_standard: 994}, expect: true}
+  - {id: CO-7943-T4, month: "2026-11", as_of: "2026-11-12", title: "NM-KL-2: an ineligible spouse's income not deemed: the own-income form, 500 <= 994, true", given: {ma_ssi_income_test_status: not_met, ma_ssi_ineligible_spouse_income_is_not_deemed: true, ma_ssi_own_countable_income_with_widow_benefit_disregarded: 500, ma_ssi_income_standard: 994}, expect: true}

@@ -1,0 +1,20 @@
+id: CO-1980
+name: "Medicaid: long-term care private-pay region"
+identifier: ma_ltc_private_pay_region
+kind: derived
+type: one of
+options: [region_i, region_ii, region_iii, region_iv]
+scope: person
+program: Medicaid
+meaning: "The Bureau of Economic Analysis region, as 10 CCR 2505-10 § 8.100.7.G.6.a.i.a) lists its counties, in which the person resides and intends to remain: the region whose average private-pay rate is the income-trust gross income ceiling."
+precision: "Read from ma_ltc_private_pay_region_by_county_table (CO-3021), where every option of county_of_residence has a row (hard-coded numbers audit H-7: before, three literal county lists with region IV as the remainder)."
+derived: [lookup, ma_ltc_private_pay_region_by_county_table, county_of_residence]
+sources: [S1229]
+implemented: engine
+tags: [ma, ltc]
+rationale: "OQ-99: the rule maps counties to four regions; the income-trust ceiling (CO-1985) reads the region."
+tests:
+  - {id: CO-1980-T1, as_of: "2026-10-01", given: {county_of_residence: denver}, expect: region_i}
+  - {id: CO-1980-T2, as_of: "2026-10-01", given: {county_of_residence: weld}, expect: region_ii}
+  - {id: CO-1980-T3, as_of: "2026-10-01", given: {county_of_residence: el_paso}, expect: region_iii}
+  - {id: CO-1980-T4, as_of: "2026-10-01", given: {county_of_residence: mesa}, expect: region_iv}

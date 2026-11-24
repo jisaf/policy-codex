@@ -1,0 +1,13 @@
+id: CO-3728
+name: "California Indian"
+identifier: is_california_indian_under_ihcia
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a California Indian described in section 809(a) of the Indian Health Care Improvement Act (25 U.S.C. 1679(a)): a member of a federally recognized Indian tribe; a descendant of an Indian residing in California on June 1, 1852 who is a member of the Indian community served by a local program of the Indian Health Service and regarded as an Indian by the community in which the descendant lives; an Indian holding trust interests in public domain, national forest or reservation allotments in California; or an Indian of California listed on the plans for distribution of the assets of California rancherias and reservations under the Act of August 18, 1958, or a descendant of such an Indian."
+precision: "If not stated, SNAP reads this as false."
+supplied_by: "Indian Health Service eligibility record; tribal or Bureau of Indian Affairs records."
+sources: [S2515, S128]
+tags: [immigration]
+rationale: "Final verification F-13 (docs/reviews/final-snap.md): 7 U.S.C. 2015(o)(3)(G) as amended by Pub. L. 119-21 sec. 10102 (S127, S128) excepts \"a California Indian described in section 809(a) of the Indian Health Care Improvement Act\" from the ABAWD time limit; the tribal-membership, Alaska Native and urban Indian facts (CO-2890 to CO-2893) do not reach a California Indian descendant who is none of these."

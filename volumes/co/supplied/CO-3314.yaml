@@ -1,0 +1,14 @@
+id: CO-3314
+name: "Burial assistance: responsible persons outside the case"
+identifier: af_burial_responsible_persons_outside_case_count
+kind: supplied
+type: whole number
+scope: person
+program: AdultFinancial
+meaning: "The number of the decedent's legally responsible persons (3.570.42: a spouse, or the parents of an unemancipated minor under 18) who are not persons of this case. Stated on the decedent; 0 when every responsible person is a person of the case."
+precision: "Required where Adult Financial (af_burial_responsible_persons_are_couple, CO-1226) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
+supplied_by: "County department determination."
+sources: [S722]
+implemented: engine
+tags: [cash, resources]
+rationale: "Dual-entry audit 1.9: the resources of the decedent's spouse or parents, and whether they are a couple, were entered on the decedent, restating the decedent's spouse and parent relationships. The legally responsible persons are now read from the relationships (3.570.42, S722) and their own countable resources; only responsible persons outside the case are stated."

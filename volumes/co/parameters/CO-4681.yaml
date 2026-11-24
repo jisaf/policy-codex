@@ -1,0 +1,12 @@
+id: CO-4681
+name: SNAP student employment exemption hours per month
+identifier: snap_student_employment_hours_per_month
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The hours of paid employment in a month that meet the student employment exemption when the twenty weekly hours are averaged over the month (10 CCR 2506-1 4.306.1.B, third paragraph).
+value: 80
+sources: [S135]
+tags: [student]
+rationale: "Coverage pass 2 N2-2: 4.306.1.B (S135) lets the twenty weekly hours \"be based on an average number of hours worked per month, so long as the student is employed for eighty (80) hours per month\"; snap_meets_student_employment_exemption (CO-407) divided the month's hours by 4.3 and so required 86. No existing parameter states the monthly figure (snap_student_employment_hours_per_week, CO-175, is the weekly one)."

@@ -1,0 +1,12 @@
+id: CO-1909
+name: "Medicaid community engagement: stable recovery years"
+identifier: ma_community_engagement_stable_recovery_years
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The years in recovery after which a person with a substance use disorder is in stable recovery and no longer medically frail on that ground (42 CFR 435.554(c)(5)(i)(B)): 5."
+value: 5
+sources: [S1209]
+tags: [ma, magi, medical]
+rationale: "OQ-65: ma_is_medically_frail (CO-1964) compares the years since recovery began with it."

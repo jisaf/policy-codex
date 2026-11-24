@@ -1,0 +1,19 @@
+id: CO-1201
+name: AND-CS payment floor standard
+identifier: af_and_cs_payment_floor
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: The minimum monthly AND-CS grant payment an eligible AND-CS client may receive, per 9 CCR 2503-5 3.510, 3.546.C.2 and 3.546.E.
+precision: Updated annually with the cost-of-living adjustment (3.510); each update is a new version.
+versions:
+  - from: "2026-01-01"
+    to: "2027-01-01"
+    value: 13
+    source: S707
+review_by: "2027-01-01"
+sources: [S704, S706, S707]
+tags: [cash, and, income]
+rationale: No existing item states the AND-CS payment floor added by D-80; af_and_grant (CO-952) needs it for the and_cs category. Same shape as af_oap_payment_floor (CO-1200) but a different program's figure.
+nearest: [CO-1200]

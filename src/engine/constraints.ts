@@ -1,8 +1,10 @@
 import type { LedgerIndex } from "./ledger-index";
 import { check } from "./check";
-import { runTest } from "./evaluate";
+import { buildGraph } from "./graph";
+import { runTest, type TestResult } from "./evaluate";
+import { schemaErrors } from "./records";
 import { baseType, fmt } from "./values";
-import { DATE_RE, type EngineRefs, type Item, type VolumeMeta } from "./types";
+import { DATE_RE, type EngineRefs, type Item, type TestSpec, type VolumeMeta } from "./types";
 
 export interface Constraint { ok: boolean; msg: string; level: "error" | "warn" }
 
@@ -15,8 +17,56 @@ export function approvals(meta: VolumeMeta, it: Item): string[] {
   return [...new Set(roles)];
 }
 
+const upstreamCache = new WeakMap<LedgerIndex, Map<string, Set<string>>>();
+
+/** For each program with declared outcomes, every identifier those outcomes
+ *  read, directly or through other items (the outcomes included). */
+function upstreamOfOutcomes(ix: LedgerIndex, meta: VolumeMeta): Map<string, Set<string>> {
+  const hit = upstreamCache.get(ix);
+  if (hit) return hit;
+  const uses = buildGraph(ix).uses;
+  const out = new Map<string, Set<string>>();
+  for (const p of meta.programs ?? []) {
+    const seen = new Set<string>();
+    const stack = [...(p.outcomes ?? [])];
+    while (stack.length) {
+      const id = stack.pop()!;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      for (const d of uses.get(id) ?? []) stack.push(d);
+    }
+    out.set(p.id, seen);
+  }
+  upstreamCache.set(ix, out);
+  return out;
+}
+
+/** The roles an item requires: `approvals()`, plus, when the policy sets
+ *  `upstream_of_outcomes`, the by_program roles of every program whose
+ *  declared outcomes read the item. */
+export function approvalsFor(ix: LedgerIndex, meta: VolumeMeta, it: Item): string[] {
+  const roles = approvals(meta, it);
+  const pol = meta.approval_policy;
+  if (!pol?.upstream_of_outcomes) return roles;
+  for (const [program, ids] of upstreamOfOutcomes(ix, meta)) {
+    if (program !== it.program && ids.has(it.identifier)) {
+      roles.push(...(pol.by_program?.[program] ?? []));
+    }
+  }
+  return [...new Set(roles)];
+}
+
+export interface ConstraintOptions {
+  /** The result of one of the item's rule tests, when the caller has already
+   *  run it (`npm run check` runs every rule test once and shares the
+   *  results); otherwise each test is run here. It must be what
+   *  `runTest(ix, it, t, meta.default_as_of)` returns. */
+  testResult?: (t: TestSpec) => TestResult | undefined;
+}
+
 export function constraints(
   ix: LedgerIndex, meta: VolumeMeta, refs: EngineRefs | null, it: Item,
+  opts: ConstraintOptions = {},
 ): Constraint[] {
   const R: Constraint[] = [];
   const add = (ok: boolean, msg: string, level: "error" | "warn" = "error") =>
@@ -43,6 +93,26 @@ export function constraints(
     add(!!(it.options && it.options.length >= 2), "Enumeration lists its options");
   }
   if (it.kind === "supplied") add(!!it.supplied_by, "Supplied facts say where the value comes from");
+  // A list of records declares its record schema once (docs/operators.md,
+  // "Receipt records"); only a list of records may declare one. Reported
+  // only when something is wrong, so other items read as before.
+  for (const m of schemaErrors(it)) add(false, m);
+  // A table keyed by option whose rows are treatments (a counting table)
+  // lists the treatments it may give in `options`; every row gives one.
+  if (it.kind === "parameter" && it.type === "table keyed by option" && it.options && it.options.length) {
+    const values = Array.isArray(it.versions) && it.versions.length ? it.versions.map((v) => v.value) : [it.value];
+    const bad = new Set<string>();
+    for (const v of values) {
+      if (v && typeof v === "object") {
+        for (const [k, r] of Object.entries(v as Record<string, unknown>)) {
+          if (typeof r !== "string" || !it.options.includes(r)) bad.add(`${k}: ${JSON.stringify(r)}`);
+        }
+      }
+    }
+    add(!bad.size, bad.size
+      ? `Every row gives one of the table's options (${[...bad].join(", ")} does not)`
+      : "Every row gives one of the table's options");
+  }
   if (it.kind === "parameter") {
     // A parameter states its value once, or as dated versions (each with a
     // value); either satisfies the constraint, but not both, and not neither.
@@ -50,10 +120,16 @@ export function constraints(
     const versions = it.versions ?? [];
     const hasVersions = versions.length > 0 &&
       versions.every((v) => v.value !== undefined && v.value !== null && v.value !== "");
+    // A figure the State sets but has not published where it can be fetched
+    // is an empty list of versions: the parameter exists, covers no date
+    // (unknown, reported as no-version), and names the open question that
+    // records where the figure is to come from.
+    const awaitsFigure = Array.isArray(it.versions) && versions.length === 0 &&
+      !hasValue && !!(it.open && it.open.length);
     // One message, so the pinned fixture reports of unversioned parameters
     // read exactly as before; a parameter stating both is reported as having
     // no value, since the two cannot both be its value.
-    add((hasValue || hasVersions) && !(hasValue && hasVersions), "Parameter has a value");
+    add(((hasValue || hasVersions) && !(hasValue && hasVersions)) || awaitsFigure, "Parameter has a value");
   }
   if (it.kind !== "supplied") {
     add(!!(it.sources && it.sources.length), "At least one source excerpt is cited");
@@ -101,7 +177,7 @@ export function constraints(
       add(Boolean(it.tests && it.tests.length > 0), "At least one example (rule-level test)");
       if (chk.errors.length === 0 && it.tests) {
         for (const t of it.tests) {
-          const r = runTest(ix, it, t, meta.default_as_of);
+          const r = opts.testResult?.(t) ?? runTest(ix, it, t, meta.default_as_of);
           add(
             r.ok,
             `Example ${t.id}: ${

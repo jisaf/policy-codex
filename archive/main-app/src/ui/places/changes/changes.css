@@ -1,0 +1,94 @@
+/* Changes: what takes effect, My proposal, Edits to the codex. Uses the
+ * tokens of styles.css. A new value is bold, never green or red. */
+
+.changes .card h3 { font-size: 14px; margin: 12px 0 4px; }
+.changes .small { font-size: 12px; }
+
+/* What takes effect */
+.takeseffect .monthpick { gap: 8px 12px; }
+.takeseffect .monthpick select { max-width: 100%; }
+.takeseffect .monthpick label { flex-wrap: wrap; }
+.takeseffect h2.monthhead { font-size: 18px; margin: 8px 0 2px; }
+.takeseffect .summary { margin: 0 0 2px; }
+.takeseffect .empty { background: var(--panel); border: 1px dashed var(--line); border-radius: 6px; padding: 10px; }
+.takeseffect .empty a { margin-left: 8px; }
+ul.tooklist { list-style: none; padding: 0; margin: 6px 0; }
+ul.tooklist li.took { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin: 0 0 8px; }
+li.took .tookhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+li.took .tookhead .name { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+li.took .tookhead .name small { font-weight: 400; }
+li.took .fromto { margin: 4px 0; font-size: 14px; }
+li.took .readers { margin: 4px 0; font-size: 13px; }
+li.took .readers a.hl { background: #fff1c7; font-weight: 600; padding: 0 2px; border-radius: 2px; }
+li.took .compared { margin-top: 6px; }
+.btn.small { padding: 2px 8px; font-size: 13px; }
+
+/* The before-and-after table */
+.changedwrap { overflow-x: auto; }
+table.changed { border-collapse: collapse; width: 100%; font-size: 13px; margin: 4px 0; }
+table.changed th, table.changed td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.changed thead th { background: var(--bg); font-weight: 600; }
+table.changed tr.first td { border-top: 1px solid #c9c4b8; }
+table.changed td small { display: block; }
+
+/* My proposal */
+.proposal .flash { background: #eef6f0; border: 1px solid #b9dcc2; border-radius: 4px; padding: 6px 10px; }
+.proposal-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; align-items: start; }
+.proposal-rail { position: sticky; top: 64px; }
+.propose-editor .intoday { margin: 4px 0 8px; }
+.propose-editor .note, .proposal .note { background: #fff4d6; border: 1px solid #e3c470; border-radius: 4px; padding: 6px 10px; font-size: 13px; }
+.propose-editor fieldset.modes { border: 0; padding: 0; margin: 0 0 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.propose-editor fieldset.modes legend { font-weight: 600; margin-bottom: 4px; padding: 0; }
+.propose-editor label.mode { display: flex; gap: 8px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; cursor: pointer; background: var(--bg); }
+.propose-editor label.mode:has(input:checked) { border-color: var(--accent); background: var(--med); }
+.propose-editor label.mode small { display: block; color: var(--muted); }
+.propose-editor .fields { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-end; }
+.propose-editor .fields label { display: flex; flex-direction: column; gap: 3px; color: var(--muted); }
+.propose-editor .fields label.wide, .propose-editor .fields fieldset.wide { flex-basis: 100%; }
+.propose-editor input, .propose-editor select, .propose-editor textarea, .pickitem input {
+  font: inherit; padding: 5px 6px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); max-width: 100%; }
+.propose-editor select[name="excerpt"] { width: 100%; }
+.propose-editor .reads { font-size: 13px; }
+.propose-editor fieldset.tablevalue { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; }
+.propose-editor table.edit th { font-weight: 500; color: var(--ink); }
+.propose-editor table.edit input { width: 9rem; }
+.propose-editor .excerptnote { margin: -4px 0 0; flex-basis: 100%; }
+.propose-editor .refuse { color: var(--bad); background: #fdf0f0; border: 1px solid #e0a0a0; border-radius: 4px; padding: 6px 10px; }
+.proposal .actions, .proposal .sendactions, .proposal .entryactions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pickitem label.wide { display: flex; flex-direction: column; gap: 4px; color: var(--muted); }
+.pickitem ul.picklist { list-style: none; padding: 0; margin: 8px 0; }
+.pickitem ul.picklist li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+.holds ul.entries { list-style: none; padding: 0; margin: 0; }
+.holds li.entry { border-bottom: 1px solid var(--line); padding: 8px 0; }
+.holds li.entry.editing { background: var(--bg); }
+.holds li.entry .what { margin: 2px 0; }
+.holds ul.errors { margin: 0; padding-left: 18px; font-size: 13px; }
+.holds ul.errors:empty { display: none; }
+.effect .reach { font-weight: 600; }
+.approvers ul.approverlist { list-style: none; padding: 0; margin: 0; }
+.approvers ul.approverlist > li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.approvers ul.why { margin: 2px 0 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+.approvers li.mine > b::after { content: " (your role)"; font-weight: 400; color: var(--muted); }
+.send .preview-note { background: var(--med); border-radius: 4px; padding: 6px 10px; font-size: 13px; }
+.send .sendchange ol { padding-left: 18px; font-size: 13px; }
+
+/* Edits to the codex */
+.codexedits ul.history { list-style: none; padding: 0; }
+.codexedits ul.history li { padding: 5px 0; border-bottom: 1px solid var(--line); }
+.codexedits .date { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 960px) {
+  .proposal-grid { grid-template-columns: 1fr; }
+  .proposal-rail { position: static; }
+}
+@media (max-width: 600px) {
+  .propose-editor fieldset.modes { grid-template-columns: 1fr; }
+  table.changed thead { position: absolute; left: -9999px; }
+  table.changed, table.changed tbody, table.changed tr, table.changed td { display: block; width: 100%; }
+  table.changed tr { border-bottom: 1px solid var(--line); padding: 4px 0; }
+  table.changed tr.first { border-top: 1px solid #c9c4b8; }
+  table.changed td { border: 0; padding: 1px 0; }
+  table.changed td::before { content: attr(data-label) ": "; color: var(--muted); }
+  .takeseffect .monthpick > label, .takeseffect .monthpick select { width: 100%; }
+}

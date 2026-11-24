@@ -1,0 +1,22 @@
+id: CO-2593
+name: "LEAP: this person's participation"
+identifier: leap_person_participation_status
+kind: derived
+type: one of
+options: [eligible_member, ineligible_member_status, ineligible_member_verification, not_in_household]
+scope: person
+program: LEAP
+role: outcome
+meaning: "Whether this person is a member of a LEAP household, and if not, why: not in any LEAP household (living in institutional group care, or already counted in another household approved for the eligibility period, 9 CCR 2503-7 3.751.2.A); an excluded member whose income still counts - not a citizen, national or qualified alien (3.753.16-18), or a member whose SSN or declared immigration status has not been provided or verified (3.751.1 \"Completed Application\" B); otherwise an eligible member. Whether the household is eligible and its benefit are leap_is_eligible (CO-1007) and leap_benefit_amount (CO-1281), household results reported on every member."
+precision: Reads the same per-person tests as the household filter of leap_household_members (CO-1000), so a person reported eligible_member is in their own LEAP household.
+derived: [case, [[any, [in, [otherwise, leap_living_arrangement, traditional_dwelling], [institutional_group_care]], leap_is_in_another_approved_household], not_in_household], [[not, leap_meets_citizenship_requirement], ineligible_member_status], [leap_member_is_excluded_for_verification, ineligible_member_verification], [else, eligible_member]]
+sources: [S489, S490, S494, S1400, S1401, S893, S896]
+implemented: engine
+tags: [household, immigration]
+rationale: "County case worker review B1: leap_is_eligible and leap_benefit_amount are household results, so CO-02's p3, excluded for status, read as eligible for $540. No existing item states each person's own LEAP membership."
+nearest: [CO-1000, CO-1009]
+tests:
+  - {id: CO-2593-T1, month: "2026-11", as_of: "2026-11-01", given: {leap_living_arrangement: institutional_group_care}, expect: not_in_household}
+  - {id: CO-2593-T2, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, immigration_status: undocumented}, title: "CO-02's p3, undocumented", expect: ineligible_member_status}
+  - {id: CO-2593-T3, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, leap_meets_citizenship_requirement: true, leap_member_is_excluded_for_verification: true}, expect: ineligible_member_verification}
+  - {id: CO-2593-T4, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, leap_meets_citizenship_requirement: true, leap_member_is_excluded_for_verification: false}, expect: eligible_member}

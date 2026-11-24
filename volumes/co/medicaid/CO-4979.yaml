@@ -1,0 +1,19 @@
+id: CO-4979
+name: "Medicaid: monthly poverty guideline for the limited Family Planning household size"
+identifier: ma_family_planning_monthly_poverty_guideline
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The monthly federal poverty guideline for the person's limited Family Planning household size (ma_family_planning_household_size, CO-4976): the annual federal_poverty_guideline_annual_table figure for that size, plus federal_poverty_guideline_annual_each_additional for each person above the table's last row, divided by 12."
+precision: "Read as ma_magi_household_income_pct_fpl (CO-504, through CO-4567) reads the guideline for the MAGI size: lookup_extended beyond the table's last row, divided by 12, not rounded."
+derived: ["/", [lookup_extended, federal_poverty_guideline_annual_table, ma_family_planning_household_size, federal_poverty_guideline_annual_each_additional], 12]
+sources: [S55, S614]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-204]
+nearest: [CO-4976]
+rationale: "Coverage review 3, C3-03 (2026-11-22): the attested Family Planning figure (CO-1153) and the data source figure on the same size (CO-4977) divide by the same guideline; one item states it for both."
+tests:
+  - {id: CO-4979-T1, month: "2026-11", as_of: "2026-11-10", title: "Size 2: 21,640 / 12 = 1,803.33", given: {ma_family_planning_household_size: 2}, expect: 1803.3333333333333}
+  - {id: CO-4979-T2, month: "2026-10", as_of: "2026-10-01", title: "Size 9: (55,720 + 5,680) / 12 = 5,116.67", given: {ma_family_planning_household_size: 9}, expect: 5116.666666666667}

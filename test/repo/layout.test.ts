@@ -31,12 +31,17 @@ describe("repository layout after the rebuild", () => {
     expect(readme).not.toContain("site_build.py");
   });
 
-  it("README's engineer-door line names both downloads the Handoff view offers", () => {
+  it("the Rulebook is the only UI; the original app and blind-a are archived", () => {
     const readme = readFileSync(join(ROOT, "README.md"), "utf8");
-    const line = readme.split("\n").find((l) => l.includes("**Implement the rules**"))!;
-    expect(line).toBeDefined();
-    expect(line).toContain("handoff");
-    expect(line).toContain("conformance suite");
+    expect(readme).toContain("prototypes/blind-b");
+    expect(readme).toContain("archive/README.md");
+    expect(existsSync(join(ROOT, "archive/README.md"))).toBe(true);
+    for (const gone of ["index.html", "vite.config.ts", "src/ui", "src/main.tsx", "e2e", "worker", "test/ui", "prototypes/blind-a"]) {
+      expect(existsSync(join(ROOT, gone)), `${gone} is archived`).toBe(false);
+    }
+    const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));
+    expect(pkg.scripts.build).toBe("npm run build:blind-b");
+    for (const s of Object.values(pkg.scripts) as string[]) expect(s).not.toContain("archive/");
   });
 
   it("the manifest lists every item file that exists and nothing else", () => {

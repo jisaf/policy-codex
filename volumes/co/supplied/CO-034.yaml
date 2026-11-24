@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: The person's monthly out-of-pocket medical expenses, for a person who is elderly or disabled.
+meaning: "The person's monthly medical and dental expenses not reimbursed by insurance or a third party, other than health insurance premiums (health_insurance_premiums_paid, CO-835, states every premium once). Each program decides which expenses it allows."
 supplied_by: Receipts, insurance statements.
-sources: []
+sources: [S87, S91]
 tags: [income, disability]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1): the meaning no longer says 'for a person who is elderly or disabled'; snap_medical_deduction applies that condition itself. Same-word audit SW-34 and SW-38: premiums were entered inside this fact and again in health_insurance_premiums_paid; this fact now leaves them out, and it cites SNAP's medical expense excerpts (S87, S91), which define what it collects."

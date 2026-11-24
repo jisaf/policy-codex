@@ -1,0 +1,12 @@
+id: CO-2421
+name: "Medicaid: first date of the out-of-state former foster care extension"
+identifier: ma_former_foster_care_out_of_state_start_date
+kind: parameter
+type: calendar date
+scope: global
+program: Medicaid
+meaning: "The date on or after which a youth who was in another state's foster care at age 18, and enrolled in that state's Medicaid, can be covered as former foster care in Colorado (10 CCR 2505-10 § 8.100.4.H.2.a.iii: \"in foster care at the age 18 on or after January 1, 2023\")."
+value: "2023-01-01"
+sources: [S1718]
+tags: [ma, age]
+rationale: "C-9 of the HCPF review: a parameter rather than a literal date."

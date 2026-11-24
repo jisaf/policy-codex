@@ -1,0 +1,18 @@
+id: CO-2249
+name: "Medicaid: verification of joint ownership is pending"
+identifier: ma_joint_ownership_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether the person must verify joint ownership of real property for Medical Assistance and the verification has not been received.
+derived: [all, ma_requires_verification_of_joint_ownership, [not, joint_ownership_verification_document_received]]
+sources: [S1515]
+implemented: engine
+tags: [ma, resources, verification]
+rationale: "OQ-379: the pending count (CO-1411) needs one item per element."
+tests:
+  - {id: CO-2249-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_joint_ownership: true, joint_ownership_verification_document_received: false}, expect: true}
+  - {id: CO-2249-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_joint_ownership: true, joint_ownership_verification_document_received: true}, expect: false}
+  - {id: CO-2249-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_joint_ownership: false}, expect: false}

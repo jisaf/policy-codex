@@ -1,0 +1,14 @@
+id: CO-4351
+name: "Colorado Works: federal poverty guideline, each additional person, annual, as of February 1, 2021"
+identifier: cw_poverty_guideline_annual_each_additional
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: "The annual amount added to the 8-person figure of cw_poverty_guideline_annual_table (CO-4350) for each person above 8, from the same 2021 notice (86 FR 7732) that 9 CCR 2503-6 3.601 adopts."
+precision: "Annual dollars."
+versions:
+  - {from: "2021-02-01", value: 4540, source: S3151}
+sources: [S3150, S3151]
+tags: [cash, tanf, income, immigration]
+rationale: "Companion figure to cw_poverty_guideline_annual_table (CO-4350), for combined sponsor-deeming households above eight persons (coverage review CW-4)."

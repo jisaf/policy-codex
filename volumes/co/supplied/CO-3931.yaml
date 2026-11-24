@@ -1,0 +1,14 @@
+id: CO-3931
+name: Receives a Colorado Works diversion payment
+identifier: receives_tanf_diversion_payment
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person's Colorado Works assistance unit has been approved for, and receives or is authorized to receive, a Colorado Works diversion payment (9 CCR 2503-6 3.606.8.A) for its current crisis need. A fact about the person's current Colorado Works case, not this volume's own determination of diversion eligibility (cw_diversion_eligible, CO-1270)."
+precision: "If not stated, CCCAP reads it as false."
+supplied_by: The Colorado Works case record (CBMS).
+sources: [S2708]
+tags: [household]
+rationale: "Final pass F-16: 8 CCR 1403-1 3.116.H (S2708) lets a county provide Colorado Works Child Care \"for households approved for Colorado Works state diversions\" with \"the same eligibility as outlined in this rule section\". Such a household does not receive basic cash assistance (receives_tanf_cash, CO-013), so no fact reached the county-elected route. Under convention rule 11 the receipt is the Colorado Works case record."
+nearest: [CO-013]

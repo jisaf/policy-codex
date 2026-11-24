@@ -1,0 +1,20 @@
+id: CO-2578
+name: "CCCAP: income the parent fee is computed on"
+identifier: cccap_parent_fee_income
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The monthly income the CCCAP parent-fee formula is applied to: for a protective services household, the countable income of the household's eligible children (8 CCR 1403-1 3.119.A, cccap_protective_services_income), since such a household has no fee unless the children have countable income (3.124.I.6); for a Colorado Works Child Care household, only the earned income of the household (3.116.C: \"only earned income that is reported and verified by the county Colorado Works worker will be considered countable income\"; 3.124.E), less the court-ordered child support deduction (3.111.K.1); for any other household, the household's countable gross income (cccap_household_income, CO-985)."
+precision: "Second-pass review N-2: cccap_protective_services_income (CO-994) is now itself the sum over the household's eligible children, so it is read as it is. The rule does not state the base of a protective services household's formula fee; the children's countable income is read as the base because it is the only income 3.119.A counts for such a household (OQ-536). Final pass F-08: a Colorado Works household's earned income is the sum of cccap_person_earned_income (CO-3915: wages and CCCAP self-employment income, nothing for a household child who is not a teen parent) over the household, as the Colorado Works worker verifies it; its unearned income (a child's survivor benefit, child support received) is not counted. The 3.111.K deduction (cccap_child_support_paid_deduction, CO-3902) applies \"when calculating parent fees\", not below zero."
+derived: [case, [["=", cccap_eligibility_status, eligible_protective_services], cccap_protective_services_income], [["=", cccap_eligibility_status, eligible_colorado_works], [max, 0, ["-", [sum, cccap_household_income_members, [of, [P], cccap_person_earned_income]], [sum, cccap_household_income_members, [of, [P], cccap_child_support_paid_deduction]]]]], [else, cccap_household_income]]
+sources: [S784, S2707, S892]
+implemented: engine
+tags: [income]
+open: [OQ-536]
+rationale: "CDHS review C-7: cccap_parent_fee (CO-1290) set every protective services fee to zero, but 3.124.I.6 charges one when the children have countable income; the formula (CO-1289) needs the income it is applied to."
+nearest: [CO-985, CO-994]
+tests:
+  - {id: CO-2578-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_eligibility_status: eligible_protective_services, cccap_protective_services_income: 300}, title: "A foster child receiving $300 of Social Security: the household's protective services income (CO-994, the placed children's)", expect: 300}
+  - {id: CO-2578-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_eligibility_status: eligible_low_income, cccap_household_income: 2380}, expect: 2380}
+  - {id: CO-2578-T3, title: "F-08: a Colorado Works household with $1,200 of wages and a child's $400 survivor benefit: the fee base is the wages (3.116.C)", month: "2026-10", as_of: "2026-10-01", given: {cccap_eligibility_status: eligible_colorado_works, cccap_household_members: [p1, p2], cccap_household_income_members: [p1, p2], cccap_person_earned_income: 1200, cccap_child_support_paid_deduction: 0, cccap_household_income: 1600}, others: {p2: {cccap_person_earned_income: 0, cccap_child_support_paid_deduction: 0}}, expect: 1200}

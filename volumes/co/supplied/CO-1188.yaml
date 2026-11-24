@@ -1,0 +1,13 @@
+id: CO-1188
+name: Discharged student loan debt
+identifier: discharged_student_loan_debt
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The amount of the person's student loan debt that was discharged, forgiven or cancelled in the month, with the person as the borrower, or 0 if none."
+precision: The amount discharged in the month in context, as stated on the lender's or servicer's discharge notice (IRS Form 1099-C where one is issued). The reason for the discharge is student_loan_discharge_reason (CO-1189).
+supplied_by: Applicant statement, lender or servicer discharge notice, IRS Form 1099-C.
+sources: [S670]
+tags: [income]
+rationale: "S-9 of the phase 7 review: the current § 8.100.4.C.1.b.xv treats discharged student loan debt as MAGI income with stated exceptions; no existing income fact carries it separately from other discharge of indebtedness, and the exceptions depend on why it was discharged."

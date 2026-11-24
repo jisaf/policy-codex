@@ -1,0 +1,16 @@
+id: CO-2445
+name: "Medicaid: end of the Express Lane verification period"
+identifier: ma_express_lane_verification_period_end_date
+kind: derived
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The last day of the ma_express_lane_verification_days days of eligibility an Express Lane child receives while U.S. citizenship and identity verification is awaited (10 CCR 2505-10 § 8.100.4.J.1.a.iii, J.2.a.iii: \"shall receive 90 days of eligibility while awaiting this verification\"), the enrollment date being the first of them: the enrollment date plus 89 days."
+precision: "T-9 hand check A-6, A-7 (fixed, 2026-11-23): the item was the enrollment date plus 90 days, the 91st day of eligibility when the enrollment day is the first. Ninety days of eligibility beginning on the day the child is enrolled end 89 days after it, as the volume counts \"30 calendar days beginning on the date ... received\" as that date plus 29 (CO-1974, CO-3165). Read by ma_express_lane_status (CO-2442) and, by its adopted-method link, chp_express_lane_status (CO-4793): the child is enrolled pending verification through this day and the period has expired from the next."
+derived: [days_after, ["-", ma_express_lane_verification_days, 1], ma_express_lane_enrollment_date]
+sources: [S1723]
+implemented: engine
+tags: [ma, verification]
+rationale: "C-6 of the HCPF review. T-9 hand check A-6, A-7: the off-by-one count fixed (the 90th day of eligibility, not the 91st)."
+tests:
+  - {id: CO-2445-T1, as_of: "2026-10-01", given: {ma_express_lane_enrollment_date: "2026-10-05"}, title: "T-9 A-6 fixed: enrolled 2026-10-05, day 1; 2026-10-05 + 89 days = 2027-01-02 (26 days to October 31, 56 to November 30, 87 to December 31, 89 to January 2)", expect: "2027-01-02"}

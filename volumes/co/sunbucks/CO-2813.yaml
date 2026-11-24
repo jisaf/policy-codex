@@ -1,0 +1,20 @@
+id: CO-2813
+name: "SUN Bucks: homeless child"
+identifier: sebt_is_homeless_child
+kind: derived
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "Whether the child is a homeless child under 7 CFR 245.2 (S1952), which 7 CFR 292.2 makes categorically eligible: lacking a fixed, regular and adequate nighttime residence as 42 U.S.C. 11434a(2) specifies (S1953): sharing the housing of others because of loss of housing, economic hardship or a similar reason; living in a motel, hotel, trailer park or camping ground for lack of alternative adequate accommodations; living in an emergency or transitional shelter; abandoned in a hospital; or living in a place not designed for sleeping, a car, park, public space, abandoned building, substandard housing, or a bus or train station."
+precision: "245.2 asks that the child be identified as homeless by the local educational agency liaison, a shelter director or another person FNS names; nighttime_residence_type (CO-2810) is that identification as the case states it. A migratory child (11434a(2)(B)(iv)) is homeless when living in one of these circumstances, so needs no separate arm. A temporary stay in another's home for a reason other than loss of housing or hardship is not homelessness under McKinney-Vento."
+derived: [in, nighttime_residence_type, [shared_housing_due_to_loss_or_hardship, motel_or_hotel_for_lack_of_alternative, trailer_park_for_lack_of_alternative, campground_for_lack_of_alternative, emergency_or_transitional_shelter, abandoned_in_hospital, place_not_designed_for_sleeping, substandard_housing]]
+sources: [S1952, S1953, S792]
+implemented: engine
+tags: [sebt, household]
+rationale: "Same-word audit SW-11: SUN Bucks read the shared is_homeless, whose meaning left out a child doubled up after losing housing and a family in a motel for lack of an alternative, both homeless under McKinney-Vento. No existing item states SUN Bucks's definition."
+nearest: [CO-037, CO-2010, CO-2814, CO-2815]
+tests:
+  - {id: CO-2813-T1, title: "Doubled up after an eviction", as_of: "2026-11-01", given: {nighttime_residence_type: shared_housing_due_to_loss_or_hardship}, expect: true}
+  - {id: CO-2813-T2, title: "Substandard housing", as_of: "2026-11-01", given: {nighttime_residence_type: substandard_housing}, expect: true}
+  - {id: CO-2813-T3, title: "Halfway house is not named by McKinney-Vento", as_of: "2026-11-01", given: {nighttime_residence_type: halfway_house}, expect: false}
+  - {id: CO-2813-T4, title: "Own home", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate}, expect: false}

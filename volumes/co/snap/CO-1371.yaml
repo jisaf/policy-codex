@@ -1,0 +1,17 @@
+id: CO-1371
+name: "SNAP: requires verification of citizenship"
+identifier: snap_requires_verification_of_citizenship
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether the person's declared U.S. citizenship must be verified for SNAP: only when the declaration is questionable."
+derived: [all, snap_is_household_member, is_us_citizen_or_national, citizenship_attestation_is_questionable]
+sources: [S811, S826, S827]
+implemented: engine
+tags: [verification, snap, immigration]
+rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
+tests:
+  - {id: CO-1371-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, immigration_status: us_citizen, citizenship_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1371-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, immigration_status: us_citizen, citizenship_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1371-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, immigration_status: undocumented}, expect: false}

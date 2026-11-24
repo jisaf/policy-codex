@@ -1,0 +1,18 @@
+id: CO-6603
+name: "SNAP: household has an elderly or disabled member in the month"
+identifier: snap_household_has_elderly_or_disabled_member_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "In the month evaluated, at least one member of this person's SNAP household (snap_household_members) is an elderly or disabled member under 7 CFR 271.2 and 7 U.S.C. 2012(j) (snap_is_elderly_or_disabled, read in the month)."
+precision: "Coverage pass 4 for SNAP (docs/reviews/coverage4-snap.md), S4-11: the income tests and deductions an elderly or disabled member changes (the gross income test, 4.401.A.1-3; the uncapped shelter deduction, 4.407.3.B; the net income with disqualified members) read the member's age in the month evaluated (4.402.1.A, S4734), so an application month before the month a member turns 60 is not budgeted as an elderly household, and the month he turns 60 is. Tests every member of the purchase-and-prepare unit, as snap_household_has_elderly_or_disabled_member (CO-314) did. CO-314 was retired by coverage pass 7, C7-8 (docs/reviews/coverage7-snap.md): once the heating and cooling allowance entitlement (CO-1243) read this item per month (coverage pass 6, C6-3), no item read it. Coverage pass 4 S4-11 (OQ-1263 resolved): the household (snap_household_members, CO-305) is now built for each month, and the resource test (CO-344) and the transfer disqualification (CO-4158) read this item."
+derived: ["exists", "snap_household_members", ["of", ["P"], "snap_is_elderly_or_disabled"]]
+sources: [S6, S7, S4734]
+implemented: engine
+tags: [snap, household]
+open: [OQ-1262]
+rationale: "Coverage pass 4 for SNAP, S4-11 (AGE60): the household's elderly status was the determination date's in every month."
+tests:
+  - {"id": "CO-6603-T1", "title": "S4-11 (AGE60): a member born 1966-11-02 in October 2026 (59 all month): false", "month": "2026-10", "as_of": "2026-11-05", "given": {"snap_household_members": ["p1", "p2"], "date_of_birth": "1985-01-22", "snap_is_disabled_member": false}, "others": {"p2": {"date_of_birth": "1966-11-02", "snap_is_disabled_member": false}}, "expect": false}
+  - {"id": "CO-6603-T2", "title": "S4-11: the same household in November 2026 (60 from November 2): true", "month": "2026-11", "as_of": "2026-11-05", "given": {"snap_household_members": ["p1", "p2"], "date_of_birth": "1985-01-22", "snap_is_disabled_member": false}, "others": {"p2": {"date_of_birth": "1966-11-02", "snap_is_disabled_member": false}}, "expect": true}

@@ -1,0 +1,18 @@
+id: CO-1634
+name: "Medical Assistance: requires verification of a trust"
+identifier: ma_requires_verification_of_trust
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) holds an interest in a trust (ma_holds_trust_interest_in_month, CO-5329: a trust_interest holdings record), or has an income trust."
+precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631). Resource records, Medicaid track H1 (docs/reviews/records-holdings-medicaid.md): a trust interest is a trust_interest holdings record (CO-5300), in place of has_trust_interest (CO-1577); a person whose holdings are stated with no such record has none. has_income_trust (CO-823) stays a person fact (an income arrangement). Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): the person's spouse is read from the person's relationships as stated, required where read (decision 4 of 2026-11-23): before, a person with no relationships stated was read as having no spouse, so a spouse's transfers, trust or annuity were not asked for."
+derived: [all, ma_owes_long_term_care_asset_disclosure, [any, ma_holds_trust_interest_in_month, [exists, [filter, [persons], [rel, [spouse], [P]]], [of, [P], ma_holds_trust_interest_in_month]], has_income_trust]]
+sources: [S1741, S3408]
+implemented: engine
+tags: [verification, ma, ltc, resources]
+rationale: "Review K-3: 8.100.7.A.2.i requires the trust documents; no item asked for them."
+tests:
+  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_income_trust: true, holdings: [{kind: bank_account}]}, relationships: [], expect: true}
+  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_income_trust: false, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
+  - {id: CO-1634-T90, month: "2026-11", as_of: "2026-11-12", title: "Pattern sweep: no own trust and no relationships stated: cannot determine (decision 4; was false)", given: {ma_owes_long_term_care_asset_disclosure: true, ma_holds_trust_interest_in_month: false, has_income_trust: false}, expect: unknown}

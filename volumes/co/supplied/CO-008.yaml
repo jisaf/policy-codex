@@ -5,8 +5,8 @@ kind: supplied
 type: calendar date
 scope: person
 program: All
-meaning: The date the person entered the medical institution named by in_medical_institution.
+meaning: "The date the person entered the setting residence_setting_type (CO-3330) states, where it is not a private dwelling: a hospital, nursing facility or other medical institution, a care facility, a correctional facility or another institution, a hotel. Each program decides whether that setting is one its rule names."
 supplied_by: Institution admission record.
-sources: []
+sources: [S3, S354]
 tags: [household]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is a household member (not excluded as an institution resident)."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is a household member (not excluded as an institution resident). Same-word audit SW-20 and SW-38: the meaning named SNAP's institution fact while Medicaid read it for a medical institution; it now states the entry date neutrally, with the excerpts each reader cites. Same-word SW-20: the entry date of the neutral residence setting (CO-3330)."

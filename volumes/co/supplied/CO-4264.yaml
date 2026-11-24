@@ -1,0 +1,13 @@
+id: CO-4264
+name: "SNAP: ABAWD work hours missed for good cause"
+identifier: snap_abawd_work_hours_missed_for_good_cause
+kind: supplied
+type: hours
+scope: person-month
+program: SNAP
+meaning: "For the month, the hours of work, work program or workfare the person was scheduled for and missed for a good cause the county finds - circumstances beyond the person's control, such as the person's illness, the illness of another household member requiring the person's presence, a household emergency or the unavailability of transportation - where the absence is temporary and the person keeps the job or the program place (10 CCR 2506-1 4.311.3.B; 7 CFR 273.24(a)(2)). Good cause the county grants for failing a mandatory E&T requirement under 7 CFR 273.7(i), other than under (i)(4), is good cause here."
+precision: "If not stated, SNAP reads this as 0. The missed hours count with the hours worked toward the ABAWD work requirement (snap_meets_abawd_work_requirement, CO-415): an ABAWD who would have worked 80 hours in the month but missed some for good cause meets it."
+supplied_by: "The county's good cause finding, from the person's statement and the employer's or provider's record."
+sources: [S3060, S3061]
+tags: [abawd]
+rationale: "Coverage review C-9 (docs/reviews/coverage-snap-nonfinancial.md): 4.311.3.B (S3060) and 273.24(a)(2) (S3061) count an ABAWD who missed some work for good cause as having met the work requirement; CO-415 counted only hours actually worked, so a person working 20 hours a week who missed a week for illness accrued a countable month. No existing fact states hours missed for good cause."

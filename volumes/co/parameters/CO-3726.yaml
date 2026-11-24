@@ -1,0 +1,16 @@
+id: CO-3726
+name: SNAP maximum allotment, households of eighteen or more
+identifier: snap_maximum_allotment_large_household
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The maximum monthly allotment for a household of snap_maximum_allotment_large_household_size (18) or more members, which FNS and 10 CCR 2506-1 4.207.3.D state as one figure (\"18+\") rather than by adding the amount for each additional person."
+precision: "The fiscal year 2026 table (S82) has no such row and states only the amount for each additional member, so no version covers dates before October 1, 2026; snap_maximum_allotment (CO-383) then adds the amount for each additional member, as before."
+versions:
+  - from: "2026-10-01"
+    value: 3887
+    source: S730
+sources: [S730, S2514]
+tags: [income, snap]
+rationale: "Final verification F-11 (docs/reviews/final-snap.md): CO-383 extrapolated $225 for each person beyond eight without limit, giving $4,091 for eighteen persons where FNS's fiscal year 2027 Table 1 (S730) and 4.207.3.D (S2514) state $3,887."

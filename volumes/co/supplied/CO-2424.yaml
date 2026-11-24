@@ -1,0 +1,14 @@
+id: CO-2424
+name: "Medicaid: category enrolled in for a past month"
+identifier: ma_prior_enrollment_category
+kind: supplied
+type: one of
+options: [parent_caretaker, pregnant, other_medical_assistance, none]
+scope: person-month
+program: Medicaid
+meaning: "For a month before the determination month, the Medical Assistance category the person was eligible for and enrolled in: the Parent/Caretaker Relative category (parent_caretaker), the Pregnant Women category (pregnant), any other Medical Assistance (other_medical_assistance), or none. It is the eligibility history § 8.100.4.I.1.a and I.5 count (\"at least three of the six months preceding\") and a recorded approval § 8.100.4.G.5's pregnancy lock-in can rest on (\"Once eligibility has been approved\"). It records approvals made before the determination being made, not that determination: a month of the application being determined (its application month, a later month, or a requested retroactive month) is not history, so none or another category recorded for it does not mean the person was found ineligible then, and the pregnancy coverage period tests the Pregnant Women category in such a month whatever this fact says (coverage pass 5, C5-01, C5-19)."
+precision: "Heavier-definitions audit H-6: pregnant is read by ma_pregnancy_coverage_period_opens_in_month (CO-7401, through CO-565 and CO-566) as a recorded approval that opens the lock-in without the category being computed. Coverage pass 6, C6-01 (2026-11-24): the history is read for every month of the application being determined before the determination month (from its application month, or its first requested retroactive month), not only its first month, and a month it records as parent_caretaker or other_medical_assistance in which the person was pregnant (ma_is_pregnant_in_month) also opens the lock-in, since 42 U.S.C. 1396a(e)(5) (S5060) continues the coverage of a woman who, while pregnant, 'has received medical assistance under the State plan' in any category; none opens nothing by itself and closes nothing (C5-01), the category being computed for that month; a month recorded as pregnant counts as Medical Assistance for the four-month extension (CO-2431, any category other than none) and not as Parent/Caretaker Relative for Transitional Medical Assistance (CO-2430). A child's continuous eligibility period is recorded by its start month (continuous_eligibility_period_start_month, CO-094), so no child option is needed here."
+supplied_by: CBMS eligibility history.
+sources: [S1719, S1720, S640, S5060]
+tags: [ma, magi]
+rationale: "C-4 of the HCPF review: the three-of-six-months tests need the enrollment history, which the volume's other facts (stated for the current month) do not carry. Heavier-definitions audit H-6 (audit fix round 4): the pregnant option records the approval the pregnancy lock-in reads."

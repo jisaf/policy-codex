@@ -1,0 +1,13 @@
+id: CO-4568
+name: Required to file a tax return, leaving out Social Security and Tier I benefits
+identifier: is_required_to_file_tax_return_excluding_social_security
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is expected to be required to file a federal tax return under 26 U.S.C. 6012(a)(1) for the taxable year of the determination when the person's Title II Social Security benefits and Tier I railroad retirement benefits are left out of the income the filing threshold is tested on."
+precision: "Differs from is_required_to_file_tax_return (CO-078) only for a person who receives such benefits (a child with survivor's or dependent's benefits). Stated where the person has Title II or Tier I benefits; where it is not stated, a reader takes is_required_to_file_tax_return. Medical Assistance reads it for a child or tax dependent (§ 8.100.4.C.1.f.i.1, f.ii.1; ma_magi_household_income_members, CO-4558); the premium tax credit methodology reads the plain filing requirement (26 CFR 1.36B-1(e)(1)(ii)(B))."
+supplied_by: The application's tax filing questions.
+sources: [S167]
+tags: [income]
+rationale: "Coverage review F-17 (2026-11-22): 10 CCR 2505-10 § 8.100.4.C.1.f.i.1 and f.ii.1 exclude Title II and Tier I benefits \"when determining if a child is required to file taxes\" (and for a tax dependent), and is_required_to_file_tax_return (CO-078) states the plain 6012(a)(1) requirement, which the premium tax credit methodology reads; one fact cannot carry both, so a child with large survivor benefits could be stated as required to file and have her income counted in her parent's household."

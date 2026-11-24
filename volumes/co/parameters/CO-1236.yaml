@@ -1,0 +1,22 @@
+id: CO-1236
+name: SNAP basic utility allowance
+identifier: snap_sua_basic
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: Colorado's Basic Utility Allowance (BUA, the FNS table's BUA/LUA), for a household not entitled to the HCUA that incurs at least two non-heating, non-cooling utility costs, per 10 CCR 2506-1 4.407.31.B.
+versions:
+  - from: "2025-10-01"
+    to: "2026-10-01"
+    value: 377
+    source: S747
+  - from: "2026-10-01"
+    to: "2027-10-01"
+    value: 390
+    source: S744
+review_by: "2027-10-01"
+sources: [S744, S747]
+tags: [income, snap, state_election]
+rationale: No existing parameter states it (OQ-36); snap_utility_allowance_amount (CO-1500) needs it. Same table as snap_sua_heating_cooling (CO-1235), a different tier.
+nearest: [CO-1235]

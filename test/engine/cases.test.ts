@@ -87,3 +87,40 @@ describe("household cases", () => {
     expect(evaluate(ix, data, "medicaid_ce_status_at_application", "p1", null)).toBe("met");
   });
 });
+
+describe("case-scope facts", () => {
+  const mk = (o: Partial<Item>): Item => ({
+    id: o.identifier!, name: o.identifier!, kind: "supplied", type: "yes/no", scope: "case",
+    program: "All", sources: [], tags: [], ...o,
+  } as Item);
+  const items2: Item[] = [
+    mk({ identifier: "application_date", type: "calendar date" }),
+    mk({ identifier: "home_has_phone" }),
+    mk({ identifier: "person_flag", scope: "person" }),
+    mk({
+      identifier: "reads_case_fact", kind: "derived", scope: "person",
+      derived: ["all", "home_has_phone", "person_flag"],
+    }),
+    mk({ identifier: "case_rule", kind: "derived", derived: ["not", "home_has_phone"] }),
+  ];
+  const ix2 = buildIndex(items2);
+
+  it("reads a case fact stated once in case_facts for every person, and a case-scope rule once", () => {
+    const data = makeCase(ix2, {
+      id: "X", as_of: "2026-10-01", case_facts: { application_date: "2026-09-30", home_has_phone: true },
+      persons: { p1: { facts: { person_flag: true } }, p2: { facts: { person_flag: false } } },
+    });
+    expect(evaluate(ix2, data, "application_date", "p2", null)).toBe("2026-09-30");
+    expect(evaluate(ix2, data, "reads_case_fact", "p1", null)).toBe(true);
+    expect(evaluate(ix2, data, "reads_case_fact", "p2", null)).toBe(false);
+    expect(evaluate(ix2, data, "case_rule", "p1", null)).toBe(false);
+  });
+
+  it("routes a case-scope fact a rule test gives on a person to the case; unstated is unknown", () => {
+    const data = makeCase(ix2, { id: "T", given: { home_has_phone: false, person_flag: true } });
+    expect(data.caseFacts).toEqual({ home_has_phone: false });
+    expect(data.persons.p1.home_has_phone).toBeUndefined();
+    expect(evaluate(ix2, data, "case_rule", "p1", null)).toBe(true);
+    expect(evaluate(ix2, data, "application_date", "p1", null)).toBeNull();
+  });
+});

@@ -1,0 +1,12 @@
+id: CO-3609
+name: "Home Maintenance Allowance: poverty guideline percentage"
+identifier: ma_home_maintenance_fpl_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The percentage of the poverty guideline for a household of one that the Home Maintenance Allowance maximum is built on: the Individual Needs Standard is this share of the guideline times the MMMNA maximum over the MMMNA, and the maximum subtracts this share and adds back ma_home_maintenance_shelter_pct of it (10 CCR 2505-10 § 8.100.7.V.3.g.ii.2.b, \"150% of FPL for a household of 1\")."
+value: 1.5
+sources: [S2404]
+tags: [ma, ltc, income]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. The 150% figure of the Home Maintenance Allowance maximum as a parameter."

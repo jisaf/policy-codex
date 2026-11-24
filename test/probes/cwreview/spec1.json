@@ -1,0 +1,8 @@
+[
+ {"id":"ZZ-1","title":"emancipated minor mother alone with baby","relationships":[["parent","p1","p2"]],
+  "persons":{"p1":{"facts":{"date_of_birth":"2010-03-01","is_emancipated_minor":true}},
+             "p2":{"facts":{"date_of_birth":"2026-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}},
+ {"id":"ZZ-2","title":"mother and child within a diversion POI","relationships":[["parent","p1","p2"]],
+  "persons":{"p1":{"facts":{"in_diversion_period_of_ineligibility":true}},
+             "p2":{"facts":{"date_of_birth":"2020-06-01","cw_is_head_of_assistance_unit":false,"snap_is_head_of_household":false}}}}
+]

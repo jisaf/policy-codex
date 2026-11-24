@@ -1,0 +1,13 @@
+id: CO-3860
+name: "Adult Financial: failed to apply for other benefits"
+identifier: af_has_failed_to_apply_for_other_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department has found that the client failed or refused, without good cause, to apply for and accept a retirement or public assistance benefit for which the client may be eligible (9 CCR 2503-5 3.520.61.G); for an OAP client, this includes Social Security and SSI as 3.520.71.B and D require: applying when eligible, keeping the scheduled SSA interviews, and appealing negative SSA decisions until no appeal remains, unless D.1-5 excuse the appeals."
+precision: "If not stated, Adult Financial reads this as false. The AND-SO client's own SSI and SSDI duty of 3.520.71.B is af_has_met_and_so_benefit_application_duty (CO-2004)."
+supplied_by: "County department finding (the client's SSA application, interview and appeal status)."
+sources: [S2621, S2622]
+tags: [cash, oap, and]
+rationale: "Final cash review FC-9: 3.520.61.G (S2621) makes applying for and accepting retirement and public assistance benefits a non-financial requirement of every Adult Financial program, and 3.520.71.B and D (S2622) state the OAP client's Social Security and SSI duty; only AND-SO's duty was modeled (CO-2004). The phase-8 review left the OAP SSI duty \"with [its] existing questions\", but none existed. The finding is the county's, so it carries the program's prefix (convention rule 13 (i))."

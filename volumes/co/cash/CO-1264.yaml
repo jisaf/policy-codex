@@ -1,0 +1,20 @@
+id: CO-1264
+name: "Colorado Works: assistance unit's sanction level"
+identifier: cw_unit_sanction_level
+kind: derived
+type: one of
+options: [none, first, second, third, fourth]
+scope: person-month
+program: ColoradoWorks
+meaning: The sanction level the assistance unit serves in the month - the highest level any unit member is serving, since a case experiences no more than one sanction level in a month and simultaneous sanctions are served at the higher level - per 9 CCR 2503-6 3.608.4.C and F.
+precision: A member whose work_sanction_level_served is unstated is read as serving no sanction (OQ-252), so cases written before sanctions were modeled keep their results.
+derived: [case, [[exists, cw_assistance_unit_members, ["=", [otherwise, [of, [P], work_sanction_level_served], none], fourth]], fourth], [[exists, cw_assistance_unit_members, ["=", [otherwise, [of, [P], work_sanction_level_served], none], third]], third], [[exists, cw_assistance_unit_members, ["=", [otherwise, [of, [P], work_sanction_level_served], none], second]], second], [[exists, cw_assistance_unit_members, ["=", [otherwise, [of, [P], work_sanction_level_served], none], first]], first], [else, none]]
+sources: [S760]
+open: [OQ-252]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: No existing item lifts a member's sanction to the unit; cw_sanction_reduction (CO-1265) and cw_eligibility_status (CO-921) need the unit's level.
+tests:
+  - {id: CO-1264-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], work_sanction_level_served: second}, others: {p2: {work_sanction_level_served: third}}, expect: third}
+  - {id: CO-1264-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], work_sanction_level_served: none}, others: {p2: {}}, expect: none}
+  - {id: CO-1264-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_assistance_unit_members: [p1, p2], work_sanction_level_served: first}, others: {p2: {work_sanction_level_served: none}}, expect: first}

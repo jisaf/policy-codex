@@ -8,6 +8,6 @@ program: Medicaid
 meaning: The personal needs allowance for a veteran (or a veteran's widow(er)) with no spouse or dependent child, in a Long-Term Care institution, receiving a non-service-connected VA disability pension, per 10 CCR 2505-10 § 8.100.7.V.3.d.ii.
 effective: { from: "1991-07-01", to: present }
 value: 90
-sources: [S362]
+sources: [S1737]
 tags: [ma, ltc, income]
-rationale: "No existing item states the $90 veterans-related personal needs allowance. Not yet wired into ma_patient_payment (CO-658), which always uses the non-veteran base (OQ-98); stated as a parameter so a future item selecting between the two PNA figures does not need to cite a literal 90."
+rationale: "No existing item states the $90 veterans-related personal needs allowance. Selected by ma_personal_needs_allowance (CO-1987) for a resident who qualifies (OQ-98 resolved)."

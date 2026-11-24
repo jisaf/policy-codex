@@ -1,0 +1,13 @@
+id: CO-4304
+name: "Received SNAP or public assistance when joining VISTA"
+identifier: received_snap_or_public_assistance_when_joined_vista
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person was receiving SNAP or public assistance when the person joined the Title I volunteer program (VISTA) whose payments dvsa_title_i_volunteer_payments_received (CO-4303) states; a later temporary interruption in SNAP participation does not change the answer."
+precision: "Receipt of another program's benefit, stated as a fact of the person's case (convention rule 11). If not stated, SNAP reads it as false, so the payments are counted as earned income (10 CCR 2506-1 4.403.A.2, 4.405.2.A.3)."
+supplied_by: "CBMS benefit history at the date the person joined VISTA."
+sources: [S3105, S3106]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: the VISTA exclusion of 4.405.2.A.3 (S3105) turns on whether the person received SNAP or public assistance when joining; no fact stated it."

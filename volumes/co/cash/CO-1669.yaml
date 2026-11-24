@@ -1,0 +1,18 @@
+id: CO-1669
+name: "Adult Financial: AND-SO disability verification is pending"
+identifier: af_and_so_disability_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: Whether Adult Financial requires verification of the client's total disability, by the State's medical disability certification (Aid to the Needy Disabled State Only) and it has not been provided.
+precision: "af_and_so_medical_certification_received (CO-2824) is the completed medical certification form for AND-SO; another program's disability document does not clear it (same-word audit SW-15). False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_and_so_disability_certification_due_date (CO-2592: thirty days after the interview, 3.541.1.A.1.b)."
+derived: [all, af_verification_is_applicable, [all, af_requires_verification_of_and_so_disability, [not, af_and_so_medical_certification_received]]]
+sources: [S1079, S1080]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1669-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, af_requires_verification_of_and_so_disability: true, af_and_so_medical_certification_received: false}, expect: true}
+  - {id: CO-1669-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, af_requires_verification_of_and_so_disability: true, af_and_so_medical_certification_received: true}, expect: false}

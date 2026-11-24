@@ -1,0 +1,9 @@
+# Receipt records, migration phase 3 (docs/reviews/receipts-migration-3.md): the cleanup after every program
+# reads the receipts (CO-5000). Step 1 retires the unearned-income facts no rule reads; step 2 gives the money
+# still stated as a part of a receipt kinds of its own (and the lump-sum costs a field), so the readers that
+# subtracted those parts no longer do; step 3 splits the thirty-day wages CCCAP and LEAP shared; step 4 restates
+# CO-5000's meaning. One entry per change-impact flag; an entry that re-keys an earlier disposition (the changed
+# item's fingerprint moved because the receipts schema it reads changed) keeps the earlier reason.
+date: 2026-11-23
+summary: Receipts cleanup - the unearned-income facts no rule reads are retired, the parts of a receipt get kinds of their own, the shared thirty-day wages are split, and CO-5000 names every program.
+impact: []

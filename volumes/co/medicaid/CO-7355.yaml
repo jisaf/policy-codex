@@ -1,0 +1,20 @@
+id: CO-7355
+name: "Medicaid SSI method: the person's own countable income with Social Security disregarded"
+identifier: ma_ssi_own_countable_income_with_oasdi_disregarded
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's own countable income for the month as ma_ssi_own_countable_income (CO-7354) figures it, with the person's counted Social Security (ma_ssi_counted_social_security_receipts) left out of the unearned income: the own-income form of ma_dac_countable_income (CO-1160), which the Disabled Adult Children test compares (10 CCR 2505-10 § 8.100.6.J), for a person whose ineligible spouse's income is not deemed (20 CFR 416.1163(d)(1), S5031)."
+precision: "Read by ma_dac_eligible (CO-1161) where ma_ssi_ineligible_spouse_income_is_not_deemed (CO-7353) holds. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2): the SSI method's excluded earned income (ma_ssi_excluded_earned_income, CO-2471; the infrequent part, CO-4883) and in-kind support and maintenance (ssi_in_kind_support_and_maintenance, CO-802) are read as computed, required where read (decision 4 of 2026-11-23): they are unknown only where a fact they rest on is not stated (a student's school attendance, the shelter costs others pay), and no rule reads that as none; before, an unknown figure was read as 0. NM-KL-2 (2026-11-24; docs/reviews/known-limits.md): the disabled widow(er) test no longer reads this figure (it read it through CO-5516's met_with_oasdi_disregarded); it reads its own sibling copy with only the benefits under 42 U.S.C. 402 left out (ma_ssi_own_countable_income_with_widow_benefit_disregarded, CO-7942)."
+derived: ["+", [max, 0, ["-", [max, 0, ["-", ma_ssi_own_unearned_income, ma_ssi_counted_social_security_receipts]], ssi_general_income_exclusion]], [max, 0, ["-", ["*", [max, 0, ["-", [max, 0, ["-", [max, 0, ["-", ma_ssi_gross_earned_income, ma_ssi_excluded_earned_income]], ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, [max, 0, ["-", ma_ssi_own_unearned_income, ma_ssi_counted_social_security_receipts]]]]]]], [case, [[all, meets_ssa_disability_criteria, [not, is_blind], ["<", ma_age_on_first_day_of_month, ma_aged_age]], [otherwise, impairment_related_work_expenses_paid, 0]], [else, 0]]]], ssi_earned_income_disregard_rate], [case, [["<", ma_age_on_first_day_of_month, ma_aged_age], ["+", [case, [is_blind, [otherwise, blind_work_expenses_paid, 0]], [else, 0]], [case, [[any, is_blind, meets_ssa_disability_criteria], ma_ssi_pass_set_aside_earned_income], [else, 0]]]], [else, 0]]]]]
+sources: [S5031, S1746, S308, S309, S310]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md): the DAC and disabled widow(er)s tests read the couple's figure against the couple rate in the same way."
+nearest: [CO-1160, CO-7354]
+siblings:
+  - {id: CO-7942, reason: "the own-income form of the disabled widow(er) test repeats this computation with only the 402 benefits left out (1383c(d)(2)); every other term must stay the same"}
+tests:
+  # Social Security 800 and a pension 100, aged: unearned 900 - 800 = 100; 100 - 20 = 80.
+  - {id: CO-7355-T1, month: "2026-11", as_of: "2026-11-20", title: "F6-6: own income with the Social Security left out: (900 - 800) - 20 = 80", given: {ma_ssi_own_unearned_income: 900, ma_ssi_counted_social_security_receipts: 800, ma_ssi_gross_earned_income: 0, ma_ssi_excluded_earned_income: 0, date_of_birth: "1950-03-01", meets_ssa_disability_criteria: false, is_blind: false}, expect: 80}

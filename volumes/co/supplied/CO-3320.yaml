@@ -1,0 +1,15 @@
+id: CO-3320
+name: Public health coverage enrolled in the month
+identifier: public_health_coverage_enrolled
+kind: supplied
+type: one of
+options: [none, medical_assistance, chp]
+scope: person-month
+program: All
+meaning: "The public health coverage program in which the person was enrolled (receiving coverage) in the month, as the enrollment record shows, retroactive coverage included: Medical Assistance (Health First Colorado), the Children's Basic Health Plan (CHP+), or none."
+precision: "A history fact, stated for a past month a rule reads (the month the person gave birth). Enrollment in Medical Assistance at the determination date is is_enrolled_in_medical_assistance (CO-2435), which this fact does not restate."
+supplied_by: "CBMS / MMIS enrollment history."
+sources: [S211, S1716]
+implemented: engine
+tags: [ma, chp]
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case."

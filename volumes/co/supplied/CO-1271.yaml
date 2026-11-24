@@ -1,0 +1,13 @@
+id: CO-1271
+name: "Estimated home heating costs for the heating season"
+identifier: estimated_home_heating_costs_for_season
+kind: supplied
+type: money
+scope: case
+program: LEAP
+meaning: "The household's estimated home heating costs (EHHC) for November 1 through April 30 at its current residence - the actual primary-fuel heating costs of the prior year's heating season reported by the vendor, or the State's flat-rate amount by dwelling type (or the standard rate for heat included in rent) where the prior year's costs are unavailable or invalid - per 9 CCR 2503-7 3.758.47 Step A. For electric heat this is the household's total electric usage cost; leap_adjusted_heating_costs (CO-1280) applies the heat portion."
+precision: "One value for the case: a fact about the home."
+supplied_by: Vendor-reported prior-season heating costs, or the flat-rate and in-rent standards in the annual LEAP training manual, applied by the county or contractor.
+sources: [S770]
+tags: [household, income]
+rationale: "No existing fact states heating costs; OQ-123 named it as the first missing input of the benefit formula. leap_adjusted_heating_costs (CO-1280) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-3): renamed from estimated_home_heating_costs; the name hid the unit or the counted group. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

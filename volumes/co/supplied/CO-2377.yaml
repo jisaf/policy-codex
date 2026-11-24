@@ -1,0 +1,13 @@
+id: CO-2377
+name: "Adult Financial: twenty-four-month redetermination"
+identifier: af_redetermination_is_twenty_four_month
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "This Adult Financial redetermination is a twenty-four-month redetermination, at which resources \"must be reverified by traditional verification methods\" (9 CCR 2503-5 3.520.72.D.4)."
+precision: "Required where read, for a redetermination (decision 4; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D9)."
+supplied_by: "CBMS redetermination schedule."
+sources: [S888]
+tags: [cash, verification]
+rationale: "OQ-373: the resource re-verification of 3.520.72.D.4 (S888) falls at every twenty-four-month redetermination."

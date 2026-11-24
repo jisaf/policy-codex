@@ -1,0 +1,12 @@
+id: CO-2409
+name: "CHP+: age under which a newborn's guaranteed coverage lasts"
+identifier: chp_newborn_coverage_age_limit_years
+kind: parameter
+type: whole number
+scope: global
+program: CHP+
+meaning: "The age in whole years under which a child born to a CHP+ mother keeps guaranteed coverage: \"guaranteed coverage for one year\" (10 CCR 2505-3 § 430.5)."
+value: 1
+sources: [S1716]
+tags: [chp, age]
+rationale: "B-2 of the HCPF review: chp_is_guaranteed_newborn (CO-2410) needs the one-year limit as a parameter."

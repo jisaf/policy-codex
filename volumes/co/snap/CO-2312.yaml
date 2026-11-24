@@ -1,0 +1,19 @@
+id: CO-2312
+name: "SNAP: is in the ABAWD additional three months"
+identifier: snap_abawd_is_in_additional_months
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The month is one of the three consecutive months, beginning with snap_abawd_additional_months_start_month, for which an ABAWD (able-bodied adult without dependents) who regained eligibility and then stopped meeting the work requirement remains eligible (10 CCR 2506-1 4.311.3.D.3).
+precision: "False when no start month is stated."
+derived: [case, [[unknown, snap_abawd_additional_months_start_month], false], [else, [all, ["<=", snap_abawd_additional_months_start_month, [month]], ["<", [month], [months_after, snap_abawd_additional_months, snap_abawd_additional_months_start_month]]]]]
+sources: [S1613]
+implemented: engine
+tags: [snap, abawd]
+rationale: "OQ-38 (P-7): snap_abawd_time_limit_status (CO-418) needs to know whether a month falls in the additional three months."
+tests:
+  - {id: CO-2312-T1, title: "No additional months applied", as_of: "2026-10-01", month: "2026-10", given: {}, expect: false}
+  - {id: CO-2312-T2, title: "The third of the three months", as_of: "2026-12-01", month: "2026-12", given: {snap_abawd_additional_months_start_month: "2026-10"}, expect: true}
+  - {id: CO-2312-T3, title: "The fourth month is past the period", as_of: "2027-01-01", month: "2027-01", given: {snap_abawd_additional_months_start_month: "2026-10"}, expect: false}
+  - {id: CO-2312-T4, title: "Before the period", as_of: "2026-09-01", month: "2026-09", given: {snap_abawd_additional_months_start_month: "2026-10"}, expect: false}

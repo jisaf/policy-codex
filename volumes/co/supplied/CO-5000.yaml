@@ -1,0 +1,218 @@
+id: CO-5000
+name: Receipts
+identifier: receipts
+kind: supplied
+type: list of receipts
+scope: person
+program: All
+meaning: "Every payment of money other than earnings that the person received or receives, one record per payment, or per stream of like payments, each stated once: what it is (its kind, the source, in words no program's rule is needed to apply), how much, when it came (the month, and the day where known), how often it is paid, whether it is retroactive or infrequent, and the parts of it set aside, withheld or paid on for a stated purpose. It is the one statement of the person's unearned money, and every program that counts unearned money reads it: LEAP, SNAP, Adult Financial, Colorado Works, CCCAP, SUN Bucks and Health First Colorado (MAGI and the SSI method), and CHP+ through Medicaid's MAGI income; what a receipt counts for is decided by each program's own counting table, never by a second statement of the money. A stated empty list means the person received no unearned money: every sum over it is 0. A list not stated means the person's unearned money is not known: every sum over it is unknown, and an outcome that depends on it cannot be determined (product-owner decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise)."
+precision: "Product-owner decision of 2026-11-23 (receipt records adopted; docs/reviews/receipt-spike.md, Model A). Each kind names one source: one-time, retroactive, irregular and earmarked are fields of the record, never a second record of the same money, so no rule has to decide where a dollar stated twice sits. A receipt with no month and no date recurs in every month the case covers, at its amount; a receipt paid once states its month or its date. Each program's counting table (leap_, snap_, af_, cw_, cccap_, sebt_, ma_magi_ and ma_ssi_receipt_treatment_table) gives every kind one treatment, row by row, and the type check refuses a table that lacks a row for a kind. Since receipts migration phase 3 (2026-11-23) no scalar unearned-income fact remains in the ledger: the facts this list replaced (social_security_income, other_unearned_income_nontaxable and the others) are retired, and since step E2 (2026-11-24) so is their translator and the record of what the stored households stated in them: every household and rule test states its unearned money here alone. A household with no unearned money states receipts: [], not nothing. Earnings are not receipts: pay for work the person performed, as an employee or in self-employment, is stated in earnings (CO-5100, earned-income records step E0; docs/design-earned-and-resource-records.md 2.3), and a stipend or allowance a program happens to count as earned (VISTA, AmeriCorps, a training allowance) stays here; npm run records:harness -- --list earnings flags a person who states the same amount in the same month under a pair of kinds on either side of that boundary. The taxable_amount field (coverage pass 4, C4-01, 2026-11-23) states what the federal return counts of a payment whose kind holds taxable and non-taxable money alike (a savings account distribution: a traditional IRA or 401(k) withdrawal is taxable, a health savings account, Roth or tuition program distribution for its qualified purpose is not; cash value taken from an insurance policy, of which gross income includes the income from the contract (26 U.S.C. 61(a)(9))); it is required where read; Medicaid MAGI reads it (ma_magi_receipt_treatment_table, CO-5500, counted_taxable_amount) and, for a savings account distribution, Adult Financial (af_receipt_treatment_table, CO-5016, counted_taxable_amount; coverage pass 4, CA4-3), so a record neither rule reaches need not state it. Nine readers still take one sum over an unknown list as 0 (an `otherwise ... 0` kept from before the migration: CO-3701, CO-3827, CO-4023, CO-4361, CO-4363, CO-4369, CO-4412, CO-4518, CO-4930); they are under review against decision 4 (docs/handoff-2026-11-23.md, the reader defaults). Whose list child support is stated on (coverage pass 4, non-MAGI N4-11, 2026-11-23): support paid for a child (child_support, child_support_arrears) is stated once, on the list of the child it is paid for, whoever receives the payment on the child's behalf, because every rule that reads it treats it as the child's income: the SSI method counts \"Child support received by an applicant/recipient child\" as the child's, less one-third (10 CCR 2505-10 8.100.5.H.4.c, S3002; 20 CFR 416.1121(b), S4755, and 416.1124(c)(11), S2803, \"support payments made to or for you by an absent parent if you are a child\"), Adult Financial excludes one-third for an SSI-age child (af_child_support_exclusion, CO-5020), and Colorado Works counts \"the current child support received for this person\" and tests whether a half sibling \"receives child support\" (cw_counted_child_support, CO-2553; cw_is_half_sibling_receiving_child_support, CO-2842); SNAP, LEAP and CCCAP sum the members' receipts, so where the child is a member the household's figure is the same on either list. A payee's own figure (the long-term care gross income of a parent, ma_ltc_gross_income) therefore never holds support for a child. Support for a person who is not a child of a parent paying it (alimony, spousal support) is other_taxable or other_nontaxable. The VA's amount for a dependent is a field of the veteran's record (for_dependent), since 20 CFR 416.1123(e)(1) (S4756) leaves it out of the veteran's income. Records E2/H2 leftovers (2026-11-24, docs/reviews/records-e2-h2.md, section 5): the three receipt kinds that were earnings, stated in both lists from step E0 (uniformed_services_special_pay, board_only_payment, room_only_payment), leave receipts, as design 2.3 planned for E2: special pay is the earnings kind uniformed_services_special_pay, and a payment for meals only or a room only is an earnings record of kind boarder_payments (provides board_only or room_only)."
+supplied_by: The applicant's statement and the payer's records (award letters, benefit statements, deposit records, the State's and SSA's data exchanges), one record per payment or stream of payments.
+record_fields:
+  kind:
+    type: one of
+    required: true
+    meaning: "What the payment is: its source, one kind per source."
+    options: [social_security, ssi, pension, unemployment_compensation, child_support, child_support_arrears, colorado_works_cash, adult_financial_cash, tax_exempt_interest, interest_and_dividends, rental_income, workers_compensation, gambling_winnings, resource_liquidation, educational_assistance, loan, reimbursement, energy_assistance_federal, energy_assistance_other, income_tax_refund, property_or_food_tax_refund, federally_excluded_payment, dvsa_title_i_volunteer_payment, dvsa_title_i_payment_at_or_above_minimum_wage, crime_victim_compensation, foster_care_payment, kinship_care_payment, colorado_works_diversion, colorado_works_supportive_services, reverse_mortgage, housing_utility_allowance, gi_bill_housing_food_allowance, refugee_resettlement, americorps, workforce_program_payment, vocational_training_allowance, general_assistance, emergency_assistance, in_home_care_allowance, home_care_allowance, va_aid_and_attendance, state_veteran_annuity, charitable_need_based_cash, charitable_gift_life_threatening_condition, gift, sponsor_payment, migrant_farmworker_emergency_assistance, adoption_subsidy, early_childhood_research_payment, savings_account_distribution, medicare_premium_refund, insurance_cash_value, military_allotment, school_attendance_conditional_benefit, other_taxable, other_nontaxable, title_iv_or_bie_student_aid, wioa_adult_or_dislocated_worker_payment, allowance_from_institutionalized_spouse]
+    option_meanings:
+      social_security: "Social Security (title II) benefits: retirement, survivors' or disability insurance, on the person's own record or another's; not a refund of Medicare premiums (medicare_premium_refund)."
+      ssi: Supplemental Security Income paid by the Social Security Administration (title XVI).
+      pension: A pension, annuity or retirement benefit from a former employer, a union, the military or a government retirement system, Railroad Retirement included; not a distribution from an account the person owns (savings_account_distribution).
+      unemployment_compensation: Unemployment insurance benefits paid by a State or the federal government.
+      child_support: "Current child support paid for a child, other than arrears, stated on the list of the child it is paid for, whoever receives it on the child's behalf (a parent or caretaker, the payee); see the precision."
+      child_support_arrears: "Child support paid toward support owed for months before the month received, stated on the list of the child it is paid for, as child_support is."
+      colorado_works_cash: Colorado Works (TANF) basic cash assistance.
+      adult_financial_cash: "An Adult Financial grant payment: Old Age Pension, Aid to the Needy Disabled or Aid to the Blind, other than the Home Care Allowance (home_care_allowance)."
+      tax_exempt_interest: Interest that is exempt from federal income tax, such as interest on municipal bonds.
+      interest_and_dividends: "Taxable interest and dividends: the return paid on money or securities the person holds."
+      rental_income: Rent or royalties from property the person owns and does not actively manage as a business.
+      workers_compensation: Workers' compensation benefits for a work injury or illness, an award's amounts for the claim's expenses included (see claim_expense).
+      gambling_winnings: Winnings from a lottery or any other game of chance, one record per game.
+      resource_liquidation: Money the person obtained by selling or converting a personal resource the person owned.
+      educational_assistance: "Grants, scholarships, fellowships and educational loans for the cost of education or training, other than a training allowance from a workforce program, other than benefits paid only on condition of school attendance (school_attendance_conditional_benefit) and other than student financial assistance under Title IV of the Higher Education Act or from a Bureau of Indian Education program (title_iv_or_bie_student_aid)."
+      loan: The proceeds of a bona fide loan the person must repay, a reverse mortgage excepted.
+      reimbursement: A reimbursement of expenses the person paid or will pay, which is not a gain to the person.
+      energy_assistance_federal: "Home energy assistance under federal law: LEAP (LIHEAP) or other federally funded assistance with energy costs."
+      energy_assistance_other: Home energy assistance not under federal law, from a nonprofit organization or the energy supplier.
+      income_tax_refund: An income tax refund, rebate or credit, the earned income tax credit and Colorado's Property Tax/Rent/Heat credit included.
+      property_or_food_tax_refund: A public agency's refund of taxes paid on real property or on food (one class, 20 CFR 416.1124(c)(1)), other than an income tax refund or credit.
+      federally_excluded_payment: A payment a federal statute excludes from income for federally funded means-tested programs (the list in the federally excluded payments fact), other than a Domestic Volunteer Service Act Title I volunteer payment.
+      dvsa_title_i_volunteer_payment: A payment to a volunteer under Title I of the Domestic Volunteer Service Act (VISTA, University Year for Action, Urban Crime Prevention), below the minimum wage.
+      dvsa_title_i_payment_at_or_above_minimum_wage: "A payment to a volunteer under Title I of the Domestic Volunteer Service Act (AmeriCorps VISTA, University Year for Action, Urban Crime Prevention) whose value, adjusted to the hours served, is at or above the minimum wage: a full-time VISTA living allowance."
+      crime_victim_compensation: Compensation paid to the person as a victim of crime under the Colorado Crime Victim Compensation Act or a like program.
+      foster_care_payment: A payment to the person as a foster care provider for a child placed in the person's home.
+      kinship_care_payment: A kinship care payment to the person for a related child in the person's care.
+      colorado_works_diversion: A Colorado Works State or county diversion payment.
+      colorado_works_supportive_services: A Colorado Works supportive services payment.
+      reverse_mortgage: A payment to the person from a reverse mortgage on the person's home.
+      housing_utility_allowance: A utility allowance paid to the person by a subsidized housing program.
+      gi_bill_housing_food_allowance: The housing or food allowance paid under the G.I. Bill.
+      refugee_resettlement: Refugee resettlement funds or reception and placement money from a resettlement agency, or the Interim Cash Payment of the Colorado Refugee Services Program; not Refugee Cash Assistance.
+      americorps: A living allowance, stipend or education award paid for service in AmeriCorps (national service under the National and Community Service Act).
+      workforce_program_payment: "A payment from the Workforce Innovation and Opportunity Act (other income or supportive services) or a youth employment and training project (YIEPP, YCCIP, YETP), other than a training allowance from another program and other than a payment from WIOA's employment and training activities for adults and dislocated workers under 29 U.S.C. 3174 (wioa_adult_or_dislocated_worker_payment)."
+      vocational_training_allowance: A training allowance from a vocational or rehabilitation program other than WIOA and the youth projects (a JOBS or vocational rehabilitation allowance, for example), to the extent it is not a reimbursement.
+      general_assistance: General Assistance granted by a county department, before or as a supplement to other assistance.
+      emergency_assistance: Emergency assistance received on a one-time basis from a county department or another agency or organization, other than home energy assistance and major disaster or emergency assistance.
+      in_home_care_allowance: A personal care or home care allowance from a federal, State or local government program to purchase in-home supportive services for the person, other than the Adult Financial Home Care Allowance (home_care_allowance).
+      home_care_allowance: The Adult Financial Home Care Allowance paid to the client (9 CCR 2503-5 3.500), its own kind so a rule can read it apart from the Old Age Pension and Aid to the Needy Disabled grants (coverage review 3 of Adult Financial, H-5).
+      va_aid_and_attendance: VA Aid and Attendance or housebound allowance (see used_for_uncovered_medical_care).
+      state_veteran_annuity: A State's annuity for a blind, disabled or aged veteran.
+      charitable_need_based_cash: Cash a charitable organization gave the person on the basis of need, other than a gift for a life-threatening condition.
+      charitable_gift_life_threatening_condition: A cash gift (or an in-kind gift converted to cash) from a 501(c)(3) organization to or for the person because the person has a life-threatening condition.
+      gift: Money a person outside the household gave the person, with no obligation to repay and not for work, other than a gift from a charitable organization.
+      sponsor_payment: Money a non-citizen received from a sponsor, or a sponsor's spouse, who does not live with the non-citizen.
+      migrant_farmworker_emergency_assistance: Emergency assistance paid to a migrant or seasonal farmworker in the job stream.
+      adoption_subsidy: "An adoption subsidy (adoption assistance, under Title IV-E or State-funded) the county or the State pays the person for a child the person adopted; not a kinship care or guardianship payment (kinship_care_payment) or a foster care payment (foster_care_payment)."
+      early_childhood_research_payment: Money paid to the person for taking part in a grant-funded research study on early childhood development.
+      savings_account_distribution: "A withdrawal or distribution from an account the person owns to save for retirement (an IRA, a 401(k) or another defined-contribution account), for health costs (a health savings account), for education (an educational savings account) or under an individual development account; a pension or annuity a plan pays is pension."
+      medicare_premium_refund: "A lump-sum refund of Medicare Part B (Supplementary Medical Insurance) premiums, such as the refund paid when the State's buy-in begins paying the premium for past months."
+      insurance_cash_value: "Cash value the person takes out of a life or disability insurance policy the person owns (a withdrawal, a policy loan or a surrender of the cash value)."
+      military_allotment: "A military allotment: the part of a uniformed service member's pay allotted to dependents, received by the person on their behalf (the part for persons who do not live with the person is its for_person_living_elsewhere)."
+      school_attendance_conditional_benefit: "Educational benefits paid only on condition of the person's school attendance rather than as a grant, scholarship, fellowship, stipend or loan: U.S. Department of Veterans Affairs educational assistance (G.I. Bill) payments and other military, veterans' or similar benefits paid only while the person attends school; not the G.I. Bill housing or food allowance (gi_bill_housing_food_allowance)."
+      other_taxable: "Federally taxable unearned money no other kind names: alimony under a divorce or separation executed before 2019, income from an estate or trust, and the like."
+      other_nontaxable: "Unearned money that is not federally taxable and that no other kind names: veterans' benefits, alimony under a divorce or separation executed after 2018, an inheritance, an insurance settlement (a death benefit paid on another person's death, such as life insurance proceeds, included), and the like."
+      title_iv_or_bie_student_aid: "Student financial assistance received under Title IV of the Higher Education Act of 1965 (20 U.S.C. chapter 28, subchapter IV, Student Assistance: its grants to students, its federal student loans, Federal Perkins loans) or from a Bureau of Indian Education student assistance program: one class, the student aid 20 U.S.C. 1087uu (S5243) names. Federal Work-Study pay is pay for work, stated in earnings (work_study, CO-5100); other grants, scholarships and educational loans are educational_assistance (NM-KL-3, 2026-11-24)."
+      wioa_adult_or_dislocated_worker_payment: "A payment to the person from the employment and training activities for adults or dislocated workers that 29 U.S.C. 3174 (S5363) funds under the Workforce Innovation and Opportunity Act: training funds paid to the person, a needs-related payment or a supportive services payment; not wages, which are earnings (wioa_on_the_job_training, subsidized_employment; CO-5100), and not a payment from WIOA's youth activities or another workforce program (workforce_program_payment) (NM-KL-3, 2026-11-24)."
+      allowance_from_institutionalized_spouse: "The monthly income allowance the person's spouse, while an institutionalized spouse under Health First Colorado's spousal protection rules (in a medical institution or nursing facility, enrolled in PACE or receiving home and community-based services: 10 CCR 2505-10 § 8.100.7.K.2, S1754), pays or makes available to the person from the spouse's own income for the person's needs (§ 8.100.7.R, T.1.b; S1756, S3410), a court-ordered amount included (R.3, S3409); stated on the receiving spouse's list. Other support between spouses is other_taxable or other_nontaxable (NM-KL-1, 2026-11-24)."
+  amount:
+    type: money
+    required: true
+    meaning: "The gross amount received, before anything withheld: for a receipt that recurs, the amount received in each month it covers (in its month, when it states one); for a receipt paid once, the payment."
+  month:
+    type: month
+    when_absent: "every month: the receipt recurs, at its amount, in every month the case covers"
+    meaning: The month the payment came in. A receipt stated with a date and no month came in the date's month; one with neither recurs in every month, unless it is paid once.
+  date:
+    type: calendar date
+    required: true
+    meaning: The day the payment came in, needed where a rule counts by date (LEAP's income verification period); in the month the record states, when it states one.
+  frequency:
+    type: one of
+    default: monthly
+    required_if_dated: true
+    meaning: "How often the payment is made; once for a nonrecurring payment. Monthly is what an unstated frequency means on a receipt stated without a date (its amount is the month's); a receipt stated with its date states its frequency, since whether it recurs or is paid once decides the period LEAP and CCCAP read it in (decision 4 of 2026-11-23; coverage pass 4 L4-3, C4-2)."
+    options: [once, monthly, weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual]
+  per_payment:
+    type: money
+    required: true
+    meaning: For a receipt paid other than monthly, the amount of one payment, which a rule converting by frequency reads (SNAP's 4.402.A.2).
+  retroactive:
+    type: yes/no
+    default: false
+    meaning: The payment is a retroactive benefit paid for months before the month received.
+  irregular:
+    type: yes/no
+    default: false
+    meaning: The payment was received infrequently (only once in the calendar quarter from this source, not in the month before or after) or irregularly (the person could not reasonably expect it).
+  hours_served:
+    type: hours
+    required: true
+    meaning: For a service payment (AmeriCorps), the hours of service it pays for in the month.
+  pass_set_aside:
+    type: money
+    default: 0
+    meaning: The part set aside under a Plan to Achieve Self-Support the Social Security Administration approved, and used for the plan.
+  claim_expense:
+    type: money
+    default: 0
+    meaning: The part of a workers' compensation payment the award includes for the claim's medical, legal or related expenses.
+  spent_on_covered_costs:
+    type: money
+    default: 0
+    meaning: The part of an insurance or injury settlement spent, or to be spent, on the costs it covers (the last illness and burial, medical care).
+  designated_for_lump_sum_costs:
+    type: money
+    default: 0
+    meaning: "The part of a payment received once that is designated or legally obligated for legal fees related to obtaining it, medical bills, funeral and burial expenses, or income taxes, beyond what spent_on_covered_costs states."
+  designated_for_legal_fees:
+    type: money
+    required: true
+    meaning: "Of designated_for_lump_sum_costs, the part that is legal fees connected with the claim that obtained the payment (an attorney's fee for a retroactive benefit award, for example), not stated again in claim_expense. A rule that subtracts the legal fees of a claim and not the payment's other designated costs reads it (20 CFR 416.1123(b)(3), S4756: 'If you receive a retroactive check from a benefit program other than SSI, legal fees connected with the claim are subtracted'; field-effect sweep, FS-MA-8); required where read (decision 4 of 2026-11-23)."
+  used_for_uncovered_medical_care:
+    type: money
+    default: 0
+    meaning: The part of VA Aid and Attendance used for medical supplies or medical or attendant care no insurance covers.
+  transferred_to_child_support_agency:
+    type: money
+    default: 0
+    meaning: The part of child support received that the person turned over to the child support (IV-D) agency.
+  paid_to_former_spouse:
+    type: money
+    default: 0
+    meaning: The part of military retirement pay paid to a former spouse under a court order.
+  recouped:
+    type: money
+    default: 0
+    meaning: The part withheld by the same payer to recover an earlier overpayment, intentional-violation recoupments included.
+  recouped_for_intentional_violation:
+    type: money
+    default: 0
+    meaning: Of the part recouped, the part a means-tested program withheld for an intentional failure to comply with its rules.
+  for_person_living_elsewhere:
+    type: money
+    default: 0
+    meaning: "The part received for a person who does not live with the person (a beneficiary living elsewhere). For the part of a veterans benefit the Department of Veterans Affairs pays because of a dependent (for_dependent): a dependent who is not a person of the case and lives elsewhere has that part stated here too; a dependent who is a person of the case is named in for_person and the part is not stated here, wherever the dependent lives, so a rule that leaves out money for a person living elsewhere reads it once (coverage verification 7, V7-2, which restores the split R7-4 had merged: LEAP, leap_counted_recurring_receipts CO-5003, and SNAP, snap_counted_recurring_receipts CO-5011, take off this field, and for_dependent only where for_person names a person of the case outside the household; 9 CCR 2503-7 3.752.211.E, 3.752.212; 10 CCR 2506-1 4.405.B)."
+  for_dependent:
+    type: money
+    default: 0
+    meaning: "The part of a veterans benefit that the Department of Veterans Affairs pays the person because of a dependent of the person (an amount for a spouse or child in the award), stated for every dependent: with for_person naming the dependent where the dependent is a person of the case, wherever the dependent lives; without it where the dependent is not, and then, where that dependent lives elsewhere, the same part is also the record's for_person_living_elsewhere (coverage verification 7, V7-2). The rules that count the part as the dependent's income and not the veteran's read this field (Adult Financial, Colorado Works, the SSI method); LEAP and SNAP read it only where for_person names a person of the case outside the household, and read for_person_living_elsewhere otherwise, so no rule takes the part off twice. An award with amounts for two dependents is stated as one record per dependent, each with that dependent's part and for_person (records are disjoint)."
+  for_person:
+    type: person
+    when_absent: "the amount for a dependent (for_dependent) is for no person of the case"
+    meaning: "For a receipt with an amount for a dependent (for_dependent), the person of the case that amount is for: the person's id in the case. A rule that counts the dependent's part as the dependent's income reads it (9 CCR 2503-5 3.520.785.B.4, 9 CCR 2503-6 3.605.3.B.5: \"countable unearned income to the dependent rather than to the veteran\"; field sweep fix round, FS-AF-2, FS-CW-2), and the SSI method for a dependent who resides with the person paid (20 CFR 416.1123(e)(2)(i); cross-list records round, OQ-1348)."
+  regular_date:
+    type: calendar date
+    when_absent: "the payment came on the day its schedule set for it"
+    meaning: "For a payment of a regular schedule that came early or late, because a holiday or a weekend fell on its payment day, because the payer changed the payment dates, or because of a mailing cycle (two monthly payments in one month and none in the next), the day the schedule set for it; the month it is for is that day's month. A rule that counts a payment by its regular schedule reads it (SNAP 10 CCR 2506-1 4.402.B.2-3); a rule that counts a payment by the day it came in reads date (coverage pass 4 for SNAP, S4-2)."
+  start_date:
+    type: calendar date
+    when_absent: "the payments began before the months the case covers"
+    meaning: "For a stream of like payments (a receipt with no month and no date), the day its first payment came in. A stream recurs from that day's month; in that month a full month's payments are not received (coverage pass 4 for SNAP, S4-1, S4-3)."
+  end_date:
+    type: calendar date
+    when_absent: "the payments continue through the months the case covers"
+    meaning: "For a stream of like payments (a receipt with no month and no date), the day its last payment came in or is expected to come in. A stream recurs through that day's month and not after it (coverage pass 4 for SNAP, S4-1, S4-3)."
+  covers_from:
+    type: calendar date
+    required: true
+    meaning: "For a payment received once that is meant for the person's expenses or needs over a period (a Colorado Works diversion payment, for example), the first day of that period (coverage pass 4 for SNAP, S4-5)."
+  covers_through:
+    type: calendar date
+    required: true
+    meaning: "For a payment received once that is meant for the person's expenses or needs over a period, the last day of that period (coverage pass 4 for SNAP, S4-5)."
+  recurs_within_twelve_months:
+    type: yes/no
+    required: true
+    meaning: "For a payment received once, another payment of the same kind is expected to be paid to the person within twelve months of its date (coverage pass 4 for SNAP, S4-5)."
+  taxable_amount:
+    type: money
+    when_absent: "the record does not state which part of the payment is in federal gross income: a rule for a kind whose amount does not settle that part (a savings account distribution, insurance cash value) cannot determine, as for a required field; a rule for a kind the Code makes gross income unless it provides otherwise reads the kind's own figure (a pension or annuity, its whole amount, 26 U.S.C. 61(a)(8), (10); an income tax refund, none, 111(a)) (coverage pass 5, C5-09)"
+    meaning: "The part of the payment that is in the person's federal gross income (26 U.S.C. 61(a)), as the person's federal income tax return reports it or will report it: for a distribution from a health savings account used only to pay qualified medical expenses, a qualified distribution from a Roth IRA, or a qualified tuition program distribution that does not exceed the qualified higher education expenses, 0 (26 U.S.C. 223(f)(1), 408A(d)(1), 529(c)(3)(B)); for a distribution from a traditional retirement account, or cash value taken from an insurance policy, the part the return includes; for a pension or annuity, the amount less the part that returns the investment in the contract (72(b)(1)) or that 104(a)(4) excludes (a pension for injuries or sickness resulting from active service in the armed forces); for an income tax refund, the part that is the recovery of an amount deducted in an earlier year that reduced the tax (111(a)). A fact of the federal return, the same for every reader; a program reads it only for a kind whose amount does not settle what is taxable (coverage pass 4, C4-01; pensions and refunds, coverage pass 5, C5-09)."
+  for_living_expenses:
+    type: money
+    required: true
+    meaning: "For educational assistance (a grant, scholarship, fellowship grant, award or educational loan), the part of the payment used for, or provided for, living expenses (room and board, travel and other personal costs) rather than for the costs of education (tuition, fees, books, supplies and equipment). A rule that excludes educational assistance only as far as it is used for educational purposes reads it: Medicaid's MAGI (10 CCR 2505-10 § 8.100.4.C.1.d.ii, S166: 'Scholarships, awards, or fellowship grants used for educational purposes and not for living expenses'; coverage pass 7, C7-03). Required where read (decision 4 of 2026-11-23): 0 when none of the payment is for living expenses. MAGI reads it only where the record's taxable_amount is greater than 0: a payment none of which is in federal gross income (an educational loan, a grant or scholarship used only for qualified tuition and related expenses, taxable_amount 0) counts nothing whatever part is for living expenses, so it need not be stated there (coverage verification 7, V7-3)."
+  early_withdrawal_penalty:
+    type: money
+    default: 0
+    meaning: "For a payment from a pension, an annuity or an account meant to provide for a person in retirement (a 401(k), an IRA) taken before the plan or the law allows it without a penalty (an early payout), the amount deducted from the payment, or owed on it, as a penalty for the early payout (the additional tax on an early distribution included); none when not stated, since a penalty is a deduction the person shows. Part of the payment's amount (coverage pass 5, C5-2: 8 CCR 1403-1 3.111.I.8 counts pensions and annuities \"minus the amount deducted for penalties, if early payouts are received from these accounts\")."
+  ownership_share:
+    type: rate
+    when_absent: "the payment is not income from property the person owns jointly with others: the person owns the property alone, or the payment is not income from property"
+    meaning: "For income from property the person owns jointly with others (rent, royalties, interest or dividends from a jointly held property, account or security), the person's part of the property, as a fraction (0.5 for half); stated with property_income (coverage pass 5, X5-1: 8 CCR 1403-1 3.111.H.4.e and 9 CCR 2503-7 3.752.21.F count such income \"as a percentage at least equal to the percentage of ownership or, if receiving more than percentage of ownership, the actual amount received\"). The record's amount is what the person received of it. Two owners who are both persons of the case each state the property's income on the own list, with what each received (0 when the other kept it all), and name each other (co_owner; coverage pass 6, R6-2)."
+  property_income:
+    type: money
+    required: true
+    meaning: "For a payment that states ownership_share, the whole income the jointly owned property produced for the same period as the record's amount (its month, its date's payment, or each month of a stream), before it was divided among the owners or kept by one of them (coverage pass 5, X5-1)."
+  co_owner:
+    type: person
+    when_absent: "no other person of the case owns part of the property: its other owners are outside the case"
+    meaning: "For a payment that states ownership_share, the other person of the case who owns part of the same property: the person's id in the case, as a holding names its co-owner (holdings, CO-5300, co_owner). Each co-owner of the case states the property's income on the own list, with the amount the co-owner received (0 when the other kept it all), the own share and the same property_income, and names the other. A rule that applies a share test once per property in a household reads it (coverage pass 6, R6-2: 8 CCR 1403-1 3.111.H.4.e, 9 CCR 2503-7 3.752.21.F; OQ-1316)."
+  title_ii_benefit_type:
+    type: one of
+    required: true
+    options: [retirement_or_survivor, own_disability, disabled_adult_child, disabled_widow]
+    meaning: "For a Social Security receipt (kind social_security), the benefit it pays, as SSA's benefit record shows it and as title_ii_benefit_type (CO-2821) states it for the person: retirement_or_survivor (an old-age benefit, or a survivor's or an auxiliary benefit not based on the person's own disability), own_disability (a disability insurance benefit on the person's own record, 42 U.S.C. 423, S5362), disabled_adult_child (a child's benefit for a disability that began before 22, 42 U.S.C. 402(d)), disabled_widow (a widow's or widower's benefit for a disability, 402(e), (f); S5361). A person paid two benefits states one record for each. Required where read (decision 4 of 2026-11-23): the disabled widow(er) group reads it, since 42 U.S.C. 1383c(d)(2) (S3416) tests SSI eligibility 'in the absence of' the benefits of paragraph (1)(A), the benefits under 42 U.S.C. 402, so a disability insurance benefit under 423 stays counted (ma_disabled_widow_disregarded_social_security_receipts, CO-7940; NM-KL-2, 2026-11-24); a receipt no rule reads it for need not state it."
+sources: [S2712, S2713, S2714, S1624, S3300, S42, S1620, S1622, S2608, S4631, S4633, S4634, S4635, S3002, S4755, S4756, S2803, S4637, S4638, S4639, S5360, S5361, S5362, S5363, S5243]
+tags: [income]
+rationale: "Product-owner decision of 2026-11-23 (receipt records): the rules count money by kind of receipt, by date and form, by frequency and by earmark; one record per receipt states each once, so no rule decides where a dollar stated twice sits. Replaced the scalar unearned income facts and their part-of facts for LEAP, SNAP and Adult Financial (migration phase 1) and for Colorado Works, CCCAP, SUN Bucks, Medicaid and CHP+ (phase 2); phase 3 retired the scalar facts, so the list is now the only statement of unearned money."

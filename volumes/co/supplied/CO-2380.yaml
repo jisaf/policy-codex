@@ -1,0 +1,13 @@
+id: CO-2380
+name: "SNAP: verification request date"
+identifier: snap_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The date of the SNAP office's initial request for the particular verification that is missing (7 CFR 273.2(h)(1)(i)(C); 10 CCR 2506-1 4.205.2.B), from which the ten days run."
+precision: "If not stated, SNAP reads the shared verification_request_date (CO-1343)."
+supplied_by: "SNAP request for verification (CBMS checklist)."
+sources: [S813, S834]
+tags: [snap, verification]
+rationale: "OQ-300: SNAP runs its period from its own request for the particular verification; one shared verification_request_date (CO-1343) could not state a request on a different date from the other programs'."

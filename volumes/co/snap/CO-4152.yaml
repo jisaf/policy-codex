@@ -1,0 +1,17 @@
+id: CO-4152
+name: "SNAP: household has substantial lottery or gambling winnings"
+identifier: snap_household_has_substantial_lottery_winnings
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "A member of this person's SNAP household received substantial lottery or gambling winnings in the month (snap_has_substantial_lottery_winnings), which disqualifies the entire household from eligibility in that month, whatever its category (10 CCR 2506-1 4.206.E; 7 U.S.C. 2015(s)(1); 7 CFR 273.11(r))."
+precision: "Every member of the purchase-and-prepare unit is tested, an ineligible or disqualified member included (\"any individual in the household\", 273.11(r)); an ineligible student, whom 4.411.2.C treats as a non-household member, is not (snap_household_members_other_than_ineligible_students, CO-3714). The month the winnings are received is the month disqualified; afterwards the household must reapply and is considered under Standard Eligibility, with its resource test (snap_is_first_certification_after_lottery_disqualification, CO-4153, read by snap_eligibility_category, CO-341), which is how 2015(s)(2) and 273.11(r)(1) keep it ineligible \"until the household meets the allowable financial resources and income eligibility requirements\"."
+derived: [exists, snap_household_members_other_than_ineligible_students, [of, [P], snap_has_substantial_lottery_winnings]]
+sources: [S2950, S2952, S2953]
+implemented: engine
+tags: [snap, income]
+rationale: "Final verification pass 2 N-1: the household disqualification of 4.206.E had no item; snap_is_eligible (CO-386), snap_eligibility_status (CO-387) and snap_full_month_allotment (CO-2307) read this one."
+tests:
+  - {id: CO-4152-T1, title: "The mother of a family of three wins $10,000", as_of: "2026-10-15", month: "2026-10", given: {snap_household_members_other_than_ineligible_students: [p1, p2, p3], snap_has_substantial_lottery_winnings: false}, others: {p2: {snap_has_substantial_lottery_winnings: true}, p3: {snap_has_substantial_lottery_winnings: false}}, expect: true}
+  - {id: CO-4152-T2, title: "No member with winnings", as_of: "2026-10-15", month: "2026-10", given: {snap_household_members_other_than_ineligible_students: [p1, p2], snap_has_substantial_lottery_winnings: false}, others: {p2: {snap_has_substantial_lottery_winnings: false}}, expect: false}

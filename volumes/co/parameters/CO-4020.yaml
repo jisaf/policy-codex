@@ -1,0 +1,12 @@
+id: CO-4020
+name: "Adult Financial: age under which a student is a child under the SSI rules"
+identifier: af_ssi_child_student_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A student regularly attending school, college or job training under this age is a child for the SSI unearned income exclusions 9 CCR 2503-5 3.520.786.K incorporates (20 CFR 416.1856(a)(2): \"You are under 22 years old and you are a student regularly attending school or college or training\")."
+value: 22
+sources: [S2805]
+tags: [cash, income]
+rationale: "Final cash review 2, N-4: the student arm of 416.1856, read by af_is_ssi_child (CO-4022)."

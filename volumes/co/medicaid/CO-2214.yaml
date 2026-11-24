@@ -1,0 +1,21 @@
+id: CO-2214
+name: "Medicaid: must provide citizenship documentation again"
+identifier: ma_must_resubmit_citizenship_documentation
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether a person who provided citizenship and identity documentation before must provide it again under 10 CCR 2505-10 § 8.100.3.H.4.h.ii: there is a gap of more than five years between the ending date of the person's last period of eligibility and this application, and the eligibility site has not retained the documentation."
+precision: "'More than five years' is read as the application falling after the fifth anniversary of the end date: the whole years from the end date to the day before the application are at least five. A person with no ended earlier period (ma_previous_eligibility_end_date not stated) has no gap."
+derived: [all, [otherwise, [">=", [years_between, ma_previous_eligibility_end_date, [days_after, -1, ma_application_date]], ma_citizenship_documentation_gap_years], false], [not, ma_citizenship_documentation_is_retained]]
+sources: [S1053]
+implemented: engine
+tags: [ma, verification]
+rationale: "OQ-372: ma_requires_verification_of_citizenship (CO-1395) did not test the gap exception of § 8.100.3.H.4.h.ii."
+tests:
+  - {id: CO-2214-T1, as_of: "2026-10-01", title: "Six years since the last period ended, documents not kept", given: {ma_previous_eligibility_end_date: "2020-06-30", ma_application_date: "2026-09-15", ma_citizenship_documentation_is_retained: false}, expect: true}
+  - {id: CO-2214-T2, as_of: "2026-10-01", title: "Six years, documents kept", given: {ma_previous_eligibility_end_date: "2020-06-30", ma_application_date: "2026-09-15", ma_citizenship_documentation_is_retained: true}, expect: false}
+  - {id: CO-2214-T3, as_of: "2026-10-01", title: "Three years", given: {ma_previous_eligibility_end_date: "2023-06-30", ma_application_date: "2026-09-15"}, expect: false}
+  - {id: CO-2214-T4, as_of: "2026-10-01", title: "Exactly five years is not more than five", given: {ma_previous_eligibility_end_date: "2021-09-15", ma_application_date: "2026-09-15"}, expect: false}
+  - {id: CO-2214-T5, as_of: "2026-10-01", title: "Five years and a day", given: {ma_previous_eligibility_end_date: "2021-09-14", ma_application_date: "2026-09-15", ma_citizenship_documentation_is_retained: false}, expect: true}
+  - {id: CO-2214-T6, as_of: "2026-10-01", title: "No earlier period ended", given: {ma_application_date: "2026-09-15"}, expect: false}

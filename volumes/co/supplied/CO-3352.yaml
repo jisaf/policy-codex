@@ -1,0 +1,13 @@
+id: CO-3352
+name: Temporary absence start date
+identifier: temporary_absence_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's current temporary absence from the home they usually live in began; stated with a temporary_absence_reason other than none."
+supplied_by: "Application (household members temporarily away)."
+sources: [S2203]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-7 and dual-entry audit 3.6: living together was read from relationship edges by every household, caretaker and custody item, while Medicaid read a separate lives_with list stated on one person; the two disagreed in CO-04, and lives_with could be stated on p1 and not on p2. Each person states the home they live in once; lives_with is derived, symmetric, and every item that asks whether persons live together reads it (convention rule 17)."

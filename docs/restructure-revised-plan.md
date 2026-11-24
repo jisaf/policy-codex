@@ -1,0 +1,20 @@
+# Revised plan: making the codex's rules hold for every case (draft for review)
+
+Status: draft, 2026-11-23. Not approved.
+
+## Context
+The Colorado codex (volumes/co/) states eligibility and benefit rules for SNAP, Colorado Works, Adult Financial, CCCAP, LEAP, SUN Bucks, Medicaid (MAGI and non-MAGI) and CHP+ as small YAML items: supplied facts, dated parameters, and derived rules written as expressions, each citing the regulation text it implements. An evaluator in src/engine/ runs them only to test them (rule tests, stored households in volumes/co/tests/cases.yaml) and to produce the conformance suite engine teams implement against. It is not a production engine.
+
+Exhaustive paragraph-by-paragraph reviews per program found 101, then about 31, then 25 wrong-answer findings (P1). Counts fall, but each pass finds more; about half of each pass's findings were introduced by the previous pass's fixes, and most of the rest are edge combinations (household composition changes, date boundaries, pay frequency, money that can be stated in two facts, a status change not followed to all its readers, alternate paths that copy a main path). The product owner's position: every case matters; programs stay independent except where a rule requires a link; only primitives with one definition everywhere (age, dates, relationships, published figures) are shared across programs, never program-specific calculations such as income or resources.
+
+## Plan
+1. **Keep every test household.** All ~185 reviewer probe households become stored cases with the rule's answer as the expectation; open defects are tracked as known failures. Every fix from now on ships with a whole-household test, not only an item test with mocked inputs.
+2. **Fix the open findings** (non-MAGI Medicaid pass-3 findings and the Adult Financial leftovers) under the current design, refactor and fix kept in separate commits so any change in an answer is visibly a fix.
+3. **Change-impact check at fix time.** When an item changes, a check lists the untouched items that cite the same regulation excerpt or read the same facts, so a fix is followed to every place it applies.
+4. **No duplicate paths within a program.** Alternate paths (Family Planning, the SNAP allotment's eligibility gates, Adult Financial deeming, parallel Medicaid gates) read the program's main items, except where the rule deliberately differs (recorded with the citation). Where a path reuses logic with a different person set or period, use a shared template rather than a copy.
+5. **Money-fact overlap made explicit, not restructured.** Supplied money facts that are "part of" another fact get machine-readable `part_of` metadata; checks enforce that every reader subtracts or adds consistently, and a metamorphic test asserts that the same money stated in any permitted place gives the same answer. Unknown income must still yield "cannot determine", never a silent zero.
+6. **Cross-program sharing in three classes:** primitive (one meaning everywhere), adopted method (a program adopts another method by reference, e.g. SSI-method income), program calculation (never shared). Any cross-program read must be declared with the rule citation; checks block undeclared ones. Split copies are registered as siblings so a change to one is flagged on the others.
+7. **One owner for new supplied facts** (no two tracks add the same fact under different names), and date-safe age comparisons (birthday-month rules).
+8. **Reviews:** light targeted reviews first (what the last change touched, composition, dates, money placement), every finding a stored case; then one exhaustive review per program decides completion under the unchanged stopping rule (a fresh pass finds no wrong answer).
+
+**Deferred, gated on a spike:** recording each receipt once as non-overlapping receipt records with one counting table per program (the original step 2). Tried first on LEAP unearned income, SNAP unearned income and Adult Financial deeming behind a harness that compares old and new answers for every household; adopted only if the spike shows it removes errors without new ones.

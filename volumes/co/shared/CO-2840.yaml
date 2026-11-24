@@ -1,0 +1,19 @@
+id: CO-2840
+name: Full siblings
+identifier: full_siblings
+kind: derived
+type: group of persons
+scope: person
+program: All
+meaning: "The persons, other than this person, whose legal parents (natural or adoptive) are exactly this person's: brothers and sisters who share both parents."
+precision: "Read from the parent role (P53). A person with one stated parent has as full siblings the others whose only stated parent is the same; a parent who is not a person of the case is not stated, so a case states both parents where it matters."
+derived: [shared_relative, parent, every]
+sources: [S169, S1625]
+implemented: engine
+tags: [household]
+link_class: primitive
+link_basis: "The persons who share both legal parents with this person; a relationship primitive."
+rationale: "Same-word audit SW-2: siblings (CO-2609) does not tell full from half siblings, which Colorado Works treats differently (9 CCR 2503-6 3.604.2.C.1.c-d, C.2.d, S1625). No existing item states it."
+nearest: [CO-2609, CO-2610]
+tests:
+  - {id: CO-2840-T1, title: "Two children of the same two parents, and a half brother", as_of: "2026-11-01", given: {}, others: {p2: {}, p3: {}, p4: {}, p5: {}}, relationships: [[parent, p2, p1], [parent, p3, p1], [parent, p2, p4], [parent, p3, p4], [parent, p2, p5]], expect: [p4]}

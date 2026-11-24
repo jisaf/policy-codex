@@ -1,0 +1,12 @@
+id: CO-3026
+name: "Medicaid Buy-In for Children with Disabilities: oldest age"
+identifier: ma_cbwd_max_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The oldest age (inclusive) of an applicant for the Medicaid Buy-In Program for Children with Disabilities: \"Applicants must be age 18 or younger\" (10 CCR 2505-10 § 8.100.6.Q.1.a)."
+value: 18
+sources: [S1752]
+tags: [ma, non_magi, buy_in, age]
+rationale: "Hard-coded numbers audit H-14: ma_cbwd_eligible (CO-620) wrote [\"<=\", age, 18]; convention 8, _max_age is inclusive. Not ma_dependent_child_age_limit or another 18: each cites different text."

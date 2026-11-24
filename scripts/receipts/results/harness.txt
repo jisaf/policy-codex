@@ -1,0 +1,57 @@
+# Receipt records harness: metamorphic relations
+
+Stored households: 561; generated households: 1566; 152 s.
+
+## Metamorphic relations
+
+| Relation | Households | Violations |
+|---|---|---|
+| MA-1 split | 1791 | 0 |
+| MA-2 order | 1791 | 0 |
+| MA-3 month | 1791 | 0 |
+| MA-4 residual | 1791 | 0 |
+| MA-5 frequency | 1791 | 0 |
+| MA-6 date | 1791 | 0 |
+
+| Family | Statement | Identifier | Value | Rule |
+|---|---|---|---|---|
+| F1 | dated | leap_household_income | 2900 | 2900 |
+| F1 | dated | snap_person_unearned_income | 900 | 900 |
+| F1 | dated | af_relative_deemable_unearned_income | 900 | 900 |
+| F1 | dated | cw_countable_unearned_income | 900 | 900 |
+| F1 | dated | cw_payment_countable_unearned_income | 0 | 0 |
+| F1 | by month only | leap_household_income | 2900 | 2900 |
+| F1 | by month only | snap_person_unearned_income | 900 | 900 |
+| F1 | by month only | af_relative_deemable_unearned_income | 900 | 900 |
+| F1 | by month only | cw_countable_unearned_income | 900 | 900 |
+| F1 | by month only | cw_payment_countable_unearned_income | 0 | 0 |
+| F1 | frequency left at its default | leap_household_income | 2900 | 2900 |
+| F1 | frequency left at its default | snap_person_unearned_income | 900 | 900 |
+| F1 | frequency left at its default | af_relative_deemable_unearned_income | 900 | 900 |
+| F1 | frequency left at its default | cw_countable_unearned_income | 900 | 900 |
+| F1 | frequency left at its default | cw_payment_countable_unearned_income | 0 | 0 |
+| F2 | dated in the period | leap_household_income | 4000 | 4000 |
+| F3 | two receipts, each with its own frequency | snap_person_unearned_income | 529.9999 | 529.9999 |
+| F3 | two receipts, each with its own frequency | cw_countable_unearned_income | 800 | 800 |
+| F5 | earmarks as fields | cw_countable_unearned_income | 1650 | 1650 |
+| F5 | earmarks as fields | cw_payment_countable_unearned_income | 1650 | 1650 |
+| F5 | each receipt split in two | cw_countable_unearned_income | 1650 | 1650 |
+| F5 | each receipt split in two | cw_payment_countable_unearned_income | 1650 | 1650 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | leap_household_income | 2200 | 2200 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | snap_person_unearned_income | 200 | 200 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | af_relative_deemable_unearned_income | 200 | 200 |
+| F4 | pension 300, PASS 100 (equals Social Security 300, PASS 100) | cw_countable_unearned_income | 300 | 300 |
+| F6 | a county diversion paid once | cccap_household_income | 2125 | 2125 |
+| F6 | a gift paid once | cccap_household_income | 2125 | 2125 |
+| F6 | a lump-sum child support payment | cccap_household_income | 2125 | 2125 |
+| F6 | an inheritance | cccap_household_income | 2125 | 2125 |
+| F6 | the diversion stated as recurring | cccap_household_income | 3500 | 3500 |
+| F7 | Colorado Works cash in September | sebt_eligibility_status | "eligible_categorical" | eligible_categorical |
+| F7 | a diversion in September (the same as no receipt) | sebt_eligibility_status | "ineligible" | ineligible |
+| M1 | recurring | ma_magi_unearned_receipts | 1050 | 1050 |
+| M1 | stated for the month | ma_magi_unearned_receipts | 1050 | 1050 |
+| M1 | Social Security split in two records | ma_magi_unearned_receipts | 1050 | 1050 |
+| M2 | PASS, VA, foster care and a retroactive payment by month | ma_ssi_unearned_receipts | 600 | 600 |
+| M2 | the retroactive payment dated | ma_ssi_unearned_receipts | 600 | 600 |
+| M3 | long-term care gross | ma_ssi_gross_unearned_receipts | 1900 | 1900 |
+| M4 | pension 300 + VA 300 (equals pension 300 alone) | ma_ssi_unearned_receipts | 300 | 300 |

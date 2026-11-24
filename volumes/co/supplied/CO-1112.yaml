@@ -1,0 +1,13 @@
+id: CO-1112
+name: Retains SSI recipient status without an SSI payment
+identifier: retains_ssi_status_without_payment
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether SSA continues to treat the person as an SSI recipient although no SSI payment is made - including section 1619(b) status (SSI eligibility continued after the person returns to work and loses the SSI cash payment because of earned income), payments withheld to recover an overpayment, and checks undeliverable because of a change of address or representative payee (10 CCR 2505-10 §§ 8.100.1 "1619b", 8.100.6.C.8).
+precision: "Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). The Medicaid readers that tested it read it as no when unstated (ma_is_applying_for_or_eligible_for_ssi, CO-2271; ma_reaches_hcbs_without_special_income_group, CO-4630; ma_hcbs_waiver_eligible, CO-653) until that round."
+supplied_by: SSA SDX record of the person's SSI payment status code, as read by the eligibility site.
+sources: [S627]
+tags: [ma, non_magi, disability]
+rationale: "receives_ssi (CO-012) records receipt of an SSI payment; § 8.100.6.C.8 also covers SSI recipients with no payment, of whom section 1619(b) is the working-disabled case. ma_protected_group_category (CO-1163) needs it."

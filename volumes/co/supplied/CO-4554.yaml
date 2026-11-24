@@ -1,0 +1,13 @@
+id: CO-4554
+name: "Medicaid: sponsor indigence determination date"
+identifier: ma_sponsor_indigence_determination_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date the Medical Assistance eligibility site determined that this sponsored non-citizen would, in the absence of Medical Assistance, be unable to obtain food and shelter, taking into account the person's own income and any cash, food, housing or other help from others, including the sponsor (8 U.S.C. 1631(e)(2)). Not stated when no such determination was made."
+precision: "A determination by the agency providing the benefit: SNAP's own finding is snap_is_indigent_non_citizen (CO-2334). After it, ma_sponsor_deemed_income (CO-4551) counts no more than the support actually provided (support_received_from_sponsor, CO-4555) for federal_sponsor_deeming_exception_months."
+supplied_by: The eligibility site's indigence determination recorded in CBMS.
+sources: [S3354]
+tags: [immigration, verification]
+rationale: "Coverage review F-03 (2026-11-22): 8 U.S.C. 1631(e) limits the sponsor income attributed after an agency's indigence determination, and no fact recorded a Medical Assistance determination; SNAP's snap_is_indigent_non_citizen is the SNAP office's finding under SNAP's rule."

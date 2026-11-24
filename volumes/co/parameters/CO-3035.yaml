@@ -1,0 +1,15 @@
+id: CO-3035
+name: "Medicaid: the community engagement requirement is in force"
+identifier: ma_community_engagement_requirement_in_force
+kind: parameter
+type: yes/no
+scope: global
+program: Medicaid
+meaning: "Whether the community engagement requirement of 42 CFR 435.119(d) and 435.552-435.559 is in force on the determination date: false before ma_community_engagement_start_date (January 1, 2027) and true from it (435.559(a): medical assistance furnished before then is not conditioned)."
+precision: "The same date as the effective range of ma_community_engagement_status (CO-1974), which is out of force, and so unknown, on a determination date before it; a determination made then does not assess the requirement. The first version runs from the enactment of Pub. L. 119-21 (July 4, 2025)."
+versions:
+  - {from: "2025-07-04", to: "2027-01-01", value: false, source: S1200}
+  - {from: "2027-01-01", value: true, source: S1200}
+sources: [S1200, S1212]
+tags: [ma, magi]
+rationale: "Hard-coded numbers audit E-1: ma_meets_adult_group_community_engagement_condition (CO-1975) compared the determination date with ma_community_engagement_start_date to switch the requirement on; a rule that changes on a date is two versions. The month arm (a coverage month before the start date) compares a month with the date and stays."

@@ -1,0 +1,13 @@
+id: CO-2716
+name: Is claimed by a tax filer outside the case
+identifier: is_claimed_by_filer_outside_case
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person expects to be claimed as a tax dependent, for the taxable year of the determination, by a taxpayer who is not a person of the case (a parent or relative living elsewhere). A claim by a person of the case is the tax_filer / tax_dependent relationship instead."
+precision: "Required where read (decision 4 of 2026-11-23; coverage pass 6, C6-04, 2026-11-24): Medicaid reads it for a person with no tax_dependent relationship in the case (expects_to_be_claimed_as_dependent CO-076, ma_premium_tax_credit_family CO-4560), and no rule says an unstated claim is none: 10 CCR 2505-10 § 8.100.4.E.1 has the relationship to the tax filer 'established as declared on the Single Streamlined Application', and whether the person 'expects to be claimed as a tax dependent by another taxpayer' (E.1.b) decides between the claimed-dependent and the filer or non-filer rules. Before, it was read as false where not stated. No other program reads it. Coverage pass 5, C5-05 (2026-11-23): where it is true, the claimer's relationship to the person is stated in outside_claimer_is_parent (CO-7052), which Medicaid reads for 10 CCR 2505-10 § 8.100.4.E.1.c.i; a claimer whose household and income a rule needs (a parent, E.1.b; the premium tax credit family, 26 CFR 1.36B-1(d)) is declared as a person of the case with the tax_filer relationship, or the rule cannot determine."
+supplied_by: "Applicant statement on the application (tax filing questions)."
+sources: [S161, S162, S163, S169]
+tags: [ma, magi, household]
+rationale: "Dual-entry audit 3.3 and 5.7 (audit fix round): expects_to_be_claimed_as_dependent (CO-076) restated the tax_dependent edge, and five persons in CO-74 to CO-77 stated it false while holding the edge. It is now derived from the edge; this fact carries only the claim the edge cannot state, a claimer who is not a person of the case."

@@ -1,0 +1,9 @@
+# Coverage pass 4 fix round for Adult Financial and Colorado Works (docs/reviews/coverage4-cash.md, section 7): the parts of
+# a receipt the rule deducts read from the receipt; loans, reimbursements, sale proceeds and cash value not income; the HUD
+# utility allowance excluded; employer vendor payments, foster care difficulty of care, contract pay and job dates in the
+# earnings readers; one exempt vehicle per couple; other personal property and surrenderable annuities counted; the
+# resource figures per month; nothing paid before the eligibility date; ages in the month; the reader defaults decision 4
+# removes; a child's prize in the child's own income. One entry per change-impact flag the round raises.
+date: 2026-11-23
+summary: "Coverage pass 4 (Adult Financial, Colorado Works): CA4-1 to CA4-17 fixed with rule tests by hand and the review's repro households (CO-770 to CO-779 and rule tests); CA4-18, CA4-20, CA4-21, CA4-23 recorded in OQ-1292, OQ-1294, OQ-1295, OQ-1293 (and OQ-1290, OQ-1291 for the readings CA4-3 and CA4-8 choose); CA4-19 OQ-1254 reclassified; CA4-22, CA4-24, CA4-25 fixed. Answer changes, each an enumerated entry of the harnesses' allowed differences: the fixed readings on the households that state them, and decision 4 (CA4-16) on households that state none of the facts now required."
+impact: []

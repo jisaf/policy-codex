@@ -1,0 +1,13 @@
+id: CO-2220
+name: Medical Assistance verification extended due date
+identifier: ma_verification_extended_due_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date to which the eligibility site extended the time to submit requested Medical Assistance verification on the applicant's request (10 CCR 2505-10 § 8.100.3.D.2: an extension within the application processing timeframe on request, or beyond it at the site's discretion, for the time the person needs to obtain the documentation)."
+precision: "If not stated, Medical Assistance reads it as no extension granted."
+supplied_by: The extension recorded in the case file (CBMS case comments).
+sources: [S1516]
+tags: [verification, ma]
+rationale: "OQ-316: no fact stated an extension of the time to verify; ma_verification_due_date (CO-1414) reads it."

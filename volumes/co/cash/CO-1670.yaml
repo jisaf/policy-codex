@@ -1,0 +1,19 @@
+id: CO-1670
+name: "Adult Financial: requires verification of marital status"
+identifier: af_requires_verification_of_marital_status
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client must verify marital status: the county determines it and verifies it if questionable, whatever the status declared - single and never married, married, widowed, or divorced or legally separated (9 CCR 2503-5 3.520.63.A); a questionable divorce, separation or widowhood is verified by court or vital records or a death certificate or obituary (C)."
+precision: "Final cash review FC-11: the item asked only when marital_status was other, but the vocabulary round gave widowed its own option and carries a divorced client as single (CO-844), so a questionable widowhood or divorce was never verified, and A's \"verify if questionable\" reaches every status. The element is now owed whenever the status is questionable; which documents answer it is the case worker's (C)."
+derived: ["=", marital_status_attestation_is_questionable, true]
+sources: [S1078, S2626]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review K-6: 3.520.63.A and C verify a questionable marital status; no item asked for it."
+tests:
+  - {id: CO-1670-T1, month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: true, marital_status: other}, expect: true}
+  - {id: CO-1670-T2, month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1670-T3, title: "FC-11: a questionable widowhood", month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: true, marital_status: widowed}, expect: true}
+  - {id: CO-1670-T4, title: "FC-11: a questionable statement of being single (divorced)", month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: true, marital_status: single}, expect: true}

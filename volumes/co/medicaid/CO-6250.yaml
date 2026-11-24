@@ -1,0 +1,22 @@
+id: CO-6250
+name: "Medicaid: the current OASDI the SSI method counts"
+identifier: ma_ssi_counted_social_security_receipts
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's current Social Security (Title II, OASDI) benefits of the month as the SSI method counts them: each receipt of kind social_security other than a retroactive payment (ma_social_security_receipts, CO-5515), less the part set aside under a plan for self-support, which 10 CCR 2505-10 8.100.5.F.6.q exempts (S3404) and ma_ssi_unearned_receipts (CO-5511) already leaves out. What the Disabled Adult Child test takes out of the SSI-related unearned income when it disregards the current OASDI income (8.100.6.J.1.c.i, S626)."
+precision: "Receipts harness after the generated households state earnings (docs/reviews/records-earnings-e1-integration.md): ma_dac_countable_income (CO-1160) took the gross OASDI (CO-5515) out of the unearned income counted, ma_ssi_household_unearned_income_counted (CO-2281), from which the PASS set-aside of that OASDI had already been left out (CO-5511), so the set-aside came off twice and other countable income was disregarded with it: the CBWD child of 10 with $1,763.50 of deemed parental income and $300 of OASDI, $100 of it set aside under a PASS, had 1,643.50 where the income other than the OASDI is 1,763.50 - 20 = 1,743.50. The gross figure stays for the Pickle and Medicare Savings Program cost-of-living disregards (CO-6052, CO-6053, CO-3627, CO-5221), which compare benefit amounts. Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-1: a receipt stated as a stream (no month and no date) is received only in the months from the month of its start_date through the month of its end_date (each absent: before, or through, the months the case covers; CO-5000), since unearned income \"is countable as income in the month received\" (10 CCR 2505-10 8.100.5.F.5, S3001) and is counted \"when you receive it\" (20 CFR 416.1123(a), S4940); in its first and last months it is read at its amount, and a payment stated with its month or date is placed by it, a final payment after the stream ended included. Before, a stream was counted in every month whatever its dates. The clause is SNAP's (snap_counted_recurring_receipts, CO-5011)."
+derived: [sum_receipts, receipts, [all, [received_in, [month]], [any, [not, [unknown, [receipt, month]]], [all, [any, [unknown, [receipt, start_date]], ["<=", [month_of, [receipt, start_date]], [month]]], [any, [unknown, [receipt, end_date]], [">=", [month_of, [receipt, end_date]], [month]]]]], ["=", [receipt, kind], social_security], [not, [receipt, retroactive]]], [max, 0, ["-", [receipt, amount], [receipt, pass_set_aside]]]]
+sources: [S626, S3404, S4940]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "8.100.6.J.1.c disregards the current OASDI income and tests the other countable income; the OASDI a PASS sets aside is not countable income to begin with (F.6.q), so only the counted OASDI is taken out."
+nearest: [CO-5515, CO-5511]
+tests:
+  - {id: CO-6250-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 300, pass_set_aside: 100}, {kind: pension, amount: 200}]}, title: "OASDI of $300 with $100 set aside under a PASS: the SSI method counts 300 - 100 = 200 of it; the pension is not OASDI", expect: 200}
+  - {id: CO-6250-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: social_security, amount: 1100}, {kind: social_security, amount: 2400, frequency: once, retroactive: true, month: "2026-10"}]}, title: "No set-aside: the current benefit, 1,100; the retroactive payment is not current OASDI (F.6.c)", expect: 1100}
+  - {id: CO-6250-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: []}, title: "No receipts: no OASDI", expect: 0}
+  - {id: CO-6250-T4, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine (decision 4)", expect: unknown}
+  # Field-effect sweep, non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md); hand-computed from the text quoted in each title.
+  - {id: CO-6250-T5, month: "2026-11", as_of: "2026-11-12", title: "FS-MA-1: Social Security of 700 that ended 2026-10-31: 0", given: {receipts: [{kind: social_security, amount: 700, end_date: "2026-10-31"}]}, expect: 0}

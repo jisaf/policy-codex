@@ -1,0 +1,15 @@
+id: CO-7102
+name: "Adult Financial: the twelve months over which irregular self-employment income is averaged"
+identifier: af_self_employment_averaging_period
+kind: supplied
+type: one of
+scope: person
+program: AdultFinancial
+options: [previous_tax_year, twelve_months_before_application]
+meaning: "For a person whose self-employment income is irregular, which of the two twelve-month periods of 9 CCR 2503-5 3.520.783.F the county department averages it over: the previous tax year, January to December of the year before the month evaluated (previous_tax_year), or the most recent twelve months before the month of the application date, af_application_date (twelve_months_before_application)."
+precision: "Field sweep fix round (FS-AF-3). 3.520.783.F (S4914) allows either period (\"can either be\") and does not say who chooses: OQ-1336. Required where read (decision 4 of 2026-11-23): af_self_employment_net_profit (CO-1708) reads it only for a person with an irregular business receipt in the month evaluated or in the period it names; a person whose self-employment income is received regularly need not state it."
+supplied_by: "County department record of the self-employment income determination (the client's ledger, receipts or tax return used, 3.520.783.E)."
+sources: [S4914]
+open: ["OQ-1336"]
+tags: [cash, income]
+rationale: "Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-3): 3.520.783.F averages irregular self-employment income over one of two periods; the choice between them is a fact of the determination, not a rule the volume can derive."

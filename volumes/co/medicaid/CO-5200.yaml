@@ -1,0 +1,21 @@
+id: CO-5200
+name: "Medicaid: institutionalized spouse in the institution"
+identifier: ma_is_institutionalized_spouse_in_institution
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is an institutionalized spouse who is in the institution: in a medical institution or nursing facility, expected to stay at least 30 consecutive days, and married to a spouse who is not (ma_ltc_couple, CO-643). From the month of admission no income of the community spouse is deemed available to this person (42 U.S.C. 1396r-5(b)(1); 10 CCR 2505-10 § 8.100.7.C.1, C.2.c)."
+precision: "Only the medical-institution arm of 1396r-5(h)(1)(A): (b)(1) applies \"During any month in which an institutionalized spouse is in the institution\", so an HCBS or PACE participant living at home with the spouse (an institutionalized spouse for the CSRA and the income allowances under § 8.100.7.K.2.b-c) keeps the couple's mutual availability (§ 8.100.5.H.1.a). The community spouse is not affected: the couple's incomes stay mutually available to that spouse until the month after admission (§ 8.100.7.C.2.b; ma_excluded_from_ssi_household, CO-661). Coverage pass 4, non-MAGI N4-7: per month. 42 U.S.C. 1396r-5(b)(1) speaks of \"any month in which an institutionalized spouse is in the institution\": for a month before the determination month the person is in the institution from the month of institution_entry_date on (a retroactive month before the admission is not one; the entry date is needed for such a month, decision 4); the determination month and the months after read the setting on the determination date."
+derived: [all, resides_in_medical_institution, ma_ltc_couple, [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, institution_entry_date], [month]]]]]
+sources: [S3750, S1759, S3615]
+implemented: engine
+tags: [ma, non_magi, ltc, household]
+rationale: "Coverage pass 3 C3-1 and the probe hand-check of CO-395 (docs/reviews/probe-handcheck-medicaid.md): the SSI-method couple (CO-3626) kept an institutionalized spouse with the community spouse through the admission month, so the institutionalized spouse's income test read the couple's income against the couple standard. 1396r-5(a)(1) (S3615) makes the section supersede any inconsistent provision in determining an institutionalized spouse's eligibility. ma_is_institutionalized_spouse (CO-644) also covers HCBS and PACE; ma_ltc_couple (CO-643) adds the community spouse; neither says the person is in the institution."
+nearest: [CO-643, CO-644, CO-661]
+tests:
+  - {id: CO-5200-T1, month: "2026-11", as_of: "2026-11-20", title: "Admitted this month, 30-day stay expected, spouse at home", given: {resides_in_medical_institution: true, ma_ltc_couple: true}, expect: true}
+  - {id: CO-5200-T2, month: "2026-11", as_of: "2026-11-20", title: "HCBS participant at home with the spouse", given: {resides_in_medical_institution: false, ma_ltc_couple: true}, expect: false}
+  - {id: CO-5200-T3, month: "2026-11", as_of: "2026-11-20", title: "In a nursing facility, no community spouse", given: {resides_in_medical_institution: true, ma_ltc_couple: false}, expect: false}
+  - {id: CO-5200-T4, month: "2026-08", as_of: "2026-11-20", title: "N4-7: a retroactive month before the admission (2026-09-10): not in the institution", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-10", ma_ltc_couple: true}, expect: false}
+  - {id: CO-5200-T5, month: "2026-09", as_of: "2026-11-20", title: "N4-7: the admission month: an institutionalized spouse in the institution (1396r-5(b)(1))", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-10", ma_ltc_couple: true}, expect: true}

@@ -1,0 +1,13 @@
+id: CO-4354
+name: Spousal maintenance paid
+identifier: spousal_maintenance_paid
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The spousal maintenance (alimony) the person paid in the month to a spouse or former spouse who does not live in the person's home, under a court order or a separation or divorce agreement. 0 if none."
+precision: "Amounts actually paid in the month, the gross payment. Child support is child_support_paid_legally_obligated (CO-033), not this fact. Colorado Works requires it where read (coverage pass 4 CA4-16, decision 4 of 2026-11-23: missing information is cannot determine unless the rule says otherwise); before, it was read as 0 when not stated."
+supplied_by: Applicant statement, with the order or agreement and proof of payment.
+sources: [S3155]
+tags: [income]
+rationale: "Coverage review CW-20 (P2): 9 CCR 2503-6 3.605.1.A.4.a (S3155) deducts \"the maintenance or child support paid to others outside the assistance unit\" from a deemed stepparent's or non-participant parent's income, but only child support paid had a fact. No existing supplied fact states maintenance paid (the alimony facts state alimony received). Program-neutral: it states what the person paid; cw_deemed_parent_income_of_minor_parent (CO-909) and cw_budgetary_member_deemed_income (CO-2353) deduct it."

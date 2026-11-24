@@ -1,0 +1,13 @@
+id: CO-4430
+name: "Adult Financial: default deduction for taxes on a retirement account"
+identifier: af_retirement_account_default_tax_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The share of a retirement or pension account's gross value deducted for taxes when the client cannot give the taxes due (9 CCR 2503-5 3.520.73.B.1.b): 20% (0.2)."
+precision: "Applied to retirement_accounts_value when retirement_accounts_taxes_due is not stated."
+value: 0.2
+sources: [S3208]
+tags: [cash, resources]
+rationale: "Coverage review F-8: the figure of 3.520.73.B.1.b (S3208)."

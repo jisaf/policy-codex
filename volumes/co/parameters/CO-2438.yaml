@@ -1,0 +1,12 @@
+id: CO-2438
+name: "Medicaid: minimum age of the employed-disabled hospital presumptive eligibility group"
+identifier: ma_hospital_pe_employed_disabled_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age from which an employed applicant with a disability may receive hospital presumptive eligibility (10 CCR 2505-10 § 8.100.3.R.1.c, R.2.f: \"age 16 or older\")."
+value: 16
+sources: [S1721, S1722]
+tags: [ma, age, disability]
+rationale: C-5 of the HCPF review.

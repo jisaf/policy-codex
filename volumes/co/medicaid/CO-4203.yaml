@@ -1,0 +1,16 @@
+id: CO-4203
+name: "Medicaid: Children with Disabilities Buy-In countable household income as a share of the poverty level"
+identifier: ma_cbwd_countable_household_income_pct_fpl
+kind: derived
+type: rate
+scope: person-month
+program: Medicaid
+meaning: "The child's Children with Disabilities Buy-In countable household income (ma_cbwd_countable_household_income) as a decimal fraction of the monthly federal poverty guideline for the MAGI household's size (ma_magi_household_size; 1.00 = 100%) - the figure 10 CCR 2505-10 § 8.100.6.Q.1.b's 300% limit and the Q.1.g.iv premium bands are stated against."
+precision: "The monthly guideline is the annual federal_poverty_guideline_annual_table figure (plus federal_poverty_guideline_annual_each_additional above eight persons) divided by 12, as for ma_magi_household_income_pct_fpl (CO-504); the household size is the MAGI family size of § 8.100.4.E (Q.1.b.i). No rounding is applied to the ratio."
+derived: ["/", ma_cbwd_countable_household_income, ["/", [lookup_extended, federal_poverty_guideline_annual_table, ma_magi_household_size, federal_poverty_guideline_annual_each_additional], 12]]
+sources: [S3000]
+implemented: engine
+tags: [ma, non_magi, buy_in, income]
+rationale: "Final verification pass 3, F3-1: ma_cbwd_eligible (CO-620) and ma_cbwd_premium (CO-621) compared the MAGI percentage (CO-504); § 8.100.6.Q.1.b compares the household's income after the § 8.100.5.H disregards. No existing item states that figure against the poverty level."
+tests:
+  - {id: CO-4203-T1, as_of: "2026-10-12", month: "2026-10", title: "CO-140: 2,482.50 for a household of 2 (21,640 / 12 = 1,803.33): 137.7%", given: {ma_cbwd_countable_household_income: 2482.5, ma_magi_household_size: 2}, expect: 1.3766173752310538}

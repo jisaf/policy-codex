@@ -1,0 +1,19 @@
+id: CO-3869
+name: "Adult Financial: proof of benefit application pending"
+identifier: af_benefit_application_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "Whether Adult Financial still needs the client's verification of the application for, or pursuit of, the SSA benefit or other income the county referred the client to (9 CCR 2503-5 3.520.71.C, G): Adult Financial verification applies, the client was referred, and the proof has not been received."
+precision: "Counted in af_pending_verification_count (CO-1436) with its own due date (af_benefit_application_verification_due_date, CO-3870)."
+derived: [all, af_verification_is_applicable, [otherwise, af_referred_to_apply_for_other_income, false], [not, benefit_application_verification_document_received]]
+sources: [S2622, S2623]
+implemented: engine
+tags: [cash, verification]
+rationale: "Final cash review FC-9: the document-collection rule of 3.520.71.C and G (proof of application within eleven or sixty days; no grant before the proof) had no item, so af_verification_status (CO-1438) could read complete for a client who had not proved the application."
+tests:
+  - {id: CO-3869-T1, title: "OAP client referred to SSA, no receipt yet", as_of: "2026-10-01", month: "2026-10", given: {af_verification_is_applicable: true, af_referred_to_apply_for_other_income: true, benefit_application_verification_document_received: false}, expect: true}
+  - {id: CO-3869-T2, title: "Receipt provided", as_of: "2026-10-01", month: "2026-10", given: {af_verification_is_applicable: true, af_referred_to_apply_for_other_income: true, benefit_application_verification_document_received: true}, expect: false}
+  - {id: CO-3869-T3, title: "Not referred", as_of: "2026-10-01", month: "2026-10", given: {af_verification_is_applicable: true}, expect: false}

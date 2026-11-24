@@ -1,0 +1,19 @@
+id: CO-3504
+name: "SNAP: the household meets the striker rule"
+identifier: snap_household_meets_striker_condition
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "This person's SNAP household has no striking member (snap_is_striker, CO-3500), or every striking member's household was eligible the day before the strike (snap_household_was_eligible_day_before_strike, CO-3501). 7 CFR 273.1(e) makes a household with a striking member ineligible unless it was eligible the day before the strike and is otherwise eligible at the time of application; being otherwise eligible is the rest of snap_is_eligible (CO-386)."
+precision: "A person not stated to be a striker is read as not one. A striker's pre-strike eligibility is read from the fact stated on that striker. Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734): the household (CO-305) is the month's. Before, the item was per person and read on the determination date in every month."
+derived: [not, [exists, snap_household_members, [all, [otherwise, [of, [P], snap_is_striker], false], [not, [of, [P], snap_household_was_eligible_day_before_strike]]]]]
+sources: [S1816]
+nearest: [CO-3501]
+implemented: engine
+tags: [household]
+rationale: "OQ-534: no existing item applies 7 CFR 273.1(e)'s bar on a household with a striking member (S1816); snap_is_eligible (CO-386) and snap_eligibility_status (CO-387) read this one."
+tests:
+  - {id: CO-3504-T1, month: "2026-10", title: "A striker whose household was not eligible the day before the strike: the household fails", as_of: "2026-10-01", given: {dwelling_id: h1, date_of_birth: "1980-01-01", snap_resides_in_institution_providing_meals: false}, others: {p2: {dwelling_id: h1, date_of_birth: "1982-01-01", snap_resides_in_institution_providing_meals: false, snap_is_striker: true, snap_household_was_eligible_day_before_strike: false}}, relationships: [[spouse, p1, p2]], expect: false}
+  - {id: CO-3504-T2, month: "2026-10", title: "The same household was eligible the day before the strike: it meets the rule", as_of: "2026-10-01", given: {dwelling_id: h1, date_of_birth: "1980-01-01", snap_resides_in_institution_providing_meals: false}, others: {p2: {dwelling_id: h1, date_of_birth: "1982-01-01", snap_resides_in_institution_providing_meals: false, snap_is_striker: true, snap_household_was_eligible_day_before_strike: true}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-3504-T3, month: "2026-10", title: "No striker stated: the household meets the rule", as_of: "2026-10-01", given: {dwelling_id: h1, date_of_birth: "1980-01-01", snap_resides_in_institution_providing_meals: false}, others: {p2: {dwelling_id: h1, date_of_birth: "1982-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[spouse, p1, p2]], expect: true}

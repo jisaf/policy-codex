@@ -1,0 +1,8 @@
+# SNAP ages by month (coverage pass 4 for SNAP, S4-11 finished and S4-19; docs/reviews/coverage4-snap.md, section 7): the SNAP household
+# (CO-305) is built for each month and every SNAP age and status OQ-1263 listed is read in the month evaluated, with the chain of items that
+# read them; OQ-1263 resolved, OQ-1262 (the day of the month) extended. One entry per change-impact flag the round raises: those whose item
+# this round changed carry their own reason; the others are flags an earlier record dispositioned, re-keyed because the SNAP household sits
+# upstream of the changed item.
+date: 2026-11-23
+summary: "SNAP ages by month: household composition (CO-305), the separate elderly household (CO-2304), the ABAWD limit (CO-2564, S4-19), the student and care ages (CO-401, CO-405, CO-406, CO-408 to CO-411), the voluntary quit (CO-2318), the non-citizen and military ages (CO-3713, CO-4260), sponsor deeming (CO-2337, CO-3708), the foster child (CO-4689) and every per-person item that read them (the eligible members and size, the participation status, the non-citizen findings, the categorical tests, the resource items) are per month. No stored or generated household's compared answer changes (the receipts, earnings and holdings harnesses list no new difference); the stored expectations of the converted items are keyed by the determination month; new stored household CO-780."
+impact: []

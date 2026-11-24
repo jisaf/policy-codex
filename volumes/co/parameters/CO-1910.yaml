@@ -1,0 +1,12 @@
+id: CO-1910
+name: "Medicaid community engagement: non-resident non-relative care hours"
+identifier: ma_community_engagement_nonrelative_care_min_hours
+kind: parameter
+type: hours
+scope: global
+program: Medicaid
+meaning: "The monthly hours of assistance, not solely incidental, that a family caregiver who neither resides with nor is a relative of a dependent child or disabled individual must provide to be a specified excluded individual (42 CFR 435.554(c)(3)(i)(C)): 80."
+value: 80
+sources: [S1208]
+tags: [ma, magi]
+rationale: "OQ-65: ma_is_family_caregiver_for_community_engagement (CO-1963) needs the hours threshold for criterion (C)."

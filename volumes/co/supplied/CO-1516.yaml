@@ -1,0 +1,14 @@
+id: CO-1516
+name: Enrolled in substance use disorder treatment at an intensive outpatient level or higher
+identifier: is_in_sud_treatment_iop_or_higher
+kind: supplied
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: Whether, in the month, this person is enrolled in a licensed, nationally recognized, evidence-based substance use disorder treatment program at an intensive outpatient service level of care or higher, licensed and appropriately endorsed by the Behavioral Health Administration (BHA), per 8 CCR 1403-1 3.111.G.4.a.3.
+precision: "The one-year-per-instance limit of 3.111.G.4.a.3 is not carried by this fact (OQ-162 records the activity time limits generally). If not stated, CCCAP reads this as false: the treatment is an eligible activity only for a caretaker shown to be in it (S1015) (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
+supplied_by: Applicant statement with the treatment provider's enrollment verification.
+sources: [S1015]
+tags: [household]
+rationale: "No existing fact states this (phase-8 review K-7). participates_in_drug_alcohol_treatment (CO-045) is SNAP's work-registration exemption for any regular participant in a drug or alcohol treatment program; CCCAP's activity requires a licensed, BHA-endorsed program at an intensive outpatient level or higher, a narrower test, so the SNAP fact would carry two meanings."
+nearest: [CO-045]

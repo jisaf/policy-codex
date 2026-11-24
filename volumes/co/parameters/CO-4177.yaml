@@ -1,0 +1,15 @@
+id: CO-4177
+name: SNAP funeral agreement exclusion
+identifier: snap_funeral_agreement_exclusion
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The equity value of one bona fide pre-purchased funeral agreement per household member that SNAP excludes as a resource; the equity value above it is counted (10 CCR 2506-1 4.410.D.4): $1,500. Since coverage pass 4 for SNAP resources (SR-1) no rule reads it: 7 CFR 273.8(e)(2) excludes the value of one funeral agreement per household member with no limit, and snap_countable_funeral_agreements (CO-5312) applies it by its statute override over 4.410.D.4 (OQ-1305); the figure stays the text's, for the record."
+versions:
+  - from: "2000-01-01"
+    value: 1500
+    source: S2967
+sources: [S2967]
+tags: [snap, resources]
+rationale: "Final verification pass 2 N-8: 4.410.D.4 (S2967) counts the equity of a funeral agreement over $1,500, and SNAP read no burial fact, so a large revocable agreement went uncounted. The figure is in the Colorado rule and is not adjusted annually; one version covers every date the volume determines."

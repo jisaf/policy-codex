@@ -1,0 +1,13 @@
+id: CO-1733
+name: "Colorado Works: is head of the assistance unit"
+identifier: cw_is_head_of_assistance_unit
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "The person is the head-of-household of the Colorado Works assistance unit in the sense of 45 CFR 264.1 and 261.2(n): the adult (or the pregnant minor or minor parent) who heads the family receiving TANF assistance."
+precision: "One head per assistance unit, as recorded on the Colorado Works case. Not the SNAP head of household (snap_is_head_of_household, CO-067): a three-generation home can have a grandparent as SNAP head while the mother heads the Colorado Works unit."
+supplied_by: "Colorado Works case record (CBMS)."
+sources: [S421, S418]
+tags: [cash, tanf, household]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-7): cw_months_of_assistance_used (CO-915), cw_is_work_eligible_individual (CO-919) and cw_is_adult_member (CO-924) read the SNAP head of household for the TANF head-of-household of 45 CFR 264.1 and 261.2(n). The SNAP household and the assistance unit are different groups."

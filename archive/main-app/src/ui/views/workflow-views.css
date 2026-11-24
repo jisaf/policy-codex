@@ -1,0 +1,115 @@
+/* The by-role home and the by-outcome view (phase 13). Built on the app's
+ * own tokens (styles.css :root); works from 390px up with no page-wide
+ * horizontal scroll. */
+.workflow h2 { font-size: 18px; margin: 20px 0 8px; }
+.workflow h3 { font-size: 15px; margin: 14px 0 6px; }
+.workflow h4 { font-size: 14px; margin: 12px 0 4px; }
+.workflow .note { font-size: 13px; max-width: 80ch; }
+.workflow .controls input[type="date"], .workflow .controls input[type="search"],
+.workflow .controls select { font: inherit; padding: 3px 5px; border: 1px solid var(--line);
+  border-radius: 4px; background: var(--bg); color: var(--ink); max-width: 100%; }
+.workflow .controls label { flex-wrap: wrap; max-width: 100%; }
+.workflow nav.tabs { flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+.workflow nav.tabs a { border-radius: 4px; }
+.workflow a:focus-visible, .workflow summary:focus-visible, .workflow input:focus-visible,
+.workflow select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.workflow summary { cursor: pointer; }
+.workflow .cites { font-size: 13px; color: var(--muted); margin: 4px 0; }
+.workflow .cites a { color: var(--accent); }
+.workflow ul.plainlist { padding-left: 18px; }
+.workflow .focus { scroll-margin-top: 12px; }
+.workflow .focus > h2 { background: var(--med); padding: 2px 6px; border-radius: 4px; }
+
+/* placeholder aid codes */
+.placeholder-banner { background: #fff4d6; border: 2px dashed #c9a227; color: #5a4200;
+  padding: 8px 12px; border-radius: 6px; margin: 8px 0 12px; max-width: 90ch; }
+.codechip { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px; padding: 0 5px; border: 1px solid var(--line); border-radius: 3px;
+  background: var(--all); color: var(--muted); white-space: nowrap; }
+.codechip.placeholder { border-style: dashed; border-color: #c9a227; background: #fffaf0; }
+.codechip.placeholder::after { content: " placeholder"; font-family: system-ui, sans-serif;
+  font-size: 10px; color: #8a6d00; }
+
+/* by outcome: code cards */
+ul.codecards { list-style: none; padding: 0; margin: 0; }
+.codecard { border: 1px solid var(--line); border-radius: 6px; margin: 6px 0; background: var(--panel); }
+.codecard > details > summary { padding: 8px 10px; }
+.codecard[data-code] .codelabel { font-weight: 600; }
+.codecard .landcount { font-size: 12px; }
+.codebody { padding: 0 12px 10px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.codebody .branch { margin: 6px 0; }
+.codebody details.unless { margin: 4px 0 8px; font-size: 13px; }
+.codebody ul.needs, ul.landings { padding-left: 18px; }
+ul.landings li { margin: 4px 0; }
+.workflow table.figures { font-size: 13px; }
+.workflow table.figures td { overflow-wrap: anywhere; }
+details.aidwarn { margin: 6px 0; font-size: 13px; }
+.codegroup .note { margin-top: 0; }
+
+/* by outcome: household view */
+.hhwrap { overflow-x: auto; max-width: 100%; }
+table.household caption { caption-side: top; text-align: left; font-size: 12px; padding: 4px 0; }
+/* Fits 1280px beside the sidebar (the evaluators found the Child care
+ * column cut off): fixed columns that share the width, text that wraps. */
+table.household { table-layout: fixed; width: 100%; }
+table.household thead th { font-size: 12px; overflow-wrap: anywhere; vertical-align: bottom; }
+table.household thead th:first-child { width: 10em; }
+table.household th[scope="row"] { white-space: normal; overflow-wrap: anywhere; font-size: 13px; }
+table.household td { min-width: 0; font-size: 12px; overflow-wrap: anywhere; padding: 4px 5px; }
+table.household .codechip { white-space: normal; overflow-wrap: anywhere; }
+table.household .codechip.placeholder::after { content: none; }
+table.household .held { margin-bottom: 3px; }
+table.household .held a { text-decoration: none; }
+table.household .held a:hover { text-decoration: underline; }
+table.household .cell.none a { color: var(--muted); }
+table.household .funding { font-size: 12px; }
+.hhtitle { margin: 6px 0 2px; }
+.family { font-size: 13px; margin: 2px 0 8px; }
+.legend { font-size: 12px; }
+@media (max-width: 700px) {
+  table.household, table.household thead, table.household tbody, table.household tr,
+  table.household th, table.household td { display: block; width: 100%; }
+  table.household thead { position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); }
+  table.household tr { border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; padding: 4px; }
+  table.household th[scope="row"] { position: static; background: var(--all); border-bottom: 0;
+    padding: 4px 8px; border-radius: 4px; }
+  table.household td { min-width: 0; display: grid; grid-template-columns: 9em 1fr; gap: 6px; }
+  table.household td::before { content: attr(data-program); font-weight: 600; color: var(--muted); }
+  table.household caption { display: block; width: 100%; }
+}
+
+/* by role */
+.workflow .persona > h2 { margin-top: 8px; }
+.countcard ul { list-style: none; padding: 0; margin: 6px 0 0; font-size: 13px; }
+.tip { background: var(--med); padding: 6px 10px; border-radius: 4px; }
+details.program { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin: 8px 0; }
+details.program > summary { font-size: 15px; }
+.programlinks { font-size: 13px; margin: 6px 0; }
+ul.outcomecards { list-style: none; padding: 0; margin: 6px 0; display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.outcomecard { border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; background: var(--bg);
+  overflow-wrap: anywhere; }
+.outcomecard h4 { margin: 0 0 4px; font-size: 14px; }
+.outcomecard p { margin: 4px 0; font-size: 13px; }
+.outcomecard ul.opts { margin: 2px 0; padding-left: 18px; font-size: 13px; }
+.outcomecard .cardfoot { font-size: 12px; }
+details.verification { margin: 6px 0; font-size: 13px; }
+ul.changes, ul.figurelist, ul.departures { list-style: none; padding: 0; margin: 4px 0; }
+ul.changes li.change, ul.figurelist li.figure, ul.departures li { border-bottom: 1px solid var(--line);
+  padding: 6px 0; overflow-wrap: anywhere; }
+li.change .date { font-weight: 600; font-variant-numeric: tabular-nums; }
+li.change .fromto { margin: 2px 0; font-size: 13px; }
+li.change .touches { font-size: 12px; }
+details.figuregroup { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin: 8px 0; }
+li.figure .figvalue { font-size: 13px; }
+li.figure .figvalue table.valuetable { max-width: 100%; }
+li.figure .figvalue details > div, li.figure .figvalue details > table { overflow-x: auto; display: block; }
+.staged { border-left: 3px solid #e3a040; background: #fff8ea; padding: 6px 10px; margin: 6px 0; font-size: 13px; }
+.draftnote { background: #fff4d6; border: 1px solid #e3c470; padding: 6px 10px; border-radius: 4px; font-size: 13px; }
+ul.casechanges { padding-left: 18px; }
+p.flag.override, div.flag.override { display: block; margin: 4px 0; padding: 4px 8px; font-size: 13px; }
+.workflow small.mono, .workflow .mono { overflow-wrap: anywhere; word-break: break-word; }
+/* The header volume menu names the volume in full; at phone width it would
+ * push every page sideways. */
+.topbar .volume-select { max-width: 100%; }

@@ -1,0 +1,13 @@
+id: CO-2251
+name: Is incapable of indicating intent
+identifier: ma_is_incapable_of_indicating_intent
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is incapable of indicating intent as to the state of residence: an I.Q. of 49 or less or a mental age of 7 or less on standardized tests, judged legally incompetent, or found incapable by medical or other documentation acceptable to the eligibility site (10 CCR 2505-10 § 8.100.3.B.3; 42 CFR 435.403(c))."
+precision: "If not stated, Medical Assistance reads this as false: no finding of incapacity has been made, and the person's stated residence applies."
+supplied_by: The test results, court order or medical documentation in the case file.
+sources: [S1518]
+tags: [ma]
+rationale: "OQ-393: the residency rules for institutionalized persons apply only to a person incapable of indicating intent; no fact stated it."

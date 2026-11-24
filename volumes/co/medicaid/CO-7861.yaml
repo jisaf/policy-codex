@@ -1,0 +1,23 @@
+id: CO-7861
+name: "Medicaid: a Children with Disabilities Buy-In premium is due for the child in the month"
+identifier: ma_cbwd_premium_is_due_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether a Children with Disabilities Buy-In premium is charged for this child in the month: the child is eligible for the program in the month (ma_cbwd_eligible, CO-620), the month is after the month the child's Buy-In eligibility was determined (ma_buy_in_determination_month, CO-2462; 10 CCR 2505-10 § 8.100.6.Q.1.g.ii, S1728: \"Premiums are charged beginning the month after determination of eligibility. Any premiums for the months prior to the determination of eligibility will be waived.\"), and the child is not within the 12 months postpartum (Q.1.g.vi: \"The Department will waive premiums for the Children with Disabilities Program members who are within their 12 months postpartum period\")."
+precision: "Coverage verification 7, V7-4 (docs/reviews/verify-coverage7-fixes.md). The household's one premium (Q.1.g.iii, \"the total premium shall be the amount due for one eligible child\") is reported on a child whose own premium is due (ma_cbwd_premium, CO-621): an older eligible child, or a child born the same day, whose premium is waived in the month (the month of its own determination or earlier, or its postpartum year) does not take the premium from the others. Read for the other children of the MAGI household by CO-621; each child's determination month is required where read (decision 4). The postpartum year is read as CO-621 reads it for the child itself (pregnancy_end_date, ma_postpartum_coverage_end_month)."
+derived: [all, ma_cbwd_eligible, [">", [month], ma_buy_in_determination_month], [not, [all, [not, [unknown, pregnancy_end_date]], ["<=", [month], ma_postpartum_coverage_end_month]]]]
+sources: [S1728]
+implemented: engine
+tags: [ma, non_magi, buy_in]
+rationale: "Coverage verification 7, V7-4 (P1, rare): CO-621 put the premium on the oldest eligible child and shared it among eligible children born the same day, counting every eligible child whether or not its premium was due in the month, so when the children were determined in different months the household's total fell below the one premium Q.1.g.iii charges (N8-B: twins determined in June and October, October 35 + 0 = 35; N8-C: an older child determined in October, October 0 + 0 = 0; the rule gives 70 in both)."
+nearest: [CO-621, CO-2462]
+tests:
+  # § 8.100.6.Q.1.g.ii (S1728): charged from the month after the determination; waived for the months before it and its month.
+  - {id: CO-7861-T1, month: "2026-11", as_of: "2026-11-01", title: "Eligible, determined in June 2026: due in November", given: {ma_cbwd_eligible: true, ma_buy_in_determination_month: "2026-06"}, expect: true}
+  - {id: CO-7861-T2, month: "2026-10", as_of: "2026-10-15", title: "Eligible, determined in October 2026: waived in October (the month of determination)", given: {ma_cbwd_eligible: true, ma_buy_in_determination_month: "2026-10"}, expect: false}
+  - {id: CO-7861-T3, month: "2026-11", as_of: "2026-11-01", title: "Not eligible in the month: no premium", given: {ma_cbwd_eligible: false, ma_buy_in_determination_month: "2026-06"}, expect: false}
+  # Q.1.g.vi: a member within the 12 months postpartum (pregnancy ended 2026-08-15; the postpartum coverage ends in August 2027): waived.
+  - {id: CO-7861-T4, month: "2026-11", as_of: "2026-11-01", title: "Within the 12 months postpartum: waived (Q.1.g.vi)", given: {ma_cbwd_eligible: true, ma_buy_in_determination_month: "2026-06", pregnancy_end_date: "2026-08-15", ma_postpartum_coverage_end_month: "2027-08"}, expect: false}
+  - {id: CO-7861-T5, month: "2026-11", as_of: "2026-11-01", title: "Eligible, the determination month not stated: cannot determine (decision 4)", given: {ma_cbwd_eligible: true}, expect: unknown}

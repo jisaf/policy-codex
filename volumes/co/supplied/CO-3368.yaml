@@ -1,0 +1,14 @@
+id: CO-3368
+name: "Class attendance hours per week"
+identifier: class_attendance_hours_per_week
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The hours a week the person attends class in the education or training program education_program_type states (with shop practice, workshop hours included)."
+precision: "If not stated, the SSI method reads the person as not regularly attending school."
+supplied_by: "School or training program record."
+sources: [S2212]
+implemented: engine
+tags: [student]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13)."

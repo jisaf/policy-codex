@@ -8,9 +8,10 @@ program: Medicaid
 meaning: The maximum monthly SSI federal benefit rate for an eligible individual with an eligible spouse - the income standard the SSI-related income test compares a couple's countable income against.
 precision: Set annually by SSA's cost-of-living notice; versioned by effective date.
 versions:
-  - from: "2026-01-01"
-    value: 1491
-    source: S319
-sources: [S319]
+  - {from: "2025-01-01", to: "2026-01-01", value: 1450, source: S1711}
+  - {from: "2026-01-01", to: "2027-01-01", value: 1491, source: S319}
+  - {from: "2027-01-01", to: "2028-01-01", value: 1544, source: S1712}
+review_by: "2027-11-01"
+sources: [S319, S1711, S1712]
 tags: [ma, non_magi, income]
-rationale: "Companion figure to ma_ssi_federal_benefit_rate_individual (CO-235), for a married couple both SSI-eligible or living together and mutually available under 8.100.5.H.1.a. ma_meets_ssi_income_standard (CO-609) needs it."
+rationale: "Companion figure to ssi_federal_benefit_rate_individual (CO-235), for a married couple both SSI-eligible or living together and mutually available under 8.100.5.H.1.a. ma_meets_ssi_income_standard (CO-609) needs it."

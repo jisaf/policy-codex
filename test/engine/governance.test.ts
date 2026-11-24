@@ -94,13 +94,71 @@ describe("governance", () => {
     expect(rule(f, "name.prefix")[0].level).toBe("error");
   });
 
-  it("leaves supplied facts program-neutral and only warns on parameters", () => {
+  it("warns on a program's supplied fact without its prefix, and only warns on parameters", () => {
+    // Same-word audit, convention rule 13: a supplied fact carrying one program's meaning
+    // carries that program's prefix (a finding recorded as an event) or is made neutral.
     const supplied = draft({ program: "Medicaid", identifier: "receives_care", kind: "supplied", supplied_by: "form" });
-    expect(rule(engine.governance(supplied), "name.prefix")).toEqual([]);
+    const sf = rule(engine.governance(supplied), "name.prefix");
+    expect(sf).toHaveLength(1);
+    expect(sf[0].level).toBe("warn");
+    expect(sf[0].msg).toContain("medicaid_");
+    expect(rule(engine.governance(draft({ program: "Medicaid", identifier: "medicaid_receives_care", kind: "supplied", supplied_by: "form" })), "name.prefix")).toEqual([]);
+    expect(rule(engine.governance(draft({ program: "All", identifier: "receives_care", kind: "supplied", supplied_by: "form" })), "name.prefix")).toEqual([]);
     const param = draft({ program: "SNAP", identifier: "lookback_months", kind: "parameter", value: 3 });
     const f = rule(engine.governance(param), "name.prefix");
     expect(f).toHaveLength(1);
     expect(f[0].level).toBe("warn");
+  });
+
+  it("warns when a rule reads another program's fact it does not accept", () => {
+    const reader = (over: Partial<Item> = {}) => draft({
+      program: "SNAP", identifier: "snap_draft_rule", kind: "derived", type: "yes/no",
+      derived: ["all", "is_disabled_individual_ada"], tests: [], ...over,
+    });
+    const f = rule(engine.governance(reader()), "read.cross_program");
+    expect(f).toHaveLength(1);
+    expect(f[0].level).toBe("warn");
+    expect(f[0].msg).toContain("is_disabled_individual_ada");
+    expect(f[0].msg).toContain("Medicaid");
+    // Listing the read in accepts_from acknowledges it.
+    expect(rule(engine.governance(reader({ accepts_from: ["is_disabled_individual_ada"] })), "read.cross_program"))
+      .toEqual([]);
+    // The program's own facts and shared (program All) facts are not cross-program reads.
+    expect(rule(engine.governance(reader({ program: "Medicaid", identifier: "medicaid_draft_rule" })), "read.cross_program"))
+      .toEqual([]);
+    const shared = (ledger.items as unknown as Item[]).find((x) => x.program === "All" && x.kind === "supplied")!;
+    expect(rule(engine.governance(reader({ derived: ["all", shared.identifier] })), "read.cross_program"))
+      .toEqual([]);
+    // A name in accepts_from that is not in the ledger is reported too.
+    expect(rule(engine.governance(reader({ derived: ["all", shared.identifier], accepts_from: ["no_such_fact"] })), "read.cross_program")[0].msg)
+      .toContain("no_such_fact");
+  });
+
+  it("warns when a program reads a shared definition its meaning does not name (read.shared_definition)", () => {
+    const named = { ...meta, programs: meta.programs!.map((p) => (p.id === "SNAP" ? { ...p, names: ["food assistance"] } : p)) };
+    const shared: Item = {
+      id: "WR-950", name: "Shared student test", identifier: "is_student_for_work_rules", kind: "derived",
+      type: "yes/no", scope: "person", program: "All", derived: ["all", "is_pregnant"], tests: [],
+      meaning: "Whether the person is a student as SNAP (food assistance) defines it.", implemented: "engine",
+    };
+    const neutral: Item = { ...shared, id: "WR-951", identifier: "is_adult_neutral", meaning: "Whether the person is at least 18." };
+    const eng = createEngine([...(ledger.items as unknown as Item[]), shared, neutral], named, refs);
+    const reader = (over: Partial<Item>) => draft({
+      kind: "derived", type: "yes/no", tests: [], derived: ["all", "is_student_for_work_rules"], ...over,
+    });
+    const f = rule(eng.governance(reader({ program: "Medicaid", identifier: "medicaid_reads_student" })), "read.shared_definition");
+    expect(f).toHaveLength(1);
+    expect(f[0].level).toBe("warn");
+    expect(f[0].msg).toContain("is_student_for_work_rules");
+    expect(f[0].msg).toContain("SNAP");
+    // The program the meaning names, by id or by one of its names, may read it.
+    expect(rule(eng.governance(reader({ program: "SNAP", identifier: "snap_reads_student" })), "read.shared_definition")).toEqual([]);
+    const byName = { ...shared, meaning: "Whether the person is a student as food assistance defines it." };
+    const eng2 = createEngine([...(ledger.items as unknown as Item[]), byName], named, refs);
+    expect(rule(eng2.governance(reader({ program: "SNAP", identifier: "snap_reads_student" })), "read.shared_definition")).toEqual([]);
+    expect(rule(eng2.governance(reader({ program: "Medicaid", identifier: "medicaid_reads_student" })), "read.shared_definition")).toHaveLength(1);
+    // A neutral shared item (its meaning names no program) is read by anyone.
+    expect(rule(eng.governance(reader({ program: "Medicaid", identifier: "medicaid_reads_adult", derived: ["all", "is_adult_neutral"] })), "read.shared_definition")).toEqual([]);
   });
 
   it("forbids a program prefix on a shared item", () => {
@@ -108,6 +166,18 @@ describe("governance", () => {
     expect(rule(f, "name.prefix")[0].msg).toContain("carry no program prefix");
     expect(engine.governance(draft({ program: "Medicaid", identifier: "medicaid_draft_fact" })))
       .toEqual([]);
+  });
+
+  it("rejects an id another item already uses", () => {
+    const taken = (ledger.items as unknown as Item[])[0];
+    const f = rule(engine.governance(draft({ id: taken.id }), { isNew: true }), "id.duplicate");
+    expect(f).toHaveLength(1);
+    expect(f[0].level).toBe("error");
+    expect(f[0].msg).toContain(taken.identifier);
+    // The item itself, re-checked under its own id, is not a duplicate of itself,
+    // and neither is an edited or renamed copy of it.
+    expect(rule(engine.governance(taken), "id.duplicate")).toEqual([]);
+    expect(rule(engine.governance({ ...taken, identifier: "renamed_fact" }), "id.duplicate")).toEqual([]);
   });
 
   it("reserves the pattern operators", () => {

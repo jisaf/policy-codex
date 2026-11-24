@@ -1,0 +1,21 @@
+id: CO-5214
+name: "Medicaid: Difficulty of Care payments excluded from MAGI income"
+identifier: ma_excluded_difficulty_of_care_payments
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's Difficulty of Care payments for the month (the earnings records the MAGI counting table treats as Difficulty of Care, ma_magi_difficulty_of_care_earnings, CO-5162) when 10 CCR 2505-10 § 8.100.3.K.7 excludes them from MAGI income: the person lives full-time in the same home as the care recipient (K.7.a), the care recipient receives HCBS waiver services through long-term services and supports or the Working Adults Buy-In (K.7.b), and the payments are for no more than ma_difficulty_of_care_younger_foster_max qualified foster individuals under 19 and no more than ma_difficulty_of_care_older_foster_max over 19 (K.7.c); otherwise 0, so the payments stay in the pay MAGI income counts (ma_magi_wage_earnings, CO-5160)."
+precision: "With no payment in the month nothing else is read; earnings not stated cannot be determined (earned-income records, step E1: the old reading of an unstated payment as none, otherwise 0, is gone with the scalar fact, decision 4). K.7.c's \"over the age of 19\" is read as 19 or older, the complement of its \"under the age of 19\"."
+derived: [case, [["<=", ma_magi_difficulty_of_care_earnings, 0], 0], [[all, lives_full_time_with_care_recipient, care_recipient_receives_hcbs_waiver_services, ["<=", difficulty_of_care_younger_foster_individuals, ma_difficulty_of_care_younger_foster_max], ["<=", difficulty_of_care_older_foster_individuals, ma_difficulty_of_care_older_foster_max]], ma_magi_difficulty_of_care_earnings], [else, 0]]
+sources: [S3754]
+open: [OQ-1425]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "Coverage review (MAGI and CHP+) F-18, deferred P2 (fix round 2026-11-23): ma_person_magi_income (CO-502) subtracts this amount from the wages it counts. Earned-income records, step E1 (Medicaid and CHP+): the payments are the earnings records the MAGI counting table treats as Difficulty of Care (ma_magi_difficulty_of_care_earnings, CO-5162)."
+nearest: [CO-502]
+tests:
+  - {id: CO-5214-T1, as_of: "2026-10-01", month: "2026-10", title: "Live-in provider for an HCBS waiver member: excluded", given: {lives_full_time_with_care_recipient: true, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_younger_foster_individuals: 0, difficulty_of_care_older_foster_individuals: 0, earnings: [{kind: wages}, {kind: difficulty_of_care_payment, amount: 1800}, {kind: self_employment_receipts}]}, expect: 1800}
+  - {id: CO-5214-T2, as_of: "2026-10-01", month: "2026-10", title: "Provider who does not live with the recipient: counted", given: {lives_full_time_with_care_recipient: false, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_younger_foster_individuals: 0, difficulty_of_care_older_foster_individuals: 0, earnings: [{kind: wages}, {kind: difficulty_of_care_payment, amount: 1800}, {kind: self_employment_receipts}]}, expect: 0}
+  - {id: CO-5214-T3, as_of: "2026-10-01", month: "2026-10", title: "Payments for six foster adults: counted (K.7.c)", given: {lives_full_time_with_care_recipient: true, care_recipient_receives_hcbs_waiver_services: true, difficulty_of_care_younger_foster_individuals: 0, difficulty_of_care_older_foster_individuals: 6, earnings: [{kind: wages}, {kind: difficulty_of_care_payment, amount: 1800}, {kind: self_employment_receipts}]}, expect: 0}
+  - {id: CO-5214-T4, as_of: "2026-10-01", month: "2026-10", title: "No payment: nothing else read", given: {earnings: [{kind: wages}, {kind: self_employment_receipts}]}, expect: 0}

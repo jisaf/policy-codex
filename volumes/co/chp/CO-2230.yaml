@@ -1,0 +1,24 @@
+id: CO-2230
+name: "CHP+: scheduled copayment"
+identifier: chp_scheduled_copayment
+kind: derived
+type: money
+scope: person
+program: CHP+
+meaning: "The copayment 10 CCR 2505-3 § 320.1 schedules for the service (chp_service_type) at the family's income band (chp_copayment_income_band), before the yearly limit: none for a preventive service (§ 330.3), for COVID-19 laboratory testing (§ 320.1.C.3) or for emergency care when the enrollee is admitted to the hospital; otherwise the amount the band's schedule lists for the service (chp_copayment_band_a_table to chp_copayment_band_d_table, CO-3009 to CO-3012), which is nothing for a service the band does not list."
+derived: [case, [[in, chp_service_type, [preventive, covid_19_laboratory_testing, emergency_care_with_admission]], 0], [["=", chp_copayment_income_band, band_a], [lookup, chp_copayment_band_a_table, chp_service_type]], [["=", chp_copayment_income_band, band_b], [lookup, chp_copayment_band_b_table, chp_service_type]], [["=", chp_copayment_income_band, band_c], [lookup, chp_copayment_band_c_table, chp_service_type]], [else, [lookup, chp_copayment_band_d_table, chp_service_type]]]
+sources: [S1504, S1505]
+implemented: engine
+tags: [chp]
+rationale: "OQ-60: the § 320.1 schedule was not modeled. Hard-coded numbers audit H-5: the dollar amounts, which the rule dates \"Effective July 1, 2012\", were literals in a nested case; they are the band tables CO-3009 to CO-3012, and the item keeps the exemptions, which are rules, not figures."
+tests:
+  - {id: CO-2230-T1, as_of: "2026-10-01", title: "Band A urgent care", given: {chp_service_type: urgent_care, chp_copayment_income_band: band_a}, expect: 1}
+  - {id: CO-2230-T2, as_of: "2026-10-01", title: "Band A office visit waived", given: {chp_service_type: office_visit, chp_copayment_income_band: band_a}, expect: 0}
+  - {id: CO-2230-T3, as_of: "2026-10-01", title: "Band B brand name prescription", given: {chp_service_type: brand_name_prescription, chp_copayment_income_band: band_b}, expect: 1}
+  - {id: CO-2230-T4, as_of: "2026-10-01", title: "Band B laboratory: not listed", given: {chp_service_type: laboratory_or_imaging, chp_copayment_income_band: band_b}, expect: 0}
+  - {id: CO-2230-T5, as_of: "2026-10-01", title: "Band C emergency care", given: {chp_service_type: emergency_care, chp_copayment_income_band: band_c}, expect: 30}
+  - {id: CO-2230-T6, as_of: "2026-10-01", title: "Band C inpatient hospital", given: {chp_service_type: inpatient_hospital, chp_copayment_income_band: band_c}, expect: 20}
+  - {id: CO-2230-T7, as_of: "2026-10-01", title: "Band D brand name prescription", given: {chp_service_type: brand_name_prescription, chp_copayment_income_band: band_d}, expect: 15}
+  - {id: CO-2230-T8, as_of: "2026-10-01", title: "Band D emergency care with admission: waived", given: {chp_service_type: emergency_care_with_admission, chp_copayment_income_band: band_d}, expect: 0}
+  - {id: CO-2230-T9, as_of: "2026-10-01", title: "Preventive service", given: {chp_service_type: preventive, chp_copayment_income_band: band_d}, expect: 0}
+  - {id: CO-2230-T10, as_of: "2026-10-01", title: "Band D ambulance", given: {chp_service_type: emergency_transport, chp_copayment_income_band: band_d}, expect: 25}

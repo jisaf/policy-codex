@@ -1,0 +1,13 @@
+id: CO-1214
+name: Home Care Allowance maximum need-for-paid-care score
+identifier: af_hca_max_need_score
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The highest need-for-paid-care score the 3.570.13.C.3 tier table places in a tier (tier 3, "38 to 51"), per 9 CCR 2503-5 3.570.13.C.3.
+value: 51
+sources: [S714]
+tags: [cash, disability]
+rationale: No existing parameter states the table's upper bound; af_hca_tier (CO-1216) needs it. Same table as CO-1211.
+nearest: [CO-1211]

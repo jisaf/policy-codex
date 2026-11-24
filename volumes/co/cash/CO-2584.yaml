@@ -1,0 +1,22 @@
+id: CO-2584
+name: "Adult Financial: verification applies to this person"
+identifier: af_verification_is_applicable
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Adult Financial verification applies to this person: the person is of Old Age Pension age, or at least the AND-SO minimum age with an SSI, blindness or disability basis for Aid to the Needy Disabled. For anyone else Adult Financial's verification status is not_applicable and no Adult Financial element is pending."
+precision: "The test that af_verification_status (CO-1438) used for its not_applicable branch, made its own item so that every Adult Financial pending element and count reads it: an element is pending only where verification applies (county case worker review B2). Pattern sweep (cash) PS-T7 (docs/reviews/pattern-sweep-cash.md): the AND-SO minimum age is taken on the last day of the month evaluated, as af_and_so_eligible (CO-1203) takes it, not on the determination date."
+derived: [any, af_is_oap_age, [all, [">=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], af_and_so_min_age], [any, receives_ssi, is_blind, af_and_so_disability_met, claims_disability]]]
+sources: [S879, S1080]
+open: [OQ-951]
+implemented: engine
+tags: [cash, verification]
+rationale: "County case worker review B2: Adult Financial pending flags and counts were non-zero for people whose Adult Financial verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."
+nearest: [CO-1438]
+tests:
+  - {id: CO-2584-T1, title: "A 6-year-old with no disability basis", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: false, date_of_birth: "2020-05-01", receives_ssi: false, is_blind: false, af_and_so_disability_met: false, claims_disability: false}, expect: false}
+  - {id: CO-2584-T2, title: "Old Age Pension age", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: true}, expect: true}
+  # Pattern sweep (cash) PS-T7: as CO-1668: the AND-SO age on the last day of the month evaluated. Born 2008-10-20, determined 2026-10-25.
+  - {id: "CO-2584-T5", title: "Pattern sweep PS-T7: September, 17 on its last day: no Adult Financial verification applies", month: "2026-09", as_of: "2026-10-25", given: {date_of_birth: "2008-10-20", af_is_oap_age: false, receives_ssi: false, is_blind: false, af_and_so_disability_met: false, claims_disability: true}, expect: false}
+  - {id: "CO-2584-T6", title: "PS-T7: October, 18 on its last day, claiming a disability: applies", month: "2026-10", as_of: "2026-10-25", given: {date_of_birth: "2008-10-20", af_is_oap_age: false, receives_ssi: false, is_blind: false, af_and_so_disability_met: false, claims_disability: true}, expect: true}

@@ -1,0 +1,13 @@
+id: CO-3862
+name: "Adult Financial: referred to apply for other income"
+identifier: af_referred_to_apply_for_other_income
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department has referred the client to the Social Security Administration to apply for an SSA benefit, or to pursue other income for which the client may be eligible (9 CCR 2503-5 3.520.71.C, G)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "County department case record."
+sources: [S2622, S2623]
+tags: [cash, verification]
+rationale: "Final cash review FC-9: 3.520.71.C and G (S2622, S2623) require a client referred to apply to prove the application, and \"Grant payments shall not be approved prior to receipt of proof\"; no fact stated the referral."

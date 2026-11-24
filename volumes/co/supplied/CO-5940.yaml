@@ -1,0 +1,14 @@
+id: CO-5940
+name: Lives in the person's own home
+identifier: lives_in_own_home
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether, on the determination date, the person lives in a home of the person's own: a house, apartment, mobile home or other dwelling where the person lives as a member of the household that owns or rents it (the person's own household, or the family the person lives with as one of its members). Not a hospital, nursing facility, assisted living residence, group home, host home or other institution or care facility; not another household's home where the person stays as a guest, boarder or lodger; not a shelter, a temporary stay or no fixed dwelling."
+precision: "If not stated, it is unknown; no reader supplies a default. A fact of where the person lives, beside residence_setting_type (CO-3330), not a program's classification. It is not residence_setting_type's private_dwelling, which also covers another household's home, a foster family's home, a shelter and no fixed dwelling, and not lives_in_owned_home (CO-4610), which says whether the person lives in the home whose equity is stated; neither has this meaning, so neither is read in its place. Read by Colorado Works' VA Aid and Attendance exemption (9 CCR 2503-6 3.605.4.A.6, \"in the applicant's or recipient's own home\"; cw_counted_unearned_receipts, CO-5651), only for a person with a receipt part used for uncovered care. Whether a person living as a member of a relative's household, or as a guest in another's home, is in \"own home\" is OQ-1051; the meaning above reads the first as own home and the second as not."
+supplied_by: "Application (living arrangement)."
+sources: [S2605]
+tags: [household, cash, tanf, income]
+open: [OQ-1051]
+rationale: "Receipt records follow-up (2026-11-23): 3.605.4.A.6 (S2605) exempts the VA Aid and Attendance used for uncovered medical supplies and care only for a person \"in the applicant's or recipient's own home\", and cw_counted_unearned_receipts (CO-5651) subtracted that part in every setting. No fact stated whether the person lives in the person's own home: residence_setting_type and lives_in_owned_home have other meanings."

@@ -1,0 +1,12 @@
+id: CO-2262
+name: Date of the brain injury
+identifier: ma_brain_injury_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The date the person's brain injury occurred, which 10 CCR 2505-10 § 8.7101.E.2.a requires to be before the person's 65th birthday.
+supplied_by: The medical record of the injury.
+sources: [S1512]
+tags: [ma, hcbs, age]
+rationale: "OQ-210: BI's 'occurred prior to the individual's 65th birthday' had no fact."

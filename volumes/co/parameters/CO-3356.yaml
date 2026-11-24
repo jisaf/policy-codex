@@ -1,0 +1,13 @@
+id: CO-3356
+name: "Colorado Works: months of a visit to a noncustodial parent"
+identifier: cw_parenting_plan_visit_max_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "A child visiting a noncustodial parent under a parenting plan stays in the home for a visit not exceeding this many months (3.604.2.G.2)."
+value: 6
+sources: [S2203]
+implemented: engine
+tags: [cash, household]
+rationale: "Same-word audit SW-7 and dual-entry audit 3.6: living together was read from relationship edges by every household, caretaker and custody item, while Medicaid read a separate lives_with list stated on one person; the two disagreed in CO-04, and lives_with could be stated on p1 and not on p2. Each person states the home they live in once; lives_with is derived, symmetric, and every item that asks whether persons live together reads it (convention rule 17). A figure the rule states is a parameter (OQ-82)."

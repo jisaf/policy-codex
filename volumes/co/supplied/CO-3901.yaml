@@ -1,0 +1,15 @@
+id: CO-3901
+name: Kind of order for the child support paid
+identifier: child_support_paid_order_type
+kind: supplied
+type: one of
+options: [court_order, administrative_order]
+scope: person
+program: All
+meaning: "The kind of order that sets the person's legal obligation to pay the child support stated in child_support_paid_legally_obligated (CO-033): an order of a court, or an administrative order of a child support enforcement agency."
+precision: "Stated for a person who pays legally obligated child support; a person who pays none needs no value (CCCAP reads it only when the payment is above zero)."
+supplied_by: The support order.
+sources: [S892]
+tags: [income]
+rationale: "Final pass F-01 and V-7: 8 CCR 1403-1 3.111.K.1.a deducts child support only when \"Court ordered and paid\" (S892), and K.2.a asks for verification \"that payments are court ordered\". child_support_paid_legally_obligated (CO-033) covers any legal obligation, administrative orders included, as SNAP's deduction does; no fact said which kind of order a payment is under."
+nearest: [CO-033, CO-3900]

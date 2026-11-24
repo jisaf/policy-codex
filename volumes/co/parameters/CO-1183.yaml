@@ -1,0 +1,14 @@
+id: CO-1183
+name: "Medicaid: lottery and gambling winnings counted only in the month received, upper amount"
+identifier: ma_lottery_winnings_spread_floor
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The least amount of lottery or gambling winnings that is divided equally over two or more months; winnings less than it are counted as MAGI income in the month received only - 42 U.S.C. 1396a(e)(14)(K)(i)(I)-(II) (\"in the month in which such winnings ... is received if the amount ... is less than $80,000\"; \"over a period of 2 months if ... greater than or equal to $80,000 but less than $90,000\"), which governs 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.1-2 (\"If less than $79,999\", \"If over $79,999\")."
+precision: "Compared with \"less than\" (ma_lottery_winnings_spread_months, CO-1185): $79,999.99 is counted in the month received and $80,000.00 is spread over two months. Time audit T-4: the figure had been Colorado's $79,999 read as an inclusive upper amount, which is the federal edge for whole dollars only, so winnings of $79,999.01 to $79,999.99 were spread over two months although the statute counts them in the month received. OQ-216."
+value: 80000
+sources: [S1234, S669]
+statute_override: "Federal law overrides 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.1-2, which states the edge as $79,999 ('less than $79,999', 'over $79,999'): 42 U.S.C. 1396a(e)(14)(K)(i) counts winnings in the month received only when they are less than $80,000 and spreads $80,000 or more (OQ-216, time audit T-4)."
+tags: [ma, magi, income]
+rationale: "S-9 of the phase 7 review: ma_lottery_winnings_spread_months (CO-1185) needs the figure. A policy number the text states."

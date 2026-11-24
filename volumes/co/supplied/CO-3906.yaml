@@ -1,0 +1,14 @@
+id: CO-3906
+name: "CCCAP: is serving a disqualification for an intentional program violation"
+identifier: cccap_is_serving_ipv_disqualification
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The person is an adult caretaker or teen parent within a CCCAP disqualification period: for an intentional program violation founded by a signed waiver of the hearing or an administrative disqualification hearing (8 CCR 1403-1 3.135-3.139), or for a criminal fraud verdict (3.142) - twelve months for a first offense, twenty-four months for a second, permanently for a third - not reversed by the Department or a court."
+precision: "A finding of the county or a court recorded in the CCCAP case (CHATS), which follows the person to any county (3.139.F, 3.143.A; convention rule 13(i)). The period begins the first day of the month after the determination (3.139.A). A SNAP or Colorado Works violation is not a CCCAP one (snap_is_serving_ipv_disqualification, CO-039; cw_is_serving_ipv_disqualification, CO-1730). If not stated, CCCAP reads this as false."
+supplied_by: "The county's IPV determination or the court's judgment, recorded in CHATS."
+sources: [S2711]
+tags: [household]
+rationale: "Final pass F-07: 3.114.A.6 (S2711) terminates a case when \"The adult caretaker(s) or teen parent(s) has been disqualified due to a founded Intentional Program Violation\", and 3.139.D makes the penalty \"affect any household to which the adult caretaker(s) or teen parent(s) is a member\". No CCCAP item read a disqualification, so a household with a disqualified caretaker was found eligible."
+nearest: [CO-039, CO-1730]

@@ -1,0 +1,13 @@
+id: CO-4265
+name: Participates in on-the-job training
+identifier: participates_in_on_the_job_training
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "On the determination date the person is in an on-the-job training program and is being trained by an employer: the person is participating only during the period the employer is training the person (10 CCR 2506-1 4.306.1.H, 4.306.B.6; 7 CFR 273.5(b)(7)). On-the-job training is training in an employment environment; it does not include an internship, field work, or practical experience associated with a course of higher education (4.306.B.6)."
+precision: "If not stated, SNAP reads this as false."
+supplied_by: "Application (training); the employer's or the training program's record."
+sources: [S135]
+tags: [student]
+rationale: "Coverage review C-10 (docs/reviews/coverage-snap-nonfinancial.md): a student enrolled at least half time is exempt from the ineligible-student rule while \"participating in an on-the-job training program\" (4.306.1.H; 4.306.B.6, S135), and the volume had neither the fact nor the arm, so a half-time student in an employer's training was found ineligible. No existing fact states on-the-job training."

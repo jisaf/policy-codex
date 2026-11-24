@@ -1,0 +1,18 @@
+id: CO-2003
+name: "SNAP: child support exclusion"
+identifier: snap_child_support_exclusion
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The legally obligated child support the person pays that SNAP excludes from the person's gross income for the month: with a history of at least snap_child_support_averaging_months (CO-3039) months of payments, the average of the payments in that many months before the month; otherwise the month's anticipated payment, which is the estimate 4.407.5.E calls for."
+precision: "The average is taken over the snap_child_support_averaging_months months before the budget month (P17). 4.407.5.D also adjusts the average for \"any anticipated changes in the legal obligation\"; a case with such a change states the changed figure as the month's payment and a history shorter than three months, or states the prior months as the adjusted figures. A payment history with no stated length is read as none (snap_child_support_payment_history_months, CO-2002), so the month's payment is used, as before. Final verification F-10 (V-5): nothing is excluded once the expense verification period has ended (snap_expense_verification_period_has_ended, CO-3739) with the payments required to be verified and unverified (snap_child_support_paid_verification_is_pending, CO-1615): 4.502.A.3 (S818) and 7 CFR 273.2(f)(3)(ii) (S812) determine eligibility and benefit without the exclusion."
+derived: [case, [[all, snap_child_support_paid_verification_is_pending, snap_expense_verification_period_has_ended], 0], [[">=", snap_child_support_payment_history_months, snap_child_support_averaging_months], [avg, child_support_paid_legally_obligated, [months_ending, snap_child_support_averaging_months, [month_before, [month]]]]], [else, child_support_paid_legally_obligated]]
+sources: [S99, S1314, S818, S812]
+implemented: engine
+tags: [income, state_election, snap]
+rationale: "snap_person_gross_income (CO-332) subtracted the month's child_support_paid_legally_obligated, a shared fact CCCAP also reads, on the assumption that it was already the 4.407.5.D average (OQ-22). 4.407.5.D-E (S1314) state the computation: average three or more months of payments, or estimate. This item computes it from the shared monthly payments so the shared fact keeps its plain meaning."
+tests:
+  - {id: CO-2003-T1, title: "Three months of history: the average of the three prior months", as_of: "2026-10-01", month: "2026-10", given: {snap_expense_verification_period_has_ended: false, snap_child_support_payment_history_months: 6, child_support_paid_legally_obligated: {"2026-07": 200, "2026-08": 300, "2026-09": 400, "2026-10": 500}}, expect: 300}
+  - {id: CO-2003-T2, title: "Fewer than three months: the month's anticipated payment is the estimate", as_of: "2026-10-01", month: "2026-10", given: {snap_expense_verification_period_has_ended: false, snap_child_support_payment_history_months: 2, child_support_paid_legally_obligated: 250}, expect: 250}
+  - {id: CO-2003-T3, title: "History not stated: read as none", as_of: "2026-10-01", month: "2026-10", given: {snap_expense_verification_period_has_ended: false, child_support_paid_legally_obligated: 150}, expect: 150}

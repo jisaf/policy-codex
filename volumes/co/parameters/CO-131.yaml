@@ -8,9 +8,14 @@ program: SNAP
 meaning: The amount added to the 8-person maximum allotment for each household member above 8.
 versions:
   - from: "2025-10-01"
+    to: "2026-10-01"
     value: 218
     source: S82
-rationale: Companion figure to snap_maximum_allotment_table (CO-130); D-20's Table 1 (S82) states the FY2026 "Each Additional Member" increment, which the table alone does not carry, matching the each-additional shape snap_gross_income_limit_each_additional (CO-111) and the other income-limit tables already use.
-sources: [S82]
+  - from: "2026-10-01"
+    to: "2027-10-01"
+    value: 225
+    source: S730
+rationale: "Companion figure to snap_maximum_allotment_table (CO-130); D-20's Table 1 (S82) states the FY2026 'Each Additional Member' increment, which the table alone does not carry, matching the each-additional shape snap_gross_income_limit_each_additional (CO-111) and the other income-limit tables already use. Phase 8 adds the FY2027 version (S730, S738)."
+review_by: "2027-10-01"
+sources: [S82, S730, S738]
 tags: [income, snap]
-open: [OQ-21]

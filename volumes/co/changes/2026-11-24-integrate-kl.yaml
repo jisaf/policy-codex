@@ -1,0 +1,7 @@
+# Integration of the three parallel known-limits rounds (2026-11-24), all built from the same base: KL-CE-1 and KL-CASH-1
+# (already on the branch), NM-KL-1 to NM-KL-3 (nm-kl) and KL-SNAP-3 to KL-SNAP-5 (kl-snap-3-5). One entry per change-impact flag the
+# merge reopens: each round re-keyed these flags at its own fingerprint, and the merged fingerprint combines the three rounds'
+# upstream changes. Each entry keeps the three rounds' recorded reasons.
+date: 2026-11-24
+summary: "Merge of the parallel known-limits rounds: KL-CE-1 and KL-CASH-1, NM-KL-1 to NM-KL-3 (receipt kinds for Title IV and BIE student aid, WIOA 3174 payments and the institutionalized spouse's allowance; title_ii_benefit_type; NM-KL-7 recorded) and KL-SNAP-3 to KL-SNAP-5 (CO-7890, CO-7891, CO-7892; CO-5011; OQ-1510). No rule changed by the merge; the dispositions below re-key the flags whose changed item's fingerprint moved by the merge."
+impact: []

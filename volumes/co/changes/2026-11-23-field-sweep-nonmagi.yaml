@@ -1,0 +1,9 @@
+# Field-effect sweep fix round for non-MAGI Medicaid (docs/reviews/field-sweep-snap-cash-nonmagi.md, dispositions: non-MAGI Medicaid):
+# streams and jobs placed by their dates (FS-MA-1, FS-MA-2), legally restricted holdings (FS-MA-4), burial spaces (FS-MA-5), personal
+# property (FS-MA-6), joint accounts (FS-MA-7), a retroactive check's legal fees (FS-MA-8), replacement proceeds by source (FS-MA-9),
+# taxes_on_withdrawal when_absent; FS-MA-3 and CO-2467 recorded (OQ-1348, OQ-1345). One entry per change-impact flag the round raises:
+# CO-2467's carries its own reason; the others are flags an earlier record dispositioned, re-keyed because the receipts and holdings
+# lists' fields changed upstream.
+date: 2026-11-23
+summary: "Field-effect sweep, non-MAGI Medicaid: FS-MA-1, 2, 4 to 9 fixed with rule tests and households CO-835 to CO-843; FS-MA-3 recorded (OQ-1348, an operator limitation); CO-2467 recorded (OQ-1345); OQ-1240 narrowed; OQ-1346, OQ-1347 recorded. Answer changes, each a cited entry of the holdings harness (scripts/records/allowed/h4-fs-nonmagi.yaml)."
+impact: []

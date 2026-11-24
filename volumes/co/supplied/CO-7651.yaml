@@ -1,0 +1,13 @@
+id: CO-7651
+name: State of residence start date
+identifier: state_of_residence_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person began living in the state of residence (state_of_residence, CO-006): the day the person moved there, or, for a person who has lived there since birth, the date of birth. An absence from the state the person returned from, with the intent to return kept throughout, does not change it. A fact of the person's history, not any program's residency finding."
+precision: "Required where read: a program that needs the person to have lived in the state in each month it covers reads it for a month before the application month (Medicaid's residency in the month, ma_meets_residency_in_month, CO-7650: a retroactive month before the move is not a month of residence, 10 CCR 2505-10 § 8.100.3.E.1 and 42 CFR 435.915(a)(2)), and not stated it cannot be determined there (decision 4 of 2026-11-23). The application month and the months after read state_of_residence as stated. A neutral date, like medicare_part_a_entitlement_date (CO-7502) and adult_financial_program_start_date (CO-7507), that dates a status the case states for the determination date (docs/conventions.md, rule 17)."
+supplied_by: "The applicant's statement on the application (where the person lived in the months the application asks about, and since when), or the case record."
+sources: [S1518, S1503, S218]
+tags: [household]
+rationale: "Medicaid status by month (MS-1; docs/reviews/medicaid-status-by-month.md): state_of_residence (CO-006) states where the person lives on the determination date, with no date at which that began, so a retroactive month before a move to Colorado was read as a month of residence (OQ-1425 recorded it for MAGI; the non-MAGI pattern sweep listed the readers as SHARED). No fact dated the move."

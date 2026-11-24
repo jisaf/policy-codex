@@ -1,0 +1,21 @@
+id: CO-4052
+name: "CCCAP: assessed parent fee, capped during the eligibility period"
+identifier: cccap_parent_fee_within_period_cap
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The parent fee as the formula assesses it (cccap_parent_fee_assessed, CO-3508), but, at a change during the twelve-month eligibility period or a transition from Colorado Works to Low-Income Child Care, no higher than the fee determined at the household's most recent Colorado Works Child Care referral, Low-Income application or redetermination (cccap_parent_fee_at_last_determination, CO-4050), unless the change is one of the circumstances in which 8 CCR 1403-1 3.124.B.1, B.3 or B.4 lets the fee rise (cccap_parent_fee_increase_basis, CO-4051) (3.124.B-C, 3.117.F)."
+precision: "At an application or a redetermination (cccap_determination_type, CO-3307) the formula fee is used as it is: a new eligibility period begins and 3.124.R updates the fee to the formula in effect. A lower formula fee is always used (B.2). cccap_parent_fee (CO-1290) applies its waivers and the 3.124.S hardship reduction to this figure; capping first and then reducing gives the same fee as reducing first, since both take the lesser amount. Whether B.1, B.3 and B.4 lift the cap altogether or only allow the increase they cause is not stated; the volume lifts it (OQ-712). Coverage round F-26: 3.124.R (S3261) says counties \"update parent fees at the next scheduled re-determination\" for the new federal poverty guideline and formula; the formula fee at a change during the period reads the guideline in force in the month determined (CO-3007), so after October 1 a change can lower the fee under the new guideline before the redetermination. The cap keeps an increase from taking effect; a decrease the new guideline alone causes is allowed, as B.2 allows any decrease."
+derived: [case, [[all, [in, cccap_determination_type, [change_during_eligibility_period, transition_from_colorado_works]], ["=", [otherwise, cccap_parent_fee_increase_basis, none], none]], [min, cccap_parent_fee_assessed, cccap_parent_fee_at_last_determination]], [else, cccap_parent_fee_assessed]]
+sources: [S2850, S2851, S3261]
+open: [OQ-712]
+nearest: [CO-3508]
+implemented: engine
+tags: [income]
+rationale: "Second-pass review N-1: 3.124.C (\"the household parent fee cannot be assessed higher than the parent fee determined at the most recent Colorado Works Child Care referral or low-income application or re-determination\") and 3.117.F had no item; a household transitioning from Colorado Works with child support received (RV-S6) paid $137 on its full income where its referral fee on earnings was $47."
+tests:
+  - {id: CO-4052-T1, title: "A transition from Colorado Works: the formula gives $137, the referral fee was $47 (3.117.F)", as_of: "2026-11-01", month: "2026-11", given: {cccap_determination_type: transition_from_colorado_works, cccap_parent_fee_assessed: 137, cccap_parent_fee_at_last_determination: 47}, expect: 47}
+  - {id: CO-4052-T2, title: "A change during the period that lowers the fee (B.2)", as_of: "2026-11-01", month: "2026-11", given: {cccap_determination_type: change_during_eligibility_period, cccap_parent_fee_assessed: 30, cccap_parent_fee_at_last_determination: 47}, expect: 30}
+  - {id: CO-4052-T3, title: "A change during the period: the household stops using a top-quality-rated provider (B.4), so the fee may rise", as_of: "2026-11-01", month: "2026-11", given: {cccap_determination_type: change_during_eligibility_period, cccap_parent_fee_increase_basis: quality_provider_use_changed, cccap_parent_fee_assessed: 60, cccap_parent_fee_at_last_determination: 47}, expect: 60}
+  - {id: CO-4052-T4, title: "At a redetermination the formula fee is used (3.124.R)", as_of: "2026-11-01", month: "2026-11", given: {cccap_determination_type: redetermination, cccap_parent_fee_assessed: 137}, expect: 137}

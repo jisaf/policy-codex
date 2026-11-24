@@ -1,0 +1,15 @@
+id: CO-4075
+name: "CCCAP: quarterly limit on excluded irregular income"
+identifier: cccap_irregular_income_quarterly_limit
+kind: parameter
+type: money
+scope: global
+program: CCCAP
+meaning: "Irregular income is excluded from CCCAP income when what is received in the calendar quarter totals less than this (8 CCR 1403-1 3.111.J.28: \"Irregular income in the certification period that totals less than ninety dollars ($90) in any calendar quarter\")."
+versions:
+  - from: "2026-08-14"
+    value: 90
+    source: S2858
+sources: [S2858]
+tags: [income]
+rationale: "Second-pass review P2 (J.28): the exclusion was filed under OQ-162 (county plans) though it is the state rule's own; cccap_excluded_irregular_income (CO-4076) reads the figure."

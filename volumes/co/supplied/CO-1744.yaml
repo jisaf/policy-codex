@@ -1,0 +1,13 @@
+id: CO-1744
+name: "CCCAP: caretaker is incapacitated"
+identifier: cccap_caretaker_is_incapacitated
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "This adult caretaker or teen parent is incapacitated, so that they are unable to care for the child(ren): in a two-caretaker household, 8 CCR 1403-1 3.111.D.1.c.3 then excuses the caretaker from being in an eligible activity; a caretaker with an open Low-Income Child Care case who goes on verified medical leave and is unable to care for the children stays in an eligible household (3.111.D.9)."
+precision: "A finding about the caretaker's capacity, not SNAP's 'unfit for employment' statement (has_medical_statement_of_unfitness, CO-043). If not stated, CCCAP reads this as false (not incapacitated). Coverage round F-21: the physician's statement or other medical verification the rule asks for (3.111.C.2.g, D.1.c.3) is incapacity_verification_document_received (CO-4466), a pending verification element until received (cccap_incapacity_verification_is_pending, CO-4467); before, the fact meant the incapacity as verified, so an undocumented incapacity read as none."
+supplied_by: "Physician's statement or other medical verification."
+sources: [S497, S2700, S3265]
+tags: [household, medical]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-12): cccap_household_caretakers_in_eligible_activity (CO-991) read SNAP's medical statement of unfitness for employment for a caretaker 'incapacitated' under 3.111.D.1.c.3; fitness for employment and capacity to care for a child are different medical findings."

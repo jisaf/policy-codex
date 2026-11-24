@@ -3,16 +3,19 @@ name: "Medicaid: MAGI Children category income standard"
 identifier: ma_magi_income_standard_child
 kind: derived
 type: rate
-scope: global
+scope: person-month
 program: Medicaid
-meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Children's MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.118(c)(1)(i) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.2.
-precision: Both the federal floor and Colorado's percentage are 133% FPL, so this rule is not binding for this batch's household, but it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would be caught.
+meaning: The income standard in force in the month, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Children's MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.118(c)(1)(i) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.2.
+precision: "Colorado's percentage (ma_income_limit_child_pct, current § 8.100.4.G.2) is above the federal ma_federal_magi_floor_pct floor, so the floor does not bind; it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would be caught. MAGI close-out, MAGI-SW-1 (2026-11-24; docs/reviews/known-limits.md): per month. A global item is one value per case, so the parameter was read on the determination date in every month that read it (docs/operators.md, Resolution step 2), and a retroactive or application month in another version period of ma_income_limit_child_pct (CO-191: 133% from 2022-04-14, 142% from 2022-06-30) took the determination date's figure. Eligibility in a month is judged on that month (10 CCR 2505-10 § 8.100.4.G.1, S3351: 'any person who is determined to be eligible for Medical Assistance based on MAGI at any time during a calendar month shall be eligible for benefits during the entire month'), and a retroactive month is one in which the person 'met all applicable eligibility requirements' (§ 8.100.3.E.1, S1503), so the figure of a month is the one in force in it: the version in force on the month's first day, or on the determination date in the determination month, as non-MAGI F7-2 made the personal needs allowance (CO-1987). Rules about the determination itself (presumptive eligibility, CO-2439, CO-3155, CO-708) read it in the determination month."
 derived: [max, ma_federal_magi_floor_pct, ma_income_limit_child_pct]
-sources: [S201, S202]
-open: [OQ-63]
+sources: [S638, S202, S675, S676, S3351, S1503]
 implemented: engine
 tags: [ma, magi, income, state_election]
 rationale: "No existing item states the Children's-category income standard. ma_is_child_category (CO-545) needs it. Written as the greater of the federal floor and Colorado's percentage, per the phase-3 brief's direction to model Colorado's rule against the federal minimum floor and cite both, rather than as a bare reference to ma_income_limit_child_pct (CO-191), which would trip governance's derived.alias check. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
-nearest: [CO-541, CO-542, CO-543]
+nearest: [CO-542, CO-543]
 tests:
-  - {id: CO-540-T1, as_of: "2026-10-01", given: {}, expect: 1.33}
+  - {id: CO-540-T1, as_of: "2026-10-01", month: "2026-10", given: {}, expect: 1.42}
+  # MAGI-SW-1: determined 2022-07-15 with a retroactive May 2022. ma_income_limit_child_pct (CO-191): 1.33 from 2022-04-14 to 2022-06-30 (S676), 1.42 from 2022-06-30 (S675); ma_federal_magi_floor_pct 1.33. May 2022 reads the version in force on 2022-05-01: max(1.33, 1.33) = 1.33. July 2022, the determination month, reads it on 2022-07-15: max(1.33, 1.42) = 1.42. April 2022 reads it on 2022-04-01, which no version covers (none was fetched before 2022-04-14): unknown.
+  - {id: CO-540-T2, as_of: "2022-07-15", month: "2022-05", title: "MAGI-SW-1 (was 1.42): a retroactive May 2022 of a July 2022 determination reads the version of 2022-05-01: max(1.33, 1.33) = 1.33", given: {}, expect: 1.33}
+  - {id: CO-540-T3, as_of: "2022-07-15", month: "2022-07", title: "MAGI-SW-1: the determination month reads the version of 2022-07-15: max(1.33, 1.42) = 1.42", given: {}, expect: 1.42}
+  - {id: CO-540-T4, as_of: "2022-07-15", month: "2022-04", title: "MAGI-SW-1 (was 1.42): April 2022 reads 2022-04-01, before any version on file (2022-04-14): unknown", given: {}, expect: unknown}

@@ -1,0 +1,12 @@
+id: CO-2234
+name: Transfer penalty apportioned share
+identifier: ma_transfer_penalty_apportioned_share_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The share of a transfer-of-assets period of ineligibility each spouse serves when it is apportioned equally between institutionalized spouses - 10 CCR 2505-10 § 8.100.7.F.8.a (\"apportioned equally between the spouses\")."
+value: 0.5
+sources: [S1507]
+tags: [ma, ltc, legal]
+rationale: "OQ-94: ma_transfer_penalty_share_rate (CO-2235) needs the share as a parameter."

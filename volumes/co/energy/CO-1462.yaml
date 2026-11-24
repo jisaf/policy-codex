@@ -1,0 +1,26 @@
+id: CO-1462
+name: "LEAP: verification status"
+identifier: leap_verification_status
+kind: derived
+type: one of
+options: [not_applicable, not_required, complete, pending, past_due]
+scope: person-month
+program: LEAP
+role: outcome
+meaning: "Where this person's LEAP household stands on verification: not applicable (no one in the person's LEAP economic unit meets the citizenship requirement as declared, so LEAP cannot reach it); none required; complete; pending within the two weeks allowed; or past due (the application is denied for failure to provide required verification). A member without an SSN or a verified status is excluded (leap_member_is_excluded_for_verification) rather than making the household past due; a unit whose declared-citizen members are all excluded that way is still reported, not not_applicable."
+precision: "Coverage review C-22: 9 CCR 2503-7 3.756.12.D has the county reopen and complete a denied application when the requested verification arrives after the denial (within fifteen calendar days of receipt, by June 15). This item reports the status on the facts stated; it has no dated path from past due back to complete, so a reopened application is read from the verification facts as they then stand, with the due date unchanged. Coverage pass 6 for LEAP, R6-5 (docs/reviews/coverage6-care-energy.md): LEAP's time contract fixes an eligibility determination's date at the application date (leap_determination_is_as_of_application_date, CO-7000; docs/conventions.md, Scopes), but whether verification is pending or past due turns on the day the county looks (3.755.11; the due date, leap_verification_due_date, CO-1461, is two weeks after the request). The verification status is therefore reported on a separate evaluation of the same facts, stated as of the day the county looks, and that evaluation is not an eligibility determination: leap_is_eligible (CO-1007) does not read this item, and CO-7000 makes it cannot determine on any date but the application date. A case stated as of the application date reads a request made after it as pending (review probes LV1 and LV2)."
+derived: [case, [[not, leap_verification_is_applicable], not_applicable], [["=", [sum, leap_household_members_for_income, [of, [P], leap_person_required_verification_count]], 0], not_required], [["=", leap_pending_verification_count, 0], complete], [["<=", [det_date], leap_verification_due_date], pending], [else, past_due]]
+sources: [S893, S899, S494]
+implemented: engine
+tags: [verification]
+rationale: No existing item reports LEAP verification standing.
+tests:
+  - {id: CO-1462-T1, month: "2026-10", as_of: "2026-10-01", given: {has_primary_heating_source: true, leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 0}, expect: not_required}
+  - {id: CO-1462-T2, month: "2026-10", as_of: "2026-10-01", given: {has_primary_heating_source: true, leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1462-T3, month: "2026-10", as_of: "2026-10-01", given: {has_primary_heating_source: true, determination_date: "2026-11-10", leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16"}, expect: pending}
+  - {id: CO-1462-T4, month: "2026-10", as_of: "2026-10-01", given: {has_primary_heating_source: true, determination_date: "2026-11-20", leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16"}, expect: past_due}
+  - {id: CO-1462-T9, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: false}, expect: not_applicable}
+  # OQ-370: a household whose only member is excluded pending SAVE (3.751.1 B, 3.753.15) has no LEAP members, but its verification standing is still reported.
+  - {id: CO-1462-T10, month: "2026-10", as_of: "2026-10-01", given: {has_primary_heating_source: true, leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 1, leap_pending_verification_count: 0}, expect: complete}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-1462-T11", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: leap_verification_due_date equal to [\"det_date\"] (det_date at or under leap_verification_due_date)", "given": {"has_primary_heating_source": true, "determination_date": "2026-11-10", "leap_household_members_for_income": ["p1"], "leap_meets_citizenship_requirement": true, "leap_person_required_verification_count": 2, "leap_pending_verification_count": 1, "leap_verification_due_date": "2026-11-10"}, "expect": "pending"}

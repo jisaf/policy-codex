@@ -1,0 +1,144 @@
+- id: CO-122
+  title: "Final verification review V-2 / final cash review FC-12: a stepfather's undocumented wages are pending for the Colorado Works unit"
+  # Built for V-2. p1 Ana, 30, applies for Colorado Works for herself and her son p2, 6, on October 1; her husband p3
+  # Luis, 33, the boy's stepfather, has not asked to be in the unit. All are citizens and Colorado residents.
+  # Unit (3.604.2.C): Ana and her son; Luis, a stepparent who did not request assistance, is outside it, but as the
+  # spouse of the parent he is in the budgetary unit (3.604.2.D, cw_budgetary_unit_members), and his income is
+  # deemed (3.605.1.A.4.a): wages 2,000 - the $90 disregard = 1,910, plus no unearned income, less no support paid,
+  # less the needs of his own children outside the unit (none: the One Caretaker 0-children need standard, 253)
+  # = 1,657. Unit countable income 1,657 >= the need standard 331 (one caretaker, one child): ineligible_income.
+  # Verification (3.604.3.B.2.e: "income of any member of the assistance unit or other household member whose income
+  # is used"): Ana and her son have provided every document; Luis has given no pay stubs
+  # (earned_income_verification_document_received false). His wages are used, so the unit's count is 1 (was 0
+  # before the V-2 fix, which summed the assistance unit only), and on October 5, within the eleven days, the
+  # status is pending. Luis's own Colorado Works status stays not_applicable (he is in no unit Colorado Works aids).
+  as_of: "2026-10-05"
+  case_facts:
+    cw_application_date: "2026-10-01"
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [parent, p1, p2]
+    - [spouse, p1, p3]
+    - [stepparent, p3, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "1996-03-03"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        cw_determination_is_redetermination: false
+        verification_request_date: "2026-10-01"
+        lawful_presence_document_received: true
+        citizenship_verification_document_received: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "2020-06-15"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: single
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        verification_request_date: "2026-10-01"
+        lawful_presence_document_received: true
+        citizenship_verification_document_received: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "1993-01-20"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_requests_inclusion_in_assistance_unit: false
+        earned_income_verification_document_received: false
+      month_defaults:
+        wages_gross: 2000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+  expect:
+    p1:
+      cw_budgetary_unit_members: [p1, p2, p3]
+      cw_countable_income: {"2026-10": 1657}    # Luis's 2,000 - 90 - 253
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      cw_pending_verification_count: {"2026-10": 1}   # Luis's wages, no pay stubs (V-2)
+      cw_verification_status: {"2026-10": pending}
+    p3:
+      cw_budgetary_member_deemed_income: {"2026-10": 1657}
+      cw_verification_status: {"2026-10": not_applicable}

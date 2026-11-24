@@ -1,0 +1,20 @@
+id: CO-5652
+name: "Colorado Works: current child support received in the month"
+identifier: cw_child_support_receipts
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The current child support received for this person in the month: the receipts Colorado Works' counting table treats as child support (cw_receipt_treatment_table: child_support), which 9 CCR 2503-6 3.605.5 counts against the need standard at application and, when consistent and averaging over $500 for the unit, at redetermination, and never in the grant. Arrears are their own kind, exempt (3.605.5.D), and are not part of it."
+precision: "Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-cw.md): replaces child_support_received less the arrears stated within it (child_support_arrears_received). The months before the determination month are read in each month (cw_child_support_months_received_of_last_six, CO-2550; cw_child_support_six_month_average, CO-2551), so a receipt summed for an earlier month reads that month. Child support turned over to the IV-D agency stays received (the transferred field is not read), as before receipt records. Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-CW-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since income is \"the receipt by a client of a gain or benefit in cash or in-kind during a calendar month\" and the unit's income is what it has \"received, or ... expects to receive in the application month and any month following\" (9 CCR 2503-6 3.605.1.A.2, B, S4911): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["lookup", "cw_receipt_treatment_table", ["receipt", "kind"]], "child_support"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]]
+sources: [S1805, S2607, S4911]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Receipt records, migration phase 2: the one figure of current child support every Colorado Works child support rule reads (CO-2550, CO-2551, CO-2553, CO-2871), from the receipts, so no rule subtracts arrears stated inside the support again."
+tests:
+  - {id: CO-5652-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: child_support, amount: 300}, {kind: child_support_arrears, amount: 100}, {kind: social_security, amount: 500}]}, title: "$300 of current support; $100 of arrears is not current support (3.605.5.D)", expect: 300}
+  - {id: CO-5652-T2, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: child_support, amount: 300, month: "2026-09"}]}, title: "Support received in September is not October's", expect: 0}
+  - {id: CO-5652-T3, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: child_support}]}, title: "Support stated with no amount: cannot determine", expect: unknown}
+  # Field sweep fix round (FS-CW-1): hand-computed from 9 CCR 2503-6 3.605.1.A.2, B (S4911): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-5652-T4", "month": "2026-10", "as_of": "2026-10-15", "title": "$300 of current support that ended 2026-09-30, read for October: 0", "given": {"receipts": [{"kind": "child_support", "amount": 300, "end_date": "2026-09-30"}]}, "expect": 0}

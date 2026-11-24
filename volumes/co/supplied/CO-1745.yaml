@@ -1,0 +1,13 @@
+id: CO-1745
+name: "Colorado Works: hours in countable work activities"
+identifier: cw_work_activity_hours
+kind: supplied
+type: hours
+scope: person-month
+program: ColoradoWorks
+meaning: "The hours this person participated in the month in work activities that count toward the TANF participation rate under 45 CFR 261.30-261.31 (subsidized employment, work experience, on-the-job training, job search and job readiness assistance, community service, vocational educational training, job skills training, education directly related to employment, secondary school attendance, and providing child care to a community service participant)."
+precision: "Hours of SNAP employment and training or workfare count only if the activity is also one of the 261.30 activities. The core/non-core split of 261.31 is not separately stated (OQ-104)."
+supplied_by: "Colorado Works participation record (Individual Responsibility Contract activity hours)."
+sources: [S419, S420]
+tags: [cash, tanf]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-12): cw_meets_work_participation (CO-920) added hours worked for pay and SNAP employment and training hours, whose activity lists differ from the TANF list. Dual-entry audit 3.26: unsubsidized employment is hours_worked (CO-022), so this fact states only the other countable activities and cw_countable_work_activity_hours (CO-2885) adds the two."

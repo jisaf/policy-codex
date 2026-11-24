@@ -1,0 +1,287 @@
+# Cases this scratch copy of the repository added to volumes/co/tests/cases.yaml
+# (ids not in the repository at the time of preservation), extracted verbatim with their comments.
+# Source: scratchpad/cov-leap/volumes/co/tests/cases.yaml
+
+- id: RV-L1
+  title: 'Coverage probe: crime victim compensation (3.752.23.G) for a one-person LEAP household'
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    leap_has_denial_hold: false
+    leap_applicant_is_serving_fraud_penalty: false
+    leap_received_benefit_in_another_county: false
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_responsible_for_heating_costs: true
+        wages_gross: 1000
+        social_security_income: 0
+        ssi_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 3000
+        crime_victim_compensation_received: 3000
+        tax_exempt_interest: 0
+        self_employment_gross_receipts: 0
+
+        is_emancipated_minor: false
+        lives_in_subsidized_housing: false
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        leap_is_in_another_approved_household: false
+  expect: {}
+
+- id: RV-L2
+  title: 'Coverage probe: crime victim compensation (3.752.23.G) for a one-person LEAP household'
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    leap_has_denial_hold: false
+    leap_applicant_is_serving_fraud_penalty: false
+    leap_received_benefit_in_another_county: false
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: imminently_losing_residence
+        leap_is_in_another_approved_household: false
+        is_responsible_for_heating_costs: true
+        wages_gross: 1000
+        social_security_income: 0
+        ssi_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        crime_victim_compensation_received: 0
+        tax_exempt_interest: 0
+        self_employment_gross_receipts: 0
+
+        is_emancipated_minor: false
+        lives_in_subsidized_housing: false
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        leap_is_in_another_approved_household: false
+  expect: {}
+
+- id: RV-L3
+  title: 'Coverage probe: crime victim compensation (3.752.23.G) for a one-person LEAP household'
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-10-20'
+    has_primary_heating_source: true
+    leap_has_denial_hold: false
+    leap_applicant_is_serving_fraud_penalty: false
+    leap_received_benefit_in_another_county: false
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_responsible_for_heating_costs: true
+        wages_gross: 1000
+        social_security_income: 0
+        ssi_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 500
+        receives_tanf_cash: true
+        adult_financial_cash_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        crime_victim_compensation_received: 0
+        tax_exempt_interest: 0
+        self_employment_gross_receipts: 0
+
+        is_emancipated_minor: false
+        lives_in_subsidized_housing: false
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        leap_is_in_another_approved_household: false
+  expect: {}
+
+- id: RV-L4
+  title: 'Coverage probe: crime victim compensation (3.752.23.G) for a one-person LEAP household'
+  as_of: '2027-05-03'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2027-05-03'
+    has_primary_heating_source: true
+    leap_has_denial_hold: false
+    leap_applicant_is_serving_fraud_penalty: false
+    leap_received_benefit_in_another_county: false
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_responsible_for_heating_costs: true
+        wages_gross: 1000
+        social_security_income: 0
+        ssi_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        crime_victim_compensation_received: 0
+        tax_exempt_interest: 0
+        self_employment_gross_receipts: 0
+
+        is_emancipated_minor: false
+        lives_in_subsidized_housing: false
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        leap_is_in_another_approved_household: false
+  expect: {}
+
+- id: RV-L0
+  title: 'Coverage probe: crime victim compensation (3.752.23.G) for a one-person LEAP household'
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+    leap_has_denial_hold: false
+    leap_applicant_is_serving_fraud_penalty: false
+    leap_received_benefit_in_another_county: false
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_responsible_for_heating_costs: true
+        wages_gross: 1000
+        social_security_income: 0
+        ssi_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        crime_victim_compensation_received: 0
+        tax_exempt_interest: 0
+        self_employment_gross_receipts: 0
+
+        is_emancipated_minor: false
+        lives_in_subsidized_housing: false
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        leap_is_in_another_approved_household: false
+  expect: {}
+
+- id: RV-S1
+  title: 'Coverage probe: SUN Bucks child whose family received SNAP in September 2026 and left SNAP in January 2027'
+  as_of: '2027-03-15'
+  case_facts:
+    school_meal_household_size: 2
+    school_meal_household_income: 6000
+    sebt_application_is_selected_for_verification: false
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1985-01-01'
+        receives_tanf_cash: false
+        receives_snap: true
+      months:
+        "2027-01": {receives_snap: false}
+        "2027-02": {receives_snap: false}
+        "2027-03": {receives_snap: false}
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        child_welfare_payment_type: none
+        nighttime_residence_type: fixed_regular_adequate
+        receives_snap: true
+      months:
+        "2027-01": {receives_snap: false}
+        "2027-02": {receives_snap: false}
+        "2027-03": {receives_snap: false}
+  expect: {}

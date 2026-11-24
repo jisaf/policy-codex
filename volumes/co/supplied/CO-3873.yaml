@@ -1,0 +1,13 @@
+id: CO-3873
+name: "Adult Financial: requested disaster assistance"
+identifier: af_has_requested_disaster_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The client has requested disaster assistance from the county department, verbally or in writing (9 CCR 2503-5 3.570.52.C)."
+precision: "If not stated, Adult Financial reads this as false: disaster assistance is determined on the client's request (9 CCR 2503-5 3.570.52.C, S2624), so a case that states no request has made none (pattern sweep (cash), PS-D10, docs/reviews/pattern-sweep-cash.md)."
+supplied_by: "County department case record (the request, or the state form)."
+sources: [S2624]
+tags: [cash]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. The request is made to the Adult Financial program, so the fact carries its prefix."

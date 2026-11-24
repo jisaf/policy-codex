@@ -1,0 +1,12 @@
+id: CO-2416
+name: "Medicaid: was still in active inpatient treatment at age 21"
+identifier: ma_is_in_inpatient_treatment_at_twenty_one
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, covered as Psych <21, was still receiving active inpatient treatment in the facility on reaching age 21, which extends the group to age 22 (10 CCR 2505-10 \u00a7 8.100.4.H.1.a). No default (pattern sweep, MAGI, PS-06, 2026-11-24): H.1.a (S1717) extends the group to 22 only for a client 'still receiving active inpatient treatment in the facility at age 21' and gives no reading for an unstated one, so Medicaid requires it where read (a Psych <21 client of 21)."
+supplied_by: The psychiatric facility's treatment record.
+sources: [S1717]
+tags: [ma, age, medical]
+rationale: "C-3 of the HCPF review: the H.1.a extension to 22 needs it."

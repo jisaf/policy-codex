@@ -1,0 +1,12 @@
+id: CO-3051
+name: "Adult Financial sponsor deeming: share of the SSI standard for the sponsor's spouse and dependents"
+identifier: af_sponsor_dependent_allowance_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The share of the SSI benefit standard for an individual allowed for the needs of a sponsor's spouse living in the sponsor's household who is not a co-sponsor, and for each of the sponsor's other dependents, in Adult Financial sponsor deeming: \"one-half\" of the standard (9 CCR 2503-5 3.534.D, 3.544.G, 3.549.G)."
+value: 0.5
+sources: [S1632, S1633, S1634]
+tags: [cash, income, immigration]
+rationale: "Hard-coded numbers audit H-17: af_deemed_sponsor_income (CO-2386) divided the standard by a literal 2 in both places."

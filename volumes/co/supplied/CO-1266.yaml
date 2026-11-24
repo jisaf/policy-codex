@@ -1,0 +1,12 @@
+id: CO-1266
+name: Needs long-term or basic cash assistance
+identifier: needs_long_term_cash_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The county's assessment finds that the Colorado Works client needs long-term cash assistance or basic cash assistance (a recurrent payment to meet ongoing needs), rather than help with a specific crisis, per 9 CCR 2503-6 3.601 ("Basic cash assistance") and 3.606.8.A.1.
+supplied_by: County Colorado Works assessment, documented in the statewide automated system.
+sources: [S762]
+tags: [cash, tanf]
+rationale: No existing fact states it; cw_diversion_eligible (CO-1270) needs it.

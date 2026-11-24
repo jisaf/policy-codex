@@ -1,0 +1,13 @@
+id: CO-1592
+name: School meal household income verification received
+identifier: school_meal_household_income_verification_received
+kind: supplied
+type: yes/no
+scope: case
+program: SunBucks
+meaning: "Whether the household selected for verification has documented the source, amount and frequency of all household income, or proof that the child receives SNAP, FDPIR or TANF."
+precision: "One value for the case."
+supplied_by: Summer EBT agency verification file.
+sources: [S1092, S1093]
+tags: [verification, sebt, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.14(f)(4)) needs it as a supplied fact. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

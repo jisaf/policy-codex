@@ -1,0 +1,12 @@
+id: CO-2433
+name: "Medicaid: declares current employment"
+identifier: ma_declares_current_employment
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the applicant declares that they are currently employed (10 CCR 2505-10 § 8.100.3.R.1.c, R.2.f).
+supplied_by: The hospital presumptive eligibility site's application.
+sources: [S1722]
+tags: [ma, income]
+rationale: C-5 of the HCPF review.

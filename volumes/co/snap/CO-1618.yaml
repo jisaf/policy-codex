@@ -1,0 +1,18 @@
+id: CO-1618
+name: "SNAP: expense verification due date"
+identifier: snap_expense_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: SNAP
+role: outcome
+meaning: "The last day a deductible expense can be verified before the household's eligibility and benefit are determined without the deduction: thirty days after the date of application."
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
+derived: [days_after, snap_expense_verification_days, snap_application_date]
+sources: [S812, S818]
+implemented: engine
+tags: [verification, snap, income]
+rationale: "Review C-5: snap_verification_status disallowed expenses from the eleventh day after the request; the deduction is lost only after thirty days from application."
+nearest: [CO-1393]
+tests:
+  - {id: CO-1618-T1, as_of: "2026-10-01", given: {snap_application_date: "2026-10-01"}, expect: "2026-10-31"}

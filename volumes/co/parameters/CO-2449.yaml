@@ -1,0 +1,12 @@
+id: CO-2449
+name: "Medicaid: first application date under the shorter retroactive periods"
+identifier: ma_retroactive_coverage_change_date
+kind: parameter
+type: calendar date
+scope: global
+program: Medicaid
+meaning: "The first application date to which Pub. L. 119-21 sec. 71112 applies: \"the first day of the first quarter that begins after December 31, 2026\", January 1, 2027. Applications made on or after it get one retroactive month for expansion adults and two for others."
+value: "2027-01-01"
+sources: [S1706]
+tags: [ma]
+rationale: "C-11 of the HCPF review: ma_retroactive_coverage_start_month (CO-557) applied three months to every application."

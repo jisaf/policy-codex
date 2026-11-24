@@ -1,0 +1,13 @@
+id: CO-3846
+name: "Positive alcohol or drug tests in a three-month period"
+identifier: positive_substance_tests_in_three_months
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The largest number of the person's random tests for alcohol or a non-prescribed controlled substance, given by the licensed treatment agency, that were positive within any three-month period of the current treatment."
+precision: "Required where Adult Financial (af_and_so_meets_substance_abuse_conditions, CO-3849) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, Adult Financial read an unstated value as 0."
+supplied_by: "The treatment agency's test record."
+sources: [S2616, S2617]
+tags: [cash, and]
+rationale: "Final cash review FC-7: 9 CCR 2503-5 3.541.3 (S2616) and C.R.S. 26-2-111(4)(e)-(f) (S2617) limit AND-SO for a client whose primary diagnosis is alcoholism or controlled substance addiction to twelve cumulative months in a lifetime, on condition of treatment and of not testing positive twice in any three-month period, and nothing in the volume stated it. Test results are facts about the person, program-neutral."

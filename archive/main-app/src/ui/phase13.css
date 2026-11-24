@@ -1,0 +1,102 @@
+/* Phase 13 foundation: ref selector, workflow nav, role doors, draft banner,
+ * plain-language presentation, and the shared pieces the workflow views use. */
+.hdrfoot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.refselect select, .refselect input { font: inherit; font-size: 12px; padding: 2px 4px;
+  border: 1px solid var(--accent); border-radius: 10px; background: var(--med); max-width: 260px; }
+nav.workflows { gap: 4px; flex-wrap: wrap; }
+nav.workflows a { font-size: 13px; }
+.doors.roles .door { border-color: var(--accent); }
+.door .agency { font-size: 12px; margin-bottom: 4px; }
+h2.otherways { font-size: 15px; margin: 24px 0 0; color: var(--muted); }
+.doors.classic .door { padding: 10px 14px; }
+.viewhead h1 { margin-bottom: 4px; }
+.viewhead .purpose { margin-top: 0; font-size: 15px; max-width: 70ch; }
+
+.draftbanner { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 6px 16px;
+  background: #fff4d6; border-bottom: 1px solid #e3c470; font-size: 13px; }
+.draftbanner.shown { background: #ffe2b8; }
+
+.qbody p { max-width: 80ch; }
+ul.qlist li, ul.qitems li { margin: 4px 0; }
+
+.lead-meaning { font-size: 15px; max-width: 80ch; }
+.plain-derivation { margin: 6px 0 10px; padding: 0; list-style: none; max-width: 90ch; }
+.plain-derivation li { margin: 2px 0; }
+.plain-derivation li.d1 { padding-left: 1.5em; }
+.plain-derivation li.d2 { padding-left: 3em; }
+.plain-derivation li.d3 { padding-left: 4.5em; }
+.plain-derivation li.d4 { padding-left: 6em; }
+.plain-derivation li.d5 { padding-left: 7.5em; }
+
+table.valuetable { border-collapse: collapse; margin: 4px 0; }
+table.valuetable th, table.valuetable td { border: 1px solid var(--line); padding: 2px 8px;
+  text-align: right; font-variant-numeric: tabular-nums; }
+table.valuetable th { background: var(--all); font-weight: 600; }
+table.valuetable caption { text-align: left; font-size: 12px; color: var(--muted); }
+
+.flag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 12px; }
+.trace .notes { margin: 6px 0; padding-left: 0; list-style: none; }
+.trace .notes li { margin: 4px 0; }
+.story .who { color: var(--muted); font-size: 12px; margin-right: 4px; }
+.status-line { margin: 4px 0 8px; }
+
+article.source.on { background: var(--med); border-left: 3px solid var(--accent); padding-left: 8px; }
+.doctext pre.statute.on { background: #fff4b0; outline: 2px solid #e3c470; }
+
+.household-persons { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+.household-persons button.on { background: var(--med); border-color: var(--accent); }
+.household-rels { margin: 8px 0; }
+.household-rels select, .household-rels button { font: inherit; }
+.example-kept { font-size: 12px; }
+
+/* The token card is never taller than the window, and its actions stay in
+ * reach at the bottom however long the card's body is. */
+.tokpop { max-height: calc(100vh - 16px); display: flex; flex-direction: column; overflow: hidden; }
+.tokpop .tokcard { overflow-y: auto; min-height: 0; }
+.tokpop .tokpop-actions { flex: none; }
+
+/* The volume picker never widens the page past a phone screen. */
+.volume-select { max-width: 100%; min-width: 0; }
+
+/* UI fix round (phase 13 retests): what happens next with a staged change,
+ * the dated periods editor, the staged and linked inbox rows, the household
+ * grid's amounts and questions, the walkthrough's added budget lines. */
+.sendchange { margin: 8px 0; padding: 8px 12px; background: #e3f1e7; border: 1px solid #9cc9a8; border-radius: 4px; max-width: 70ch; }
+.sendchange.notoken { background: #fff4d6; border-color: #e3c470; }
+.sendchange .nextsteps { margin: 4px 0 6px; padding-left: 1.4em; }
+.sendchange .nextsteps li { margin: 2px 0; }
+.sendchange .sendactions { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; }
+.sendchange p.sendhead { margin: 0; }
+.periodsnote { margin: 4px 0 8px; padding: 6px 10px; background: var(--med); border-left: 3px solid var(--accent); font-size: 13px; max-width: 80ch; }
+.periods table.periodtable { border-collapse: collapse; margin: 4px 0 8px; max-width: 100%; }
+.periods table.periodtable td, .periods table.periodtable th { border: 1px solid var(--line); padding: 2px 6px; vertical-align: top; }
+.periods table.periodtable input { width: 100%; min-width: 6em; box-sizing: border-box; font: inherit; }
+.periods .addperiod { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; border: 1px solid var(--line); padding: 6px 10px; }
+.periods .addperiod label { display: flex; flex-direction: column; font-size: 13px; min-width: 0; }
+.periods .addperiod p { flex-basis: 100%; margin: 2px 0; }
+.periods { overflow-x: auto; }
+.editor-next { max-width: 80ch; }
+.inbox-linked, .inbox-staged { margin: 10px 0; padding: 6px 10px; border: 2px solid var(--accent); border-radius: 4px; }
+.inbox-linked h3, .inbox-staged h3 { margin: 4px 0; }
+.inbox .affects ul.reach { margin: 4px 0; padding-left: 1.2em; font-size: 13px; }
+.inbox .inbox-filters label.search input { min-width: 14em; max-width: 100%; }
+.qhistory { margin-top: 6px; }
+.qhistory .note { margin: 6px 0; font-size: 13px; }
+.unknown-note { padding: 6px 10px; background: #fff4d6; border: 1px solid #e3c470; border-radius: 4px; max-width: 80ch; }
+.unknown-why { color: var(--muted); }
+.qgroup.mine h2 { border-left: 4px solid var(--accent); padding-left: 6px; }
+.household .cell .amounts { margin-top: 2px; font-size: 13px; }
+.household .cell .cellq { margin-top: 2px; }
+.household .cell.untested { font-style: italic; }
+.wk-budget tr.taken td { font-style: italic; }
+.wk-docs-block > summary { cursor: pointer; }
+.wk-docs-block > summary h3 { display: inline; }
+ul.dueprograms { margin: 0; padding-left: 1em; }
+.wk-test { display: inline; }
+.changes li .worked { margin: 4px 0; }
+.changes.docs li { margin: 4px 0; }
+@media (max-width: 600px) {
+  .sendchange .sendactions .btn { flex: 1 1 auto; }
+  .inbox .inbox-filters label.search input { min-width: 0; width: 100%; }
+  .periods .addperiod label { flex: 1 1 100%; }
+}

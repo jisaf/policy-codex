@@ -1,0 +1,13 @@
+id: CO-2309
+name: "SNAP: ABAWD eligibility regained"
+identifier: snap_abawd_eligibility_regained
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "By this month, in the current thirty-six month ABAWD (able-bodied adult without dependents) clock period, this person, having become ineligible under the ABAWD time limit, regained eligibility under 10 CCR 2506-1 4.311.3.D.1: in a thirty calendar day period the person worked eighty or more hours (compensated, in-kind or verified unpaid work, 4.311.B.1.a; final verification F-12), participated in and complied with a work program for eighty or more hours, participated and complied with Workfare, or became exempt."
+precision: "If not stated, SNAP reads this as false (no regained eligibility). The clock's reset every thirty-six months (4.311.3.C.2) clears it with the countable months."
+supplied_by: "County ABAWD tracking: hours worked or in a work program in a 30-day period, Workfare compliance, or a new exemption."
+sources: [S1613]
+tags: [snap, abawd]
+rationale: "OQ-38 (P-7): 4.311.3.D (S1613) lets an ABAWD who reached the time limit regain eligibility; no fact stated that the person had, so snap_abawd_time_limit_status (CO-418) had no branch for it."

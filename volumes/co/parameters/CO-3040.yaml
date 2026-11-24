@@ -1,0 +1,12 @@
+id: CO-3040
+name: "SNAP work registration: oldest age of the youth exemption"
+identifier: snap_work_registration_youth_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The oldest age (inclusive) of the work registration exemption for \"A person age 16 or 17 who is not the head of a household, or who is attending school, or is enrolled in an employment training program, on at least a half-time basis\" (10 CCR 2506-1 4.310.3.A.1; 7 CFR 273.7(b)(1)(i)); the youngest is snap_work_registration_min_age."
+value: 17
+sources: [S123, S126]
+tags: [work_registration, age]
+rationale: "Hard-coded numbers audit H-10: snap_is_exempt_from_work_registration (CO-405) wrote [\"<=\", age, 17]; the product-owner decision (figures are parameters) overrules the precision that defended the literal. Convention 8: _max_age is inclusive."

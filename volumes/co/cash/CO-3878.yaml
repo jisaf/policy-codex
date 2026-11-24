@@ -1,0 +1,21 @@
+id: CO-3878
+name: "Adult Financial: disaster assistance payment"
+identifier: af_disaster_assistance_payment
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "The Adult Financial disaster assistance payment for the month (9 CCR 2503-5 3.570.51.A): for an eligible client, the amount the county approved, at most af_disaster_assistance_max less what was already paid for the same disaster; otherwise 0."
+precision: "The county does not verify how the payment is used (3.570.53.D). Coverage pass 6 CA6-7: what has already been paid for the disaster is required where read (an eligible client; decision 4 of 2026-11-23); before, read as 0 when not stated."
+derived: ["case", ["af_disaster_assistance_eligible", ["min", "af_county_approved_disaster_assistance_amount", ["max", 0, ["-", "af_disaster_assistance_max", "af_disaster_assistance_paid_for_disaster"]]]], ["else", 0]]
+sources: [S2624, S2625]
+implemented: engine
+tags: [cash]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. "
+tests:
+  - {id: "CO-3878-T1", title: "County approved $1,500", as_of: "2026-10-01", month: "2026-10", given: {af_disaster_assistance_eligible: true, af_county_approved_disaster_assistance_amount: 1500, af_disaster_assistance_paid_for_disaster: 0}, expect: 1500}
+  - {id: CO-3878-T2, title: "County approved $1,500, $800 already paid for the same disaster: capped at $1,200", as_of: "2026-10-01", month: "2026-10", given: {af_disaster_assistance_eligible: true, af_county_approved_disaster_assistance_amount: 1500, af_disaster_assistance_paid_for_disaster: 800}, expect: 1200}
+  - {id: CO-3878-T3, title: "Not eligible", as_of: "2026-10-01", month: "2026-10", given: {af_disaster_assistance_eligible: false}, expect: 0}
+  # Coverage pass 6 CA6-7: what was already paid for the disaster is required.
+  - {id: "CO-3878-T6", title: "Coverage pass 6 CA6-7: eligible, already paid not stated: cannot determine", month: "2026-10", as_of: "2026-10-01", given: {af_disaster_assistance_eligible: true, af_county_approved_disaster_assistance_amount: 500}, expect: unknown}

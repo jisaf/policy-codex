@@ -1,0 +1,12 @@
+id: CO-1576
+name: Asset transfer verification document received
+identifier: asset_transfer_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person (and spouse) have documented every transfer of assets made on or after the look-back date, 60 months before the application, or signed a declaration that none was made without fair consideration.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1741, S1742]
+tags: [verification, ltc, resources]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.h, F.2.a) needs it as a supplied fact."

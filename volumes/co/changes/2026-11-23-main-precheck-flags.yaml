@@ -1,0 +1,9 @@
+date: 2026-11-23
+summary: >-
+  Written dispositions for the 8 change-impact flags the branch raises against origin/main, measured when the check was
+  introduced (docs/governance.md, "Change impact", "Starting point"; docs/plan-colorado.md, step 4). They are hidden by
+  impact-baseline.yaml while main predates it, so they are keyed here to the fingerprints measured against main without
+  the baseline. Two were fixed in this round by changing the flagged item (CO-118, CO-303), so those entries no longer
+  settle a live flag and the check reports them as stale; they are kept as the written record.
+impact:
+  - {changed: CO-133, fingerprint: fp1-264b9ebc8aca454ddd79, flagged: CO-138, not_applicable: "CO-133 is the indexed excess shelter cap, which FNS sets each fiscal year ($769 for FY2027, S732). CO-138 is the 50 percent share of income the shelter costs must exceed, fixed by statute and rule (7 U.S.C. 2014(e)(6)(A), S88; 7 CFR 273.9(d)(6)(ii), S93; 10 CCR 2506-1 4.407.3.A-B, S96), with no yearly figure."}

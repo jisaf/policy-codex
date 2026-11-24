@@ -1,0 +1,18 @@
+id: CO-1609
+name: "SNAP: age verification is pending"
+identifier: snap_age_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+role: outcome
+meaning: Whether SNAP requires verification of the person's questionable age and it has not been provided.
+precision: "False where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2). Due by: snap_verification_due_date (CO-1392), or snap_expedited_postponement_end_date (CO-1393) for a household certified under expedited service."
+derived: [all, snap_is_household_member, [all, snap_requires_verification_of_age, [not, age_is_verified]]]
+sources: [S811]
+implemented: engine
+tags: [verification, snap]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1609-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_age: true, age_verified_by_electronic_data_source: false, age_verification_document_received: false}, expect: true}
+  - {id: CO-1609-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_age: false}, expect: false}

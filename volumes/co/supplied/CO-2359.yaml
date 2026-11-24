@@ -1,0 +1,13 @@
+id: CO-2359
+name: "Support paid to dependents outside the home"
+identifier: support_paid_to_dependents_outside_home
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The support this person paid in the month to dependents not living in the person's home (stated on a sponsor and a sponsor's spouse, for 9 CCR 2503-6 3.605.1.A.5.b)."
+precision: "Required where Colorado Works (cw_sponsor_deemed_income, CO-2365) reads it (coverage pass 6 CA6-7, docs/reviews/coverage6-cash.md; decision 4 of 2026-11-23): not stated is cannot determine; before, a program read an unstated value as 0."
+supplied_by: "The sponsor's statement or income documents."
+sources: [S1627]
+tags: [income, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. Renamed from sponsor_support_paid_to_dependents_outside_home through a change set that keeps the ID; stated on the sponsor and the sponsor's spouse, each for the support that person paid."

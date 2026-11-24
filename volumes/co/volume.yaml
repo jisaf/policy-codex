@@ -10,49 +10,82 @@ approval_policy:
     - CHP+ policy owner
     - SNAP policy owner
     - Cash programs policy owner
-    - Child care policy owner
+    - Energy assistance (LEAP) policy owner
+    - Child care policy owner (CDEC)
+    - School meals (CDE) co-approver
     - Legal
     - Data steward
+    - LTSS policy owner
+    - Premium and finance owner
+    - Eligibility operations owner
+    - State plan coordinator
+  # HCPF review S-13: an item any program's declared outcome reads, directly or
+  # through other items, also requires that program's by_program roles (so the
+  # CHP+ owner signs the shared and Medicaid items CHP+ reads).
+  upstream_of_outcomes: true
   by_program:
-    All: ["Medicaid policy owner", "SNAP policy owner", "Cash programs policy owner"]
+    All: ["Medicaid policy owner", "CHP+ policy owner", "SNAP policy owner", "Cash programs policy owner"]
     Medicaid: ["Medicaid policy owner"]
     CHP+: ["CHP+ policy owner"]
     SNAP: ["SNAP policy owner"]
     ColoradoWorks: ["Cash programs policy owner"]
     AdultFinancial: ["Cash programs policy owner"]
-    CCCAP: ["Child care policy owner"]
-    LEAP: ["Cash programs policy owner"]
+    CCCAP: ["Child care policy owner (CDEC)"]
+    LEAP: ["Energy assistance (LEAP) policy owner"]
+    SunBucks: ["SNAP policy owner", "School meals (CDE) co-approver"]
   by_kind:
     supplied: ["Data steward"]
   by_tag:
     legal: [Legal]
-    state_election: [Legal]
+    state_election: [Legal, "State plan coordinator"]
     immigration: [Legal]
+    ltc: ["LTSS policy owner"]
+    hcbs: ["LTSS policy owner"]
+    buy_in: ["Premium and finance owner"]
+    verification: ["Eligibility operations owner"]
 
+# names: the words an item's meaning uses for the program; governance's read.shared_definition
+# reads them (same-word audit; docs/conventions.md rule 15).
 programs:
   - id: All
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment]
+    names: ["Medical Assistance", "Health First Colorado"]
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_needy_young_person_category, ma_hospital_presumptive_eligibility_category, ma_express_lane_status, ma_community_engagement_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category, ma_verification_status, ma_pending_verification_count, ma_citizenship_verification_is_pending, ma_identity_verification_is_pending, ma_immigration_status_verification_is_pending, ma_ssn_verification_is_pending, ma_earned_income_verification_is_pending, ma_unearned_income_verification_is_pending, ma_resources_verification_is_pending, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_institutional_stay_verification_is_pending, ma_asset_transfers_verification_is_pending, ma_trust_verification_is_pending, ma_annuity_verification_is_pending, ma_sale_efforts_verification_is_pending, ma_joint_ownership_verification_is_pending]
   - id: CHP+
     prefix: chp_
-    outcomes: [chp_eligibility_status]
+    names: ["Child Health Plan Plus"]
+    outcomes: [chp_eligibility_status, chp_express_lane_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
   - id: SNAP
     prefix: snap_
-    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
+    names: ["food assistance"]
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count, snap_identity_verification_is_pending, snap_citizenship_verification_is_pending, snap_immigration_status_verification_is_pending, snap_ssn_verification_is_pending, snap_residency_verification_is_pending, snap_earned_income_verification_is_pending, snap_unearned_income_verification_is_pending, snap_resources_verification_is_pending, snap_household_composition_verification_is_pending, snap_disability_verification_is_pending, snap_age_verification_is_pending, snap_work_hours_verification_is_pending, snap_sponsor_verification_is_pending, snap_child_majority_meals_verification_is_pending, snap_shelter_costs_verification_is_pending, snap_medical_expenses_verification_is_pending, snap_dependent_care_verification_is_pending, snap_child_support_paid_verification_is_pending, snap_person_pending_verification_count, snap_person_pending_expense_verification_count, snap_person_participation_status, snap_verification_due_date, snap_noncitizen_documentation_due_date, snap_expense_verification_due_date, snap_expedited_postponement_end_date]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: [cw_grant_amount, cw_eligibility_status]
+    names: ["Colorado Works", "TANF"]
+    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_death_reimbursement_eligible, cw_death_reimbursement_amount, cw_verification_status, cw_pending_verification_count, cw_lawful_presence_verification_is_pending, cw_citizenship_verification_is_pending, cw_immigration_status_verification_is_pending, cw_ssn_verification_is_pending, cw_household_composition_verification_is_pending, cw_earned_income_verification_is_pending, cw_residency_verification_is_pending, cw_school_enrollment_verification_is_pending, cw_pregnancy_verification_is_pending, cw_sponsor_verification_is_pending, cw_person_pending_verification_count, cw_person_pending_status_verification_count, cw_person_participation_status, cw_diversion_payment, cw_unearned_income_verification_is_pending, cw_verification_due_date, cw_status_verification_due_date]
   - id: AdultFinancial
     prefix: af_
-    outcomes: [af_category, af_oap_grant, af_and_grant]
+    names: ["Adult Financial", "Old Age Pension", "OAP", "Aid to the Needy Disabled", "AND-SO", "AND-CS", "Home Care Allowance"]
+    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count, af_age_verification_is_pending, af_residency_verification_is_pending, af_identity_verification_is_pending, af_ssn_verification_is_pending, af_citizenship_verification_is_pending, af_immigration_status_verification_is_pending, af_resources_verification_is_pending, af_earned_income_verification_is_pending, af_disability_verification_is_pending, af_and_so_disability_verification_is_pending, af_marital_status_verification_is_pending, af_sponsor_verification_is_pending, af_unearned_income_verification_is_pending, af_verification_due_date, af_and_so_disability_certification_due_date, af_benefit_application_verification_is_pending, af_benefit_application_verification_due_date, af_disaster_assistance_eligible, af_disaster_assistance_payment]
   - id: CCCAP
     prefix: cccap_
-    outcomes: [cccap_eligibility_status]
+    names: ["Colorado Child Care Assistance Program"]
+    outcomes: [cccap_eligibility_status, cccap_parent_fee, cccap_verification_status, cccap_pending_verification_count, cccap_residency_verification_is_pending, cccap_eligible_activity_verification_is_pending, cccap_citizenship_verification_is_pending, cccap_age_verification_is_pending, cccap_identity_verification_is_pending, cccap_earned_income_verification_is_pending, cccap_work_hours_verification_is_pending, cccap_additional_care_needs_verification_is_pending, cccap_child_support_paid_verification_is_pending, cccap_person_pending_verification_count, cccap_pending_deduction_verification_count, cccap_person_participation_status, cccap_unearned_income_verification_is_pending, cccap_verification_due_date]
   - id: LEAP
     prefix: leap_
-    outcomes: [leap_is_eligible]
+    names: ["Low-income Energy Assistance Program", "Low-Income Energy Assistance Program"]
+    outcomes: [leap_is_eligible, leap_benefit_amount, leap_verification_status, leap_pending_verification_count, leap_earned_income_verification_is_pending, leap_citizenship_verification_is_pending, leap_heating_costs_verification_is_pending, leap_zero_income_verification_is_pending, leap_person_pending_verification_count, leap_member_is_excluded_for_verification, leap_person_participation_status, leap_unearned_income_verification_is_pending, leap_verification_due_date]
+  - id: SunBucks
+    prefix: sebt_
+    names: ["SUN Bucks", "Summer EBT"]
+    outcomes: [sebt_eligibility_status, sebt_benefit_amount, sebt_verification_status, sebt_pending_verification_count, sebt_income_verification_is_pending, sebt_school_enrollment_verification_is_pending]
+
+# Cross-program links are classified (docs/conventions.md "Cross-program links";
+# product-owner decision 2026-11-23): every shared rule declares its class and
+# every read of another program's item is a declared, cited link.
+link_classes: true
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
@@ -69,6 +102,7 @@ tags:
   - { id: abawd, parent: snap, label: ABAWD time limit }
   - { id: work_registration, parent: snap, label: Work registration }
   - { id: student, parent: snap, label: Students }
+  - { id: sebt, label: Summer EBT (SUN Bucks) }
   - { id: cash, label: Cash assistance }
   - { id: tanf, parent: cash, label: Colorado Works }
   - { id: oap, parent: cash, label: Old Age Pension }
@@ -83,6 +117,8 @@ tags:
   - { id: legal, label: Legal review }
   - { id: medical, label: Medical determination }
   - { id: state_election, label: State election }
+  - { id: verification, label: Verification and documentation }
+  - { id: application_wide, label: "One value for the whole application: a case-scope fact stated once in case_facts (audit fix round 5); the case check warns if persons state differing values" }
 
 types:
   - yes/no
@@ -99,6 +135,56 @@ types:
   - relationships
   - table keyed by person
   - table keyed by household size
+  - table keyed by income band
+  - table keyed by year
+  - table keyed by number of days
+  - table keyed by option
   - list of months
+  - list of receipts
 
 scopes: [person, person-month, case, month, global]
+
+# The closed list of relationship roles. A [role, other] pair on p reads "p
+# is the <role> of other"; `inverse` is the role other then holds toward p, and
+# a case-level [role, from, to] edge records both. A role with no inverse is
+# recorded on the person named first alone. The engine reads this list
+# (docs/operators.md, Relationships).
+#
+# The roles state what is true of the persons, not any program's word for it
+# (docs/plan-colorado.md, product-owner decisions; same-word audit SW-0): each
+# program's "caretaker", "parent" or "sibling" is that program's own derived
+# item over these roles. Siblings are derived from shared parents (`siblings`,
+# `step_siblings`), not stated.
+relationship_roles:
+  - {id: parent, inverse: child, label: "legal parent: natural or adoptive (not a stepparent)"}
+  - {id: child, inverse: parent, label: "legal child: natural or adopted"}
+  - {id: stepparent, inverse: stepchild, label: "the spouse of the child's parent who is not the child's legal parent"}
+  - {id: stepchild, inverse: stepparent, label: "the child of one's spouse who is not one's own legal child"}
+  - {id: spouse, inverse: spouse, label: "legally married to"}
+  - {id: surviving_spouse_of, inverse: deceased_spouse_of, label: "was legally married to the other person when the other person died (a widow or widower); not a spouse: is_married does not read it"}
+  - {id: deceased_spouse_of, inverse: surviving_spouse_of, label: "was legally married to the other person at this person's death"}
+  - {id: holds_out_as_spouse_with, inverse: holds_out_as_spouse_with, label: "living together, free to marry, and representing themselves to others as spouses, but not legally married"}
+  - {id: grandparent, inverse: grandchild}
+  - {id: grandchild, inverse: grandparent}
+  - {id: other_relative, inverse: other_relative, label: "related by blood, adoption or marriage other than as parent, stepparent, grandparent, sibling or spouse (aunt, uncle, cousin, niece, nephew, great-grandparent, in-law)"}
+  - {id: gave_birth_to, inverse: born_to, label: "the birth mother of the child (a fact of birth, beside the legal parent edge where she is also the legal parent)"}
+  - {id: born_to, inverse: gave_birth_to, label: "the child this person gave birth to"}
+  - {id: legal_guardian, inverse: ward, label: "appointed by a court as the person's guardian"}
+  - {id: ward, inverse: legal_guardian, label: "the person for whom a court appointed this guardian"}
+  - {id: foster_parent, inverse: foster_child, label: "the child is placed in this person's home in foster care"}
+  - {id: foster_child, inverse: foster_parent, label: "placed in this person's home in foster care"}
+  - {id: has_primary_responsibility_for, inverse: in_primary_care_of, label: "has assumed day-to-day responsibility for the child's care, in place of or beside a parent"}
+  - {id: in_primary_care_of, inverse: has_primary_responsibility_for, label: "the child whose day-to-day care this person has assumed"}
+  - {id: provides_regular_care_to, inverse: receives_regular_care_from, label: "provides care within a broad range of assistance (personal care, supervision, help with daily activities) on a regular basis that is not solely incidental"}
+  - {id: receives_regular_care_from, inverse: provides_regular_care_to, label: "the person to whom this person provides that care"}
+  - {id: tax_filer, inverse: tax_dependent}
+  - {id: tax_dependent, inverse: tax_filer}
+  - {id: buys_prepares_with, inverse: buys_prepares_with}
+  - {id: shares_heat_with, inverse: shares_heat_with}
+  - {id: lives_as_one_economic_unit_with, inverse: lives_as_one_economic_unit_with, label: "lives with this person as one economic unit (the school meal and Summer EBT household of 7 CFR 292.2: related or unrelated persons, not residents of an institution or boarding house, living as one economic unit)"}
+  - {id: files_jointly_with, inverse: files_jointly_with, label: "expects to file a joint federal tax return with this spouse for the taxable year of the determination"}
+  - {id: sponsor, inverse: sponsored_by, label: "signed the other person's affidavit of support (Form I-864) as sponsor or joint sponsor; the sponsor is declared as a person of the case whether or not the sponsor lives in the home"}
+  - {id: sponsored_by, inverse: sponsor, label: "a non-citizen whose affidavit of support the other person signed as sponsor or joint sponsor"}
+  - {id: civil_union_partner, inverse: civil_union_partner, label: "has entered into a civil union with the other person (a legal relationship, not a marriage; spouse is a legal marriage)"}
+  - {id: contributes_financially_to, inverse: receives_financial_contribution_from, label: "an adult in the child's home who contributes financially to the welfare of the child (toward the child's food, shelter, clothing or care), whether or not related to the child; not a parent or other person living elsewhere who pays support"}
+  - {id: receives_financial_contribution_from, inverse: contributes_financially_to, label: "the child whose welfare the other person contributes to financially"}

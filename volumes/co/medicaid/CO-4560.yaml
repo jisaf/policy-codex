@@ -1,0 +1,21 @@
+id: CO-4560
+name: "Medicaid: premium tax credit family"
+identifier: ma_premium_tax_credit_family
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The family whose income the premium tax credit methodology counts for this person (26 CFR 1.36B-1(d)): for a tax filer, the filer, a spouse filing jointly, and the persons either claims as a tax dependent; for a claimed tax dependent, the family of the filer claiming the person. Empty for a person who neither files nor is claimed, who has no family under that methodology."
+precision: "The persons joined to this person by tax_filer, tax_dependent and files_jointly_with relationships, the tax household as the case states it. A person who neither files nor is claimed is not eligible for the premium tax credit and has no household income under 26 CFR 1.36B-1(e), so § 8.100.4.C.5 does not reach that person (ma_meets_premium_tax_credit_income_test, CO-4564). Coverage pass 5, C5-05 (2026-11-23): for a person claimed only by a taxpayer outside the case, the family is that taxpayer's (1.36B-1(d)), whose members and expected income the case does not state, so the family is unknown (cannot determine), never the person alone; before, it was the person alone, and since a claimed member's income counts only where required to file, the household income under the methodology was 0% and met every standard (STUDENT-OUT). Coverage pass 6, C6-04 (2026-11-24): a person with no tax_dependent relationship in the case reads is_claimed_by_filer_outside_case as stated, required there (decision 4); before, an unstated outside claim was read as none."
+derived: [case, [[not, [all, [not, [exists_related, [tax_dependent], true]], is_claimed_by_filer_outside_case]], [case, [[any, is_tax_filer, [exists_related, [tax_filer], true], expects_to_be_claimed_as_dependent], [reachable, [tax_filer, tax_dependent, files_jointly_with]]], [else, [filter, [persons], false]]]]]
+sources: [S3359, S3357, S3358]
+implemented: engine
+tags: [ma, magi, income, household]
+open: [OQ-811]
+rationale: "Coverage review F-05 (2026-11-22): § 8.100.4.C.5 and 42 CFR 435.603(i) test income as 26 CFR 1.36B-1(e) computes it, for the taxpayer's family, which differs from the MAGI household (ma_magi_household_members, CO-500: a spouse living apart and filing jointly, a non-filer's relatives). No existing item states the tax family."
+tests:
+  - {id: CO-4560-T1, as_of: "2026-11-10", title: "Filer, joint spouse and their claimed child (C6-04: no claimer outside the case, stated)", given: {is_claimed_by_filer_outside_case: false, is_tax_filer: true, expects_to_be_claimed_as_dependent: false}, others: {p2: {is_tax_filer: true}, p3: {expects_to_be_claimed_as_dependent: true}}, relationships: [[files_jointly_with, p1, p2], [tax_filer, p1, p3]], expect: [p1, p2, p3]}
+  - {id: CO-4560-T2, as_of: "2026-11-10", title: "A claimed child's family is the claiming filer's", given: {is_tax_filer: false, expects_to_be_claimed_as_dependent: true}, others: {p2: {is_tax_filer: true}, p3: {expects_to_be_claimed_as_dependent: true}}, relationships: [[tax_filer, p2, p1], [tax_filer, p2, p3]], expect: [p1, p2, p3]}
+  - {id: CO-4560-T3, as_of: "2026-11-10", title: "A non-filer, not claimed: no family (C6-04: no claimer outside the case, stated)", given: {is_claimed_by_filer_outside_case: false, is_tax_filer: false, expects_to_be_claimed_as_dependent: false}, relationships: [], expect: []}
+  - {"id": "CO-4560-T10", "as_of": "2026-11-10", "title": "C5-05 (STUDENT-OUT): claimed by her parents outside the case, no claimer in the case: the family is the parents', not stated: unknown", "given": {"is_tax_filer": false, "is_claimed_by_filer_outside_case": true}, "relationships": [], "expect": "unknown"}
+  - {id: CO-4560-T11, as_of: "2026-11-10", title: "C6-04: a non-filer with no tax_dependent relationship in the case, the outside claim not stated: whether a taxpayer outside the case claims her (and so whose family counts) cannot be determined (was the person alone's empty family)", given: {is_tax_filer: false}, relationships: [], expect: unknown}

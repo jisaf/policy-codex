@@ -1,0 +1,12 @@
+id: CO-2413
+name: "Medicaid: can live in a community setting without jeopardizing health or safety"
+identifier: ma_can_live_in_community_without_jeopardy
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether, at the time of enrollment, the person is able to live in a community setting without jeopardizing his or her health or safety, as the State administering agency's criteria in the PACE program agreement determine (42 CFR 460.150(c)).
+supplied_by: The PACE organization's and the State's enrollment assessment under the program agreement.
+sources: [S1726, S649]
+tags: [ma, ltc, medical]
+rationale: "B-3 of the HCPF review: ma_pace_eligible (CO-654) omitted 460.150(c); no fact states it."

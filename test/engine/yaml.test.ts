@@ -94,3 +94,27 @@ describe("yaml", () => {
     expect(text.endsWith("\n\n")).toBe(false);
   });
 });
+
+describe("the = operator in derivations", () => {
+  const bare =
+    "id: X-1\nname: X\nidentifier: x\nkind: derived\ntype: yes/no\nscope: person\n" +
+    "program: All\nderived: [=, a, b]\n";
+  const quoted = bare.replace("[=, a, b]", '["=", a, b]');
+
+  it('reads a bare = and a quoted "=" as the same operator', () => {
+    expect(parseItemFile(bare).derived).toEqual(["=", "a", "b"]);
+    expect(parseItemFile(quoted).derived).toEqual(["=", "a", "b"]);
+  });
+
+  it("writes the operator quoted, which YAML 1.1 parsers also read as a string", () => {
+    expect(stringifyItem(parseItemFile(bare))).toContain('derived: ["=", a, b]');
+    expect(stringifyItem(parseItemFile(bare))).toBe(stringifyItem(parseItemFile(quoted)));
+  });
+  it("keeps an empty list of versions (a parameter awaiting its figure) through a round trip", () => {
+    const text = "id: X-1\nname: n\nidentifier: x\nkind: parameter\ntype: money\nscope: global\nprogram: All\n" +
+      "meaning: m\nversions: []\nsources: [S1]\nopen: [OQ-1]\n";
+    const it = parseItemFile(text);
+    expect(it.versions).toEqual([]);
+    expect(stringifyItem(it)).toBe(text);
+  });
+});

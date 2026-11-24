@@ -1,0 +1,14 @@
+id: CO-3406
+name: "SSI method: presumed maximum value, divisor of the FBR"
+identifier: ssi_presumed_maximum_value_fbr_divisor
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The presumed maximum value of in-kind shelter is one-third of the Federal Benefit Rate: the FBR divided by this number (10 CCR 2505-10 § 8.100.5.F.5.k; 20 CFR 416.1140(a)(1))."
+precision: "A figure the rule states is a parameter (OQ-82)."
+value: 3
+sources: [S306, S307]
+implemented: engine
+tags: [non_magi, income]
+rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."

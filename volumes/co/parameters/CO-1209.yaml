@@ -1,0 +1,12 @@
+id: CO-1209
+name: Home Care Allowance minimum age
+identifier: af_hca_min_age
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The minimum age for Home Care Allowance - five years - per 9 CCR 2503-5 3.570.11.A and 3.570.14.D.
+value: 5
+sources: [S712, S716]
+tags: [cash, age]
+rationale: No existing parameter states the HCA minimum age; af_hca_eligibility_status (CO-1217) needs it.

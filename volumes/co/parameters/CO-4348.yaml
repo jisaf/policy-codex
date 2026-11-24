@@ -1,0 +1,13 @@
+id: CO-4348
+name: "SNAP former farm property exclusion years"
+identifier: snap_former_farm_property_exclusion_years
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The number of whole years after a household member stops self-employment in farming during which the property essential to it stays excluded as a resource: 1 (10 CCR 2506-1 4.410.E.4)."
+versions:
+  - {from: "2000-01-01", value: 1, source: S3118}
+sources: [S3118]
+tags: [snap, resources]
+rationale: "Coverage review snap-financial CF-7: the one-year exemption had no item."

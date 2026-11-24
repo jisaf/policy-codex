@@ -1,0 +1,10 @@
+# Field sweep fix round for SNAP, Adult Financial and Colorado Works (docs/reviews/field-sweep-snap-cash-nonmagi.md, section
+# "Fix round dispositions"): receipt streams read only between their dates (FS-AF-1, FS-CW-1), a VA dependent's part counted as the
+# dependent's (FS-AF-2, FS-CW-2), Colorado Works' PASS exemption for Social Security only (FS-CW-3), held wages by their regular date
+# (FS-CW-4), irregular self-employment averaged over twelve months (FS-CW-5, FS-AF-3), SNAP's earnings PASS set-aside and retroactive
+# lump sums (FS-SNAP-1, FS-SNAP-2), a trust and encumbered securities (FS-SNAP-4, FS-SNAP-5), Adult Financial's written intent and
+# burial-fund interest (FS-AF-4, FS-AF-5), and the record defaults the rules give. One entry per change-impact flag the round leaves
+# open.
+date: 2026-11-23
+summary: "Field sweep (SNAP, Adult Financial, Colorado Works): FS-SNAP-1, 2, 4, 5, FS-AF-1 to 5 and FS-CW-1 to 5 fixed; FS-SNAP-3 and FS-SNAP-6 fixed by the SNAP resources round (SR-4, SR-7); new neutral record fields for_person (receipts), regular_date_reason (earnings) and SNAP's finding snap_trust_inaccessible (holdings); the defaults the rules give declared on the schema; OQ-1335, OQ-1336 new, OQ-1307 and OQ-1253 updated."
+impact: []

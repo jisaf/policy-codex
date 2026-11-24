@@ -1,0 +1,11 @@
+# Coverage pass 4 fix round for SNAP's resource test (docs/reviews/coverage4-snap-resources.md, section 6): one funeral agreement
+# and one burial plot per household member (7 CFR 273.8(e)(2), the agreement in full by a statute override), the resources of an
+# SSI or public assistance recipient (273.8(e)(17)), personal property held as an investment and a revocable burial fund counted
+# (273.8(c)(2)), the home and income-producing property tests, the $1,500 test per holding at the household's interest, a
+# separate household's joint holding in its entirety (4.409.C), resources per month (4.408.B, 4.408.1), the Colorado EITC in the
+# state refund, and the transfer, verification and open-question findings. One entry per change-impact flag the round leaves
+# open: none is a decision this round changed; each is a flag an earlier record dispositioned, re-keyed because the holdings
+# record and SNAP's resource items changed upstream.
+date: 2026-11-23
+summary: "Coverage pass 4 (SNAP resources): SR-1 to SR-10 fixed (one agreement and one plot per member, 273.8(e)(2) and (e)(17) by statute overrides on CO-5312, CO-343, CO-1740; (c)(2) counted; home, income-producing and installment tests; $1,500 per holding; 4.409.C; per month; Colorado EITC); SR-11 to SR-20 fixed or recorded; OQ-1202 part 2 and OQ-1250 resolved, OQ-1251 narrowed, OQ-1252 resolved in part, OQ-1305 to OQ-1310 recorded; stored households CO-790 to CO-799."
+impact: []

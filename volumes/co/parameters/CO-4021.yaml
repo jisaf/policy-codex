@@ -1,0 +1,15 @@
+id: CO-4021
+name: "Adult Financial: child support exclusion divisor"
+identifier: af_child_support_exclusion_divisor
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The support payments an absent parent makes to or for a child, divided by this number, are excluded from the child's unearned income (20 CFR 416.1124(c)(11), incorporated by 9 CCR 2503-5 3.520.786.K: \"One-third of support payments made to or for you by an absent parent if you are a child\")."
+versions:
+  - from: "2025-09-01"
+    value: 3
+    source: S2803
+sources: [S2803]
+tags: [cash, income]
+rationale: "Final cash review 2, N-4: af_excluded_unearned_income (CO-2343) counted all of the child support an AND-CS child receives; the one-third is a dated parameter, stated as its divisor so the share is exact. The version runs from September 2025, the edition of 20 CFR 416.1124 that 3.520.786.K incorporates by reference (S2608)."

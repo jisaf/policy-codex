@@ -1,0 +1,14 @@
+id: CO-7407
+name: Annual income for the previous calendar year
+identifier: previous_year_annual_income
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The person's modified adjusted gross income for the calendar year before the calendar year of the determination, as the person's federal return for that year computes it (26 CFR 1.36B-1(e)(2)): adjusted gross income plus income excluded under 26 U.S.C. 911, tax-exempt interest, and Social Security benefits not included in gross income. The year's figure as filed, or as the person expects it where the return is not yet filed."
+precision: "The figure for one year, as expected_annual_income (CO-4556) states the determination's year. Required where read (decision 4 of 2026-11-23): Medical Assistance reads it only for a month of the previous calendar year (a retroactive month of an application made in January to March) whose income the month's figure leaves over a standard, for the premium tax credit test of § 8.100.4.C.5 (ma_premium_tax_credit_previous_year_income_pct_fpl, CO-7408); no rule gives an unstated figure a value."
+supplied_by: "The applicant's statement of the previous year's income (the federal return for that year), or the account transferred from the marketplace."
+sources: [S3359, S3357]
+tags: [income]
+open: [OQ-811]
+rationale: "Coverage pass 6, C6-09 (docs/reviews/coverage6-medicaid-magi-chp.md, P2): the C.5 figure is one per case, the determination year's expected income, and was applied to a retroactive month of the previous calendar year too; the methodology C.5 names is an annual, taxable-year figure (26 CFR 1.36B-1(e)), so a month of another year needs that year's income."

@@ -1,0 +1,12 @@
+id: CO-2209
+name: Lost OAP to a cost of living adjustment other than OASDI
+identifier: ma_lost_oap_to_non_oasdi_cost_of_living_adjustment
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, a former OAP-A, OAP-B or OAP Refugee recipient, lost Old Age Pension financial assistance because of a cost of living adjustment in income other than OASDI, such as VA, RRB or PERA benefits (10 CCR 2505-10 § 8.100.6.K.7)."
+supplied_by: The Old Age Pension closure reason in the case record (CBMS).
+sources: [S667]
+tags: [ma, oap]
+rationale: "OQ-206: § 8.100.6.K.7 keeps these former recipients in the OAP State Only Medical Assistance Program (SISC C); no fact stated the closure."

@@ -1,0 +1,13 @@
+id: CO-3054
+name: "Adult Financial deeming: age under which a spouse's child is a dependent child"
+identifier: af_dependent_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The age under which a child of an OAP client's spouse, living in the household, is read as a \"dependent child\" whose needs are deducted from the spouse's deemed income (9 CCR 2503-5 3.534.B.3)."
+assumption: "3.534.B.3 says \"each dependent child living in the household\" without an age; the draft reads a dependent child as one under eighteen, the age 3.549.E uses for an unemancipated child. The figure is an interpretation, not a number the rule states."
+value: 18
+sources: [S1632]
+tags: [cash, income, age]
+rationale: "Hard-coded numbers audit H-14: af_spouse_dependent_children_needs (CO-2392) wrote [\"<\", age, 18]. Convention 8: _age_limit is exclusive."

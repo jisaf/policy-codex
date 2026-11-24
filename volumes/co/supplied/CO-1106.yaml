@@ -1,0 +1,12 @@
+id: CO-1106
+name: Lost SSDI entitlement because of earnings above SGA
+identifier: lost_ssdi_due_to_substantial_gainful_activity
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person was a recipient of federal Social Security Disability Insurance benefits who continues to be disabled but lost SSDI entitlement because earned income exceeded the Social Security Administration's Substantial Gainful Activity threshold (10 CCR 2505-10 § 8.100.6.O.2.a).
+supplied_by: SSA entitlement records (SVES/BENDEX) as read by the eligibility site.
+sources: [S622]
+tags: [ma, msp, disability]
+rationale: "OQ-84: ma_qdwi_eligible (CO-616) read the whole QDWI work history through one Part A entitlement fact. § 8.100.6.O.2.a and .b state two separate history conditions; this is the first. ma_qdwi_meets_disability_work_history (CO-1157) needs it."

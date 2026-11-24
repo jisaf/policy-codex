@@ -1,0 +1,11 @@
+# Earned-income records, step E1, SNAP (2026-11-23; docs/reviews/records-earnings-snap.md). SNAP reads earned income
+# from the earnings records (CO-5100) through snap_earnings_treatment_table (CO-5101): each pay converted by its own
+# frequency (CO-4324; CO-4682 retired), the counted pay summed record by record (CO-5113), the business, the farm and
+# boarders from their own records (CO-5114 to CO-5118, CO-1701, CO-1702, CO-3722, CO-4165, CO-4329, CO-4349), the
+# work tests' pay as received (CO-5119); wages an employer diverts to a third party counted (4.405.H.4, OQ-1021);
+# the quarter test shared (CO-5110, D-S4); reader defaults removed (decision 4); the prorated initial month capped for
+# disqualified members (CO-6000 to CO-6002, D-S3); unpaid work hours verified (CO-6003, D-S6). Harness classes in
+# scripts/records/allowed/e1-snap.yaml.
+date: 2026-11-23
+summary: "SNAP reads earned income from the earnings records; employer-diverted wages counted; the prorated initial month capped; unpaid work hours verified; unstated receipts in the quarter sums and the winnings flag are cannot determine."
+impact: []

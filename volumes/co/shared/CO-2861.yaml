@@ -1,0 +1,21 @@
+id: CO-2861
+name: SSI countable resources of the couple, wherever stated
+identifier: ssi_countable_resources_of_couple
+kind: derived
+type: money
+scope: person
+program: All
+meaning: "The couple's countable resources under the SSI methodology (ssi_countable_resources_couple, CO-801), read from this person where stated, otherwise from the spouse, so the couple's figure is stated once, on one spouse."
+precision: "Unknown when neither this person nor a spouse states the couple figure. The spouse is the legal spouse or a person holding out as one (the SSI method, S1955)."
+derived: [otherwise, ssi_countable_resources_couple, [case, [[">", [count, [filter, [reachable, [spouse, holds_out_as_spouse_with]], [not, [unknown, [of, [P], ssi_countable_resources_couple]]]]], 0], [sum, [filter, [reachable, [spouse, holds_out_as_spouse_with]], [not, [unknown, [of, [P], ssi_countable_resources_couple]]]], [of, [P], ssi_countable_resources_couple]]]]]
+sources: [S301, S1955]
+implemented: engine
+tags: [resources, non_magi]
+link_class: adopted_method
+link_basis: "The SSI couple's countable resources (20 CFR 416.1202(a), 416.1806), stated once on one spouse, as 10 CCR 2505-10 8.100.5.M adopts the SSI method for SSI-related Medicaid."
+adopted_by:
+  - {program: Medicaid, source: S301}
+rationale: "Dual-entry audit 2.6 and 5.6: the couple's figure was stated on both spouses and on unmarried persons. The couple's exclusions apply jointly, so it is not a sum of the individual figures and stays supplied, but once."
+tests:
+  - {id: CO-2861-T1, title: "Stated on the other spouse only", as_of: "2026-11-01", given: {}, others: {p2: {ssi_countable_resources_couple: 46000}}, relationships: [[spouse, p1, p2]], expect: 46000}
+  - {id: CO-2861-T2, title: "Stated on this person", as_of: "2026-11-01", given: {ssi_countable_resources_couple: 3000}, others: {p2: {}}, relationships: [[spouse, p1, p2]], expect: 3000}

@@ -1,0 +1,19 @@
+id: CO-2231
+name: "CHP+: copayment due"
+identifier: chp_copayment
+kind: derived
+type: money
+scope: person
+program: CHP+
+meaning: "The copayment due from a CHP+ enrollee at the time of service: nothing for an enrollee exempt from cost sharing (an American Indian or Alaska Native, or a Prenatal Care Program client, § 330.1 and § 330.4); otherwise the scheduled copayment (chp_scheduled_copayment), but no more than what remains of the family's yearly limit of 5% of income after the cost sharing already paid this year (§ 330.2). Informational: no rule reads it and it is not a declared outcome; it reports the cost sharing beside chp_eligibility_status."
+precision: The exemption is read in the month of the determination.
+derived: [case, [[at, chp_is_exempt_from_cost_sharing, [det_month]], 0], [else, [min, chp_scheduled_copayment, [max, 0, ["-", chp_cost_sharing_annual_limit, chp_family_cost_sharing_paid_for_year]]]]]
+sources: [S1504, S1505, S1236, S247]
+implemented: engine
+tags: [chp]
+rationale: "OQ-60: no rule applied the § 320 schedule, the § 330 exemptions and the § 330.2 yearly limit together."
+tests:
+  - {id: CO-2231-T1, as_of: "2026-10-01", month: "2026-10", title: "Band C office visit, far from the limit", given: {chp_is_exempt_from_cost_sharing: false, chp_scheduled_copayment: 5, chp_cost_sharing_annual_limit: 2400, chp_family_cost_sharing_paid_for_year: 300}, expect: 5}
+  - {id: CO-2231-T2, as_of: "2026-10-01", month: "2026-10", title: "Emergency care with $10 left under the yearly limit", given: {chp_is_exempt_from_cost_sharing: false, chp_scheduled_copayment: 30, chp_cost_sharing_annual_limit: 2400, chp_family_cost_sharing_paid_for_year: 2390}, expect: 10}
+  - {id: CO-2231-T3, as_of: "2026-10-01", month: "2026-10", title: "Yearly limit reached", given: {chp_is_exempt_from_cost_sharing: false, chp_scheduled_copayment: 30, chp_cost_sharing_annual_limit: 2400, chp_family_cost_sharing_paid_for_year: 2450}, expect: 0}
+  - {id: CO-2231-T4, as_of: "2026-10-01", month: "2026-10", title: "American Indian enrollee", given: {chp_is_exempt_from_cost_sharing: true}, expect: 0}

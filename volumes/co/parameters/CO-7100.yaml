@@ -1,0 +1,14 @@
+id: CO-7100
+name: "Colorado Works: months over which irregular self-employment income is averaged"
+identifier: cw_irregular_self_employment_averaging_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "The twelve months over which 9 CCR 2503-6 3.605.2.E.3 averages self-employment income whose receipt is irregular (\"If receipt of self-employment income is irregular or varies significantly from month to month, it shall be averaged over a twelve-month period\")."
+precision: "Read by cw_self_employment_net_profit (CO-1706), both as the length of the period and as the divisor. Which twelve months the period is (3.605.2.E.3 does not name them) is OQ-1335."
+value: 12
+sources: [S4913]
+open: ["OQ-1335"]
+tags: [cash, tanf, income]
+rationale: "Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-CW-5): the twelve-month period of 3.605.2.E.3 (S4913) as a parameter, not a literal."

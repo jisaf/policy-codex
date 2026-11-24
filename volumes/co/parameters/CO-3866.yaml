@@ -1,0 +1,12 @@
+id: CO-3866
+name: "Adult Financial: days to prove an application for SSA benefits"
+identifier: af_benefit_application_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "For all Adult Financial programs other than AND-SO, a client referred to the SSA shall provide verification of the application within this many calendar days of the application for SSA benefits (9 CCR 2503-5 3.520.71.C: \"eleven (11) calendar days\")."
+value: 11
+sources: [S2622]
+tags: [cash, verification]
+rationale: "Final cash review FC-9: The figure is a parameter."

@@ -1,0 +1,13 @@
+id: CO-3930
+name: "LEAP: approved this program year in another county"
+identifier: leap_received_benefit_in_another_county
+kind: supplied
+type: yes/no
+scope: case
+program: LEAP
+meaning: "The household was approved for Heating Fuel Assistance Program benefits for the program year applied for by another Colorado county, which remains responsible for its case after the household moved (9 CCR 2503-7 3.756.17), so the application in this county is denied and benefits are paid by the original county (3.754.1.F)."
+precision: "A record of the other county's approval in the LEAP system (convention rule 13(i)). One value for the case. If not stated, LEAP reads this as false."
+supplied_by: The LEAP system's record of the household's approval in the original county.
+sources: [S2715, S2718]
+tags: [household]
+rationale: "Final pass F-12: 3.754.1.F (S2715) makes receipt of Heating Fuel Assistance Program benefits from another county a factor for denial, and 3.756.17 (S2718) says the application in the new county \"shall be denied\". leap_is_eligible (CO-1007) did not read it."

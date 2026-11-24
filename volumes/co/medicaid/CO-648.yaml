@@ -3,15 +3,22 @@ name: "Medicaid: meets the LTC resource standard"
 identifier: ma_meets_ltc_resource_standard
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
-meaning: Whether this person's countable resources for Long-Term Care eligibility do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the $2,000 individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1.
-derived: ["<=", ma_institutionalized_spouse_countable_resources, ma_ssi_resource_limit_individual]
-sources: [S357]
+meaning: "Whether this person's countable resources for Long-Term Care eligibility for the month do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the ssi_resource_limit_individual individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1."
+precision: "A community spouse who controls resources attributed to the institutionalized spouse and withholds them does not make the institutionalized spouse ineligible where support rights are assigned, the Department can proceed without an assignment, or denial would be an undue hardship (§ 8.100.7.M.4; ma_community_spouse_withheld_resources_are_excused, CO-4637; coverage review NM-19). Coverage pass 6, non-MAGI F6-2: per month, with ma_institutionalized_spouse_countable_resources (CO-647): a person with no community spouse is tested on the month's holdings (20 CFR 416.1207(a), S4501; 10 CCR 2505-10 8.100.3.E.1, S1503)."
+derived: [any, ["<=", ma_institutionalized_spouse_countable_resources, ssi_resource_limit_individual], [all, ma_ltc_couple, [otherwise, ma_community_spouse_withheld_resources_are_excused, false]]]
+sources: [S1755, S3418, S4501]
 implemented: engine
 tags: [ma, ltc, resources]
-rationale: "No existing item compares ma_institutionalized_spouse_countable_resources to the individual resource limit. ma_ltc_financially_eligible (CO-651) needs it. Reuses ma_ssi_resource_limit_individual (CO-233, batch 8) rather than a new parameter, since 8.100.7.O.1's '$2,000' is the same SSI-related individual limit 8.100.5.M.1 states."
+rationale: "No existing item compares ma_institutionalized_spouse_countable_resources to the individual resource limit. ma_ltc_financially_eligible (CO-651) needs it. Reuses ssi_resource_limit_individual (CO-233, batch 8) rather than a new parameter, since 8.100.7.O.1's '$2,000' is the same SSI-related individual limit 8.100.5.M.1 states."
 nearest: [CO-610]
 tests:
-  - {id: CO-648-T1, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 1600, ma_ssi_resource_limit_individual: 2000}, expect: true}
-  - {id: CO-648-T2, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 16000, ma_ssi_resource_limit_individual: 2000}, expect: false}
+  - {id: CO-648-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 1600}, expect: true}
+  - {id: CO-648-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 16000}, expect: false}
+  - {id: CO-648-T3, month: "2026-10", as_of: "2026-10-01", title: "NM-19: over the standard, but the community spouse withholds the resources and support rights are assigned", given: {ma_institutionalized_spouse_countable_resources: 16000, ma_ltc_couple: true, ma_community_spouse_withheld_resources_are_excused: true}, expect: true}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-648-T4", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: ma_institutionalized_spouse_countable_resources equal to ssi_resource_limit_individual (ma_institutionalized_spouse_countable_resources at or under ssi_resource_limit_individual)", "given": {"ma_institutionalized_spouse_countable_resources": 2000}, "expect": true}
+  # Coverage pass 6 F6-2 (RETRO-LTC, CO-900): 8,000 at the first moment of August against the 2,000 limit (8.100.7.O.1, S1755): false; 1,200 in October: true.
+  - {id: CO-648-T5, month: "2026-08", as_of: "2026-11-12", title: "F6-2: a retroactive month over the limit before the spend-down", given: {ma_ltc_couple: false, holdings: [{kind: bank_account, value: 8000, month: "2026-08"}, {kind: bank_account, value: 1200, month: "2026-10"}]}, expect: false}
+  - {id: CO-648-T6, month: "2026-10", as_of: "2026-11-12", title: "F6-2: the month after the spend-down", given: {ma_ltc_couple: false, holdings: [{kind: bank_account, value: 8000, month: "2026-08"}, {kind: bank_account, value: 1200, month: "2026-10"}]}, expect: true}

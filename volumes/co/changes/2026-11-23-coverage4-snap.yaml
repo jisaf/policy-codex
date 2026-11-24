@@ -1,0 +1,10 @@
+# Coverage pass 4 fix round for SNAP (docs/reviews/coverage4-snap.md, section 7): a record's time read by SNAP (its regular date,
+# its interval, its source's dates, leave pay after termination), the counting rows the text on file settles (a diversion paid
+# once, foster care payments, HUD utility reimbursements, WIOA wages, boarders and roomers, business vehicle costs, the
+# irregular-income limit), Expanded Categorical Eligibility and the elderly member per month, decision 4 on the hours worked and
+# the reader defaults the review listed, anticipated capital gains. One entry per change-impact flag the round raises: those whose
+# item this round changed carry their own reason; the others are flags an earlier record dispositioned, re-keyed because the
+# receipts and earnings lists gained fields upstream.
+date: 2026-11-23
+summary: "Coverage pass 4 (SNAP): S4-1 to S4-14 (the P1s), S4-17, S4-18, S4-20, S4-21 fixed with rule tests and the review's repro households (CO-750 to CO-759); S4-11's remaining ages and S4-19 recorded in OQ-1263; S4-15 rows cited for the owner (OQ-1261); S4-16 OQ-996 resolved by the text, OQ-1020's SNAP half settled, OQ-835 and OQ-875 reclassified. Answer changes, each an enumerated class of the harnesses (scripts/records/allowed/coverage4-snap.yaml, h1-coverage4-snap.yaml, scripts/receipts/allowed-differences.yaml): a business vehicle cost is deducted (S4-10); a diversion paid once whose period is not stated, rent whose costs are not stated, VISTA pay whose joining status is not stated, a boarder record with no number of boarders, and SNAP income of a person whose earnings are not stated are cannot determine (S4-5, S4-14, S4-9, S4-4, S4-13); foster care payments with no member foster individual, HUD utility allowances, and room-only and meals-only receipts are no longer unearned income (S4-6, S4-7, S4-9)."
+impact: []

@@ -1,0 +1,21 @@
+id: CO-3322
+name: Birth mother's coverage at the person's birth
+identifier: birth_mother_coverage_at_birth
+kind: derived
+type: one of
+options: [none, medical_assistance, chp]
+scope: person
+program: All
+meaning: "The public health coverage program in which the person's birth mother was enrolled in the month the person was born: read from the mother of the case who gave birth to the person (gave_birth_to), her public_health_coverage_enrolled for the month of the person's date of birth; where no birth mother is linked in the case, the stated mother_coverage_at_birth."
+precision: "Neutral: it states the mother's enrollment, not any program's newborn rule; Medicaid (CO-087) and CHP+ (CO-2408) each read the program they name."
+derived: [case, [[exists, [filter, [persons], [otherwise, [rel, [born_to], [P]], false]], [at, ["=", [of, [P], public_health_coverage_enrolled], medical_assistance], [month_of, date_of_birth]]], medical_assistance], [[exists, [filter, [persons], [otherwise, [rel, [born_to], [P]], false]], [at, ["=", [of, [P], public_health_coverage_enrolled], chp], [month_of, date_of_birth]]], chp], [[exists, [filter, [persons], [otherwise, [rel, [born_to], [P]], false]], true], none], [else, mother_coverage_at_birth]]
+sources: [S211, S212, S1716]
+implemented: engine
+tags: [ma, chp, household]
+link_class: primitive
+link_basis: "The birth mother's enrollment in the month of birth, read across the born_to relationship; an enrollment fact no program defines differently."
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case."
+tests:
+  - {id: CO-3322-T1, title: "Mother in the case, on Medical Assistance in the birth month", as_of: "2026-10-01", given: {date_of_birth: "2026-02-03"}, persons: {p2: {months: {"2026-02": {public_health_coverage_enrolled: medical_assistance}}}}, relationships: [[born_to, p2]], expect: medical_assistance}
+  - {id: CO-3322-T2, title: "Mother in the case, on CHP+ in the birth month", as_of: "2027-02-01", given: {date_of_birth: "2026-12-03"}, persons: {p2: {months: {"2026-12": {public_health_coverage_enrolled: chp}}}}, relationships: [[born_to, p2]], expect: chp}
+  - {id: CO-3322-T3, title: "No birth mother linked: the stated fallback", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", mother_coverage_at_birth: none}, relationships: [], expect: none}

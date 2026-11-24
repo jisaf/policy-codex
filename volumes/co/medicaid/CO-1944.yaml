@@ -1,0 +1,18 @@
+id: CO-1944
+name: Community engagement review type
+identifier: ma_community_engagement_review_type
+kind: derived
+type: one of
+options: [application, renewal, change_in_circumstances, none]
+scope: person
+program: Medicaid
+meaning: "Which look-back of 42 CFR 435.556(a) this determination applies to the person: application (an application for medical assistance, (a)(1)); renewal (the regularly scheduled renewal of an enrolled beneficiary, (a)(2)(i)); change_in_circumstances (a redetermination on a change in circumstances that makes an enrolled beneficiary an applicable individual, (a)(2)(iii)); or none (an enrolled beneficiary's eligibility between those reviews, including before the first renewal on or after the implementation date, 435.559(c))."
+derived: [case, [[in, ma_determination_type, [initial_application, reapplication_after_break]], application], [[=, ma_determination_type, renewal], renewal], [[=, ma_determination_type, change_in_circumstances], change_in_circumstances], [else, none]]
+sources: [S1211, S1212]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: ma_determination_is_renewal (CO-1566) folds a subsequent application after a break in coverage into renewal and has no value for a determination that assesses nothing; the look-back differs for each of the four. Same-word audit SW-26 and dual-entry 3.22: derived from ma_determination_type (CO-2831), so a renewal is stated once."
+tests:
+  - {id: CO-1944-T1, title: "Reapplication after a break is an application under 435.556(a)(1)", as_of: "2026-11-01", given: {ma_determination_type: reapplication_after_break}, expect: application}
+  - {id: CO-1944-T2, title: "Renewal", as_of: "2026-11-01", given: {ma_determination_type: renewal}, expect: renewal}
+  - {id: CO-1944-T3, title: "Between reviews", as_of: "2026-11-01", given: {ma_determination_type: between_reviews}, expect: none}

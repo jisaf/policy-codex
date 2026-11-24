@@ -6,12 +6,22 @@ export interface Source {
   /** The document this excerpt was taken from (`D-n`), when sources.md names
    *  one. Excerpts written before the documents library are undefined. */
   document?: string;
+  /** `unverified` when the excerpt carries a `Verification: unverified` line:
+   *  the text could not be fetched and is not a quotation. */
+  verification?: string;
+}
+
+/** The ids of excerpts marked `Verification: unverified`. */
+export function unverifiedSourceIds(sources: readonly Source[]): string[] {
+  return sources.filter((s) => s.verification === "unverified").map((s) => s.id);
 }
 export interface OpenQuestion { id: string; title: string; body: string; items: string[] }
 
 const SOURCE_HEAD = /^### (S\d+)\.\s*(.*)$/;
 /** `Document: D-n` directly under an excerpt heading names its document. */
 const SOURCE_DOCUMENT = /^Document:\s*(D-\d+)$/;
+/** `Verification: unverified ...` marks an excerpt that is not a quotation. */
+const SOURCE_VERIFICATION = /^Verification:\s*([A-Za-z]+)/;
 const QUESTION_HEAD = /^### (OQ-\d+)\.?\s+(.*)$/;
 
 export function parseSources(md: string): Source[] {
@@ -27,8 +37,11 @@ export function parseSources(md: string): Source[] {
     }
     if (!cur) continue;
     const d = SOURCE_DOCUMENT.exec(line.trim());
+    const v = SOURCE_VERIFICATION.exec(line.trim());
     if (d) {
       cur.document = d[1];
+    } else if (v && !line.startsWith(">")) {
+      cur.verification = v[1].toLowerCase();
     } else if (line.startsWith(">")) {
       cur.text += line.slice(1).trim() + "\n";
     } else if (line.trim() && !cur.citation && !line.startsWith("#")) {
@@ -67,6 +80,14 @@ export function parseOpenQuestions(md: string): OpenQuestion[] {
     }
   }
   flush();
+  return out;
+}
+
+/** Excerpt id -> quoted text, what approval fingerprints hash
+ *  (src/engine/fingerprint.ts). */
+export function sourceTextMap(sources: readonly Source[]): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const s of sources) out[s.id] = s.text;
   return out;
 }
 

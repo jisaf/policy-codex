@@ -1,0 +1,14 @@
+id: CO-7671
+name: Moved into home date
+identifier: moved_into_home_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person who, on the determination date, lives in the home (dwelling_id) the person states, and came to live there with persons of the case who already lived there, the date the person moved in. Not stated for a person who has lived in the home since before the first month the case is evaluated for, or who came to it together with every person of the case the person lives with there."
+precision: "An event of the household's history, stated when it happened, as date_of_death (CO-2868) is not stated for a living person: a program that builds a month's household from the persons who live together reads a stated date for a month before the determination month (SNAP's household of the month, snap_lives_with_in_month CO-7672: 7 CFR 273.10(a)(1)(i), S5091), and an unstated date means the person did not move in after the first month the case is evaluated for. If not stated, SNAP reads it so (convention rule 12). The person who moved in states it; the persons who were already there state none."
+supplied_by: "The applicant's statement on the application (who lives at the address, and since when), or the case record."
+sources: [S5091, S1]
+tags: [household]
+rationale: "Coverage pass 7 for SNAP, C7-1 (docs/reviews/coverage7-snap.md): SNAP built every month's household from the homes of the determination date, so a person who moved in after the application month and before the determination was counted in an application month he did not live in. No fact dated when a person joined the home."
+nearest: [CO-7352, CO-7506, CO-7670]

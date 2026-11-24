@@ -1,0 +1,12 @@
+id: CO-3041
+name: "SNAP weeks per month"
+identifier: snap_weeks_per_month
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: "The factor between a weekly and a monthly amount in SNAP: \"the State agency shall convert the income to a monthly amount by multiplying weekly amounts by 4.3\" (7 CFR 273.10(c)(2)(i)). The work registration and student employment exemptions state weekly hours and earnings, so a month's hours and earnings are divided by it."
+value: 4.3
+sources: [S2050]
+tags: [income, work_registration]
+rationale: "Hard-coded numbers audit H-11: snap_weekly_hours_worked (CO-402) and snap_weekly_earnings_worked (CO-403) converted with 12/52 (4.333 weeks a month), a factor no SNAP text states; SNAP's own conversion is 7 CFR 273.10(c)(2)'s 4.3. Medical Assistance keeps its own factor, ma_community_engagement_weeks_per_month (CO-1907, 4.33, 42 CFR 435.552(d)(1)(ii)), which cites different text."

@@ -1,0 +1,18 @@
+id: CO-2871
+name: cw has countable unearned income
+identifier: cw_has_countable_unearned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person has unearned income in the month that Colorado Works counts: the receipts its counting table counts (cw_counted_unearned_receipts, CO-5651) or current child support (cw_child_support_receipts, CO-5652; 3.605.5), above zero. Not the Colorado Works grant itself, which a program does not count as its own income (docs/conventions.md rule 6), and not a receipt 3.605.4 exempts."
+derived: [">", ["+", cw_counted_unearned_receipts, cw_child_support_receipts], 0]
+sources: [S872, S1623]
+implemented: engine
+tags: [cash, tanf, income, verification]
+rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
+nearest: [CO-2870, CO-2872, CO-2873, CO-2874]
+tests:
+  - {id: CO-2871-T1, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: false}
+  - {id: CO-2871-T2, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: child_support, amount: 200}]}, title: "Child support received", expect: true}
+  - {id: CO-2871-T3, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: energy_assistance_federal, amount: 300}, {kind: child_support_arrears, amount: 100}]}, title: "Only exempt receipts (LEAP, 3.605.4.B.31; arrears, 3.605.5.D): nothing to verify", expect: false}

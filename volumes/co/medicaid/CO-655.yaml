@@ -5,15 +5,16 @@ kind: derived
 type: money
 scope: person-month
 program: Medicaid
-meaning: The community spouse's minimum monthly income needs - the MMMNA standard plus an excess shelter allowance for shelter costs above 30% of the standard, capped at the current MMMNA maximum - per 42 U.S.C. 1396r-5(d)(3)-(4) and 10 CCR 2505-10 § 8.100.7.Q.
-precision: Does not model 8.100.7.Q.2's additional approved amounts for the community spouse's medical expenses or insurance premiums (those instead deduct from health_insurance_premiums_paid, per CO-835's rationale, or are out of scope) or 8.100.7.Q.3's exceptional-circumstances fair-hearing increase.
-derived: ["min", mmmna_cap, ["+", ma_mmmna_standard, ["max", 0, ["-", shelter_costs_community_spouse, ["*", ma_mmmna_shelter_threshold_pct, ma_mmmna_standard]]]]]
-sources: [S358, S372]
-open: [OQ-97]
+meaning: "The community spouse's minimum monthly income needs - the MMMNA standard plus an excess shelter allowance for shelter costs above ma_mmmna_shelter_threshold_pct of the standard, the two together capped at the current MMMNA maximum, plus the additional amount for the community spouse's and dependents' medical expenses and premiums (ma_community_spouse_medical_needs, CO-3619) - per 42 U.S.C. 1396r-5(d)(3)-(4) and 10 CCR 2505-10 § 8.100.7.Q.1, Q.2 and Q.4."
+precision: "Q.4 caps only \"the total that results from adding the current MMMNA and the excess shelter allowance\", so the Q.2 amount is added after the cap (OQ-620 records the reading of Q.2's \"may be approved\"). § 8.100.7.R.2 calls the community spouse's minimum monthly needs \"the MMMNA\", so the monthly income allowance (CO-656) and the increased resource allowance (CO-1977) read this total. 8.100.7.Q.3's exceptional-circumstances amount is substituted only \"if established through a fair hearing\", a hearing decision outside the eligibility determination, and is not modeled."
+derived: [+, ["min", ma_mmmna_cap, ["+", ma_mmmna_standard, ["max", 0, ["-", ma_community_spouse_shelter_costs, ["*", ma_mmmna_shelter_threshold_pct, ma_mmmna_standard]]]]], ma_community_spouse_medical_needs]
+sources: [S358, S372, S1756]
 implemented: engine
 tags: [ma, ltc, income, legal]
-rationale: "No existing item computes the MMMNA. ma_community_spouse_income_allowance (CO-656) needs it."
+open: [OQ-620]
+rationale: "No existing item computes the MMMNA. ma_community_spouse_income_allowance (CO-656) needs it. Dual-entry audit 1.2: the shelter costs are the community spouse's own, read across the spouse edge (ma_community_spouse_shelter_costs, CO-2802), not a figure supplied on the institutionalized spouse (CO-834, retired). Final verification F-4 (2026-11-22): § 8.100.7.Q.2's additional amount for the community spouse's and dependents' medical expenses and premiums was left out, so the monthly income allowance was too low and the patient payment too high for a community spouse who pays a Part B premium; it is now added after the Q.4 cap."
 tests:
-  - {id: CO-655-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, mmmna_cap: 3948, shelter_costs_community_spouse: 800, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2270}
-  - {id: CO-655-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, mmmna_cap: 3948, shelter_costs_community_spouse: 400, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2100}
-  - {id: CO-655-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, mmmna_cap: 2200, shelter_costs_community_spouse: 5000, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2200}
+  - {id: CO-655-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_community_spouse_medical_needs: 0, ma_mmmna_standard: 2100, ma_community_spouse_shelter_costs: 800}, expect: 2270}
+  - {id: CO-655-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_community_spouse_medical_needs: 0, ma_mmmna_standard: 2100, ma_community_spouse_shelter_costs: 400}, expect: 2100}
+  - {id: CO-655-T3, title: "Phase 7: capped at the 2026 CMS maximum MMMNA, 4066.50", as_of: "2026-10-01", month: "2026-10", given: {ma_community_spouse_medical_needs: 0, ma_mmmna_standard: 2100, ma_community_spouse_shelter_costs: 5000}, expect: 4066.5}
+  - {id: CO-655-T4, title: "F-4: capped at 4,066.50, plus the community spouse's 262.90 of approved medical expenses and premiums above the cap", as_of: "2026-10-01", month: "2026-10", given: {ma_community_spouse_medical_needs: 262.9, ma_mmmna_standard: 2100, ma_community_spouse_shelter_costs: 5000}, expect: 4329.4}

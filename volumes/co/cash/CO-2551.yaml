@@ -1,0 +1,18 @@
+id: CO-2551
+name: "Colorado Works: average monthly child support over the last six months"
+identifier: cw_child_support_six_month_average
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "At a Colorado Works redetermination, the current child support the assistance unit received for this person in the six months before the redetermination, averaged over those six months (9 CCR 2503-6 3.605.5.C.2). Arrears are not included: 3.605.5.D makes them exempt."
+precision: "The six months before the determination month (cw_child_support_history_months); each month's current support is cw_child_support_receipts (CO-5652) in that month. Arrears are their own receipt kind (3.605.5.D), so nothing is subtracted (receipt records, migration phase 2: before them, child_support_received less the arrears stated within it, child_support_arrears_received; final cash review FC-2)."
+derived: [avg, cw_child_support_receipts, [months_ending, cw_child_support_history_months, [month_before, [det_month]]]]
+sources: [S2607, S1805]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: 3.605.5.C.2 compares the household's six-month average with $500; no fact stated the average. Dual-entry audit 2.2: derived as the average of the months of child_support_received (CO-028) the case states."
+nearest: [CO-2550]
+tests:
+  - {id: CO-2551-T1, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: child_support, amount: 500, month: "2026-05"}, {kind: child_support, amount: 600, month: "2026-06"}, {kind: child_support, amount: 550, month: "2026-07"}, {kind: child_support, amount: 550, month: "2026-08"}, {kind: child_support, amount: 500, month: "2026-09"}, {kind: child_support, amount: 600, month: "2026-10"}]}, title: "Six months averaging 550", expect: 550}
+  - {id: CO-2551-T2, month: "2026-11", as_of: "2026-11-01", given: {receipts: [{kind: child_support, amount: 600}, {kind: child_support_arrears, amount: 300, month: "2026-07"}]}, title: "Arrears paid in July are not current support (3.605.5.D)", expect: 600}

@@ -1,0 +1,14 @@
+id: CO-1268
+name: Meets the county's diversion income limit
+identifier: cw_meets_county_diversion_income_limit
+kind: supplied
+type: yes/no
+scope: case
+program: ColoradoWorks
+meaning: "The household's income is within the higher income limit the county has adopted for diversion payments under its own policy, not exceeding the maximum the State plan sets for non-recurrent short-term benefits, per 9 CCR 2503-6 3.606.8.A.6. False where the county has adopted no such limit."
+precision: "One value for the case."
+supplied_by: County Colorado Works policy applied by the eligibility worker.
+sources: [S762]
+open: [OQ-252]
+tags: [cash, tanf, income, state_election]
+rationale: "The county option has no state-stated figure (OQ-252), so its result enters as a supplied fact; cw_diversion_eligible (CO-1270) needs it. Same-word audit SW-37: renamed from cw_meets_county_diversion_income_limit so the identifier carries the prefix of the program (or method) whose meaning it states. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

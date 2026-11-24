@@ -1,0 +1,14 @@
+id: CO-4261
+name: Qualifying quarters with a federal means-tested benefit
+identifier: qualifying_quarters_with_federal_means_tested_benefit
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "How many of the quarters counted in qualifying_quarters (CO-004) are for a period beginning after December 31, 1996 in which the person, a parent of the person or the person's spouse received a federal means-tested public benefit, identified calendar year by calendar year. Benefits that do not count as a federal means-tested public benefit are not receipt here: emergency Medicaid, short-term non-cash emergency disaster relief, school lunch and child nutrition benefits, public health assistance for immunizations and communicable diseases, certain Title IV-B and IV-E foster care and adoption payments, community programs the Attorney General specifies, Higher Education Act student assistance, Elementary and Secondary Education Act means-tested programs, Head Start and Workforce Investment Act benefits (10 CCR 2506-1 4.505.61.C). A fortieth quarter the person earned before applying for SNAP or any other federal means-tested public benefit in that same quarter is not counted here (4.505.61.B)."
+precision: "If not stated, read as 0 (no such benefit in a credited quarter). The quarters are those SSA's record credits, the spouse's and parent's included; the benefit may be the person's, a parent's or the spouse's."
+supplied_by: "The county's review of the SSA quarters record against the case's benefit history (4.505.61.B)."
+sources: [S3056, S13]
+tags: [immigration]
+nearest: [CO-004]
+rationale: "Coverage review C-5 (docs/reviews/coverage-snap-nonfinancial.md): qualifying_quarters (CO-004) is SSA's credited total, which does not remove the post-1996 quarters in which a federal means-tested benefit was received; 4.505.61.A-B (S3056) and 8 U.S.C. 1612(a)(2)(B)(ii) do not credit them, and give that step to the local office. SNAP assumed the supplied count already reflected it. No existing fact states those quarters."

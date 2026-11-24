@@ -1,0 +1,13 @@
+id: CO-1180
+name: Lost SSI because of Social Security benefits
+identifier: lost_ssi_due_to_social_security_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person received SSI in the past and no longer receives SSI payments because of the receipt of, or an increase to, Social Security (OASDI) benefits - the loss event 10 CCR 2505-10 § 8.100.6.I.1.b and d (disabled widow(er)s: 'have received SSI in the past', 'no longer receive SSI payments because of Social Security payments') and § 8.100.6.J.1 (Disabled Adult Children: 'loses SSI due to the receipt of OASDI drawn from his/her parents' Social Security Number') each start from. A loss of Old Age Pension alone is not this fact."
+precision: "Narrower than lost_ssi_or_oap_due_to_social_security_benefits (CO-1108), which also counts a loss of OAP and remains the Pickle fact (§ 8.100.6.D.2, 'SSI and/or OAP'). Which benefit caused the loss is distinguished by receives_oasdi_as_disabled_adult_child (CO-1110) and is_widow_or_widower (CO-1111). § 8.100.3.F.1.h's 'SSI was discontinued on or after May 1, 1987' is not separately recorded."
+supplied_by: SSA SDX/SVES history of SSI termination reason, as read by the eligibility site.
+sources: [S625, S626]
+tags: [ma, non_magi, income]
+rationale: "S-7 of the phase 7 review: ma_dac_eligible (CO-1161) and ma_disabled_widow_eligible (CO-1162) read CO-1108, which is true for a person who lost only OAP, although §§ 8.100.6.I.1 and J.1 require a loss of SSI. No existing fact states an SSI-only loss."

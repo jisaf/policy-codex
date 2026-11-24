@@ -1,0 +1,19 @@
+id: CO-2240
+name: "Medicaid: SSI income standard for the person's household size"
+identifier: ma_ssi_income_standard
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The SSI Federal Benefit Rate that applies to the person's SSI-related income test: the couple rate for a person living with a spouse (ma_ssi_household_size of 2), otherwise the individual rate (10 CCR 2505-10 §§ 8.100.6.C.1.a-b, 8.100.6.K.3-4)."
+precision: "Coverage pass 6, non-MAGI F6-6 (docs/reviews/coverage6-medicaid-nonmagi.md): where no income of an ineligible spouse is deemed (ma_ssi_ineligible_spouse_income_is_not_deemed, CO-7353; 20 CFR 416.1163(d)(1), S5031: 'we subtract only your own countable income from the Federal benefit rate for an individual'), the individual rate applies although the person lives with the spouse; otherwise the couple rate for a couple, as before."
+derived: [case, [ma_ssi_ineligible_spouse_income_is_not_deemed, ssi_federal_benefit_rate_individual], [["=", ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]
+sources: [S1746, S5031]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "OQ-374: ma_meets_ssi_income_standard (CO-609) and the aged, blind and disabled reasonable compatibility test (CO-1640) compare with the same standard; one item states it."
+tests:
+  - {id: CO-2240-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_ineligible_spouse_income_is_not_deemed: false, ma_ssi_household_size: 2}, expect: 1491}
+  - {id: CO-2240-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_ineligible_spouse_income_is_not_deemed: false, ma_ssi_household_size: 1}, expect: 994}
+  # Coverage pass 6 F6-6: 20 CFR 416.1163(d)(1) (S5031): with no income deemed from the ineligible spouse the person is tested against "the Federal benefit rate for an individual": 994 (2026), although the household size is 2.
+  - {id: CO-2240-T3, month: "2026-11", as_of: "2026-11-20", title: "F6-6: the individual rate where no income is deemed from an ineligible spouse", given: {ma_ssi_ineligible_spouse_income_is_not_deemed: true, ma_ssi_household_size: 2}, expect: 994}

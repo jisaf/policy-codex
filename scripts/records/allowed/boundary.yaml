@@ -1,0 +1,7 @@
+# Boundary lint (scripts/records/boundary.ts): pairs a stored household or rule test states on both sides of
+# the receipts/earnings boundary that are known and dispositioned, each with the reason and who restates it.
+# Owned by the integration owner; a track that restates the household removes its entry.
+# {case, person, receipt, earning, amount, reason}
+# CO-425 (finding E0-F1) was restated by the SNAP E1 track: its $600 of room and board is stated once, as the
+# boarder record (docs/reviews/records-earnings-snap.md).
+[]

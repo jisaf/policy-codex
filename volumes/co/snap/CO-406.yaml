@@ -3,14 +3,23 @@ name: "SNAP: is a work registrant"
 identifier: snap_is_work_registrant
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: SNAP
-meaning: The person is subject to general SNAP work registration - age 16 through 59 and not exempt under snap_is_exempt_from_work_registration.
-derived: [all, [">=", age, snap_work_registration_min_age], ["<=", age, snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
-sources: [S122, S123, S126]
+meaning: "The person is subject to general SNAP work registration - age snap_work_registration_min_age through snap_work_registration_max_age and not exempt under snap_is_exempt_from_work_registration. Informational: no rule reads it and it is not a declared outcome; the work requirements read their own exemptions, and the figure is reported to the worker (household cases check it)."
+precision: "Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): evaluated for the month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734). The ages are taken in the month; the exemptions \"younger than sixteen (16)\" and \"sixty (60) years of age or older\" (4.310.3.A, S126) are met when met on any day of it (OQ-1262; docs/operators.md, Ages in a month), so the person is a registrant when 16 or older on the first day (the age on the first day of the month) and 59 or younger on the last day (the age on the last day of the month). Before, the age on the determination date in every month."
+derived: [all, [">=", [years_between, date_of_birth, [first_day, [month]]], snap_work_registration_min_age], ["<=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
+sources: [S122, S123, S126, S4734]
 implemented: engine
 tags: [work_registration]
+open: [OQ-1262]
 rationale: No existing item states the pass/fail work-registration outcome itself; this combines the age band (7 CFR 273.7(b)(1)(i), 10 CCR 2506-1 4.310.3.A, S123/S126) with snap_is_exempt_from_work_registration, matching the structure of the mwr volume's WR-308.
 tests:
-  - {id: CO-406-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_is_exempt_from_work_registration: false}, expect: true}
-  - {id: CO-406-T2, as_of: "2026-10-01", given: {date_of_birth: "1945-07-30", snap_is_exempt_from_work_registration: false}, expect: false}
+  - {id: CO-406-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_is_exempt_from_work_registration: false}, expect: true}
+  - {id: CO-406-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1945-07-30", snap_is_exempt_from_work_registration: false}, expect: false}
+  # Coverage pass 4 S4-11 (OQ-1263 resolved): determined 2026-11-20. Born 1966-11-10: 59 on October 31, 60 on November 30 (exempt as 60 or older,
+  # 4.310.3.A, S126) - October true, November false. Born 2010-11-15: 15 on November 1 (exempt as younger than 16), 16 on December 1 - November
+  # false, December true. Before, the ages on 2026-11-20 (60 and 16): false in October, true in November.
+  - {id: CO-406-T3, month: "2026-10", as_of: "2026-11-20", title: "S4-11: turns 60 on November 10 - 59 on October 31: a registrant in October", given: {date_of_birth: "1966-11-10", snap_is_exempt_from_work_registration: false}, expect: true}
+  - {id: CO-406-T4, month: "2026-11", as_of: "2026-11-20", title: "S4-11: November - 60 on November 30: not a registrant", given: {date_of_birth: "1966-11-10", snap_is_exempt_from_work_registration: false}, expect: false}
+  - {id: CO-406-T5, month: "2026-11", as_of: "2026-11-20", title: "S4-11: turns 16 on November 15 - 15 on November 1: not a registrant in November", given: {date_of_birth: "2010-11-15", snap_is_exempt_from_work_registration: false}, expect: false}
+  - {id: CO-406-T6, month: "2026-12", as_of: "2026-11-20", title: "S4-11: December - 16 on December 1: a registrant", given: {date_of_birth: "2010-11-15", snap_is_exempt_from_work_registration: false}, expect: true}

@@ -1,0 +1,12 @@
+id: CO-2454
+name: "Medicaid: standard renewal interval"
+identifier: ma_standard_renewal_interval_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The months between renewals for a person whose renewal is not made at the expansion adult interval (ma_expansion_adult_renewal_interval_months, CO-2453): 42 CFR 435.916(a), \"once every 12 months\"."
+value: 12
+sources: [S1707]
+tags: [ma]
+rationale: C-11 of the HCPF review.

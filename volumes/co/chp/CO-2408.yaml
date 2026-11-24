@@ -1,0 +1,18 @@
+id: CO-2408
+name: "CHP+: mother was enrolled in CHP+ at the child's birth"
+identifier: chp_mother_was_enrolled_at_birth
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: "Whether the child's mother was enrolled in the Children's Basic Health Plan (CHP+) at the time of the child's birth (10 CCR 2505-3 § 430.5)."
+precision: "Read from the birth mother's enrollment in the birth month (birth_mother_coverage_at_birth, CO-3322)."
+derived: ["=", birth_mother_coverage_at_birth, chp]
+sources: [S1716]
+implemented: engine
+tags: [chp, age]
+nearest: [CO-087]
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived."
+tests:
+  - {id: CO-2408-T1, as_of: "2027-02-01", given: {birth_mother_coverage_at_birth: chp}, expect: true}
+  - {id: CO-2408-T2, as_of: "2027-02-01", given: {birth_mother_coverage_at_birth: none}, expect: false}

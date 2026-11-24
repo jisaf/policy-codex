@@ -1,0 +1,13 @@
+id: CO-3729
+name: "SNAP: application filed by an authorized representative"
+identifier: snap_application_filed_by_authorized_representative
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "The household's SNAP application was made on its behalf by an authorized representative (10 CCR 2506-1 4.301; 7 CFR 273.2(n))."
+precision: "One value for the case. If not stated, SNAP reads this as false (the household applied itself)."
+supplied_by: "The application (authorized representative designation) as recorded in CBMS."
+sources: [S2512, S2513]
+tags: [snap, verification, application_wide]
+rationale: "Final verification F-9 (docs/reviews/final-snap.md): when an authorized representative applies, the representative's identity is verified as well as the head of household's (4.301, 4.502.A.1, 4.505.1.A, S2512; 273.2(f)(1)(vii), S2513); the volume had no fact saying who applied."

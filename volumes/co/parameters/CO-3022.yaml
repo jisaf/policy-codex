@@ -1,0 +1,17 @@
+id: CO-3022
+name: Income trust gross income limit by private-pay region
+identifier: ma_income_trust_limit_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: Medicaid
+meaning: "The average monthly private-pay cost of long-term care institution care in each region of 10 CCR 2505-10 § 8.100.7.G.6.a.i.a) (keyed by the options of ma_ltc_private_pay_region, CO-1980), which HCPF calculates each calendar year: the gross monthly income an individual with an income trust who resides in that region must be below."
+precision: "The figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1230). Blocked (OQ-1061): the 2025 and 2026 regional figures rest on S1230, which is not a quotation; the county lists match S1229. HCPF Operational Memo OM 25-073 (D-125), the only document that states them, could not be fetched on 2026-11-23 (hcpf.colorado.gov refused, HTTP 403; medicaid.gov, sos.state.co.us, ecfr.gov, law.cornell.edu, govinfo.gov and federalregister.gov answered but state no Colorado figure), so the item stays Draft until the memo is stored and the excerpt replaced by its quotation."
+open: [OQ-1061]
+versions:
+  - {from: "2025-01-01", to: "2026-01-01", value: {region_i: 11556.2, region_ii: 10397.93, region_iii: 9290.77, region_iv: 10655.56}, source: S1230}
+  - {from: "2026-01-01", to: "2027-01-01", value: {region_i: 11522.44, region_ii: 10633.36, region_iii: 9780.17, region_iv: 11322.6}, source: S1230}
+review_by: "2027-01-01"
+sources: [S1229, S1230]
+tags: [ma, ltc, income]
+rationale: "Hard-coded numbers audit H-7(b): the four regional rates were four parameters (ma_income_trust_limit_region_i to _iv, CO-1981 to CO-1984, now retired) selected by a case on the region; one figure keyed by region is one table. OQ-99: the product owner supplied the 2025 and 2026 rates."

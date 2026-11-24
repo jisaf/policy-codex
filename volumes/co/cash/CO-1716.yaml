@@ -1,0 +1,23 @@
+id: CO-1716
+name: "Colorado Works: gross earned income"
+identifier: cw_gross_earned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "This person's gross earned income for the month for Colorado Works: the pay the earnings table counts (cw_earned_pay: wages and the other pay no paragraph exempts, pay diverted to a third party for the household, in-kind pay at its value, 9 CCR 2503-6 3.605.2.A, B.1, D.1, G), plus the net profit from self-employment, which 3.605.2.E.1.c treats as earned income (3.605.2.D), plus room and board, board-only and room-only payments beyond the one-person Food Assistance allotment per boarder (none for a room only) and the documented costs (3.605.2.E.4.c-e; cw_boarder_income, CO-4361), less the earned income 3.605 does not consider by a property of the pay or of the person (cw_excluded_earned_income: a temporary job's pay, 3.605.2.C; a dependent student's earnings, 3.605.4.B.24.b), never below zero. Coverage review CW-9(c), CW-10, coverage pass 3 CW3-1 (S3159)."
+precision: "Earned-income records, step E1 Colorado Works (docs/reviews/records-earnings-cash.md): read from the earnings records (earnings, CO-5100) through cw_earnings_treatment_table (CO-5104), replacing wages_gross, in_kind_compensation_value and the parts of wages_gross cw_excluded_earned_income subtracted: a kind the table excludes (work-study, 3.605.4.A.24.a; WIOA on-the-job training and other subsidized employment, B.35, B.16) is never counted, so it is not subtracted either. The same for a member of the unit and every person whose income is deemed to it (the stepparent and minor parent's parent deeming, the sponsor, a disqualified member: cw_budgetary_member_deemed_income and its siblings read this figure). An unstated earnings list is cannot determine (product-owner decision 4 of 2026-11-23); a stated empty list is no earned income."
+derived: [max, 0, ["-", [+, cw_earned_pay, cw_self_employment_net_profit, cw_boarder_income], cw_excluded_earned_income]]
+sources: [S1621, S412, S1155, S3159, S4381, S2606]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): the Colorado Works need test, payment and minor-parent deeming read wages only, so a self-employed applicant's earnings were left out; one item now states the earned income the three of them disregard from. Earned-income records, step E1 Colorado Works: the pay, business and boarder parts are read from the earnings records through the program's counting table (cw_earned_pay CO-5140, cw_self_employment_net_profit CO-1706, cw_boarder_income CO-4361)."
+tests:
+  # Hand computations from 3.605.2 (S3159, S1155, S4381) and 3.605.4.B.24, B.35 (S2606).
+  - {id: "CO-1716-T1", title: "$800 of wages and a business with $1,500 of receipts and $400 of operating costs: 800 + 1,100 = 1,900", as_of: "2026-10-01", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: false, earnings: [{kind: wages, amount: 800}, {kind: self_employment_receipts, amount: 1500}, {kind: business_cost_operating, amount: 400}], licensed_child_care_children_in_care_count: 0}, expect: 1900}
+  - {id: CO-1716-T2, title: "$2,380 of wages", as_of: "2026-10-01", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: false, earnings: [{kind: wages, amount: 2380}]}, expect: 2380}
+  # Phase-10 sweep (OQ-390): a full-time student dependent child's $800 of wages is disregarded (3.605.4.B.24.b).
+  - {id: CO-1716-T3, title: "A full-time student dependent child's $800 of wages: 800 - 800 = 0 (B.24.b)", as_of: "2026-10-01", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: true, earnings: [{kind: wages, amount: 800}]}, expect: 0}
+  - {id: CO-1716-T4, title: "$900 of wages, $600 of WIOA on-the-job training wages (B.35, B.16) and a $400 room-only payment with no costs (E.4.d): 900 + 400 = 1,300", as_of: "2026-10-15", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: false, earnings: [{kind: wages, amount: 900}, {kind: wioa_on_the_job_training, amount: 600}, {kind: boarder_payments, amount: 400, provides: room_only, boarders: 1}]}, expect: 1300}
+  - {id: CO-1716-T5, title: "$700 of wages and $500 from a 60-day temporary job still going (3.605.2.C): 1,200 - 500 = 700", as_of: "2026-10-01", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: false, earnings: [{kind: wages, amount: 700}, {kind: wages, amount: 500, temporary_job: true}]}, expect: 700}
+  - {id: CO-1716-T6, title: "Earnings not stated: cannot determine (decision 4)", as_of: "2026-10-01", month: "2026-10", given: {receipts: [], cw_student_earnings_are_disregarded: false}, expect: unknown}

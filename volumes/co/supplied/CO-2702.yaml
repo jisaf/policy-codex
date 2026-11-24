@@ -1,0 +1,13 @@
+id: CO-2702
+name: Hmong or Highland Lao veteran of the Vietnam conflict
+identifier: is_hmong_or_highland_lao_veteran
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a Hmong or Highland Lao veteran of the Vietnam conflict (10 CCR 2505-10 § 8.100.3.G.1.g.iv.6 and vii.24; 10 CCR 2505-3 § 110.1.B.4.i)."
+precision: "If not stated, programs read this as false."
+supplied_by: "Immigration documents and the military service record the applicant provides."
+sources: [S656, S1904, S1907]
+tags: [immigration]
+rationale: "OQ-44 fix (docs/reviews/audit-dual-entry.md 3.1): the hmong_or_highland_lao_veteran option of ma_five_year_bar_exempt_category (CO-1170, retired) as a program-neutral yes/no; Medicaid's five-year-rule exemption reads it for a lawful permanent resident (ma_is_five_year_bar_exempt, CO-1172)."

@@ -1,0 +1,15 @@
+id: CO-6501
+name: "Medicaid SSI method: months proceeds held toward replacing a home are not a resource"
+identifier: ma_replacement_proceeds_exclusion_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of months from their receipt during which the proceeds of the sale of the person's home, and a condemnation award toward real property, held to replace the home are left out of resources: three months for the proceeds of the sale of an exempt home used to purchase another home (10 CCR 2505-10 8.100.5.P.4, S4669: \"excluded to the extent they are intended to be used and are, in fact, used to purchase another home ... within three months of the date of the sale of the home\"); relocation payments toward a replacement dwelling are exempt for up to six months (F.6.f, S4506)."
+precision: "Resource records, Medicaid track H1: read by ma_ssi_holdings_countable_in_month (CO-5320) for the holdings counting table's row excluded_three_months_toward_real_property (held_replacement_proceeds whose replacement_property is real_property): proceeds received in month M are left out through month M + 3. The record does not say whether the proceeds are a sale's, a relocation payment or insurance (CO-5300's kind names all three), so the three months every source the Medical Assistance text names at least gives are applied; the longer windows of a relocation payment (six months, F.6.f) and of insurance for an excluded resource (nine months under 20 CFR 416.1232(a), S4662, which no Colorado text on file adopts) need the source stated (OQ-1240). Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-9 (OQ-1240 narrowed): the record now states proceeds_source, so this figure is read for the proceeds of the sale of the home (P.4) and, as before, for a condemnation award toward real property (no text on file names condemnation: OQ-1240); a relocation payment has its six months (CO-7150) and cash replacing a lost, damaged or stolen excluded resource its nine (CO-7151)."
+value: 3
+sources: [S4669, S4506, S4662]
+open: [OQ-1240]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Resource records, step H1 (Medicaid), finding H0-F1 (OQ-1204): no SSI-method item left proceeds held toward replacing a home out, though 8.100.5.P.4 and F.6.f exempt them for three and six months."

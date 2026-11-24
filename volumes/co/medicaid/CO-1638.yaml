@@ -1,0 +1,17 @@
+id: CO-1638
+name: "Medical Assistance: trust verification is pending"
+identifier: ma_trust_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether a long-term care applicant must document trust documents and has not.
+derived: [all, ma_requires_verification_of_trust, [not, trust_documents_received]]
+sources: [S1741]
+implemented: engine
+tags: [verification, ma, ltc]
+rationale: "Review K-3: the long-term care documentation 8.100.7.A.2 requires had no item; the Medical Assistance count sums this one."
+tests:
+  - {id: CO-1638-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_trust: true, trust_documents_received: false}, expect: true}
+  - {id: CO-1638-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_trust: true, trust_documents_received: true}, expect: false}

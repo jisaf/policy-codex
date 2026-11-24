@@ -1,17 +1,19 @@
 id: CO-417
-name: "SNAP: countable ABAWD months in the 36-month period"
+name: "SNAP: countable ABAWD months in the current 36-month clock period"
 identifier: snap_abawd_countable_months_in_period
 kind: derived
 type: whole number
 scope: person-month
 program: SNAP
-meaning: The number of countable ABAWD months in the snap_abawd_period_months (36) consecutive months ending with the month before the month in context.
-precision: Evaluated per month, not only as of the determination date, so the count can be checked for any month (a rolling clock, per 7 CFR 273.24(b)(3)).
-derived: [count_months, [months_ending, snap_abawd_period_months, [month_before, [month]]], [at, snap_abawd_countable_month, [month]]]
-sources: [S127, S130, S132]
+meaning: The number of countable ABAWD (able-bodied adult without dependents) months accrued in Colorado's current fixed 36-month clock period before the month in context - from the most recent reset (July 2023, July 2026, July 2029, ...) through the month before - since the clock 'resets accrued countable months and ABAWD disqualifications, regardless of start date, for all ABAWDs every thirty-six (36) calendar months starting July 1, 2023' (10 CCR 2506-1 4.311.3.C.2).
+precision: "Evaluated per month, not only as of the determination date. The period start is the clock start month plus snap_abawd_period_months times the whole number of 36-month periods elapsed (whole years between the first days of the two months, divided by three and rounded down; floor(x) is computed as -ceil(-x)). In the reset month itself nothing has accrued yet. A month before July 2023 keeps the rolling 36-month count 7 CFR 273.24(b)(3) also allows. Phase-8 fix round (K-6): the item counted a rolling snap_abawd_period_months months, which is not the clock Colorado chose."
+derived: [case, [["<", [month], snap_abawd_clock_start_month], [count_months, [months_ending, snap_abawd_period_months, [month_before, [month]]], [at, snap_abawd_countable_month, [month]]]], [else, [count_months, [months_from_to, [months_after, ["*", snap_abawd_period_months, ["*", -1, [ceil, ["*", -1, ["/", [years_between, [first_day, snap_abawd_clock_start_month], [first_day, [month]]], ["/", snap_abawd_period_months, 12]]]]]], snap_abawd_clock_start_month], [month_before, [month]]], [at, snap_abawd_countable_month, [month]]]]]
+sources: [S127, S130, S132, S1014]
 implemented: engine
 tags: [abawd]
-rationale: 7 U.S.C. 2015(o)(2), 7 CFR 273.24(b), and 10 CCR 2506-1 4.311.3 (S127, S130, S132) all state the 3-in-36 test as a count of countable months in a rolling 36-month period; this item is that count, read by snap_abawd_time_limit_status, following the mwr volume's WR-314/WR-315 shape but combined into one pm-scoped item per the design brief's interface.
+rationale: Phase-8 fix round (K-6) - counts from the most recent reset of Colorado's fixed clock (snap_abawd_clock_start_month, CO-1515; S1014) instead of a rolling window. 7 U.S.C. 2015(o)(2), 7 CFR 273.24(b), and 10 CCR 2506-1 4.311.3 (S127, S130, S132) all state the 3-in-36 test as a count of countable months in a rolling 36-month period; this item is that count, read by snap_abawd_time_limit_status, following the mwr volume's WR-314/WR-315 shape but combined into one pm-scoped item per the design brief's interface.
 tests:
-  - {id: CO-417-T1, month: "2026-10", given: {snap_abawd_countable_month: {"2026-07": true, "2026-08": true, "2026-06": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 3}
+  - {id: CO-417-T1, title: "K-6 - June 2026 was in the clock period that reset in July 2026; only July and August count", month: "2026-10", given: {snap_abawd_countable_month: {"2026-07": true, "2026-08": true, "2026-06": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 2}
   - {id: CO-417-T2, month: "2026-10", given: {snap_abawd_countable_month: {"2026-07": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 1}
+  - {id: CO-417-T3, title: "K-6 - in the reset month nothing has accrued", month: "2026-07", given: {snap_abawd_countable_month: {"2026-05": true, "2026-06": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 0}
+  - {id: CO-417-T4, title: "K-6 - the July 2023 period runs through June 2026", month: "2026-06", given: {snap_abawd_countable_month: {"2023-07": true, "2025-01": true, "2026-05": true, "2023-06": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 3}

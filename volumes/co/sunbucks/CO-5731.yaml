@@ -1,0 +1,22 @@
+id: CO-5731
+name: "SUN Bucks: a person's TANF assistance receipts"
+identifier: sebt_tanf_assistance_receipts
+kind: derived
+type: money
+scope: person-month
+program: SunBucks
+meaning: "The assistance under TANF paid to the person in the month that SUN Bucks' table of receipts reads (sebt_receipt_treatment_table: Colorado Works basic cash assistance), other than a retroactive payment for months before the month received: a payment that shows a child of the household \"receiving assistance under ... TANF\" in the month (7 CFR 292.2)."
+precision: "A receipt is read in the month it states, or in every month when it states none (it recurs). A retroactive lump sum is paid for earlier months and is not read as receipt in the month it comes in. Replaces tanf_cash_income (CO-029, paid in the month for the member's needs) for SUN Bucks. Read by sebt_household_child_receives_snap_or_tanf (CO-2708) for each month of the period of eligibility, for the child and the other children of the economic unit. Coverage pass 5, S5-1 (docs/reviews/coverage5-care-energy.md): a stream (a receipt with neither a month nor a date) is read only in the months from the month of its start_date through the month of its end_date (docs/conventions.md, \"A record's time\"), so a Colorado Works grant that ended before the period of eligibility is not assistance received in it (7 CFR 292.6, S790: children who, \"at any time during the period of eligibility\", are categorically eligible; 292.2), as SNAP reads a stream (snap_counted_recurring_receipts, CO-5011). Review household SS1: CO-5731-T5, CO-2708-T16."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["lookup", "sebt_receipt_treatment_table", ["receipt", "kind"]], "tanf_assistance"], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]], ["not", ["receipt", "retroactive"]]], ["receipt", "amount"]]
+sources: [S792, S790]
+implemented: engine
+tags: [sebt]
+rationale: "Receipt records, migration phase 2: the Colorado Works receipt SUN Bucks' categorical test reads, from the receipts through SUN Bucks' table."
+tests:
+  - {id: CO-5731-T1, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: colorado_works_cash, amount: 300, month: "2026-10"}, {kind: child_support, amount: 200}]}, title: "$300 of Colorado Works cash in October; child support is not read", expect: 300}
+  - {id: CO-5731-T2, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: colorado_works_diversion, amount: 1000, frequency: once, month: "2026-10"}]}, title: "A diversion payment is not read as assistance under TANF (OQ-993)", expect: 0}
+  - {id: CO-5731-T3, month: "2026-10", as_of: "2026-10-01", given: {receipts: [{kind: colorado_works_cash, amount: 900, frequency: once, retroactive: true, month: "2026-10"}]}, title: "A retroactive Colorado Works lump sum is for earlier months", expect: 0}
+  - {id: CO-5731-T4, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Receipts not stated: cannot determine", expect: unknown}
+  # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), S5-1: a stream is read only in the months from its start_date's through its end_date's.
+  - {"id": "CO-5731-T5", "title": "S5-1 (review household SS1): a $300 Colorado Works stream whose end_date is 2026-05-31, read for July 2026: 0 (was 300)", "month": "2026-07", "as_of": "2026-07-01", "given": {"receipts": [{"kind": "colorado_works_cash", "amount": 300, "end_date": "2026-05-31"}]}, "expect": 0}
+  - {"id": "CO-5731-T6", "title": "S5-1: the same stream read for May 2026, its last month: 300", "month": "2026-05", "as_of": "2026-07-01", "given": {"receipts": [{"kind": "colorado_works_cash", "amount": 300, "end_date": "2026-05-31"}]}, "expect": 300}

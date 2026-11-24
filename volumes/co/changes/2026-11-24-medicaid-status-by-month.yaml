@@ -1,0 +1,7 @@
+# Medicaid status by month (docs/reviews/medicaid-status-by-month.md): residency and citizenship and immigration status,
+# shared by the MAGI and non-MAGI Medicaid categories, read for the month evaluated (MS-1 to MS-3): a retroactive month
+# before a move to Colorado, before the five years end or before the qualified status held now is judged on that month.
+# One entry per change-impact flag the round leaves open.
+date: 2026-11-24
+summary: "Medicaid status by month: ma_meets_residency_in_month (CO-7650) over the neutral state_of_residence_start_date (CO-7651); the status held before the qualified status date (CO-7652, read by CO-7551); every month-scoped Medicaid reader of CO-2250, CO-509, CO-1174 and CO-1173 reads the month's item; OQ-1445, OQ-1446; stored households CO-1060 to CO-1063."
+impact: []

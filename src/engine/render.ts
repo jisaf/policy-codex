@@ -1,14 +1,37 @@
 import type { LedgerIndex } from "./ledger-index";
 import { lit, paramValue } from "./values";
+import { RECORD_NOUNS, recordNounOf } from "./records";
 import {
   ARITH, BLOCK_OPS, CMP, DATE_RE, MONTH_RE, PAREN_OPS, type Expr,
 } from "./types";
+
+/** The nouns of the record sums ("for each receipt in", "for each holding
+ *  in") around the expression being rendered, innermost last: "that
+ *  receipt" and "that holding" name the record of the innermost one. */
+const recordNouns: string[] = [];
+function listNoun(ix: LedgerIndex, list: Expr): string {
+  const id = typeof list === "string" ? list
+    : Array.isArray(list) && list[0] === "of" && typeof list[2] === "string" ? list[2] : null;
+  return recordNounOf(id ? ix.byIdentifier.get(id) : undefined);
+}
+function withNoun<T>(noun: string, f: () => T): T {
+  recordNouns.push(noun);
+  try { return f(); } finally { recordNouns.pop(); }
+}
+const thatNoun = (): string => recordNouns[recordNouns.length - 1] ?? "receipt";
 
 export function factName(ix: LedgerIndex, id: string): string {
   const it = ix.byIdentifier.get(id);
   if (!it) return id;
   if (it.kind === "parameter") return `${it.name} (${lit(paramValue(it))})`;
   return it.name;
+}
+
+/** Whether an expression counts days, months or persons (a ceil of it is a whole number). */
+function countsSomething(e: Expr): boolean {
+  if (!Array.isArray(e)) return false;
+  if (["days_between", "count", "count_months"].includes(e[0] as string)) return true;
+  return e.some((x) => countsSomething(x as Expr));
 }
 
 export function inline(ix: LedgerIndex, e: Expr): string {
@@ -23,6 +46,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "det_date": return "the Determination Date";
     case "det_month": return "the month containing the Determination Date";
     case "month": return "the month";
+    case "that_month": return "that month";
     case "not": return "it is not the case that " + i(e[1]);
     case "otherwise": return `${i(e[1])}, otherwise ${i(e[2])}`;
     case "unknown": return `${i(e[1])} is unknown`;
@@ -38,26 +62,40 @@ export function inline(ix: LedgerIndex, e: Expr): string {
       const w = { "+": " plus ", "*": " times ", "-": " minus ", "/": " divided by " }[op]!;
       return e.slice(1).map((x: Expr) => o(x)).join(w);
     }
-    case "min": return `the lesser of ${i(e[1])} and ${i(e[2])}`;
-    case "max": return `the greater of ${i(e[1])} and ${i(e[2])}`;
-    case "ceil": return `${i(e[1])} rounded up to the next whole dollar`;
+    // An arithmetic operand is bracketed (coverage pass 4, non-MAGI N4-16), so "the greater of 0 and
+    // (1,500 minus A minus B)" cannot be read as "(the greater of 0 and 1,500 minus A) minus B".
+    case "min": return `the lesser of ${o(e[1])} and ${o(e[2])}`;
+    case "max": return `the greater of ${o(e[1])} and ${o(e[2])}`;
+    // A count (of paydays, of days, of months) rounded up is a whole number, not a sum of money
+    // (coverage pass 4 for SNAP, S4-20); both phrases parse to the same tree.
+    case "ceil": return `${i(e[1])} rounded up to ${countsSomething(e[1]) ? "a whole number" : "the next whole dollar"}`;
     case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
     case "persons": return "every person in the case";
     case "count": return `the number of persons in ${i(e[1])}`;
     case "has_relative_in":
       return "that person is a " + (e[1] as string[]).join(" or ") + ` of a person in ${i(e[2])}`;
-    case "shared_relative": return `the persons who share a ${e[1]} with this person`;
+    case "shared_relative":
+      return e[2] === "every"
+        ? `the persons who share every ${e[1]} with this person`
+        : `the persons who share a ${e[1]} with this person`;
     case "reachable": {
       const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
-      return e.length > 2 ? `${head} such that ${i(e[2])}` : head;
+      // Not "such that": the condition gates each edge of the walk (this
+      // person = the person reached, that person = the one across the
+      // edge); it is not a filter on the result (docs/operators.md).
+      return e.length > 2 ? `${head}, crossing an edge only where ${i(e[2])}` : head;
     }
     case "years_between": return `the number of whole years between ${i(e[1])} and ${i(e[2])}`;
     case "first_day": return `the first day of ${i(e[1])}`;
     case "month_of": return `the month containing ${i(e[1])}`;
+    case "month_of_year": return `the calendar month number of ${i(e[1])}`;
+    case "year_of": return `the calendar year of ${i(e[1])}`;
     case "month_before": return `the month before ${i(e[1])}`;
     case "month_after": return `the month after ${i(e[1])}`;
     case "months_after": return `${i(e[1])} months after ${i(e[2])}`;
     case "months_before": return `${i(e[1])} months before ${i(e[2])}`;
+    case "days_after": return `${i(e[1])} days after ${i(e[2])}`;
+    case "days_between": return `the number of days from ${i(e[1])} to ${i(e[2])}`;
     case "months_ending": return `the ${i(e[1])} consecutive months ending with ${i(e[2])}`;
     case "months_from_to": return `the months from ${i(e[1])} through ${i(e[2])}`;
     case "at": return `${i(e[1])} for ${i(e[2])}`;
@@ -66,10 +104,29 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "rel": return "this person is a " + (e[1] as string[]).join(" or ") + ` of ${i(e[2])}`;
     case "in_group": return `${i(e[1])} is in ${i(e[2])}`;
     case "of": return `${i(e[1])}'s ${i(e[2])}`;
-    case "lookup": return `${i(e[1])}, for ${i(e[2])}`;
+    case "lookup": return `${o(e[1])}, for ${i(e[2])}`;
+    case "band": return `${i(e[1])}, for the band containing ${i(e[2])}`;
+    case "lookup_extended":
+      return e.length > 3
+        ? `${o(e[1])}, for ${o(e[2])}, adding ${o(e[3])} for each beyond its last row`
+        : `${o(e[1])}, for ${o(e[2])}, or its last row beyond it`;
+    case "latest_month_of_year": return `the most recent month number ${o(e[1])} on or before ${o(e[2])}`;
+    case "as_of": return `${i(e[1])} as of ${o(e[2])}`;
+    case "owner": return `that ${thatNoun()}'s owner`;
+    case "receipt": return `that ${thatNoun()}'s ${String(e[1]).replace(/_/g, " ")}`;
+    case "received_in": return `that ${thatNoun()} ${(RECORD_NOUNS[thatNoun()] ?? RECORD_NOUNS.receipt).placed} ${i(e[1])}`;
+  }
+  // The condition is parenthesised so its comparisons never read as the
+  // sum's own (the inline form is read back by parse.ts).
+  if (op === "sum_receipts" || op === "largest") {
+    const n = listNoun(ix, e[1]);
+    const head = op === "largest" ? "the largest of" : "the sum of";
+    return withNoun(n, () => `${head} ${o(e[3])} for each ${n} in ${i(e[1])} where (${i(e[2])})`);
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
+  if (op === "greatest") return `the greatest of ${i(e[2])} for each person in ${i(e[1])}`;
+  if (op === "sum_months") return `the sum of ${i(e[2])} for each month in ${i(e[1])}`;
   if (BLOCK_OPS.has(op)) return "(" + block(ix, e).join("; ") + ")";
   throw new Error("unknown operator " + op);
 }
@@ -126,7 +183,7 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
   if (op === "reachable") {
     if (e.length < 3 || !(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
     return [
-      pad + `the persons joined to this person by ${(e[1] as string[]).join(" or ")} such that`,
+      pad + `the persons joined to this person by ${(e[1] as string[]).join(" or ")}, crossing an edge only where`,
       ...block(ix, e[2], indent + 1),
     ];
   }
@@ -144,6 +201,30 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
       pad + `the sum for each person in ${inline(ix, e[1])} of`,
       ...block(ix, e[2], indent + 1),
     ];
+  }
+  if (op === "greatest") {
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the greatest for each person in ${inline(ix, e[1])} of`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "sum_months") {
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the sum for each month in ${inline(ix, e[1])} of`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "sum_receipts" || op === "largest") {
+    // The condition, then the value, each under its own heading line.
+    const n = listNoun(ix, e[1]);
+    return withNoun(n, () => [
+      pad + `the ${op === "largest" ? "largest" : "sum"} for each ${n} in ${inline(ix, e[1])} where`,
+      ...block(ix, e[2], indent + 2),
+      pad + "  of",
+      ...block(ix, e[3], indent + 2),
+    ]);
   }
   if (op === "each") {
     return [pad + `in each of ${inline(ix, e[1])}:`, ...block(ix, e[2], indent + 1)];
@@ -180,7 +261,9 @@ export function compact(ix: LedgerIndex, e: Expr): string {
   if (op === "rel" || op === "exists_related") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }
-  if (op === "shared_relative") return `${op}(${JSON.stringify(e[1])})`;
+  if (op === "shared_relative") {
+    return e[2] === "every" ? `${op}(${JSON.stringify(e[1])}, "every")` : `${op}(${JSON.stringify(e[1])})`;
+  }
   if (op === "has_relative_in") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }

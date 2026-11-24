@@ -1,0 +1,13 @@
+id: CO-3399
+name: "Adult Financial: life insurance face value exempt"
+identifier: af_life_insurance_face_value_exemption_limit
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: "The full cash surrender value is exempt when the total face value of all policies owned by a client and spouse is no more than this (9 CCR 2503-5 3.520.75.D)."
+value: 1500
+sources: [S2214]
+implemented: engine
+tags: [resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. A figure the rule states is a parameter (OQ-82)."

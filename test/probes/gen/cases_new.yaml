@@ -1,0 +1,144 @@
+- id: CO-120
+  title: "Final cash review FC-4: a married couple, both on the Old Age Pension, $500 of Social Security each - the $20 disregard is split"
+  # Built for the final cash review's FC-4 probe, which the reviewer confirmed with the engine.
+  # p1 Harold, 72, and p2 June, 70, are married and live together; each receives $500 of Social Security,
+  # has $1,000 in the bank and is enrolled in Medicaid. Both are citizens, Colorado residents, not on SSI.
+  # Countable income (9 CCR 2503-5 3.533.A.2): gross unearned 500, no SSI; a married client's $20 is
+  # "split equally between the client and the client's spouse" (A.2.c.1), so each deducts $10: 500 - 10 = 490.
+  # No earned income, so nothing rolls (A.2.f). Deeming (3.534.C): each spouse is on Medicaid with income
+  # 500 <= the OAP grant standard 1,032, so nothing is deemed either way. Countable income 490 each (was 480
+  # with the full $20 each, the review's probe).
+  # Resources: 1,000 + 1,000 = 2,000 <= the $3,000 couple limit (3.520.72.A.2). Category oap.
+  # Grant (3.533.B): 1,032 - 490 = 542, above the $189 floor: $542 each (was $552).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1954-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        receives_ssdi: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1000
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-07-22"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        receives_ssdi: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1000
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_income: {"2026-10": 490}   # 500 - 10 (split $20, 3.533.A.2.c.1)
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 542}         # 1,032 - 490
+    p2:
+      af_countable_income: {"2026-10": 490}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 542}
+- id: CO-121
+  title: "Final cash review FC-5: an AND-SO client with $465 of wages and no unearned income - no rollover of the $20"
+  # Built for the final cash review's FC-5 probe, which the reviewer confirmed with the engine.
+  # p1 Dana, 40, single, totally disabled for six months by the county's medical certification, not on SSI
+  # or SSDI, has applied for SSI (the AND-SO duty of 3.520.71.B), a citizen and Colorado resident with $200 in the
+  # bank. She earns $465 a month and has no unearned income.
+  # Countable income (3.544): earned 465 - 65 = 400, divided by two = 200. 3.544 has no paragraph that rolls the
+  # unused $20 onto earnings (3.533.A.2.f and 3.549.A.2.f are OAP's and AND-CS's), so countable income is 200
+  # (was 190 with the rollover). 200 < the $248 AND-SO standard: and_so.
+  # Grant (3.544.C): 248 - 200 = $48 (was $58).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1986-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        receives_ssdi: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+      month_defaults:
+        wages_gross: 465
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_income: {"2026-10": 200}   # (465 - 65) / 2; no rollover in 3.544
+      af_category: {"2026-10": and_so}
+      af_and_grant: {"2026-10": 48}           # 248 - 200

@@ -1,0 +1,13 @@
+id: CO-1350
+name: Medicaid reasonable compatibility threshold
+identifier: ma_reasonable_compatibility_threshold_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The reasonable compatibility threshold: electronic-data income above the program standard is still reasonably compatible with attested income at or below the standard when it exceeds the attested amount by no more than this fraction."
+value: 0.2
+sources: [S864]
+tags: [verification, ma, income]
+open: [OQ-302]
+rationale: 10 CCR 2505-10 8.100.4.C.2.a.ii (S864) states the 20% threshold; no item carried it.

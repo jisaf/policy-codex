@@ -1,0 +1,15 @@
+id: CO-2118
+name: "CCCAP parent fee second band upper limit"
+identifier: cccap_parent_fee_second_band_limit_pct_fpl
+kind: parameter
+type: rate
+scope: global
+program: CCCAP
+meaning: "The upper edge of the second parent fee band of 3.124.Q, as a multiple of the monthly federal poverty guideline: 130%. Before August 1, 2028 the band rates are all 15% (3.124.P), so the edge does not change the fee; its one version runs from July 1, 2021, when 3.124.P took effect, so the formula reads one tree."
+versions:
+  - from: "2021-07-01"
+    value: 1.3
+    source: S786
+sources: [S786]
+tags: [income]
+rationale: "OQ-254 part 2: 8 CCR 1403-1 3.124.Q (S786) states the parent fee bands as percentages of the federal poverty level; cccap_parent_fee_formula_amount (CO-1289) reads it. Engineering follow-up 3 and 6: its one version starts July 1, 2021, so the parameter is known on the volume's default date; under 3.124.P the edge has no effect."

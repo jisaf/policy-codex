@@ -1,0 +1,18 @@
+id: CO-3811
+name: "Colorado Works: meets the child support requirements"
+identifier: cw_meets_child_support_requirements
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "Whether this person's Colorado Works assistance unit meets the child support conditions of 9 CCR 2503-6 3.604.4.A: no member refused to sign and date the application form to avoid assigning support rights, and no member has failed to cooperate with Child Support Services without good cause."
+precision: "Each member's findings are read as false when not stated (CO-3809, CO-3810)."
+derived: [not, [exists, cw_assistance_unit_members, [any, [otherwise, [of, [P], cw_has_refused_child_support_assignment], false], [otherwise, [of, [P], cw_has_failed_child_support_cooperation], false]]]]
+sources: [S2603]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "Final cash review FC-1: 3.604.4.A (S2603) makes the assignment of support rights a condition of the unit's eligibility and non-cooperation without good cause a ground to end basic cash assistance; no item read either. cw_eligibility_status (CO-921) reads this item."
+tests:
+  - {id: CO-3811-T1, title: "Assignment signed, cooperating", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2]}, expect: true}
+  - {id: CO-3811-T2, title: "The mother refused to assign support rights", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_has_refused_child_support_assignment: true}, expect: false}
+  - {id: CO-3811-T3, title: "The mother failed to cooperate without good cause", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_has_failed_child_support_cooperation: true}, expect: false}

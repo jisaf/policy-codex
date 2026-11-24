@@ -1,0 +1,16 @@
+id: CO-3627
+name: "Medicaid: Title II cost-of-living increase"
+identifier: ma_title_ii_cola_increase
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The increase in the Social Security (Title II) benefit of the person and a spouse in the SSI-method couple (ma_ssi_couple_members) for the month over the December before it: the annual cost-of-living adjustment, first paid in January, which the Medicare Savings Programs disregard for a member (10 CCR 2505-10 § 8.100.6.L.12, M.7, N.6)."
+precision: Read from ma_social_security_receipts (CO-5515), the gross current benefit received in the month, against the December before the month; a decrease counts as 0. An increase from another cause in the same months (a new award) is not separated from the adjustment.
+derived: [sum, ma_ssi_couple_members, [max, 0, ["-", [of, [P], ma_social_security_receipts], [at, [of, [P], ma_social_security_receipts], [latest_month_of_year, 12, [month_before, [month]]]]]]]
+sources: [S2406, S2407, S2409]
+implemented: engine
+tags: [ma, msp, income]
+rationale: "Final verification F-6 (docs/reviews/final-medicaid-chp.md): no item carried the annual COLA disregard of 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (S2406, S2407, S2409), so a QMB, SLMB or QI-1 member whose January Social Security cost-of-living increase pushed countable income over the limit was reported ineligible while the rule keeps the member eligible. Receipt records, migration phase 2: the benefit is ma_social_security_receipts (CO-5515), the receipts of kind social_security other than a retroactive payment, read in the month and in the December before it."
+tests:
+  - {id: CO-3627-T1, month: "2027-01", as_of: "2027-02-01", given: {ma_ssi_couple_members: [p1], receipts: [{kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}, {kind: social_security, month: "2025-10"}, {kind: social_security, month: "2025-11"}, {kind: social_security, month: "2025-12"}, {kind: social_security, month: "2026-01"}, {kind: social_security, month: "2026-02"}, {kind: social_security, month: "2026-03"}, {kind: social_security, month: "2026-04"}, {kind: social_security, month: "2026-05"}, {kind: social_security, month: "2026-06"}, {kind: social_security, month: "2026-07"}, {kind: social_security, month: "2026-08"}, {kind: social_security, month: "2026-09"}, {kind: social_security, month: "2026-10"}, {kind: social_security, month: "2026-11"}, {kind: social_security, amount: 1500, month: "2026-12"}, {kind: social_security, amount: 1542, month: "2027-01"}, {kind: social_security, month: "2027-02"}, {kind: social_security, month: "2027-03"}, {kind: social_security, month: "2027-04"}, {kind: social_security, month: "2027-05"}]}, title: "Benefit 1,500 in December 2026, 1,542 in January 2027", expect: 42}

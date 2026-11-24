@@ -1,0 +1,12 @@
+id: CO-1348
+name: Medicaid notice receipt days
+identifier: ma_notice_receipt_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of days after the date on a reasonable-opportunity notice on which the notice is considered received, the day the reasonable opportunity period begins.
+value: 5
+sources: [S841]
+tags: [verification, ma, immigration]
+rationale: 42 CFR 435.956(b)(2)(i) (S841) begins the period on receipt, considered five days after the notice date; no item carried the figure.

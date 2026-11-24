@@ -1,0 +1,21 @@
+id: CO-1510
+name: Resident of a care facility for thirty consecutive days
+identifier: af_resides_in_care_facility_thirty_consecutive_days
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether, for the whole of the month, this person is and has been for at least thirty consecutive days a resident of a general medical and surgical hospital, a nursing home, assisted living residence, intermediate care facility, group home, host home, other long-term care facility or Adult Financial approved setting - the facilities 9 CCR 2503-5 3.532.D.1-2, 3.543.D and 3.548.D list for the personal needs allowance. False for a month the stay covers only in part."
+precision: "Read from residence_setting_type (CO-3330) and the entry date (CO-008): the person entered on or before the first day of the month and had lived there af_personal_needs_allowance_min_stay_days by the last day of it; the stay is read as continuing to the determination date. An Adult Financial approved setting is stated as other_long_term_care_facility. OAP's psychiatric facility is CO-2006; an unlicensed or uncertified facility is CO-2007. Time audit T-6: \"N consecutive days\" is counted as the days elapsed since the day the absence or stay began (days_between), the day of departure or entry itself not counted (OQ-953): \"a resident for at least thirty (30) consecutive days\" (S1008, S1009, S1010): the days elapsed from the day of entry to the first day of the next month, so an entry on the 1st is thirty days in a 30-day month and thirty-one in a 31-day month."
+derived: [all, [in, residence_setting_type, [hospital, nursing_facility, assisted_living_residence, icf_iid, group_home, host_home, other_long_term_care_facility]], [all, ["<=", institution_entry_date, [first_day, [month]]], [">=", [days_between, institution_entry_date, [first_day, [month_after, [month]]]], af_personal_needs_allowance_min_stay_days]]]
+sources: [S1008, S1009, S1010]
+open: [OQ-953]
+implemented: engine
+tags: [cash, oap, and]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. Dual-entry 2.10: 'for the whole of the month and at least thirty consecutive days' is computed from the setting and the entry date."
+tests:
+  - {id: CO-1510-T1, month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: nursing_facility, institution_entry_date: "2026-08-20"}, expect: true}
+  - {id: CO-1510-T2, title: "Entered during the month", month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: nursing_facility, institution_entry_date: "2026-10-03"}, expect: false}
+  - {id: CO-1510-T3, title: "Entered on the first of a 31-day month: 31 days by its end", month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: group_home, institution_entry_date: "2026-10-01"}, expect: true}
+  - {id: CO-1510-T4, title: "Entered on the first of February: 28 days", month: "2027-02", as_of: "2027-02-15", given: {residence_setting_type: group_home, institution_entry_date: "2027-02-01"}, expect: false}
+  - {id: CO-1510-T5, month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: private_dwelling}, expect: false}

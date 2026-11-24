@@ -1,0 +1,15 @@
+id: CO-3700
+name: SNAP initial-month minimum issuance
+identifier: snap_initial_month_minimum_issuance
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The smallest prorated initial-month allotment that is issued: no allotment is issued for an initial month whose prorated value is less than this amount (7 U.S.C. 2017(c)(1); 7 CFR 273.10(a)(1)(iii)(C), (e)(2)(ii)(B))."
+versions:
+  - from: "2000-01-01"
+    value: 10
+    source: S2500
+rationale: "Final verification F-1 (docs/reviews/final-snap.md): snap_allotment (CO-385) paid nothing for an initial month whose prorated benefit was $10 to $24, reading the Colorado text (4.207.3.B, S737) that names the minimum allotment. The statute (S2500) and 7 CFR 273.10 (S1617, S2501) both set the threshold at $10; the statute governs, as the volume does elsewhere where a Colorado paragraph has not followed federal law (CO-119, CO-166, CO-308, CO-414, CO-1243). The figure is in the statute itself, not an annual adjustment, so one version covers every date the volume determines."
+sources: [S2500, S2501, S1617, S737]
+tags: [income, snap, legal]

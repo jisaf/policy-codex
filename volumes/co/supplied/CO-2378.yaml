@@ -1,0 +1,13 @@
+id: CO-2378
+name: "Adult Financial: newly reported resources"
+identifier: af_has_newly_reported_resources
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The client has reported a resource other than cash since resources were last verified; \"All new resources must be verified by traditional verification methods when reported\" (9 CCR 2503-5 3.520.72.D.4)."
+precision: "Required where read, for a redetermination (decision 4; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D9)."
+supplied_by: "Client report recorded in CBMS."
+sources: [S888]
+tags: [cash, verification, resources]
+rationale: "OQ-373: a new resource is verified when reported whatever the redetermination schedule (3.520.72.D.4, S888)."

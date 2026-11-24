@@ -1,0 +1,21 @@
+id: CO-1235
+name: SNAP heating and cooling standard utility allowance
+identifier: snap_sua_heating_cooling
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: Colorado's Heating and Cooling Utility Allowance (HCUA, the FNS table's HCSUA), the monthly standard utility amount added to shelter costs for a household entitled to it, per 10 CCR 2506-1 4.407.31.A.
+versions:
+  - from: "2025-10-01"
+    to: "2026-10-01"
+    value: 594
+    source: S747
+  - from: "2026-10-01"
+    to: "2027-10-01"
+    value: 616
+    source: S743
+review_by: "2027-10-01"
+sources: [S743, S747]
+tags: [income, snap, state_election]
+rationale: No existing parameter states Colorado's SUA amounts (OQ-36); snap_utility_allowance_amount (CO-1500) needs them. The FY2026 figure is the Colorado row of FNS's FY2026 SUA table (D-85); the FY2027 figure is stated in 10 CCR 2506-1 effective 2026-10-01 (D-82).

@@ -1,0 +1,12 @@
+id: CO-2443
+name: "Medicaid: Express Lane days of eligibility pending citizenship verification"
+identifier: ma_express_lane_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The days of eligibility an Express Lane child who meets every requirement except verification of U.S. citizenship and identity receives while awaiting it (10 CCR 2505-10 § 8.100.4.J.1.a.iii, J.2.a.iii)."
+value: 90
+sources: [S1723]
+tags: [ma, verification]
+rationale: C-6 of the HCPF review.

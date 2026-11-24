@@ -5,14 +5,15 @@ kind: derived
 type: yes/no
 scope: person
 program: CCCAP
-meaning: Whether this child has verified citizen/legal-resident status, under 8 CCR 1403-1 3.111.F.1 - required of "all children who have had an application made on their behalf or are receiving child care assistance."
-precision: Reads citizenship_status and lawful_presence_status the way this volume's other citizenship tests do (for example leap_meets_citizenship_requirement, CO-1010); 3.111.F.1 imposes no citizenship test on the adult caretaker, only the child (see the review's note in docs/reviews/cccap-leap-phase-6.md 1.3, "CCCAP has no citizenship test for the caretaker, and that is correct").
-derived: [any, ["=", citizenship_status, citizen], ["=", lawful_presence_status, lawfully_present]]
-sources: [S514]
+meaning: "Whether this child is a citizen/legal resident under 8 CCR 1403-1 3.111.F.1 and 3.103.Z - required of \"all children who have had an application made on their behalf or are receiving child care assistance\": a citizen or national of the United States, or a qualified alien (a lawful permanent resident or another status of 8 U.S.C. 1641), the only non-citizens lawfully present for the Child Care and Development Fund under Title IV of PRWORA."
+precision: "3.103.Z defines \"citizen/legal resident\" as a citizen, a current legal resident, or \"a person lawfully present in the United States pursuant to Title IV of the Personal Responsibility and Work Opportunity Reconciliation Act\" and the Federal Register notices it incorporates (S1910). Title IV makes a non-citizen who is not a qualified alien ineligible for any Federal public benefit (8 U.S.C. 1611(a), S1911), and the incorporated HHS notice lists the Child Care and Development Fund as one (63 Fed. Reg. 41658, S1912), so the non-qualified lawfully present categories (Temporary Protected Status and the others) do not meet it (OQ-394 resolved). 3.103.Z and 3.111.F.1 impose no test on the adult caretaker, only the child."
+derived: [any, is_us_citizen_or_national, is_qualified_non_citizen]
+sources: [S514, S1910, S1911, S1912]
 implemented: engine
 tags: [immigration, legal]
-rationale: "No existing item states 3.111.F.1's child citizenship/legal-residency verification; the review (docs/reviews/cccap-leap-phase-6.md, K-1) called this 'the single largest gap in the CCCAP chapter' - the chapter has no CCCAP citizenship item of any kind, though LEAP's parallel leap_meets_citizenship_requirement (CO-1010, the nearest same-shape item) exists. cccap_is_eligible_child (CO-980) reads it as a conjunct, so a child without verified status is not an eligible child."
+rationale: "No existing item states 3.111.F.1's child citizenship/legal-residency verification; the review (docs/reviews/cccap-leap-phase-6.md, K-1) called this 'the single largest gap in the CCCAP chapter' - the chapter has no CCCAP citizenship item of any kind, though LEAP's parallel leap_meets_citizenship_requirement (CO-1010, the nearest same-shape item) exists. cccap_is_eligible_child (CO-980) reads it as a conjunct, so a child without verified status is not an eligible child.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170). OQ-394 resolved by 3.103.Z (S1910) and the HHS notice it incorporates (S1912): the arm for a lawfully present non-qualified child is removed."
 tests:
-  - {id: CO-998-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: true}
-  - {id: CO-998-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}
-  - {id: CO-998-T3, as_of: "2026-10-01", given: {citizenship_status: other_non_qualified_non_citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-998-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: true}
+  - {id: CO-998-T2, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: false}
+  - {id: CO-998-T3, as_of: "2026-10-01", title: "OQ-394 resolved: a child with Temporary Protected Status is lawfully present but not a qualified alien (3.103.Z, 8 U.S.C. 1611)", given: {immigration_status: temporary_protected_status}, expect: false}
+  - {id: CO-998-T4, as_of: "2026-10-01", title: "A refugee child is a qualified alien", given: {immigration_status: refugee}, expect: true}

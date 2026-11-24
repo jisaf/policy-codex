@@ -1,0 +1,16 @@
+id: CO-5151
+name: "CCCAP: the days before the application or redetermination whose income is read"
+identifier: cccap_prior_income_period_days
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The number of days before the application or redetermination date whose income 8 CCR 1403-1 3.111.H.4-5 reads: \"the income received in the prior thirty (30) day period\" (H.4), \"income received during the prior thirty (30) day period shall be used in determining eligibility\" (H.5.a.1)."
+versions:
+  - from: "2000-01-01"
+    value: 30
+    source: S2704
+sources: [S2704, S891]
+tags: [income]
+open: [OQ-680]
+rationale: "Earned-income records, E1 (CCCAP): cccap_person_earned_income (CO-3915) places dated pays in the thirty days before cccap_application_or_redetermination_date (CO-5150); the thirty days are the rule's figure, not a literal. The volume holds no earlier version of 8 CCR 1403-1 with another period."

@@ -1,0 +1,14 @@
+id: CO-3011
+name: CHP+ copayment schedule, band C
+identifier: chp_copayment_band_c_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: CHP+
+meaning: "The CHP+ copayment per use, visit, prescription, trip or date of service that 10 CCR 2505-3 § 320.1.C schedules for each service type (the options of chp_service_type, CO-2223), for a family in copayment band c (chp_copayment_income_band, CO-2228)."
+precision: "Paragraph C (151% to 200%). Every option of chp_service_type (CO-2223) has a row; a service the paragraph lists no copayment for is 0. The exemptions of § 330.3 (preventive services), § 320.1.C.3 and D.3 (COVID-19 laboratory testing) and the waiver for emergency care with a hospital admission are rules, applied by chp_scheduled_copayment (CO-2230) before the table, and their rows are 0. Paragraphs B to D state their amounts \"Effective July 1, 2012\"."
+versions:
+  - {from: "2012-07-01", value: {office_visit: 5, behavioral_health_visit: 5, generic_prescription: 3, brand_name_prescription: 10, therapy_visit: 5, vision_visit: 5, emergency_care: 30, emergency_care_with_admission: 0, urgent_care: 20, laboratory_or_imaging: 5, covid_19_laboratory_testing: 0, emergency_transport: 15, inpatient_hospital: 20, inpatient_physician: 5, outpatient_hospital: 5, preventive: 0}, source: S1504}
+sources: [S1504, S1505]
+tags: [chp]
+rationale: "Hard-coded numbers audit H-5: chp_scheduled_copayment (CO-2230) held the whole § 320.1 schedule as literals in a nested case; the band limits were already parameters (CO-2225 to CO-2227) but the amounts were not. One table per band, keyed by service type."

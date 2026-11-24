@@ -1,0 +1,13 @@
+id: CO-2823
+name: VA disability rating
+identifier: va_disability_rating_type
+kind: supplied
+type: one of
+scope: person
+program: All
+options: [none, partial, partial_paid_as_total, total]
+meaning: "The person's disability rating by the Department of Veterans Affairs under title 38: none (no rated service-connected or non-service-connected disability, or not a veteran); partial (rated below total and paid at that rate); partial_paid_as_total (rated below total but paid at the total rate, as for individual unemployability); total (rated 100 percent, total)."
+supplied_by: VA award letter or rating decision.
+sources: [S1209, S1951]
+tags: [disability]
+rationale: "Dual-entry audit 3.13 and same-word audit SW-14: the VA's total rating was stated twice, in is_veteran_rated_totally_disabled (CO-1928) and in a prong of has_va_aid_attendance_housebound_or_survivor_finding (CO-016). SNAP counts a rating that is total or paid as total (271.2 (6), S1951); community engagement only a total rating (435.554(c)(4), S1209)."

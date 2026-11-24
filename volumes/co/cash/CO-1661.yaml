@@ -1,0 +1,18 @@
+id: CO-1661
+name: "Adult Financial: ssn verification is pending"
+identifier: af_ssn_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: Whether Adult Financial requires verification of the client's Social Security number and it has not been provided.
+precision: "False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days). Coverage pass 6 CA6-11: a refusal to apply for or provide an SSN (3.520.65.A.3) is read here as the element not provided, which becomes past due (af_verification_status, CO-1438), the path to the denial A.3 requires."
+derived: [all, af_verification_is_applicable, [all, af_requires_verification_of_ssn, [not, ssn_is_verified]]]
+sources: [S884]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1661-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, af_requires_verification_of_ssn: true, ssn_verified_by_electronic_data_source: false, ssn_furnished_or_application_shown: false}, expect: true}
+  - {id: CO-1661-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, af_requires_verification_of_ssn: false}, expect: false}

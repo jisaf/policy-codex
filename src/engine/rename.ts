@@ -116,6 +116,9 @@ function renameTestSpec(t: TestSpec, from: string, to: string): { spec: TestSpec
   const monthFacts = renameKeyedMap(t.month_facts, from, to);
   if (monthFacts.changed) { next.month_facts = monthFacts.map; changed = true; }
 
+  const caseFacts = renameKeys(t.case_facts, from, to);
+  if (caseFacts.changed) { next.case_facts = caseFacts.obj; changed = true; }
+
   if (t.others) {
     const others = renameKeyedMap(t.others, from, to);
     if (others.changed) { next.others = others.map; changed = true; }
@@ -223,7 +226,9 @@ export function renameInCasesText(
  *  reference the textual `renameInCasesText` above is checked against, not
  *  something `renameInCasesText` itself calls. */
 export function renameCase(c: HouseholdCase, from: string, to: string): HouseholdCase {
-  const asSpec: TestSpec = { id: c.id, parameters: c.parameters, month_facts: c.month_facts, persons: c.persons };
+  const asSpec: TestSpec = {
+    id: c.id, parameters: c.parameters, month_facts: c.month_facts, case_facts: c.case_facts, persons: c.persons,
+  };
   const { spec } = renameTestSpec(asSpec, from, to);
   const expect: Record<string, Record<string, unknown>> = {};
   for (const [pid, exp] of Object.entries(c.expect || {})) {
@@ -233,6 +238,7 @@ export function renameCase(c: HouseholdCase, from: string, to: string): Househol
     ...c,
     parameters: spec.parameters,
     month_facts: spec.month_facts,
+    case_facts: spec.case_facts,
     persons: spec.persons ?? c.persons,
     expect,
   };
@@ -247,7 +253,7 @@ export function referencesInCases(cases: readonly HouseholdCase[], from: string)
   const has = (obj: Record<string, unknown> | undefined): boolean => !!obj && from in obj;
   const out: string[] = [];
   for (const c of cases) {
-    let hit = has(c.parameters) || Object.values(c.month_facts || {}).some(has);
+    let hit = has(c.parameters) || has(c.case_facts) || Object.values(c.month_facts || {}).some(has);
     if (!hit) {
       for (const p of Object.values(c.persons || {})) {
         if (has(p.facts) || has(p.month_defaults) || Object.values(p.months || {}).some(has)) {

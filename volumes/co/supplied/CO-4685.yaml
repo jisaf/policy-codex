@@ -1,0 +1,13 @@
+id: CO-4685
+name: "Law enforcement is actively seeking the person"
+identifier: law_enforcement_is_actively_seeking_person
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "A federal, state or local law enforcement agency is actively seeking the person on an outstanding felony warrant or for a probation or parole violation: it has informed the local office that it intends to enforce the warrant or arrest the person within twenty days of submitting a request for information about the person, has presented a felony arrest warrant, or has stated within thirty days of the local office's request about the specific warrant or violation that it intends to enforce it or arrest the person (10 CCR 2506-1 4.304.4.C.1.a-c)."
+precision: "If not stated, SNAP reads it as false. snap_is_probation_or_parole_violator (CO-5216) reads it beside the probation or parole violation (CO-1732) and the impartial party's finding (CO-5215)."
+supplied_by: "Law enforcement's statement to the local office."
+sources: [S3066]
+tags: [snap]
+rationale: "Coverage pass 2 N2-P2-2: the fourth part of Colorado's fleeing felon test (4.304.4.B.4, S3066) is that law enforcement is actively seeking the person as 4.304.4.C.1 defines it; no fact stated it for a fleeing felon."

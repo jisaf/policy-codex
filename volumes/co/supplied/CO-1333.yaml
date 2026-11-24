@@ -1,0 +1,12 @@
+id: CO-1333
+name: Disability verification document received
+identifier: disability_benefit_or_statement_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the agency has received documentary evidence (or an acceptable collateral contact) verifying the person's receipt of a disability-based benefit, or a disability statement, for this application: an award letter for disability benefits, a VA rating statement, or a physician's statement (SNAP, S807). It is not the State's AND-SO medical disability certification (af_and_so_medical_certification_received, CO-2824)."
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S807]
+tags: [verification, disability]
+rationale: "Same-word audit SW-15: renamed from disability_benefit_or_statement_document_received and narrowed to the benefit-receipt or statement element; AND-SO reads its own certification. No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value."

@@ -1,0 +1,19 @@
+id: CO-1174
+name: "Medicaid: meets the status requirement for a Cover All Coloradans category"
+identifier: ma_meets_status_for_cover_all_coloradans_categories
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person meets the citizenship and immigration status requirement of a category 10 CCR 2505-10 § 8.100.3.G.1.g.ix.1.a-b lists (MAGI Children, MAGI Pregnant, Psych <21, Transitional Medical Assistance, the 4 Month Extended Medical Assistance, MAGI prenatal and child presumptive eligibility, the two Buy-In programs, and the Long-Term Care waivers except PACE): the status test itself (ma_meets_citizenship_requirement, CO-509), or the Cover All Coloradans population (ma_is_cover_all_coloradans_person, CO-1173) regardless of status."
+precision: "Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-3): the determination date's reading. Every item for a listed category is evaluated for a month and reads ma_meets_status_for_cover_all_coloradans_categories_in_month (CO-7553) instead: the Buy-In programs (CO-618, CO-620), the HCBS waivers (CO-653), the Breast and Cervical Cancer Program (CO-1152) and the MAGI categories ix.1.a lists; this item has no reader in the volume and is kept as the person-scope test of the determination itself. Before MS-3 it was read by the Buy-In programs (CO-618, CO-620), and HCBS waivers (CO-653). CHP+ reads its own chp_meets_status_requirement (CO-2707) since the OQ-44 fix. The MAGI Children and Pregnant categories read the same two terms inside ma_magi_is_fully_eligible (CO-562), because there the protection depends on which MAGI category the person is in. Every other category reads CO-509 alone (OQ-214)."
+derived: [any, ma_meets_citizenship_requirement, ma_is_cover_all_coloradans_person]
+sources: [S607]
+open: [OQ-214]
+implemented: engine
+tags: [ma, immigration]
+rationale: "S-2 of the phase 7 review: the categories § 8.100.3.G.1.g.ix.1.a-b names need a single status test that includes the Cover All Coloradans population, now that ma_meets_citizenship_requirement (CO-509) no longer does. No existing item states it."
+tests:
+  - {id: CO-1174-T1, as_of: "2026-10-01", given: {ma_meets_citizenship_requirement: true}, expect: true}
+  - {id: CO-1174-T2, as_of: "2026-10-01", title: "Undocumented child", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: true}, expect: true}
+  - {id: CO-1174-T3, as_of: "2026-10-01", title: "Undocumented adult, not pregnant or postpartum", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: false}, expect: false}

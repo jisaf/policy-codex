@@ -1,0 +1,15 @@
+id: CO-2705
+name: "Medicaid: Afghan humanitarian parolee five-year exemption end date"
+identifier: ma_afghan_humanitarian_parolee_exemption_end_date
+kind: parameter
+type: calendar date
+scope: global
+program: Medicaid
+meaning: "The date through which an Afghan humanitarian parolee is exempt from the five-year waiting period whatever the end of the person's parole: March 31, 2023 (10 CCR 2505-10 § 8.100.3.G.1.g.viii: \"exempt from the 5-year waiting period until March 31, 2023, or through the termination of their parole period, whichever is later\")."
+versions:
+  - from: "2021-07-31"
+    value: "2023-03-31"
+    source: S1905
+sources: [S1905]
+tags: [ma, immigration]
+rationale: "OQ-44 fix: § 8.100.3.G.1.g.viii was not modeled (CO-509's precision said so); ma_is_five_year_bar_exempt (CO-1172) now reads it with parole_end_date (CO-2703)."

@@ -1,0 +1,12 @@
+id: CO-1584
+name: Claims a disability
+identifier: claims_disability
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person declares on the application a disability or blindness on which eligibility is to rest (for Adult Financial, the total disability AND-SO certifies), whether or not any agency has determined it.
+supplied_by: Disability question on the application as recorded in CBMS.
+sources: [S1079, S1080]
+tags: [verification, disability]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-6 and C-4: AND-SO's disability is certified after application, so the program cannot tell its applicants from a determination) needs it as a supplied fact."

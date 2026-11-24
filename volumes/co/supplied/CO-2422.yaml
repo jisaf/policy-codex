@@ -1,0 +1,12 @@
+id: CO-2422
+name: "Medicaid: first month of ineligibility"
+identifier: ma_first_month_of_ineligibility
+kind: supplied
+type: month
+scope: person
+program: Medicaid
+meaning: "The first month in which the person was no longer eligible for the Medical Assistance category they were enrolled in - for Transitional Medical Assistance, the Parent/Caretaker Relative category; for the four-month extension, Medical Assistance (10 CCR 2505-10 § 8.100.4.I.1, I.5: \"beginning with the first month of ineligibility\"). If neither this nor the reason (ma_ineligibility_reason, CO-2423) is stated, the person has no recorded loss of eligibility and neither extension applies; a reason stated without this month cannot be determined (coverage pass 5, C5-17)."
+supplied_by: CBMS eligibility history (the month the redetermination found the person ineligible).
+sources: [S1719, S1720]
+tags: [ma, magi]
+rationale: "C-4 of the HCPF review: § 8.100.4.I had no item. No existing fact records a loss of eligibility."

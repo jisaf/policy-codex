@@ -1,0 +1,21 @@
+id: CO-1986
+name: Qualifies for the veterans-related personal needs allowance
+identifier: ma_qualifies_for_veterans_personal_needs_allowance
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person, a resident of a nursing facility or other Long-Term Care institution, receives a non-service-connected disability pension from the U.S. Department of Veterans Affairs and has no spouse or dependent child, or is the surviving spouse of a person who received such a pension and has no dependent child (10 CCR 2505-10 § 8.100.7.V.3.d.ii; C.R.S. 25.5-6-206(2)(b)).
+precision: "A dependent child is a child of the person who is a dependent child under the Medical Assistance rules (ma_is_dependent_child). Coverage pass 6, non-MAGI F6-10 (decision 4 of 2026-11-23: each supplied fact states once whether it is required or what its rule-given default is; readers do not invent defaults): whether the person is the surviving spouse of a VA pensioner is read as stated, no longer as false when unstated (C.R.S. 25.5-6-206(2)(b) gives no default). Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P2, P3): whether the person is married is read from a spouse of the case or the marital status as stated, required where read (decision 4 of 2026-11-23); before, is_married (CO-930) read a person with neither stated as not married."
+derived: [all, [not, [exists, [filter, [persons], [rel, [parent], [P]]], [of, [P], ma_is_dependent_child]]], [any, [all, receives_va_non_service_connected_pension, [not, [any, [otherwise, [exists_related, [spouse], true], false], ["=", marital_status, married]]]], is_surviving_spouse_of_va_pensioner]]
+sources: [S1231, S1232]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "OQ-98: the $90 allowance turns on VA pension receipt and the absence of a spouse or dependent child, which no fact states. Dual-entry audit 2.11: derived from the VA pension facts (CO-2862, CO-2863), is_married (CO-930) and the person's dependent children read across the parent edge."
+tests:
+  # Pattern sweep (P2): the marital status is stated beside is_married; the reader now reads it (required where read).
+  - {id: CO-1986-T5, title: "Unmarried pensioner, no children", as_of: "2026-11-01", given: {receives_va_non_service_connected_pension: true, is_married: false, marital_status: single}, relationships: [], expect: true}
+  - {id: CO-1986-T6, title: "Married pensioner", as_of: "2026-11-01", given: {is_surviving_spouse_of_va_pensioner: false, receives_va_non_service_connected_pension: true, is_married: true, marital_status: married}, relationships: [], expect: false}
+  # Coverage pass 6 F6-10 (decision 4): a widow with no VA pension of her own: whether she is the surviving spouse of a VA pensioner decides the allowance (C.R.S. 25.5-6-206(2)(b)(II)); not stated: cannot determine (it was read as no).
+  - {id: CO-1986-T90, title: "F6-10: surviving spouse of a VA pensioner not stated", as_of: "2026-11-01", given: {receives_va_non_service_connected_pension: false, is_married: false}, relationships: [], expect: unknown}
+  - {id: CO-1986-T91, title: "F6-10: the surviving spouse of a VA pensioner with no dependent child", as_of: "2026-11-01", given: {receives_va_non_service_connected_pension: false, is_married: false, is_surviving_spouse_of_va_pensioner: true}, relationships: [], expect: true}

@@ -1,0 +1,22 @@
+id: CO-1507
+name: "Colorado Works: death reimbursement eligible"
+identifier: cw_death_reimbursement_eligible
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+role: outcome
+meaning: Whether a Colorado Works death reimbursement benefit is payable for the deceased person - a client who received Colorado Works while alive, whose disposition charges are within the $2,500 limit, whose estate is insufficient to pay them, and for whom something remains after the insurance proceeds and the responsible persons' excess resources - per 9 CCR 2503-6 3.606.7.A-B, E and F.
+precision: The conditions are the ones cw_death_reimbursement_amount (CO-1508) applies; a decedent is eligible exactly when that amount is more than zero, so the two outcomes cannot disagree. The county's written authorization and itemization (B.3) and the application form (F.1) are procedural and not modeled.
+derived: [">", cw_death_reimbursement_amount, 0]
+sources: [S1005, S1006, S1007]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing item determines Colorado Works death reimbursement eligibility (phase-8 review K-1); the volume reports an eligibility outcome beside each benefit amount, as for Adult Financial burial (af_burial_eligible, CO-1231). Derived from the amount rather than restating its conditions."
+nearest: [CO-1231]
+tests:
+  - {id: CO-1507-T1, as_of: "2026-10-01", given: {cw_death_reimbursement_amount: 1500}, expect: true}
+  - {id: CO-1507-T2, as_of: "2026-10-01", given: {cw_death_reimbursement_amount: 0}, expect: false}
+  - {id: "CO-1507-T3", title: "Computed through the amount - a Colorado Works decedent with $2,200 of charges and a $200 estate", as_of: "2026-10-01", given: {cw_is_deceased_client: true, burial_services_total_cost: 2200, burial_plot_cost_excluded_from_limit: 0, decedent_estate_value: 200, burial_insurance_proceeds: 0, af_burial_responsible_person_excess_resources: 0, burial_contributions_from_responsible_persons: 0}, expect: true}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-1507-T4", "as_of": "2026-10-01", "title": "T-9: cw_death_reimbursement_amount equal to 0 (cw_death_reimbursement_amount over 0)", "given": {"cw_death_reimbursement_amount": 0}, "expect": false}

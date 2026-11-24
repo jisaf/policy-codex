@@ -1,0 +1,7 @@
+# Coverage pass 4 fix round for MAGI Medicaid and CHP+ (docs/reviews/coverage4-medicaid-magi-chp.md, dispositions). One entry
+# per change-impact flag the round raises: each is a flag an earlier record dispositioned, re-keyed because the receipts and
+# earnings lists changed upstream (CO-5000: taxable_amount; CO-5100: combat_zone_compensation, seasonal_or_commission,
+# employer_convenience_meals_or_lodging), fields no flagged pair reads; the MAGI and CHP+ items this round changed raise no flag.
+date: 2026-11-23
+summary: "Coverage pass 4 (MAGI Medicaid, CHP+): C4-01 to C4-08 fixed (taxable part of savings distributions; combat-zone compensation; boarders net of costs; in-kind and vendor pay; C.4.a from the earnings records with no defaults, each test reading the month first; custody from the home; CHP+ newborn and MAGI household ages per month); CO-387 settled by 2505-3 320.1 and C.4.a; C4-09 to C4-17 fixed or recorded (OQ-1230, OQ-1231, OQ-1232); OQ-970, OQ-1121, OQ-1123, OQ-1124 settled or narrowed; six needs-Legal questions reclassified; stored households CO-720 to CO-727."
+impact: []

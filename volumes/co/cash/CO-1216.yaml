@@ -1,0 +1,22 @@
+id: CO-1216
+name: "Home Care Allowance: tier"
+identifier: af_hca_tier
+kind: derived
+type: one of
+options: [tier_1, tier_2, tier_3, none]
+scope: person
+program: AdultFinancial
+role: outcome
+meaning: "The Home Care Allowance tier the person's functional assessment places them in - a functional capacity score of af_hca_min_capacity_score or higher with a need-for-paid-care score from 1 to below af_hca_tier_two_min_need_score (tier 1), from that score to below af_hca_tier_three_min_need_score (tier 2) or from that score to af_hca_max_need_score (tier 3) - or none when the capacity score is under af_hca_min_capacity_score or the need score is outside 1 to af_hca_max_need_score, per 9 CCR 2503-5 3.570.13.C.3 and 3.570.14.B."
+derived: [case, [[<, hca_functional_capacity_score, af_hca_min_capacity_score], none], [[<, hca_need_for_paid_care_score, af_hca_tier_one_min_need_score], none], [[">", hca_need_for_paid_care_score, af_hca_max_need_score], none], [[">=", hca_need_for_paid_care_score, af_hca_tier_three_min_need_score], tier_3], [[">=", hca_need_for_paid_care_score, af_hca_tier_two_min_need_score], tier_2], [else, tier_1]]
+sources: [S714, S715]
+implemented: engine
+tags: [cash, disability]
+rationale: No existing item reads the HCA tier table. It is the program's functional determination and selects the tier of grant payments (3.570.13.C.3), so it is declared as an outcome.
+tests:
+  - {id: CO-1216-T1, as_of: "2026-10-01", given: {hca_functional_capacity_score: 20, hca_need_for_paid_care_score: 30}, expect: none}
+  - {id: CO-1216-T2, as_of: "2026-10-01", given: {hca_functional_capacity_score: 21, hca_need_for_paid_care_score: 0}, expect: none}
+  - {id: CO-1216-T3, as_of: "2026-10-01", given: {hca_functional_capacity_score: 21, hca_need_for_paid_care_score: 23}, expect: tier_1}
+  - {id: CO-1216-T4, as_of: "2026-10-01", given: {hca_functional_capacity_score: 22, hca_need_for_paid_care_score: 24}, expect: tier_2}
+  - {id: CO-1216-T5, as_of: "2026-10-01", given: {hca_functional_capacity_score: 24, hca_need_for_paid_care_score: 38}, expect: tier_3}
+  - {id: CO-1216-T6, as_of: "2026-10-01", given: {hca_functional_capacity_score: 24, hca_need_for_paid_care_score: 52}, expect: none}

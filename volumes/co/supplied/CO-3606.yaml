@@ -1,0 +1,12 @@
+id: CO-3606
+name: "Long-term care insurance benefits received"
+identifier: long_term_care_insurance_benefits_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Benefits a long-term care insurance policy pays for the person's care for the month, to the person or to the facility. Stated here and in no other income fact. Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). A case states 0 where there is none."
+supplied_by: "The insurer's benefit statement or the facility's AP-5615 report."
+sources: [S2401]
+tags: [ma, ltc, income]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. § 8.100.7.V.3.c: Long-Term Care insurance payments are not income for eligibility but are added to the patient payment; no fact stated them."

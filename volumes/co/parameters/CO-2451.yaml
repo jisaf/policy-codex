@@ -1,0 +1,12 @@
+id: CO-2451
+name: "Medicaid: retroactive months for other applicants from 2027"
+identifier: ma_retroactive_coverage_months_other_after_change
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "For an application made on or after January 1, 2027 by anyone not in the Adults group, the months before the application month for which coverage is available: two (\"in or after the second month before the month in which the individual made application\", 42 U.S.C. 1396a(a)(34)(B) as amended by Pub. L. 119-21 sec. 71112)."
+value: 2
+sources: [S1706]
+tags: [ma]
+rationale: C-11 of the HCPF review.

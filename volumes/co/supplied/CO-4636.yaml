@@ -1,0 +1,13 @@
+id: CO-4636
+name: "Medicaid: CSRA transfer not completed in time"
+identifier: ma_csra_transfer_is_overdue
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the resources allotted to the community spouse as the Community Spouse Resource Allowance have not been transferred into the community spouse's name (or to another person for the community spouse's sole benefit) by the deadline of 10 CCR 2505-10 § 8.100.7.M.3: the next redetermination, or when the community spouse becomes institutionalized, whichever is earlier."
+precision: "Stated for the institutionalized spouse. If not stated, Medicaid reads it as false."
+supplied_by: "Verification of the transfer in the case file."
+sources: [S3418]
+tags: [ma, ltc, resources]
+rationale: "Coverage review NM-19: § 8.100.7.M.3 attributes the resources back to the institutionalized spouse when the transfer is not completed in time; no fact stated it."

@@ -1,0 +1,21 @@
+id: CO-2711
+name: "Medicaid community engagement: is exempt from SNAP work requirements"
+identifier: ma_is_exempt_from_snap_work_requirements
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, this month, the person is exempt from the work requirements of the Food and Nutrition Act for 42 CFR 435.554(c)(7)'s exclusion of \"a member of a household that receives SNAP ... and is not exempt from a work requirement under such Act\": exempt both from work registration (7 U.S.C. 2015(d); snap_is_exempt_from_work_registration, CO-405) and from the time limit (2015(o); snap_is_exempt_from_abawd_time_limit, CO-414), as this volume determines them."
+precision: "\"Is not exempt from a work requirement\" is a status under the Act, which this volume determines; the exclusion applies to a person subject to either requirement, so exemption means exemption from both. Where the volume cannot determine the person's SNAP exemptions (the SNAP household is not determined in this case), the SNAP case record is_exempt_from_snap_work_requirements (CO-1937) is read instead. Receipt of SNAP stays the record receives_snap (CO-1936)."
+derived: [otherwise, [all, snap_is_exempt_from_work_registration, snap_is_exempt_from_abawd_time_limit], is_exempt_from_snap_work_requirements]
+sources: [S1209, S121, S128]
+implemented: engine
+tags: [ma, magi]
+accepts_from:
+  - {from: snap_is_exempt_from_abawd_time_limit, class: rule_required, source: S1209}
+  - {from: snap_is_exempt_from_work_registration, class: rule_required, source: S1209}
+rationale: "Dual-entry audit 4.1 (audit fix round): ma_is_specified_excluded_individual (CO-1965) read only the supplied is_exempt_from_snap_work_requirements (CO-1937), so community engagement could differ from the SNAP exemptions the volume computes for the same person. The federal rule adopts SNAP's exemption, so the volume's SNAP items are read (accepts_from); no existing Medicaid item states it."
+tests:
+  - {id: CO-2711-T1, as_of: "2027-03-01", month: "2027-02", title: "Exempt from work registration and the time limit", given: {snap_is_exempt_from_work_registration: true, snap_is_exempt_from_abawd_time_limit: true}, expect: true}
+  - {id: CO-2711-T2, as_of: "2027-03-01", month: "2027-02", title: "Exempt from the time limit only: still subject to work registration", given: {snap_is_exempt_from_work_registration: false, snap_is_exempt_from_abawd_time_limit: true}, expect: false}
+  - {id: CO-2711-T3, as_of: "2027-03-01", month: "2027-02", title: "SNAP exemptions not determinable here: the SNAP case record", given: {is_exempt_from_snap_work_requirements: true}, expect: true}

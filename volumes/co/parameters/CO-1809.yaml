@@ -1,0 +1,15 @@
+id: CO-1809
+name: CCCAP asset self-declaration limit
+identifier: cccap_asset_limit
+kind: parameter
+type: money
+scope: global
+program: CCCAP
+meaning: The combined liquid and non-liquid asset ceiling above which a CCCAP household is ineligible, under 8 CCR 1403-1 3.111.H.4.c.
+versions:
+  - from: "2024-10-01"
+    value: 1000000
+    source: S515
+sources: [S515]
+tags: [resources]
+rationale: "No existing item states 3.111.H.4.c's asset ceiling, a stated, unambiguous, dollar-valued eligibility condition (docs/reviews/cccap-leap-phase-6.md, K-3). The self-declaration cccap_declares_assets_within_limit (CO-1741) names it; no rule compares an amount with it, since the application collects the declaration, not a figure (heavier-definitions audit H-12)."

@@ -1,0 +1,14 @@
+id: CO-7911
+name: "Number of persons living in the home"
+identifier: persons_living_in_home_count
+kind: supplied
+type: whole number
+scope: case
+program: All
+meaning: "The number of people who live in the home of the application, the applicant included, whether or not each is a person of the case or applies for anything: everyone who shares the dwelling whose shelter costs home_total_shelter_costs (CO-3402) totals."
+precision: "One value for the case (convention rule 18), as home_total_shelter_costs is: a fact of the home, stated once, never repeated on each member. It counts the persons the case does not list as well as those it does, so it is at least the number of persons of the case who live in the home (lives_with, CO-1925) and may be more. Required where read (decision 4 of 2026-11-23): no rule text gives a number of people in a home that is not stated. Read by Adult Financial's in-kind support and maintenance (af_in_kind_support_and_maintenance, CO-1512), whose fair share divides the home's shelter costs \"by the number of people living in the household\" (9 CCR 2503-5 3.520.79.B.4.a, S1012), only where the computation reaches the fair share (KL-CASH-1, docs/reviews/known-limits.md)."
+supplied_by: "Application (housing and shelter costs: who lives in the home); client statement is acceptable verification (3.520.79.A)."
+sources: [S1012]
+implemented: engine
+tags: [household]
+rationale: "KL-CASH-1 (coverage pass 7, F7-4; docs/reviews/coverage7-cash.md, docs/reviews/known-limits.md): the fair share of 3.520.79.B.4.a and C.2 divides the home's shelter costs by the number of people living in the household, and the volume counted only the persons of the case who live in the home (lives_with), so an Adult Financial client sharing a home with people who do not apply, and are not listed, had the fair share overstated (a client paying $250 of a $1,000 home shared with three others was charged $101 of ISM where the text charges none). A neutral fact of the home, stated once as home_total_shelter_costs is, gives the divisor the text names without making a case list persons who do not apply."

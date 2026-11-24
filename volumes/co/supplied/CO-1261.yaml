@@ -1,0 +1,14 @@
+id: CO-1261
+name: Colorado Works sanction level being served
+identifier: work_sanction_level_served
+kind: supplied
+type: one of
+options: [none, first, second, third, fourth]
+scope: person-month
+program: ColoradoWorks
+meaning: The level of Colorado Works sanction this person is serving in the month for not participating in the Workforce Development program - the first, second, third or fourth instance, counted from the level after the last sanction served - or none, per 9 CCR 2503-6 3.601 ("Sanction") and 3.608.4.C-E. A sanction from another county is still served; one from another state is not recognized (3.608.4.A-B).
+supplied_by: County Workforce Development case record (statewide automated system), after the re-engagement process and notice.
+sources: [S760, S761, S765]
+open: [OQ-252]
+tags: [cash, tanf]
+rationale: No existing fact states a Colorado Works sanction; whether a sanction is imposed (non-participation without good cause, re-engagement) is a county process outside the volume's scope, so the level being served enters as a supplied fact. cw_unit_sanction_level (CO-1264) needs it.

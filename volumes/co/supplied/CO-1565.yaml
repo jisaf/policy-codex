@@ -1,0 +1,12 @@
+id: CO-1565
+name: Zero income verified
+identifier: zero_income_verified
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: "Whether the county has verified that the person, an adult member of a household reporting no income, has none: a Department of Labor and Employment wage check together with a reasonable explanation of how shelter expenses are met, the final date of employment from the last employer, or CBMS records."
+supplied_by: LEAP worker's zero-income verification recorded in the LEAP system Record of Contact.
+sources: [S1083]
+tags: [verification, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-14: 3.755.21.H requires zero income to be verified) needs it as a supplied fact."

@@ -1,0 +1,13 @@
+id: CO-4724
+name: "Adult Financial: cost of doing business allowance for a licensed child care provider, first child"
+identifier: af_child_care_provider_cost_first_child
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: "The monthly cost of doing business allowed a client, client's spouse or sponsor who is a licensed child care provider for the first child for whom day care is provided (9 CCR 2503-5 3.520.783.C.3.a: \"deduct $55\")."
+precision: "Read by af_self_employment_business_costs (CO-1707). Colorado Works states the same figure as its own parameter (cw_child_care_provider_cost_first_child); each program's figure is its own."
+value: 55
+sources: [S3505]
+tags: [cash, income]
+rationale: "Coverage review 2 (first-pass P2-2): the figure of 3.520.783.C.3.a (S3505)."

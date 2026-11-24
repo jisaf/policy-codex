@@ -1,0 +1,12 @@
+id: CO-3033
+name: Federal qualifying quarters threshold
+identifier: federal_qualifying_quarters_threshold
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The number of qualifying quarters of coverage under Title II of the Social Security Act (worked by the non-citizen or credited from a spouse or parent) that the federal non-citizen eligibility rules of 8 U.S.C. 1612 and 1631 make an exception: forty. SNAP's additional condition (10 CCR 2506-1, S13), Medical Assistance's exemption from the five-year rule (10 CCR 2505-10 § 8.100.3.G.1.g.iv.1, citing 8 U.S.C. 1612(b)(2)(B), S656) and Colorado Works' exemption from sponsor deeming (9 CCR 2503-6 3.605.1.A.5.c.6, S1627) and Adult Financial's end of the sponsor's obligation (9 CCR 2503-5 3.520.69.B.2, S3203) each restate it."
+value: 40
+sources: [S13, S656, S1627, S3203]
+tags: [immigration]
+rationale: "Hard-coded numbers audit D-3: one federal figure was held three times (snap_qualifying_quarters_threshold CO-103, ma_five_year_bar_exempt_work_quarters CO-1171, cw_sponsor_deeming_exempt_quarters CO-2369, now retired), as the vocabulary fix round had already merged the parallel five-year figure (U-2). Each state rule restates the federal forty quarters rather than setting a figure of its own, so one parameter (convention 2: federal_ marks a federal figure) is correct for all three; a program whose rule later sets its own figure gets its own parameter."

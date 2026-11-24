@@ -1,0 +1,14 @@
+id: CO-3334
+name: Residence setting provides the majority of meals
+identifier: residence_setting_provides_majority_of_meals
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The setting provides the person with the majority of the person's meals (over half of three meals daily) as part of its normal services."
+precision: "Stated for a setting other than a private dwelling where a reader asks."
+supplied_by: "Application (living arrangement), the facility's admission record."
+sources: [S2200]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."

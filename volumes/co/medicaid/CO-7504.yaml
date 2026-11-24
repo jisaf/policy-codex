@@ -1,0 +1,22 @@
+id: CO-7504
+name: "Medicaid: retains SSI status in the month"
+identifier: ma_retains_ssi_status_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether SSA treats the person as an SSI recipient without payment in the month (10 CCR 2505-10 § 8.100.6.C.8; 1619(b), § 8.100.1): so treated on the determination date (retains_ssi_status_without_payment, CO-1112) and, for a month before the determination month, the month is not before the month of the original SSI eligibility date (ssi_eligibility_date, CO-7350), since the status continues an SSI award."
+precision: "Pattern sweep, non-MAGI Medicaid (P1): a person keeps SSI status without payment only after SSA awarded SSI, so no month before the award's eligibility date is one; between that date and the status, the person was an SSI recipient, which the same readers take as well (§ 8.100.7.B.1.a, S3408: \"SSI (including 1619b)\"). The determination month and the months after read the status as stated. The eligibility date is required for a month before the determination month (decision 4 of 2026-11-23)."
+derived: [all, retains_ssi_status_without_payment, [case, [[">=", [month], [det_month]], true], [else, ["<=", [month_of, ssi_eligibility_date], [month]]]]]
+sources: [S627, S5030, S1503, S3408]
+implemented: engine
+tags: [ma, non_magi, disability]
+rationale: "Pattern sweep P1: ma_hcbs_waiver_eligible (CO-653), ma_reaches_hcbs_without_special_income_group (CO-4630) and ma_protected_group_category (CO-1163) read retains_ssi_status_without_payment, the status on the determination date, in every month; coverage pass 6 F6-5 dated the SSI award itself (CO-7351) and left this route undated."
+nearest: [CO-7351, CO-1112]
+tests:
+  # SSI eligibility from 2026-10-01, determined 2026-11-12. August: 2026-10 > 2026-08: false. October: 2026-10 <= 2026-10: true.
+  - {id: CO-7504-T1, month: "2026-08", as_of: "2026-11-12", title: "A retroactive month before the SSI award's eligibility date", given: {retains_ssi_status_without_payment: true, ssi_eligibility_date: "2026-10-01"}, expect: false}
+  - {id: CO-7504-T2, month: "2026-10", as_of: "2026-11-12", title: "The month of the eligibility date", given: {retains_ssi_status_without_payment: true, ssi_eligibility_date: "2026-10-01"}, expect: true}
+  - {id: CO-7504-T3, month: "2026-11", as_of: "2026-11-12", title: "The determination month reads the status as stated", given: {retains_ssi_status_without_payment: true}, expect: true}
+  - {id: CO-7504-T4, month: "2026-09", as_of: "2026-11-12", title: "No such status: false", given: {retains_ssi_status_without_payment: false}, expect: false}
+  - {id: CO-7504-T5, month: "2026-09", as_of: "2026-11-12", title: "A retroactive month with no eligibility date stated cannot be determined (decision 4)", given: {retains_ssi_status_without_payment: true}, expect: unknown}

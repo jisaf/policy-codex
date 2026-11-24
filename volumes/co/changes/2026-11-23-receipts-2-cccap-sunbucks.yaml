@@ -1,0 +1,6 @@
+# Receipt records, migration phase 2 (docs/reviews/receipts-migration-2-cccap-sunbucks.md): CCCAP and SUN Bucks read
+# the receipts (CO-5000) through one counting table each; the thirty-day unearned income CCCAP and LEAP shared (CO-3913)
+# has no reader left and is removed. One entry per change-impact flag the phase raises.
+date: 2026-11-23
+summary: CCCAP and SUN Bucks read unearned income from receipt records through one counting table each; the thirty-day unearned income CCCAP and LEAP shared (CO-3913) is removed.
+impact: []

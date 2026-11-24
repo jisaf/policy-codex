@@ -1,0 +1,14 @@
+id: CO-1902
+name: "Medicaid community engagement: look-back months at application"
+identifier: ma_community_engagement_application_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of consecutive months immediately preceding the month of application for which an applicant who is an applicable individual must demonstrate, or be deemed to have demonstrated, community engagement: at least one and not more than three, as specified in the State plan (42 CFR 435.556(a)(1); 42 U.S.C. 1396a(xx)(1)(A))."
+assumption: No published Colorado rule or State plan amendment states the number (OQ-410). The draft uses one month, the least the federal text allows.
+value: 1
+sources: [S1211, S1215]
+tags: [ma, magi, state_election]
+open: [OQ-410]
+rationale: "OQ-65: the application look-back is a State election the requirement cannot be evaluated without; ma_community_engagement_review_months (CO-1973) reads it."

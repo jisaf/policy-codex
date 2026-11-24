@@ -1,0 +1,13 @@
+id: CO-1586
+name: Residency verification cannot reasonably be accomplished
+identifier: residency_verification_cannot_reasonably_be_accomplished
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "Whether verification of the household's residency cannot reasonably be accomplished, as for some migrant farmworker households or households newly arrived in the area (a homeless household is read from snap_is_homeless)."
+precision: "One value for the case."
+supplied_by: Eligibility worker's finding recorded in CBMS case comments.
+sources: [S824, S805]
+tags: [verification, snap]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-310: 4.505.3.A) needs it as a supplied fact. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

@@ -1,0 +1,12 @@
+id: CO-2207
+name: Has declined state medical assistance
+identifier: ma_has_declined_state_medical_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, a child who could receive state medical assistance under C.R.S. 25.5-2-104 because the child is not eligible for Medical Assistance due solely to immigration status, has declined to enroll in it (C.R.S. 25.5-2-103(1)(b): an eligible individual for the reproductive health-care program is one 'who is not eligible for, or declines to enroll in, state medical assistance')."
+supplied_by: The applicant's or the child's representative's statement on the application.
+sources: [S615, S654]
+tags: [ma, immigration]
+rationale: "OQ-205: the reproductive health-care program reaches a child who declines state medical assistance; no fact stated the declination."

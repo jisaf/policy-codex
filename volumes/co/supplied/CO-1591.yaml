@@ -1,0 +1,12 @@
+id: CO-1591
+name: Summer EBT eligibility directly verified
+identifier: sebt_eligibility_directly_verified
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: Whether direct verification against SNAP, TANF, FDPIR, Medicaid or other program records or administrative data confirmed the child's eligibility at some point in the period of eligibility.
+supplied_by: Summer EBT agency direct-verification match results.
+sources: [S1091]
+tags: [verification, sebt]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.14(e)) needs it as a supplied fact."

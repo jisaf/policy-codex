@@ -1,0 +1,13 @@
+id: CO-7101
+name: "Adult Financial: months over which irregular self-employment income is averaged"
+identifier: af_irregular_self_employment_averaging_months
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The twelve months over which 9 CCR 2503-5 3.520.783.F averages self-employment income whose receipt is irregular (\"If receipt of self-employment income is irregular, it shall be averaged over a twelve-month period. The twelve-month period can either be the previous tax year (January to December) or the most recent twelve-months prior to the application date\")."
+precision: "Read by af_self_employment_net_profit (CO-1708), as the length of the period before the application month and as the divisor; the previous tax year is January to December of the year before the month evaluated. Which of the two periods applies is af_self_employment_averaging_period (CO-7102)."
+value: 12
+sources: [S4914]
+tags: [cash, income]
+rationale: "Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-3): the twelve-month period of 3.520.783.F (S4914) as a parameter, not a literal."

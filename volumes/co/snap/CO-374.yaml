@@ -6,13 +6,14 @@ type: money
 scope: person-month
 program: SNAP
 meaning: The deduction for this person's SNAP household's actual monthly dependent care costs necessary for a household member to work, seek work, or attend training or education preparatory to employment - the amount billed, with no maximum.
-precision: Sums dependent_care_expense over every member of snap_household_members (a dependent care expense is allowed "as billed to a household member or as paid by or billed to a person disqualified," 10 CCR 2506-1 4.407.4,A), rather than snap_eligible_household_members only; does not prorate out a disqualified member's own share of an expense billed to that member (OQ-28).
-derived: [sum, snap_household_members, [of, [P], dependent_care_expense]]
-sources: [S98]
-open: [OQ-28]
+precision: "Sums snap_counted_dependent_care_expense_of_member (CO-2301) over every member of snap_household_members: an expense billed to an eligible member or to a member disqualified for IPV, a work sanction or as a fleeing felon counts in full, one billed to an ineligible non-citizen less that member's pro rata share (4.407.4.A, 4.411.1.B.2.c), one paid by an ineligible student not at all (phase-10 sweep, OQ-28)."
+derived: [sum, snap_household_members, [of, [P], snap_counted_dependent_care_expense_of_member]]
+sources: [S98, S1601, S1602]
 implemented: engine
 tags: [income]
 rationale: 7 U.S.C. 2014(e)(3) removed the federal dependent care cap effective the date noted in that provision, and 10 CCR 2506-1 4.407.4,B (S98) confirms Colorado allows "the total dollar amount that the household is responsible to pay," with no cap; no existing item sums the dependent_care_expense supplied fact to the household level.
 tests:
-  - {id: CO-374-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2], dependent_care_expense: 0}, others: {p2: {dependent_care_expense: 450}}, relationships: [[spouse, p1, p2]], expect: 450}
-  - {id: CO-374-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], dependent_care_expense: 0}, others: {}, relationships: [], expect: 0}
+  - {id: CO-374-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_expense_verification_period_has_ended: false, snap_household_members: [p1, p2], dependent_care_expense: 0, snap_is_ineligible_member: false}, others: {p2: {snap_expense_verification_period_has_ended: false, dependent_care_expense: 450, snap_is_ineligible_member: false}}, relationships: [[spouse, p1, p2]], expect: 450}
+  - {id: CO-374-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], dependent_care_expense: 0, snap_is_ineligible_member: false}, others: {}, relationships: [], expect: 0}
+  # Phase-10 sweep (OQ-28): $450 billed to an ineligible non-citizen spouse in a household of three; two thirds count (4.407.4.A).
+  - {id: CO-374-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_expense_verification_period_has_ended: false, snap_household_members: [p1, p2, p3], dependent_care_expense: 0, snap_is_ineligible_member: false}, others: {p2: {snap_prorated_member_share_counted_rate: 0.6666666666666666, snap_expense_verification_period_has_ended: false, dependent_care_expense: 450, snap_is_ineligible_member: true, snap_is_disqualified_member_counted_in_full: false, snap_is_ineligible_non_citizen: true, snap_household_members: [p1, p2, p3]}, p3: {snap_expense_verification_period_has_ended: false, dependent_care_expense: 0, snap_is_ineligible_member: false}}, relationships: [], expect: 300}

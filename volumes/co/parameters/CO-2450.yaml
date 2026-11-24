@@ -1,0 +1,12 @@
+id: CO-2450
+name: "Medicaid: retroactive months for an expansion adult from 2027"
+identifier: ma_retroactive_coverage_months_expansion_adult
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "For an application made on or after January 1, 2027 by a person enrolled in the Adults group (42 U.S.C. 1396a(a)(10)(A)(i)(VIII)), the months before the application month for which coverage is available: one (\"in or after the month before the month in which the individual made application\", 42 U.S.C. 1396a(a)(34)(A) as amended by Pub. L. 119-21 sec. 71112)."
+value: 1
+sources: [S1706]
+tags: [ma, magi]
+rationale: C-11 of the HCPF review.

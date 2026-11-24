@@ -1,0 +1,18 @@
+id: CO-2238
+name: "Medicaid: income trust monthly distribution"
+identifier: ma_income_trust_distribution
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The amount an income trust distributes this month for the person (10 CCR 2505-10 § 8.100.7, income trusts, 6.a.i.b and f): for a Long-Term Care institution member, the entire income transferred into the trust less the amount retained for trust expenses (at most ma_income_trust_expense_retention_max); for an HCBS member, the same, but no more than ma_special_income_group_pct of the SSI limit, the rest remaining in the trust."
+precision: "The trust holds all of the person's monthly income (pension, Social Security and other income, 6.a.i), so the income transferred in is ma_ltc_gross_income. A Long-Term Care institution member is a resident of a medical institution (resides_in_medical_institution). The HCBS member payment (PETI) that 6.a.i.f computes on ma_special_income_group_pct of the SSI limit is not modeled; no HCBS payment item exists."
+derived: [case, [resides_in_medical_institution, [max, 0, ["-", ma_ltc_gross_income, [min, ma_income_trust_amount_retained_for_expenses, ma_income_trust_expense_retention_max]]]], [else, [min, ["*", ssi_federal_benefit_rate_individual, ma_special_income_group_pct], [max, 0, ["-", ma_ltc_gross_income, [min, ma_income_trust_amount_retained_for_expenses, ma_income_trust_expense_retention_max]]]]]]
+sources: [S1508]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "OQ-96: the income trust's own rules (the monthly distribution, the $20 retention, the HCBS 300% limit) were not modeled; ma_patient_payment (CO-658) reads the distribution for a trust user."
+tests:
+  - {id: CO-2238-T1, as_of: "2026-10-01", month: "2026-10", title: "Nursing facility resident, $3,200 into the trust, $15 bank charges retained", given: {resides_in_medical_institution: true, ma_ltc_gross_income: 3200, ma_income_trust_amount_retained_for_expenses: 15}, expect: 3185}
+  - {id: CO-2238-T2, as_of: "2026-10-01", month: "2026-10", title: "Retention above $20 is limited to $20", given: {resides_in_medical_institution: true, ma_ltc_gross_income: 3200, ma_income_trust_amount_retained_for_expenses: 35}, expect: 3180}
+  - {id: CO-2238-T3, as_of: "2026-10-01", month: "2026-10", title: "HCBS member: distribution limited to 300% of the SSI rate", given: {resides_in_medical_institution: false, ma_ltc_gross_income: 3200, ma_income_trust_amount_retained_for_expenses: 0}, expect: 2982}

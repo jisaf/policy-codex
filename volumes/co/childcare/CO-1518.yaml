@@ -1,0 +1,20 @@
+id: CO-1518
+name: "CCCAP: in workforce training or post-secondary education"
+identifier: cccap_is_in_workforce_training_or_post_secondary_education
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether, for the period care is requested, this person participates in workforce training (vocational, technical or job skills training resulting in a diploma, license or certificate, and, from July 1, 2026, substance use disorder treatment at an intensive outpatient level of care or higher, 3.103.IIIII) or post-secondary education - the activities that make a parent under twenty-one an adult caretaker rather than a teen parent under 8 CCR 1403-1 3.103.EEEEE and 3.111.G.4.a.1-2.
+precision: "Coverage pass 2 C2-1: 3.103.IIIII (S3258) makes workforce training include, effective July 1, 2026, substance use disorder treatment at an intensive outpatient level of care or higher, so a person in that treatment (is_in_sud_treatment_iop_or_higher, CO-1516, read for the determination month and as false when not stated) is in workforce training once the determination date is on or after cccap_sud_treatment_activity_start_date (CO-1517). A parent under twenty-one in treatment is then an adult caretaker (3.103.EEEEE), whose activity is cccap_is_in_sud_treatment_activity (CO-4074) with its year per instance. Before the fix a 17-year-old mother in treatment was neither an adult caretaker nor a teen parent, and her household was ineligible_activity (probe Z-1)."
+derived: [any, [in, education_program_type, [workforce_training, postsecondary_career_and_technical, higher_education]], [all, [otherwise, [at, is_in_sud_treatment_iop_or_higher, [det_month]], false], [">=", [det_date], cccap_sud_treatment_activity_start_date]]]
+sources: [S1016, S3258]
+implemented: engine
+tags: [household, age]
+rationale: "No existing fact separates workforce training and post-secondary education from secondary school (phase-8 review K-7, OQ-124). snap_is_enrolled_half_time_in_school_or_training (CO-020) is the shared secondary-school fact the vocabulary review proposes to split; is_enrolled_higher_education_half_time (CO-021) is SNAP's student test, which does not include vocational or job skills training. cccap_is_teen_parent (CO-981) and cccap_is_adult_caretaker (CO-992) need it for the current teen-parent definition. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
+nearest: [CO-020, CO-021]
+tests:
+  - {id: CO-1518-T1, title: "Certificate program", as_of: "2026-11-01", given: {education_program_type: workforce_training}, expect: true}
+  - {id: CO-1518-T2, title: "High school", as_of: "2026-11-01", given: {education_program_type: secondary}, expect: false}
+  - {id: CO-1518-T3, title: "C2-1: treatment at an intensive outpatient level is workforce training from July 1, 2026 (3.103.IIIII)", as_of: "2026-11-15", given: {education_program_type: none, is_in_sud_treatment_iop_or_higher: true}, expect: true}
+  - {id: CO-1518-T4, title: "C2-1: no education program and no treatment", as_of: "2026-11-15", given: {education_program_type: none, is_in_sud_treatment_iop_or_higher: false}, expect: false}

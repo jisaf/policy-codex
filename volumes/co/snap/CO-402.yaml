@@ -3,15 +3,20 @@ name: "SNAP: weekly average hours worked"
 identifier: snap_weekly_hours_worked
 kind: derived
 type: hours
-scope: person
+scope: person-month
 program: SNAP
-meaning: Hours worked in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported hours counts as 0.
-precision: Reads hours_worked (a person-month fact) for the determination date's month via the "at" pattern, since this item's own scope is person.
-derived: ["/", ["*", [otherwise, [at, hours_worked, [det_month]], 0], 12], 52]
-sources: [S121, S123, S126, S133, S135]
+meaning: "Hours worked for pay in the month evaluated (snap_hours_worked_in_month, CO-6604), converted to a weekly average by dividing by snap_weeks_per_month (CO-3041, the 7 CFR 273.10(c)(2) conversion)."
+precision: "Coverage pass 4 S4-13 (decision 4): unstated hours are no longer read as 0 when the person's earnings records state pay or business receipts for the month; they are cannot determine (CO-6604). Coverage pass 6 for SNAP, C6-6 (docs/reviews/coverage6-snap.md): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734) and the readers (the student's eligibility, CO-410 and CO-411; the work registration exemption, CO-405) are per month since S4-11: the month's hours and pay are read in each month evaluated. Before, the item was per person and read the determination month in every month, so a student who began a 20-hour job after the determination month stayed an ineligible student in that month."
+derived: ["/", "snap_hours_worked_in_month", "snap_weeks_per_month"]
+sources: [S121, S123, S126, S133, S135, S2050, S4734]
 implemented: engine
 tags: [work_registration, student]
-rationale: Both the work-registration employment exemption (30 hours/week, S121/S123/S126) and the student employment exemption (20 hours/week, S133/S135) test a weekly-average-hours figure computed the same way; this item is the shared conversion both snap_meets_work_registration_employment_exemption and snap_meets_student_employment_exemption read, following the same 12/52 conversion as the mwr volume's WR-304.
+rationale: "Both the work-registration employment exemption (30 hours/week, S121/S123/S126) and the student employment exemption (20 hours/week, S133/S135) test a weekly-average-hours figure computed the same way; this item is the shared conversion both snap_meets_work_registration_employment_exemption and snap_meets_student_employment_exemption read. Hard-coded numbers audit H-11: the conversion was 12/52, following the mwr volume's WR-304; SNAP's own rule converts by 4.3 (S2050)."
 tests:
-  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 130}, expect: 30}
-  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138}, expect: 31.846153846153847}
+  # Hard-coded numbers audit H-11: 4.3 weeks a month (7 CFR 273.10(c)(2), S2050) replaces 52/12. T1: 130 / 4.3 = 30.2325581395 (was 130 x 12 / 52 = 30);
+  # T2: 138 / 4.3 = 32.0930232558 (was 31.846153846153847).
+  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: wages, amount: 1500}], hours_worked: 130}, expect: 30.232558139534884}
+  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: wages, amount: 1500}], hours_worked: 138}, expect: 32.09302325581396}
+  - {"id": "CO-402-T3", "title": "S4-13: wages stated, hours not stated: cannot determine", "month": "2026-10", "as_of": "2026-10-01", "given": {"earnings": [{"kind": "wages", "amount": 1500}]}, "expect": "unknown"}
+  - {"id": "CO-402-T4", "title": "S4-13: no earnings stated as an empty list, hours not stated: 0 / 4.3 = 0", "month": "2026-10", "as_of": "2026-10-01", "given": {"earnings": []}, "expect": 0}
+  - {id: CO-402-T5, as_of: "2026-10-15", month: "2026-11", title: "Coverage pass 6 C6-6: the month evaluated's hours, not the determination month's: 86 hours in November, 86 / 4.3 = 20", given: {hours_worked: 86, earnings: [{kind: wages, amount: 1000, job_start_date: "2026-11-01"}]}, expect: 20}

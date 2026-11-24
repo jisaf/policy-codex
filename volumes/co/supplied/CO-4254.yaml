@@ -1,0 +1,13 @@
+id: CO-4254
+name: "SNAP: the last expedited certification's postponed verification is still incomplete"
+identifier: snap_prior_expedited_postponed_verification_incomplete
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "The household was last certified under expedited procedures with verification postponed, it has not completed the verification postponed at that certification, and it has not been certified under normal processing standards since (10 CCR 2506-1 4.205.11.C; 7 CFR 273.2(i)(4)(iv)). Such a household may not be certified under expedited procedures again until it does: its verification must be completed before this certification."
+precision: "One value for the case. If not stated, SNAP reads this as false (no earlier expedited certification with verification left incomplete)."
+supplied_by: "The case's certification history in the statewide system."
+sources: [S3062]
+tags: [snap, verification, application_wide]
+rationale: "Coverage review C-12 (docs/reviews/coverage-snap-nonfinancial.md): nothing recorded the earlier expedited certification, so a household that never completed the verification postponed last time was again reported postponed_expedited (snap_verification_status, CO-1394), and the rule (S3062) requires full verification before this certification. No existing fact states the household's certification history."

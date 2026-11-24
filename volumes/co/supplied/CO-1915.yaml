@@ -1,0 +1,12 @@
+id: CO-1915
+name: Unpaid or in-kind work hours
+identifier: unpaid_or_in_kind_work_hours
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: "The hours in the month the person worked in exchange for goods or services (\"in-kind\" work) or worked without pay, other than community service (community_service_hours, CO-1916). Hours worked for money, self-employment included, are hours_worked (CO-022). If not stated, Medicaid and SNAP read this as zero."
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1203, S132]
+tags: [ma, magi, snap]
+rationale: "OQ-65: hours_worked (CO-022) counts paid work only; 435.552(b) also counts in-kind and unpaid work toward the 80 hours. SNAP final verification F-12: 10 CCR 2506-1 4.311.B.1.a (S132) also counts in-kind and unpaid work toward the ABAWD work requirement, so the fact is made neutral (renamed from ma_unpaid_or_in_kind_work_hours through a change set that keeps the ID; program All); sources S132 added."

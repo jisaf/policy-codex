@@ -1,0 +1,13 @@
+id: CO-2109
+name: "CCCAP: job search weeks used"
+identifier: cccap_job_search_weeks_used
+kind: supplied
+type: whole number
+scope: person-month
+program: CCCAP
+meaning: "The number of weeks of job search child care this caretaker has used in the current instance of job search, before the month (8 CCR 1403-1 3.111.G.3); any week in which a day is used counts as a week."
+precision: "Stated for a caretaker in a job search activity; not needed otherwise."
+supplied_by: CCCAP case record of authorized job search care.
+sources: [S1411]
+tags: [household]
+rationale: "Review K-5 and OQ-162: no fact counts the job search time used. cccap_caretaker_in_eligible_activity (CO-984) reads it."

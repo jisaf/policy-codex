@@ -1,0 +1,14 @@
+id: CO-7150
+name: "Medicaid SSI method: months a relocation payment held toward a replacement dwelling is not a resource"
+identifier: ma_relocation_payment_exclusion_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of months from its receipt during which a relocation payment a displaced homeowner holds toward the purchase of a replacement dwelling is left out of resources (10 CCR 2505-10 8.100.5.F.6.f, S4506: \"Relocation payments to a displaced homeowner toward the purchase of a replacement dwelling are considered exempt for up to 6 months\")."
+precision: "Read by ma_ssi_holdings_countable_in_month (CO-5320) for held_replacement_proceeds whose proceeds_source is relocation (row excluded_by_proceeds_source of CO-5303): a payment received in month M is left out through month M + 6 and counted from the month after (field-effect sweep, FS-MA-9; OQ-1240 narrowed). Before, the three months of ma_replacement_proceeds_exclusion_months (CO-6501) were applied to every source toward real property, for want of a field stating the source."
+value: 6
+sources: [S4506]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Field-effect sweep (docs/reviews/field-sweep-snap-cash-nonmagi.md), FS-MA-9: the holdings record states proceeds_source, and F.6.f gives a relocation payment six months; a figure the rule states is a parameter (OQ-82)."

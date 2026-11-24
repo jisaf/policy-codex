@@ -3,14 +3,18 @@ name: "Medicaid: meets the SSI resource standard"
 identifier: ma_meets_ssi_resource_standard
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
 meaning: Whether this person's ma_ssi_countable_resources do not exceed the SSI-related resource limit for their ma_ssi_household_size, per 42 U.S.C. 1382b, 20 CFR 416.1205 and 10 CCR 2505-10 8.100.5.M.1.
-derived: [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], ma_ssi_resource_limit_couple], [else, ma_ssi_resource_limit_individual]]]
+precision: "Coverage pass 4, non-MAGI N4-7: per month, on the month's countable resources (ma_ssi_countable_resources, CO-608) and household size (ma_ssi_household_size, CO-604)."
+derived: [<=, ma_ssi_countable_resources, [case, [["=", ma_ssi_household_size, 2], ssi_resource_limit_couple], [else, ssi_resource_limit_individual]]]
 sources: [S301, S302]
 implemented: engine
 tags: [ma, non_magi, resources]
 rationale: "No existing item compares SSI-related countable resources to the $2,000/$3,000 limit. ma_is_ssi_related_eligible (CO-611) needs it. CO-01's p1 (1900 <= 2000) is the worked example in the batch report."
 tests:
-  - {id: CO-610-T1, as_of: "2026-10-01", given: {ma_ssi_countable_resources: 1900, in_medical_institution: true}, others: {}, relationships: [], expect: true}
-  - {id: CO-610-T2, as_of: "2026-10-01", given: {ma_ssi_countable_resources: 2500, in_medical_institution: true}, others: {}, relationships: [], expect: false}
+  - {id: CO-610-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_countable_resources: 1900, resides_in_medical_institution: true}, others: {}, relationships: [], expect: true}
+  - {id: CO-610-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_countable_resources: 2500, resides_in_medical_institution: true}, others: {}, relationships: [], expect: false}
+  - {id: CO-610-T4, month: "2026-08", as_of: "2026-11-12", title: "N4-7: 5,000 in August, one person: 5,000 > 2,000, not met in August", given: {ma_ssi_countable_resources: 5000, ma_ssi_household_size: 1}, expect: false}
+  # Time audit T-9: each comparison tested at its limit, with the two sides equal (the strict/inclusive flip of the comparison fails it).
+  - {"id": "CO-610-T3", "month": "2026-10", "as_of": "2026-10-01", "title": "T-9: ma_ssi_countable_resources equal to [\"case\",[[\"=\",\"ma_ssi_household_size\",2],\"ssi_resource_limit_couple\"],[\"else\",\"ssi_resource_limit_individual\"]] (ma_ssi_countable_resources at or under [\"case\",[[\"=\",\"ma_ssi_household_size\",2],\"ssi_resource_limit_couple\"],[\"else\",\"ssi_resource_limit_individual\"]])", "given": {"ma_ssi_countable_resources": 2000, "resides_in_medical_institution": true}, "others": {}, "relationships": [], "expect": true}

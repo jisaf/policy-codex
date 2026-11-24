@@ -1,0 +1,12 @@
+id: CO-2201
+name: Has left the Medical Assistance required household
+identifier: ma_has_left_required_household
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, by this month, the person is no longer part of the Medical Assistance required household of the determination that opened the person's continuous eligibility period - the parents or caretaker relatives, spouses and dependent children residing in the same home (10 CCR 2505-10 §§ 8.100.1, 8.100.3.Q.1.b.iii)."
+supplied_by: A reported change of address or household composition in the case record.
+sources: [S1502]
+tags: [ma, magi, household]
+rationale: "OQ-53: leaving the required household ends a child's continuous eligibility period. The case's relationship edges state the household at the determination only, so the later change needs its own fact."

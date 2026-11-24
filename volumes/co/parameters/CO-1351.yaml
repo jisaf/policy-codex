@@ -1,0 +1,13 @@
+id: CO-1351
+name: Colorado Works verification response days
+identifier: cw_verification_response_days
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The number of calendar days from the county's written request within which a Colorado Works applicant must return requested verifications.
+value: 11
+sources: [S871]
+open: [OQ-770]
+tags: [verification, cash, tanf]
+rationale: 9 CCR 2503-6 3.604.3.A (S871) sets the due date at eleven calendar days from the written request; no item carried it.

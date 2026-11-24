@@ -1,0 +1,13 @@
+id: CO-1311
+name: "SSN furnished or application for one shown"
+identifier: ssn_furnished_or_application_shown
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person has furnished a Social Security number or documentary proof of an application for one, the condition each program imposes before the number can be verified with SSA.
+precision: "True when the number is furnished even if SSA has not yet confirmed it: every program forbids delaying an otherwise eligible person pending SSA's response (7 CFR 273.2(f)(1)(v), 42 CFR 435.910(f), 45 CFR 205.52(c), 9 CCR 2503-5 3.520.65.A.4)."
+supplied_by: SSN entered on the application, or SSA receipt of an SSN application recorded in the CBMS case file.
+sources: [S843, S860, S878, S884]
+tags: [verification]
+rationale: "No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-4): renamed from ssn_verification_document_received; the name said more than the fact establishes."

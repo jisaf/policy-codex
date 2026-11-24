@@ -1,0 +1,12 @@
+id: CO-2203
+name: Has requested withdrawal from continuous eligibility
+identifier: ma_has_requested_withdrawal_from_continuous_eligibility
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, by this month, the child or the child's responsible party has requested that the child be withdrawn from continuous eligibility (10 CCR 2505-10 § 8.100.3.Q.1.b.vi)."
+supplied_by: The withdrawal request recorded in the case.
+sources: [S1502]
+tags: [ma, magi]
+rationale: "OQ-53: a request to withdraw ends a child's continuous eligibility period; no fact stated it."

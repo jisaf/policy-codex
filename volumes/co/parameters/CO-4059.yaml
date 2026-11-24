@@ -1,0 +1,15 @@
+id: CO-4059
+name: CCCAP protective services months to verify a child's citizenship, age and identity
+identifier: cccap_protective_services_child_identity_verification_months
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The months a protective services household has to provide verification of a placed child's citizenship status, age and identity when the Child Welfare worker could not attest to them at the referral: 8 CCR 1403-1 3.119.F.1-2, \"up to six (6) months\"; past them the county must not provide Protective Services Child Care for the child (F.3)."
+versions:
+  - from: "2026-08-14"
+    value: 6
+    source: S2852
+sources: [S2852]
+tags: [verification]
+rationale: "Second-pass review N-6: cccap_verification_status (CO-1451) gave a protective services household fifteen days for a child's citizenship, age and identity, which 3.119.F gives six months."

@@ -3,16 +3,19 @@ name: "SNAP: weekly earnings"
 identifier: snap_weekly_earnings_worked
 kind: derived
 type: money
-scope: person
+scope: person-month
 program: SNAP
-meaning: Earned income and self-employment net income in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported income counts as 0.
-precision: Reads earned_income and self_employment_net_income (person-month facts) for the determination date's month via the "at" pattern.
-derived: ["/", ["*", [+, [otherwise, [at, earned_income, [det_month]], 0], [otherwise, [at, self_employment_net_income, [det_month]], 0]], 12], 52]
-sources: [S121, S123, S126]
+meaning: "Earned income and self-employment net income in the month evaluated, converted to a weekly average by dividing by snap_weeks_per_month (CO-3041, the 7 CFR 273.10(c)(2) conversion): the pay received in the month (snap_person_pay_received, CO-5119) and the net self-employment income (snap_self_employment_income, CO-1702)."
+precision: "Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): the pay is the month's pay for work as an employee as received, read from the earnings records (snap_person_pay_received), in place of wages_gross. No reported income no longer counts as 0: earnings not stated cannot determine the weekly earnings (decision 4 of 2026-11-23); a stated empty list is 0. Coverage pass 6 for SNAP, C6-6 (docs/reviews/coverage6-snap.md): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734) and the readers (the student's eligibility, CO-410 and CO-411; the work registration exemption, CO-405) are per month since S4-11: the month's hours and pay are read in each month evaluated. Before, the item was per person and read the determination month in every month, so a student who began a 20-hour job after the determination month stayed an ineligible student in that month."
+derived: ["/", ["+", "snap_person_pay_received", "snap_self_employment_income"], "snap_weeks_per_month"]
+sources: [S121, S123, S126, S2050, S4734]
 implemented: engine
 tags: [work_registration]
-rationale: "The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts earned_income to a weekly figure. Fix-round (C-10): 7 CFR 273.7(b)(1)(vii) (S123) covers 'An employed or self-employed person working... or earning weekly wages at least equal to...'; this item omitted self_employment_net_income, so a self-employed applicant with no W-2 wages failed the earnings prong. Now sums earned_income and self_employment_net_income the same way snap_person_earned_income (CO-330) does for income purposes."
+rationale: "The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts wages_gross to a weekly figure. Fix-round (C-10): 7 CFR 273.7(b)(1)(vii) (S123) covers 'An employed or self-employed person working... or earning weekly wages at least equal to...'; this item omitted self_employment_net_earnings_for_tax, so a self-employed applicant with no W-2 wages failed the earnings prong. Now sums wages_gross and self_employment_net_earnings_for_tax the same way snap_person_earned_income (CO-330) does for income purposes. Earned-income records, step E1 (SNAP; docs/reviews/records-earnings-snap.md): reads snap_person_pay_received (CO-5119); the reader defaults are removed."
 tests:
-  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5, self_employment_net_income: 0, child_support_paid_legally_obligated: 0}, expect: 217.5}
-  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, child_support_paid_legally_obligated: 0}, expect: 0}
-  - {id: CO-403-T3, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 942.5, child_support_paid_legally_obligated: 0}, expect: 217.5}
+  # Hard-coded numbers audit H-11: 942.5 / 4.3 = 219.1860465116 (was 942.5 x 12 / 52 = 217.5); T3 the same for 1,142.5 less 200 of costs.
+  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {child_support_paid_legally_obligated: 0, earnings: [{kind: wages, amount: 942.5}]}, expect: 219.18604651162792}
+  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {child_support_paid_legally_obligated: 0, earnings: []}, expect: 0}
+  - {id: CO-403-T3, as_of: "2026-10-01", month: "2026-10", given: {earnings: [{kind: self_employment_receipts, amount: 1142.5, annual_support: false}, {kind: business_cost_operating, amount: 200}]}, expect: 219.18604651162792}
+  - {id: CO-403-T4, as_of: "2026-10-01", month: "2026-10", title: "Earnings not stated: cannot determine", given: {}, expect: unknown}
+  - {id: CO-403-T5, as_of: "2026-10-15", month: "2026-11", title: "Coverage pass 6 C6-6: the month evaluated's pay: a job begun November 1 paying $1,290 in November, 1,290 / 4.3 = 300 a week", given: {earnings: [{kind: wages, amount: 1290, job_start_date: "2026-11-01"}]}, expect: 300}

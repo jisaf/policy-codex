@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: SNAP
-meaning: The length, in months, of the rolling period over which countable months are counted for the ABAWD time limit.
+meaning: The length, in months, of the rolling period over which countable months are counted for the ABAWD (able-bodied adult without dependents) time limit.
 value: 36
 sources: [S127, S130, S132]
 tags: [abawd]

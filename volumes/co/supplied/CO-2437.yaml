@@ -1,0 +1,12 @@
+id: CO-2437
+name: "Received presumptive eligibility during this pregnancy"
+identifier: received_presumptive_eligibility_this_pregnancy
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether a pregnant applicant has already received presumptive eligibility (Medical Assistance or CHP+) during the current pregnancy: the history the once-per-pregnancy bars read (10 CCR 2505-10 § 8.100.4.F.9 and § 8.100.3.R.9; 10 CCR 2505-3 § 170.6: pregnant women \"may receive presumptive eligibility once every pregnancy\"; 42 CFR 435.1103(a): \"one per pregnancy\")."
+supplied_by: CBMS presumptive eligibility history.
+sources: [S1722, S2100, S2101, S1745]
+tags: [ma]
+rationale: "C-5 of the HCPF review. Heavier-definitions audit L-1 and L-2 (audit fix round 4): renamed from ma_received_presumptive_eligibility_this_pregnancy through a change set that keeps the ID and made program All, since CHP+ presumptive eligibility (CO-708) and the presumptive eligibility site route (CO-558) now read it."

@@ -1,0 +1,12 @@
+id: CO-1222
+name: Burial plot cost excluded from the burial cost limit
+identifier: burial_plot_cost_excluded_from_limit
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: The part of burial_services_total_cost that is the cost of a burial plot excluded from the $2,500 maximum cost limit because the decedent had a prepaid plot valued at $2,000 or less at purchase or the plot was purchased by someone else and donated, per 9 CCR 2503-5 3.570.43.A.4.a-b and, for a deceased Colorado Works client, 9 CCR 2503-6 3.606.7.F.2.d (the same two conditions); zero otherwise.
+supplied_by: County department review of the plot purchase or donation record.
+sources: [S719, S1005, S1007]
+tags: [cash]
+rationale: No existing fact carries the plot exclusion; af_burial_eligible (CO-1231) needs it to apply the cost limit; cw_death_reimbursement_amount (CO-1508) applies the Colorado Works limit the same way (phase-8 fix round, K-1).

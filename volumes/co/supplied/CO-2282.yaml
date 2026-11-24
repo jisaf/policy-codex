@@ -1,0 +1,12 @@
+id: CO-2282
+name: Was placed in an institution by a state
+identifier: ma_was_placed_in_institution_by_a_state
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether an agency of a state, or an entity under contract with it, arranged or made the person's placement in an institution located in another state - more than providing information or helping a person capable of indicating intent find a facility (10 CCR 2505-10 § 8.100.3.B.2.c; 42 CFR 435.403(e)(1)-(2))."
+supplied_by: The placement record in the case file.
+sources: [S1518]
+tags: [ma]
+rationale: "OQ-393: a state that arranges an out-of-state placement remains the state of residence; ma_institutional_placement_arranging_state (CO-2255) names the state when this is true."

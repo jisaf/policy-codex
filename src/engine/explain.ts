@@ -12,6 +12,9 @@ export interface TraceNode {
   identifier: string; name: string; person: string | null; month: string | null;
   kind: Item["kind"] | "case" | "month"; scope?: Scope;
   value: unknown; origin: TraceEvent["origin"]; error?: string;
+  /** Unknowns this fact's rule produced with no supplied fact behind them
+   *  (a lookup with no row, a division by zero); see EvalWarning. */
+  warnings?: string[];
   rule: string[] | null;       // pattern-English lines of the derivation (engine block()), null for non-derived
   sources: string[];           // the item's cited S-ids
   children: TraceNode[];       // in evaluation order; a memo hit has children: [] and origin "memo"
@@ -20,6 +23,10 @@ export interface TraceNode {
    *  settled every operator it sits inside. Absent when it did not decide,
    *  and on nodes evaluated with no operator between them and their parent. */
   decisive?: boolean;
+  /** The item's statute_override: the one sentence a county reads when a
+   *  statute governs over the Colorado rule paragraph the item would
+   *  otherwise follow. Absent on items without one. */
+  override?: string;
 }
 
 /** One expectation of a household case with the trace behind its value. */
@@ -58,7 +65,9 @@ function nodeOf(ix: LedgerIndex, e: TraceEvent): TraceNode {
     key: e.key,
   };
   if (it) node.scope = it.scope;
+  if (it && it.statute_override) node.override = it.statute_override;
   if (e.error !== undefined) node.error = e.error;
+  if (e.warnings && e.warnings.length) node.warnings = e.warnings.slice();
   if (e.decisive) node.decisive = true;
   return node;
 }
@@ -123,6 +132,7 @@ export function explain(
       key: identifier,
     };
     if (it) node.scope = it.scope;
+    if (it && it.statute_override) node.override = it.statute_override;
     if (thrown !== null) node.error = thrown;
     return node;
   }
@@ -188,15 +198,70 @@ export function missingFacts(node: TraceNode): TraceNode[] {
 /** How many lines the story may take before it stops and counts the rest. */
 export const STORY_LINES = 12;
 
+/** The statute overrides a story rests on: the explained value's own and
+ *  those of the facts its story tells, each once, in story order. */
+export function overrides(node: TraceNode): string[] {
+  const out: string[] = [];
+  const add = (n: TraceNode) => { if (n.override && !out.includes(n.override)) out.push(n.override); };
+  add(node);
+  for (const s of story(node)) add(s.node);
+  return out;
+}
+
+/** One line of a narrative: a story line about a node, the "… and N more"
+ *  line of a story cut short, or a "Statute over rule:" note. */
+export interface NarrativeLine {
+  kind: "story" | "more" | "override";
+  /** 0 for what decided the value, 1 for what decided that. */
+  depth: number;
+  /** The node a story line tells about. */
+  node?: TraceNode;
+  /** The line as text, exactly as `narrative` returns it. */
+  text: string;
+}
+
+export interface NarrativeOptions {
+  /** How a story line names the person it is about ("Person 2"). Omitted:
+   *  lines carry no person, as before. A line about the explained value's
+   *  own person is labelled too, so every line reads on its own. */
+  person?: (person: string) => string;
+}
+
+/** The narrative as structured lines (see `narrative`), so a view can render
+ *  each line's parts while saying exactly what the text says. Identical
+ *  story lines (the same fact, person, month and value told twice) are told
+ *  once. */
+export function narrativeLines(
+  node: TraceNode, fmt: (v: unknown, n: TraceNode) => string, opts: NarrativeOptions = {},
+): NarrativeLine[] {
+  const seen = new Set<string>();
+  const lines: NarrativeLine[] = [];
+  for (const s of story(node)) {
+    const who = opts.person && s.node.person ? opts.person(s.node.person) + ": " : "";
+    const text = (s.depth ? "  " : "") + who + s.node.name + " is " + fmt(s.node.value, s.node);
+    const key = `${text}|${s.node.month ?? ""}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    lines.push({ kind: "story", depth: s.depth, node: s.node, text });
+  }
+  const notes: NarrativeLine[] = overrides(node).map((o) => ({
+    kind: "override", depth: 0, text: "Statute over rule: " + o,
+  }));
+  if (lines.length <= STORY_LINES) return lines.concat(notes);
+  const kept = lines.slice(0, STORY_LINES - 1);
+  kept.push({ kind: "more", depth: 0, text: "… and " + (lines.length - kept.length) + " more" });
+  return kept.concat(notes);
+}
+
 /** The story of one value in plain lines, "<name> is <value>", the second
  *  level indented under the child it explains. Long stories stop at
- *  STORY_LINES, the last line saying how many more there were. */
-export function narrative(node: TraceNode, fmt: (v: unknown) => string): string[] {
-  const lines = story(node).map(
-    (s) => (s.depth ? "  " : "") + s.node.name + " is " + fmt(s.node.value),
-  );
-  if (lines.length <= STORY_LINES) return lines;
-  const kept = lines.slice(0, STORY_LINES - 1);
-  kept.push("… and " + (lines.length - kept.length) + " more");
-  return kept;
+ *  STORY_LINES, the last line saying how many more there were. A value
+ *  whose rule, or a fact in whose story, follows a statute over a Colorado
+ *  rule ends with one "Statute over rule:" line for each such note, so a
+ *  county reader sees why the result departs from the rule manual. */
+export function narrative(
+  node: TraceNode, fmt: (v: unknown, n: TraceNode) => string, opts: NarrativeOptions = {},
+): string[] {
+  return narrativeLines(node, fmt, opts).map((l) => l.text);
 }
+

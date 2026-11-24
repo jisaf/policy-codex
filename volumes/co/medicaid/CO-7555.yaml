@@ -1,0 +1,23 @@
+id: CO-7555
+name: "Medicaid: an inmate of a public institution for the whole month"
+identifier: ma_is_inmate_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is an inmate of a public institution (is_inmate_of_public_institution, CO-1105, from the setting the case states for the determination date) on every day of the month evaluated: the stay in that setting began on or before the first day of the month (institution_entry_date, CO-008)."
+precision: "Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-05). 10 CCR 2505-10 § 8.100.3.G.1.b.ii (S3361) limits the benefits of 'Inmates who are incarcerated', a condition of the month evaluated (8.100.4.G.1, S3351: eligible for the whole month on any day of it; a retroactive month on its own facts, 8.100.3.E.1, S217). is_inmate_of_public_institution reads the setting 'on the determination date' (residence_setting_type, CO-3330) in every month, so a retroactive month before the person entered the jail was limited too. A stay that began after the first day of a month leaves days of the month outside it, so that month is not an inmate month (G.1's any day; docs/operators.md, Ages in a month: a disqualifying condition holds on every day); a month before the stay began is not one either. The entry date is required where read (decision 4): for an inmate with no institution_entry_date, whether a month was spent in the institution cannot be determined. Not an inmate on the determination date: not an inmate in any month (the case states no earlier stay; recorded in the review, PS-05). Read by ma_magi_eligibility_status (CO-554). CHP+ and community engagement keep CO-1105 (see the review)."
+derived: [all, is_inmate_of_public_institution, ["<=", institution_entry_date, [first_day, [month]]]]
+sources: [S3361, S3351, S217]
+open: [OQ-1425]
+implemented: engine
+tags: [ma, magi]
+nearest: [CO-1105, CO-661, CO-5200]
+rationale: "Pattern sweep, MAGI (PS-05): ma_magi_eligibility_status read the person-month CO-1105, whose setting facts are the determination date's, so every month of a retroactive request by a person jailed after it was incarceration_limited. JAILED (stored household CO-1004): jailed on 2026-10-05, applied 2026-11-02 with a retroactive request: August, September and October were not inmate months (October's first four days outside), November is. The SSI method already reads institution status against institution_entry_date per month (ma_excluded_from_ssi_household, CO-661; OQ-952)."
+tests:
+  - {id: CO-7555-T1, as_of: "2026-11-10", month: "2026-10", title: "PS-05 (JAILED): in a county jail from 2026-10-05; October: not on every day", given: {residence_setting_type: correctional_facility, residence_setting_operated_by_government: true, institution_entry_date: "2026-10-05"}, expect: false}
+  - {id: CO-7555-T2, as_of: "2026-11-10", month: "2026-11", title: "PS-05 (JAILED): the same, November", given: {residence_setting_type: correctional_facility, residence_setting_operated_by_government: true, institution_entry_date: "2026-10-05"}, expect: true}
+  - {id: CO-7555-T3, as_of: "2026-11-10", month: "2026-08", title: "PS-05 (JAILED): the same, August (before the stay)", given: {residence_setting_type: correctional_facility, residence_setting_operated_by_government: true, institution_entry_date: "2026-10-05"}, expect: false}
+  - {id: CO-7555-T4, as_of: "2026-11-10", month: "2026-11", title: "PS-05: in a county jail, entry date not stated: cannot determine", given: {residence_setting_type: correctional_facility, residence_setting_operated_by_government: true}, expect: unknown}
+  - {id: CO-7555-T5, as_of: "2026-11-10", month: "2026-08", title: "PS-05: living at home: not an inmate (no entry date needed)", given: {residence_setting_type: private_dwelling}, expect: false}
+  - {id: CO-7555-T6, as_of: "2026-11-10", month: "2026-10", title: "PS-05: in jail from 2026-10-01: October is an inmate month", given: {residence_setting_type: correctional_facility, residence_setting_operated_by_government: true, institution_entry_date: "2026-10-01"}, expect: true}

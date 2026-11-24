@@ -1,0 +1,13 @@
+id: CO-3715
+name: Spouse or dependent child of a Hmong or Highland Lao veteran
+identifier: is_spouse_or_dependent_child_of_hmong_or_highland_lao_veteran
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is the spouse, the unremarried surviving spouse, or an unmarried dependent child (under 18, a full-time student under 22, or a disabled child dependent on the veteran before turning 18) of a Hmong or Highland Lao veteran of the Vietnam era (8 U.S.C. 1612(a)(2)(K)(ii)-(iii); 7 CFR 273.4(a)(4)(ii)-(iii)), where that veteran is not a person of the case."
+precision: "A spouse or child of a veteran who is a person of the case is read from the spouse or parent edge and the veteran's is_hmong_or_highland_lao_veteran (CO-2702), not stated here. If not stated, SNAP reads this as false."
+supplied_by: "Immigration documents and the veteran's military service record; marriage and birth records."
+sources: [S2505, S2506]
+tags: [immigration]
+rationale: "Final verification F-3: the Hmong and Highland Lao exception of 8 U.S.C. 1612(a)(2)(K) (S2505) reaches the veteran's spouse, dependent children and unremarried surviving spouse; is_hmong_or_highland_lao_veteran (CO-2702) states only the veteran, and a deceased veteran is not a person of the case."

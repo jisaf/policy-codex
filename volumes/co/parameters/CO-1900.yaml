@@ -1,0 +1,14 @@
+id: CO-1900
+name: "Medicaid community engagement: start date"
+identifier: ma_community_engagement_start_date
+kind: parameter
+type: calendar date
+scope: global
+program: Medicaid
+meaning: "The date from which the community engagement requirement of 42 CFR 435.550-435.563 is a condition of eligibility for the Adults group (42 CFR 435.119(d)): medical assistance furnished on or after January 1, 2027 (42 CFR 435.559(a)), the first day of the first quarter beginning after December 31, 2026 (42 U.S.C. 1396a(xx)(1))."
+precision: A State may implement earlier (435.559(b)) and CMS may grant a good faith effort exemption that defers it no later than December 31, 2028 (435.560); no published Colorado rule states either (OQ-411), so the federal date is used.
+value: "2027-01-01"
+sources: [S1200, S1212, S1213, S1215]
+tags: [ma, magi, legal]
+open: [OQ-411]
+rationale: "OQ-65: no item states when the community engagement requirement starts. ma_meets_adult_group_community_engagement_condition (CO-1975) compares the month and the determination date with it."

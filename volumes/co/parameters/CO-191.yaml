@@ -6,9 +6,15 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Children's MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.2.
-precision: A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
-value: 1.33
-sources: [S201]
-open: [OQ-63]
+precision: "A percentage-of-FPL figure (1.42 = 142%), compared directly against ma_magi_household_income_pct_fpl (CO-504). The current Secretary of State text of 10 CCR 2505-10 § 8.100.4.G.2 (D-65, S638) states 142%, and CMS's eligibility levels table (D-73, S641) states 142% for Colorado's children ages 0-18; the 133% this item held came from the Cornell copy (D-40, S201), which is out of date. The § 8.100 version effective 04/14/2022 (D-78, S676) states the earlier figure and the version effective 06/30/2022 (D-77, S675) the current one, so the current figure runs from 2022-06-30; no earlier version was fetched, so the volume states no figure before 2022-04-14."
+versions:
+  - from: "2022-04-14"
+    to: "2022-06-30"
+    value: 1.33
+    source: S676
+  - from: "2022-06-30"
+    value: 1.42
+    source: S675
+sources: [S675, S676, S638, S641]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Children's-category income percentage. ma_magi_income_standard_child (CO-540) needs it as a parameter rather than an inline digit (governance name.digits)."
+rationale: "No existing item carries Colorado's Children's-category income percentage. ma_magi_income_standard_child (CO-540) needs it as a parameter rather than an inline digit (governance name.digits). History moved from the precision note (HCPF review S-14): Phase 7 (OQ-63, resolved): the current Secretary of State text of 10 CCR 2505-10 § 8.100.4.G.2 (D-65, S638) states 142%, and CMS's eligibility levels table (D-73, S641) states 142% for Colorado's children ages 0-18; the 133% this item held came from the Cornell copy (D-40, S201), which is out of date. Versioned in the phase 7 fix round (S-12; OQ-211, resolved): the § 8.100 version effective 04/14/2022 (D-78, S676) states the earlier figure and the version effective 06/30/2022 (D-77, S675) the current one, so the current figure runs from 2022-06-30; no earlier version was fetched, so the volume states no figure before 2022-04-14. Precision history (moved from precision, engineering follow-up pass task 5): Versioned in the phase 7 fix round (S-12; OQ-211, resolved)."

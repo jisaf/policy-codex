@@ -1,0 +1,13 @@
+id: CO-4407
+name: "Adult Financial: days out of the State that presume non-residence"
+identifier: af_out_of_state_presumption_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The number of consecutive days out of the State at which a client's absence, other than for documented medical treatment, creates the rebuttable presumption of non-residence: ninety (9 CCR 2503-5 3.520.64.E.2: \"a period of ninety (90) or more consecutive days\")."
+precision: "Compared with >=; read by af_is_presumed_nonresident_by_absence (CO-4401). Not Colorado Works' 90 days (cw_temporary_out_of_state_max_days), a different rule (9 CCR 2503-6 3.604.2.O.1)."
+value: 90
+sources: [S3201]
+tags: [cash, oap, and]
+rationale: "Coverage review F-1: the figure of 3.520.64.E.2 (S3201)."

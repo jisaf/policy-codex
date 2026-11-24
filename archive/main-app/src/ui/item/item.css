@@ -1,0 +1,152 @@
+/* The item page (src/ui/ItemView.tsx). Uses the app's tokens (styles.css
+ * :root) and its .btn, .tag, .flag and .tabs classes; no text below 12px. */
+.itempage { max-width: 1240px; }
+.itemhead { border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px; }
+.itemhead .eyebrow { margin: 0; color: var(--muted); font-size: 13px; }
+.itemhead h1 { font-size: 22px; margin: 2px 0 6px; line-height: 1.25; }
+.itemhead .badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 8px; }
+.itemhead .badges .idline { margin-left: 4px; font-size: 12px; }
+.itemhead .editrow { margin: 0 0 8px; }
+.itempage .jump { display: none; margin: 8px 0 0; font-size: 13px; }
+
+.itemgrid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.itemmain { min-width: 0; }
+.itemrail { position: sticky; top: 8px; display: flex; flex-direction: column; gap: 12px;
+  max-height: calc(100vh - 16px); overflow-y: auto; }
+
+.isec { margin: 0 0 22px; }
+.isec > h2 { font-size: 17px; margin: 0 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--line); }
+.isec h3 { font-size: 15px; margin: 16px 0 6px; }
+.isec:focus { outline: none; }
+.isec:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.itempage .lead-meaning { font-size: 16px; max-width: 72ch; margin: 0 0 8px; }
+.itempage .small, .itempage small { font-size: 12px; }
+.itempage a.itemref { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.itempage .refid { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--muted); }
+.itempage a.refid { color: var(--accent); }
+.callout { border-left: 4px solid var(--line); background: var(--bg); padding: 8px 10px; margin: 8px 0; max-width: 72ch; }
+.callout.override-box { border-left-color: #c05050; background: #fdf2f2; }
+.callout.assume-box { border-left-color: #c9a227; background: #fffaeb; }
+.warnbox { border: 1px solid #e3c470; background: #fff8e6; padding: 8px 10px; border-radius: 4px; color: #4d3800; }
+.itempage .edge { color: var(--ink); max-width: 72ch; }
+.itempage .rule-plain { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; }
+.itempage .rule-plain ul.plain-derivation { margin: 0; }
+.itempage .optlist { margin: 0; padding-left: 20px; columns: 2 220px; }
+
+/* The figure */
+.bigvalue { font-size: 22px; font-weight: 600; margin: 4px 0; }
+.figure-today .valuetable { margin: 4px 0; }
+.figure-today table.fpl { margin-top: 10px; }
+.figure-today table.fpl caption { text-align: left; color: var(--muted); font-size: 12px; padding-bottom: 4px; }
+.tlbar { position: relative; display: flex; height: 50px; margin: 6px 0 26px; border: 1px solid var(--line);
+  border-radius: 4px; overflow: visible; background: var(--panel); }
+.tlbar .seg { position: relative; min-width: 0; padding: 4px 6px; overflow: hidden; border-right: 1px solid var(--panel);
+  display: flex; flex-direction: column; justify-content: space-between; }
+.tlbar .seg .seglabel { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tlbar .seg small { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.tlbar .seg.version { background: var(--med); }
+.tlbar .seg.same { background: #fbecc4; }
+.tlbar .seg.gap { background: repeating-linear-gradient(135deg, #fde6e6 0 6px, #fff 6px 12px); color: #7a1010; }
+.tlbar .today { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 2px dashed var(--ink); }
+.tlbar .today span { position: absolute; top: 100%; left: -16px; font-size: 12px; background: var(--panel); padding: 0 2px; }
+ul.gaps { margin: 0 0 10px; padding-left: 20px; }
+ul.gaps li.gap { color: #7a1010; }
+.fighistory { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 4px 12px; margin: 10px 0; }
+.fighistory h3 { margin-top: 8px; }
+.fighistory p { max-width: 78ch; }
+.scrollx { overflow-x: auto; max-width: 100%; }
+table.across { width: auto; min-width: 50%; }
+table.across td.chg { background: #fbecc4; }
+table.across th[scope="row"] { font-weight: 400; }
+.fversion { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin: 10px 0; }
+.fversion.current { border: 2px solid var(--ok); }
+.fversion header { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fversion header h3 { margin: 0 8px 0 0; font-size: 15px; }
+.fversion .why { margin: 6px 0; max-width: 72ch; }
+.fversion .vgrid { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 12px; margin-top: 8px; }
+.itempage .ipill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; border: 1px solid var(--line);
+  background: var(--all); margin: 2px 0; }
+.itempage .ipill.ok { background: #e3f2e8; border-color: #9bc9a9; color: var(--ok); }
+.itempage .ipill.warn, .itempage .ipill.freeze { background: #fbecc4; border-color: #e3c470; color: #5c4000; }
+.itempage .ipill.bad { background: #fde6e6; border-color: #e0a0a0; color: #7a1010; }
+
+/* The law */
+.excerpt { border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; margin: 10px 0; background: var(--panel); }
+.excerpt header h4 { margin: 0; font-size: 14px; }
+.excerpt .cite { margin: 2px 0 6px; font-size: 13px; color: var(--muted); }
+.excerpt blockquote.words { margin: 0; padding: 8px 12px; background: var(--bg); border-left: 3px solid var(--accent);
+  white-space: pre-wrap; font-family: Georgia, "Times New Roman", serif; font-size: 14px; line-height: 1.55;
+  max-height: 22em; overflow-y: auto; overflow-wrap: anywhere; }
+.excerpt.compact blockquote.words { max-height: 16em; }
+.excerpt blockquote mark { background: #ffe58a; color: inherit; padding: 0 1px; border-radius: 2px; }
+.excerpt .readall { margin: 6px 0 0; font-size: 13px; }
+
+/* Households and effects */
+.countline { margin: 0 0 4px; }
+table.hhvalues td { vertical-align: top; }
+table.hhvalues th:first-child { width: 55%; }
+table.hhvalues .pval .who { color: var(--muted); }
+ul.byprogram { padding-left: 20px; margin: 6px 0; }
+ul.byprogram li { margin: 3px 0; }
+details.readers summary { cursor: pointer; }
+details.readers ul.cols { columns: 2 260px; padding-left: 20px; }
+.compare { margin: 8px 0; }
+.itempage .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.itempage .btn.wide { width: 100%; }
+table.changed { font-size: 13px; }
+ul.qlist-item { list-style: none; padding: 0; margin: 0; }
+ul.qlist-item li { margin: 0 0 10px; }
+ul.qlist-item li p { margin: 2px 0 0; max-width: 72ch; }
+.itempage .maplink { margin: 0 0 16px; }
+
+/* The rail */
+.railcard { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+.railcard h2 { font-size: 15px; margin: 0 0 6px; }
+.railcard p { margin: 4px 0; }
+.railcard ul.signers { list-style: none; padding: 0; margin: 4px 0 8px; font-size: 13px; }
+.railcard ul.signers li { padding: 2px 0; }
+.railcard ul.signers li.me { font-weight: 600; }
+.railcard .field { display: block; margin: 6px 0; font-size: 13px; }
+.railcard .field input, .railcard .field select, .railcard .field textarea { display: block; width: 100%; margin-top: 2px;
+  font: inherit; font-size: 14px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); }
+.railcard dl.facts { margin: 8px 0; font-size: 13px; }
+.railcard dl.facts dt { font-weight: 600; margin-top: 6px; }
+.railcard dl.facts dd { margin: 0; }
+.railcard dl.facts .valuetable { font-size: 12px; }
+.railcard ul.plaindiff { margin: 2px 0; padding-left: 16px; }
+.railcard .btnrow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.railcard .notice { background: #e3f2e8; border: 1px solid #9bc9a9; border-radius: 4px; padding: 6px 8px; font-size: 13px; }
+.railcard .own-change { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; font-size: 13px; }
+.railcard fieldset { border: 1px solid var(--line); border-radius: 4px; margin: 6px 0; padding: 4px 8px 8px; }
+.railcard fieldset legend { font-size: 13px; }
+.railcard label.radio { display: block; font-size: 13px; margin: 4px 0; }
+.railcard .tableinputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; }
+.railcard .tableinputs label.inline { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+.railcard .tableinputs label.inline span { min-width: 1.6em; text-align: right; color: var(--muted); }
+.railcard .tableinputs input { width: 100%; font: inherit; padding: 3px 5px; border: 1px solid var(--line); border-radius: 4px; }
+
+.itempage details.implementers { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 8px; }
+.itempage details.implementers > summary { cursor: pointer; color: var(--muted); }
+.itempage dl.implfacts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 12px; font-size: 13px; }
+.itempage dl.implfacts dt { color: var(--muted); }
+.itempage dl.implfacts dd { margin: 0; }
+.itemmap { margin-top: 8px; }
+.itempage a:focus-visible, .itempage button:focus-visible, .itempage input:focus-visible,
+.itempage select:focus-visible, .itempage textarea:focus-visible, .itempage summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 1100px) {
+  .itemgrid { grid-template-columns: minmax(0, 1fr); }
+  .itemrail { position: static; max-height: none; overflow: visible; }
+  .itempage .jump { display: block; }
+}
+@media (max-width: 600px) {
+  .itemhead h1 { font-size: 19px; }
+  .fversion .vgrid { grid-template-columns: minmax(0, 1fr); }
+  .tlbar .seg small { display: none; }
+  .itempage .optlist { columns: 1; }
+}
+@media print {
+  .itemrail, .itemtabs, .itempage .jump, .itempage details.implementers { display: none !important; }
+  .itemgrid { grid-template-columns: 1fr; }
+}

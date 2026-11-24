@@ -1,0 +1,18 @@
+id: CO-1279
+name: "LEAP: household income contribution rate"
+identifier: leap_income_contribution_rate
+kind: derived
+type: rate
+scope: person-month
+program: LEAP
+meaning: The share of estimated home heating costs the household is expected to contribute from income - the rate of leap_income_contribution_rate_table (CO-3000) for the poverty band containing the household's income as a share of the federal poverty level - per 9 CCR 2503-7 3.758.47 Step D.
+derived: [band, leap_income_contribution_rate_table, leap_household_income_pct_fpl]
+sources: [S771]
+implemented: engine
+tags: [income]
+rationale: "No existing item reads the Step D chart; leap_benefit_amount (CO-1281) needs it. Hard-coded numbers audit H-2: the band edges and rates were literals in a case; they are now leap_income_contribution_rate_table (CO-3000), read with P48."
+tests:
+  - {id: CO-1279-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income_pct_fpl: 0.75}, expect: 0}
+  - {id: CO-1279-T2, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income_pct_fpl: 0.7501}, expect: 0.1}
+  - {id: CO-1279-T3, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income_pct_fpl: 1.5}, expect: 0.2}
+  - {id: CO-1279-T4, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income_pct_fpl: 1.9}, expect: 0.3}

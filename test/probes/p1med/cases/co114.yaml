@@ -1,0 +1,99 @@
+- id: CO-114
+  title: QMB member whose January cost-of-living increase would take her over the limit
+  # Final verification F-5 and F-6 (docs/reviews/final-medicaid-chp.md). Linda (p1, 70), single, Medicare
+  # Part A, enrolled as a Qualified Medicare Beneficiary through December 2026. Her Social Security rises from
+  # 1,320 (paid in December 2026) to 1,358 (paid in January 2027) with the annual cost-of-living adjustment.
+  # Resources 3,000. Her renewal is determined 2027-01-20. The volume has no 2027 poverty guidelines yet, so
+  # 2027 months read the 2026 table (OQ-515): QMB limit 100% x 15,960 / 12 = 1,330.
+  # Hand derivation, January 2027:
+  # - Countable income 1,358 - 20 (general exclusion) = 1,338, over 1,330: without the disregard she would
+  #   lose QMB (and, at or under 120% = 1,596, be reported SLMB, which is what the volume gave before the fix).
+  # - She was a QMB member in December 2026 (ma_prior_msp_category), so 8.100.6.L.12 keeps the COLA
+  #   disregarded "until the next year's federal poverty guidelines are published": the publication date in
+  #   force on 2027-01-01 is still 2026-01-15 (no 2027 version loaded), earlier than 2027, so January is inside
+  #   the disregard (OQ-622). COLA increase 1,358 - 1,320 = 38; 1,338 - 38 = 1,300, at or under 1,330: QMB.
+  # - QMB effective date (F-5): she is a continuing member (QMB in the month before the determination month),
+  #   so her coverage continues in January without the month-after-determination rule of L.10.
+  #   ma_msp_category January 2027: qmb. (A new applicant determined in January would start in February.)
+  # - Her resources 3,000 are liquid (an MSP-only renewal), at or under 9,950.
+  as_of: "2027-01-20"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        residence_setting_type: private_dwelling
+        has_qualifying_military_service: false
+        date_of_birth: "1957-01-09"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        liquid_resources_value: 3000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-01-05"
+        ma_application_is_msp_only: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        shelter_cost_monthly: 634
+        social_security_income: 1358
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        medicare_part_b_premium_paid: 0
+        medical_expenses_out_of_pocket: 0
+      months:
+        2026-12:
+          social_security_income: 1320
+          ma_prior_msp_category: qmb
+  expect:
+    p1:
+      ma_title_ii_cola_increase: {"2027-01": 38}
+      ma_msp_december_category: {"2027-01": qmb}
+      ma_msp_cola_disregard: {"2027-01": 38}
+      ma_qmb_is_in_effect: {"2027-01": true}
+      ma_qmb_eligible: {"2027-01": true}
+      ma_msp_category: {"2027-01": qmb}

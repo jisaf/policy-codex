@@ -1,0 +1,21 @@
+id: CO-2388
+name: "Sponsor has a spouse in the household"
+identifier: sponsor_has_spouse_in_household
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The sponsor of this non-citizen has a spouse, not a co-sponsor, living in the same household as the sponsor (9 CCR 2503-5 3.534.D.2.B): sponsor_spouses_not_cosigning (CO-2714) is not empty."
+precision: "A co-sponsor spouse is sponsor_spouse_is_cosponsor (CO-2362). Coverage review 2, G-5: the spouse lives in the sponsor's household when the spouse lives with a spouse of theirs, the sponsor (lives_with_spouse, CO-4731, from dwelling_id); a spouse whose dwelling_id or relationships are not stated is read as living with the sponsor, as before. That the sponsor is married at all, which the resource limit of 3.520.72.A.2.b asks without a household condition, is read by af_countable_resources (CO-947) from sponsor_spouses_not_cosigning (CO-2714) directly."
+derived: [exists, sponsor_spouses_not_cosigning, [otherwise, [of, [P], lives_with_spouse], true]]
+sources: [S1632, S1633, S1634]
+implemented: engine
+tags: [immigration]
+link_class: primitive
+link_basis: "A sponsor's non-cosigning spouse lives with the sponsor; a relationship primitive."
+rationale: "OQ-114: Adult Financial deducts half the SSI benefit standard for a sponsor's spouse in the household, or the full standard for a co-sponsor spouse (S1632); no fact stated the spouse.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts."
+tests:
+  - {id: CO-2388-T1, as_of: "2026-10-01", given: {sponsor_spouses_not_cosigning: [p3]}, others: {p3: {}}, expect: true}
+  - {id: CO-2388-T2, as_of: "2026-10-01", given: {sponsor_spouses_not_cosigning: []}, expect: false}
+  - {id: CO-2388-T3, title: "G-5 (probe PZ-5): the sponsor lives with the client and the sponsor's non-signing wife lives in another home - not in the household (3.534.D.2.B)", as_of: "2026-10-01", given: {dwelling_id: home_a, sponsor_spouses_not_cosigning: [p3]}, others: {p2: {dwelling_id: home_a}, p3: {dwelling_id: home_b}}, relationships: [[sponsored_by, p1, p2], [spouse, p2, p3]], expect: false}
+  - {id: CO-2388-T4, title: "G-5: the same wife living with the sponsor", as_of: "2026-10-01", given: {dwelling_id: home_a, sponsor_spouses_not_cosigning: [p3]}, others: {p2: {dwelling_id: home_a}, p3: {dwelling_id: home_a}}, relationships: [[sponsored_by, p1, p2], [spouse, p2, p3]], expect: true}

@@ -1,0 +1,19 @@
+id: CO-2610
+name: Step-siblings
+identifier: step_siblings
+kind: derived
+type: group of persons
+scope: person
+program: All
+meaning: "The persons who are a child of this person's stepparent, or a stepchild of this person's parent, and who share no legal parent with this person."
+precision: "Read from the parent and stepparent roles. Programs that count step-siblings (MAGI, S169: natural, adoptive and step siblings; community engagement, S1207: stepbrother, stepsister) read this beside siblings (CO-2609). A person with no stepparent and no parent has none, without the other persons' relationships being read."
+derived: [filter, [persons], [all, [any, [all, [">", [count, [filter, [persons], [rel, [stepchild], [P]]]], 0], [otherwise, [has_relative_in, [child], [filter, [persons], [rel, [stepchild], [P]]]], false]], [all, [">", [count, [filter, [persons], [rel, [child], [P]]]], 0], [otherwise, [has_relative_in, [stepchild], [filter, [persons], [rel, [child], [P]]]], false]]], [not, [in_group, [P], siblings]]]]
+sources: [S169, S1207]
+implemented: engine
+tags: [household]
+link_class: primitive
+link_basis: "Step-siblings, from stepparent and parent relationships; a relationship primitive."
+rationale: "Same-word audit SW-2: MAGI's non-filer household and community engagement's relatives include step-siblings, which the shared-parent reading misses once a stepparent is stated as a stepparent; no existing item states them. Same-word audit fix round: another person's unstated relationships are read as none (otherwise false), as reachable and shared_relative read them, so a case person with no stated edges does not make the group unknown."
+tests:
+  - {id: CO-2610-T1, title: "His stepmother's daughter", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[parent, p3, p1], [spouse, p3, p4], [parent, p4, p2], [stepparent, p3, p2], [stepparent, p4, p1]], expect: [p2]}
+  - {id: CO-2610-T2, title: "A half sibling is not a step-sibling", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[parent, p3, p1], [parent, p3, p2], [spouse, p3, p4], [stepparent, p4, p1], [parent, p4, p2]], expect: []}

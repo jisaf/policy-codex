@@ -3,16 +3,19 @@ name: "Medicaid: excluded from SSI-related household by institutionalization"
 identifier: ma_excluded_from_ssi_household
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: Medicaid
-meaning: Whether this person's institutionalization removes them from a spouse's SSI-related household as of the determination date - true only beginning the first day of the month following the month they entered the institution, per 10 CCR 2505-10 § 8.100.7.C.2.b.
-precision: "8.100.7.C.2.b: 'Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted.' In the admission month itself the couple's income is still mutually available under 8.100.5.H.1.a, so this item is false until the first day of the month after institution_entry_date, per the [first_day, [month_after, ...]] pattern CO-509 already uses for a similar month-boundary test."
-derived: [all, in_medical_institution, [">=", [det_date], [first_day, [month_after, [month_of, institution_entry_date]]]]]
-sources: [S308, S498]
+meaning: "Whether this person's institutionalization removes them from a spouse's SSI-related household in the month - true only beginning the first month following the month they entered the institution, per 10 CCR 2505-10 § 8.100.7.C.2.b (\"Beginning the first month following the month the couple ceases to live together\")."
+precision: "8.100.7.C.2.b: 'Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted.' In the admission month itself the couple's income is still mutually available under 8.100.5.H.1.a, so this item is false until the first day of the month after institution_entry_date, per the [first_day, [month_after, ...]] pattern CO-509 already uses for a similar month-boundary test. Reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact. Coverage pass 4, non-MAGI N4-7: per month, measured against the month evaluated: a retroactive month before the admission is not excluded (the person was at home), and a month after the determination month is excluded once it follows the month of entry. Before, it was measured on the determination date for every month. The person is read as in the institution through the months after the determination (resides_in_medical_institution is the determination date's setting)."
+derived: [all, resides_in_medical_institution, [">", [month], [month_of, institution_entry_date]]]
+sources: [S1746, S1759]
 implemented: engine
 tags: [ma, non_magi, ltc, household]
-rationale: "No existing item states the month-after-admission timing 8.100.7.C.2.b requires. ma_ssi_household_size (CO-604) needs it - the phase-4 review's C-21 finding: CO-604 previously excluded an institutionalized spouse from household size immediately, in the admission month itself, understating the couple's combined income that month."
+rationale: "No existing item states the month-after-admission timing 8.100.7.C.2.b requires. ma_ssi_household_size (CO-604) needs it - the phase-4 review's C-21 finding: CO-604 previously excluded an institutionalized spouse from household size immediately, in the admission month itself, understating the couple's combined income that month. History moved from the precision note (HCPF review S-14): Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-8): reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact."
 tests:
-  - {id: CO-661-T1, as_of: "2026-10-15", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, expect: false}
-  - {id: CO-661-T2, as_of: "2026-11-01", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, expect: true}
-  - {id: CO-661-T3, as_of: "2026-10-15", given: {in_medical_institution: false, institution_entry_date: "2026-10-05"}, expect: false}
+  - {id: CO-661-T1, month: "2026-10", as_of: "2026-10-15", given: {resides_in_medical_institution: true, institution_entry_date: "2026-10-05"}, expect: false}
+  - {id: CO-661-T2, month: "2026-11", as_of: "2026-11-01", given: {resides_in_medical_institution: true, institution_entry_date: "2026-10-05"}, expect: true}
+  - {id: CO-661-T3, month: "2026-10", as_of: "2026-10-15", given: {resides_in_medical_institution: false, institution_entry_date: "2026-10-05"}, expect: false}
+  - {id: CO-661-T4, month: "2026-08", as_of: "2026-11-20", title: "N4-7: a retroactive month before the admission: at home, not excluded", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-10"}, expect: false}
+  - {id: CO-661-T5, month: "2026-09", as_of: "2026-11-20", title: "N4-7: the admission month: not yet excluded (8.100.7.C.2.b)", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-10"}, expect: false}
+  - {id: CO-661-T6, month: "2026-10", as_of: "2026-11-20", title: "N4-7: the month after the admission: excluded", given: {resides_in_medical_institution: true, institution_entry_date: "2026-09-10"}, expect: true}

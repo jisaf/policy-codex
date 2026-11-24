@@ -1,11 +1,12 @@
 id: CO-041
-name: Is disqualified for a drug-related felony
-identifier: is_disqualified_drug_felony
+name: "SNAP: is disqualified for a drug-related felony"
+identifier: snap_is_disqualified_drug_felony
 kind: supplied
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person was convicted of a felony involving the possession, use, or distribution of a controlled substance, based on conduct after August 22, 1996, and is subject to the resulting disqualification.
+meaning: "The person is serving a SNAP disqualification for a drug conviction under 10 CCR 2506-1 4.803.3.D: found guilty by a court of purchasing controlled substances with SNAP benefits (twenty-four months for a first conviction, permanently for a second), or convicted of a felony entered on or after July 1, 1997 for possession, use or distribution of controlled substances that is directly related to the misuse of SNAP benefits. A drug conviction whose court findings do not include the misuse of SNAP benefits does not disqualify (\"An individual shall not be ineligible due to a drug conviction unless misuse of SNAP benefits is part of the court findings\")."
+precision: "Final verification F-15: the meaning was the federal 21 U.S.C. 862a ban (any drug felony after August 22, 1996), which Colorado does not apply; a worker stating the fact by that meaning would have disqualified persons Colorado does not. If not stated, SNAP reads this as false: the disqualification is imposed only where the court's findings show the misuse of SNAP benefits as part of the drug conviction (S2517), so a case states one in force (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: Court record, county worker determination.
-sources: []
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member."
+sources: [S2517]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member. Vocabulary fix round (R-6): renamed from is_disqualified_drug_felony and read only by SNAP's member disqualification (CO-311); basic categorical eligibility's narrower bar is snap_has_drug_felony_involving_snap_benefits (CO-1731)."

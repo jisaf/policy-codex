@@ -36,6 +36,13 @@ describe("buildSuite", () => {
     expect(typeof suite.codex.generated).toBe("string");
   });
 
+  it("names the resolution contract its expectations were computed under (time audit T-1, T-3)", () => {
+    expect(suite.volume.resolution.contract).toBe("month-v1");
+    expect(suite.volume.resolution.parameter_versions).toMatch(/first day of any other month/);
+    expect(suite.volume.resolution.numbers).toMatch(/within 1e-9/);
+    expect(suite.volume.resolution.ages).toMatch(/month evaluated/);
+  });
+
   it("lists one item per ledger entry, carrying implemented/implemented_by", () => {
     expect(suite.items).toHaveLength(138);
     const age = suite.items.find((i) => i.identifier === "age")!;
@@ -132,7 +139,7 @@ describe("the codex-self adapter, called in-process", () => {
     let checked = 0;
     let failed = 0;
     for (const c of sample) {
-      const values = evaluateCase(c);
+      const values = evaluateCase(c, "mwr");
       for (const e of c.expect) {
         const v = values.find(
           (x) => x.person === e.person && x.identifier === e.identifier && x.month === e.month,
@@ -154,7 +161,7 @@ describe("the codex-self adapter, called in-process", () => {
         { person: "p1", identifier: "nonexistent_identifier", month: null, value: true },
       ],
     };
-    const values = evaluateCase(withBogus);
+    const values = evaluateCase(withBogus, "mwr");
     // The bogus identifier throws inside evaluateCase and is omitted, not
     // reported as `value: null`.
     expect(values.some((v) => v.identifier === "nonexistent_identifier")).toBe(false);

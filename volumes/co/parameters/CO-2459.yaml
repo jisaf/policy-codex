@@ -1,0 +1,12 @@
+id: CO-2459
+name: "Medicaid: Children with Disabilities Buy-In premium cap, families at or below 200% FPL"
+identifier: ma_cbwd_premium_cap_pct_lower
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The share of the family's adjusted gross income premiums and cost sharing may not exceed for a family whose income does not exceed ma_cbwd_premium_cap_threshold_pct of the poverty level (10 CCR 2505-10 § 8.100.6.Q.1.g.i)."
+value: 0.05
+sources: [S1728]
+tags: [ma, buy_in]
+rationale: "S-8 of the HCPF review: the Q.1.g.i caps were missing."

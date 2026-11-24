@@ -1,0 +1,19 @@
+id: CO-2360
+name: "Colorado Works: sponsor deeming household size"
+identifier: cw_sponsor_deeming_household_size
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: "The number of persons in the households of both this sponsored non-citizen and the non-citizen's sponsor, the household size for which 9 CCR 2503-6 3.605.1.A.5.c.5 compares their combined income with 125% of the federal poverty guidelines: the persons in the non-citizen's Colorado Works budgetary unit (cw_budgetary_unit_members, CO-2352) plus the sponsor's household size stated on the sponsor (sponsor_household_size, CO-2715)."
+precision: "A sponsor who lives in the non-citizen's home is in the budgetary unit only if Colorado Works makes the sponsor a member; the sponsor's own household size then counts the same persons and the case states it without them. Coverage pass 6 CA6-7 (docs/reviews/coverage6-cash.md, probe W6v): each sponsor's household size is required (decision 4 of 2026-11-23); before, a size not stated was read as 0, so a sponsor's household of two was left out of the size and 125% of the guideline for two (1,814.58) was compared where four (2,760.42) is the rule's."
+derived: ["+", ["count", "cw_budgetary_unit_members"], ["sum", "sponsors", ["of", ["P"], "sponsor_household_size"]]]
+sources: [S1627]
+implemented: engine
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. Derived from the unit count and the sponsor's own household size (CO-2715)."
+tests:
+  - {id: CO-2360-T1, title: "A unit of two and a sponsor household of three", as_of: "2026-10-01", given: {cw_budgetary_unit_members: [p1, p3]}, others: {p2: {sponsor_household_size: 3}, p3: {}}, relationships: [[sponsored_by, p1, p2]], expect: 5}
+  # Coverage pass 6 CA6-7 (probe W6s/W6v): 3.605.1.A.5 deems at 125% of the guideline for the household size, the budgetary unit plus the sponsor's household.
+  - {id: "CO-2360-T5", title: "Probe W6s: a budgetary unit of two and a sponsor's household of two: 4", as_of: "2026-10-15", given: {cw_budgetary_unit_members: [p1, p2], sponsors: [p3]}, others: {p3: {sponsor_household_size: 2}}, expect: 4}
+  - {id: "CO-2360-T6", title: "Probe W6v: the sponsor's household size not stated: cannot determine (decision 4; was 2)", as_of: "2026-10-15", given: {cw_budgetary_unit_members: [p1, p2], sponsors: [p3]}, others: {p3: {}}, expect: unknown}

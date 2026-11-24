@@ -1,0 +1,14 @@
+id: CO-2434
+name: Declared own income
+identifier: declared_own_income_monthly
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The applicant's own monthly income, without other household members' income, as the applicant declares it on a presumptive eligibility application (10 CCR 2505-10 § 8.100.3.R.2.f: \"Only the applicant's income will be considered\")."
+precision: "A monthly amount as declared, taken at face value; its ratio to the poverty guideline for the applicant alone is ma_declared_own_income_pct_fpl (CO-3153)."
+supplied_by: The hospital presumptive eligibility site's application.
+sources: [S1722]
+tags: [income]
+nearest: [CO-092]
+rationale: "C-5 of the HCPF review: the household's declared income is declared_household_income_monthly (CO-092); the employed-disabled group counts the applicant's alone. Heavier-definitions audit H-9 (audit fix round 4): renamed from ma_attested_own_income_pct_fpl through a change set that keeps the ID, made program All, and restated as the declared amount rather than a ratio the site had to compute; the ratio is CO-3153."

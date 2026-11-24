@@ -1,0 +1,12 @@
+id: CO-1184
+name: "Medicaid: lottery and gambling winnings amount that adds a month of spreading"
+identifier: ma_lottery_winnings_spread_increment
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The additional amount of lottery or gambling winnings that adds one month to the period over which the winnings are divided equally - 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.3 (\"For every additional $10,000 over $89,999, one month is added\")."
+value: 10000
+sources: [S669]
+tags: [ma, magi, income]
+rationale: "S-9 of the phase 7 review: ma_lottery_winnings_spread_months (CO-1185) needs the figure. A policy number the text states."

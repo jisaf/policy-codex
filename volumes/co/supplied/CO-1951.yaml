@@ -1,0 +1,12 @@
+id: CO-1951
+name: Family eligible for a State health benefits plan through public agency employment
+identifier: chp_is_eligible_for_public_agency_state_health_benefits_plan
+kind: supplied
+type: yes/no
+scope: person
+program: CHP+
+meaning: "Whether the person is a member of a family that is eligible for health benefits coverage under a State health benefits plan in Colorado on the basis of a family member's employment with a public agency in the State (42 U.S.C. 1397jj(b)(2)(B)), even if the family declines the coverage: true when a more than nominal contribution toward the person's coverage is available from the State or public agency (or would have been on November 8, 1999), a contribution toward dependent coverage at least $10 per family per month more than toward employee-only coverage (42 CFR 457.310(c)(1))."
+supplied_by: The application's employer and health coverage questions.
+sources: [S1223, S1224]
+tags: [chp]
+rationale: "OQ-59: the public agency employee exclusion is part of the federal definition of a targeted low-income child and pregnant woman; no fact states the family's eligibility for the State plan."

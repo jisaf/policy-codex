@@ -1,0 +1,22 @@
+id: CO-1631
+name: "Medical Assistance: long-term care applicant"
+identifier: ma_is_long_term_care_applicant
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is an aged, blind or disabled person seeking long-term care: in a medical institution, in an HCBS waiver target group, or enrolled in PACE, so the long-term care documentation of 8.100.7.A.2 applies."
+precision: "Reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact. Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P1): whether the person is in a medical institution is read in the month (ma_resides_in_medical_institution_in_month, CO-7500: for a month before the determination month, from the month of institution_entry_date; § 8.100.7.A.2.c.iii, S1753; § 8.100.3.E.1, S1503). Before, the setting of the determination date was read in every month, so a retroactive month before the admission was a month in the institution."
+derived: [all, ma_is_aged_blind_or_disabled, [any, ma_resides_in_medical_institution_in_month, [not, ["=", meets_hcbs_waiver_target_group, none]], is_enrolled_in_pace]]
+sources: [S1740, S1741, S1753, S1503]
+implemented: engine
+tags: [verification, ma, ltc]
+open: [OQ-1415]
+rationale: "Review K-3: the long-term care documentation requirements need the group they apply to; ma_is_institutionalized (CO-570) also requires the 30-day expectation, which is itself one of the facts documented. History moved from the precision note (HCPF review S-14): Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-8): reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact."
+tests:
+  - {id: CO-1631-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, resides_in_medical_institution: true}, expect: true}
+  - {id: CO-1631-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, resides_in_medical_institution: false, meets_hcbs_waiver_target_group: none, is_enrolled_in_pace: false}, expect: false}
+  - {id: CO-1631-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: false}, expect: false}
+  # Pattern sweep P1: disabled, in a nursing facility since 2026-09-14, no waiver, not in PACE; determined 2026-11-12. August: not yet a long-term care applicant: false. September: true.
+  - {id: CO-1631-T4, month: "2026-08", as_of: "2026-11-12", title: "Pattern sweep: a retroactive month before the admission", given: {ma_is_aged_blind_or_disabled: true, resides_in_medical_institution: true, institution_entry_date: "2026-09-14", meets_hcbs_waiver_target_group: none, is_enrolled_in_pace: false}, expect: false}
+  - {id: CO-1631-T5, month: "2026-09", as_of: "2026-11-12", title: "Pattern sweep: the month of the admission", given: {ma_is_aged_blind_or_disabled: true, resides_in_medical_institution: true, institution_entry_date: "2026-09-14", meets_hcbs_waiver_target_group: none, is_enrolled_in_pace: false}, expect: true}

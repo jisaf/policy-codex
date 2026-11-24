@@ -1,0 +1,17 @@
+id: CO-065
+name: "SNAP: responsible for the care of an incapacitated household member"
+identifier: snap_has_responsibility_for_incapacitated_person
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person is responsible for the care of an incapacitated household member (not a dependent child), the second prong of the 7 U.S.C. 2015(d)(2)(B) / 7 CFR 273.7(b)(1)(iv) work-registration exemption.
+precision: "Coverage pass 4 for SNAP S4-11 (OQ-1263 resolved): per month, since prospective budgeting reads \"anticipated income and circumstances during the issuance month\" (10 CCR 2506-1 4.402.1.A, S4734): the household (snap_household_members, CO-305) is the month's. Before, the item was per person and read on the determination date in every month."
+derived: [exists, snap_household_members, [all, [in_group, [P], snap_persons_cared_for], [otherwise, [of, [P], needs_care_due_to_incapacity], false]]]
+sources: [S121, S126]
+implemented: engine
+tags: [work_registration]
+rationale: "The work-registration exemption for caring for a dependent child under 6 reads \"or an incapacitated person\" (S121, S124); no existing fact in this volume's interface captures the incapacitated-person branch, and unlike the child-under-6 branch it cannot be derived from age alone. Same-word audit SW-25: derived from the care roles (snap_persons_cared_for, CO-042) and the cared-for member's incapacity (CO-2832)."
+tests:
+  - {id: CO-065-T1, month: "2026-11", title: "Cares for her incapacitated husband", as_of: "2026-11-01", given: {snap_household_members: [p1, p2]}, others: {p2: {needs_care_due_to_incapacity: true}}, relationships: [[spouse, p1, p2], [provides_regular_care_to, p1, p2]], expect: true}
+  - {id: CO-065-T2, month: "2026-11", title: "No care relationship", as_of: "2026-11-01", given: {snap_household_members: [p1, p2]}, others: {p2: {needs_care_due_to_incapacity: true}}, relationships: [[spouse, p1, p2]], expect: false}

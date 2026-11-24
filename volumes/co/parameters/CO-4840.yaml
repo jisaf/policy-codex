@@ -1,0 +1,12 @@
+id: CO-4840
+name: Colorado Works validity of a proof of SSN application
+identifier: cw_ssn_application_proof_validity_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The number of months a proof of an application for a Social Security number is valid without good cause - eight - per 9 CCR 2503-6 3.604.3.B.2.c.
+value: 8
+sources: [S872]
+tags: [cash, tanf, verification]
+rationale: "Coverage review CW-25: no parameter states it; cw_ssn_verification_is_pending (CO-1647) needs it."

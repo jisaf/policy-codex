@@ -1,0 +1,14 @@
+id: CO-4619
+name: "Court-ordered monthly support of a spouse"
+identifier: court_ordered_spousal_support
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The monthly amount a court has ordered the person to pay for the support of the person's spouse."
+precision: "Required where read: not stated, it cannot be determined (decision 4 of 2026-11-23; coverage pass 4, non-MAGI N4-13, which removed the reader's default). A case with no such order states 0."
+supplied_by: "The court order."
+sources: [S3409]
+tags: [income, legal]
+rationale: "Coverage review NM-15: 10 CCR 2505-10 § 8.100.7.R.3 sets the Monthly Income Allowance at no less than a court order of monthly support. ma_court_ordered_transfer_to_community_spouse (CO-1950) states the resources a court orders transferred (the CSRA of § 8.100.7.M.1.c), not a monthly amount, so the monthly order is a fact of its own."
+nearest: [CO-1950]

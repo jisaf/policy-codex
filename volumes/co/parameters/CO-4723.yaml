@@ -1,0 +1,13 @@
+id: CO-4723
+name: "Adult Financial: months over which the prior year's farm income is averaged"
+identifier: af_farm_income_averaging_months
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The twelve months of the succeeding year over which 9 CCR 2503-5 3.520.783.C.1 averages the prior year's net farm income (\"Farm income shall be considered on a yearly basis. Net income for the prior year shall be determined and averaged for the succeeding year\")."
+precision: "Read by af_self_employment_net_profit (CO-1708)."
+value: 12
+sources: [S3505]
+tags: [cash, income]
+rationale: "Coverage review 2 (first-pass P2-2): the yearly basis of 3.520.783.C.1 (S3505) as a parameter, not a literal."

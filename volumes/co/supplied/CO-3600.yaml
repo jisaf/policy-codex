@@ -1,0 +1,13 @@
+id: CO-3600
+name: Pregnancy start date
+identifier: pregnancy_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's current pregnancy began, or, for a pregnancy that has ended (pregnancy_end_date), the date that pregnancy began, as the person's medical provider dates it or, without a provider's dating, as the person states it. Together with pregnancy_end_date it says in which past months the person was pregnant."
+precision: "Each program decides which months it reads. Medical Assistance reads it only for a month before the determination month and before the application month (a retroactive month, 10 CCR 2505-10 § 8.100.3.E): from those months on, is_pregnant states the pregnancy (ma_is_pregnant_in_month, CO-3601). The pregnancy coverage period reads such a month only when retroactive coverage was requested (ma_retroactive_coverage_requested, CO-4100; ma_pregnancy_coverage_period_start_month, CO-565), so the date is needed only then. If not stated, Medical Assistance cannot tell whether the person was pregnant in such a month before the pregnancy ended, and that month's pregnancy is unknown."
+supplied_by: Applicant statement on the application or the retroactive coverage request, or the medical provider's dating of the pregnancy.
+sources: [S1503, S2411, S640, S224]
+tags: [ma, magi]
+rationale: "Final verification F-1 (docs/reviews/final-medicaid-chp.md): is_pregnant (CO-009) states the pregnancy on the determination date, so a pregnancy that ended before the application could never be read in a retroactive month, and a woman who delivered before applying got no Pregnant Women category for her retroactive months and no 12-month postpartum period (42 U.S.C. 1396a(e)(16)(A), \"including during a period of retroactive eligibility\"). pregnancy_end_date (CO-089) states when a pregnancy ended; no fact stated when it began, which decides whether an earlier retroactive month was a pregnant month."

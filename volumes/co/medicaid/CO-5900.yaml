@@ -1,0 +1,19 @@
+id: CO-5900
+name: "Medicaid: SSI-related unearned income after allocations, before parental deeming"
+identifier: ma_ssi_household_unearned_income_before_deeming
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The SSI-related household's own unearned income before the $20 general disregard and before any parental income is deemed (10 CCR 2505-10 § 8.100.5.H.3-4): the combined gross unearned income of the person and a spouse living with the person (ma_ssi_household_unearned_income_sum), less the Ineligible Child Allocation taken from an ineligible spouse's unearned income, plus, for an unemancipated child, the child support the child receives reduced by one third (H.4.c). For a child this is the child's own unearned income that 20 CFR 416.1165(e)(1) combines with the deemed parental income, and that 416.1165(e)(3) calls the child's own income."
+precision: "ma_ssi_household_unearned_income_counted (CO-2281) is this amount plus the parental income deemed to the child (ma_ssi_parental_income_deemed, CO-4626). It is stated apart so that the most parental income that can be deemed to a child (ma_ssi_deeming_benefit_zero_amount, CO-5902) is figured from the child's own income alone, without the deemed amount it limits."
+derived: ["+", ["-", ma_ssi_household_unearned_income_sum, ma_ssi_child_allocation_from_spouse_unearned], [case, [ma_is_ssi_unemancipated_child, ["-", ma_ssi_child_support_receipts, ["/", ma_ssi_child_support_receipts, ma_ssi_child_support_reduction_divisor]]], [else, 0]]]
+sources: [S1506, S308, S3405, S3413, S4080]
+implemented: engine
+tags: [ma, non_magi, income, household]
+siblings:
+  - {id: CO-6056, reason: "the Pickle copy reads the countable OASDI (the Pickle Disregard and a spouse's increases subtracted, 8.100.6.E.1.e, E.3); every other term must stay the same"}
+rationale: "Coverage review, 416.1165(e)(3) fill-up (docs/reviews/coverage-medicaid-nonmagi.md): (e)(3) limits the income deemed to each eligible child by what, 'when combined with the child's own income', reduces the child's SSI benefit to zero. CO-2281 held the child's own unearned income and the deemed parental income in one sum, so the child's own income could not be read without the deemed amount; this item is CO-2281's own-income part, unchanged, and CO-2281 now adds the deemed amount to it."
+tests:
+  - {id: CO-5900-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_unearned_income_sum: 1300, ma_ssi_child_allocation_from_spouse_unearned: 500, date_of_birth: "1980-01-01"}, title: "Adult: 1,300 less the 500 of the spouse's pension allocated to the children = 800", expect: 800}
+  - {id: CO-5900-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_unearned_income_sum: 0, ma_ssi_child_allocation_from_spouse_unearned: 0, date_of_birth: "2016-01-01", receipts: [{kind: social_security}, {kind: ssi}, {kind: pension}, {kind: unemployment_compensation}, {kind: child_support, amount: 300}, {kind: colorado_works_cash}, {kind: adult_financial_cash}, {kind: tax_exempt_interest}, {kind: other_taxable}, {kind: other_nontaxable}]}, title: "Disabled child of 10 receiving $300 of child support: 300 - 300 / 3 = 200", expect: 200}

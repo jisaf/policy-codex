@@ -1,0 +1,24 @@
+id: CO-2410
+name: "CHP+: is a guaranteed newborn"
+identifier: chp_is_guaranteed_newborn
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether, in the month, the person is a child under one year old whose mother was enrolled in CHP+ at the time of the child's birth, and so is guaranteed CHP+ coverage for one year (10 CCR 2505-3 § 430.5): the child is under one on the first day of the month, so the guarantee covers at least that day of it."
+precision: "Coverage pass 4, C4-07 (2026-11-23; time contract month-v1): the age is measured in the month evaluated (its first day), not on the determination date, so a newborn reported or determined late is guaranteed in the earlier months of its first year (\"A newborn can be reported at any time by any person\", § 430.5.A), and a newborn determined in its first year is not guaranteed in the months after its first birthday. 'Guaranteed coverage for one year' runs from the birth to the day before the first birthday; CHP+ coverage is by calendar month (eligibility is effective on the first day of a month, § 430.1), so the month of the first birthday, which the guarantee reaches on its first days, is covered and the month after it is not (OQ-1231 records this reading of the birthday month). Then the child is tested as any CHP+ child (chp_child_is_eligible, CO-705), whose 12-month continuous eligibility (§ 430.2) runs from its own start. Coverage review 2, N-11 had read the age on the determination date in every month. Pattern sweep, MAGI (2026-11-24, PS-06): whether the mother was enrolled in CHP+ at the birth is read as stated (chp_mother_was_enrolled_at_birth, from birth_mother_coverage_at_birth), required where read for a child in the first year (§ 430.5 gives no reading for an unstated enrollment; decision 4; was read as not enrolled)."
+derived: [all, ["<", [years_between, date_of_birth, [first_day, [month]]], chp_newborn_coverage_age_limit_years], chp_mother_was_enrolled_at_birth]
+sources: [S1716, S1714]
+implemented: engine
+tags: [chp, age]
+open: [OQ-1231]
+rationale: "B-2 of the HCPF review: no CHP+ newborn rule existed; it mirrors ma_is_needy_newborn (CO-550) for the CHP+ text. Coverage pass 4, C4-07: per month, on the month's age, as CO-550 reads ma_age_on_first_day_of_month (CO-4978); the age is computed here rather than read from the Medicaid item, since CHP+'s guarantee is its own rule."
+nearest: [CO-550]
+tests:
+  - {id: CO-2410-T1, month: "2026-11", as_of: "2026-11-01", given: {date_of_birth: "2026-06-02", chp_mother_was_enrolled_at_birth: true}, title: "Born 2026-06-02 to a CHP+ prenatal member: 0 on 2026-11-01", expect: true}
+  - {id: CO-2410-T2, month: "2027-07", as_of: "2027-07-01", given: {date_of_birth: "2026-06-02", chp_mother_was_enrolled_at_birth: true}, title: "Past the first birthday: 1 on 2027-07-01", expect: false}
+  - {id: CO-2410-T3, month: "2026-11", as_of: "2026-11-01", given: {date_of_birth: "2026-06-02", chp_mother_was_enrolled_at_birth: false}, title: "Mother not enrolled in CHP+ (stated)", expect: false}
+  - {id: CO-2410-T20, month: "2026-11", as_of: "2026-11-01", given: {date_of_birth: "2026-06-02"}, title: "Pattern sweep PS-06: an infant whose mother's coverage at the birth is not stated: cannot determine (was read as not enrolled)", expect: unknown}
+  - {id: CO-2410-T4, month: "2026-08", as_of: "2026-10-25", given: {date_of_birth: "2025-10-20", chp_mother_was_enrolled_at_birth: true}, title: "Coverage pass 4, C4-07 (NB-CHP-late): born 2025-10-20, determined 2026-10-25 after the first birthday; in August 2026 the child is 0 on August 1 (whole years from 2025-10-20 to 2026-08-01 = 0 < 1): guaranteed", expect: true}
+  - {id: CO-2410-T5, month: "2026-10", as_of: "2026-10-25", given: {date_of_birth: "2025-10-20", chp_mother_was_enrolled_at_birth: true}, title: "Coverage pass 4, C4-07: October 2026, the birthday month: 0 on October 1 (the first birthday is October 20): guaranteed for the month (OQ-1231)", expect: true}
+  - {id: CO-2410-T6, month: "2026-11", as_of: "2026-09-25", given: {date_of_birth: "2025-10-20", chp_mother_was_enrolled_at_birth: true}, title: "Coverage pass 4, C4-07 (NB-CHP-early): determined 2026-09-25, before the first birthday; November 2026: 1 on November 1: not guaranteed", expect: false}

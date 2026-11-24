@@ -1,0 +1,22 @@
+id: CO-1206
+name: "Home Care Allowance: functionally eligible for HCBS"
+identifier: af_hca_functionally_eligible_for_hcbs
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person is functionally eligible for Health First Colorado Home and Community Based Services - meets the nursing facility level of care and falls in an HCBS waiver target group - which bars Home Care Allowance under 9 CCR 2503-5 3.570.11.A.2.a-b.
+precision: Reads the Medicaid chapter's functional facts (meets_nursing_facility_level_of_care, meets_hcbs_waiver_target_group) rather than ma_hcbs_waiver_eligible (CO-653), because 3.570.11.A.2 bars HCA on functional eligibility for HCBS, not on financial eligibility for it. The three-month transition allowed at reassessment (3.570.11.A.2.b) is not modeled (OQ-250).
+derived: [all, meets_nursing_facility_level_of_care, [not, ["=", meets_hcbs_waiver_target_group, none]]]
+sources: [S712]
+open: [OQ-250]
+implemented: engine
+tags: [cash, hcbs, disability]
+accepts_from:
+  - {from: meets_hcbs_waiver_target_group, class: rule_required, source: S712}
+rationale: "No existing item states functional (as opposed to financial) HCBS eligibility; ma_hcbs_waiver_eligible (CO-653) folds in the financial tests. af_hca_eligibility_status (CO-1217) needs the functional test alone. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Adult Financial rule names the other program's result (the Colorado Works bar of 3.520.61.F; the HCBS target-group screen of 3.570, S712)."
+nearest: [CO-653]
+tests:
+  - {id: CO-1206-T1, as_of: "2026-10-01", given: {meets_nursing_facility_level_of_care: true, meets_hcbs_waiver_target_group: ebd}, expect: true}
+  - {id: CO-1206-T2, as_of: "2026-10-01", given: {meets_nursing_facility_level_of_care: true, meets_hcbs_waiver_target_group: none}, expect: false}
+  - {id: CO-1206-T3, as_of: "2026-10-01", given: {meets_nursing_facility_level_of_care: false, meets_hcbs_waiver_target_group: ebd}, expect: false}

@@ -1,0 +1,12 @@
+id: CO-1932
+name: Has a disabling mental disorder
+identifier: ma_has_disabling_mental_disorder
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person has a disabling mental disorder (42 CFR 435.554(c)(5)(i)(C)).
+supplied_by: The State's list of diseases, diagnoses, disorders and health conditions (435.554(c)(5)(ii)), claims and encounter data, or the person's request for consideration (435.557(f)).
+sources: [S1209]
+tags: [ma, magi, medical]
+rationale: "OQ-65: one of the five conditions of the medically frail exclusion; no fact states it."

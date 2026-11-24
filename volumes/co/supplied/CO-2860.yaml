@@ -1,0 +1,12 @@
+id: CO-2860
+name: Left employment with good cause
+identifier: left_employment_with_good_cause
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether, this month, the person has left employment with good cause. No default (pattern sweep, MAGI, PS-06, 2026-11-24): 10 CCR 2505-10 § 8.100.4.I.1.b.i (S1719) keeps Transitional Medical Assistance for a family whose parent or caretaker relative stops working only where the employment ended with good cause, and gives no reading for an unstated reason, so Medicaid requires it where read (a parent or caretaker relative with no earnings in a transitional month)."
+supplied_by: The application or the county's good-cause finding.
+sources: [S1719]
+tags: [ma, magi]
+rationale: "Dual-entry audit 2.1: ma_household_has_employed_parent_caretaker (CO-2425) restated each parent's employment, which the earned income facts state; leaving employment with good cause (§ 8.100.4.I.1.b.i) is the one part no fact states."

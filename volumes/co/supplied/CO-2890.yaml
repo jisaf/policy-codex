@@ -1,0 +1,12 @@
+id: CO-2890
+name: "Member of a federally recognized tribe"
+identifier: is_member_of_federally_recognized_tribe
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is an enrolled member of a federally recognized Indian tribe, band, nation, rancheria, pueblo, colony or community, Alaska Native villages included."
+supplied_by: Tribal enrollment card or certificate; the Indian Health Service or Bureau of Indian Affairs record.
+sources: [S1208, S1214, S1236]
+tags: [immigration]
+rationale: "Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."

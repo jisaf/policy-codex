@@ -1,0 +1,12 @@
+id: CO-5180
+name: "Medicaid: months a year a dependent child's WIOA wages are exempt"
+identifier: ma_ssi_wioa_dependent_child_exempt_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The most months in a calendar year for which wages from a Workforce Investment (now Innovation and Opportunity) Act program paid to a dependent child applying for or receiving Medical Assistance are exempt: \"for a period not to exceed six months in each calendar year\" (10 CCR 2505-10 8.100.3.K.8.c)."
+value: 6
+sources: [S4107]
+tags: [ma, non_magi, income]
+rationale: "A figure the rule states is a parameter, not a literal (OQ-82); read by ma_ssi_excluded_wioa_wages (CO-5179)."

@@ -1,0 +1,12 @@
+id: CO-1107
+name: Has exhausted the premium-free Part A extension
+identifier: has_exhausted_premium_free_part_a_extension
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person has exhausted SSA's allowed extension of premium-free Medicare Part A coverage under SSDI (10 CCR 2505-10 § 8.100.6.O.2.b).
+supplied_by: SSA/CMS Medicare entitlement records (BENDEX/TBQ) as read by the eligibility site.
+sources: [S622]
+tags: [ma, msp, disability]
+rationale: "OQ-84: the second of § 8.100.6.O.2's history conditions, which no existing fact states separately. ma_qdwi_meets_disability_work_history (CO-1157) needs it."

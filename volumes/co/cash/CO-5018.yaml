@@ -1,0 +1,19 @@
+id: CO-5018
+name: "Adult Financial: a person's SSI receipts"
+identifier: af_ssi_receipts
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The person's SSI received in the month (9 CCR 2503-5 3.533.A.2: the full SSI is added back after the $20 disregard is taken from unearned income other than SSI), other than a retroactive lump sum (counted with the other unearned income, af_counted_unearned_receipts)."
+precision: "Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since \"All income shall be countable in the month it is actually received or legally becomes available\" (9 CCR 2503-5 3.520.781.G, S4910): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: ["sum_receipts", "receipts", ["all", ["=", ["receipt", "kind"], "ssi"], ["not", ["receipt", "retroactive"]], ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]]], ["receipt", "amount"]]
+sources: [S1622, S2608, S4910]
+implemented: engine
+tags: [cash, income]
+rationale: "Receipt records, migration phase 1: the SSI that af_countable_income, af_and_cs_eligible, af_receives_ssi_in_month and the deeming items read, from the receipts, replacing ssi_income (CO-849)."
+nearest: [CO-5023]
+tests:
+  - {id: CO-5018-T1, month: "2026-10", as_of: "2026-10-15", given: {receipts: [{kind: ssi, amount: 943}, {kind: ssi, amount: 2000, frequency: once, retroactive: true, month: "2026-10"}]}, title: "The month's SSI; the retroactive award is not", expect: 943}
+  # Field sweep fix round (FS-AF-1): hand-computed from 9 CCR 2503-5 3.520.781.G (S4910): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-5018-T2", "month": "2027-01", "as_of": "2027-01-15", "title": "SSI of $943 that ended 2026-12-31 (the person now on another program), read for January 2027: 0", "given": {"receipts": [{"kind": "ssi", "amount": 943, "end_date": "2026-12-31"}]}, "expect": 0}

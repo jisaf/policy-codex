@@ -1,0 +1,17 @@
+id: CO-1750
+name: "Medicaid: monthly poverty guideline for the SSI-method household"
+identifier: ma_ssi_poverty_guideline_monthly
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The monthly federal poverty guideline for this person's SSI-method household size (one, or two for a couple living together): the annual guideline for the size divided by twelve, the base the Medicare Savings Program income limits (10 CCR 2505-10 8.100.6.L) are percentages of."
+precision: "Time audit T-3: per month, so the figure is the one in force in the month evaluated (docs/operators.md, Resolution step 2); as a per-person item it gave the determination date's figure in every month."
+derived: [/, [lookup, federal_poverty_guideline_annual_table, ma_ssi_household_size], 12]
+sources: [S55, S317]
+implemented: engine
+tags: [ma, msp, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, U-1): the QMB, SLMB, QI and QDWI tests (CO-613 to CO-616) each restated the lookup; one item now states it. The Buy-In rules (CO-618, CO-619) read the size-1 guideline, which is not the SSI household, and keep their own lookup."
+tests:
+  - {id: CO-1750-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_size: 1}, expect: 1330}
+  - {id: CO-1750-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssi_household_size: 2}, expect: 1803.3333333333333}

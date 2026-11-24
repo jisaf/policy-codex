@@ -3,14 +3,15 @@ name: "Colorado Works: assistance unit size"
 identifier: cw_unit_size
 kind: derived
 type: whole number
-scope: person
+scope: person-month
 program: ColoradoWorks
-meaning: The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by.
-derived: [count, cw_assistance_unit_members]
-sources: [S408, S414]
+meaning: "The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by. Informational: no rule reads it and it is not a declared outcome; the standards are read by household size through cw_need_standard and cw_grant_standard, and this reports the unit's size (household cases check it)."
+derived: [count, cw_assistance_unit_members_for_size]
+precision: "Coverage pass 6 CA6-4: per month, as cw_assistance_unit_members_for_size (CO-2351) is."
+sources: [S408, S414, S1004]
 implemented: engine
 tags: [cash, tanf, household]
-rationale: No existing item counts the Colorado Works assistance unit; cw_need_standard (CO-911) and cw_grant_standard (CO-912) both look up this size in the standards-of-assistance tables.
+rationale: Phase-10 sweep (OQ-143) - counts cw_assistance_unit_members_for_size (CO-2351), which leaves out a disqualified or ineligible member as 3.604.2.M requires (S1004). No existing item counts the Colorado Works assistance unit; cw_need_standard (CO-911) and cw_grant_standard (CO-912) both look up this size in the standards-of-assistance tables.
 tests:
-  - {id: CO-903-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 2}
-  - {id: CO-903-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 1}
+  - {id: "CO-903-T1", month: "2026-10", as_of: "2026-10-01", given: {receipts: [], dwelling_id: h1, cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "2009-04-08", is_full_time_secondary_student_finishing_before_nineteen: true, receives_ssi: false, cw_receives_title_iv_foster_adoption_kinship_payment: false, temporary_absence_reason: none, cw_is_optional_member_by_custody_or_support: false, residence_setting_type: private_dwelling}, others: {p2: {receipts: [], dwelling_id: h1, cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "2026-02-03", receives_ssi: false, cw_receives_title_iv_foster_adoption_kinship_payment: false, temporary_absence_reason: none, residence_setting_type: private_dwelling, cw_is_optional_member_by_custody_or_support: false}}, relationships: [[parent, p1, p2]], expect: 2}
+  - {id: "CO-903-T2", month: "2026-10", as_of: "2026-10-01", given: {receipts: [], temporary_absence_reason: none, cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "1990-01-01", receives_ssi: false, cw_receives_title_iv_foster_adoption_kinship_payment: false, is_in_work_release_or_court_monitoring: false, is_pregnant: false, residence_setting_is_primarily_for_mental_diseases: false, residence_setting_type: private_dwelling}, relationships: [], expect: 1}
