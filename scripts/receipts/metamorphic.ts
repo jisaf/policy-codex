@@ -144,7 +144,11 @@ const mapReceipts = (c: HouseholdCase, f: (rs: Receipt[]) => Receipt[]) => {
 };
 const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "used_for_uncovered_medical_care",
   "transferred_to_child_support_agency", "paid_to_former_spouse", "recouped", "recouped_for_intentional_violation",
-  "for_person_living_elsewhere", "for_dependent", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served"];
+  "for_person_living_elsewhere", "for_dependent", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served",
+  "for_living_expenses"];
+// for_living_expenses (receipts, CO-5000): the part of educational assistance used for living expenses, a part of the
+// amount like the set-asides, so each half of a split grant carries half of it; copied whole, the two halves counted the
+// living-expense part twice (MAGI coverage pass 7, C7-03; household CO-1126).
 // for_dependent (receipts, CO-5000): a veterans benefit's part for a dependent, an earmark of the amount, split with it
 // (field sweep FS-AF-2, FS-CW-2; coverage pass 5 L5-2; household CO-802).
 // designated_for_legal_fees (receipts, CO-5000): the legal-fee part of designated_for_lump_sum_costs, an earmark of the

@@ -1,6 +1,6 @@
 # Known limits for the product owner's sign-off (Colorado volume)
 
-The findings of the final reviews (coverage pass 7: docs/reviews/coverage7-snap.md, coverage7-care-energy.md, coverage7-cash.md) that the fix round of 2026-11-24 recorded instead of fixing, because the fix is a larger design change than a fix round should make, and the limits the reviews asked to carry to the program owners. Each entry names the finding, the households it affects and how often, the governing paragraph, a household that shows it (stored households and rule tests run with `npm run check`; probes are given in full so they can be rebuilt), and the proposed fix. The product owner reviews this list with each program's owner.
+The findings of the final reviews (coverage pass 7: docs/reviews/coverage7-snap.md, coverage7-care-energy.md, coverage7-cash.md, coverage7-medicaid-magi-chp.md) that the fix round of 2026-11-24 recorded instead of fixing, because the fix is a larger design change than a fix round should make, and the limits the reviews asked to carry to the program owners. Each entry names the finding, the households it affects and how often, the governing paragraph, a household that shows it (stored households and rule tests run with `npm run check`; probes are given in full so they can be rebuilt), and the proposed fix. The product owner reviews this list with each program's owner.
 
 Common / rare: **common** is a shape an intake worker sees routinely; **rare** needs a combination of facts that is uncommon.
 
@@ -14,6 +14,15 @@ Common / rare: **common** is a shape an intake worker sees routinely; **rare** n
 - **Rule paragraph.** 7 CFR 273.10(a)(1)(i) (S5091): the application month on "the household's circumstances for the entire month of application"; 10 CCR 2506-1 4.402.1.A (S4734).
 - **Household that shows it.** Rule test CO-7672-T5: spouses apart on 2026-11-05 with no separation date are apart in November, the determination month (a husband who moved out on November 2 states the date and is a member of November, CO-7672-T2, stored household CO-1070). A status example: CO-1073 with the family in a shelter instead of a friend's home on the determination date and in its own home in October would read October as homeless; only a stay in another person's home states the residence before it (CO-7674).
 - **Proposed fix.** Date each status SNAP reads for an application month (the residence's start for every temporary accommodation, the award dates of SSI, TANF and State cash, the discharge date from an institution), required where read for a month before the determination month, as coverage pass 7 dated who lives in the home (CO-7670 to CO-7672), the energy assistance payments (CO-7673) and a stay in another's home (CO-7674). Until then OQ-1450 records the reading for the SNAP owner.
+
+### KL-SNAP-2 (MAGI coverage pass 7, C7-04; a follow-up for the SNAP owner): the five-year waiting period counted from the qualified status held now
+
+- **Description.** SNAP's five-year test (snap_meets_immigrant_additional_condition CO-307, which counts years from qualified_status_date in the month) and its readers of the same date (snap_is_exempt_from_waiting_period_other_than_military CO-3713, snap_requires_verification_of_qualifying_quarters CO-3736, snap_requires_verification_of_military_connection CO-3738) read qualified_status_date (CO-003), the date of the status held now. A person who held an earlier qualified status (a parolee of a year or more, a battered non-citizen, a conditional entrant) and later became a lawful permanent resident restarts the five years at the adjustment. The MAGI fix round added the neutral fact of the first qualified status (first_qualified_status_date, CO-7770) and Medicaid reads it (CO-7550); SNAP was not edited because another fix round was editing it.
+- **Households affected.** A lawful permanent resident whose earlier, non-exempt qualified status began more than five years ago and whose LPR status began less than five years ago.
+- **Common / rare.** Rare.
+- **Rule paragraph.** 10 CCR 2506-1 4.305.B.3.a (S12): "The five (5) year waiting period begins on the date the non-citizen obtains status as a qualified non-citizen or enters the U.S. in a qualifying status"; 8 U.S.C. 1613(a) (S176); CO-003's precision now says so.
+- **Household that shows it.** Stored household CO-1127 (LPR-EX-PAROLEE: paroled 2019-05-01, LPR 2023-03-01, first_qualified_status_date 2019-05-01): Medicaid eligible in November 2026 (the five years ended 2024-05-01); SNAP's CO-307 counts from 2023-03-01 (three years) for the same person.
+- **Proposed fix.** CO-307 counts from first_qualified_status_date where the person's first qualified status is not the one held now (required where read, as Medicaid's CO-7550 reads it: not needed where us_entry_date is on or after qualified_status_date or a lawful permanent resident's earlier status is none), and CO-3713, CO-3736 and CO-3738 are reviewed for the same date.
 
 ## CCCAP and LEAP
 
@@ -66,4 +75,44 @@ Each is a parameter with no version (docs/conventions.md, "Effective dating"); t
 - **Household that shows it.** A client sharing a $1,000 market-rent home with three people not stated as persons of the case, paying $250: CO-1512 gives a fair share of $1,000 and ISM min(1,000, 351) - 250 = $101; by the text the fair share is $250, paid in full, no ISM (the reviewer's example, docs/reviews/coverage7-cash.md, F7-4).
 - **Proposed fix.** A neutral case fact, the number of persons living in the home (convention rule 18), required where CO-1512 reads it, and the fair share divided by it.
 
+### KL-CASH-2 (MAGI coverage pass 7, C7-04; a follow-up for the cash programs' owner): the five-year bar counted from the qualified status held now
+
+- **Description.** The shared has_held_qualified_status_five_years (CO-508) counts the five years of 8 U.S.C. 1613(a) from qualified_status_date, the status held now. Since the MAGI fix round only the cash programs read it, through meets_public_assistance_citizenship_requirement (CO-905): Colorado Works (cw_meets_citizenship_and_immigration_requirement CO-4005) and Adult Financial (af_category CO-953, af_meets_citizenship_requirement_oap CO-929 and the other readers of CO-905). A person who held an earlier qualified status restarts the five years at a later adjustment. Medicaid reads the new first_qualified_status_date (CO-7770); the cash items were not edited because another fix round was editing them.
+- **Households affected.** As KL-SNAP-2: an LPR whose earlier, non-exempt qualified status began more than five years ago.
+- **Common / rare.** Rare.
+- **Rule paragraph.** 8 U.S.C. 1613(a) (S176): "for a period of 5 years beginning on the date of the alien's entry into the United States with a status within the meaning of the term 'qualified alien'".
+- **Household that shows it.** Stored household CO-1127 (LPR-EX-PAROLEE) read by CO-905: the five years from 2023-03-01 are not held in November 2026; from the first qualified status (2019-05-01) they are.
+- **Proposed fix.** CO-508 counts from first_qualified_status_date with the same shortcut Medicaid's CO-7550 uses (the status held now is the first where the person entered in it or is an LPR admitted directly), required where read; the cash stored households that state an LPR with an earlier status state the first date.
+
 The other cash findings were fixed; their recorded readings are open questions the cash owner signs: OQ-1451 (the reach of C.R.S. 26-2-706(1.5)(c) and a mandatory member who receives Adult Financial) and OQ-1452 (a voluntary foster care placement measured by its elapsed length).
+
+## MAGI Medicaid and CHP+
+
+The final review's findings (docs/reviews/coverage7-medicaid-magi-chp.md) C7-01 to C7-06 and C7-08 to C7-11 were fixed in the fix round of 2026-11-24 (section 9 of the review); the entries below are what it recorded instead, and what the round found beside them.
+
+### KL-MAGI-1 (coverage pass 7, C7-07; OQ-1475): "current or previous monthly household income" read as the current month
+
+- **Description.** 10 CCR 2505-10 § 8.100.4.C.4 bases an applicant's financial eligibility on "current or previous monthly household income and family size". The volume reads the month evaluated only, the previous month being evidence of it where the current month's income is not yet verified (§ 8.100.4.B.1.c). Read as a choice between the two months, an applicant ineligible on the current month and eligible on the previous one would be eligible.
+- **Households affected.** An applicant whose income rose in the application month across a standard.
+- **Common / rare.** Rare (a raise or a new job in the application month that crosses a standard).
+- **Rule paragraph.** § 8.100.4.C.4, C.4.a (S3356); § 8.100.4.B.1.c (S5270, D-65:1641-1645): "Verification of earned income received during the month prior to the month of application shall be acceptable if the application month verification is not yet available"; 42 CFR 435.603(h)(1) (S5271): "must be based on current monthly household income and family size".
+- **Household that shows it.** OQ-1475's worked example: a single adult, $1,700 in October 2026 and $1,900 in November, the application month: November 1,900 / 1,330 = 142.9%, less 5 = 137.9% > 133%, ineligible_income as the volume reads C.4; 1,700 / 1,330 = 127.8%, less 5 = 122.8%, eligible on the previous month.
+- **Proposed fix.** None in the volume: a state policy choice for the Medicaid policy owner (OQ-1475). If HCPF reads C.4 as a choice, a month's income test reads the lower of the month's and the previous month's household income for an applicant (ma_magi_monthly_household_income_pct_fpl, CO-6452).
+
+### KL-MAGI-2 (found in the fix round, beside C7-02): a month of an earlier pregnancy before the stated start of the current one is read as not pregnant
+
+- **Description.** ma_is_pregnant_in_month (CO-3601) reads a month before the month of pregnancy_start_date as not pregnant, so for a person pregnant now whose earlier pregnancy is recorded only by a child's date of birth (gave_birth_to), the months of the earlier pregnancy before its birth month read as not pregnant. The coverage period of the earlier pregnancy still opens where the eligibility history records Pregnant Women in those months (CO-7401: a recorded month opens unless it is in the postpartum year of an earlier end and she was not pregnant), and the birth month itself is a pregnant month; it does not open from a month recorded as other Medical Assistance, and those months' household size counts no expected child.
+- **Households affected.** A renewal (whose application date is the original application's, CO-088) of a member pregnant again, whose earlier pregnancy fell within the application's months and was covered under another category, evaluated for a month of that earlier pregnancy, all of them before the determination month.
+- **Common / rare.** Rare (only months long before the determination month, which a renewal does not decide).
+- **Rule paragraph.** § 8.100.4.G.5 (S640); 42 U.S.C. 1396a(e)(5) (S5060).
+- **Household that shows it.** CO-1123 (PG-SECOND) with the history of March to August 2025 recorded as other_medical_assistance instead of Pregnant Women: March to August 2025 read as not pregnant (the start stated is 2026-10-05), so no period opens before September 2025, the birth month; by hand she was pregnant in those months (a birth on 2025-09-10).
+- **Proposed fix.** In CO-3601 (and CHP+'s CO-7051), a stated pregnancy_start_date governs only the months after the last recorded end before it; a month on or before that end is read from the ended pregnancy (its own start, where stated on or before the end, else unknown before the birth month).
+
+### KL-MAGI-3 (found in the fix round): family planning has no reason for a month before the application can cover
+
+- **Description.** ma_family_planning_status (CO-1154) does not read ma_month_is_before_coverage_period (CO-4101): a month before a requested retroactive window, or before the application month with no request, is answered by the person's category and income as if covered (full_coverage, limited_family_planning), where ma_magi_eligibility_status and chp_eligibility_status answer ineligible_before_coverage_period.
+- **Households affected.** Every household evaluated for a month before the months its application can cover.
+- **Common / rare.** Common in the stored households that evaluate such months; in a determination a month before the application is not decided, so a worker does not see it.
+- **Rule paragraph.** 10 CCR 2505-10 § 8.100.3.E.1-2 (S1503, S2411); § 8.100.4.G.8.
+- **Household that shows it.** CO-1130 (DIED-RETRO): May 2026, before the June to August window, is ineligible_before_coverage_period for MAGI and full_coverage for family planning.
+- **Proposed fix.** A first row in CO-1154, [ma_month_is_before_coverage_period, ineligible_before_coverage_period], with the option added to the outcome and the aid-code map (no code), as C7-06 added ineligible_deceased; the stored expectations of family planning in such months restated. Not made in the fix round because the review did not list it and it moves stored expectations of other rounds.
