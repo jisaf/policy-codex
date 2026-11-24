@@ -86,9 +86,9 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
         <h2>Roles</h2>
         <div class="toolbar"><button id="splitBusiest">Split the four busiest</button><button id="reset">Reset all</button></div>
       </div>
-      <p class="help">Hours a week per reviewer, number of reviewers sharing the role, and the role's fixed work (program sign-off, decisions) in hours.</p>
+      <p class="help">Hours a week per reviewer and the number of reviewers sharing the role. Sign-off &amp; meetings is work that does not grow with the item count: confirming the program's stored households and outcomes as a whole, and working sessions on the product decisions and known limits.</p>
       <div class="tablewrap">
-        <table id="roles"><thead><tr><th>Role</th><th class="num">Hours / wk</th><th class="num">Reviewers</th><th class="num">Fixed h low</th><th class="num">Fixed h high</th><th class="num">Weeks</th></tr></thead><tbody></tbody></table>
+        <table id="roles"><thead><tr><th>Role</th><th class="num">Hours / wk</th><th class="num">Reviewers</th><th class="num">Sign-off &amp; meetings, h low</th><th class="num">h high</th><th class="num">Weeks</th></tr></thead><tbody></tbody></table>
       </div>
       <p class="note">Not included: rework if items are signed before the product decisions, waiting for meetings or documents, engineering time, leave. A role split between reviewers is assumed to divide its load equally.</p>
     </section>
@@ -184,8 +184,8 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
       tr.innerHTML = `<td><span class="rowname">${r.name}</span><span class="sub">${r.decisions ? "5 decisions, 9 known limits" : `${fmt(items)} items · ${qs} questions`}</span></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num weeks" id="w-${r.id}"></td>`;
       tr.children[1].append(numInput(st.hpw, d.hpw, v => st.hpw = v, `${r.name}, hours per week`, 1));
       tr.children[2].append(numInput(st.n, d.n, v => st.n = Math.max(1, Math.round(v)), `${r.name}, reviewers`, 1));
-      tr.children[3].append(numInput(st.fxLo, d.fxLo, v => st.fxLo = v, `${r.name}, fixed hours low`));
-      tr.children[4].append(numInput(st.fxHi, d.fxHi, v => st.fxHi = v, `${r.name}, fixed hours high`));
+      tr.children[3].append(numInput(st.fxLo, d.fxLo, v => st.fxLo = v, `${r.name}, sign-off and meeting hours, low`));
+      tr.children[4].append(numInput(st.fxHi, d.fxHi, v => st.fxHi = v, `${r.name}, sign-off and meeting hours, high`));
       tb.append(tr);
     }
   }
