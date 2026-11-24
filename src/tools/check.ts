@@ -24,6 +24,7 @@ import { versionInForce } from "../engine/versions";
 import { AID_CODES_FILE, aidCodeWarnings, parseAidCodes, type AidCodeMap } from "../ledger/aid-codes";
 import type { Engine } from "../engine/engine";
 import { stopwatch, timed } from "./profile";
+import { runReportChecks, type ReportCheckResult } from "./report-checks";
 import type { Item, TestSpec, VolumeMeta } from "../engine/types";
 import type { TestResult } from "../engine/evaluate";
 
@@ -53,6 +54,9 @@ export interface LoadedLedger {
   impactSince?: string | null;
   /** the volume's `cross-program-allowlist.yaml`, when it has one. */
   crossProgramAllowlist?: CrossProgramAllowlist | null;
+  /** excerpt id -> its citation line in sources.md (the paragraph it
+   *  quotes), for the report-only check of shared items. */
+  sourceCitations?: Record<string, string>;
 }
 
 /** The dated, shrink-only list of shared program calculations
@@ -146,6 +150,7 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
     questionIds: openQuestions.map((q) => q.id),
     unverifiedSourceIds: unverifiedSourceIds(sources),
     sourceTexts: sourceTextMap(sources),
+    sourceCitations: Object.fromEntries(sources.map((s) => [s.id, s.citation])),
     aidCodes,
     changeRecords,
     impactSince,
@@ -308,6 +313,10 @@ export interface CheckReport {
    *  supplied fact behind them (a table lookup with no row, a parameter with
    *  no version in force, a division by zero). One line each. */
   warnings: string[];
+  /** Report-only checks (docs/governance.md "Report-only checks"): each
+   *  check's findings, printed and counted; they block only when the check's
+   *  switch makes it blocking (src/tools/report-checks.ts). */
+  reportOnly: ReportCheckResult[];
   /** true when there is nothing to block a merge. */
   ok: boolean;
 }
@@ -899,6 +908,11 @@ export function buildCheckReport(
   warnings.push(...inputWarnings(engine, ledger));
   if (ledger.aidCodes) warnings.push(...aidCodeWarnings(engine, ledger.aidCodes));
   lap("check: input warnings");
+  const reportOnly = runReportChecks({
+    engine, items: ledger.items, meta: ledger.meta, chapterOf: ledger.chapterOf,
+    sourceCitations: ledger.sourceCitations ?? {}, cases: ledger.cases,
+  });
+  lap("check: report-only checks");
   opts.share?.({ engine, ledger, testResults, caseReports });
 
   const ok = blockingItemErrors.length === 0
@@ -910,7 +924,8 @@ export function buildCheckReport(
     && openQuestions.errors.length === 0
     && changeImpact.open.length === 0
     && changeImpact.errors.length === 0
-    && crossProgram.errors.length === 0;
+    && crossProgram.errors.length === 0
+    && reportOnly.every((r) => !r.blocking || r.findings.length === 0);
 
   return {
     base: null, // the caller (runCheck) fills this in with the ref it resolved
@@ -945,6 +960,7 @@ export function buildCheckReport(
     changeImpact,
     crossProgram,
     warnings: [...new Set(warnings)],
+    reportOnly,
     ok,
   };
 }
@@ -1187,6 +1203,13 @@ export function formatSummary(r: CheckReport): string {
   if (r.warnings.length) {
     lines.push(`warnings (${r.warnings.length}, not blocking):`);
     for (const w of r.warnings) lines.push(`  ${w}`);
+  }
+  if (r.reportOnly?.length) {
+    lines.push(`report-only checks (${r.reportOnly.reduce((n, c) => n + c.findings.length, 0)} finding(s); docs/governance.md "Report-only checks"):`);
+    for (const c of r.reportOnly) {
+      lines.push(`  ${c.id}: ${c.findings.length} ${c.title}${c.blocking ? " (blocking)" : " (not blocking)"}`);
+      for (const f of c.findings) lines.push(`    ${f}`);
+    }
   }
   if (r.newFailures.length) {
     lines.push(

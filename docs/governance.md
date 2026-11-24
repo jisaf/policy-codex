@@ -442,6 +442,26 @@ page lists the flags of the staged change with a disposition field per flag,
 and Propose writes the change record into the pull request beside the items.
 Until then, run `npm run check` locally and paste its stubs.
 
+## Report-only checks
+
+A check whose findings must be worked off before it can block starts
+report-only: `npm run check` prints every finding, one line each, under
+"report-only checks" with a count per check, and does not fail on them. The
+JSON report carries them as `reportOnly` (`id`, `title`, `blocking`,
+`findings`). Each has a switch, `blocking` in `REPORT_CHECKS`
+(`src/tools/report-checks.ts`): set to true in a reviewed pull request, the
+check's findings block like any other error. To see what blocking would do
+first, name the check in `CHECK_BLOCKING` (comma-separated ids, or `all`) for
+one run. `npm run report-checks -- --out docs/reviews/report-only-checks.md`
+writes the same findings as a markdown report with counts. None of the
+checks changes an answer; they read the ledger and the stored households.
+
+| Id | What it reports | Source | How it decides |
+|---|---|---|---|
+| `ignored-default` | A supplied fact whose meaning or precision declares what an unstated value means ("If not stated, SNAP reads this as false"), and a reader the statement covers that reads the fact bare | service-design finding FB-06 (docs/reviews/service-design-fact-burden.md) | The declaration is a sentence of the form "if not stated, … reads … as …" or "read as … when not stated"; a sentence about history ("no longer", "before,", "until that round"), a required fact ("required where read", "cannot be determined") or "Left unstated (unknown)" is not one. It covers the readers it names (by id or identifier) when it names any, else the readers of the programs named before its verb (less those named as requiring it), else every reader. A read is bare when it is not the first argument of an `otherwise` (docs/operators.md: the only way to turn unknown into a value), and the reader does not test the fact with `unknown`. Candidates: the statement may be the stale part |
+| `shared-one-program` | A shared item (program `All`, or in the shared chapter) whose program-regulation citations are all one program's, or whose derivation reads a program-prefixed item | the four tests for sharing (docs/reviews/cross-program-primitives.md; handoff 2026-11-24, section 3, item 2) | An excerpt belongs to a program by its citation line in sources.md: SNAP 7 CFR 271–274 and 10 CCR 2506-1; Medicaid 42 CFR 430–439 and 10 CCR 2505-10; CHP+ 42 CFR 457 and 10 CCR 2505-3; Colorado Works 9 CCR 2503-6 and 45 CFR 260–265; Adult Financial 9 CCR 2503-5; CCCAP 8 CCR 1403-1 and 45 CFR 98; LEAP 9 CCR 2503-7; SUN Bucks 7 CFR 292. Statutes, 20 CFR 416 and guidance are no one program's. A read declared in `accepts_from` is listed, and marked so |
+| `benefit-status-receipt` | In a stored household, a person stated as receiving SSI (`receives_ssi`), Colorado Works cash (`receives_tanf_cash`) or Adult Financial (`adult_financial_program_received` other than `none`) with no receipt of that kind (`ssi`, `colorado_works_cash`, `adult_financial_cash`) in the determination month and no stated reason; and a receipt of that kind in the month with the status stated false | the benefit-status decision (handoff 2026-11-24, section 3, item 4; FB-05) | The status facts are person facts on the determination date, so the month is the determination month. A receipt is in it by its `month` or `date`; one with neither recurs from its `start_date` through its `end_date`; a one-time payment with neither is in no month. The one stated reason the ledger has is `retains_ssi_status_without_payment` (SSI); the narrow status record the decision proposes would add the others. Another member's receipt (a payee's) is shown, not taken as a reason |
+
 ## Known follow-ups
 
 Noted at the end of the phase-2 fix round, left as-is on purpose:

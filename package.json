@@ -28,7 +28,8 @@
     "records:harness": "vite-node scripts/records/harness.ts",
     "external:template": "vite-node scripts/external/template.ts",
     "external:import": "vite-node scripts/external/import.ts",
-    "external:check": "vite-node scripts/external/check.ts"
+    "external:check": "vite-node scripts/external/check.ts",
+    "report-checks": "vite-node scripts/report-only-checks.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "1.1.4",
