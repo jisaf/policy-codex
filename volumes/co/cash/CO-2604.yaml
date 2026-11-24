@@ -6,8 +6,8 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether SSI income reduces this month's Adult Financial grant: the client receives SSI and has SSI income this month, which af_countable_income counts. 9 CCR 2503-5 3.581.E drops the cents from every Adult Financial payment except in that case."
-precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read. Receipt records, migration phase 1: the SSI of the month is af_ssi_receipts is read from the receipts (CO-5000)."
-derived: [all, receives_ssi, [">", af_ssi_receipts, 0]]
+precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read. Receipt records, migration phase 1: the SSI of the month is af_ssi_receipts is read from the receipts (CO-5000). Pattern sweep (cash) PS-T12: the same test is af_receives_ssi_in_month (CO-7605), read here, one derivation for both readers."
+derived: af_receives_ssi_in_month
 sources: [S1825]
 implemented: engine
 tags: [cash, income]
