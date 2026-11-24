@@ -51,6 +51,11 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
 .weeks { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .weeks.max { color: var(--accent); font-weight: 600; }
 .note { font-size: .8rem; color: var(--ink3); margin: 10px 0 0; }
+.tip { position: relative; cursor: help; display: inline-flex; align-items: center; gap: 5px; border-radius: 4px; }
+.tip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tipmark { display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; border: 1px solid var(--ink3); color: var(--ink3); font: 600 .66rem/1 var(--sans); flex: none; }
+.bubble { display: none; position: absolute; left: 0; top: calc(100% + 6px); z-index: 20; width: min(300px, 75vw); background: var(--ink); color: var(--panel); padding: 9px 11px; border-radius: 7px; font-size: .8rem; line-height: 1.45; font-weight: 400; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+.tip:hover .bubble, .tip:focus .bubble, .tip:focus-within .bubble { display: block; }
 @media (max-width: 860px) { .result, .grid2 { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: no-preference) { .bar-g { transition: opacity .15s; } }
 </style>
@@ -75,7 +80,7 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
   <div class="grid2">
     <section class="panel">
       <h2>Time per item</h2>
-      <p class="help">Minutes for one reviewer to sign or settle one, low and high.</p>
+      <p class="help">Minutes for one reviewer to sign or settle one, low and high. Hover or tap a kind for examples.</p>
       <table id="tiers"><thead><tr><th>Kind</th><th class="num">Low</th><th class="num">High</th><th class="num">Count</th></tr></thead><tbody></tbody></table>
       <div class="toolbar" style="margin-top:12px">
         <label class="chk"><input type="checkbox" id="decisionsFirst" checked> Product decisions come first</label>
@@ -100,12 +105,12 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
 <script>
 (() => {
   const TIERS = [
-    { key: "E", label: "Easy item", lo: 3, hi: 10 },
-    { key: "M", label: "Medium item", lo: 20, hi: 45 },
-    { key: "H", label: "Hard item", lo: 60, hi: 180 },
-    { key: "qE", label: "Easy question", lo: 15, hi: 30 },
-    { key: "qM", label: "Medium question", lo: 60, hi: 120 },
-    { key: "qH", label: "Hard question", lo: 180, hi: 360 },
+    { key: "E", label: "Easy item", lo: 3, hi: 10, tip: "A plain fact, a short rule or a single dated figure; can be signed in batches. Facts: date of birth; self-employment start date; how the home is heated. Rules: is entitled to Medicare; a person's SNAP gross income. Figures: SNAP elderly age (60); a CCCAP parent-fee band limit." },
+    { key: "M", label: "Medium item", lo: 20, hi: 45, tip: "A read of the rule and its source. Facts: SNAP medical expenses at last certification; serving a SNAP fraud disqualification. Rules: SNAP averaging of self-employment income; Adult Financial countable vehicles. Figures: SNAP gross income limit by household size; Colorado Works grant standard by number of children." },
+    { key: "H", label: "Hard item", lo: 60, hi: 180, tip: "Discussion, worked cases or cross-program impact. Facts: state of residence (it carries a Colorado Works intent test); support from a sponsor; the income and resource record lists. Rules: SNAP allotment (an outcome); lives with; SNAP household countable resources; CCCAP eligible activity." },
+    { key: "qE", label: "Easy question", lo: 15, hi: 30, tip: "One program, one or two rules. Example: what \"a part-time student who is not a full-time employee\" means in Colorado Works." },
+    { key: "qM", label: "Medium question", lo: 60, hi: 120, tip: "One program, three to five rules. Example: whether a pregnant applicant under 19 is a CHP+ prenatal care client." },
+    { key: "qH", label: "Hard question", lo: 180, hi: 360, tip: "Several programs, six or more rules, or needs Legal. Examples: the five-year rule exemptions for refugees and asylees; the day of the month a SNAP age is taken." },
   ];
   // Sign-offs per role and tier, from the codex's approval policy and open questions (24 Nov 2026).
   const ROLES = [
@@ -171,7 +176,7 @@ label.chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9re
     for (const t of TIERS) {
       const tr = document.createElement("tr");
       const count = ROLES.reduce((s, r) => s + r.c[t.key], 0);
-      tr.innerHTML = `<td>${t.label}</td><td class="num"></td><td class="num"></td><td class="num">${fmt(count)}</td>`;
+      tr.innerHTML = `<td><span class="tip" tabindex="0" aria-describedby="tip-${t.key}">${t.label}<span class="tipmark" aria-hidden="true">i</span><span class="bubble" role="tooltip" id="tip-${t.key}">${t.tip}</span></span></td><td class="num"></td><td class="num"></td><td class="num">${fmt(count)}</td>`;
       tr.children[1].append(numInput(S.tiers[t.key].lo, D.tiers[t.key].lo, v => S.tiers[t.key].lo = v, `${t.label}, low minutes`));
       tr.children[2].append(numInput(S.tiers[t.key].hi, D.tiers[t.key].hi, v => S.tiers[t.key].hi = v, `${t.label}, high minutes`));
       tb.append(tr);
