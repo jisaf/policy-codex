@@ -88996,3 +88996,341 @@
         "2026-09": eligible_institutional
         "2026-10": eligible_institutional
         "2026-11": eligible_institutional
+
+- id: "CO-1060"
+  title: "A person who moved to Colorado after a retroactive month: not a resident in it (Medicaid status by month, MS-1, MOVED-IN)"
+  # Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-1), probe MOVED-IN, built from CO-1000's single filer. p1, born
+  # 1990-01-01, a citizen, lived in Wyoming until she moved to Denver on 2026-09-20; applied on 2026-10-15 with a retroactive request; wages
+  # $1,000 a month; determined 2026-11-10. Retroactive months July to September 2026 (8.100.3.E.1, S1503). Every month 1,000 / 1,330 = 75.2%: Adults.
+  # July and August: living in Wyoming on every day of the month; a retroactive month needs every requirement met in it (E.1; 42 CFR 435.915(a)(2),
+  # S218, "would have been eligible ... at the time"; 8.100.3.B.2, S1518, "living within the state of Colorado"): ineligible_residency.
+  # September: in Colorado from the 20th, a day of the month (8.100.4.G.1, S3351): eligible. October (the application month) and November: eligible.
+  # Before MS-1 residency was the determination date's in every month: July and August eligible.
+  as_of: "2026-11-10"
+  persons:
+    p1:
+      facts:
+        expected_annual_income: 12000
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: "private_dwelling"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: "CO"
+        state_of_residence_start_date: "2026-09-20"
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 8
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: "none"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: "female"
+        immigration_status: "us_citizen"
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-15"
+        ma_retroactive_coverage_requested: true
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: "none"
+        date_of_birth: "1990-01-01"
+        dwelling_id: "h1"
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: "none"
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: "magi"
+        continuous_eligibility_period_start_month: "2020-01"
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        receipts: []
+        earnings:
+          - kind: "wages"
+            amount: 1000
+            seasonal_or_commission: false
+        is_surviving_spouse_of_veteran: false
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 1000
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: "none"
+        electronic_data_source_monthly_gross_income: 1000
+      relationships: []
+  relationships: []
+  expect:
+    p1:
+      ma_meets_residency_in_month:
+        2026-08: false
+        2026-09: true
+      ma_magi_eligibility_status:
+        2026-07: "ineligible_residency"
+        2026-08: "ineligible_residency"
+        2026-09: "eligible"
+        2026-10: "eligible"
+        2026-11: "eligible"
+
+- id: "CO-1061"
+  title: "An aged person who moved to Colorado after a retroactive month: not SSI-related eligible in it (Medicaid status by month, MS-1, MOVED-IN-AGED)"
+  # Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-1), probe MOVED-IN-AGED, built from CO-766. p1, 76, single, a
+  # citizen, Social Security $800 a month, a bank account of $1,000; lived in Nebraska until she moved to Pueblo on 2026-09-20; applied 2026-11-05
+  # with a retroactive request (August to October); determined 2026-11-12.
+  # Every month: countable income 800 - 20 = 780 <= 994 (the SSI individual rate, S319); resources 1,000 <= 2,000: the aged group but for residency.
+  # August: living in Nebraska on every day (8.100.3.B.2, S1518; 8.100.3.E.1, S1503; 42 CFR 435.915(a)(2), S218): not a resident: none.
+  # September: in Colorado from the 20th; eligibility from the first day of the month the person becomes eligible (8.100.5.C.1, S3900): aged.
+  # October, November: aged. Before MS-1 August was aged.
+  as_of: "2026-11-12"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: "1950-03-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        state_of_residence_start_date: "2026-09-20"
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: "2026-11-05"
+        ma_retroactive_coverage_requested: true
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        is_pregnant: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_countable_income:
+        2026-08: 780
+        2026-09: 780
+      ma_ssi_related_category:
+        2026-08: none
+        2026-09: aged
+        2026-10: aged
+        2026-11: aged
+
+- id: "CO-1062"
+  title: "An aged lawful permanent resident whose five years end after a retroactive month: not SSI-related eligible in it (Medicaid status by month, MS-2, LPR-5Y-AGED)"
+  # Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-2), probe LPR-5Y-AGED, built from CO-766. p1, 76, single, a
+  # lawful permanent resident admitted directly on 2021-09-15 (8 work quarters, no military connection: no exemption) and living in Colorado since,
+  # Social Security $800 a month, a bank account of $1,000; applied 2026-11-05 with a retroactive request (August to October); determined 2026-11-12.
+  # Every month: 780 <= 994 and 1,000 <= 2,000, as CO-1061.
+  # August: 8 U.S.C. 1613(a) (S176): five years from 2021-09-15, through 2026-09-14: inside the bar on every day; status not met (8.100.3.G.1.g.iii, S655): none.
+  # September: the five years end on the 15th, a day of the month (8.100.5.C.1, S3900); an LPR is in 1396b(v)(5)(B): aged. October, November: aged.
+  # Before MS-2 the five years were counted to the determination date for every month: August aged.
+  as_of: "2026-11-12"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: "1950-03-01"
+        immigration_status: lawful_permanent_resident
+        qualified_status_date: "2021-09-15"
+        us_entry_date: "2021-09-15"
+        status_before_lpr_adjustment: none
+        qualifying_quarters: 8
+        has_military_connection: false
+        state_of_residence: CO
+        state_of_residence_start_date: "2021-09-15"
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: "2026-11-05"
+        ma_retroactive_coverage_requested: true
+        marital_status: single
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        is_pregnant: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 800
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 1000
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_meets_citizenship_requirement_in_month:
+        2026-08: false
+        2026-09: true
+      ma_ssi_related_category:
+        2026-08: none
+        2026-09: aged
+        2026-10: aged
+        2026-11: aged
+
+- id: "CO-1063"
+  title: "A refugee who became a lawful permanent resident after a retroactive month: a refugee adult in it (Medicaid status by month, MS-2, REFUGEE-LPR)"
+  # Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-month.md, MS-2), probe REFUGEE-LPR, built from CO-1000's single filer. p1, born
+  # 1990-01-01, admitted as a refugee on 2019-03-01 and living in Colorado since, adjusted to lawful permanent resident on 2026-09-15
+  # (status_before_lpr_adjustment refugee: exempt from the five-year rule, 8.100.3.G.1.g.iv.10); applied 2026-11-02 with a retroactive request;
+  # wages $1,000 a month; determined 2026-11-10, after October 1, 2026. Every month 75.2%: Adults.
+  # August: the LPR status began 2026-09-15, after the month: she was a refugee in August; from October 2026 (determination date, OQ-510) a refugee
+  # adult is not in 42 U.S.C. 1396b(v)(5)(B) (S1700, S1702): status not met; a resident who meets a category: emergency_only.
+  # September: an LPR from the 15th, a day of the month (8.100.4.G.1, S3351), exempt from the five years, in 1396b(v)(5)(B): eligible. October, November: eligible.
+  # Before MS-2 the stated LPR status was read in every month: August eligible.
+  as_of: "2026-11-10"
+  persons:
+    p1:
+      facts:
+        expected_annual_income: 12000
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: "private_dwelling"
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: "none"
+        education_program_type: "none"
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: "CO"
+        state_of_residence_start_date: "2019-03-01"
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 8
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: "none"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: "female"
+        immigration_status: "lawful_permanent_resident"
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+        ma_retroactive_coverage_requested: true
+        ma_eligibility_start_date: "2026-01-01"
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: "none"
+        date_of_birth: "1990-01-01"
+        dwelling_id: "h1"
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: "none"
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: "magi"
+        continuous_eligibility_period_start_month: "2020-01"
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+        receipts: []
+        earnings:
+          - kind: "wages"
+            amount: 1000
+            seasonal_or_commission: false
+        qualified_status_date: "2026-09-15"
+        us_entry_date: "2019-03-01"
+        status_before_lpr_adjustment: "refugee"
+        is_surviving_spouse_of_veteran: false
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 1000
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: "none"
+        electronic_data_source_monthly_gross_income: 1000
+      relationships: []
+  relationships: []
+  expect:
+    p1:
+      ma_meets_citizenship_requirement_in_month:
+        2026-08: false
+        2026-09: true
+      ma_magi_eligibility_status:
+        2026-08: "emergency_only"
+        2026-09: "eligible"
+        2026-10: "eligible"
+        2026-11: "eligible"
