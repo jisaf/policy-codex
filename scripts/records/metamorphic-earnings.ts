@@ -1,7 +1,7 @@
 // Earned-income records: metamorphic relations (design 4.4). The same pay
 // stated in each way the record permits must give the same answer where the
 // policy says it should. Each relation transforms a household's earnings
-// records only (the scalar facts stay as stated) and compares the figures
+// records only and compares the figures
 // each track registers as reading the records (scripts/records/programs/*.ts,
 // `metamorphic`); a track lists, with the rule, each relation its rules say
 // is not invariant (`notInvariant`), and that relation is not run for it.
@@ -24,8 +24,8 @@
 //   ME-5 dated   four dated weekly pays of x in a month against a weekly
 //                stream of per_payment x (SNAP 4.402.A.2: 4.3x in both): a
 //                family the SNAP track adds with its readers.
-// In step E0 no figure reads the records, so every relation is run on no
-// figure and reports so; the machinery is here for the E1 tracks.
+// Run over the stored households and the generated households (generate-
+// earnings.ts), each stated in the records alone since step E2.
 import type { HouseholdCase } from "../../src/engine/cases";
 import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { caseToSpec } from "../../src/engine/cases";

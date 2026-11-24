@@ -6,15 +6,27 @@
 // a program counts as earned, or that is pay for service, beside the
 // earnings kind the same money would be if it were pay.
 //
-// During the transition (E0 to E2) the receipt kinds that are earnings
-// (MOVING_KINDS: special pay, payments for meals or a room only) are stated
-// in both lists on purpose, the earnings record written by the translator
-// from the receipt. Such a pair is a transition copy, not a finding, when
-// the person's earnings are the translation (the harness checks that
-// separately); any other pair is a finding.
-import { MOVING_KINDS } from "./translate-earnings";
+// The receipt kinds that are earnings (MOVING_KINDS: special pay, payments
+// for meals or a room only; design 2.3, OQ-1020) were stated in both lists
+// from step E0, the earnings record written by the translator from the
+// receipt. The translator is retired (step E2, docs/reviews/records-e2-h2.md),
+// but a reader still counts the receipt kind (Adult Financial's test of
+// countable unearned income, af_has_countable_unearned_income, CO-2872, sums
+// every receipt but gambling winnings and sponsor payments), so the
+// households and rule tests that state such a copy keep it (CO-206, CO-362;
+// CO-5110-T4): removing it moves that figure. Such a pair, the earnings
+// record of the receipt's amount and month, is a copy, not a finding; any
+// other pair is a finding.
 
 type Rec = Record<string, unknown>;
+
+/** The receipt kinds that are earnings: receipt kind -> the earnings
+ *  record's own fields (the E0 translator's MOVING_KINDS). */
+export const MOVING_KINDS: Readonly<Record<string, Record<string, unknown>>> = {
+  uniformed_services_special_pay: { kind: "uniformed_services_special_pay" },
+  board_only_payment: { kind: "boarder_payments", provides: "board_only" },
+  room_only_payment: { kind: "boarder_payments", provides: "room_only" },
+};
 
 /** [receipt kinds, earnings kinds, what the pair is]. */
 export const BOUNDARY_PAIRS: ReadonlyArray<readonly [readonly string[], readonly string[], string]> = [
@@ -29,16 +41,16 @@ export const BOUNDARY_PAIRS: ReadonlyArray<readonly [readonly string[], readonly
 const monthOf = (r: Rec): string | null => (typeof r.month === "string" ? r.month : typeof r.date === "string" ? r.date.slice(0, 7) : null);
 const overlap = (a: Rec, b: Rec) => { const x = monthOf(a), y = monthOf(b); return x === null || y === null || x === y; };
 
-/** Is the pair the translator's transition copy of a moving receipt kind? */
-function isTransitionCopy(r: Rec, e: Rec): boolean {
+/** Is the pair a receipt kind that is earnings, stated in both lists? */
+function isCopy(r: Rec, e: Rec): boolean {
   const m = MOVING_KINDS[String(r.kind)];
   if (!m) return false;
   return Object.entries(m).every(([k, v]) => e[k] === v) && e.amount === r.amount && monthOf(e) === monthOf(r);
 }
 
-export interface BoundaryFinding { pair: string; receipt: string; earning: string; amount: number; month: string | null; transition: boolean }
+export interface BoundaryFinding { pair: string; receipt: string; earning: string; amount: number; month: string | null; copy: boolean }
 
-/** One person's boundary pairs, findings and transition copies alike. */
+/** One person's boundary pairs, findings and copies alike. */
 export function lintPerson(receipts: unknown, earnings: unknown): BoundaryFinding[] {
   if (!Array.isArray(receipts) || !Array.isArray(earnings)) return [];
   const out: BoundaryFinding[] = [];
@@ -48,7 +60,7 @@ export function lintPerson(receipts: unknown, earnings: unknown): BoundaryFindin
       if (!rk.includes(String(r.kind))) continue;
       for (const e of earnings as Rec[]) {
         if (!ek.includes(String(e.kind)) || e.amount !== r.amount || !overlap(r, e)) continue;
-        out.push({ pair: what, receipt: String(r.kind), earning: String(e.kind), amount: r.amount, month: monthOf(r) ?? monthOf(e), transition: isTransitionCopy(r, e) });
+        out.push({ pair: what, receipt: String(r.kind), earning: String(e.kind), amount: r.amount, month: monthOf(r) ?? monthOf(e), copy: isCopy(r, e) });
       }
     }
   }

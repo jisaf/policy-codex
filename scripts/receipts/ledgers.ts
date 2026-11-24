@@ -1,8 +1,8 @@
-// Receipt records harness: the two ledgers it compares. `old` is the
-// Colorado volume as it was before the migration (the baseline ref, read with
-// `git archive`, every program reading the scalar unearned-income facts);
-// `new` is the volume on disk. Both are evaluated by today's engine, so the
-// harness measures the ledger change, not an engine change.
+// The Colorado volume as the record harnesses and audit scripts read it:
+// the ledger on disk, or the ledger at a ref (read with `git archive`, for a
+// script that compares one ledger with another on the same households,
+// scripts/audit/answer-diff.ts). Both are evaluated by today's engine, so a
+// comparison measures the ledger change, not an engine change.
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -11,18 +11,6 @@ import { loadLedgerFromDisk, type LoadedLedger } from "../../src/tools/check";
 import { buildIndex, type LedgerIndex } from "../../src/engine/ledger-index";
 
 export const root = path.resolve(import.meta.dirname, "../..");
-
-/** The ledger without the migration phase being measured. Phase 1: the last
- *  commit of the branch the migration merges into that reads the scalar
- *  facts everywhere: the adoption commit (41ec04b) until the non-MAGI fix
- *  round (82a29d0) was merged in, then the time-audit fix round (ccbb3a7)
- *  when the migration was merged into it. Phase 2 (Colorado Works; CCCAP and
- *  SUN Bucks; Medicaid and CHP+, three parallel tracks merged together): the
- *  end of phase 1 (c29d326), so the harness measures phase 2 alone; the
- *  phase-1 baseline still runs clean with --base ccbb3a7. The baseline moves
- *  with each merge, so the harness measures the migration and nothing the
- *  other track changed. */
-export const BASELINE_REF = "c29d3262ed69d9fbc7589a949149aa75dc8ba182";
 
 export interface Ledger { ledger: LoadedLedger; ix: LedgerIndex }
 

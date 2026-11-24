@@ -1,7 +1,0 @@
-# Earned-income records harness: the differences the resource records' SNAP and Adult Financial H1 track makes, as the
-# earnings harness sees them against EARNINGS_BASELINE (docs/reviews/records-holdings-snap-af.md section 9.1). To be
-# removed with the earnings harness's baseline re-pointed past H1.
-
-# H1A-R1 (decision 4): CO-300 states its held refund in holdings alone, dated 2026-08-14, because the translator cannot
-# write a date the old facts lack; the baseline reads facts it no longer states. New values are the household's expectations.
-- {case: CO-300, person: p1, identifier: "/^(ma_ssi_related_category|ma_family_planning_status|af_category|af_oap_grant|af_and_grant|af_client_and_spouse_countable_resources)$/", class: "H1A-R1 CO-300 states its dated refund in holdings alone; the baseline reads facts it no longer states", old: unknown}

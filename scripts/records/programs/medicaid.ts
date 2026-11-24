@@ -9,16 +9,6 @@ export const track: Track = {
   programs: ["Medicaid", "CHP+"],
   earnings: {
     tables: ["ma_magi_earnings_treatment_table", "ma_ssi_earnings_treatment_table"],
-    figures: [
-      "ma_self_employment_net_earnings", "ma_excluded_difficulty_of_care_payments", "ma_person_magi_income", "ma_magi_household_income",
-      "ma_ssi_excluded_earned_income", "ma_ssi_countable_income", "ma_wawd_countable_income", "ma_cbwd_household_earned_income",
-      "ma_ssi_parental_income_deemed",
-      // E1 (Medicaid and CHP+): the figures that read the earnings records
-      "ma_magi_wage_earnings", "ma_magi_self_employment_earnings", "ma_ssi_wage_earnings", "ma_ssi_gross_earned_income",
-      "ma_ssi_exempt_earned_receipts", "ma_ssi_irregular_earned_receipts", "ma_ssi_pass_set_aside_earned_income",
-      "ma_employer_pay_for_verification", "ma_ltc_gross_income", "ma_community_spouse_income", "ma_ssi_ineligible_child_allocation",
-      "ma_pickle_countable_income", "ma_dac_countable_income",
-    ],
     // E1: the figures that read the earnings records, which the metamorphic relations compare
     metamorphic: [
       "ma_magi_wage_earnings", "ma_magi_self_employment_earnings", "ma_person_magi_income", "ma_ssi_gross_earned_income",
@@ -49,18 +39,6 @@ export const track: Track = {
     // the CSRA, transfers); the Medicaid H1 track moves its readers onto the
     // holdings records, in sequential sub-commits (design 4.2).
     tables: ["ma_ssi_holding_treatment_table"],
-    figures: [
-      "ssi_countable_resources_individual", "ssi_countable_resources_couple", "ma_excluded_real_property_value",
-      "ma_countable_income_producing_property_value", "ma_home_is_countable_resource", "ma_home_is_countable_resource_without_beneficiary_deed",
-      "ma_home_equity_counted_only_by_beneficiary_deed", "ma_ssi_countable_resources_individual", "ma_ssi_countable_resources",
-      "ma_ssi_parental_resources_deemed", "ma_msp_countable_resources", "ma_csra", "ma_institutionalized_spouse_countable_resources",
-      "ma_home_equity_disqualifies", "ma_transfer_penalty_months", "ma_transfer_penalty_days", "ma_transfer_penalty_applies",
-      // H1 (Medicaid): the figures that read the holdings records
-      "ma_ssi_holdings_countable_in_month", "ma_ssi_excluded_automobile_equity_in_month", "ma_ssi_countable_resources_in_month",
-      "ma_real_property_for_sale_excluded_in_month", "ma_uncompensated_transfers_in_lookback", "ma_ssi_retirement_accounts_counted_in_month",
-      "ma_home_equity_interest_in_month", "ma_liquid_holdings_value_in_month", "ma_holds_trust_interest_in_month", "ma_holds_annuity_in_month",
-      "ma_spousal_resources_at_snapshot",
-    ],
     // H1 (Medicaid): the figures that read the holdings records, which the
     // metamorphic relations compare
     metamorphic: [
