@@ -24960,3 +24960,34 @@ Document: D-95
 > (D) Institutionalized in a nonexempt facility as defined in § 273.1(e).
 >
 > (E) Ineligible because of failure to comply with a work requirement of § 273.7.
+### S5060. Continued eligibility after the pregnancy for a woman who, while pregnant, was eligible for, applied for and received medical assistance
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(5) (Legal Information Institute; coverage pass 6, C6-01). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (5) A woman who, while pregnant, is eligible for, has applied for, and has received medical assistance under the State plan, shall continue to be eligible under the plan, as though she were pregnant, for all pregnancy-related and postpartum medical assistance under the plan, through the end of the month in which the 60-day period (beginning on the last day of her pregnancy) ends.
+
+### S5061. HHS poverty guidelines for 2024, 48 contiguous states and the District of Columbia
+
+Document: D-5061
+
+HHS, "Annual Update of the HHS Poverty Guidelines," 89 FR 2961 (Jan. 17, 2024) (coverage pass 6, C6-09). https://www.govinfo.gov/content/pkg/FR-2024-01-17/html/2024-00796.htm
+
+> 1.................................................... $15,060
+>
+> 2.................................................... 20,440
+>
+> 3.................................................... 25,820
+>
+> 4.................................................... 31,200
+>
+> 5.................................................... 36,580
+>
+> 6.................................................... 41,960
+>
+> 7.................................................... 47,340
+>
+> 8.................................................... 52,720
+>
+> For families/households with more than 8 persons, add $5,380 for each additional person.
