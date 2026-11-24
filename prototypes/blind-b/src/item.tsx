@@ -4,7 +4,7 @@ import type { ComponentChildren } from "preact";
 import {
   D, E, TODAY, byId, byIdent, srcById, PROGRAMS, KIND, SCOPE, fmtVal, fmtDate, ruleLines, firstSentence, upstream, downstream,
   outcomesReached, outcomeProgram, touchedBy, caseById, requiredRoles, openQuestions, qByItem, itemSources, versionInForce,
-  role, isPendingSign, toggleSign, signBlockers, edits, saveEdit, dropEdit, addNote, PROGRAM_ORDER, type CItem, type Item,
+  role, isPendingSign, toggleSign, signBlockers, edits, saveEdit, dropEdit, addNote, notes, dropNote, PROGRAM_ORDER, tagLabel, type CItem, type Item,
 } from "./store";
 import {
   href, route, setQ, ProgramTag, Pill, Fold, More, ItemLink, StatusPill, Flags, Rich, RuleText, ValueView, keyLabel,
@@ -27,6 +27,9 @@ export function ItemPage({ id }: { id: string }) {
         <p class="item-meta"><StatusPill it={it} /> <Flags it={it} /> <span class="idtag" title="Item number and the name engineers use">{it.id} · {it.identifier}</span></p>
       </header>
       {draft && <p class="notice ok">Your proposal changes this item ({draft.reason}). <a href={href("changes/proposal")}>See the proposal</a> · <button class="linkish" onClick={() => dropEdit(it.id)}>discard the change</button></p>}
+      {notes.value.filter((n) => n.target === it.id).map((n) => (
+        <p class="notice ok" role="status"><b>Your question is in your proposal</b>, as {n.role}: “{n.text}” It becomes an open question on {it.id} when the proposal is sent. <a href={href("changes/proposal")}>See the proposal</a> · <button class="linkish" onClick={() => dropNote(n.id)}>remove it</button></p>
+      ))}
 
       <div class="item-grid">
         <div class="item-main">
@@ -51,6 +54,7 @@ export function ItemPage({ id }: { id: string }) {
           {it.kind === "derived" && <RuleSection it={it} steps={q.steps} />}
           {it.precision && <Fold title="Fine print: edge cases and how they are measured"><p><Rich text={it.precision} /></p></Fold>}
           {it.kind === "derived" && <ReadsSection it={it} />}
+          <SharedSection it={it} />
           <ChangesSection it={it} />
           <LawSection it={it} />
           {it.kind === "derived" && <ExamplesSection it={it} />}
@@ -130,14 +134,45 @@ function Beside({ it, value, src }: { it: CItem; value: unknown; src?: string })
   );
 }
 
+/* ---------- sharing between programs ---------- */
+const CLASS_WORDS: Record<string, string> = {
+  primitive: "Primitive: observable without any program’s rule, defined the same for every reader",
+  "clean derivation": "Clean derivation: date logic, arithmetic or relationships over primitives, no judgement",
+  grey: "Grey: observable, but a reader redefines it or reads it for another period; the review proposes splitting it",
+  "program-local": "A program’s own item that another program reads",
+};
+function SharedSection({ it }: { it: CItem }) {
+  const progs = useMemo(() => PROGRAM_ORDER.filter((p) => outcomesReached([it.identifier]).some((o) => outcomeProgram.get(o.identifier) === p)), [it.id]);
+  const cls = D.shareClass?.[it.identifier];
+  return (
+    <section class="card shared-sec">
+      <h2>Shared between programs?</h2>
+      <p>{progs.length > 1 ? <>Yes: <b>{progs.length} programs</b> read it, directly or through other rules: </> : progs.length === 1 ? <>No: only one program reads it: </> : <>No program outcome reads it.</>}
+        {progs.map((p) => <> <ProgramTag id={p} /></>)}</p>
+      {cls ? <p class="small">The cross-program review classes it as <b>{CLASS_WORDS[cls] ?? cls}</b>.</p> : progs.length > 1 ? <p class="small muted">The cross-program review did not class it as shared (it may count Medicaid’s sides as one program).</p> : null}
+      {it.program !== "All" && progs.some((p) => p !== it.program) && <p class="small muted">It sits in the {PROGRAMS[it.program]?.short ?? it.program} chapter, and other programs read it.</p>}
+      <p class="small"><a href={href("map", { own: "1", min: "2", find: it.id })}>Show it on the Map</a></p>
+    </section>
+  );
+}
+
 /* ---------- fact ---------- */
 function FactSection({ it }: { it: CItem }) {
   const readers = E.usedBy(it.identifier).map((u) => byIdent.get(u)!).filter(Boolean);
+  const fields = Object.entries((it.record_fields ?? {}) as Record<string, { type: string; required?: boolean; meaning?: string; options?: string[] }>);
   return (
     <section class="card">
       <h2>Where the answer comes from</h2>
       <p><Rich text={it.supplied_by} /></p>
       <p class="small muted">Answer type: {it.type}{it.options ? ": " + it.options.map((o) => o.replace(/_/g, " ")).join(" · ") : ""}</p>
+      {fields.length > 0 && (
+        <Fold title="What each record states" count={`${fields.length} fields, ${fields.filter(([, f]) => f.required).length} required`} open>
+          <div class="tablewrap"><table class="outs fields-t">
+            <thead><tr><th>Field</th><th>Answer</th><th>Meaning</th></tr></thead>
+            <tbody>{fields.map(([k, f]) => <tr><td><b>{k.replace(/_/g, " ")}</b>{f.required && <span class="small muted"> · required</span>}</td><td class="small">{f.type}{f.options ? <span class="muted">: {f.options.map((o) => o.replace(/_/g, " ")).join(" · ")}</span> : null}</td><td class="small"><Rich text={f.meaning} /></td></tr>)}</tbody>
+          </table></div>
+        </Fold>
+      )}
       <h3>Rules that read it directly ({readers.length})</h3>
       <ul class="plain cols"><More items={readers} n={10} render={(r) => <li><ItemLink it={r} /></li>} noun="rules" /></ul>
     </section>
@@ -338,7 +373,8 @@ function SignSection({ it }: { it: CItem }) {
 function ActionPanel({ it }: { it: CItem }) {
   const [mode, setMode] = useState<"" | "edit" | "ask">("");
   const hh = touchedBy.get(it.identifier) ?? [];
-  const outs = outcomesReached([it.identifier]);
+  // The same count as "What a change here would affect": the outcomes downstream, not the item itself.
+  const outs = outcomesReached([it.identifier]).filter((o) => o.identifier !== it.identifier);
   return (
     <div class="side-card">
       <h3>At a glance</h3>
@@ -346,7 +382,7 @@ function ActionPanel({ it }: { it: CItem }) {
         <dt>Kind</dt><dd>{KIND[it.kind].one}</dd>
         <dt>Program</dt><dd>{PROGRAMS[it.program]?.label ?? it.program}</dd>
         <dt>Answer</dt><dd>{it.type}; {SCOPE[it.scope]}</dd>
-        {it.tags && <><dt>Topics</dt><dd>{it.tags.map((t) => t.replace(/_/g, " ")).join(", ")}</dd></>}
+        {it.tags && <><dt>Topics</dt><dd>{it.tags.map((t) => firstSentence(tagLabel(t), 40)).join(", ")}</dd></>}
         <dt>Reaches</dt><dd>{outs.length} outcome{outs.length === 1 ? "" : "s"}; read by {hh.length} stored household{hh.length === 1 ? "" : "s"}</dd>
         <dt>Questions</dt><dd>{(qByItem.get(it.id) ?? []).length ? <>{openQuestions(it).length} open, {(qByItem.get(it.id) ?? []).length - openQuestions(it).length} settled</> : "none"}</dd>
       </dl>
@@ -388,6 +424,9 @@ function Editor({ it, done }: { it: CItem; done: () => void }) {
   const save = (e: Event) => {
     e.preventDefault();
     if (!reason.trim()) { setErr("Say why: reviewers read this first."); return; }
+    const sameText = meaning === (it.meaning ?? "") && (it.kind !== "derived" || rule.trim() === ruleLines(it).join("\n").trim());
+    const sameFigure = it.kind !== "parameter" || (it.versions ? !from : JSON.stringify(isTable ? Object.fromEntries(Object.entries(rows).map(([k, v]) => [k, coerce(v)])) : coerce(val)) === JSON.stringify(it.value));
+    if (sameText && sameFigure) { setErr(it.kind === "parameter" && it.versions ? "Nothing would change. Give the first day the new figure applies, or change the wording." : "Nothing would change: edit the text or the figure first."); return; }
     const next: CItem = { ...it, meaning };
     if (it.kind === "derived" && rule.trim() !== ruleLines(it).join("\n").trim()) {
       try { next.derived = E.parseDerivation(rule, it.options ?? []); }

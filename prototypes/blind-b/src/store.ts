@@ -23,7 +23,10 @@ interface Data {
   questions: Question[]; cases: HouseholdCase[]; aidCodes: any;
   touched: Record<string, number[]>;
   shareClass?: Record<string, string>;
+  knownLimits?: KnownLimit[];
 }
+/** A known limit from docs/reviews/known-limits.md (scripts/build-data.ts). */
+export interface KnownLimit { id: string; title: string; section: string; programs: string[]; closed: string | null; paras: string[] }
 
 export let D: Data;
 export let E: Engine;
@@ -179,8 +182,29 @@ export function tagLabel(t: string): string {
 export function openQuestions(it: Item): Question[] {
   return (qByItem.get(it.id) ?? []).filter((q) => q.state !== "resolved");
 }
-/** The roles that own a question: those that must approve the items it touches. */
+/** The "Class:" and "Owner:" lines a question states, if any. */
+export function questionClass(q: Question): string | null {
+  for (const p of q.paras) { const m = /^Class:\s*(.+)$/m.exec(p); if (m) return m[1].trim().replace(/[.;]\s*$/, ""); }
+  return null;
+}
+/** The roles a question names on its "Owner:" line, in the order named. */
+export function statedOwners(q: Question): string[] {
+  for (const p of q.paras) {
+    const m = /^Owner:\s*(.+)$/m.exec(p);
+    if (!m) continue;
+    return D.meta.approval_policy.roles.map((r) => [r, m[1].indexOf(r)] as const).filter(([, i]) => i >= 0).sort((a, b) => a[1] - b[1]).map(([r]) => r);
+  }
+  return [];
+}
+const ownerCache = new Map<string, string[]>();
+/** The roles that own a question: those its "Owner:" line names; for a
+ *  question with no such line, those that must approve the items it touches. */
 export function questionOwners(q: Question): string[] {
+  let hit = ownerCache.get(q.id);
+  if (!hit) { const s = statedOwners(q); hit = s.length ? s : derivedOwners(q); ownerCache.set(q.id, hit); }
+  return hit;
+}
+function derivedOwners(q: Question): string[] {
   const count = new Map<string, number>();
   for (const id of q.items) {
     const it = byId.get(id);
@@ -188,11 +212,45 @@ export function questionOwners(q: Question): string[] {
     const pol = D.meta.approval_policy;
     const roles = new Set<string>(it.program === "All" ? [] : pol.by_program?.[it.program] ?? []);
     for (const t of it.tags ?? []) for (const r of pol.by_tag?.[t] ?? []) roles.add(r);
+    for (const r of pol.by_kind?.[it.kind] ?? []) roles.add(r);
     if (it.program === "All") for (const o of outcomesReached([it.identifier])) for (const r of pol.by_program?.[outcomeProgram.get(o.identifier)!] ?? []) roles.add(r);
     for (const r of roles) count.set(r, (count.get(r) ?? 0) + 1);
   }
   return [...count.entries()].sort((a, b) => b[1] - a[1]).map((e) => e[0]);
 }
+/** The roles that own a known limit: the owners of the programs it is filed under. */
+export function limitOwners(k: KnownLimit): string[] {
+  const s = new Set<string>();
+  for (const p of k.programs) for (const r of D.meta.approval_policy.by_program?.[p] ?? []) s.add(r);
+  return [...s];
+}
+
+/* ---------- effort: the handoff's rule of thumb (docs/handoff-2026-11-24.md, section 8) ---------- */
+export type Effort = "easy" | "medium" | "hard";
+export const EFFORT: Record<Effort, { label: string; help: string }> = {
+  easy: { label: "Easy", help: "a plain fact, a short rule (15 terms or fewer) or a single dated figure" },
+  medium: { label: "Medium", help: "neither easy nor hard" },
+  hard: { label: "Hard", help: "a program outcome, household or unit composition, a long rule (more than 80 terms) or a grey shared fact" },
+};
+function terms(x: unknown): number {
+  if (Array.isArray(x)) return x.reduce((n: number, y) => n + terms(y), 0);
+  if (x && typeof x === "object") return Object.values(x).reduce((n: number, y) => n + terms(y), 0);
+  return 1;
+}
+/** A rule of thumb, not a judgement on the item. */
+export function effortOf(it: Item): Effort {
+  const composition = (it.tags ?? []).includes("household");
+  if (it.kind === "supplied") return D.shareClass?.[it.identifier] === "grey" || composition ? "hard" : "easy";
+  if (it.kind === "parameter") {
+    const single = (it.versions?.length ?? 0) <= 1;
+    const v = it.versions?.[0]?.value ?? it.value;
+    return single && (v === null || typeof v !== "object") ? "easy" : "medium";
+  }
+  const n = terms(it.derived);
+  if (outcomeProgram.has(it.identifier) || composition || n > 80 || D.shareClass?.[it.identifier] === "grey") return "hard";
+  return n <= 15 ? "easy" : "medium";
+}
+
 export function questionPrograms(q: Question): string[] {
   const s = new Set<string>();
   for (const id of q.items) { const it = byId.get(id); if (it && it.program !== "All") s.add(it.program); }
