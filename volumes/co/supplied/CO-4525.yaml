@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person has provided evidence from a court of domestic violence as C.R.S. 18-6-800.3(1) defines it, or takes part in the State's Address Confidentiality Program under C.R.S. 24-30-2104."
-precision: "A statement of the evidence the person has given, not a finding of any program. If not stated, every program reads it as false."
+precision: "A statement of the evidence the person has given, not a finding of any program. If not stated, every program reads it as false. If not stated, LEAP reads this as false: verification by declaration in a domestic violence case applies where the court evidence or the Address Confidentiality Program participation is shown (S3313) (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: "A court order or record, or the Address Confidentiality Program's participation card."
 sources: [S3313]
 tags: [verification]

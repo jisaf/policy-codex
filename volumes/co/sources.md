@@ -25011,3 +25011,18 @@ Document: D-14
 7 CFR 273.10(a)(1)(i) (three-pattern sweep). https://www.ecfr.gov/current/title-7/section-273.10
 
 > (a) *Month of application*—(1) *Determination of eligibility and benefit levels.* (i) A household's eligibility shall be determined for the month of application by considering the household's circumstances for the entire month of application.
+
+### S5092. Colorado SNAP: a student's enrollment begins with the term and is continuous until the student graduates, leaves or does not intend to register
+
+Document: D-82
+
+10 CCR 2506-1 4.306.C (version effective 2026-10-01; three-pattern sweep T-11). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. The enrollment status of a student shall begin on the first day of the school term
+> of the institution of higher education. Once a student enrolls in an institution of
+> higher education, such enrollment shall be deemed continuous through normal
+> periods of class attendance, vacation, and recess unless the student graduates,
+> is suspended or expelled, drops out or does not intend to register for the next
+> normal school term (excluding summer session). It is possible for a student to
+> enroll prior to the beginning of the school term. However, for eligibility purposes,
+> enrollment starts when the student starts classes.

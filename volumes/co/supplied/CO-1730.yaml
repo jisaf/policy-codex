@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: "The person is within a Colorado Works disqualification period under 9 CCR 2503-6 3.604.2.M.1-2: ten years for misrepresenting residence to obtain assistance in two states at once, or 12 months, 24 months or life for fraud found by a court or an intentional program violation determined by administrative hearing (including an IPV from another state's TANF program)."
-precision: "A SNAP intentional program violation is not a Colorado Works one; each program finds its own (snap_is_serving_ipv_disqualification, CO-039)."
+precision: "A SNAP intentional program violation is not a Colorado Works one; each program finds its own (snap_is_serving_ipv_disqualification, CO-039). If not stated, CCCAP reads this as false (cccap_eligibility_status, CO-989): a disqualification exists only once imposed (S1004) (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: "Colorado Works case record of the court finding, IPV waiver or administrative hearing decision (CBMS)."
 sources: [S1004]
 tags: [cash, tanf]

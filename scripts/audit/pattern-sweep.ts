@@ -1,6 +1,10 @@
 /* Lists the candidates of the three-pattern sweep (docs/reviews/pattern-sweep-snap-ce.md)
  * mechanically, for hand judgement against the rule text:
  *   npx vite-node scripts/audit/pattern-sweep.ts -- [programs, comma-separated] [--json]
+ *     [--root <dir>]          read the volume under another tree (an exported commit)
+ *     [--verdicts <yaml>]     print the candidates grouped by the first verdict rule each matches
+ *                             (rules: {id, pattern, items?, item_re?, program?, read_re?, note_re?, verdict}),
+ *                             and list every candidate no rule matches
  * Programs default to SNAP,CCCAP,LEAP,SunBucks. An item is in scope when its program is one of
  * them, or it is a shared (All) item or parameter one of them reads, directly or through others.
  *   P1 timing: inside a month-scoped item (person-month, month), every read of a person- or
@@ -12,11 +16,16 @@
  *   P3 membership: every item that builds or reads a household, unit or member group, with the
  *      composition facts it reads (death, birth, separation, joining, institution, roomer/boarder).
  * Writes nothing. */
+import fs from "node:fs";
 import path from "node:path";
+import { parse } from "yaml";
 import { loadVolume } from "../../src/tools/volumes";
 
-const root = path.resolve(import.meta.dirname, "../..");
-const args = process.argv.slice(2).filter((a) => a !== "--");
+const argv = process.argv.slice(2).filter((a) => a !== "--");
+const opt = (k: string) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : undefined; };
+const root = opt("--root") ? path.resolve(opt("--root")!) : path.resolve(import.meta.dirname, "../..");
+const verdictFile = opt("--verdicts");
+const args = argv.filter((a, i) => !(argv[i - 1] === "--root" || argv[i - 1] === "--verdicts"));
 const json = args.includes("--json");
 const programs = new Set((args.find((a) => !a.startsWith("--")) ?? "SNAP,CCCAP,LEAP,SunBucks").split(","));
 const { vol } = loadVolume(root, "co");
@@ -109,7 +118,39 @@ for (const list of ["receipts", "earnings", "holdings"]) {
     rows.push({ pattern: "P2", item: `${list}.${f}`, id: li.id, program: "All", scope: "record", read: users.map((u) => u.id).join(","), note: "default" in s ? `default ${JSON.stringify(s.default)}` : `when_absent: ${s.when_absent}` });
   }
 }
-if (json) console.log(JSON.stringify(rows, null, 1));
+if (verdictFile) {
+  type Rule = { id: string; pattern: string; items?: string[]; item_re?: string; program?: string; read_re?: string; note_re?: string; verdict: string };
+  const rules = parse(fs.readFileSync(verdictFile, "utf8")) as Rule[];
+  const groups = new Map<string, Row[]>();
+  const unmatched: Row[] = [];
+  const seen = new Set<string>();
+  for (const r of rows) {
+    const key = `${r.pattern}|${r.id}|${r.read}|${r.note}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const hit = rules.find((u) => u.pattern === r.pattern
+      && (!u.items || u.items.includes(r.id))
+      && (!u.item_re || new RegExp(u.item_re).test(r.item))
+      && (!u.program || u.program === r.program)
+      && (!u.read_re || new RegExp(u.read_re).test(r.read))
+      && (!u.note_re || new RegExp(u.note_re).test(r.note)));
+    if (!hit) { unmatched.push(r); continue; }
+    if (!groups.has(hit.id)) groups.set(hit.id, []);
+    groups.get(hit.id)!.push(r);
+  }
+  for (const p of ["P1", "P2", "P3"]) {
+    const rs = rules.filter((u) => u.pattern === p && groups.has(u.id));
+    console.log(`\n### ${p}: ${rs.reduce((n, u) => n + groups.get(u.id)!.length, 0)} candidates\n`);
+    console.log("| Verdict | Candidates | Judgement |\n|---|---|---|");
+    for (const u of rs) {
+      const cs = groups.get(u.id)!;
+      const list = cs.map((r) => `${r.id} ${r.item}${r.read && !r.read.startsWith("[") && !r.read.startsWith("sum_receipts") && !r.read.startsWith("largest") ? " (" + r.read.split(" ").slice(0, 3).join(" ") + ")" : ""}`);
+      console.log(`| ${u.id} | ${cs.length}: ${list.join("; ")} | ${u.verdict.replace(/\|/g, "/")} |`);
+    }
+  }
+  console.error(`unmatched: ${unmatched.length}`);
+  for (const r of unmatched) console.error(`UNMATCHED ${r.pattern}\t${r.id}\t${r.item}\t[${r.program} ${r.scope}]\t${r.read.slice(0, 120)}\t${r.note.slice(0, 120)}`);
+} else if (json) console.log(JSON.stringify(rows, null, 1));
 else {
   for (const p of ["P1", "P2", "P3"]) {
     const rs = rows.filter((r) => r.pattern === p);
