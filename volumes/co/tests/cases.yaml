@@ -90212,8 +90212,9 @@
         meets_hcbs_waiver_target_group: ebd
         ma_ltc_setting_requested: hcbs
         has_income_trust: false
-        liquid_resources_value: 52500
+        liquid_resources_value: 192500  # the holdings record's bank account, stated in the scalar fact too (transition rule)
         home_equity: 240000
+        lives_in_owned_home: true  # both spouses live in the home (the holdings record's lives_in; transition rule)
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_tax_filer: true
@@ -90235,13 +90236,13 @@
           - kind: home
             value: 240000
             amount_owed: 0
+            lives_in: true
             outside_colorado: false
             held_in_trust_or_entity: false
             beneficiary_deed: false
             share: 0.5
             co_owners: spouse
             holding_id: CO-112-home
-            lives_in: true
         ma_hcbs_ebd_subgroup: aged
         ma_meets_designated_waiver_level_of_care: true
         ma_csra_transfer_is_overdue: false
@@ -90297,6 +90298,7 @@
         has_income_trust: false
         liquid_resources_value: 7500
         home_equity: 240000
+        lives_in_owned_home: true  # both spouses live in the home (the holdings record's lives_in; transition rule)
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_tax_filer: true
@@ -90319,13 +90321,13 @@
           - kind: home
             value: 240000
             amount_owed: 0
+            lives_in: true
             outside_colorado: false
             held_in_trust_or_entity: false
             beneficiary_deed: false
             share: 0.5
             co_owners: spouse
             holding_id: CO-112-home
-            lives_in: true
       month_defaults:
         housing_maintenance_fee: 0
         ma_payroll_taxes_withheld: 0
