@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 26 of ${vol.cases.length} stored households; it reaches 49`); // + CO-773, CO-775, CO-778 (coverage pass 4, Adult Financial and Colorado Works)
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 42 and reaches 95", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(42); // + CO-810, CO-811, CO-819 (coverage pass 5, MAGI and CHP+: households with a child or a newborn); + CO-720, CO-721, CO-723 (coverage pass 4, MAGI and CHP+: households with a child); + CO-562 (receipts migration 2: CO-386's CHP+ child in receipts alone); + CO-530, CO-531 (time audit T-1: the 19th-birthday month is the Children's group's); + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(95); // + CO-810 to CO-819 (coverage pass 5, MAGI and CHP+ repro households); + CO-720 to CO-727 (coverage pass 4, MAGI and CHP+ repro households); + CO-560, CO-562 (receipts migration 2, households in receipts alone); + CO-480, CO-483, CO-484, CO-490, CO-491, CO-492 (non-MAGI fix round 2026-11-23 households); + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up); + CO-530, CO-531 (time audit)
+  it("the children's Medicaid income limit (CO-191) is read by 43 and reaches 109", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(43); // + CO-924 (coverage pass 6, MAGI and CHP+: CO-810 with the birth read from the baby); + CO-810, CO-811, CO-819 (coverage pass 5, MAGI and CHP+: households with a child or a newborn); + CO-720, CO-721, CO-723 (coverage pass 4, MAGI and CHP+: households with a child); + CO-562 (receipts migration 2: CO-386's CHP+ child in receipts alone); + CO-530, CO-531 (time audit T-1: the 19th-birthday month is the Children's group's); + CO-228 (MAGI coverage pass 3: a stepchild of 16); + CO-377, CO-380, CO-381, CO-385 to CO-387, CO-452, CO-453 (probe-preservation round (CO-300 and up))
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(109); // + CO-920 to CO-933 (coverage pass 6, MAGI and CHP+ probe households); + CO-810 to CO-819 (coverage pass 5, MAGI and CHP+ repro households); + CO-720 to CO-727 (coverage pass 4, MAGI and CHP+ repro households); + CO-560, CO-562 (receipts migration 2, households in receipts alone); + CO-480, CO-483, CO-484, CO-490, CO-491, CO-492 (non-MAGI fix round 2026-11-23 households); + CO-226 to CO-228 (MAGI coverage pass 3); + 25 Medicaid and CHP+ probes of the probe-preservation round (CO-300 and up); + CO-530, CO-531 (time audit)
   });
 
   it("every household that reads an item is one it reaches", () => {
@@ -100,7 +100,7 @@ describe("unverified upstream", () => {
     expect(citing.length).toBe(6);
     for (const it of citing) expect(citedUnverified(it, unverified).length).toBeGreaterThan(0);
     const tainted = restingOnUnverified(engine, unverified);
-    expect(tainted.size).toBe(63); // + 13 SSI-method and Medicare Savings Program items (ma_ssi_countable_resources, CO-608, and what reads it): C3-1 of the fix round 2026-11-23 has CO-608 read the institutionalized spouse's share (CO-647), which rests on CO-1987 through the CSRA
+    expect(tainted.size).toBe(64); // + chp_child_continuous_eligibility_start_month (CO-7406, coverage pass 6, C6-08: reads chp_child_is_eligible, which rests on an unverified excerpt); + 13 SSI-method and Medicare Savings Program items (ma_ssi_countable_resources, CO-608, and what reads it): C3-1 of the fix round 2026-11-23 has CO-608 read the institutionalized spouse's share (CO-647), which rests on CO-1987 through the CSRA
     for (const it of citing) {
       expect(tainted.has(it.identifier)).toBe(true);
       for (const r of engine.impact([it.identifier])) expect(tainted.has(r)).toBe(true);
@@ -196,18 +196,18 @@ describe("affects: what reads an item and the outcomes it reaches (the item page
     expect(itemAffects(engine, ident("CO-276"))).toEqual({ direct: 1, dependents: 4, outcomes: 1 });
   });
 
-  it("the children's income limit (CO-191): 4 rules directly, 21 outcomes", () => {
+  it("the children's income limit (CO-191): 4 rules directly, 23 outcomes", () => {
     const a = itemAffects(engine, ident("CO-191"));
-    expect([a.direct, a.outcomes]).toEqual([4, 21]);
-    expect(affectsPhrase(a)).toMatch(/^Read by 4 rules directly and \d+ in all, reaching 21 program outcomes$/);
+    expect([a.direct, a.outcomes]).toEqual([4, 23]); // + ma_buy_in_category and ma_protected_group_category (coverage pass 6, C6-08: the children's continuous eligibility end month, CO-556, which the non-MAGI period CO-2448 also reads, now reads its start month CO-7405, which scans the Children's category, CO-191, for a MAGI period; a non-MAGI period keeps the application month, so their answers do not change); 
+    expect(affectsPhrase(a)).toMatch(/^Read by 4 rules directly and \d+ in all, reaching 23 program outcomes$/);
     expect(COUNT_DEFINITIONS.affects).toMatch(/verification/);
   });
 
-  it("the Map and the item page say the same: CO-191 reaches 21 program outcomes, read by 76 items (the Map said 22)", () => {
+  it("the Map and the item page say the same: CO-191 reaches 23 program outcomes, read by 76 items (the Map said 22)", () => {
     const a = itemAffects(engine, ident("CO-191"));
     const m = mapCounts(engine, ident("CO-191"));
     expect(m.readBy.outcomes).toBe(a.outcomes);
-    expect(m.readBy.outcomes).toBe(21);
+    expect(m.readBy.outcomes).toBe(23); // + ma_buy_in_category and ma_protected_group_category (coverage pass 6, C6-08: the children's continuous eligibility end month, CO-556, which the non-MAGI period CO-2448 also reads, now reads its start month CO-7405, which scans the Children's category, CO-191, for a MAGI period; a non-MAGI period keeps the application month, so their answers do not change); 
     expect(m.readBy.total).toBe(a.dependents);
     // Every item the page's centre box can name, for every program outcome.
     for (const id of ["CO-276", "CO-914"]) {
