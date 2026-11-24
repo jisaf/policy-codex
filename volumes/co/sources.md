@@ -25066,3 +25066,23 @@ Document: D-53
 > (3) *Ineligible parent dies.* If your ineligible parent dies, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the month following the month of death. In determining your benefit amount beginning with the month following the month of death, we use only your own countable income in a prior month, excluding any income deemed to you in that month from your deceased ineligible parent (see § 416.1160(b)(2)(iii)). If you live with two ineligible parents and one dies, we continue to deem income from the surviving ineligible parent who is also your natural or adoptive parent. If you live with a stepparent following the death of your natural or adoptive parent, we do not deem income from the stepparent.
 >
 > (4) *Ineligible parent and you no longer live in the same household.* If your ineligible parent and you no longer live in the same household, we do not deem that parent's income to you to determine your eligibility for SSI benefits beginning with the first month following the month in which one of you leaves the household. We also will not deem income to you from your parent's spouse (*i.e.*, your stepparent) who remains in the household with you if your natural or adoptive parent has permanently left the household. To determine your benefit amount if you continue to be eligible, we follow the rule in § 416.420 of counting your income including deemed income from your parent and your parent's spouse (*i.e.*, your stepparent) (if the stepparent and parent lived in the household with you) in the second month prior to the current month.
+
+### S5270. Colorado MAGI verification: earned income of the month before the application month is acceptable where the application month's is not yet available (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.B.1.c (rule version effective 11/14/2026; D-65:1641-1645). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. Earned Income: Income -may be self-attested by an applicant or member and verified through an electronic data source. Individuals who provide self-attestation of income - may provide a SSN for electronic wage verification purposes.
+>
+> If the self-attested earned income cannot be verified electronically, due to a missing SSN, the applicant must provide documentation of income. Earned income must be verified by wage stubs, tax documents, written documentation from the employer stating the employee’s gross income or a telephone call to an employer. Applicants may request that communication with their employers be made in writing.
+>
+> Estimated earned income shall be used to determine eligibility if the applicant/client provides less than a full calendar month of wage stubs for the application month. A single recent wage stub shall be sufficient if the applicant's income is expected to be the same amount for the month of application. Verification of earned income received during the month prior to the month of application shall be acceptable if the application month verification is not yet available. Actual earned income shall be used to determine eligibility if the client provides verification for the full calendar month.
+
+### S5271. Federal MAGI budget period: an applicant's financial eligibility on current monthly household income and family size
+
+Document: D-34
+
+42 CFR 435.603(h)(1) (D-34:196). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (h) *Budget period*—(1) *Applicants and new enrollees.* Financial eligibility for Medicaid for applicants, and other individuals not receiving Medicaid benefits at the point at which eligibility for Medicaid is being determined, must be based on current monthly household income and family size.
