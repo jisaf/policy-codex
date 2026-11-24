@@ -22,3 +22,6 @@ conformance/*/ledger.json
 # static preview builds (`npm run build:bundle`, the prototypes)
 .artifacts/
 vite.config.ts.timestamp-*
+
+# blind-b generated data (scripts/build-data.ts)
+prototypes/blind-b/public/
