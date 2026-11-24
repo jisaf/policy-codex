@@ -143,9 +143,14 @@ const mapReceipts = (c: HouseholdCase, f: (rs: Receipt[]) => Receipt[]) => {
 };
 const EARMARKS = ["pass_set_aside", "claim_expense", "spent_on_covered_costs", "used_for_uncovered_medical_care",
   "transferred_to_child_support_agency", "paid_to_former_spouse", "recouped", "recouped_for_intentional_violation",
-  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served"];
+  "for_person_living_elsewhere", "designated_for_lump_sum_costs", "designated_for_legal_fees", "per_payment", "hours_served",
+  "for_dependent"];
 // designated_for_legal_fees (receipts, CO-5000): the legal-fee part of designated_for_lump_sum_costs, an earmark of the
 // amount, split with it (field-effect sweep, non-MAGI Medicaid, FS-MA-8; household CO-842).
+// for_dependent (receipts, CO-5000): the part of a veterans benefit paid because of a dependent, a part of the amount like
+// the set-asides, so each half of a split award carries half of it; copied whole, the two halves gave the dependent twice
+// the part (and the veteran's figure lost it twice), the MA-1 violation the field sweep left on CO-802 (cross-list records
+// round, docs/reviews/cross-list-records.md; households CO-802, CO-850).
 const split = (rs: Receipt[]) => rs.flatMap((r) => {
   if (typeof r.amount !== "number" || r.amount === 0 || r.kind === "gambling_winnings") return [r];
   const a = { ...r }, b = { ...r };

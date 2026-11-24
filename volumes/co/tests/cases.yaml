@@ -76154,7 +76154,6 @@
           value: 2000
         - kind: prepaid_burial_contract
           value: 1500
-          amount_owed: 0
           irrevocable: false
           burial_for: person_of_case
           for_person: p2
@@ -76439,7 +76438,6 @@
         holdings:
         - kind: prepaid_burial_contract
           value: 1500
-          amount_owed: 0
           irrevocable: false
           burial_for: person_of_case
           for_person: p2
@@ -76498,7 +76496,6 @@
         af_has_total_disability_six_months: false
         claims_disability: false
         is_enrolled_in_medical_assistance: true
-        liquid_resources_value: 500
         receives_tanf_cash: false
         is_sponsored_non_citizen: false
         child_welfare_payment_type: none
@@ -76533,7 +76530,6 @@
         af_has_total_disability_six_months: true
         claims_disability: true
         af_has_met_and_so_benefit_application_duty: true
-        liquid_resources_value: 200
         receives_tanf_cash: false
         is_sponsored_non_citizen: false
         child_welfare_payment_type: none
