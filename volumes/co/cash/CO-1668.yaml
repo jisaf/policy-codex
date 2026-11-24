@@ -6,7 +6,8 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the client must submit the State's medical disability certification for Aid to the Needy Disabled State Only: a client under the Old Age Pension age and at least the AND-SO minimum age who claims a disability that SSI, SSDI or an SSA determination has not already established."
-derived: [all, claims_disability, [not, af_is_oap_age], [">=", age, af_and_so_min_age], [not, receives_ssi], [not, af_and_so_disability_met]]
+precision: "Pattern sweep (cash) PS-T7 (docs/reviews/pattern-sweep-cash.md): the AND-SO minimum age is taken on the last day of the month evaluated, as af_and_so_eligible (CO-1203) takes it, not on the determination date."
+derived: [all, claims_disability, [not, af_is_oap_age], [">=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], af_and_so_min_age], [not, receives_ssi], [not, af_and_so_disability_met]]
 sources: [S1079, S1080]
 implemented: engine
 tags: [verification, cash, and, disability]
@@ -15,3 +16,6 @@ tests:
   - {id: CO-1668-T1, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: true, af_is_oap_age: false, date_of_birth: "1980-01-01", receives_ssi: false, af_and_so_disability_met: false}, expect: true}
   - {id: CO-1668-T2, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: true, af_is_oap_age: false, date_of_birth: "1980-01-01", receives_ssi: false, af_and_so_disability_met: true}, expect: false}
   - {id: CO-1668-T3, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: false}, expect: false}
+  # Pattern sweep (cash) PS-T7: AND-SO is for clients 18 or older (3.520.61.A, S449), the age taken on the last day of the month evaluated as af_and_so_eligible (CO-1203) takes it, not on the determination date. Born 2008-10-20, determined 2026-10-25: 17 all of September (no disability verification for September), 18 on October 31.
+  - {id: "CO-1668-T5", title: "Pattern sweep PS-T7: September, 17 on its last day: not required", month: "2026-09", as_of: "2026-10-25", given: {date_of_birth: "2008-10-20", claims_disability: true, af_is_oap_age: false, receives_ssi: false, af_and_so_disability_met: false}, expect: false}
+  - {id: "CO-1668-T6", title: "PS-T7: October, 18 on its last day: required", month: "2026-10", as_of: "2026-10-25", given: {date_of_birth: "2008-10-20", claims_disability: true, af_is_oap_age: false, receives_ssi: false, af_and_so_disability_met: false}, expect: true}
