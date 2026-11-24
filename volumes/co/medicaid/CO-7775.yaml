@@ -1,0 +1,22 @@
+id: CO-7775
+name: "Medicaid: a pregnancy coverage period begins in the month"
+identifier: ma_pregnancy_coverage_period_begins_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether a pregnancy coverage period (10 CCR 2505-10 § 8.100.4.G.5; 42 U.S.C. 1396a(e)(5), (e)(16)) can run from the month: the period opens in it (ma_pregnancy_coverage_period_opens_in_month, CO-7401), and the pregnancy whose period it is has a recorded end on or after the month (pregnancy_ended_on_or_after_month, CO-7773), so the period ends with the 12th month after the earliest such end, or continues (the person is pregnant now, is_pregnant). Unknown where it opens, no end is recorded on or after the month and the person is not pregnant now (the end of that pregnancy is the missing fact)."
+precision: "Coverage pass 7, C7-02 (2026-11-24). G.5 (S640) provides coverage 'for a period beginning with the date of application for Medical Assistance through the last day of the 12th month following the date the pregnancy ends': each period belongs to the pregnancy current in its first month and ends with that pregnancy's postpartum year, and a later pregnancy opens its own period only in a month of that pregnancy (CO-7401). The months a period beginning here reaches are those up to the 12th month after the first recorded end on or after it; ma_is_in_pregnancy_coverage_period (CO-566) reads this item only from ma_pregnancy_coverage_period_search_start_month (CO-7774), the month after the last end whose postpartum year ended before the month evaluated, so every end on or after a month it reads reaches that month."
+derived: [all, ma_pregnancy_coverage_period_opens_in_month, [case, [pregnancy_ended_on_or_after_month, true], [is_pregnant, true]]]
+sources: [S640, S224, S5060]
+implemented: engine
+tags: [ma, magi]
+nearest: [CO-7401, CO-565]
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): the period ran from its start month for every month in which the person was pregnant on the determination date, so a second pregnancy kept a first pregnancy's period open (PG-SECOND). This item ties a period's opening month to its pregnancy's recorded end."
+siblings:
+  - {id: CO-7777, reason: "CHP+'s test that a prenatal enrollment span begins in a month; Medicaid keeps its own over its opening test"}
+tests:
+  - {id: CO-7775-T1, month: "2025-03", as_of: "2026-11-10", title: "C7-02 (PG-SECOND): March 2025 opens (the history records the Pregnant Women category), and the pregnancy has a recorded end on or after it (p2 born 2025-09-10): true", given: {ma_pregnancy_coverage_period_opens_in_month: {"2025-03": true}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
+  - {id: CO-7775-T2, month: "2026-10", as_of: "2026-11-10", title: "C7-02 (PG-SECOND at $5,500): October 2026 does not open (241.6% - 5 > 195%, nothing recorded): false", given: {ma_pregnancy_coverage_period_opens_in_month: {"2026-10": false}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: false}
+  - {id: CO-7775-T3, month: "2026-10", as_of: "2026-11-10", title: "C7-02: October 2026 opens (the second pregnancy, within 195%) and she is pregnant now, no end recorded after it: true", given: {ma_pregnancy_coverage_period_opens_in_month: {"2026-10": true}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
+  - {id: CO-7775-T4, month: "2026-08", as_of: "2026-11-10", title: "Opens in August, not pregnant now, no end recorded (the start stated, no birth): unknown", given: {ma_pregnancy_coverage_period_opens_in_month: {"2026-08": true}, is_pregnant: false, pregnancy_start_date: "2026-03-01"}, relationships: [], expect: unknown}

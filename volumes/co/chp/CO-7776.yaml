@@ -1,0 +1,22 @@
+id: CO-7776
+name: "CHP+: first month a prenatal enrollment span reaching the month can begin"
+identifier: chp_prenatal_span_search_start_month
+kind: derived
+type: month
+scope: person-month
+program: CHP+
+meaning: "The first month in which a CHP+ prenatal enrollment span that can still reach the month evaluated (10 CCR 2505-3 § 430.3) can begin: the month of application (ma_application_date; CHP+ has no retroactive months, § 430.1), or, where later, the month after the latest pregnancy end the case records whose span end (chp_postpartum_coverage_months after the month it ended) is before the month evaluated: a span that begins in or before that end's month belongs to that pregnancy or an earlier one, and ends before the month evaluated."
+precision: "Coverage pass 7, C7-02 (2026-11-24). § 430.3 (S1715): 'The enrollment span shall end on the last day of the month 12 months after the birth of the child or termination of the pregnancy', the birth or termination of the pregnancy for which she enrolled. An end e reaches the month m when m is no later than chp_postpartum_coverage_months after the month of e; the latest end that does not reach m is latest_pregnancy_end_date_before_month (CO-7772) read for m less chp_postpartum_coverage_months (at), and whether there is one is pregnancy_ended_before_month (CO-7771). CHP+'s own reading, as ma_pregnancy_coverage_period_search_start_month (CO-7774) is Medicaid's (no retroactive months here)."
+derived: [case, [[not, [at, pregnancy_ended_before_month, [months_before, chp_postpartum_coverage_months, [month]]]], [month_of, ma_application_date]], [[">", [month_after, [month_of, [at, latest_pregnancy_end_date_before_month, [months_before, chp_postpartum_coverage_months, [month]]]]], [month_of, ma_application_date]], [month_after, [month_of, [at, latest_pregnancy_end_date_before_month, [months_before, chp_postpartum_coverage_months, [month]]]]]], [else, [month_of, ma_application_date]]]
+sources: [S1715, S1714]
+implemented: engine
+tags: [chp]
+nearest: [CO-7774, CO-2407]
+siblings:
+  - {id: CO-7774, reason: "Medicaid's search start for its pregnancy coverage period; CHP+ keeps its own (no retroactive months, its own postpartum parameter)"}
+accepts_from:
+  - {from: ma_application_date, class: primitive, source: S1715}
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): the CHP+ prenatal span ran while the person was pregnant on the determination date, so a span opened for a first pregnancy (recorded, or found in a month of the application) continued through a second pregnancy (PG-SECOND-CHP: span recorded from 2025-03, birth 2025-09-10, pregnant again from 2026-10-05, $7,000: October and November 2026 eligible_prenatal at 307.5%). The search for a span reaching a month starts after the last pregnancy whose span ended before it."
+tests:
+  - {id: CO-7776-T1, month: "2026-10", as_of: "2026-11-10", title: "C7-02: application 2025-03-01; she gave birth to p2 on 2025-09-10: October 2026 - 12 = 2025-10, the birth is before it: the month after it, 2025-10 (later than 2025-03)", given: {ma_application_date: "2025-03-01"}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: "2025-10"}
+  - {id: CO-7776-T2, month: "2026-09", as_of: "2026-11-10", title: "C7-02: September 2026 - 12 = 2025-09; the birth (2025-09-10) is not before 2025-09-01: the application month, 2025-03", given: {ma_application_date: "2025-03-01"}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: "2025-03"}

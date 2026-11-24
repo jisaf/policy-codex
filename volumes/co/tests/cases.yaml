@@ -4457,7 +4457,6 @@
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        ma_eligibility_start_date: "2026-07-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
         date_of_birth: "1997-02-11"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -4973,7 +4972,6 @@
         expected_program_completion_date: "2029-01-01"
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        ma_eligibility_start_date: "2026-01-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2010-03-02"
         immigration_status: us_citizen
@@ -13282,7 +13280,6 @@
         ma_retroactive_coverage_requested: true
         pregnancy_end_date: '2026-08-10'
         pregnancy_start_date: '2025-11-05'
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -14812,7 +14809,6 @@
         ma_application_date: '2026-09-15'
         ma_retroactive_coverage_requested: true
         pregnancy_start_date: '2026-03-01'
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -14910,7 +14906,6 @@
         ma_custodial_parent: p1
         ma_application_date: '2026-09-15'
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: '2026-01-01'
         receipts: []
         earnings: []
       month_defaults:
@@ -15020,7 +15015,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-09-15'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -15117,7 +15111,6 @@
         ma_custodial_parent: p1
         ma_application_date: '2026-09-15'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         receipts: []
         earnings: []
       month_defaults:
@@ -15351,7 +15344,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -16972,7 +16964,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -17135,7 +17126,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -17278,7 +17268,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -17589,7 +17578,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -25667,7 +25655,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -25735,7 +25722,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -25799,7 +25785,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -25895,7 +25880,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -25958,7 +25942,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -26052,7 +26035,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -26194,7 +26176,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -26265,7 +26246,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -26358,7 +26338,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-03-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -26428,7 +26407,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-03-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29529,7 +29507,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29597,7 +29574,6 @@
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29692,7 +29668,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29758,7 +29733,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29856,7 +29830,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29921,7 +29894,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -29986,7 +29958,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -30096,7 +30067,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -30165,7 +30135,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -33998,7 +33967,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -34102,7 +34070,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -34206,7 +34173,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -34285,7 +34251,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -44963,7 +44928,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45045,7 +45009,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45136,7 +45099,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45205,7 +45167,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45290,7 +45251,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45379,7 +45339,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45446,7 +45405,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45535,7 +45493,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45604,7 +45561,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45704,7 +45660,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45772,7 +45727,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45862,7 +45816,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -45955,7 +45908,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46048,7 +46000,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46150,7 +46101,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46227,7 +46177,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46330,7 +46279,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46407,7 +46355,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46512,7 +46459,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -46591,7 +46537,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -47135,7 +47080,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -47272,7 +47216,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -47896,7 +47839,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -48040,7 +47982,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -58956,7 +58897,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -59090,7 +59030,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -59864,7 +59803,7 @@
   title: "Time audit T-1: retroactive months across a 19th birthday (MAGI Children's group)"
   # Time audit T-1 (docs/reviews/time-audit.md). Passes since the fix round: the age is taken in the month evaluated.
   # p1, single, born 2007-09-15, earns $1,850 a month in wages, her own tax household (size 1). She applies on
-  # 2026-11-10 and asks for retroactive coverage; she met every requirement from 2026-08-01 (ma_eligibility_start_date).
+  # 2026-11-10 and asks for retroactive coverage; she met every requirement from 2026-08-01 (coverage pass 7, C7-08: each month on its own facts; the date is no longer stated).
   # Retroactive period (8.100.3.E.1, 42 CFR 435.915(a), an application before 2027): the three months before November,
   # August to October 2026; 435.915(a) asks whether she "would have been eligible ... at the time" of each month.
   # Income: FPL 2026 size 1 = 15,960 / 12 = 1,330.00 a month; 1,850 / 1,330 = 1.3910 (139.10%).
@@ -59912,7 +59851,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-10"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-08-01"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -60720,7 +60658,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -61681,7 +61618,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -61785,7 +61721,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -61896,7 +61831,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -63368,7 +63302,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -63448,7 +63381,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64146,7 +64078,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64235,7 +64166,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64314,7 +64244,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64389,7 +64318,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64518,7 +64446,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-10-05
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64593,7 +64520,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-10-05
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64698,7 +64624,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64773,7 +64698,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64887,7 +64811,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -64962,7 +64885,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -65035,7 +64957,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -65147,7 +65068,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -65246,7 +65166,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -65346,7 +65265,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -65445,7 +65363,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: 2026-11-02
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: 2026-01-01
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -76761,7 +76678,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -76824,7 +76740,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -76918,7 +76833,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -76982,7 +76896,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77073,7 +76986,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77157,7 +77069,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77239,7 +77150,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77302,7 +77212,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-10-05'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77382,7 +77291,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77462,7 +77370,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77540,7 +77447,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77619,7 +77525,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77699,7 +77604,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -77761,7 +77665,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: '2026-01-01'
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -82891,7 +82794,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2025-05-01"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -82992,7 +82894,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2025-05-01"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83122,7 +83023,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2025-05-01"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83207,7 +83107,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2025-05-01"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83334,7 +83233,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-28"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83423,7 +83321,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-28"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83544,7 +83441,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-28"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83633,7 +83529,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-28"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83741,7 +83636,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83824,7 +83718,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -83957,7 +83850,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84040,7 +83932,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84152,7 +84043,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84249,7 +84139,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84338,7 +84227,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84430,7 +84318,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84519,7 +84406,6 @@
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84615,7 +84501,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84698,7 +84583,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84797,7 +84681,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-20"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -84903,7 +84786,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
         ma_retroactive_coverage_requested: false
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85005,7 +84887,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85114,7 +84995,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85220,7 +85100,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85329,7 +85208,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85407,7 +85285,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85485,7 +85362,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -85596,7 +85472,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -89481,7 +89356,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-15"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false
@@ -89715,7 +89589,6 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
         ma_retroactive_coverage_requested: true
-        ma_eligibility_start_date: "2026-01-01"
         documentation_not_reasonably_available: false
         earned_income_attestation_is_questionable: false
         unearned_income_attestation_is_questionable: false

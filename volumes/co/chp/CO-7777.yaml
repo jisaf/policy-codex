@@ -1,0 +1,21 @@
+id: CO-7777
+name: "CHP+: a prenatal enrollment span begins in the month"
+identifier: chp_prenatal_span_begins_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether a CHP+ prenatal enrollment span (10 CCR 2505-3 § 430.3) can begin in the month: she is eligible for CHP+ prenatal coverage in it (chp_prenatal_is_eligible), and the pregnancy has a recorded end on or after the month (pregnancy_ended_on_or_after_month, CO-7773), so the span ends with the last day of the month chp_postpartum_coverage_months after the earliest such end, or continues (the person is pregnant now, is_pregnant). Unknown where she is eligible, no end is recorded on or after the month and she is not pregnant now."
+precision: "Coverage pass 7, C7-02 (2026-11-24). § 430.3 (S1715) ends the span 'on the last day of the month 12 months after the birth of the child or termination of the pregnancy' for which she enrolled; chp_is_in_prenatal_coverage_period (CO-2407) reads this item only from chp_prenatal_span_search_start_month (CO-7776), so every end on or after a month it reads reaches the month evaluated. CHP+'s own item, as ma_pregnancy_coverage_period_begins_in_month (CO-7775) is Medicaid's."
+derived: [all, chp_prenatal_is_eligible, [case, [pregnancy_ended_on_or_after_month, true], [is_pregnant, true]]]
+sources: [S1715]
+implemented: engine
+tags: [chp]
+nearest: [CO-7775, CO-2407]
+siblings:
+  - {id: CO-7775, reason: "Medicaid's test that a coverage period begins in a month; CHP+ keeps its own over its prenatal eligibility"}
+rationale: "Coverage pass 7, C7-02 (docs/reviews/coverage7-medicaid-magi-chp.md): ties the month a CHP+ prenatal span begins to its pregnancy's recorded end, so a later pregnancy has its own span."
+tests:
+  - {id: CO-7777-T1, month: "2026-10", as_of: "2026-11-10", title: "C7-02: prenatal-eligible in October 2026 (the second pregnancy), pregnant now, no end recorded after it: true", given: {chp_prenatal_is_eligible: {"2026-10": true}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
+  - {id: CO-7777-T2, month: "2026-10", as_of: "2026-11-10", title: "C7-02 (at $7,000): not prenatal-eligible in October 2026 (3.0747 - 0.05 > 2.60): false", given: {chp_prenatal_is_eligible: {"2026-10": false}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: false}
+  - {id: CO-7777-T3, month: "2025-04", as_of: "2026-11-10", title: "C7-02: prenatal-eligible in April 2025, the pregnancy ended 2025-09-10 (on or after 2025-04-01): true", given: {chp_prenatal_is_eligible: {"2025-04": true}, is_pregnant: true}, others: {p2: {date_of_birth: "2025-09-10"}}, relationships: [[gave_birth_to, p1, p2]], expect: true}
