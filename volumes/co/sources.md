@@ -25202,3 +25202,13 @@ Document: D-80
 > “Marriage” (for the purpose of these rules) means a marriage as defined in Section 14-
 > 2-104(1), C.R.S., a common law marriage as defined in Section 14-2-104(2), C.R.S.,
 > and a civil union, as defined in Section 14-15-103(1), C.R.S.
+### S5300. Colorado public assistance for qualified aliens: after the five years, a qualified alien entering on or after August 22, 1996 is eligible, with sponsor income and resources deemed
+
+Document: D-59
+
+C.R.S. 26-2-111.8(2)(c) (D-59:1354-1357; KL-CASH-2 fix round, 2026-11-24). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (c)    Deeming  of  sponsor  income  and  resources.  After  five  years,  a  qualified  alien
+> described in paragraph (b) of this subsection (2) shall be eligible for benefits under this article,
+> but  shall  have  sponsor  income  and  resources  deemed  to  the  individual  or  family  under  rules
+> established by the state department pursuant to section 26-2-137 (2).
