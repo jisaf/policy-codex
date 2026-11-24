@@ -3937,7 +3937,7 @@ Body: Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-mont
 
 Class: state policy choice, with Legal advising (both texts are on file; whether B.2's "at the time of application" reaches the retroactive months is the State's reading of its own rule against the federal rule a state plan follows, which HCPF settles by amending B.2 or confirming the reading in force)
 Owner: Medicaid policy owner
-Assumption: A retroactive month is a month of residence only if the person lived in Colorado on a day of it (435.915(a)(2), the federal floor); the application month and after read the residence stated for the application (B.1-2). ma_meets_residency_in_month (CO-7650) reads state_of_residence_start_date (CO-7651) for a month before the application month.
+Assumption: A retroactive month is a month of residence only if the person lived in Colorado on a day of it (435.915(a)(2), the federal floor); the application month and after read the residence stated for the application (B.1-2). For a month before the application month the case states the date the person began living in Colorado, and without it the month cannot be determined.
 
 Checked 2026-11-24: 10 CCR 2505-10 § 8.100.3.B.1-5 (D-65, S1518; D-39, S172), § 8.100.3.E.1 (S1503, S217), § 8.100.4.G.1 (S3351), § 8.100.5.C.1 (S3900); 42 CFR 435.403(a), (d), (h) (D-33, S171), 435.915(a) (D-35, S218). None says how residence is established for a month before the application. Items: CO-7650, CO-7651, CO-2250.
 
@@ -3947,6 +3947,6 @@ Body: Medicaid status by month (2026-11-24, docs/reviews/medicaid-status-by-mont
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Before the qualified status the case states, the qualified status and the exemptions it opens are not held; lawful presence (ma_is_lawfully_present, CO-507) is read as stated (OQ-1425's reading, no date of a change to it being stated), so the lawfully residing pregnant woman and child (vii) and the ii arm are read on it; a month before entry into the United States meets no category.
+Assumption: Before the qualified status the case states, the qualified status and the exemptions it opens are not held; lawful presence is read as the case states it for the determination date (no date of a change to it being stated, the reading of the facts a case states once), so the lawfully residing pregnant woman and child (vii) and the ii arm are read on it; a month before entry into the United States meets no category.
 
 Checked 2026-11-24: 10 CCR 2505-10 § 8.100.3.G.1.g (D-65, S655 to S658), § 8.100.3.E.1 (S1503); 8 U.S.C. 1613(a) (S176); 42 CFR 435.406 (D-33, S173); CMS SHO #26-001 (S1702, S1705). None says what status the agency establishes for a month before a grant. Items: CO-7551, CO-7652.
