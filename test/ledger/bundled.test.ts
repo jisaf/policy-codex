@@ -1,9 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { bundleReader, chunkFiles, type BundleIndex } from "../../src/ledger/bundled";
 import { BUNDLED, bundledSource, LOCAL_REF, pickSource, probeBundled } from "../../src/ledger/source";
-import { refLabel } from "../../src/ledger/mode";
 import { loadManifest } from "../../src/ledger/load";
-import { proposeBlockedReason, PREVIEW_PROPOSE_REASON } from "../../src/ui/propose";
 
 const repo = { owner: "jisaf", name: "policy-codex" };
 
@@ -61,21 +59,14 @@ describe("bundled source", () => {
     expect(calls.every((u) => u.startsWith("./ledger/"))).toBe(true);
   });
 
-  it("probes as a bundled working tree, labelled a preview snapshot", async () => {
+  it("probes as a bundled working tree", async () => {
     const { impl } = bundleFetch(index, chunks);
     const info = await probeBundled(bundleReader("./ledger/", impl));
     expect(info).toEqual({ mode: "local", bundled: true, head: "0123456789abcdef", branch: "main", dirty: false });
-    expect(refLabel(LOCAL_REF, info)).toBe("preview snapshot (main @ 0123456)");
     const missing = bundleFetch({ info: index.info, files: {} }, {});
     const broken = (async () => ({ ok: false, status: 404, text: async () => "" })) as unknown as typeof fetch;
     expect(await probeBundled(bundleReader("./ledger/", broken))).toBeNull();
     expect(await probeBundled(bundleReader("./ledger/", missing.impl))).not.toBeNull();
-  });
-
-  it("blocks Propose in a preview build with a plain reason", () => {
-    expect(proposeBlockedReason({ hasToken: true, entryCount: 1, valid: true, isPrRef: false, preview: true }))
-      .toBe(PREVIEW_PROPOSE_REASON);
-    expect(proposeBlockedReason({ hasToken: true, entryCount: 1, valid: true, isPrRef: false })).toBeNull();
   });
 });
 

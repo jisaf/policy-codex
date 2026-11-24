@@ -66,7 +66,8 @@ export function apiSource(
 
 /** The ref name that means "the working tree this app is served from": the
  *  checkout's own `codex.json` and `volumes/`, served by the dev and preview
- *  servers (`scripts/vite-local-ledger.ts`) under LOCAL_BASE. It is never a
+ *  servers of the original app (archived: archive/main-app/scripts/vite-local-ledger.ts)
+ *  under LOCAL_BASE. It is never a
  *  git branch, so anything that needs one (Propose) maps it to the default
  *  branch first (`gitRefOf`). */
 export const LOCAL_REF = "local";

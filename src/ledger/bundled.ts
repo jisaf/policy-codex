@@ -1,5 +1,5 @@
-/* The "bundled" ledger: a static preview build (`npm run build:bundle`,
- * scripts/build-bundle.ts) carries a snapshot of the ledger beside the page,
+/* The "bundled" ledger: a static preview build of the original app (archived:
+ * archive/main-app/scripts/build-bundle.ts) carries a snapshot of the ledger beside the page,
  * as a few JSON files, so it runs on a plain static host with no GitHub and
  * no dev server. The app reads it in place of the working tree when it is
  * built with VITE_LEDGER_SOURCE=bundled (src/ledger/source.ts `pickSource`).
