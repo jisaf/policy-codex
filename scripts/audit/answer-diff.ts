@@ -1,19 +1,14 @@
 /* The answers a change moves: evaluates the MAGI and CHP+ outcomes (and any
  * identifiers named with --id) on the ledger at a base ref and on the ledger
  * on disk, for the same households (the stored households as stored, and the
- * receipts harness's generated households, translated to records as the
- * harnesses translate them), and lists every value that differs. Unlike the
- * harnesses it compares one ledger with another on identical households, so
- * every difference is the change's.
+ * receipts harness's generated households, stated in records alone), and
+ * lists every value that differs. It compares one ledger with another on
+ * identical households, so every difference is the change's.
  *   npx vite-node scripts/audit/answer-diff.ts -- --base origin/ccr-9d19bf4c-wmnwcl [--id x]... [--out file]
  */
 import fs from "node:fs";
 import { ledgerAt, currentLedger, type Ledger } from "../receipts/ledgers";
 import { generated } from "../receipts/generate";
-import { translateCase } from "../receipts/translate";
-import { translateCase as translateEarnings } from "../records/translate-earnings";
-import { translateCase as translateHoldings } from "../records/translate-holdings";
-import { CHOICES } from "../receipts/choices";
 import { makeCase, evaluate } from "../../src/engine/evaluate";
 import { caseToSpec, type HouseholdCase } from "../../src/engine/cases";
 
@@ -59,10 +54,7 @@ function run(l: Ledger, c: HouseholdCase, months: string[]): Map<string, unknown
 }
 const households: Array<{ src: string; c: HouseholdCase }> = [];
 for (const c of newL.ledger.cases) households.push({ src: "S", c });
-for (const g of generated(oldL.ledger.cases)) {
-  const tr = translateCase(g, newL.ix, CHOICES).value;
-  households.push({ src: "G", c: translateHoldings(translateEarnings(tr, newL.ix).value, newL.ix).value });
-}
+for (const g of generated(newL.ledger.cases)) households.push({ src: "G", c: g });
 const lines: string[] = [];
 let n = 0;
 for (const { src, c } of households) {

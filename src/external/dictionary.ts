@@ -28,9 +28,17 @@ export const RECORD_SHEETS: Readonly<Record<"earnings" | "other-income" | "resou
  *  template never asks for (income and resources are stated as records). A
  *  snapshot of the facts the earned-income and holdings translations read
  *  (scripts/records/translate-earnings.ts and translate-holdings.ts, taken
- *  2026-11-24): they are being retired (handoff 2026-11-24, section 6,
- *  E2/H2). The facts the holdings translation states but does not restate
- *  (an income trust, the CSRA figures) are not in it: no record replaces them. */
+ *  2026-11-24), retired in steps E2 and H2 (docs/reviews/records-e2-h2.md)
+ *  with three facts the records had already left without a reader
+ *  (has_self_employment_seasonal_or_commission_earnings,
+ *  retirement_early_withdrawal_penalty, unearned_income_offsetting_expenses).
+ *  Two are not retired: Medicaid's findings ma_excess_real_property_is_for_sale
+ *  and ma_claims_co_owner_hardship_for_real_property stay in the ledger,
+ *  because its verifications of sale efforts and joint ownership read them,
+ *  but the template states those findings on the real property's resource
+ *  record (ma_sale_efforts_unsuccessful, co_owner_would_lose_housing). The
+ *  facts the holdings translation stated but did not restate (an income
+ *  trust, the CSRA figures) are not in it: no record replaces them. */
 export const RETIRING_SCALAR_FACTS: ReadonlySet<string> = new Set([
   "able_account_value", "af_property_exempt_as_unsaleable_value", "af_transfer_found_not_twfc", "annual_contract_pay",
   "annual_contract_wages_received", "board_only_payers_count", "board_only_provision_costs", "burial_funds_accrued_interest",
@@ -40,7 +48,8 @@ export const RETIRING_SCALAR_FACTS: ReadonlySet<string> = new Set([
   "employment_began_or_ended_prior_thirty_days", "excluded_government_payments_held_value", "farming_self_employment_end_date",
   "federal_tax_refunds_held_value", "former_farm_property_value", "has_trust_interest", "home_equity",
   "home_has_recorded_beneficiary_deed", "home_is_held_in_trust_or_entity", "home_is_outside_colorado",
-  "home_use_production_property_equity_value", "in_kind_compensation_value", "income_producing_property_equity_value",
+  "has_self_employment_seasonal_or_commission_earnings", "home_use_production_property_equity_value", "in_kind_compensation_value",
+  "income_producing_property_equity_value", "retirement_early_withdrawal_penalty", "unearned_income_offsetting_expenses",
   "income_producing_property_is_used_in_trade_or_business", "income_producing_property_net_return_annual",
   "infrequent_or_irregular_earned_income_received", "installment_sale_contract_value", "intends_to_return_home",
   "intent_to_return_home_is_documented_in_writing", "investment_personal_property_value", "irrevocable_burial_funds_value",

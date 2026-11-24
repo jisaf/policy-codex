@@ -202,18 +202,21 @@ describe("the determination page", () => {
 
 describe("What if (Rosa: more income for CO-07)", () => {
   const hc = kase("CO-07");
-  const wages = { person: "p1", identifier: "wages_gross" };
+  // Steps E2 and H2 (docs/reviews/records-e2-h2.md): wages are stated as an earnings record alone (wages_gross is
+  // retired), so the what-if moves the record's amount: "earnings.wages", was "wages_gross" (same $400, same answers).
+  const wages = { person: "p1", identifier: "earnings.wages" };
+  const wageRecord = (c: typeof hc) => (c.persons.p1.facts!.earnings as Array<{ kind: string; amount: number }>).find((r) => r.kind === "wages")!;
 
   it("offers the stated dollar amounts, earned income first", () => {
     const a = statedAmounts(engine, hc);
-    expect(a[0]).toMatchObject({ person: "p1", identifier: "wages_gross", value: 400 });
+    expect(a[0]).toMatchObject({ person: "p1", identifier: "earnings.wages", value: 400 }); // was wages_gross (E2)
     expect(a.every((x) => typeof x.value === "number")).toBe(true);
   });
 
   it("moves an amount in a copy of the stored household only", () => {
     const moved = withRaise(hc, wages, 250);
-    expect(hc.persons.p1.month_defaults!.wages_gross).toBe(400);
-    expect(moved.persons.p1.month_defaults!.wages_gross).toBe(650);
+    expect(wageRecord(hc).amount).toBe(400); // was month_defaults.wages_gross (E2)
+    expect(wageRecord(moved).amount).toBe(650);
   });
 
   it("+$250: the grant falls from $387 to $325", () => {
@@ -221,7 +224,7 @@ describe("What if (Rosa: more income for CO-07)", () => {
     const grant = ch.find((c) => c.person === "p1" && c.identifier === "cw_grant_amount")!;
     expect(grant).toMatchObject({ before: 387, after: 325 });
     expect(whatIfPhrase(ch)).toMatch(/^\d+ results? changes?, for \d+ (person|people)$/);
-    const host = show("CO-07", { tab: "whatif", fact: "p1:wages_gross", add: "250" });
+    const host = show("CO-07", { tab: "whatif", fact: "p1:earnings.wages", add: "250" });
     expect(host.querySelector('table.wi-changes tr[data-person="p1"][data-outcome="cw_grant_amount"]')!.textContent).toContain("$325");
     expect(host.querySelector("button.wi-chip[aria-pressed=true]")!.textContent).toBe("+$250");
   });

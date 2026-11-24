@@ -85,6 +85,10 @@ npm run external:check -- <folder>
     # runs county or State sample cases (a filled external-check/template) through the
     # engine and writes a comparison report; see docs/external-check.md
 npm run e2e        # Playwright tests against a local build (vite preview)
+npm run receipts:harness
+npm run records:harness -- --list earnings|holdings
+    # the record checks of the Colorado volume: metamorphic relations over the stored and
+    # generated households, the receipts/earnings boundary lint, the joint-holding lint
 ```
 
 Every script that reads the ledger runs every volume in `codex.json` unless given `--volume <id>` (or `CODEX_VOLUME=<id>`), e.g. `npm run conformance -- --volume co`. `npm run check` is the gate: run it before every merge, as CI would. An engine team implementing a volume starts from `docs/conformance.md` and `docs/operators.md`.

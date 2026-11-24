@@ -17,10 +17,9 @@ export interface Base {
 export interface ListEntry {
   /** The track's counting tables for the list (Medicaid has two methods). */
   tables: string[];
-  /** Intermediate figures compared beside the outcomes, old ledger against new. */
-  figures: string[];
   /** Figures that read the list itself, which the metamorphic relations
-   *  compare (empty until the track moves its readers onto the list). */
+   *  compare. (The intermediate figures the old-against-new comparison read,
+   *  `figures`, went with that comparison in steps E2 and H2.) */
   metamorphic: string[];
   /** Relations the track's rules say are NOT invariant, by relation id
    *  (ME-1 to ME-5; for holdings MH-1 to MH-5), with the reason; the

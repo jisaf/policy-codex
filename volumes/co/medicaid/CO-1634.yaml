@@ -13,6 +13,6 @@ implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.i requires the trust documents; no item asked for them."
 tests:
-  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_trust_interest: false, has_income_trust: true, holdings: [{kind: bank_account}]}, relationships: [], expect: true}
-  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_trust_interest: false, has_income_trust: false, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
+  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_income_trust: true, holdings: [{kind: bank_account}]}, relationships: [], expect: true}
+  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_income_trust: false, holdings: [{kind: bank_account}]}, relationships: [], expect: false}
   - {id: CO-1634-T90, month: "2026-11", as_of: "2026-11-12", title: "Pattern sweep: no own trust and no relationships stated: cannot determine (decision 4; was false)", given: {ma_owes_long_term_care_asset_disclosure: true, ma_holds_trust_interest_in_month: false, has_income_trust: false}, expect: unknown}

@@ -3,7 +3,7 @@
 // must give the same answer where the policy says it should, and four
 // hand-built families must give the rule's answer.
 //
-// Relations, over every translated household (run by harness.ts):
+// Relations, over every stored and generated household (run by harness.ts):
 //   MA-1 split    a receipt split into two records with the same fields, the
 //                 amounts (and earmarks, per-payment amounts) summing to the
 //                 original, gives the same outcomes. Policy says NOT invariant
@@ -96,7 +96,7 @@ import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { valuesEqual as ve } from "../../src/engine/values";
 import { createEngine } from "../../src/engine/engine";
 import type { Ledger } from "./ledgers";
-import type { Receipt } from "./translate";
+import type { Receipt } from "./generate";
 
 const eq = (a: unknown, b: unknown) => (a == null && b == null) || (a != null && b != null && ve(a, b));
 const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
@@ -282,7 +282,6 @@ function families(m: Ledger, households: HouseholdCase[]) {
   if (sebtSrc && readsReceipts.has("sebt_eligibility_status")) {
     const child = (rs: Receipt[]) => {
       const c = clone(sebtSrc);
-      for (const mf of Object.values(c.persons.p2.months ?? {})) delete mf.tanf_cash_income;
       c.persons.p2.facts = { ...(c.persons.p2.facts ?? {}), receipts: rs };
       return c;
     };

@@ -5,7 +5,7 @@ kind: parameter
 type: table keyed by option
 scope: global
 program: LEAP
-meaning: "The number of gross pay amounts 9 CCR 2503-7 3.752.22.C adds to obtain a month's income, by the pay schedule of wages_pay_frequency (CO-3921): four weekly amounts (C.1.a), two bi-weekly amounts (C.1.b), two semi-monthly amounts (C.2), and one monthly amount (a person paid monthly is not \"paid less than monthly\", so the month's pay is the month's income)."
+meaning: "The number of gross pay amounts 9 CCR 2503-7 3.752.22.C adds to obtain a month's income, by the pay schedule an earnings record states (frequency; earnings, CO-5100): four weekly amounts (C.1.a), two bi-weekly amounts (C.1.b), two semi-monthly amounts (C.2), and one monthly amount (a person paid monthly is not \"paid less than monthly\", so the month's pay is the month's income)."
 versions:
   - {from: "2015-11-01", value: {weekly: 4, biweekly: 2, semimonthly: 2, monthly: 1}, source: S2713}
 sources: [S2713]

@@ -10,11 +10,6 @@ export const track: Track = {
   programs: ["CCCAP"],
   earnings: {
     tables: ["cccap_earnings_treatment_table"],
-    figures: [
-      "cccap_person_gross_wages", "cccap_self_employment_gross_receipts", "cccap_self_employment_business_expenses",
-      "cccap_self_employment_net_earnings", "cccap_other_countable_receipts", "cccap_irregular_earnings", "cccap_irregular_earnings_in_quarter",
-      "cccap_person_earned_income", "cccap_has_earned_income", "cccap_caretaker_in_eligible_activity", "cccap_household_income",
-    ],
     metamorphic: [
       "cccap_person_gross_wages", "cccap_self_employment_gross_receipts", "cccap_self_employment_business_expenses",
       "cccap_self_employment_net_earnings", "cccap_other_countable_receipts", "cccap_person_earned_income", "cccap_has_earned_income",

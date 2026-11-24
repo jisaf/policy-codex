@@ -8,11 +8,6 @@ export const track: Track = {
   programs: ["AdultFinancial"],
   earnings: {
     tables: ["af_earnings_treatment_table"],
-    figures: [
-      "af_earned_pay", "af_boarder_income", "af_excluded_earned_income", "af_self_employment_business_costs",
-      "af_self_employment_net_profit", "af_gross_earned_income", "af_countable_income", "af_deemed_relative_income",
-      "af_spouse_dependent_children_needs", "af_earned_income_is_unverified",
-    ],
     // E1 Adult Financial (docs/reviews/records-earnings-cash.md): the figures that read the earnings records.
     metamorphic: [
       "af_earned_pay", "af_boarder_income", "af_excluded_earned_income", "af_self_employment_business_costs",
@@ -32,17 +27,6 @@ export const track: Track = {
     // Financial (docs/reviews/records-holdings-snap-af.md) moved the readers
     // onto the holdings records and registers the figures that read them.
     tables: ["af_holding_treatment_table"],
-    figures: [
-      "af_exempt_liquid_resources", "af_self_support_property_countable_value", "af_person_countable_resources_other_than_life_insurance",
-      "af_life_insurance_cash_value", "af_life_insurance_countable_cash_value", "af_life_insurance_countable_value_for_oap",
-      "af_life_insurance_countable_value_other_than_oap", "af_client_and_spouse_countable_resources", "af_sponsor_countable_resources",
-      "af_twfc_transfer_is_counted", "af_twfc_penalty_months", "af_burial_responsible_person_resources",
-      // step H1: the figures that read the holdings records (CO-5340 to CO-5350)
-      "af_cash_and_convertible_holdings", "af_countable_retirement_accounts", "af_countable_real_property", "af_countable_vehicles",
-      "af_countable_burial_holdings", "af_countable_personal_property", "af_countable_home_equity", "af_life_insurance_face_value",
-      "af_life_insurance_bought_within_lookback", "af_life_insurance_premiums_in_lookback", "af_resources_known_lower_bound",
-      "af_meets_resource_limit",
-    ],
     metamorphic: [
       "af_cash_and_convertible_holdings", "af_exempt_liquid_resources", "af_countable_retirement_accounts", "af_countable_real_property",
       "af_self_support_property_countable_value", "af_countable_vehicles", "af_countable_burial_holdings", "af_countable_personal_property",

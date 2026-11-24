@@ -23,7 +23,7 @@ import type { AidCodeMap } from "../ledger/aid-codes";
 import { CaseReader, caseMonth, codePrograms, householdCodes, type PersonProgram } from "./aidcodes";
 import { outcomesAffected } from "./counts";
 import { relationDescription } from "./people";
-import { formatFor, personLabel } from "./present";
+import { formatFor, formatMoney, personLabel } from "./present";
 import { programLabel } from "./roles";
 import {
   ageOn, budgetMoney, budgetRole, declaredOutcomePrograms, isHouseholdOutcome, plainCaseTitle,
@@ -338,6 +338,7 @@ export function whyInShort(walk: Walk, max = 5): { steps: WalkStep[]; skipped: n
 
 export interface StatedAmount {
   person: string;
+  /** A supplied money fact, or a record amount: `<list>.<kind>` (recordAmount). */
   identifier: string;
   /** What the case states (the largest month, for an amount stated by month). */
   value: number;
@@ -349,8 +350,43 @@ const EARNED = /wage|earn|salary|self_employ|tips/;
 const INCOME = /wage|income|earn|salary|benefit|pension|support|ssi|ssdi|social_security|unemployment|tips|self_employ/;
 const NOT_INCOME = /expense|cost|paid|premium|resource|value|balance|_due|deduct/;
 
+/** The record lists whose amounts a what-if can move (receipts CO-5000,
+ *  earnings CO-5100, holdings CO-5300): the money field each record states,
+ *  and whether it reads as income. Since steps E2 and H2 (docs/reviews/
+ *  records-e2-h2.md) a household states its income and resources there
+ *  alone, so they are the amounts a what-if moves. */
+const RECORD_LISTS: Readonly<Record<string, { field: string; income: boolean }>> = {
+  earnings: { field: "amount", income: true },
+  receipts: { field: "amount", income: true },
+  holdings: { field: "value", income: false },
+};
+/** Fields that mark a record as one part of a kind (a month's or a dated
+ *  payment, irregular or temporary pay, a joint or a disposed holding): a
+ *  what-if moves only the one recurring record of a kind. */
+const PART_FIELDS = ["month", "date", "irregular", "temporary_job", "paid_as_business_owner", "job_start_date", "job_end_date", "farm",
+  "retroactive", "holding_id", "share", "source_date", "disposed_date"];
+
+/** The list and kind of a record amount's identifier (`earnings.wages`), or
+ *  null for a supplied fact. */
+export function recordAmount(identifier: string): { list: string; kind: string; field: string } | null {
+  const i = identifier.indexOf(".");
+  const list = i > 0 ? identifier.slice(0, i) : "";
+  return RECORD_LISTS[list] ? { list, kind: identifier.slice(i + 1), field: RECORD_LISTS[list].field } : null;
+}
+
+/** The person's one recurring record of `kind` in `list`, or every such
+ *  record when there is more than one. */
+function ownRecords(facts: Record<string, unknown> | undefined, list: string, kind: string, field: string): Array<Record<string, unknown>> {
+  const rs = facts?.[list];
+  if (!Array.isArray(rs)) return [];
+  return (rs as Array<Record<string, unknown>>).filter((r) => r.kind === kind && typeof r[field] === "number" && r.frequency !== "once"
+    && PART_FIELDS.every((k) => r[k] === undefined));
+}
+
 /** The dollar amounts the stored household states for its people: what a
- *  "what if" can move. Incomes first, larger first. */
+ *  "what if" can move. Each supplied money fact, and each kind of record of
+ *  which the person states one recurring record (its amount, or a
+ *  holding's value). Incomes first, larger first. */
 export function statedAmounts(engine: Engine, hc: HouseholdCase): StatedAmount[] {
   const out: StatedAmount[] = [];
   for (const [pid, p] of Object.entries(hc.persons ?? {})) {
@@ -368,6 +404,14 @@ export function statedAmounts(engine: Engine, hc: HouseholdCase): StatedAmount[]
     for (const [k, v] of seen) {
       out.push({ person: pid, identifier: k, value: v, income: INCOME.test(k) && !NOT_INCOME.test(k) });
     }
+    const facts = p.facts as Record<string, unknown> | undefined;
+    for (const [list, { field, income }] of Object.entries(RECORD_LISTS)) {
+      const kinds = new Set(((Array.isArray(facts?.[list]) ? facts![list] : []) as Array<Record<string, unknown>>).map((r) => String(r.kind)));
+      for (const kind of kinds) {
+        const own = ownRecords(facts, list, kind, field);
+        if (own.length === 1) out.push({ person: pid, identifier: `${list}.${kind}`, value: own[0][field] as number, income });
+      }
+    }
   }
   const earned = (a: StatedAmount) => Number(a.income && EARNED.test(a.identifier) && a.value > 0);
   return out.sort((a, b) => earned(b) - earned(a) || Number(b.income) - Number(a.income) || Number(b.value > 0) - Number(a.value > 0)
@@ -378,41 +422,43 @@ export function amountKey(a: Pick<StatedAmount, "person" | "identifier">): strin
   return `${a.person}:${a.identifier}`;
 }
 
-/** The earnings record a scalar earned fact restates one to one during the
- *  earned-income records transition (docs/reviews/earnings-e0.md 5: what is
- *  left of wages_gross after its parts is the wages record; the business's
- *  gross receipts are its receipts record). A raise of the fact is a raise of
- *  that record too, so a program that reads the records sees it (the
- *  transition rule: both statements move together). */
-const RESTATED_AS: Readonly<Record<string, string>> = {
-  wages_gross: "wages",
-  self_employment_gross_receipts: "self_employment_receipts",
-};
+/** The name a stated amount is shown by: the supplied fact's, or the
+ *  record list's and the kind's (`Earnings records: wages`). */
+export function amountName(engine: Engine, identifier: string): string {
+  const r = recordAmount(identifier);
+  if (!r) return engine.item(identifier)?.name ?? identifier;
+  return `${engine.item(r.list)?.name ?? r.list}: ${r.kind.replace(/_/g, " ")}`;
+}
 
-/** The stored household with `delta` added to one stated amount, wherever
- *  the case states it (every month it is stated for), and to the earnings
- *  record that restates it: the person's one recurring record of that kind
- *  with no field that marks a part (a record is added when the person's
- *  stated earnings list has none). The original is not changed. */
+/** A stated amount's value as the page shows it: a record amount is money. */
+export function formatAmount(engine: Engine, identifier: string, value: number): string {
+  return recordAmount(identifier) ? formatMoney(value) : formatFor(engine, identifier, value);
+}
+
+/** The stored household with `delta` added to one stated amount: a
+ *  supplied fact wherever the case states it (every month it is stated
+ *  for), or a record amount on the person's one recurring record of that
+ *  kind (a record is added when the person's stated list has none). The
+ *  original is not changed. */
 export function withRaise(hc: HouseholdCase, a: Pick<StatedAmount, "person" | "identifier">, delta: number): HouseholdCase {
   const x = JSON.parse(JSON.stringify(hc)) as HouseholdCase;
   const p = x.persons[a.person];
   if (!p) return x;
-  let raised = false;
-  const bump = (rec: Record<string, unknown> | undefined) => {
-    if (rec && typeof rec[a.identifier] === "number") { rec[a.identifier] = (rec[a.identifier] as number) + delta; raised = true; }
+  const rec = recordAmount(a.identifier);
+  if (rec) {
+    const facts = p.facts as Record<string, unknown> | undefined;
+    const list = facts?.[rec.list];
+    const own = ownRecords(facts, rec.list, rec.kind, rec.field);
+    if (own.length === 1) own[0][rec.field] = (own[0][rec.field] as number) + delta;
+    else if (own.length === 0 && Array.isArray(list)) list.push({ kind: rec.kind, [rec.field]: delta });
+    return x;
+  }
+  const bump = (r: Record<string, unknown> | undefined) => {
+    if (r && typeof r[a.identifier] === "number") r[a.identifier] = (r[a.identifier] as number) + delta;
   };
   bump(p.facts as Record<string, unknown> | undefined);
   bump(p.month_defaults);
   for (const m of Object.values(p.months ?? {})) bump(m);
-  const kind = RESTATED_AS[a.identifier];
-  const earnings = (p.facts as Record<string, unknown> | undefined)?.earnings;
-  if (raised && kind && Array.isArray(earnings)) {
-    const parts = ["month", "date", "irregular", "temporary_job", "paid_as_business_owner", "job_start_date", "farm"];
-    const own = (earnings as Array<Record<string, unknown>>).filter((r) => r.kind === kind && parts.every((k) => r[k] === undefined));
-    if (own.length === 1 && typeof own[0].amount === "number") own[0].amount = (own[0].amount as number) + delta;
-    else if (own.length === 0) earnings.push({ kind, amount: delta });
-  }
   return x;
 }
 
@@ -422,8 +468,8 @@ export interface Watched { person: string; identifier: string }
  *  outcome that reads it (counts.ts `outcomesAffected`, verification flags
  *  left out), for every person. */
 export function watchedResults(engine: Engine, hc: HouseholdCase, identifier: string): Watched[] {
-  // a fact restated as an earnings record moves what reads the record too (RESTATED_AS)
-  const outs = new Set([...outcomesAffected(engine, identifier), ...(RESTATED_AS[identifier] ? outcomesAffected(engine, "earnings") : [])]);
+  // a record amount moves what reads its list
+  const outs = new Set(outcomesAffected(engine, recordAmount(identifier)?.list ?? identifier));
   const declared = declaredOutcomePrograms(engine).flatMap((p) => p.outcomes).filter((o) => outs.has(o));
   const tested = new Set(programsOfCase(engine.index, hc));
   const ids = declared.filter((o) => tested.has(engine.item(o)?.program ?? ""));

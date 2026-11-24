@@ -192,12 +192,12 @@ Phase 2 merged (CW, CCCAP and SUN Bucks, Medicaid and CHP+), the unearned final 
 | E1 AF | track | CO-3830, CO-2342, CO-1707/1708, deeming | 8 readers, 62 |
 | E1 CW | track | CO-1716, CO-2340, CO-1705/1706, CO-4361, new source | 8 readers, 59 |
 | E1 LEAP | track | CO-3925, CO-1711/1712, its CO-3912 copy | 4 readers, 25 |
-| E2 cleanup | integration owner | retire the earned scalars and translator; shared CO-1356, CO-3387 | 3 shared readers, 8 tests |
+| E2 cleanup | integration owner | retire the earned scalars and translator; shared CO-1356, CO-3387 | 3 shared readers, 8 tests. Done 2026-11-24 with H2 (docs/reviews/records-e2-h2.md): 48 facts and CO-1356 retired |
 | H0 foundation | integration owner | CO-5300 schema, `record_noun`, P58 (if D5), joint-holding check, 3 tables, translator from 74 facts (part-of carving as phase 1 did for lump sums) | 155 households, 227 rule tests |
 | H1 Medicaid | track (one, sequential sub-commits: SSI method, MSP, LTC and CSRA, transfers, trusts) | CO-4623, CO-608, CO-647, CO-646, CO-5206, CO-649/659, CO-650, CO-4620-4627 | 21 readers, 97 |
 | H1 AF | track | CO-4000, CO-4412, CO-2389/2390, CO-4722, CO-3840, burial | 11 readers, 65 |
 | H1 SNAP | track | CO-4176, CO-074, CO-343, CO-3702, CO-4158-4160 | 5 readers, 58 |
-| H2 cleanup | integration owner | retire scalars, CO-800/801/2861, translator | |
+| H2 cleanup | integration owner | retire scalars, CO-800/801/2861, translator | Done 2026-11-24 with E2 (docs/reviews/records-e2-h2.md): 65 facts retired; CO-800 and CO-801 are derived from the holdings since H1 and stay, CO-2861 is listed in docs/reviews/orphan-facts.md |
 
 Households and rule tests are mostly shared between tracks, which is why the translator, not the tracks, restates them.
 

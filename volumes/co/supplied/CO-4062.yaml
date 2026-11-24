@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person-month
 program: All
-meaning: "Whether the agency has received documents, other than receipts (self_employment_cost_receipts_received, CO-3927), that verify the business costs of the person's self-employment stated for the month (the operating, interest and business vehicle costs, CO-3370 to CO-3375): such as bank or credit card statements showing the payments, a mileage log, or the business's tax return schedule."
+meaning: "Whether the agency has received documents, other than receipts (self_employment_cost_receipts_received, CO-3927), that verify the business costs of the person's self-employment stated for the month (the operating, interest and business vehicle costs: earnings of kinds business_cost_operating, business_cost_interest and business_cost_vehicle, CO-5100): such as bank or credit card statements showing the payments, a mileage log, or the business's tax return schedule."
 precision: "Each program decides which documents verify a cost: LEAP takes only receipts (9 CCR 2503-7 3.755.21.I.2-3) and does not read this fact; CCCAP takes any verification the county obtains (8 CCR 1403-1 3.111.G.2.a), receipts or these documents. If not stated, CCCAP reads it as false."
 supplied_by: The documents the applicant provides.
 sources: [S1637]

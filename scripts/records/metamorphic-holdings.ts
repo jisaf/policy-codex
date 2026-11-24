@@ -1,7 +1,7 @@
 // Resource records: metamorphic relations (design 4.4). The same holdings
 // stated in each way the record permits must give the same answer where the
 // policy says it should. Each relation transforms a household's holdings
-// records only (the scalar facts stay as stated) and compares the figures
+// records only and compares the figures
 // each track registers as reading the records (scripts/records/programs/*.ts,
 // `holdings.metamorphic`); a track lists, with the rule, each relation its
 // rules say is not invariant (`notInvariant`), and that relation is not run
@@ -30,8 +30,8 @@
 //                     bank_account. Since the H1 integration, only those
 //                     two kinds (EXPIRING): other held_ kinds have rows
 //                     with no time limit in some table.
-// In step H0 no figure reads the records, so every relation is run on no
-// figure and reports so; the machinery is here for the H1 tracks. The
+// Run over the stored households and the generated households (generate-
+// holdings.ts), each stated in the records alone since step H2. The
 // harness also checks that every relation, applied to every stored
 // household, gives a statement the schema and the joint-holding check
 // accept (a relation that produced an invalid household would test nothing).
