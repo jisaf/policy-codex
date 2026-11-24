@@ -133,9 +133,38 @@ const shareClass: Record<string, string> = {};
   }
 }
 
+// The known limits the product owner reviews with each program's owner
+// (docs/reviews/known-limits.md): "## Program" sections of "### ID ..." entries.
+// An entry whose body starts "**Closed" is closed; the programs come from the
+// section heading (and SUN Bucks where the entry names it).
+const knownLimits: Array<{ id: string; title: string; section: string; programs: string[]; closed: string | null; paras: string[] }> = [];
+{
+  const f = path.join(root, "docs/reviews/known-limits.md");
+  if (fs.existsSync(f)) {
+    const PROGS: Array<[RegExp, string]> = [[/SNAP/, "SNAP"], [/CCCAP/, "CCCAP"], [/LEAP/, "LEAP"], [/Adult Financial/, "AdultFinancial"],
+      [/Colorado Works/, "ColoradoWorks"], [/Medicaid/, "Medicaid"], [/CHP\+/, "CHP+"], [/SUN Bucks/, "SunBucks"]];
+    let section = "";
+    for (const block of fs.readFileSync(f, "utf8").split(/^(?=##+ )/m)) {
+      const head = /^(##+) (.*)$/m.exec(block);
+      if (!head) continue;
+      if (head[1] === "##") { section = head[2].trim(); continue; }
+      const m = /^([A-Z][A-Z0-9-]*\d)\.?\s*(?:\(([^)]*)\))?:?\s*(.*)$/.exec(head[2].trim());
+      if (!m) continue;
+      const body = block.slice(block.indexOf("\n") + 1).trim();
+      const paras = body.split(/\n\s*\n|\n(?=- \*\*)/).map((p) => p.trim()).filter(Boolean);
+      const closed = /^\*\*Closed\b/.test(paras[0] ?? "") ? paras[0].replace(/^\*\*Closed\s*(\([^)]*\))?\.?\*\*\s*/, "").trim() || "closed" : null;
+      // The programs the entry itself names in its title, description or table; else its section's.
+      const own = m[3] + " " + (paras.find((p) => p.startsWith("- **Description")) ?? "") + " " + paras.filter((p) => p.startsWith("|")).join(" ");
+      const named = PROGS.filter(([re]) => re.test(own)).map(([, p]) => p);
+      const programs = named.length ? named : PROGS.filter(([re]) => re.test(section)).map(([, p]) => p);
+      knownLimits.push({ id: m[1], title: (m[3] || m[2] || "").replace(/^./, (c) => c.toUpperCase()), section, programs, closed, paras: closed ? paras.slice(1) : paras });
+    }
+  }
+}
+
 const data = {
   generated: new Date().toISOString().slice(0, 10),
-  chapters, items, meta, sources, documents, questions, cases, aidCodes, touched, shareClass,
+  chapters, items, meta, sources, documents, questions, cases, aidCodes, touched, shareClass, knownLimits,
 };
 // A host may hold each file to 16 MB (a claude.ai Artifact): the households and
 // what each reads go in data-cases.json, which src/store.ts loads from `parts`.
