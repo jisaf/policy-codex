@@ -7,5 +7,4 @@ summary: >-
   OQ-900), the Children's Buy-In infrequent and Census exclusions (C3-8), 1619(b) before the denial (C3-9), and loans
   and tax refunds in the 300% test (C3-10).
 impact:
-  - {changed: CO-613, fingerprint: fp1-a1cd44610fa59dee7bf4, flagged: CO-617, not_applicable: "ma_msp_category only orders the QMB, SLMB, QI-1 and QDWI results; the resource change sits in CO-613 to CO-616, which it reads."}
-  - {changed: CO-616, fingerprint: fp1-92038d319fca7d9163c9, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
+  - {changed: CO-616, fingerprint: fp1-270a7fb27ab19df1d3bd, flagged: CO-617, not_applicable: "As for CO-613: CO-617 orders the tier results and reads CO-616, where the beneficiary-deed change sits."}
