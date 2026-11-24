@@ -6,9 +6,9 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the person has unearned income in the month that Adult Financial counts (af_countable_income, CO-946, reads these sources): every unearned source but the Adult Financial grant itself."
-precision: "Receipt records, migration phase 1: the month's receipts of every kind but SSI and the grant (other than a retroactive lump sum of either), gambling winnings and a sponsor's money, as the unearned income facts it summed held them."
-derived: [">", [sum_receipts, receipts, [all, [received_in, [month]], [not, [in, [receipt, kind], [gambling_winnings, sponsor_payment]]], [any, [receipt, retroactive], [not, [in, [receipt, kind], [ssi, adult_financial_cash]]]]], [receipt, amount]], 0]
-sources: [S875, S880]
+precision: "Receipt records, migration phase 1: the month's receipts of every kind but SSI and the grant (other than a retroactive lump sum of either), gambling winnings and a sponsor's money, as the unearned income facts it summed held them. Field sweep fix round (docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-1): a stream (a receipt with no month and no date) is read only in the months from the month of its start_date through the month of its end_date, as SNAP's readers read it (snap_counted_recurring_receipts, CO-5011), since \"All income shall be countable in the month it is actually received or legally becomes available\" (9 CCR 2503-5 3.520.781.G, S4910): a pension that ended, or one not yet begun, is received in no month outside those dates; a receipt stated with its month or date is read in that month. Before, a stream was read in every month whatever its dates."
+derived: [">", ["sum_receipts", "receipts", ["all", ["all", ["received_in", ["month"]], ["any", ["not", ["unknown", ["receipt", "month"]]], ["all", ["any", ["unknown", ["receipt", "start_date"]], ["<=", ["month_of", ["receipt", "start_date"]], ["month"]]], ["any", ["unknown", ["receipt", "end_date"]], [">=", ["month_of", ["receipt", "end_date"]], ["month"]]]]]], ["not", ["in", ["receipt", "kind"], ["gambling_winnings", "sponsor_payment"]]], ["any", ["receipt", "retroactive"], ["not", ["in", ["receipt", "kind"], ["ssi", "adult_financial_cash"]]]]], ["receipt", "amount"]], 0]
+sources: [S875, S880, S4910]
 implemented: engine
 tags: [cash, income, verification]
 rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
@@ -16,3 +16,5 @@ nearest: [CO-2870, CO-2871, CO-2873, CO-2874]
 tests:
   - {id: CO-2872-T1, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: colorado_works_cash, amount: 488}]}, title: "Only the Colorado Works grant", expect: true}
   - {id: CO-2872-T2, month: "2026-11", as_of: "2026-11-01", given: {ma_is_aged_blind_or_disabled: false, receipts: [{kind: ssi}, {kind: child_support, amount: 200}]}, title: "Child support received", expect: true}
+  # Field sweep fix round (FS-AF-1): hand-computed from 9 CCR 2503-5 3.520.781.G (S4910): a stream is received only from the month of its start_date through the month of its end_date.
+  - {"id": "CO-2872-T3", "month": "2026-11", "as_of": "2026-11-01", "title": "A $500 pension that ended 2026-10-31 is the only receipt: nothing received in November, false", "given": {"ma_is_aged_blind_or_disabled": false, "receipts": [{"kind": "pension", "amount": 500, "end_date": "2026-10-31"}]}, "expect": false}

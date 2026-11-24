@@ -3494,13 +3494,15 @@ Checked 2026-11-23: 10 CCR 2506-1 4.409.C (D-82); 7 CFR 273.8(d) (S3129). Items:
 
 Resolved in part (coverage pass 4 for SNAP resources, 2026-11-23; docs/reviews/coverage4-snap-resources.md, SR-8; the class check found the text settles the spouse in an institution): 4.409.C and 273.8(d) count a holding owned jointly with a separate household in its entirety, and whether a co-owner of the case is a member of the person's SNAP household is derivable: a spouse (co_owners spouse) from the spouse relationship and the household's members, another person of the case from the record (co_owner, naming the person). A co-owner of the case who is not a member of the person's SNAP household is a separate household, so the co-owners' part is added (snap_countable_liquid_resources, CO-4176; snap_real_property_not_exempt, CO-5310; snap_countable_real_property, CO-5311; snap_countable_other_nonliquid_resources, CO-6900): the worked example counts $6,000. Stays open: an ineligible student is a non-household member living with the household (4.411.2.C, S2508), whose resources are not available to the household, but who is not a separate household in 4.409.C's words; a holding shared with an ineligible student who buys and prepares with the household is read at the person's share (the student is in snap_household_members), as before.
 
-### OQ-1253. Adult Financial holdings: the interest on the exempt $1,500 of a revocable burial trust or contract
+### OQ-1253. Narrowed: Adult Financial holdings: the interest on the exempt $1,500 of a revocable burial trust or contract whose principal is over $1,500
 
 Body: 9 CCR 2503-5 3.520.77.G.3 (S2619): "A revocable burial trust is exempt if the value of the trust does not exceed one thousand five hundred dollars ($1,500). Any interest on the exempt $1,500 is also exempt. Any amount over $1,500 is a countable resource." H.2.b says the same of a revocable prepaid burial contract. The holdings record states a burial fund's or contract's value and the interest accrued in it (accrued_interest, CO-5300), but the rule does not say how the interest is split between the exempt $1,500 and the rest when the principal is over $1,500, and Adult Financial has never read the interest (af_countable_burial_holdings, CO-5344, counts the value over $1,500, as af_person_countable_resources_other_than_life_insurance did before step H1). Worked example: a revocable trust of $1,500 that has earned $120 of interest, value $1,620: if the interest on the exempt $1,500 is exempt, nothing counts; read as today, $120 counts. A trust of $3,000 principal with $200 of interest: interest in proportion to principal gives $100 on the exempt $1,500, so $1,600 counts; read as today, $1,700.
 
+Narrowed (field sweep fix round, 2026-11-23; docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-AF-5): a trust or contract whose principal (value less accrued_interest) is $1,500 or less has all its interest on the exempt $1,500, so G.3 and H.2.b exempt it whole: the first worked example ($1,620, $120 of interest) counts 0, read by af_countable_burial_holdings (CO-5344). What stays open is the split when the principal is over $1,500 (the second worked example).
+
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: The value over $1,500 counts, interest included (today's reading), until the owner says how the interest on the exempt $1,500 is measured.
+Assumption: With a principal over $1,500, the value over $1,500 counts, interest included, until the owner says how the interest on the exempt $1,500 is measured.
 
 Checked 2026-11-23: 9 CCR 2503-5 3.520.77.G.3, H.2 (D-80). No paragraph on file allocates the interest. Items: CO-5344, CO-5302.
 
@@ -3681,9 +3683,11 @@ Body: 10 CCR 2506-1 4.410.F.3 (S2968) makes "Any funds in a trust or transferred
 
 Class: state policy choice
 Owner: SNAP policy owner, Legal
-Assumption: Trust interests and annuities are not counted, as before; if the owner reads the federal "and" as governing, a revocable trust's available corpus and a surrenderable annuity's value are counted, and fields for the trustee and the trust's investments are requested.
+Assumption: A trust interest is counted at its value unless the county has found its funds inaccessible under 4.410.F.3 (SNAP's finding on the holdings record): the county applies F.3's conditions as the owner reads them, and the volume reads its finding, so a revocable trust with no finding cannot be determined (decision 4) rather than being left out. Annuities are not counted, as before; if the owner reads the federal "and" as governing, a surrenderable annuity's value is counted.
 
-Checked 2026-11-23: 10 CCR 2506-1 4.410.F.3 (D-82); 7 CFR 273.8(c)(2), (e)(8) (D-191). Items: CO-5301, CO-6900, CO-074.
+Field sweep fix round (2026-11-23; docs/reviews/field-sweep-snap-cash-nonmagi.md, FS-SNAP-4): before, the trust_interest row was not_counted_reading_open, so a revocable trust of $10,000 counted nothing under either reading (F.3.a fails for it, so under "or" it is inaccessible only if a trustee or investment condition holds, and under "and" it is never inaccessible). The row is now counted_unless_found_inaccessible; the open part is how the county applies F.3 ("or" or "and"), not whether the volume reads the trust.
+
+Checked 2026-11-23: 10 CCR 2506-1 4.410.F.3 (D-82); 7 CFR 273.8(c)(2), (e)(8) (D-191). Items: CO-5301, CO-6900, CO-074, CO-4176, CO-5300.
 
 ### OQ-1308. SNAP: the measure of "income consistent with its fair market value" for income-producing property and installment contracts
 
@@ -3824,3 +3828,23 @@ Due: the engine owner's next operator round after 2026-11-23: a way for a receip
 Assumption: The dependent's own income does not include the amount; a dependent paid separately by the VA states that payment on the dependent's own list (416.1123(e)(2)(ii)).
 
 Checked 2026-11-23: 20 CFR 416.1123(e) (D-53); docs/operators.md "Receipt records" (P55, "A record that names a person"). Items: CO-5000, CO-5511, CO-5514, CO-6730.
+
+### OQ-1335. Colorado Works: which twelve months irregular self-employment income is averaged over, and when receipts "vary significantly"
+
+Body: 9 CCR 2503-6 3.605.2.E.3 (S4913): "If receipt of self-employment income is irregular or varies significantly from month to month, it shall be averaged over a twelve-month period." The paragraph names no period (Adult Financial's 9 CCR 2503-5 3.520.783.F, S4914, names two: the previous tax year or the twelve months before the application date) and no measure of a significant variation. The field sweep fix round (FS-CW-5) averages, in each month, the net profit of the twelve months ending with that month, for a person with a business receipts record marked irregular in those twelve months (cw_self_employment_net_profit, CO-1706; cw_irregular_self_employment_averaging_months, CO-7100). Worked example: $2,400 of irregular receipts in February 2027: $200 in each month from February 2027 to January 2028 under the assumption; under the previous tax year, $200 in each month of 2028 and nothing in 2027; under the twelve months before an application in March 2027, $200 in each month of the certification. A business whose receipts are regular but vary from month to month has no field: it is stated irregular meanwhile.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The twelve months ending with the month evaluated; "varies significantly" is stated as irregular on the business receipts record.
+
+Checked 2026-11-23: 9 CCR 2503-6 3.605.1, 3.605.2.E (D-81); 9 CCR 2503-5 3.520.783.F (D-80) for comparison. Neither names the Colorado Works period. Items: CO-1706, CO-7100, CO-5100.
+
+### OQ-1336. Adult Financial: who chooses between the two twelve-month periods for irregular self-employment income
+
+Body: 9 CCR 2503-5 3.520.783.F (S4914): "If receipt of self-employment income is irregular, it shall be averaged over a twelve-month period. The twelve-month period can either be the previous tax year (January to December) or the most recent twelve-months prior to the application date." The text allows either and does not say whether the county department or the client chooses, or by what test (the period that better represents expected income). The field sweep fix round (FS-AF-3) reads the period the determination used as a supplied fact (af_self_employment_averaging_period, CO-7102), required for a person with irregular business receipts. Worked example: $2,400 of irregular receipts in May 2026, a client applying in March 2027: $200 a month under either period; with the receipts in February 2027 instead, $200 under the twelve months before the application and nothing under the previous tax year.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The county department states the period it used; no default.
+
+Checked 2026-11-23: 9 CCR 2503-5 3.520.783.E-F (D-80). Items: CO-1708, CO-7101, CO-7102.

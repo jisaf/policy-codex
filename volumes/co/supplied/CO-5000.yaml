@@ -155,7 +155,11 @@ record_fields:
   for_dependent:
     type: money
     default: 0
-    meaning: "The part of a veterans benefit that the Department of Veterans Affairs pays the person because of a dependent of the person (an amount for a spouse or child in the award)."
+    meaning: "The part of a veterans benefit that the Department of Veterans Affairs pays the person because of a dependent of the person (an amount for a spouse or child in the award). An award with amounts for two dependents is stated as one record per dependent, each with that dependent's part and for_person (records are disjoint)."
+  for_person:
+    type: person
+    when_absent: "the amount for a dependent (for_dependent) is for no person of the case"
+    meaning: "For a receipt with an amount for a dependent (for_dependent), the person of the case that amount is for: the person's id in the case. A rule that counts the dependent's part as the dependent's income reads it (9 CCR 2503-5 3.520.785.B.4, 9 CCR 2503-6 3.605.3.B.5: \"countable unearned income to the dependent rather than to the veteran\"; field sweep fix round, FS-AF-2, FS-CW-2)."
   regular_date:
     type: calendar date
     when_absent: "the payment came on the day its schedule set for it"
