@@ -88982,7 +88982,7 @@
         institution_entry_date: "2026-08-01"
         expects_institutional_stay_of_thirty_days: true
         meets_nursing_facility_level_of_care: true
-        is_patient_in_institution_for_mental_diseases: false  # Coverage pass 7 F7-5: the long-term care outcome reads 8.100.3.G.1.c (CO-1179); the story's nursing facility is not an institution for mental diseases
+        residence_setting_is_primarily_for_mental_diseases: false  # Coverage pass 7 F7-5: the long-term care outcome reads 8.100.3.G.1.c (CO-1179); the story's nursing facility is not primarily for mental diseases
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional
         has_income_trust: false
@@ -90472,7 +90472,7 @@
 - id: CO-1104
   title: "Coverage pass 7 F7-5 (IMD-LTC): a 40-year-old patient of an institution for mental diseases is not eligible for long-term care"
   # Probe IMD-LTC of docs/reviews/coverage7-medicaid-nonmagi.md (F7-5, P1). CO-900's resident, here 40 (born 1986-03-12), disabled
-  # since 2020 (SSA's finding), a patient since 2026-08-03 of a psychiatric hospital that is an institution for mental diseases;
+  # since 2020 (SSA's finding), a patient since 2026-08-03 of a psychiatric hospital of 60 beds primarily for mental diseases (an institution for mental diseases, CO-1104);
   # Social Security 2,500, bank account 1,200. Determined 2026-11-12.
   # 10 CCR 2505-10 8.100.3.G.1.c (S659): "Not be a patient in an institution for tuberculosis or mental disease, unless the person is
   # under 21 years of age or has attained 65 years of age". 40 on the first and last day of November: excluded
@@ -90539,7 +90539,8 @@
             value: 1200
         ma_retroactive_coverage_requested: true
         disability_onset_date: 2020-01-01
-        is_patient_in_institution_for_mental_diseases: true
+        residence_setting_is_primarily_for_mental_diseases: true
+        residence_setting_bed_count: 60
       month_defaults:
         donated_work_hours_per_week: 0
         wages_gross: 0
