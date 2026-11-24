@@ -190,7 +190,19 @@ lives together in the month (`ma_lives_with_in_month`: a person who died
 before the month lives with no one), and an inmate is one on every day of the
 month (`ma_is_inmate_in_month`, from `institution_entry_date`). The person-scope
 items they replace (CO-509, CO-1173, CO-1174, lives_with) stay for readers
-that test the determination itself.
+that test the determination itself. Every other Medicaid category reads status
+and residency the same way (Medicaid status by month, MS-1 to MS-3,
+2026-11-24): the Aged, Blind and Disabled groups, the long-term care tests,
+the Medicare Savings Programs, the Buy-Ins, the protected groups, emergency
+Medicaid and the Breast and Cervical Cancer Program read
+`ma_meets_citizenship_requirement_in_month`, which tests, in a month that ends
+before `qualified_status_date`, the status held then
+(`ma_meets_citizenship_requirement_before_qualified_status`), and
+`ma_meets_residency_in_month`: resident on a day of the month, from
+`state_of_residence_start_date` for a month before the application month
+(8.100.5.C.1 makes the Aged, Blind and Disabled categories effective from the
+first day of the month the person becomes eligible, so the any-day reading is
+theirs too).
 
 SNAP reads its ages the same way (coverage pass 4 S4-11; 10 CCR 2506-1
 4.402.1.A, "circumstances during the issuance month"): its household
