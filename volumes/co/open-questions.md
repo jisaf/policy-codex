@@ -3908,6 +3908,6 @@ Body: Pattern sweep, MAGI (2026-11-24, docs/reviews/pattern-sweep-magi.md, PS-07
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: The facts the case states for the determination date hold in each retroactive month, except where the case states the date of a change (a pregnancy's start and end, qualified_status_date, date_of_birth, date_of_death, institution_entry_date).
+Assumption: The facts the case states for the determination date hold in each retroactive month, except where the case states the date of a change (when a pregnancy began and ended, when the person obtained qualified status, the date of birth, the date of death, the date a stay in an institution began).
 
 Checked 2026-11-24: 10 CCR 2505-10 § 8.100.3.E.1-2 (D-65, S217, S1503), § 8.100.4.G.1 (S3351), 42 CFR 435.915(a) (D-35, S218), 42 CFR 435.403 (D-33, S171): each makes a retroactive month's requirements its own and none says how they are established for a month before the application or what the agency asks about them. CHP+ has no retroactive months (10 CCR 2505-3 § 430.1), so only its application month can precede a change. Items: CO-2250, CO-7402, CO-548, CO-539, CO-552, CO-7551, CO-7555, CO-5214, CO-1976.
