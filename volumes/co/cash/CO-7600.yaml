@@ -1,0 +1,19 @@
+id: CO-7600
+name: "Colorado Works: the day a month's dated circumstances are read on"
+identifier: cw_month_reading_date
+kind: derived
+type: calendar date
+scope: person-month
+program: ColoradoWorks
+meaning: "The day on which a Colorado Works circumstance that changes on a stated date (the days an absence from the home or the State has lasted, the days a stay in an institution has lasted, the months a visit or placement has lasted) is read for the month evaluated: for a month before the determination month, the month's last day, so the month is judged on the absence or stay as it stood in that month; for the determination month and any later month, the determination date, the day the case's facts are stated as of. Each month is judged on its own circumstances (9 CCR 2503-6 3.605.1.A.1: the month of application's circumstances determine eligibility; 3.609.2.A.1: the initial payment runs from the date of application or the later date the unit became eligible); which day of an earlier month is read is OQ-1435."
+precision: "Pattern sweep (cash) PS-T8 (docs/reviews/pattern-sweep-cash.md): the absence and stay readers (cw_meets_residency CO-904, cw_assistance_unit_members_for_size CO-2351, cw_is_institution_resident CO-3804, cw_is_considered_living_in_home_in_month CO-7602) measured every month to the determination date, so an application month was judged on an absence that passed its limit only later (a member who left on August 1 and is determined on November 15 was out of the State more than ninety days in September, though on September 30 the absence was sixty days old). The determination month keeps the determination date, so no answer for the determination month or a later month changes."
+derived: [case, [["<", [month], [det_month]], [days_after, -1, [first_day, [month_after, [month]]]]], [else, [det_date]]]
+sources: [S412, S2602, S3156]
+open: [OQ-1435]
+implemented: engine
+tags: [cash, tanf]
+rationale: "Pattern sweep (cash), PS-T8: four Colorado Works readers measured an absence or a stay to the determination date in every month; one item states the day each month reads them on, so they agree."
+tests:
+  - {id: "CO-7600-T1", title: "September, before the determination month (October 15): September 30", as_of: "2026-10-15", month: "2026-09", given: {}, expect: "2026-09-30"}
+  - {id: "CO-7600-T2", title: "The determination month: the determination date", as_of: "2026-10-15", month: "2026-10", given: {}, expect: "2026-10-15"}
+  - {id: "CO-7600-T3", title: "A later month: the determination date (the case's facts are stated as of it)", as_of: "2026-10-15", month: "2026-11", given: {}, expect: "2026-10-15"}

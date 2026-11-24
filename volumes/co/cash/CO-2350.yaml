@@ -8,6 +8,7 @@ program: ColoradoWorks
 meaning: "This person is not in any Colorado Works assistance unit: the person receives SSI or a Title IV foster care, adoption subsidy or kinship payment (9 CCR 2503-6 3.604.2.C.3), or is an optional member (C.2) who has not requested assistance."
 derived: [any, receives_ssi, cw_receives_title_iv_foster_adoption_kinship_payment, [all, cw_is_optional_assistance_unit_member, [not, [otherwise, cw_requests_inclusion_in_assistance_unit, false]]]]
 sources: [S1625, S411]
+open: [OQ-1436]
 implemented: engine
 tags: [cash, tanf, household]
 rationale: "OQ-152: cw_assistance_unit_members (CO-900) filtered on the C.3 exclusions alone; one item now states every reason a person in the home is left out, the optional member who did not ask included."

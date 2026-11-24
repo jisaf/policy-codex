@@ -1,0 +1,18 @@
+id: CO-7604
+name: "Adult Financial: the client's sponsors in the month"
+identifier: af_sponsors_in_month
+kind: derived
+type: group of persons
+scope: person-month
+program: AdultFinancial
+meaning: "The sponsors of this non-citizen client (sponsors, CO-2713) who had not died before the month evaluated began: a sponsor's obligation ends when the sponsor dies, though \"The death of one sponsor does not terminate the support obligation of a joint sponsor\" (9 CCR 2503-5 3.520.69.B.5), so in a month after a sponsor's death the income and resources deemed are the surviving sponsors' only."
+precision: "Pattern sweep (cash) PS-M2 (docs/reviews/pattern-sweep-cash.md): af_sponsor_deeming_applies (CO-4400) read sponsor_has_died (CO-2336) in the determination month, so deeming stopped for every month a determination covered when the last sponsor died in the determination month, and went on in full, the deceased sponsor's income and resources included, when one of two sponsors died. Each month now deems the sponsors living on its first day."
+derived: [filter, sponsors, [any, [unknown, [of, [P], date_of_death]], [">=", [of, [P], date_of_death], [first_day, [month]]]]]
+sources: [S3203, S1632, S1636]
+implemented: engine
+tags: [cash, oap, and, household]
+rationale: "Pattern sweep (cash), PS-M2: the end of a sponsor's obligation at death (3.520.69.B.5) is per sponsor and per month; the shared sponsor_has_died answers only whether every sponsor has died, in the determination month."
+tests:
+  # Pattern sweep (cash) PS-M2: 3.520.69.B.5 (S3203); two joint sponsors, one dies on 2026-09-20; determined 2026-10-15.
+  - {id: "CO-7604-T1", title: "Pattern sweep PS-M2: September, both sponsors alive on its first day", as_of: "2026-10-15", month: "2026-09", given: {}, others: {p2: {date_of_death: "2026-09-20"}, p3: {}}, relationships: [[sponsored_by, p1, p2], [sponsored_by, p1, p3]], expect: [p2, p3]}
+  - {id: "CO-7604-T2", title: "PS-M2: October, the joint sponsor who survives (B.5: the death of one does not end the other's obligation)", as_of: "2026-10-15", month: "2026-10", given: {}, others: {p2: {date_of_death: "2026-09-20"}, p3: {}}, relationships: [[sponsored_by, p1, p2], [sponsored_by, p1, p3]], expect: [p3]}

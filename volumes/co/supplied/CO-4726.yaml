@@ -5,7 +5,7 @@ kind: supplied
 type: calendar date
 scope: person
 program: AdultFinancial
-meaning: "The date the county department and the Case Management Agency approved the person for the Home Care Allowance, as the case records it: the date that opens the twelve-month leave period of 9 CCR 2503-5 3.570.17.C.7.b and whose month 3.570.13.F names (\"the first day of the month following the month in which the HCA is approved\")."
+meaning: "The date the county department and the Case Management Agency approved the person for the Home Care Allowance, as the case records it: the date that opens the twelve-month leave period of 9 CCR 2503-5 3.570.17.C.7.b and whose month 3.570.13.F names (\"the first day of the month following the month in which the HCA is approved\"). Not stated for a person not approved for the Home Care Allowance before this determination: such a person, found eligible, is approved at this determination, so the month of approval is the determination month and payment begins the month after it (3.570.13.F, \"There shall be no retroactive HCA payments\"), and no twelve-month leave period has begun (3.570.17.C.7.b). Pattern sweep (cash) PS-D1 (docs/reviews/pattern-sweep-cash.md): before, a case that did not state the date was paid the allowance in every month, the determination month and the months before it included."
 precision: "Not stated: read as approved before the month evaluated, so af_hca_grant (CO-1219) pays the month (an ongoing client)."
 supplied_by: "County department HCA approval record."
 sources: [S3501, S3503]

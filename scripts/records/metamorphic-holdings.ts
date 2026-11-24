@@ -74,7 +74,12 @@ function mapHoldings(c: HouseholdCase, f: (rs: Rec[], pid: string) => Rec[]): Ho
 /** The pairs of spouses of a household who both state holdings. */
 function spousePairs(c: HouseholdCase): Array<[string, string]> {
   const out: Array<[string, string]> = [];
-  const has = (pid: string) => Array.isArray(c.persons[pid]?.facts?.holdings);
+  // A spouse who died on or before the determination date is no spouse of the months the relation's figures are read
+  // in (9 CCR 2503-5 3.520.63.A: widowed; Adult Financial's spouse of the month, af_spouses_in_month CO-7603, cash
+  // pattern sweep PS-M1), so an account stated joint with that person is not the couple's: the pair is not a couple and
+  // the relation does not apply to it (docs/reviews/pattern-sweep-cash.md, section 7).
+  const alive = (pid: string) => { const d = c.persons[pid]?.facts?.date_of_death; return typeof d !== "string" || d > c.as_of; };
+  const has = (pid: string) => Array.isArray(c.persons[pid]?.facts?.holdings) && alive(pid);
   for (const r of c.relationships ?? []) if (r[0] === "spouse" && has(r[1]) && has(r[2]) && !out.some(([a, b]) => (a === r[2] && b === r[1]))) out.push([r[1], r[2]]);
   for (const [pid, p] of Object.entries(c.persons)) for (const r of (p.relationships ?? []) as Array<[string, string]>) {
     if (r[0] === "spouse" && has(pid) && has(r[1]) && !out.some(([a, b]) => (a === pid && b === r[1]) || (a === r[1] && b === pid))) out.push([pid, r[1]]);

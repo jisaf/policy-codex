@@ -3,11 +3,11 @@ name: "Adult Financial: married"
 identifier: af_is_married
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: AdultFinancial
 meaning: "Whether the Adult Financial client is married, as the county determines the client's marital status (9 CCR 2503-5 3.520.63.A: \"Single, never married; Married; Widowed; or, Divorced or legally separated\"; D: a client not legally separated is married): a spouse edge to a person of the case, or marital_status married for a spouse who is not a person of the case, as the shared is_married (CO-930) reads a marriage, with neither the relationships nor the marital status read as none when not stated: a client with no spouse edge whose marital status is not stated is not known to be unmarried."
-precision: "Coverage pass 6 CA6-7 (docs/reviews/coverage6-cash.md): is_married (CO-930), a shared item, reads a person who states neither a spouse edge nor a marital status as not married, a default no Adult Financial rule gives (decision 4 of 2026-11-23); Adult Financial's readers (the couple's $20, af_client_general_income_disregard CO-3829; the couple's resource limit, af_meets_resource_limit CO-948; the SSI child, af_is_ssi_child CO-4022) read this item, which asks for the marital status 3.520.63.A makes the county determine. is_married itself is unchanged; its other readers (CO-005, CO-1164, CO-1986, CO-4103, CO-4260) are other programs' and are listed in the review, not changed here."
-derived: ["any", ["exists_related", ["spouse"], true], ["=", "marital_status", "married"]]
+precision: "Coverage pass 6 CA6-7 (docs/reviews/coverage6-cash.md): is_married (CO-930), a shared item, reads a person who states neither a spouse edge nor a marital status as not married, a default no Adult Financial rule gives (decision 4 of 2026-11-23); Adult Financial's readers (the couple's $20, af_client_general_income_disregard CO-3829; the couple's resource limit, af_meets_resource_limit CO-948; the SSI child, af_is_ssi_child CO-4022) read this item, which asks for the marital status 3.520.63.A makes the county determine. is_married itself is unchanged; its other readers (CO-005, CO-1164, CO-1986, CO-4103, CO-4260) are other programs' and are listed in the review, not changed here. Pattern sweep (cash) PS-M1 (docs/reviews/pattern-sweep-cash.md): per month: a spouse of the month (af_spouses_in_month, CO-7603), so a client whose spouse died before the month is widowed in it (3.520.63.A.3) unless marital_status states a marriage to a spouse outside the case; before, a spouse edge made the client married in every month."
+derived: ["any", [">", ["count", "af_spouses_in_month"], 0], ["=", "marital_status", "married"]]
 sources: [S2626, S3204]
 implemented: engine
 tags: [cash, household]
@@ -15,6 +15,9 @@ nearest: [CO-930]
 rationale: "Coverage pass 6 CA6-7: the default inside the shared is_married decided Adult Financial's $20 split and couple resource limit for a case that stated no marital status; this item keeps the shared reading and adds the requirement, so no other program's answer moves."
 tests:
   # 3.520.63.A (S2626): the county determines the client's marital status; D (S3204): not legally separated is married.
-  - {id: "CO-7308-T1", title: "Marital status not stated: cannot determine (decision 4)", as_of: "2026-10-01", given: {}, relationships: [], expect: unknown}
-  - {id: "CO-7308-T2", title: "Widowed, no spouse edge: not married", as_of: "2026-10-01", given: {marital_status: widowed}, relationships: [], expect: false}
-  - {id: "CO-7308-T3", title: "Married to a person of the case (a spouse edge): married", as_of: "2026-10-01", given: {marital_status: married}, others: {p2: {marital_status: married}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: "CO-7308-T1", title: "Marital status not stated: cannot determine (decision 4)", as_of: "2026-10-01", month: "2026-10", given: {}, relationships: [], expect: unknown}
+  - {id: "CO-7308-T2", title: "Widowed, no spouse edge: not married", as_of: "2026-10-01", month: "2026-10", given: {marital_status: widowed}, relationships: [], expect: false}
+  - {id: "CO-7308-T3", title: "Married to a person of the case (a spouse edge): married", as_of: "2026-10-01", month: "2026-10", given: {marital_status: married}, others: {p2: {marital_status: married}}, relationships: [[spouse, p1, p2]], expect: true}
+  # Pattern sweep (cash) PS-M1: 3.520.63.A (S2626): married while the spouse lives; widowed from the month after a death before its first day. The husband dies on 2026-09-20 and the case states her status on the determination date (widowed); determined 2026-10-15.
+  - {id: "CO-7308-T4", title: "Pattern sweep PS-M1: September, the husband alive on its first day: married", month: "2026-09", as_of: "2026-10-15", given: {marital_status: widowed}, others: {p2: {date_of_death: "2026-09-20"}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: "CO-7308-T5", title: "PS-M1: October, widowed: not married (the couple's resource limit and the split $20 no longer apply)", month: "2026-10", as_of: "2026-10-15", given: {marital_status: widowed}, others: {p2: {date_of_death: "2026-09-20"}}, relationships: [[spouse, p1, p2]], expect: false}

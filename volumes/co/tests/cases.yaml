@@ -66,6 +66,9 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        af_determination_is_redetermination: false  # pattern sweep (cash) PS-D9: stated (decision 4); the story is an application, the value the reader read when it was unstated
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         is_surviving_spouse_of_va_pensioner: false  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -301,6 +304,8 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        af_determination_is_redetermination: false  # pattern sweep (cash) PS-D9: stated (decision 4); the story is an application, the value the reader read when it was unstated
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -522,6 +527,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -726,6 +732,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -934,6 +941,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2169,6 +2177,8 @@
   persons:
     p1:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         is_surviving_spouse_of_va_pensioner: false  # coverage pass 6 F6-10: stated (decision 4: no rule-given default)
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2404,6 +2414,7 @@
         shelter_cost_monthly: 0
     p2:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         is_enrolled_in_medical_assistance: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2625,6 +2636,7 @@
         shelter_cost_monthly: 1400
     p3:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         is_claimed_by_filer_outside_case: false  # C6-04: no claimer outside the case
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -2829,6 +2841,7 @@
         hours_worked: 138
     p4:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -3036,6 +3049,7 @@
         "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
+        af_interview_date: "2026-10-01"  # pattern sweep (cash) PS-D8: stated (decision 4); the interview the story dates with the verification request, the date the reader read when it was unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         temporary_absence_reason: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         cw_is_optional_member_by_custody_or_support: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -5799,7 +5813,7 @@
       # time_limit_reached, it is extended. The review's derivation predates the C-3(a) fix that made the
       # extension read over cw_assistance_unit_members rather than the person asked.
       cw_eligibility_status: {"2026-10": eligible}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}
       cw_meets_work_participation: {"2026-10": false}
       af_category: {"2026-10": none}
@@ -5813,7 +5827,7 @@
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}
       cw_meets_work_participation: {"2026-10": false}   # C-3: his sanction enters through work_sanction_level_served (second), which reduces the unit's grant (CO-1264, CO-1265)
       af_category: {"2026-10": none}
@@ -5826,7 +5840,7 @@
       cw_unit_size: {"2026-10": 0}
       cw_countable_income: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       af_category: {"2026-10": and_cs}    # C-4/K-6 fixed (and B-2: countable income 700 < 994): eligible - ssi_income $700 < the $994 federal benefit rate (ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 294}    # B-2: 994 - 700 (3.548.B, 3.549.A.2); phase 8 had 994 with the SSI add-back unmodeled
@@ -5837,7 +5851,7 @@
       cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": false}
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
@@ -5850,7 +5864,7 @@
       cw_countable_income: {"2026-10": 900}
       cw_grant_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
-      cw_time_limit_reached: false
+      cw_time_limit_reached: {"2026-10": false}
       cw_is_work_eligible_individual: {"2026-10": true}   # C-6: she receives no TANF and lives with no TANF child of her own
       af_countable_income: {"2026-10": 880}
       af_meets_resource_limit:
@@ -6141,6 +6155,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         dwelling_id: h1
         marital_status: single  # coverage pass 6 CA6-7: stated (decision 4); no spouse in the story, the reading Adult Financial gave it when unstated (af_is_married, CO-7308)
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -6730,6 +6745,9 @@
   persons:
     p1:
       facts:
+        af_hca_combined_leave_days_in_approval_year: 0  # pattern sweep (cash) PS-D1: stated (decision 4); she lives at home with no leave in the story, the value the reader read when it was unstated
+        af_hca_approval_date: "2013-12-31"  # pattern sweep (cash) PS-D1: stated (decision 4); the story has Ruth on OAP and HCA as of 2013-12-31 (3.570.13.B.3), so approved by that day; the day itself is not in the story and no answer turns on it
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -10898,6 +10916,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
@@ -10980,6 +10999,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_participating_in_strike: false  # coverage pass 6 CA6-7: stated (decision 4); the story has no strike, the value Colorado Works read when unstated
         days_out_of_state_in_calendar_year: 0
@@ -12189,7 +12209,7 @@
       sponsor_spouse_is_cosponsor: false
       sponsor_has_spouse_in_household: true
       sponsor_has_died: false
-      af_sponsor_deeming_applies: true
+      af_sponsor_deeming_applies: {"2026-10": true}
       af_deemed_sponsor_income: {"2026-10": 1212}
       af_sponsor_countable_resources: {"2026-10": 2900}
       snap_sponsor_deeming_applies: {"2026-10": false}
@@ -14270,6 +14290,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         af_and_so_certification_identifies_substance_abuse: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -16776,6 +16798,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
@@ -16822,6 +16846,7 @@
     p2:
       relationships: []
       facts:
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         is_emancipated_minor: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -17973,7 +17998,7 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_is_presumed_nonresident_by_absence: true
+      af_is_presumed_nonresident_by_absence: {"2026-10": true}
       af_meets_residency: {"2026-10": false}
       af_countable_income: {"2026-10": 580}
       af_category: {"2026-10": none}
@@ -17999,6 +18024,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         stays_with_succession_of_others_without_permanent_arrangement: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -18219,6 +18246,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         dwelling_id: h1
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         status_before_lpr_adjustment: none  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
@@ -18294,7 +18322,7 @@
         shelter_costs_paid_by_others: 0
   expect:
     p1:
-      af_sponsor_deeming_applies: false
+      af_sponsor_deeming_applies: {"2026-10": false}
       af_deemed_sponsor_income: {"2026-10": 0}
       af_countable_income: {"2026-10": 580}
       af_category: {"2026-10": oap}
@@ -18574,7 +18602,7 @@
   expect:
     p1:
       cw_months_of_assistance_used: 10
-      cw_time_limit_reached: true
+      cw_time_limit_reached: {"2026-10": true}
       cw_eligibility_status: {2026-10: time_limit_reached}
       cw_grant_amount: {2026-10: 0}
     p2:
@@ -34334,6 +34362,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -34392,6 +34422,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -34715,7 +34747,12 @@
       af_hca_eligibility_status:
         2026-10: eligible
       af_hca_grant:
-        2026-10: 977
+        # Pattern sweep (cash) PS-D1: 3.570.13.F (S3503) "the HCA grant payment shall begin on the first day of the month
+        # following the month in which the HCA is approved ... There shall be no retroactive HCA payments." The probe states
+        # no earlier approval, so she is approved at this determination (October): nothing for October, $977 from November.
+        # Before, an unstated approval date was read as no limit and October was paid.
+        2026-10: 0
+        2026-11: 977
 
 - id: CO-306
   title: 'Probe PZ-4 (Adult Financial coverage 2 G-4): an OAP client who died in September has no October eligibility'
@@ -60964,6 +61001,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -61024,6 +61063,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
@@ -66498,6 +66539,8 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
@@ -71319,6 +71362,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71411,6 +71455,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71843,6 +71888,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -71892,6 +71938,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -85572,6 +85619,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -85621,6 +85669,7 @@
     p1:
       relationships: []
       facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
         received_financial_assistance_from_another_state_this_month: false
         residence_setting_type: private_dwelling
         date_of_birth: '1956-04-10'
@@ -88944,3 +88993,393 @@
         "2026-09": eligible_institutional
         "2026-10": eligible_institutional
         "2026-11": eligible_institutional
+
+- id: CO-1030
+  title: 'Pattern sweep (cash) PS-M1: an OAP client whose husband dies on September 20; October is a widow''s month'
+  # Built for the cash pattern sweep, PS-M1 (docs/reviews/pattern-sweep-cash.md). p1, 70, is an OAP client with Social Security of $600 and
+  # $500 in the bank (CO-896's client); p2, her husband, 68, receives Social Security of $700 (it ends with the month of his death) and
+  # dies on 2026-09-20. A continuing client (no application or eligibility date), determined 2026-10-15; her marital status on that
+  # date is widowed (9 CCR 2503-5 3.520.63.A.3).
+  # September (he is alive on its first day): married. His unearned income 700 is under the OAP grant standard, 1,032, so nothing is
+  # deemed (3.534.B.2). The couple's $20 is split (3.533.A.2, af_married_couple_disregard_share .5): 600 - 10 = 590; 1,032 - 590 = $442.
+  # October: widowed (CO-7603: no spouse alive on its first day). Her own $20: 600 - 20 = 580; 1,032 - 580 = $452. Before the sweep the
+  # spouse edge kept her married in October: 590 and $442.
+  as_of: '2026-10-15'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        temporary_absence_reason: none
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: '1958-01-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 0
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 700
+          end_date: '2026-09-30'
+        earnings: []
+        holdings: []
+        date_of_death: '2026-09-20'
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_deemed_relative_income:
+        2026-09: 0
+        2026-10: 0
+      af_is_married:
+        2026-09: true
+        2026-10: false
+      af_countable_income:
+        2026-09: 590
+        2026-10: 580
+      af_oap_grant:
+        2026-09: 442
+        2026-10: 452
+
+- id: CO-1031
+  title: 'Pattern sweep (cash) PS-T9: an OAP client away from Colorado since August 1 applies September 10, determined November 5'
+  # Built for the cash pattern sweep, PS-T9 (docs/reviews/pattern-sweep-cash.md). p1, 70, widowed, Social Security $600, $500 in the bank
+  # (CO-896's client alone), left Colorado on 2026-08-01, not for medical treatment, intending to return; she applied on 2026-09-10 and
+  # met every requirement that day; determined 2026-11-05.
+  # 3.520.64.E.2 presumes a client out of the State ninety or more consecutive days no longer a resident. September 30: 60 days (OQ-953:
+  # the day she left not counted): a resident; October 31: 91 days, presumed (OQ-1435: an earlier month read on its last day); November 5
+  # (the determination date): 96 days, presumed.
+  # September: countable 600 - 20 = 580, 1,032 - 580 = 452; eligible from September 10, 21 days, .69041 (3.581.D.4): 452 x .69041 =
+  # 312.07, cents dropped (3.581.E): $312. October and November: none. Before the sweep every month counted the days to the
+  # determination date (96): none in September too.
+  as_of: '2026-11-05'
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: other_with_intent_to_return
+        received_financial_assistance_from_another_state_this_month: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 96
+        residence_setting_type: private_dwelling
+        date_of_birth: '1956-04-10'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+        receipts:
+        - kind: social_security
+          amount: 600
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+        temporarily_out_of_state_start_date: '2026-08-01'
+        temporary_absence_is_outside_united_states: false
+        is_out_of_state_caring_for_family_member_injured_in_military_duty: false
+        af_application_date: '2026-09-10'
+        af_eligibility_date: '2026-09-10'
+        temporary_absence_start_date: '2026-08-01'
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_is_presumed_nonresident_by_absence:
+        2026-09: false
+        2026-10: true
+        2026-11: true
+      af_category:
+        2026-09: oap
+        2026-10: none
+        2026-11: none
+      af_oap_grant:
+        2026-09: 312
+        2026-10: 0
+        2026-11: 0
+
+- id: CO-1032
+  title: 'Pattern sweep (cash) PS-T8: a daughter visiting her father under a parenting plan since April 20; September is the sixth month'
+  # Built for the cash pattern sweep, PS-T8 (docs/reviews/pattern-sweep-cash.md), from CO-883's unit (a mother and her daughter, no
+  # income). The daughter has been visiting her father under a parenting plan since 2026-04-20; the mother applies on 2026-09-10;
+  # determined 2026-10-15.
+  # 3.604.2.G.2 keeps a child visiting a noncustodial parent under a parenting plan in the home "for no more than six months", counted
+  # from the month the visit began (April): September is the sixth month (in the home), October the seventh (out).
+  # September: one caretaker and one child, grant standard $488, no income; the initial payment from September 10, 21 days, .69041
+  # (3.609.2.A.1, E): 488 x .69041 = 336.92, $336. October: no dependent child in the home: ineligible_no_dependent_child, $0.
+  # Before the sweep the visit was counted to the determination month in every month, so the daughter was out of the unit in
+  # September too: ineligible, $0.
+  as_of: '2026-10-15'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_determination_is_recertification: false
+    cw_determination_is_redetermination: false
+    cw_application_date: '2026-09-10'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        temporary_absence_reason: none
+        cw_is_optional_member_by_custody_or_support: false
+        is_participating_in_strike: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: '2002-02-02'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+    p2:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        temporary_absence_reason: visiting_noncustodial_parent_under_parenting_plan
+        cw_is_optional_member_by_custody_or_support: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: true
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2020-06-01'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+        temporary_absence_start_date: '2026-04-20'
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  expect:
+    p1:
+      cw_eligibility_status:
+        2026-09: eligible
+        2026-10: ineligible_no_dependent_child
+      cw_grant_amount:
+        2026-09: 336
+        2026-10: 0
+    p2:
+      cw_is_considered_living_in_home_in_month:
+        2026-09: true
+        2026-10: false

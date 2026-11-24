@@ -5,7 +5,7 @@ kind: supplied
 type: calendar date
 scope: person
 program: AdultFinancial
-meaning: "The date of the client's Adult Financial application interview (or the redetermination), from which 9 CCR 2503-5 3.541.1.A.1.b counts the thirty calendar days to submit the AND-SO medical examination. If not stated, Adult Financial reads it as verification_request_date, the date the county requested the verification, which is usually the interview date."
+meaning: "The date of the client's Adult Financial application interview (or the redetermination), from which 9 CCR 2503-5 3.541.1.A.1.b counts the thirty calendar days to submit the AND-SO medical examination. Required where read (decision 4 of 2026-11-23; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D8): no rule dates the thirty days from the verification request, which was read in its place before."
 supplied_by: County department case record (interview date).
 sources: [S1080]
 tags: [verification, cash, and]

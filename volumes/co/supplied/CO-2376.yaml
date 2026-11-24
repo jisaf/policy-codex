@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: "The Adult Financial determination for this client is a redetermination rather than an application (9 CCR 2503-5 3.520.72.D.4)."
-precision: "If not stated, Adult Financial reads the determination as an application."
+precision: "Required where read (decision 4; Pattern sweep (cash), 2026-11-24 (docs/reviews/pattern-sweep-cash.md): PS-D9), as Colorado Works' cw_determination_is_redetermination is since coverage pass 6 CA6-2."
 supplied_by: "CBMS case action type (redetermination)."
 sources: [S888]
 tags: [cash, verification]
