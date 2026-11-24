@@ -99002,22 +99002,48 @@
       cccap_household_income:
         2026-11: unknown
 - id: CO-1168
-  title: 'Coverage verification 7, V7-8: a lawful permanent resident who adjusted from a student visa counts the five years from the permanent residence'
+  title: 'Coverage verification 7, V7-8: a lawful permanent resident who adjusted from a student visa counts the five years from the permanent residence, for Medicaid, SNAP and the cash programs'
   # Built for coverage verification 7 (V7-8) from CO-1127: a lawful permanent resident since 2023-03-01 who adjusted from a student visa, a status
   # in which she was not a qualified alien (8 U.S.C. 1641(b), S1900): status_before_lpr_adjustment non_qualified_status, first_qualified_status_date
   # not stated. 8 U.S.C. 1613(a) (S176): five years "beginning on the date of the alien's entry into the United States with a status within the
   # meaning of the term qualified alien": her first qualified status is the permanent residence, 2023-03-01; to 2026-11-30, 3 whole years, so
   # November 2026 is inside the five years: not held, and the MAGI status is emergency_only (as CO-1127 admitted directly). Before the fix she
   # stated the earlier status as other and the first date equal to the LPR date, or November was cannot determine.
+  # Close-out verification F1 (docs/reviews/known-limits.md, 2026-11-24; probes A3, B4, B5): the same mother, with no income and her daughter p2
+  # (born 2020-06-01, a citizen; CO-1141's), applies for SNAP and Colorado Works on 2026-10-12 (CO-1141's application). The start of the waiting
+  # period read by SNAP and the cash programs (qualified_non_citizen_waiting_period_start_date, CO-7820) reads non_qualified_status as none: 2023-03-01.
+  # SNAP, October 2026: 8 U.S.C. 1612(a)(2)(L) (S22), 10 CCR 2506-1 4.305.B.3.a (S12): 2023-03-01 to 2026-10-31 is 3 whole years < 5, no 40
+  # quarters (0), no exemption (an adult, not disabled, no military or Indian connection): the additional condition is not met (CO-307), and she is
+  # an ineligible member, ineligible_member_non_citizen.
+  # Colorado Works: C.R.S. 26-2-706(1.5)(b) (S402): "in a qualified alien status for a period of five years"; 2023-03-01 to the determination date
+  # 2026-11-10 is 3 whole years (has_held_qualified_status_five_years CO-508 false; meets_public_assistance_citizenship_requirement CO-905 false):
+  # she is ineligible_status, out of the unit. The daughter alone is a No Caretaker unit of one child with no income: grant standard 173 (3.606.1.F
+  # chart, S414, S1800), October paid from the application date, 20 days at .65754 (3.609.2.A.1, S3156): 173 x .65754 = 113.75, cents dropped: $113.
+  # Adult Financial: she is 40 and not disabled, af_category none in any case; the status test she would need (CO-905) is not met.
+  # Before the fix every SNAP and cash answer of hers, and the daughter's grant, was cannot determine (the first qualified date was asked again).
   as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: '2026-10-12'
+    snap_determination_is_recertification: false
+    cw_application_date: '2026-10-12'
+    cw_determination_is_redetermination: false
   persons:
     p1:
       facts:
+        is_surviving_spouse_of_veteran: false
+        qualifying_quarters_with_federal_means_tested_benefit: 0
+        receives_va_non_service_connected_pension: false
+        receives_railroad_retirement_disability_annuity: false
+        receives_disability_based_medical_assistance: false
+        is_spouse_or_dependent_child_of_hmong_or_highland_lao_veteran: false
         marital_status: single
         received_financial_assistance_from_another_state_this_month: false
         af_burial_responsible_persons_outside_case_resources: 0
         af_and_so_certification_identifies_substance_abuse: false
-        expected_annual_income: 12000
+        expected_annual_income: 0
         days_out_of_state_in_calendar_year: 0
         residence_setting_type: private_dwelling
         is_member_of_federally_recognized_tribe: false
@@ -99044,7 +99070,7 @@
         sex: female
         immigration_status: lawful_permanent_resident
         is_tax_filer: true
-        is_required_to_file_tax_return: true
+        is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: '2026-11-02'
         ma_retroactive_coverage_requested: false
@@ -99059,7 +99085,7 @@
         date_of_birth: '1986-03-01'
         dwelling_id: h1
         is_claimed_by_filer_outside_case: false
-        is_required_to_file_tax_return_excluding_social_security: true
+        is_required_to_file_tax_return_excluding_social_security: false
         is_sponsored_non_citizen: false
         adult_financial_program_received: none
         ma_failed_to_pursue_potential_resources_or_income: false
@@ -99070,18 +99096,56 @@
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_self_employment_seasonal_or_commission_earnings: false
         receipts: []
-        earnings:
-        - kind: wages
-          amount: 1000
-          seasonal_or_commission: false
+        earnings: []
         qualified_status_date: '2023-03-01'
         status_before_lpr_adjustment: non_qualified_status
         us_entry_date: '2019-05-01'
         is_hmong_or_highland_lao_veteran: false
         is_american_indian_born_in_canada_or_tribal_member: false
+        temporary_absence_reason: none
+        cw_is_optional_member_by_custody_or_support: false
+        is_participating_in_strike: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        af_has_total_disability_six_months: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        meets_nursing_facility_level_of_care: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        holdings:
+        - kind: bank_account
+          value: 300
       month_defaults:
         donated_work_hours_per_week: 0
-        wages_gross: 1000
+        wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
         magi_other_taxable_income: 0
@@ -99094,15 +99158,140 @@
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_needy_young_person_basis: none
-        electronic_data_source_monthly_gross_income: 1000
+        electronic_data_source_monthly_gross_income: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
       relationships: []
-  relationships: []
+    p2:
+      relationships: []
+      facts:
+        is_required_to_file_tax_return: false
+        is_required_to_file_tax_return_excluding_social_security: false
+        dependent_child_has_minimum_essential_coverage: true
+        dwelling_id: h1
+        is_emancipated_minor: false
+        af_burial_responsible_persons_outside_case_resources: 0
+        temporary_absence_reason: none
+        cw_is_optional_member_by_custody_or_support: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: fixed_regular_adequate
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        receives_ssi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        receives_unemployment_compensation_or_applied: false
+        participates_in_drug_alcohol_treatment: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        liquid_resources_value: 300
+        cccap_declares_assets_within_limit: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: '2020-06-01'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        meets_nursing_facility_level_of_care: false
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 300
+      month_defaults:
+        donated_work_hours_per_week: 0
+        health_insurance_premiums_paid: 0
+        shelter_cost_monthly: 0
+        participates_in_workfare: false
+        abawd_discretionary_exemption_month: false
+        abawd_waiver_area_month: false
+        received_full_snap_benefit_month: false
+        work_program_hours: 0
+        hours_worked: 0
+        medical_expenses_out_of_pocket: 0
+        dependent_care_expense: 0
+        child_support_paid_legally_obligated: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        wages_gross: 0
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - tax_filer
+    - p1
+    - p2
   expect:
     p1:
       ma_has_held_qualified_status_five_years_in_month:
         2026-11: false
       ma_magi_eligibility_status:
         2026-11: emergency_only
+      qualified_non_citizen_waiting_period_start_date: '2023-03-01'
+      snap_meets_immigrant_additional_condition:
+        2026-10: false
+      snap_person_participation_status:
+        2026-10: ineligible_member_non_citizen
+      has_held_qualified_status_five_years: false
+      meets_public_assistance_citizenship_requirement: false
+      cw_eligibility_status:
+        2026-10: ineligible_status
+      af_category:
+        2026-10: none
+    p2:
+      cw_eligibility_status:
+        2026-10: eligible
+      cw_grant_amount:
+        2026-10: 113
 - id: CO-1169
   title: 'Coverage verification 7, V7-6 (S2-F): earlier energy assistance payments not stated give the application month no heating and cooling allowance'
   # Built for coverage verification 7 (V7-6) from CO-1072: LEAP paid in November 2026, after the October application month; the months of earlier
