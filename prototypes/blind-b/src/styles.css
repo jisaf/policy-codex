@@ -1,5 +1,5 @@
 :root {
-  --paper: #f6f4ee; --card: #fffefb; --ink: #1c2330; --ink2: #4a5364; --ink3: #6b7385; --line: #e0dccf; --line2: #ece8dc;
+  --paper: #f6f4ee; --card: #fffefb; --ink: #1c2330; --ink2: #4a5364; --ink3: #5e6678; --line: #e0dccf; --line2: #ece8dc;
   --accent: #0d5c6e; --accent-ink: #0a4856; --accent-bg: #e3f0f1;
   --ok: #1f6b3a; --ok-bg: #e2f1e5; --warn: #9a4a00; --warn-bg: #fdefd8; --q: #6a3d9a; --q-bg: #f0e8f8; --fed: #8a1f3c; --fed-bg: #fbe9ee;
   --rule: #0d5c6e; --fact: #7a4b00; --fig: #5b3a9e;
@@ -273,3 +273,12 @@ table.grid td { padding: 0; vertical-align: top; min-width: 9.5rem; } table.grid
 .tmarks { display: inline-flex; gap: 2px; }
 .tmarks i { display: inline-block; width: 6px; height: 6px; border-radius: 1px; border: 1px solid; }
 .tablewrap { overflow-x: auto; }
+
+/* persona check fixes (docs/reviews/rulebook-persona-check.md) */
+.inshort ol li { padding: .2rem 0; } .inshort .dstep-val { margin-left: .2rem; } .inshort-in li { padding: .15rem 0 .15rem .8rem; }
+pre.kl-table { white-space: pre-wrap; overflow-x: auto; font: .78rem/1.4 var(--mono); background: #f8f6ef; padding: .5rem; border-radius: 6px; }
+table.fields-t td { padding: .35rem .6rem .35rem 0; } table.fields-t th { padding-bottom: .3rem; }
+@media (max-width: 720px) {
+  .dkids .dstep { margin-left: 0; padding-left: .45rem; } .dstep-name { overflow-wrap: anywhere; min-width: 0; }
+  .dstep-body .rule { overflow-x: auto; } .dstep-body, .dkids { min-width: 0; max-width: 100%; }
+}
