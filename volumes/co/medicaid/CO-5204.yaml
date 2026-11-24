@@ -11,6 +11,7 @@ derived: [all, [">", [sum_receipts, holdings, [all, ["=", [lookup, ma_ssi_holdin
 sources: [S3403, S3616, S4665, S4501, S1753, S1503]
 implemented: engine
 tags: [ma, non_magi, resources]
+open: [OQ-1415]
 rationale: "Coverage pass 3 C3-5: the Medicare Savings Program tests and parental deeming need the home that only a beneficiary deed makes countable, so the other arms of CO-4622 are stated once here and CO-4622 reads them."
 nearest: [CO-4622]
 tests:

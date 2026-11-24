@@ -3901,3 +3901,13 @@ Owner: Child care policy owner (CDEC)
 Assumption: The caretaker's hours in the month in all the businesses stated, together, over the month's days divided by seven.
 
 Checked 2026-11-24: 8 CCR 1403-1 3.103 (no definition of active management or of a week), 3.111.G.2, H.4, H.4.e, I.2, I.12, I.17 (D-87). Items: CO-7251, CO-7252, CO-7254, CO-5156, CO-6404.
+
+### OQ-1415. Medicaid long-term care: whether a retroactive month before the Case Management Agency's assessment is an HCBS, PACE or level-of-care month
+
+Body: Pattern sweep, non-MAGI Medicaid (docs/reviews/pattern-sweep-nonmagi.md, P1). The long-term care, HCBS and PACE rules read the functional findings as the Case Management Agency (or the Utilization Review Contractor) states them on the determination date: the waiver target group (meets_hcbs_waiver_target_group, CO-821), the waiver's level of care and condition criteria (CO-1178, CO-2270), the nursing facility level of care (CO-820), the PACE service area and community-safety findings (CO-2412, CO-2413) and the requested setting (CO-2411). 10 CCR 2505-10 § 8.100.7.B.1 (S3408) provides HCBS or PACE "to persons who have been assessed by the Single Entry Point/Case Management Agency to have met the institutional level of care"; § 8.7100.C.9 (S375) has the agency certify waiver eligibility for those it determines to meet the target group and level of care; § 8.401 (D-55) requires the Level of Care determination "prior to admission to a Medicaid certified nursing facility". A nursing facility month before the admission is already not a long-term care month (ma_is_institutionalized, CO-640), so the question is the community settings: no text on file says whether a retroactive month (§ 8.100.3.E.1, S1503) before the agency's assessment or certification is an HCBS or PACE month. Worked example: a person assessed for the EBD waiver on 2026-10-20, applying 2026-11-02 for the retroactive months, meets every financial test in August: with the codex's reading August is an HCBS month (eligible_hcbs); if the certification governs, August is not_institutionalized_or_waiver.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The findings stated on the determination date are read for every month the determination covers, retroactive months included.
+
+Checked 2026-11-24: 10 CCR 2505-10 § 8.100.7.A.1, B.1-2 (D-65), § 8.7100.C.9 and § 8.7101 (D-75), §§ 8.400-8.401 (D-55), § 8.7000-8.7001 (D-56); none dates the assessment's effect on a retroactive month. Items: CO-653, CO-654, CO-3310, CO-4630, CO-5204, CO-1631, CO-2267.

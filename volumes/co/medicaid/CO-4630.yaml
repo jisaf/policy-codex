@@ -11,6 +11,7 @@ derived: [all, [in, [otherwise, ma_ltc_setting_requested, none], [hcbs, pace]], 
 sources: [S3408, S5030]
 implemented: engine
 tags: [ma, ltc, hcbs]
+open: [OQ-1415]
 rationale: "Coverage review NM-12 and NM-22: ma_hcbs_waiver_eligible (CO-653) let the Buy-In route bypass the 300% and resource tests, but ma_ltc_unmet_requirement (CO-3310) tested them for every applicant, so a Buy-In worker above 300% of the FBR was reported ineligible_income; and B.1.a's 1619(b) and OAP routes were missing. ma_ltc_unmet_requirement and ma_hcbs_waiver_eligible read this item."
 tests:
   - {id: CO-4630-T1, as_of: "2026-10-12", month: "2026-10", title: "X-WAWDHCBS: Buy-In worker designated for EBD", given: {ma_ltc_setting_requested: hcbs, ma_is_ssi_related_eligible: false, retains_ssi_status_without_payment: false, ma_oap_sisc_b_eligible: false, ma_wawd_eligible: true, meets_hcbs_waiver_target_group: ebd}, expect: true}
