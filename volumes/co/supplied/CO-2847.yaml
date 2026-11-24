@@ -7,6 +7,7 @@ scope: person
 program: All
 options: [none, title_iv_e_foster_care, state_funded_foster_care, title_iv_b_services_only, title_iv_e_adoption_assistance, state_subsidized_adoption, title_iv_e_kinship_guardianship, state_kinship_guardianship]
 meaning: "The child welfare payment or service the person (a child) receives this month, as the child welfare record shows it: none; title_iv_e_foster_care (Title IV-E foster care maintenance payments); state_funded_foster_care (foster care paid by the State or county outside Title IV-E); title_iv_b_services_only (a child in foster care receiving Title IV-B child welfare services without IV-E payments); title_iv_e_adoption_assistance; state_subsidized_adoption (a subsidized adoption paid outside Title IV-E); title_iv_e_kinship_guardianship (Title IV-E kinship guardianship assistance); state_kinship_guardianship."
+precision: "If not stated, LEAP reads this as none (leap_household_members, CO-1000, CO-1009): a child welfare payment is one the county makes for a child it has placed, and a case states it where one is made (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: The child welfare (Trails) case record.
 sources: [S409, S844, S854, S1717, S1952]
 tags: [household]

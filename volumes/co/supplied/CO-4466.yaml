@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the agency has received a physician's statement or other medical verification that the person is incapacitated, unable to care for the person's children, for this application or redetermination."
-precision: "If not stated, every program reads it as false (not received)."
+precision: "If not stated, every program reads it as false (not received). If not stated, CCCAP reads this as false: a document is received only when the county records it (S3265); a verification requested and not received is pending (three-pattern sweep D-5, docs/reviews/pattern-sweep-snap-ce.md)."
 supplied_by: "Date-stamped document receipt in the case file."
 sources: [S3265, S1409]
 tags: [verification]

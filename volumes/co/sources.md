@@ -25005,3 +25005,37 @@ Document: D-80
 > the SSI or SSDI benefits are received shall be created and the client
 > shall be liable to repay the AND-SO or Colorado Supplement grant
 > payments that were issued.
+### S5090. SNAP: the heating and cooling standard for energy assistance received in the current month or the immediately preceding 12 months
+
+Document: D-13
+
+7 CFR 273.9(d)(6)(iii)(D)(3), (D)(3)(iii)-(iv) (three-pattern sweep T-10). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (*3*) Households that receive a payment or on behalf of which a payment was made under the Low Income Home Energy Assistance Act of 1981 (LIHEAA) or other similar energy assistance program, if in the current month or in the immediately preceding 12 months and such payment was greater than $20 annually.
+>
+> (*iii*) The State agency shall document the date and receipt of a payment made under LIHEAA or other similar energy assistance program to ensure the payment was received in the current month or the immediately preceding 12 months and exceeds $20 annually.
+>
+> (*iv*) State agencies shall not consider anticipated receipt of a payment to be an actual payment received under the LIHEAA or other similar energy assistance program when determining a household's eligibility for the HCSUA. However, for purposes of this sub clause, a State agency may consider a payment under the LIHEAA or other similar energy assistance program to be received by the household, or on behalf of the household, if the household is scheduled to receive the payment in the current month.
+
+### S5091. SNAP: eligibility for the month of application on the household's circumstances for the entire month
+
+Document: D-14
+
+7 CFR 273.10(a)(1)(i) (three-pattern sweep). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (a) *Month of application*—(1) *Determination of eligibility and benefit levels.* (i) A household's eligibility shall be determined for the month of application by considering the household's circumstances for the entire month of application.
+
+### S5092. Colorado SNAP: a student's enrollment begins with the term and is continuous until the student graduates, leaves or does not intend to register
+
+Document: D-82
+
+10 CCR 2506-1 4.306.C (version effective 2026-10-01; three-pattern sweep T-11). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. The enrollment status of a student shall begin on the first day of the school term
+> of the institution of higher education. Once a student enrolls in an institution of
+> higher education, such enrollment shall be deemed continuous through normal
+> periods of class attendance, vacation, and recess unless the student graduates,
+> is suspended or expelled, drops out or does not intend to register for the next
+> normal school term (excluding summer session). It is possible for a student to
+> enroll prior to the beginning of the school term. However, for eligibility purposes,
+> enrollment starts when the student starts classes.
