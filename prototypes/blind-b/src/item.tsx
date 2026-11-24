@@ -53,7 +53,6 @@ export function ItemPage({ id }: { id: string }) {
           {it.kind === "parameter" && <FigureSection it={it} />}
           {it.kind === "supplied" && <FactSection it={it} />}
           {it.kind === "derived" && <RuleSection it={it} steps={q.steps} />}
-          <CodeSection it={it} />
           {it.precision && <Fold title="Fine print: edge cases and how they are measured"><p><Rich text={it.precision} /></p></Fold>}
           {it.kind === "derived" && <ReadsSection it={it} />}
           <SharedSection it={it} />
@@ -346,7 +345,9 @@ function SignSection({ it }: { it: CItem }) {
     <section class="card" id="signoff">
       <h2>Sign-off</h2>
       <p class="small muted">This item is a Draft until each of these roles has signed it. A signature is recorded through a reviewed change, like any other edit.</p>
-      <p class="small">You sign the item as it is defined in <a href="#code" onClick={(e) => { e.preventDefault(); document.getElementById("code")?.scrollIntoView({ behavior: "smooth" }); }}>Definition as code</a>: its meaning, its answer type{it.kind === "derived" ? ", its formula" : it.kind === "parameter" ? ", its dated values" : ""} and its tests. A later change to that definition needs signing again.</p>
+      <h3 id="code">What you sign: the definition as code</h3>
+      <p class="small muted">Your signature approves this item exactly as defined here: its meaning, its answer type{it.kind === "derived" ? ", its formula" : it.kind === "parameter" ? ", its dated values" : ""} and its tests. A later change to it needs signing again.</p>
+      <CodeView it={it} />
       <table class="signs">
         <tbody>
           {need.map((r) => {
@@ -500,7 +501,7 @@ export function describeEdit(before: Item, after: Item): ComponentChildren[] {
 
 /** The item as engineers implement it: the key fields in plain words, then the
  *  item's file exactly as stored in the volume (fetched on demand). */
-function CodeSection({ it }: { it: CItem }) {
+export function CodeView({ it }: { it: CItem }) {
   const [src, setSrc] = useState<{ file: string; text: string } | null | undefined>(undefined);
   const [msg, setMsg] = useState("");
   useEffect(() => { let live = true; itemSource(it.id).then((x) => live && setSrc(x), () => live && setSrc(null)); return () => { live = false; }; }, [it.id]);
@@ -514,9 +515,7 @@ function CodeSection({ it }: { it: CItem }) {
     try { navigator.clipboard.writeText(src.text).then(() => setMsg("Copied."), () => setMsg("Copy did not work here; select the text instead.")); } catch { setMsg("Copy did not work here; select the text instead."); }
   };
   return (
-    <section class="card" id="code">
-      <h2>Definition as code</h2>
-      <p class="small muted">What engineers implement, and what your signature approves.</p>
+    <div class="codeview">
       <dl class="code-facts">
         <dt>Name in code</dt><dd><code>{it.identifier}</code></dd>
         <dt>Answer type</dt><dd>{it.type}{any.options?.length ? <> · one of <code>{any.options.join(", ")}</code></> : null}</dd>
@@ -535,6 +534,6 @@ function CodeSection({ it }: { it: CItem }) {
           return m ? <span class="cl"><span>{m[1]}</span><b class="ck">{m[2]}</b>{m[3]}<span>{m[4]}</span>{"\n"}</span> : <span class="cl">{line}{"\n"}</span>;
         })}</pre>
       </>}
-    </section>
+    </div>
   );
 }

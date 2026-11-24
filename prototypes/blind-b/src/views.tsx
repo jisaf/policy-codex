@@ -1,4 +1,5 @@
 /* My desk, the sign-off queue, Programs, Figures, Questions. */
+import { CodeView } from "./item";
 import { useMemo, useState } from "preact/hooks";
 import {
   D, E, TODAY, byId, byIdent, PROGRAMS, PROGRAM_ORDER, KIND, fmtVal, fmtDate, firstSentence, requiredRoles, openQuestions, qById,
@@ -172,6 +173,7 @@ export function SignQueue() {
                 <p class="si-h"><span class={"kdot k-" + it.kind} /> <ItemLink it={it} cls="plainlink strong" /> <span class="idtag">{it.id}</span> <Flags it={it} /></p>
                 <p class="si-m"><Rich text={firstSentence(it.meaning, 420)} /></p>
                 {it.kind === "derived" && <details class="si-rule"><summary>The rule</summary><RuleText it={it} /></details>}
+                <DefinitionFold it={it} />
                 {it.kind === "parameter" && <p class="small">Today: <b>{fmtVal(versionInForce(it, TODAY)?.value ?? it.value, it)}</b></p>}
                 <p class="small muted">You sign because {becauseWords(why ?? "")}. <span title={EFFORT[effortOf(it)].help}>Effort: {EFFORT[effortOf(it)].label.toLowerCase()}.</span>{requiredRoles(it).length > 1 && <> Also signing: {requiredRoles(it).filter((r) => r.role !== me).map((r) => r.role).join(", ")}.</>}</p>
                 {blocked.map((b) => <p class="warnbox small"><b>Cannot be signed yet.</b> {b}</p>)}
@@ -450,5 +452,16 @@ function NoteForm({ q, kind, done }: { q: Question; kind: "answer" | "opinion"; 
       <p class="small muted">It is added to the question’s record through your proposal, dated today and signed with the role{kind === "opinion" ? " Legal" : ""}. The {q.items.length} items stay as they are until someone proposes the rule change.</p>
       <button class="btn primary" type="submit">Add to proposal</button>
     </form>
+  );
+}
+
+/** A sign-off row's definition as code, fetched only when the row is opened. */
+function DefinitionFold({ it }: { it: CItem }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <details class="si-rule" onToggle={(e) => setOpen((e.currentTarget as HTMLDetailsElement).open)}>
+      <summary>Definition as code: what you sign</summary>
+      {open && <CodeView it={it} />}
+    </details>
   );
 }

@@ -191,18 +191,31 @@ const data = {
     fs.writeFileSync(path.join(out, "data-external.json"), JSON.stringify({ external }));
     parts.push("data-external.json");
   }
-  // Item source files, in chunks fetched only when a page opens "Definition as code".
+  // Item source files ("Definition as code" on every sign-off), one file per
+  // chapter (data-source-<chapter>.json), a chapter over about 1 MB split into
+  // numbered parts, so a sign-off fetches only its chapter's small file.
   const sourceIndex: Record<string, string> = {};
   {
-    let chunk: Record<string, { file: string; text: string }> = {}, bytes = 0, n = 0;
-    const flush = () => { if (!bytes) return; fs.writeFileSync(path.join(out, `data-source-${n}.json`), JSON.stringify(chunk)); n++; chunk = {}; bytes = 0; };
+    const LIMIT = 1024 * 1024;
+    const byChapter = new Map<string, Array<{ id: string; file: string; text: string }>>();
     for (const src of itemSources) {
-      if (bytes > 6 * 1024 * 1024) flush();
-      chunk[src.id] = { file: src.file, text: src.text };
-      bytes += src.text.length;
-      sourceIndex[src.id] = `data-source-${n}.json`;
+      const ch = src.file.split("/")[2];
+      if (!byChapter.has(ch)) byChapter.set(ch, []);
+      byChapter.get(ch)!.push(src);
     }
-    flush();
+    for (const [ch, list] of byChapter) {
+      let chunk: Record<string, { file: string; text: string }> = {}, bytes = 0, n = 0;
+      const total = list.reduce((s, x) => s + x.text.length, 0);
+      const name = () => total > LIMIT ? `data-source-${ch}-${n + 1}.json` : `data-source-${ch}.json`;
+      const flush = () => { if (!bytes) return; fs.writeFileSync(path.join(out, name()), JSON.stringify(chunk)); n++; chunk = {}; bytes = 0; };
+      for (const src of list) {
+        if (bytes && bytes + src.text.length > LIMIT) flush();
+        chunk[src.id] = { file: src.file, text: src.text };
+        bytes += src.text.length;
+        sourceIndex[src.id] = name();
+      }
+      flush();
+    }
   }
   fs.writeFileSync(path.join(out, "data.json"), JSON.stringify({ ...rest, parts, sourceIndex }));
   for (const f of ["data.json", ...parts]) {
