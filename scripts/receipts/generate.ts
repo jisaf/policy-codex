@@ -28,7 +28,7 @@ const PARTS: ReadonlyArray<readonly [string, string?]> = [
   ["kinship_care_payment"], ["colorado_works_diversion"], ["reverse_mortgage"], ["housing_utility_allowance"],
   ["gi_bill_housing_food_allowance"], ["refugee_resettlement"], ["colorado_works_supportive_services"],
   ["workers_compensation", "claim_expense"], ["workforce_program_payment"], ["general_assistance"], ["in_home_care_allowance"],
-  ["va_aid_and_attendance", "used_for_uncovered_medical_care"], ["uniformed_services_special_pay"], ["state_veteran_annuity"],
+  ["va_aid_and_attendance", "used_for_uncovered_medical_care"], ["state_veteran_annuity"],
   ["charitable_need_based_cash"], ["migrant_farmworker_emergency_assistance"], ["gift"], ["charitable_gift_life_threatening_condition"],
   ["interest_and_dividends"], ["rental_income"],
 ];
@@ -69,8 +69,7 @@ export function variants(): Variant[] {
   // receipts migration phase 3: the kinds of their own for the parts of a receipt
   v.push(["P3 adoption subsidy 300", () => [r("adoption_subsidy", 300)]]);
   v.push(["P3 early childhood research 300", () => [r("early_childhood_research_payment", 300)]]);
-  v.push(["P3 board only 300", () => [r("board_only_payment", 300)]]);
-  v.push(["P3 room only 300", () => [r("room_only_payment", 300)]]);
+  // the board-only, room-only and special-pay receipt kinds left receipts (records E2/H2 leftovers): earnings records now
   v.push(["P3 military allotment for persons elsewhere 300", () => [r("military_allotment", 300, { for_person_living_elsewhere: 300 })]]);
   v.push(["P3 educational assistance 300 of which school conditional 200", () => [r("school_attendance_conditional_benefit", 200), r("educational_assistance", 100)]]);
   v.push(["P3 savings distribution 300", () => [r("savings_account_distribution", 300)]]);

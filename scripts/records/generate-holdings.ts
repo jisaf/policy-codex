@@ -27,7 +27,7 @@ type Variant = [string, (asOf: string) => { holdings: Rec[] | null; monthDefault
 /** The resource facts that stay person facts (read by their own rules), removed from a base. */
 const KEPT_FACTS = ["has_income_trust", "transfer_penalty_period_start_date", "ma_spousal_resources_at_snapshot",
   "ma_csra_annuity_lowest_estimate", "ma_court_ordered_transfer_to_community_spouse", "ma_csra_transfer_is_overdue",
-  "ma_community_spouse_withheld_resources_are_excused", "ma_excess_real_property_is_for_sale", "ma_claims_co_owner_hardship_for_real_property"];
+  "ma_community_spouse_withheld_resources_are_excused"];
 
 /** The parts of an account, each 800 of 2,500: [name, the record of the part]. */
 const LIQUID_PARTS: ReadonlyArray<readonly [string, Rec]> = [
@@ -72,11 +72,7 @@ export function variants(): Variant[] {
   v.push(["real property 5000", h([{ kind: "real_property", value: 5000, amount_owed: 0 }])]);
   for (const [name, rec] of REAL_PARTS) v.push([`real property 5000 of which ${name} 2000`, h([{ kind: "real_property", value: 3000, amount_owed: 0 }, { ...rec, amount_owed: 0, value: 2000 }])]);
   v.push(["a lot for sale 1200, costs of sale 300 (H4)", h([{ kind: "real_property", listed_for_sale: true, amount_owed: 0, value: 1200, costs_of_sale: 300 }])]);
-  v.push(["Medicaid: real property 5000 for sale, efforts unsuccessful", () => ({
-    holdings: [{ kind: "real_property", listed_for_sale: true, amount_owed: 0, value: 5000, ma_sale_efforts_unsuccessful: true }],
-    // the person fact Medicaid's verification of sale efforts reads (CO-2246; kept, docs/reviews/records-e2-h2.md)
-    monthDefaults: { ma_excess_real_property_is_for_sale: true },
-  })]);
+  v.push(["Medicaid: real property 5000 for sale, efforts unsuccessful", h([{ kind: "real_property", listed_for_sale: true, amount_owed: 0, value: 5000, ma_sale_efforts_unsuccessful: true }])]);
   v.push(["joint real property, outside owners' share 2000", h([{ kind: "real_property", value: 2000, amount_owed: 0 },
     { kind: "real_property", value: 2000, amount_owed: 0, share: 0, co_owners: "outside_case", holding_id: "p-joint-real-property" }])]);
   v.push(["income-producing business property 7000, net 500", h([{ kind: "real_property", value: 7000, amount_owed: 0, income_producing: true, used_in_trade_or_business: true, net_annual_return: 500 }])]);

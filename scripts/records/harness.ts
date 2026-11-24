@@ -11,10 +11,10 @@
 // --list earnings:
 // 1. Boundary lint (boundary.ts). A person who states the same amount in the
 //    same month as a receipt and an earnings record of a boundary pair is a
-//    finding, unless the pair is a receipt kind that is earnings stated in
-//    both lists (the copy the E0 translator wrote, kept where a reader still
-//    reads it; docs/reviews/records-e2-h2.md) or a pair allowed/boundary.yaml
-//    dispositions. Fails on any finding.
+//    finding, unless allowed/boundary.yaml dispositions the pair (the copies
+//    of the receipt kinds that were earnings went with those kinds in the
+//    E2/H2 leftovers round, docs/reviews/records-e2-h2.md). Fails on any
+//    finding.
 // 2. Metamorphic relations (metamorphic-earnings.ts) on the figures each
 //    track registers as reading the records, over the stored households and
 //    the generated households of each track's bases (generate-earnings.ts).
@@ -118,13 +118,11 @@ async function earnings(): Promise<number> {
   }
   const knownPairs = loadKnownPairs();
   const isKnown = ([c, p, f]: [string, string, BoundaryFinding]) => knownPairs.some((k) => k.case === c && k.person === p && k.receipt === f.receipt && k.earning === f.earning && k.amount === f.amount);
-  const real = findings.filter((x) => !x[2].copy && !isKnown(x));
-  const known = findings.filter((x) => !x[2].copy && isKnown(x));
-  const copies = findings.filter(([, , f]) => f.copy);
+  const real = findings.filter((x) => !isKnown(x));
+  const known = findings.filter((x) => isKnown(x));
   const withEarnings = L.ledger.cases.filter((c) => Object.values(c.persons).some((p) => p.facts && "earnings" in p.facts));
   lines.push("## Boundary lint", "",
     `Stored households stating earnings: ${withEarnings.length} of ${L.ledger.cases.length}.`,
-    `A receipt kind that is earnings stated in both lists (kept where a reader still reads the receipt; docs/reviews/records-e2-h2.md): ${copies.length ? copies.map(([c, p, f]) => `${c} ${p} ${f.receipt} ${f.amount}`).join("; ") : "none"}.`,
     `Known and dispositioned (allowed/boundary.yaml): ${known.length ? known.map(([c, p, f]) => `${c} ${p} ${f.receipt}/${f.earning} ${f.amount}`).join("; ") : "none"}.`,
     `Findings: ${real.length ? "" : "none."}`, ...real.map(([c, p, f]) => `- ${c} ${p}: ${f.pair}: receipt ${f.receipt} and earnings ${f.earning}, ${f.amount}${f.month ? " in " + f.month : " every month"}`), "");
   if (real.length) { fail = 1; console.log(`FAILED: ${real.length} boundary finding(s)`); }
@@ -139,7 +137,7 @@ async function earnings(): Promise<number> {
     if (meta.violations) { fail = 1; console.log(`FAILED: ${meta.violations} metamorphic violation(s)`); }
   }
   write(outFile, `# Records harness: earnings (${Math.round((Date.now() - t0) / 1000)} s)`, lines);
-  console.log(`boundary lint: ${real.length} finding(s), ${known.length} known and dispositioned, ${copies.length} receipt kind(s) that are earnings stated in both lists`);
+  console.log(`boundary lint: ${real.length} finding(s), ${known.length} known and dispositioned`);
   console.log(`metamorphic relations over ${stored.length} stored and ${gen.length} generated households`);
   if (!fail) console.log("records harness (earnings): OK");
   return fail;
