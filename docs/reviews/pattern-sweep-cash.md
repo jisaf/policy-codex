@@ -24,12 +24,12 @@ At 14558ff it listed **1,424 candidates**: 421 for pattern 1, 889 for pattern 2,
 
 | pattern | candidates | right, with the text | fixed | recorded (OQ) | shared item, listed |
 |---|---|---|---|---|---|
-| 1 time | 421 | 254 | 90 | 77 (OQ-1436) | 0 |
-| 2 defaults | 889 | 784 | 97 | 0 | 8 |
+| 1 time | 421 | 255 | 89 | 77 (OQ-1436) | 0 |
+| 2 defaults | 889 | 785 | 96 | 0 | 8 |
 | 3 membership | 114 | 67 | 45 | 2 (OQ-1436) | 0 |
-| **all** | **1,424** | **1,105** | **232** | **79** | **8** |
+| **all** | **1,424** | **1,107** | **230** | **79** | **8** |
 
-"Fixed" counts candidates (reads), not defects: one defect is usually several reads (the 22 defects of section 3). The classes of "right" (each verdict's text, with the paragraph that fixes the point in time or gives the reading, is in the candidates file):
+"Fixed" counts candidates (reads), not defects: one fix usually covers several reads (the 28 fixes of section 3: 12 for time, 4 for membership, 12 for defaults). The classes of "right" (each verdict's text, with the paragraph that fixes the point in time or gives the reading, is in the candidates file):
 
 - **R-DATED** (pattern 1, 53; pattern 3, 14; pattern 2, 40): a dated fact read against the month, or a record by its month or dates (date_of_birth, date_of_death, institution_entry_date, the pregnancy dates, af_application_date, af_eligibility_date, cw_application_date, cw_unit_eligible_from_date, the approval dates).
 - **R-PROCESS** (105; 14; 44): a fact of the determination itself, one value for it (verification documents, requests and due dates, attestations, interviews): 9 CCR 2503-5 3.520.4-3.520.5, 9 CCR 2503-6 3.604.3.
