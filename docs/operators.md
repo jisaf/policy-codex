@@ -295,15 +295,43 @@ is the person's id. The step beyond the last row is a separate
 | `count` | group | the number of members | unknown if the group is | 0 |
 | `filter` | group, condition | the members for whom the condition is true, in the group's order | unknown if the group is, or if the condition is unknown for **any** member (every member is evaluated) | `[]` |
 | `sum` | group, number | the sum over members, folded in the group's order | unknown if the group is, or at the first member whose value is unknown | 0 |
+| `greatest` (P59) | group, number | the greatest value over the members, each bound as **that person** in the group's order (as `sum` binds it); the true greatest, negative when every value is | unknown if the group is, or if any member's value is (the greatest of values one of which is unknown is not known; every member is evaluated until one is unknown) | **0**, as P58 gives for no record |
 | `exists` | group, condition | true at the first member for whom the condition is true | otherwise unknown if any member's condition is unknown, else false | false |
 | `in_group` | person, group | whether the person is a member | unknown if the group is unknown. An unknown person is not a member (false). | false |
 | `of` | person, expression | the expression evaluated with **this person** = the given person | unknown if the person is unknown | |
 
-Inside the condition or value of `filter`, `sum` and `exists`, **that
+Inside the condition or value of `filter`, `sum`, `greatest` and `exists`, **that
 person** (`["P"]`) is the member being tested; this person and the month are
 unchanged. `of` changes this person only: `that person` and the month stay
 as they were outside it, so `["of", ["P"], x]` reads x for the member while
 a bare `x` still reads it for this person.
+
+**P59 `greatest`** (cross-list records round, 2026-11-24;
+docs/reviews/cross-list-records.md). Rendered `the greatest of V for each
+person in G`; as a block `the greatest for each person in G of`, the value
+indented one step (as `sum`). The rule text that needs it: 7 CFR 273.8(e)(2)
+(S2216), "one burial plot per household member, and the value of one funeral
+agreement per household member", with 10 CCR 2506-1 4.410.D.1 and D.4
+(S3119, S2967): the exclusion is the household's, one per member, so when two
+members each hold an agreement (or a plot) for the same third member, the one
+excluded is chosen across the holders' lists. Each holder's largest for the
+member is P58 over that holder's list; the largest over the holders needs a
+maximum over a group, which `sum`, `count`, `filter` and the binary `max`
+cannot give for a group of any size (comparing two members' values needs
+three persons at once: the member, and two holders). Without it the codex
+excluded one per member on each holder's list, so both were excluded
+(snap_countable_funeral_agreements CO-5312, snap_countable_burial_spaces
+CO-5313; their readers CO-7200 to CO-7205). An empty group is 0 because a
+member for whom no one holds anything has nothing excluded; a rule that
+needs "no member" told apart from 0 tests the group's `count` first. For
+engines: Drools, `accumulate(Person(id memberOf $group, $v : <value>) ;
+max($v))` with the review's `Tri` for an unknown value and 0 written for no
+member (Drools' `max` of no facts is null); Corticon, `->max` over the
+filtered association with the null guard of `->sum` and a 0 default; fact
+graph, the collection maximum P58 already adds (`CollectionMax`) over the
+person collection the group filters, with the strict unknowns of
+`CollectionSum` (an incomplete member makes it incomplete; no member gives
+0).
 
 ## Relationships
 
@@ -384,7 +412,7 @@ members' groups need not be equal.
 Date arithmetic is in the proleptic Gregorian calendar with no time of day
 and no time zone (computed in UTC).
 
-## Receipt records (P55-P58)
+## Receipt records (P55-P58, P60)
 
 **A recorded exception to the engine guardrail.** The product owner adopted
 receipt records on 2026-11-23 (docs/plan-colorado.md, "Decision, 2026-11-23:
@@ -469,6 +497,7 @@ is not known.
 | `sum_receipts` (P55) | list, condition, value | the sum of the value over the records whose condition is true, with **that receipt** bound to each record in list order. The list is a list-of-receipts identifier (this person's) or `["of", person, list]` (that person's). A record whose condition is false is skipped and its value is never read | unknown if the list is unknown, or the condition of any record is unknown, or the value of a record whose condition is true is unknown. **No records: 0** | 9 CCR 2503-7 3.752.22.A ("received in the income verification period"); 10 CCR 2506-1 4.402.A.2 (each income converted by how often it is paid); 4.405.E (nonrecurring lump sums, of any source); 9 CCR 2503-5 3.520.786 (exempt by source, for the client, spouse and sponsor alike) |
 | `receipt` (P56) | field name (not evaluated) | that receipt's field as the record states it (its `month`: the month it states, or its `date`'s month), else the default the schema declares | unknown when the record does not state a field that has no default; the field is then reported as a missing supplied fact (below). An error outside `sum_receipts`, and for a field the schema does not declare | as P55 |
 | `largest` (P58) | list, condition, value | the largest value over the records whose condition is true, with **that receipt** (that holding) bound to each record in list order, read exactly as P55 reads the list, the condition and the value. Rendered `the largest of V for each holding in L where (C)`; as a block `the largest for each holding in L where`, the condition indented two steps, `of` one step in, the value indented two steps | as P55: unknown if the list is unknown, or the condition of any record is unknown, or the value of a record whose condition is true is unknown (the largest of values one of which is unknown is not known). A record whose condition is false is skipped and its value never read. **No records, or none whose condition holds: 0**; otherwise the true largest, negative when every matching value is (a vehicle owing more than it is worth), so a derivation that wants equity floored at 0 floors each record's value itself. The strictness on an unknown condition is deliberate, as P55's: every target engine gets it from its filtered collection, and an engine that skipped unknown records would answer where the codex cannot | 20 CFR 416.1218(b)(1) ("One automobile is totally excluded regardless of value if it is used for transportation for the individual or a member of the individual's household", S2215) and 9 CCR 2503-5 3.520.77.A ("The vehicle with the highest value is exempt if it is used for the transportation of the client or a member of the household", S2214): the countable vehicles are the sum of the vehicles' equity less the largest equity of a vehicle used for transportation. Before holdings this was a supplied part of the vehicles' total (transportation_vehicle_equity_value, CO-3395), the household choosing which vehicle the rule excludes; the alternative, a stated `excluded_vehicle` field, would put a program's choice into a neutral record (design 3.4, decision D5) |
+| `owner` (P60) | none | **that receipt's owner** (rendered `that receipt's owner`, `that holding's owner`): the person whose list the innermost record sum reads, this person for a bare list and the person `["of", person, list]` names otherwise. A fact of the owner is read inside the condition or the value as `["of", ["owner"], fact]` (`that holding's owner's F`; a per-month fact read for another month is `["at", ["of", ["owner"], fact], month]`), and a record sum nested inside another's condition or value reads the outer record's owner's list (`["of", ["owner"], list]`) | never unknown; an error outside a record sum. A fact read through it is unknown as the fact is | 9 CCR 2503-5 3.520.76.D.3 and E (S2614, S2806): "Divide the uncompensated value by the TWFC monthly penalty value and round down to the nearest whole number", "depending on the amount of the uncompensated value for each resource transferred", where the penalty value is "the current Adult Financial Program grant standard" of the client (D.2); and A.3: a transfer "Made within thirty-six (36) months prior to the application date", the client's (af_twfc_penalty_months, CO-3840). Each resource's quotient is rounded down on its own and each resource is placed against the client's application date, so the divisor and the date are read for each record, inside the sum: before P60 a condition read no fact of a person, and two resources transferred in one month, or transfers on both sides of the application's day of the month thirty-six months before it, were cannot determine (OQ-1254). A record sum nested in another's condition (the largest whole equity among a holder's own agreements for a member, CO-7202, CO-5312) reads the same owner's list |
 | `received_in` (P57) | month | whether that receipt came in the month: its `month`, or the month of its `date`, is the month. A record that states neither recurs in every month, **unless it is paid once** (`frequency: once`): a one-time payment with no month and no date cannot be placed, so the result is unknown and its `month` is reported missing. **The month is the month in context** (the determination month outside one): a sum for another month (a quarter's or a year's earlier months) is written in that month, `["at", ["sum_receipts", ..., ["received_in", ["month"]] ...], ["that_month"]]`, so a receipt summed for month M reads M's parameter versions (Resolution step 2); naming any other month is an error | unknown if the month is, or as just said | 9 CCR 2503-7 3.752.21.I and 9 CCR 2503-5 3.520.785.B.1.a ("counted as income in the month received"); 10 CCR 2506-1 4.405.A (income received in the quarter) |
 
 Inside the condition and the value of a receipt sum, an expression reads
@@ -480,7 +509,24 @@ is counted for. A fact of a
 person (person or person-month scope, supplied or derived) is a type error
 there: a rule that turns on the person (an SSI-age child, an
 application-month destitution test) reads it outside the sum and chooses
-between sums. A derived fact's own rule never sees "that receipt" (as for
+between sums. **The one exception is the record's owner (P60):** a fact of
+the person whose list the record is on, read as `["of", ["owner"], fact]`,
+where the rule computes something for each record from the owner's own
+figures (each resource transferred divided by the client's grant standard and
+placed against the client's application date); any other person's fact,
+`["of", ["P"], fact]` included, is still a type error inside the sum. For
+engines, the owner is the entity the record's collection belongs to: Drools,
+the `Person($p)` the accumulate's `Receipt(owner == $p)` pattern already
+joins, its fact read in the constraint (`$p.afApplicationDate`); Corticon,
+`receipt.person.<attribute>` over the association; fact graph, with records
+loaded as `/persons/#p/holdings/#r`, the owner's fact is the record's
+ancestor's, read by its path (`../../<fact>`), a dependency the record's
+predicate declares like any field of its own, so no outer binding is needed
+(the receipts are owned by the person entity, item 1 below). An engine whose
+collection predicates cannot read the owning entity computes the record's
+value as a derived fact on the record that depends on the owner's facts,
+inside the graph; the adapter cannot write it when it loads the case, since
+the facts read so are derived (the client's grant standard). A derived fact's own rule never sees "that receipt" (as for
 "that month", P54), so there are no per-receipt derived items: a condition
 several sums share is written in each.
 
@@ -499,6 +545,27 @@ they name, and the comparison with the bound person is an equality of entity
 ids (in a fact graph, a predicate over the record and the binder's id, like
 `inMonth`; in Drools, a join on `owner`-style ids; in Corticon, an
 association compared by key).
+
+**A record on another person's list that names the person evaluated**
+(field sweep fix round, 2026-11-23; cross-list records round, 2026-11-24).
+A sum over another person's list, `["sum", group, ["sum_receipts", ["of",
+["P"], list], C, V]]`, binds that person to the list's owner and leaves this
+person unchanged, so a record that names the person evaluated (a veterans
+benefit's part for a dependent, `for_person`; an agreement for the member
+whose exclusion is chosen) is found by comparing the person field with this
+person. The codex has no operator that is this person as a value; the
+comparison is written `["in_group", ["receipt", "for_person"], ["reachable",
+["spouse"], false]]`, the persons joined to this person by no edge, which is
+this person alone (`reachable` with a condition that is never true crosses
+no edge; it is unknown only when this person's relationships are unstated,
+and every reader that needs it reads a household or a case that states
+them). Readers: Adult Financial's and Colorado Works' dependent's part
+(CO-5017, CO-5651), the SSI method's (CO-5511, CO-5514, CO-6730; 20 CFR
+416.1123(e)(2)), SNAP's holders for a member (CO-7200 to CO-7205). For
+engines it is an equality of the record's person id with the id of the
+person the rule is evaluated for: in a fact graph, the predicate compares the
+adapter-written entity id with the owning item's id, as the `["P"]`
+comparison above does.
 
 **Counting tables.** Each program that counts receipts has one table keyed by
 option (`table keyed by option`), keyed by kind, whose rows name a treatment

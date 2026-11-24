@@ -820,6 +820,27 @@ export function evaluate(
         }
         return total;
       }
+      case "greatest": {
+        // P59: ["greatest", group, value]: the greatest value over the
+        // members of the group, each bound in turn as that person (as in
+        // "sum"), in the group's order. Unknown when the group is unknown or
+        // any member's value is (the greatest of values one of which is
+        // unknown is not known). An empty group: 0, as P58 gives for no
+        // record. The rule text that needs it: 7 CFR 273.8(e)(2) and
+        // 10 CCR 2506-1 4.410.D.4, "one funeral agreement per household
+        // member": the household excludes, for each member, the largest
+        // agreement any member holds for that member (cross-list records
+        // round; docs/operators.md "P59").
+        const grp = g(e[1]);
+        if (grp === null) return null;
+        let best: number | null = null;
+        for (const pid of grp) {
+          const v = ev(e[2], p, m, pid);
+          if (v === null) return null;
+          if (best === null || v > best) best = v;
+        }
+        return best ?? 0;
+      }
       case "has_relative_in": {
         // That person (the bound member) stands in one of the named roles to
         // some person in the group: a join between the bound person and the
@@ -1035,6 +1056,17 @@ export function evaluate(
           thatReceipt = outer;
         }
         return best ?? 0;
+      }
+      case "owner": {
+        // P60: ["owner"]: the person whose list that receipt (that holding)
+        // is on: this person for a sum over this person's own list, the
+        // person named by ["of", person, list] otherwise. A fact of the owner
+        // is read inside the sum as ["of", ["owner"], fact]: the rule text
+        // that needs it divides each resource transferred by the client's
+        // own grant standard and counts it by the client's own application
+        // date (9 CCR 2503-5 3.520.76.A.3, D.3, E; docs/operators.md "P60").
+        if (thatReceipt === null) throw new Error('"that receipt\'s owner" outside "for each receipt in"');
+        return thatReceipt.owner;
       }
       case "receipt": {
         // P56: ["receipt", field]: that receipt's field as the record states

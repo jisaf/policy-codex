@@ -121,6 +121,15 @@ export function parseInline(
   let rm: RegExpMatchArray | null;
   // "that holding" is the same record read under the list's own noun
   // (record_noun; resource records, step H0).
+  // P60: the record's owner, and a fact of the owner ("that holding's
+  // owner's F", or "... F for M" for a per-month fact read in another month).
+  if (/^that (?:receipt|holding)'s owner$/.test(s)) return ["owner"];
+  if ((rm = s.match(/^that (?:receipt|holding)'s owner's (.+)$/))) {
+    const n = resolveName(ix, rm[1]);
+    if (n) return ["of", ["owner"], n];
+    const at = parseAt(ix, rm[1], options);
+    if (at) return ["at", ["of", ["owner"], (at as Expr[])[1]], (at as Expr[])[2]];
+  }
   if ((rm = s.match(/^that (?:receipt|holding)'s ([a-z][a-z0-9 ]*)$/))) return ["receipt", rm[1].trim().replace(/ /g, "_")];
   if ((rm = s.match(/^that (?:receipt is received|holding is valued) in (.+)$/))) return ["received_in", p(rm[1])];
   // P51, read before arithmetic: its own words hold no arithmetic phrase at
@@ -197,6 +206,11 @@ export function parseInline(
     const qr = splitTop(m[1], " for each receipt in ", true) ?? splitTop(m[1], " for each holding in ", true);
     const qw = qr && splitTop(qr[1], " where ");
     if (qr && qw) return ["sum_receipts", p(qw[0]), p(qw[1]), p(qr[0])];
+  }
+  if ((m = s.match(/^the greatest of (.+)$/))) {
+    // P59: "the greatest of V for each person in G".
+    const q = splitTop(m[1], " for each person in ", true);
+    if (q) return ["greatest", p(q[1]), p(q[0])];
   }
   if ((m = s.match(/^the largest of (.+)$/))) {
     // P58: "the largest of V for each holding in L where (C)".
@@ -316,6 +330,10 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
   if ((m = txt.match(/^the sum for each person in (.+) of$/))) {
     if (!rest.length) throw new Error("the sum: missing value");
     return ["sum", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the greatest for each person in (.+) of$/))) {
+    if (!rest.length) throw new Error("the greatest: missing value");
+    return ["greatest", p(m[1]), parseBlockLines(ix, rest, options)];
   }
   if ((m = txt.match(/^the sum for each month in (.+) of$/))) {
     if (!rest.length) throw new Error("the sum: missing value");

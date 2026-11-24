@@ -255,6 +255,11 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
           return "number";
         }
         need(e[1], ["records"], "for each receipt in");
+        // A sum nested inside another's condition or value reads the outer
+        // record's owner's list (P60), the one person whose facts it may read.
+        if (receiptSchemas.length && !(Array.isArray(e[1]) && e[1][0] === "of" && Array.isArray(e[1][1]) && e[1][1][0] === "owner")) {
+          errors.push(`${op === "largest" ? "the largest" : "the sum"} for each receipt in, inside another: reads only that receipt's owner's list ([of, [owner], list])`);
+        }
         receiptSchemas.push({ list: listId, fields: listItem!.record_fields ?? {} });
         try {
           need(e[2], ["yes/no"], "where");
@@ -262,6 +267,10 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         } finally { receiptSchemas.pop(); }
         return "number";
       }
+      case "owner":
+        // P60: the person whose list that receipt is on.
+        if (!receiptSchemas.length) errors.push(`"that receipt's owner" used outside "the sum of ... for each receipt in"`);
+        return "person";
       case "receipt": {
         if (!receiptSchemas.length) {
           errors.push('"that receipt" used outside "the sum of ... for each receipt in"');
@@ -320,6 +329,15 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         if (typeof e[2] === "string" && ix.byIdentifier.has(e[2])) {
           refs.add(e[2]);
           const target = ix.byIdentifier.get(e[2])!;
+          // Inside a receipt sum the one person whose facts a condition or
+          // value may read is the record's owner (P60, "that receipt's
+          // owner's"); any other person's fact is read outside the sum, as a
+          // bare fact of this person is (docs/operators.md "Receipt records").
+          const ownerRead = Array.isArray(e[1]) && e[1][0] === "owner";
+          if (receiptSchemas.length && !ownerRead && !isRecordList(target) && target.kind !== "parameter" &&
+            (target.scope === "person" || target.scope === "person-month")) {
+            errors.push(`"${target.name}" is a fact of a person; inside a receipt sum only that receipt's owner's facts are read (read it outside the sum)`);
+          }
           if (target.scope === "person-month" && !mb) {
             errors.push(`"${target.name}" is per-month; needs a month context`);
           }
@@ -369,6 +387,11 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "group";
       case "sum":
         need(e[1], ["group"], "for each person in"); need(e[2], ["number"], "the sum of");
+        return "number";
+      case "greatest":
+        // P59: the greatest value over the members of a group.
+        if (e.length !== 3) errors.push("the greatest for each person in: needs a group and a value");
+        need(e[1], ["group"], "for each person in"); need(e[2], ["number"], "the greatest of");
         return "number";
       case "has_relative_in":
         if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");

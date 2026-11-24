@@ -84,7 +84,7 @@ export interface LedgerJsonItem {
   tests: string[];
 }
 
-const BINDERS = new Set(["filter", "sum", "exists", "exists_related", "reachable"]);
+const BINDERS = new Set(["filter", "sum", "greatest", "exists", "exists_related", "reachable"]);
 
 /** The binder operators in `e` whose body reads this person and that person
  *  both. "This person" is read by a person fact named bare (or a

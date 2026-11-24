@@ -256,6 +256,7 @@ class Renderer {
       case "band": return cat("the ", p(e[1]), " figure for the band containing ", p(e[2]));
       case "filter": return cat("the people in ", p(e[1]), " for whom ", this.over(() => p(e[2])));
       case "sum": return cat("the total of ", this.over(() => p(e[2])), " over the people in ", p(e[1]));
+      case "greatest": return cat("the greatest of ", this.over(() => p(e[2])), " over the people in ", p(e[1]));
       case "rel": return [`this person is the ${relWords(e[1] as string[])} of `, ...p(e[2])];
       case "reachable":
         return e.length > 2
@@ -268,6 +269,7 @@ class Renderer {
       case "sum_months": return cat("the total over ", p(e[1]), " of ", p(e[2]));
       case "sum_receipts": return cat("the total, over the receipts in ", p(e[1]), " for which ", p(e[2]), ", of ", p(e[3]));
       case "largest": return cat("the largest, over the records in ", p(e[1]), " for which ", p(e[2]), ", of ", p(e[3]));
+      case "owner": return ["the person whose record it is"];
       case "receipt": return [`the receipt's ${String(e[1]).replace(/_/g, " ")}`];
       case "received_in": return cat("the receipt came in ", p(e[1]));
       case "all": case "any": {
@@ -384,7 +386,7 @@ class Renderer {
       return this.condition(e, depth, lead + (lead ? "" : ""), "");
     }
     if (op === "exists" || op === "exists_related" || op === "each" || op === "some_month"
-      || (op === "filter" && isBlock(e[2])) || (op === "sum" && isBlock(e[2]))
+      || (op === "filter" && isBlock(e[2])) || (op === "sum" && isBlock(e[2])) || (op === "greatest" && isBlock(e[2]))
       || (op === "reachable" && e.length > 2 && isBlock(e[2]))) {
       let head: PlainPart[];
       if (op === "exists") head = cat("someone in ", this.phrase(e[1]), " is such that");
@@ -393,8 +395,9 @@ class Renderer {
       else if (op === "some_month") head = cat("in at least one of ", this.phrase(e[1]));
       else if (op === "filter") head = cat("the people in ", this.phrase(e[1]), " for whom");
       else if (op === "sum") head = cat("the total, over the people in ", this.phrase(e[1]), ", of");
+      else if (op === "greatest") head = cat("the greatest, over the people in ", this.phrase(e[1]), ", of");
       else head = [`the people joined to this person by ${relWords(e[1] as string[])}, crossing only where`];
-      const people = op === "exists" || op === "exists_related" || op === "filter" || op === "sum" || op === "reachable";
+      const people = op === "exists" || op === "exists_related" || op === "filter" || op === "sum" || op === "greatest" || op === "reachable";
       const body = () => this.value(e[2], depth + 1, "");
       return [{ depth, parts: cat(lead, head, ":") }, ...(people ? this.over(body) : body())];
     }
@@ -471,6 +474,8 @@ class Renderer {
         return [{ depth, parts: one }];
       case "sum":
         return [head("the total, over the people in ", this.phrase(e[1]), ", of:"), ...this.over(() => sub(e[2], ""))];
+      case "greatest":
+        return [head("the greatest, over the people in ", this.phrase(e[1]), ", of:"), ...this.over(() => sub(e[2], ""))];
       case "sum_months":
         return [head("the total over ", this.phrase(e[1]), " of:"), ...sub(e[2], "")];
       case "sum_receipts":

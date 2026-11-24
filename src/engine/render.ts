@@ -112,6 +112,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
         : `${o(e[1])}, for ${o(e[2])}, or its last row beyond it`;
     case "latest_month_of_year": return `the most recent month number ${o(e[1])} on or before ${o(e[2])}`;
     case "as_of": return `${i(e[1])} as of ${o(e[2])}`;
+    case "owner": return `that ${thatNoun()}'s owner`;
     case "receipt": return `that ${thatNoun()}'s ${String(e[1]).replace(/_/g, " ")}`;
     case "received_in": return `that ${thatNoun()} ${(RECORD_NOUNS[thatNoun()] ?? RECORD_NOUNS.receipt).placed} ${i(e[1])}`;
   }
@@ -124,6 +125,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
+  if (op === "greatest") return `the greatest of ${i(e[2])} for each person in ${i(e[1])}`;
   if (op === "sum_months") return `the sum of ${i(e[2])} for each month in ${i(e[1])}`;
   if (BLOCK_OPS.has(op)) return "(" + block(ix, e).join("; ") + ")";
   throw new Error("unknown operator " + op);
@@ -197,6 +199,13 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
     if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
     return [
       pad + `the sum for each person in ${inline(ix, e[1])} of`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "greatest") {
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the greatest for each person in ${inline(ix, e[1])} of`,
       ...block(ix, e[2], indent + 1),
     ];
   }
