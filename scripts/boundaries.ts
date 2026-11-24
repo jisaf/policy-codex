@@ -102,7 +102,7 @@ const DATE_OPS = new Set([
  *  argument: a comparison under one is not in the item's own context. */
 const REBINDS = new Set([
   "of", "at", "each", "some_month", "count_months", "avg", "sum_months", "filter", "sum",
-  "exists", "exists_related", "reachable",
+  "greatest", "exists", "exists_related", "reachable",
 ]);
 /** Argument positions that are not expressions (operators.md "The
  *  expression tree"): never walked. */

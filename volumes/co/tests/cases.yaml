@@ -75863,3 +75863,692 @@
       ma_ssi_related_category:
         2026-11: aged
         2026-12: aged
+
+- id: CO-850
+  title: 'Cross-list records round, FS-MA-3 (OQ-1348): the part of a veterans benefit attributable to the wife, who lives with the veteran, is her income (20 CFR 416.1123(e)(2)(i))'
+  # CO-762's aged couple at home (determined 2026-11-20), without the car: p1, the wife, receives $400 of Social Security; p2, the veteran, $500 of Social Security
+  # and a $900 VA pension (other_nontaxable), $300 of it attributable to his wife (for_dependent 300, for_person p1). Resources: $500 in the bank each and the home.
+  # 416.1123(e)(1): the $300 is not the veteran's income: p2 500 + 900 - 300 = 1,100. (e)(2)(i): "we count the amount attributable to you as your unearned cash
+  # income if ... You reside with the individual who receives the veterans benefit": p1 400 + 300 = 700. The couple (8.100.5.H.1.a): 700 + 1,100 - 20 = 1,780
+  # > the couple FBR 1,491: none for both. Before: the $300 reached no one, 400 + 1,100 - 20 = 1,480 <= 1,491: aged for both.
+  as_of: '2026-11-20'
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: married
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 400
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+        - kind: home
+          value: 240000
+          amount_owed: 0
+          lives_in: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
+          share: 0.5
+          co_owners: spouse
+          holding_id: CO-850-home
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+    p2:
+      relationships: []
+      facts:
+        date_of_birth: '1951-06-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-11-05'
+        ma_retroactive_coverage_requested: false
+        marital_status: married
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        retains_ssi_status_without_payment: false
+        education_program_type: none
+        sale_efforts_verification_document_received: true
+        receipts:
+        - kind: social_security
+          amount: 500
+        - kind: other_nontaxable
+          amount: 900
+          for_dependent: 300
+          for_person: p1
+        earnings: []
+        holdings:
+        - kind: bank_account
+          value: 500
+        - kind: home
+          value: 240000
+          amount_owed: 0
+          lives_in: true
+          outside_colorado: false
+          held_in_trust_or_entity: false
+          beneficiary_deed: false
+          share: 0.5
+          co_owners: spouse
+          holding_id: CO-850-home
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+      month_defaults:
+        shelter_costs_paid_by_others: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        rental_property_expenses_paid: 0
+  expect:
+    p1:
+      ma_ssi_unearned_receipts:
+        2026-11: 700
+      ma_ssi_related_category:
+        2026-11: none
+    p2:
+      ma_ssi_unearned_receipts:
+        2026-11: 1100
+      ma_ssi_related_category:
+        2026-11: none
+
+- id: CO-851
+  title: 'Cross-list records round, SR-1: both parents hold a funeral agreement for their daughter; one agreement per member is excluded once for the household (7 CFR 273.8(e)(2))'
+  # CO-795's family (the father serving a SNAP IPV disqualification, so the household is standard and resource-tested; size 2, FY 2027 limit $3,000), with no crypt:
+  # the father p1 has $2,000 in the bank and a $1,500 pre-purchased funeral agreement for the daughter p2; the mother p3 holds another $1,500 agreement for p2.
+  # 273.8(e)(2) (S2216, the statute override on CO-5312): "the value of one funeral agreement per household member": one of the two is excluded for p2.
+  # The two tie, so each holder excludes half of its own: p1 2,000 + 1,500 - 750 = 2,750, p3 1,500 - 750 = 750; 2,750 + 750 = 3,500 > 3,000:
+  # over_resource_limit, $0. Before: each holder excluded its own for p2, 2,000, eligible, $387.
+  as_of: '2027-02-10'
+  case_facts:
+    home_heating_cost_arrangement: none
+    snap_application_date: '2026-11-02'
+    snap_determination_is_recertification: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    has_primary_heating_source: false
+    cccap_determination_type: application
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - spouse
+    - p1
+    - p3
+  - - parent
+    - p3
+    - p2
+  - - buys_prepares_with
+    - p1
+    - p2
+  - - buys_prepares_with
+    - p3
+    - p2
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        is_tax_filer: false
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        af_and_so_medical_certification_received: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: emergency_or_transitional_shelter
+        receives_snap: true
+        county_of_residence: denver
+        leap_is_in_another_approved_household: false
+        date_of_birth: '1992-08-15'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        mother_coverage_at_birth: none
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: true
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        cccap_is_in_job_search_activity: true
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_child_has_additional_care_needs: false
+        is_referred_for_colorado_works_child_care: false
+        is_emancipated_minor: false
+        marital_status: married
+        cccap_declares_assets_within_limit: true
+        ma_application_date: '2026-11-02'
+        verification_request_date: '2026-11-02'
+        ma_reasonable_opportunity_notice_date: '2026-11-02'
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        disability_benefit_or_statement_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        cccap_eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        trust_documents_received: false
+        annuity_verification_document_received: false
+        sebt_eligibility_directly_verified: false
+        nslp_school_enrollment_confirmed: false
+        is_enrolled_in_nslp_school: false
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 1000
+        holdings:
+        - kind: bank_account
+          value: 2000
+        - kind: prepaid_burial_contract
+          value: 1500
+          irrevocable: false
+          burial_for: person_of_case
+          for_person: p2
+        dwelling_id: d1
+        has_higher_education_meal_plan_providing_majority_of_meals: false
+        snap_is_boarder: false
+        receives_snap_in_another_household: false
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        electronic_data_source_monthly_gross_income: 1000
+        wages_gross: 1000
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 100
+        child_support_paid_legally_obligated: 150
+        dependent_care_expense: 200
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: elementary
+        education_enrollment_intensity: full_time
+        is_tax_filer: false
+        cccap_care_is_part_time: false
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        af_and_so_medical_certification_received: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: emergency_or_transitional_shelter
+        receives_snap: true
+        cccap_child_needs_care_for_part_of_day: true
+        county_of_residence: denver
+        leap_is_in_another_approved_household: false
+        date_of_birth: '2020-05-20'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        mother_coverage_at_birth: none
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        is_referred_for_colorado_works_child_care: false
+        is_emancipated_minor: false
+        marital_status: single
+        cccap_declares_assets_within_limit: true
+        ma_application_date: '2026-11-02'
+        verification_request_date: '2026-11-02'
+        ma_reasonable_opportunity_notice_date: '2026-11-02'
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        identity_verification_document_type: child_medical_or_school_record
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        disability_benefit_or_statement_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        trust_documents_received: false
+        annuity_verification_document_received: false
+        sebt_eligibility_directly_verified: false
+        nslp_school_enrollment_confirmed: true
+        is_enrolled_in_nslp_school: true
+        receipts: []
+        earnings: []
+        holdings: []
+        dwelling_id: d1
+        has_higher_education_meal_plan_providing_majority_of_meals: false
+        snap_is_boarder: false
+        receives_snap_in_another_household: false
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        electronic_data_source_monthly_gross_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        is_tax_filer: false
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
+        title_ii_benefit_type: none
+        receives_disability_based_state_supplement: false
+        va_disability_rating_type: none
+        af_and_so_medical_certification_received: false
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        nighttime_residence_type: emergency_or_transitional_shelter
+        receives_snap: true
+        county_of_residence: denver
+        leap_is_in_another_approved_household: false
+        date_of_birth: '1993-03-01'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        adult_financial_program_received: none
+        snap_receives_permanent_disability_retirement_benefit: false
+        has_va_aid_attendance_housebound_or_survivor_finding: false
+        mother_coverage_at_birth: none
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        cccap_is_in_job_search_activity: true
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_child_has_additional_care_needs: false
+        is_referred_for_colorado_works_child_care: false
+        is_emancipated_minor: false
+        marital_status: married
+        cccap_declares_assets_within_limit: true
+        ma_application_date: '2026-11-02'
+        verification_request_date: '2026-11-02'
+        ma_reasonable_opportunity_notice_date: '2026-11-02'
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_benefit_receipt_verified_by_electronic_data_source: false
+        disability_benefit_or_statement_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        cccap_eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        trust_documents_received: false
+        annuity_verification_document_received: false
+        sebt_eligibility_directly_verified: false
+        nslp_school_enrollment_confirmed: false
+        is_enrolled_in_nslp_school: false
+        receipts: []
+        earnings: []
+        holdings:
+        - kind: prepaid_burial_contract
+          value: 1500
+          irrevocable: false
+          burial_for: person_of_case
+          for_person: p2
+        dwelling_id: d1
+        has_higher_education_meal_plan_providing_majority_of_meals: false
+        snap_is_boarder: false
+        receives_snap_in_another_household: false
+      month_defaults:
+        health_insurance_premiums_paid: 0
+        electronic_data_source_monthly_gross_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 150
+        dependent_care_expense: 200
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+  expect:
+    p2:
+      snap_household_countable_resources:
+        2027-02: 3500
+      snap_eligibility_status:
+        2027-02: over_resource_limit
+      snap_allotment:
+        2027-02: 0
+
+- id: CO-852
+  title: "Cross-list records round, OQ-1254 (CA4-19): an OAP client who gave two gifts in one month; each resource transferred is divided and rounded down on its own"
+  # CO-131's Lucia (72, Social Security $700, $500 in the bank, applied for the Old Age Pension 2026-10-01) and her grandson Mateo, unchanged, except that
+  # she gave her grandson's father $1,600 on 2026-09-02 and $1,600 more on 2026-09-20 (cash, nothing received, not found to be for another purpose).
+  # 3.520.76.D.3, E (S2614, S2806): each resource transferred is divided by the OAP grant standard ($1,032) and rounded down: floor(1,600 / 1,032) = 1 for each,
+  # 1 + 1 = 2 months for September (the month's total, floor(3,200 / 1,032) = 3, would overstate it). The period begins the month after the transfers (D.5):
+  # October and November 2026, so October, the month determined, is a month of ineligibility for the grant. Before: two transfers in one month were
+  # cannot determine (OQ-1254). Mateo's figures are CO-131's.
+  as_of: "2026-10-05"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        retains_ssi_status_without_payment: false  # coverage pass 4 N4-13: stated (decision 4); the value the reader read when it was unstated
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1954-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        af_application_date: "2026-10-01"
+        receipts:
+        - {kind: social_security, amount: 700}
+        earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+        - {kind: other_resource, value: 1600, amount_owed: 0, compensation_received: 0, disposed_date: "2026-09-02"}
+        - {kind: other_resource, value: 1600, amount_owed: 0, compensation_received: 0, disposed_date: "2026-09-20"}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "2017-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: true
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        receipts:
+        - {kind: ssi, amount: 500}
+        - {kind: child_support, amount: 300}
+        earnings: []
+        holdings:
+        - {kind: bank_account, value: 200}
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_twfc_penalty_months: {"2026-09": 2}                  # floor(1,600 / 1,032) + floor(1,600 / 1,032) = 1 + 1 (3.520.76.D.3, E)
+      af_is_in_twfc_penalty_period: {"2026-10": true, "2026-11": true}   # October and November (D.5)
+      af_category: {"2026-10": none}                          # a month of ineligibility for the grant (3.520.76.D.4); CO-131 gives oap
+

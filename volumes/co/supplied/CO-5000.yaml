@@ -159,7 +159,7 @@ record_fields:
   for_person:
     type: person
     when_absent: "the amount for a dependent (for_dependent) is for no person of the case"
-    meaning: "For a receipt with an amount for a dependent (for_dependent), the person of the case that amount is for: the person's id in the case. A rule that counts the dependent's part as the dependent's income reads it (9 CCR 2503-5 3.520.785.B.4, 9 CCR 2503-6 3.605.3.B.5: \"countable unearned income to the dependent rather than to the veteran\"; field sweep fix round, FS-AF-2, FS-CW-2)."
+    meaning: "For a receipt with an amount for a dependent (for_dependent), the person of the case that amount is for: the person's id in the case. A rule that counts the dependent's part as the dependent's income reads it (9 CCR 2503-5 3.520.785.B.4, 9 CCR 2503-6 3.605.3.B.5: \"countable unearned income to the dependent rather than to the veteran\"; field sweep fix round, FS-AF-2, FS-CW-2), and the SSI method for a dependent who resides with the person paid (20 CFR 416.1123(e)(2)(i); cross-list records round, OQ-1348)."
   regular_date:
     type: calendar date
     when_absent: "the payment came on the day its schedule set for it"
