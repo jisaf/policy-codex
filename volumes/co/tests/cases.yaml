@@ -82518,6 +82518,9 @@
   # (OQ-1366): the rent is unearned, net of the expenses (I.12, I.17): 1,800 - 300 = 1,500; it is not self-employment, so
   # she has no eligible activity (3.111.B.1, G): ineligible_activity. Before coverage pass 6 the business was read as
   # self-employment: activity true, eligible_low_income.
+  # KL-CE-1 (2026-11-24): restated with the property's $300 of expenses as the rental business's own cost record (job_1), no
+  # longer rental_property_expenses_paid, which states only the expenses of rental property that is not a business; the answer is
+  # unchanged: 1,800 - 300 = 1,500 (cccap_rental_property_costs, CO-7910).
   as_of: "2026-11-15"
   case_facts:
     is_protective_services_child_care_case: false
@@ -82586,8 +82589,12 @@
             amount: 1800
             hours: 43
             rental_property: true
+            job: job_1
+          - kind: business_cost_operating
+            amount: 300
+            job: job_1
       month_defaults:
-        rental_property_expenses_paid: 300
+        rental_property_expenses_paid: 0
         donated_work_hours_per_week: 0
         hours_worked: 43
         child_support_paid_legally_obligated: 0
@@ -92507,6 +92514,9 @@
   # Income 2,500 + 600 = $3,100 <= $3,336.16: eligible_low_income.
   # Before coverage pass 7 the two businesses' hours were pooled (140 / 4.29 = 32.7 a week), the rent read as self-employment:
   # 4,000 - 500 = $3,500, ineligible_income.
+  # KL-CE-1 (2026-11-24): restated with each business named (job_2 the cleaning business, job_1 the rental) and the rental's $400 of
+  # expenses as its own cost record, no longer rental_property_expenses_paid; the cleaning business's $500 stays a cost of
+  # self-employment (CO-1709) and the rental's $400 comes off its rent (CO-7910): the answer is unchanged.
   as_of: '2026-11-15'
   case_facts:
     is_protective_services_child_care_case: false
@@ -92570,14 +92580,20 @@
           amount: 3000
           hours: 120
           rental_property: false
+          job: job_2
         - kind: business_cost_operating
           amount: 500
+          job: job_2
         - kind: self_employment_receipts
           amount: 1000
           hours: 20
           rental_property: true
+          job: job_1
+        - kind: business_cost_operating
+          amount: 400
+          job: job_1
       month_defaults:
-        rental_property_expenses_paid: 400
+        rental_property_expenses_paid: 0
         donated_work_hours_per_week: 0
         hours_worked: 140
         child_support_paid_legally_obligated: 0
@@ -92660,6 +92676,8 @@
   # are not hours worked. G.1.b: "gross income divided by the number of hours worked": 800 / (130 - 43) = 800 / 87 = $9.20
   # >= $7.25: an eligible activity. Income 800 + 1,500 = $2,300 <= $3,336.16: eligible_low_income.
   # Before coverage pass 7: 800 / 130 = $6.15 < $7.25, ineligible_activity.
+  # KL-CE-1 (2026-11-24): restated with the rental's $300 of expenses as its own cost record (job_1), no longer
+  # rental_property_expenses_paid; the answer is unchanged: 1,800 - 300 = 1,500 (cccap_rental_property_costs, CO-7910).
   as_of: '2026-11-15'
   case_facts:
     is_protective_services_child_care_case: false
@@ -92725,8 +92743,12 @@
           amount: 1800
           hours: 43
           rental_property: true
+          job: job_1
+        - kind: business_cost_operating
+          amount: 300
+          job: job_1
       month_defaults:
-        rental_property_expenses_paid: 300
+        rental_property_expenses_paid: 0
         donated_work_hours_per_week: 0
         hours_worked: 130
         child_support_paid_legally_obligated: 0
@@ -92801,13 +92823,22 @@
       cccap_eligibility_status:
         2026-11: eligible_low_income
 - id: CO-1082
-  title: 'Coverage pass 7, R7-3 known limit (CR2b): a small rental stated the CCCAP way (costs as rental_property_expenses_paid)'
-  # Built for coverage pass 7 (docs/reviews/coverage7-care-energy.md, R7-3; docs/reviews/known-limits.md) from CO-806: wages
-  # $1,600 (87 hours), a rental managed 43 hours in November (10.03 a week), rent $1,800, its $300 of costs stated as
-  # rental_property_expenses_paid, as cccap_rental_property_receipts_as_unearned (CO-7251) asks. CCCAP: the rent is unearned and
-  # net (3.111.H.4.e, I.12, I.17): 1,800 - 300 = 1,500; income 1,600 + 1,500 = $3,100 <= $3,336.16: eligible_low_income.
-  # The known limit: the same costs stated as a cost record of the rental business (LEAP's statement, CO-1711) give CCCAP
-  # $3,400, ineligible_income (probe CR2); CO-1083 states a rental the LEAP way. No one statement serves both programs.
+  title: 'KL-CE-1 (coverage pass 7, R7-3): a small rental stated once, its costs as its own cost records, read right by CCCAP and LEAP'
+  # Built for coverage pass 7 (docs/reviews/coverage7-care-energy.md, R7-3) from CO-806, restated for KL-CE-1 (2026-11-24;
+  # docs/reviews/known-limits.md). One PEAK application on 2026-11-15 for child care and energy assistance: the mother (p1) and
+  # her son of 6 (p3), Denver. Wages $1,600 (87 hours); a rental house she manages 43 hours in November, rent $1,800, stated as a
+  # business (job_1, rental_property true) whose two costs are its own cost records: mortgage interest $200 (not maintenance)
+  # and repairs $100 (maintenance, property_maintenance true). Every record is a stream (no month, no date).
+  # CCCAP (8 CCR 1403-1 3.111.H.4.e, I.12, I.17): 43 / (30 / 7) = 10.03 hours a week, under twenty: the rent is unearned and net of
+  # the rental's own costs (cccap_rental_property_costs, CO-7910): 1,800 - (200 + 100) = 1,500; income 1,600 + 1,500 = $3,100
+  # <= $3,336.16 (185% of the guideline for two): eligible_low_income.
+  # LEAP (the full month prior to the application, October; 9 CCR 2503-7 3.755.21.I.1 as amended 2026-11-01, I.2.D):
+  # the rental is self-employment and only its maintenance is deducted: 1,800 - 100 = 1,700; income 1,600 + 1,700 = $3,300
+  # <= $4,936 (the 2026-27 limit for two): eligible.
+  # Before KL-CE-1 this household was stated the CCCAP way ($300 as rental_property_expenses_paid, no cost record), and so stated
+  # LEAP counted the rent gross ($3,400 for LEAP); stated as here, CCCAP gave 1,600 + 1,800 = $3,400, ineligible_income (the
+  # costs read as self-employment costs against no self-employment receipts), and LEAP deducted the interest too:
+  # 1,600 + 1,800 - 300 = $3,100. No one statement served both programs.
   as_of: '2026-11-15'
   case_facts:
     is_protective_services_child_care_case: false
@@ -92816,6 +92847,9 @@
     uses_top_quality_rated_provider: false
     cccap_is_child_welfare_child_care_household: false
     cccap_application_or_redetermination_date: '2026-11-15'
+    leap_application_date: '2026-11-15'
+    home_heating_cost_arrangement: pays_vendor_directly
+    has_primary_heating_source: true
   parameters:
     cccap_entry_income_limit_pct_fpl_table:
       denver: 1.85
@@ -92865,6 +92899,8 @@
         earned_income_verification_document_received: true
         work_hours_verification_document_received: true
         verification_request_date: '2026-10-01'
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
         receipts: []
         earnings:
         - kind: wages
@@ -92873,8 +92909,17 @@
           amount: 1800
           hours: 43
           rental_property: true
+          job: job_1
+        - kind: business_cost_interest
+          amount: 200
+          job: job_1
+          property_maintenance: false
+        - kind: business_cost_operating
+          amount: 100
+          job: job_1
+          property_maintenance: true
       month_defaults:
-        rental_property_expenses_paid: 300
+        rental_property_expenses_paid: 0
         donated_work_hours_per_week: 0
         hours_worked: 130
         child_support_paid_legally_obligated: 0
@@ -92923,6 +92968,8 @@
         verification_request_date: '2026-10-01'
         cccap_child_needs_care_for_part_of_day: true
         cccap_care_is_part_time: false
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
         receipts: []
         earnings: []
       month_defaults:
@@ -92939,44 +92986,95 @@
       cccap_is_in_homelessness_stabilization_period: false
   expect:
     p1:
+      cccap_rental_property_costs:
+        2026-11: 300
       cccap_household_income:
         2026-11: 3100
+      leap_self_employment_allowable_costs:
+        2026-10: 100
+      leap_household_income:
+        2026-11: 3300
+      leap_is_eligible:
+        2026-11: true
     p3:
       cccap_eligibility_status:
         2026-11: eligible_low_income
 - id: CO-1083
-  title: 'Coverage pass 7, R7-3 known limit (LRB4): a rental business stated the LEAP way (maintenance as a business cost record)'
-  # Built for coverage pass 7 (docs/reviews/coverage7-care-energy.md, R7-3; docs/reviews/known-limits.md) from CO-712 (one adult,
-  # application 2026-11-10, full month prior October 2026, limit $3,774 for one): wages $2,300, a rental business (October rent
-  # $1,500, 40 hours) whose $100 of maintenance is a business_cost_operating record, as leap_self_employment_allowable_costs
-  # (CO-1711) asks. 9 CCR 2503-7 3.755.21.I.2.D: "Rental property allowable expenses shall be limited to the costs of
-  # maintenance of the property": 1,500 - 100 = 1,400; income 2,300 + 1,400 = $3,700 <= $3,774: eligible.
-  # The known limit: the same maintenance stated as rental_property_expenses_paid (CCCAP's statement, CO-7251) gives LEAP
-  # $3,800, ineligible (probe LRB3); mortgage interest stated as a cost record is deducted, which I.2.D does not allow (probe LRB1).
+  title: 'KL-CE-1 (coverage pass 7, R7-3): a rental business''s maintenance stated once, as its own cost record, read right by CCCAP and LEAP'
+  # Built for coverage pass 7 (docs/reviews/coverage7-care-energy.md, R7-3; LRB4) from CO-712, restated for KL-CE-1 (2026-11-24;
+  # docs/reviews/known-limits.md) as one application on 2026-11-10 for child care and energy assistance, so that one statement of the
+  # property is read by both programs: the mother (p1) and her son of 6 (p3), Denver. Wages $2,300 (87 hours); a rental she manages
+  # 40 hours a month, rent $1,500, stated as a business (job_1, rental_property true) whose one cost is its own record: repairs $100
+  # (business_cost_operating, property_maintenance true). Every record is a stream (no month, no date).
+  # LEAP (full month prior: October; 9 CCR 2503-7 3.755.21.I.1, I.2.D): rent less maintenance: 1,500 - 100 = 1,400; income
+  # 2,300 + 1,400 = $3,700 <= $4,936 (two persons): eligible.
+  # CCCAP (8 CCR 1403-1 3.111.H.4.e, I.12, I.17): 40 / (30 / 7) = 9.33 hours a week, under twenty: unearned rent net of its own
+  # cost: 1,500 - 100 = 1,400; income 2,300 + 1,400 = $3,700 > $3,336.16 (185% for two): ineligible_income.
+  # Before KL-CE-1 this household was LEAP's alone (one adult, limit $3,774), stated the LEAP way ($100 as a business_cost_operating
+  # record, LEAP's statement rule); CCCAP would have read that record as a cost of self-employment and counted the rent gross,
+  # $3,800. The single-adult LEAP probes near $3,774 are CO-1191 (LRB1) and CO-1192 (LRB3).
   as_of: '2026-11-10'
   case_facts:
-    home_heating_cost_arrangement: pays_vendor_directly
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: '2026-11-10'
     leap_application_date: '2026-11-10'
+    home_heating_cost_arrangement: pays_vendor_directly
     has_primary_heating_source: true
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
   relationships:
-  - - other_relative
+  - - parent
     - p1
-    - p2
+    - p3
   persons:
     p1:
       facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
         days_out_of_state_in_calendar_year: 0
         is_pregnant: false
-        date_of_birth: '1980-01-01'
+        date_of_birth: '1988-04-02'
+        sex: female
         immigration_status: us_citizen
         ssn_furnished_or_application_shown: true
         state_of_residence: CO
+        county_of_residence: denver
         residence_setting_type: private_dwelling
         nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
         lives_in_own_home: true
         leap_is_in_another_approved_household: false
-        is_emancipated_minor: false
-        dwelling_id: d1
         receipts: []
         earnings:
         - kind: wages
@@ -92985,28 +93083,92 @@
           amount: 1500
           hours: 40
           rental_property: true
-          month: 2026-10
+          job: job_1
         - kind: business_cost_operating
           amount: 100
-          month: 2026-10
-        self_employment_cost_receipts_received: true
+          job: job_1
+          property_maintenance: true
       month_defaults:
-        donated_work_hours_per_week: 0
         rental_property_expenses_paid: 0
-    p2:
-      facts:
-        is_pregnant: false
-        date_of_birth: '1950-01-01'
-        dwelling_id: d2
-      month_defaults:
-        ssa_in_kind_support_and_maintenance_charged: 0
         donated_work_hours_per_week: 0
+        hours_worked: 127
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
   expect:
     p1:
+      cccap_rental_property_costs:
+        2026-11: 100
+      cccap_household_income:
+        2026-11: 3700
+      leap_self_employment_allowable_costs:
+        2026-10: 100
       leap_household_income:
         2026-11: 3700
       leap_is_eligible:
         2026-11: true
+    p3:
+      cccap_eligibility_status:
+        2026-11: ineligible_income
 - id: CO-1090
   title: 'Coverage pass 7 for the cash programs, F7-1 (V1): a parenting-plan visit is measured as a length of time, not in calendar months'
   # Built for coverage pass 7 (docs/reviews/coverage7-cash.md, F7-1) from CO-1032 (a mother and her daughter of 6, no income):
@@ -99786,3 +99948,380 @@
         2026-10: unknown
       af_oap_grant:
         2026-10: unknown
+- id: CO-1190
+  title: 'KL-CE-1, probe CR2 (coverage pass 7, R7-3): a small rental''s $300 of repairs stated as its own cost record'
+  # Probe CR2 of docs/reviews/coverage7-care-energy.md (R7-3), stored for KL-CE-1 (2026-11-24; docs/reviews/known-limits.md):
+  # CO-1082's household (one application on 2026-11-15; the mother's wages $1,600, 87 hours; a rental managed 43 hours in
+  # November, rent $1,800) with the property's $300 of costs stated as one business_cost_operating record of the rental (job_1),
+  # repairs (property_maintenance true), and rental_property_expenses_paid 0.
+  # CCCAP (8 CCR 1403-1 3.111.H.4.e, I.12, I.17): 43 / (30 / 7) = 10.03 hours a week, under twenty: unearned rent net of its own
+  # costs: 1,800 - 300 = 1,500; income 1,600 + 1,500 = $3,100 <= $3,336.16: eligible_low_income.
+  # LEAP (9 CCR 2503-7 3.755.21.I.2.D): the repairs are maintenance: 1,800 - 300 = 1,500; income 1,600 + 1,500 = $3,100
+  # <= $4,936: eligible.
+  # Before KL-CE-1 CCCAP read the cost record as a cost of self-employment, against no self-employment receipts, and counted the
+  # rent gross: 1,600 + 1,800 = $3,400 > $3,336.16, ineligible_income (the probe's engine answer).
+  as_of: '2026-11-15'
+  case_facts:
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_application_or_redetermination_date: '2026-11-15'
+    leap_application_date: '2026-11-15'
+    home_heating_cost_arrangement: pays_vendor_directly
+    has_primary_heating_source: true
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - - parent
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 1600
+        - kind: self_employment_receipts
+          amount: 1800
+          hours: 43
+          rental_property: true
+          job: job_1
+        - kind: business_cost_operating
+          amount: 300
+          job: job_1
+          property_maintenance: true
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 130
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        meets_ssa_disability_criteria: false
+        is_blind: false
+        retains_ssi_status_without_payment: false
+        has_applied_for_ssi: false
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        child_support_paid_order_type: court_order
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        work_hours_verification_document_received: true
+        verification_request_date: '2026-10-01'
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        receipts: []
+        earnings: []
+      month_defaults:
+        rental_property_expenses_paid: 0
+        donated_work_hours_per_week: 0
+        hours_worked: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      cccap_rental_property_costs:
+        2026-11: 300
+      cccap_household_income:
+        2026-11: 3100
+      leap_self_employment_allowable_costs:
+        2026-10: 300
+      leap_household_income:
+        2026-11: 3100
+      leap_is_eligible:
+        2026-11: true
+    p3:
+      cccap_eligibility_status:
+        2026-11: eligible_low_income
+- id: CO-1191
+  title: 'KL-CE-1, probe LRB1 (coverage pass 7, R7-3): a LEAP rental business''s mortgage interest is not maintenance'
+  # Probe LRB1 of docs/reviews/coverage7-care-energy.md (R7-3), stored for KL-CE-1 (2026-11-24; docs/reviews/known-limits.md):
+  # CO-712's adult alone (application 2026-11-10; full month prior October 2026; limit $3,774 for one) with wages $2,500 and a
+  # rental business (job_1, rental_property true; October rent $1,500, 40 hours) whose October costs are its own records:
+  # mortgage interest $600 (business_cost_interest, not maintenance) and repairs $100 (business_cost_operating, maintenance).
+  # 9 CCR 2503-7 3.755.21.I.2.D (S3596): "Rental property allowable expenses shall be limited to the costs of maintenance of
+  # the property": 1,500 - 100 = 1,400; income 2,500 + 1,400 = $3,900 > $3,774: not eligible.
+  # Before KL-CE-1 LEAP deducted every cost record of a deducted kind: 1,500 - 700 = 800; $3,300, eligible (the probe's answer).
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 2500
+        - kind: self_employment_receipts
+          amount: 1500
+          hours: 40
+          rental_property: true
+          job: job_1
+          month: 2026-10
+        - kind: business_cost_interest
+          amount: 600
+          job: job_1
+          property_maintenance: false
+          month: 2026-10
+        - kind: business_cost_operating
+          amount: 100
+          job: job_1
+          property_maintenance: true
+          month: 2026-10
+        self_employment_cost_receipts_received: true
+      month_defaults:
+        donated_work_hours_per_week: 0
+        rental_property_expenses_paid: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_self_employment_allowable_costs:
+        2026-10: 100
+      leap_household_income:
+        2026-11: 3900
+      leap_is_eligible:
+        2026-11: false
+- id: CO-1192
+  title: 'KL-CE-1, probe LRB3 (coverage pass 7, R7-3): a LEAP rental''s maintenance stated once, as its own cost record'
+  # Probe LRB3 of docs/reviews/coverage7-care-energy.md (R7-3), stored for KL-CE-1 (2026-11-24; docs/reviews/known-limits.md):
+  # CO-712's adult alone (application 2026-11-10; full month prior October 2026; limit $3,774 for one), wages $2,300, a rental
+  # business (job_1, rental_property true; October rent $1,500, 40 hours) and $100 of repairs. The probe stated the repairs the
+  # CCCAP way (rental_property_expenses_paid, no cost record), and LEAP counted the rent gross: 2,300 + 1,500 = $3,800 > $3,774,
+  # not eligible. Since KL-CE-1 the property is stated once for every program: the repairs are the rental's own cost record
+  # (business_cost_operating, job_1, property_maintenance true), and rental_property_expenses_paid states only the expenses of
+  # rental property that is not a business (rental_income receipts). 9 CCR 2503-7 3.755.21.I.2.D (S3596): 1,500 - 100 = 1,400;
+  # income 2,300 + 1,400 = $3,700 <= $3,774: eligible, the rule's answer. CCCAP reads the same records (CO-1083, the household
+  # with a child).
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        days_out_of_state_in_calendar_year: 0
+        is_pregnant: false
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        lives_in_own_home: true
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        receipts: []
+        earnings:
+        - kind: wages
+          amount: 2300
+        - kind: self_employment_receipts
+          amount: 1500
+          hours: 40
+          rental_property: true
+          job: job_1
+          month: 2026-10
+        - kind: business_cost_operating
+          amount: 100
+          job: job_1
+          property_maintenance: true
+          month: 2026-10
+        self_employment_cost_receipts_received: true
+      month_defaults:
+        donated_work_hours_per_week: 0
+        rental_property_expenses_paid: 0
+    p2:
+      facts:
+        is_pregnant: false
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+      month_defaults:
+        ssa_in_kind_support_and_maintenance_charged: 0
+        donated_work_hours_per_week: 0
+  expect:
+    p1:
+      leap_self_employment_allowable_costs:
+        2026-10: 100
+      leap_household_income:
+        2026-11: 3700
+      leap_is_eligible:
+        2026-11: true
+- id: CO-1193
+  title: 'KL-CASH-1: an OAP client who shares a market-rent home with three people who do not apply'
+  # Built for KL-CASH-1 (coverage pass 7, F7-4; docs/reviews/coverage7-cash.md, docs/reviews/known-limits.md; 2026-11-24) from
+  # CO-166: p1, 70, $600 of Social Security, the only person of the case, lives in a home of four people whose shelter costs are
+  # $1,000 a month at market value; she pays $200 and others pay $50 of her share. Determination on October 1, 2026.
+  # ISM (9 CCR 2503-5 3.520.79.B.4.a, C.2, S1012): "Fair share is calculated by totaling shelter costs and dividing by the number
+  # of people living in the household": 1,000 / 4 = 250 (persons_living_in_home_count, CO-7911); C.2: min(250, 351) - 200 = $50.
+  # Countable income (3.533.A.2): 600 + 50 = 650 unearned, less the $20: 630 < 1,032: oap. Grant (3.532.B): 1,032 - 630 = $402.
+  # Before KL-CASH-1 the fair share divided by the persons of the case in the home (lives_with: p1 alone): min(1,000, 351) - 200
+  # = $151; countable 731; grant $301.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+    home_total_shelter_costs: 1000
+    home_shelter_costs_are_market_value: true
+    persons_living_in_home_count: 4
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        temporary_absence_reason: none  # pattern sweep (cash) PS-T8/PS-D3: stated (decision 4); present in the home, as the story has it and the reader read it unstated
+        dwelling_id: h1  # pattern sweep (cash) PS-D2: stated (decision 4; docs/conventions.md rule 17); the case states no home apart, so every person lives in one home, as the reader read it unstated
+        af_burial_responsible_persons_outside_case_resources: 0  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        stays_with_succession_of_others_without_permanent_arrangement: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        received_financial_assistance_from_another_state_this_month: false  # coverage pass 6 CA6-7: stated (decision 4); the value the story assumes, which the reader gave it when unstated
+        days_out_of_state_in_calendar_year: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        nighttime_residence_type: fixed_regular_adequate
+        owns_and_lives_in_home: false
+        lives_in_subsidized_housing: false
+        shelter_cost_monthly: 200
+        receipts:
+        - {kind: social_security, amount: 600}
+        earnings: []
+        holdings:
+        - {kind: bank_account, value: 500}
+      month_defaults:
+        donated_work_hours_per_week: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        shelter_costs_paid_by_others: 50
+  expect:
+    p1:
+      af_is_homeless: false
+      af_in_kind_support_and_maintenance: {"2026-10": 50}
+      af_countable_income: {"2026-10": 630}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 402}

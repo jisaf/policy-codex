@@ -25212,3 +25212,68 @@ C.R.S. 26-2-111.8(2)(c) (D-59:1354-1357; KL-CASH-2 fix round, 2026-11-24). https
 > described in paragraph (b) of this subsection (2) shall be eligible for benefits under this article,
 > but  shall  have  sponsor  income  and  resources  deemed  to  the  individual  or  family  under  rules
 > established by the state department pursuant to section 26-2-137 (2).
+
+### S5350. CCCAP self-employment: the verified business expenses allowed and those not allowed (depreciation, principal of loans, personal expenses)
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.2.a-b (D-87:1937-1966; rule version 12658, effective 2026-08-14; KL-CE-1, 2026-11-24). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2. Taxable gross income (declared gross income minus verified business
+> expenses from one’s own business, professional enterprise, or
+> partnership) from non-farm self-employment.
+>
+> a. These verified business expenses include, but are not limited to:
+>
+> 1) The rent of business premises;
+>
+> 2) Wholesale cost of merchandise;
+>
+> 3) Utilities;
+>
+> 4) Taxes;
+>
+> 5) Mileage expense for business purposes only;
+>
+> 6) Labor; and
+>
+> 7) Upkeep of necessary equipment.
+>
+> b. The following are not allowed as business expenses from self-
+> employment:
+>
+> 1) Depreciation of equipment;
+>
+> 2) The cost of and payment on the principal of loans for capital
+> asset or durable goods; and
+>
+> 3) Personal expenses such as personal income tax payments,
+> lunches, and transportation to and from work.
+
+### S5351. LEAP self-employment: receipts are required for business expenses to be deducted; rental property expenses are limited to maintenance; credit card and bank statements are not receipts
+
+Document: D-86
+
+9 CCR 2503-7 3.755.21.I.2-3 (D-86:2057-2082; rule version 12221, effective 11/01/2025; the amendments effective 11/01/2026, D-173, change I.1 and J and leave I.2-3 as they were; KL-CE-1, 2026-11-24). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 2. Receipts for business-related expenses are required in order to be considered as
+> deductions:
+> ...
+> a. Rent or mortgage is not an allowable expense when the applicant is operating a
+> business from his or her residence.
+>
+> b. Utilities, data and phone bills including cell phones are not allowable expenses
+> when the account is in the name of an individual.
+>
+> c. Fuel expenses are allowable for vehicles used solely for business and for
+> individuals who use personal vehicles that are directly related to the work and
+> necessary to conduct business. The county may accept gas receipts and/or
+> documentation of mileage for those vehicles that are not used solely for
+> business. If using a mileage log, the deduction is then based on the number of
+> miles times the county’s established reimbursement rate.
+>
+> D. Rental property allowable expenses shall be limited to the costs of maintenance
+> of the property.
+>
+> 3. Credit card and bank statements are not allowable receipts for business related
+> expenses.

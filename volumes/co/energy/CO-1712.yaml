@@ -18,7 +18,13 @@ tests:
   - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {earnings: [{kind: wages, amount: 1000}]}, expect: 0}
   - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {leap_self_employment_allowable_costs: 450, earnings: [{kind: self_employment_receipts, amount: 300}]}, expect: 0}
   # $1,500 of receipts, $300 of receipted operating costs, $200 set aside under an approved PASS (3.752.23.DD): $1,500 - $300 - $200 = $1,000.
-  - {id: CO-1712-T4, as_of: "2026-10-01", month: "2026-10", title: "A PASS set-aside from the business", given: {self_employment_cost_receipts_received: true, earnings: [{kind: self_employment_receipts, amount: 1500, pass_set_aside: 200}, {kind: business_cost_operating, amount: 300}]}, expect: 1000}
+  # KL-CE-1 (2026-11-24): the business states that it is not rental property (rental_property false), which leap_self_employment_allowable_costs
+  # (CO-1711) now reads before deducting a receipted cost (decision 4); the value is unchanged.
+  - {id: CO-1712-T4, as_of: "2026-10-01", month: "2026-10", title: "A PASS set-aside from the business", given: {self_employment_cost_receipts_received: true, earnings: [{kind: self_employment_receipts, amount: 1500, pass_set_aside: 200, rental_property: false}, {kind: business_cost_operating, amount: 300}]}, expect: 1000}
   - {id: CO-1712-T5, as_of: "2026-10-01", month: "2026-10", title: "Earnings not stated: cannot determine", given: {}, expect: unknown}
   # Coverage pass 5 (docs/reviews/coverage5-care-energy.md), L5-1: the full month prior to an application of 2026-11-10 is October 2026 (3.755.21.I.1, OQ-681 (3)).
   - {"id": "CO-1712-T6", "title": "L5-1 (LE1): a business that began 2026-11-01 has no self-employment income in October: 0", "month": "2026-10", "as_of": "2026-11-10", "given": {"self_employment_cost_receipts_received": false, "earnings": [{"kind": "self_employment_receipts", "amount": 2000, "hours": 80, "pass_set_aside": 100, "job_start_date": "2026-11-01"}]}, "expect": 0}
+  # KL-CE-1, probe LRB1 (docs/reviews/coverage7-care-energy.md, R7-3): October rents of $1,500 from a rental business; its mortgage interest
+  # $600 is not maintenance and its repairs $100 are (9 CCR 2503-7 3.755.21.I.2.D, S3596): 1,500 - 100 = 1,400 (before KL-CE-1:
+  # 1,500 - 700 = 800).
+  - {id: CO-1712-T7, title: "KL-CE-1 (LRB1): rents $1,500 less the maintenance $100 only: 1,400", month: "2026-10", as_of: "2026-11-10", given: {self_employment_cost_receipts_received: true, earnings: [{kind: self_employment_receipts, amount: 1500, hours: 40, rental_property: true, job: job_1}, {kind: business_cost_interest, amount: 600, job: job_1, property_maintenance: false}, {kind: business_cost_operating, amount: 100, job: job_1, property_maintenance: true}]}, expect: 1400}
