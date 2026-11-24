@@ -15,6 +15,7 @@
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
   as_of: "2026-10-01"
   case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
     home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p2 true; is_responsible_for_heating_costs p1 true, p2 true, p3 true, p4 true, p5 true; non_heating_utility_cost_count 3; incurs_telephone_cost true on members)
     home_incurs_electricity_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
     home_incurs_water_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
@@ -2083,6 +2084,7 @@
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
   as_of: "2026-11-01"
   case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
     home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p2 true; is_responsible_for_heating_costs p1 true, p2 true, p3 true, p4 true, p5 true; non_heating_utility_cost_count 3; incurs_telephone_cost true on members)
     home_incurs_electricity_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
     home_incurs_water_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
@@ -5319,6 +5321,8 @@
   # unit's 649 - 132 = 517 grant loses 25%, 517 x 0.75 = 387.75, cents dropped: 387. Alma's AND-CS grant counts
   # her SSI (B-2, 3.549.A.2): 700 - 700 + 0 (no $20 disregard on SSI alone) + 700 = 700 countable; 994 - 700 = 294.
   as_of: "2026-10-01"
+  case_facts:
+    cw_determination_is_redetermination: true  # coverage pass 6 CA6-2: stated (decision 4); the unit receives its October grant, so this is not an application (3.605.5.C); no answer turns on it (no child support counted, no SSN pending)
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -6517,6 +6521,7 @@
   # p4 is school aged, enrolled in an NSLP school and in a TANF household: SUN Bucks categorical, $120 (S796).
   as_of: "2026-11-01"
   case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: true  # coverage pass 6 CA6-2: stated (decision 4); Ana's unit is receiving basic cash assistance under a sanction, so this is not an application (3.605.5.C); no answer turns on it (no child support, no SSN pending)
     cw_meets_county_diversion_income_limit: false
   relationships:
     - [parent, p3, p4]
@@ -6709,6 +6714,7 @@
   # are in. The case is evaluated on 2027-02-10, after every program's period has run.
   as_of: "2027-02-10"
   case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
     home_heating_cost_arrangement: none  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was is_responsible_for_heating_costs p1 false, p2 false on members)
     snap_application_date: "2026-11-02"
     snap_determination_is_recertification: false
@@ -7117,6 +7123,7 @@
   # document. p1 works 140 hours a month for $1,800; her hours are not yet documented.
   as_of: "2026-10-15"
   case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
     home_heating_cost_arrangement: none  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 false; is_responsible_for_heating_costs p1 false, p2 false on members)
     received_energy_assistance_within_twelve_months: false
     snap_application_date: "2026-10-01"
@@ -7943,6 +7950,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -9503,6 +9511,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
     - [parent, p3, p4]
@@ -10464,6 +10473,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships: []
   persons:
     p1:
@@ -11167,6 +11177,7 @@
     snap_application_date: "2028-08-10"
     snap_determination_is_recertification: false
     cw_application_date: "2028-08-10"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
   persons:
@@ -14993,6 +15004,7 @@
     snap_application_date: "2026-09-01"
     snap_determination_is_recertification: true
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -16136,6 +16148,7 @@
         child_welfare_payment_type: none
         is_pregnant: false
         af_application_date: "2026-10-01"
+        af_eligibility_date: "2026-10-01"  # coverage pass 6 CA6-1: stated (decision 4); the story's client is eligible from the date she applied, the first, so October is a full month (3.532.B.1)
         receipts:
         - {kind: social_security, amount: 700}
         earnings: []
@@ -17571,6 +17584,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
   persons:
@@ -17687,6 +17701,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p3]
     - [parent, p2, p3]
@@ -17847,6 +17862,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
     - [sponsor, p3, p1]
@@ -18021,6 +18037,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p3, p1]
     - [parent, p1, p5]
@@ -18185,6 +18202,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
     - [grandparent, p3, p1]
@@ -19926,6 +19944,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -26154,6 +26173,7 @@
   as_of: '2026-10-15'
   case_facts:
     cw_application_date: '2026-10-12'
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - - parent
     - p1
@@ -26319,6 +26339,7 @@
   as_of: '2026-10-15'
   case_facts:
     cw_application_date: '2026-10-12'
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - - parent
     - p1
@@ -29293,6 +29314,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
   persons:
@@ -29410,6 +29432,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
   persons:
@@ -29523,6 +29546,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-09-25"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
     cw_unit_eligible_from_date: "2026-10-03"
   relationships:
     - [parent, p1, p2]
@@ -40085,6 +40109,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -40280,6 +40305,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p3, p1]
   - [parent, p1, p5]
@@ -40561,6 +40587,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -40778,6 +40805,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -40979,6 +41007,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -41171,6 +41200,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -41364,6 +41394,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -41558,6 +41589,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -41758,6 +41790,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -41953,6 +41986,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -42137,6 +42171,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   - [parent, p3, p1]
@@ -42302,6 +42337,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -42418,6 +42454,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -42533,6 +42570,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -42648,6 +42686,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -42763,6 +42802,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -49476,6 +49516,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -54762,6 +54803,7 @@
     snap_application_date: "2026-10-31"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -55032,6 +55074,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -55303,6 +55346,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -55576,6 +55620,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -55853,6 +55898,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -56500,6 +56546,7 @@
     snap_application_date: "2026-09-01"
     snap_determination_is_recertification: true
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [spouse, p1, p2]
   - [parent, p1, p3]
@@ -58916,6 +58963,7 @@
   as_of: "2026-10-15"
   case_facts:
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - [parent, p1, p2]
     - [parent, p3, p1]
@@ -60211,6 +60259,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -60429,6 +60478,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -60630,6 +60680,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -61492,6 +61543,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
   - [parent, p1, p2]
   persons:
@@ -67137,6 +67189,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - - "spouse"
       - "p1"
@@ -67422,6 +67475,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - - "spouse"
       - "p1"
@@ -68718,6 +68772,7 @@
     snap_application_date: "2026-10-12"
     snap_determination_is_recertification: false
     cw_application_date: "2026-10-12"
+    cw_determination_is_redetermination: false  # coverage pass 6 CA6-2: stated (decision 4); the story is an application, the value the readers gave it when unstated
   relationships:
     - - "parent"
       - "p2"
@@ -69142,8 +69197,9 @@
   # income 0 < 331 (the need standard for two): eligible; application October 12, 20 days, .65754 x 488 = 320.88, cents
   # dropped: $320. Before the fix: 2,000 counted, ineligible_income.
   as_of: '2026-10-15'
+  # coverage pass 6 CA6-2: cw_determination_is_redetermination stated (decision 4); the story is an application, the value the readers gave it when it was unstated
   case_facts: {home_heating_cost_arrangement: included_in_rent, home_incurs_telephone_cost: false, received_energy_assistance_within_twelve_months: false, snap_application_date: '2026-10-12', snap_determination_is_recertification: false,
-    cw_application_date: '2026-10-12'}
+    cw_application_date: '2026-10-12', cw_determination_is_redetermination: false}
   relationships:
   - [parent, p1, p2]
   persons:
@@ -69367,8 +69423,9 @@
   # Hand derivation: countable income 0 < 331: eligible; 20 days of October, .65754 x 488 = 320.88: $320. Before the fix:
   # 600 - 90 = 510 >= 331, ineligible_income. (Probe W1, a pay stream whose job ended, is rule test CO-5140-T11.)
   as_of: '2026-10-15'
+  # coverage pass 6 CA6-2: cw_determination_is_redetermination stated (decision 4); the story is an application, the value the readers gave it when it was unstated
   case_facts: {home_heating_cost_arrangement: included_in_rent, home_incurs_telephone_cost: false, received_energy_assistance_within_twelve_months: false, snap_application_date: '2026-10-12', snap_determination_is_recertification: false,
-    cw_application_date: '2026-10-12'}
+    cw_application_date: '2026-10-12', cw_determination_is_redetermination: false}
   relationships:
   - [parent, p1, p2]
   persons:
@@ -69605,8 +69662,9 @@
   # (cw_is_dependent_child_in_month): eligible in both; September from the 25th, 6 days, .19726 x 488 = 96.26: $96; October
   # the entire month, $488. Before the fix: the determination date's age (18), ineligible_no_dependent_child.
   as_of: '2026-10-15'
+  # coverage pass 6 CA6-2: cw_determination_is_redetermination stated (decision 4); the story is an application, the value the readers gave it when it was unstated
   case_facts: {home_heating_cost_arrangement: included_in_rent, home_incurs_telephone_cost: false, received_energy_assistance_within_twelve_months: false, snap_application_date: '2026-09-25', snap_determination_is_recertification: false,
-    cw_application_date: '2026-09-25'}
+    cw_application_date: '2026-09-25', cw_determination_is_redetermination: false}
   relationships:
   - [parent, p1, p2]
   persons:
